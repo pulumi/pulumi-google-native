@@ -6217,6 +6217,167 @@ func (o StartActivityIntentResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v StartActivityIntentResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
+type SystraceSetup struct {
+	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+	DurationSeconds *int `pulumi:"durationSeconds"`
+}
+
+// SystraceSetupInput is an input type that accepts SystraceSetupArgs and SystraceSetupOutput values.
+// You can construct a concrete instance of `SystraceSetupInput` via:
+//
+//          SystraceSetupArgs{...}
+type SystraceSetupInput interface {
+	pulumi.Input
+
+	ToSystraceSetupOutput() SystraceSetupOutput
+	ToSystraceSetupOutputWithContext(context.Context) SystraceSetupOutput
+}
+
+type SystraceSetupArgs struct {
+	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+	DurationSeconds pulumi.IntPtrInput `pulumi:"durationSeconds"`
+}
+
+func (SystraceSetupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystraceSetup)(nil)).Elem()
+}
+
+func (i SystraceSetupArgs) ToSystraceSetupOutput() SystraceSetupOutput {
+	return i.ToSystraceSetupOutputWithContext(context.Background())
+}
+
+func (i SystraceSetupArgs) ToSystraceSetupOutputWithContext(ctx context.Context) SystraceSetupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupOutput)
+}
+
+func (i SystraceSetupArgs) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
+	return i.ToSystraceSetupPtrOutputWithContext(context.Background())
+}
+
+func (i SystraceSetupArgs) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupOutput).ToSystraceSetupPtrOutputWithContext(ctx)
+}
+
+// SystraceSetupPtrInput is an input type that accepts SystraceSetupArgs, SystraceSetupPtr and SystraceSetupPtrOutput values.
+// You can construct a concrete instance of `SystraceSetupPtrInput` via:
+//
+//          SystraceSetupArgs{...}
+//
+//  or:
+//
+//          nil
+type SystraceSetupPtrInput interface {
+	pulumi.Input
+
+	ToSystraceSetupPtrOutput() SystraceSetupPtrOutput
+	ToSystraceSetupPtrOutputWithContext(context.Context) SystraceSetupPtrOutput
+}
+
+type systraceSetupPtrType SystraceSetupArgs
+
+func SystraceSetupPtr(v *SystraceSetupArgs) SystraceSetupPtrInput {
+	return (*systraceSetupPtrType)(v)
+}
+
+func (*systraceSetupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystraceSetup)(nil)).Elem()
+}
+
+func (i *systraceSetupPtrType) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
+	return i.ToSystraceSetupPtrOutputWithContext(context.Background())
+}
+
+func (i *systraceSetupPtrType) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SystraceSetupPtrOutput)
+}
+
+type SystraceSetupOutput struct{ *pulumi.OutputState }
+
+func (SystraceSetupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystraceSetup)(nil)).Elem()
+}
+
+func (o SystraceSetupOutput) ToSystraceSetupOutput() SystraceSetupOutput {
+	return o
+}
+
+func (o SystraceSetupOutput) ToSystraceSetupOutputWithContext(ctx context.Context) SystraceSetupOutput {
+	return o
+}
+
+func (o SystraceSetupOutput) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
+	return o.ToSystraceSetupPtrOutputWithContext(context.Background())
+}
+
+func (o SystraceSetupOutput) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystraceSetup) *SystraceSetup {
+		return &v
+	}).(SystraceSetupPtrOutput)
+}
+
+// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+func (o SystraceSetupOutput) DurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SystraceSetup) *int { return v.DurationSeconds }).(pulumi.IntPtrOutput)
+}
+
+type SystraceSetupPtrOutput struct{ *pulumi.OutputState }
+
+func (SystraceSetupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystraceSetup)(nil)).Elem()
+}
+
+func (o SystraceSetupPtrOutput) ToSystraceSetupPtrOutput() SystraceSetupPtrOutput {
+	return o
+}
+
+func (o SystraceSetupPtrOutput) ToSystraceSetupPtrOutputWithContext(ctx context.Context) SystraceSetupPtrOutput {
+	return o
+}
+
+func (o SystraceSetupPtrOutput) Elem() SystraceSetupOutput {
+	return o.ApplyT(func(v *SystraceSetup) SystraceSetup {
+		if v != nil {
+			return *v
+		}
+		var ret SystraceSetup
+		return ret
+	}).(SystraceSetupOutput)
+}
+
+// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+func (o SystraceSetupPtrOutput) DurationSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SystraceSetup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+type SystraceSetupResponse struct {
+	// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+	DurationSeconds int `pulumi:"durationSeconds"`
+}
+
+type SystraceSetupResponseOutput struct{ *pulumi.OutputState }
+
+func (SystraceSetupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystraceSetupResponse)(nil)).Elem()
+}
+
+func (o SystraceSetupResponseOutput) ToSystraceSetupResponseOutput() SystraceSetupResponseOutput {
+	return o
+}
+
+func (o SystraceSetupResponseOutput) ToSystraceSetupResponseOutputWithContext(ctx context.Context) SystraceSetupResponseOutput {
+	return o
+}
+
+// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+func (o SystraceSetupResponseOutput) DurationSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v SystraceSetupResponse) int { return v.DurationSeconds }).(pulumi.IntOutput)
+}
+
 // Additional details about the progress of the running test.
 type TestDetailsResponse struct {
 	// If the TestState is ERROR, then this string will contain human-readable details about the error.
@@ -6368,6 +6529,10 @@ type TestSetup struct {
 	FilesToPush []DeviceFile `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile *string `pulumi:"networkProfile"`
+	// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+	//
+	// Deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+	Systrace *SystraceSetup `pulumi:"systrace"`
 }
 
 // TestSetupInput is an input type that accepts TestSetupArgs and TestSetupOutput values.
@@ -6397,6 +6562,10 @@ type TestSetupArgs struct {
 	FilesToPush DeviceFileArrayInput `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
+	// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+	//
+	// Deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+	Systrace SystraceSetupPtrInput `pulumi:"systrace"`
 }
 
 func (TestSetupArgs) ElementType() reflect.Type {
@@ -6512,6 +6681,13 @@ func (o TestSetupOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TestSetup) *string { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+//
+// Deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+func (o TestSetupOutput) Systrace() SystraceSetupPtrOutput {
+	return o.ApplyT(func(v TestSetup) *SystraceSetup { return v.Systrace }).(SystraceSetupPtrOutput)
+}
+
 type TestSetupPtrOutput struct{ *pulumi.OutputState }
 
 func (TestSetupPtrOutput) ElementType() reflect.Type {
@@ -6606,6 +6782,18 @@ func (o TestSetupPtrOutput) NetworkProfile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+//
+// Deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+func (o TestSetupPtrOutput) Systrace() SystraceSetupPtrOutput {
+	return o.ApplyT(func(v *TestSetup) *SystraceSetup {
+		if v == nil {
+			return nil
+		}
+		return v.Systrace
+	}).(SystraceSetupPtrOutput)
+}
+
 // A description of how to set up the Android device prior to running the test.
 type TestSetupResponse struct {
 	// The device will be logged in on this account for the duration of the test.
@@ -6622,6 +6810,10 @@ type TestSetupResponse struct {
 	FilesToPush []DeviceFileResponse `pulumi:"filesToPush"`
 	// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 	NetworkProfile string `pulumi:"networkProfile"`
+	// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+	//
+	// Deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+	Systrace SystraceSetupResponse `pulumi:"systrace"`
 }
 
 // A description of how to set up the Android device prior to running the test.
@@ -6672,6 +6864,13 @@ func (o TestSetupResponseOutput) FilesToPush() DeviceFileResponseArrayOutput {
 // The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
 func (o TestSetupResponseOutput) NetworkProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v TestSetupResponse) string { return v.NetworkProfile }).(pulumi.StringOutput)
+}
+
+// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+//
+// Deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+func (o TestSetupResponseOutput) Systrace() SystraceSetupResponseOutput {
+	return o.ApplyT(func(v TestSetupResponse) SystraceSetupResponse { return v.Systrace }).(SystraceSetupResponseOutput)
 }
 
 // A description of how to run the test.
@@ -7555,6 +7754,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ShardingOptionPtrInput)(nil)).Elem(), ShardingOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentInput)(nil)).Elem(), StartActivityIntentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StartActivityIntentPtrInput)(nil)).Elem(), StartActivityIntentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystraceSetupInput)(nil)).Elem(), SystraceSetupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SystraceSetupPtrInput)(nil)).Elem(), SystraceSetupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestSetupInput)(nil)).Elem(), TestSetupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestSetupPtrInput)(nil)).Elem(), TestSetupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TestSpecificationInput)(nil)).Elem(), TestSpecificationArgs{})
@@ -7670,6 +7871,9 @@ func init() {
 	pulumi.RegisterOutputType(StartActivityIntentOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentPtrOutput{})
 	pulumi.RegisterOutputType(StartActivityIntentResponseOutput{})
+	pulumi.RegisterOutputType(SystraceSetupOutput{})
+	pulumi.RegisterOutputType(SystraceSetupPtrOutput{})
+	pulumi.RegisterOutputType(SystraceSetupResponseOutput{})
 	pulumi.RegisterOutputType(TestDetailsResponseOutput{})
 	pulumi.RegisterOutputType(TestExecutionResponseOutput{})
 	pulumi.RegisterOutputType(TestExecutionResponseArrayOutput{})

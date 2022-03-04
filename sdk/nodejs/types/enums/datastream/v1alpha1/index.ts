@@ -2,6 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const GcsDestinationConfigGcsFileFormat = {
+    /**
+     * Unspecified Cloud Storage file format.
+     */
+    GcsFileFormatUnspecified: "GCS_FILE_FORMAT_UNSPECIFIED",
+    /**
+     * Avro file format
+     */
+    Avro: "AVRO",
+} as const;
+
+/**
+ * File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+ */
+export type GcsDestinationConfigGcsFileFormat = (typeof GcsDestinationConfigGcsFileFormat)[keyof typeof GcsDestinationConfigGcsFileFormat];
+
 export const JsonFileFormatCompression = {
     /**
      * Unspecified json file compression.

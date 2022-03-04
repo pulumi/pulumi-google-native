@@ -18,13 +18,28 @@ __all__ = [
 
 @pulumi.output_type
 class GetFolderPolicyResult:
-    def __init__(__self__, name=None, spec=None):
+    def __init__(__self__, alternate=None, name=None, spec=None):
+        if alternate and not isinstance(alternate, dict):
+            raise TypeError("Expected argument 'alternate' to be a dict")
+        if alternate is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""alternate is deprecated: Deprecated.""")
+
+        pulumi.set(__self__, "alternate", alternate)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if spec and not isinstance(spec, dict):
             raise TypeError("Expected argument 'spec' to be a dict")
         pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def alternate(self) -> 'outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse':
+        """
+        Deprecated.
+        """
+        return pulumi.get(self, "alternate")
 
     @property
     @pulumi.getter
@@ -49,6 +64,7 @@ class AwaitableGetFolderPolicyResult(GetFolderPolicyResult):
         if False:
             yield self
         return GetFolderPolicyResult(
+            alternate=self.alternate,
             name=self.name,
             spec=self.spec)
 
@@ -69,6 +85,7 @@ def get_folder_policy(folder_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:orgpolicy/v2:getFolderPolicy', __args__, opts=opts, typ=GetFolderPolicyResult).value
 
     return AwaitableGetFolderPolicyResult(
+        alternate=__ret__.alternate,
         name=__ret__.name,
         spec=__ret__.spec)
 

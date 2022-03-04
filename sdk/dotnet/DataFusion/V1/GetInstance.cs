@@ -138,6 +138,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         /// </summary>
         public readonly bool PrivateInstance;
         /// <summary>
+        /// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+        /// </summary>
+        public readonly string ServiceAccount;
+        /// <summary>
         /// Endpoint on which the Data Fusion UI is accessible.
         /// </summary>
         public readonly string ServiceEndpoint;
@@ -210,6 +214,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1
 
             bool privateInstance,
 
+            string serviceAccount,
+
             string serviceEndpoint,
 
             string state,
@@ -245,6 +251,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
             Options = options;
             P4ServiceAccount = p4ServiceAccount;
             PrivateInstance = privateInstance;
+            ServiceAccount = serviceAccount;
             ServiceEndpoint = serviceEndpoint;
             State = state;
             StateMessage = stateMessage;

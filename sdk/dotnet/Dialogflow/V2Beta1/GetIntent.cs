@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public readonly bool MlDisabled;
         /// <summary>
+        /// Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+        /// </summary>
+        public readonly bool MlEnabled;
+        /// <summary>
         /// Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
         /// </summary>
         public readonly string Name;
@@ -178,6 +182,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 
             bool mlDisabled,
 
+            bool mlEnabled,
+
             string name,
 
             ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1ContextResponse> outputContexts,
@@ -207,6 +213,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             LiveAgentHandoff = liveAgentHandoff;
             Messages = messages;
             MlDisabled = mlDisabled;
+            MlEnabled = mlEnabled;
             Name = name;
             OutputContexts = outputContexts;
             Parameters = parameters;

@@ -122,6 +122,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Encryption;
         /// <summary>
+        /// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+        /// </summary>
+        public readonly string GoogleReferenceId;
+        /// <summary>
         /// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
         /// </summary>
         public readonly string Interconnect;
@@ -234,6 +238,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string encryption,
 
+            string googleReferenceId,
+
             string interconnect,
 
             ImmutableArray<string> ipsecInternalAddresses,
@@ -289,6 +295,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Description = description;
             EdgeAvailabilityDomain = edgeAvailabilityDomain;
             Encryption = encryption;
+            GoogleReferenceId = googleReferenceId;
             Interconnect = interconnect;
             IpsecInternalAddresses = ipsecInternalAddresses;
             Kind = kind;

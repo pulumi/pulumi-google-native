@@ -45,6 +45,12 @@ export class Instruction extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     *
+     * @deprecated Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     */
+    public readonly csvInstruction!: pulumi.Output<outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionResponse>;
+    /**
      * The data type of this instruction.
      */
     public readonly dataType!: pulumi.Output<string>;
@@ -86,6 +92,7 @@ export class Instruction extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["csvInstruction"] = args ? args.csvInstruction : undefined;
             resourceInputs["dataType"] = args ? args.dataType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -98,6 +105,7 @@ export class Instruction extends pulumi.CustomResource {
         } else {
             resourceInputs["blockingResources"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["csvInstruction"] = undefined /*out*/;
             resourceInputs["dataType"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -114,6 +122,12 @@ export class Instruction extends pulumi.CustomResource {
  * The set of arguments for constructing a Instruction resource.
  */
 export interface InstructionArgs {
+    /**
+     * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     *
+     * @deprecated Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     */
+    csvInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionArgs>;
     /**
      * The data type of this instruction.
      */

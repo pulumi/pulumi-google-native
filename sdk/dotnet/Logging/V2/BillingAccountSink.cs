@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated. This field is unused.
+        /// </summary>
+        [Output("outputVersionFormat")]
+        public Output<string> OutputVersionFormat { get; private set; } = null!;
+
+        /// <summary>
         /// The last update timestamp of the sink.This field may not be present for older sinks.
         /// </summary>
         [Output("updateTime")]
@@ -182,6 +188,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Deprecated. This field is unused.
+        /// </summary>
+        [Input("outputVersionFormat")]
+        public Input<Pulumi.GoogleNative.Logging.V2.BillingAccountSinkOutputVersionFormat>? OutputVersionFormat { get; set; }
 
         [Input("uniqueWriterIdentity")]
         public Input<string>? UniqueWriterIdentity { get; set; }

@@ -59,6 +59,10 @@ type LookupTransferConfigResult struct {
 	State string `pulumi:"state"`
 	// Data transfer modification time. Ignored by server on input.
 	UpdateTime string `pulumi:"updateTime"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId string `pulumi:"userId"`
 }
 
 func LookupTransferConfigOutput(ctx *pulumi.Context, args LookupTransferConfigOutputArgs, opts ...pulumi.InvokeOption) LookupTransferConfigResultOutput {
@@ -172,6 +176,13 @@ func (o LookupTransferConfigResultOutput) State() pulumi.StringOutput {
 // Data transfer modification time. Ignored by server on input.
 func (o LookupTransferConfigResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransferConfigResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Deprecated. Unique ID of the user on whose behalf transfer is done.
+//
+// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+func (o LookupTransferConfigResultOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTransferConfigResult) string { return v.UserId }).(pulumi.StringOutput)
 }
 
 func init() {

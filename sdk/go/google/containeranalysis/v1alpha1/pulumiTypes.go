@@ -16,6 +16,10 @@ type Artifact struct {
 	Checksum *string `pulumi:"checksum"`
 	// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
 	Id *string `pulumi:"id"`
+	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	//
+	// Deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	Name *string `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -37,6 +41,10 @@ type ArtifactArgs struct {
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
 	// Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	//
+	// Deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names pulumi.StringArrayInput `pulumi:"names"`
 }
@@ -103,6 +111,13 @@ func (o ArtifactOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Artifact) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+//
+// Deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+func (o ArtifactOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Artifact) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 func (o ArtifactOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Artifact) []string { return v.Names }).(pulumi.StringArrayOutput)
@@ -132,6 +147,10 @@ func (o ArtifactArrayOutput) Index(i pulumi.IntInput) ArtifactOutput {
 type ArtifactResponse struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 	Checksum string `pulumi:"checksum"`
+	// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	//
+	// Deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+	Name string `pulumi:"name"`
 	// Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
 	Names []string `pulumi:"names"`
 }
@@ -154,6 +173,13 @@ func (o ArtifactResponseOutput) ToArtifactResponseOutputWithContext(ctx context.
 // Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
 func (o ArtifactResponseOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v ArtifactResponse) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+//
+// Deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+func (o ArtifactResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ArtifactResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
@@ -1039,6 +1065,10 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Message encapsulating build provenance details.
 type BuildDetails struct {
+	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	//
+	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	IntotoProvenance *InTotoProvenance `pulumi:"intotoProvenance"`
 	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 	IntotoStatement *InTotoStatement `pulumi:"intotoStatement"`
 	// The actual provenance
@@ -1060,6 +1090,10 @@ type BuildDetailsInput interface {
 
 // Message encapsulating build provenance details.
 type BuildDetailsArgs struct {
+	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	//
+	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	IntotoProvenance InTotoProvenancePtrInput `pulumi:"intotoProvenance"`
 	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 	IntotoStatement InTotoStatementPtrInput `pulumi:"intotoStatement"`
 	// The actual provenance
@@ -1146,6 +1180,13 @@ func (o BuildDetailsOutput) ToBuildDetailsPtrOutputWithContext(ctx context.Conte
 	}).(BuildDetailsPtrOutput)
 }
 
+// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+//
+// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+func (o BuildDetailsOutput) IntotoProvenance() InTotoProvenancePtrOutput {
+	return o.ApplyT(func(v BuildDetails) *InTotoProvenance { return v.IntotoProvenance }).(InTotoProvenancePtrOutput)
+}
+
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 func (o BuildDetailsOutput) IntotoStatement() InTotoStatementPtrOutput {
 	return o.ApplyT(func(v BuildDetails) *InTotoStatement { return v.IntotoStatement }).(InTotoStatementPtrOutput)
@@ -1185,6 +1226,18 @@ func (o BuildDetailsPtrOutput) Elem() BuildDetailsOutput {
 	}).(BuildDetailsOutput)
 }
 
+// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+//
+// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+func (o BuildDetailsPtrOutput) IntotoProvenance() InTotoProvenancePtrOutput {
+	return o.ApplyT(func(v *BuildDetails) *InTotoProvenance {
+		if v == nil {
+			return nil
+		}
+		return v.IntotoProvenance
+	}).(InTotoProvenancePtrOutput)
+}
+
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 func (o BuildDetailsPtrOutput) IntotoStatement() InTotoStatementPtrOutput {
 	return o.ApplyT(func(v *BuildDetails) *InTotoStatement {
@@ -1217,6 +1270,10 @@ func (o BuildDetailsPtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
 
 // Message encapsulating build provenance details.
 type BuildDetailsResponse struct {
+	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	//
+	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	IntotoProvenance InTotoProvenanceResponse `pulumi:"intotoProvenance"`
 	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 	IntotoStatement InTotoStatementResponse `pulumi:"intotoStatement"`
 	// The actual provenance
@@ -1238,6 +1295,13 @@ func (o BuildDetailsResponseOutput) ToBuildDetailsResponseOutput() BuildDetailsR
 
 func (o BuildDetailsResponseOutput) ToBuildDetailsResponseOutputWithContext(ctx context.Context) BuildDetailsResponseOutput {
 	return o
+}
+
+// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+//
+// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+func (o BuildDetailsResponseOutput) IntotoProvenance() InTotoProvenanceResponseOutput {
+	return o.ApplyT(func(v BuildDetailsResponse) InTotoProvenanceResponse { return v.IntotoProvenance }).(InTotoProvenanceResponseOutput)
 }
 
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
@@ -5757,6 +5821,10 @@ type DiscoveredResponse struct {
 	Cpe string `pulumi:"cpe"`
 	// The last time this resource was scanned.
 	LastScanTime string `pulumi:"lastScanTime"`
+	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+	//
+	// Deprecated: Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+	Operation OperationResponse `pulumi:"operation"`
 }
 
 // Provides information about the scan status of a discovered resource.
@@ -5802,6 +5870,13 @@ func (o DiscoveredResponseOutput) Cpe() pulumi.StringOutput {
 // The last time this resource was scanned.
 func (o DiscoveredResponseOutput) LastScanTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveredResponse) string { return v.LastScanTime }).(pulumi.StringOutput)
+}
+
+// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+//
+// Deprecated: Output only. An operation that indicates the status of the current scan. This field is deprecated, do not use.
+func (o DiscoveredResponseOutput) Operation() OperationResponseOutput {
+	return o.ApplyT(func(v DiscoveredResponse) OperationResponse { return v.Operation }).(OperationResponseOutput)
 }
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
@@ -11914,6 +11989,60 @@ func (o NonCompliantFileResponseArrayOutput) Index(i pulumi.IntInput) NonComplia
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NonCompliantFileResponse {
 		return vs[0].([]NonCompliantFileResponse)[vs[1].(int)]
 	}).(NonCompliantFileResponseOutput)
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponse struct {
+	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+	Done bool `pulumi:"done"`
+	// The error result of the operation in case of failure or cancellation.
+	Error StatusResponse `pulumi:"error"`
+	// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+	Name string `pulumi:"name"`
+	// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+	Response map[string]string `pulumi:"response"`
+}
+
+// This resource represents a long-running operation that is the result of a network API call.
+type OperationResponseOutput struct{ *pulumi.OutputState }
+
+func (OperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OperationResponse)(nil)).Elem()
+}
+
+func (o OperationResponseOutput) ToOperationResponseOutput() OperationResponseOutput {
+	return o
+}
+
+func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx context.Context) OperationResponseOutput {
+	return o
+}
+
+// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+func (o OperationResponseOutput) Done() pulumi.BoolOutput {
+	return o.ApplyT(func(v OperationResponse) bool { return v.Done }).(pulumi.BoolOutput)
+}
+
+// The error result of the operation in case of failure or cancellation.
+func (o OperationResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v OperationResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+func (o OperationResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+func (o OperationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+func (o OperationResponseOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Response }).(pulumi.StringMapOutput)
 }
 
 // This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
@@ -18820,6 +18949,7 @@ func init() {
 	pulumi.RegisterOutputType(NonCompliantFileArrayOutput{})
 	pulumi.RegisterOutputType(NonCompliantFileResponseOutput{})
 	pulumi.RegisterOutputType(NonCompliantFileResponseArrayOutput{})
+	pulumi.RegisterOutputType(OperationResponseOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackagePtrOutput{})
 	pulumi.RegisterOutputType(PackageInfoNoteOutput{})

@@ -1699,6 +1699,172 @@ func (in *attachedDiskInitializeParamsArchitecturePtr) ToAttachedDiskInitializeP
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsArchitecturePtrOutput)
 }
 
+// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+type AttachedDiskInitializeParamsInterface string
+
+const (
+	AttachedDiskInitializeParamsInterfaceNvme        = AttachedDiskInitializeParamsInterface("NVME")
+	AttachedDiskInitializeParamsInterfaceScsi        = AttachedDiskInitializeParamsInterface("SCSI")
+	AttachedDiskInitializeParamsInterfaceUnspecified = AttachedDiskInitializeParamsInterface("UNSPECIFIED")
+)
+
+func (AttachedDiskInitializeParamsInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedDiskInitializeParamsInterface)(nil)).Elem()
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToAttachedDiskInitializeParamsInterfaceOutput() AttachedDiskInitializeParamsInterfaceOutput {
+	return pulumi.ToOutput(e).(AttachedDiskInitializeParamsInterfaceOutput)
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToAttachedDiskInitializeParamsInterfaceOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AttachedDiskInitializeParamsInterfaceOutput)
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToAttachedDiskInitializeParamsInterfacePtrOutput() AttachedDiskInitializeParamsInterfacePtrOutput {
+	return e.ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(context.Background())
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfacePtrOutput {
+	return AttachedDiskInitializeParamsInterface(e).ToAttachedDiskInitializeParamsInterfaceOutputWithContext(ctx).ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx)
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AttachedDiskInitializeParamsInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AttachedDiskInitializeParamsInterfaceOutput struct{ *pulumi.OutputState }
+
+func (AttachedDiskInitializeParamsInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedDiskInitializeParamsInterface)(nil)).Elem()
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToAttachedDiskInitializeParamsInterfaceOutput() AttachedDiskInitializeParamsInterfaceOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToAttachedDiskInitializeParamsInterfaceOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfaceOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToAttachedDiskInitializeParamsInterfacePtrOutput() AttachedDiskInitializeParamsInterfacePtrOutput {
+	return o.ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedDiskInitializeParamsInterface) *AttachedDiskInitializeParamsInterface {
+		return &v
+	}).(AttachedDiskInitializeParamsInterfacePtrOutput)
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AttachedDiskInitializeParamsInterface) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsInterfaceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AttachedDiskInitializeParamsInterface) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttachedDiskInitializeParamsInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedDiskInitializeParamsInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedDiskInitializeParamsInterface)(nil)).Elem()
+}
+
+func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToAttachedDiskInitializeParamsInterfacePtrOutput() AttachedDiskInitializeParamsInterfacePtrOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfacePtrOutput {
+	return o
+}
+
+func (o AttachedDiskInitializeParamsInterfacePtrOutput) Elem() AttachedDiskInitializeParamsInterfaceOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParamsInterface) AttachedDiskInitializeParamsInterface {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedDiskInitializeParamsInterface
+		return ret
+	}).(AttachedDiskInitializeParamsInterfaceOutput)
+}
+
+func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AttachedDiskInitializeParamsInterface) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AttachedDiskInitializeParamsInterfaceInput is an input type that accepts AttachedDiskInitializeParamsInterfaceArgs and AttachedDiskInitializeParamsInterfaceOutput values.
+// You can construct a concrete instance of `AttachedDiskInitializeParamsInterfaceInput` via:
+//
+//          AttachedDiskInitializeParamsInterfaceArgs{...}
+type AttachedDiskInitializeParamsInterfaceInput interface {
+	pulumi.Input
+
+	ToAttachedDiskInitializeParamsInterfaceOutput() AttachedDiskInitializeParamsInterfaceOutput
+	ToAttachedDiskInitializeParamsInterfaceOutputWithContext(context.Context) AttachedDiskInitializeParamsInterfaceOutput
+}
+
+var attachedDiskInitializeParamsInterfacePtrType = reflect.TypeOf((**AttachedDiskInitializeParamsInterface)(nil)).Elem()
+
+type AttachedDiskInitializeParamsInterfacePtrInput interface {
+	pulumi.Input
+
+	ToAttachedDiskInitializeParamsInterfacePtrOutput() AttachedDiskInitializeParamsInterfacePtrOutput
+	ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(context.Context) AttachedDiskInitializeParamsInterfacePtrOutput
+}
+
+type attachedDiskInitializeParamsInterfacePtr string
+
+func AttachedDiskInitializeParamsInterfacePtr(v string) AttachedDiskInitializeParamsInterfacePtrInput {
+	return (*attachedDiskInitializeParamsInterfacePtr)(&v)
+}
+
+func (*attachedDiskInitializeParamsInterfacePtr) ElementType() reflect.Type {
+	return attachedDiskInitializeParamsInterfacePtrType
+}
+
+func (in *attachedDiskInitializeParamsInterfacePtr) ToAttachedDiskInitializeParamsInterfacePtrOutput() AttachedDiskInitializeParamsInterfacePtrOutput {
+	return pulumi.ToOutput(in).(AttachedDiskInitializeParamsInterfacePtrOutput)
+}
+
+func (in *attachedDiskInitializeParamsInterfacePtr) ToAttachedDiskInitializeParamsInterfacePtrOutputWithContext(ctx context.Context) AttachedDiskInitializeParamsInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsInterfacePtrOutput)
+}
+
 // Specifies which action to take on instance update with this disk. Default is to use the existing disk.
 type AttachedDiskInitializeParamsOnUpdateAction string
 
@@ -2702,6 +2868,174 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogC
 
 func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
+// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+type AuthenticationPolicyPrincipalBinding string
+
+const (
+	AuthenticationPolicyPrincipalBindingInvalid = AuthenticationPolicyPrincipalBinding("INVALID")
+	// Principal will be set to the identity from origin authentication.
+	AuthenticationPolicyPrincipalBindingUseOrigin = AuthenticationPolicyPrincipalBinding("USE_ORIGIN")
+	// Principal will be set to the identity from peer authentication.
+	AuthenticationPolicyPrincipalBindingUsePeer = AuthenticationPolicyPrincipalBinding("USE_PEER")
+)
+
+func (AuthenticationPolicyPrincipalBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationPolicyPrincipalBinding)(nil)).Elem()
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToAuthenticationPolicyPrincipalBindingOutput() AuthenticationPolicyPrincipalBindingOutput {
+	return pulumi.ToOutput(e).(AuthenticationPolicyPrincipalBindingOutput)
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToAuthenticationPolicyPrincipalBindingOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthenticationPolicyPrincipalBindingOutput)
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToAuthenticationPolicyPrincipalBindingPtrOutput() AuthenticationPolicyPrincipalBindingPtrOutput {
+	return e.ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(context.Background())
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingPtrOutput {
+	return AuthenticationPolicyPrincipalBinding(e).ToAuthenticationPolicyPrincipalBindingOutputWithContext(ctx).ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx)
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthenticationPolicyPrincipalBinding) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthenticationPolicyPrincipalBindingOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPolicyPrincipalBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationPolicyPrincipalBinding)(nil)).Elem()
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToAuthenticationPolicyPrincipalBindingOutput() AuthenticationPolicyPrincipalBindingOutput {
+	return o
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToAuthenticationPolicyPrincipalBindingOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingOutput {
+	return o
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToAuthenticationPolicyPrincipalBindingPtrOutput() AuthenticationPolicyPrincipalBindingPtrOutput {
+	return o.ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationPolicyPrincipalBinding) *AuthenticationPolicyPrincipalBinding {
+		return &v
+	}).(AuthenticationPolicyPrincipalBindingPtrOutput)
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthenticationPolicyPrincipalBinding) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationPolicyPrincipalBindingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthenticationPolicyPrincipalBinding) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthenticationPolicyPrincipalBindingPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPolicyPrincipalBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationPolicyPrincipalBinding)(nil)).Elem()
+}
+
+func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToAuthenticationPolicyPrincipalBindingPtrOutput() AuthenticationPolicyPrincipalBindingPtrOutput {
+	return o
+}
+
+func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingPtrOutput {
+	return o
+}
+
+func (o AuthenticationPolicyPrincipalBindingPtrOutput) Elem() AuthenticationPolicyPrincipalBindingOutput {
+	return o.ApplyT(func(v *AuthenticationPolicyPrincipalBinding) AuthenticationPolicyPrincipalBinding {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationPolicyPrincipalBinding
+		return ret
+	}).(AuthenticationPolicyPrincipalBindingOutput)
+}
+
+func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthenticationPolicyPrincipalBinding) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthenticationPolicyPrincipalBindingInput is an input type that accepts AuthenticationPolicyPrincipalBindingArgs and AuthenticationPolicyPrincipalBindingOutput values.
+// You can construct a concrete instance of `AuthenticationPolicyPrincipalBindingInput` via:
+//
+//          AuthenticationPolicyPrincipalBindingArgs{...}
+type AuthenticationPolicyPrincipalBindingInput interface {
+	pulumi.Input
+
+	ToAuthenticationPolicyPrincipalBindingOutput() AuthenticationPolicyPrincipalBindingOutput
+	ToAuthenticationPolicyPrincipalBindingOutputWithContext(context.Context) AuthenticationPolicyPrincipalBindingOutput
+}
+
+var authenticationPolicyPrincipalBindingPtrType = reflect.TypeOf((**AuthenticationPolicyPrincipalBinding)(nil)).Elem()
+
+type AuthenticationPolicyPrincipalBindingPtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationPolicyPrincipalBindingPtrOutput() AuthenticationPolicyPrincipalBindingPtrOutput
+	ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(context.Context) AuthenticationPolicyPrincipalBindingPtrOutput
+}
+
+type authenticationPolicyPrincipalBindingPtr string
+
+func AuthenticationPolicyPrincipalBindingPtr(v string) AuthenticationPolicyPrincipalBindingPtrInput {
+	return (*authenticationPolicyPrincipalBindingPtr)(&v)
+}
+
+func (*authenticationPolicyPrincipalBindingPtr) ElementType() reflect.Type {
+	return authenticationPolicyPrincipalBindingPtrType
+}
+
+func (in *authenticationPolicyPrincipalBindingPtr) ToAuthenticationPolicyPrincipalBindingPtrOutput() AuthenticationPolicyPrincipalBindingPtrOutput {
+	return pulumi.ToOutput(in).(AuthenticationPolicyPrincipalBindingPtrOutput)
+}
+
+func (in *authenticationPolicyPrincipalBindingPtr) ToAuthenticationPolicyPrincipalBindingPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPrincipalBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationPolicyPrincipalBindingPtrOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -5608,6 +5942,176 @@ func (in *channelCredentialsChannelCredentialTypePtr) ToChannelCredentialsChanne
 	return pulumi.ToOutputWithContext(ctx, in).(ChannelCredentialsChannelCredentialTypePtrOutput)
 }
 
+// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+type ClientTlsSettingsMode string
+
+const (
+	// Do not setup a TLS connection to the backends.
+	ClientTlsSettingsModeDisable = ClientTlsSettingsMode("DISABLE")
+	ClientTlsSettingsModeInvalid = ClientTlsSettingsMode("INVALID")
+	// Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	ClientTlsSettingsModeMutual = ClientTlsSettingsMode("MUTUAL")
+	// Originate a TLS connection to the backends.
+	ClientTlsSettingsModeSimple = ClientTlsSettingsMode("SIMPLE")
+)
+
+func (ClientTlsSettingsMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTlsSettingsMode)(nil)).Elem()
+}
+
+func (e ClientTlsSettingsMode) ToClientTlsSettingsModeOutput() ClientTlsSettingsModeOutput {
+	return pulumi.ToOutput(e).(ClientTlsSettingsModeOutput)
+}
+
+func (e ClientTlsSettingsMode) ToClientTlsSettingsModeOutputWithContext(ctx context.Context) ClientTlsSettingsModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClientTlsSettingsModeOutput)
+}
+
+func (e ClientTlsSettingsMode) ToClientTlsSettingsModePtrOutput() ClientTlsSettingsModePtrOutput {
+	return e.ToClientTlsSettingsModePtrOutputWithContext(context.Background())
+}
+
+func (e ClientTlsSettingsMode) ToClientTlsSettingsModePtrOutputWithContext(ctx context.Context) ClientTlsSettingsModePtrOutput {
+	return ClientTlsSettingsMode(e).ToClientTlsSettingsModeOutputWithContext(ctx).ToClientTlsSettingsModePtrOutputWithContext(ctx)
+}
+
+func (e ClientTlsSettingsMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClientTlsSettingsMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClientTlsSettingsMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClientTlsSettingsMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClientTlsSettingsModeOutput struct{ *pulumi.OutputState }
+
+func (ClientTlsSettingsModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTlsSettingsMode)(nil)).Elem()
+}
+
+func (o ClientTlsSettingsModeOutput) ToClientTlsSettingsModeOutput() ClientTlsSettingsModeOutput {
+	return o
+}
+
+func (o ClientTlsSettingsModeOutput) ToClientTlsSettingsModeOutputWithContext(ctx context.Context) ClientTlsSettingsModeOutput {
+	return o
+}
+
+func (o ClientTlsSettingsModeOutput) ToClientTlsSettingsModePtrOutput() ClientTlsSettingsModePtrOutput {
+	return o.ToClientTlsSettingsModePtrOutputWithContext(context.Background())
+}
+
+func (o ClientTlsSettingsModeOutput) ToClientTlsSettingsModePtrOutputWithContext(ctx context.Context) ClientTlsSettingsModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientTlsSettingsMode) *ClientTlsSettingsMode {
+		return &v
+	}).(ClientTlsSettingsModePtrOutput)
+}
+
+func (o ClientTlsSettingsModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClientTlsSettingsModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClientTlsSettingsMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClientTlsSettingsModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClientTlsSettingsModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClientTlsSettingsMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientTlsSettingsModePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientTlsSettingsModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTlsSettingsMode)(nil)).Elem()
+}
+
+func (o ClientTlsSettingsModePtrOutput) ToClientTlsSettingsModePtrOutput() ClientTlsSettingsModePtrOutput {
+	return o
+}
+
+func (o ClientTlsSettingsModePtrOutput) ToClientTlsSettingsModePtrOutputWithContext(ctx context.Context) ClientTlsSettingsModePtrOutput {
+	return o
+}
+
+func (o ClientTlsSettingsModePtrOutput) Elem() ClientTlsSettingsModeOutput {
+	return o.ApplyT(func(v *ClientTlsSettingsMode) ClientTlsSettingsMode {
+		if v != nil {
+			return *v
+		}
+		var ret ClientTlsSettingsMode
+		return ret
+	}).(ClientTlsSettingsModeOutput)
+}
+
+func (o ClientTlsSettingsModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClientTlsSettingsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClientTlsSettingsMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClientTlsSettingsModeInput is an input type that accepts ClientTlsSettingsModeArgs and ClientTlsSettingsModeOutput values.
+// You can construct a concrete instance of `ClientTlsSettingsModeInput` via:
+//
+//          ClientTlsSettingsModeArgs{...}
+type ClientTlsSettingsModeInput interface {
+	pulumi.Input
+
+	ToClientTlsSettingsModeOutput() ClientTlsSettingsModeOutput
+	ToClientTlsSettingsModeOutputWithContext(context.Context) ClientTlsSettingsModeOutput
+}
+
+var clientTlsSettingsModePtrType = reflect.TypeOf((**ClientTlsSettingsMode)(nil)).Elem()
+
+type ClientTlsSettingsModePtrInput interface {
+	pulumi.Input
+
+	ToClientTlsSettingsModePtrOutput() ClientTlsSettingsModePtrOutput
+	ToClientTlsSettingsModePtrOutputWithContext(context.Context) ClientTlsSettingsModePtrOutput
+}
+
+type clientTlsSettingsModePtr string
+
+func ClientTlsSettingsModePtr(v string) ClientTlsSettingsModePtrInput {
+	return (*clientTlsSettingsModePtr)(&v)
+}
+
+func (*clientTlsSettingsModePtr) ElementType() reflect.Type {
+	return clientTlsSettingsModePtrType
+}
+
+func (in *clientTlsSettingsModePtr) ToClientTlsSettingsModePtrOutput() ClientTlsSettingsModePtrOutput {
+	return pulumi.ToOutput(in).(ClientTlsSettingsModePtrOutput)
+}
+
+func (in *clientTlsSettingsModePtr) ToClientTlsSettingsModePtrOutputWithContext(ctx context.Context) ClientTlsSettingsModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClientTlsSettingsModePtrOutput)
+}
+
 // This is deprecated and has no effect. Do not use.
 type ConditionIam string
 
@@ -6646,6 +7150,337 @@ func (in *diskInstantiationConfigInstantiateFromPtr) ToDiskInstantiationConfigIn
 
 func (in *diskInstantiationConfigInstantiateFromPtr) ToDiskInstantiationConfigInstantiateFromPtrOutputWithContext(ctx context.Context) DiskInstantiationConfigInstantiateFromPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskInstantiationConfigInstantiateFromPtrOutput)
+}
+
+// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+type DiskInterface string
+
+const (
+	DiskInterfaceNvme        = DiskInterface("NVME")
+	DiskInterfaceScsi        = DiskInterface("SCSI")
+	DiskInterfaceUnspecified = DiskInterface("UNSPECIFIED")
+)
+
+func (DiskInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskInterface)(nil)).Elem()
+}
+
+func (e DiskInterface) ToDiskInterfaceOutput() DiskInterfaceOutput {
+	return pulumi.ToOutput(e).(DiskInterfaceOutput)
+}
+
+func (e DiskInterface) ToDiskInterfaceOutputWithContext(ctx context.Context) DiskInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiskInterfaceOutput)
+}
+
+func (e DiskInterface) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
+	return e.ToDiskInterfacePtrOutputWithContext(context.Background())
+}
+
+func (e DiskInterface) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
+	return DiskInterface(e).ToDiskInterfaceOutputWithContext(ctx).ToDiskInterfacePtrOutputWithContext(ctx)
+}
+
+func (e DiskInterface) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskInterface) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiskInterfaceOutput struct{ *pulumi.OutputState }
+
+func (DiskInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskInterface)(nil)).Elem()
+}
+
+func (o DiskInterfaceOutput) ToDiskInterfaceOutput() DiskInterfaceOutput {
+	return o
+}
+
+func (o DiskInterfaceOutput) ToDiskInterfaceOutputWithContext(ctx context.Context) DiskInterfaceOutput {
+	return o
+}
+
+func (o DiskInterfaceOutput) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
+	return o.ToDiskInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o DiskInterfaceOutput) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskInterface) *DiskInterface {
+		return &v
+	}).(DiskInterfacePtrOutput)
+}
+
+func (o DiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiskInterfaceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskInterface) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiskInterfaceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskInterfaceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskInterface) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskInterface)(nil)).Elem()
+}
+
+func (o DiskInterfacePtrOutput) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
+	return o
+}
+
+func (o DiskInterfacePtrOutput) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
+	return o
+}
+
+func (o DiskInterfacePtrOutput) Elem() DiskInterfaceOutput {
+	return o.ApplyT(func(v *DiskInterface) DiskInterface {
+		if v != nil {
+			return *v
+		}
+		var ret DiskInterface
+		return ret
+	}).(DiskInterfaceOutput)
+}
+
+func (o DiskInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskInterface) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiskInterfaceInput is an input type that accepts DiskInterfaceArgs and DiskInterfaceOutput values.
+// You can construct a concrete instance of `DiskInterfaceInput` via:
+//
+//          DiskInterfaceArgs{...}
+type DiskInterfaceInput interface {
+	pulumi.Input
+
+	ToDiskInterfaceOutput() DiskInterfaceOutput
+	ToDiskInterfaceOutputWithContext(context.Context) DiskInterfaceOutput
+}
+
+var diskInterfacePtrType = reflect.TypeOf((**DiskInterface)(nil)).Elem()
+
+type DiskInterfacePtrInput interface {
+	pulumi.Input
+
+	ToDiskInterfacePtrOutput() DiskInterfacePtrOutput
+	ToDiskInterfacePtrOutputWithContext(context.Context) DiskInterfacePtrOutput
+}
+
+type diskInterfacePtr string
+
+func DiskInterfacePtr(v string) DiskInterfacePtrInput {
+	return (*diskInterfacePtr)(&v)
+}
+
+func (*diskInterfacePtr) ElementType() reflect.Type {
+	return diskInterfacePtrType
+}
+
+func (in *diskInterfacePtr) ToDiskInterfacePtrOutput() DiskInterfacePtrOutput {
+	return pulumi.ToOutput(in).(DiskInterfacePtrOutput)
+}
+
+func (in *diskInterfacePtr) ToDiskInterfacePtrOutputWithContext(ctx context.Context) DiskInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiskInterfacePtrOutput)
+}
+
+// [Deprecated] Storage type of the persistent disk.
+type DiskStorageType string
+
+const (
+	DiskStorageTypeHdd = DiskStorageType("HDD")
+	DiskStorageTypeSsd = DiskStorageType("SSD")
+)
+
+func (DiskStorageType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskStorageType)(nil)).Elem()
+}
+
+func (e DiskStorageType) ToDiskStorageTypeOutput() DiskStorageTypeOutput {
+	return pulumi.ToOutput(e).(DiskStorageTypeOutput)
+}
+
+func (e DiskStorageType) ToDiskStorageTypeOutputWithContext(ctx context.Context) DiskStorageTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiskStorageTypeOutput)
+}
+
+func (e DiskStorageType) ToDiskStorageTypePtrOutput() DiskStorageTypePtrOutput {
+	return e.ToDiskStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (e DiskStorageType) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
+	return DiskStorageType(e).ToDiskStorageTypeOutputWithContext(ctx).ToDiskStorageTypePtrOutputWithContext(ctx)
+}
+
+func (e DiskStorageType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskStorageType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DiskStorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DiskStorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiskStorageTypeOutput struct{ *pulumi.OutputState }
+
+func (DiskStorageTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskStorageType)(nil)).Elem()
+}
+
+func (o DiskStorageTypeOutput) ToDiskStorageTypeOutput() DiskStorageTypeOutput {
+	return o
+}
+
+func (o DiskStorageTypeOutput) ToDiskStorageTypeOutputWithContext(ctx context.Context) DiskStorageTypeOutput {
+	return o
+}
+
+func (o DiskStorageTypeOutput) ToDiskStorageTypePtrOutput() DiskStorageTypePtrOutput {
+	return o.ToDiskStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (o DiskStorageTypeOutput) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskStorageType) *DiskStorageType {
+		return &v
+	}).(DiskStorageTypePtrOutput)
+}
+
+func (o DiskStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiskStorageTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskStorageType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiskStorageTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskStorageTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskStorageType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskStorageTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskStorageTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskStorageType)(nil)).Elem()
+}
+
+func (o DiskStorageTypePtrOutput) ToDiskStorageTypePtrOutput() DiskStorageTypePtrOutput {
+	return o
+}
+
+func (o DiskStorageTypePtrOutput) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
+	return o
+}
+
+func (o DiskStorageTypePtrOutput) Elem() DiskStorageTypeOutput {
+	return o.ApplyT(func(v *DiskStorageType) DiskStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret DiskStorageType
+		return ret
+	}).(DiskStorageTypeOutput)
+}
+
+func (o DiskStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskStorageType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DiskStorageTypeInput is an input type that accepts DiskStorageTypeArgs and DiskStorageTypeOutput values.
+// You can construct a concrete instance of `DiskStorageTypeInput` via:
+//
+//          DiskStorageTypeArgs{...}
+type DiskStorageTypeInput interface {
+	pulumi.Input
+
+	ToDiskStorageTypeOutput() DiskStorageTypeOutput
+	ToDiskStorageTypeOutputWithContext(context.Context) DiskStorageTypeOutput
+}
+
+var diskStorageTypePtrType = reflect.TypeOf((**DiskStorageType)(nil)).Elem()
+
+type DiskStorageTypePtrInput interface {
+	pulumi.Input
+
+	ToDiskStorageTypePtrOutput() DiskStorageTypePtrOutput
+	ToDiskStorageTypePtrOutputWithContext(context.Context) DiskStorageTypePtrOutput
+}
+
+type diskStorageTypePtr string
+
+func DiskStorageTypePtr(v string) DiskStorageTypePtrInput {
+	return (*diskStorageTypePtr)(&v)
+}
+
+func (*diskStorageTypePtr) ElementType() reflect.Type {
+	return diskStorageTypePtrType
+}
+
+func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutput() DiskStorageTypePtrOutput {
+	return pulumi.ToOutput(in).(DiskStorageTypePtrOutput)
+}
+
+func (in *diskStorageTypePtr) ToDiskStorageTypePtrOutputWithContext(ctx context.Context) DiskStorageTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiskStorageTypePtrOutput)
 }
 
 // The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
@@ -17621,6 +18456,174 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
+// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+type MutualTlsMode string
+
+const (
+	MutualTlsModeInvalid = MutualTlsMode("INVALID")
+	// Client certificate can be omitted, connection can be either plaintext or TLS.
+	MutualTlsModePermissive = MutualTlsMode("PERMISSIVE")
+	// Client certificate must be presented, connection is in TLS.
+	MutualTlsModeStrict = MutualTlsMode("STRICT")
+)
+
+func (MutualTlsMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutualTlsMode)(nil)).Elem()
+}
+
+func (e MutualTlsMode) ToMutualTlsModeOutput() MutualTlsModeOutput {
+	return pulumi.ToOutput(e).(MutualTlsModeOutput)
+}
+
+func (e MutualTlsMode) ToMutualTlsModeOutputWithContext(ctx context.Context) MutualTlsModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MutualTlsModeOutput)
+}
+
+func (e MutualTlsMode) ToMutualTlsModePtrOutput() MutualTlsModePtrOutput {
+	return e.ToMutualTlsModePtrOutputWithContext(context.Background())
+}
+
+func (e MutualTlsMode) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
+	return MutualTlsMode(e).ToMutualTlsModeOutputWithContext(ctx).ToMutualTlsModePtrOutputWithContext(ctx)
+}
+
+func (e MutualTlsMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MutualTlsMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MutualTlsMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MutualTlsMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MutualTlsModeOutput struct{ *pulumi.OutputState }
+
+func (MutualTlsModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutualTlsMode)(nil)).Elem()
+}
+
+func (o MutualTlsModeOutput) ToMutualTlsModeOutput() MutualTlsModeOutput {
+	return o
+}
+
+func (o MutualTlsModeOutput) ToMutualTlsModeOutputWithContext(ctx context.Context) MutualTlsModeOutput {
+	return o
+}
+
+func (o MutualTlsModeOutput) ToMutualTlsModePtrOutput() MutualTlsModePtrOutput {
+	return o.ToMutualTlsModePtrOutputWithContext(context.Background())
+}
+
+func (o MutualTlsModeOutput) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MutualTlsMode) *MutualTlsMode {
+		return &v
+	}).(MutualTlsModePtrOutput)
+}
+
+func (o MutualTlsModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MutualTlsModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MutualTlsMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MutualTlsModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MutualTlsModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MutualTlsMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MutualTlsModePtrOutput struct{ *pulumi.OutputState }
+
+func (MutualTlsModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutualTlsMode)(nil)).Elem()
+}
+
+func (o MutualTlsModePtrOutput) ToMutualTlsModePtrOutput() MutualTlsModePtrOutput {
+	return o
+}
+
+func (o MutualTlsModePtrOutput) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
+	return o
+}
+
+func (o MutualTlsModePtrOutput) Elem() MutualTlsModeOutput {
+	return o.ApplyT(func(v *MutualTlsMode) MutualTlsMode {
+		if v != nil {
+			return *v
+		}
+		var ret MutualTlsMode
+		return ret
+	}).(MutualTlsModeOutput)
+}
+
+func (o MutualTlsModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MutualTlsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MutualTlsMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MutualTlsModeInput is an input type that accepts MutualTlsModeArgs and MutualTlsModeOutput values.
+// You can construct a concrete instance of `MutualTlsModeInput` via:
+//
+//          MutualTlsModeArgs{...}
+type MutualTlsModeInput interface {
+	pulumi.Input
+
+	ToMutualTlsModeOutput() MutualTlsModeOutput
+	ToMutualTlsModeOutputWithContext(context.Context) MutualTlsModeOutput
+}
+
+var mutualTlsModePtrType = reflect.TypeOf((**MutualTlsMode)(nil)).Elem()
+
+type MutualTlsModePtrInput interface {
+	pulumi.Input
+
+	ToMutualTlsModePtrOutput() MutualTlsModePtrOutput
+	ToMutualTlsModePtrOutputWithContext(context.Context) MutualTlsModePtrOutput
+}
+
+type mutualTlsModePtr string
+
+func MutualTlsModePtr(v string) MutualTlsModePtrInput {
+	return (*mutualTlsModePtr)(&v)
+}
+
+func (*mutualTlsModePtr) ElementType() reflect.Type {
+	return mutualTlsModePtrType
+}
+
+func (in *mutualTlsModePtr) ToMutualTlsModePtrOutput() MutualTlsModePtrOutput {
+	return pulumi.ToOutput(in).(MutualTlsModePtrOutput)
+}
+
+func (in *mutualTlsModePtr) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MutualTlsModePtrOutput)
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
@@ -22367,6 +23370,337 @@ func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskArchitecturePtrOutput)
 }
 
+// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+type RegionDiskInterface string
+
+const (
+	RegionDiskInterfaceNvme        = RegionDiskInterface("NVME")
+	RegionDiskInterfaceScsi        = RegionDiskInterface("SCSI")
+	RegionDiskInterfaceUnspecified = RegionDiskInterface("UNSPECIFIED")
+)
+
+func (RegionDiskInterface) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskInterface)(nil)).Elem()
+}
+
+func (e RegionDiskInterface) ToRegionDiskInterfaceOutput() RegionDiskInterfaceOutput {
+	return pulumi.ToOutput(e).(RegionDiskInterfaceOutput)
+}
+
+func (e RegionDiskInterface) ToRegionDiskInterfaceOutputWithContext(ctx context.Context) RegionDiskInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionDiskInterfaceOutput)
+}
+
+func (e RegionDiskInterface) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
+	return e.ToRegionDiskInterfacePtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskInterface) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
+	return RegionDiskInterface(e).ToRegionDiskInterfaceOutputWithContext(ctx).ToRegionDiskInterfacePtrOutputWithContext(ctx)
+}
+
+func (e RegionDiskInterface) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskInterface) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskInterface) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskInterface) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionDiskInterfaceOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskInterface)(nil)).Elem()
+}
+
+func (o RegionDiskInterfaceOutput) ToRegionDiskInterfaceOutput() RegionDiskInterfaceOutput {
+	return o
+}
+
+func (o RegionDiskInterfaceOutput) ToRegionDiskInterfaceOutputWithContext(ctx context.Context) RegionDiskInterfaceOutput {
+	return o
+}
+
+func (o RegionDiskInterfaceOutput) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
+	return o.ToRegionDiskInterfacePtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskInterfaceOutput) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskInterface) *RegionDiskInterface {
+		return &v
+	}).(RegionDiskInterfacePtrOutput)
+}
+
+func (o RegionDiskInterfaceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionDiskInterfaceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskInterface) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionDiskInterfaceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskInterfaceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskInterface) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionDiskInterfacePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskInterfacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskInterface)(nil)).Elem()
+}
+
+func (o RegionDiskInterfacePtrOutput) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
+	return o
+}
+
+func (o RegionDiskInterfacePtrOutput) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
+	return o
+}
+
+func (o RegionDiskInterfacePtrOutput) Elem() RegionDiskInterfaceOutput {
+	return o.ApplyT(func(v *RegionDiskInterface) RegionDiskInterface {
+		if v != nil {
+			return *v
+		}
+		var ret RegionDiskInterface
+		return ret
+	}).(RegionDiskInterfaceOutput)
+}
+
+func (o RegionDiskInterfacePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionDiskInterface) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionDiskInterfaceInput is an input type that accepts RegionDiskInterfaceArgs and RegionDiskInterfaceOutput values.
+// You can construct a concrete instance of `RegionDiskInterfaceInput` via:
+//
+//          RegionDiskInterfaceArgs{...}
+type RegionDiskInterfaceInput interface {
+	pulumi.Input
+
+	ToRegionDiskInterfaceOutput() RegionDiskInterfaceOutput
+	ToRegionDiskInterfaceOutputWithContext(context.Context) RegionDiskInterfaceOutput
+}
+
+var regionDiskInterfacePtrType = reflect.TypeOf((**RegionDiskInterface)(nil)).Elem()
+
+type RegionDiskInterfacePtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput
+	ToRegionDiskInterfacePtrOutputWithContext(context.Context) RegionDiskInterfacePtrOutput
+}
+
+type regionDiskInterfacePtr string
+
+func RegionDiskInterfacePtr(v string) RegionDiskInterfacePtrInput {
+	return (*regionDiskInterfacePtr)(&v)
+}
+
+func (*regionDiskInterfacePtr) ElementType() reflect.Type {
+	return regionDiskInterfacePtrType
+}
+
+func (in *regionDiskInterfacePtr) ToRegionDiskInterfacePtrOutput() RegionDiskInterfacePtrOutput {
+	return pulumi.ToOutput(in).(RegionDiskInterfacePtrOutput)
+}
+
+func (in *regionDiskInterfacePtr) ToRegionDiskInterfacePtrOutputWithContext(ctx context.Context) RegionDiskInterfacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskInterfacePtrOutput)
+}
+
+// [Deprecated] Storage type of the persistent disk.
+type RegionDiskStorageType string
+
+const (
+	RegionDiskStorageTypeHdd = RegionDiskStorageType("HDD")
+	RegionDiskStorageTypeSsd = RegionDiskStorageType("SSD")
+)
+
+func (RegionDiskStorageType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskStorageType)(nil)).Elem()
+}
+
+func (e RegionDiskStorageType) ToRegionDiskStorageTypeOutput() RegionDiskStorageTypeOutput {
+	return pulumi.ToOutput(e).(RegionDiskStorageTypeOutput)
+}
+
+func (e RegionDiskStorageType) ToRegionDiskStorageTypeOutputWithContext(ctx context.Context) RegionDiskStorageTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionDiskStorageTypeOutput)
+}
+
+func (e RegionDiskStorageType) ToRegionDiskStorageTypePtrOutput() RegionDiskStorageTypePtrOutput {
+	return e.ToRegionDiskStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskStorageType) ToRegionDiskStorageTypePtrOutputWithContext(ctx context.Context) RegionDiskStorageTypePtrOutput {
+	return RegionDiskStorageType(e).ToRegionDiskStorageTypeOutputWithContext(ctx).ToRegionDiskStorageTypePtrOutputWithContext(ctx)
+}
+
+func (e RegionDiskStorageType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskStorageType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionDiskStorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionDiskStorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionDiskStorageTypeOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskStorageTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskStorageType)(nil)).Elem()
+}
+
+func (o RegionDiskStorageTypeOutput) ToRegionDiskStorageTypeOutput() RegionDiskStorageTypeOutput {
+	return o
+}
+
+func (o RegionDiskStorageTypeOutput) ToRegionDiskStorageTypeOutputWithContext(ctx context.Context) RegionDiskStorageTypeOutput {
+	return o
+}
+
+func (o RegionDiskStorageTypeOutput) ToRegionDiskStorageTypePtrOutput() RegionDiskStorageTypePtrOutput {
+	return o.ToRegionDiskStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskStorageTypeOutput) ToRegionDiskStorageTypePtrOutputWithContext(ctx context.Context) RegionDiskStorageTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionDiskStorageType) *RegionDiskStorageType {
+		return &v
+	}).(RegionDiskStorageTypePtrOutput)
+}
+
+func (o RegionDiskStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionDiskStorageTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskStorageType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionDiskStorageTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskStorageTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionDiskStorageType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionDiskStorageTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskStorageTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskStorageType)(nil)).Elem()
+}
+
+func (o RegionDiskStorageTypePtrOutput) ToRegionDiskStorageTypePtrOutput() RegionDiskStorageTypePtrOutput {
+	return o
+}
+
+func (o RegionDiskStorageTypePtrOutput) ToRegionDiskStorageTypePtrOutputWithContext(ctx context.Context) RegionDiskStorageTypePtrOutput {
+	return o
+}
+
+func (o RegionDiskStorageTypePtrOutput) Elem() RegionDiskStorageTypeOutput {
+	return o.ApplyT(func(v *RegionDiskStorageType) RegionDiskStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionDiskStorageType
+		return ret
+	}).(RegionDiskStorageTypeOutput)
+}
+
+func (o RegionDiskStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionDiskStorageType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionDiskStorageTypeInput is an input type that accepts RegionDiskStorageTypeArgs and RegionDiskStorageTypeOutput values.
+// You can construct a concrete instance of `RegionDiskStorageTypeInput` via:
+//
+//          RegionDiskStorageTypeArgs{...}
+type RegionDiskStorageTypeInput interface {
+	pulumi.Input
+
+	ToRegionDiskStorageTypeOutput() RegionDiskStorageTypeOutput
+	ToRegionDiskStorageTypeOutputWithContext(context.Context) RegionDiskStorageTypeOutput
+}
+
+var regionDiskStorageTypePtrType = reflect.TypeOf((**RegionDiskStorageType)(nil)).Elem()
+
+type RegionDiskStorageTypePtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskStorageTypePtrOutput() RegionDiskStorageTypePtrOutput
+	ToRegionDiskStorageTypePtrOutputWithContext(context.Context) RegionDiskStorageTypePtrOutput
+}
+
+type regionDiskStorageTypePtr string
+
+func RegionDiskStorageTypePtr(v string) RegionDiskStorageTypePtrInput {
+	return (*regionDiskStorageTypePtr)(&v)
+}
+
+func (*regionDiskStorageTypePtr) ElementType() reflect.Type {
+	return regionDiskStorageTypePtrType
+}
+
+func (in *regionDiskStorageTypePtr) ToRegionDiskStorageTypePtrOutput() RegionDiskStorageTypePtrOutput {
+	return pulumi.ToOutput(in).(RegionDiskStorageTypePtrOutput)
+}
+
+func (in *regionDiskStorageTypePtr) ToRegionDiskStorageTypePtrOutputWithContext(ctx context.Context) RegionDiskStorageTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskStorageTypePtrOutput)
+}
+
 // Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
 type RegionHealthCheckServiceHealthStatusAggregationPolicy string
 
@@ -22532,6 +23866,173 @@ func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHeal
 
 func (in *regionHealthCheckServiceHealthStatusAggregationPolicyPtr) ToRegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput)
+}
+
+// This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+type RegionHealthCheckServiceHealthStatusAggregationStrategy string
+
+const (
+	// This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+	RegionHealthCheckServiceHealthStatusAggregationStrategyAnd = RegionHealthCheckServiceHealthStatusAggregationStrategy("AND")
+	// This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
+	RegionHealthCheckServiceHealthStatusAggregationStrategyNoAggregation = RegionHealthCheckServiceHealthStatusAggregationStrategy("NO_AGGREGATION")
+)
+
+func (RegionHealthCheckServiceHealthStatusAggregationStrategy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionHealthCheckServiceHealthStatusAggregationStrategy)(nil)).Elem()
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyOutput {
+	return pulumi.ToOutput(e).(RegionHealthCheckServiceHealthStatusAggregationStrategyOutput)
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionHealthCheckServiceHealthStatusAggregationStrategyOutput)
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return e.ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return RegionHealthCheckServiceHealthStatusAggregationStrategy(e).ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutputWithContext(ctx).ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx)
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionHealthCheckServiceHealthStatusAggregationStrategy) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionHealthCheckServiceHealthStatusAggregationStrategyOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionHealthCheckServiceHealthStatusAggregationStrategy)(nil)).Elem()
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyOutput {
+	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyOutput {
+	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return o.ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionHealthCheckServiceHealthStatusAggregationStrategy) *RegionHealthCheckServiceHealthStatusAggregationStrategy {
+		return &v
+	}).(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput)
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionHealthCheckServiceHealthStatusAggregationStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionHealthCheckServiceHealthStatusAggregationStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheckServiceHealthStatusAggregationStrategy)(nil)).Elem()
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) Elem() RegionHealthCheckServiceHealthStatusAggregationStrategyOutput {
+	return o.ApplyT(func(v *RegionHealthCheckServiceHealthStatusAggregationStrategy) RegionHealthCheckServiceHealthStatusAggregationStrategy {
+		if v != nil {
+			return *v
+		}
+		var ret RegionHealthCheckServiceHealthStatusAggregationStrategy
+		return ret
+	}).(RegionHealthCheckServiceHealthStatusAggregationStrategyOutput)
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionHealthCheckServiceHealthStatusAggregationStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionHealthCheckServiceHealthStatusAggregationStrategyInput is an input type that accepts RegionHealthCheckServiceHealthStatusAggregationStrategyArgs and RegionHealthCheckServiceHealthStatusAggregationStrategyOutput values.
+// You can construct a concrete instance of `RegionHealthCheckServiceHealthStatusAggregationStrategyInput` via:
+//
+//          RegionHealthCheckServiceHealthStatusAggregationStrategyArgs{...}
+type RegionHealthCheckServiceHealthStatusAggregationStrategyInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyOutput
+	ToRegionHealthCheckServiceHealthStatusAggregationStrategyOutputWithContext(context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyOutput
+}
+
+var regionHealthCheckServiceHealthStatusAggregationStrategyPtrType = reflect.TypeOf((**RegionHealthCheckServiceHealthStatusAggregationStrategy)(nil)).Elem()
+
+type RegionHealthCheckServiceHealthStatusAggregationStrategyPtrInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput
+	ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput
+}
+
+type regionHealthCheckServiceHealthStatusAggregationStrategyPtr string
+
+func RegionHealthCheckServiceHealthStatusAggregationStrategyPtr(v string) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrInput {
+	return (*regionHealthCheckServiceHealthStatusAggregationStrategyPtr)(&v)
+}
+
+func (*regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ElementType() reflect.Type {
+	return regionHealthCheckServiceHealthStatusAggregationStrategyPtrType
+}
+
+func (in *regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput() RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return pulumi.ToOutput(in).(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput)
+}
+
+func (in *regionHealthCheckServiceHealthStatusAggregationStrategyPtr) ToRegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutputWithContext(ctx context.Context) RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput)
 }
 
 // Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
@@ -36483,6 +37984,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrInput)(nil)).Elem(), AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("PERIODIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsArchitectureInput)(nil)).Elem(), AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsArchitecturePtrInput)(nil)).Elem(), AttachedDiskInitializeParamsArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsInterfaceInput)(nil)).Elem(), AttachedDiskInitializeParamsInterface("NVME"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsInterfacePtrInput)(nil)).Elem(), AttachedDiskInitializeParamsInterface("NVME"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsOnUpdateActionInput)(nil)).Elem(), AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInitializeParamsOnUpdateActionPtrInput)(nil)).Elem(), AttachedDiskInitializeParamsOnUpdateAction("RECREATE_DISK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInterfaceInput)(nil)).Elem(), AttachedDiskInterface("NVDIMM"))
@@ -36495,6 +37998,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskTypePtrInput)(nil)).Elem(), AttachedDiskType("PERSISTENT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("ADMIN_READ"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("ADMIN_READ"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationPolicyPrincipalBindingInput)(nil)).Elem(), AuthenticationPolicyPrincipalBinding("INVALID"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationPolicyPrincipalBindingPtrInput)(nil)).Elem(), AuthenticationPolicyPrincipalBinding("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsPermissionTypeInput)(nil)).Elem(), AuthorizationLoggingOptionsPermissionType("ADMIN_READ"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsPermissionTypePtrInput)(nil)).Elem(), AuthorizationLoggingOptionsPermissionType("ADMIN_READ"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyCpuUtilizationPredictiveMethodInput)(nil)).Elem(), AutoscalingPolicyCpuUtilizationPredictiveMethod("NONE"))
@@ -36529,6 +38034,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CallCredentialsCallCredentialTypePtrInput)(nil)).Elem(), CallCredentialsCallCredentialType("FROM_PLUGIN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelCredentialsChannelCredentialTypeInput)(nil)).Elem(), ChannelCredentialsChannelCredentialType("CERTIFICATES"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelCredentialsChannelCredentialTypePtrInput)(nil)).Elem(), ChannelCredentialsChannelCredentialType("CERTIFICATES"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsSettingsModeInput)(nil)).Elem(), ClientTlsSettingsMode("DISABLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsSettingsModePtrInput)(nil)).Elem(), ClientTlsSettingsMode("DISABLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionIamInput)(nil)).Elem(), ConditionIam("APPROVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionIamPtrInput)(nil)).Elem(), ConditionIam("APPROVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionOpInput)(nil)).Elem(), ConditionOp("DISCHARGED"))
@@ -36541,6 +38048,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskArchitecturePtrInput)(nil)).Elem(), DiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInstantiateFromInput)(nil)).Elem(), DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInstantiateFromPtrInput)(nil)).Elem(), DiskInstantiationConfigInstantiateFrom("ATTACH_READ_ONLY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInterfaceInput)(nil)).Elem(), DiskInterface("NVME"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskInterfacePtrInput)(nil)).Elem(), DiskInterface("NVME"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskStorageTypeInput)(nil)).Elem(), DiskStorageType("HDD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskStorageTypePtrInput)(nil)).Elem(), DiskStorageType("HDD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyTargetShapeInput)(nil)).Elem(), DistributionPolicyTargetShape("ANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyTargetShapePtrInput)(nil)).Elem(), DistributionPolicyTargetShape("ANY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalVpnGatewayRedundancyTypeInput)(nil)).Elem(), ExternalVpnGatewayRedundancyType("FOUR_IPS_REDUNDANCY"))
@@ -36671,6 +38182,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigDataAccessOptionsLogModePtrInput)(nil)).Elem(), LogConfigDataAccessOptionsLogMode("LOG_FAIL_CLOSED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterFilterMatchCriteriaInput)(nil)).Elem(), MetadataFilterFilterMatchCriteria("MATCH_ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterFilterMatchCriteriaPtrInput)(nil)).Elem(), MetadataFilterFilterMatchCriteria("MATCH_ALL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsModeInput)(nil)).Elem(), MutualTlsMode("INVALID"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsModePtrInput)(nil)).Elem(), MutualTlsMode("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupTypeInput)(nil)).Elem(), NetworkEndpointGroupType("LOAD_BALANCING"))
@@ -36727,8 +38240,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentTypePtrInput)(nil)).Elem(), RegionCommitmentType("ACCELERATOR_OPTIMIZED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArchitectureInput)(nil)).Elem(), RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskArchitecturePtrInput)(nil)).Elem(), RegionDiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInterfaceInput)(nil)).Elem(), RegionDiskInterface("NVME"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskInterfacePtrInput)(nil)).Elem(), RegionDiskInterface("NVME"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskStorageTypeInput)(nil)).Elem(), RegionDiskStorageType("HDD"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionDiskStorageTypePtrInput)(nil)).Elem(), RegionDiskStorageType("HDD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckServiceHealthStatusAggregationPolicyInput)(nil)).Elem(), RegionHealthCheckServiceHealthStatusAggregationPolicy("AND"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckServiceHealthStatusAggregationPolicyPtrInput)(nil)).Elem(), RegionHealthCheckServiceHealthStatusAggregationPolicy("AND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckServiceHealthStatusAggregationStrategyInput)(nil)).Elem(), RegionHealthCheckServiceHealthStatusAggregationStrategy("AND"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckServiceHealthStatusAggregationStrategyPtrInput)(nil)).Elem(), RegionHealthCheckServiceHealthStatusAggregationStrategy("AND"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckTypeInput)(nil)).Elem(), RegionHealthCheckType("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckTypePtrInput)(nil)).Elem(), RegionHealthCheckType("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
@@ -36917,6 +38436,8 @@ func init() {
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalPtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsArchitectureOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsArchitecturePtrOutput{})
+	pulumi.RegisterOutputType(AttachedDiskInitializeParamsInterfaceOutput{})
+	pulumi.RegisterOutputType(AttachedDiskInitializeParamsInterfacePtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsOnUpdateActionOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInitializeParamsOnUpdateActionPtrOutput{})
 	pulumi.RegisterOutputType(AttachedDiskInterfaceOutput{})
@@ -36929,6 +38450,8 @@ func init() {
 	pulumi.RegisterOutputType(AttachedDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationPolicyPrincipalBindingOutput{})
+	pulumi.RegisterOutputType(AuthenticationPolicyPrincipalBindingPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsPermissionTypeOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsPermissionTypePtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyCpuUtilizationPredictiveMethodOutput{})
@@ -36963,6 +38486,8 @@ func init() {
 	pulumi.RegisterOutputType(CallCredentialsCallCredentialTypePtrOutput{})
 	pulumi.RegisterOutputType(ChannelCredentialsChannelCredentialTypeOutput{})
 	pulumi.RegisterOutputType(ChannelCredentialsChannelCredentialTypePtrOutput{})
+	pulumi.RegisterOutputType(ClientTlsSettingsModeOutput{})
+	pulumi.RegisterOutputType(ClientTlsSettingsModePtrOutput{})
 	pulumi.RegisterOutputType(ConditionIamOutput{})
 	pulumi.RegisterOutputType(ConditionIamPtrOutput{})
 	pulumi.RegisterOutputType(ConditionOpOutput{})
@@ -36975,6 +38500,10 @@ func init() {
 	pulumi.RegisterOutputType(DiskArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigInstantiateFromPtrOutput{})
+	pulumi.RegisterOutputType(DiskInterfaceOutput{})
+	pulumi.RegisterOutputType(DiskInterfacePtrOutput{})
+	pulumi.RegisterOutputType(DiskStorageTypeOutput{})
+	pulumi.RegisterOutputType(DiskStorageTypePtrOutput{})
 	pulumi.RegisterOutputType(DistributionPolicyTargetShapeOutput{})
 	pulumi.RegisterOutputType(DistributionPolicyTargetShapePtrOutput{})
 	pulumi.RegisterOutputType(ExternalVpnGatewayRedundancyTypeOutput{})
@@ -37105,6 +38634,8 @@ func init() {
 	pulumi.RegisterOutputType(LogConfigDataAccessOptionsLogModePtrOutput{})
 	pulumi.RegisterOutputType(MetadataFilterFilterMatchCriteriaOutput{})
 	pulumi.RegisterOutputType(MetadataFilterFilterMatchCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(MutualTlsModeOutput{})
+	pulumi.RegisterOutputType(MutualTlsModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupTypeOutput{})
@@ -37161,8 +38692,14 @@ func init() {
 	pulumi.RegisterOutputType(RegionCommitmentTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionDiskArchitectureOutput{})
 	pulumi.RegisterOutputType(RegionDiskArchitecturePtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskInterfaceOutput{})
+	pulumi.RegisterOutputType(RegionDiskInterfacePtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskStorageTypeOutput{})
+	pulumi.RegisterOutputType(RegionDiskStorageTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationPolicyOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationStrategyOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckTypeOutput{})
 	pulumi.RegisterOutputType(RegionHealthCheckTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerFailoverActionOutput{})

@@ -25,6 +25,7 @@ class CaseArgs:
                  escalated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
+                 severity: Optional[pulumi.Input['CaseSeverity']] = None,
                  subscriber_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case: Optional[pulumi.Input[bool]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
@@ -37,6 +38,7 @@ class CaseArgs:
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
         :param pulumi.Input[str] name: The resource name for the case.
         :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
+        :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriber_email_addresses: The email addresses to receive updates on this case.
         :param pulumi.Input[bool] test_case: Whether this case was created for internal API testing and should not be acted on by the support team.
         :param pulumi.Input[str] time_zone: The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
@@ -57,6 +59,11 @@ class CaseArgs:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if severity is not None:
+            warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
+            pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
         if subscriber_email_addresses is not None:
             pulumi.set(__self__, "subscriber_email_addresses", subscriber_email_addresses)
         if test_case is not None:
@@ -167,6 +174,18 @@ class CaseArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input['CaseSeverity']]:
+        """
+        The severity of this case. Deprecated. Use priority instead.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input['CaseSeverity']]):
+        pulumi.set(self, "severity", value)
+
+    @property
     @pulumi.getter(name="subscriberEmailAddresses")
     def subscriber_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -215,6 +234,7 @@ class Case(pulumi.CustomResource):
                  escalated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
+                 severity: Optional[pulumi.Input['CaseSeverity']] = None,
                  subscriber_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case: Optional[pulumi.Input[bool]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
@@ -235,6 +255,7 @@ class Case(pulumi.CustomResource):
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
         :param pulumi.Input[str] name: The resource name for the case.
         :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
+        :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subscriber_email_addresses: The email addresses to receive updates on this case.
         :param pulumi.Input[bool] test_case: Whether this case was created for internal API testing and should not be acted on by the support team.
         :param pulumi.Input[str] time_zone: The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
@@ -272,6 +293,7 @@ class Case(pulumi.CustomResource):
                  escalated: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
+                 severity: Optional[pulumi.Input['CaseSeverity']] = None,
                  subscriber_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case: Optional[pulumi.Input[bool]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
@@ -296,6 +318,10 @@ class Case(pulumi.CustomResource):
             __props__.__dict__["escalated"] = escalated
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
+            if severity is not None and not opts.urn:
+                warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
+                pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
+            __props__.__dict__["severity"] = severity
             __props__.__dict__["subscriber_email_addresses"] = subscriber_email_addresses
             __props__.__dict__["test_case"] = test_case
             __props__.__dict__["time_zone"] = time_zone
@@ -338,6 +364,7 @@ class Case(pulumi.CustomResource):
         __props__.__dict__["escalated"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["priority"] = None
+        __props__.__dict__["severity"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["subscriber_email_addresses"] = None
         __props__.__dict__["test_case"] = None
@@ -408,6 +435,14 @@ class Case(pulumi.CustomResource):
         The priority of this case. If this is set, do not set severity.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Output[str]:
+        """
+        The severity of this case. Deprecated. Use priority instead.
+        """
+        return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter

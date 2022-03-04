@@ -229,6 +229,7 @@ class EncryptionConfigArgs:
 @pulumi.input_type
 class ExecutionTemplateArgs:
     def __init__(__self__, *,
+                 scale_tier: pulumi.Input['ExecutionTemplateScaleTier'],
                  accelerator_config: Optional[pulumi.Input['SchedulerAcceleratorConfigArgs']] = None,
                  container_image_uri: Optional[pulumi.Input[str]] = None,
                  dataproc_parameters: Optional[pulumi.Input['DataprocParametersArgs']] = None,
@@ -245,6 +246,7 @@ class ExecutionTemplateArgs:
                  vertex_ai_parameters: Optional[pulumi.Input['VertexAIParametersArgs']] = None):
         """
         The description a notebook execution workload.
+        :param pulumi.Input['ExecutionTemplateScaleTier'] scale_tier: Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
         :param pulumi.Input['SchedulerAcceleratorConfigArgs'] accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param pulumi.Input[str] container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
         :param pulumi.Input['DataprocParametersArgs'] dataproc_parameters: Parameters used in Dataproc JobType executions.
@@ -260,6 +262,10 @@ class ExecutionTemplateArgs:
         :param pulumi.Input[str] tensorboard: The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
         :param pulumi.Input['VertexAIParametersArgs'] vertex_ai_parameters: Parameters used in Vertex AI JobType executions.
         """
+        if scale_tier is not None:
+            warnings.warn("""Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.""", DeprecationWarning)
+            pulumi.log.warn("""scale_tier is deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.""")
+        pulumi.set(__self__, "scale_tier", scale_tier)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if container_image_uri is not None:
@@ -288,6 +294,18 @@ class ExecutionTemplateArgs:
             pulumi.set(__self__, "tensorboard", tensorboard)
         if vertex_ai_parameters is not None:
             pulumi.set(__self__, "vertex_ai_parameters", vertex_ai_parameters)
+
+    @property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> pulumi.Input['ExecutionTemplateScaleTier']:
+        """
+        Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+        """
+        return pulumi.get(self, "scale_tier")
+
+    @scale_tier.setter
+    def scale_tier(self, value: pulumi.Input['ExecutionTemplateScaleTier']):
+        pulumi.set(self, "scale_tier", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")

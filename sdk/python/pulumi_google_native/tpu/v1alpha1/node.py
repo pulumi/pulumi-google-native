@@ -316,8 +316,10 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["api_version"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["health_description"] = None
+            __props__.__dict__["ip_address"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["network_endpoints"] = None
+            __props__.__dict__["port"] = None
             __props__.__dict__["service_account"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["symptoms"] = None
@@ -350,10 +352,12 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["health"] = None
         __props__.__dict__["health_description"] = None
+        __props__.__dict__["ip_address"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["network_endpoints"] = None
+        __props__.__dict__["port"] = None
         __props__.__dict__["scheduling_config"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["state"] = None
@@ -419,6 +423,14 @@ class Node(pulumi.CustomResource):
         return pulumi.get(self, "health_description")
 
     @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Output[str]:
+        """
+        DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
@@ -449,6 +461,14 @@ class Node(pulumi.CustomResource):
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
         """
         return pulumi.get(self, "network_endpoints")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[str]:
+        """
+        DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="schedulingConfig")

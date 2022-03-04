@@ -50,7 +50,8 @@ class VersionArgs:
                  serving_status: Optional[pulumi.Input['VersionServingStatus']] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
-                 vpc_access_connector: Optional[pulumi.Input['VpcAccessConnectorArgs']] = None):
+                 vpc_access_connector: Optional[pulumi.Input['VpcAccessConnectorArgs']] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Version resource.
         :param pulumi.Input['ApiConfigHandlerArgs'] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
@@ -86,6 +87,7 @@ class VersionArgs:
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input['VpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
         pulumi.set(__self__, "app_id", app_id)
         pulumi.set(__self__, "service_id", service_id)
@@ -155,6 +157,11 @@ class VersionArgs:
             pulumi.set(__self__, "vm", vm)
         if vpc_access_connector is not None:
             pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+        if zones is not None:
+            warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="appId")
@@ -570,6 +577,18 @@ class VersionArgs:
     def vpc_access_connector(self, value: Optional[pulumi.Input['VpcAccessConnectorArgs']]):
         pulumi.set(self, "vpc_access_connector", value)
 
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "zones", value)
+
 
 class Version(pulumi.CustomResource):
     @overload
@@ -611,6 +630,7 @@ class Version(pulumi.CustomResource):
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Deploys code and resource files to a new version.
@@ -651,6 +671,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[bool] threadsafe: Whether multiple requests can be dispatched to this version at once.
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']] vpc_access_connector: Enables VPC connectivity for standard apps.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
         """
         ...
     @overload
@@ -712,6 +733,7 @@ class Version(pulumi.CustomResource):
                  threadsafe: Optional[pulumi.Input[bool]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -763,6 +785,10 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["threadsafe"] = threadsafe
             __props__.__dict__["vm"] = vm
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
+            if zones is not None and not opts.urn:
+                warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
+                pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
+            __props__.__dict__["zones"] = zones
             __props__.__dict__["create_time"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["disk_usage_bytes"] = None
@@ -827,6 +853,7 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["version_url"] = None
         __props__.__dict__["vm"] = None
         __props__.__dict__["vpc_access_connector"] = None
+        __props__.__dict__["zones"] = None
         return Version(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1124,4 +1151,12 @@ class Version(pulumi.CustomResource):
         Enables VPC connectivity for standard apps.
         """
         return pulumi.get(self, "vpc_access_connector")
+
+    @property
+    @pulumi.getter
+    def zones(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        """
+        return pulumi.get(self, "zones")
 

@@ -131,6 +131,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<bool> PrivateInstance { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+        /// </summary>
+        [Output("serviceAccount")]
+        public Output<string> ServiceAccount { get; private set; } = null!;
+
+        /// <summary>
         /// Endpoint on which the Data Fusion UI is accessible.
         /// </summary>
         [Output("serviceEndpoint")]

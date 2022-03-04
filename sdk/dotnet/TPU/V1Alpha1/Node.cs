@@ -59,6 +59,12 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         public Output<string> HealthDescription { get; private set; } = null!;
 
         /// <summary>
+        /// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+        /// </summary>
+        [Output("ipAddress")]
+        public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// </summary>
         [Output("labels")]
@@ -81,6 +87,12 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         /// </summary>
         [Output("networkEndpoints")]
         public Output<ImmutableArray<Outputs.NetworkEndpointResponse>> NetworkEndpoints { get; private set; } = null!;
+
+        /// <summary>
+        /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+        /// </summary>
+        [Output("port")]
+        public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
         /// The scheduling options for this node.

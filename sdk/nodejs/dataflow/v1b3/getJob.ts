@@ -55,6 +55,12 @@ export interface GetJobResult {
      */
     readonly environment: outputs.dataflow.v1b3.EnvironmentResponse;
     /**
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
+     */
+    readonly executionInfo: outputs.dataflow.v1b3.JobExecutionInfoResponse;
+    /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */
     readonly jobMetadata: outputs.dataflow.v1b3.JobMetadataResponse;

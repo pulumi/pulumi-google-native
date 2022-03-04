@@ -68,6 +68,12 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
+     * This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+     *
+     * @deprecated This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+     */
+    public readonly loadBalancer!: pulumi.Output<outputs.compute.alpha.NetworkEndpointGroupLbNetworkEndpointGroupResponse>;
+    /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -133,6 +139,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["cloudRun"] = args ? args.cloudRun : undefined;
             resourceInputs["defaultPort"] = args ? args.defaultPort : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
@@ -158,6 +165,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["defaultPort"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["loadBalancer"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkEndpointType"] = undefined /*out*/;
@@ -204,6 +212,12 @@ export interface GlobalNetworkEndpointGroupArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+     *
+     * @deprecated This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+     */
+    loadBalancer?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupLbNetworkEndpointGroupArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

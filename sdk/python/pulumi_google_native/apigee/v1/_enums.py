@@ -16,6 +16,7 @@ __all__ = [
     'OrganizationType',
     'RatePlanBillingPeriod',
     'RatePlanConsumptionPricingType',
+    'RatePlanPaymentFundingModel',
     'RatePlanRevenueShareType',
     'RatePlanState',
     'TargetServerProtocol',
@@ -265,6 +266,24 @@ class RatePlanConsumptionPricingType(str, Enum):
     STAIRSTEP = "STAIRSTEP"
     """
     **Note**: Not supported by Apigee at this time.
+    """
+
+
+class RatePlanPaymentFundingModel(str, Enum):
+    """
+    DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+    """
+    PAYMENT_FUNDING_MODEL_UNSPECIFIED = "PAYMENT_FUNDING_MODEL_UNSPECIFIED"
+    """
+    Billing account type not specified.
+    """
+    PREPAID = "PREPAID"
+    """
+    Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
+    """
+    POSTPAID = "POSTPAID"
+    """
+    Postpaid billing account type. Developer is billed through an invoice after using your API products.
     """
 
 

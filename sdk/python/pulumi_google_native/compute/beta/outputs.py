@@ -124,6 +124,7 @@ __all__ = [
     'NetworkEndpointGroupAppEngineResponse',
     'NetworkEndpointGroupCloudFunctionResponse',
     'NetworkEndpointGroupCloudRunResponse',
+    'NetworkEndpointGroupLbNetworkEndpointGroupResponse',
     'NetworkEndpointGroupServerlessDeploymentResponse',
     'NetworkInterfaceResponse',
     'NetworkPeeringResponse',
@@ -6286,6 +6287,8 @@ class ImageRawDiskResponse(dict):
         suggest = None
         if key == "containerType":
             suggest = "container_type"
+        elif key == "sha1Checksum":
+            suggest = "sha1_checksum"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ImageRawDiskResponse. Access the value via the '{suggest}' property getter instead.")
@@ -6300,13 +6303,16 @@ class ImageRawDiskResponse(dict):
 
     def __init__(__self__, *,
                  container_type: str,
+                 sha1_checksum: str,
                  source: str):
         """
         The parameters of the raw disk image.
         :param str container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+        :param str sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         :param str source: The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         pulumi.set(__self__, "container_type", container_type)
+        pulumi.set(__self__, "sha1_checksum", sha1_checksum)
         pulumi.set(__self__, "source", source)
 
     @property
@@ -6316,6 +6322,14 @@ class ImageRawDiskResponse(dict):
         The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
         """
         return pulumi.get(self, "container_type")
+
+    @property
+    @pulumi.getter(name="sha1Checksum")
+    def sha1_checksum(self) -> str:
+        """
+        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+        """
+        return pulumi.get(self, "sha1_checksum")
 
     @property
     @pulumi.getter
@@ -6708,6 +6722,8 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
         suggest = None
         if key == "hasStatefulConfig":
             suggest = "has_stateful_config"
+        elif key == "isStateful":
+            suggest = "is_stateful"
         elif key == "perInstanceConfigs":
             suggest = "per_instance_configs"
 
@@ -6724,12 +6740,15 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
 
     def __init__(__self__, *,
                  has_stateful_config: bool,
+                 is_stateful: bool,
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
         """
         :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param bool is_stateful: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configs on the instance.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
+        pulumi.set(__self__, "is_stateful", is_stateful)
         pulumi.set(__self__, "per_instance_configs", per_instance_configs)
 
     @property
@@ -6739,6 +6758,14 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
         A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
         """
         return pulumi.get(self, "has_stateful_config")
+
+    @property
+    @pulumi.getter(name="isStateful")
+    def is_stateful(self) -> bool:
+        """
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+        """
+        return pulumi.get(self, "is_stateful")
 
     @property
     @pulumi.getter(name="perInstanceConfigs")
@@ -8424,6 +8451,78 @@ class NetworkEndpointGroupCloudRunResponse(dict):
         A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         return pulumi.get(self, "url_mask")
+
+
+@pulumi.output_type
+class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
+    """
+    Load balancing specific fields for network endpoint group.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPort":
+            suggest = "default_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointGroupLbNetworkEndpointGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEndpointGroupLbNetworkEndpointGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEndpointGroupLbNetworkEndpointGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_port: int,
+                 network: str,
+                 subnetwork: str,
+                 zone: str):
+        """
+        Load balancing specific fields for network endpoint group.
+        :param int default_port: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+        :param str network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        :param str subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+        :param str zone: The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
+        """
+        pulumi.set(__self__, "default_port", default_port)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="defaultPort")
+    def default_port(self) -> int:
+        """
+        The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "default_port")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
@@ -13861,15 +13960,26 @@ class SecuritySettingsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 authentication: str,
                  client_tls_policy: str,
                  subject_alt_names: Sequence[str]):
         """
         The authentication and authorization settings for a BackendService.
+        :param str authentication: [Deprecated] Use clientTlsPolicy instead.
         :param str client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         :param Sequence[str] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
         """
+        pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "client_tls_policy", client_tls_policy)
         pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> str:
+        """
+        [Deprecated] Use clientTlsPolicy instead.
+        """
+        return pulumi.get(self, "authentication")
 
     @property
     @pulumi.getter(name="clientTlsPolicy")

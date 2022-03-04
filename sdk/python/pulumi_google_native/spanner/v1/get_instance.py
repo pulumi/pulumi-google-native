@@ -17,13 +17,20 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, config=None, display_name=None, labels=None, name=None, node_count=None, processing_units=None, state=None):
+    def __init__(__self__, config=None, display_name=None, endpoint_uris=None, labels=None, name=None, node_count=None, processing_units=None, state=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if endpoint_uris and not isinstance(endpoint_uris, list):
+            raise TypeError("Expected argument 'endpoint_uris' to be a list")
+        if endpoint_uris is not None:
+            warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
+            pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
+
+        pulumi.set(__self__, "endpoint_uris", endpoint_uris)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -55,6 +62,14 @@ class GetInstanceResult:
         The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="endpointUris")
+    def endpoint_uris(self) -> Sequence[str]:
+        """
+        Deprecated. This field is not populated.
+        """
+        return pulumi.get(self, "endpoint_uris")
 
     @property
     @pulumi.getter
@@ -105,6 +120,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             config=self.config,
             display_name=self.display_name,
+            endpoint_uris=self.endpoint_uris,
             labels=self.labels,
             name=self.name,
             node_count=self.node_count,
@@ -132,6 +148,7 @@ def get_instance(field_mask: Optional[str] = None,
     return AwaitableGetInstanceResult(
         config=__ret__.config,
         display_name=__ret__.display_name,
+        endpoint_uris=__ret__.endpoint_uris,
         labels=__ret__.labels,
         name=__ret__.name,
         node_count=__ret__.node_count,

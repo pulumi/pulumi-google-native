@@ -2314,6 +2314,7 @@ class GooglePrivacyDlpV2InfoTypeArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2InspectConfigArgs:
     def __init__(__self__, *,
+                 content_options: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]] = None,
                  custom_info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]]] = None,
                  exclude_info_types: Optional[pulumi.Input[bool]] = None,
                  include_quote: Optional[pulumi.Input[bool]] = None,
@@ -2323,6 +2324,7 @@ class GooglePrivacyDlpV2InspectConfigArgs:
                  rule_set: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]]] = None):
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]] content_options: Deprecated and unused.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2CustomInfoTypeArgs']]] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         :param pulumi.Input[bool] exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
         :param pulumi.Input[bool] include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
@@ -2331,6 +2333,11 @@ class GooglePrivacyDlpV2InspectConfigArgs:
         :param pulumi.Input['GooglePrivacyDlpV2InspectConfigMinLikelihood'] min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleSetArgs']]] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
+        if content_options is not None:
+            warnings.warn("""Deprecated and unused.""", DeprecationWarning)
+            pulumi.log.warn("""content_options is deprecated: Deprecated and unused.""")
+        if content_options is not None:
+            pulumi.set(__self__, "content_options", content_options)
         if custom_info_types is not None:
             pulumi.set(__self__, "custom_info_types", custom_info_types)
         if exclude_info_types is not None:
@@ -2345,6 +2352,18 @@ class GooglePrivacyDlpV2InspectConfigArgs:
             pulumi.set(__self__, "min_likelihood", min_likelihood)
         if rule_set is not None:
             pulumi.set(__self__, "rule_set", rule_set)
+
+    @property
+    @pulumi.getter(name="contentOptions")
+    def content_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]:
+        """
+        Deprecated and unused.
+        """
+        return pulumi.get(self, "content_options")
+
+    @content_options.setter
+    def content_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectConfigContentOptionsItem']]]]):
+        pulumi.set(self, "content_options", value)
 
     @property
     @pulumi.getter(name="customInfoTypes")

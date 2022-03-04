@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, addresses=None, application_info=None, company=None, company_display_name=None, compensation_info=None, custom_attributes=None, degree_types=None, department=None, derived_info=None, description=None, employment_types=None, incentives=None, job_benefits=None, job_end_time=None, job_level=None, job_start_time=None, language_code=None, name=None, posting_create_time=None, posting_expire_time=None, posting_publish_time=None, posting_region=None, posting_update_time=None, processing_options=None, promotion_value=None, qualifications=None, requisition_id=None, responsibilities=None, title=None):
+    def __init__(__self__, addresses=None, application_info=None, company=None, company_display_name=None, compensation_info=None, custom_attributes=None, degree_types=None, department=None, derived_info=None, description=None, employment_types=None, incentives=None, job_benefits=None, job_end_time=None, job_level=None, job_start_time=None, language_code=None, name=None, posting_create_time=None, posting_expire_time=None, posting_publish_time=None, posting_region=None, posting_update_time=None, processing_options=None, promotion_value=None, qualifications=None, requisition_id=None, responsibilities=None, title=None, visibility=None):
         if addresses and not isinstance(addresses, list):
             raise TypeError("Expected argument 'addresses' to be a list")
         pulumi.set(__self__, "addresses", addresses)
@@ -106,6 +106,13 @@ class GetJobResult:
         if title and not isinstance(title, str):
             raise TypeError("Expected argument 'title' to be a str")
         pulumi.set(__self__, "title", title)
+        if visibility and not isinstance(visibility, str):
+            raise TypeError("Expected argument 'visibility' to be a str")
+        if visibility is not None:
+            warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
+            pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
+
+        pulumi.set(__self__, "visibility", visibility)
 
     @property
     @pulumi.getter
@@ -339,6 +346,14 @@ class GetJobResult:
         """
         return pulumi.get(self, "title")
 
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        """
+        Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+        """
+        return pulumi.get(self, "visibility")
+
 
 class AwaitableGetJobResult(GetJobResult):
     # pylint: disable=using-constant-test
@@ -374,7 +389,8 @@ class AwaitableGetJobResult(GetJobResult):
             qualifications=self.qualifications,
             requisition_id=self.requisition_id,
             responsibilities=self.responsibilities,
-            title=self.title)
+            title=self.title,
+            visibility=self.visibility)
 
 
 def get_job(job_id: Optional[str] = None,
@@ -423,7 +439,8 @@ def get_job(job_id: Optional[str] = None,
         qualifications=__ret__.qualifications,
         requisition_id=__ret__.requisition_id,
         responsibilities=__ret__.responsibilities,
-        title=__ret__.title)
+        title=__ret__.title,
+        visibility=__ret__.visibility)
 
 
 @_utilities.lift_output_func(get_job)

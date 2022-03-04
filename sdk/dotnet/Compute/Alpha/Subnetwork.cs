@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> EnableL2 { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+        /// </summary>
+        [Output("enablePrivateV6Access")]
+        public Output<bool> EnablePrivateV6Access { get; private set; } = null!;
+
+        /// <summary>
         /// The range of external IPv6 addresses that are owned by this subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
@@ -140,6 +146,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("privateIpv6GoogleAccess")]
         public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+        /// </summary>
+        [Output("privateIpv6GoogleAccessServiceAccounts")]
+        public Output<ImmutableArray<string>> PrivateIpv6GoogleAccessServiceAccounts { get; private set; } = null!;
 
         /// <summary>
         /// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
@@ -277,6 +289,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<bool>? EnableL2 { get; set; }
 
         /// <summary>
+        /// Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+        /// </summary>
+        [Input("enablePrivateV6Access")]
+        public Input<bool>? EnablePrivateV6Access { get; set; }
+
+        /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         /// </summary>
         [Input("flowSampling")]
@@ -329,6 +347,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }
+
+        [Input("privateIpv6GoogleAccessServiceAccounts")]
+        private InputList<string>? _privateIpv6GoogleAccessServiceAccounts;
+
+        /// <summary>
+        /// Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+        /// </summary>
+        [Obsolete(@"Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.")]
+        public InputList<string> PrivateIpv6GoogleAccessServiceAccounts
+        {
+            get => _privateIpv6GoogleAccessServiceAccounts ?? (_privateIpv6GoogleAccessServiceAccounts = new InputList<string>());
+            set => _privateIpv6GoogleAccessServiceAccounts = value;
+        }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

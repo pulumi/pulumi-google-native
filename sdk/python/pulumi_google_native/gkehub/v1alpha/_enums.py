@@ -8,6 +8,7 @@ __all__ = [
     'AuditLogConfigLogType',
     'FeatureSpecProvisionGoogleCa',
     'MembershipSpecCertificateManagement',
+    'MultiClusterIngressFeatureSpecBilling',
 ]
 
 
@@ -66,4 +67,22 @@ class MembershipSpecCertificateManagement(str, Enum):
     ENABLED = "ENABLED"
     """
     Enable workload certificate feature.
+    """
+
+
+class MultiClusterIngressFeatureSpecBilling(str, Enum):
+    """
+    Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+    """
+    BILLING_UNSPECIFIED = "BILLING_UNSPECIFIED"
+    """
+    Unknown
+    """
+    PAY_AS_YOU_GO = "PAY_AS_YOU_GO"
+    """
+    User pays a fee per-endpoint.
+    """
+    ANTHOS_LICENSE = "ANTHOS_LICENSE"
+    """
+    User is paying for Anthos as a whole.
     """

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class BuildDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+        /// </summary>
+        [Input("intotoProvenance")]
+        public Input<Inputs.InTotoProvenanceArgs>? IntotoProvenance { get; set; }
+
+        /// <summary>
         /// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         /// </summary>
         [Input("intotoStatement")]

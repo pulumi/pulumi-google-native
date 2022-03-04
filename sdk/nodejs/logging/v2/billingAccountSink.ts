@@ -72,6 +72,12 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Deprecated. This field is unused.
+     *
+     * @deprecated Deprecated. This field is unused.
+     */
+    public readonly outputVersionFormat!: pulumi.Output<string>;
+    /**
      * The last update timestamp of the sink.This field may not be present for older sinks.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -106,6 +112,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputVersionFormat"] = args ? args.outputVersionFormat : undefined;
             resourceInputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -120,6 +127,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["includeChildren"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputVersionFormat"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
@@ -165,5 +173,11 @@ export interface BillingAccountSinkArgs {
      * The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Deprecated. This field is unused.
+     *
+     * @deprecated Deprecated. This field is unused.
+     */
+    outputVersionFormat?: pulumi.Input<enums.logging.v2.BillingAccountSinkOutputVersionFormat>;
     uniqueWriterIdentity?: pulumi.Input<string>;
 }

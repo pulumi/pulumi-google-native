@@ -509,6 +509,43 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     }
 
     /// <summary>
+    /// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+    /// </summary>
+    [EnumType]
+    public readonly struct StatisticalTimeSeriesFilterRankingMethod : IEquatable<StatisticalTimeSeriesFilterRankingMethod>
+    {
+        private readonly string _value;
+
+        private StatisticalTimeSeriesFilterRankingMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not allowed in well-formed requests.
+        /// </summary>
+        public static StatisticalTimeSeriesFilterRankingMethod MethodUnspecified { get; } = new StatisticalTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED");
+        /// <summary>
+        /// Compute the outlier score of each stream.
+        /// </summary>
+        public static StatisticalTimeSeriesFilterRankingMethod MethodClusterOutlier { get; } = new StatisticalTimeSeriesFilterRankingMethod("METHOD_CLUSTER_OUTLIER");
+
+        public static bool operator ==(StatisticalTimeSeriesFilterRankingMethod left, StatisticalTimeSeriesFilterRankingMethod right) => left.Equals(right);
+        public static bool operator !=(StatisticalTimeSeriesFilterRankingMethod left, StatisticalTimeSeriesFilterRankingMethod right) => !left.Equals(right);
+
+        public static explicit operator string(StatisticalTimeSeriesFilterRankingMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StatisticalTimeSeriesFilterRankingMethod other && Equals(other);
+        public bool Equals(StatisticalTimeSeriesFilterRankingMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// How the text content is formatted.
     /// </summary>
     [EnumType]

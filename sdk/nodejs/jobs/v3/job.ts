@@ -151,6 +151,12 @@ export class Job extends pulumi.CustomResource {
      * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
     public readonly title!: pulumi.Output<string>;
+    /**
+     * Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+     *
+     * @deprecated Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+     */
+    public readonly visibility!: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -204,6 +210,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["requisitionId"] = args ? args.requisitionId : undefined;
             resourceInputs["responsibilities"] = args ? args.responsibilities : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["visibility"] = args ? args.visibility : undefined;
             resourceInputs["companyDisplayName"] = undefined /*out*/;
             resourceInputs["derivedInfo"] = undefined /*out*/;
             resourceInputs["postingCreateTime"] = undefined /*out*/;
@@ -238,6 +245,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["requisitionId"] = undefined /*out*/;
             resourceInputs["responsibilities"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
+            resourceInputs["visibility"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
@@ -349,4 +357,10 @@ export interface JobArgs {
      * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
     title: pulumi.Input<string>;
+    /**
+     * Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+     *
+     * @deprecated Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+     */
+    visibility?: pulumi.Input<enums.jobs.v3.JobVisibility>;
 }

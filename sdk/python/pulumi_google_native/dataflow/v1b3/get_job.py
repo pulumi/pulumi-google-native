@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, client_request_id=None, create_time=None, created_from_snapshot_id=None, current_state=None, current_state_time=None, environment=None, job_metadata=None, labels=None, location=None, name=None, pipeline_description=None, project=None, replace_job_id=None, replaced_by_job_id=None, requested_state=None, satisfies_pzs=None, stage_states=None, start_time=None, steps=None, steps_location=None, temp_files=None, transform_name_mapping=None, type=None):
+    def __init__(__self__, client_request_id=None, create_time=None, created_from_snapshot_id=None, current_state=None, current_state_time=None, environment=None, execution_info=None, job_metadata=None, labels=None, location=None, name=None, pipeline_description=None, project=None, replace_job_id=None, replaced_by_job_id=None, requested_state=None, satisfies_pzs=None, stage_states=None, start_time=None, steps=None, steps_location=None, temp_files=None, transform_name_mapping=None, type=None):
         if client_request_id and not isinstance(client_request_id, str):
             raise TypeError("Expected argument 'client_request_id' to be a str")
         pulumi.set(__self__, "client_request_id", client_request_id)
@@ -37,6 +37,13 @@ class GetJobResult:
         if environment and not isinstance(environment, dict):
             raise TypeError("Expected argument 'environment' to be a dict")
         pulumi.set(__self__, "environment", environment)
+        if execution_info and not isinstance(execution_info, dict):
+            raise TypeError("Expected argument 'execution_info' to be a dict")
+        if execution_info is not None:
+            warnings.warn("""Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""execution_info is deprecated: Deprecated.""")
+
+        pulumi.set(__self__, "execution_info", execution_info)
         if job_metadata and not isinstance(job_metadata, dict):
             raise TypeError("Expected argument 'job_metadata' to be a dict")
         pulumi.set(__self__, "job_metadata", job_metadata)
@@ -136,6 +143,14 @@ class GetJobResult:
         The environment for the job.
         """
         return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter(name="executionInfo")
+    def execution_info(self) -> 'outputs.JobExecutionInfoResponse':
+        """
+        Deprecated.
+        """
+        return pulumi.get(self, "execution_info")
 
     @property
     @pulumi.getter(name="jobMetadata")
@@ -286,6 +301,7 @@ class AwaitableGetJobResult(GetJobResult):
             current_state=self.current_state,
             current_state_time=self.current_state_time,
             environment=self.environment,
+            execution_info=self.execution_info,
             job_metadata=self.job_metadata,
             labels=self.labels,
             location=self.location,
@@ -331,6 +347,7 @@ def get_job(job_id: Optional[str] = None,
         current_state=__ret__.current_state,
         current_state_time=__ret__.current_state_time,
         environment=__ret__.environment,
+        execution_info=__ret__.execution_info,
         job_metadata=__ret__.job_metadata,
         labels=__ret__.labels,
         location=__ret__.location,

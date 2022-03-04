@@ -89,6 +89,12 @@ export interface GetInterconnectAttachmentResult {
      */
     readonly encryption: string;
     /**
+     * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+     *
+     * @deprecated [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+     */
+    readonly googleReferenceId: string;
+    /**
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     readonly interconnect: string;

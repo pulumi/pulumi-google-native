@@ -18,10 +18,17 @@ __all__ = [
 
 @pulumi.output_type
 class GetCloneJobResult:
-    def __init__(__self__, compute_engine_target_details=None, create_time=None, error=None, name=None, state=None, state_time=None):
+    def __init__(__self__, compute_engine_target_details=None, compute_engine_vm_details=None, create_time=None, error=None, name=None, state=None, state_time=None, target_details=None):
         if compute_engine_target_details and not isinstance(compute_engine_target_details, dict):
             raise TypeError("Expected argument 'compute_engine_target_details' to be a dict")
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
+        if compute_engine_vm_details and not isinstance(compute_engine_vm_details, dict):
+            raise TypeError("Expected argument 'compute_engine_vm_details' to be a dict")
+        if compute_engine_vm_details is not None:
+            warnings.warn("""Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+            pulumi.log.warn("""compute_engine_vm_details is deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.""")
+
+        pulumi.set(__self__, "compute_engine_vm_details", compute_engine_vm_details)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +44,13 @@ class GetCloneJobResult:
         if state_time and not isinstance(state_time, str):
             raise TypeError("Expected argument 'state_time' to be a str")
         pulumi.set(__self__, "state_time", state_time)
+        if target_details and not isinstance(target_details, dict):
+            raise TypeError("Expected argument 'target_details' to be a dict")
+        if target_details is not None:
+            warnings.warn("""Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""", DeprecationWarning)
+            pulumi.log.warn("""target_details is deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.""")
+
+        pulumi.set(__self__, "target_details", target_details)
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -45,6 +59,14 @@ class GetCloneJobResult:
         Details of the target VM in Compute Engine.
         """
         return pulumi.get(self, "compute_engine_target_details")
+
+    @property
+    @pulumi.getter(name="computeEngineVmDetails")
+    def compute_engine_vm_details(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_details")
 
     @property
     @pulumi.getter(name="createTime")
@@ -86,6 +108,14 @@ class GetCloneJobResult:
         """
         return pulumi.get(self, "state_time")
 
+    @property
+    @pulumi.getter(name="targetDetails")
+    def target_details(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "target_details")
+
 
 class AwaitableGetCloneJobResult(GetCloneJobResult):
     # pylint: disable=using-constant-test
@@ -94,11 +124,13 @@ class AwaitableGetCloneJobResult(GetCloneJobResult):
             yield self
         return GetCloneJobResult(
             compute_engine_target_details=self.compute_engine_target_details,
+            compute_engine_vm_details=self.compute_engine_vm_details,
             create_time=self.create_time,
             error=self.error,
             name=self.name,
             state=self.state,
-            state_time=self.state_time)
+            state_time=self.state_time,
+            target_details=self.target_details)
 
 
 def get_clone_job(clone_job_id: Optional[str] = None,
@@ -124,11 +156,13 @@ def get_clone_job(clone_job_id: Optional[str] = None,
 
     return AwaitableGetCloneJobResult(
         compute_engine_target_details=__ret__.compute_engine_target_details,
+        compute_engine_vm_details=__ret__.compute_engine_vm_details,
         create_time=__ret__.create_time,
         error=__ret__.error,
         name=__ret__.name,
         state=__ret__.state,
-        state_time=__ret__.state_time)
+        state_time=__ret__.state_time,
+        target_details=__ret__.target_details)
 
 
 @_utilities.lift_output_func(get_clone_job)

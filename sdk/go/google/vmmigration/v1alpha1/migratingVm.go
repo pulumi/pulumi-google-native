@@ -18,6 +18,10 @@ type MigratingVm struct {
 
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponseOutput `pulumi:"computeEngineTargetDefaults"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	ComputeEngineVmDefaults TargetVMDetailsResponseOutput `pulumi:"computeEngineVmDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The percentage progress of the current running replication cycle.
@@ -48,6 +52,10 @@ type MigratingVm struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The last time the migrating VM state was updated.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
+	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	TargetDefaults TargetVMDetailsResponseOutput `pulumi:"targetDefaults"`
 	// The last time the migrating VM resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -99,6 +107,10 @@ func (MigratingVmState) ElementType() reflect.Type {
 type migratingVmArgs struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults *ComputeEngineTargetDefaults `pulumi:"computeEngineTargetDefaults"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	ComputeEngineVmDefaults *TargetVMDetails `pulumi:"computeEngineVmDefaults"`
 	// The description attached to the migrating VM by the user.
 	Description *string `pulumi:"description"`
 	// The display name attached to the MigratingVm by the user.
@@ -114,12 +126,20 @@ type migratingVmArgs struct {
 	SourceId  string          `pulumi:"sourceId"`
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
 	SourceVmId *string `pulumi:"sourceVmId"`
+	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	TargetDefaults *TargetVMDetails `pulumi:"targetDefaults"`
 }
 
 // The set of arguments for constructing a MigratingVm resource.
 type MigratingVmArgs struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsPtrInput
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	ComputeEngineVmDefaults TargetVMDetailsPtrInput
 	// The description attached to the migrating VM by the user.
 	Description pulumi.StringPtrInput
 	// The display name attached to the MigratingVm by the user.
@@ -135,6 +155,10 @@ type MigratingVmArgs struct {
 	SourceId  pulumi.StringInput
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
 	SourceVmId pulumi.StringPtrInput
+	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	TargetDefaults TargetVMDetailsPtrInput
 }
 
 func (MigratingVmArgs) ElementType() reflect.Type {

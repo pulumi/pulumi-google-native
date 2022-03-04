@@ -36,6 +36,12 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
+     */
+    public readonly alternate!: pulumi.Output<outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>;
+    /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
     public readonly name!: pulumi.Output<string>;
@@ -55,10 +61,12 @@ export class Policy extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["alternate"] = args ? args.alternate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
         } else {
+            resourceInputs["alternate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["spec"] = undefined /*out*/;
         }
@@ -71,6 +79,12 @@ export class Policy extends pulumi.CustomResource {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
+    /**
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
+     */
+    alternate?: pulumi.Input<inputs.orgpolicy.v2.GoogleCloudOrgpolicyV2AlternatePolicySpecArgs>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */

@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionHealthCheckServiceResult:
-    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, health_checks=None, health_status_aggregation_policy=None, kind=None, name=None, network_endpoint_groups=None, notification_endpoints=None, region=None, self_link=None, self_link_with_id=None):
+    def __init__(__self__, creation_timestamp=None, description=None, fingerprint=None, health_checks=None, health_status_aggregation_policy=None, health_status_aggregation_strategy=None, kind=None, name=None, network_endpoint_groups=None, notification_endpoints=None, region=None, self_link=None, self_link_with_id=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -33,6 +33,13 @@ class GetRegionHealthCheckServiceResult:
         if health_status_aggregation_policy and not isinstance(health_status_aggregation_policy, str):
             raise TypeError("Expected argument 'health_status_aggregation_policy' to be a str")
         pulumi.set(__self__, "health_status_aggregation_policy", health_status_aggregation_policy)
+        if health_status_aggregation_strategy and not isinstance(health_status_aggregation_strategy, str):
+            raise TypeError("Expected argument 'health_status_aggregation_strategy' to be a str")
+        if health_status_aggregation_strategy is not None:
+            warnings.warn("""This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .""", DeprecationWarning)
+            pulumi.log.warn("""health_status_aggregation_strategy is deprecated: This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .""")
+
+        pulumi.set(__self__, "health_status_aggregation_strategy", health_status_aggregation_strategy)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -94,6 +101,14 @@ class GetRegionHealthCheckServiceResult:
         Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
         """
         return pulumi.get(self, "health_status_aggregation_policy")
+
+    @property
+    @pulumi.getter(name="healthStatusAggregationStrategy")
+    def health_status_aggregation_strategy(self) -> str:
+        """
+        This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        """
+        return pulumi.get(self, "health_status_aggregation_strategy")
 
     @property
     @pulumi.getter
@@ -163,6 +178,7 @@ class AwaitableGetRegionHealthCheckServiceResult(GetRegionHealthCheckServiceResu
             fingerprint=self.fingerprint,
             health_checks=self.health_checks,
             health_status_aggregation_policy=self.health_status_aggregation_policy,
+            health_status_aggregation_strategy=self.health_status_aggregation_strategy,
             kind=self.kind,
             name=self.name,
             network_endpoint_groups=self.network_endpoint_groups,
@@ -195,6 +211,7 @@ def get_region_health_check_service(health_check_service: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         health_checks=__ret__.health_checks,
         health_status_aggregation_policy=__ret__.health_status_aggregation_policy,
+        health_status_aggregation_strategy=__ret__.health_status_aggregation_strategy,
         kind=__ret__.kind,
         name=__ret__.name,
         network_endpoint_groups=__ret__.network_endpoint_groups,

@@ -167,6 +167,7 @@ class CutoverJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["compute_engine_target_details"] = None
+            __props__.__dict__["compute_engine_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["name"] = None
@@ -175,6 +176,7 @@ class CutoverJob(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["state_time"] = None
+            __props__.__dict__["target_details"] = None
         super(CutoverJob, __self__).__init__(
             'google-native:vmmigration/v1alpha1:CutoverJob',
             resource_name,
@@ -198,6 +200,7 @@ class CutoverJob(pulumi.CustomResource):
         __props__ = CutoverJobArgs.__new__(CutoverJobArgs)
 
         __props__.__dict__["compute_engine_target_details"] = None
+        __props__.__dict__["compute_engine_vm_details"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["name"] = None
@@ -206,6 +209,7 @@ class CutoverJob(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
         __props__.__dict__["state_time"] = None
+        __props__.__dict__["target_details"] = None
         return CutoverJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -215,6 +219,14 @@ class CutoverJob(pulumi.CustomResource):
         Details of the target VM in Compute Engine.
         """
         return pulumi.get(self, "compute_engine_target_details")
+
+    @property
+    @pulumi.getter(name="computeEngineVmDetails")
+    def compute_engine_vm_details(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_details")
 
     @property
     @pulumi.getter(name="createTime")
@@ -279,4 +291,12 @@ class CutoverJob(pulumi.CustomResource):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter(name="targetDetails")
+    def target_details(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
+        """
+        Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "target_details")
 

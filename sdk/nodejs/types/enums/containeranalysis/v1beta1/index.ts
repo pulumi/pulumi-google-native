@@ -407,6 +407,22 @@ export const GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity = {
  */
 export type GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity = (typeof GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity)[keyof typeof GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity];
 
+export const HashType = {
+    /**
+     * Unknown.
+     */
+    HashTypeUnspecified: "HASH_TYPE_UNSPECIFIED",
+    /**
+     * A SHA-256 hash.
+     */
+    Sha256: "SHA256",
+} as const;
+
+/**
+ * Required. The type of hash that was performed.
+ */
+export type HashType = (typeof HashType)[keyof typeof HashType];
+
 export const LayerDirective = {
     /**
      * Default value for unsupported/missing directive.

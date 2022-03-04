@@ -63,6 +63,12 @@ export interface GetInstanceResult {
      */
     readonly diskEncryptionStatus: outputs.sqladmin.v1beta4.DiskEncryptionStatusResponse;
     /**
+     * This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+     *
+     * @deprecated This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+     */
+    readonly etag: string;
+    /**
      * The name and status of the failover replica.
      */
     readonly failoverReplica: outputs.sqladmin.v1beta4.InstanceFailoverReplicaResponse;
@@ -78,6 +84,12 @@ export interface GetInstanceResult {
      * The assigned IP addresses for the instance.
      */
     readonly ipAddresses: outputs.sqladmin.v1beta4.IpMappingResponse[];
+    /**
+     * The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+     *
+     * @deprecated The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+     */
+    readonly ipv6Address: string;
     /**
      * This is always `sql#instance`.
      */

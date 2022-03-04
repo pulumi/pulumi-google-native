@@ -476,6 +476,44 @@ namespace Pulumi.GoogleNative.DLP.V2
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2InspectConfigContentOptionsItem : IEquatable<GooglePrivacyDlpV2InspectConfigContentOptionsItem>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2InspectConfigContentOptionsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Includes entire content of a file or a data stream.
+        /// </summary>
+        public static GooglePrivacyDlpV2InspectConfigContentOptionsItem ContentUnspecified { get; } = new GooglePrivacyDlpV2InspectConfigContentOptionsItem("CONTENT_UNSPECIFIED");
+        /// <summary>
+        /// Text content within the data, excluding any metadata.
+        /// </summary>
+        public static GooglePrivacyDlpV2InspectConfigContentOptionsItem ContentText { get; } = new GooglePrivacyDlpV2InspectConfigContentOptionsItem("CONTENT_TEXT");
+        /// <summary>
+        /// Images found in the data.
+        /// </summary>
+        public static GooglePrivacyDlpV2InspectConfigContentOptionsItem ContentImage { get; } = new GooglePrivacyDlpV2InspectConfigContentOptionsItem("CONTENT_IMAGE");
+
+        public static bool operator ==(GooglePrivacyDlpV2InspectConfigContentOptionsItem left, GooglePrivacyDlpV2InspectConfigContentOptionsItem right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2InspectConfigContentOptionsItem left, GooglePrivacyDlpV2InspectConfigContentOptionsItem right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2InspectConfigContentOptionsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2InspectConfigContentOptionsItem other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2InspectConfigContentOptionsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
     /// </summary>

@@ -31,6 +31,10 @@ type LookupCloneJobArgs struct {
 type LookupCloneJobResult struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
 	// Provides details for the errors that led to the Clone Job's state.
@@ -41,6 +45,10 @@ type LookupCloneJobResult struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+	TargetDetails TargetVMDetailsResponse `pulumi:"targetDetails"`
 }
 
 func LookupCloneJobOutput(ctx *pulumi.Context, args LookupCloneJobOutputArgs, opts ...pulumi.InvokeOption) LookupCloneJobResultOutput {
@@ -83,6 +91,13 @@ func (o LookupCloneJobResultOutput) ComputeEngineTargetDetails() ComputeEngineTa
 	return o.ApplyT(func(v LookupCloneJobResult) ComputeEngineTargetDetailsResponse { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
 }
 
+// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+func (o LookupCloneJobResultOutput) ComputeEngineVmDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) TargetVMDetailsResponse { return v.ComputeEngineVmDetails }).(TargetVMDetailsResponseOutput)
+}
+
 // The time the clone job was created (as an API call, not when it was actually created in the target).
 func (o LookupCloneJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -106,6 +121,13 @@ func (o LookupCloneJobResultOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o LookupCloneJobResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+func (o LookupCloneJobResultOutput) TargetDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) TargetVMDetailsResponse { return v.TargetDetails }).(TargetVMDetailsResponseOutput)
 }
 
 func init() {

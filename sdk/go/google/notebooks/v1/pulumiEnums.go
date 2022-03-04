@@ -366,6 +366,183 @@ func (in *executionTemplateJobTypePtr) ToExecutionTemplateJobTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateJobTypePtrOutput)
 }
 
+// Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+type ExecutionTemplateScaleTier string
+
+const (
+	// Unspecified Scale Tier.
+	ExecutionTemplateScaleTierScaleTierUnspecified = ExecutionTemplateScaleTier("SCALE_TIER_UNSPECIFIED")
+	// A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
+	ExecutionTemplateScaleTierBasic = ExecutionTemplateScaleTier("BASIC")
+	// Many workers and a few parameter servers.
+	ExecutionTemplateScaleTierStandard1 = ExecutionTemplateScaleTier("STANDARD_1")
+	// A large number of workers with many parameter servers.
+	ExecutionTemplateScaleTierPremium1 = ExecutionTemplateScaleTier("PREMIUM_1")
+	// A single worker instance with a K80 GPU.
+	ExecutionTemplateScaleTierBasicGpu = ExecutionTemplateScaleTier("BASIC_GPU")
+	// A single worker instance with a Cloud TPU.
+	ExecutionTemplateScaleTierBasicTpu = ExecutionTemplateScaleTier("BASIC_TPU")
+	// The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `ExecutionTemplate.masterType` to specify the type of machine to use for your master node. This is the only required setting.
+	ExecutionTemplateScaleTierCustom = ExecutionTemplateScaleTier("CUSTOM")
+)
+
+func (ExecutionTemplateScaleTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateScaleTier)(nil)).Elem()
+}
+
+func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierOutput() ExecutionTemplateScaleTierOutput {
+	return pulumi.ToOutput(e).(ExecutionTemplateScaleTierOutput)
+}
+
+func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExecutionTemplateScaleTierOutput)
+}
+
+func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
+	return e.ToExecutionTemplateScaleTierPtrOutputWithContext(context.Background())
+}
+
+func (e ExecutionTemplateScaleTier) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
+	return ExecutionTemplateScaleTier(e).ToExecutionTemplateScaleTierOutputWithContext(ctx).ToExecutionTemplateScaleTierPtrOutputWithContext(ctx)
+}
+
+func (e ExecutionTemplateScaleTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExecutionTemplateScaleTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExecutionTemplateScaleTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExecutionTemplateScaleTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExecutionTemplateScaleTierOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateScaleTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecutionTemplateScaleTier)(nil)).Elem()
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierOutput() ExecutionTemplateScaleTierOutput {
+	return o
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierOutput {
+	return o
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
+	return o.ToExecutionTemplateScaleTierPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecutionTemplateScaleTier) *ExecutionTemplateScaleTier {
+		return &v
+	}).(ExecutionTemplateScaleTierPtrOutput)
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecutionTemplateScaleTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateScaleTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecutionTemplateScaleTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExecutionTemplateScaleTierPtrOutput struct{ *pulumi.OutputState }
+
+func (ExecutionTemplateScaleTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecutionTemplateScaleTier)(nil)).Elem()
+}
+
+func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
+	return o
+}
+
+func (o ExecutionTemplateScaleTierPtrOutput) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
+	return o
+}
+
+func (o ExecutionTemplateScaleTierPtrOutput) Elem() ExecutionTemplateScaleTierOutput {
+	return o.ApplyT(func(v *ExecutionTemplateScaleTier) ExecutionTemplateScaleTier {
+		if v != nil {
+			return *v
+		}
+		var ret ExecutionTemplateScaleTier
+		return ret
+	}).(ExecutionTemplateScaleTierOutput)
+}
+
+func (o ExecutionTemplateScaleTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExecutionTemplateScaleTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExecutionTemplateScaleTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExecutionTemplateScaleTierInput is an input type that accepts ExecutionTemplateScaleTierArgs and ExecutionTemplateScaleTierOutput values.
+// You can construct a concrete instance of `ExecutionTemplateScaleTierInput` via:
+//
+//          ExecutionTemplateScaleTierArgs{...}
+type ExecutionTemplateScaleTierInput interface {
+	pulumi.Input
+
+	ToExecutionTemplateScaleTierOutput() ExecutionTemplateScaleTierOutput
+	ToExecutionTemplateScaleTierOutputWithContext(context.Context) ExecutionTemplateScaleTierOutput
+}
+
+var executionTemplateScaleTierPtrType = reflect.TypeOf((**ExecutionTemplateScaleTier)(nil)).Elem()
+
+type ExecutionTemplateScaleTierPtrInput interface {
+	pulumi.Input
+
+	ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput
+	ToExecutionTemplateScaleTierPtrOutputWithContext(context.Context) ExecutionTemplateScaleTierPtrOutput
+}
+
+type executionTemplateScaleTierPtr string
+
+func ExecutionTemplateScaleTierPtr(v string) ExecutionTemplateScaleTierPtrInput {
+	return (*executionTemplateScaleTierPtr)(&v)
+}
+
+func (*executionTemplateScaleTierPtr) ElementType() reflect.Type {
+	return executionTemplateScaleTierPtrType
+}
+
+func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutput() ExecutionTemplateScaleTierPtrOutput {
+	return pulumi.ToOutput(in).(ExecutionTemplateScaleTierPtrOutput)
+}
+
+func (in *executionTemplateScaleTierPtr) ToExecutionTemplateScaleTierPtrOutputWithContext(ctx context.Context) ExecutionTemplateScaleTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExecutionTemplateScaleTierPtrOutput)
+}
+
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 type InstanceBootDiskType string
 
@@ -2615,6 +2792,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigTypePtrInput)(nil)).Elem(), AcceleratorConfigType("ACCELERATOR_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateJobTypeInput)(nil)).Elem(), ExecutionTemplateJobType("JOB_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateJobTypePtrInput)(nil)).Elem(), ExecutionTemplateJobType("JOB_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateScaleTierInput)(nil)).Elem(), ExecutionTemplateScaleTier("SCALE_TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionTemplateScaleTierPtrInput)(nil)).Elem(), ExecutionTemplateScaleTier("SCALE_TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBootDiskTypeInput)(nil)).Elem(), InstanceBootDiskType("DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBootDiskTypePtrInput)(nil)).Elem(), InstanceBootDiskType("DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskTypeInput)(nil)).Elem(), InstanceDataDiskType("DISK_TYPE_UNSPECIFIED"))
@@ -2645,6 +2824,8 @@ func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(ExecutionTemplateJobTypeOutput{})
 	pulumi.RegisterOutputType(ExecutionTemplateJobTypePtrOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateScaleTierOutput{})
+	pulumi.RegisterOutputType(ExecutionTemplateScaleTierPtrOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskTypeOutput{})
 	pulumi.RegisterOutputType(InstanceBootDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceDataDiskTypeOutput{})

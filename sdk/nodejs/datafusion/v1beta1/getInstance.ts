@@ -105,6 +105,12 @@ export interface GetInstanceResult {
      */
     readonly privateInstance: boolean;
     /**
+     * Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+     *
+     * @deprecated Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+     */
+    readonly serviceAccount: string;
+    /**
      * Endpoint on which the Data Fusion UI is accessible.
      */
     readonly serviceEndpoint: string;

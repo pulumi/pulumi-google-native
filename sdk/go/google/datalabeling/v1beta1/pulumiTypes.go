@@ -924,6 +924,172 @@ func (o GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput) IsMu
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse) bool { return v.IsMultiLabel }).(pulumi.BoolOutput)
 }
 
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+type GoogleCloudDatalabelingV1beta1CsvInstruction struct {
+	// CSV file for the instruction. Only gcs path is allowed.
+	GcsFileUri *string `pulumi:"gcsFileUri"`
+}
+
+// GoogleCloudDatalabelingV1beta1CsvInstructionInput is an input type that accepts GoogleCloudDatalabelingV1beta1CsvInstructionArgs and GoogleCloudDatalabelingV1beta1CsvInstructionOutput values.
+// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1CsvInstructionInput` via:
+//
+//          GoogleCloudDatalabelingV1beta1CsvInstructionArgs{...}
+type GoogleCloudDatalabelingV1beta1CsvInstructionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatalabelingV1beta1CsvInstructionOutput() GoogleCloudDatalabelingV1beta1CsvInstructionOutput
+	ToGoogleCloudDatalabelingV1beta1CsvInstructionOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionOutput
+}
+
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+type GoogleCloudDatalabelingV1beta1CsvInstructionArgs struct {
+	// CSV file for the instruction. Only gcs path is allowed.
+	GcsFileUri pulumi.StringPtrInput `pulumi:"gcsFileUri"`
+}
+
+func (GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1CsvInstruction)(nil)).Elem()
+}
+
+func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabelingV1beta1CsvInstructionOutput() GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
+	return i.ToGoogleCloudDatalabelingV1beta1CsvInstructionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabelingV1beta1CsvInstructionOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1CsvInstructionOutput)
+}
+
+func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput() GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return i.ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1CsvInstructionOutput).ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1CsvInstructionArgs, GoogleCloudDatalabelingV1beta1CsvInstructionPtr and GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput` via:
+//
+//          GoogleCloudDatalabelingV1beta1CsvInstructionArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput() GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput
+	ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput
+}
+
+type googleCloudDatalabelingV1beta1CsvInstructionPtrType GoogleCloudDatalabelingV1beta1CsvInstructionArgs
+
+func GoogleCloudDatalabelingV1beta1CsvInstructionPtr(v *GoogleCloudDatalabelingV1beta1CsvInstructionArgs) GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput {
+	return (*googleCloudDatalabelingV1beta1CsvInstructionPtrType)(v)
+}
+
+func (*googleCloudDatalabelingV1beta1CsvInstructionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1CsvInstruction)(nil)).Elem()
+}
+
+func (i *googleCloudDatalabelingV1beta1CsvInstructionPtrType) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput() GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return i.ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatalabelingV1beta1CsvInstructionPtrType) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput)
+}
+
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+type GoogleCloudDatalabelingV1beta1CsvInstructionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1CsvInstruction)(nil)).Elem()
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionOutput() GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
+	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
+	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput() GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return o.ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatalabelingV1beta1CsvInstruction) *GoogleCloudDatalabelingV1beta1CsvInstruction {
+		return &v
+	}).(GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput)
+}
+
+// CSV file for the instruction. Only gcs path is allowed.
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionOutput) GcsFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1CsvInstruction) *string { return v.GcsFileUri }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatalabelingV1beta1CsvInstruction)(nil)).Elem()
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput() GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionPtrOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) Elem() GoogleCloudDatalabelingV1beta1CsvInstructionOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1CsvInstruction) GoogleCloudDatalabelingV1beta1CsvInstruction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatalabelingV1beta1CsvInstruction
+		return ret
+	}).(GoogleCloudDatalabelingV1beta1CsvInstructionOutput)
+}
+
+// CSV file for the instruction. Only gcs path is allowed.
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput) GcsFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1CsvInstruction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcsFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+type GoogleCloudDatalabelingV1beta1CsvInstructionResponse struct {
+	// CSV file for the instruction. Only gcs path is allowed.
+	GcsFileUri string `pulumi:"gcsFileUri"`
+}
+
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+type GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatalabelingV1beta1CsvInstructionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput() GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) ToGoogleCloudDatalabelingV1beta1CsvInstructionResponseOutputWithContext(ctx context.Context) GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput {
+	return o
+}
+
+// CSV file for the instruction. Only gcs path is allowed.
+func (o GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput) GcsFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1CsvInstructionResponse) string { return v.GcsFileUri }).(pulumi.StringOutput)
+}
+
 // Configuration details used for calculating evaluation metrics and creating an Evaluation.
 type GoogleCloudDatalabelingV1beta1EvaluationConfig struct {
 	// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
@@ -3675,6 +3841,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1CsvInstructionInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1CsvInstructionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1CsvInstructionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrInput)(nil)).Elem(), GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{})
@@ -3717,6 +3885,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1CsvInstructionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput{})

@@ -519,6 +519,175 @@ func (in *membershipSpecCertificateManagementPtr) ToMembershipSpecCertificateMan
 	return pulumi.ToOutputWithContext(ctx, in).(MembershipSpecCertificateManagementPtrOutput)
 }
 
+// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+type MultiClusterIngressFeatureSpecBilling string
+
+const (
+	// Unknown
+	MultiClusterIngressFeatureSpecBillingBillingUnspecified = MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED")
+	// User pays a fee per-endpoint.
+	MultiClusterIngressFeatureSpecBillingPayAsYouGo = MultiClusterIngressFeatureSpecBilling("PAY_AS_YOU_GO")
+	// User is paying for Anthos as a whole.
+	MultiClusterIngressFeatureSpecBillingAnthosLicense = MultiClusterIngressFeatureSpecBilling("ANTHOS_LICENSE")
+)
+
+func (MultiClusterIngressFeatureSpecBilling) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpecBilling)(nil)).Elem()
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToMultiClusterIngressFeatureSpecBillingOutput() MultiClusterIngressFeatureSpecBillingOutput {
+	return pulumi.ToOutput(e).(MultiClusterIngressFeatureSpecBillingOutput)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToMultiClusterIngressFeatureSpecBillingOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MultiClusterIngressFeatureSpecBillingOutput)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToMultiClusterIngressFeatureSpecBillingPtrOutput() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return e.ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(context.Background())
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return MultiClusterIngressFeatureSpecBilling(e).ToMultiClusterIngressFeatureSpecBillingOutputWithContext(ctx).ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MultiClusterIngressFeatureSpecBillingOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecBillingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpecBilling)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToMultiClusterIngressFeatureSpecBillingOutput() MultiClusterIngressFeatureSpecBillingOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToMultiClusterIngressFeatureSpecBillingOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToMultiClusterIngressFeatureSpecBillingPtrOutput() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o.ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiClusterIngressFeatureSpecBilling) *MultiClusterIngressFeatureSpecBilling {
+		return &v
+	}).(MultiClusterIngressFeatureSpecBillingPtrOutput)
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MultiClusterIngressFeatureSpecBilling) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecBillingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MultiClusterIngressFeatureSpecBilling) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MultiClusterIngressFeatureSpecBillingPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecBillingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpecBilling)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToMultiClusterIngressFeatureSpecBillingPtrOutput() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecBillingPtrOutput) Elem() MultiClusterIngressFeatureSpecBillingOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecBilling) MultiClusterIngressFeatureSpecBilling {
+		if v != nil {
+			return *v
+		}
+		var ret MultiClusterIngressFeatureSpecBilling
+		return ret
+	}).(MultiClusterIngressFeatureSpecBillingOutput)
+}
+
+func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MultiClusterIngressFeatureSpecBilling) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MultiClusterIngressFeatureSpecBillingInput is an input type that accepts MultiClusterIngressFeatureSpecBillingArgs and MultiClusterIngressFeatureSpecBillingOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecBillingInput` via:
+//
+//          MultiClusterIngressFeatureSpecBillingArgs{...}
+type MultiClusterIngressFeatureSpecBillingInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecBillingOutput() MultiClusterIngressFeatureSpecBillingOutput
+	ToMultiClusterIngressFeatureSpecBillingOutputWithContext(context.Context) MultiClusterIngressFeatureSpecBillingOutput
+}
+
+var multiClusterIngressFeatureSpecBillingPtrType = reflect.TypeOf((**MultiClusterIngressFeatureSpecBilling)(nil)).Elem()
+
+type MultiClusterIngressFeatureSpecBillingPtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecBillingPtrOutput() MultiClusterIngressFeatureSpecBillingPtrOutput
+	ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput
+}
+
+type multiClusterIngressFeatureSpecBillingPtr string
+
+func MultiClusterIngressFeatureSpecBillingPtr(v string) MultiClusterIngressFeatureSpecBillingPtrInput {
+	return (*multiClusterIngressFeatureSpecBillingPtr)(&v)
+}
+
+func (*multiClusterIngressFeatureSpecBillingPtr) ElementType() reflect.Type {
+	return multiClusterIngressFeatureSpecBillingPtrType
+}
+
+func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeatureSpecBillingPtrOutput() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return pulumi.ToOutput(in).(MultiClusterIngressFeatureSpecBillingPtrOutput)
+}
+
+func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeatureSpecBillingPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MultiClusterIngressFeatureSpecBillingPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
@@ -526,10 +695,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecProvisionGoogleCaPtrInput)(nil)).Elem(), FeatureSpecProvisionGoogleCa("GOOGLE_CA_PROVISIONING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecCertificateManagementInput)(nil)).Elem(), MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipSpecCertificateManagementPtrInput)(nil)).Elem(), MembershipSpecCertificateManagement("CERTIFICATE_MANAGEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaOutput{})
 	pulumi.RegisterOutputType(FeatureSpecProvisionGoogleCaPtrOutput{})
 	pulumi.RegisterOutputType(MembershipSpecCertificateManagementOutput{})
 	pulumi.RegisterOutputType(MembershipSpecCertificateManagementPtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingPtrOutput{})
 }

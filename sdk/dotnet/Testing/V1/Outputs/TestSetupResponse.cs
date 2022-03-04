@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
         /// </summary>
         public readonly string NetworkProfile;
+        /// <summary>
+        /// Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+        /// </summary>
+        public readonly Outputs.SystraceSetupResponse Systrace;
 
         [OutputConstructor]
         private TestSetupResponse(
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             ImmutableArray<Outputs.DeviceFileResponse> filesToPush,
 
-            string networkProfile)
+            string networkProfile,
+
+            Outputs.SystraceSetupResponse systrace)
         {
             Account = account;
             AdditionalApks = additionalApks;
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
             EnvironmentVariables = environmentVariables;
             FilesToPush = filesToPush;
             NetworkProfile = networkProfile;
+            Systrace = systrace;
         }
     }
 }

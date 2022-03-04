@@ -173,6 +173,7 @@ class License(pulumi.CustomResource):
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["transferable"] = transferable
+            __props__.__dict__["charges_use_fee"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["license_code"] = None
@@ -199,6 +200,7 @@ class License(pulumi.CustomResource):
 
         __props__ = LicenseArgs.__new__(LicenseArgs)
 
+        __props__.__dict__["charges_use_fee"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["kind"] = None
@@ -208,6 +210,14 @@ class License(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["transferable"] = None
         return License(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="chargesUseFee")
+    def charges_use_fee(self) -> pulumi.Output[bool]:
+        """
+        Deprecated. This field no longer reflects whether a license charges a usage fee.
+        """
+        return pulumi.get(self, "charges_use_fee")
 
     @property
     @pulumi.getter(name="creationTimestamp")

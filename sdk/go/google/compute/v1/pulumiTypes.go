@@ -17455,6 +17455,10 @@ func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRule
 type ImageRawDisk struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType *ImageRawDiskContainerType `pulumi:"containerType"`
+	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	//
+	// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	Sha1Checksum *string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source *string `pulumi:"source"`
 }
@@ -17474,6 +17478,10 @@ type ImageRawDiskInput interface {
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType ImageRawDiskContainerTypePtrInput `pulumi:"containerType"`
+	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	//
+	// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	Sha1Checksum pulumi.StringPtrInput `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -17561,6 +17569,13 @@ func (o ImageRawDiskOutput) ContainerType() ImageRawDiskContainerTypePtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *ImageRawDiskContainerType { return v.ContainerType }).(ImageRawDiskContainerTypePtrOutput)
 }
 
+// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+//
+// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+func (o ImageRawDiskOutput) Sha1Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRawDisk) *string { return v.Sha1Checksum }).(pulumi.StringPtrOutput)
+}
+
 // The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
@@ -17600,6 +17615,18 @@ func (o ImageRawDiskPtrOutput) ContainerType() ImageRawDiskContainerTypePtrOutpu
 	}).(ImageRawDiskContainerTypePtrOutput)
 }
 
+// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+//
+// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+func (o ImageRawDiskPtrOutput) Sha1Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageRawDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha1Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
 // The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
@@ -17614,6 +17641,10 @@ func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 type ImageRawDiskResponse struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType string `pulumi:"containerType"`
+	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	//
+	// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	Sha1Checksum string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source string `pulumi:"source"`
 }
@@ -17636,6 +17667,13 @@ func (o ImageRawDiskResponseOutput) ToImageRawDiskResponseOutputWithContext(ctx 
 // The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 func (o ImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+//
+// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+func (o ImageRawDiskResponseOutput) Sha1Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Sha1Checksum }).(pulumi.StringOutput)
 }
 
 // The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL

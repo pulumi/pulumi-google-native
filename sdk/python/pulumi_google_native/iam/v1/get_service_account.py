@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceAccountResult:
-    def __init__(__self__, description=None, disabled=None, display_name=None, email=None, name=None, oauth2_client_id=None, project=None, unique_id=None):
+    def __init__(__self__, description=None, disabled=None, display_name=None, email=None, etag=None, name=None, oauth2_client_id=None, project=None, unique_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -30,6 +30,13 @@ class GetServiceAccountResult:
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        if etag is not None:
+            warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
+            pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
+
+        pulumi.set(__self__, "etag", etag)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -77,6 +84,14 @@ class GetServiceAccountResult:
 
     @property
     @pulumi.getter
+    def etag(self) -> str:
+        """
+        Deprecated. Do not use.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
@@ -118,6 +133,7 @@ class AwaitableGetServiceAccountResult(GetServiceAccountResult):
             disabled=self.disabled,
             display_name=self.display_name,
             email=self.email,
+            etag=self.etag,
             name=self.name,
             oauth2_client_id=self.oauth2_client_id,
             project=self.project,
@@ -144,6 +160,7 @@ def get_service_account(project: Optional[str] = None,
         disabled=__ret__.disabled,
         display_name=__ret__.display_name,
         email=__ret__.email,
+        etag=__ret__.etag,
         name=__ret__.name,
         oauth2_client_id=__ret__.oauth2_client_id,
         project=__ret__.project,

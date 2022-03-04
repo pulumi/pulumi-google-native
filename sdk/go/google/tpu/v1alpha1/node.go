@@ -30,6 +30,10 @@ type Node struct {
 	Health pulumi.StringOutput `pulumi:"health"`
 	// If this field is populated, it contains a description of why the TPU Node is unhealthy.
 	HealthDescription pulumi.StringOutput `pulumi:"healthDescription"`
+	// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+	//
+	// Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Immutable. The name of the TPU
@@ -38,6 +42,10 @@ type Node struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints NetworkEndpointResponseArrayOutput `pulumi:"networkEndpoints"`
+	// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+	//
+	// Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+	Port pulumi.StringOutput `pulumi:"port"`
 	// The scheduling options for this node.
 	SchedulingConfig SchedulingConfigResponseOutput `pulumi:"schedulingConfig"`
 	// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.

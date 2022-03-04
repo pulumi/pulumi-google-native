@@ -5,10 +5,25 @@
 from enum import Enum
 
 __all__ = [
+    'GcsDestinationConfigGcsFileFormat',
     'JsonFileFormatCompression',
     'JsonFileFormatSchemaFileFormat',
     'StreamState',
 ]
+
+
+class GcsDestinationConfigGcsFileFormat(str, Enum):
+    """
+    File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+    """
+    GCS_FILE_FORMAT_UNSPECIFIED = "GCS_FILE_FORMAT_UNSPECIFIED"
+    """
+    Unspecified Cloud Storage file format.
+    """
+    AVRO = "AVRO"
+    """
+    Avro file format
+    """
 
 
 class JsonFileFormatCompression(str, Enum):

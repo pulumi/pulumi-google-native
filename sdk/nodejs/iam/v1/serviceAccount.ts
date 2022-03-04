@@ -52,6 +52,12 @@ export class ServiceAccount extends pulumi.CustomResource {
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
     /**
+     * Deprecated. Do not use.
+     *
+     * @deprecated Deprecated. Do not use.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
      */
     public readonly name!: pulumi.Output<string>;
@@ -85,6 +91,7 @@ export class ServiceAccount extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["disabled"] = undefined /*out*/;
@@ -96,6 +103,7 @@ export class ServiceAccount extends pulumi.CustomResource {
             resourceInputs["disabled"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oauth2ClientId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -122,6 +130,12 @@ export interface ServiceAccountArgs {
      * Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Deprecated. Do not use.
+     *
+     * @deprecated Deprecated. Do not use.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
      */

@@ -39,6 +39,7 @@ class RegionBackendServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input['OutlierDetectionArgs']] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
@@ -70,6 +71,7 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['OutlierDetectionArgs'] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] port: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
         :param pulumi.Input['RegionBackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         :param pulumi.Input['SecuritySettingsArgs'] security_settings: This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -122,6 +124,11 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "network", network)
         if outlier_detection is not None:
             pulumi.set(__self__, "outlier_detection", outlier_detection)
+        if port is not None:
+            warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
+            pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
+        if port is not None:
+            pulumi.set(__self__, "port", port)
         if port_name is not None:
             pulumi.set(__self__, "port_name", port_name)
         if project is not None:
@@ -409,6 +416,18 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "outlier_detection", value)
 
     @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -535,6 +554,7 @@ class RegionBackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
@@ -571,6 +591,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['OutlierDetectionArgs']] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] port: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
         :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
         :param pulumi.Input['RegionBackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         :param pulumi.Input[pulumi.InputType['SecuritySettingsArgs']] security_settings: This field specifies the security settings that apply to this backend service. This field is applicable to a global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -624,6 +645,7 @@ class RegionBackendService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['RegionBackendServiceProtocol']] = None,
@@ -668,6 +690,10 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["outlier_detection"] = outlier_detection
+            if port is not None and not opts.urn:
+                warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
+                pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
+            __props__.__dict__["port"] = port
             __props__.__dict__["port_name"] = port_name
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
@@ -734,6 +760,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["outlier_detection"] = None
+        __props__.__dict__["port"] = None
         __props__.__dict__["port_name"] = None
         __props__.__dict__["protocol"] = None
         __props__.__dict__["region"] = None
@@ -947,6 +974,14 @@ class RegionBackendService(pulumi.CustomResource):
         Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "outlier_detection")
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Output[int]:
+        """
+        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="portName")

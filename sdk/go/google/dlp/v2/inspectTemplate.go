@@ -74,8 +74,11 @@ type inspectTemplateArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The core content of the template. Configuration of the scanning process.
 	InspectConfig *GooglePrivacyDlpV2InspectConfig `pulumi:"inspectConfig"`
-	Location      *string                          `pulumi:"location"`
-	Project       *string                          `pulumi:"project"`
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -88,8 +91,11 @@ type InspectTemplateArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The core content of the template. Configuration of the scanning process.
 	InspectConfig GooglePrivacyDlpV2InspectConfigPtrInput
-	Location      pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

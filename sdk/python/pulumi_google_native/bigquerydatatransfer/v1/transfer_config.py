@@ -30,6 +30,7 @@ class TransferConfigArgs:
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input['ScheduleOptionsArgs']] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransferConfig resource.
@@ -44,6 +45,7 @@ class TransferConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
+        :param pulumi.Input[str] user_id: Deprecated. Unique ID of the user on whose behalf transfer is done.
         """
         if authorization_code is not None:
             pulumi.set(__self__, "authorization_code", authorization_code)
@@ -75,6 +77,11 @@ class TransferConfigArgs:
             pulumi.set(__self__, "schedule_options", schedule_options)
         if service_account_name is not None:
             pulumi.set(__self__, "service_account_name", service_account_name)
+        if user_id is not None:
+            warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
+            pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
         if version_info is not None:
             pulumi.set(__self__, "version_info", version_info)
 
@@ -247,6 +254,18 @@ class TransferConfigArgs:
         pulumi.set(self, "service_account_name", value)
 
     @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. Unique ID of the user on whose behalf transfer is done.
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
+
+    @property
     @pulumi.getter(name="versionInfo")
     def version_info(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "version_info")
@@ -276,6 +295,7 @@ class TransferConfig(pulumi.CustomResource):
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -294,6 +314,7 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
+        :param pulumi.Input[str] user_id: Deprecated. Unique ID of the user on whose behalf transfer is done.
         """
         ...
     @overload
@@ -334,6 +355,7 @@ class TransferConfig(pulumi.CustomResource):
                  schedule: Optional[pulumi.Input[str]] = None,
                  schedule_options: Optional[pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']]] = None,
                  service_account_name: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None,
                  version_info: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -362,6 +384,10 @@ class TransferConfig(pulumi.CustomResource):
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["schedule_options"] = schedule_options
             __props__.__dict__["service_account_name"] = service_account_name
+            if user_id is not None and not opts.urn:
+                warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
+                pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
+            __props__.__dict__["user_id"] = user_id
             __props__.__dict__["version_info"] = version_info
             __props__.__dict__["dataset_region"] = None
             __props__.__dict__["next_run_time"] = None
@@ -406,6 +432,7 @@ class TransferConfig(pulumi.CustomResource):
         __props__.__dict__["schedule_options"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["user_id"] = None
         return TransferConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -535,4 +562,12 @@ class TransferConfig(pulumi.CustomResource):
         Data transfer modification time. Ignored by server on input.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        """
+        Deprecated. Unique ID of the user on whose behalf transfer is done.
+        """
+        return pulumi.get(self, "user_id")
 

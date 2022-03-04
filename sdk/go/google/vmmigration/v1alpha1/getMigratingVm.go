@@ -31,6 +31,10 @@ type LookupMigratingVmArgs struct {
 type LookupMigratingVmResult struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponse `pulumi:"computeEngineTargetDefaults"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+	ComputeEngineVmDefaults TargetVMDetailsResponse `pulumi:"computeEngineVmDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
 	CreateTime string `pulumi:"createTime"`
 	// The percentage progress of the current running replication cycle.
@@ -61,6 +65,10 @@ type LookupMigratingVmResult struct {
 	State string `pulumi:"state"`
 	// The last time the migrating VM state was updated.
 	StateTime string `pulumi:"stateTime"`
+	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	//
+	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	TargetDefaults TargetVMDetailsResponse `pulumi:"targetDefaults"`
 	// The last time the migrating VM resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -105,6 +113,13 @@ func (o LookupMigratingVmResultOutput) ComputeEngineTargetDefaults() ComputeEngi
 	return o.ApplyT(func(v LookupMigratingVmResult) ComputeEngineTargetDefaultsResponse {
 		return v.ComputeEngineTargetDefaults
 	}).(ComputeEngineTargetDefaultsResponseOutput)
+}
+
+// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+//
+// Deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+func (o LookupMigratingVmResultOutput) ComputeEngineVmDefaults() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) TargetVMDetailsResponse { return v.ComputeEngineVmDefaults }).(TargetVMDetailsResponseOutput)
 }
 
 // The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
@@ -180,6 +195,13 @@ func (o LookupMigratingVmResultOutput) State() pulumi.StringOutput {
 // The last time the migrating VM state was updated.
 func (o LookupMigratingVmResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+//
+// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+func (o LookupMigratingVmResultOutput) TargetDefaults() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) TargetVMDetailsResponse { return v.TargetDefaults }).(TargetVMDetailsResponseOutput)
 }
 
 // The last time the migrating VM resource was updated.

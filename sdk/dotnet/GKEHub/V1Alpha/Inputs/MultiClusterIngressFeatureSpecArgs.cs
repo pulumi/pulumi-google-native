@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     public sealed class MultiClusterIngressFeatureSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+        /// </summary>
+        [Input("billing")]
+        public Input<Pulumi.GoogleNative.GKEHub.V1Alpha.MultiClusterIngressFeatureSpecBilling>? Billing { get; set; }
+
+        /// <summary>
         /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         /// </summary>
         [Input("configMembership")]

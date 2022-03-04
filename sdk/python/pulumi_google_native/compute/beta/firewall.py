@@ -22,6 +22,7 @@ class FirewallArgs:
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input['FirewallDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  log_config: Optional[pulumi.Input['FirewallLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,7 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
         :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
+        :param pulumi.Input[bool] enable_logging: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         :param pulumi.Input['FirewallLogConfigArgs'] log_config: This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default 
@@ -63,6 +65,11 @@ class FirewallArgs:
             pulumi.set(__self__, "direction", direction)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
+            pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if name is not None:
@@ -157,6 +164,18 @@ class FirewallArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
 
     @property
     @pulumi.getter(name="logConfig")
@@ -296,6 +315,7 @@ class Firewall(pulumi.CustomResource):
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input['FirewallDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -319,6 +339,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
         :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
+        :param pulumi.Input[bool] enable_logging: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         :param pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']] log_config: This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default 
@@ -359,6 +380,7 @@ class Firewall(pulumi.CustomResource):
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input['FirewallDirection']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -388,6 +410,10 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["destination_ranges"] = destination_ranges
             __props__.__dict__["direction"] = direction
             __props__.__dict__["disabled"] = disabled
+            if enable_logging is not None and not opts.urn:
+                warnings.warn("""Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""", DeprecationWarning)
+                pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.""")
+            __props__.__dict__["enable_logging"] = enable_logging
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -431,6 +457,7 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["destination_ranges"] = None
         __props__.__dict__["direction"] = None
         __props__.__dict__["disabled"] = None
+        __props__.__dict__["enable_logging"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["log_config"] = None
         __props__.__dict__["name"] = None
@@ -499,6 +526,14 @@ class Firewall(pulumi.CustomResource):
         Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         """
         return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> pulumi.Output[bool]:
+        """
+        Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+        """
+        return pulumi.get(self, "enable_logging")
 
     @property
     @pulumi.getter

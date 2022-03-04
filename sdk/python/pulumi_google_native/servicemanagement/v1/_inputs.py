@@ -2259,14 +2259,21 @@ class MethodArgs:
 class MetricDescriptorMetadataArgs:
     def __init__(__self__, *,
                  ingest_delay: Optional[pulumi.Input[str]] = None,
+                 launch_stage: Optional[pulumi.Input['MetricDescriptorMetadataLaunchStage']] = None,
                  sample_period: Optional[pulumi.Input[str]] = None):
         """
         Additional annotations that can be used to guide the usage of a metric.
         :param pulumi.Input[str] ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+        :param pulumi.Input['MetricDescriptorMetadataLaunchStage'] launch_stage: Deprecated. Must use the MetricDescriptor.launch_stage instead.
         :param pulumi.Input[str] sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
         """
         if ingest_delay is not None:
             pulumi.set(__self__, "ingest_delay", ingest_delay)
+        if launch_stage is not None:
+            warnings.warn("""Deprecated. Must use the MetricDescriptor.launch_stage instead.""", DeprecationWarning)
+            pulumi.log.warn("""launch_stage is deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.""")
+        if launch_stage is not None:
+            pulumi.set(__self__, "launch_stage", launch_stage)
         if sample_period is not None:
             pulumi.set(__self__, "sample_period", sample_period)
 
@@ -2281,6 +2288,18 @@ class MetricDescriptorMetadataArgs:
     @ingest_delay.setter
     def ingest_delay(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingest_delay", value)
+
+    @property
+    @pulumi.getter(name="launchStage")
+    def launch_stage(self) -> Optional[pulumi.Input['MetricDescriptorMetadataLaunchStage']]:
+        """
+        Deprecated. Must use the MetricDescriptor.launch_stage instead.
+        """
+        return pulumi.get(self, "launch_stage")
+
+    @launch_stage.setter
+    def launch_stage(self, value: Optional[pulumi.Input['MetricDescriptorMetadataLaunchStage']]):
+        pulumi.set(self, "launch_stage", value)
 
     @property
     @pulumi.getter(name="samplePeriod")

@@ -475,6 +475,8 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
             suggest = "disk_type"
         elif key == "imageType":
             suggest = "image_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "serviceAccount":
@@ -501,6 +503,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
                  disk_type: str,
                  image_type: str,
                  management: 'outputs.NodeManagementResponse',
+                 min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
@@ -512,6 +515,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param str image_type: The image type to use for NAP created node.
         :param 'NodeManagementResponse' management: Specifies the node management options for NAP created node-pools.
+        :param str min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: Scopes that are used by NAP when creating node pools.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
@@ -522,6 +526,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "management", management)
+        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
@@ -566,6 +571,14 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         Specifies the node management options for NAP created node-pools.
         """
         return pulumi.get(self, "management")
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> str:
+        """
+        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        """
+        return pulumi.get(self, "min_cpu_platform")
 
     @property
     @pulumi.getter(name="oauthScopes")
@@ -1325,14 +1338,20 @@ class IPAllocationPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clusterIpv4CidrBlock":
+        if key == "clusterIpv4Cidr":
+            suggest = "cluster_ipv4_cidr"
+        elif key == "clusterIpv4CidrBlock":
             suggest = "cluster_ipv4_cidr_block"
         elif key == "clusterSecondaryRangeName":
             suggest = "cluster_secondary_range_name"
         elif key == "createSubnetwork":
             suggest = "create_subnetwork"
+        elif key == "nodeIpv4Cidr":
+            suggest = "node_ipv4_cidr"
         elif key == "nodeIpv4CidrBlock":
             suggest = "node_ipv4_cidr_block"
+        elif key == "servicesIpv4Cidr":
+            suggest = "services_ipv4_cidr"
         elif key == "servicesIpv4CidrBlock":
             suggest = "services_ipv4_cidr_block"
         elif key == "servicesSecondaryRangeName":
@@ -1358,10 +1377,13 @@ class IPAllocationPolicyResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cluster_ipv4_cidr: str,
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
                  create_subnetwork: bool,
+                 node_ipv4_cidr: str,
                  node_ipv4_cidr_block: str,
+                 services_ipv4_cidr: str,
                  services_ipv4_cidr_block: str,
                  services_secondary_range_name: str,
                  subnetwork_name: str,
@@ -1370,10 +1392,13 @@ class IPAllocationPolicyResponse(dict):
                  use_routes: bool):
         """
         Configuration for controlling how IPs are allocated in the cluster.
+        :param str cluster_ipv4_cidr: This field is deprecated, use cluster_ipv4_cidr_block.
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         :param bool create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param str node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+        :param str services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         :param str subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
@@ -1381,16 +1406,27 @@ class IPAllocationPolicyResponse(dict):
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         :param bool use_routes: Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         """
+        pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
+        pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
         pulumi.set(__self__, "use_routes", use_routes)
+
+    @property
+    @pulumi.getter(name="clusterIpv4Cidr")
+    def cluster_ipv4_cidr(self) -> str:
+        """
+        This field is deprecated, use cluster_ipv4_cidr_block.
+        """
+        return pulumi.get(self, "cluster_ipv4_cidr")
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -1417,12 +1453,28 @@ class IPAllocationPolicyResponse(dict):
         return pulumi.get(self, "create_subnetwork")
 
     @property
+    @pulumi.getter(name="nodeIpv4Cidr")
+    def node_ipv4_cidr(self) -> str:
+        """
+        This field is deprecated, use node_ipv4_cidr_block.
+        """
+        return pulumi.get(self, "node_ipv4_cidr")
+
+    @property
     @pulumi.getter(name="nodeIpv4CidrBlock")
     def node_ipv4_cidr_block(self) -> str:
         """
         The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         """
         return pulumi.get(self, "node_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="servicesIpv4Cidr")
+    def services_ipv4_cidr(self) -> str:
+        """
+        This field is deprecated, use services_ipv4_cidr_block.
+        """
+        return pulumi.get(self, "services_ipv4_cidr")
 
     @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
@@ -3052,6 +3104,8 @@ class NodePoolResponse(dict):
             suggest = "pod_ipv4_cidr_size"
         elif key == "selfLink":
             suggest = "self_link"
+        elif key == "statusMessage":
+            suggest = "status_message"
         elif key == "upgradeSettings":
             suggest = "upgrade_settings"
 
@@ -3080,6 +3134,7 @@ class NodePoolResponse(dict):
                  pod_ipv4_cidr_size: int,
                  self_link: str,
                  status: str,
+                 status_message: str,
                  upgrade_settings: 'outputs.UpgradeSettingsResponse',
                  version: str):
         """
@@ -3097,6 +3152,7 @@ class NodePoolResponse(dict):
         :param int pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
+        :param str status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         :param 'UpgradeSettingsResponse' upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param str version: The version of the Kubernetes of this node.
         """
@@ -3113,6 +3169,7 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "status_message", status_message)
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         pulumi.set(__self__, "version", version)
 
@@ -3219,6 +3276,14 @@ class NodePoolResponse(dict):
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        """
+        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter(name="upgradeSettings")
@@ -3870,13 +3935,16 @@ class StatusConditionResponse(dict):
 
     def __init__(__self__, *,
                  canonical_code: str,
+                 code: str,
                  message: str):
         """
         StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
         :param str canonical_code: Canonical code of the condition.
+        :param str code: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         :param str message: Human-friendly representation of the condition
         """
         pulumi.set(__self__, "canonical_code", canonical_code)
+        pulumi.set(__self__, "code", code)
         pulumi.set(__self__, "message", message)
 
     @property
@@ -3886,6 +3954,14 @@ class StatusConditionResponse(dict):
         Canonical code of the condition.
         """
         return pulumi.get(self, "canonical_code")
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+        """
+        return pulumi.get(self, "code")
 
     @property
     @pulumi.getter

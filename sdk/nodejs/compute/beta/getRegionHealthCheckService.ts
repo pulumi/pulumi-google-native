@@ -48,6 +48,12 @@ export interface GetRegionHealthCheckServiceResult {
      */
     readonly healthStatusAggregationPolicy: string;
     /**
+     * This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+     *
+     * @deprecated This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+     */
+    readonly healthStatusAggregationStrategy: string;
+    /**
      * [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
      */
     readonly kind: string;

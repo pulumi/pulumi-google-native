@@ -160,6 +160,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.OutlierDetectionResponse> OutlierDetection { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        /// </summary>
+        [Output("port")]
+        public Output<int> Port { get; private set; } = null!;
+
+        /// <summary>
         /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
         /// </summary>
         [Output("portName")]
@@ -398,6 +404,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("outlierDetection")]
         public Input<Inputs.OutlierDetectionArgs>? OutlierDetection { get; set; }
+
+        /// <summary>
+        /// Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.

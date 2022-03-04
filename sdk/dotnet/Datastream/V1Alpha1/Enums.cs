@@ -8,6 +8,43 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Datastream.V1Alpha1
 {
     /// <summary>
+    /// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+    /// </summary>
+    [EnumType]
+    public readonly struct GcsDestinationConfigGcsFileFormat : IEquatable<GcsDestinationConfigGcsFileFormat>
+    {
+        private readonly string _value;
+
+        private GcsDestinationConfigGcsFileFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified Cloud Storage file format.
+        /// </summary>
+        public static GcsDestinationConfigGcsFileFormat GcsFileFormatUnspecified { get; } = new GcsDestinationConfigGcsFileFormat("GCS_FILE_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// Avro file format
+        /// </summary>
+        public static GcsDestinationConfigGcsFileFormat Avro { get; } = new GcsDestinationConfigGcsFileFormat("AVRO");
+
+        public static bool operator ==(GcsDestinationConfigGcsFileFormat left, GcsDestinationConfigGcsFileFormat right) => left.Equals(right);
+        public static bool operator !=(GcsDestinationConfigGcsFileFormat left, GcsDestinationConfigGcsFileFormat right) => !left.Equals(right);
+
+        public static explicit operator string(GcsDestinationConfigGcsFileFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GcsDestinationConfigGcsFileFormat other && Equals(other);
+        public bool Equals(GcsDestinationConfigGcsFileFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Compression of the loaded JSON file.
     /// </summary>
     [EnumType]

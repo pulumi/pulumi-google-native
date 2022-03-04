@@ -215,6 +215,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// Enables VPC connectivity for standard apps.
         /// </summary>
         public readonly Outputs.VpcAccessConnectorResponse VpcAccessConnector;
+        /// <summary>
+        /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        /// </summary>
+        public readonly ImmutableArray<string> Zones;
 
         [OutputConstructor]
         private GetVersionResult(
@@ -290,7 +294,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
             bool vm,
 
-            Outputs.VpcAccessConnectorResponse vpcAccessConnector)
+            Outputs.VpcAccessConnectorResponse vpcAccessConnector,
+
+            ImmutableArray<string> zones)
         {
             ApiConfig = apiConfig;
             AutomaticScaling = automaticScaling;
@@ -329,6 +335,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
             VersionUrl = versionUrl;
             Vm = vm;
             VpcAccessConnector = vpcAccessConnector;
+            Zones = zones;
         }
     }
 }

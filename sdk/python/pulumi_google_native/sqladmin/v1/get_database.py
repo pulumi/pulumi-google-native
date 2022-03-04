@@ -18,13 +18,20 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, charset=None, collation=None, instance=None, kind=None, name=None, project=None, self_link=None, sqlserver_database_details=None):
+    def __init__(__self__, charset=None, collation=None, etag=None, instance=None, kind=None, name=None, project=None, self_link=None, sqlserver_database_details=None):
         if charset and not isinstance(charset, str):
             raise TypeError("Expected argument 'charset' to be a str")
         pulumi.set(__self__, "charset", charset)
         if collation and not isinstance(collation, str):
             raise TypeError("Expected argument 'collation' to be a str")
         pulumi.set(__self__, "collation", collation)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        if etag is not None:
+            warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
+            pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
+
+        pulumi.set(__self__, "etag", etag)
         if instance and not isinstance(instance, str):
             raise TypeError("Expected argument 'instance' to be a str")
         pulumi.set(__self__, "instance", instance)
@@ -59,6 +66,14 @@ class GetDatabaseResult:
         The Cloud SQL collation value.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        This field is deprecated and will be removed from a future version of the API.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -114,6 +129,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
         return GetDatabaseResult(
             charset=self.charset,
             collation=self.collation,
+            etag=self.etag,
             instance=self.instance,
             kind=self.kind,
             name=self.name,
@@ -142,6 +158,7 @@ def get_database(database: Optional[str] = None,
     return AwaitableGetDatabaseResult(
         charset=__ret__.charset,
         collation=__ret__.collation,
+        etag=__ret__.etag,
         instance=__ret__.instance,
         kind=__ret__.kind,
         name=__ret__.name,

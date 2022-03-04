@@ -31,6 +31,7 @@ class JobTriggerArgs:
         :param pulumi.Input[str] description: User provided description (max 256 chars)
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
         :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: For inspect jobs, a snapshot of the configuration.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
@@ -42,6 +43,9 @@ class JobTriggerArgs:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_job is not None:
             pulumi.set(__self__, "inspect_job", inspect_job)
+        if location is not None:
+            warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+            pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -104,6 +108,9 @@ class JobTriggerArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. This field has no effect.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -179,6 +186,7 @@ class JobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] description: User provided description (max 256 chars)
         :param pulumi.Input[str] display_name: Display name (max 100 chars)
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: For inspect jobs, a snapshot of the configuration.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
         :param pulumi.Input['JobTriggerStatus'] status: A status for this trigger.
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
@@ -232,6 +240,9 @@ class JobTrigger(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_job"] = inspect_job
+            if location is not None and not opts.urn:
+                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project

@@ -124,6 +124,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        /// </summary>
+        public readonly string StatusMessage;
+        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         public readonly Outputs.UpgradeSettingsResponse UpgradeSettings;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             string status,
 
+            string statusMessage,
+
             Outputs.UpgradeSettingsResponse upgradeSettings,
 
             string version)
@@ -180,6 +186,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             PodIpv4CidrSize = podIpv4CidrSize;
             SelfLink = selfLink;
             Status = status;
+            StatusMessage = statusMessage;
             UpgradeSettings = upgradeSettings;
             Version = version;
         }

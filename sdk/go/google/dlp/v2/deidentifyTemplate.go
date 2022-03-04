@@ -74,8 +74,11 @@ type deidentifyTemplateArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name (max 256 chars).
 	DisplayName *string `pulumi:"displayName"`
-	Location    *string `pulumi:"location"`
-	Project     *string `pulumi:"project"`
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -88,8 +91,11 @@ type DeidentifyTemplateArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name (max 256 chars).
 	DisplayName pulumi.StringPtrInput
-	Location    pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

@@ -42,6 +42,10 @@ type RatePlan struct {
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the rate plan.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	//
+	// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	PaymentFundingModel pulumi.StringOutput `pulumi:"paymentFundingModel"`
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -121,6 +125,10 @@ type ratePlanArgs struct {
 	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
 	FixedRecurringFee *GoogleTypeMoney `pulumi:"fixedRecurringFee"`
 	OrganizationId    string           `pulumi:"organizationId"`
+	// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	//
+	// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	PaymentFundingModel *RatePlanPaymentFundingModel `pulumi:"paymentFundingModel"`
 	// Details of the revenue sharing model.
 	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRange `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -157,6 +165,10 @@ type RatePlanArgs struct {
 	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
 	FixedRecurringFee GoogleTypeMoneyPtrInput
 	OrganizationId    pulumi.StringInput
+	// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	//
+	// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	PaymentFundingModel RatePlanPaymentFundingModelPtrInput
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeArrayInput
 	// Method used to calculate the revenue that is shared with developers.

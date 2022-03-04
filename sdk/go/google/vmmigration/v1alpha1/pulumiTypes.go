@@ -127,6 +127,10 @@ func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersio
 type CloneJobResponse struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
 	// Provides details for the errors that led to the Clone Job's state.
@@ -137,6 +141,10 @@ type CloneJobResponse struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+	TargetDetails TargetVMDetailsResponse `pulumi:"targetDetails"`
 }
 
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -157,6 +165,13 @@ func (o CloneJobResponseOutput) ToCloneJobResponseOutputWithContext(ctx context.
 // Details of the target VM in Compute Engine.
 func (o CloneJobResponseOutput) ComputeEngineTargetDetails() ComputeEngineTargetDetailsResponseOutput {
 	return o.ApplyT(func(v CloneJobResponse) ComputeEngineTargetDetailsResponse { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
+}
+
+// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+func (o CloneJobResponseOutput) ComputeEngineVmDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v CloneJobResponse) TargetVMDetailsResponse { return v.ComputeEngineVmDetails }).(TargetVMDetailsResponseOutput)
 }
 
 // The time the clone job was created (as an API call, not when it was actually created in the target).
@@ -182,6 +197,13 @@ func (o CloneJobResponseOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o CloneJobResponseOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CloneJobResponse) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+func (o CloneJobResponseOutput) TargetDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v CloneJobResponse) TargetVMDetailsResponse { return v.TargetDetails }).(TargetVMDetailsResponseOutput)
 }
 
 type CloneJobResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1154,6 +1176,10 @@ func (o ComputeSchedulingResponseOutput) RestartType() pulumi.StringOutput {
 type CutoverJobResponse struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
@@ -1170,6 +1196,10 @@ type CutoverJobResponse struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+	TargetDetails TargetVMDetailsResponse `pulumi:"targetDetails"`
 }
 
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
@@ -1190,6 +1220,13 @@ func (o CutoverJobResponseOutput) ToCutoverJobResponseOutputWithContext(ctx cont
 // Details of the target VM in Compute Engine.
 func (o CutoverJobResponseOutput) ComputeEngineTargetDetails() ComputeEngineTargetDetailsResponseOutput {
 	return o.ApplyT(func(v CutoverJobResponse) ComputeEngineTargetDetailsResponse { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
+}
+
+// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+func (o CutoverJobResponseOutput) ComputeEngineVmDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v CutoverJobResponse) TargetVMDetailsResponse { return v.ComputeEngineVmDetails }).(TargetVMDetailsResponseOutput)
 }
 
 // The time the cutover job was created (as an API call, not when it was actually created in the target).
@@ -1230,6 +1267,13 @@ func (o CutoverJobResponseOutput) StateMessage() pulumi.StringOutput {
 // The time the state was last updated.
 func (o CutoverJobResponseOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CutoverJobResponse) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+func (o CutoverJobResponseOutput) TargetDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v CutoverJobResponse) TargetVMDetailsResponse { return v.TargetDetails }).(TargetVMDetailsResponseOutput)
 }
 
 type CutoverJobResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1927,6 +1971,635 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+type TargetVMDetails struct {
+	// Compute instance scheduling information (if empty default is used).
+	ComputeScheduling *ComputeScheduling `pulumi:"computeScheduling"`
+	// The disk type to use in the VM.
+	DiskType *TargetVMDetailsDiskType `pulumi:"diskType"`
+	// The external IP to define in the VM.
+	ExternalIp *string `pulumi:"externalIp"`
+	// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+	InternalIp *string `pulumi:"internalIp"`
+	// A map of labels to associate with the VM.
+	Labels map[string]string `pulumi:"labels"`
+	// The license type to use in OS adaptation.
+	LicenseType *TargetVMDetailsLicenseType `pulumi:"licenseType"`
+	// The machine type to create the VM with.
+	MachineType *string `pulumi:"machineType"`
+	// The machine type series to create the VM with.
+	MachineTypeSeries *string `pulumi:"machineTypeSeries"`
+	// The metadata key/value pairs to assign to the VM.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The name of the VM to create.
+	Name *string `pulumi:"name"`
+	// The network to connect the VM to.
+	Network *string `pulumi:"network"`
+	// List of NICs connected to this VM.
+	NetworkInterfaces []NetworkInterface `pulumi:"networkInterfaces"`
+	// A map of network tags to associate with the VM.
+	NetworkTags []string `pulumi:"networkTags"`
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	SecureBoot *bool `pulumi:"secureBoot"`
+	// The service account to associate the VM with.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The subnetwork to connect the VM to.
+	Subnetwork *string `pulumi:"subnetwork"`
+	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+	TargetProject *string `pulumi:"targetProject"`
+	// The zone in which to create the VM.
+	Zone *string `pulumi:"zone"`
+}
+
+// TargetVMDetailsInput is an input type that accepts TargetVMDetailsArgs and TargetVMDetailsOutput values.
+// You can construct a concrete instance of `TargetVMDetailsInput` via:
+//
+//          TargetVMDetailsArgs{...}
+type TargetVMDetailsInput interface {
+	pulumi.Input
+
+	ToTargetVMDetailsOutput() TargetVMDetailsOutput
+	ToTargetVMDetailsOutputWithContext(context.Context) TargetVMDetailsOutput
+}
+
+// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+type TargetVMDetailsArgs struct {
+	// Compute instance scheduling information (if empty default is used).
+	ComputeScheduling ComputeSchedulingPtrInput `pulumi:"computeScheduling"`
+	// The disk type to use in the VM.
+	DiskType TargetVMDetailsDiskTypePtrInput `pulumi:"diskType"`
+	// The external IP to define in the VM.
+	ExternalIp pulumi.StringPtrInput `pulumi:"externalIp"`
+	// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
+	// A map of labels to associate with the VM.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The license type to use in OS adaptation.
+	LicenseType TargetVMDetailsLicenseTypePtrInput `pulumi:"licenseType"`
+	// The machine type to create the VM with.
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The machine type series to create the VM with.
+	MachineTypeSeries pulumi.StringPtrInput `pulumi:"machineTypeSeries"`
+	// The metadata key/value pairs to assign to the VM.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// The name of the VM to create.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The network to connect the VM to.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// List of NICs connected to this VM.
+	NetworkInterfaces NetworkInterfaceArrayInput `pulumi:"networkInterfaces"`
+	// A map of network tags to associate with the VM.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	SecureBoot pulumi.BoolPtrInput `pulumi:"secureBoot"`
+	// The service account to associate the VM with.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The subnetwork to connect the VM to.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+	TargetProject pulumi.StringPtrInput `pulumi:"targetProject"`
+	// The zone in which to create the VM.
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
+}
+
+func (TargetVMDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetails)(nil)).Elem()
+}
+
+func (i TargetVMDetailsArgs) ToTargetVMDetailsOutput() TargetVMDetailsOutput {
+	return i.ToTargetVMDetailsOutputWithContext(context.Background())
+}
+
+func (i TargetVMDetailsArgs) ToTargetVMDetailsOutputWithContext(ctx context.Context) TargetVMDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetVMDetailsOutput)
+}
+
+func (i TargetVMDetailsArgs) ToTargetVMDetailsPtrOutput() TargetVMDetailsPtrOutput {
+	return i.ToTargetVMDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i TargetVMDetailsArgs) ToTargetVMDetailsPtrOutputWithContext(ctx context.Context) TargetVMDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetVMDetailsOutput).ToTargetVMDetailsPtrOutputWithContext(ctx)
+}
+
+// TargetVMDetailsPtrInput is an input type that accepts TargetVMDetailsArgs, TargetVMDetailsPtr and TargetVMDetailsPtrOutput values.
+// You can construct a concrete instance of `TargetVMDetailsPtrInput` via:
+//
+//          TargetVMDetailsArgs{...}
+//
+//  or:
+//
+//          nil
+type TargetVMDetailsPtrInput interface {
+	pulumi.Input
+
+	ToTargetVMDetailsPtrOutput() TargetVMDetailsPtrOutput
+	ToTargetVMDetailsPtrOutputWithContext(context.Context) TargetVMDetailsPtrOutput
+}
+
+type targetVMDetailsPtrType TargetVMDetailsArgs
+
+func TargetVMDetailsPtr(v *TargetVMDetailsArgs) TargetVMDetailsPtrInput {
+	return (*targetVMDetailsPtrType)(v)
+}
+
+func (*targetVMDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetVMDetails)(nil)).Elem()
+}
+
+func (i *targetVMDetailsPtrType) ToTargetVMDetailsPtrOutput() TargetVMDetailsPtrOutput {
+	return i.ToTargetVMDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *targetVMDetailsPtrType) ToTargetVMDetailsPtrOutputWithContext(ctx context.Context) TargetVMDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetVMDetailsPtrOutput)
+}
+
+// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+type TargetVMDetailsOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetails)(nil)).Elem()
+}
+
+func (o TargetVMDetailsOutput) ToTargetVMDetailsOutput() TargetVMDetailsOutput {
+	return o
+}
+
+func (o TargetVMDetailsOutput) ToTargetVMDetailsOutputWithContext(ctx context.Context) TargetVMDetailsOutput {
+	return o
+}
+
+func (o TargetVMDetailsOutput) ToTargetVMDetailsPtrOutput() TargetVMDetailsPtrOutput {
+	return o.ToTargetVMDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsOutput) ToTargetVMDetailsPtrOutputWithContext(ctx context.Context) TargetVMDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetVMDetails) *TargetVMDetails {
+		return &v
+	}).(TargetVMDetailsPtrOutput)
+}
+
+// Compute instance scheduling information (if empty default is used).
+func (o TargetVMDetailsOutput) ComputeScheduling() ComputeSchedulingPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *ComputeScheduling { return v.ComputeScheduling }).(ComputeSchedulingPtrOutput)
+}
+
+// The disk type to use in the VM.
+func (o TargetVMDetailsOutput) DiskType() TargetVMDetailsDiskTypePtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *TargetVMDetailsDiskType { return v.DiskType }).(TargetVMDetailsDiskTypePtrOutput)
+}
+
+// The external IP to define in the VM.
+func (o TargetVMDetailsOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.ExternalIp }).(pulumi.StringPtrOutput)
+}
+
+// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+func (o TargetVMDetailsOutput) InternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+}
+
+// A map of labels to associate with the VM.
+func (o TargetVMDetailsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetVMDetails) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The license type to use in OS adaptation.
+func (o TargetVMDetailsOutput) LicenseType() TargetVMDetailsLicenseTypePtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *TargetVMDetailsLicenseType { return v.LicenseType }).(TargetVMDetailsLicenseTypePtrOutput)
+}
+
+// The machine type to create the VM with.
+func (o TargetVMDetailsOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// The machine type series to create the VM with.
+func (o TargetVMDetailsOutput) MachineTypeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.MachineTypeSeries }).(pulumi.StringPtrOutput)
+}
+
+// The metadata key/value pairs to assign to the VM.
+func (o TargetVMDetailsOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetVMDetails) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The name of the VM to create.
+func (o TargetVMDetailsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The network to connect the VM to.
+func (o TargetVMDetailsOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// List of NICs connected to this VM.
+func (o TargetVMDetailsOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v TargetVMDetails) []NetworkInterface { return v.NetworkInterfaces }).(NetworkInterfaceArrayOutput)
+}
+
+// A map of network tags to associate with the VM.
+func (o TargetVMDetailsOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetVMDetails) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+func (o TargetVMDetailsOutput) SecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *bool { return v.SecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// The service account to associate the VM with.
+func (o TargetVMDetailsOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The subnetwork to connect the VM to.
+func (o TargetVMDetailsOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+func (o TargetVMDetailsOutput) TargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.TargetProject }).(pulumi.StringPtrOutput)
+}
+
+// The zone in which to create the VM.
+func (o TargetVMDetailsOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetVMDetails) *string { return v.Zone }).(pulumi.StringPtrOutput)
+}
+
+type TargetVMDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetVMDetails)(nil)).Elem()
+}
+
+func (o TargetVMDetailsPtrOutput) ToTargetVMDetailsPtrOutput() TargetVMDetailsPtrOutput {
+	return o
+}
+
+func (o TargetVMDetailsPtrOutput) ToTargetVMDetailsPtrOutputWithContext(ctx context.Context) TargetVMDetailsPtrOutput {
+	return o
+}
+
+func (o TargetVMDetailsPtrOutput) Elem() TargetVMDetailsOutput {
+	return o.ApplyT(func(v *TargetVMDetails) TargetVMDetails {
+		if v != nil {
+			return *v
+		}
+		var ret TargetVMDetails
+		return ret
+	}).(TargetVMDetailsOutput)
+}
+
+// Compute instance scheduling information (if empty default is used).
+func (o TargetVMDetailsPtrOutput) ComputeScheduling() ComputeSchedulingPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *ComputeScheduling {
+		if v == nil {
+			return nil
+		}
+		return v.ComputeScheduling
+	}).(ComputeSchedulingPtrOutput)
+}
+
+// The disk type to use in the VM.
+func (o TargetVMDetailsPtrOutput) DiskType() TargetVMDetailsDiskTypePtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *TargetVMDetailsDiskType {
+		if v == nil {
+			return nil
+		}
+		return v.DiskType
+	}).(TargetVMDetailsDiskTypePtrOutput)
+}
+
+// The external IP to define in the VM.
+func (o TargetVMDetailsPtrOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+func (o TargetVMDetailsPtrOutput) InternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InternalIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of labels to associate with the VM.
+func (o TargetVMDetailsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TargetVMDetails) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The license type to use in OS adaptation.
+func (o TargetVMDetailsPtrOutput) LicenseType() TargetVMDetailsLicenseTypePtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *TargetVMDetailsLicenseType {
+		if v == nil {
+			return nil
+		}
+		return v.LicenseType
+	}).(TargetVMDetailsLicenseTypePtrOutput)
+}
+
+// The machine type to create the VM with.
+func (o TargetVMDetailsPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The machine type series to create the VM with.
+func (o TargetVMDetailsPtrOutput) MachineTypeSeries() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineTypeSeries
+	}).(pulumi.StringPtrOutput)
+}
+
+// The metadata key/value pairs to assign to the VM.
+func (o TargetVMDetailsPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TargetVMDetails) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// The name of the VM to create.
+func (o TargetVMDetailsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network to connect the VM to.
+func (o TargetVMDetailsPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of NICs connected to this VM.
+func (o TargetVMDetailsPtrOutput) NetworkInterfaces() NetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *TargetVMDetails) []NetworkInterface {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceArrayOutput)
+}
+
+// A map of network tags to associate with the VM.
+func (o TargetVMDetailsPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetVMDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+func (o TargetVMDetailsPtrOutput) SecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The service account to associate the VM with.
+func (o TargetVMDetailsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subnetwork to connect the VM to.
+func (o TargetVMDetailsPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+func (o TargetVMDetailsPtrOutput) TargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// The zone in which to create the VM.
+func (o TargetVMDetailsPtrOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetVMDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Zone
+	}).(pulumi.StringPtrOutput)
+}
+
+// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+type TargetVMDetailsResponse struct {
+	// The OS license returned from the adaptation module report.
+	AppliedLicense AppliedLicenseResponse `pulumi:"appliedLicense"`
+	// The VM Boot Option, as set in the source vm.
+	BootOption string `pulumi:"bootOption"`
+	// Compute instance scheduling information (if empty default is used).
+	ComputeScheduling ComputeSchedulingResponse `pulumi:"computeScheduling"`
+	// The disk type to use in the VM.
+	DiskType string `pulumi:"diskType"`
+	// The external IP to define in the VM.
+	ExternalIp string `pulumi:"externalIp"`
+	// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+	InternalIp string `pulumi:"internalIp"`
+	// A map of labels to associate with the VM.
+	Labels map[string]string `pulumi:"labels"`
+	// The license type to use in OS adaptation.
+	LicenseType string `pulumi:"licenseType"`
+	// The machine type to create the VM with.
+	MachineType string `pulumi:"machineType"`
+	// The machine type series to create the VM with.
+	MachineTypeSeries string `pulumi:"machineTypeSeries"`
+	// The metadata key/value pairs to assign to the VM.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The name of the VM to create.
+	Name string `pulumi:"name"`
+	// The network to connect the VM to.
+	Network string `pulumi:"network"`
+	// List of NICs connected to this VM.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// A map of network tags to associate with the VM.
+	NetworkTags []string `pulumi:"networkTags"`
+	// The project in which to create the VM.
+	Project string `pulumi:"project"`
+	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+	SecureBoot bool `pulumi:"secureBoot"`
+	// The service account to associate the VM with.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// The subnetwork to connect the VM to.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+	TargetProject string `pulumi:"targetProject"`
+	// The zone in which to create the VM.
+	Zone string `pulumi:"zone"`
+}
+
+// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+type TargetVMDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetailsResponse)(nil)).Elem()
+}
+
+func (o TargetVMDetailsResponseOutput) ToTargetVMDetailsResponseOutput() TargetVMDetailsResponseOutput {
+	return o
+}
+
+func (o TargetVMDetailsResponseOutput) ToTargetVMDetailsResponseOutputWithContext(ctx context.Context) TargetVMDetailsResponseOutput {
+	return o
+}
+
+// The OS license returned from the adaptation module report.
+func (o TargetVMDetailsResponseOutput) AppliedLicense() AppliedLicenseResponseOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) AppliedLicenseResponse { return v.AppliedLicense }).(AppliedLicenseResponseOutput)
+}
+
+// The VM Boot Option, as set in the source vm.
+func (o TargetVMDetailsResponseOutput) BootOption() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.BootOption }).(pulumi.StringOutput)
+}
+
+// Compute instance scheduling information (if empty default is used).
+func (o TargetVMDetailsResponseOutput) ComputeScheduling() ComputeSchedulingResponseOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) ComputeSchedulingResponse { return v.ComputeScheduling }).(ComputeSchedulingResponseOutput)
+}
+
+// The disk type to use in the VM.
+func (o TargetVMDetailsResponseOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// The external IP to define in the VM.
+func (o TargetVMDetailsResponseOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+func (o TargetVMDetailsResponseOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+// A map of labels to associate with the VM.
+func (o TargetVMDetailsResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The license type to use in OS adaptation.
+func (o TargetVMDetailsResponseOutput) LicenseType() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.LicenseType }).(pulumi.StringOutput)
+}
+
+// The machine type to create the VM with.
+func (o TargetVMDetailsResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// The machine type series to create the VM with.
+func (o TargetVMDetailsResponseOutput) MachineTypeSeries() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.MachineTypeSeries }).(pulumi.StringOutput)
+}
+
+// The metadata key/value pairs to assign to the VM.
+func (o TargetVMDetailsResponseOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The name of the VM to create.
+func (o TargetVMDetailsResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network to connect the VM to.
+func (o TargetVMDetailsResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// List of NICs connected to this VM.
+func (o TargetVMDetailsResponseOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+// A map of network tags to associate with the VM.
+func (o TargetVMDetailsResponseOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// The project in which to create the VM.
+func (o TargetVMDetailsResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+func (o TargetVMDetailsResponseOutput) SecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) bool { return v.SecureBoot }).(pulumi.BoolOutput)
+}
+
+// The service account to associate the VM with.
+func (o TargetVMDetailsResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The subnetwork to connect the VM to.
+func (o TargetVMDetailsResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+func (o TargetVMDetailsResponseOutput) TargetProject() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.TargetProject }).(pulumi.StringOutput)
+}
+
+// The zone in which to create the VM.
+func (o TargetVMDetailsResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetVMDetailsResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 // UpgradeStatus contains information about upgradeAppliance operation.
@@ -3431,6 +4104,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyPtrInput)(nil)).Elem(), SchedulePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsInput)(nil)).Elem(), TargetVMDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsPtrInput)(nil)).Elem(), TargetVMDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoInput)(nil)).Elem(), VmUtilizationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoArrayInput)(nil)).Elem(), VmUtilizationInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationMetricsInput)(nil)).Elem(), VmUtilizationMetricsArgs{})
@@ -3467,6 +4142,9 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsPtrOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsResponseOutput{})
 	pulumi.RegisterOutputType(UpgradeStatusResponseOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoArrayOutput{})

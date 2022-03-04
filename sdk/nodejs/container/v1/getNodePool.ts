@@ -83,6 +83,12 @@ export interface GetNodePoolResult {
      */
     readonly status: string;
     /**
+     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     *
+     * @deprecated [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     */
+    readonly statusMessage: string;
+    /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
     readonly upgradeSettings: outputs.container.v1.UpgradeSettingsResponse;

@@ -57,6 +57,12 @@ export interface GetRegionNetworkResult {
      */
     readonly internalIpv6Range: string;
     /**
+     * Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     *
+     * @deprecated Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     */
+    readonly ipv4Range: string;
+    /**
      * Type of the resource. Always compute#network for networks.
      */
     readonly kind: string;

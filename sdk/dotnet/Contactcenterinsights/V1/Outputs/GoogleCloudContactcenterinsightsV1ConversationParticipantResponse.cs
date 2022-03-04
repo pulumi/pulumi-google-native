@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
     public sealed class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse
     {
         /// <summary>
+        /// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        /// </summary>
+        public readonly string DialogflowParticipant;
+        /// <summary>
         /// The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
         /// </summary>
         public readonly string DialogflowParticipantName;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(
+            string dialogflowParticipant,
+
             string dialogflowParticipantName,
 
             string obfuscatedExternalUserId,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
             string userId)
         {
+            DialogflowParticipant = dialogflowParticipant;
             DialogflowParticipantName = dialogflowParticipantName;
             ObfuscatedExternalUserId = obfuscatedExternalUserId;
             Role = role;

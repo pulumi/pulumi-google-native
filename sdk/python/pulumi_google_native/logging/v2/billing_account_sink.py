@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['BillingAccountSinkArgs', 'BillingAccountSink']
@@ -24,6 +25,7 @@ class BillingAccountSinkArgs:
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_version_format: Optional[pulumi.Input['BillingAccountSinkOutputVersionFormat']] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BillingAccountSink resource.
@@ -35,6 +37,7 @@ class BillingAccountSinkArgs:
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input['BillingAccountSinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
         """
         pulumi.set(__self__, "billing_account_id", billing_account_id)
         pulumi.set(__self__, "destination", destination)
@@ -52,6 +55,11 @@ class BillingAccountSinkArgs:
             pulumi.set(__self__, "include_children", include_children)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if output_version_format is not None:
+            warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
+            pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
+        if output_version_format is not None:
+            pulumi.set(__self__, "output_version_format", output_version_format)
         if unique_writer_identity is not None:
             pulumi.set(__self__, "unique_writer_identity", unique_writer_identity)
 
@@ -161,6 +169,18 @@ class BillingAccountSinkArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="outputVersionFormat")
+    def output_version_format(self) -> Optional[pulumi.Input['BillingAccountSinkOutputVersionFormat']]:
+        """
+        Deprecated. This field is unused.
+        """
+        return pulumi.get(self, "output_version_format")
+
+    @output_version_format.setter
+    def output_version_format(self, value: Optional[pulumi.Input['BillingAccountSinkOutputVersionFormat']]):
+        pulumi.set(self, "output_version_format", value)
+
+    @property
     @pulumi.getter(name="uniqueWriterIdentity")
     def unique_writer_identity(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "unique_writer_identity")
@@ -184,6 +204,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_version_format: Optional[pulumi.Input['BillingAccountSinkOutputVersionFormat']] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -199,6 +220,7 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.Input[str] filter: Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter.For example:logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input['BillingAccountSinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
         """
         ...
     @overload
@@ -233,6 +255,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_version_format: Optional[pulumi.Input['BillingAccountSinkOutputVersionFormat']] = None,
                  unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -259,6 +282,10 @@ class BillingAccountSink(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["include_children"] = include_children
             __props__.__dict__["name"] = name
+            if output_version_format is not None and not opts.urn:
+                warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
+                pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
+            __props__.__dict__["output_version_format"] = output_version_format
             __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
@@ -294,6 +321,7 @@ class BillingAccountSink(pulumi.CustomResource):
         __props__.__dict__["filter"] = None
         __props__.__dict__["include_children"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["output_version_format"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["writer_identity"] = None
         return BillingAccountSink(resource_name, opts=opts, __props__=__props__)
@@ -369,6 +397,14 @@ class BillingAccountSink(pulumi.CustomResource):
         The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="outputVersionFormat")
+    def output_version_format(self) -> pulumi.Output[str]:
+        """
+        Deprecated. This field is unused.
+        """
+        return pulumi.get(self, "output_version_format")
 
     @property
     @pulumi.getter(name="updateTime")

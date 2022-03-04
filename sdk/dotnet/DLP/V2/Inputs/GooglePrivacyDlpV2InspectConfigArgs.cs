@@ -15,6 +15,19 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// </summary>
     public sealed class GooglePrivacyDlpV2InspectConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("contentOptions")]
+        private InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>? _contentOptions;
+
+        /// <summary>
+        /// Deprecated and unused.
+        /// </summary>
+        [Obsolete(@"Deprecated and unused.")]
+        public InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem> ContentOptions
+        {
+            get => _contentOptions ?? (_contentOptions = new InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>());
+            set => _contentOptions = value;
+        }
+
         [Input("customInfoTypes")]
         private InputList<Inputs.GooglePrivacyDlpV2CustomInfoTypeArgs>? _customInfoTypes;
 

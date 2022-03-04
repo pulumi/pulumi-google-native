@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Deprecated. This field is unused.
+        /// </summary>
+        public readonly string OutputVersionFormat;
+        /// <summary>
         /// The last update timestamp of the sink.This field may not be present for older sinks.
         /// </summary>
         public readonly string UpdateTime;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Logging.V2
 
             string name,
 
+            string outputVersionFormat,
+
             string updateTime,
 
             string writerIdentity)
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Logging.V2
             Filter = filter;
             IncludeChildren = includeChildren;
             Name = name;
+            OutputVersionFormat = outputVersionFormat;
             UpdateTime = updateTime;
             WriterIdentity = writerIdentity;
         }

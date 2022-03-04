@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatalabelingV1beta1CsvInstructionResponse CsvInstruction;
+        /// <summary>
         /// The data type of this instruction.
         /// </summary>
         public readonly string DataType;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 
             string createTime,
 
+            Outputs.GoogleCloudDatalabelingV1beta1CsvInstructionResponse csvInstruction,
+
             string dataType,
 
             string description,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         {
             BlockingResources = blockingResources;
             CreateTime = createTime;
+            CsvInstruction = csvInstruction;
             DataType = dataType;
             Description = description;
             DisplayName = displayName;

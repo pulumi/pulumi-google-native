@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public readonly string Email;
         /// <summary>
+        /// Deprecated. Do not use.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         /// </summary>
         public readonly string Name;
@@ -98,6 +102,8 @@ namespace Pulumi.GoogleNative.IAM.V1
 
             string email,
 
+            string etag,
+
             string name,
 
             string oauth2ClientId,
@@ -110,6 +116,7 @@ namespace Pulumi.GoogleNative.IAM.V1
             Disabled = disabled;
             DisplayName = displayName;
             Email = email;
+            Etag = etag;
             Name = name;
             Oauth2ClientId = oauth2ClientId;
             Project = project;

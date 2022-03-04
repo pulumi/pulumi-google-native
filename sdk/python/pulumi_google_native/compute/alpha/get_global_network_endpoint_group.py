@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGlobalNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, self_link_with_id=None, serverless_deployment=None, size=None, subnetwork=None, type=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, self_link_with_id=None, serverless_deployment=None, size=None, subnetwork=None, type=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -43,6 +43,13 @@ class GetGlobalNetworkEndpointGroupResult:
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
+        if load_balancer and not isinstance(load_balancer, dict):
+            raise TypeError("Expected argument 'load_balancer' to be a dict")
+        if load_balancer is not None:
+            warnings.warn("""This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer is deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.""")
+
+        pulumi.set(__self__, "load_balancer", load_balancer)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -143,6 +150,14 @@ class GetGlobalNetworkEndpointGroupResult:
         Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
         """
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="loadBalancer")
+    def load_balancer(self) -> 'outputs.NetworkEndpointGroupLbNetworkEndpointGroupResponse':
+        """
+        This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "load_balancer")
 
     @property
     @pulumi.getter
@@ -255,6 +270,7 @@ class AwaitableGetGlobalNetworkEndpointGroupResult(GetGlobalNetworkEndpointGroup
             default_port=self.default_port,
             description=self.description,
             kind=self.kind,
+            load_balancer=self.load_balancer,
             name=self.name,
             network=self.network,
             network_endpoint_type=self.network_endpoint_type,
@@ -293,6 +309,7 @@ def get_global_network_endpoint_group(network_endpoint_group: Optional[str] = No
         default_port=__ret__.default_port,
         description=__ret__.description,
         kind=__ret__.kind,
+        load_balancer=__ret__.load_balancer,
         name=__ret__.name,
         network=__ret__.network,
         network_endpoint_type=__ret__.network_endpoint_type,

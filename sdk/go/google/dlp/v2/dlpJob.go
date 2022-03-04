@@ -79,7 +79,10 @@ type dlpJobArgs struct {
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	JobId    *string `pulumi:"jobId"`
+	JobId *string `pulumi:"jobId"`
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
 	Location *string `pulumi:"location"`
 	Project  *string `pulumi:"project"`
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
@@ -91,7 +94,10 @@ type DlpJobArgs struct {
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob GooglePrivacyDlpV2InspectJobConfigPtrInput
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	JobId    pulumi.StringPtrInput
+	JobId pulumi.StringPtrInput
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.

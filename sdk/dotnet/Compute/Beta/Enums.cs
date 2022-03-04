@@ -1418,6 +1418,69 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    /// </summary>
+    [EnumType]
+    public readonly struct DiskInterface : IEquatable<DiskInterface>
+    {
+        private readonly string _value;
+
+        private DiskInterface(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static DiskInterface Nvme { get; } = new DiskInterface("NVME");
+        public static DiskInterface Scsi { get; } = new DiskInterface("SCSI");
+        public static DiskInterface Unspecified { get; } = new DiskInterface("UNSPECIFIED");
+
+        public static bool operator ==(DiskInterface left, DiskInterface right) => left.Equals(right);
+        public static bool operator !=(DiskInterface left, DiskInterface right) => !left.Equals(right);
+
+        public static explicit operator string(DiskInterface value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DiskInterface other && Equals(other);
+        public bool Equals(DiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// [Deprecated] Storage type of the persistent disk.
+    /// </summary>
+    [EnumType]
+    public readonly struct DiskStorageType : IEquatable<DiskStorageType>
+    {
+        private readonly string _value;
+
+        private DiskStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static DiskStorageType Hdd { get; } = new DiskStorageType("HDD");
+        public static DiskStorageType Ssd { get; } = new DiskStorageType("SSD");
+
+        public static bool operator ==(DiskStorageType left, DiskStorageType right) => left.Equals(right);
+        public static bool operator !=(DiskStorageType left, DiskStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(DiskStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DiskStorageType other && Equals(other);
+        public bool Equals(DiskStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
     /// </summary>
     [EnumType]
@@ -4394,6 +4457,69 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionDiskInterface : IEquatable<RegionDiskInterface>
+    {
+        private readonly string _value;
+
+        private RegionDiskInterface(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionDiskInterface Nvme { get; } = new RegionDiskInterface("NVME");
+        public static RegionDiskInterface Scsi { get; } = new RegionDiskInterface("SCSI");
+        public static RegionDiskInterface Unspecified { get; } = new RegionDiskInterface("UNSPECIFIED");
+
+        public static bool operator ==(RegionDiskInterface left, RegionDiskInterface right) => left.Equals(right);
+        public static bool operator !=(RegionDiskInterface left, RegionDiskInterface right) => !left.Equals(right);
+
+        public static explicit operator string(RegionDiskInterface value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionDiskInterface other && Equals(other);
+        public bool Equals(RegionDiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// [Deprecated] Storage type of the persistent disk.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionDiskStorageType : IEquatable<RegionDiskStorageType>
+    {
+        private readonly string _value;
+
+        private RegionDiskStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionDiskStorageType Hdd { get; } = new RegionDiskStorageType("HDD");
+        public static RegionDiskStorageType Ssd { get; } = new RegionDiskStorageType("SSD");
+
+        public static bool operator ==(RegionDiskStorageType left, RegionDiskStorageType right) => left.Equals(right);
+        public static bool operator !=(RegionDiskStorageType left, RegionDiskStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(RegionDiskStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionDiskStorageType other && Equals(other);
+        public bool Equals(RegionDiskStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
     /// </summary>
     [EnumType]
@@ -4423,6 +4549,43 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionHealthCheckServiceHealthStatusAggregationPolicy other && Equals(other);
         public bool Equals(RegionHealthCheckServiceHealthStatusAggregationPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionHealthCheckServiceHealthStatusAggregationStrategy : IEquatable<RegionHealthCheckServiceHealthStatusAggregationStrategy>
+    {
+        private readonly string _value;
+
+        private RegionHealthCheckServiceHealthStatusAggregationStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+        /// </summary>
+        public static RegionHealthCheckServiceHealthStatusAggregationStrategy And { get; } = new RegionHealthCheckServiceHealthStatusAggregationStrategy("AND");
+        /// <summary>
+        /// This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
+        /// </summary>
+        public static RegionHealthCheckServiceHealthStatusAggregationStrategy NoAggregation { get; } = new RegionHealthCheckServiceHealthStatusAggregationStrategy("NO_AGGREGATION");
+
+        public static bool operator ==(RegionHealthCheckServiceHealthStatusAggregationStrategy left, RegionHealthCheckServiceHealthStatusAggregationStrategy right) => left.Equals(right);
+        public static bool operator !=(RegionHealthCheckServiceHealthStatusAggregationStrategy left, RegionHealthCheckServiceHealthStatusAggregationStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(RegionHealthCheckServiceHealthStatusAggregationStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionHealthCheckServiceHealthStatusAggregationStrategy other && Equals(other);
+        public bool Equals(RegionHealthCheckServiceHealthStatusAggregationStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

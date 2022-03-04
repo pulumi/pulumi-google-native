@@ -650,13 +650,32 @@ class MultiCloudClusterArgs:
 @pulumi.input_type
 class MultiClusterIngressFeatureSpecArgs:
     def __init__(__self__, *,
+                 billing: Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']] = None,
                  config_membership: Optional[pulumi.Input[str]] = None):
         """
         **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+        :param pulumi.Input['MultiClusterIngressFeatureSpecBilling'] billing: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
         :param pulumi.Input[str] config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
+        if billing is not None:
+            warnings.warn("""Deprecated: This field will be ignored and should not be set. Customer's billing structure.""", DeprecationWarning)
+            pulumi.log.warn("""billing is deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.""")
+        if billing is not None:
+            pulumi.set(__self__, "billing", billing)
         if config_membership is not None:
             pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter
+    def billing(self) -> Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']]:
+        """
+        Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+        """
+        return pulumi.get(self, "billing")
+
+    @billing.setter
+    def billing(self, value: Optional[pulumi.Input['MultiClusterIngressFeatureSpecBilling']]):
+        pulumi.set(self, "billing", value)
 
     @property
     @pulumi.getter(name="configMembership")

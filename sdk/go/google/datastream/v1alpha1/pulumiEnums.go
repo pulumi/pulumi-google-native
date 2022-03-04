@@ -10,6 +10,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+type GcsDestinationConfigGcsFileFormat string
+
+const (
+	// Unspecified Cloud Storage file format.
+	GcsDestinationConfigGcsFileFormatGcsFileFormatUnspecified = GcsDestinationConfigGcsFileFormat("GCS_FILE_FORMAT_UNSPECIFIED")
+	// Avro file format
+	GcsDestinationConfigGcsFileFormatAvro = GcsDestinationConfigGcsFileFormat("AVRO")
+)
+
+func (GcsDestinationConfigGcsFileFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsDestinationConfigGcsFileFormat)(nil)).Elem()
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToGcsDestinationConfigGcsFileFormatOutput() GcsDestinationConfigGcsFileFormatOutput {
+	return pulumi.ToOutput(e).(GcsDestinationConfigGcsFileFormatOutput)
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToGcsDestinationConfigGcsFileFormatOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GcsDestinationConfigGcsFileFormatOutput)
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToGcsDestinationConfigGcsFileFormatPtrOutput() GcsDestinationConfigGcsFileFormatPtrOutput {
+	return e.ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatPtrOutput {
+	return GcsDestinationConfigGcsFileFormat(e).ToGcsDestinationConfigGcsFileFormatOutputWithContext(ctx).ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx)
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GcsDestinationConfigGcsFileFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GcsDestinationConfigGcsFileFormatOutput struct{ *pulumi.OutputState }
+
+func (GcsDestinationConfigGcsFileFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcsDestinationConfigGcsFileFormat)(nil)).Elem()
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToGcsDestinationConfigGcsFileFormatOutput() GcsDestinationConfigGcsFileFormatOutput {
+	return o
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToGcsDestinationConfigGcsFileFormatOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatOutput {
+	return o
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToGcsDestinationConfigGcsFileFormatPtrOutput() GcsDestinationConfigGcsFileFormatPtrOutput {
+	return o.ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(context.Background())
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GcsDestinationConfigGcsFileFormat) *GcsDestinationConfigGcsFileFormat {
+		return &v
+	}).(GcsDestinationConfigGcsFileFormatPtrOutput)
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GcsDestinationConfigGcsFileFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GcsDestinationConfigGcsFileFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GcsDestinationConfigGcsFileFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GcsDestinationConfigGcsFileFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (GcsDestinationConfigGcsFileFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GcsDestinationConfigGcsFileFormat)(nil)).Elem()
+}
+
+func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToGcsDestinationConfigGcsFileFormatPtrOutput() GcsDestinationConfigGcsFileFormatPtrOutput {
+	return o
+}
+
+func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatPtrOutput {
+	return o
+}
+
+func (o GcsDestinationConfigGcsFileFormatPtrOutput) Elem() GcsDestinationConfigGcsFileFormatOutput {
+	return o.ApplyT(func(v *GcsDestinationConfigGcsFileFormat) GcsDestinationConfigGcsFileFormat {
+		if v != nil {
+			return *v
+		}
+		var ret GcsDestinationConfigGcsFileFormat
+		return ret
+	}).(GcsDestinationConfigGcsFileFormatOutput)
+}
+
+func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GcsDestinationConfigGcsFileFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GcsDestinationConfigGcsFileFormatInput is an input type that accepts GcsDestinationConfigGcsFileFormatArgs and GcsDestinationConfigGcsFileFormatOutput values.
+// You can construct a concrete instance of `GcsDestinationConfigGcsFileFormatInput` via:
+//
+//          GcsDestinationConfigGcsFileFormatArgs{...}
+type GcsDestinationConfigGcsFileFormatInput interface {
+	pulumi.Input
+
+	ToGcsDestinationConfigGcsFileFormatOutput() GcsDestinationConfigGcsFileFormatOutput
+	ToGcsDestinationConfigGcsFileFormatOutputWithContext(context.Context) GcsDestinationConfigGcsFileFormatOutput
+}
+
+var gcsDestinationConfigGcsFileFormatPtrType = reflect.TypeOf((**GcsDestinationConfigGcsFileFormat)(nil)).Elem()
+
+type GcsDestinationConfigGcsFileFormatPtrInput interface {
+	pulumi.Input
+
+	ToGcsDestinationConfigGcsFileFormatPtrOutput() GcsDestinationConfigGcsFileFormatPtrOutput
+	ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(context.Context) GcsDestinationConfigGcsFileFormatPtrOutput
+}
+
+type gcsDestinationConfigGcsFileFormatPtr string
+
+func GcsDestinationConfigGcsFileFormatPtr(v string) GcsDestinationConfigGcsFileFormatPtrInput {
+	return (*gcsDestinationConfigGcsFileFormatPtr)(&v)
+}
+
+func (*gcsDestinationConfigGcsFileFormatPtr) ElementType() reflect.Type {
+	return gcsDestinationConfigGcsFileFormatPtrType
+}
+
+func (in *gcsDestinationConfigGcsFileFormatPtr) ToGcsDestinationConfigGcsFileFormatPtrOutput() GcsDestinationConfigGcsFileFormatPtrOutput {
+	return pulumi.ToOutput(in).(GcsDestinationConfigGcsFileFormatPtrOutput)
+}
+
+func (in *gcsDestinationConfigGcsFileFormatPtr) ToGcsDestinationConfigGcsFileFormatPtrOutputWithContext(ctx context.Context) GcsDestinationConfigGcsFileFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GcsDestinationConfigGcsFileFormatPtrOutput)
+}
+
 // Compression of the loaded JSON file.
 type JsonFileFormatCompression string
 
@@ -530,12 +697,16 @@ func (in *streamStateEnumPtr) ToStreamStateEnumPtrOutputWithContext(ctx context.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsDestinationConfigGcsFileFormatInput)(nil)).Elem(), GcsDestinationConfigGcsFileFormat("GCS_FILE_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GcsDestinationConfigGcsFileFormatPtrInput)(nil)).Elem(), GcsDestinationConfigGcsFileFormat("GCS_FILE_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatCompressionInput)(nil)).Elem(), JsonFileFormatCompression("JSON_COMPRESSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatCompressionPtrInput)(nil)).Elem(), JsonFileFormatCompression("JSON_COMPRESSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatSchemaFileFormatInput)(nil)).Elem(), JsonFileFormatSchemaFileFormat("SCHEMA_FILE_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JsonFileFormatSchemaFileFormatPtrInput)(nil)).Elem(), JsonFileFormatSchemaFileFormat("SCHEMA_FILE_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamStateEnumInput)(nil)).Elem(), StreamStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamStateEnumPtrInput)(nil)).Elem(), StreamStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(GcsDestinationConfigGcsFileFormatOutput{})
+	pulumi.RegisterOutputType(GcsDestinationConfigGcsFileFormatPtrOutput{})
 	pulumi.RegisterOutputType(JsonFileFormatCompressionOutput{})
 	pulumi.RegisterOutputType(JsonFileFormatCompressionPtrOutput{})
 	pulumi.RegisterOutputType(JsonFileFormatSchemaFileFormatOutput{})

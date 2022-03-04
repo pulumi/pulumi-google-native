@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -97,6 +97,13 @@ class GetBackendServiceResult:
         if outlier_detection and not isinstance(outlier_detection, dict):
             raise TypeError("Expected argument 'outlier_detection' to be a dict")
         pulumi.set(__self__, "outlier_detection", outlier_detection)
+        if port and not isinstance(port, int):
+            raise TypeError("Expected argument 'port' to be a int")
+        if port is not None:
+            warnings.warn("""Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""", DeprecationWarning)
+            pulumi.log.warn("""port is deprecated: Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.""")
+
+        pulumi.set(__self__, "port", port)
         if port_name and not isinstance(port_name, str):
             raise TypeError("Expected argument 'port_name' to be a str")
         pulumi.set(__self__, "port_name", port_name)
@@ -337,6 +344,14 @@ class GetBackendServiceResult:
         return pulumi.get(self, "outlier_detection")
 
     @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
     @pulumi.getter(name="portName")
     def port_name(self) -> str:
         """
@@ -462,6 +477,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             name=self.name,
             network=self.network,
             outlier_detection=self.outlier_detection,
+            port=self.port,
             port_name=self.port_name,
             protocol=self.protocol,
             region=self.region,
@@ -518,6 +534,7 @@ def get_backend_service(backend_service: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         outlier_detection=__ret__.outlier_detection,
+        port=__ret__.port,
         port_name=__ret__.port_name,
         protocol=__ret__.protocol,
         region=__ret__.region,

@@ -114,6 +114,7 @@ __all__ = [
     'NetworkEndpointGroupAppEngineArgs',
     'NetworkEndpointGroupCloudFunctionArgs',
     'NetworkEndpointGroupCloudRunArgs',
+    'NetworkEndpointGroupLbNetworkEndpointGroupArgs',
     'NetworkEndpointGroupServerlessDeploymentArgs',
     'NetworkInterfaceArgs',
     'NetworkPerformanceConfigArgs',
@@ -5969,14 +5970,21 @@ class HttpRouteRuleArgs:
 class ImageRawDiskArgs:
     def __init__(__self__, *,
                  container_type: Optional[pulumi.Input['ImageRawDiskContainerType']] = None,
+                 sha1_checksum: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         The parameters of the raw disk image.
         :param pulumi.Input['ImageRawDiskContainerType'] container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+        :param pulumi.Input[str] sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
         :param pulumi.Input[str] source: The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         if container_type is not None:
             pulumi.set(__self__, "container_type", container_type)
+        if sha1_checksum is not None:
+            warnings.warn("""[Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""", DeprecationWarning)
+            pulumi.log.warn("""sha1_checksum is deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.""")
+        if sha1_checksum is not None:
+            pulumi.set(__self__, "sha1_checksum", sha1_checksum)
         if source is not None:
             pulumi.set(__self__, "source", source)
 
@@ -5991,6 +5999,18 @@ class ImageRawDiskArgs:
     @container_type.setter
     def container_type(self, value: Optional[pulumi.Input['ImageRawDiskContainerType']]):
         pulumi.set(self, "container_type", value)
+
+    @property
+    @pulumi.getter(name="sha1Checksum")
+    def sha1_checksum(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+        """
+        return pulumi.get(self, "sha1_checksum")
+
+    @sha1_checksum.setter
+    def sha1_checksum(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha1_checksum", value)
 
     @property
     @pulumi.getter
@@ -7501,6 +7521,71 @@ class NetworkEndpointGroupCloudRunArgs:
     @url_mask.setter
     def url_mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_mask", value)
+
+
+@pulumi.input_type
+class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
+    def __init__(__self__, *,
+                 default_port: Optional[pulumi.Input[int]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        Load balancing specific fields for network endpoint group.
+        :param pulumi.Input[int] default_port: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+        :param pulumi.Input[str] network: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        :param pulumi.Input[str] subnetwork: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+        """
+        if default_port is not None:
+            warnings.warn("""The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""default_port is deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.""")
+        if default_port is not None:
+            pulumi.set(__self__, "default_port", default_port)
+        if network is not None:
+            warnings.warn("""The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""network is deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses \"default\" project network if unspecified. [Deprecated] This field is deprecated.""")
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            warnings.warn("""Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""subnetwork is deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.""")
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="defaultPort")
+    def default_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "default_port")
+
+    @default_port.setter
+    def default_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_port", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type
@@ -11825,17 +11910,36 @@ class SecurityPolicyRuleArgs:
 @pulumi.input_type
 class SecuritySettingsArgs:
     def __init__(__self__, *,
+                 authentication: Optional[pulumi.Input[str]] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The authentication and authorization settings for a BackendService.
+        :param pulumi.Input[str] authentication: [Deprecated] Use clientTlsPolicy instead.
         :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
         """
+        if authentication is not None:
+            warnings.warn("""[Deprecated] Use clientTlsPolicy instead.""", DeprecationWarning)
+            pulumi.log.warn("""authentication is deprecated: [Deprecated] Use clientTlsPolicy instead.""")
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
         if client_tls_policy is not None:
             pulumi.set(__self__, "client_tls_policy", client_tls_policy)
         if subject_alt_names is not None:
             pulumi.set(__self__, "subject_alt_names", subject_alt_names)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Deprecated] Use clientTlsPolicy instead.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authentication", value)
 
     @property
     @pulumi.getter(name="clientTlsPolicy")

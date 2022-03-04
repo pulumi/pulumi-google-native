@@ -341,21 +341,40 @@ class BuildNoteArgs:
 @pulumi.input_type
 class BuildOccurrenceArgs:
     def __init__(__self__, *,
+                 intoto_provenance: Optional[pulumi.Input['InTotoProvenanceArgs']] = None,
                  intoto_statement: Optional[pulumi.Input['InTotoStatementArgs']] = None,
                  provenance: Optional[pulumi.Input['BuildProvenanceArgs']] = None,
                  provenance_bytes: Optional[pulumi.Input[str]] = None):
         """
         Details of a build occurrence.
+        :param pulumi.Input['InTotoProvenanceArgs'] intoto_provenance: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         :param pulumi.Input['InTotoStatementArgs'] intoto_statement: In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         :param pulumi.Input['BuildProvenanceArgs'] provenance: The actual provenance for the build.
         :param pulumi.Input[str] provenance_bytes: Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
+        if intoto_provenance is not None:
+            warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
+            pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
+        if intoto_provenance is not None:
+            pulumi.set(__self__, "intoto_provenance", intoto_provenance)
         if intoto_statement is not None:
             pulumi.set(__self__, "intoto_statement", intoto_statement)
         if provenance is not None:
             pulumi.set(__self__, "provenance", provenance)
         if provenance_bytes is not None:
             pulumi.set(__self__, "provenance_bytes", provenance_bytes)
+
+    @property
+    @pulumi.getter(name="intotoProvenance")
+    def intoto_provenance(self) -> Optional[pulumi.Input['InTotoProvenanceArgs']]:
+        """
+        Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+        """
+        return pulumi.get(self, "intoto_provenance")
+
+    @intoto_provenance.setter
+    def intoto_provenance(self, value: Optional[pulumi.Input['InTotoProvenanceArgs']]):
+        pulumi.set(self, "intoto_provenance", value)
 
     @property
     @pulumi.getter(name="intotoStatement")

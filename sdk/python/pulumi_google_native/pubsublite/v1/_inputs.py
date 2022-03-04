@@ -85,16 +85,23 @@ class DeliveryConfigArgs:
 class PartitionConfigArgs:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input['CapacityArgs']] = None,
-                 count: Optional[pulumi.Input[str]] = None):
+                 count: Optional[pulumi.Input[str]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
         """
         The settings for a topic's partitions.
         :param pulumi.Input['CapacityArgs'] capacity: The capacity configuration.
         :param pulumi.Input[str] count: The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
+        :param pulumi.Input[int] scale: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
         if count is not None:
             pulumi.set(__self__, "count", count)
+        if scale is not None:
+            warnings.warn("""DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].""", DeprecationWarning)
+            pulumi.log.warn("""scale is deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].""")
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
 
     @property
     @pulumi.getter
@@ -119,6 +126,18 @@ class PartitionConfigArgs:
     @count.setter
     def count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
 
 
 @pulumi.input_type

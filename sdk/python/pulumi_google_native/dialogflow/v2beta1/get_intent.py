@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetIntentResult:
-    def __init__(__self__, action=None, default_response_platforms=None, display_name=None, end_interaction=None, events=None, followup_intent_info=None, input_context_names=None, is_fallback=None, live_agent_handoff=None, messages=None, ml_disabled=None, name=None, output_contexts=None, parameters=None, parent_followup_intent_name=None, priority=None, reset_contexts=None, root_followup_intent_name=None, training_phrases=None, webhook_state=None):
+    def __init__(__self__, action=None, default_response_platforms=None, display_name=None, end_interaction=None, events=None, followup_intent_info=None, input_context_names=None, is_fallback=None, live_agent_handoff=None, messages=None, ml_disabled=None, ml_enabled=None, name=None, output_contexts=None, parameters=None, parent_followup_intent_name=None, priority=None, reset_contexts=None, root_followup_intent_name=None, training_phrases=None, webhook_state=None):
         if action and not isinstance(action, str):
             raise TypeError("Expected argument 'action' to be a str")
         pulumi.set(__self__, "action", action)
@@ -52,6 +52,13 @@ class GetIntentResult:
         if ml_disabled and not isinstance(ml_disabled, bool):
             raise TypeError("Expected argument 'ml_disabled' to be a bool")
         pulumi.set(__self__, "ml_disabled", ml_disabled)
+        if ml_enabled and not isinstance(ml_enabled, bool):
+            raise TypeError("Expected argument 'ml_enabled' to be a bool")
+        if ml_enabled is not None:
+            warnings.warn("""Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""", DeprecationWarning)
+            pulumi.log.warn("""ml_enabled is deprecated: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.""")
+
+        pulumi.set(__self__, "ml_enabled", ml_enabled)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -169,6 +176,14 @@ class GetIntentResult:
         return pulumi.get(self, "ml_disabled")
 
     @property
+    @pulumi.getter(name="mlEnabled")
+    def ml_enabled(self) -> bool:
+        """
+        Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+        """
+        return pulumi.get(self, "ml_enabled")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -258,6 +273,7 @@ class AwaitableGetIntentResult(GetIntentResult):
             live_agent_handoff=self.live_agent_handoff,
             messages=self.messages,
             ml_disabled=self.ml_disabled,
+            ml_enabled=self.ml_enabled,
             name=self.name,
             output_contexts=self.output_contexts,
             parameters=self.parameters,
@@ -302,6 +318,7 @@ def get_intent(intent_id: Optional[str] = None,
         live_agent_handoff=__ret__.live_agent_handoff,
         messages=__ret__.messages,
         ml_disabled=__ret__.ml_disabled,
+        ml_enabled=__ret__.ml_enabled,
         name=__ret__.name,
         output_contexts=__ret__.output_contexts,
         parameters=__ret__.parameters,

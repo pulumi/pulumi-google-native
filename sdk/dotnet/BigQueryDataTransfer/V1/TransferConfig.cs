@@ -111,6 +111,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -239,6 +245,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
 
         [Input("serviceAccountName")]
         public Input<string>? ServiceAccountName { get; set; }
+
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         [Input("versionInfo")]
         public Input<string>? VersionInfo { get; set; }

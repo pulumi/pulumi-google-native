@@ -9,11 +9,52 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
 __all__ = [
+    'GoogleCloudOrgpolicyV2AlternatePolicySpecArgs',
     'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs',
     'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs',
     'GoogleCloudOrgpolicyV2PolicySpecArgs',
     'GoogleTypeExprArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudOrgpolicyV2AlternatePolicySpecArgs:
+    def __init__(__self__, *,
+                 launch: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None):
+        """
+        Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+        :param pulumi.Input[str] launch: Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+        :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] spec: Specify `Constraint` for configurations of Cloud Platform resources.
+        """
+        if launch is not None:
+            pulumi.set(__self__, "launch", launch)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def launch(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+        """
+        return pulumi.get(self, "launch")
+
+    @launch.setter
+    def launch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "launch", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']]:
+        """
+        Specify `Constraint` for configurations of Cloud Platform resources.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']]):
+        pulumi.set(self, "spec", value)
+
 
 @pulumi.input_type
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs:

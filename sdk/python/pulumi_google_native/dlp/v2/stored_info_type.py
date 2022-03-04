@@ -22,9 +22,13 @@ class StoredInfoTypeArgs:
         """
         The set of arguments for constructing a StoredInfoType resource.
         :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Configuration of the storedInfoType to create.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "config", config)
+        if location is not None:
+            warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+            pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -47,6 +51,9 @@ class StoredInfoTypeArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. This field has no effect.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -92,6 +99,7 @@ class StoredInfoType(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] config: Configuration of the storedInfoType to create.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         ...
@@ -138,6 +146,9 @@ class StoredInfoType(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            if location is not None and not opts.urn:
+                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["stored_info_type_id"] = stored_info_type_id

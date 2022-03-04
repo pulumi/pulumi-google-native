@@ -189,6 +189,12 @@ namespace Pulumi.GoogleNative.Jobs.V4
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+        /// </summary>
+        [Output("visibility")]
+        public Output<string> Visibility { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Job resource with the given unique name, arguments, and options.
@@ -419,6 +425,12 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
+
+        /// <summary>
+        /// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+        /// </summary>
+        [Input("visibility")]
+        public Input<Pulumi.GoogleNative.Jobs.V4.JobVisibility>? Visibility { get; set; }
 
         public JobArgs()
         {

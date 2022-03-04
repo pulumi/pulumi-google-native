@@ -99,6 +99,12 @@ export class TransferConfig extends pulumi.CustomResource {
      * Data transfer modification time. Ignored by server on input.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
+     *
+     * @deprecated Deprecated. Unique ID of the user on whose behalf transfer is done.
+     */
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -126,6 +132,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
             resourceInputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["versionInfo"] = args ? args.versionInfo : undefined;
             resourceInputs["datasetRegion"] = undefined /*out*/;
             resourceInputs["nextRunTime"] = undefined /*out*/;
@@ -149,6 +156,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["scheduleOptions"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TransferConfig.__pulumiType, name, resourceInputs, opts);
@@ -207,5 +215,11 @@ export interface TransferConfigArgs {
      */
     scheduleOptions?: pulumi.Input<inputs.bigquerydatatransfer.v1.ScheduleOptionsArgs>;
     serviceAccountName?: pulumi.Input<string>;
+    /**
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
+     *
+     * @deprecated Deprecated. Unique ID of the user on whose behalf transfer is done.
+     */
+    userId?: pulumi.Input<string>;
     versionInfo?: pulumi.Input<string>;
 }

@@ -30,6 +30,10 @@ type LookupInstructionResult struct {
 	BlockingResources []string `pulumi:"blockingResources"`
 	// Creation time of instruction.
 	CreateTime string `pulumi:"createTime"`
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	//
+	// Deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction GoogleCloudDatalabelingV1beta1CsvInstructionResponse `pulumi:"csvInstruction"`
 	// The data type of this instruction.
 	DataType string `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
@@ -84,6 +88,15 @@ func (o LookupInstructionResultOutput) BlockingResources() pulumi.StringArrayOut
 // Creation time of instruction.
 func (o LookupInstructionResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstructionResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+//
+// Deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+func (o LookupInstructionResultOutput) CsvInstruction() GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput {
+	return o.ApplyT(func(v LookupInstructionResult) GoogleCloudDatalabelingV1beta1CsvInstructionResponse {
+		return v.CsvInstruction
+	}).(GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput)
 }
 
 // The data type of this instruction.

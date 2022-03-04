@@ -23,6 +23,7 @@ class CatalogItemArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class CatalogItemArgs:
         :param pulumi.Input[str] description: Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
         :param pulumi.Input['GoogleCloudRecommendationengineV1beta1FeatureMapArgs'] item_attributes: Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
         :param pulumi.Input[str] item_group_id: Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+        :param pulumi.Input[str] language_code: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
         :param pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs'] product_metadata: Optional. Metadata specific to retail products.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
         """
@@ -48,6 +50,11 @@ class CatalogItemArgs:
             pulumi.set(__self__, "item_attributes", item_attributes)
         if item_group_id is not None:
             pulumi.set(__self__, "item_group_id", item_group_id)
+        if language_code is not None:
+            warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
+            pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if product_metadata is not None:
@@ -139,6 +146,18 @@ class CatalogItemArgs:
         pulumi.set(self, "item_group_id", value)
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
@@ -192,6 +211,7 @@ class CatalogItem(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']]] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -209,6 +229,7 @@ class CatalogItem(pulumi.CustomResource):
         :param pulumi.Input[str] id: Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']] item_attributes: Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
         :param pulumi.Input[str] item_group_id: Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+        :param pulumi.Input[str] language_code: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']] product_metadata: Optional. Metadata specific to retail products.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
         :param pulumi.Input[str] title: Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
@@ -244,6 +265,7 @@ class CatalogItem(pulumi.CustomResource):
                  id: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']]] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -273,6 +295,10 @@ class CatalogItem(pulumi.CustomResource):
             __props__.__dict__["id"] = id
             __props__.__dict__["item_attributes"] = item_attributes
             __props__.__dict__["item_group_id"] = item_group_id
+            if language_code is not None and not opts.urn:
+                warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
+                pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
+            __props__.__dict__["language_code"] = language_code
             __props__.__dict__["location"] = location
             __props__.__dict__["product_metadata"] = product_metadata
             __props__.__dict__["project"] = project
@@ -306,6 +332,7 @@ class CatalogItem(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["item_attributes"] = None
         __props__.__dict__["item_group_id"] = None
+        __props__.__dict__["language_code"] = None
         __props__.__dict__["product_metadata"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["title"] = None
@@ -342,6 +369,14 @@ class CatalogItem(pulumi.CustomResource):
         Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
         """
         return pulumi.get(self, "item_group_id")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[str]:
+        """
+        Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+        """
+        return pulumi.get(self, "language_code")
 
     @property
     @pulumi.getter(name="productMetadata")

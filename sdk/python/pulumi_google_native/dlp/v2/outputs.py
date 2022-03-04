@@ -3129,7 +3129,9 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "customInfoTypes":
+        if key == "contentOptions":
+            suggest = "content_options"
+        elif key == "customInfoTypes":
             suggest = "custom_info_types"
         elif key == "excludeInfoTypes":
             suggest = "exclude_info_types"
@@ -3154,6 +3156,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 content_options: Sequence[str],
                  custom_info_types: Sequence['outputs.GooglePrivacyDlpV2CustomInfoTypeResponse'],
                  exclude_info_types: bool,
                  include_quote: bool,
@@ -3163,6 +3166,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
                  rule_set: Sequence['outputs.GooglePrivacyDlpV2InspectionRuleSetResponse']):
         """
         Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
+        :param Sequence[str] content_options: Deprecated and unused.
         :param Sequence['GooglePrivacyDlpV2CustomInfoTypeResponse'] custom_info_types: CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         :param bool exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
@@ -3171,6 +3175,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         :param str min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param Sequence['GooglePrivacyDlpV2InspectionRuleSetResponse'] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
+        pulumi.set(__self__, "content_options", content_options)
         pulumi.set(__self__, "custom_info_types", custom_info_types)
         pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         pulumi.set(__self__, "include_quote", include_quote)
@@ -3178,6 +3183,14 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "min_likelihood", min_likelihood)
         pulumi.set(__self__, "rule_set", rule_set)
+
+    @property
+    @pulumi.getter(name="contentOptions")
+    def content_options(self) -> Sequence[str]:
+        """
+        Deprecated and unused.
+        """
+        return pulumi.get(self, "content_options")
 
     @property
     @pulumi.getter(name="customInfoTypes")

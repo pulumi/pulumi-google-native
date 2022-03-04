@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> HealthStatusAggregationPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        /// </summary>
+        [Output("healthStatusAggregationStrategy")]
+        public Output<string> HealthStatusAggregationStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
         /// </summary>
         [Output("kind")]
@@ -155,6 +161,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("healthStatusAggregationPolicy")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.RegionHealthCheckServiceHealthStatusAggregationPolicy>? HealthStatusAggregationPolicy { get; set; }
+
+        /// <summary>
+        /// This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        /// </summary>
+        [Input("healthStatusAggregationStrategy")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.RegionHealthCheckServiceHealthStatusAggregationStrategy>? HealthStatusAggregationStrategy { get; set; }
 
         /// <summary>
         /// Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

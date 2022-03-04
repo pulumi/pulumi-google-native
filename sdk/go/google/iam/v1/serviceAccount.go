@@ -24,6 +24,10 @@ type ServiceAccount struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The email address of the service account.
 	Email pulumi.StringOutput `pulumi:"email"`
+	// Deprecated. Do not use.
+	//
+	// Deprecated: Deprecated. Do not use.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The OAuth 2.0 client ID for the service account.
@@ -82,6 +86,10 @@ type serviceAccountArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 	DisplayName *string `pulumi:"displayName"`
+	// Deprecated. Do not use.
+	//
+	// Deprecated: Deprecated. Do not use.
+	Etag *string `pulumi:"etag"`
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -95,6 +103,10 @@ type ServiceAccountArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 	DisplayName pulumi.StringPtrInput
+	// Deprecated. Do not use.
+	//
+	// Deprecated: Deprecated. Do not use.
+	Etag pulumi.StringPtrInput
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

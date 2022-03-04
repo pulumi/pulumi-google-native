@@ -2528,6 +2528,8 @@
         "types/enums/jobs/index.ts",
         "types/enums/jobs/v3/index.ts",
         "types/enums/jobs/v4/index.ts",
+        "types/enums/logging/index.ts",
+        "types/enums/logging/v2/index.ts",
         "types/enums/memcache/index.ts",
         "types/enums/memcache/v1/index.ts",
         "types/enums/memcache/v1beta2/index.ts",

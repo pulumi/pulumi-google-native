@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly Outputs.ComputeEngineTargetDetailsResponse ComputeEngineTargetDetails;
         /// <summary>
+        /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+        /// </summary>
+        public readonly Outputs.TargetVMDetailsResponse ComputeEngineVmDetails;
+        /// <summary>
         /// The time the clone job was created (as an API call, not when it was actually created in the target).
         /// </summary>
         public readonly string CreateTime;
@@ -97,10 +101,16 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// The time the state was last updated.
         /// </summary>
         public readonly string StateTime;
+        /// <summary>
+        /// Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+        /// </summary>
+        public readonly Outputs.TargetVMDetailsResponse TargetDetails;
 
         [OutputConstructor]
         private GetCloneJobResult(
             Outputs.ComputeEngineTargetDetailsResponse computeEngineTargetDetails,
+
+            Outputs.TargetVMDetailsResponse computeEngineVmDetails,
 
             string createTime,
 
@@ -110,14 +120,18 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string state,
 
-            string stateTime)
+            string stateTime,
+
+            Outputs.TargetVMDetailsResponse targetDetails)
         {
             ComputeEngineTargetDetails = computeEngineTargetDetails;
+            ComputeEngineVmDetails = computeEngineVmDetails;
             CreateTime = createTime;
             Error = error;
             Name = name;
             State = state;
             StateTime = stateTime;
+            TargetDetails = targetDetails;
         }
     }
 }

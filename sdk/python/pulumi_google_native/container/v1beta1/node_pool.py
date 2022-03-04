@@ -31,9 +31,11 @@ class NodePoolInitArgs:
                  placement_policy: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
-                 version: Optional[pulumi.Input[str]] = None):
+                 version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
+        :param pulumi.Input[str] cluster_id: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
@@ -45,9 +47,14 @@ class NodePoolInitArgs:
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
+        :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
+        :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
+        if cluster_id is not None:
+            warnings.warn("""Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_id is deprecated: Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
         pulumi.set(__self__, "cluster_id", cluster_id)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -74,15 +81,26 @@ class NodePoolInitArgs:
         if placement_policy is not None:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
+            warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""")
+        if project is not None:
             pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
             pulumi.set(__self__, "version", version)
+        if zone is not None:
+            warnings.warn("""Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
+        """
+        Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -233,6 +251,9 @@ class NodePoolInitArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -263,6 +284,18 @@ class NodePoolInitArgs:
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class NodePool(pulumi.CustomResource):
     @overload
@@ -285,6 +318,7 @@ class NodePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a node pool for a cluster.
@@ -292,6 +326,7 @@ class NodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NodePoolAutoscalingArgs']] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+        :param pulumi.Input[str] cluster_id: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
@@ -302,8 +337,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[pulumi.InputType['PlacementPolicyArgs']] placement_policy: Specifies the node placement policy.
+        :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
+        :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
         ...
     @overload
@@ -345,6 +382,7 @@ class NodePool(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -360,6 +398,9 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["autoscaling"] = autoscaling
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
+            if cluster_id is not None and not opts.urn:
+                warnings.warn("""Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+                pulumi.log.warn("""cluster_id is deprecated: Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
@@ -372,13 +413,21 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
             __props__.__dict__["placement_policy"] = placement_policy
+            if project is not None and not opts.urn:
+                warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+                pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version
+            if zone is not None and not opts.urn:
+                warnings.warn("""Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+                pulumi.log.warn("""zone is deprecated: Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.""")
+            __props__.__dict__["zone"] = zone
             __props__.__dict__["instance_group_urls"] = None
             __props__.__dict__["pod_ipv4_cidr_size"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["status_message"] = None
         super(NodePool, __self__).__init__(
             'google-native:container/v1beta1:NodePool',
             resource_name,
@@ -415,6 +464,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["pod_ipv4_cidr_size"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["status_message"] = None
         __props__.__dict__["upgrade_settings"] = None
         __props__.__dict__["version"] = None
         return NodePool(resource_name, opts=opts, __props__=__props__)
@@ -530,6 +580,14 @@ class NodePool(pulumi.CustomResource):
         [Output only] The status of the nodes in this pool instance.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> pulumi.Output[str]:
+        """
+        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        """
+        return pulumi.get(self, "status_message")
 
     @property
     @pulumi.getter(name="upgradeSettings")

@@ -47,6 +47,10 @@ type LookupClusterResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion string `pulumi:"currentMasterVersion"`
+	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+	//
+	// Deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+	CurrentNodeCount int `pulumi:"currentNodeCount"`
 	// [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion string `pulumi:"currentNodeVersion"`
 	// Configuration of etcd encryption.
@@ -67,6 +71,14 @@ type LookupClusterResult struct {
 	IdentityServiceConfig IdentityServiceConfigResponse `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion string `pulumi:"initialClusterVersion"`
+	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	//
+	// Deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	InitialNodeCount int `pulumi:"initialNodeCount"`
+	// Deprecated. Use node_pools.instance_group_urls.
+	//
+	// Deprecated: Deprecated. Use node_pools.instance_group_urls.
+	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyResponse `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -101,6 +113,10 @@ type LookupClusterResult struct {
 	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyResponse `pulumi:"networkPolicy"`
+	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	//
+	// Deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize int `pulumi:"nodeIpv4CidrSize"`
 	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
@@ -127,6 +143,10 @@ type LookupClusterResult struct {
 	ShieldedNodes ShieldedNodesResponse `pulumi:"shieldedNodes"`
 	// [Output only] The current status of this cluster.
 	Status string `pulumi:"status"`
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+	//
+	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+	StatusMessage string `pulumi:"statusMessage"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
 	Subnetwork string `pulumi:"subnetwork"`
 	// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
@@ -135,6 +155,10 @@ type LookupClusterResult struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingResponse `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponse `pulumi:"workloadIdentityConfig"`
+	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+	//
+	// Deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+	Zone string `pulumi:"zone"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -220,6 +244,13 @@ func (o LookupClusterResultOutput) CurrentMasterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.CurrentMasterVersion }).(pulumi.StringOutput)
 }
 
+// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+//
+// Deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+func (o LookupClusterResultOutput) CurrentNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.CurrentNodeCount }).(pulumi.IntOutput)
+}
+
 // [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 func (o LookupClusterResultOutput) CurrentNodeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.CurrentNodeVersion }).(pulumi.StringOutput)
@@ -268,6 +299,20 @@ func (o LookupClusterResultOutput) IdentityServiceConfig() IdentityServiceConfig
 // The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 func (o LookupClusterResultOutput) InitialClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.InitialClusterVersion }).(pulumi.StringOutput)
+}
+
+// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+//
+// Deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+func (o LookupClusterResultOutput) InitialNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupClusterResult) int { return v.InitialNodeCount }).(pulumi.IntOutput)
+}
+
+// Deprecated. Use node_pools.instance_group_urls.
+//
+// Deprecated: Deprecated. Use node_pools.instance_group_urls.
+func (o LookupClusterResultOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []string { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
 }
 
 // Configuration for cluster IP allocation.
@@ -357,6 +402,13 @@ func (o LookupClusterResultOutput) NetworkPolicy() NetworkPolicyResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) NetworkPolicyResponse { return v.NetworkPolicy }).(NetworkPolicyResponseOutput)
 }
 
+// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+//
+// Deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+func (o LookupClusterResultOutput) NodeConfig() NodeConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) NodeConfigResponse { return v.NodeConfig }).(NodeConfigResponseOutput)
+}
+
 // [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 func (o LookupClusterResultOutput) NodeIpv4CidrSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.NodeIpv4CidrSize }).(pulumi.IntOutput)
@@ -422,6 +474,13 @@ func (o LookupClusterResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+//
+// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+func (o LookupClusterResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
 // The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
 func (o LookupClusterResultOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Subnetwork }).(pulumi.StringOutput)
@@ -440,6 +499,13 @@ func (o LookupClusterResultOutput) VerticalPodAutoscaling() VerticalPodAutoscali
 // Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 func (o LookupClusterResultOutput) WorkloadIdentityConfig() WorkloadIdentityConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) WorkloadIdentityConfigResponse { return v.WorkloadIdentityConfig }).(WorkloadIdentityConfigResponseOutput)
+}
+
+// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+//
+// Deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+func (o LookupClusterResultOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 func init() {

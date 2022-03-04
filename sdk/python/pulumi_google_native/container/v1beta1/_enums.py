@@ -27,6 +27,7 @@ __all__ = [
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
     'StatusConditionCanonicalCode',
+    'StatusConditionCode',
     'WorkloadMetadataConfigMode',
     'WorkloadMetadataConfigNodeMetadata',
 ]
@@ -484,6 +485,40 @@ class StatusConditionCanonicalCode(str, Enum):
     DATA_LOSS = "DATA_LOSS"
     """
     Unrecoverable data loss or corruption. HTTP Mapping: 500 Internal Server Error
+    """
+
+
+class StatusConditionCode(str, Enum):
+    """
+    Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+    """
+    UNKNOWN = "UNKNOWN"
+    """
+    UNKNOWN indicates a generic condition.
+    """
+    GCE_STOCKOUT = "GCE_STOCKOUT"
+    """
+    GCE_STOCKOUT indicates that Google Compute Engine resources are temporarily unavailable.
+    """
+    GKE_SERVICE_ACCOUNT_DELETED = "GKE_SERVICE_ACCOUNT_DELETED"
+    """
+    GKE_SERVICE_ACCOUNT_DELETED indicates that the user deleted their robot service account.
+    """
+    GCE_QUOTA_EXCEEDED = "GCE_QUOTA_EXCEEDED"
+    """
+    Google Compute Engine quota was exceeded.
+    """
+    SET_BY_OPERATOR = "SET_BY_OPERATOR"
+    """
+    Cluster state was manually changed by an SRE due to a system logic error.
+    """
+    CLOUD_KMS_KEY_ERROR = "CLOUD_KMS_KEY_ERROR"
+    """
+    Unable to perform an encrypt operation against the CloudKMS key used for etcd level encryption.
+    """
+    CA_EXPIRING = "CA_EXPIRING"
+    """
+    Cluster CA is expiring soon. More codes TBA
     """
 
 

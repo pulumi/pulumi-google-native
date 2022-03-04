@@ -18,7 +18,14 @@ __all__ = [
 
 @pulumi.output_type
 class GetLicenseResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, license_code=None, name=None, resource_requirements=None, self_link=None, transferable=None):
+    def __init__(__self__, charges_use_fee=None, creation_timestamp=None, description=None, kind=None, license_code=None, name=None, resource_requirements=None, self_link=None, transferable=None):
+        if charges_use_fee and not isinstance(charges_use_fee, bool):
+            raise TypeError("Expected argument 'charges_use_fee' to be a bool")
+        if charges_use_fee is not None:
+            warnings.warn("""[Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""", DeprecationWarning)
+            pulumi.log.warn("""charges_use_fee is deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.""")
+
+        pulumi.set(__self__, "charges_use_fee", charges_use_fee)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -43,6 +50,14 @@ class GetLicenseResult:
         if transferable and not isinstance(transferable, bool):
             raise TypeError("Expected argument 'transferable' to be a bool")
         pulumi.set(__self__, "transferable", transferable)
+
+    @property
+    @pulumi.getter(name="chargesUseFee")
+    def charges_use_fee(self) -> bool:
+        """
+        Deprecated. This field no longer reflects whether a license charges a usage fee.
+        """
+        return pulumi.get(self, "charges_use_fee")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -112,6 +127,7 @@ class AwaitableGetLicenseResult(GetLicenseResult):
         if False:
             yield self
         return GetLicenseResult(
+            charges_use_fee=self.charges_use_fee,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             kind=self.kind,
@@ -138,6 +154,7 @@ def get_license(license: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/v1:getLicense', __args__, opts=opts, typ=GetLicenseResult).value
 
     return AwaitableGetLicenseResult(
+        charges_use_fee=__ret__.charges_use_fee,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         kind=__ret__.kind,

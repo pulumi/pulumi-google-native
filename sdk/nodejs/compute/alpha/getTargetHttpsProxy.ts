@@ -26,6 +26,18 @@ export interface GetTargetHttpsProxyArgs {
 
 export interface GetTargetHttpsProxyResult {
     /**
+     * [Deprecated] Use serverTlsPolicy instead.
+     *
+     * @deprecated [Deprecated] Use serverTlsPolicy instead.
+     */
+    readonly authentication: string;
+    /**
+     * [Deprecated] Use authorizationPolicy instead.
+     *
+     * @deprecated [Deprecated] Use authorizationPolicy instead.
+     */
+    readonly authorization: string;
+    /**
      * Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
      */
     readonly authorizationPolicy: string;

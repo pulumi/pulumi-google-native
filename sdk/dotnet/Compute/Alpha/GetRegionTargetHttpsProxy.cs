@@ -62,6 +62,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetRegionTargetHttpsProxyResult
     {
         /// <summary>
+        /// [Deprecated] Use serverTlsPolicy instead.
+        /// </summary>
+        public readonly string Authentication;
+        /// <summary>
+        /// [Deprecated] Use authorizationPolicy instead.
+        /// </summary>
+        public readonly string Authorization;
+        /// <summary>
         /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
         /// </summary>
         public readonly string AuthorizationPolicy;
@@ -132,6 +140,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetRegionTargetHttpsProxyResult(
+            string authentication,
+
+            string authorization,
+
             string authorizationPolicy,
 
             string certificateMap,
@@ -166,6 +178,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string urlMap)
         {
+            Authentication = authentication;
+            Authorization = authorization;
             AuthorizationPolicy = authorizationPolicy;
             CertificateMap = certificateMap;
             CreationTimestamp = creationTimestamp;

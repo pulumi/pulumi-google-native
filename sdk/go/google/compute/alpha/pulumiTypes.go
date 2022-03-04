@@ -1831,6 +1831,10 @@ type AttachedDiskInitializeParams struct {
 	DiskType *string `pulumi:"diskType"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
+	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	//
+	// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	Interface *AttachedDiskInitializeParamsInterface `pulumi:"interface"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
 	// Integer license codes indicating which licenses are attached to this disk.
@@ -1884,6 +1888,10 @@ type AttachedDiskInitializeParamsArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures GuestOsFeatureArrayInput `pulumi:"guestOsFeatures"`
+	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	//
+	// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	Interface AttachedDiskInitializeParamsInterfacePtrInput `pulumi:"interface"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Integer license codes indicating which licenses are attached to this disk.
@@ -2018,6 +2026,13 @@ func (o AttachedDiskInitializeParamsOutput) DiskType() pulumi.StringPtrOutput {
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 func (o AttachedDiskInitializeParamsOutput) GuestOsFeatures() GuestOsFeatureArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) []GuestOsFeature { return v.GuestOsFeatures }).(GuestOsFeatureArrayOutput)
+}
+
+// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+//
+// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+func (o AttachedDiskInitializeParamsOutput) Interface() AttachedDiskInitializeParamsInterfacePtrOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) *AttachedDiskInitializeParamsInterface { return v.Interface }).(AttachedDiskInitializeParamsInterfacePtrOutput)
 }
 
 // Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
@@ -2171,6 +2186,18 @@ func (o AttachedDiskInitializeParamsPtrOutput) GuestOsFeatures() GuestOsFeatureA
 	}).(GuestOsFeatureArrayOutput)
 }
 
+// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+//
+// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+func (o AttachedDiskInitializeParamsPtrOutput) Interface() AttachedDiskInitializeParamsInterfacePtrOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) *AttachedDiskInitializeParamsInterface {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(AttachedDiskInitializeParamsInterfacePtrOutput)
+}
+
 // Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 func (o AttachedDiskInitializeParamsPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) map[string]string {
@@ -2315,6 +2342,10 @@ type AttachedDiskInitializeParamsResponse struct {
 	DiskType string `pulumi:"diskType"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
+	// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	//
+	// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	Interface string `pulumi:"interface"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
 	// Integer license codes indicating which licenses are attached to this disk.
@@ -2386,6 +2417,13 @@ func (o AttachedDiskInitializeParamsResponseOutput) DiskType() pulumi.StringOutp
 // A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
 func (o AttachedDiskInitializeParamsResponseOutput) GuestOsFeatures() GuestOsFeatureResponseArrayOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) []GuestOsFeatureResponse { return v.GuestOsFeatures }).(GuestOsFeatureResponseArrayOutput)
+}
+
+// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+//
+// Deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+func (o AttachedDiskInitializeParamsResponseOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.Interface }).(pulumi.StringOutput)
 }
 
 // Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
@@ -2983,6 +3021,416 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
 		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
 	}).(AuditLogConfigResponseOutput)
+}
+
+// [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
+type AuthenticationPolicy struct {
+	// List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
+	Origins []OriginAuthenticationMethod `pulumi:"origins"`
+	// List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
+	Peers []PeerAuthenticationMethod `pulumi:"peers"`
+	// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+	PrincipalBinding *AuthenticationPolicyPrincipalBinding `pulumi:"principalBinding"`
+	// Configures the mechanism to obtain server-side security certificates and identity information.
+	ServerTlsContext *TlsContext `pulumi:"serverTlsContext"`
+}
+
+// AuthenticationPolicyInput is an input type that accepts AuthenticationPolicyArgs and AuthenticationPolicyOutput values.
+// You can construct a concrete instance of `AuthenticationPolicyInput` via:
+//
+//          AuthenticationPolicyArgs{...}
+type AuthenticationPolicyInput interface {
+	pulumi.Input
+
+	ToAuthenticationPolicyOutput() AuthenticationPolicyOutput
+	ToAuthenticationPolicyOutputWithContext(context.Context) AuthenticationPolicyOutput
+}
+
+// [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
+type AuthenticationPolicyArgs struct {
+	// List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
+	Origins OriginAuthenticationMethodArrayInput `pulumi:"origins"`
+	// List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
+	Peers PeerAuthenticationMethodArrayInput `pulumi:"peers"`
+	// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+	PrincipalBinding AuthenticationPolicyPrincipalBindingPtrInput `pulumi:"principalBinding"`
+	// Configures the mechanism to obtain server-side security certificates and identity information.
+	ServerTlsContext TlsContextPtrInput `pulumi:"serverTlsContext"`
+}
+
+func (AuthenticationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationPolicy)(nil)).Elem()
+}
+
+func (i AuthenticationPolicyArgs) ToAuthenticationPolicyOutput() AuthenticationPolicyOutput {
+	return i.ToAuthenticationPolicyOutputWithContext(context.Background())
+}
+
+func (i AuthenticationPolicyArgs) ToAuthenticationPolicyOutputWithContext(ctx context.Context) AuthenticationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPolicyOutput)
+}
+
+func (i AuthenticationPolicyArgs) ToAuthenticationPolicyPtrOutput() AuthenticationPolicyPtrOutput {
+	return i.ToAuthenticationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AuthenticationPolicyArgs) ToAuthenticationPolicyPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPolicyOutput).ToAuthenticationPolicyPtrOutputWithContext(ctx)
+}
+
+// AuthenticationPolicyPtrInput is an input type that accepts AuthenticationPolicyArgs, AuthenticationPolicyPtr and AuthenticationPolicyPtrOutput values.
+// You can construct a concrete instance of `AuthenticationPolicyPtrInput` via:
+//
+//          AuthenticationPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthenticationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationPolicyPtrOutput() AuthenticationPolicyPtrOutput
+	ToAuthenticationPolicyPtrOutputWithContext(context.Context) AuthenticationPolicyPtrOutput
+}
+
+type authenticationPolicyPtrType AuthenticationPolicyArgs
+
+func AuthenticationPolicyPtr(v *AuthenticationPolicyArgs) AuthenticationPolicyPtrInput {
+	return (*authenticationPolicyPtrType)(v)
+}
+
+func (*authenticationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationPolicy)(nil)).Elem()
+}
+
+func (i *authenticationPolicyPtrType) ToAuthenticationPolicyPtrOutput() AuthenticationPolicyPtrOutput {
+	return i.ToAuthenticationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *authenticationPolicyPtrType) ToAuthenticationPolicyPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
+type AuthenticationPolicyOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationPolicy)(nil)).Elem()
+}
+
+func (o AuthenticationPolicyOutput) ToAuthenticationPolicyOutput() AuthenticationPolicyOutput {
+	return o
+}
+
+func (o AuthenticationPolicyOutput) ToAuthenticationPolicyOutputWithContext(ctx context.Context) AuthenticationPolicyOutput {
+	return o
+}
+
+func (o AuthenticationPolicyOutput) ToAuthenticationPolicyPtrOutput() AuthenticationPolicyPtrOutput {
+	return o.ToAuthenticationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationPolicyOutput) ToAuthenticationPolicyPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationPolicy) *AuthenticationPolicy {
+		return &v
+	}).(AuthenticationPolicyPtrOutput)
+}
+
+// List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
+func (o AuthenticationPolicyOutput) Origins() OriginAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v AuthenticationPolicy) []OriginAuthenticationMethod { return v.Origins }).(OriginAuthenticationMethodArrayOutput)
+}
+
+// List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
+func (o AuthenticationPolicyOutput) Peers() PeerAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v AuthenticationPolicy) []PeerAuthenticationMethod { return v.Peers }).(PeerAuthenticationMethodArrayOutput)
+}
+
+// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+func (o AuthenticationPolicyOutput) PrincipalBinding() AuthenticationPolicyPrincipalBindingPtrOutput {
+	return o.ApplyT(func(v AuthenticationPolicy) *AuthenticationPolicyPrincipalBinding { return v.PrincipalBinding }).(AuthenticationPolicyPrincipalBindingPtrOutput)
+}
+
+// Configures the mechanism to obtain server-side security certificates and identity information.
+func (o AuthenticationPolicyOutput) ServerTlsContext() TlsContextPtrOutput {
+	return o.ApplyT(func(v AuthenticationPolicy) *TlsContext { return v.ServerTlsContext }).(TlsContextPtrOutput)
+}
+
+type AuthenticationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationPolicy)(nil)).Elem()
+}
+
+func (o AuthenticationPolicyPtrOutput) ToAuthenticationPolicyPtrOutput() AuthenticationPolicyPtrOutput {
+	return o
+}
+
+func (o AuthenticationPolicyPtrOutput) ToAuthenticationPolicyPtrOutputWithContext(ctx context.Context) AuthenticationPolicyPtrOutput {
+	return o
+}
+
+func (o AuthenticationPolicyPtrOutput) Elem() AuthenticationPolicyOutput {
+	return o.ApplyT(func(v *AuthenticationPolicy) AuthenticationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationPolicy
+		return ret
+	}).(AuthenticationPolicyOutput)
+}
+
+// List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
+func (o AuthenticationPolicyPtrOutput) Origins() OriginAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v *AuthenticationPolicy) []OriginAuthenticationMethod {
+		if v == nil {
+			return nil
+		}
+		return v.Origins
+	}).(OriginAuthenticationMethodArrayOutput)
+}
+
+// List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
+func (o AuthenticationPolicyPtrOutput) Peers() PeerAuthenticationMethodArrayOutput {
+	return o.ApplyT(func(v *AuthenticationPolicy) []PeerAuthenticationMethod {
+		if v == nil {
+			return nil
+		}
+		return v.Peers
+	}).(PeerAuthenticationMethodArrayOutput)
+}
+
+// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+func (o AuthenticationPolicyPtrOutput) PrincipalBinding() AuthenticationPolicyPrincipalBindingPtrOutput {
+	return o.ApplyT(func(v *AuthenticationPolicy) *AuthenticationPolicyPrincipalBinding {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalBinding
+	}).(AuthenticationPolicyPrincipalBindingPtrOutput)
+}
+
+// Configures the mechanism to obtain server-side security certificates and identity information.
+func (o AuthenticationPolicyPtrOutput) ServerTlsContext() TlsContextPtrOutput {
+	return o.ApplyT(func(v *AuthenticationPolicy) *TlsContext {
+		if v == nil {
+			return nil
+		}
+		return v.ServerTlsContext
+	}).(TlsContextPtrOutput)
+}
+
+// [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
+type AuthenticationPolicyResponse struct {
+	// List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
+	Origins []OriginAuthenticationMethodResponse `pulumi:"origins"`
+	// List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
+	Peers []PeerAuthenticationMethodResponse `pulumi:"peers"`
+	// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+	PrincipalBinding string `pulumi:"principalBinding"`
+	// Configures the mechanism to obtain server-side security certificates and identity information.
+	ServerTlsContext TlsContextResponse `pulumi:"serverTlsContext"`
+}
+
+// [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
+type AuthenticationPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationPolicyResponse)(nil)).Elem()
+}
+
+func (o AuthenticationPolicyResponseOutput) ToAuthenticationPolicyResponseOutput() AuthenticationPolicyResponseOutput {
+	return o
+}
+
+func (o AuthenticationPolicyResponseOutput) ToAuthenticationPolicyResponseOutputWithContext(ctx context.Context) AuthenticationPolicyResponseOutput {
+	return o
+}
+
+// List of authentication methods that can be used for origin authentication. Similar to peers, these will be evaluated in order the first valid one will be used to set origin identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if origin authentication is not required.
+func (o AuthenticationPolicyResponseOutput) Origins() OriginAuthenticationMethodResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationPolicyResponse) []OriginAuthenticationMethodResponse { return v.Origins }).(OriginAuthenticationMethodResponseArrayOutput)
+}
+
+// List of authentication methods that can be used for peer authentication. They will be evaluated in order the first valid one will be used to set peer identity. If none of these methods pass, the request will be rejected with authentication failed error (401). Leave the list empty if peer authentication is not required.
+func (o AuthenticationPolicyResponseOutput) Peers() PeerAuthenticationMethodResponseArrayOutput {
+	return o.ApplyT(func(v AuthenticationPolicyResponse) []PeerAuthenticationMethodResponse { return v.Peers }).(PeerAuthenticationMethodResponseArrayOutput)
+}
+
+// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+func (o AuthenticationPolicyResponseOutput) PrincipalBinding() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthenticationPolicyResponse) string { return v.PrincipalBinding }).(pulumi.StringOutput)
+}
+
+// Configures the mechanism to obtain server-side security certificates and identity information.
+func (o AuthenticationPolicyResponseOutput) ServerTlsContext() TlsContextResponseOutput {
+	return o.ApplyT(func(v AuthenticationPolicyResponse) TlsContextResponse { return v.ServerTlsContext }).(TlsContextResponseOutput)
+}
+
+// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
+type AuthorizationConfig struct {
+	// List of RbacPolicies.
+	Policies []RbacPolicy `pulumi:"policies"`
+}
+
+// AuthorizationConfigInput is an input type that accepts AuthorizationConfigArgs and AuthorizationConfigOutput values.
+// You can construct a concrete instance of `AuthorizationConfigInput` via:
+//
+//          AuthorizationConfigArgs{...}
+type AuthorizationConfigInput interface {
+	pulumi.Input
+
+	ToAuthorizationConfigOutput() AuthorizationConfigOutput
+	ToAuthorizationConfigOutputWithContext(context.Context) AuthorizationConfigOutput
+}
+
+// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
+type AuthorizationConfigArgs struct {
+	// List of RbacPolicies.
+	Policies RbacPolicyArrayInput `pulumi:"policies"`
+}
+
+func (AuthorizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationConfig)(nil)).Elem()
+}
+
+func (i AuthorizationConfigArgs) ToAuthorizationConfigOutput() AuthorizationConfigOutput {
+	return i.ToAuthorizationConfigOutputWithContext(context.Background())
+}
+
+func (i AuthorizationConfigArgs) ToAuthorizationConfigOutputWithContext(ctx context.Context) AuthorizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationConfigOutput)
+}
+
+func (i AuthorizationConfigArgs) ToAuthorizationConfigPtrOutput() AuthorizationConfigPtrOutput {
+	return i.ToAuthorizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AuthorizationConfigArgs) ToAuthorizationConfigPtrOutputWithContext(ctx context.Context) AuthorizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationConfigOutput).ToAuthorizationConfigPtrOutputWithContext(ctx)
+}
+
+// AuthorizationConfigPtrInput is an input type that accepts AuthorizationConfigArgs, AuthorizationConfigPtr and AuthorizationConfigPtrOutput values.
+// You can construct a concrete instance of `AuthorizationConfigPtrInput` via:
+//
+//          AuthorizationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AuthorizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizationConfigPtrOutput() AuthorizationConfigPtrOutput
+	ToAuthorizationConfigPtrOutputWithContext(context.Context) AuthorizationConfigPtrOutput
+}
+
+type authorizationConfigPtrType AuthorizationConfigArgs
+
+func AuthorizationConfigPtr(v *AuthorizationConfigArgs) AuthorizationConfigPtrInput {
+	return (*authorizationConfigPtrType)(v)
+}
+
+func (*authorizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationConfig)(nil)).Elem()
+}
+
+func (i *authorizationConfigPtrType) ToAuthorizationConfigPtrOutput() AuthorizationConfigPtrOutput {
+	return i.ToAuthorizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *authorizationConfigPtrType) ToAuthorizationConfigPtrOutputWithContext(ctx context.Context) AuthorizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorizationConfigPtrOutput)
+}
+
+// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
+type AuthorizationConfigOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationConfig)(nil)).Elem()
+}
+
+func (o AuthorizationConfigOutput) ToAuthorizationConfigOutput() AuthorizationConfigOutput {
+	return o
+}
+
+func (o AuthorizationConfigOutput) ToAuthorizationConfigOutputWithContext(ctx context.Context) AuthorizationConfigOutput {
+	return o
+}
+
+func (o AuthorizationConfigOutput) ToAuthorizationConfigPtrOutput() AuthorizationConfigPtrOutput {
+	return o.ToAuthorizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizationConfigOutput) ToAuthorizationConfigPtrOutputWithContext(ctx context.Context) AuthorizationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizationConfig) *AuthorizationConfig {
+		return &v
+	}).(AuthorizationConfigPtrOutput)
+}
+
+// List of RbacPolicies.
+func (o AuthorizationConfigOutput) Policies() RbacPolicyArrayOutput {
+	return o.ApplyT(func(v AuthorizationConfig) []RbacPolicy { return v.Policies }).(RbacPolicyArrayOutput)
+}
+
+type AuthorizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizationConfig)(nil)).Elem()
+}
+
+func (o AuthorizationConfigPtrOutput) ToAuthorizationConfigPtrOutput() AuthorizationConfigPtrOutput {
+	return o
+}
+
+func (o AuthorizationConfigPtrOutput) ToAuthorizationConfigPtrOutputWithContext(ctx context.Context) AuthorizationConfigPtrOutput {
+	return o
+}
+
+func (o AuthorizationConfigPtrOutput) Elem() AuthorizationConfigOutput {
+	return o.ApplyT(func(v *AuthorizationConfig) AuthorizationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizationConfig
+		return ret
+	}).(AuthorizationConfigOutput)
+}
+
+// List of RbacPolicies.
+func (o AuthorizationConfigPtrOutput) Policies() RbacPolicyArrayOutput {
+	return o.ApplyT(func(v *AuthorizationConfig) []RbacPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.Policies
+	}).(RbacPolicyArrayOutput)
+}
+
+// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
+type AuthorizationConfigResponse struct {
+	// List of RbacPolicies.
+	Policies []RbacPolicyResponse `pulumi:"policies"`
+}
+
+// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
+type AuthorizationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuthorizationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizationConfigResponse)(nil)).Elem()
+}
+
+func (o AuthorizationConfigResponseOutput) ToAuthorizationConfigResponseOutput() AuthorizationConfigResponseOutput {
+	return o
+}
+
+func (o AuthorizationConfigResponseOutput) ToAuthorizationConfigResponseOutputWithContext(ctx context.Context) AuthorizationConfigResponseOutput {
+	return o
+}
+
+// List of RbacPolicies.
+func (o AuthorizationConfigResponseOutput) Policies() RbacPolicyResponseArrayOutput {
+	return o.ApplyT(func(v AuthorizationConfigResponse) []RbacPolicyResponse { return v.Policies }).(RbacPolicyResponseArrayOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -8890,6 +9338,250 @@ func (o CircuitBreakersResponseOutput) MaxRequestsPerConnection() pulumi.IntOutp
 // The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
 func (o CircuitBreakersResponseOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v CircuitBreakersResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
+type ClientTlsSettings struct {
+	// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
+	ClientTlsContext *TlsContext `pulumi:"clientTlsContext"`
+	// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	Mode *ClientTlsSettingsMode `pulumi:"mode"`
+	// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
+	Sni *string `pulumi:"sni"`
+	// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// ClientTlsSettingsInput is an input type that accepts ClientTlsSettingsArgs and ClientTlsSettingsOutput values.
+// You can construct a concrete instance of `ClientTlsSettingsInput` via:
+//
+//          ClientTlsSettingsArgs{...}
+type ClientTlsSettingsInput interface {
+	pulumi.Input
+
+	ToClientTlsSettingsOutput() ClientTlsSettingsOutput
+	ToClientTlsSettingsOutputWithContext(context.Context) ClientTlsSettingsOutput
+}
+
+// [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
+type ClientTlsSettingsArgs struct {
+	// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
+	ClientTlsContext TlsContextPtrInput `pulumi:"clientTlsContext"`
+	// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	Mode ClientTlsSettingsModePtrInput `pulumi:"mode"`
+	// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
+	Sni pulumi.StringPtrInput `pulumi:"sni"`
+	// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
+	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (ClientTlsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTlsSettings)(nil)).Elem()
+}
+
+func (i ClientTlsSettingsArgs) ToClientTlsSettingsOutput() ClientTlsSettingsOutput {
+	return i.ToClientTlsSettingsOutputWithContext(context.Background())
+}
+
+func (i ClientTlsSettingsArgs) ToClientTlsSettingsOutputWithContext(ctx context.Context) ClientTlsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsSettingsOutput)
+}
+
+func (i ClientTlsSettingsArgs) ToClientTlsSettingsPtrOutput() ClientTlsSettingsPtrOutput {
+	return i.ToClientTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ClientTlsSettingsArgs) ToClientTlsSettingsPtrOutputWithContext(ctx context.Context) ClientTlsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsSettingsOutput).ToClientTlsSettingsPtrOutputWithContext(ctx)
+}
+
+// ClientTlsSettingsPtrInput is an input type that accepts ClientTlsSettingsArgs, ClientTlsSettingsPtr and ClientTlsSettingsPtrOutput values.
+// You can construct a concrete instance of `ClientTlsSettingsPtrInput` via:
+//
+//          ClientTlsSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type ClientTlsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToClientTlsSettingsPtrOutput() ClientTlsSettingsPtrOutput
+	ToClientTlsSettingsPtrOutputWithContext(context.Context) ClientTlsSettingsPtrOutput
+}
+
+type clientTlsSettingsPtrType ClientTlsSettingsArgs
+
+func ClientTlsSettingsPtr(v *ClientTlsSettingsArgs) ClientTlsSettingsPtrInput {
+	return (*clientTlsSettingsPtrType)(v)
+}
+
+func (*clientTlsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTlsSettings)(nil)).Elem()
+}
+
+func (i *clientTlsSettingsPtrType) ToClientTlsSettingsPtrOutput() ClientTlsSettingsPtrOutput {
+	return i.ToClientTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *clientTlsSettingsPtrType) ToClientTlsSettingsPtrOutputWithContext(ctx context.Context) ClientTlsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientTlsSettingsPtrOutput)
+}
+
+// [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
+type ClientTlsSettingsOutput struct{ *pulumi.OutputState }
+
+func (ClientTlsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTlsSettings)(nil)).Elem()
+}
+
+func (o ClientTlsSettingsOutput) ToClientTlsSettingsOutput() ClientTlsSettingsOutput {
+	return o
+}
+
+func (o ClientTlsSettingsOutput) ToClientTlsSettingsOutputWithContext(ctx context.Context) ClientTlsSettingsOutput {
+	return o
+}
+
+func (o ClientTlsSettingsOutput) ToClientTlsSettingsPtrOutput() ClientTlsSettingsPtrOutput {
+	return o.ToClientTlsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ClientTlsSettingsOutput) ToClientTlsSettingsPtrOutputWithContext(ctx context.Context) ClientTlsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientTlsSettings) *ClientTlsSettings {
+		return &v
+	}).(ClientTlsSettingsPtrOutput)
+}
+
+// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
+func (o ClientTlsSettingsOutput) ClientTlsContext() TlsContextPtrOutput {
+	return o.ApplyT(func(v ClientTlsSettings) *TlsContext { return v.ClientTlsContext }).(TlsContextPtrOutput)
+}
+
+// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+func (o ClientTlsSettingsOutput) Mode() ClientTlsSettingsModePtrOutput {
+	return o.ApplyT(func(v ClientTlsSettings) *ClientTlsSettingsMode { return v.Mode }).(ClientTlsSettingsModePtrOutput)
+}
+
+// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
+func (o ClientTlsSettingsOutput) Sni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientTlsSettings) *string { return v.Sni }).(pulumi.StringPtrOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
+func (o ClientTlsSettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientTlsSettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type ClientTlsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientTlsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientTlsSettings)(nil)).Elem()
+}
+
+func (o ClientTlsSettingsPtrOutput) ToClientTlsSettingsPtrOutput() ClientTlsSettingsPtrOutput {
+	return o
+}
+
+func (o ClientTlsSettingsPtrOutput) ToClientTlsSettingsPtrOutputWithContext(ctx context.Context) ClientTlsSettingsPtrOutput {
+	return o
+}
+
+func (o ClientTlsSettingsPtrOutput) Elem() ClientTlsSettingsOutput {
+	return o.ApplyT(func(v *ClientTlsSettings) ClientTlsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ClientTlsSettings
+		return ret
+	}).(ClientTlsSettingsOutput)
+}
+
+// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
+func (o ClientTlsSettingsPtrOutput) ClientTlsContext() TlsContextPtrOutput {
+	return o.ApplyT(func(v *ClientTlsSettings) *TlsContext {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsContext
+	}).(TlsContextPtrOutput)
+}
+
+// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+func (o ClientTlsSettingsPtrOutput) Mode() ClientTlsSettingsModePtrOutput {
+	return o.ApplyT(func(v *ClientTlsSettings) *ClientTlsSettingsMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(ClientTlsSettingsModePtrOutput)
+}
+
+// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
+func (o ClientTlsSettingsPtrOutput) Sni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientTlsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sni
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
+func (o ClientTlsSettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClientTlsSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
+type ClientTlsSettingsResponse struct {
+	// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
+	ClientTlsContext TlsContextResponse `pulumi:"clientTlsContext"`
+	// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+	Mode string `pulumi:"mode"`
+	// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
+	Sni string `pulumi:"sni"`
+	// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
+type ClientTlsSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientTlsSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientTlsSettingsResponse)(nil)).Elem()
+}
+
+func (o ClientTlsSettingsResponseOutput) ToClientTlsSettingsResponseOutput() ClientTlsSettingsResponseOutput {
+	return o
+}
+
+func (o ClientTlsSettingsResponseOutput) ToClientTlsSettingsResponseOutputWithContext(ctx context.Context) ClientTlsSettingsResponseOutput {
+	return o
+}
+
+// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
+func (o ClientTlsSettingsResponseOutput) ClientTlsContext() TlsContextResponseOutput {
+	return o.ApplyT(func(v ClientTlsSettingsResponse) TlsContextResponse { return v.ClientTlsContext }).(TlsContextResponseOutput)
+}
+
+// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+func (o ClientTlsSettingsResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientTlsSettingsResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// SNI string to present to the server during TLS handshake. This field is applicable only when mode is SIMPLE or MUTUAL.
+func (o ClientTlsSettingsResponseOutput) Sni() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientTlsSettingsResponse) string { return v.Sni }).(pulumi.StringOutput)
+}
+
+// A list of alternate names to verify the subject identity in the certificate.If specified, the proxy will verify that the server certificate's subject alt name matches one of the specified values. This field is applicable only when mode is SIMPLE or MUTUAL.
+func (o ClientTlsSettingsResponseOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClientTlsSettingsResponse) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
 }
 
 // This is deprecated and has no effect. Do not use.
@@ -20078,6 +20770,10 @@ func (o HttpRouteRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRouteRule
 type ImageRawDisk struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType *ImageRawDiskContainerType `pulumi:"containerType"`
+	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	//
+	// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	Sha1Checksum *string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source *string `pulumi:"source"`
 }
@@ -20097,6 +20793,10 @@ type ImageRawDiskInput interface {
 type ImageRawDiskArgs struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType ImageRawDiskContainerTypePtrInput `pulumi:"containerType"`
+	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	//
+	// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	Sha1Checksum pulumi.StringPtrInput `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
@@ -20184,6 +20884,13 @@ func (o ImageRawDiskOutput) ContainerType() ImageRawDiskContainerTypePtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *ImageRawDiskContainerType { return v.ContainerType }).(ImageRawDiskContainerTypePtrOutput)
 }
 
+// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+//
+// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+func (o ImageRawDiskOutput) Sha1Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageRawDisk) *string { return v.Sha1Checksum }).(pulumi.StringPtrOutput)
+}
+
 // The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageRawDisk) *string { return v.Source }).(pulumi.StringPtrOutput)
@@ -20223,6 +20930,18 @@ func (o ImageRawDiskPtrOutput) ContainerType() ImageRawDiskContainerTypePtrOutpu
 	}).(ImageRawDiskContainerTypePtrOutput)
 }
 
+// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+//
+// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+func (o ImageRawDiskPtrOutput) Sha1Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageRawDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha1Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
 // The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageRawDisk) *string {
@@ -20237,6 +20956,10 @@ func (o ImageRawDiskPtrOutput) Source() pulumi.StringPtrOutput {
 type ImageRawDiskResponse struct {
 	// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 	ContainerType string `pulumi:"containerType"`
+	// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	//
+	// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+	Sha1Checksum string `pulumi:"sha1Checksum"`
 	// The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
 	Source string `pulumi:"source"`
 }
@@ -20259,6 +20982,13 @@ func (o ImageRawDiskResponseOutput) ToImageRawDiskResponseOutputWithContext(ctx 
 // The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
 func (o ImageRawDiskResponseOutput) ContainerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.ContainerType }).(pulumi.StringOutput)
+}
+
+// [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+//
+// Deprecated: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+func (o ImageRawDiskResponseOutput) Sha1Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v ImageRawDiskResponse) string { return v.Sha1Checksum }).(pulumi.StringOutput)
 }
 
 // The full Google Cloud Storage URL where the raw disk image archive is stored. The following are valid formats for the URL: - https://storage.googleapis.com/bucket_name/image_archive_name - https://storage.googleapis.com/bucket_name/folder_name/ image_archive_name In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL
@@ -21753,6 +22483,10 @@ func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput) AllE
 type InstanceGroupManagerStatusStatefulResponse struct {
 	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+	//
+	// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+	IsStateful bool `pulumi:"isStateful"`
 	// Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse `pulumi:"perInstanceConfigs"`
 }
@@ -21774,6 +22508,13 @@ func (o InstanceGroupManagerStatusStatefulResponseOutput) ToInstanceGroupManager
 // A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) HasStatefulConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
+}
+
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+//
+// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+func (o InstanceGroupManagerStatusStatefulResponseOutput) IsStateful() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.IsStateful }).(pulumi.BoolOutput)
 }
 
 // Status of per-instance configs on the instance.
@@ -22163,6 +22904,10 @@ type InstanceGroupManagerVersion struct {
 	InstanceTemplate *string `pulumi:"instanceTemplate"`
 	// Name of the version. Unique among all versions in the scope of this managed instance group.
 	Name *string `pulumi:"name"`
+	// Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+	//
+	// Deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+	Tag *string `pulumi:"tag"`
 	// Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
 	TargetSize *FixedOrPercent `pulumi:"targetSize"`
 }
@@ -22183,6 +22928,10 @@ type InstanceGroupManagerVersionArgs struct {
 	InstanceTemplate pulumi.StringPtrInput `pulumi:"instanceTemplate"`
 	// Name of the version. Unique among all versions in the scope of this managed instance group.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+	//
+	// Deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
 	TargetSize FixedOrPercentPtrInput `pulumi:"targetSize"`
 }
@@ -22248,6 +22997,13 @@ func (o InstanceGroupManagerVersionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerVersion) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+//
+// Deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+func (o InstanceGroupManagerVersionOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerVersion) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
 // Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
 func (o InstanceGroupManagerVersionOutput) TargetSize() FixedOrPercentPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerVersion) *FixedOrPercent { return v.TargetSize }).(FixedOrPercentPtrOutput)
@@ -22278,6 +23034,10 @@ type InstanceGroupManagerVersionResponse struct {
 	InstanceTemplate string `pulumi:"instanceTemplate"`
 	// Name of the version. Unique among all versions in the scope of this managed instance group.
 	Name string `pulumi:"name"`
+	// Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+	//
+	// Deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+	Tag string `pulumi:"tag"`
 	// Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
 	TargetSize FixedOrPercentResponse `pulumi:"targetSize"`
 }
@@ -22304,6 +23064,13 @@ func (o InstanceGroupManagerVersionResponseOutput) InstanceTemplate() pulumi.Str
 // Name of the version. Unique among all versions in the scope of this managed instance group.
 func (o InstanceGroupManagerVersionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerVersionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+//
+// Deprecated: Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
+func (o InstanceGroupManagerVersionResponseOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerVersionResponse) string { return v.Tag }).(pulumi.StringOutput)
 }
 
 // Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
@@ -24449,6 +25216,438 @@ func (o InterconnectOutageNotificationResponseArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterconnectOutageNotificationResponse {
 		return vs[0].([]InterconnectOutageNotificationResponse)[vs[1].(int)]
 	}).(InterconnectOutageNotificationResponseOutput)
+}
+
+// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
+type Jwt struct {
+	// A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences []string `pulumi:"audiences"`
+	// Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
+	Issuer *string `pulumi:"issuer"`
+	// The provider's public key set to validate the signature of the JWT.
+	JwksPublicKeys *string `pulumi:"jwksPublicKeys"`
+	// jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See ` here  `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See ` this  `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
+	JwtHeaders []JwtHeader `pulumi:"jwtHeaders"`
+	// This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
+	JwtParams []string `pulumi:"jwtParams"`
+}
+
+// JwtInput is an input type that accepts JwtArgs and JwtOutput values.
+// You can construct a concrete instance of `JwtInput` via:
+//
+//          JwtArgs{...}
+type JwtInput interface {
+	pulumi.Input
+
+	ToJwtOutput() JwtOutput
+	ToJwtOutputWithContext(context.Context) JwtOutput
+}
+
+// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
+type JwtArgs struct {
+	// A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences pulumi.StringArrayInput `pulumi:"audiences"`
+	// Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
+	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// The provider's public key set to validate the signature of the JWT.
+	JwksPublicKeys pulumi.StringPtrInput `pulumi:"jwksPublicKeys"`
+	// jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See ` here  `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See ` this  `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
+	JwtHeaders JwtHeaderArrayInput `pulumi:"jwtHeaders"`
+	// This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
+	JwtParams pulumi.StringArrayInput `pulumi:"jwtParams"`
+}
+
+func (JwtArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Jwt)(nil)).Elem()
+}
+
+func (i JwtArgs) ToJwtOutput() JwtOutput {
+	return i.ToJwtOutputWithContext(context.Background())
+}
+
+func (i JwtArgs) ToJwtOutputWithContext(ctx context.Context) JwtOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtOutput)
+}
+
+func (i JwtArgs) ToJwtPtrOutput() JwtPtrOutput {
+	return i.ToJwtPtrOutputWithContext(context.Background())
+}
+
+func (i JwtArgs) ToJwtPtrOutputWithContext(ctx context.Context) JwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtOutput).ToJwtPtrOutputWithContext(ctx)
+}
+
+// JwtPtrInput is an input type that accepts JwtArgs, JwtPtr and JwtPtrOutput values.
+// You can construct a concrete instance of `JwtPtrInput` via:
+//
+//          JwtArgs{...}
+//
+//  or:
+//
+//          nil
+type JwtPtrInput interface {
+	pulumi.Input
+
+	ToJwtPtrOutput() JwtPtrOutput
+	ToJwtPtrOutputWithContext(context.Context) JwtPtrOutput
+}
+
+type jwtPtrType JwtArgs
+
+func JwtPtr(v *JwtArgs) JwtPtrInput {
+	return (*jwtPtrType)(v)
+}
+
+func (*jwtPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Jwt)(nil)).Elem()
+}
+
+func (i *jwtPtrType) ToJwtPtrOutput() JwtPtrOutput {
+	return i.ToJwtPtrOutputWithContext(context.Background())
+}
+
+func (i *jwtPtrType) ToJwtPtrOutputWithContext(ctx context.Context) JwtPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtPtrOutput)
+}
+
+// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
+type JwtOutput struct{ *pulumi.OutputState }
+
+func (JwtOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Jwt)(nil)).Elem()
+}
+
+func (o JwtOutput) ToJwtOutput() JwtOutput {
+	return o
+}
+
+func (o JwtOutput) ToJwtOutputWithContext(ctx context.Context) JwtOutput {
+	return o
+}
+
+func (o JwtOutput) ToJwtPtrOutput() JwtPtrOutput {
+	return o.ToJwtPtrOutputWithContext(context.Background())
+}
+
+func (o JwtOutput) ToJwtPtrOutputWithContext(ctx context.Context) JwtPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Jwt) *Jwt {
+		return &v
+	}).(JwtPtrOutput)
+}
+
+// A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+func (o JwtOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Jwt) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
+func (o JwtOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Jwt) *string { return v.Issuer }).(pulumi.StringPtrOutput)
+}
+
+// The provider's public key set to validate the signature of the JWT.
+func (o JwtOutput) JwksPublicKeys() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Jwt) *string { return v.JwksPublicKeys }).(pulumi.StringPtrOutput)
+}
+
+// jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See ` here  `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See ` this  `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
+func (o JwtOutput) JwtHeaders() JwtHeaderArrayOutput {
+	return o.ApplyT(func(v Jwt) []JwtHeader { return v.JwtHeaders }).(JwtHeaderArrayOutput)
+}
+
+// This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
+func (o JwtOutput) JwtParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Jwt) []string { return v.JwtParams }).(pulumi.StringArrayOutput)
+}
+
+type JwtPtrOutput struct{ *pulumi.OutputState }
+
+func (JwtPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Jwt)(nil)).Elem()
+}
+
+func (o JwtPtrOutput) ToJwtPtrOutput() JwtPtrOutput {
+	return o
+}
+
+func (o JwtPtrOutput) ToJwtPtrOutputWithContext(ctx context.Context) JwtPtrOutput {
+	return o
+}
+
+func (o JwtPtrOutput) Elem() JwtOutput {
+	return o.ApplyT(func(v *Jwt) Jwt {
+		if v != nil {
+			return *v
+		}
+		var ret Jwt
+		return ret
+	}).(JwtOutput)
+}
+
+// A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+func (o JwtPtrOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Jwt) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Audiences
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
+func (o JwtPtrOutput) Issuer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Jwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provider's public key set to validate the signature of the JWT.
+func (o JwtPtrOutput) JwksPublicKeys() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Jwt) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwksPublicKeys
+	}).(pulumi.StringPtrOutput)
+}
+
+// jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See ` here  `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See ` this  `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
+func (o JwtPtrOutput) JwtHeaders() JwtHeaderArrayOutput {
+	return o.ApplyT(func(v *Jwt) []JwtHeader {
+		if v == nil {
+			return nil
+		}
+		return v.JwtHeaders
+	}).(JwtHeaderArrayOutput)
+}
+
+// This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
+func (o JwtPtrOutput) JwtParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Jwt) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JwtParams
+	}).(pulumi.StringArrayOutput)
+}
+
+// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
+type JwtHeader struct {
+	// The HTTP header name.
+	Name *string `pulumi:"name"`
+	// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
+	ValuePrefix *string `pulumi:"valuePrefix"`
+}
+
+// JwtHeaderInput is an input type that accepts JwtHeaderArgs and JwtHeaderOutput values.
+// You can construct a concrete instance of `JwtHeaderInput` via:
+//
+//          JwtHeaderArgs{...}
+type JwtHeaderInput interface {
+	pulumi.Input
+
+	ToJwtHeaderOutput() JwtHeaderOutput
+	ToJwtHeaderOutputWithContext(context.Context) JwtHeaderOutput
+}
+
+// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
+type JwtHeaderArgs struct {
+	// The HTTP header name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
+	ValuePrefix pulumi.StringPtrInput `pulumi:"valuePrefix"`
+}
+
+func (JwtHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JwtHeader)(nil)).Elem()
+}
+
+func (i JwtHeaderArgs) ToJwtHeaderOutput() JwtHeaderOutput {
+	return i.ToJwtHeaderOutputWithContext(context.Background())
+}
+
+func (i JwtHeaderArgs) ToJwtHeaderOutputWithContext(ctx context.Context) JwtHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtHeaderOutput)
+}
+
+// JwtHeaderArrayInput is an input type that accepts JwtHeaderArray and JwtHeaderArrayOutput values.
+// You can construct a concrete instance of `JwtHeaderArrayInput` via:
+//
+//          JwtHeaderArray{ JwtHeaderArgs{...} }
+type JwtHeaderArrayInput interface {
+	pulumi.Input
+
+	ToJwtHeaderArrayOutput() JwtHeaderArrayOutput
+	ToJwtHeaderArrayOutputWithContext(context.Context) JwtHeaderArrayOutput
+}
+
+type JwtHeaderArray []JwtHeaderInput
+
+func (JwtHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JwtHeader)(nil)).Elem()
+}
+
+func (i JwtHeaderArray) ToJwtHeaderArrayOutput() JwtHeaderArrayOutput {
+	return i.ToJwtHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i JwtHeaderArray) ToJwtHeaderArrayOutputWithContext(ctx context.Context) JwtHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JwtHeaderArrayOutput)
+}
+
+// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
+type JwtHeaderOutput struct{ *pulumi.OutputState }
+
+func (JwtHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JwtHeader)(nil)).Elem()
+}
+
+func (o JwtHeaderOutput) ToJwtHeaderOutput() JwtHeaderOutput {
+	return o
+}
+
+func (o JwtHeaderOutput) ToJwtHeaderOutputWithContext(ctx context.Context) JwtHeaderOutput {
+	return o
+}
+
+// The HTTP header name.
+func (o JwtHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JwtHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
+func (o JwtHeaderOutput) ValuePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JwtHeader) *string { return v.ValuePrefix }).(pulumi.StringPtrOutput)
+}
+
+type JwtHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (JwtHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JwtHeader)(nil)).Elem()
+}
+
+func (o JwtHeaderArrayOutput) ToJwtHeaderArrayOutput() JwtHeaderArrayOutput {
+	return o
+}
+
+func (o JwtHeaderArrayOutput) ToJwtHeaderArrayOutputWithContext(ctx context.Context) JwtHeaderArrayOutput {
+	return o
+}
+
+func (o JwtHeaderArrayOutput) Index(i pulumi.IntInput) JwtHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JwtHeader {
+		return vs[0].([]JwtHeader)[vs[1].(int)]
+	}).(JwtHeaderOutput)
+}
+
+// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
+type JwtHeaderResponse struct {
+	// The HTTP header name.
+	Name string `pulumi:"name"`
+	// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
+	ValuePrefix string `pulumi:"valuePrefix"`
+}
+
+// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
+type JwtHeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (JwtHeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JwtHeaderResponse)(nil)).Elem()
+}
+
+func (o JwtHeaderResponseOutput) ToJwtHeaderResponseOutput() JwtHeaderResponseOutput {
+	return o
+}
+
+func (o JwtHeaderResponseOutput) ToJwtHeaderResponseOutputWithContext(ctx context.Context) JwtHeaderResponseOutput {
+	return o
+}
+
+// The HTTP header name.
+func (o JwtHeaderResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtHeaderResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
+func (o JwtHeaderResponseOutput) ValuePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtHeaderResponse) string { return v.ValuePrefix }).(pulumi.StringOutput)
+}
+
+type JwtHeaderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JwtHeaderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JwtHeaderResponse)(nil)).Elem()
+}
+
+func (o JwtHeaderResponseArrayOutput) ToJwtHeaderResponseArrayOutput() JwtHeaderResponseArrayOutput {
+	return o
+}
+
+func (o JwtHeaderResponseArrayOutput) ToJwtHeaderResponseArrayOutputWithContext(ctx context.Context) JwtHeaderResponseArrayOutput {
+	return o
+}
+
+func (o JwtHeaderResponseArrayOutput) Index(i pulumi.IntInput) JwtHeaderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JwtHeaderResponse {
+		return vs[0].([]JwtHeaderResponse)[vs[1].(int)]
+	}).(JwtHeaderResponseOutput)
+}
+
+// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
+type JwtResponse struct {
+	// A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+	Audiences []string `pulumi:"audiences"`
+	// Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
+	Issuer string `pulumi:"issuer"`
+	// The provider's public key set to validate the signature of the JWT.
+	JwksPublicKeys string `pulumi:"jwksPublicKeys"`
+	// jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See ` here  `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See ` this  `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
+	JwtHeaders []JwtHeaderResponse `pulumi:"jwtHeaders"`
+	// This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
+	JwtParams []string `pulumi:"jwtParams"`
+}
+
+// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
+type JwtResponseOutput struct{ *pulumi.OutputState }
+
+func (JwtResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JwtResponse)(nil)).Elem()
+}
+
+func (o JwtResponseOutput) ToJwtResponseOutput() JwtResponseOutput {
+	return o
+}
+
+func (o JwtResponseOutput) ToJwtResponseOutputWithContext(ctx context.Context) JwtResponseOutput {
+	return o
+}
+
+// A JWT containing any of these audiences will be accepted. The service name will be accepted if audiences is empty. Examples: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
+func (o JwtResponseOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JwtResponse) []string { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// Identifies the issuer that issued the JWT, which is usually a URL or an email address. Examples: https://securetoken.google.com, 1234567-compute@developer.gserviceaccount.com
+func (o JwtResponseOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtResponse) string { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The provider's public key set to validate the signature of the JWT.
+func (o JwtResponseOutput) JwksPublicKeys() pulumi.StringOutput {
+	return o.ApplyT(func(v JwtResponse) string { return v.JwksPublicKeys }).(pulumi.StringOutput)
+}
+
+// jwt_headers and jwt_params define where to extract the JWT from an HTTP request. If no explicit location is specified, the following default locations are tried in order: 1. The Authorization header using the Bearer schema. See ` here  `_. Example: Authorization: Bearer . 2. `access_token` query parameter. See ` this  `_ Multiple JWTs can be verified for a request. Each JWT has to be extracted from the locations its issuer specified or from the default locations. This field is set if JWT is sent in a request header. This field specifies the header name. For example, if `header=x-goog-iap-jwt-assertion`, the header format will be x-goog-iap-jwt-assertion: .
+func (o JwtResponseOutput) JwtHeaders() JwtHeaderResponseArrayOutput {
+	return o.ApplyT(func(v JwtResponse) []JwtHeaderResponse { return v.JwtHeaders }).(JwtHeaderResponseArrayOutput)
+}
+
+// This field is set if JWT is sent in a query parameter. This field specifies the query parameter name. For example, if jwt_params[0] is jwt_token, the JWT format in the query parameter is /path?jwt_token=.
+func (o JwtResponseOutput) JwtParams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JwtResponse) []string { return v.JwtParams }).(pulumi.StringArrayOutput)
 }
 
 // Commitment for a particular license resource.
@@ -26807,6 +28006,172 @@ func (o MetadataResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
+type MutualTls struct {
+	// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+	Mode *MutualTlsMode `pulumi:"mode"`
+}
+
+// MutualTlsInput is an input type that accepts MutualTlsArgs and MutualTlsOutput values.
+// You can construct a concrete instance of `MutualTlsInput` via:
+//
+//          MutualTlsArgs{...}
+type MutualTlsInput interface {
+	pulumi.Input
+
+	ToMutualTlsOutput() MutualTlsOutput
+	ToMutualTlsOutputWithContext(context.Context) MutualTlsOutput
+}
+
+// [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
+type MutualTlsArgs struct {
+	// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+	Mode MutualTlsModePtrInput `pulumi:"mode"`
+}
+
+func (MutualTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutualTls)(nil)).Elem()
+}
+
+func (i MutualTlsArgs) ToMutualTlsOutput() MutualTlsOutput {
+	return i.ToMutualTlsOutputWithContext(context.Background())
+}
+
+func (i MutualTlsArgs) ToMutualTlsOutputWithContext(ctx context.Context) MutualTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutualTlsOutput)
+}
+
+func (i MutualTlsArgs) ToMutualTlsPtrOutput() MutualTlsPtrOutput {
+	return i.ToMutualTlsPtrOutputWithContext(context.Background())
+}
+
+func (i MutualTlsArgs) ToMutualTlsPtrOutputWithContext(ctx context.Context) MutualTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutualTlsOutput).ToMutualTlsPtrOutputWithContext(ctx)
+}
+
+// MutualTlsPtrInput is an input type that accepts MutualTlsArgs, MutualTlsPtr and MutualTlsPtrOutput values.
+// You can construct a concrete instance of `MutualTlsPtrInput` via:
+//
+//          MutualTlsArgs{...}
+//
+//  or:
+//
+//          nil
+type MutualTlsPtrInput interface {
+	pulumi.Input
+
+	ToMutualTlsPtrOutput() MutualTlsPtrOutput
+	ToMutualTlsPtrOutputWithContext(context.Context) MutualTlsPtrOutput
+}
+
+type mutualTlsPtrType MutualTlsArgs
+
+func MutualTlsPtr(v *MutualTlsArgs) MutualTlsPtrInput {
+	return (*mutualTlsPtrType)(v)
+}
+
+func (*mutualTlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutualTls)(nil)).Elem()
+}
+
+func (i *mutualTlsPtrType) ToMutualTlsPtrOutput() MutualTlsPtrOutput {
+	return i.ToMutualTlsPtrOutputWithContext(context.Background())
+}
+
+func (i *mutualTlsPtrType) ToMutualTlsPtrOutputWithContext(ctx context.Context) MutualTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MutualTlsPtrOutput)
+}
+
+// [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
+type MutualTlsOutput struct{ *pulumi.OutputState }
+
+func (MutualTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutualTls)(nil)).Elem()
+}
+
+func (o MutualTlsOutput) ToMutualTlsOutput() MutualTlsOutput {
+	return o
+}
+
+func (o MutualTlsOutput) ToMutualTlsOutputWithContext(ctx context.Context) MutualTlsOutput {
+	return o
+}
+
+func (o MutualTlsOutput) ToMutualTlsPtrOutput() MutualTlsPtrOutput {
+	return o.ToMutualTlsPtrOutputWithContext(context.Background())
+}
+
+func (o MutualTlsOutput) ToMutualTlsPtrOutputWithContext(ctx context.Context) MutualTlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MutualTls) *MutualTls {
+		return &v
+	}).(MutualTlsPtrOutput)
+}
+
+// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+func (o MutualTlsOutput) Mode() MutualTlsModePtrOutput {
+	return o.ApplyT(func(v MutualTls) *MutualTlsMode { return v.Mode }).(MutualTlsModePtrOutput)
+}
+
+type MutualTlsPtrOutput struct{ *pulumi.OutputState }
+
+func (MutualTlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MutualTls)(nil)).Elem()
+}
+
+func (o MutualTlsPtrOutput) ToMutualTlsPtrOutput() MutualTlsPtrOutput {
+	return o
+}
+
+func (o MutualTlsPtrOutput) ToMutualTlsPtrOutputWithContext(ctx context.Context) MutualTlsPtrOutput {
+	return o
+}
+
+func (o MutualTlsPtrOutput) Elem() MutualTlsOutput {
+	return o.ApplyT(func(v *MutualTls) MutualTls {
+		if v != nil {
+			return *v
+		}
+		var ret MutualTls
+		return ret
+	}).(MutualTlsOutput)
+}
+
+// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+func (o MutualTlsPtrOutput) Mode() MutualTlsModePtrOutput {
+	return o.ApplyT(func(v *MutualTls) *MutualTlsMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(MutualTlsModePtrOutput)
+}
+
+// [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
+type MutualTlsResponse struct {
+	// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+	Mode string `pulumi:"mode"`
+}
+
+// [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
+type MutualTlsResponseOutput struct{ *pulumi.OutputState }
+
+func (MutualTlsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MutualTlsResponse)(nil)).Elem()
+}
+
+func (o MutualTlsResponseOutput) ToMutualTlsResponseOutput() MutualTlsResponseOutput {
+	return o
+}
+
+func (o MutualTlsResponseOutput) ToMutualTlsResponseOutputWithContext(ctx context.Context) MutualTlsResponseOutput {
+	return o
+}
+
+// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+func (o MutualTlsResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v MutualTlsResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 // The named port. For example: <"http", 80>.
 type NamedPort struct {
 	// The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
@@ -27595,6 +28960,271 @@ func (o NetworkEndpointGroupCloudRunResponseOutput) Tag() pulumi.StringOutput {
 // A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
 func (o NetworkEndpointGroupCloudRunResponseOutput) UrlMask() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupCloudRunResponse) string { return v.UrlMask }).(pulumi.StringOutput)
+}
+
+// Load balancing specific fields for network endpoint group.
+type NetworkEndpointGroupLbNetworkEndpointGroup struct {
+	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	DefaultPort *int `pulumi:"defaultPort"`
+	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	Network *string `pulumi:"network"`
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// NetworkEndpointGroupLbNetworkEndpointGroupInput is an input type that accepts NetworkEndpointGroupLbNetworkEndpointGroupArgs and NetworkEndpointGroupLbNetworkEndpointGroupOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupLbNetworkEndpointGroupInput` via:
+//
+//          NetworkEndpointGroupLbNetworkEndpointGroupArgs{...}
+type NetworkEndpointGroupLbNetworkEndpointGroupInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupLbNetworkEndpointGroupOutput() NetworkEndpointGroupLbNetworkEndpointGroupOutput
+	ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(context.Context) NetworkEndpointGroupLbNetworkEndpointGroupOutput
+}
+
+// Load balancing specific fields for network endpoint group.
+type NetworkEndpointGroupLbNetworkEndpointGroupArgs struct {
+	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	DefaultPort pulumi.IntPtrInput `pulumi:"defaultPort"`
+	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (NetworkEndpointGroupLbNetworkEndpointGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupOutput() NetworkEndpointGroupLbNetworkEndpointGroupOutput {
+	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupOutput)
+}
+
+func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupLbNetworkEndpointGroupArgs) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupOutput).ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx)
+}
+
+// NetworkEndpointGroupLbNetworkEndpointGroupPtrInput is an input type that accepts NetworkEndpointGroupLbNetworkEndpointGroupArgs, NetworkEndpointGroupLbNetworkEndpointGroupPtr and NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupLbNetworkEndpointGroupPtrInput` via:
+//
+//          NetworkEndpointGroupLbNetworkEndpointGroupArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkEndpointGroupLbNetworkEndpointGroupPtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput
+	ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput
+}
+
+type networkEndpointGroupLbNetworkEndpointGroupPtrType NetworkEndpointGroupLbNetworkEndpointGroupArgs
+
+func NetworkEndpointGroupLbNetworkEndpointGroupPtr(v *NetworkEndpointGroupLbNetworkEndpointGroupArgs) NetworkEndpointGroupLbNetworkEndpointGroupPtrInput {
+	return (*networkEndpointGroupLbNetworkEndpointGroupPtrType)(v)
+}
+
+func (*networkEndpointGroupLbNetworkEndpointGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (i *networkEndpointGroupLbNetworkEndpointGroupPtrType) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return i.ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *networkEndpointGroupLbNetworkEndpointGroupPtrType) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput)
+}
+
+// Load balancing specific fields for network endpoint group.
+type NetworkEndpointGroupLbNetworkEndpointGroupOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupLbNetworkEndpointGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupOutput() NetworkEndpointGroupLbNetworkEndpointGroupOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return o.ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpointGroupLbNetworkEndpointGroup) *NetworkEndpointGroupLbNetworkEndpointGroup {
+		return &v
+	}).(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput)
+}
+
+// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+//
+// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) DefaultPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *int { return v.DefaultPort }).(pulumi.IntPtrOutput)
+}
+
+// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+//
+// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+//
+// Deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroup) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupLbNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutput() NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Elem() NetworkEndpointGroupLbNetworkEndpointGroupOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) NetworkEndpointGroupLbNetworkEndpointGroup {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpointGroupLbNetworkEndpointGroup
+		return ret
+	}).(NetworkEndpointGroupLbNetworkEndpointGroupOutput)
+}
+
+// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+//
+// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) DefaultPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+//
+// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+//
+// Deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupLbNetworkEndpointGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load balancing specific fields for network endpoint group.
+type NetworkEndpointGroupLbNetworkEndpointGroupResponse struct {
+	// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+	DefaultPort int `pulumi:"defaultPort"`
+	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+	Network string `pulumi:"network"`
+	// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
+	Zone string `pulumi:"zone"`
+}
+
+// Load balancing specific fields for network endpoint group.
+type NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupResponse)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutput() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) ToNetworkEndpointGroupLbNetworkEndpointGroupResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
+	return o
+}
+
+// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+//
+// Deprecated: The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) DefaultPort() pulumi.IntOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) int { return v.DefaultPort }).(pulumi.IntOutput)
+}
+
+// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+//
+// Deprecated: The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+//
+// Deprecated: Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
+//
+// Deprecated: [Output Only] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
+func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
@@ -29703,6 +31333,147 @@ func (o NotificationEndpointGrpcSettingsResponseOutput) RetryDurationSec() pulum
 	return o.ApplyT(func(v NotificationEndpointGrpcSettingsResponse) int { return v.RetryDurationSec }).(pulumi.IntOutput)
 }
 
+// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
+type OriginAuthenticationMethod struct {
+	Jwt *Jwt `pulumi:"jwt"`
+}
+
+// OriginAuthenticationMethodInput is an input type that accepts OriginAuthenticationMethodArgs and OriginAuthenticationMethodOutput values.
+// You can construct a concrete instance of `OriginAuthenticationMethodInput` via:
+//
+//          OriginAuthenticationMethodArgs{...}
+type OriginAuthenticationMethodInput interface {
+	pulumi.Input
+
+	ToOriginAuthenticationMethodOutput() OriginAuthenticationMethodOutput
+	ToOriginAuthenticationMethodOutputWithContext(context.Context) OriginAuthenticationMethodOutput
+}
+
+// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
+type OriginAuthenticationMethodArgs struct {
+	Jwt JwtPtrInput `pulumi:"jwt"`
+}
+
+func (OriginAuthenticationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAuthenticationMethod)(nil)).Elem()
+}
+
+func (i OriginAuthenticationMethodArgs) ToOriginAuthenticationMethodOutput() OriginAuthenticationMethodOutput {
+	return i.ToOriginAuthenticationMethodOutputWithContext(context.Background())
+}
+
+func (i OriginAuthenticationMethodArgs) ToOriginAuthenticationMethodOutputWithContext(ctx context.Context) OriginAuthenticationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginAuthenticationMethodOutput)
+}
+
+// OriginAuthenticationMethodArrayInput is an input type that accepts OriginAuthenticationMethodArray and OriginAuthenticationMethodArrayOutput values.
+// You can construct a concrete instance of `OriginAuthenticationMethodArrayInput` via:
+//
+//          OriginAuthenticationMethodArray{ OriginAuthenticationMethodArgs{...} }
+type OriginAuthenticationMethodArrayInput interface {
+	pulumi.Input
+
+	ToOriginAuthenticationMethodArrayOutput() OriginAuthenticationMethodArrayOutput
+	ToOriginAuthenticationMethodArrayOutputWithContext(context.Context) OriginAuthenticationMethodArrayOutput
+}
+
+type OriginAuthenticationMethodArray []OriginAuthenticationMethodInput
+
+func (OriginAuthenticationMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OriginAuthenticationMethod)(nil)).Elem()
+}
+
+func (i OriginAuthenticationMethodArray) ToOriginAuthenticationMethodArrayOutput() OriginAuthenticationMethodArrayOutput {
+	return i.ToOriginAuthenticationMethodArrayOutputWithContext(context.Background())
+}
+
+func (i OriginAuthenticationMethodArray) ToOriginAuthenticationMethodArrayOutputWithContext(ctx context.Context) OriginAuthenticationMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginAuthenticationMethodArrayOutput)
+}
+
+// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
+type OriginAuthenticationMethodOutput struct{ *pulumi.OutputState }
+
+func (OriginAuthenticationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAuthenticationMethod)(nil)).Elem()
+}
+
+func (o OriginAuthenticationMethodOutput) ToOriginAuthenticationMethodOutput() OriginAuthenticationMethodOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodOutput) ToOriginAuthenticationMethodOutputWithContext(ctx context.Context) OriginAuthenticationMethodOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodOutput) Jwt() JwtPtrOutput {
+	return o.ApplyT(func(v OriginAuthenticationMethod) *Jwt { return v.Jwt }).(JwtPtrOutput)
+}
+
+type OriginAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (OriginAuthenticationMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OriginAuthenticationMethod)(nil)).Elem()
+}
+
+func (o OriginAuthenticationMethodArrayOutput) ToOriginAuthenticationMethodArrayOutput() OriginAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodArrayOutput) ToOriginAuthenticationMethodArrayOutputWithContext(ctx context.Context) OriginAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodArrayOutput) Index(i pulumi.IntInput) OriginAuthenticationMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OriginAuthenticationMethod {
+		return vs[0].([]OriginAuthenticationMethod)[vs[1].(int)]
+	}).(OriginAuthenticationMethodOutput)
+}
+
+// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
+type OriginAuthenticationMethodResponse struct {
+	Jwt JwtResponse `pulumi:"jwt"`
+}
+
+// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
+type OriginAuthenticationMethodResponseOutput struct{ *pulumi.OutputState }
+
+func (OriginAuthenticationMethodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginAuthenticationMethodResponse)(nil)).Elem()
+}
+
+func (o OriginAuthenticationMethodResponseOutput) ToOriginAuthenticationMethodResponseOutput() OriginAuthenticationMethodResponseOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodResponseOutput) ToOriginAuthenticationMethodResponseOutputWithContext(ctx context.Context) OriginAuthenticationMethodResponseOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodResponseOutput) Jwt() JwtResponseOutput {
+	return o.ApplyT(func(v OriginAuthenticationMethodResponse) JwtResponse { return v.Jwt }).(JwtResponseOutput)
+}
+
+type OriginAuthenticationMethodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (OriginAuthenticationMethodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OriginAuthenticationMethodResponse)(nil)).Elem()
+}
+
+func (o OriginAuthenticationMethodResponseArrayOutput) ToOriginAuthenticationMethodResponseArrayOutput() OriginAuthenticationMethodResponseArrayOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodResponseArrayOutput) ToOriginAuthenticationMethodResponseArrayOutputWithContext(ctx context.Context) OriginAuthenticationMethodResponseArrayOutput {
+	return o
+}
+
+func (o OriginAuthenticationMethodResponseArrayOutput) Index(i pulumi.IntInput) OriginAuthenticationMethodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OriginAuthenticationMethodResponse {
+		return vs[0].([]OriginAuthenticationMethodResponse)[vs[1].(int)]
+	}).(OriginAuthenticationMethodResponseOutput)
+}
+
 // Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
 type OutlierDetection struct {
 	// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
@@ -31647,6 +33418,878 @@ func (o PathRuleResponseArrayOutput) Index(i pulumi.IntInput) PathRuleResponseOu
 	}).(PathRuleResponseOutput)
 }
 
+// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
+type PeerAuthenticationMethod struct {
+	// Set if mTLS is used for peer authentication.
+	Mtls *MutualTls `pulumi:"mtls"`
+}
+
+// PeerAuthenticationMethodInput is an input type that accepts PeerAuthenticationMethodArgs and PeerAuthenticationMethodOutput values.
+// You can construct a concrete instance of `PeerAuthenticationMethodInput` via:
+//
+//          PeerAuthenticationMethodArgs{...}
+type PeerAuthenticationMethodInput interface {
+	pulumi.Input
+
+	ToPeerAuthenticationMethodOutput() PeerAuthenticationMethodOutput
+	ToPeerAuthenticationMethodOutputWithContext(context.Context) PeerAuthenticationMethodOutput
+}
+
+// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
+type PeerAuthenticationMethodArgs struct {
+	// Set if mTLS is used for peer authentication.
+	Mtls MutualTlsPtrInput `pulumi:"mtls"`
+}
+
+func (PeerAuthenticationMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeerAuthenticationMethod)(nil)).Elem()
+}
+
+func (i PeerAuthenticationMethodArgs) ToPeerAuthenticationMethodOutput() PeerAuthenticationMethodOutput {
+	return i.ToPeerAuthenticationMethodOutputWithContext(context.Background())
+}
+
+func (i PeerAuthenticationMethodArgs) ToPeerAuthenticationMethodOutputWithContext(ctx context.Context) PeerAuthenticationMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeerAuthenticationMethodOutput)
+}
+
+// PeerAuthenticationMethodArrayInput is an input type that accepts PeerAuthenticationMethodArray and PeerAuthenticationMethodArrayOutput values.
+// You can construct a concrete instance of `PeerAuthenticationMethodArrayInput` via:
+//
+//          PeerAuthenticationMethodArray{ PeerAuthenticationMethodArgs{...} }
+type PeerAuthenticationMethodArrayInput interface {
+	pulumi.Input
+
+	ToPeerAuthenticationMethodArrayOutput() PeerAuthenticationMethodArrayOutput
+	ToPeerAuthenticationMethodArrayOutputWithContext(context.Context) PeerAuthenticationMethodArrayOutput
+}
+
+type PeerAuthenticationMethodArray []PeerAuthenticationMethodInput
+
+func (PeerAuthenticationMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PeerAuthenticationMethod)(nil)).Elem()
+}
+
+func (i PeerAuthenticationMethodArray) ToPeerAuthenticationMethodArrayOutput() PeerAuthenticationMethodArrayOutput {
+	return i.ToPeerAuthenticationMethodArrayOutputWithContext(context.Background())
+}
+
+func (i PeerAuthenticationMethodArray) ToPeerAuthenticationMethodArrayOutputWithContext(ctx context.Context) PeerAuthenticationMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PeerAuthenticationMethodArrayOutput)
+}
+
+// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
+type PeerAuthenticationMethodOutput struct{ *pulumi.OutputState }
+
+func (PeerAuthenticationMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeerAuthenticationMethod)(nil)).Elem()
+}
+
+func (o PeerAuthenticationMethodOutput) ToPeerAuthenticationMethodOutput() PeerAuthenticationMethodOutput {
+	return o
+}
+
+func (o PeerAuthenticationMethodOutput) ToPeerAuthenticationMethodOutputWithContext(ctx context.Context) PeerAuthenticationMethodOutput {
+	return o
+}
+
+// Set if mTLS is used for peer authentication.
+func (o PeerAuthenticationMethodOutput) Mtls() MutualTlsPtrOutput {
+	return o.ApplyT(func(v PeerAuthenticationMethod) *MutualTls { return v.Mtls }).(MutualTlsPtrOutput)
+}
+
+type PeerAuthenticationMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (PeerAuthenticationMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PeerAuthenticationMethod)(nil)).Elem()
+}
+
+func (o PeerAuthenticationMethodArrayOutput) ToPeerAuthenticationMethodArrayOutput() PeerAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o PeerAuthenticationMethodArrayOutput) ToPeerAuthenticationMethodArrayOutputWithContext(ctx context.Context) PeerAuthenticationMethodArrayOutput {
+	return o
+}
+
+func (o PeerAuthenticationMethodArrayOutput) Index(i pulumi.IntInput) PeerAuthenticationMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PeerAuthenticationMethod {
+		return vs[0].([]PeerAuthenticationMethod)[vs[1].(int)]
+	}).(PeerAuthenticationMethodOutput)
+}
+
+// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
+type PeerAuthenticationMethodResponse struct {
+	// Set if mTLS is used for peer authentication.
+	Mtls MutualTlsResponse `pulumi:"mtls"`
+}
+
+// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
+type PeerAuthenticationMethodResponseOutput struct{ *pulumi.OutputState }
+
+func (PeerAuthenticationMethodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PeerAuthenticationMethodResponse)(nil)).Elem()
+}
+
+func (o PeerAuthenticationMethodResponseOutput) ToPeerAuthenticationMethodResponseOutput() PeerAuthenticationMethodResponseOutput {
+	return o
+}
+
+func (o PeerAuthenticationMethodResponseOutput) ToPeerAuthenticationMethodResponseOutputWithContext(ctx context.Context) PeerAuthenticationMethodResponseOutput {
+	return o
+}
+
+// Set if mTLS is used for peer authentication.
+func (o PeerAuthenticationMethodResponseOutput) Mtls() MutualTlsResponseOutput {
+	return o.ApplyT(func(v PeerAuthenticationMethodResponse) MutualTlsResponse { return v.Mtls }).(MutualTlsResponseOutput)
+}
+
+type PeerAuthenticationMethodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PeerAuthenticationMethodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PeerAuthenticationMethodResponse)(nil)).Elem()
+}
+
+func (o PeerAuthenticationMethodResponseArrayOutput) ToPeerAuthenticationMethodResponseArrayOutput() PeerAuthenticationMethodResponseArrayOutput {
+	return o
+}
+
+func (o PeerAuthenticationMethodResponseArrayOutput) ToPeerAuthenticationMethodResponseArrayOutputWithContext(ctx context.Context) PeerAuthenticationMethodResponseArrayOutput {
+	return o
+}
+
+func (o PeerAuthenticationMethodResponseArrayOutput) Index(i pulumi.IntInput) PeerAuthenticationMethodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PeerAuthenticationMethodResponse {
+		return vs[0].([]PeerAuthenticationMethodResponse)[vs[1].(int)]
+	}).(PeerAuthenticationMethodResponseOutput)
+}
+
+// [Deprecated] All fields defined in a permission are ANDed.
+type Permission struct {
+	// Extra custom constraints. The constraints are ANDed together.
+	Constraints []PermissionConstraint `pulumi:"constraints"`
+	// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
+	Hosts []string `pulumi:"hosts"`
+	// HTTP method.
+	Methods []string `pulumi:"methods"`
+	// Negate of hosts. Specifies exclusions.
+	NotHosts []string `pulumi:"notHosts"`
+	// Negate of methods. Specifies exclusions.
+	NotMethods []string `pulumi:"notMethods"`
+	// Negate of paths. Specifies exclusions.
+	NotPaths []string `pulumi:"notPaths"`
+	// Negate of ports. Specifies exclusions.
+	NotPorts []string `pulumi:"notPorts"`
+	// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
+	Paths []string `pulumi:"paths"`
+	// Port names or numbers.
+	Ports []string `pulumi:"ports"`
+}
+
+// PermissionInput is an input type that accepts PermissionArgs and PermissionOutput values.
+// You can construct a concrete instance of `PermissionInput` via:
+//
+//          PermissionArgs{...}
+type PermissionInput interface {
+	pulumi.Input
+
+	ToPermissionOutput() PermissionOutput
+	ToPermissionOutputWithContext(context.Context) PermissionOutput
+}
+
+// [Deprecated] All fields defined in a permission are ANDed.
+type PermissionArgs struct {
+	// Extra custom constraints. The constraints are ANDed together.
+	Constraints PermissionConstraintArrayInput `pulumi:"constraints"`
+	// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
+	Hosts pulumi.StringArrayInput `pulumi:"hosts"`
+	// HTTP method.
+	Methods pulumi.StringArrayInput `pulumi:"methods"`
+	// Negate of hosts. Specifies exclusions.
+	NotHosts pulumi.StringArrayInput `pulumi:"notHosts"`
+	// Negate of methods. Specifies exclusions.
+	NotMethods pulumi.StringArrayInput `pulumi:"notMethods"`
+	// Negate of paths. Specifies exclusions.
+	NotPaths pulumi.StringArrayInput `pulumi:"notPaths"`
+	// Negate of ports. Specifies exclusions.
+	NotPorts pulumi.StringArrayInput `pulumi:"notPorts"`
+	// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
+	Paths pulumi.StringArrayInput `pulumi:"paths"`
+	// Port names or numbers.
+	Ports pulumi.StringArrayInput `pulumi:"ports"`
+}
+
+func (PermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Permission)(nil)).Elem()
+}
+
+func (i PermissionArgs) ToPermissionOutput() PermissionOutput {
+	return i.ToPermissionOutputWithContext(context.Background())
+}
+
+func (i PermissionArgs) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionOutput)
+}
+
+// PermissionArrayInput is an input type that accepts PermissionArray and PermissionArrayOutput values.
+// You can construct a concrete instance of `PermissionArrayInput` via:
+//
+//          PermissionArray{ PermissionArgs{...} }
+type PermissionArrayInput interface {
+	pulumi.Input
+
+	ToPermissionArrayOutput() PermissionArrayOutput
+	ToPermissionArrayOutputWithContext(context.Context) PermissionArrayOutput
+}
+
+type PermissionArray []PermissionInput
+
+func (PermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Permission)(nil)).Elem()
+}
+
+func (i PermissionArray) ToPermissionArrayOutput() PermissionArrayOutput {
+	return i.ToPermissionArrayOutputWithContext(context.Background())
+}
+
+func (i PermissionArray) ToPermissionArrayOutputWithContext(ctx context.Context) PermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionArrayOutput)
+}
+
+// [Deprecated] All fields defined in a permission are ANDed.
+type PermissionOutput struct{ *pulumi.OutputState }
+
+func (PermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Permission)(nil)).Elem()
+}
+
+func (o PermissionOutput) ToPermissionOutput() PermissionOutput {
+	return o
+}
+
+func (o PermissionOutput) ToPermissionOutputWithContext(ctx context.Context) PermissionOutput {
+	return o
+}
+
+// Extra custom constraints. The constraints are ANDed together.
+func (o PermissionOutput) Constraints() PermissionConstraintArrayOutput {
+	return o.ApplyT(func(v Permission) []PermissionConstraint { return v.Constraints }).(PermissionConstraintArrayOutput)
+}
+
+// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
+func (o PermissionOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// HTTP method.
+func (o PermissionOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Negate of hosts. Specifies exclusions.
+func (o PermissionOutput) NotHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.NotHosts }).(pulumi.StringArrayOutput)
+}
+
+// Negate of methods. Specifies exclusions.
+func (o PermissionOutput) NotMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.NotMethods }).(pulumi.StringArrayOutput)
+}
+
+// Negate of paths. Specifies exclusions.
+func (o PermissionOutput) NotPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.NotPaths }).(pulumi.StringArrayOutput)
+}
+
+// Negate of ports. Specifies exclusions.
+func (o PermissionOutput) NotPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.NotPorts }).(pulumi.StringArrayOutput)
+}
+
+// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
+func (o PermissionOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Port names or numbers.
+func (o PermissionOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Permission) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type PermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (PermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Permission)(nil)).Elem()
+}
+
+func (o PermissionArrayOutput) ToPermissionArrayOutput() PermissionArrayOutput {
+	return o
+}
+
+func (o PermissionArrayOutput) ToPermissionArrayOutputWithContext(ctx context.Context) PermissionArrayOutput {
+	return o
+}
+
+func (o PermissionArrayOutput) Index(i pulumi.IntInput) PermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Permission {
+		return vs[0].([]Permission)[vs[1].(int)]
+	}).(PermissionOutput)
+}
+
+// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
+type PermissionConstraint struct {
+	// Key of the constraint.
+	Key *string `pulumi:"key"`
+	// A list of allowed values.
+	Values []string `pulumi:"values"`
+}
+
+// PermissionConstraintInput is an input type that accepts PermissionConstraintArgs and PermissionConstraintOutput values.
+// You can construct a concrete instance of `PermissionConstraintInput` via:
+//
+//          PermissionConstraintArgs{...}
+type PermissionConstraintInput interface {
+	pulumi.Input
+
+	ToPermissionConstraintOutput() PermissionConstraintOutput
+	ToPermissionConstraintOutputWithContext(context.Context) PermissionConstraintOutput
+}
+
+// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
+type PermissionConstraintArgs struct {
+	// Key of the constraint.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// A list of allowed values.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (PermissionConstraintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionConstraint)(nil)).Elem()
+}
+
+func (i PermissionConstraintArgs) ToPermissionConstraintOutput() PermissionConstraintOutput {
+	return i.ToPermissionConstraintOutputWithContext(context.Background())
+}
+
+func (i PermissionConstraintArgs) ToPermissionConstraintOutputWithContext(ctx context.Context) PermissionConstraintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionConstraintOutput)
+}
+
+// PermissionConstraintArrayInput is an input type that accepts PermissionConstraintArray and PermissionConstraintArrayOutput values.
+// You can construct a concrete instance of `PermissionConstraintArrayInput` via:
+//
+//          PermissionConstraintArray{ PermissionConstraintArgs{...} }
+type PermissionConstraintArrayInput interface {
+	pulumi.Input
+
+	ToPermissionConstraintArrayOutput() PermissionConstraintArrayOutput
+	ToPermissionConstraintArrayOutputWithContext(context.Context) PermissionConstraintArrayOutput
+}
+
+type PermissionConstraintArray []PermissionConstraintInput
+
+func (PermissionConstraintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PermissionConstraint)(nil)).Elem()
+}
+
+func (i PermissionConstraintArray) ToPermissionConstraintArrayOutput() PermissionConstraintArrayOutput {
+	return i.ToPermissionConstraintArrayOutputWithContext(context.Background())
+}
+
+func (i PermissionConstraintArray) ToPermissionConstraintArrayOutputWithContext(ctx context.Context) PermissionConstraintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PermissionConstraintArrayOutput)
+}
+
+// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
+type PermissionConstraintOutput struct{ *pulumi.OutputState }
+
+func (PermissionConstraintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionConstraint)(nil)).Elem()
+}
+
+func (o PermissionConstraintOutput) ToPermissionConstraintOutput() PermissionConstraintOutput {
+	return o
+}
+
+func (o PermissionConstraintOutput) ToPermissionConstraintOutputWithContext(ctx context.Context) PermissionConstraintOutput {
+	return o
+}
+
+// Key of the constraint.
+func (o PermissionConstraintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PermissionConstraint) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// A list of allowed values.
+func (o PermissionConstraintOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionConstraint) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type PermissionConstraintArrayOutput struct{ *pulumi.OutputState }
+
+func (PermissionConstraintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PermissionConstraint)(nil)).Elem()
+}
+
+func (o PermissionConstraintArrayOutput) ToPermissionConstraintArrayOutput() PermissionConstraintArrayOutput {
+	return o
+}
+
+func (o PermissionConstraintArrayOutput) ToPermissionConstraintArrayOutputWithContext(ctx context.Context) PermissionConstraintArrayOutput {
+	return o
+}
+
+func (o PermissionConstraintArrayOutput) Index(i pulumi.IntInput) PermissionConstraintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PermissionConstraint {
+		return vs[0].([]PermissionConstraint)[vs[1].(int)]
+	}).(PermissionConstraintOutput)
+}
+
+// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
+type PermissionConstraintResponse struct {
+	// Key of the constraint.
+	Key string `pulumi:"key"`
+	// A list of allowed values.
+	Values []string `pulumi:"values"`
+}
+
+// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
+type PermissionConstraintResponseOutput struct{ *pulumi.OutputState }
+
+func (PermissionConstraintResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionConstraintResponse)(nil)).Elem()
+}
+
+func (o PermissionConstraintResponseOutput) ToPermissionConstraintResponseOutput() PermissionConstraintResponseOutput {
+	return o
+}
+
+func (o PermissionConstraintResponseOutput) ToPermissionConstraintResponseOutputWithContext(ctx context.Context) PermissionConstraintResponseOutput {
+	return o
+}
+
+// Key of the constraint.
+func (o PermissionConstraintResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PermissionConstraintResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// A list of allowed values.
+func (o PermissionConstraintResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionConstraintResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type PermissionConstraintResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PermissionConstraintResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PermissionConstraintResponse)(nil)).Elem()
+}
+
+func (o PermissionConstraintResponseArrayOutput) ToPermissionConstraintResponseArrayOutput() PermissionConstraintResponseArrayOutput {
+	return o
+}
+
+func (o PermissionConstraintResponseArrayOutput) ToPermissionConstraintResponseArrayOutputWithContext(ctx context.Context) PermissionConstraintResponseArrayOutput {
+	return o
+}
+
+func (o PermissionConstraintResponseArrayOutput) Index(i pulumi.IntInput) PermissionConstraintResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PermissionConstraintResponse {
+		return vs[0].([]PermissionConstraintResponse)[vs[1].(int)]
+	}).(PermissionConstraintResponseOutput)
+}
+
+// [Deprecated] All fields defined in a permission are ANDed.
+type PermissionResponse struct {
+	// Extra custom constraints. The constraints are ANDed together.
+	Constraints []PermissionConstraintResponse `pulumi:"constraints"`
+	// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
+	Hosts []string `pulumi:"hosts"`
+	// HTTP method.
+	Methods []string `pulumi:"methods"`
+	// Negate of hosts. Specifies exclusions.
+	NotHosts []string `pulumi:"notHosts"`
+	// Negate of methods. Specifies exclusions.
+	NotMethods []string `pulumi:"notMethods"`
+	// Negate of paths. Specifies exclusions.
+	NotPaths []string `pulumi:"notPaths"`
+	// Negate of ports. Specifies exclusions.
+	NotPorts []string `pulumi:"notPorts"`
+	// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
+	Paths []string `pulumi:"paths"`
+	// Port names or numbers.
+	Ports []string `pulumi:"ports"`
+}
+
+// [Deprecated] All fields defined in a permission are ANDed.
+type PermissionResponseOutput struct{ *pulumi.OutputState }
+
+func (PermissionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PermissionResponse)(nil)).Elem()
+}
+
+func (o PermissionResponseOutput) ToPermissionResponseOutput() PermissionResponseOutput {
+	return o
+}
+
+func (o PermissionResponseOutput) ToPermissionResponseOutputWithContext(ctx context.Context) PermissionResponseOutput {
+	return o
+}
+
+// Extra custom constraints. The constraints are ANDed together.
+func (o PermissionResponseOutput) Constraints() PermissionConstraintResponseArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []PermissionConstraintResponse { return v.Constraints }).(PermissionConstraintResponseArrayOutput)
+}
+
+// Used in Ingress or Egress Gateway cases to specify hosts that the policy applies to. Exact match, prefix match, and suffix match are supported.
+func (o PermissionResponseOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+// HTTP method.
+func (o PermissionResponseOutput) Methods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.Methods }).(pulumi.StringArrayOutput)
+}
+
+// Negate of hosts. Specifies exclusions.
+func (o PermissionResponseOutput) NotHosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.NotHosts }).(pulumi.StringArrayOutput)
+}
+
+// Negate of methods. Specifies exclusions.
+func (o PermissionResponseOutput) NotMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.NotMethods }).(pulumi.StringArrayOutput)
+}
+
+// Negate of paths. Specifies exclusions.
+func (o PermissionResponseOutput) NotPaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.NotPaths }).(pulumi.StringArrayOutput)
+}
+
+// Negate of ports. Specifies exclusions.
+func (o PermissionResponseOutput) NotPorts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.NotPorts }).(pulumi.StringArrayOutput)
+}
+
+// HTTP request paths or gRPC methods. Exact match, prefix match, and suffix match are supported.
+func (o PermissionResponseOutput) Paths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.Paths }).(pulumi.StringArrayOutput)
+}
+
+// Port names or numbers.
+func (o PermissionResponseOutput) Ports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PermissionResponse) []string { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+type PermissionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PermissionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PermissionResponse)(nil)).Elem()
+}
+
+func (o PermissionResponseArrayOutput) ToPermissionResponseArrayOutput() PermissionResponseArrayOutput {
+	return o
+}
+
+func (o PermissionResponseArrayOutput) ToPermissionResponseArrayOutputWithContext(ctx context.Context) PermissionResponseArrayOutput {
+	return o
+}
+
+func (o PermissionResponseArrayOutput) Index(i pulumi.IntInput) PermissionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PermissionResponse {
+		return vs[0].([]PermissionResponse)[vs[1].(int)]
+	}).(PermissionResponseOutput)
+}
+
+// [Deprecated] All fields defined in a principal are ANDed.
+type Principal struct {
+	// An expression to specify custom condition.
+	Condition *string `pulumi:"condition"`
+	// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
+	Groups []string `pulumi:"groups"`
+	// IPv4 or IPv6 address or range (In CIDR format)
+	Ips []string `pulumi:"ips"`
+	// The namespaces. Exact match, prefix match, and suffix match are supported.
+	Namespaces []string `pulumi:"namespaces"`
+	// Negate of groups. Specifies exclusions.
+	NotGroups []string `pulumi:"notGroups"`
+	// Negate of IPs. Specifies exclusions.
+	NotIps []string `pulumi:"notIps"`
+	// Negate of namespaces. Specifies exclusions.
+	NotNamespaces []string `pulumi:"notNamespaces"`
+	// Negate of users. Specifies exclusions.
+	NotUsers []string `pulumi:"notUsers"`
+	// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
+	Properties map[string]string `pulumi:"properties"`
+	// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
+	Users []string `pulumi:"users"`
+}
+
+// PrincipalInput is an input type that accepts PrincipalArgs and PrincipalOutput values.
+// You can construct a concrete instance of `PrincipalInput` via:
+//
+//          PrincipalArgs{...}
+type PrincipalInput interface {
+	pulumi.Input
+
+	ToPrincipalOutput() PrincipalOutput
+	ToPrincipalOutputWithContext(context.Context) PrincipalOutput
+}
+
+// [Deprecated] All fields defined in a principal are ANDed.
+type PrincipalArgs struct {
+	// An expression to specify custom condition.
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	// IPv4 or IPv6 address or range (In CIDR format)
+	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	// The namespaces. Exact match, prefix match, and suffix match are supported.
+	Namespaces pulumi.StringArrayInput `pulumi:"namespaces"`
+	// Negate of groups. Specifies exclusions.
+	NotGroups pulumi.StringArrayInput `pulumi:"notGroups"`
+	// Negate of IPs. Specifies exclusions.
+	NotIps pulumi.StringArrayInput `pulumi:"notIps"`
+	// Negate of namespaces. Specifies exclusions.
+	NotNamespaces pulumi.StringArrayInput `pulumi:"notNamespaces"`
+	// Negate of users. Specifies exclusions.
+	NotUsers pulumi.StringArrayInput `pulumi:"notUsers"`
+	// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
+	Users pulumi.StringArrayInput `pulumi:"users"`
+}
+
+func (PrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Principal)(nil)).Elem()
+}
+
+func (i PrincipalArgs) ToPrincipalOutput() PrincipalOutput {
+	return i.ToPrincipalOutputWithContext(context.Background())
+}
+
+func (i PrincipalArgs) ToPrincipalOutputWithContext(ctx context.Context) PrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalOutput)
+}
+
+// PrincipalArrayInput is an input type that accepts PrincipalArray and PrincipalArrayOutput values.
+// You can construct a concrete instance of `PrincipalArrayInput` via:
+//
+//          PrincipalArray{ PrincipalArgs{...} }
+type PrincipalArrayInput interface {
+	pulumi.Input
+
+	ToPrincipalArrayOutput() PrincipalArrayOutput
+	ToPrincipalArrayOutputWithContext(context.Context) PrincipalArrayOutput
+}
+
+type PrincipalArray []PrincipalInput
+
+func (PrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Principal)(nil)).Elem()
+}
+
+func (i PrincipalArray) ToPrincipalArrayOutput() PrincipalArrayOutput {
+	return i.ToPrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i PrincipalArray) ToPrincipalArrayOutputWithContext(ctx context.Context) PrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalArrayOutput)
+}
+
+// [Deprecated] All fields defined in a principal are ANDed.
+type PrincipalOutput struct{ *pulumi.OutputState }
+
+func (PrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Principal)(nil)).Elem()
+}
+
+func (o PrincipalOutput) ToPrincipalOutput() PrincipalOutput {
+	return o
+}
+
+func (o PrincipalOutput) ToPrincipalOutputWithContext(ctx context.Context) PrincipalOutput {
+	return o
+}
+
+// An expression to specify custom condition.
+func (o PrincipalOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Principal) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
+func (o PrincipalOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 or IPv6 address or range (In CIDR format)
+func (o PrincipalOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// The namespaces. Exact match, prefix match, and suffix match are supported.
+func (o PrincipalOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Negate of groups. Specifies exclusions.
+func (o PrincipalOutput) NotGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.NotGroups }).(pulumi.StringArrayOutput)
+}
+
+// Negate of IPs. Specifies exclusions.
+func (o PrincipalOutput) NotIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.NotIps }).(pulumi.StringArrayOutput)
+}
+
+// Negate of namespaces. Specifies exclusions.
+func (o PrincipalOutput) NotNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.NotNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// Negate of users. Specifies exclusions.
+func (o PrincipalOutput) NotUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.NotUsers }).(pulumi.StringArrayOutput)
+}
+
+// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
+func (o PrincipalOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Principal) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
+func (o PrincipalOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Principal) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type PrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (PrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Principal)(nil)).Elem()
+}
+
+func (o PrincipalArrayOutput) ToPrincipalArrayOutput() PrincipalArrayOutput {
+	return o
+}
+
+func (o PrincipalArrayOutput) ToPrincipalArrayOutputWithContext(ctx context.Context) PrincipalArrayOutput {
+	return o
+}
+
+func (o PrincipalArrayOutput) Index(i pulumi.IntInput) PrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Principal {
+		return vs[0].([]Principal)[vs[1].(int)]
+	}).(PrincipalOutput)
+}
+
+// [Deprecated] All fields defined in a principal are ANDed.
+type PrincipalResponse struct {
+	// An expression to specify custom condition.
+	Condition string `pulumi:"condition"`
+	// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
+	Groups []string `pulumi:"groups"`
+	// IPv4 or IPv6 address or range (In CIDR format)
+	Ips []string `pulumi:"ips"`
+	// The namespaces. Exact match, prefix match, and suffix match are supported.
+	Namespaces []string `pulumi:"namespaces"`
+	// Negate of groups. Specifies exclusions.
+	NotGroups []string `pulumi:"notGroups"`
+	// Negate of IPs. Specifies exclusions.
+	NotIps []string `pulumi:"notIps"`
+	// Negate of namespaces. Specifies exclusions.
+	NotNamespaces []string `pulumi:"notNamespaces"`
+	// Negate of users. Specifies exclusions.
+	NotUsers []string `pulumi:"notUsers"`
+	// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
+	Properties map[string]string `pulumi:"properties"`
+	// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
+	Users []string `pulumi:"users"`
+}
+
+// [Deprecated] All fields defined in a principal are ANDed.
+type PrincipalResponseOutput struct{ *pulumi.OutputState }
+
+func (PrincipalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalResponse)(nil)).Elem()
+}
+
+func (o PrincipalResponseOutput) ToPrincipalResponseOutput() PrincipalResponseOutput {
+	return o
+}
+
+func (o PrincipalResponseOutput) ToPrincipalResponseOutputWithContext(ctx context.Context) PrincipalResponseOutput {
+	return o
+}
+
+// An expression to specify custom condition.
+func (o PrincipalResponseOutput) Condition() pulumi.StringOutput {
+	return o.ApplyT(func(v PrincipalResponse) string { return v.Condition }).(pulumi.StringOutput)
+}
+
+// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
+func (o PrincipalResponseOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+// IPv4 or IPv6 address or range (In CIDR format)
+func (o PrincipalResponseOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// The namespaces. Exact match, prefix match, and suffix match are supported.
+func (o PrincipalResponseOutput) Namespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.Namespaces }).(pulumi.StringArrayOutput)
+}
+
+// Negate of groups. Specifies exclusions.
+func (o PrincipalResponseOutput) NotGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.NotGroups }).(pulumi.StringArrayOutput)
+}
+
+// Negate of IPs. Specifies exclusions.
+func (o PrincipalResponseOutput) NotIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.NotIps }).(pulumi.StringArrayOutput)
+}
+
+// Negate of namespaces. Specifies exclusions.
+func (o PrincipalResponseOutput) NotNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.NotNamespaces }).(pulumi.StringArrayOutput)
+}
+
+// Negate of users. Specifies exclusions.
+func (o PrincipalResponseOutput) NotUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.NotUsers }).(pulumi.StringArrayOutput)
+}
+
+// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
+func (o PrincipalResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrincipalResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
+func (o PrincipalResponseOutput) Users() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalResponse) []string { return v.Users }).(pulumi.StringArrayOutput)
+}
+
+type PrincipalResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrincipalResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrincipalResponse)(nil)).Elem()
+}
+
+func (o PrincipalResponseArrayOutput) ToPrincipalResponseArrayOutput() PrincipalResponseArrayOutput {
+	return o
+}
+
+func (o PrincipalResponseArrayOutput) ToPrincipalResponseArrayOutputWithContext(ctx context.Context) PrincipalResponseArrayOutput {
+	return o
+}
+
+func (o PrincipalResponseArrayOutput) Index(i pulumi.IntInput) PrincipalResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrincipalResponse {
+		return vs[0].([]PrincipalResponse)[vs[1].(int)]
+	}).(PrincipalResponseOutput)
+}
+
 // Represents a CIDR range which can be used to assign addresses.
 type PublicAdvertisedPrefixPublicDelegatedPrefixResponse struct {
 	// The IP address range of the public delegated prefix
@@ -31943,6 +34586,179 @@ func (o PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
 		return vs[0].([]PublicDelegatedPrefixPublicDelegatedSubPrefixResponse)[vs[1].(int)]
 	}).(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput)
+}
+
+type RbacPolicy struct {
+	// Name of the RbacPolicy.
+	Name *string `pulumi:"name"`
+	// The list of permissions.
+	Permissions []Permission `pulumi:"permissions"`
+	// The list of principals.
+	Principals []Principal `pulumi:"principals"`
+}
+
+// RbacPolicyInput is an input type that accepts RbacPolicyArgs and RbacPolicyOutput values.
+// You can construct a concrete instance of `RbacPolicyInput` via:
+//
+//          RbacPolicyArgs{...}
+type RbacPolicyInput interface {
+	pulumi.Input
+
+	ToRbacPolicyOutput() RbacPolicyOutput
+	ToRbacPolicyOutputWithContext(context.Context) RbacPolicyOutput
+}
+
+type RbacPolicyArgs struct {
+	// Name of the RbacPolicy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The list of permissions.
+	Permissions PermissionArrayInput `pulumi:"permissions"`
+	// The list of principals.
+	Principals PrincipalArrayInput `pulumi:"principals"`
+}
+
+func (RbacPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicy)(nil)).Elem()
+}
+
+func (i RbacPolicyArgs) ToRbacPolicyOutput() RbacPolicyOutput {
+	return i.ToRbacPolicyOutputWithContext(context.Background())
+}
+
+func (i RbacPolicyArgs) ToRbacPolicyOutputWithContext(ctx context.Context) RbacPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyOutput)
+}
+
+// RbacPolicyArrayInput is an input type that accepts RbacPolicyArray and RbacPolicyArrayOutput values.
+// You can construct a concrete instance of `RbacPolicyArrayInput` via:
+//
+//          RbacPolicyArray{ RbacPolicyArgs{...} }
+type RbacPolicyArrayInput interface {
+	pulumi.Input
+
+	ToRbacPolicyArrayOutput() RbacPolicyArrayOutput
+	ToRbacPolicyArrayOutputWithContext(context.Context) RbacPolicyArrayOutput
+}
+
+type RbacPolicyArray []RbacPolicyInput
+
+func (RbacPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RbacPolicy)(nil)).Elem()
+}
+
+func (i RbacPolicyArray) ToRbacPolicyArrayOutput() RbacPolicyArrayOutput {
+	return i.ToRbacPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i RbacPolicyArray) ToRbacPolicyArrayOutputWithContext(ctx context.Context) RbacPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RbacPolicyArrayOutput)
+}
+
+type RbacPolicyOutput struct{ *pulumi.OutputState }
+
+func (RbacPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicy)(nil)).Elem()
+}
+
+func (o RbacPolicyOutput) ToRbacPolicyOutput() RbacPolicyOutput {
+	return o
+}
+
+func (o RbacPolicyOutput) ToRbacPolicyOutputWithContext(ctx context.Context) RbacPolicyOutput {
+	return o
+}
+
+// Name of the RbacPolicy.
+func (o RbacPolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RbacPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The list of permissions.
+func (o RbacPolicyOutput) Permissions() PermissionArrayOutput {
+	return o.ApplyT(func(v RbacPolicy) []Permission { return v.Permissions }).(PermissionArrayOutput)
+}
+
+// The list of principals.
+func (o RbacPolicyOutput) Principals() PrincipalArrayOutput {
+	return o.ApplyT(func(v RbacPolicy) []Principal { return v.Principals }).(PrincipalArrayOutput)
+}
+
+type RbacPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (RbacPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RbacPolicy)(nil)).Elem()
+}
+
+func (o RbacPolicyArrayOutput) ToRbacPolicyArrayOutput() RbacPolicyArrayOutput {
+	return o
+}
+
+func (o RbacPolicyArrayOutput) ToRbacPolicyArrayOutputWithContext(ctx context.Context) RbacPolicyArrayOutput {
+	return o
+}
+
+func (o RbacPolicyArrayOutput) Index(i pulumi.IntInput) RbacPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RbacPolicy {
+		return vs[0].([]RbacPolicy)[vs[1].(int)]
+	}).(RbacPolicyOutput)
+}
+
+type RbacPolicyResponse struct {
+	// Name of the RbacPolicy.
+	Name string `pulumi:"name"`
+	// The list of permissions.
+	Permissions []PermissionResponse `pulumi:"permissions"`
+	// The list of principals.
+	Principals []PrincipalResponse `pulumi:"principals"`
+}
+
+type RbacPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (RbacPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RbacPolicyResponse)(nil)).Elem()
+}
+
+func (o RbacPolicyResponseOutput) ToRbacPolicyResponseOutput() RbacPolicyResponseOutput {
+	return o
+}
+
+func (o RbacPolicyResponseOutput) ToRbacPolicyResponseOutputWithContext(ctx context.Context) RbacPolicyResponseOutput {
+	return o
+}
+
+// Name of the RbacPolicy.
+func (o RbacPolicyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RbacPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of permissions.
+func (o RbacPolicyResponseOutput) Permissions() PermissionResponseArrayOutput {
+	return o.ApplyT(func(v RbacPolicyResponse) []PermissionResponse { return v.Permissions }).(PermissionResponseArrayOutput)
+}
+
+// The list of principals.
+func (o RbacPolicyResponseOutput) Principals() PrincipalResponseArrayOutput {
+	return o.ApplyT(func(v RbacPolicyResponse) []PrincipalResponse { return v.Principals }).(PrincipalResponseArrayOutput)
+}
+
+type RbacPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RbacPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RbacPolicyResponse)(nil)).Elem()
+}
+
+func (o RbacPolicyResponseArrayOutput) ToRbacPolicyResponseArrayOutput() RbacPolicyResponseArrayOutput {
+	return o
+}
+
+func (o RbacPolicyResponseArrayOutput) ToRbacPolicyResponseArrayOutputWithContext(ctx context.Context) RbacPolicyResponseArrayOutput {
+	return o
+}
+
+func (o RbacPolicyResponseArrayOutput) Index(i pulumi.IntInput) RbacPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RbacPolicyResponse {
+		return vs[0].([]RbacPolicyResponse)[vs[1].(int)]
+	}).(RbacPolicyResponseOutput)
 }
 
 type RegionSslPolicyWarningsItemDataItemResponse struct {
@@ -44232,8 +47048,24 @@ func (o SecurityPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) Security
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettings struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication *string `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy *AuthenticationPolicy `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig *AuthorizationConfig `pulumi:"authorizationConfig"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings *ClientTlsSettings `pulumi:"clientTlsSettings"`
 	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
@@ -44251,8 +47083,24 @@ type SecuritySettingsInput interface {
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsArgs struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy AuthenticationPolicyPtrInput `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig AuthorizationConfigPtrInput `pulumi:"authorizationConfig"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings ClientTlsSettingsPtrInput `pulumi:"clientTlsSettings"`
 	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
 	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
 }
@@ -44335,9 +47183,37 @@ func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx conte
 	}).(SecuritySettingsPtrOutput)
 }
 
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthenticationPolicy { return v.AuthenticationPolicy }).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthorizationConfig { return v.AuthorizationConfig }).(AuthorizationConfigPtrOutput)
+}
+
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *ClientTlsSettings { return v.ClientTlsSettings }).(ClientTlsSettingsPtrOutput)
 }
 
 // Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
@@ -44369,6 +47245,42 @@ func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
 	}).(SecuritySettingsOutput)
 }
 
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsPtrOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthenticationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationPolicy
+	}).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsPtrOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthorizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationConfig
+	}).(AuthorizationConfigPtrOutput)
+}
+
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecuritySettings) *string {
@@ -44377,6 +47289,18 @@ func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
 		}
 		return v.ClientTlsPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsPtrOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *ClientTlsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsSettings
+	}).(ClientTlsSettingsPtrOutput)
 }
 
 // Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
@@ -44391,8 +47315,24 @@ func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
 
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsResponse struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication string `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy AuthenticationPolicyResponse `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig AuthorizationConfigResponse `pulumi:"authorizationConfig"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings ClientTlsSettingsResponse `pulumi:"clientTlsSettings"`
 	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
 	SubjectAltNames []string `pulumi:"subjectAltNames"`
 }
@@ -44412,9 +47352,37 @@ func (o SecuritySettingsResponseOutput) ToSecuritySettingsResponseOutputWithCont
 	return o
 }
 
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsResponseOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.Authentication }).(pulumi.StringOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsResponseOutput) AuthenticationPolicy() AuthenticationPolicyResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) AuthenticationPolicyResponse { return v.AuthenticationPolicy }).(AuthenticationPolicyResponseOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsResponseOutput) AuthorizationConfig() AuthorizationConfigResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) AuthorizationConfigResponse { return v.AuthorizationConfig }).(AuthorizationConfigResponseOutput)
+}
+
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 func (o SecuritySettingsResponseOutput) ClientTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v SecuritySettingsResponse) string { return v.ClientTlsPolicy }).(pulumi.StringOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsResponseOutput) ClientTlsSettings() ClientTlsSettingsResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) ClientTlsSettingsResponse { return v.ClientTlsSettings }).(ClientTlsSettingsResponseOutput)
 }
 
 // Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
@@ -49701,8 +52669,16 @@ func (o Uint128ResponseOutput) Low() pulumi.StringOutput {
 type UpcomingMaintenanceResponse struct {
 	// Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
 	CanReschedule bool `pulumi:"canReschedule"`
+	// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	//
+	// Deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	Date string `pulumi:"date"`
 	// The start time window of the maintenance disruption.
 	StartTimeWindow UpcomingMaintenanceTimeWindowResponse `pulumi:"startTimeWindow"`
+	// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	//
+	// Deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	Time string `pulumi:"time"`
 	// Defines the type of maintenance.
 	Type string `pulumi:"type"`
 }
@@ -49727,9 +52703,23 @@ func (o UpcomingMaintenanceResponseOutput) CanReschedule() pulumi.BoolOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
 }
 
+// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+//
+// Deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+func (o UpcomingMaintenanceResponseOutput) Date() pulumi.StringOutput {
+	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.Date }).(pulumi.StringOutput)
+}
+
 // The start time window of the maintenance disruption.
 func (o UpcomingMaintenanceResponseOutput) StartTimeWindow() UpcomingMaintenanceTimeWindowResponseOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) UpcomingMaintenanceTimeWindowResponse { return v.StartTimeWindow }).(UpcomingMaintenanceTimeWindowResponseOutput)
+}
+
+// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+//
+// Deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+func (o UpcomingMaintenanceResponseOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.Time }).(pulumi.StringOutput)
 }
 
 // Defines the type of maintenance.
@@ -49776,6 +52766,10 @@ type UrlMapTest struct {
 	ExpectedOutputUrl *string `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode *int `pulumi:"expectedRedirectResponseCode"`
+	// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+	//
+	// Deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+	ExpectedUrlRedirect *string `pulumi:"expectedUrlRedirect"`
 	// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
 	Headers []UrlMapTestHeader `pulumi:"headers"`
 	// Host portion of the URL. If headers contains a host header, then host must also match the header value.
@@ -49807,6 +52801,10 @@ type UrlMapTestArgs struct {
 	ExpectedOutputUrl pulumi.StringPtrInput `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode pulumi.IntPtrInput `pulumi:"expectedRedirectResponseCode"`
+	// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+	//
+	// Deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+	ExpectedUrlRedirect pulumi.StringPtrInput `pulumi:"expectedUrlRedirect"`
 	// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
 	Headers UrlMapTestHeaderArrayInput `pulumi:"headers"`
 	// Host portion of the URL. If headers contains a host header, then host must also match the header value.
@@ -49887,6 +52885,13 @@ func (o UrlMapTestOutput) ExpectedOutputUrl() pulumi.StringPtrOutput {
 // For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 func (o UrlMapTestOutput) ExpectedRedirectResponseCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UrlMapTest) *int { return v.ExpectedRedirectResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+//
+// Deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+func (o UrlMapTestOutput) ExpectedUrlRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UrlMapTest) *string { return v.ExpectedUrlRedirect }).(pulumi.StringPtrOutput)
 }
 
 // HTTP headers for this request. If headers contains a host header, then host must also match the header value.
@@ -50101,6 +53106,10 @@ type UrlMapTestResponse struct {
 	ExpectedOutputUrl string `pulumi:"expectedOutputUrl"`
 	// For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 	ExpectedRedirectResponseCode int `pulumi:"expectedRedirectResponseCode"`
+	// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+	//
+	// Deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+	ExpectedUrlRedirect string `pulumi:"expectedUrlRedirect"`
 	// HTTP headers for this request. If headers contains a host header, then host must also match the header value.
 	Headers []UrlMapTestHeaderResponse `pulumi:"headers"`
 	// Host portion of the URL. If headers contains a host header, then host must also match the header value.
@@ -50144,6 +53153,13 @@ func (o UrlMapTestResponseOutput) ExpectedOutputUrl() pulumi.StringOutput {
 // For rules with urlRedirect, the test passes only if expectedRedirectResponseCode matches the HTTP status code in load balancer's redirect response. expectedRedirectResponseCode cannot be set when service is set.
 func (o UrlMapTestResponseOutput) ExpectedRedirectResponseCode() pulumi.IntOutput {
 	return o.ApplyT(func(v UrlMapTestResponse) int { return v.ExpectedRedirectResponseCode }).(pulumi.IntOutput)
+}
+
+// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+//
+// Deprecated: The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+func (o UrlMapTestResponseOutput) ExpectedUrlRedirect() pulumi.StringOutput {
+	return o.ApplyT(func(v UrlMapTestResponse) string { return v.ExpectedUrlRedirect }).(pulumi.StringOutput)
 }
 
 // HTTP headers for this request. If headers contains a host header, then host must also match the header value.
@@ -50732,6 +53748,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationPolicyInput)(nil)).Elem(), AuthenticationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationPolicyPtrInput)(nil)).Elem(), AuthenticationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationConfigInput)(nil)).Elem(), AuthorizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationConfigPtrInput)(nil)).Elem(), AuthorizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsInput)(nil)).Elem(), AuthorizationLoggingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationLoggingOptionsPtrInput)(nil)).Elem(), AuthorizationLoggingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyInput)(nil)).Elem(), AutoscalingPolicyArgs{})
@@ -50782,6 +53802,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelCredentialsPtrInput)(nil)).Elem(), ChannelCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CircuitBreakersInput)(nil)).Elem(), CircuitBreakersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CircuitBreakersPtrInput)(nil)).Elem(), CircuitBreakersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsSettingsInput)(nil)).Elem(), ClientTlsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsSettingsPtrInput)(nil)).Elem(), ClientTlsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigInput)(nil)).Elem(), ConfidentialInstanceConfigArgs{})
@@ -50917,6 +53939,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectMacsecPtrInput)(nil)).Elem(), InterconnectMacsecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectMacsecPreSharedKeyInput)(nil)).Elem(), InterconnectMacsecPreSharedKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectMacsecPreSharedKeyArrayInput)(nil)).Elem(), InterconnectMacsecPreSharedKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JwtInput)(nil)).Elem(), JwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JwtPtrInput)(nil)).Elem(), JwtArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JwtHeaderInput)(nil)).Elem(), JwtHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JwtHeaderArrayInput)(nil)).Elem(), JwtHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceCommitmentInput)(nil)).Elem(), LicenseResourceCommitmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceCommitmentPtrInput)(nil)).Elem(), LicenseResourceCommitmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseResourceRequirementsInput)(nil)).Elem(), LicenseResourceRequirementsArgs{})
@@ -50943,6 +53969,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterLabelMatchArrayInput)(nil)).Elem(), MetadataFilterLabelMatchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataItemsItemInput)(nil)).Elem(), MetadataItemsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataItemsItemArrayInput)(nil)).Elem(), MetadataItemsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsInput)(nil)).Elem(), MutualTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsPtrInput)(nil)).Elem(), MutualTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedPortInput)(nil)).Elem(), NamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedPortArrayInput)(nil)).Elem(), NamedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupAppEngineInput)(nil)).Elem(), NetworkEndpointGroupAppEngineArgs{})
@@ -50951,6 +53979,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudFunctionPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudFunctionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupInput)(nil)).Elem(), NetworkEndpointGroupLbNetworkEndpointGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupPtrInput)(nil)).Elem(), NetworkEndpointGroupLbNetworkEndpointGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), NetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupServerlessDeploymentPtrInput)(nil)).Elem(), NetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
@@ -50969,6 +53999,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateNodeTypeFlexibilityPtrInput)(nil)).Elem(), NodeTemplateNodeTypeFlexibilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationEndpointGrpcSettingsInput)(nil)).Elem(), NotificationEndpointGrpcSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationEndpointGrpcSettingsPtrInput)(nil)).Elem(), NotificationEndpointGrpcSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginAuthenticationMethodInput)(nil)).Elem(), OriginAuthenticationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginAuthenticationMethodArrayInput)(nil)).Elem(), OriginAuthenticationMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OutlierDetectionInput)(nil)).Elem(), OutlierDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OutlierDetectionPtrInput)(nil)).Elem(), OutlierDetectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterInput)(nil)).Elem(), PacketMirroringFilterArgs{})
@@ -50987,8 +54019,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PathMatcherArrayInput)(nil)).Elem(), PathMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PathRuleInput)(nil)).Elem(), PathRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PathRuleArrayInput)(nil)).Elem(), PathRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeerAuthenticationMethodInput)(nil)).Elem(), PeerAuthenticationMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PeerAuthenticationMethodArrayInput)(nil)).Elem(), PeerAuthenticationMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PermissionInput)(nil)).Elem(), PermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PermissionArrayInput)(nil)).Elem(), PermissionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PermissionConstraintInput)(nil)).Elem(), PermissionConstraintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PermissionConstraintArrayInput)(nil)).Elem(), PermissionConstraintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalInput)(nil)).Elem(), PrincipalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalArrayInput)(nil)).Elem(), PrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicDelegatedPrefixPublicDelegatedSubPrefixArrayInput)(nil)).Elem(), PublicDelegatedPrefixPublicDelegatedSubPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RbacPolicyInput)(nil)).Elem(), RbacPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RbacPolicyArrayInput)(nil)).Elem(), RbacPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyInput)(nil)).Elem(), RequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestMirrorPolicyPtrInput)(nil)).Elem(), RequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationTypeInput)(nil)).Elem(), ReservationTypeArgs{})
@@ -51197,6 +54239,12 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(AuthenticationPolicyOutput{})
+	pulumi.RegisterOutputType(AuthenticationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AuthenticationPolicyResponseOutput{})
+	pulumi.RegisterOutputType(AuthorizationConfigOutput{})
+	pulumi.RegisterOutputType(AuthorizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizationConfigResponseOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationLoggingOptionsResponseOutput{})
@@ -51281,6 +54329,9 @@ func init() {
 	pulumi.RegisterOutputType(CircuitBreakersOutput{})
 	pulumi.RegisterOutputType(CircuitBreakersPtrOutput{})
 	pulumi.RegisterOutputType(CircuitBreakersResponseOutput{})
+	pulumi.RegisterOutputType(ClientTlsSettingsOutput{})
+	pulumi.RegisterOutputType(ClientTlsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ClientTlsSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
@@ -51521,6 +54572,13 @@ func init() {
 	pulumi.RegisterOutputType(InterconnectMacsecResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectOutageNotificationResponseOutput{})
 	pulumi.RegisterOutputType(InterconnectOutageNotificationResponseArrayOutput{})
+	pulumi.RegisterOutputType(JwtOutput{})
+	pulumi.RegisterOutputType(JwtPtrOutput{})
+	pulumi.RegisterOutputType(JwtHeaderOutput{})
+	pulumi.RegisterOutputType(JwtHeaderArrayOutput{})
+	pulumi.RegisterOutputType(JwtHeaderResponseOutput{})
+	pulumi.RegisterOutputType(JwtHeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(JwtResponseOutput{})
 	pulumi.RegisterOutputType(LicenseResourceCommitmentOutput{})
 	pulumi.RegisterOutputType(LicenseResourceCommitmentPtrOutput{})
 	pulumi.RegisterOutputType(LicenseResourceCommitmentResponseOutput{})
@@ -51566,6 +54624,9 @@ func init() {
 	pulumi.RegisterOutputType(MetadataItemsItemResponseOutput{})
 	pulumi.RegisterOutputType(MetadataItemsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
+	pulumi.RegisterOutputType(MutualTlsOutput{})
+	pulumi.RegisterOutputType(MutualTlsPtrOutput{})
+	pulumi.RegisterOutputType(MutualTlsResponseOutput{})
 	pulumi.RegisterOutputType(NamedPortOutput{})
 	pulumi.RegisterOutputType(NamedPortArrayOutput{})
 	pulumi.RegisterOutputType(NamedPortResponseOutput{})
@@ -51579,6 +54640,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupCloudRunResponseOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentResponseOutput{})
@@ -51610,6 +54674,10 @@ func init() {
 	pulumi.RegisterOutputType(NotificationEndpointGrpcSettingsOutput{})
 	pulumi.RegisterOutputType(NotificationEndpointGrpcSettingsPtrOutput{})
 	pulumi.RegisterOutputType(NotificationEndpointGrpcSettingsResponseOutput{})
+	pulumi.RegisterOutputType(OriginAuthenticationMethodOutput{})
+	pulumi.RegisterOutputType(OriginAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(OriginAuthenticationMethodResponseOutput{})
+	pulumi.RegisterOutputType(OriginAuthenticationMethodResponseArrayOutput{})
 	pulumi.RegisterOutputType(OutlierDetectionOutput{})
 	pulumi.RegisterOutputType(OutlierDetectionPtrOutput{})
 	pulumi.RegisterOutputType(OutlierDetectionResponseOutput{})
@@ -51641,12 +54709,32 @@ func init() {
 	pulumi.RegisterOutputType(PathRuleArrayOutput{})
 	pulumi.RegisterOutputType(PathRuleResponseOutput{})
 	pulumi.RegisterOutputType(PathRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(PeerAuthenticationMethodOutput{})
+	pulumi.RegisterOutputType(PeerAuthenticationMethodArrayOutput{})
+	pulumi.RegisterOutputType(PeerAuthenticationMethodResponseOutput{})
+	pulumi.RegisterOutputType(PeerAuthenticationMethodResponseArrayOutput{})
+	pulumi.RegisterOutputType(PermissionOutput{})
+	pulumi.RegisterOutputType(PermissionArrayOutput{})
+	pulumi.RegisterOutputType(PermissionConstraintOutput{})
+	pulumi.RegisterOutputType(PermissionConstraintArrayOutput{})
+	pulumi.RegisterOutputType(PermissionConstraintResponseOutput{})
+	pulumi.RegisterOutputType(PermissionConstraintResponseArrayOutput{})
+	pulumi.RegisterOutputType(PermissionResponseOutput{})
+	pulumi.RegisterOutputType(PermissionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrincipalOutput{})
+	pulumi.RegisterOutputType(PrincipalArrayOutput{})
+	pulumi.RegisterOutputType(PrincipalResponseOutput{})
+	pulumi.RegisterOutputType(PrincipalResponseArrayOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixResponseOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixArrayOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseOutput{})
 	pulumi.RegisterOutputType(PublicDelegatedPrefixPublicDelegatedSubPrefixResponseArrayOutput{})
+	pulumi.RegisterOutputType(RbacPolicyOutput{})
+	pulumi.RegisterOutputType(RbacPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RbacPolicyResponseOutput{})
+	pulumi.RegisterOutputType(RbacPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemDataItemResponseOutput{})
 	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemDataItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(RegionSslPolicyWarningsItemResponseOutput{})

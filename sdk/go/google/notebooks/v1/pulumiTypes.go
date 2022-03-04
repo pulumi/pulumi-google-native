@@ -1358,6 +1358,10 @@ type ExecutionTemplate struct {
 	Parameters *string `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
 	ParamsYamlFile *string `pulumi:"paramsYamlFile"`
+	// Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+	//
+	// Deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+	ScaleTier ExecutionTemplateScaleTier `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
@@ -1401,6 +1405,10 @@ type ExecutionTemplateArgs struct {
 	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
+	// Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+	//
+	// Deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+	ScaleTier ExecutionTemplateScaleTierInput `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
@@ -1540,6 +1548,13 @@ func (o ExecutionTemplateOutput) Parameters() pulumi.StringPtrOutput {
 // Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
 func (o ExecutionTemplateOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ParamsYamlFile }).(pulumi.StringPtrOutput)
+}
+
+// Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+//
+// Deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+func (o ExecutionTemplateOutput) ScaleTier() ExecutionTemplateScaleTierOutput {
+	return o.ApplyT(func(v ExecutionTemplate) ExecutionTemplateScaleTier { return v.ScaleTier }).(ExecutionTemplateScaleTierOutput)
 }
 
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
@@ -1691,6 +1706,18 @@ func (o ExecutionTemplatePtrOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+//
+// Deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+func (o ExecutionTemplatePtrOutput) ScaleTier() ExecutionTemplateScaleTierPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *ExecutionTemplateScaleTier {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleTier
+	}).(ExecutionTemplateScaleTierPtrOutput)
+}
+
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 func (o ExecutionTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *string {
@@ -1745,6 +1772,10 @@ type ExecutionTemplateResponse struct {
 	Parameters string `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
 	ParamsYamlFile string `pulumi:"paramsYamlFile"`
+	// Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+	//
+	// Deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+	ScaleTier string `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
@@ -1821,6 +1852,13 @@ func (o ExecutionTemplateResponseOutput) Parameters() pulumi.StringOutput {
 // Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
 func (o ExecutionTemplateResponseOutput) ParamsYamlFile() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ParamsYamlFile }).(pulumi.StringOutput)
+}
+
+// Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+//
+// Deprecated: Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+func (o ExecutionTemplateResponseOutput) ScaleTier() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ScaleTier }).(pulumi.StringOutput)
 }
 
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.

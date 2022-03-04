@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -76,6 +76,13 @@ class GetInstanceResult:
         if private_instance and not isinstance(private_instance, bool):
             raise TypeError("Expected argument 'private_instance' to be a bool")
         pulumi.set(__self__, "private_instance", private_instance)
+        if service_account and not isinstance(service_account, str):
+            raise TypeError("Expected argument 'service_account' to be a str")
+        if service_account is not None:
+            warnings.warn("""Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.""", DeprecationWarning)
+            pulumi.log.warn("""service_account is deprecated: Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.""")
+
+        pulumi.set(__self__, "service_account", service_account)
         if service_endpoint and not isinstance(service_endpoint, str):
             raise TypeError("Expected argument 'service_endpoint' to be a str")
         pulumi.set(__self__, "service_endpoint", service_endpoint)
@@ -254,6 +261,14 @@ class GetInstanceResult:
         return pulumi.get(self, "private_instance")
 
     @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
     @pulumi.getter(name="serviceEndpoint")
     def service_endpoint(self) -> str:
         """
@@ -343,6 +358,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             options=self.options,
             p4_service_account=self.p4_service_account,
             private_instance=self.private_instance,
+            service_account=self.service_account,
             service_endpoint=self.service_endpoint,
             state=self.state,
             state_message=self.state_message,
@@ -390,6 +406,7 @@ def get_instance(instance_id: Optional[str] = None,
         options=__ret__.options,
         p4_service_account=__ret__.p4_service_account,
         private_instance=__ret__.private_instance,
+        service_account=__ret__.service_account,
         service_endpoint=__ret__.service_endpoint,
         state=__ret__.state,
         state_message=__ret__.state_message,

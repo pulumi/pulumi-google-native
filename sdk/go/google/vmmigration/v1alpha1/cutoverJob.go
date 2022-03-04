@@ -20,6 +20,10 @@ type CutoverJob struct {
 
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseOutput `pulumi:"computeEngineTargetDetails"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	ComputeEngineVmDetails TargetVMDetailsResponseOutput `pulumi:"computeEngineVmDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
@@ -36,6 +40,10 @@ type CutoverJob struct {
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
+	// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+	TargetDetails TargetVMDetailsResponseOutput `pulumi:"targetDetails"`
 }
 
 // NewCutoverJob registers a new resource with the given unique name, arguments, and options.

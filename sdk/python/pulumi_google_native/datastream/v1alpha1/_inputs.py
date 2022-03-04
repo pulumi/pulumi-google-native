@@ -227,6 +227,7 @@ class GcsDestinationConfigArgs:
                  avro_file_format: Optional[pulumi.Input['AvroFileFormatArgs']] = None,
                  file_rotation_interval: Optional[pulumi.Input[str]] = None,
                  file_rotation_mb: Optional[pulumi.Input[int]] = None,
+                 gcs_file_format: Optional[pulumi.Input['GcsDestinationConfigGcsFileFormat']] = None,
                  json_file_format: Optional[pulumi.Input['JsonFileFormatArgs']] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
@@ -234,6 +235,7 @@ class GcsDestinationConfigArgs:
         :param pulumi.Input['AvroFileFormatArgs'] avro_file_format: AVRO file format configuration.
         :param pulumi.Input[str] file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
         :param pulumi.Input[int] file_rotation_mb: The maximum file size to be saved in the bucket.
+        :param pulumi.Input['GcsDestinationConfigGcsFileFormat'] gcs_file_format: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
         :param pulumi.Input['JsonFileFormatArgs'] json_file_format: JSON file format configuration.
         :param pulumi.Input[str] path: Path inside the Cloud Storage bucket to write data to.
         """
@@ -243,6 +245,11 @@ class GcsDestinationConfigArgs:
             pulumi.set(__self__, "file_rotation_interval", file_rotation_interval)
         if file_rotation_mb is not None:
             pulumi.set(__self__, "file_rotation_mb", file_rotation_mb)
+        if gcs_file_format is not None:
+            warnings.warn("""File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.""", DeprecationWarning)
+            pulumi.log.warn("""gcs_file_format is deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.""")
+        if gcs_file_format is not None:
+            pulumi.set(__self__, "gcs_file_format", gcs_file_format)
         if json_file_format is not None:
             pulumi.set(__self__, "json_file_format", json_file_format)
         if path is not None:
@@ -283,6 +290,18 @@ class GcsDestinationConfigArgs:
     @file_rotation_mb.setter
     def file_rotation_mb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "file_rotation_mb", value)
+
+    @property
+    @pulumi.getter(name="gcsFileFormat")
+    def gcs_file_format(self) -> Optional[pulumi.Input['GcsDestinationConfigGcsFileFormat']]:
+        """
+        File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+        """
+        return pulumi.get(self, "gcs_file_format")
+
+    @gcs_file_format.setter
+    def gcs_file_format(self, value: Optional[pulumi.Input['GcsDestinationConfigGcsFileFormat']]):
+        pulumi.set(self, "gcs_file_format", value)
 
     @property
     @pulumi.getter(name="jsonFileFormat")

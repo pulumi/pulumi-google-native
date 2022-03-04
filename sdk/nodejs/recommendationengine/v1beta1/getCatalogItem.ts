@@ -47,6 +47,12 @@ export interface GetCatalogItemResult {
      */
     readonly itemGroupId: string;
     /**
+     * Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     *
+     * @deprecated Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     */
+    readonly languageCode: string;
+    /**
      * Optional. Metadata specific to retail products.
      */
     readonly productMetadata: outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse;

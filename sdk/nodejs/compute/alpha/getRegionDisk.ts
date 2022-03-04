@@ -61,6 +61,12 @@ export interface GetRegionDiskResult {
      */
     readonly guestOsFeatures: outputs.compute.alpha.GuestOsFeatureResponse[];
     /**
+     * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     *
+     * @deprecated [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     */
+    readonly interface: string;
+    /**
      * Type of the resource. Always compute#disk for disks.
      */
     readonly kind: string;
@@ -204,6 +210,12 @@ export interface GetRegionDiskResult {
      * The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
      */
     readonly status: string;
+    /**
+     * [Deprecated] Storage type of the persistent disk.
+     *
+     * @deprecated [Deprecated] Storage type of the persistent disk.
+     */
+    readonly storageType: string;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */

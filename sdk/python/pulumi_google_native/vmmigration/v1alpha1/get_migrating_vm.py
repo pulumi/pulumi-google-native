@@ -18,10 +18,17 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None):
+    def __init__(__self__, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
         if compute_engine_target_defaults and not isinstance(compute_engine_target_defaults, dict):
             raise TypeError("Expected argument 'compute_engine_target_defaults' to be a dict")
         pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
+        if compute_engine_vm_defaults and not isinstance(compute_engine_vm_defaults, dict):
+            raise TypeError("Expected argument 'compute_engine_vm_defaults' to be a dict")
+        if compute_engine_vm_defaults is not None:
+            warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
+
+        pulumi.set(__self__, "compute_engine_vm_defaults", compute_engine_vm_defaults)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -67,6 +74,13 @@ class GetMigratingVmResult:
         if state_time and not isinstance(state_time, str):
             raise TypeError("Expected argument 'state_time' to be a str")
         pulumi.set(__self__, "state_time", state_time)
+        if target_defaults and not isinstance(target_defaults, dict):
+            raise TypeError("Expected argument 'target_defaults' to be a dict")
+        if target_defaults is not None:
+            warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+
+        pulumi.set(__self__, "target_defaults", target_defaults)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -78,6 +92,14 @@ class GetMigratingVmResult:
         Details of the target VM in Compute Engine.
         """
         return pulumi.get(self, "compute_engine_target_defaults")
+
+    @property
+    @pulumi.getter(name="computeEngineVmDefaults")
+    def compute_engine_vm_defaults(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_defaults")
 
     @property
     @pulumi.getter(name="createTime")
@@ -200,6 +222,14 @@ class GetMigratingVmResult:
         return pulumi.get(self, "state_time")
 
     @property
+    @pulumi.getter(name="targetDefaults")
+    def target_defaults(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        """
+        return pulumi.get(self, "target_defaults")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -215,6 +245,7 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             yield self
         return GetMigratingVmResult(
             compute_engine_target_defaults=self.compute_engine_target_defaults,
+            compute_engine_vm_defaults=self.compute_engine_vm_defaults,
             create_time=self.create_time,
             current_sync_info=self.current_sync_info,
             description=self.description,
@@ -230,6 +261,7 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             source_vm_id=self.source_vm_id,
             state=self.state,
             state_time=self.state_time,
+            target_defaults=self.target_defaults,
             update_time=self.update_time)
 
 
@@ -256,6 +288,7 @@ def get_migrating_vm(location: Optional[str] = None,
 
     return AwaitableGetMigratingVmResult(
         compute_engine_target_defaults=__ret__.compute_engine_target_defaults,
+        compute_engine_vm_defaults=__ret__.compute_engine_vm_defaults,
         create_time=__ret__.create_time,
         current_sync_info=__ret__.current_sync_info,
         description=__ret__.description,
@@ -271,6 +304,7 @@ def get_migrating_vm(location: Optional[str] = None,
         source_vm_id=__ret__.source_vm_id,
         state=__ret__.state,
         state_time=__ret__.state_time,
+        target_defaults=__ret__.target_defaults,
         update_time=__ret__.update_time)
 
 

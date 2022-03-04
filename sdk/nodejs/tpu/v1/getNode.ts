@@ -57,6 +57,12 @@ export interface GetNodeResult {
      */
     readonly healthDescription: string;
     /**
+     * DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+     *
+     * @deprecated Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+     */
+    readonly ipAddress: string;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     readonly labels: {[key: string]: string};
@@ -72,6 +78,12 @@ export interface GetNodeResult {
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
      */
     readonly networkEndpoints: outputs.tpu.v1.NetworkEndpointResponse[];
+    /**
+     * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+     *
+     * @deprecated Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+     */
+    readonly port: string;
     /**
      * The scheduling options for this node.
      */

@@ -325,6 +325,30 @@ export const JobPostingRegion = {
  */
 export type JobPostingRegion = (typeof JobPostingRegion)[keyof typeof JobPostingRegion];
 
+export const JobVisibility = {
+    /**
+     * Default value.
+     */
+    VisibilityUnspecified: "VISIBILITY_UNSPECIFIED",
+    /**
+     * The resource is only visible to the GCP account who owns it.
+     */
+    AccountOnly: "ACCOUNT_ONLY",
+    /**
+     * The resource is visible to the owner and may be visible to other applications and processes at Google.
+     */
+    SharedWithGoogle: "SHARED_WITH_GOOGLE",
+    /**
+     * The resource is visible to the owner and may be visible to all other API clients.
+     */
+    SharedWithPublic: "SHARED_WITH_PUBLIC",
+} as const;
+
+/**
+ * Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+ */
+export type JobVisibility = (typeof JobVisibility)[keyof typeof JobVisibility];
+
 export const ProcessingOptionsHtmlSanitization = {
     /**
      * Default value.

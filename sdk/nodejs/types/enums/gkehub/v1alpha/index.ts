@@ -65,3 +65,23 @@ export const MembershipSpecCertificateManagement = {
  * Specifies workload certificate management.
  */
 export type MembershipSpecCertificateManagement = (typeof MembershipSpecCertificateManagement)[keyof typeof MembershipSpecCertificateManagement];
+
+export const MultiClusterIngressFeatureSpecBilling = {
+    /**
+     * Unknown
+     */
+    BillingUnspecified: "BILLING_UNSPECIFIED",
+    /**
+     * User pays a fee per-endpoint.
+     */
+    PayAsYouGo: "PAY_AS_YOU_GO",
+    /**
+     * User is paying for Anthos as a whole.
+     */
+    AnthosLicense: "ANTHOS_LICENSE",
+} as const;
+
+/**
+ * Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+ */
+export type MultiClusterIngressFeatureSpecBilling = (typeof MultiClusterIngressFeatureSpecBilling)[keyof typeof MultiClusterIngressFeatureSpecBilling];

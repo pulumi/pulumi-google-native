@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly Outputs.DiskEncryptionStatusResponse DiskEncryptionStatus;
         /// <summary>
+        /// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The name and status of the failover replica.
         /// </summary>
         public readonly Outputs.InstanceFailoverReplicaResponse FailoverReplica;
@@ -107,6 +111,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The assigned IP addresses for the instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.IpMappingResponse> IpAddresses;
+        /// <summary>
+        /// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+        /// </summary>
+        public readonly string Ipv6Address;
         /// <summary>
         /// This is always `sql#instance`.
         /// </summary>
@@ -212,6 +220,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
             Outputs.DiskEncryptionStatusResponse diskEncryptionStatus,
 
+            string etag,
+
             Outputs.InstanceFailoverReplicaResponse failoverReplica,
 
             string gceZone,
@@ -219,6 +229,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             string instanceType,
 
             ImmutableArray<Outputs.IpMappingResponse> ipAddresses,
+
+            string ipv6Address,
 
             string kind,
 
@@ -271,10 +283,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             DatabaseVersion = databaseVersion;
             DiskEncryptionConfiguration = diskEncryptionConfiguration;
             DiskEncryptionStatus = diskEncryptionStatus;
+            Etag = etag;
             FailoverReplica = failoverReplica;
             GceZone = gceZone;
             InstanceType = instanceType;
             IpAddresses = ipAddresses;
+            Ipv6Address = ipv6Address;
             Kind = kind;
             MaintenanceVersion = maintenanceVersion;
             MasterInstanceName = masterInstanceName;

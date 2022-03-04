@@ -64,6 +64,12 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly internalIpv6Range!: pulumi.Output<string>;
     /**
+     * Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     *
+     * @deprecated Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     */
+    public readonly ipv4Range!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#network for networks.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -119,6 +125,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableUlaInternalIpv6"] = args ? args.enableUlaInternalIpv6 : undefined;
             resourceInputs["internalIpv6Range"] = args ? args.internalIpv6Range : undefined;
+            resourceInputs["ipv4Range"] = args ? args.ipv4Range : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
@@ -142,6 +149,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["firewallPolicy"] = undefined /*out*/;
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
             resourceInputs["internalIpv6Range"] = undefined /*out*/;
+            resourceInputs["ipv4Range"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["mtu"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -178,6 +186,12 @@ export interface NetworkArgs {
      * When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
      */
     internalIpv6Range?: pulumi.Input<string>;
+    /**
+     * Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     *
+     * @deprecated Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+     */
+    ipv4Range?: pulumi.Input<string>;
     /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */

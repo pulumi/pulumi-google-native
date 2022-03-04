@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string IngestDelay;
         /// <summary>
+        /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+        /// </summary>
+        public readonly string LaunchStage;
+        /// <summary>
         /// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
         /// </summary>
         public readonly string SamplePeriod;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         private MetricDescriptorMetadataResponse(
             string ingestDelay,
 
+            string launchStage,
+
             string samplePeriod)
         {
             IngestDelay = ingestDelay;
+            LaunchStage = launchStage;
             SamplePeriod = samplePeriod;
         }
     }

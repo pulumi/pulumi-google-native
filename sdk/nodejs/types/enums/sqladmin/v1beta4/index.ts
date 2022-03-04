@@ -467,6 +467,26 @@ export const SettingsPricingPlan = {
  */
 export type SettingsPricingPlan = (typeof SettingsPricingPlan)[keyof typeof SettingsPricingPlan];
 
+export const SettingsReplicationType = {
+    /**
+     * This is an unknown replication type for a Cloud SQL instance.
+     */
+    SqlReplicationTypeUnspecified: "SQL_REPLICATION_TYPE_UNSPECIFIED",
+    /**
+     * The synchronous replication mode for First Generation instances. It is the default value.
+     */
+    Synchronous: "SYNCHRONOUS",
+    /**
+     * The asynchronous replication mode for First Generation instances. It provides a slight performance gain, but if an outage occurs while this option is set to asynchronous, you can lose up to a few seconds of updates to your data.
+     */
+    Asynchronous: "ASYNCHRONOUS",
+} as const;
+
+/**
+ * The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+ */
+export type SettingsReplicationType = (typeof SettingsReplicationType)[keyof typeof SettingsReplicationType];
+
 export const SqlOutOfDiskReportSqlOutOfDiskState = {
     /**
      * Unspecified state

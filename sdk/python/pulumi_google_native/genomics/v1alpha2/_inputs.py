@@ -22,6 +22,7 @@ class DiskArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  type: pulumi.Input['DiskType'],
+                 auto_delete: Optional[pulumi.Input[bool]] = None,
                  mount_point: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None,
                  size_gb: Optional[pulumi.Input[int]] = None,
@@ -30,6 +31,7 @@ class DiskArgs:
         A Google Compute Engine disk resource specification.
         :param pulumi.Input[str] name: The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         :param pulumi.Input['DiskType'] type: The type of the disk to create.
+        :param pulumi.Input[bool] auto_delete: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
         :param pulumi.Input[str] mount_point: Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
         :param pulumi.Input[bool] read_only: Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
         :param pulumi.Input[int] size_gb: The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
@@ -37,6 +39,11 @@ class DiskArgs:
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
+        if auto_delete is not None:
+            warnings.warn("""Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.""", DeprecationWarning)
+            pulumi.log.warn("""auto_delete is deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.""")
+        if auto_delete is not None:
+            pulumi.set(__self__, "auto_delete", auto_delete)
         if mount_point is not None:
             pulumi.set(__self__, "mount_point", mount_point)
         if read_only is not None:
@@ -69,6 +76,18 @@ class DiskArgs:
     @type.setter
     def type(self, value: pulumi.Input['DiskType']):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @auto_delete.setter
+    def auto_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_delete", value)
 
     @property
     @pulumi.getter(name="mountPoint")

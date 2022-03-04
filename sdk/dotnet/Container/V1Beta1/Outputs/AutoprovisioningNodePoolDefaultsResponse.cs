@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.NodeManagementResponse Management;
         /// <summary>
+        /// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        /// </summary>
+        public readonly string MinCpuPlatform;
+        /// <summary>
         /// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             Outputs.NodeManagementResponse management,
 
+            string minCpuPlatform,
+
             ImmutableArray<string> oauthScopes,
 
             string serviceAccount,
@@ -78,6 +84,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             DiskType = diskType;
             ImageType = imageType;
             Management = management;
+            MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;

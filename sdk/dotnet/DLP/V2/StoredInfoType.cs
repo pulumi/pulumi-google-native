@@ -85,6 +85,9 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("config", required: true)]
         public Input<Inputs.GooglePrivacyDlpV2StoredInfoTypeConfigArgs> Config { get; set; } = null!;
 
+        /// <summary>
+        /// Deprecated. This field has no effect.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

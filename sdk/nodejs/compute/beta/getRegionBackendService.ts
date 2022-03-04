@@ -127,6 +127,12 @@ export interface GetRegionBackendServiceResult {
      */
     readonly outlierDetection: outputs.compute.beta.OutlierDetectionResponse;
     /**
+     * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+     *
+     * @deprecated Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+     */
+    readonly port: number;
+    /**
      * A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
      */
     readonly portName: string;

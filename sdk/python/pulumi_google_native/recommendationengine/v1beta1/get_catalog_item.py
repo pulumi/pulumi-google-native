@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCatalogItemResult:
-    def __init__(__self__, category_hierarchies=None, description=None, item_attributes=None, item_group_id=None, product_metadata=None, tags=None, title=None):
+    def __init__(__self__, category_hierarchies=None, description=None, item_attributes=None, item_group_id=None, language_code=None, product_metadata=None, tags=None, title=None):
         if category_hierarchies and not isinstance(category_hierarchies, list):
             raise TypeError("Expected argument 'category_hierarchies' to be a list")
         pulumi.set(__self__, "category_hierarchies", category_hierarchies)
@@ -31,6 +31,13 @@ class GetCatalogItemResult:
         if item_group_id and not isinstance(item_group_id, str):
             raise TypeError("Expected argument 'item_group_id' to be a str")
         pulumi.set(__self__, "item_group_id", item_group_id)
+        if language_code and not isinstance(language_code, str):
+            raise TypeError("Expected argument 'language_code' to be a str")
+        if language_code is not None:
+            warnings.warn("""Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""", DeprecationWarning)
+            pulumi.log.warn("""language_code is deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.""")
+
+        pulumi.set(__self__, "language_code", language_code)
         if product_metadata and not isinstance(product_metadata, dict):
             raise TypeError("Expected argument 'product_metadata' to be a dict")
         pulumi.set(__self__, "product_metadata", product_metadata)
@@ -74,6 +81,14 @@ class GetCatalogItemResult:
         return pulumi.get(self, "item_group_id")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
     @pulumi.getter(name="productMetadata")
     def product_metadata(self) -> 'outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse':
         """
@@ -108,6 +123,7 @@ class AwaitableGetCatalogItemResult(GetCatalogItemResult):
             description=self.description,
             item_attributes=self.item_attributes,
             item_group_id=self.item_group_id,
+            language_code=self.language_code,
             product_metadata=self.product_metadata,
             tags=self.tags,
             title=self.title)
@@ -137,6 +153,7 @@ def get_catalog_item(catalog_id: Optional[str] = None,
         description=__ret__.description,
         item_attributes=__ret__.item_attributes,
         item_group_id=__ret__.item_group_id,
+        language_code=__ret__.language_code,
         product_metadata=__ret__.product_metadata,
         tags=__ret__.tags,
         title=__ret__.title)

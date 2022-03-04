@@ -23,6 +23,7 @@ class WorkloadArgs:
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
+                 kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -35,6 +36,7 @@ class WorkloadArgs:
         :param pulumi.Input[str] billing_account: Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
@@ -51,6 +53,11 @@ class WorkloadArgs:
             pulumi.set(__self__, "etag", etag)
         if external_id is not None:
             pulumi.set(__self__, "external_id", external_id)
+        if kms_settings is not None:
+            warnings.warn("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""", DeprecationWarning)
+            pulumi.log.warn("""kms_settings is deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
+        if kms_settings is not None:
+            pulumi.set(__self__, "kms_settings", kms_settings)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -141,6 +148,18 @@ class WorkloadArgs:
         pulumi.set(self, "external_id", value)
 
     @property
+    @pulumi.getter(name="kmsSettings")
+    def kms_settings(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]:
+        """
+        Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+        """
+        return pulumi.get(self, "kms_settings")
+
+    @kms_settings.setter
+    def kms_settings(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]):
+        pulumi.set(self, "kms_settings", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -209,6 +228,7 @@ class Workload(pulumi.CustomResource):
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
+                 kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -226,6 +246,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
@@ -261,6 +282,7 @@ class Workload(pulumi.CustomResource):
                  enable_sovereign_controls: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
+                 kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -289,6 +311,10 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["enable_sovereign_controls"] = enable_sovereign_controls
             __props__.__dict__["etag"] = etag
             __props__.__dict__["external_id"] = external_id
+            if kms_settings is not None and not opts.urn:
+                warnings.warn("""Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""", DeprecationWarning)
+                pulumi.log.warn("""kms_settings is deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.""")
+            __props__.__dict__["kms_settings"] = kms_settings
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -330,6 +356,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["enable_sovereign_controls"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["kaj_enrollment_state"] = None
+        __props__.__dict__["kms_settings"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["provisioned_resources_parent"] = None
@@ -393,6 +420,14 @@ class Workload(pulumi.CustomResource):
         Represents the KAJ enrollment state of the given workload.
         """
         return pulumi.get(self, "kaj_enrollment_state")
+
+    @property
+    @pulumi.getter(name="kmsSettings")
+    def kms_settings(self) -> pulumi.Output['outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse']:
+        """
+        Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+        """
+        return pulumi.get(self, "kms_settings")
 
     @property
     @pulumi.getter

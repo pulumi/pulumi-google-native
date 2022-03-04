@@ -350,6 +350,8 @@ class GcsDestinationConfigResponse(dict):
             suggest = "file_rotation_interval"
         elif key == "fileRotationMb":
             suggest = "file_rotation_mb"
+        elif key == "gcsFileFormat":
+            suggest = "gcs_file_format"
         elif key == "jsonFileFormat":
             suggest = "json_file_format"
 
@@ -368,6 +370,7 @@ class GcsDestinationConfigResponse(dict):
                  avro_file_format: 'outputs.AvroFileFormatResponse',
                  file_rotation_interval: str,
                  file_rotation_mb: int,
+                 gcs_file_format: str,
                  json_file_format: 'outputs.JsonFileFormatResponse',
                  path: str):
         """
@@ -375,12 +378,14 @@ class GcsDestinationConfigResponse(dict):
         :param 'AvroFileFormatResponse' avro_file_format: AVRO file format configuration.
         :param str file_rotation_interval: The maximum duration for which new events are added before a file is closed and a new file is created.
         :param int file_rotation_mb: The maximum file size to be saved in the bucket.
+        :param str gcs_file_format: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
         :param 'JsonFileFormatResponse' json_file_format: JSON file format configuration.
         :param str path: Path inside the Cloud Storage bucket to write data to.
         """
         pulumi.set(__self__, "avro_file_format", avro_file_format)
         pulumi.set(__self__, "file_rotation_interval", file_rotation_interval)
         pulumi.set(__self__, "file_rotation_mb", file_rotation_mb)
+        pulumi.set(__self__, "gcs_file_format", gcs_file_format)
         pulumi.set(__self__, "json_file_format", json_file_format)
         pulumi.set(__self__, "path", path)
 
@@ -407,6 +412,14 @@ class GcsDestinationConfigResponse(dict):
         The maximum file size to be saved in the bucket.
         """
         return pulumi.get(self, "file_rotation_mb")
+
+    @property
+    @pulumi.getter(name="gcsFileFormat")
+    def gcs_file_format(self) -> str:
+        """
+        File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+        """
+        return pulumi.get(self, "gcs_file_format")
 
     @property
     @pulumi.getter(name="jsonFileFormat")

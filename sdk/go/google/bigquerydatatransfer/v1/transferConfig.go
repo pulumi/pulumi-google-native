@@ -46,6 +46,10 @@ type TransferConfig struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Data transfer modification time. Ignored by server on input.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewTransferConfig registers a new resource with the given unique name, arguments, and options.
@@ -113,7 +117,11 @@ type transferConfigArgs struct {
 	// Options customizing the data transfer schedule.
 	ScheduleOptions    *ScheduleOptions `pulumi:"scheduleOptions"`
 	ServiceAccountName *string          `pulumi:"serviceAccountName"`
-	VersionInfo        *string          `pulumi:"versionInfo"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId      *string `pulumi:"userId"`
+	VersionInfo *string `pulumi:"versionInfo"`
 }
 
 // The set of arguments for constructing a TransferConfig resource.
@@ -144,7 +152,11 @@ type TransferConfigArgs struct {
 	// Options customizing the data transfer schedule.
 	ScheduleOptions    ScheduleOptionsPtrInput
 	ServiceAccountName pulumi.StringPtrInput
-	VersionInfo        pulumi.StringPtrInput
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId      pulumi.StringPtrInput
+	VersionInfo pulumi.StringPtrInput
 }
 
 func (TransferConfigArgs) ElementType() reflect.Type {
