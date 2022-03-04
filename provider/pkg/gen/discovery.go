@@ -1,14 +1,27 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package gen
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"google.golang.org/api/discovery/v1"
-	"strings"
 )
 
 // discoveryDocumentResource is a combination of REST methods that should be treated as
@@ -19,7 +32,10 @@ type discoveryDocumentResource struct {
 
 // findResources builds a map of resources for a given Discovery Document resource. Map keys are resource names and
 // values are pointers to CRUD REST methods.
-func findResources(docName string, rest map[string]discovery.RestResource) (map[string]discoveryDocumentResource, error) {
+func findResources(
+	docName string,
+	rest map[string]discovery.RestResource,
+) (map[string]discoveryDocumentResource, error) {
 	result := map[string]discoveryDocumentResource{}
 	add := func(typeName string, dd discoveryDocumentResource) error {
 		return addFoundResource(result, typeName, dd)
@@ -69,7 +85,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				if getIamPolicy, has := res.Methods["getIamPolicy"]; has {
 					dd := discoveryDocumentResource{
 						createMethod: &restMethod,
-						getMethod: &getIamPolicy,
+						getMethod:    &getIamPolicy,
 						updateMethod: &restMethod,
 					}
 					err := add(typeName, dd)
@@ -86,7 +102,8 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 		switch {
 		case createMethod != nil && getMethod != nil:
 			if getMethod.HttpMethod != "GET" {
-				return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
+				return errors.Errorf(
+					"get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
 			}
 			path := createMethod.FlatPath
 			if path == "" {
@@ -111,7 +128,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 
 			dd := discoveryDocumentResource{
 				createMethod: createMethod,
-				getMethod: getMethod,
+				getMethod:    getMethod,
 				updateMethod: updateMethod,
 				deleteMethod: deleteMethod,
 			}
@@ -146,7 +163,11 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 	return nil
 }
 
-func addFoundResource(resourceMap map[string]discoveryDocumentResource, typeName string, dd discoveryDocumentResource) error {
+func addFoundResource(
+	resourceMap map[string]discoveryDocumentResource,
+	typeName string,
+	dd discoveryDocumentResource,
+) error {
 	for _, param := range dd.createMethod.Parameters {
 		if param.Location == "path" && isDeprecated(param.Description) {
 			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
@@ -161,14 +182,21 @@ func addFoundResource(resourceMap map[string]discoveryDocumentResource, typeName
 		return nil
 	}
 
-	// Check if two conflicting resources represent the same data type. Otherwise, error - we don't support this scenario.
+	// Check if two conflicting resources represent the same data type. Otherwise, error - we don't support this
+	// scenario.
 	if existing.createMethod.Response.Ref != dd.createMethod.Response.Ref {
-		return errors.Errorf("%q conflict: %q (%q) vs %q (%q)", typeName, existing.createMethod.Response.Ref, existing.createMethod.FlatPath, dd.createMethod.Response.Ref, dd.createMethod.FlatPath)
+		return errors.Errorf(
+			"%q conflict: %q (%q) vs %q (%q)",
+			typeName,
+			existing.createMethod.Response.Ref,
+			existing.createMethod.FlatPath,
+			dd.createMethod.Response.Ref,
+			dd.createMethod.FlatPath)
 	}
 
 	// Parse the paths of both resources to extract the parameters.
-	existingParams := findApiParams(existing)
-	newParams := findApiParams(dd)
+	existingParams := findAPIParams(existing)
+	newParams := findAPIParams(dd)
 
 	// Check if one set of parameters is preferred over the other, pick the preferred one if so.
 	if preferParams(existingParams, newParams) {
@@ -179,7 +207,8 @@ func addFoundResource(resourceMap map[string]discoveryDocumentResource, typeName
 		return nil
 	}
 
-	return errors.Errorf("%q incompatible params: %q vs %q", typeName, existing.createMethod.FlatPath, dd.createMethod.FlatPath)
+	return errors.Errorf(
+		"%q incompatible params: %q vs %q", typeName, existing.createMethod.FlatPath, dd.createMethod.FlatPath)
 }
 
 func preferParams(set codegen.StringSet, other codegen.StringSet) bool {
@@ -195,7 +224,7 @@ func preferParams(set codegen.StringSet, other codegen.StringSet) bool {
 	return false
 }
 
-func findApiParams(dd discoveryDocumentResource) codegen.StringSet {
+func findAPIParams(dd discoveryDocumentResource) codegen.StringSet {
 	path := dd.createMethod.FlatPath
 	if path == "" {
 		path = dd.createMethod.Path

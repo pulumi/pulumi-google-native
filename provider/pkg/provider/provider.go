@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package provider
 
@@ -91,12 +103,15 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 
 	p.setLoggingContext(ctx)
 
-	impersonateServiceAccountDelegatesString := p.getConfig("impersonateServiceAccountDelegates", "")
+	impersonateServiceAccountDelegatesString := p.getConfig(
+		"impersonateServiceAccountDelegates", "")
 	var impersonateServiceAccountDelegates []string
 	if impersonateServiceAccountDelegatesString != "" {
 		err := json.Unmarshal([]byte(impersonateServiceAccountDelegatesString), &impersonateServiceAccountDelegates)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to unmarshal %q as Impersonate Service Account Delegates", impersonateServiceAccountDelegatesString)
+			return nil, errors.Wrapf(err,
+				"failed to unmarshal %q as Impersonate Service Account Delegates",
+				impersonateServiceAccountDelegatesString)
 		}
 	}
 
@@ -110,11 +125,12 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	}
 
 	appendUserAgent := p.getConfig("appendUserAgent", "GOOGLE_APPEND_USER_AGENT")
+	impersonateServiceAccount := p.getConfig("impersonateServiceAccount", "GOOGLE_IMPERSONATE_SERVICE_ACCOUNT")
 
 	config := googleclient.Config{
 		Credentials:                        p.getConfig("credentials", "GOOGLE_CREDENTIALS"),
 		AccessToken:                        p.getConfig("accessToken", "GOOGLE_OAUTH_ACCESS_TOKEN"),
-		ImpersonateServiceAccount:          p.getConfig("impersonateServiceAccount", "GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"),
+		ImpersonateServiceAccount:          impersonateServiceAccount,
 		ImpersonateServiceAccountDelegates: impersonateServiceAccountDelegates,
 		Scopes:                             scopes,
 		PulumiVersion:                      getPulumiVersion(),
@@ -150,7 +166,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 	}
 
 	// Apply default config values.
-	for _, param := range inv.Params {
+	for _, param := range inv.URL.Values {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
@@ -164,7 +180,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		}
 	}
 
-	uri, err := buildFunctionUrl(inv, args)
+	uri, err := buildFunctionURL(inv, args)
 	if err != nil {
 		return nil, err
 	}
@@ -225,7 +241,7 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 
 	// Apply default config values.
 	var failures []*rpc.CheckFailure
-	for _, param := range res.CreateParams {
+	for _, param := range res.Create.Endpoint.Values {
 		sdkName := param.Name
 		if param.SdkName != "" {
 			sdkName = param.SdkName
@@ -243,7 +259,9 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 			if value, ok := p.getDefaultValue(key, configName, olds); ok {
 				news[key] = *value
 			} else {
-				reason := fmt.Sprintf("missing required property '%s'. Either set it explicitly or configure it with 'pulumi config set google-native:%s <value>'.", sdkName, configName)
+				reason := fmt.Sprintf(
+					"missing required property '%s'. Either set it explicitly or configure it with "+
+						"'pulumi config set google-native:%s <value>'.", sdkName, configName)
 				failures = append(failures, &rpc.CheckFailure{
 					Reason: reason,
 				})
@@ -258,7 +276,7 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 
 	// Apply property patterns.
-	for name, prop := range res.CreateProperties {
+	for name, prop := range res.Create.SDKProperties {
 		key := resource.PropertyKey(name)
 		if prop.SdkName != "" {
 			key = resource.PropertyKey(prop.SdkName)
@@ -278,7 +296,11 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 }
 
 // Get a default project name for the given inputs.
-func (p *googleCloudProvider) getDefaultValue(key resource.PropertyKey, configName string, olds resource.PropertyMap) (*resource.PropertyValue, bool) {
+func (p *googleCloudProvider) getDefaultValue(
+	key resource.PropertyKey,
+	configName string,
+	olds resource.PropertyMap,
+) (*resource.PropertyValue, bool) {
 	// 1. Check if old inputs define the value.
 	if v, ok := olds[key]; ok {
 		return &v, true
@@ -382,11 +404,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	uri, err := buildCreateUrl(res, inputs)
+	uri, err := buildCreateURL(res, inputs)
 	if err != nil {
 		return nil, err
 	}
-	body := p.prepareAPIInputs(inputs, nil, res.CreateProperties)
+	body := p.prepareAPIInputs(inputs, nil, res.Create.SDKProperties)
 
 	var op map[string]interface{}
 	if res.AssetUpload {
@@ -401,25 +423,25 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, err
 		}
 
-		op, err = p.client.UploadWithTimeout(res.CreateVerb, uri, body, content, 0)
+		op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
 		}
 	} else {
-		op, err = p.client.RequestWithTimeout(res.CreateVerb, uri, body, 0)
+		op, err = p.client.RequestWithTimeout(res.Create.Verb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootURL, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
 		// A partial failure may have occurred because we got an error and a response.
 		// Try reading the resource state and return a partial error if there is some.
-		id, idErr := calculateResourceId(res, inputsMap, resp)
+		id, idErr := calculateResourceID(res, inputsMap, resp)
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
@@ -442,8 +464,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		checkpointObject(inputs, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal checkpoint: %w", err)
+	}
 
-	id, err := calculateResourceId(res, inputsMap, resp)
+	id, err := calculateResourceID(res, inputsMap, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "calculating resource ID")
 	}
@@ -456,17 +481,19 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 func (p *googleCloudProvider) prepareAPIInputs(
 	inputs, state resource.PropertyMap,
-	properties map[string]resources.CloudAPIProperty) map[string]interface{} {
-	inputsMap := inputs.Mappable()
-	stateMap := state.Mappable()
-	return p.converter.SdkPropertiesToRequestBody(properties, inputsMap, stateMap)
+	properties map[string]resources.CloudAPIProperty,
+) map[string]interface{} {
+	return p.converter.SdkPropertiesToRequestBody(properties, inputs.Mappable(), state.Mappable())
 }
 
 // waitForResourceOpCompletion keeps polling the resource or operation URL until it gets
 // a success or a failure of provisioning.
 // Note that both a response and an error can be returned in case of a partially-failed deployment
 // (e.g., resource is created but failed to initialize to completion).
-func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
+func (p *googleCloudProvider) waitForResourceOpCompletion(
+	baseURL string,
+	resp map[string]interface{},
+) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
 		Max:    15 * time.Second,
@@ -492,7 +519,8 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 			if response, has := resp["response"].(map[string]interface{}); has {
 				return response, err
 			}
-			if operationType, has := resp["operationType"].(string); has && strings.Contains(strings.ToLower(operationType), "delete") {
+			if operationType, has := resp["operationType"].(string); has &&
+				strings.Contains(strings.ToLower(operationType), "delete") {
 				return resp, err
 			}
 			// Check if there's a target link.
@@ -516,22 +544,22 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 			return resp, nil
 		}
 
-		var pollUri string
+		var pollURI string
 		if selfLink, has := resp["selfLink"].(string); has && hasStatus {
-			pollUri = selfLink
+			pollURI = selfLink
 		} else {
 			if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
-				pollUri = fmt.Sprintf("%s/v1/%s", baseUrl, name)
+				pollURI = fmt.Sprintf("%s/v1/%s", baseURL, name)
 			}
 		}
 
-		if pollUri == "" {
+		if pollURI == "" {
 			return resp, nil
 		}
 
 		time.Sleep(retryPolicy.Duration())
 
-		op, err := p.client.RequestWithTimeout("GET", pollUri, nil, 0)
+		op, err := p.client.RequestWithTimeout("GET", pollURI, nil, 0)
 		if err != nil {
 			return nil, errors.Wrapf(err, "polling operation status")
 		}
@@ -551,7 +579,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	id := req.GetId()
-	uri := res.ResourceUrl(id)
+	uri := res.ResourceURL(id)
 
 	// Retrieve the old state.
 	oldState, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
@@ -576,20 +604,19 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	newStateProps := resource.NewPropertyMapFromMap(newState)
 	if inputs == nil {
 		return nil, status.Error(codes.Unimplemented, "Import is not yet implemented")
-	} else {
-		// It's hard to infer the changes in the inputs shape based on the outputs without false positives.
-		// The current approach is complicated but it's aimed to minimize the noise while refreshing:
-		// 0. We have "old" inputs and outputs before refresh and "new" outputs read from API.
-		// 1. Project old outputs to their corresponding input shape (exclude read-only properties).
-		oldInputProjection := getInputsFromState(res, oldState)
-		// 2. Project new outputs to their corresponding input shape (exclude read-only properties).
-		newInputProjection := getInputsFromState(res, newStateProps)
-		// 3. Calculate the difference between two projections. This should give us actual significant changes
-		// that happened in Google Cloud between the last resource update and its current state.
-		diff := oldInputProjection.Diff(newInputProjection)
-		// 4. Apply this difference to the actual inputs (not a projection) that we have in state.
-		inputs = applyDiff(inputs, diff)
 	}
+	// It's hard to infer the changes in the inputs shape based on the outputs without false positives.
+	// The current approach is complicated but it's aimed to minimize the noise while refreshing:
+	// 0. We have "old" inputs and outputs before refresh and "new" outputs read from API.
+	// 1. Project old outputs to their corresponding input shape (exclude read-only properties).
+	oldInputProjection := getInputsFromState(res, oldState)
+	// 2. Project new outputs to their corresponding input shape (exclude read-only properties).
+	newInputProjection := getInputsFromState(res, newStateProps)
+	// 3. Calculate the difference between two projections. This should give us actual significant changes
+	// that happened in Google Cloud between the last resource update and its current state.
+	diff := oldInputProjection.Diff(newInputProjection)
+	// 4. Apply this difference to the actual inputs (not a projection) that we have in state.
+	inputs = applyDiff(inputs, diff)
 
 	// Store both outputs and inputs into the state checkpoint.
 	checkpoint, err := plugin.MarshalProperties(
@@ -639,19 +666,19 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	body := p.prepareAPIInputs(inputs, oldState, res.UpdateProperties)
+	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
 
-	uri := res.ResourceUrl(req.GetId())
+	uri := res.ResourceURL(req.GetId())
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 	}
 
-	op, err := p.client.RequestWithTimeout(res.UpdateVerb, uri, body, 0)
+	op, err := p.client.RequestWithTimeout(res.Update.Verb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootURL, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -671,6 +698,9 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		checkpointObject(newInputs, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), KeepSecrets: true, SkipNulls: true},
 	)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal checkpoint: %w", err)
+	}
 
 	return &rpc.UpdateResponse{
 		Properties: outputs,
@@ -687,9 +717,9 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	uri := res.ResourceUrl(req.GetId())
+	uri := res.ResourceURL(req.GetId())
 
-	if res.NoDelete {
+	if res.Delete.Undefined() {
 		// At the time of writing, the classic GCP provider has the same behavior and warning for 10 resources.
 		logging.V(1).Infof("%q resources"+
 			" cannot be deleted from Google Cloud. The resource %s will be removed from Pulumi"+
@@ -702,7 +732,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.BaseUrl, resp)
+	_, err = p.waitForResourceOpCompletion(res.RootURL, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -760,11 +790,10 @@ func (p *googleCloudProvider) getPartnerName() string {
 	result := p.getConfig("partnerName", "GOOGLE_PARTNER_NAME")
 	if result != "" {
 		return result
-	} else {
-		disablePartner := p.getConfig("disablePartnerName", "GOOGLE_DISABLE_PARTNER_NAME")
-		if disablePartner == "true" {
-			return ""
-		}
+	}
+	disablePartner := p.getConfig("disablePartnerName", "GOOGLE_DISABLE_PARTNER_NAME")
+	if disablePartner == "true" {
+		return ""
 	}
 	return "Pulumi"
 }
