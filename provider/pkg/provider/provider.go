@@ -579,7 +579,6 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	id := req.GetId()
-	uri := res.ResourceURL(id)
 
 	// Retrieve the old state.
 	oldState, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
@@ -589,8 +588,16 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 		return nil, err
 	}
 
+	// Extract old inputs from the `__inputs` field of the old state.
+	inputs := parseCheckpointObject(oldState)
+
+	uri, err := res.Read.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+	if err != nil {
+		return nil, err
+	}
+
 	// Read the current state of the resource from the API.
-	newState, err := p.client.RequestWithTimeout("GET", uri, nil, 0)
+	newState, err := p.client.RequestWithTimeout(res.Read.Verb, uri, nil, 0)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -599,8 +606,6 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	// Extract old inputs from the `__inputs` field of the old state.
-	inputs := parseCheckpointObject(oldState)
 	newStateProps := resource.NewPropertyMapFromMap(newState)
 	if inputs == nil {
 		return nil, status.Error(codes.Unimplemented, "Import is not yet implemented")
@@ -668,7 +673,12 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 
 	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
 
-	uri := res.ResourceURL(req.GetId())
+	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+	if err != nil {
+		return nil, err
+	}
+	//uri := res.ResourceURL(req.GetId())
+
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 	}
@@ -711,13 +721,30 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 // to still exist.
 func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) (*empty.Empty, error) {
 	urn := resource.URN(req.GetUrn())
+	label := fmt.Sprintf("%s.Delete(%s)", p.name, urn)
+	logging.V(9).Infof("%s executing", label)
+
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	uri := res.ResourceURL(req.GetId())
+	// Deserialize RPC inputs
+	oldState, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
+		Label: fmt.Sprintf("%s.properties", label), SkipNulls: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	// Extract old inputs from the `__inputs` field of the old state.
+	inputs := parseCheckpointObject(oldState)
+
+	uri, err := res.Delete.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+	if err != nil {
+		return nil, err
+	}
 
 	if res.Delete.Undefined() {
 		// At the time of writing, the classic GCP provider has the same behavior and warning for 10 resources.
@@ -727,7 +754,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := p.client.RequestWithTimeout("DELETE", uri, nil, 0)
+	resp, err := p.client.RequestWithTimeout(res.Delete.Verb, uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
@@ -833,7 +860,10 @@ func checkpointObject(inputs resource.PropertyMap, outputs map[string]interface{
 // parseCheckpointObject returns inputs that are saved in the `__inputs` field of the state.
 func parseCheckpointObject(obj resource.PropertyMap) resource.PropertyMap {
 	if inputs, ok := obj["__inputs"]; ok {
-		return inputs.SecretValue().Element.ObjectValue()
+		if inputs.IsSecret() {
+			return inputs.SecretValue().Element.ObjectValue()
+		}
+		return inputs.ObjectValue()
 	}
 
 	return nil
