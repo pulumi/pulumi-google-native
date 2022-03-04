@@ -5547,13 +5547,13 @@ type Probe struct {
 	HttpGet *HTTPGetAction `pulumi:"httpGet"`
 	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 	SuccessThreshold *int `pulumi:"successThreshold"`
 	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket *TCPSocketAction `pulumi:"tcpSocket"`
-	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
 
@@ -5578,13 +5578,13 @@ type ProbeArgs struct {
 	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
 	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
 	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket TCPSocketActionPtrInput `pulumi:"tcpSocket"`
-	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
 
@@ -5686,12 +5686,12 @@ func (o ProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
 func (o ProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 func (o ProbeOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.SuccessThreshold }).(pulumi.IntPtrOutput)
 }
@@ -5701,7 +5701,7 @@ func (o ProbeOutput) TcpSocket() TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v Probe) *TCPSocketAction { return v.TcpSocket }).(TCPSocketActionPtrOutput)
 }
 
-// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
 }
@@ -5770,7 +5770,7 @@ func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
 func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -5780,7 +5780,7 @@ func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 func (o ProbePtrOutput) SuccessThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -5800,7 +5800,7 @@ func (o ProbePtrOutput) TcpSocket() TCPSocketActionPtrOutput {
 	}).(TCPSocketActionPtrOutput)
 }
 
-// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -5820,13 +5820,13 @@ type ProbeResponse struct {
 	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
 	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
 	PeriodSeconds int `pulumi:"periodSeconds"`
-	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 	SuccessThreshold int `pulumi:"successThreshold"`
 	// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
 	TcpSocket TCPSocketActionResponse `pulumi:"tcpSocket"`
-	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
 }
 
@@ -5865,12 +5865,12 @@ func (o ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
 
-// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
 func (o ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
-// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 func (o ProbeResponseOutput) SuccessThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.SuccessThreshold }).(pulumi.IntOutput)
 }
@@ -5880,7 +5880,7 @@ func (o ProbeResponseOutput) TcpSocket() TCPSocketActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) TCPSocketActionResponse { return v.TcpSocket }).(TCPSocketActionResponseOutput)
 }
 
-// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.TimeoutSeconds }).(pulumi.IntOutput)
 }

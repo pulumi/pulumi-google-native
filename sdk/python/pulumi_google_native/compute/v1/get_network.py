@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkResult:
-    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, gateway_i_pv4=None, kind=None, mtu=None, name=None, peerings=None, routing_config=None, self_link=None, subnetworks=None):
+    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, gateway_i_pv4=None, internal_ipv6_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
             raise TypeError("Expected argument 'auto_create_subnetworks' to be a bool")
         pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -28,9 +28,15 @@ class GetNetworkResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_ula_internal_ipv6 and not isinstance(enable_ula_internal_ipv6, bool):
+            raise TypeError("Expected argument 'enable_ula_internal_ipv6' to be a bool")
+        pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
         if gateway_i_pv4 and not isinstance(gateway_i_pv4, str):
             raise TypeError("Expected argument 'gateway_i_pv4' to be a str")
         pulumi.set(__self__, "gateway_i_pv4", gateway_i_pv4)
+        if internal_ipv6_range and not isinstance(internal_ipv6_range, str):
+            raise TypeError("Expected argument 'internal_ipv6_range' to be a str")
+        pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -40,6 +46,9 @@ class GetNetworkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_firewall_policy_enforcement_order and not isinstance(network_firewall_policy_enforcement_order, str):
+            raise TypeError("Expected argument 'network_firewall_policy_enforcement_order' to be a str")
+        pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if peerings and not isinstance(peerings, list):
             raise TypeError("Expected argument 'peerings' to be a list")
         pulumi.set(__self__, "peerings", peerings)
@@ -49,6 +58,9 @@ class GetNetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if self_link_with_id and not isinstance(self_link_with_id, str):
+            raise TypeError("Expected argument 'self_link_with_id' to be a str")
+        pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if subnetworks and not isinstance(subnetworks, list):
             raise TypeError("Expected argument 'subnetworks' to be a list")
         pulumi.set(__self__, "subnetworks", subnetworks)
@@ -78,12 +90,28 @@ class GetNetworkResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableUlaInternalIpv6")
+    def enable_ula_internal_ipv6(self) -> bool:
+        """
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        """
+        return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @property
     @pulumi.getter(name="gatewayIPv4")
     def gateway_i_pv4(self) -> str:
         """
         The gateway address for default routing out of the network, selected by GCP.
         """
         return pulumi.get(self, "gateway_i_pv4")
+
+    @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> str:
+        """
+        When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        """
+        return pulumi.get(self, "internal_ipv6_range")
 
     @property
     @pulumi.getter
@@ -110,6 +138,14 @@ class GetNetworkResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
+    def network_firewall_policy_enforcement_order(self) -> str:
+        """
+        The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        """
+        return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @property
     @pulumi.getter
     def peerings(self) -> Sequence['outputs.NetworkPeeringResponse']:
         """
@@ -134,6 +170,14 @@ class GetNetworkResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> str:
+        """
+        Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
+
+    @property
     @pulumi.getter
     def subnetworks(self) -> Sequence[str]:
         """
@@ -151,13 +195,17 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             auto_create_subnetworks=self.auto_create_subnetworks,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
+            enable_ula_internal_ipv6=self.enable_ula_internal_ipv6,
             gateway_i_pv4=self.gateway_i_pv4,
+            internal_ipv6_range=self.internal_ipv6_range,
             kind=self.kind,
             mtu=self.mtu,
             name=self.name,
+            network_firewall_policy_enforcement_order=self.network_firewall_policy_enforcement_order,
             peerings=self.peerings,
             routing_config=self.routing_config,
             self_link=self.self_link,
+            self_link_with_id=self.self_link_with_id,
             subnetworks=self.subnetworks)
 
 
@@ -180,13 +228,17 @@ def get_network(network: Optional[str] = None,
         auto_create_subnetworks=__ret__.auto_create_subnetworks,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
+        enable_ula_internal_ipv6=__ret__.enable_ula_internal_ipv6,
         gateway_i_pv4=__ret__.gateway_i_pv4,
+        internal_ipv6_range=__ret__.internal_ipv6_range,
         kind=__ret__.kind,
         mtu=__ret__.mtu,
         name=__ret__.name,
+        network_firewall_policy_enforcement_order=__ret__.network_firewall_policy_enforcement_order,
         peerings=__ret__.peerings,
         routing_config=__ret__.routing_config,
         self_link=__ret__.self_link,
+        self_link_with_id=__ret__.self_link_with_id,
         subnetworks=__ret__.subnetworks)
 
 

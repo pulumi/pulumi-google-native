@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2alphaRuleResponse Rule;
         /// <summary>
-        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         public readonly ImmutableArray<string> SolutionTypes;
 

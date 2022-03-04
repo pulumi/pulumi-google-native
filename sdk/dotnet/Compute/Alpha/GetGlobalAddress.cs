@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string IpVersion;
         /// <summary>
+        /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+        /// </summary>
+        public readonly string Ipv6EndpointType;
+        /// <summary>
         /// Type of the resource. Always compute#address for addresses.
         /// </summary>
         public readonly string Kind;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string ipVersion,
 
+            string ipv6EndpointType,
+
             string kind,
 
             string labelFingerprint,
@@ -177,6 +183,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             CreationTimestamp = creationTimestamp;
             Description = description;
             IpVersion = ipVersion;
+            Ipv6EndpointType = ipv6EndpointType;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

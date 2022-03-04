@@ -49,7 +49,7 @@ class GetGameServerDeploymentResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        Human readable description of the game server delpoyment.
+        Human readable description of the game server deployment.
         """
         return pulumi.get(self, "description")
 
@@ -57,7 +57,7 @@ class GetGameServerDeploymentResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        ETag of the resource.
+        Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
 
@@ -73,7 +73,7 @@ class GetGameServerDeploymentResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
         return pulumi.get(self, "name")
 

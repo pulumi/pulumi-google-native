@@ -22,10 +22,10 @@ class GameServerDeploymentArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GameServerDeployment resource.
-        :param pulumi.Input[str] description: Human readable description of the game server delpoyment.
-        :param pulumi.Input[str] etag: ETag of the resource.
+        :param pulumi.Input[str] description: Human readable description of the game server deployment.
+        :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a key-value pair.
-        :param pulumi.Input[str] name: The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        :param pulumi.Input[str] name: The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
         pulumi.set(__self__, "deployment_id", deployment_id)
         if description is not None:
@@ -54,7 +54,7 @@ class GameServerDeploymentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Human readable description of the game server delpoyment.
+        Human readable description of the game server deployment.
         """
         return pulumi.get(self, "description")
 
@@ -66,7 +66,7 @@ class GameServerDeploymentArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        ETag of the resource.
+        Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
 
@@ -99,7 +99,7 @@ class GameServerDeploymentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
         return pulumi.get(self, "name")
 
@@ -135,10 +135,10 @@ class GameServerDeployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Human readable description of the game server delpoyment.
-        :param pulumi.Input[str] etag: ETag of the resource.
+        :param pulumi.Input[str] description: Human readable description of the game server deployment.
+        :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a key-value pair.
-        :param pulumi.Input[str] name: The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        :param pulumi.Input[str] name: The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
         ...
     @overload
@@ -236,7 +236,7 @@ class GameServerDeployment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Human readable description of the game server delpoyment.
+        Human readable description of the game server deployment.
         """
         return pulumi.get(self, "description")
 
@@ -244,7 +244,7 @@ class GameServerDeployment(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        ETag of the resource.
+        Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
 
@@ -260,7 +260,7 @@ class GameServerDeployment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
         return pulumi.get(self, "name")
 

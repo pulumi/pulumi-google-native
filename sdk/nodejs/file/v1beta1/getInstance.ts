@@ -53,6 +53,10 @@ export interface GetInstanceResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * The max number of shares allowed.
+     */
+    readonly maxShareCount: string;
+    /**
      * The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
      */
     readonly name: string;

@@ -186,6 +186,7 @@ class FirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["parent"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["rule_tuple_count"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -218,6 +219,7 @@ class FirewallPolicy(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["rule_tuple_count"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
@@ -280,6 +282,14 @@ class FirewallPolicy(pulumi.CustomResource):
         The parent of the firewall policy.
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="ruleTupleCount")

@@ -214,6 +214,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly int NodeIpv4CidrSize;
         /// <summary>
+        /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        /// </summary>
+        public readonly Outputs.NodePoolAutoConfigResponse NodePoolAutoConfig;
+        /// <summary>
         /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         /// </summary>
         public readonly Outputs.NodePoolDefaultsResponse NodePoolDefaults;
@@ -352,6 +356,8 @@ namespace Pulumi.GoogleNative.Container.V1
 
             int nodeIpv4CidrSize,
 
+            Outputs.NodePoolAutoConfigResponse nodePoolAutoConfig,
+
             Outputs.NodePoolDefaultsResponse nodePoolDefaults,
 
             ImmutableArray<Outputs.NodePoolResponse> nodePools,
@@ -420,6 +426,7 @@ namespace Pulumi.GoogleNative.Container.V1
             NetworkConfig = networkConfig;
             NetworkPolicy = networkPolicy;
             NodeIpv4CidrSize = nodeIpv4CidrSize;
+            NodePoolAutoConfig = nodePoolAutoConfig;
             NodePoolDefaults = nodePoolDefaults;
             NodePools = nodePools;
             NotificationConfig = notificationConfig;

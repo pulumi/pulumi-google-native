@@ -105,6 +105,8 @@ type LookupClusterResult struct {
 	NetworkPolicy NetworkPolicyResponse `pulumi:"networkPolicy"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize int `pulumi:"nodeIpv4CidrSize"`
+	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	NodePoolAutoConfig NodePoolAutoConfigResponse `pulumi:"nodePoolAutoConfig"`
 	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
 	NodePoolDefaults NodePoolDefaultsResponse `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -137,6 +139,8 @@ type LookupClusterResult struct {
 	TpuIpv4CidrBlock string `pulumi:"tpuIpv4CidrBlock"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingResponse `pulumi:"verticalPodAutoscaling"`
+	// Configuration for direct-path (via ALTS) with workload identity.
+	WorkloadAltsConfig WorkloadALTSConfigResponse `pulumi:"workloadAltsConfig"`
 	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 	WorkloadCertificates WorkloadCertificatesResponse `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
@@ -373,6 +377,11 @@ func (o LookupClusterResultOutput) NodeIpv4CidrSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupClusterResult) int { return v.NodeIpv4CidrSize }).(pulumi.IntOutput)
 }
 
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+func (o LookupClusterResultOutput) NodePoolAutoConfig() NodePoolAutoConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) NodePoolAutoConfigResponse { return v.NodePoolAutoConfig }).(NodePoolAutoConfigResponseOutput)
+}
+
 // Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
 func (o LookupClusterResultOutput) NodePoolDefaults() NodePoolDefaultsResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) NodePoolDefaultsResponse { return v.NodePoolDefaults }).(NodePoolDefaultsResponseOutput)
@@ -451,6 +460,11 @@ func (o LookupClusterResultOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 // Cluster-level Vertical Pod Autoscaling configuration.
 func (o LookupClusterResultOutput) VerticalPodAutoscaling() VerticalPodAutoscalingResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) VerticalPodAutoscalingResponse { return v.VerticalPodAutoscaling }).(VerticalPodAutoscalingResponseOutput)
+}
+
+// Configuration for direct-path (via ALTS) with workload identity.
+func (o LookupClusterResultOutput) WorkloadAltsConfig() WorkloadALTSConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) WorkloadALTSConfigResponse { return v.WorkloadAltsConfig }).(WorkloadALTSConfigResponseOutput)
 }
 
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     public sealed class ScalingConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        /// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
         /// </summary>
         [Input("fleetAutoscalerSpec", required: true)]
         public Input<string> FleetAutoscalerSpec { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Scaling Config
+        /// The name of the scaling config.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         private InputList<Inputs.ScheduleArgs>? _schedules;
 
         /// <summary>
-        /// The schedules to which this Scaling Config applies.
+        /// The schedules to which this scaling config applies.
         /// </summary>
         public InputList<Inputs.ScheduleArgs> Schedules
         {

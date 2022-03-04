@@ -5,7 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+ * Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+ * Auto-naming is currently not supported for this resource.
  */
 export class EndpointAttachment extends pulumi.CustomResource {
     /**
@@ -35,7 +36,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+     * Host that can be used in either the HTTP target endpoint directly or as the host in target server.
      */
     public /*out*/ readonly host!: pulumi.Output<string>;
     /**
@@ -43,7 +44,7 @@ export class EndpointAttachment extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+     * Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -92,7 +93,7 @@ export interface EndpointAttachmentArgs {
      */
     location?: pulumi.Input<string>;
     /**
-     * Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+     * Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
      */
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;

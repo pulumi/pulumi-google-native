@@ -66,6 +66,10 @@ class DocumentKnowledgeTypesItem(str, Enum):
     """
     The entire document content as a whole can be used for query results. Only for Contact Center Solutions on Dialogflow.
     """
+    AGENT_FACING_SMART_REPLY = "AGENT_FACING_SMART_REPLY"
+    """
+    The document contains agent-facing Smart Reply entries.
+    """
     SMART_REPLY = "SMART_REPLY"
     """
     The legacy enum for agent-facing smart reply feature.

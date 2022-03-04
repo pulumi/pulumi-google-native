@@ -35,6 +35,8 @@ type Subnetwork struct {
 	FlowSampling pulumi.Float64Output `pulumi:"flowSampling"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress pulumi.StringOutput `pulumi:"gatewayAddress"`
+	// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+	InternalIpv6Prefix pulumi.StringOutput `pulumi:"internalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
 	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
@@ -69,7 +71,7 @@ type Subnetwork struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
-	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
 	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
 	State pulumi.StringOutput `pulumi:"state"`
@@ -159,7 +161,7 @@ type subnetworkArgs struct {
 	Role *SubnetworkRole `pulumi:"role"`
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges []SubnetworkSecondaryRange `pulumi:"secondaryIpRanges"`
-	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
 	StackType *SubnetworkStackType `pulumi:"stackType"`
 	// A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
 	Vlans []int `pulumi:"vlans"`
@@ -207,7 +209,7 @@ type SubnetworkArgs struct {
 	Role SubnetworkRolePtrInput
 	// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
 	SecondaryIpRanges SubnetworkSecondaryRangeArrayInput
-	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+	// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
 	StackType SubnetworkStackTypePtrInput
 	// A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
 	Vlans pulumi.IntArrayInput

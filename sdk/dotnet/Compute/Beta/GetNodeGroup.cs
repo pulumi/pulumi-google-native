@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
+        /// Share-settings for the node group
+        /// </summary>
+        public readonly Outputs.ShareSettingsResponse ShareSettings;
+        /// <summary>
         /// The total number of nodes in the node group.
         /// </summary>
         public readonly int Size;
@@ -133,6 +137,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string selfLink,
 
+            Outputs.ShareSettingsResponse shareSettings,
+
             int size,
 
             string status,
@@ -150,6 +156,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Name = name;
             NodeTemplate = nodeTemplate;
             SelfLink = selfLink;
+            ShareSettings = shareSettings;
             Size = size;
             Status = status;
             Zone = zone;

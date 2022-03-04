@@ -1254,8 +1254,6 @@ type AutoprovisioningNodePoolDefaults struct {
 	ImageType *string `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management *NodeManagement `pulumi:"management"`
-	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP when creating node pools.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -1289,8 +1287,6 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementPtrInput `pulumi:"management"`
-	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP when creating node pools.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -1404,11 +1400,6 @@ func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
 }
 
-// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-func (o AutoprovisioningNodePoolDefaultsOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
-}
-
 // Scopes that are used by NAP when creating node pools.
 func (o AutoprovisioningNodePoolDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
@@ -1503,16 +1494,6 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPt
 	}).(NodeManagementPtrOutput)
 }
 
-// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-func (o AutoprovisioningNodePoolDefaultsPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinCpuPlatform
-	}).(pulumi.StringPtrOutput)
-}
-
 // Scopes that are used by NAP when creating node pools.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) []string {
@@ -1565,8 +1546,6 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	ImageType string `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementResponse `pulumi:"management"`
-	// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP when creating node pools.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -1615,11 +1594,6 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.Strin
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagementResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
-}
-
-// Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-func (o AutoprovisioningNodePoolDefaultsResponseOutput) MinCpuPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
 // Scopes that are used by NAP when creating node pools.
@@ -2814,6 +2788,8 @@ type ClusterUpdate struct {
 	DesiredMonitoringConfig *MonitoringConfig `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	DesiredMonitoringService *string `pulumi:"desiredMonitoringService"`
+	// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	DesiredNodePoolAutoConfigNetworkTags *NetworkTags `pulumi:"desiredNodePoolAutoConfigNetworkTags"`
 	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
 	DesiredNodePoolAutoscaling *NodePoolAutoscaling `pulumi:"desiredNodePoolAutoscaling"`
 	// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family" or "desired_node_pool_autoscaling" is specified and there is more than one node pool on the cluster.
@@ -9024,6 +9000,172 @@ func (o NetworkPolicyResponseOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkPolicyResponse) string { return v.Provider }).(pulumi.StringOutput)
 }
 
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+type NetworkTags struct {
+	// List of network tags.
+	Tags []string `pulumi:"tags"`
+}
+
+// NetworkTagsInput is an input type that accepts NetworkTagsArgs and NetworkTagsOutput values.
+// You can construct a concrete instance of `NetworkTagsInput` via:
+//
+//          NetworkTagsArgs{...}
+type NetworkTagsInput interface {
+	pulumi.Input
+
+	ToNetworkTagsOutput() NetworkTagsOutput
+	ToNetworkTagsOutputWithContext(context.Context) NetworkTagsOutput
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+type NetworkTagsArgs struct {
+	// List of network tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (NetworkTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTags)(nil)).Elem()
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsOutput() NetworkTagsOutput {
+	return i.ToNetworkTagsOutputWithContext(context.Background())
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsOutputWithContext(ctx context.Context) NetworkTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsOutput)
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return i.ToNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsOutput).ToNetworkTagsPtrOutputWithContext(ctx)
+}
+
+// NetworkTagsPtrInput is an input type that accepts NetworkTagsArgs, NetworkTagsPtr and NetworkTagsPtrOutput values.
+// You can construct a concrete instance of `NetworkTagsPtrInput` via:
+//
+//          NetworkTagsArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkTagsPtrInput interface {
+	pulumi.Input
+
+	ToNetworkTagsPtrOutput() NetworkTagsPtrOutput
+	ToNetworkTagsPtrOutputWithContext(context.Context) NetworkTagsPtrOutput
+}
+
+type networkTagsPtrType NetworkTagsArgs
+
+func NetworkTagsPtr(v *NetworkTagsArgs) NetworkTagsPtrInput {
+	return (*networkTagsPtrType)(v)
+}
+
+func (*networkTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkTags)(nil)).Elem()
+}
+
+func (i *networkTagsPtrType) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return i.ToNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *networkTagsPtrType) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsPtrOutput)
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+type NetworkTagsOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTags)(nil)).Elem()
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsOutput() NetworkTagsOutput {
+	return o
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsOutputWithContext(ctx context.Context) NetworkTagsOutput {
+	return o
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return o.ToNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkTags) *NetworkTags {
+		return &v
+	}).(NetworkTagsPtrOutput)
+}
+
+// List of network tags.
+func (o NetworkTagsOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTags) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type NetworkTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkTags)(nil)).Elem()
+}
+
+func (o NetworkTagsPtrOutput) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return o
+}
+
+func (o NetworkTagsPtrOutput) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return o
+}
+
+func (o NetworkTagsPtrOutput) Elem() NetworkTagsOutput {
+	return o.ApplyT(func(v *NetworkTags) NetworkTags {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkTags
+		return ret
+	}).(NetworkTagsOutput)
+}
+
+// List of network tags.
+func (o NetworkTagsPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkTags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+type NetworkTagsResponse struct {
+	// List of network tags.
+	Tags []string `pulumi:"tags"`
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+type NetworkTagsResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTagsResponse)(nil)).Elem()
+}
+
+func (o NetworkTagsResponseOutput) ToNetworkTagsResponseOutput() NetworkTagsResponseOutput {
+	return o
+}
+
+func (o NetworkTagsResponseOutput) ToNetworkTagsResponseOutputWithContext(ctx context.Context) NetworkTagsResponseOutput {
+	return o
+}
+
+// List of network tags.
+func (o NetworkTagsResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTagsResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 // Parameters that describe the nodes in a cluster.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
@@ -9070,6 +9212,8 @@ type NodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot *bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags []string `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -9135,6 +9279,8 @@ type NodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -9329,6 +9475,11 @@ func (o NodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 // Shielded Instance options.
 func (o NodeConfigOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *ShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -9590,6 +9741,16 @@ func (o NodeConfigPtrOutput) ShieldedInstanceConfig() ShieldedInstanceConfigPtrO
 	}).(ShieldedInstanceConfigPtrOutput)
 }
 
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfig) []string {
@@ -9832,6 +9993,8 @@ type NodeConfigResponse struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Shielded Instance options.
 	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
+	// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot bool `pulumi:"spot"`
 	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
 	Tags []string `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -9963,6 +10126,11 @@ func (o NodeConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
 // Shielded Instance options.
 func (o NodeConfigResponseOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
+}
+
+// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o NodeConfigResponseOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeConfigResponse) bool { return v.Spot }).(pulumi.BoolOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
@@ -10822,6 +10990,172 @@ func (o NodePoolTypeArrayOutput) Index(i pulumi.IntInput) NodePoolTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolType {
 		return vs[0].([]NodePoolType)[vs[1].(int)]
 	}).(NodePoolTypeOutput)
+}
+
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+type NodePoolAutoConfig struct {
+	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+	NetworkTags *NetworkTags `pulumi:"networkTags"`
+}
+
+// NodePoolAutoConfigInput is an input type that accepts NodePoolAutoConfigArgs and NodePoolAutoConfigOutput values.
+// You can construct a concrete instance of `NodePoolAutoConfigInput` via:
+//
+//          NodePoolAutoConfigArgs{...}
+type NodePoolAutoConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoConfigOutput() NodePoolAutoConfigOutput
+	ToNodePoolAutoConfigOutputWithContext(context.Context) NodePoolAutoConfigOutput
+}
+
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+type NodePoolAutoConfigArgs struct {
+	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+	NetworkTags NetworkTagsPtrInput `pulumi:"networkTags"`
+}
+
+func (NodePoolAutoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigOutput() NodePoolAutoConfigOutput {
+	return i.ToNodePoolAutoConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigOutputWithContext(ctx context.Context) NodePoolAutoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoConfigOutput)
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return i.ToNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoConfigOutput).ToNodePoolAutoConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolAutoConfigPtrInput is an input type that accepts NodePoolAutoConfigArgs, NodePoolAutoConfigPtr and NodePoolAutoConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolAutoConfigPtrInput` via:
+//
+//          NodePoolAutoConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolAutoConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput
+	ToNodePoolAutoConfigPtrOutputWithContext(context.Context) NodePoolAutoConfigPtrOutput
+}
+
+type nodePoolAutoConfigPtrType NodePoolAutoConfigArgs
+
+func NodePoolAutoConfigPtr(v *NodePoolAutoConfigArgs) NodePoolAutoConfigPtrInput {
+	return (*nodePoolAutoConfigPtrType)(v)
+}
+
+func (*nodePoolAutoConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i *nodePoolAutoConfigPtrType) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return i.ToNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolAutoConfigPtrType) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoConfigPtrOutput)
+}
+
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+type NodePoolAutoConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigOutput() NodePoolAutoConfigOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigOutputWithContext(ctx context.Context) NodePoolAutoConfigOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return o.ToNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoConfig) *NodePoolAutoConfig {
+		return &v
+	}).(NodePoolAutoConfigPtrOutput)
+}
+
+// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+func (o NodePoolAutoConfigOutput) NetworkTags() NetworkTagsPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoConfig) *NetworkTags { return v.NetworkTags }).(NetworkTagsPtrOutput)
+}
+
+type NodePoolAutoConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o NodePoolAutoConfigPtrOutput) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigPtrOutput) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigPtrOutput) Elem() NodePoolAutoConfigOutput {
+	return o.ApplyT(func(v *NodePoolAutoConfig) NodePoolAutoConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoConfig
+		return ret
+	}).(NodePoolAutoConfigOutput)
+}
+
+// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+func (o NodePoolAutoConfigPtrOutput) NetworkTags() NetworkTagsPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoConfig) *NetworkTags {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(NetworkTagsPtrOutput)
+}
+
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+type NodePoolAutoConfigResponse struct {
+	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+	NetworkTags NetworkTagsResponse `pulumi:"networkTags"`
+}
+
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+type NodePoolAutoConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoConfigResponse)(nil)).Elem()
+}
+
+func (o NodePoolAutoConfigResponseOutput) ToNodePoolAutoConfigResponseOutput() NodePoolAutoConfigResponseOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigResponseOutput) ToNodePoolAutoConfigResponseOutputWithContext(ctx context.Context) NodePoolAutoConfigResponseOutput {
+	return o
+}
+
+// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+func (o NodePoolAutoConfigResponseOutput) NetworkTags() NetworkTagsResponseOutput {
+	return o.ApplyT(func(v NodePoolAutoConfigResponse) NetworkTagsResponse { return v.NetworkTags }).(NetworkTagsResponseOutput)
 }
 
 // NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -15370,6 +15704,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPtrInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigPtrInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsInput)(nil)).Elem(), NetworkTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsPtrInput)(nil)).Elem(), NetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
@@ -15382,6 +15718,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkConfigPtrInput)(nil)).Elem(), NodeNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTypeInput)(nil)).Elem(), NodePoolTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTypeArrayInput)(nil)).Elem(), NodePoolTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoConfigInput)(nil)).Elem(), NodePoolAutoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoConfigPtrInput)(nil)).Elem(), NodePoolAutoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsInput)(nil)).Elem(), NodePoolDefaultsArgs{})
@@ -15568,6 +15906,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyResponseOutput{})
+	pulumi.RegisterOutputType(NetworkTagsOutput{})
+	pulumi.RegisterOutputType(NetworkTagsPtrOutput{})
+	pulumi.RegisterOutputType(NetworkTagsResponseOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigDefaultsOutput{})
@@ -15585,6 +15926,9 @@ func init() {
 	pulumi.RegisterOutputType(NodeNetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingResponseOutput{})

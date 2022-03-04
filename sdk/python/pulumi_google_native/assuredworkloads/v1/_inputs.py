@@ -10,47 +10,8 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
-    'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs',
 ]
-
-@pulumi.input_type
-class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:
-    def __init__(__self__, *,
-                 next_rotation_time: pulumi.Input[str],
-                 rotation_period: pulumi.Input[str]):
-        """
-        Settings specific to the Key Management Service.
-        :param pulumi.Input[str] next_rotation_time: Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-        :param pulumi.Input[str] rotation_period: Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-        """
-        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
-        pulumi.set(__self__, "rotation_period", rotation_period)
-
-    @property
-    @pulumi.getter(name="nextRotationTime")
-    def next_rotation_time(self) -> pulumi.Input[str]:
-        """
-        Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-        """
-        return pulumi.get(self, "next_rotation_time")
-
-    @next_rotation_time.setter
-    def next_rotation_time(self, value: pulumi.Input[str]):
-        pulumi.set(self, "next_rotation_time", value)
-
-    @property
-    @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> pulumi.Input[str]:
-        """
-        Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-        """
-        return pulumi.get(self, "rotation_period")
-
-    @rotation_period.setter
-    def rotation_period(self, value: pulumi.Input[str]):
-        pulumi.set(self, "rotation_period", value)
-
 
 @pulumi.input_type
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
@@ -61,7 +22,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
         """
         Represent the custom settings for the resources to be created.
         :param pulumi.Input[str] display_name: User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
-        :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+        :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType'] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         if display_name is not None:
@@ -87,7 +48,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+        Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail. For KeyRing, this represents the keyring_id. For a folder, don't set this value as folder_id is assigned by Google.
         """
         return pulumi.get(self, "resource_id")
 

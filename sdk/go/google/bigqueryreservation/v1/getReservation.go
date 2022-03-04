@@ -27,6 +27,8 @@ type LookupReservationArgs struct {
 }
 
 type LookupReservationResult struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency string `pulumi:"concurrency"`
 	// Creation time of the reservation.
 	CreationTime string `pulumi:"creationTime"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
@@ -72,6 +74,11 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
+}
+
+// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+func (o LookupReservationResultOutput) Concurrency() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.Concurrency }).(pulumi.StringOutput)
 }
 
 // Creation time of the reservation.

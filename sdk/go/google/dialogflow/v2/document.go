@@ -33,6 +33,8 @@ type Document struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent pulumi.StringOutput `pulumi:"rawContent"`
+	// The current state of the document.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewDocument registers a new resource with the given unique name, arguments, and options.

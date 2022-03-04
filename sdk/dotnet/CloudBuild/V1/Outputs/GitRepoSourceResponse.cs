@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class GitRepoSourceResponse
     {
         /// <summary>
+        /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        /// </summary>
+        public readonly string BitbucketServerConfig;
+        /// <summary>
+        /// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+        /// </summary>
+        public readonly string GithubEnterpriseConfig;
+        /// <summary>
         /// The branch or tag to use. Must start with "refs/" (required).
         /// </summary>
         public readonly string Ref;
@@ -31,12 +39,18 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
         [OutputConstructor]
         private GitRepoSourceResponse(
+            string bitbucketServerConfig,
+
+            string githubEnterpriseConfig,
+
             string @ref,
 
             string repoType,
 
             string uri)
         {
+            BitbucketServerConfig = bitbucketServerConfig;
+            GithubEnterpriseConfig = githubEnterpriseConfig;
             Ref = @ref;
             RepoType = repoType;
             Uri = uri;

@@ -218,6 +218,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly int NodeIpv4CidrSize;
         /// <summary>
+        /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        /// </summary>
+        public readonly Outputs.NodePoolAutoConfigResponse NodePoolAutoConfig;
+        /// <summary>
         /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         /// </summary>
         public readonly Outputs.NodePoolDefaultsResponse NodePoolDefaults;
@@ -281,6 +285,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// Cluster-level Vertical Pod Autoscaling configuration.
         /// </summary>
         public readonly Outputs.VerticalPodAutoscalingResponse VerticalPodAutoscaling;
+        /// <summary>
+        /// Configuration for direct-path (via ALTS) with workload identity.
+        /// </summary>
+        public readonly Outputs.WorkloadALTSConfigResponse WorkloadAltsConfig;
         /// <summary>
         /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         /// </summary>
@@ -370,6 +378,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             int nodeIpv4CidrSize,
 
+            Outputs.NodePoolAutoConfigResponse nodePoolAutoConfig,
+
             Outputs.NodePoolDefaultsResponse nodePoolDefaults,
 
             ImmutableArray<Outputs.NodePoolResponse> nodePools,
@@ -401,6 +411,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             string tpuIpv4CidrBlock,
 
             Outputs.VerticalPodAutoscalingResponse verticalPodAutoscaling,
+
+            Outputs.WorkloadALTSConfigResponse workloadAltsConfig,
 
             Outputs.WorkloadCertificatesResponse workloadCertificates,
 
@@ -445,6 +457,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             NetworkConfig = networkConfig;
             NetworkPolicy = networkPolicy;
             NodeIpv4CidrSize = nodeIpv4CidrSize;
+            NodePoolAutoConfig = nodePoolAutoConfig;
             NodePoolDefaults = nodePoolDefaults;
             NodePools = nodePools;
             NotificationConfig = notificationConfig;
@@ -461,6 +474,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             TpuConfig = tpuConfig;
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;
             VerticalPodAutoscaling = verticalPodAutoscaling;
+            WorkloadAltsConfig = workloadAltsConfig;
             WorkloadCertificates = workloadCertificates;
             WorkloadIdentityConfig = workloadIdentityConfig;
         }

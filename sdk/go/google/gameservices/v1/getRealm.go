@@ -31,13 +31,13 @@ type LookupRealmResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Human readable description of the realm.
 	Description string `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag string `pulumi:"etag"`
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 	Name string `pulumi:"name"`
-	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone string `pulumi:"timeZone"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
@@ -86,7 +86,7 @@ func (o LookupRealmResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRealmResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// ETag of the resource.
+// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o LookupRealmResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRealmResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -96,12 +96,12 @@ func (o LookupRealmResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRealmResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 func (o LookupRealmResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRealmResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 func (o LookupRealmResultOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRealmResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }

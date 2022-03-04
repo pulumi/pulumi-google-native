@@ -531,7 +531,7 @@ class ContentMatcherArgs:
                  matcher: Optional[pulumi.Input['ContentMatcherMatcher']] = None):
         """
         Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
-        :param pulumi.Input[str] content: String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+        :param pulumi.Input[str] content: String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
         :param pulumi.Input['ContentMatcherMatcher'] matcher: The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
         """
         if content is not None:
@@ -543,7 +543,7 @@ class ContentMatcherArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+        String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
         """
         return pulumi.get(self, "content")
 

@@ -46,6 +46,8 @@ type LookupDocumentResult struct {
 	Name string `pulumi:"name"`
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent string `pulumi:"rawContent"`
+	// The current state of the document.
+	State string `pulumi:"state"`
 }
 
 func LookupDocumentOutput(ctx *pulumi.Context, args LookupDocumentOutputArgs, opts ...pulumi.InvokeOption) LookupDocumentResultOutput {
@@ -127,6 +129,11 @@ func (o LookupDocumentResultOutput) Name() pulumi.StringOutput {
 // The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 func (o LookupDocumentResultOutput) RawContent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.RawContent }).(pulumi.StringOutput)
+}
+
+// The current state of the document.
+func (o LookupDocumentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

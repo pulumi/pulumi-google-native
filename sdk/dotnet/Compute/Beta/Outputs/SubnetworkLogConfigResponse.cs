@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly bool Enable;
         /// <summary>
-        /// Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+        /// Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         /// </summary>
         public readonly string FilterExpr;
         /// <summary>

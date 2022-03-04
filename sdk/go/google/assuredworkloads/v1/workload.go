@@ -29,8 +29,6 @@ type Workload struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Represents the KAJ enrollment state of the given workload.
 	KajEnrollmentState pulumi.StringOutput `pulumi:"kajEnrollmentState"`
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
@@ -104,8 +102,6 @@ type workloadArgs struct {
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag       *string `pulumi:"etag"`
 	ExternalId *string `pulumi:"externalId"`
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-	KmsSettings *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -131,8 +127,6 @@ type WorkloadArgs struct {
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag       pulumi.StringPtrInput
 	ExternalId pulumi.StringPtrInput
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput
 	// Optional. Labels applied to the workload.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput

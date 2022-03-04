@@ -44,7 +44,7 @@ export class MachineImage extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
     /**
@@ -164,7 +164,7 @@ export interface MachineImageArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      */
     guestFlush?: pulumi.Input<boolean>;
     /**

@@ -278,6 +278,7 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["raw_content"] = raw_content
             __props__.__dict__["latest_reload_status"] = None
+            __props__.__dict__["state"] = None
         super(Document, __self__).__init__(
             'google-native:dialogflow/v2:Document',
             resource_name,
@@ -309,6 +310,7 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["mime_type"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["raw_content"] = None
+        __props__.__dict__["state"] = None
         return Document(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -382,4 +384,12 @@ class Document(pulumi.CustomResource):
         The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         """
         return pulumi.get(self, "raw_content")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The current state of the document.
+        """
+        return pulumi.get(self, "state")
 

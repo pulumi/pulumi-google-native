@@ -30,7 +30,7 @@ type LookupMachineImageResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 	GuestFlush bool `pulumi:"guestFlush"`
 	// Properties of source instance
 	InstanceProperties InstancePropertiesResponse `pulumi:"instanceProperties"`
@@ -102,7 +102,7 @@ func (o LookupMachineImageResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 func (o LookupMachineImageResultOutput) GuestFlush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMachineImageResult) bool { return v.GuestFlush }).(pulumi.BoolOutput)
 }

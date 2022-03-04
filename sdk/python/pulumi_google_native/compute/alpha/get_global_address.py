@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGlobalAddressResult:
-    def __init__(__self__, address=None, address_type=None, creation_timestamp=None, description=None, ip_version=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, network_tier=None, prefix_length=None, purpose=None, region=None, self_link=None, self_link_with_id=None, status=None, subnetwork=None, users=None):
+    def __init__(__self__, address=None, address_type=None, creation_timestamp=None, description=None, ip_version=None, ipv6_endpoint_type=None, kind=None, label_fingerprint=None, labels=None, name=None, network=None, network_tier=None, prefix_length=None, purpose=None, region=None, self_link=None, self_link_with_id=None, status=None, subnetwork=None, users=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -33,6 +33,9 @@ class GetGlobalAddressResult:
         if ip_version and not isinstance(ip_version, str):
             raise TypeError("Expected argument 'ip_version' to be a str")
         pulumi.set(__self__, "ip_version", ip_version)
+        if ipv6_endpoint_type and not isinstance(ipv6_endpoint_type, str):
+            raise TypeError("Expected argument 'ipv6_endpoint_type' to be a str")
+        pulumi.set(__self__, "ipv6_endpoint_type", ipv6_endpoint_type)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -115,6 +118,14 @@ class GetGlobalAddressResult:
         The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
         """
         return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="ipv6EndpointType")
+    def ipv6_endpoint_type(self) -> str:
+        """
+        The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+        """
+        return pulumi.get(self, "ipv6_endpoint_type")
 
     @property
     @pulumi.getter
@@ -240,6 +251,7 @@ class AwaitableGetGlobalAddressResult(GetGlobalAddressResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             ip_version=self.ip_version,
+            ipv6_endpoint_type=self.ipv6_endpoint_type,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -277,6 +289,7 @@ def get_global_address(address: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         ip_version=__ret__.ip_version,
+        ipv6_endpoint_type=__ret__.ipv6_endpoint_type,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,
         labels=__ret__.labels,

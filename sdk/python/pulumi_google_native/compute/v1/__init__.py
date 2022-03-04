@@ -51,6 +51,8 @@ from .get_machine_image import *
 from .get_machine_image_iam_policy import *
 from .get_network import *
 from .get_network_endpoint_group import *
+from .get_network_firewall_policy import *
+from .get_network_firewall_policy_iam_policy import *
 from .get_node_group import *
 from .get_node_group_iam_policy import *
 from .get_node_template import *
@@ -67,6 +69,8 @@ from .get_region_health_check import *
 from .get_region_health_check_service import *
 from .get_region_instance_group_manager import *
 from .get_region_network_endpoint_group import *
+from .get_region_network_firewall_policy import *
+from .get_region_network_firewall_policy_iam_policy import *
 from .get_region_notification_endpoint import *
 from .get_region_ssl_certificate import *
 from .get_region_target_http_proxy import *
@@ -121,6 +125,8 @@ from .machine_image import *
 from .machine_image_iam_policy import *
 from .network import *
 from .network_endpoint_group import *
+from .network_firewall_policy import *
+from .network_firewall_policy_iam_policy import *
 from .node_group import *
 from .node_group_iam_policy import *
 from .node_template import *
@@ -137,6 +143,8 @@ from .region_health_check import *
 from .region_health_check_service import *
 from .region_instance_group_manager import *
 from .region_network_endpoint_group import *
+from .region_network_firewall_policy import *
+from .region_network_firewall_policy_iam_policy import *
 from .region_notification_endpoint import *
 from .region_ssl_certificate import *
 from .region_target_http_proxy import *

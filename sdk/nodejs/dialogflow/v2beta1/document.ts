@@ -48,7 +48,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+     * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
      */
     public readonly enableAutoReload!: pulumi.Output<boolean>;
     /**
@@ -75,6 +75,10 @@ export class Document extends pulumi.CustomResource {
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */
     public readonly rawContent!: pulumi.Output<string>;
+    /**
+     * The current state of the document.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Document resource with the given unique name, arguments, and options.
@@ -113,6 +117,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rawContent"] = args ? args.rawContent : undefined;
             resourceInputs["latestReloadStatus"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["content"] = undefined /*out*/;
             resourceInputs["contentUri"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["rawContent"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Document.__pulumiType, name, resourceInputs, opts);
@@ -147,7 +153,7 @@ export interface DocumentArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+     * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
      */
     enableAutoReload?: pulumi.Input<boolean>;
     importGcsCustomMetadata?: pulumi.Input<string>;

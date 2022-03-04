@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Outputs
     public sealed class FleetConfigResponse
     {
         /// <summary>
-        /// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+        /// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
         /// </summary>
         public readonly string FleetSpec;
         /// <summary>

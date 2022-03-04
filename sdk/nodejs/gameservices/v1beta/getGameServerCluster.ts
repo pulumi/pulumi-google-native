@@ -33,7 +33,7 @@ export interface GetGameServerClusterArgs {
 
 export interface GetGameServerClusterResult {
     /**
-     * The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+     * The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
      */
     readonly clusterState: outputs.gameservices.v1beta.KubernetesClusterStateResponse;
     /**
@@ -49,7 +49,7 @@ export interface GetGameServerClusterResult {
      */
     readonly description: string;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     readonly etag: string;
     /**
@@ -57,7 +57,7 @@ export interface GetGameServerClusterResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+     * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
      */
     readonly name: string;
     /**

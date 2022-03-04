@@ -583,7 +583,7 @@ const (
 	ContentMatcherMatcherContainsString = ContentMatcherMatcher("CONTAINS_STRING")
 	// Selects negation of substring matching. The match succeeds if the output does NOT contain the content string.
 	ContentMatcherMatcherNotContainsString = ContentMatcherMatcher("NOT_CONTAINS_STRING")
-	// Selects regular-expression matching. The match succeeds of the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
+	// Selects regular-expression matching. The match succeeds if the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
 	ContentMatcherMatcherMatchesRegex = ContentMatcherMatcher("MATCHES_REGEX")
 	// Selects negation of regular-expression matching. The match succeeds if the output does NOT match the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
 	ContentMatcherMatcherNotMatchesRegex = ContentMatcherMatcher("NOT_MATCHES_REGEX")
@@ -2128,7 +2128,7 @@ func (in *metricThresholdComparisonPtr) ToMetricThresholdComparisonPtrOutputWith
 type MetricThresholdEvaluationMissingData string
 
 const (
-	// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+	// An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
 	MetricThresholdEvaluationMissingDataEvaluationMissingDataUnspecified = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED")
 	// If there is no data to evaluate the condition, then evaluate the condition as false.
 	MetricThresholdEvaluationMissingDataEvaluationMissingDataInactive = MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")
@@ -2299,7 +2299,7 @@ func (in *metricThresholdEvaluationMissingDataPtr) ToMetricThresholdEvaluationMi
 type MonitoringQueryLanguageConditionEvaluationMissingData string
 
 const (
-	// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+	// An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
 	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataUnspecified = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED")
 	// If there is no data to evaluate the condition, then evaluate the condition as false.
 	MonitoringQueryLanguageConditionEvaluationMissingDataEvaluationMissingDataInactive = MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_INACTIVE")

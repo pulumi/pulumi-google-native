@@ -66,11 +66,11 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Human readable description of the game server delpoyment.
+        /// Human readable description of the game server deployment.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// ETag of the resource.
+        /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+        /// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         /// </summary>
         public readonly string Name;
         /// <summary>

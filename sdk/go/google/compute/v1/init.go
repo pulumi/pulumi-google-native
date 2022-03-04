@@ -89,6 +89,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Network{}
 	case "google-native:compute/v1:NetworkEndpointGroup":
 		r = &NetworkEndpointGroup{}
+	case "google-native:compute/v1:NetworkFirewallPolicy":
+		r = &NetworkFirewallPolicy{}
+	case "google-native:compute/v1:NetworkFirewallPolicyIamPolicy":
+		r = &NetworkFirewallPolicyIamPolicy{}
 	case "google-native:compute/v1:NodeGroup":
 		r = &NodeGroup{}
 	case "google-native:compute/v1:NodeGroupIamPolicy":
@@ -121,6 +125,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceGroupManager{}
 	case "google-native:compute/v1:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
+	case "google-native:compute/v1:RegionNetworkFirewallPolicy":
+		r = &RegionNetworkFirewallPolicy{}
+	case "google-native:compute/v1:RegionNetworkFirewallPolicyIamPolicy":
+		r = &RegionNetworkFirewallPolicyIamPolicy{}
 	case "google-native:compute/v1:RegionNotificationEndpoint":
 		r = &RegionNotificationEndpoint{}
 	case "google-native:compute/v1:RegionSslCertificate":

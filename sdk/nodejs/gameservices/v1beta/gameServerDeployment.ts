@@ -39,11 +39,11 @@ export class GameServerDeployment extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Human readable description of the game server delpoyment.
+     * Human readable description of the game server deployment.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -51,7 +51,7 @@ export class GameServerDeployment extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+     * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -101,11 +101,11 @@ export class GameServerDeployment extends pulumi.CustomResource {
 export interface GameServerDeploymentArgs {
     deploymentId: pulumi.Input<string>;
     /**
-     * Human readable description of the game server delpoyment.
+     * Human readable description of the game server deployment.
      */
     description?: pulumi.Input<string>;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -114,7 +114,7 @@ export interface GameServerDeploymentArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+     * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

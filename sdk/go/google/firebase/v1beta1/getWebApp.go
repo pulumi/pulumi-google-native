@@ -26,6 +26,8 @@ type LookupWebAppArgs struct {
 }
 
 type LookupWebAppResult struct {
+	// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+	ApiKeyId string `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId string `pulumi:"appId"`
 	// The URLs where the `WebApp` is hosted.
@@ -70,6 +72,11 @@ func (o LookupWebAppResultOutput) ToLookupWebAppResultOutput() LookupWebAppResul
 
 func (o LookupWebAppResultOutput) ToLookupWebAppResultOutputWithContext(ctx context.Context) LookupWebAppResultOutput {
 	return o
+}
+
+// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+func (o LookupWebAppResultOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.

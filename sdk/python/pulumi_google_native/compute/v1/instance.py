@@ -32,6 +32,7 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
+                 params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,7 @@ class InstanceArgs:
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        :param pulumi.Input['InstanceParamsArgs'] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
@@ -103,6 +105,8 @@ class InstanceArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if project is not None:
@@ -319,6 +323,18 @@ class InstanceArgs:
         pulumi.set(self, "network_performance_config", value)
 
     @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceParamsArgs']]:
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]:
         """
@@ -490,6 +506,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -524,6 +541,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
+        :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
@@ -573,6 +591,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['NetworkPerformanceConfigArgs']]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -615,6 +634,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["network_performance_config"] = network_performance_config
+            __props__.__dict__["params"] = params
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
@@ -688,6 +708,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["network_interfaces"] = None
         __props__.__dict__["network_performance_config"] = None
+        __props__.__dict__["params"] = None
         __props__.__dict__["private_ipv6_google_access"] = None
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["resource_policies"] = None
@@ -891,6 +912,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Output['outputs.NetworkPerformanceConfigResponse']:
         return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output['outputs.InstanceParamsResponse']:
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter(name="privateIpv6GoogleAccess")

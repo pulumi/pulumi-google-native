@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Outputs
         /// </summary>
         public readonly string KubernetesVersionInstalled;
         /// <summary>
-        /// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+        /// The cloud provider type reported by the first node's `providerID` in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
         /// </summary>
         public readonly string Provider;
         /// <summary>

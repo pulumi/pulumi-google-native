@@ -10,9 +10,13 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs',
     'GoogleCloudDialogflowV2AutomatedAgentConfigArgs',
     'GoogleCloudDialogflowV2ContextArgs',
     'GoogleCloudDialogflowV2EntityTypeEntityArgs',
+    'GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs',
+    'GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs',
+    'GoogleCloudDialogflowV2EvaluationConfigArgs',
     'GoogleCloudDialogflowV2FulfillmentFeatureArgs',
     'GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs',
     'GoogleCloudDialogflowV2FulfillmentArgs',
@@ -31,6 +35,7 @@ __all__ = [
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs',
+    'GoogleCloudDialogflowV2InputDatasetArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardArgs',
@@ -64,10 +69,35 @@ __all__ = [
     'GoogleCloudDialogflowV2IntentTrainingPhraseArgs',
     'GoogleCloudDialogflowV2LoggingConfigArgs',
     'GoogleCloudDialogflowV2NotificationConfigArgs',
+    'GoogleCloudDialogflowV2SmartReplyModelMetadataArgs',
     'GoogleCloudDialogflowV2SpeechToTextConfigArgs',
     'GoogleCloudDialogflowV2SuggestionFeatureArgs',
     'GoogleCloudDialogflowV2TextToSpeechSettingsArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs:
+    def __init__(__self__, *,
+                 training_model_type: Optional[pulumi.Input['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType']] = None):
+        """
+        Metadata for article suggestion models.
+        :param pulumi.Input['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType'] training_model_type: Optional. Type of the article suggestion model. If not provided, model_type is used.
+        """
+        if training_model_type is not None:
+            pulumi.set(__self__, "training_model_type", training_model_type)
+
+    @property
+    @pulumi.getter(name="trainingModelType")
+    def training_model_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType']]:
+        """
+        Optional. Type of the article suggestion model. If not provided, model_type is used.
+        """
+        return pulumi.get(self, "training_model_type")
+
+    @training_model_type.setter
+    def training_model_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType']]):
+        pulumi.set(self, "training_model_type", value)
+
 
 @pulumi.input_type
 class GoogleCloudDialogflowV2AutomatedAgentConfigArgs:
@@ -183,6 +213,139 @@ class GoogleCloudDialogflowV2EntityTypeEntityArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs:
+    def __init__(__self__, *,
+                 max_result_count: pulumi.Input[int],
+                 allowlist_document: Optional[pulumi.Input[str]] = None):
+        """
+        Smart compose specific configuration for evaluation job.
+        :param pulumi.Input[int] max_result_count: The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        :param pulumi.Input[str] allowlist_document: The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+        """
+        pulumi.set(__self__, "max_result_count", max_result_count)
+        if allowlist_document is not None:
+            pulumi.set(__self__, "allowlist_document", allowlist_document)
+
+    @property
+    @pulumi.getter(name="maxResultCount")
+    def max_result_count(self) -> pulumi.Input[int]:
+        """
+        The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        """
+        return pulumi.get(self, "max_result_count")
+
+    @max_result_count.setter
+    def max_result_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_result_count", value)
+
+    @property
+    @pulumi.getter(name="allowlistDocument")
+    def allowlist_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+        """
+        return pulumi.get(self, "allowlist_document")
+
+    @allowlist_document.setter
+    def allowlist_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allowlist_document", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs:
+    def __init__(__self__, *,
+                 max_result_count: pulumi.Input[int],
+                 allowlist_document: Optional[pulumi.Input[str]] = None):
+        """
+        Smart reply specific configuration for evaluation job.
+        :param pulumi.Input[int] max_result_count: The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        :param pulumi.Input[str] allowlist_document: The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+        """
+        pulumi.set(__self__, "max_result_count", max_result_count)
+        if allowlist_document is not None:
+            pulumi.set(__self__, "allowlist_document", allowlist_document)
+
+    @property
+    @pulumi.getter(name="maxResultCount")
+    def max_result_count(self) -> pulumi.Input[int]:
+        """
+        The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        """
+        return pulumi.get(self, "max_result_count")
+
+    @max_result_count.setter
+    def max_result_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_result_count", value)
+
+    @property
+    @pulumi.getter(name="allowlistDocument")
+    def allowlist_document(self) -> Optional[pulumi.Input[str]]:
+        """
+        The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+        """
+        return pulumi.get(self, "allowlist_document")
+
+    @allowlist_document.setter
+    def allowlist_document(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allowlist_document", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2EvaluationConfigArgs:
+    def __init__(__self__, *,
+                 datasets: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2InputDatasetArgs']]],
+                 smart_compose_config: Optional[pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs']] = None,
+                 smart_reply_config: Optional[pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs']] = None):
+        """
+        The configuration for model evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2InputDatasetArgs']]] datasets: Datasets used for evaluation.
+        :param pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs'] smart_compose_config: Configuration for smart compose model evalution.
+        :param pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs'] smart_reply_config: Configuration for smart reply model evalution.
+        """
+        pulumi.set(__self__, "datasets", datasets)
+        if smart_compose_config is not None:
+            pulumi.set(__self__, "smart_compose_config", smart_compose_config)
+        if smart_reply_config is not None:
+            pulumi.set(__self__, "smart_reply_config", smart_reply_config)
+
+    @property
+    @pulumi.getter
+    def datasets(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2InputDatasetArgs']]]:
+        """
+        Datasets used for evaluation.
+        """
+        return pulumi.get(self, "datasets")
+
+    @datasets.setter
+    def datasets(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2InputDatasetArgs']]]):
+        pulumi.set(self, "datasets", value)
+
+    @property
+    @pulumi.getter(name="smartComposeConfig")
+    def smart_compose_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs']]:
+        """
+        Configuration for smart compose model evalution.
+        """
+        return pulumi.get(self, "smart_compose_config")
+
+    @smart_compose_config.setter
+    def smart_compose_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs']]):
+        pulumi.set(self, "smart_compose_config", value)
+
+    @property
+    @pulumi.getter(name="smartReplyConfig")
+    def smart_reply_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs']]:
+        """
+        Configuration for smart reply model evalution.
+        """
+        return pulumi.get(self, "smart_reply_config")
+
+    @smart_reply_config.setter
+    def smart_reply_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs']]):
+        pulumi.set(self, "smart_reply_config", value)
 
 
 @pulumi.input_type
@@ -1085,6 +1248,29 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs:
     @salesforce_live_agent_config.setter
     def salesforce_live_agent_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]):
         pulumi.set(self, "salesforce_live_agent_config", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2InputDatasetArgs:
+    def __init__(__self__, *,
+                 dataset: pulumi.Input[str]):
+        """
+        InputDataset used to create model or do evaluation. NextID:5
+        :param pulumi.Input[str] dataset: ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+        """
+        pulumi.set(__self__, "dataset", dataset)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> pulumi.Input[str]:
+        """
+        ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset", value)
 
 
 @pulumi.input_type
@@ -2906,7 +3092,7 @@ class GoogleCloudDialogflowV2NotificationConfigArgs:
         """
         Defines notification behavior.
         :param pulumi.Input['GoogleCloudDialogflowV2NotificationConfigMessageFormat'] message_format: Format of message.
-        :param pulumi.Input[str] topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        :param pulumi.Input[str] topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
         """
         if message_format is not None:
             pulumi.set(__self__, "message_format", message_format)
@@ -2929,13 +3115,37 @@ class GoogleCloudDialogflowV2NotificationConfigArgs:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
     def topic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "topic", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2SmartReplyModelMetadataArgs:
+    def __init__(__self__, *,
+                 training_model_type: Optional[pulumi.Input['GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType']] = None):
+        """
+        Metadata for smart reply models.
+        :param pulumi.Input['GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType'] training_model_type: Optional. Type of the smart reply model. If not provided, model_type is used.
+        """
+        if training_model_type is not None:
+            pulumi.set(__self__, "training_model_type", training_model_type)
+
+    @property
+    @pulumi.getter(name="trainingModelType")
+    def training_model_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType']]:
+        """
+        Optional. Type of the smart reply model. If not provided, model_type is used.
+        """
+        return pulumi.get(self, "training_model_type")
+
+    @training_model_type.setter
+    def training_model_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType']]):
+        pulumi.set(self, "training_model_type", value)
 
 
 @pulumi.input_type

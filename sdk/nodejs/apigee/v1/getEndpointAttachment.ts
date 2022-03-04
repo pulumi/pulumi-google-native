@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Gets the specified EndpointAttachment.
+ * Gets the endpoint attachment.
  */
 export function getEndpointAttachment(args: GetEndpointAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointAttachmentResult> {
     if (!opts) {
@@ -26,7 +26,7 @@ export interface GetEndpointAttachmentArgs {
 
 export interface GetEndpointAttachmentResult {
     /**
-     * Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+     * Host that can be used in either the HTTP target endpoint directly or as the host in target server.
      */
     readonly host: string;
     /**
@@ -34,7 +34,7 @@ export interface GetEndpointAttachmentResult {
      */
     readonly location: string;
     /**
-     * Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+     * Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
      */
     readonly name: string;
     /**

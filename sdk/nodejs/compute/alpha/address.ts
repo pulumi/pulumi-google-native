@@ -56,6 +56,10 @@ export class Address extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string>;
     /**
+     * The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+     */
+    public readonly ipv6EndpointType!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#address for addresses.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -130,6 +134,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["ipv6EndpointType"] = args ? args.ipv6EndpointType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
@@ -153,6 +158,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["ipVersion"] = undefined /*out*/;
+            resourceInputs["ipv6EndpointType"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -193,6 +199,10 @@ export interface AddressArgs {
      * The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.
      */
     ipVersion?: pulumi.Input<enums.compute.alpha.AddressIpVersion>;
+    /**
+     * The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+     */
+    ipv6EndpointType?: pulumi.Input<enums.compute.alpha.AddressIpv6EndpointType>;
     /**
      * Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
      */

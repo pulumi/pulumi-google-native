@@ -9,6 +9,7 @@ __all__ = [
     'DocumentKnowledgeTypesItem',
     'EntityTypeAutoExpansionMode',
     'EntityTypeKind',
+    'GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType',
     'GoogleCloudDialogflowV2FulfillmentFeatureType',
     'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint',
     'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions',
@@ -17,6 +18,7 @@ __all__ = [
     'GoogleCloudDialogflowV2IntentMessagePlatform',
     'GoogleCloudDialogflowV2IntentTrainingPhraseType',
     'GoogleCloudDialogflowV2NotificationConfigMessageFormat',
+    'GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType',
     'GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant',
     'GoogleCloudDialogflowV2SuggestionFeatureType',
     'GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding',
@@ -62,6 +64,10 @@ class DocumentKnowledgeTypesItem(str, Enum):
     """
     The entire document content as a whole can be used for query results. Only for Contact Center Solutions on Dialogflow.
     """
+    AGENT_FACING_SMART_REPLY = "AGENT_FACING_SMART_REPLY"
+    """
+    The document contains agent-facing Smart Reply entries.
+    """
 
 
 class EntityTypeAutoExpansionMode(str, Enum):
@@ -97,6 +103,24 @@ class EntityTypeKind(str, Enum):
     KIND_REGEXP = "KIND_REGEXP"
     """
     Regexp entity types allow to specify regular expressions in entries values.
+    """
+
+
+class GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType(str, Enum):
+    """
+    Optional. Type of the article suggestion model. If not provided, model_type is used.
+    """
+    MODEL_TYPE_UNSPECIFIED = "MODEL_TYPE_UNSPECIFIED"
+    """
+    ModelType unspecified.
+    """
+    SMART_REPLY_DUAL_ENCODER_MODEL = "SMART_REPLY_DUAL_ENCODER_MODEL"
+    """
+    ModelType smart reply dual encoder model.
+    """
+    SMART_REPLY_BERT_MODEL = "SMART_REPLY_BERT_MODEL"
+    """
+    ModelType smart reply bert model.
     """
 
 
@@ -273,6 +297,24 @@ class GoogleCloudDialogflowV2NotificationConfigMessageFormat(str, Enum):
     JSON = "JSON"
     """
     Pub/Sub message will be json.
+    """
+
+
+class GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType(str, Enum):
+    """
+    Optional. Type of the smart reply model. If not provided, model_type is used.
+    """
+    MODEL_TYPE_UNSPECIFIED = "MODEL_TYPE_UNSPECIFIED"
+    """
+    ModelType unspecified.
+    """
+    SMART_REPLY_DUAL_ENCODER_MODEL = "SMART_REPLY_DUAL_ENCODER_MODEL"
+    """
+    ModelType smart reply dual encoder model.
+    """
+    SMART_REPLY_BERT_MODEL = "SMART_REPLY_BERT_MODEL"
+    """
+    ModelType smart reply bert model.
     """
 
 

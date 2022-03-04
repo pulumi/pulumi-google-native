@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Context{}
 	case "google-native:dialogflow/v2:Conversation":
 		r = &Conversation{}
+	case "google-native:dialogflow/v2:ConversationDataset":
+		r = &ConversationDataset{}
+	case "google-native:dialogflow/v2:ConversationModel":
+		r = &ConversationModel{}
 	case "google-native:dialogflow/v2:ConversationProfile":
 		r = &ConversationProfile{}
 	case "google-native:dialogflow/v2:Document":
@@ -33,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EntityType{}
 	case "google-native:dialogflow/v2:Environment":
 		r = &Environment{}
+	case "google-native:dialogflow/v2:Evaluation":
+		r = &Evaluation{}
 	case "google-native:dialogflow/v2:Intent":
 		r = &Intent{}
 	case "google-native:dialogflow/v2:KnowledgeBase":

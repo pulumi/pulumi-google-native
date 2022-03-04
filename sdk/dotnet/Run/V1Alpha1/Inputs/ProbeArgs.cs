@@ -40,13 +40,13 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<int>? InitialDelaySeconds { get; set; }
 
         /// <summary>
-        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
+        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
         /// </summary>
         [Input("periodSeconds")]
         public Input<int>? PeriodSeconds { get; set; }
 
         /// <summary>
-        /// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness. Minimum value is 1.
+        /// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
         /// </summary>
         [Input("successThreshold")]
         public Input<int>? SuccessThreshold { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<Inputs.TCPSocketActionArgs>? TcpSocket { get; set; }
 
         /// <summary>
-        /// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }

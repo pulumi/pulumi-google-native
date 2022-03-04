@@ -162,6 +162,39 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct AddressIpv6EndpointType : IEquatable<AddressIpv6EndpointType>
+    {
+        private readonly string _value;
+
+        private AddressIpv6EndpointType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Reserved IPv6 address will be assigned to VM.
+        /// </summary>
+        public static AddressIpv6EndpointType Vm { get; } = new AddressIpv6EndpointType("VM");
+
+        public static bool operator ==(AddressIpv6EndpointType left, AddressIpv6EndpointType right) => left.Equals(right);
+        public static bool operator !=(AddressIpv6EndpointType left, AddressIpv6EndpointType right) => !left.Equals(right);
+
+        public static explicit operator string(AddressIpv6EndpointType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AddressIpv6EndpointType other && Equals(other);
+        public bool Equals(AddressIpv6EndpointType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
@@ -2196,6 +2229,39 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct GlobalAddressIpv6EndpointType : IEquatable<GlobalAddressIpv6EndpointType>
+    {
+        private readonly string _value;
+
+        private GlobalAddressIpv6EndpointType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Reserved IPv6 address will be assigned to VM.
+        /// </summary>
+        public static GlobalAddressIpv6EndpointType Vm { get; } = new GlobalAddressIpv6EndpointType("VM");
+
+        public static bool operator ==(GlobalAddressIpv6EndpointType left, GlobalAddressIpv6EndpointType right) => left.Equals(right);
+        public static bool operator !=(GlobalAddressIpv6EndpointType left, GlobalAddressIpv6EndpointType right) => !left.Equals(right);
+
+        public static explicit operator string(GlobalAddressIpv6EndpointType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GlobalAddressIpv6EndpointType other && Equals(other);
+        public bool Equals(GlobalAddressIpv6EndpointType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Internal IP addresses are always Premium Tier; global external IP addresses are always Premium Tier; regional external IP addresses can be either Standard or Premium Tier. If this field is not specified, it is assumed to be PREMIUM.
     /// </summary>
     [EnumType]
@@ -2498,7 +2564,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct GlobalNetworkEndpointGroupNetworkEndpointType : IEquatable<GlobalNetworkEndpointGroupNetworkEndpointType>
@@ -2592,7 +2658,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -3250,6 +3316,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstanceGroupManagerFailoverAction other && Equals(other);
         public bool Equals(InstanceGroupManagerFailoverAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerListManagedInstancesResults : IEquatable<InstanceGroupManagerListManagedInstancesResults>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerListManagedInstancesResults(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// </summary>
+        public static InstanceGroupManagerListManagedInstancesResults Pageless { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGELESS");
+        /// <summary>
+        /// Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// </summary>
+        public static InstanceGroupManagerListManagedInstancesResults Paginated { get; } = new InstanceGroupManagerListManagedInstancesResults("PAGINATED");
+
+        public static bool operator ==(InstanceGroupManagerListManagedInstancesResults left, InstanceGroupManagerListManagedInstancesResults right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerListManagedInstancesResults left, InstanceGroupManagerListManagedInstancesResults right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerListManagedInstancesResults value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerListManagedInstancesResults other && Equals(other);
+        public bool Equals(InstanceGroupManagerListManagedInstancesResults other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4126,7 +4229,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct NetworkEndpointGroupNetworkEndpointType : IEquatable<NetworkEndpointGroupNetworkEndpointType>
@@ -4318,7 +4421,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The network interface will be assigned IPv4 address.
         /// </summary>
         public static NetworkInterfaceStackType Ipv4Only { get; } = new NetworkInterfaceStackType("IPV4_ONLY");
-        public static NetworkInterfaceStackType UnspecifiedStackType { get; } = new NetworkInterfaceStackType("UNSPECIFIED_STACK_TYPE");
 
         public static bool operator ==(NetworkInterfaceStackType left, NetworkInterfaceStackType right) => left.Equals(right);
         public static bool operator !=(NetworkInterfaceStackType left, NetworkInterfaceStackType right) => !left.Equals(right);
@@ -4370,6 +4472,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+    /// </summary>
     [EnumType]
     public readonly struct NetworkNetworkFirewallPolicyEnforcementOrder : IEquatable<NetworkNetworkFirewallPolicyEnforcementOrder>
     {
@@ -4632,7 +4737,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct OrganizationSecurityPolicyType : IEquatable<OrganizationSecurityPolicyType>
@@ -4737,6 +4842,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+    /// </summary>
+    [EnumType]
+    public readonly struct PublicAdvertisedPrefixPdpScope : IEquatable<PublicAdvertisedPrefixPdpScope>
+    {
+        private readonly string _value;
+
+        private PublicAdvertisedPrefixPdpScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The public delegated prefix is global only. The provisioning will take ~4 weeks.
+        /// </summary>
+        public static PublicAdvertisedPrefixPdpScope Global { get; } = new PublicAdvertisedPrefixPdpScope("GLOBAL");
+        /// <summary>
+        /// The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
+        /// </summary>
+        public static PublicAdvertisedPrefixPdpScope GlobalAndRegional { get; } = new PublicAdvertisedPrefixPdpScope("GLOBAL_AND_REGIONAL");
+        /// <summary>
+        /// The public delegated prefix is regional only. The provisioning will take a few minutes.
+        /// </summary>
+        public static PublicAdvertisedPrefixPdpScope Regional { get; } = new PublicAdvertisedPrefixPdpScope("REGIONAL");
+
+        public static bool operator ==(PublicAdvertisedPrefixPdpScope left, PublicAdvertisedPrefixPdpScope right) => left.Equals(right);
+        public static bool operator !=(PublicAdvertisedPrefixPdpScope left, PublicAdvertisedPrefixPdpScope right) => !left.Equals(right);
+
+        public static explicit operator string(PublicAdvertisedPrefixPdpScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PublicAdvertisedPrefixPdpScope other && Equals(other);
+        public bool Equals(PublicAdvertisedPrefixPdpScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
     /// </summary>
     [EnumType]
@@ -4749,6 +4895,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        /// <summary>
+        /// The prefix is announced to Internet.
+        /// </summary>
+        public static PublicAdvertisedPrefixStatus AnnouncedToInternet { get; } = new PublicAdvertisedPrefixStatus("ANNOUNCED_TO_INTERNET");
         /// <summary>
         /// RPKI validation is complete.
         /// </summary>
@@ -4769,6 +4919,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// User has configured the PTR.
         /// </summary>
         public static PublicAdvertisedPrefixStatus PtrConfigured { get; } = new PublicAdvertisedPrefixStatus("PTR_CONFIGURED");
+        /// <summary>
+        /// The prefix is currently withdrawn but ready to be announced.
+        /// </summary>
+        public static PublicAdvertisedPrefixStatus ReadyToAnnounce { get; } = new PublicAdvertisedPrefixStatus("READY_TO_ANNOUNCE");
         /// <summary>
         /// Reverse DNS lookup failed.
         /// </summary>
@@ -5308,7 +5462,44 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    /// Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionInstanceGroupManagerListManagedInstancesResults : IEquatable<RegionInstanceGroupManagerListManagedInstancesResults>
+    {
+        private readonly string _value;
+
+        private RegionInstanceGroupManagerListManagedInstancesResults(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// (Default) Pagination is disabled for listManagedInstances API method. maxResults and pageToken query parameters are ignored and all instances are returned in a single response.
+        /// </summary>
+        public static RegionInstanceGroupManagerListManagedInstancesResults Pageless { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGELESS");
+        /// <summary>
+        /// Pagination is enabled for listManagedInstances API method. maxResults and pageToken query parameters are respected.
+        /// </summary>
+        public static RegionInstanceGroupManagerListManagedInstancesResults Paginated { get; } = new RegionInstanceGroupManagerListManagedInstancesResults("PAGINATED");
+
+        public static bool operator ==(RegionInstanceGroupManagerListManagedInstancesResults left, RegionInstanceGroupManagerListManagedInstancesResults right) => left.Equals(right);
+        public static bool operator !=(RegionInstanceGroupManagerListManagedInstancesResults left, RegionInstanceGroupManagerListManagedInstancesResults right) => !left.Equals(right);
+
+        public static explicit operator string(RegionInstanceGroupManagerListManagedInstancesResults value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionInstanceGroupManagerListManagedInstancesResults other && Equals(other);
+        public bool Equals(RegionInstanceGroupManagerListManagedInstancesResults other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct RegionNetworkEndpointGroupNetworkEndpointType : IEquatable<RegionNetworkEndpointGroupNetworkEndpointType>
@@ -5438,6 +5629,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+    /// </summary>
     [EnumType]
     public readonly struct RegionNetworkNetworkFirewallPolicyEnforcementOrder : IEquatable<RegionNetworkNetworkFirewallPolicyEnforcementOrder>
     {
@@ -5467,7 +5661,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct RegionSecurityPolicyType : IEquatable<RegionSecurityPolicyType>
@@ -5657,6 +5851,37 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionTargetHttpsProxyQuicOverride other && Equals(other);
         public bool Equals(RegionTargetHttpsProxyQuicOverride other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionTargetTcpProxyProxyHeader : IEquatable<RegionTargetTcpProxyProxyHeader>
+    {
+        private readonly string _value;
+
+        private RegionTargetTcpProxyProxyHeader(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionTargetTcpProxyProxyHeader None { get; } = new RegionTargetTcpProxyProxyHeader("NONE");
+        public static RegionTargetTcpProxyProxyHeader ProxyV1 { get; } = new RegionTargetTcpProxyProxyHeader("PROXY_V1");
+
+        public static bool operator ==(RegionTargetTcpProxyProxyHeader left, RegionTargetTcpProxyProxyHeader right) => left.Equals(right);
+        public static bool operator !=(RegionTargetTcpProxyProxyHeader left, RegionTargetTcpProxyProxyHeader right) => !left.Equals(right);
+
+        public static explicit operator string(RegionTargetTcpProxyProxyHeader value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionTargetTcpProxyProxyHeader other && Equals(other);
+        public bool Equals(RegionTargetTcpProxyProxyHeader other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6223,7 +6448,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+    /// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
     /// </summary>
     [EnumType]
     public readonly struct RouterBgpPeerBfdSessionInitializationMode : IEquatable<RouterBgpPeerBfdSessionInitializationMode>
@@ -6278,6 +6503,40 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RouterBgpPeerEnable other && Equals(other);
         public bool Equals(RouterBgpPeerEnable other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct RouterNatEndpointTypesItem : IEquatable<RouterNatEndpointTypesItem>
+    {
+        private readonly string _value;
+
+        private RouterNatEndpointTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is used for Secure Web Gateway (go/securewebgateway) endpoints.
+        /// </summary>
+        public static RouterNatEndpointTypesItem EndpointTypeSwg { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG");
+        /// <summary>
+        /// This is the default.
+        /// </summary>
+        public static RouterNatEndpointTypesItem EndpointTypeVm { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_VM");
+
+        public static bool operator ==(RouterNatEndpointTypesItem left, RouterNatEndpointTypesItem right) => left.Equals(right);
+        public static bool operator !=(RouterNatEndpointTypesItem left, RouterNatEndpointTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(RouterNatEndpointTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterNatEndpointTypesItem other && Equals(other);
+        public bool Equals(RouterNatEndpointTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -6971,7 +7230,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -7037,7 +7296,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyType : IEquatable<SecurityPolicyType>
@@ -7434,10 +7693,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
         /// </summary>
         public static SubnetworkIpv6AccessType Internal { get; } = new SubnetworkIpv6AccessType("INTERNAL");
-        /// <summary>
-        /// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
-        /// </summary>
-        public static SubnetworkIpv6AccessType UnspecifiedIpv6AccessType { get; } = new SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE");
 
         public static bool operator ==(SubnetworkIpv6AccessType left, SubnetworkIpv6AccessType right) => left.Equals(right);
         public static bool operator !=(SubnetworkIpv6AccessType left, SubnetworkIpv6AccessType right) => !left.Equals(right);
@@ -7700,7 +7955,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+    /// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkStackType : IEquatable<SubnetworkStackType>
@@ -7720,7 +7975,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// New VMs in this subnet will only be assigned IPv4 addresses.
         /// </summary>
         public static SubnetworkStackType Ipv4Only { get; } = new SubnetworkStackType("IPV4_ONLY");
-        public static SubnetworkStackType UnspecifiedStackType { get; } = new SubnetworkStackType("UNSPECIFIED_STACK_TYPE");
 
         public static bool operator ==(SubnetworkStackType left, SubnetworkStackType right) => left.Equals(right);
         public static bool operator !=(SubnetworkStackType left, SubnetworkStackType right) => !left.Equals(right);

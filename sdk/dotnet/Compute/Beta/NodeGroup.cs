@@ -76,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
+        /// Share-settings for the node group
+        /// </summary>
+        [Output("shareSettings")]
+        public Output<Outputs.ShareSettingsResponse> ShareSettings { get; private set; } = null!;
+
+        /// <summary>
         /// The total number of nodes in the node group.
         /// </summary>
         [Output("size")]
@@ -182,6 +188,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Share-settings for the node group
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
 
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Beta.NodeGroupStatus>? Status { get; set; }

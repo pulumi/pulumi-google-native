@@ -58,12 +58,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> KajEnrollmentState { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-        /// </summary>
-        [Output("kmsSettings")]
-        public Output<Outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse> KmsSettings { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. Labels applied to the workload.
         /// </summary>
         [Output("labels")]
@@ -176,12 +170,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
-
-        /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-        /// </summary>
-        [Input("kmsSettings")]
-        public Input<Inputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs>? KmsSettings { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -41,8 +41,6 @@ type LookupWorkloadResult struct {
 	Etag string `pulumi:"etag"`
 	// Represents the KAJ enrollment state of the given workload.
 	KajEnrollmentState string `pulumi:"kajEnrollmentState"`
-	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
@@ -123,13 +121,6 @@ func (o LookupWorkloadResultOutput) Etag() pulumi.StringOutput {
 // Represents the KAJ enrollment state of the given workload.
 func (o LookupWorkloadResultOutput) KajEnrollmentState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.KajEnrollmentState }).(pulumi.StringOutput)
-}
-
-// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-func (o LookupWorkloadResultOutput) KmsSettings() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput {
-	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse {
-		return v.KmsSettings
-	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput)
 }
 
 // Optional. Labels applied to the workload.

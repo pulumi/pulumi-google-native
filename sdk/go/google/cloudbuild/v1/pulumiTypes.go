@@ -2680,6 +2680,10 @@ func (o FailureInfoResponseOutput) Type() pulumi.StringOutput {
 
 // GitFileSource describes a file within a (possibly remote) code repository.
 type GitFileSource struct {
+	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+	BitbucketServerConfig *string `pulumi:"bitbucketServerConfig"`
+	// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+	GithubEnterpriseConfig *string `pulumi:"githubEnterpriseConfig"`
 	// The path of the file, with the repo root as the root of the path.
 	Path *string `pulumi:"path"`
 	// See RepoType above.
@@ -2703,6 +2707,10 @@ type GitFileSourceInput interface {
 
 // GitFileSource describes a file within a (possibly remote) code repository.
 type GitFileSourceArgs struct {
+	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+	BitbucketServerConfig pulumi.StringPtrInput `pulumi:"bitbucketServerConfig"`
+	// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+	GithubEnterpriseConfig pulumi.StringPtrInput `pulumi:"githubEnterpriseConfig"`
 	// The path of the file, with the repo root as the root of the path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// See RepoType above.
@@ -2791,6 +2799,16 @@ func (o GitFileSourceOutput) ToGitFileSourcePtrOutputWithContext(ctx context.Con
 	}).(GitFileSourcePtrOutput)
 }
 
+// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+func (o GitFileSourceOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitFileSource) *string { return v.BitbucketServerConfig }).(pulumi.StringPtrOutput)
+}
+
+// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+func (o GitFileSourceOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitFileSource) *string { return v.GithubEnterpriseConfig }).(pulumi.StringPtrOutput)
+}
+
 // The path of the file, with the repo root as the root of the path.
 func (o GitFileSourceOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitFileSource) *string { return v.Path }).(pulumi.StringPtrOutput)
@@ -2835,6 +2853,26 @@ func (o GitFileSourcePtrOutput) Elem() GitFileSourceOutput {
 	}).(GitFileSourceOutput)
 }
 
+// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+func (o GitFileSourcePtrOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitbucketServerConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+func (o GitFileSourcePtrOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GithubEnterpriseConfig
+	}).(pulumi.StringPtrOutput)
+}
+
 // The path of the file, with the repo root as the root of the path.
 func (o GitFileSourcePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitFileSource) *string {
@@ -2877,6 +2915,10 @@ func (o GitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 
 // GitFileSource describes a file within a (possibly remote) code repository.
 type GitFileSourceResponse struct {
+	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+	BitbucketServerConfig string `pulumi:"bitbucketServerConfig"`
+	// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
 	// The path of the file, with the repo root as the root of the path.
 	Path string `pulumi:"path"`
 	// See RepoType above.
@@ -2900,6 +2942,16 @@ func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutput() GitFileSour
 
 func (o GitFileSourceResponseOutput) ToGitFileSourceResponseOutputWithContext(ctx context.Context) GitFileSourceResponseOutput {
 	return o
+}
+
+// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+func (o GitFileSourceResponseOutput) BitbucketServerConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.BitbucketServerConfig }).(pulumi.StringOutput)
+}
+
+// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+func (o GitFileSourceResponseOutput) GithubEnterpriseConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GitFileSourceResponse) string { return v.GithubEnterpriseConfig }).(pulumi.StringOutput)
 }
 
 // The path of the file, with the repo root as the root of the path.
@@ -3568,6 +3620,10 @@ func (o GitHubEventsConfigResponseOutput) Push() PushFilterResponseOutput {
 
 // GitRepoSource describes a repo and ref of a code repository.
 type GitRepoSource struct {
+	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+	BitbucketServerConfig *string `pulumi:"bitbucketServerConfig"`
+	// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+	GithubEnterpriseConfig *string `pulumi:"githubEnterpriseConfig"`
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref *string `pulumi:"ref"`
 	// See RepoType below.
@@ -3589,6 +3645,10 @@ type GitRepoSourceInput interface {
 
 // GitRepoSource describes a repo and ref of a code repository.
 type GitRepoSourceArgs struct {
+	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+	BitbucketServerConfig pulumi.StringPtrInput `pulumi:"bitbucketServerConfig"`
+	// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+	GithubEnterpriseConfig pulumi.StringPtrInput `pulumi:"githubEnterpriseConfig"`
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// See RepoType below.
@@ -3675,6 +3735,16 @@ func (o GitRepoSourceOutput) ToGitRepoSourcePtrOutputWithContext(ctx context.Con
 	}).(GitRepoSourcePtrOutput)
 }
 
+// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+func (o GitRepoSourceOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *string { return v.BitbucketServerConfig }).(pulumi.StringPtrOutput)
+}
+
+// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+func (o GitRepoSourceOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GitRepoSource) *string { return v.GithubEnterpriseConfig }).(pulumi.StringPtrOutput)
+}
+
 // The branch or tag to use. Must start with "refs/" (required).
 func (o GitRepoSourceOutput) Ref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *string { return v.Ref }).(pulumi.StringPtrOutput)
@@ -3714,6 +3784,26 @@ func (o GitRepoSourcePtrOutput) Elem() GitRepoSourceOutput {
 	}).(GitRepoSourceOutput)
 }
 
+// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+func (o GitRepoSourcePtrOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitbucketServerConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+func (o GitRepoSourcePtrOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GitRepoSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GithubEnterpriseConfig
+	}).(pulumi.StringPtrOutput)
+}
+
 // The branch or tag to use. Must start with "refs/" (required).
 func (o GitRepoSourcePtrOutput) Ref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitRepoSource) *string {
@@ -3746,6 +3836,10 @@ func (o GitRepoSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 
 // GitRepoSource describes a repo and ref of a code repository.
 type GitRepoSourceResponse struct {
+	// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+	BitbucketServerConfig string `pulumi:"bitbucketServerConfig"`
+	// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
 	// The branch or tag to use. Must start with "refs/" (required).
 	Ref string `pulumi:"ref"`
 	// See RepoType below.
@@ -3767,6 +3861,16 @@ func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponseOutput() GitRepoSour
 
 func (o GitRepoSourceResponseOutput) ToGitRepoSourceResponseOutputWithContext(ctx context.Context) GitRepoSourceResponseOutput {
 	return o
+}
+
+// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+func (o GitRepoSourceResponseOutput) BitbucketServerConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.BitbucketServerConfig }).(pulumi.StringOutput)
+}
+
+// The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+func (o GitRepoSourceResponseOutput) GithubEnterpriseConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.GithubEnterpriseConfig }).(pulumi.StringOutput)
 }
 
 // The branch or tag to use. Must start with "refs/" (required).

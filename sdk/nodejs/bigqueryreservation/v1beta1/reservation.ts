@@ -35,6 +35,10 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     */
+    public readonly concurrency!: pulumi.Output<string>;
+    /**
      * Creation time of the reservation.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
@@ -70,6 +74,7 @@ export class Reservation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["concurrency"] = args ? args.concurrency : undefined;
             resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
@@ -80,6 +85,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["concurrency"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["ignoreIdleSlots"] = undefined /*out*/;
             resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
@@ -96,6 +102,10 @@ export class Reservation extends pulumi.CustomResource {
  * The set of arguments for constructing a Reservation resource.
  */
 export interface ReservationArgs {
+    /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     */
+    concurrency?: pulumi.Input<string>;
     /**
      * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */

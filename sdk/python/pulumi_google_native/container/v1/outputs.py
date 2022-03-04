@@ -57,11 +57,13 @@ __all__ = [
     'NetworkConfigResponse',
     'NetworkPolicyConfigResponse',
     'NetworkPolicyResponse',
+    'NetworkTagsResponse',
     'NodeConfigDefaultsResponse',
     'NodeConfigResponse',
     'NodeKubeletConfigResponse',
     'NodeManagementResponse',
     'NodeNetworkConfigResponse',
+    'NodePoolAutoConfigResponse',
     'NodePoolAutoscalingResponse',
     'NodePoolDefaultsResponse',
     'NodePoolResponse',
@@ -473,8 +475,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
             suggest = "disk_type"
         elif key == "imageType":
             suggest = "image_type"
-        elif key == "minCpuPlatform":
-            suggest = "min_cpu_platform"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "serviceAccount":
@@ -501,7 +501,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
                  disk_type: str,
                  image_type: str,
                  management: 'outputs.NodeManagementResponse',
-                 min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
@@ -513,7 +512,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param str image_type: The image type to use for NAP created node.
         :param 'NodeManagementResponse' management: Specifies the node management options for NAP created node-pools.
-        :param str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: Scopes that are used by NAP when creating node pools.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
@@ -524,7 +522,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "management", management)
-        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
@@ -569,14 +566,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         Specifies the node management options for NAP created node-pools.
         """
         return pulumi.get(self, "management")
-
-    @property
-    @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> str:
-        """
-        Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-        """
-        return pulumi.get(self, "min_cpu_platform")
 
     @property
     @pulumi.getter(name="oauthScopes")
@@ -2288,6 +2277,28 @@ class NetworkPolicyResponse(dict):
 
 
 @pulumi.output_type
+class NetworkTagsResponse(dict):
+    """
+    Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+    """
+    def __init__(__self__, *,
+                 tags: Sequence[str]):
+        """
+        Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
+        :param Sequence[str] tags: List of network tags.
+        """
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        List of network tags.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class NodeConfigDefaultsResponse(dict):
     """
     Subset of NodeConfig message that has defaults.
@@ -2405,6 +2416,7 @@ class NodeConfigResponse(dict):
                  sandbox_config: 'outputs.SandboxConfigResponse',
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
+                 spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.NodeTaintResponse'],
                  workload_metadata_config: 'outputs.WorkloadMetadataConfigResponse'):
@@ -2432,6 +2444,7 @@ class NodeConfigResponse(dict):
         :param 'SandboxConfigResponse' sandbox_config: Sandbox configuration for this node.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
+        :param bool spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         :param Sequence['NodeTaintResponse'] taints: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
         :param 'WorkloadMetadataConfigResponse' workload_metadata_config: The workload metadata configuration for this node.
@@ -2458,6 +2471,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "sandbox_config", sandbox_config)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
         pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
@@ -2637,6 +2651,14 @@ class NodeConfigResponse(dict):
         Shielded Instance options.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def spot(self) -> bool:
+        """
+        Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        """
+        return pulumi.get(self, "spot")
 
     @property
     @pulumi.getter
@@ -2856,6 +2878,45 @@ class NodeNetworkConfigResponse(dict):
         The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         return pulumi.get(self, "pod_range")
+
+
+@pulumi.output_type
+class NodePoolAutoConfigResponse(dict):
+    """
+    Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkTags":
+            suggest = "network_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolAutoConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolAutoConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolAutoConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_tags: 'outputs.NetworkTagsResponse'):
+        """
+        Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        :param 'NetworkTagsResponse' network_tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        """
+        pulumi.set(__self__, "network_tags", network_tags)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> 'outputs.NetworkTagsResponse':
+        """
+        The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        """
+        return pulumi.get(self, "network_tags")
 
 
 @pulumi.output_type

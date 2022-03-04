@@ -126,6 +126,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly networkInterfaces!: pulumi.Output<outputs.compute.v1.NetworkInterfaceResponse[]>;
     public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.v1.NetworkPerformanceConfigResponse>;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.v1.InstanceParamsResponse>;
+    /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
     public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
@@ -211,6 +215,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -263,6 +268,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkInterfaces"] = undefined /*out*/;
             resourceInputs["networkPerformanceConfig"] = undefined /*out*/;
+            resourceInputs["params"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
             resourceInputs["reservationAffinity"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
@@ -347,6 +353,10 @@ export interface InstanceArgs {
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.NetworkInterfaceArgs>[]>;
     networkPerformanceConfig?: pulumi.Input<inputs.compute.v1.NetworkPerformanceConfigArgs>;
+    /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.v1.InstanceParamsArgs>;
     /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */

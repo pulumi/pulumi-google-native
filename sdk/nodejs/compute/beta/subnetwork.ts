@@ -64,6 +64,10 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     /**
+     * The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+     */
+    public /*out*/ readonly internalIpv6Prefix!: pulumi.Output<string>;
+    /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
@@ -120,7 +124,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+     * The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
      */
     public readonly stackType!: pulumi.Output<string>;
     /**
@@ -163,6 +167,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
+            resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -175,6 +180,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
+            resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["ipCidrRange"] = undefined /*out*/;
             resourceInputs["ipv6AccessType"] = undefined /*out*/;
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
@@ -260,7 +266,7 @@ export interface SubnetworkArgs {
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.beta.SubnetworkSecondaryRangeArgs>[]>;
     /**
-     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+     * The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
      */
     stackType?: pulumi.Input<enums.compute.beta.SubnetworkStackType>;
 }

@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
+        /// The prefix length of the primary internal IPv6 range.
+        /// </summary>
+        public readonly int InternalIpv6PrefixLength;
+        /// <summary>
         /// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessConfigResponse> Ipv6AccessConfigs;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string fingerprint,
 
+            int internalIpv6PrefixLength,
+
             ImmutableArray<Outputs.AccessConfigResponse> ipv6AccessConfigs,
 
             string ipv6AccessType,
@@ -106,6 +112,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
             Fingerprint = fingerprint;
+            InternalIpv6PrefixLength = internalIpv6PrefixLength;
             Ipv6AccessConfigs = ipv6AccessConfigs;
             Ipv6AccessType = ipv6AccessType;
             Ipv6Address = ipv6Address;

@@ -268,7 +268,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public static ContentMatcherMatcher NotContainsString { get; } = new ContentMatcherMatcher("NOT_CONTAINS_STRING");
         /// <summary>
-        /// Selects regular-expression matching. The match succeeds of the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
+        /// Selects regular-expression matching. The match succeeds if the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
         /// </summary>
         public static ContentMatcherMatcher MatchesRegex { get; } = new ContentMatcherMatcher("MATCHES_REGEX");
         /// <summary>
@@ -685,7 +685,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
 
         /// <summary>
-        /// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+        /// An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
         /// </summary>
         public static MetricThresholdEvaluationMissingData EvaluationMissingDataUnspecified { get; } = new MetricThresholdEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED");
         /// <summary>
@@ -730,7 +730,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
 
         /// <summary>
-        /// An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+        /// An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
         /// </summary>
         public static MonitoringQueryLanguageConditionEvaluationMissingData EvaluationMissingDataUnspecified { get; } = new MonitoringQueryLanguageConditionEvaluationMissingData("EVALUATION_MISSING_DATA_UNSPECIFIED");
         /// <summary>

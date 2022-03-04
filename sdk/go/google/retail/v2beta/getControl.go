@@ -38,7 +38,7 @@ type LookupControlResult struct {
 	Name string `pulumi:"name"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2betaRuleResponse `pulumi:"rule"`
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes []string `pulumi:"solutionTypes"`
 }
 
@@ -101,7 +101,7 @@ func (o LookupControlResultOutput) Rule() GoogleCloudRetailV2betaRuleResponseOut
 	return o.ApplyT(func(v LookupControlResult) GoogleCloudRetailV2betaRuleResponse { return v.Rule }).(GoogleCloudRetailV2betaRuleResponseOutput)
 }
 
-// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 func (o LookupControlResultOutput) SolutionTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupControlResult) []string { return v.SolutionTypes }).(pulumi.StringArrayOutput)
 }

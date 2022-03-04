@@ -154,6 +154,10 @@ class GitFileSourceRepoType(str, Enum):
     """
     A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
     """
+    BITBUCKET_SERVER = "BITBUCKET_SERVER"
+    """
+    A Bitbucket Server-hosted repo.
+    """
 
 
 class GitRepoSourceRepoType(str, Enum):
@@ -171,6 +175,10 @@ class GitRepoSourceRepoType(str, Enum):
     GITHUB = "GITHUB"
     """
     A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
+    """
+    BITBUCKET_SERVER = "BITBUCKET_SERVER"
+    """
+    A Bitbucket Server-hosted repo.
     """
 
 

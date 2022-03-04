@@ -10,13 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
-    /// Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+    /// Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:EndpointAttachment")]
     public partial class EndpointAttachment : Pulumi.CustomResource
     {
         /// <summary>
-        /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+        /// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
@@ -28,7 +29,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        /// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -94,7 +95,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        /// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

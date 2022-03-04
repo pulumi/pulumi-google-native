@@ -21,7 +21,7 @@ class EndpointAttachmentArgs:
         """
         The set of arguments for constructing a EndpointAttachment resource.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
-        :param pulumi.Input[str] name: Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        :param pulumi.Input[str] name: Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -68,7 +68,7 @@ class EndpointAttachmentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         """
         return pulumi.get(self, "name")
 
@@ -101,12 +101,13 @@ class EndpointAttachment(pulumi.CustomResource):
                  service_attachment: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+        Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
-        :param pulumi.Input[str] name: Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        :param pulumi.Input[str] name: Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
         """
         ...
@@ -116,7 +117,8 @@ class EndpointAttachment(pulumi.CustomResource):
                  args: EndpointAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+        Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param EndpointAttachmentArgs args: The arguments to use to populate this resource's properties.
@@ -190,7 +192,7 @@ class EndpointAttachment(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+        Host that can be used in either the HTTP target endpoint directly or as the host in target server.
         """
         return pulumi.get(self, "host")
 
@@ -206,7 +208,7 @@ class EndpointAttachment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         """
         return pulumi.get(self, "name")
 

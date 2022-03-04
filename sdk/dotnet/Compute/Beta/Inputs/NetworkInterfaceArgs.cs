@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _aliasIpRanges = value;
         }
 
+        /// <summary>
+        /// The prefix length of the primary internal IPv6 range.
+        /// </summary>
+        [Input("internalIpv6PrefixLength")]
+        public Input<int>? InternalIpv6PrefixLength { get; set; }
+
         [Input("ipv6AccessConfigs")]
         private InputList<Inputs.AccessConfigArgs>? _ipv6AccessConfigs;
 

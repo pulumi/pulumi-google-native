@@ -119,6 +119,10 @@ export interface GetInstanceResult {
     readonly networkInterfaces: outputs.compute.v1.NetworkInterfaceResponse[];
     readonly networkPerformanceConfig: outputs.compute.v1.NetworkPerformanceConfigResponse;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    readonly params: outputs.compute.v1.InstanceParamsResponse;
+    /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      */
     readonly privateIpv6GoogleAccess: string;

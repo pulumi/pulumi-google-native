@@ -36,7 +36,7 @@ export class GameServerCluster extends pulumi.CustomResource {
     }
 
     /**
-     * The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+     * The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
      */
     public /*out*/ readonly clusterState!: pulumi.Output<outputs.gameservices.v1.KubernetesClusterStateResponse>;
     /**
@@ -52,7 +52,7 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -60,7 +60,7 @@ export class GameServerCluster extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+     * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -125,7 +125,7 @@ export interface GameServerClusterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     etag?: pulumi.Input<string>;
     gameServerClusterId: pulumi.Input<string>;
@@ -135,7 +135,7 @@ export interface GameServerClusterArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+     * The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

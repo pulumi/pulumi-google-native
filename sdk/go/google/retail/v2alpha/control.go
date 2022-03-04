@@ -26,7 +26,7 @@ type Control struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRuleResponseOutput `pulumi:"rule"`
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes pulumi.StringArrayOutput `pulumi:"solutionTypes"`
 }
 
@@ -93,7 +93,7 @@ type controlArgs struct {
 	Project *string `pulumi:"project"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule *GoogleCloudRetailV2alphaRule `pulumi:"rule"`
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes []ControlSolutionTypesItem `pulumi:"solutionTypes"`
 }
 
@@ -111,7 +111,7 @@ type ControlArgs struct {
 	Project pulumi.StringPtrInput
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRulePtrInput
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes ControlSolutionTypesItemArrayInput
 }
 

@@ -28,7 +28,7 @@ type Snapshot struct {
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
-	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureResponseArrayOutput `pulumi:"guestOsFeatures"`
@@ -121,7 +121,7 @@ type snapshotArgs struct {
 	ChainName *string `pulumi:"chainName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
 	Labels map[string]string `pulumi:"labels"`
@@ -151,7 +151,7 @@ type SnapshotArgs struct {
 	ChainName pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
 	// Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
 	Labels pulumi.StringMapInput

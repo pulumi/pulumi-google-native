@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The user who created the Rollout. Readonly.
+        /// </summary>
+        [Output("createdBy")]
+        public Output<string> CreatedBy { get; private set; } = null!;
+
+        /// <summary>
         /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
         /// </summary>
         [Output("deleteServiceStrategy")]
@@ -104,6 +110,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The user who created the Rollout. Readonly.
+        /// </summary>
+        [Input("createdBy")]
+        public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
         /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.

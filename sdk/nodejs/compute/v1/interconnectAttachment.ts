@@ -44,7 +44,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly bandwidth!: pulumi.Output<string>;
     /**
-     * Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+     * This field is not available.
      */
     public readonly candidateIpv6Subnets!: pulumi.Output<string[]>;
     /**
@@ -60,7 +60,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly cloudRouterIpv6Address!: pulumi.Output<string>;
     /**
-     * If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     * This field is not available.
      */
     public readonly cloudRouterIpv6InterfaceId!: pulumi.Output<string>;
     /**
@@ -76,13 +76,13 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public /*out*/ readonly customerRouterIpv6Address!: pulumi.Output<string>;
     /**
-     * If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     * This field is not available.
      */
     public readonly customerRouterIpv6InterfaceId!: pulumi.Output<string>;
     /**
-     * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+     * Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
      */
-    public readonly dataplaneVersion!: pulumi.Output<number>;
+    public /*out*/ readonly dataplaneVersion!: pulumi.Output<number>;
     /**
      * An optional description of this resource.
      */
@@ -188,7 +188,6 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["candidateSubnets"] = args ? args.candidateSubnets : undefined;
             resourceInputs["cloudRouterIpv6InterfaceId"] = args ? args.cloudRouterIpv6InterfaceId : undefined;
             resourceInputs["customerRouterIpv6InterfaceId"] = args ? args.customerRouterIpv6InterfaceId : undefined;
-            resourceInputs["dataplaneVersion"] = args ? args.dataplaneVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
@@ -212,6 +211,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
             resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
+            resourceInputs["dataplaneVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
             resourceInputs["privateInterconnectInfo"] = undefined /*out*/;
@@ -271,7 +271,7 @@ export interface InterconnectAttachmentArgs {
      */
     bandwidth?: pulumi.Input<enums.compute.v1.InterconnectAttachmentBandwidth>;
     /**
-     * Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+     * This field is not available.
      */
     candidateIpv6Subnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -279,17 +279,13 @@ export interface InterconnectAttachmentArgs {
      */
     candidateSubnets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     * This field is not available.
      */
     cloudRouterIpv6InterfaceId?: pulumi.Input<string>;
     /**
-     * If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+     * This field is not available.
      */
     customerRouterIpv6InterfaceId?: pulumi.Input<string>;
-    /**
-     * [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
-     */
-    dataplaneVersion?: pulumi.Input<number>;
     /**
      * An optional description of this resource.
      */

@@ -103,7 +103,7 @@ class GetProcessorResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+        The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
         """
         return pulumi.get(self, "type")
 

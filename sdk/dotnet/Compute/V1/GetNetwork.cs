@@ -68,9 +68,17 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        /// </summary>
+        public readonly bool EnableUlaInternalIpv6;
+        /// <summary>
         /// The gateway address for default routing out of the network, selected by GCP.
         /// </summary>
         public readonly string GatewayIPv4;
+        /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        /// </summary>
+        public readonly string InternalIpv6Range;
         /// <summary>
         /// Type of the resource. Always compute#network for networks.
         /// </summary>
@@ -84,6 +92,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        /// </summary>
+        public readonly string NetworkFirewallPolicyEnforcementOrder;
+        /// <summary>
         /// A list of network peerings for the resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkPeeringResponse> Peerings;
@@ -95,6 +107,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
+        /// <summary>
+        /// Server-defined URL for this resource with the resource id.
+        /// </summary>
+        public readonly string SelfLinkWithId;
         /// <summary>
         /// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
         /// </summary>
@@ -108,7 +124,11 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string description,
 
+            bool enableUlaInternalIpv6,
+
             string gatewayIPv4,
+
+            string internalIpv6Range,
 
             string kind,
 
@@ -116,24 +136,32 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string name,
 
+            string networkFirewallPolicyEnforcementOrder,
+
             ImmutableArray<Outputs.NetworkPeeringResponse> peerings,
 
             Outputs.NetworkRoutingConfigResponse routingConfig,
 
             string selfLink,
 
+            string selfLinkWithId,
+
             ImmutableArray<string> subnetworks)
         {
             AutoCreateSubnetworks = autoCreateSubnetworks;
             CreationTimestamp = creationTimestamp;
             Description = description;
+            EnableUlaInternalIpv6 = enableUlaInternalIpv6;
             GatewayIPv4 = gatewayIPv4;
+            InternalIpv6Range = internalIpv6Range;
             Kind = kind;
             Mtu = mtu;
             Name = name;
+            NetworkFirewallPolicyEnforcementOrder = networkFirewallPolicyEnforcementOrder;
             Peerings = peerings;
             RoutingConfig = routingConfig;
             SelfLink = selfLink;
+            SelfLinkWithId = selfLinkWithId;
             Subnetworks = subnetworks;
         }
     }

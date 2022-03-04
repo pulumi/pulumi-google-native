@@ -28,9 +28,9 @@ class GameServerClusterArgs:
         The set of arguments for constructing a GameServerCluster resource.
         :param pulumi.Input['GameServerClusterConnectionInfoArgs'] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
-        :param pulumi.Input[str] etag: ETag of the resource.
+        :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
-        :param pulumi.Input[str] name: The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        :param pulumi.Input[str] name: The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         """
         pulumi.set(__self__, "game_server_cluster_id", game_server_cluster_id)
         pulumi.set(__self__, "realm_id", realm_id)
@@ -95,7 +95,7 @@ class GameServerClusterArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        ETag of the resource.
+        Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
 
@@ -128,7 +128,7 @@ class GameServerClusterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         """
         return pulumi.get(self, "name")
 
@@ -168,9 +168,9 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
-        :param pulumi.Input[str] etag: ETag of the resource.
+        :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
-        :param pulumi.Input[str] name: The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        :param pulumi.Input[str] name: The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         """
         ...
     @overload
@@ -269,7 +269,7 @@ class GameServerCluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterState")
     def cluster_state(self) -> pulumi.Output['outputs.KubernetesClusterStateResponse']:
         """
-        The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+        The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
         """
         return pulumi.get(self, "cluster_state")
 
@@ -301,7 +301,7 @@ class GameServerCluster(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        ETag of the resource.
+        Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         """
         return pulumi.get(self, "etag")
 
@@ -317,7 +317,7 @@ class GameServerCluster(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+        The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         """
         return pulumi.get(self, "name")
 

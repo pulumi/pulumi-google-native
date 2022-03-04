@@ -21,7 +21,7 @@ type Document struct {
 	ContentUri pulumi.StringOutput `pulumi:"contentUri"`
 	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolOutput `pulumi:"enableAutoReload"`
 	// The knowledge type of document content.
 	KnowledgeTypes pulumi.StringArrayOutput `pulumi:"knowledgeTypes"`
@@ -35,6 +35,8 @@ type Document struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent pulumi.StringOutput `pulumi:"rawContent"`
+	// The current state of the document.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewDocument registers a new resource with the given unique name, arguments, and options.
@@ -94,7 +96,7 @@ type documentArgs struct {
 	ContentUri *string `pulumi:"contentUri"`
 	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName string `pulumi:"displayName"`
-	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload        *bool   `pulumi:"enableAutoReload"`
 	ImportGcsCustomMetadata *string `pulumi:"importGcsCustomMetadata"`
 	KnowledgeBaseId         string  `pulumi:"knowledgeBaseId"`
@@ -120,7 +122,7 @@ type DocumentArgs struct {
 	ContentUri pulumi.StringPtrInput
 	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringInput
-	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload        pulumi.BoolPtrInput
 	ImportGcsCustomMetadata pulumi.StringPtrInput
 	KnowledgeBaseId         pulumi.StringInput

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeGroupResult:
-    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, location_hint=None, maintenance_policy=None, maintenance_window=None, name=None, node_template=None, self_link=None, size=None, status=None, zone=None):
+    def __init__(__self__, autoscaling_policy=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, location_hint=None, maintenance_policy=None, maintenance_window=None, name=None, node_template=None, self_link=None, share_settings=None, size=None, status=None, zone=None):
         if autoscaling_policy and not isinstance(autoscaling_policy, dict):
             raise TypeError("Expected argument 'autoscaling_policy' to be a dict")
         pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
@@ -52,6 +52,9 @@ class GetNodeGroupResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if share_settings and not isinstance(share_settings, dict):
+            raise TypeError("Expected argument 'share_settings' to be a dict")
+        pulumi.set(__self__, "share_settings", share_settings)
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
@@ -145,6 +148,14 @@ class GetNodeGroupResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> 'outputs.ShareSettingsResponse':
+        """
+        Share-settings for the node group
+        """
+        return pulumi.get(self, "share_settings")
+
+    @property
     @pulumi.getter
     def size(self) -> int:
         """
@@ -183,6 +194,7 @@ class AwaitableGetNodeGroupResult(GetNodeGroupResult):
             name=self.name,
             node_template=self.node_template,
             self_link=self.self_link,
+            share_settings=self.share_settings,
             size=self.size,
             status=self.status,
             zone=self.zone)
@@ -217,6 +229,7 @@ def get_node_group(node_group: Optional[str] = None,
         name=__ret__.name,
         node_template=__ret__.node_template,
         self_link=__ret__.self_link,
+        share_settings=__ret__.share_settings,
         size=__ret__.size,
         status=__ret__.status,
         zone=__ret__.zone)

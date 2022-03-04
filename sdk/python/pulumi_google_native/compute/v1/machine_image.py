@@ -29,7 +29,7 @@ class MachineImageArgs:
         The set of arguments for constructing a MachineImage resource.
         :param pulumi.Input[str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance 
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['SavedDiskArgs']]] saved_disks: An array of Machine Image specific properties for disks attached to the source instance
@@ -84,7 +84,7 @@ class MachineImageArgs:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 
@@ -193,7 +193,7 @@ class MachineImage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] machine_image_encryption_key: Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SavedDiskArgs']]]] saved_disks: An array of Machine Image specific properties for disks attached to the source instance
@@ -327,7 +327,7 @@ class MachineImage(pulumi.CustomResource):
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> pulumi.Output[bool]:
         """
-        [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 

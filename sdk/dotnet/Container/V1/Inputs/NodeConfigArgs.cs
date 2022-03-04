@@ -171,6 +171,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 
+        /// <summary>
+        /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        /// </summary>
+        [Input("spot")]
+        public Input<bool>? Spot { get; set; }
+
         [Input("tags")]
         private InputList<string>? _tags;
 

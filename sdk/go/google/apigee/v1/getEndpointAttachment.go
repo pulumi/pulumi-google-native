@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the specified EndpointAttachment.
+// Gets the endpoint attachment.
 func LookupEndpointAttachment(ctx *pulumi.Context, args *LookupEndpointAttachmentArgs, opts ...pulumi.InvokeOption) (*LookupEndpointAttachmentResult, error) {
 	var rv LookupEndpointAttachmentResult
 	err := ctx.Invoke("google-native:apigee/v1:getEndpointAttachment", args, &rv, opts...)
@@ -26,11 +26,11 @@ type LookupEndpointAttachmentArgs struct {
 }
 
 type LookupEndpointAttachmentResult struct {
-	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+	// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 	Host string `pulumi:"host"`
 	// Location of the endpoint attachment.
 	Location string `pulumi:"location"`
-	// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+	// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
 	Name string `pulumi:"name"`
 	// Format: projects/*/regions/*/serviceAttachments/*
 	ServiceAttachment string `pulumi:"serviceAttachment"`
@@ -68,7 +68,7 @@ func (o LookupEndpointAttachmentResultOutput) ToLookupEndpointAttachmentResultOu
 	return o
 }
 
-// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 func (o LookupEndpointAttachmentResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointAttachmentResult) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -78,7 +78,7 @@ func (o LookupEndpointAttachmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointAttachmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
 func (o LookupEndpointAttachmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointAttachmentResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -181,6 +181,10 @@ export interface GetClusterResult {
      */
     readonly nodeIpv4CidrSize: number;
     /**
+     * Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+     */
+    readonly nodePoolAutoConfig: outputs.container.v1.NodePoolAutoConfigResponse;
+    /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
      */
     readonly nodePoolDefaults: outputs.container.v1.NodePoolDefaultsResponse;

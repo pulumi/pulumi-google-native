@@ -26,6 +26,8 @@ type LookupIosAppArgs struct {
 }
 
 type LookupIosAppResult struct {
+	// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+	ApiKeyId string `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId string `pulumi:"appId"`
 	// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
@@ -72,6 +74,11 @@ func (o LookupIosAppResultOutput) ToLookupIosAppResultOutput() LookupIosAppResul
 
 func (o LookupIosAppResultOutput) ToLookupIosAppResultOutputWithContext(ctx context.Context) LookupIosAppResultOutput {
 	return o
+}
+
+// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+func (o LookupIosAppResultOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.

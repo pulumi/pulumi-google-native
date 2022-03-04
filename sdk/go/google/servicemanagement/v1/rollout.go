@@ -20,6 +20,8 @@ type Rollout struct {
 
 	// Creation time of the rollout. Readonly.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The user who created the Rollout. Readonly.
+	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyResponseOutput `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -76,6 +78,8 @@ func (RolloutState) ElementType() reflect.Type {
 type rolloutArgs struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime *string `pulumi:"createTime"`
+	// The user who created the Rollout. Readonly.
+	CreatedBy *string `pulumi:"createdBy"`
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy *DeleteServiceStrategy `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -92,6 +96,8 @@ type rolloutArgs struct {
 type RolloutArgs struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime pulumi.StringPtrInput
+	// The user who created the Rollout. Readonly.
+	CreatedBy pulumi.StringPtrInput
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyPtrInput
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'

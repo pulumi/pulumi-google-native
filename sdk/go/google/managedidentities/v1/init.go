@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:managedidentities/v1:Backup":
+		r = &Backup{}
 	case "google-native:managedidentities/v1:Domain":
 		r = &Domain{}
+	case "google-native:managedidentities/v1:DomainBackupIamPolicy":
+		r = &DomainBackupIamPolicy{}
 	case "google-native:managedidentities/v1:DomainIamPolicy":
 		r = &DomainIamPolicy{}
 	case "google-native:managedidentities/v1:Peering":

@@ -900,17 +900,25 @@ class BuildArgs:
 @pulumi.input_type
 class GitFileSourceArgs:
     def __init__(__self__, *,
+                 bitbucket_server_config: Optional[pulumi.Input[str]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  repo_type: Optional[pulumi.Input['GitFileSourceRepoType']] = None,
                  revision: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         GitFileSource describes a file within a (possibly remote) code repository.
+        :param pulumi.Input[str] bitbucket_server_config: The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] path: The path of the file, with the repo root as the root of the path.
         :param pulumi.Input['GitFileSourceRepoType'] repo_type: See RepoType above.
         :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         :param pulumi.Input[str] uri: The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
+        if bitbucket_server_config is not None:
+            pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
+        if github_enterprise_config is not None:
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if repo_type is not None:
@@ -919,6 +927,30 @@ class GitFileSourceArgs:
             pulumi.set(__self__, "revision", revision)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @bitbucket_server_config.setter
+    def bitbucket_server_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bitbucket_server_config", value)
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+        """
+        return pulumi.get(self, "github_enterprise_config")
+
+    @github_enterprise_config.setter
+    def github_enterprise_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_enterprise_config", value)
 
     @property
     @pulumi.getter
@@ -1212,21 +1244,53 @@ class GitHubEventsConfigArgs:
 @pulumi.input_type
 class GitRepoSourceArgs:
     def __init__(__self__, *,
+                 bitbucket_server_config: Optional[pulumi.Input[str]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[str]] = None,
                  ref: Optional[pulumi.Input[str]] = None,
                  repo_type: Optional[pulumi.Input['GitRepoSourceRepoType']] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         GitRepoSource describes a repo and ref of a code repository.
+        :param pulumi.Input[str] bitbucket_server_config: The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
         :param pulumi.Input['GitRepoSourceRepoType'] repo_type: See RepoType below.
         :param pulumi.Input[str] uri: The URI of the repo (required).
         """
+        if bitbucket_server_config is not None:
+            pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
+        if github_enterprise_config is not None:
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if ref is not None:
             pulumi.set(__self__, "ref", ref)
         if repo_type is not None:
             pulumi.set(__self__, "repo_type", repo_type)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @bitbucket_server_config.setter
+    def bitbucket_server_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bitbucket_server_config", value)
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+        """
+        return pulumi.get(self, "github_enterprise_config")
+
+    @github_enterprise_config.setter
+    def github_enterprise_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_enterprise_config", value)
 
     @property
     @pulumi.getter

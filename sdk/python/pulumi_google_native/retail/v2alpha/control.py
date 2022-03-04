@@ -28,7 +28,7 @@ class ControlArgs:
         """
         The set of arguments for constructing a Control resource.
         :param pulumi.Input[str] display_name: The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
-        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         :param pulumi.Input['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs'] facet_spec: A facet specification to perform faceted search.
         :param pulumi.Input[str] name: Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
         :param pulumi.Input['GoogleCloudRetailV2alphaRuleArgs'] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
@@ -82,7 +82,7 @@ class ControlArgs:
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]]:
         """
-        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "solution_types")
 
@@ -170,7 +170,7 @@ class Control(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs']] facet_spec: A facet specification to perform faceted search.
         :param pulumi.Input[str] name: Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaRuleArgs']] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
-        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         ...
     @overload
@@ -310,7 +310,7 @@ class Control(pulumi.CustomResource):
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "solution_types")
 

@@ -25,7 +25,7 @@ class RegionInstantSnapshotArgs:
         """
         The set of arguments for constructing a RegionInstantSnapshot resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[bool] guest_flush: Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] source_disk: URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
@@ -71,7 +71,7 @@ class RegionInstantSnapshotArgs:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 
@@ -154,7 +154,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[bool] guest_flush: Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] source_disk: URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
@@ -303,7 +303,7 @@ class RegionInstantSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> pulumi.Output[bool]:
         """
-        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 

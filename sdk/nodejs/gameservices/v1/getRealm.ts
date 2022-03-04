@@ -36,7 +36,7 @@ export interface GetRealmResult {
      */
     readonly description: string;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     readonly etag: string;
     /**
@@ -44,11 +44,11 @@ export interface GetRealmResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+     * The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
      */
     readonly name: string;
     /**
-     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
      */
     readonly timeZone: string;
     /**

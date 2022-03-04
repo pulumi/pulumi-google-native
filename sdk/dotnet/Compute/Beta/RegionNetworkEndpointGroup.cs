@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         /// </summary>
         [Output("networkEndpointType")]
         public Output<string> NetworkEndpointType { get; private set; } = null!;
@@ -223,7 +223,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+        /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         /// </summary>
         [Input("networkEndpointType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.RegionNetworkEndpointGroupNetworkEndpointType>? NetworkEndpointType { get; set; }

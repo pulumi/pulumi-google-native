@@ -35,7 +35,7 @@ type LookupInstantSnapshotResult struct {
 	Description string `pulumi:"description"`
 	// Size of the source disk, specified in GB.
 	DiskSizeGb string `pulumi:"diskSizeGb"`
-	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush bool `pulumi:"guestFlush"`
 	// Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
 	Kind string `pulumi:"kind"`
@@ -118,7 +118,7 @@ func (o LookupInstantSnapshotResultOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstantSnapshotResult) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
 
-// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
 func (o LookupInstantSnapshotResultOutput) GuestFlush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupInstantSnapshotResult) bool { return v.GuestFlush }).(pulumi.BoolOutput)
 }

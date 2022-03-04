@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
     public sealed class GetAndroidAppResult
     {
         /// <summary>
+        /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+        /// </summary>
+        public readonly string ApiKeyId;
+        /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         /// </summary>
         public readonly string AppId;
@@ -78,6 +82,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
         [OutputConstructor]
         private GetAndroidAppResult(
+            string apiKeyId,
+
             string appId,
 
             string displayName,
@@ -88,6 +94,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
             string project)
         {
+            ApiKeyId = apiKeyId;
             AppId = appId;
             DisplayName = displayName;
             Name = name;

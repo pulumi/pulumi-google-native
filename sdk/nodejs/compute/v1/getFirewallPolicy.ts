@@ -53,6 +53,10 @@ export interface GetFirewallPolicyResult {
      */
     readonly parent: string;
     /**
+     * URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+     */
+    readonly region: string;
+    /**
      * Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */
     readonly ruleTupleCount: number;

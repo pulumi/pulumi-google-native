@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, creation_time=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, slot_capacity=None, update_time=None):
+    def __init__(__self__, concurrency=None, creation_time=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, slot_capacity=None, update_time=None):
+        if concurrency and not isinstance(concurrency, str):
+            raise TypeError("Expected argument 'concurrency' to be a str")
+        pulumi.set(__self__, "concurrency", concurrency)
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -36,6 +39,14 @@ class GetReservationResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def concurrency(self) -> str:
+        """
+        Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        """
+        return pulumi.get(self, "concurrency")
 
     @property
     @pulumi.getter(name="creationTime")
@@ -92,6 +103,7 @@ class AwaitableGetReservationResult(GetReservationResult):
         if False:
             yield self
         return GetReservationResult(
+            concurrency=self.concurrency,
             creation_time=self.creation_time,
             ignore_idle_slots=self.ignore_idle_slots,
             multi_region_auxiliary=self.multi_region_auxiliary,
@@ -118,6 +130,7 @@ def get_reservation(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigqueryreservation/v1beta1:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
+        concurrency=__ret__.concurrency,
         creation_time=__ret__.creation_time,
         ignore_idle_slots=__ret__.ignore_idle_slots,
         multi_region_auxiliary=__ret__.multi_region_auxiliary,

@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         }
 
         /// <summary>
-        /// Defaults to NONE.
+        /// Invalid value, the request will return validation error.
         /// </summary>
         public static OSPolicyResourceExecResourceExecInterpreter InterpreterUnspecified { get; } = new OSPolicyResourceExecResourceExecInterpreter("INTERPRETER_UNSPECIFIED");
         /// <summary>

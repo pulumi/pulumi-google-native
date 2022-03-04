@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     public sealed class FleetConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+        /// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
         /// </summary>
         [Input("fleetSpec")]
         public Input<string>? FleetSpec { get; set; }

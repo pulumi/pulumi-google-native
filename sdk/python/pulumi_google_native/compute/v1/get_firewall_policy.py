@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFirewallPolicyResult:
-    def __init__(__self__, associations=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, parent=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None):
+    def __init__(__self__, associations=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, parent=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, short_name=None):
         if associations and not isinstance(associations, list):
             raise TypeError("Expected argument 'associations' to be a list")
         pulumi.set(__self__, "associations", associations)
@@ -40,6 +40,9 @@ class GetFirewallPolicyResult:
         if parent and not isinstance(parent, str):
             raise TypeError("Expected argument 'parent' to be a str")
         pulumi.set(__self__, "parent", parent)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if rule_tuple_count and not isinstance(rule_tuple_count, int):
             raise TypeError("Expected argument 'rule_tuple_count' to be a int")
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
@@ -113,6 +116,14 @@ class GetFirewallPolicyResult:
         return pulumi.get(self, "parent")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> int:
         """
@@ -166,6 +177,7 @@ class AwaitableGetFirewallPolicyResult(GetFirewallPolicyResult):
             kind=self.kind,
             name=self.name,
             parent=self.parent,
+            region=self.region,
             rule_tuple_count=self.rule_tuple_count,
             rules=self.rules,
             self_link=self.self_link,
@@ -194,6 +206,7 @@ def get_firewall_policy(firewall_policy: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         parent=__ret__.parent,
+        region=__ret__.region,
         rule_tuple_count=__ret__.rule_tuple_count,
         rules=__ret__.rules,
         self_link=__ret__.self_link,

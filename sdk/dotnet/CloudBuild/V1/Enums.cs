@@ -287,6 +287,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
         /// </summary>
         public static GitFileSourceRepoType Github { get; } = new GitFileSourceRepoType("GITHUB");
+        /// <summary>
+        /// A Bitbucket Server-hosted repo.
+        /// </summary>
+        public static GitFileSourceRepoType BitbucketServer { get; } = new GitFileSourceRepoType("BITBUCKET_SERVER");
 
         public static bool operator ==(GitFileSourceRepoType left, GitFileSourceRepoType right) => left.Equals(right);
         public static bool operator !=(GitFileSourceRepoType left, GitFileSourceRepoType right) => !left.Equals(right);
@@ -328,6 +332,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
         /// </summary>
         public static GitRepoSourceRepoType Github { get; } = new GitRepoSourceRepoType("GITHUB");
+        /// <summary>
+        /// A Bitbucket Server-hosted repo.
+        /// </summary>
+        public static GitRepoSourceRepoType BitbucketServer { get; } = new GitRepoSourceRepoType("BITBUCKET_SERVER");
 
         public static bool operator ==(GitRepoSourceRepoType left, GitRepoSourceRepoType right) => left.Equals(right);
         public static bool operator !=(GitRepoSourceRepoType left, GitRepoSourceRepoType right) => !left.Equals(right);

@@ -144,6 +144,10 @@ export const GitFileSourceRepoType = {
      * A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
      */
     Github: "GITHUB",
+    /**
+     * A Bitbucket Server-hosted repo.
+     */
+    BitbucketServer: "BITBUCKET_SERVER",
 } as const;
 
 /**
@@ -164,6 +168,10 @@ export const GitRepoSourceRepoType = {
      * A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
      */
     Github: "GITHUB",
+    /**
+     * A Bitbucket Server-hosted repo.
+     */
+    BitbucketServer: "BITBUCKET_SERVER",
 } as const;
 
 /**

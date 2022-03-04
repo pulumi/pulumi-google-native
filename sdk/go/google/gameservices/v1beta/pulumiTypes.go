@@ -1892,7 +1892,7 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Fleet configs for Agones.
 type FleetConfig struct {
-	// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+	// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
 	FleetSpec *string `pulumi:"fleetSpec"`
 	// The name of the FleetConfig.
 	Name *string `pulumi:"name"`
@@ -1911,7 +1911,7 @@ type FleetConfigInput interface {
 
 // Fleet configs for Agones.
 type FleetConfigArgs struct {
-	// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+	// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
 	FleetSpec pulumi.StringPtrInput `pulumi:"fleetSpec"`
 	// The name of the FleetConfig.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1969,7 +1969,7 @@ func (o FleetConfigOutput) ToFleetConfigOutputWithContext(ctx context.Context) F
 	return o
 }
 
-// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
 func (o FleetConfigOutput) FleetSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FleetConfig) *string { return v.FleetSpec }).(pulumi.StringPtrOutput)
 }
@@ -2001,7 +2001,7 @@ func (o FleetConfigArrayOutput) Index(i pulumi.IntInput) FleetConfigOutput {
 
 // Fleet configs for Agones.
 type FleetConfigResponse struct {
-	// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+	// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
 	FleetSpec string `pulumi:"fleetSpec"`
 	// The name of the FleetConfig.
 	Name string `pulumi:"name"`
@@ -2022,7 +2022,7 @@ func (o FleetConfigResponseOutput) ToFleetConfigResponseOutputWithContext(ctx co
 	return o
 }
 
-// Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
 func (o FleetConfigResponseOutput) FleetSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v FleetConfigResponse) string { return v.FleetSpec }).(pulumi.StringOutput)
 }
@@ -2248,7 +2248,7 @@ func (o GameServerClusterConnectionInfoResponseOutput) Namespace() pulumi.String
 
 // A reference to a GKE cluster.
 type GkeClusterReference struct {
-	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
 	Cluster *string `pulumi:"cluster"`
 }
 
@@ -2265,7 +2265,7 @@ type GkeClusterReferenceInput interface {
 
 // A reference to a GKE cluster.
 type GkeClusterReferenceArgs struct {
-	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
 	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
 }
 
@@ -2347,7 +2347,7 @@ func (o GkeClusterReferenceOutput) ToGkeClusterReferencePtrOutputWithContext(ctx
 	}).(GkeClusterReferencePtrOutput)
 }
 
-// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
 func (o GkeClusterReferenceOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GkeClusterReference) *string { return v.Cluster }).(pulumi.StringPtrOutput)
 }
@@ -2376,7 +2376,7 @@ func (o GkeClusterReferencePtrOutput) Elem() GkeClusterReferenceOutput {
 	}).(GkeClusterReferenceOutput)
 }
 
-// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
 func (o GkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GkeClusterReference) *string {
 		if v == nil {
@@ -2388,7 +2388,7 @@ func (o GkeClusterReferencePtrOutput) Cluster() pulumi.StringPtrOutput {
 
 // A reference to a GKE cluster.
 type GkeClusterReferenceResponse struct {
-	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+	// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
 	Cluster string `pulumi:"cluster"`
 }
 
@@ -2407,7 +2407,7 @@ func (o GkeClusterReferenceResponseOutput) ToGkeClusterReferenceResponseOutputWi
 	return o
 }
 
-// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+// The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
 func (o GkeClusterReferenceResponseOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterReferenceResponse) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -2422,7 +2422,7 @@ type KubernetesClusterStateResponse struct {
 	InstallationState string `pulumi:"installationState"`
 	// The version of Kubernetes that is currently used in the registered Kubernetes cluster (as detected by the Cloud Game Servers service).
 	KubernetesVersionInstalled string `pulumi:"kubernetesVersionInstalled"`
-	// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+	// The cloud provider type reported by the first node's `providerID` in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
 	Provider string `pulumi:"provider"`
 	// The detailed error message for the installed versions of Agones/Kubernetes.
 	VersionInstalledErrorMessage string `pulumi:"versionInstalledErrorMessage"`
@@ -2463,7 +2463,7 @@ func (o KubernetesClusterStateResponseOutput) KubernetesVersionInstalled() pulum
 	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.KubernetesVersionInstalled }).(pulumi.StringOutput)
 }
 
-// The cloud provider type reported by the first node's providerID in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
+// The cloud provider type reported by the first node's `providerID` in the list of nodes on the Kubernetes endpoint. On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the provider type will be empty.
 func (o KubernetesClusterStateResponseOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesClusterStateResponse) string { return v.Provider }).(pulumi.StringOutput)
 }
@@ -3041,11 +3041,11 @@ func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfig struct {
-	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
 	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
-	// The name of the Scaling Config
+	// The name of the scaling config.
 	Name string `pulumi:"name"`
-	// The schedules to which this Scaling Config applies.
+	// The schedules to which this scaling config applies.
 	Schedules []Schedule `pulumi:"schedules"`
 	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
 	Selectors []LabelSelector `pulumi:"selectors"`
@@ -3064,11 +3064,11 @@ type ScalingConfigInput interface {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfigArgs struct {
-	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
 	FleetAutoscalerSpec pulumi.StringInput `pulumi:"fleetAutoscalerSpec"`
-	// The name of the Scaling Config
+	// The name of the scaling config.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The schedules to which this Scaling Config applies.
+	// The schedules to which this scaling config applies.
 	Schedules ScheduleArrayInput `pulumi:"schedules"`
 	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
 	Selectors LabelSelectorArrayInput `pulumi:"selectors"`
@@ -3126,17 +3126,17 @@ func (o ScalingConfigOutput) ToScalingConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
 func (o ScalingConfigOutput) FleetAutoscalerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfig) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
 }
 
-// The name of the Scaling Config
+// The name of the scaling config.
 func (o ScalingConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The schedules to which this Scaling Config applies.
+// The schedules to which this scaling config applies.
 func (o ScalingConfigOutput) Schedules() ScheduleArrayOutput {
 	return o.ApplyT(func(v ScalingConfig) []Schedule { return v.Schedules }).(ScheduleArrayOutput)
 }
@@ -3168,11 +3168,11 @@ func (o ScalingConfigArrayOutput) Index(i pulumi.IntInput) ScalingConfigOutput {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfigResponse struct {
-	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
 	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
-	// The name of the Scaling Config
+	// The name of the scaling config.
 	Name string `pulumi:"name"`
-	// The schedules to which this Scaling Config applies.
+	// The schedules to which this scaling config applies.
 	Schedules []ScheduleResponse `pulumi:"schedules"`
 	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
 	Selectors []LabelSelectorResponse `pulumi:"selectors"`
@@ -3193,17 +3193,17 @@ func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutputWithContext(ct
 	return o
 }
 
-// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
 func (o ScalingConfigResponseOutput) FleetAutoscalerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfigResponse) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
 }
 
-// The name of the Scaling Config
+// The name of the scaling config.
 func (o ScalingConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The schedules to which this Scaling Config applies.
+// The schedules to which this scaling config applies.
 func (o ScalingConfigResponseOutput) Schedules() ScheduleResponseArrayOutput {
 	return o.ApplyT(func(v ScalingConfigResponse) []ScheduleResponse { return v.Schedules }).(ScheduleResponseArrayOutput)
 }
@@ -3233,11 +3233,11 @@ func (o ScalingConfigResponseArrayOutput) Index(i pulumi.IntInput) ScalingConfig
 	}).(ScalingConfigResponseOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type Schedule struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration *string `pulumi:"cronJobDuration"`
-	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
 	CronSpec *string `pulumi:"cronSpec"`
 	// The end time of the event.
 	EndTime *string `pulumi:"endTime"`
@@ -3256,11 +3256,11 @@ type ScheduleInput interface {
 	ToScheduleOutputWithContext(context.Context) ScheduleOutput
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleArgs struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration pulumi.StringPtrInput `pulumi:"cronJobDuration"`
-	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
 	CronSpec pulumi.StringPtrInput `pulumi:"cronSpec"`
 	// The end time of the event.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
@@ -3305,7 +3305,7 @@ func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) Sch
 	return pulumi.ToOutputWithContext(ctx, i).(ScheduleArrayOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -3325,7 +3325,7 @@ func (o ScheduleOutput) CronJobDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schedule) *string { return v.CronJobDuration }).(pulumi.StringPtrOutput)
 }
 
-// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
 func (o ScheduleOutput) CronSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schedule) *string { return v.CronSpec }).(pulumi.StringPtrOutput)
 }
@@ -3360,11 +3360,11 @@ func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
 	}).(ScheduleOutput)
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleResponse struct {
 	// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
 	CronJobDuration string `pulumi:"cronJobDuration"`
-	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+	// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
 	CronSpec string `pulumi:"cronSpec"`
 	// The end time of the event.
 	EndTime string `pulumi:"endTime"`
@@ -3372,7 +3372,7 @@ type ScheduleResponse struct {
 	StartTime string `pulumi:"startTime"`
 }
 
-// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
+// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ```start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration```
 type ScheduleResponseOutput struct{ *pulumi.OutputState }
 
 func (ScheduleResponseOutput) ElementType() reflect.Type {
@@ -3392,7 +3392,7 @@ func (o ScheduleResponseOutput) CronJobDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.CronJobDuration }).(pulumi.StringOutput)
 }
 
-// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
 func (o ScheduleResponseOutput) CronSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.CronSpec }).(pulumi.StringOutput)
 }

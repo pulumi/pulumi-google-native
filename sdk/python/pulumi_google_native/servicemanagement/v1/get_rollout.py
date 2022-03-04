@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetRolloutResult:
-    def __init__(__self__, create_time=None, delete_service_strategy=None, rollout_id=None, service_name=None, status=None, traffic_percent_strategy=None):
+    def __init__(__self__, create_time=None, created_by=None, delete_service_strategy=None, rollout_id=None, service_name=None, status=None, traffic_percent_strategy=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if created_by and not isinstance(created_by, str):
+            raise TypeError("Expected argument 'created_by' to be a str")
+        pulumi.set(__self__, "created_by", created_by)
         if delete_service_strategy and not isinstance(delete_service_strategy, dict):
             raise TypeError("Expected argument 'delete_service_strategy' to be a dict")
         pulumi.set(__self__, "delete_service_strategy", delete_service_strategy)
@@ -45,6 +48,14 @@ class GetRolloutResult:
         Creation time of the rollout. Readonly.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> str:
+        """
+        The user who created the Rollout. Readonly.
+        """
+        return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="deleteServiceStrategy")
@@ -94,6 +105,7 @@ class AwaitableGetRolloutResult(GetRolloutResult):
             yield self
         return GetRolloutResult(
             create_time=self.create_time,
+            created_by=self.created_by,
             delete_service_strategy=self.delete_service_strategy,
             rollout_id=self.rollout_id,
             service_name=self.service_name,
@@ -118,6 +130,7 @@ def get_rollout(rollout_id: Optional[str] = None,
 
     return AwaitableGetRolloutResult(
         create_time=__ret__.create_time,
+        created_by=__ret__.created_by,
         delete_service_strategy=__ret__.delete_service_strategy,
         rollout_id=__ret__.rollout_id,
         service_name=__ret__.service_name,

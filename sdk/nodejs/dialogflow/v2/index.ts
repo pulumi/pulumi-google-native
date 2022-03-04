@@ -7,16 +7,22 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./context";
 export * from "./conversation";
+export * from "./conversationDataset";
+export * from "./conversationModel";
 export * from "./conversationProfile";
 export * from "./document";
 export * from "./entityType";
 export * from "./environment";
+export * from "./evaluation";
 export * from "./getContext";
 export * from "./getConversation";
+export * from "./getConversationDataset";
+export * from "./getConversationModel";
 export * from "./getConversationProfile";
 export * from "./getDocument";
 export * from "./getEntityType";
 export * from "./getEnvironment";
+export * from "./getEvaluation";
 export * from "./getIntent";
 export * from "./getKnowledgeBase";
 export * from "./getParticipant";
@@ -34,10 +40,13 @@ export * from "../../types/enums/dialogflow/v2";
 // Import resources to register:
 import { Context } from "./context";
 import { Conversation } from "./conversation";
+import { ConversationDataset } from "./conversationDataset";
+import { ConversationModel } from "./conversationModel";
 import { ConversationProfile } from "./conversationProfile";
 import { Document } from "./document";
 import { EntityType } from "./entityType";
 import { Environment } from "./environment";
+import { Evaluation } from "./evaluation";
 import { Intent } from "./intent";
 import { KnowledgeBase } from "./knowledgeBase";
 import { Participant } from "./participant";
@@ -52,6 +61,10 @@ const _module = {
                 return new Context(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2:Conversation":
                 return new Conversation(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2:ConversationDataset":
+                return new ConversationDataset(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2:ConversationModel":
+                return new ConversationModel(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2:ConversationProfile":
                 return new ConversationProfile(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2:Document":
@@ -60,6 +73,8 @@ const _module = {
                 return new EntityType(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "google-native:dialogflow/v2:Evaluation":
+                return new Evaluation(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2:Intent":
                 return new Intent(name, <any>undefined, { urn })
             case "google-native:dialogflow/v2:KnowledgeBase":

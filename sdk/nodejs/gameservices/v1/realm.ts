@@ -43,7 +43,7 @@ export class Realm extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -51,11 +51,11 @@ export class Realm extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+     * The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
      */
     public readonly timeZone!: pulumi.Output<string>;
     /**
@@ -113,7 +113,7 @@ export interface RealmArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * ETag of the resource.
+     * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -122,13 +122,13 @@ export interface RealmArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+     * The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     realmId: pulumi.Input<string>;
     /**
-     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+     * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
      */
     timeZone: pulumi.Input<string>;
 }

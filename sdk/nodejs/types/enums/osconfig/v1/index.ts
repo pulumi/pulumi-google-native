@@ -64,7 +64,7 @@ export type OSPolicyMode = (typeof OSPolicyMode)[keyof typeof OSPolicyMode];
 
 export const OSPolicyResourceExecResourceExecInterpreter = {
     /**
-     * Defaults to NONE.
+     * Invalid value, the request will return validation error.
      */
     InterpreterUnspecified: "INTERPRETER_UNSPECIFIED",
     /**

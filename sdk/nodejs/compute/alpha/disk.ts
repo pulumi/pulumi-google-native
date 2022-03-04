@@ -40,6 +40,14 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly architecture!: pulumi.Output<string>;
     /**
+     * Disk asynchronously replicated into this disk.
+     */
+    public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.alpha.DiskAsyncReplicationResponse>;
+    /**
+     * A list of disks this disk is asynchronously replicated to.
+     */
+    public /*out*/ readonly asyncSecondaryDisks!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -128,6 +136,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly resourcePolicies!: pulumi.Output<string[]>;
     /**
+     * Status information for the disk resource.
+     */
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.alpha.DiskResourceStatusResponse>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -143,6 +155,14 @@ export class Disk extends pulumi.CustomResource {
      * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
      */
     public readonly sizeGb!: pulumi.Output<string>;
+    /**
+     * URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+     */
+    public /*out*/ readonly sourceConsistencyGroupPolicy!: pulumi.Output<string>;
+    /**
+     * ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+     */
+    public /*out*/ readonly sourceConsistencyGroupPolicyId!: pulumi.Output<string>;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
      */
@@ -220,6 +240,7 @@ export class Disk extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["architecture"] = args ? args.architecture : undefined;
+            resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
@@ -248,6 +269,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["userLicenses"] = args ? args.userLicenses : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["asyncSecondaryDisks"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -255,9 +277,12 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["lastDetachTimestamp"] = undefined /*out*/;
             resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sourceConsistencyGroupPolicy"] = undefined /*out*/;
+            resourceInputs["sourceConsistencyGroupPolicyId"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImageId"] = undefined /*out*/;
             resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
@@ -266,6 +291,8 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["users"] = undefined /*out*/;
         } else {
             resourceInputs["architecture"] = undefined /*out*/;
+            resourceInputs["asyncPrimaryDisk"] = undefined /*out*/;
+            resourceInputs["asyncSecondaryDisks"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
@@ -288,10 +315,13 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["replicaZones"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sizeGb"] = undefined /*out*/;
+            resourceInputs["sourceConsistencyGroupPolicy"] = undefined /*out*/;
+            resourceInputs["sourceConsistencyGroupPolicyId"] = undefined /*out*/;
             resourceInputs["sourceDisk"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceImage"] = undefined /*out*/;
@@ -322,6 +352,10 @@ export interface DiskArgs {
      * The architecture of the disk. Valid values are ARM64 or X86_64.
      */
     architecture?: pulumi.Input<enums.compute.alpha.DiskArchitecture>;
+    /**
+     * Disk asynchronously replicated into this disk.
+     */
+    asyncPrimaryDisk?: pulumi.Input<inputs.compute.alpha.DiskAsyncReplicationArgs>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

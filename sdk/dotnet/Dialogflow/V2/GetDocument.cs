@@ -103,6 +103,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         /// </summary>
         public readonly string RawContent;
+        /// <summary>
+        /// The current state of the document.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetDocumentResult(
@@ -122,7 +126,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 
             string name,
 
-            string rawContent)
+            string rawContent,
+
+            string state)
         {
             ContentUri = contentUri;
             DisplayName = displayName;
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             MimeType = mimeType;
             Name = name;
             RawContent = rawContent;
+            State = state;
         }
     }
 }

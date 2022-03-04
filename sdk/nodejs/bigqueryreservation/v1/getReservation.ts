@@ -28,6 +28,10 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
+     * Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+     */
+    readonly concurrency: string;
+    /**
      * Creation time of the reservation.
      */
     readonly creationTime: string;

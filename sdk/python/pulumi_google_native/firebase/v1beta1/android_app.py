@@ -13,6 +13,7 @@ __all__ = ['AndroidAppArgs', 'AndroidApp']
 @pulumi.input_type
 class AndroidAppArgs:
     def __init__(__self__, *,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -20,12 +21,15 @@ class AndroidAppArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
+        :param pulumi.Input[str] api_key_id: The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `AndroidApp`.
         :param pulumi.Input[str] name: The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
         :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
         """
+        if api_key_id is not None:
+            pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if display_name is not None:
@@ -36,6 +40,18 @@ class AndroidAppArgs:
             pulumi.set(__self__, "package_name", package_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+        """
+        return pulumi.get(self, "api_key_id")
+
+    @api_key_id.setter
+    def api_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key_id", value)
 
     @property
     @pulumi.getter(name="appId")
@@ -103,6 +119,7 @@ class AndroidApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -116,6 +133,7 @@ class AndroidApp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_key_id: The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `AndroidApp`.
         :param pulumi.Input[str] name: The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
@@ -148,6 +166,7 @@ class AndroidApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -165,6 +184,7 @@ class AndroidApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AndroidAppArgs.__new__(AndroidAppArgs)
 
+            __props__.__dict__["api_key_id"] = api_key_id
             __props__.__dict__["app_id"] = app_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
@@ -192,12 +212,21 @@ class AndroidApp(pulumi.CustomResource):
 
         __props__ = AndroidAppArgs.__new__(AndroidAppArgs)
 
+        __props__.__dict__["api_key_id"] = None
         __props__.__dict__["app_id"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["package_name"] = None
         __props__.__dict__["project"] = None
         return AndroidApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> pulumi.Output[str]:
+        """
+        The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+        """
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     public sealed class ContentMatcherArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+        /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }

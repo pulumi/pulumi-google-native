@@ -1501,7 +1501,11 @@ class GitFileSourceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "repoType":
+        if key == "bitbucketServerConfig":
+            suggest = "bitbucket_server_config"
+        elif key == "githubEnterpriseConfig":
+            suggest = "github_enterprise_config"
+        elif key == "repoType":
             suggest = "repo_type"
 
         if suggest:
@@ -1516,21 +1520,43 @@ class GitFileSourceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bitbucket_server_config: str,
+                 github_enterprise_config: str,
                  path: str,
                  repo_type: str,
                  revision: str,
                  uri: str):
         """
         GitFileSource describes a file within a (possibly remote) code repository.
+        :param str bitbucket_server_config: The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        :param str github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param str path: The path of the file, with the repo root as the root of the path.
         :param str repo_type: See RepoType above.
         :param str revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
         :param str uri: The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
+        pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
+        pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> str:
+        """
+        The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> str:
+        """
+        The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+        """
+        return pulumi.get(self, "github_enterprise_config")
 
     @property
     @pulumi.getter
@@ -1801,7 +1827,11 @@ class GitRepoSourceResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "repoType":
+        if key == "bitbucketServerConfig":
+            suggest = "bitbucket_server_config"
+        elif key == "githubEnterpriseConfig":
+            suggest = "github_enterprise_config"
+        elif key == "repoType":
             suggest = "repo_type"
 
         if suggest:
@@ -1816,18 +1846,40 @@ class GitRepoSourceResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bitbucket_server_config: str,
+                 github_enterprise_config: str,
                  ref: str,
                  repo_type: str,
                  uri: str):
         """
         GitRepoSource describes a repo and ref of a code repository.
+        :param str bitbucket_server_config: The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        :param str github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param str ref: The branch or tag to use. Must start with "refs/" (required).
         :param str repo_type: See RepoType below.
         :param str uri: The URI of the repo (required).
         """
+        pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
+        pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
         pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> str:
+        """
+        The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> str:
+        """
+        The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
+        """
+        return pulumi.get(self, "github_enterprise_config")
 
     @property
     @pulumi.getter

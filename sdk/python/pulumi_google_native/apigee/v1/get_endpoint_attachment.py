@@ -35,7 +35,7 @@ class GetEndpointAttachmentResult:
     @pulumi.getter
     def host(self) -> str:
         """
-        Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+        Host that can be used in either the HTTP target endpoint directly or as the host in target server.
         """
         return pulumi.get(self, "host")
 
@@ -51,7 +51,7 @@ class GetEndpointAttachmentResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         """
         return pulumi.get(self, "name")
 
@@ -80,7 +80,7 @@ def get_endpoint_attachment(endpoint_attachment_id: Optional[str] = None,
                             organization_id: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEndpointAttachmentResult:
     """
-    Gets the specified EndpointAttachment.
+    Gets the endpoint attachment.
     """
     __args__ = dict()
     __args__['endpointAttachmentId'] = endpoint_attachment_id
@@ -103,6 +103,6 @@ def get_endpoint_attachment_output(endpoint_attachment_id: Optional[pulumi.Input
                                    organization_id: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointAttachmentResult]:
     """
-    Gets the specified EndpointAttachment.
+    Gets the endpoint attachment.
     """
     ...

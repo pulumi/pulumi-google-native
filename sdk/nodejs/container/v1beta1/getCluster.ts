@@ -185,6 +185,10 @@ export interface GetClusterResult {
      */
     readonly nodeIpv4CidrSize: number;
     /**
+     * Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+     */
+    readonly nodePoolAutoConfig: outputs.container.v1beta1.NodePoolAutoConfigResponse;
+    /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
      */
     readonly nodePoolDefaults: outputs.container.v1beta1.NodePoolDefaultsResponse;
@@ -248,6 +252,10 @@ export interface GetClusterResult {
      * Cluster-level Vertical Pod Autoscaling configuration.
      */
     readonly verticalPodAutoscaling: outputs.container.v1beta1.VerticalPodAutoscalingResponse;
+    /**
+     * Configuration for direct-path (via ALTS) with workload identity.
+     */
+    readonly workloadAltsConfig: outputs.container.v1beta1.WorkloadALTSConfigResponse;
     /**
      * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
      */

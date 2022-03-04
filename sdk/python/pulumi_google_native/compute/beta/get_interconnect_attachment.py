@@ -145,7 +145,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="candidateIpv6Subnets")
     def candidate_ipv6_subnets(self) -> Sequence[str]:
         """
-        Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+        This field is not available.
         """
         return pulumi.get(self, "candidate_ipv6_subnets")
 
@@ -177,7 +177,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="cloudRouterIpv6InterfaceId")
     def cloud_router_ipv6_interface_id(self) -> str:
         """
-        If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        This field is not available.
         """
         return pulumi.get(self, "cloud_router_ipv6_interface_id")
 
@@ -209,7 +209,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="customerRouterIpv6InterfaceId")
     def customer_router_ipv6_interface_id(self) -> str:
         """
-        If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        This field is not available.
         """
         return pulumi.get(self, "customer_router_ipv6_interface_id")
 
@@ -217,7 +217,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="dataplaneVersion")
     def dataplane_version(self) -> int:
         """
-        [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+        Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
         """
         return pulumi.get(self, "dataplane_version")
 

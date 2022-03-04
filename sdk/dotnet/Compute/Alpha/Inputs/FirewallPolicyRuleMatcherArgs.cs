@@ -63,6 +63,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _destRegionCodes = value;
         }
 
+        [Input("destThreatIntelligences")]
+        private InputList<string>? _destThreatIntelligences;
+
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        /// </summary>
+        public InputList<string> DestThreatIntelligences
+        {
+            get => _destThreatIntelligences ?? (_destThreatIntelligences = new InputList<string>());
+            set => _destThreatIntelligences = value;
+        }
+
         [Input("layer4Configs")]
         private InputList<Inputs.FirewallPolicyRuleMatcherLayer4ConfigArgs>? _layer4Configs;
 
@@ -133,6 +145,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         {
             get => _srcSecureTags ?? (_srcSecureTags = new InputList<Inputs.FirewallPolicyRuleSecureTagArgs>());
             set => _srcSecureTags = value;
+        }
+
+        [Input("srcThreatIntelligences")]
+        private InputList<string>? _srcThreatIntelligences;
+
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        /// </summary>
+        public InputList<string> SrcThreatIntelligences
+        {
+            get => _srcThreatIntelligences ?? (_srcThreatIntelligences = new InputList<string>());
+            set => _srcThreatIntelligences = value;
         }
 
         public FirewallPolicyRuleMatcherArgs()

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        [Output("concurrency")]
+        public Output<string> Concurrency { get; private set; } = null!;
+
+        /// <summary>
         /// Creation time of the reservation.
         /// </summary>
         [Output("creationTime")]
@@ -96,6 +102,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
     public sealed class ReservationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        [Input("concurrency")]
+        public Input<string>? Concurrency { get; set; }
+
         /// <summary>
         /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
         /// </summary>

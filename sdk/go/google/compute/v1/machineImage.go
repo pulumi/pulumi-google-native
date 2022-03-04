@@ -19,7 +19,7 @@ type MachineImage struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
 	// Properties of source instance
 	InstanceProperties InstancePropertiesResponseOutput `pulumi:"instanceProperties"`
@@ -93,7 +93,7 @@ func (MachineImageState) ElementType() reflect.Type {
 type machineImageArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"machineImageEncryptionKey"`
@@ -115,7 +115,7 @@ type machineImageArgs struct {
 type MachineImageArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
 	// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyPtrInput

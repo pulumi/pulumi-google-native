@@ -19,13 +19,13 @@ type Realm struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human readable description of the realm.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -78,16 +78,16 @@ func (RealmState) ElementType() reflect.Type {
 type realmArgs struct {
 	// Human readable description of the realm.
 	Description *string `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag *string `pulumi:"etag"`
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	RealmId string  `pulumi:"realmId"`
-	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone string `pulumi:"timeZone"`
 }
 
@@ -95,16 +95,16 @@ type realmArgs struct {
 type RealmArgs struct {
 	// Human readable description of the realm.
 	Description pulumi.StringPtrInput
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringPtrInput
 	// The labels associated with this realm. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
+	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	RealmId pulumi.StringInput
-	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone pulumi.StringInput
 }
 

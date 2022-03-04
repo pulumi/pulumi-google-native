@@ -188,6 +188,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodeIpv4CidrSize!: pulumi.Output<number>;
     /**
+     * Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+     */
+    public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.v1.NodePoolAutoConfigResponse>;
+    /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
      */
     public readonly nodePoolDefaults!: pulumi.Output<outputs.container.v1.NodePoolDefaultsResponse>;
@@ -290,6 +294,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["networkPolicy"] = args ? args.networkPolicy : undefined;
+            resourceInputs["nodePoolAutoConfig"] = args ? args.nodePoolAutoConfig : undefined;
             resourceInputs["nodePoolDefaults"] = args ? args.nodePoolDefaults : undefined;
             resourceInputs["nodePools"] = args ? args.nodePools : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
@@ -353,6 +358,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["networkPolicy"] = undefined /*out*/;
             resourceInputs["nodeIpv4CidrSize"] = undefined /*out*/;
+            resourceInputs["nodePoolAutoConfig"] = undefined /*out*/;
             resourceInputs["nodePoolDefaults"] = undefined /*out*/;
             resourceInputs["nodePools"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
@@ -499,6 +505,10 @@ export interface ClusterArgs {
      * Configuration options for the NetworkPolicy feature.
      */
     networkPolicy?: pulumi.Input<inputs.container.v1.NetworkPolicyArgs>;
+    /**
+     * Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+     */
+    nodePoolAutoConfig?: pulumi.Input<inputs.container.v1.NodePoolAutoConfigArgs>;
     /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
      */

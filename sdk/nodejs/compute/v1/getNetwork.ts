@@ -39,9 +39,17 @@ export interface GetNetworkResult {
      */
     readonly description: string;
     /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+     */
+    readonly enableUlaInternalIpv6: boolean;
+    /**
      * The gateway address for default routing out of the network, selected by GCP.
      */
     readonly gatewayIPv4: string;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+     */
+    readonly internalIpv6Range: string;
     /**
      * Type of the resource. Always compute#network for networks.
      */
@@ -55,6 +63,10 @@ export interface GetNetworkResult {
      */
     readonly name: string;
     /**
+     * The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+     */
+    readonly networkFirewallPolicyEnforcementOrder: string;
+    /**
      * A list of network peerings for the resource.
      */
     readonly peerings: outputs.compute.v1.NetworkPeeringResponse[];
@@ -66,6 +78,10 @@ export interface GetNetworkResult {
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;
+    /**
+     * Server-defined URL for this resource with the resource id.
+     */
+    readonly selfLinkWithId: string;
     /**
      * Server-defined fully-qualified URLs for all subnetworks in this VPC network.
      */

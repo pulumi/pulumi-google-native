@@ -21,9 +21,17 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.AbortInfoResponse Abort;
         /// <summary>
+        /// Display information of an App Engine service version.
+        /// </summary>
+        public readonly Outputs.AppEngineVersionInfoResponse AppEngineVersionInfo;
+        /// <summary>
         /// This is a step that leads to the final state Drop.
         /// </summary>
         public readonly bool CausesDrop;
+        /// <summary>
+        /// Display information of a Cloud function.
+        /// </summary>
+        public readonly Outputs.CloudFunctionInfoResponse CloudFunction;
         /// <summary>
         /// Display information of a Cloud SQL instance.
         /// </summary>
@@ -85,6 +93,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Display information of a VPC connector.
+        /// </summary>
+        public readonly Outputs.VpcConnectorInfoResponse VpcConnector;
+        /// <summary>
         /// Display information of a Compute Engine VPN gateway.
         /// </summary>
         public readonly Outputs.VpnGatewayInfoResponse VpnGateway;
@@ -97,7 +109,11 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         private StepResponse(
             Outputs.AbortInfoResponse abort,
 
+            Outputs.AppEngineVersionInfoResponse appEngineVersionInfo,
+
             bool causesDrop,
+
+            Outputs.CloudFunctionInfoResponse cloudFunction,
 
             Outputs.CloudSQLInstanceInfoResponse cloudSqlInstance,
 
@@ -129,12 +145,16 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 
             string state,
 
+            Outputs.VpcConnectorInfoResponse vpcConnector,
+
             Outputs.VpnGatewayInfoResponse vpnGateway,
 
             Outputs.VpnTunnelInfoResponse vpnTunnel)
         {
             Abort = abort;
+            AppEngineVersionInfo = appEngineVersionInfo;
             CausesDrop = causesDrop;
+            CloudFunction = cloudFunction;
             CloudSqlInstance = cloudSqlInstance;
             Deliver = deliver;
             Description = description;
@@ -150,6 +170,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
             Project = project;
             Route = route;
             State = state;
+            VpcConnector = vpcConnector;
             VpnGateway = vpnGateway;
             VpnTunnel = vpnTunnel;
         }

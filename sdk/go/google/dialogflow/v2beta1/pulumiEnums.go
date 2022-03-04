@@ -190,6 +190,8 @@ const (
 	DocumentKnowledgeTypesItemExtractiveQa = DocumentKnowledgeTypesItem("EXTRACTIVE_QA")
 	// The entire document content as a whole can be used for query results. Only for Contact Center Solutions on Dialogflow.
 	DocumentKnowledgeTypesItemArticleSuggestion = DocumentKnowledgeTypesItem("ARTICLE_SUGGESTION")
+	// The document contains agent-facing Smart Reply entries.
+	DocumentKnowledgeTypesItemAgentFacingSmartReply = DocumentKnowledgeTypesItem("AGENT_FACING_SMART_REPLY")
 	// The legacy enum for agent-facing smart reply feature.
 	DocumentKnowledgeTypesItemSmartReply = DocumentKnowledgeTypesItem("SMART_REPLY")
 )

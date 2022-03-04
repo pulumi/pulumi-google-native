@@ -51,7 +51,7 @@ class GetTagTemplateResult:
     @pulumi.getter(name="isPubliclyReadable")
     def is_publicly_readable(self) -> bool:
         """
-        Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate.
+        Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
         """
         return pulumi.get(self, "is_publicly_readable")
 

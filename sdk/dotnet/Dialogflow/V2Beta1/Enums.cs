@@ -75,6 +75,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public static DocumentKnowledgeTypesItem ArticleSuggestion { get; } = new DocumentKnowledgeTypesItem("ARTICLE_SUGGESTION");
         /// <summary>
+        /// The document contains agent-facing Smart Reply entries.
+        /// </summary>
+        public static DocumentKnowledgeTypesItem AgentFacingSmartReply { get; } = new DocumentKnowledgeTypesItem("AGENT_FACING_SMART_REPLY");
+        /// <summary>
         /// The legacy enum for agent-facing smart reply feature.
         /// </summary>
         public static DocumentKnowledgeTypesItem SmartReply { get; } = new DocumentKnowledgeTypesItem("SMART_REPLY");

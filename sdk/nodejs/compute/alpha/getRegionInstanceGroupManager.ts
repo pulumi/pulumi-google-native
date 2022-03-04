@@ -81,6 +81,10 @@ export interface GetRegionInstanceGroupManagerResult {
      */
     readonly kind: string;
     /**
+     * Pagination behavior of listManagedInstances API method for this Managed Instance Group.
+     */
+    readonly listManagedInstancesResults: string;
+    /**
      * The name of the managed instance group. The name must be 1-63 characters long, and comply with RFC1035.
      */
     readonly name: string;

@@ -26,8 +26,6 @@ class ActorResponse(dict):
             suggest = "display_name"
         elif key == "googleSupport":
             suggest = "google_support"
-        elif key == "principalId":
-            suggest = "principal_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ActorResponse. Access the value via the '{suggest}' property getter instead.")
@@ -43,19 +41,16 @@ class ActorResponse(dict):
     def __init__(__self__, *,
                  display_name: str,
                  email: str,
-                 google_support: bool,
-                 principal_id: str):
+                 google_support: bool):
         """
         An object containing information about the effective user and authenticated principal responsible for an action.
         :param str display_name: The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
         :param str email: The email address of the actor. If not provided, it is inferred from credentials supplied during case creation. If the authenticated principal does not have an email address, one must be provided. When a name is provided, an email must also be provided. This will be obfuscated if the user is a Google Support agent.
         :param bool google_support: Whether the actor is a Google support actor.
-        :param str principal_id: An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "google_support", google_support)
-        pulumi.set(__self__, "principal_id", principal_id)
 
     @property
     @pulumi.getter(name="displayName")
@@ -80,14 +75,6 @@ class ActorResponse(dict):
         Whether the actor is a Google support actor.
         """
         return pulumi.get(self, "google_support")
-
-    @property
-    @pulumi.getter(name="principalId")
-    def principal_id(self) -> str:
-        """
-        An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
-        """
-        return pulumi.get(self, "principal_id")
 
 
 @pulumi.output_type

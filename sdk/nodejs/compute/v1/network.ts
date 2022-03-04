@@ -48,9 +48,17 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+     */
+    public readonly enableUlaInternalIpv6!: pulumi.Output<boolean>;
+    /**
      * The gateway address for default routing out of the network, selected by GCP.
      */
     public /*out*/ readonly gatewayIPv4!: pulumi.Output<string>;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+     */
+    public readonly internalIpv6Range!: pulumi.Output<string>;
     /**
      * Type of the resource. Always compute#network for networks.
      */
@@ -64,6 +72,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+     */
+    public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string>;
+    /**
      * A list of network peerings for the resource.
      */
     public /*out*/ readonly peerings!: pulumi.Output<outputs.compute.v1.NetworkPeeringResponse[]>;
@@ -75,6 +87,10 @@ export class Network extends pulumi.CustomResource {
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Server-defined URL for this resource with the resource id.
+     */
+    public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
      * Server-defined fully-qualified URLs for all subnetworks in this VPC network.
      */
@@ -93,8 +109,11 @@ export class Network extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableUlaInternalIpv6"] = args ? args.enableUlaInternalIpv6 : undefined;
+            resourceInputs["internalIpv6Range"] = args ? args.internalIpv6Range : undefined;
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["routingConfig"] = args ? args.routingConfig : undefined;
@@ -103,18 +122,23 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["subnetworks"] = undefined /*out*/;
         } else {
             resourceInputs["autoCreateSubnetworks"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["enableUlaInternalIpv6"] = undefined /*out*/;
             resourceInputs["gatewayIPv4"] = undefined /*out*/;
+            resourceInputs["internalIpv6Range"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["mtu"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["networkFirewallPolicyEnforcementOrder"] = undefined /*out*/;
             resourceInputs["peerings"] = undefined /*out*/;
             resourceInputs["routingConfig"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["subnetworks"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -135,6 +159,14 @@ export interface NetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+     */
+    enableUlaInternalIpv6?: pulumi.Input<boolean>;
+    /**
+     * When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+     */
+    internalIpv6Range?: pulumi.Input<string>;
+    /**
      * Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
      */
     mtu?: pulumi.Input<number>;
@@ -142,6 +174,10 @@ export interface NetworkArgs {
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+     */
+    networkFirewallPolicyEnforcementOrder?: pulumi.Input<enums.compute.v1.NetworkNetworkFirewallPolicyEnforcementOrder>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
     /**

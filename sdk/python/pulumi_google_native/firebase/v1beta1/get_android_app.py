@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetAndroidAppResult:
-    def __init__(__self__, app_id=None, display_name=None, name=None, package_name=None, project=None):
+    def __init__(__self__, api_key_id=None, app_id=None, display_name=None, name=None, package_name=None, project=None):
+        if api_key_id and not isinstance(api_key_id, str):
+            raise TypeError("Expected argument 'api_key_id' to be a str")
+        pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -33,6 +36,14 @@ class GetAndroidAppResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> str:
+        """
+        The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+        """
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")
@@ -81,6 +92,7 @@ class AwaitableGetAndroidAppResult(GetAndroidAppResult):
         if False:
             yield self
         return GetAndroidAppResult(
+            api_key_id=self.api_key_id,
             app_id=self.app_id,
             display_name=self.display_name,
             name=self.name,
@@ -104,6 +116,7 @@ def get_android_app(android_app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebase/v1beta1:getAndroidApp', __args__, opts=opts, typ=GetAndroidAppResult).value
 
     return AwaitableGetAndroidAppResult(
+        api_key_id=__ret__.api_key_id,
         app_id=__ret__.app_id,
         display_name=__ret__.display_name,
         name=__ret__.name,

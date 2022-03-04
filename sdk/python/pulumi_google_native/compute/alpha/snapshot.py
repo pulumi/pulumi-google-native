@@ -34,7 +34,7 @@ class SnapshotArgs:
         The set of arguments for constructing a Snapshot resource.
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -102,7 +102,7 @@ class SnapshotArgs:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> Optional[pulumi.Input[bool]]:
         """
-        [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 
@@ -264,7 +264,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] chain_name: Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this snapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] location_hint: An opaque location hint used to place the snapshot close to other resources. This field is for use by internal tools that use the public API.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -473,7 +473,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> pulumi.Output[bool]:
         """
-        [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 

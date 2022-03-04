@@ -29,7 +29,7 @@ type Processor struct {
 	ProcessEndpoint pulumi.StringOutput `pulumi:"processEndpoint"`
 	// The state of the processor.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+	// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -82,7 +82,7 @@ type processorArgs struct {
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	Location   *string `pulumi:"location"`
 	Project    *string `pulumi:"project"`
-	// The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+	// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
 	Type *string `pulumi:"type"`
 }
 
@@ -98,7 +98,7 @@ type ProcessorArgs struct {
 	KmsKeyName pulumi.StringPtrInput
 	Location   pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
-	// The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.
+	// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
 	Type pulumi.StringPtrInput
 }
 

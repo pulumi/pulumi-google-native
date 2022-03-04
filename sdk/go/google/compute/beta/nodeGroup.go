@@ -35,6 +35,8 @@ type NodeGroup struct {
 	NodeTemplate pulumi.StringOutput `pulumi:"nodeTemplate"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Share-settings for the node group
+	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// The total number of nodes in the node group.
 	Size   pulumi.IntOutput    `pulumi:"size"`
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -97,11 +99,13 @@ type nodeGroupArgs struct {
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// URL of the node template to create the node group from.
-	NodeTemplate *string          `pulumi:"nodeTemplate"`
-	Project      *string          `pulumi:"project"`
-	RequestId    *string          `pulumi:"requestId"`
-	Status       *NodeGroupStatus `pulumi:"status"`
-	Zone         *string          `pulumi:"zone"`
+	NodeTemplate *string `pulumi:"nodeTemplate"`
+	Project      *string `pulumi:"project"`
+	RequestId    *string `pulumi:"requestId"`
+	// Share-settings for the node group
+	ShareSettings *ShareSettings   `pulumi:"shareSettings"`
+	Status        *NodeGroupStatus `pulumi:"status"`
+	Zone          *string          `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NodeGroup resource.
@@ -122,8 +126,10 @@ type NodeGroupArgs struct {
 	NodeTemplate pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
 	RequestId    pulumi.StringPtrInput
-	Status       NodeGroupStatusPtrInput
-	Zone         pulumi.StringPtrInput
+	// Share-settings for the node group
+	ShareSettings ShareSettingsPtrInput
+	Status        NodeGroupStatusPtrInput
+	Zone          pulumi.StringPtrInput
 }
 
 func (NodeGroupArgs) ElementType() reflect.Type {

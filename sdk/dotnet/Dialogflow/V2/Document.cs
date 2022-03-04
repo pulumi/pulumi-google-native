@@ -69,6 +69,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Output("rawContent")]
         public Output<string> RawContent { get; private set; } = null!;
 
+        /// <summary>
+        /// The current state of the document.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Document resource with the given unique name, arguments, and options.

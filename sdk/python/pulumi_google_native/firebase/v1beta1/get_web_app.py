@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetWebAppResult:
-    def __init__(__self__, app_id=None, app_urls=None, display_name=None, name=None, project=None, web_id=None):
+    def __init__(__self__, api_key_id=None, app_id=None, app_urls=None, display_name=None, name=None, project=None, web_id=None):
+        if api_key_id and not isinstance(api_key_id, str):
+            raise TypeError("Expected argument 'api_key_id' to be a str")
+        pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -36,6 +39,14 @@ class GetWebAppResult:
         if web_id and not isinstance(web_id, str):
             raise TypeError("Expected argument 'web_id' to be a str")
         pulumi.set(__self__, "web_id", web_id)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> str:
+        """
+        The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+        """
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")
@@ -92,6 +103,7 @@ class AwaitableGetWebAppResult(GetWebAppResult):
         if False:
             yield self
         return GetWebAppResult(
+            api_key_id=self.api_key_id,
             app_id=self.app_id,
             app_urls=self.app_urls,
             display_name=self.display_name,
@@ -116,6 +128,7 @@ def get_web_app(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firebase/v1beta1:getWebApp', __args__, opts=opts, typ=GetWebAppResult).value
 
     return AwaitableGetWebAppResult(
+        api_key_id=__ret__.api_key_id,
         app_id=__ret__.app_id,
         app_urls=__ret__.app_urls,
         display_name=__ret__.display_name,

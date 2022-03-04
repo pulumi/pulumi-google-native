@@ -76,7 +76,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     /**
@@ -213,7 +213,7 @@ export interface NetworkEndpointGroupArgs {
      */
     network?: pulumi.Input<string>;
     /**
-     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+     * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
      */
     networkEndpointType?: pulumi.Input<enums.compute.alpha.NetworkEndpointGroupNetworkEndpointType>;
     project?: pulumi.Input<string>;

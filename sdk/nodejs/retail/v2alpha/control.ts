@@ -57,7 +57,7 @@ export class Control extends pulumi.CustomResource {
      */
     public readonly rule!: pulumi.Output<outputs.retail.v2alpha.GoogleCloudRetailV2alphaRuleResponse>;
     /**
-     * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+     * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
      */
     public readonly solutionTypes!: pulumi.Output<string[]>;
 
@@ -132,7 +132,7 @@ export interface ControlArgs {
      */
     rule?: pulumi.Input<inputs.retail.v2alpha.GoogleCloudRetailV2alphaRuleArgs>;
     /**
-     * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+     * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
      */
     solutionTypes: pulumi.Input<pulumi.Input<enums.retail.v2alpha.ControlSolutionTypesItem>[]>;
 }

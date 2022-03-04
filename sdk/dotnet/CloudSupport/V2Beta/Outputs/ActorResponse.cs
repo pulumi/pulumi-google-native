@@ -28,10 +28,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
         /// Whether the actor is a Google support actor.
         /// </summary>
         public readonly bool GoogleSupport;
-        /// <summary>
-        /// An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
-        /// </summary>
-        public readonly string PrincipalId;
 
         [OutputConstructor]
         private ActorResponse(
@@ -39,14 +35,11 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Outputs
 
             string email,
 
-            bool googleSupport,
-
-            string principalId)
+            bool googleSupport)
         {
             DisplayName = displayName;
             Email = email;
             GoogleSupport = googleSupport;
-            PrincipalId = principalId;
         }
     }
 }

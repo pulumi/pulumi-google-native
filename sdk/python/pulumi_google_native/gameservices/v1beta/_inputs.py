@@ -537,7 +537,7 @@ class FleetConfigArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         Fleet configs for Agones.
-        :param pulumi.Input[str] fleet_spec: Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+        :param pulumi.Input[str] fleet_spec: Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
         :param pulumi.Input[str] name: The name of the FleetConfig.
         """
         if fleet_spec is not None:
@@ -549,7 +549,7 @@ class FleetConfigArgs:
     @pulumi.getter(name="fleetSpec")
     def fleet_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        Agones fleet spec. Example spec: `https://agones.dev/site/docs/reference/fleet/`.
+        Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
         """
         return pulumi.get(self, "fleet_spec")
 
@@ -616,7 +616,7 @@ class GkeClusterReferenceArgs:
                  cluster: Optional[pulumi.Input[str]] = None):
         """
         A reference to a GKE cluster.
-        :param pulumi.Input[str] cluster: The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+        :param pulumi.Input[str] cluster: The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -625,7 +625,7 @@ class GkeClusterReferenceArgs:
     @pulumi.getter
     def cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
+        The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{locationId}/clusters/{cluster}` * `locations/{locationId}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
         """
         return pulumi.get(self, "cluster")
 
@@ -843,9 +843,9 @@ class ScalingConfigArgs:
                  selectors: Optional[pulumi.Input[Sequence[pulumi.Input['LabelSelectorArgs']]]] = None):
         """
         Autoscaling config for an Agones fleet.
-        :param pulumi.Input[str] fleet_autoscaler_spec: Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
-        :param pulumi.Input[str] name: The name of the Scaling Config
-        :param pulumi.Input[Sequence[pulumi.Input['ScheduleArgs']]] schedules: The schedules to which this Scaling Config applies.
+        :param pulumi.Input[str] fleet_autoscaler_spec: Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
+        :param pulumi.Input[str] name: The name of the scaling config.
+        :param pulumi.Input[Sequence[pulumi.Input['ScheduleArgs']]] schedules: The schedules to which this scaling config applies.
         :param pulumi.Input[Sequence[pulumi.Input['LabelSelectorArgs']]] selectors: Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
         """
         pulumi.set(__self__, "fleet_autoscaler_spec", fleet_autoscaler_spec)
@@ -859,7 +859,7 @@ class ScalingConfigArgs:
     @pulumi.getter(name="fleetAutoscalerSpec")
     def fleet_autoscaler_spec(self) -> pulumi.Input[str]:
         """
-        Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
         """
         return pulumi.get(self, "fleet_autoscaler_spec")
 
@@ -871,7 +871,7 @@ class ScalingConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the Scaling Config
+        The name of the scaling config.
         """
         return pulumi.get(self, "name")
 
@@ -883,7 +883,7 @@ class ScalingConfigArgs:
     @pulumi.getter
     def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleArgs']]]]:
         """
-        The schedules to which this Scaling Config applies.
+        The schedules to which this scaling config applies.
         """
         return pulumi.get(self, "schedules")
 
@@ -912,9 +912,9 @@ class ScheduleArgs:
                  end_time: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
-        The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
+        The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
         :param pulumi.Input[str] cron_job_duration: The duration for the cron job event. The duration of the event is effective after the cron job's start time.
-        :param pulumi.Input[str] cron_spec: The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+        :param pulumi.Input[str] cron_spec: The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
         :param pulumi.Input[str] end_time: The end time of the event.
         :param pulumi.Input[str] start_time: The start time of the event.
         """
@@ -943,7 +943,7 @@ class ScheduleArgs:
     @pulumi.getter(name="cronSpec")
     def cron_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+        The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
         """
         return pulumi.get(self, "cron_spec")
 

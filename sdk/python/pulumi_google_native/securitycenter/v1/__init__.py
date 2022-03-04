@@ -6,15 +6,21 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .folder_big_query_export import *
+from .get_folder_big_query_export import *
 from .get_mute_config import *
 from .get_notification_config import *
+from .get_organization_big_query_export import *
 from .get_organization_mute_config import *
 from .get_organization_source_iam_policy import *
+from .get_project_big_query_export import *
 from .get_source import *
 from .mute_config import *
 from .notification_config import *
+from .organization_big_query_export import *
 from .organization_mute_config import *
 from .organization_source_iam_policy import *
+from .project_big_query_export import *
 from .source import *
 from ._inputs import *
 from . import outputs

@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+        /// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
         /// </summary>
         public readonly bool EnableAutoReload;
         /// <summary>
@@ -107,6 +107,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         /// </summary>
         public readonly string RawContent;
+        /// <summary>
+        /// The current state of the document.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetDocumentResult(
@@ -128,7 +132,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 
             string name,
 
-            string rawContent)
+            string rawContent,
+
+            string state)
         {
             Content = content;
             ContentUri = contentUri;
@@ -140,6 +146,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             MimeType = mimeType;
             Name = name;
             RawContent = rawContent;
+            State = state;
         }
     }
 }

@@ -18,6 +18,7 @@ class RolloutArgs:
     def __init__(__self__, *,
                  service_name: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
                  delete_service_strategy: Optional[pulumi.Input['DeleteServiceStrategyArgs']] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input['RolloutStatus']] = None,
@@ -26,6 +27,7 @@ class RolloutArgs:
         The set of arguments for constructing a Rollout resource.
         :param pulumi.Input[str] service_name: The name of the service associated with this Rollout.
         :param pulumi.Input[str] create_time: Creation time of the rollout. Readonly.
+        :param pulumi.Input[str] created_by: The user who created the Rollout. Readonly.
         :param pulumi.Input['DeleteServiceStrategyArgs'] delete_service_strategy: The strategy associated with a rollout to delete a `ManagedService`. Readonly.
         :param pulumi.Input[str] rollout_id: Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
         :param pulumi.Input['RolloutStatus'] status: The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
@@ -34,6 +36,8 @@ class RolloutArgs:
         pulumi.set(__self__, "service_name", service_name)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
         if delete_service_strategy is not None:
             pulumi.set(__self__, "delete_service_strategy", delete_service_strategy)
         if rollout_id is not None:
@@ -66,6 +70,18 @@ class RolloutArgs:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user who created the Rollout. Readonly.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_by", value)
 
     @property
     @pulumi.getter(name="deleteServiceStrategy")
@@ -122,6 +138,7 @@ class Rollout(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
                  delete_service_strategy: Optional[pulumi.Input[pulumi.InputType['DeleteServiceStrategyArgs']]] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -137,6 +154,7 @@ class Rollout(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation time of the rollout. Readonly.
+        :param pulumi.Input[str] created_by: The user who created the Rollout. Readonly.
         :param pulumi.Input[pulumi.InputType['DeleteServiceStrategyArgs']] delete_service_strategy: The strategy associated with a rollout to delete a `ManagedService`. Readonly.
         :param pulumi.Input[str] rollout_id: Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
         :param pulumi.Input[str] service_name: The name of the service associated with this Rollout.
@@ -171,6 +189,7 @@ class Rollout(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 created_by: Optional[pulumi.Input[str]] = None,
                  delete_service_strategy: Optional[pulumi.Input[pulumi.InputType['DeleteServiceStrategyArgs']]] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
@@ -189,6 +208,7 @@ class Rollout(pulumi.CustomResource):
             __props__ = RolloutArgs.__new__(RolloutArgs)
 
             __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["created_by"] = created_by
             __props__.__dict__["delete_service_strategy"] = delete_service_strategy
             __props__.__dict__["rollout_id"] = rollout_id
             if service_name is None and not opts.urn:
@@ -219,6 +239,7 @@ class Rollout(pulumi.CustomResource):
         __props__ = RolloutArgs.__new__(RolloutArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["created_by"] = None
         __props__.__dict__["delete_service_strategy"] = None
         __props__.__dict__["rollout_id"] = None
         __props__.__dict__["service_name"] = None
@@ -233,6 +254,14 @@ class Rollout(pulumi.CustomResource):
         Creation time of the rollout. Readonly.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Output[str]:
+        """
+        The user who created the Rollout. Readonly.
+        """
+        return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter(name="deleteServiceStrategy")

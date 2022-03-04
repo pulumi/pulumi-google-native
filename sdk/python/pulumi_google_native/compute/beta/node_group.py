@@ -26,6 +26,7 @@ class NodeGroupArgs:
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  status: Optional[pulumi.Input['NodeGroupStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -36,6 +37,7 @@ class NodeGroupArgs:
         :param pulumi.Input['NodeGroupMaintenancePolicy'] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for the node group
         """
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         if autoscaling_policy is not None:
@@ -56,6 +58,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if zone is not None:
@@ -170,6 +174,18 @@ class NodeGroupArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
+        """
+        Share-settings for the node group
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['ShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input['NodeGroupStatus']]:
         return pulumi.get(self, "status")
@@ -203,6 +219,7 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  status: Optional[pulumi.Input['NodeGroupStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -217,6 +234,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input['NodeGroupMaintenancePolicy'] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
+        :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: Share-settings for the node group
         """
         ...
     @overload
@@ -252,6 +270,7 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  status: Optional[pulumi.Input['NodeGroupStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -278,6 +297,7 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["node_template"] = node_template
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["status"] = status
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
@@ -318,6 +338,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["node_template"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["share_settings"] = None
         __props__.__dict__["size"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["zone"] = None
@@ -404,6 +425,14 @@ class NodeGroup(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> pulumi.Output['outputs.ShareSettingsResponse']:
+        """
+        Share-settings for the node group
+        """
+        return pulumi.get(self, "share_settings")
 
     @property
     @pulumi.getter

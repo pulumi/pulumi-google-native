@@ -1026,6 +1026,7 @@ _utilities.register(
    "google-native:compute/alpha:RegionSslPolicy": "RegionSslPolicy",
    "google-native:compute/alpha:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/alpha:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
+   "google-native:compute/alpha:RegionTargetTcpProxy": "RegionTargetTcpProxy",
    "google-native:compute/alpha:RegionUrlMap": "RegionUrlMap",
    "google-native:compute/alpha:Reservation": "Reservation",
    "google-native:compute/alpha:ReservationIamPolicy": "ReservationIamPolicy",
@@ -1096,6 +1097,8 @@ _utilities.register(
    "google-native:compute/beta:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/beta:Network": "Network",
    "google-native:compute/beta:NetworkEndpointGroup": "NetworkEndpointGroup",
+   "google-native:compute/beta:NetworkFirewallPolicy": "NetworkFirewallPolicy",
+   "google-native:compute/beta:NetworkFirewallPolicyIamPolicy": "NetworkFirewallPolicyIamPolicy",
    "google-native:compute/beta:NodeGroup": "NodeGroup",
    "google-native:compute/beta:NodeGroupIamPolicy": "NodeGroupIamPolicy",
    "google-native:compute/beta:NodeTemplate": "NodeTemplate",
@@ -1114,6 +1117,8 @@ _utilities.register(
    "google-native:compute/beta:RegionHealthCheckService": "RegionHealthCheckService",
    "google-native:compute/beta:RegionInstanceGroupManager": "RegionInstanceGroupManager",
    "google-native:compute/beta:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup",
+   "google-native:compute/beta:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
+   "google-native:compute/beta:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
    "google-native:compute/beta:RegionNotificationEndpoint": "RegionNotificationEndpoint",
    "google-native:compute/beta:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/beta:RegionTargetHttpProxy": "RegionTargetHttpProxy",
@@ -1186,6 +1191,8 @@ _utilities.register(
    "google-native:compute/v1:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/v1:Network": "Network",
    "google-native:compute/v1:NetworkEndpointGroup": "NetworkEndpointGroup",
+   "google-native:compute/v1:NetworkFirewallPolicy": "NetworkFirewallPolicy",
+   "google-native:compute/v1:NetworkFirewallPolicyIamPolicy": "NetworkFirewallPolicyIamPolicy",
    "google-native:compute/v1:NodeGroup": "NodeGroup",
    "google-native:compute/v1:NodeGroupIamPolicy": "NodeGroupIamPolicy",
    "google-native:compute/v1:NodeTemplate": "NodeTemplate",
@@ -1202,6 +1209,8 @@ _utilities.register(
    "google-native:compute/v1:RegionHealthCheckService": "RegionHealthCheckService",
    "google-native:compute/v1:RegionInstanceGroupManager": "RegionInstanceGroupManager",
    "google-native:compute/v1:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup",
+   "google-native:compute/v1:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
+   "google-native:compute/v1:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
    "google-native:compute/v1:RegionNotificationEndpoint": "RegionNotificationEndpoint",
    "google-native:compute/v1:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/v1:RegionTargetHttpProxy": "RegionTargetHttpProxy",
@@ -1537,10 +1546,13 @@ _utilities.register(
   "classes": {
    "google-native:dialogflow/v2:Context": "Context",
    "google-native:dialogflow/v2:Conversation": "Conversation",
+   "google-native:dialogflow/v2:ConversationDataset": "ConversationDataset",
+   "google-native:dialogflow/v2:ConversationModel": "ConversationModel",
    "google-native:dialogflow/v2:ConversationProfile": "ConversationProfile",
    "google-native:dialogflow/v2:Document": "Document",
    "google-native:dialogflow/v2:EntityType": "EntityType",
    "google-native:dialogflow/v2:Environment": "Environment",
+   "google-native:dialogflow/v2:Evaluation": "Evaluation",
    "google-native:dialogflow/v2:Intent": "Intent",
    "google-native:dialogflow/v2:KnowledgeBase": "KnowledgeBase",
    "google-native:dialogflow/v2:Participant": "Participant",
@@ -1640,6 +1652,16 @@ _utilities.register(
    "google-native:dns/v1beta2:ResourceRecordSet": "ResourceRecordSet",
    "google-native:dns/v1beta2:ResponsePolicy": "ResponsePolicy",
    "google-native:dns/v1beta2:ResponsePolicyRule": "ResponsePolicyRule"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "dns/v2",
+  "fqn": "pulumi_google_native.dns.v2",
+  "classes": {
+   "google-native:dns/v2:ManagedZone": "ManagedZone",
+   "google-native:dns/v2:Policy": "Policy",
+   "google-native:dns/v2:ResourceRecordSet": "ResourceRecordSet"
   }
  },
  {
@@ -2025,7 +2047,9 @@ _utilities.register(
   "mod": "managedidentities/v1",
   "fqn": "pulumi_google_native.managedidentities.v1",
   "classes": {
+   "google-native:managedidentities/v1:Backup": "Backup",
    "google-native:managedidentities/v1:Domain": "Domain",
+   "google-native:managedidentities/v1:DomainBackupIamPolicy": "DomainBackupIamPolicy",
    "google-native:managedidentities/v1:DomainIamPolicy": "DomainIamPolicy",
    "google-native:managedidentities/v1:Peering": "Peering",
    "google-native:managedidentities/v1:PeeringIamPolicy": "PeeringIamPolicy"
@@ -2524,10 +2548,13 @@ _utilities.register(
   "mod": "securitycenter/v1",
   "fqn": "pulumi_google_native.securitycenter.v1",
   "classes": {
+   "google-native:securitycenter/v1:FolderBigQueryExport": "FolderBigQueryExport",
    "google-native:securitycenter/v1:MuteConfig": "MuteConfig",
    "google-native:securitycenter/v1:NotificationConfig": "NotificationConfig",
+   "google-native:securitycenter/v1:OrganizationBigQueryExport": "OrganizationBigQueryExport",
    "google-native:securitycenter/v1:OrganizationMuteConfig": "OrganizationMuteConfig",
    "google-native:securitycenter/v1:OrganizationSourceIamPolicy": "OrganizationSourceIamPolicy",
+   "google-native:securitycenter/v1:ProjectBigQueryExport": "ProjectBigQueryExport",
    "google-native:securitycenter/v1:Source": "Source"
   }
  },

@@ -48,6 +48,7 @@ class ClusterArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  network_policy: Optional[pulumi.Input['NetworkPolicyArgs']] = None,
+                 node_pool_auto_config: Optional[pulumi.Input['NodePoolAutoConfigArgs']] = None,
                  node_pool_defaults: Optional[pulumi.Input['NodePoolDefaultsArgs']] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
@@ -62,6 +63,7 @@ class ClusterArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['TpuConfigArgs']] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['VerticalPodAutoscalingArgs']] = None,
+                 workload_alts_config: Optional[pulumi.Input['WorkloadALTSConfigArgs']] = None,
                  workload_certificates: Optional[pulumi.Input['WorkloadCertificatesArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['WorkloadIdentityConfigArgs']] = None):
         """
@@ -97,6 +99,7 @@ class ClusterArgs:
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Configuration for cluster networking.
         :param pulumi.Input['NetworkPolicyArgs'] network_policy: Configuration options for the NetworkPolicy feature.
+        :param pulumi.Input['NodePoolAutoConfigArgs'] node_pool_auto_config: Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
         :param pulumi.Input['NodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration of the cluster.
@@ -110,6 +113,7 @@ class ClusterArgs:
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input['TpuConfigArgs'] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input['VerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
+        :param pulumi.Input['WorkloadALTSConfigArgs'] workload_alts_config: Configuration for direct-path (via ALTS) with workload identity.
         :param pulumi.Input['WorkloadCertificatesArgs'] workload_certificates: Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
@@ -177,6 +181,8 @@ class ClusterArgs:
             pulumi.set(__self__, "network_config", network_config)
         if network_policy is not None:
             pulumi.set(__self__, "network_policy", network_policy)
+        if node_pool_auto_config is not None:
+            pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
         if node_pool_defaults is not None:
             pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
         if node_pools is not None:
@@ -205,6 +211,8 @@ class ClusterArgs:
             pulumi.set(__self__, "tpu_config", tpu_config)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+        if workload_alts_config is not None:
+            pulumi.set(__self__, "workload_alts_config", workload_alts_config)
         if workload_certificates is not None:
             pulumi.set(__self__, "workload_certificates", workload_certificates)
         if workload_identity_config is not None:
@@ -592,6 +600,18 @@ class ClusterArgs:
         pulumi.set(self, "network_policy", value)
 
     @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> Optional[pulumi.Input['NodePoolAutoConfigArgs']]:
+        """
+        Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
+
+    @node_pool_auto_config.setter
+    def node_pool_auto_config(self, value: Optional[pulumi.Input['NodePoolAutoConfigArgs']]):
+        pulumi.set(self, "node_pool_auto_config", value)
+
+    @property
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> Optional[pulumi.Input['NodePoolDefaultsArgs']]:
         """
@@ -757,6 +777,18 @@ class ClusterArgs:
         pulumi.set(self, "vertical_pod_autoscaling", value)
 
     @property
+    @pulumi.getter(name="workloadAltsConfig")
+    def workload_alts_config(self) -> Optional[pulumi.Input['WorkloadALTSConfigArgs']]:
+        """
+        Configuration for direct-path (via ALTS) with workload identity.
+        """
+        return pulumi.get(self, "workload_alts_config")
+
+    @workload_alts_config.setter
+    def workload_alts_config(self, value: Optional[pulumi.Input['WorkloadALTSConfigArgs']]):
+        pulumi.set(self, "workload_alts_config", value)
+
+    @property
     @pulumi.getter(name="workloadCertificates")
     def workload_certificates(self) -> Optional[pulumi.Input['WorkloadCertificatesArgs']]:
         """
@@ -818,6 +850,7 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
+                 node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoConfigArgs']]] = None,
                  node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['NodePoolDefaultsArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
@@ -832,6 +865,7 @@ class Cluster(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
+                 workload_alts_config: Optional[pulumi.Input[pulumi.InputType['WorkloadALTSConfigArgs']]] = None,
                  workload_certificates: Optional[pulumi.Input[pulumi.InputType['WorkloadCertificatesArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
                  __props__=None):
@@ -871,6 +905,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Configuration for cluster networking.
         :param pulumi.Input[pulumi.InputType['NetworkPolicyArgs']] network_policy: Configuration options for the NetworkPolicy feature.
+        :param pulumi.Input[pulumi.InputType['NodePoolAutoConfigArgs']] node_pool_auto_config: Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
         :param pulumi.Input[pulumi.InputType['NodePoolDefaultsArgs']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration of the cluster.
@@ -884,6 +919,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         :param pulumi.Input[pulumi.InputType['TpuConfigArgs']] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
+        :param pulumi.Input[pulumi.InputType['WorkloadALTSConfigArgs']] workload_alts_config: Configuration for direct-path (via ALTS) with workload identity.
         :param pulumi.Input[pulumi.InputType['WorkloadCertificatesArgs']] workload_certificates: Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
@@ -943,6 +979,7 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
+                 node_pool_auto_config: Optional[pulumi.Input[pulumi.InputType['NodePoolAutoConfigArgs']]] = None,
                  node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['NodePoolDefaultsArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
@@ -957,6 +994,7 @@ class Cluster(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
+                 workload_alts_config: Optional[pulumi.Input[pulumi.InputType['WorkloadALTSConfigArgs']]] = None,
                  workload_certificates: Optional[pulumi.Input[pulumi.InputType['WorkloadCertificatesArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
                  __props__=None):
@@ -1003,6 +1041,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["network_policy"] = network_policy
+            __props__.__dict__["node_pool_auto_config"] = node_pool_auto_config
             __props__.__dict__["node_pool_defaults"] = node_pool_defaults
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["notification_config"] = notification_config
@@ -1017,6 +1056,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
+            __props__.__dict__["workload_alts_config"] = workload_alts_config
             __props__.__dict__["workload_certificates"] = workload_certificates
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["create_time"] = None
@@ -1091,6 +1131,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["network_config"] = None
         __props__.__dict__["network_policy"] = None
         __props__.__dict__["node_ipv4_cidr_size"] = None
+        __props__.__dict__["node_pool_auto_config"] = None
         __props__.__dict__["node_pool_defaults"] = None
         __props__.__dict__["node_pools"] = None
         __props__.__dict__["notification_config"] = None
@@ -1107,6 +1148,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tpu_config"] = None
         __props__.__dict__["tpu_ipv4_cidr_block"] = None
         __props__.__dict__["vertical_pod_autoscaling"] = None
+        __props__.__dict__["workload_alts_config"] = None
         __props__.__dict__["workload_certificates"] = None
         __props__.__dict__["workload_identity_config"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1424,6 +1466,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "node_ipv4_cidr_size")
 
     @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> pulumi.Output['outputs.NodePoolAutoConfigResponse']:
+        """
+        Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
+
+    @property
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> pulumi.Output['outputs.NodePoolDefaultsResponse']:
         """
@@ -1550,6 +1600,14 @@ class Cluster(pulumi.CustomResource):
         Cluster-level Vertical Pod Autoscaling configuration.
         """
         return pulumi.get(self, "vertical_pod_autoscaling")
+
+    @property
+    @pulumi.getter(name="workloadAltsConfig")
+    def workload_alts_config(self) -> pulumi.Output['outputs.WorkloadALTSConfigResponse']:
+        """
+        Configuration for direct-path (via ALTS) with workload identity.
+        """
+        return pulumi.get(self, "workload_alts_config")
 
     @property
     @pulumi.getter(name="workloadCertificates")

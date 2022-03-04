@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
+    def __init__(__self__, creation_timestamp=None, description=None, enable_flow_logs=None, external_ipv6_prefix=None, fingerprint=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, stack_type=None, state=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -37,6 +37,9 @@ class GetSubnetworkResult:
         if gateway_address and not isinstance(gateway_address, str):
             raise TypeError("Expected argument 'gateway_address' to be a str")
         pulumi.set(__self__, "gateway_address", gateway_address)
+        if internal_ipv6_prefix and not isinstance(internal_ipv6_prefix, str):
+            raise TypeError("Expected argument 'internal_ipv6_prefix' to be a str")
+        pulumi.set(__self__, "internal_ipv6_prefix", internal_ipv6_prefix)
         if ip_cidr_range and not isinstance(ip_cidr_range, str):
             raise TypeError("Expected argument 'ip_cidr_range' to be a str")
         pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
@@ -133,6 +136,14 @@ class GetSubnetworkResult:
         The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
+
+    @property
+    @pulumi.getter(name="internalIpv6Prefix")
+    def internal_ipv6_prefix(self) -> str:
+        """
+        The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix")
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -250,7 +261,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> str:
         """
-        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "stack_type")
 
@@ -275,6 +286,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             external_ipv6_prefix=self.external_ipv6_prefix,
             fingerprint=self.fingerprint,
             gateway_address=self.gateway_address,
+            internal_ipv6_prefix=self.internal_ipv6_prefix,
             ip_cidr_range=self.ip_cidr_range,
             ipv6_access_type=self.ipv6_access_type,
             ipv6_cidr_range=self.ipv6_cidr_range,
@@ -317,6 +329,7 @@ def get_subnetwork(project: Optional[str] = None,
         external_ipv6_prefix=__ret__.external_ipv6_prefix,
         fingerprint=__ret__.fingerprint,
         gateway_address=__ret__.gateway_address,
+        internal_ipv6_prefix=__ret__.internal_ipv6_prefix,
         ip_cidr_range=__ret__.ip_cidr_range,
         ipv6_access_type=__ret__.ipv6_access_type,
         ipv6_cidr_range=__ret__.ipv6_cidr_range,

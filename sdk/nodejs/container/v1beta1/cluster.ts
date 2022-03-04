@@ -192,6 +192,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly nodeIpv4CidrSize!: pulumi.Output<number>;
     /**
+     * Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+     */
+    public readonly nodePoolAutoConfig!: pulumi.Output<outputs.container.v1beta1.NodePoolAutoConfigResponse>;
+    /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
      */
     public readonly nodePoolDefaults!: pulumi.Output<outputs.container.v1beta1.NodePoolDefaultsResponse>;
@@ -256,6 +260,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.v1beta1.VerticalPodAutoscalingResponse>;
     /**
+     * Configuration for direct-path (via ALTS) with workload identity.
+     */
+    public readonly workloadAltsConfig!: pulumi.Output<outputs.container.v1beta1.WorkloadALTSConfigResponse>;
+    /**
      * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
      */
     public readonly workloadCertificates!: pulumi.Output<outputs.container.v1beta1.WorkloadCertificatesResponse>;
@@ -307,6 +315,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["networkPolicy"] = args ? args.networkPolicy : undefined;
+            resourceInputs["nodePoolAutoConfig"] = args ? args.nodePoolAutoConfig : undefined;
             resourceInputs["nodePoolDefaults"] = args ? args.nodePoolDefaults : undefined;
             resourceInputs["nodePools"] = args ? args.nodePools : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
@@ -321,6 +330,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
             resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
+            resourceInputs["workloadAltsConfig"] = args ? args.workloadAltsConfig : undefined;
             resourceInputs["workloadCertificates"] = args ? args.workloadCertificates : undefined;
             resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -374,6 +384,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = undefined /*out*/;
             resourceInputs["networkPolicy"] = undefined /*out*/;
             resourceInputs["nodeIpv4CidrSize"] = undefined /*out*/;
+            resourceInputs["nodePoolAutoConfig"] = undefined /*out*/;
             resourceInputs["nodePoolDefaults"] = undefined /*out*/;
             resourceInputs["nodePools"] = undefined /*out*/;
             resourceInputs["notificationConfig"] = undefined /*out*/;
@@ -390,6 +401,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["tpuConfig"] = undefined /*out*/;
             resourceInputs["tpuIpv4CidrBlock"] = undefined /*out*/;
             resourceInputs["verticalPodAutoscaling"] = undefined /*out*/;
+            resourceInputs["workloadAltsConfig"] = undefined /*out*/;
             resourceInputs["workloadCertificates"] = undefined /*out*/;
             resourceInputs["workloadIdentityConfig"] = undefined /*out*/;
         }
@@ -528,6 +540,10 @@ export interface ClusterArgs {
      */
     networkPolicy?: pulumi.Input<inputs.container.v1beta1.NetworkPolicyArgs>;
     /**
+     * Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+     */
+    nodePoolAutoConfig?: pulumi.Input<inputs.container.v1beta1.NodePoolAutoConfigArgs>;
+    /**
      * Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
      */
     nodePoolDefaults?: pulumi.Input<inputs.container.v1beta1.NodePoolDefaultsArgs>;
@@ -580,6 +596,10 @@ export interface ClusterArgs {
      * Cluster-level Vertical Pod Autoscaling configuration.
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.v1beta1.VerticalPodAutoscalingArgs>;
+    /**
+     * Configuration for direct-path (via ALTS) with workload identity.
+     */
+    workloadAltsConfig?: pulumi.Input<inputs.container.v1beta1.WorkloadALTSConfigArgs>;
     /**
      * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
      */

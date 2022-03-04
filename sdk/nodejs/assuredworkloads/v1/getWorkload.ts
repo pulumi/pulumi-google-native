@@ -57,10 +57,6 @@ export interface GetWorkloadResult {
      */
     readonly kajEnrollmentState: string;
     /**
-     * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-     */
-    readonly kmsSettings: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse;
-    /**
      * Optional. Labels applied to the workload.
      */
     readonly labels: {[key: string]: string};

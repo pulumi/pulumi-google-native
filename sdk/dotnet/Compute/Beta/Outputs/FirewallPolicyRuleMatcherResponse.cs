@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
+        /// <summary>
+        /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> SrcSecureTags;
 
         [OutputConstructor]
         private FirewallPolicyRuleMatcherResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> layer4Configs,
 
-            ImmutableArray<string> srcIpRanges)
+            ImmutableArray<string> srcIpRanges,
+
+            ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags)
         {
             DestIpRanges = destIpRanges;
             Layer4Configs = layer4Configs;
             SrcIpRanges = srcIpRanges;
+            SrcSecureTags = srcSecureTags;
         }
     }
 }

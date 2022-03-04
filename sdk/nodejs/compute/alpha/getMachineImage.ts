@@ -35,7 +35,7 @@ export interface GetMachineImageResult {
      */
     readonly description: string;
     /**
-     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      */
     readonly guestFlush: boolean;
     /**

@@ -16,6 +16,8 @@ import (
 type AndroidApp struct {
 	pulumi.CustomResourceState
 
+	// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+	ApiKeyId pulumi.StringOutput `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The user-assigned display name for the `AndroidApp`.
@@ -67,6 +69,8 @@ func (AndroidAppState) ElementType() reflect.Type {
 }
 
 type androidAppArgs struct {
+	// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
 	// The user-assigned display name for the `AndroidApp`.
@@ -81,6 +85,8 @@ type androidAppArgs struct {
 
 // The set of arguments for constructing a AndroidApp resource.
 type AndroidAppArgs struct {
+	// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+	ApiKeyId pulumi.StringPtrInput
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
 	// The user-assigned display name for the `AndroidApp`.

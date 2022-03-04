@@ -14,6 +14,8 @@ import (
 type Reservation struct {
 	pulumi.CustomResourceState
 
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency pulumi.StringOutput `pulumi:"concurrency"`
 	// Creation time of the reservation.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
@@ -67,6 +69,8 @@ func (ReservationState) ElementType() reflect.Type {
 }
 
 type reservationArgs struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency *string `pulumi:"concurrency"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots *bool   `pulumi:"ignoreIdleSlots"`
 	Location        *string `pulumi:"location"`
@@ -82,6 +86,8 @@ type reservationArgs struct {
 
 // The set of arguments for constructing a Reservation resource.
 type ReservationArgs struct {
+	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+	Concurrency pulumi.StringPtrInput
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots pulumi.BoolPtrInput
 	Location        pulumi.StringPtrInput

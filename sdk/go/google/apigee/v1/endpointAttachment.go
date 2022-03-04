@@ -11,15 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an EndpointAttachment. **Note:** Not supported for Apigee hybrid.
+// Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+// Auto-naming is currently not supported for this resource.
 type EndpointAttachment struct {
 	pulumi.CustomResourceState
 
-	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+	// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Location of the endpoint attachment.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+	// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Format: projects/*/regions/*/serviceAttachments/*
 	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
@@ -70,7 +71,7 @@ type endpointAttachmentArgs struct {
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Location of the endpoint attachment.
 	Location *string `pulumi:"location"`
-	// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+	// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
 	// Format: projects/*/regions/*/serviceAttachments/*
@@ -82,7 +83,7 @@ type EndpointAttachmentArgs struct {
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Location of the endpoint attachment.
 	Location pulumi.StringPtrInput
-	// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+	// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Format: projects/*/regions/*/serviceAttachments/*

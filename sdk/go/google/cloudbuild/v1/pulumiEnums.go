@@ -1084,6 +1084,8 @@ const (
 	GitFileSourceRepoTypeCloudSourceRepositories = GitFileSourceRepoType("CLOUD_SOURCE_REPOSITORIES")
 	// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
 	GitFileSourceRepoTypeGithub = GitFileSourceRepoType("GITHUB")
+	// A Bitbucket Server-hosted repo.
+	GitFileSourceRepoTypeBitbucketServer = GitFileSourceRepoType("BITBUCKET_SERVER")
 )
 
 func (GitFileSourceRepoType) ElementType() reflect.Type {
@@ -1253,6 +1255,8 @@ const (
 	GitRepoSourceRepoTypeCloudSourceRepositories = GitRepoSourceRepoType("CLOUD_SOURCE_REPOSITORIES")
 	// A GitHub-hosted repo not necessarily on "github.com" (i.e. GitHub Enterprise).
 	GitRepoSourceRepoTypeGithub = GitRepoSourceRepoType("GITHUB")
+	// A Bitbucket Server-hosted repo.
+	GitRepoSourceRepoTypeBitbucketServer = GitRepoSourceRepoType("BITBUCKET_SERVER")
 )
 
 func (GitRepoSourceRepoType) ElementType() reflect.Type {

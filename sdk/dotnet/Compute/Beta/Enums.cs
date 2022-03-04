@@ -1028,6 +1028,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static BackendServiceLocalityLbPolicy RoundRobin { get; } = new BackendServiceLocalityLbPolicy("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static BackendServiceLocalityLbPolicy WeightedMaglev { get; } = new BackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV");
 
         public static bool operator ==(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => left.Equals(right);
         public static bool operator !=(BackendServiceLocalityLbPolicy left, BackendServiceLocalityLbPolicy right) => !left.Equals(right);
@@ -2222,7 +2226,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct GlobalNetworkEndpointGroupNetworkEndpointType : IEquatable<GlobalNetworkEndpointGroupNetworkEndpointType>
@@ -2279,7 +2283,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -3494,7 +3498,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct NetworkEndpointGroupNetworkEndpointType : IEquatable<NetworkEndpointGroupNetworkEndpointType>
@@ -3612,7 +3616,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// The network interface will be assigned IPv4 address.
         /// </summary>
         public static NetworkInterfaceStackType Ipv4Only { get; } = new NetworkInterfaceStackType("IPV4_ONLY");
-        public static NetworkInterfaceStackType UnspecifiedStackType { get; } = new NetworkInterfaceStackType("UNSPECIFIED_STACK_TYPE");
 
         public static bool operator ==(NetworkInterfaceStackType left, NetworkInterfaceStackType right) => left.Equals(right);
         public static bool operator !=(NetworkInterfaceStackType left, NetworkInterfaceStackType right) => !left.Equals(right);
@@ -3622,6 +3625,37 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NetworkInterfaceStackType other && Equals(other);
         public bool Equals(NetworkInterfaceStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkNetworkFirewallPolicyEnforcementOrder : IEquatable<NetworkNetworkFirewallPolicyEnforcementOrder>
+    {
+        private readonly string _value;
+
+        private NetworkNetworkFirewallPolicyEnforcementOrder(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static NetworkNetworkFirewallPolicyEnforcementOrder AfterClassicFirewall { get; } = new NetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL");
+        public static NetworkNetworkFirewallPolicyEnforcementOrder BeforeClassicFirewall { get; } = new NetworkNetworkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL");
+
+        public static bool operator ==(NetworkNetworkFirewallPolicyEnforcementOrder left, NetworkNetworkFirewallPolicyEnforcementOrder right) => left.Equals(right);
+        public static bool operator !=(NetworkNetworkFirewallPolicyEnforcementOrder left, NetworkNetworkFirewallPolicyEnforcementOrder right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkNetworkFirewallPolicyEnforcementOrder value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkNetworkFirewallPolicyEnforcementOrder other && Equals(other);
+        public bool Equals(NetworkNetworkFirewallPolicyEnforcementOrder other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3835,7 +3869,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct OrganizationSecurityPolicyType : IEquatable<OrganizationSecurityPolicyType>
@@ -4120,6 +4154,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
         /// </summary>
         public static RegionBackendServiceLocalityLbPolicy RoundRobin { get; } = new RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static RegionBackendServiceLocalityLbPolicy WeightedMaglev { get; } = new RegionBackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV");
 
         public static bool operator ==(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => left.Equals(right);
         public static bool operator !=(RegionBackendServiceLocalityLbPolicy left, RegionBackendServiceLocalityLbPolicy right) => !left.Equals(right);
@@ -4460,7 +4498,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+    /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
     public readonly struct RegionNetworkEndpointGroupNetworkEndpointType : IEquatable<RegionNetworkEndpointGroupNetworkEndpointType>
@@ -4898,7 +4936,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+    /// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
     /// </summary>
     [EnumType]
     public readonly struct RouterBgpPeerBfdSessionInitializationMode : IEquatable<RouterBgpPeerBfdSessionInitializationMode>
@@ -5581,7 +5619,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -5647,7 +5685,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyType : IEquatable<SecurityPolicyType>
@@ -5762,6 +5800,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Default value.
         /// </summary>
         public static ShareSettingsShareType Local { get; } = new ShareSettingsShareType("LOCAL");
+        /// <summary>
+        /// Shared-reservation is open to entire Organization
+        /// </summary>
+        public static ShareSettingsShareType Organization { get; } = new ShareSettingsShareType("ORGANIZATION");
         /// <summary>
         /// Default value. This value is unused.
         /// </summary>
@@ -5928,9 +5970,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public static SubnetworkIpv6AccessType External { get; } = new SubnetworkIpv6AccessType("EXTERNAL");
         /// <summary>
-        /// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
+        /// VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
         /// </summary>
-        public static SubnetworkIpv6AccessType UnspecifiedIpv6AccessType { get; } = new SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE");
+        public static SubnetworkIpv6AccessType Internal { get; } = new SubnetworkIpv6AccessType("INTERNAL");
 
         public static bool operator ==(SubnetworkIpv6AccessType left, SubnetworkIpv6AccessType right) => left.Equals(right);
         public static bool operator !=(SubnetworkIpv6AccessType left, SubnetworkIpv6AccessType right) => !left.Equals(right);
@@ -6142,7 +6184,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+    /// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkStackType : IEquatable<SubnetworkStackType>
@@ -6162,7 +6204,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// New VMs in this subnet will only be assigned IPv4 addresses.
         /// </summary>
         public static SubnetworkStackType Ipv4Only { get; } = new SubnetworkStackType("IPV4_ONLY");
-        public static SubnetworkStackType UnspecifiedStackType { get; } = new SubnetworkStackType("UNSPECIFIED_STACK_TYPE");
 
         public static bool operator ==(SubnetworkStackType left, SubnetworkStackType right) => left.Equals(right);
         public static bool operator !=(SubnetworkStackType left, SubnetworkStackType right) => !left.Equals(right);

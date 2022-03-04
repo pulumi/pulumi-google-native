@@ -69,6 +69,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _targetResources = value;
         }
 
+        [Input("targetSecureTags")]
+        private InputList<Inputs.FirewallPolicyRuleSecureTagArgs>? _targetSecureTags;
+
+        /// <summary>
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// </summary>
+        public InputList<Inputs.FirewallPolicyRuleSecureTagArgs> TargetSecureTags
+        {
+            get => _targetSecureTags ?? (_targetSecureTags = new InputList<Inputs.FirewallPolicyRuleSecureTagArgs>());
+            set => _targetSecureTags = value;
+        }
+
         [Input("targetServiceAccounts")]
         private InputList<string>? _targetServiceAccounts;
 

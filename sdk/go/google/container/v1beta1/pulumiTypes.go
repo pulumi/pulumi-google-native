@@ -1332,8 +1332,6 @@ type AutoprovisioningNodePoolDefaults struct {
 	ImageType *string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management *NodeManagement `pulumi:"management"`
-	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -1367,8 +1365,6 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementPtrInput `pulumi:"management"`
-	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -1482,11 +1478,6 @@ func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
 }
 
-// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-func (o AutoprovisioningNodePoolDefaultsOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
-}
-
 // The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 func (o AutoprovisioningNodePoolDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
@@ -1581,16 +1572,6 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPt
 	}).(NodeManagementPtrOutput)
 }
 
-// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-func (o AutoprovisioningNodePoolDefaultsPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinCpuPlatform
-	}).(pulumi.StringPtrOutput)
-}
-
 // The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) []string {
@@ -1643,8 +1624,6 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	ImageType string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementResponse `pulumi:"management"`
-	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -1693,11 +1672,6 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.Strin
 // NodeManagement configuration for this NodePool.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagementResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
-}
-
-// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-func (o AutoprovisioningNodePoolDefaultsResponseOutput) MinCpuPlatform() pulumi.StringOutput {
-	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
 // The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
@@ -3062,6 +3036,8 @@ type ClusterUpdate struct {
 	DesiredMonitoringConfig *MonitoringConfig `pulumi:"desiredMonitoringConfig"`
 	// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
 	DesiredMonitoringService *string `pulumi:"desiredMonitoringService"`
+	// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	DesiredNodePoolAutoConfigNetworkTags *NetworkTags `pulumi:"desiredNodePoolAutoConfigNetworkTags"`
 	// Autoscaler configuration for the node pool specified in desired_node_pool_id. If there is only one pool in the cluster and desired_node_pool_id is not provided then the change applies to that single node pool.
 	DesiredNodePoolAutoscaling *NodePoolAutoscaling `pulumi:"desiredNodePoolAutoscaling"`
 	// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified and there is more than one node pool on the cluster.
@@ -3088,6 +3064,8 @@ type ClusterUpdate struct {
 	DesiredTpuConfig *TpuConfig `pulumi:"desiredTpuConfig"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	DesiredVerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"desiredVerticalPodAutoscaling"`
+	// Configuration for direct-path (via ALTS) with workload identity.
+	DesiredWorkloadAltsConfig *WorkloadALTSConfig `pulumi:"desiredWorkloadAltsConfig"`
 	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 	DesiredWorkloadCertificates *WorkloadCertificates `pulumi:"desiredWorkloadCertificates"`
 	// Configuration for Workload Identity.
@@ -10319,6 +10297,166 @@ type NetworkTags struct {
 	Tags []string `pulumi:"tags"`
 }
 
+// NetworkTagsInput is an input type that accepts NetworkTagsArgs and NetworkTagsOutput values.
+// You can construct a concrete instance of `NetworkTagsInput` via:
+//
+//          NetworkTagsArgs{...}
+type NetworkTagsInput interface {
+	pulumi.Input
+
+	ToNetworkTagsOutput() NetworkTagsOutput
+	ToNetworkTagsOutputWithContext(context.Context) NetworkTagsOutput
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTagsArgs struct {
+	// List of network tags.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+}
+
+func (NetworkTagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTags)(nil)).Elem()
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsOutput() NetworkTagsOutput {
+	return i.ToNetworkTagsOutputWithContext(context.Background())
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsOutputWithContext(ctx context.Context) NetworkTagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsOutput)
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return i.ToNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkTagsArgs) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsOutput).ToNetworkTagsPtrOutputWithContext(ctx)
+}
+
+// NetworkTagsPtrInput is an input type that accepts NetworkTagsArgs, NetworkTagsPtr and NetworkTagsPtrOutput values.
+// You can construct a concrete instance of `NetworkTagsPtrInput` via:
+//
+//          NetworkTagsArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkTagsPtrInput interface {
+	pulumi.Input
+
+	ToNetworkTagsPtrOutput() NetworkTagsPtrOutput
+	ToNetworkTagsPtrOutputWithContext(context.Context) NetworkTagsPtrOutput
+}
+
+type networkTagsPtrType NetworkTagsArgs
+
+func NetworkTagsPtr(v *NetworkTagsArgs) NetworkTagsPtrInput {
+	return (*networkTagsPtrType)(v)
+}
+
+func (*networkTagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkTags)(nil)).Elem()
+}
+
+func (i *networkTagsPtrType) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return i.ToNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (i *networkTagsPtrType) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsPtrOutput)
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTagsOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTags)(nil)).Elem()
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsOutput() NetworkTagsOutput {
+	return o
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsOutputWithContext(ctx context.Context) NetworkTagsOutput {
+	return o
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return o.ToNetworkTagsPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkTagsOutput) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkTags) *NetworkTags {
+		return &v
+	}).(NetworkTagsPtrOutput)
+}
+
+// List of network tags.
+func (o NetworkTagsOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTags) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+type NetworkTagsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkTags)(nil)).Elem()
+}
+
+func (o NetworkTagsPtrOutput) ToNetworkTagsPtrOutput() NetworkTagsPtrOutput {
+	return o
+}
+
+func (o NetworkTagsPtrOutput) ToNetworkTagsPtrOutputWithContext(ctx context.Context) NetworkTagsPtrOutput {
+	return o
+}
+
+func (o NetworkTagsPtrOutput) Elem() NetworkTagsOutput {
+	return o.ApplyT(func(v *NetworkTags) NetworkTags {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkTags
+		return ret
+	}).(NetworkTagsOutput)
+}
+
+// List of network tags.
+func (o NetworkTagsPtrOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkTags) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTagsResponse struct {
+	// List of network tags.
+	Tags []string `pulumi:"tags"`
+}
+
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+type NetworkTagsResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkTagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkTagsResponse)(nil)).Elem()
+}
+
+func (o NetworkTagsResponseOutput) ToNetworkTagsResponseOutput() NetworkTagsResponseOutput {
+	return o
+}
+
+func (o NetworkTagsResponseOutput) ToNetworkTagsResponseOutputWithContext(ctx context.Context) NetworkTagsResponseOutput {
+	return o
+}
+
+// List of network tags.
+func (o NetworkTagsResponseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkTagsResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 // Parameters that describe the nodes in a cluster.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
@@ -12184,6 +12322,172 @@ func (o NodePoolTypeArrayOutput) Index(i pulumi.IntInput) NodePoolTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolType {
 		return vs[0].([]NodePoolType)[vs[1].(int)]
 	}).(NodePoolTypeOutput)
+}
+
+// node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+type NodePoolAutoConfig struct {
+	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+	NetworkTags *NetworkTags `pulumi:"networkTags"`
+}
+
+// NodePoolAutoConfigInput is an input type that accepts NodePoolAutoConfigArgs and NodePoolAutoConfigOutput values.
+// You can construct a concrete instance of `NodePoolAutoConfigInput` via:
+//
+//          NodePoolAutoConfigArgs{...}
+type NodePoolAutoConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoConfigOutput() NodePoolAutoConfigOutput
+	ToNodePoolAutoConfigOutputWithContext(context.Context) NodePoolAutoConfigOutput
+}
+
+// node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+type NodePoolAutoConfigArgs struct {
+	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+	NetworkTags NetworkTagsPtrInput `pulumi:"networkTags"`
+}
+
+func (NodePoolAutoConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigOutput() NodePoolAutoConfigOutput {
+	return i.ToNodePoolAutoConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigOutputWithContext(ctx context.Context) NodePoolAutoConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoConfigOutput)
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return i.ToNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolAutoConfigArgs) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoConfigOutput).ToNodePoolAutoConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolAutoConfigPtrInput is an input type that accepts NodePoolAutoConfigArgs, NodePoolAutoConfigPtr and NodePoolAutoConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolAutoConfigPtrInput` via:
+//
+//          NodePoolAutoConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolAutoConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput
+	ToNodePoolAutoConfigPtrOutputWithContext(context.Context) NodePoolAutoConfigPtrOutput
+}
+
+type nodePoolAutoConfigPtrType NodePoolAutoConfigArgs
+
+func NodePoolAutoConfigPtr(v *NodePoolAutoConfigArgs) NodePoolAutoConfigPtrInput {
+	return (*nodePoolAutoConfigPtrType)(v)
+}
+
+func (*nodePoolAutoConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (i *nodePoolAutoConfigPtrType) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return i.ToNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolAutoConfigPtrType) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolAutoConfigPtrOutput)
+}
+
+// node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+type NodePoolAutoConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigOutput() NodePoolAutoConfigOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigOutputWithContext(ctx context.Context) NodePoolAutoConfigOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return o.ToNodePoolAutoConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolAutoConfigOutput) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolAutoConfig) *NodePoolAutoConfig {
+		return &v
+	}).(NodePoolAutoConfigPtrOutput)
+}
+
+// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+func (o NodePoolAutoConfigOutput) NetworkTags() NetworkTagsPtrOutput {
+	return o.ApplyT(func(v NodePoolAutoConfig) *NetworkTags { return v.NetworkTags }).(NetworkTagsPtrOutput)
+}
+
+type NodePoolAutoConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolAutoConfig)(nil)).Elem()
+}
+
+func (o NodePoolAutoConfigPtrOutput) ToNodePoolAutoConfigPtrOutput() NodePoolAutoConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigPtrOutput) ToNodePoolAutoConfigPtrOutputWithContext(ctx context.Context) NodePoolAutoConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigPtrOutput) Elem() NodePoolAutoConfigOutput {
+	return o.ApplyT(func(v *NodePoolAutoConfig) NodePoolAutoConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolAutoConfig
+		return ret
+	}).(NodePoolAutoConfigOutput)
+}
+
+// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+func (o NodePoolAutoConfigPtrOutput) NetworkTags() NetworkTagsPtrOutput {
+	return o.ApplyT(func(v *NodePoolAutoConfig) *NetworkTags {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(NetworkTagsPtrOutput)
+}
+
+// node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+type NodePoolAutoConfigResponse struct {
+	// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+	NetworkTags NetworkTagsResponse `pulumi:"networkTags"`
+}
+
+// node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+type NodePoolAutoConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NodePoolAutoConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolAutoConfigResponse)(nil)).Elem()
+}
+
+func (o NodePoolAutoConfigResponseOutput) ToNodePoolAutoConfigResponseOutput() NodePoolAutoConfigResponseOutput {
+	return o
+}
+
+func (o NodePoolAutoConfigResponseOutput) ToNodePoolAutoConfigResponseOutputWithContext(ctx context.Context) NodePoolAutoConfigResponseOutput {
+	return o
+}
+
+// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+func (o NodePoolAutoConfigResponseOutput) NetworkTags() NetworkTagsResponseOutput {
+	return o.ApplyT(func(v NodePoolAutoConfigResponse) NetworkTagsResponse { return v.NetworkTags }).(NetworkTagsResponseOutput)
 }
 
 // NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
@@ -16891,6 +17195,172 @@ func (o VirtualNICResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VirtualNICResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Configuration for direct-path (via ALTS) with workload identity.
+type WorkloadALTSConfig struct {
+	// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+	EnableAlts *bool `pulumi:"enableAlts"`
+}
+
+// WorkloadALTSConfigInput is an input type that accepts WorkloadALTSConfigArgs and WorkloadALTSConfigOutput values.
+// You can construct a concrete instance of `WorkloadALTSConfigInput` via:
+//
+//          WorkloadALTSConfigArgs{...}
+type WorkloadALTSConfigInput interface {
+	pulumi.Input
+
+	ToWorkloadALTSConfigOutput() WorkloadALTSConfigOutput
+	ToWorkloadALTSConfigOutputWithContext(context.Context) WorkloadALTSConfigOutput
+}
+
+// Configuration for direct-path (via ALTS) with workload identity.
+type WorkloadALTSConfigArgs struct {
+	// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+	EnableAlts pulumi.BoolPtrInput `pulumi:"enableAlts"`
+}
+
+func (WorkloadALTSConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadALTSConfig)(nil)).Elem()
+}
+
+func (i WorkloadALTSConfigArgs) ToWorkloadALTSConfigOutput() WorkloadALTSConfigOutput {
+	return i.ToWorkloadALTSConfigOutputWithContext(context.Background())
+}
+
+func (i WorkloadALTSConfigArgs) ToWorkloadALTSConfigOutputWithContext(ctx context.Context) WorkloadALTSConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadALTSConfigOutput)
+}
+
+func (i WorkloadALTSConfigArgs) ToWorkloadALTSConfigPtrOutput() WorkloadALTSConfigPtrOutput {
+	return i.ToWorkloadALTSConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadALTSConfigArgs) ToWorkloadALTSConfigPtrOutputWithContext(ctx context.Context) WorkloadALTSConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadALTSConfigOutput).ToWorkloadALTSConfigPtrOutputWithContext(ctx)
+}
+
+// WorkloadALTSConfigPtrInput is an input type that accepts WorkloadALTSConfigArgs, WorkloadALTSConfigPtr and WorkloadALTSConfigPtrOutput values.
+// You can construct a concrete instance of `WorkloadALTSConfigPtrInput` via:
+//
+//          WorkloadALTSConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkloadALTSConfigPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadALTSConfigPtrOutput() WorkloadALTSConfigPtrOutput
+	ToWorkloadALTSConfigPtrOutputWithContext(context.Context) WorkloadALTSConfigPtrOutput
+}
+
+type workloadALTSConfigPtrType WorkloadALTSConfigArgs
+
+func WorkloadALTSConfigPtr(v *WorkloadALTSConfigArgs) WorkloadALTSConfigPtrInput {
+	return (*workloadALTSConfigPtrType)(v)
+}
+
+func (*workloadALTSConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadALTSConfig)(nil)).Elem()
+}
+
+func (i *workloadALTSConfigPtrType) ToWorkloadALTSConfigPtrOutput() WorkloadALTSConfigPtrOutput {
+	return i.ToWorkloadALTSConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadALTSConfigPtrType) ToWorkloadALTSConfigPtrOutputWithContext(ctx context.Context) WorkloadALTSConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadALTSConfigPtrOutput)
+}
+
+// Configuration for direct-path (via ALTS) with workload identity.
+type WorkloadALTSConfigOutput struct{ *pulumi.OutputState }
+
+func (WorkloadALTSConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadALTSConfig)(nil)).Elem()
+}
+
+func (o WorkloadALTSConfigOutput) ToWorkloadALTSConfigOutput() WorkloadALTSConfigOutput {
+	return o
+}
+
+func (o WorkloadALTSConfigOutput) ToWorkloadALTSConfigOutputWithContext(ctx context.Context) WorkloadALTSConfigOutput {
+	return o
+}
+
+func (o WorkloadALTSConfigOutput) ToWorkloadALTSConfigPtrOutput() WorkloadALTSConfigPtrOutput {
+	return o.ToWorkloadALTSConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadALTSConfigOutput) ToWorkloadALTSConfigPtrOutputWithContext(ctx context.Context) WorkloadALTSConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadALTSConfig) *WorkloadALTSConfig {
+		return &v
+	}).(WorkloadALTSConfigPtrOutput)
+}
+
+// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadALTSConfigOutput) EnableAlts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadALTSConfig) *bool { return v.EnableAlts }).(pulumi.BoolPtrOutput)
+}
+
+type WorkloadALTSConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadALTSConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadALTSConfig)(nil)).Elem()
+}
+
+func (o WorkloadALTSConfigPtrOutput) ToWorkloadALTSConfigPtrOutput() WorkloadALTSConfigPtrOutput {
+	return o
+}
+
+func (o WorkloadALTSConfigPtrOutput) ToWorkloadALTSConfigPtrOutputWithContext(ctx context.Context) WorkloadALTSConfigPtrOutput {
+	return o
+}
+
+func (o WorkloadALTSConfigPtrOutput) Elem() WorkloadALTSConfigOutput {
+	return o.ApplyT(func(v *WorkloadALTSConfig) WorkloadALTSConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadALTSConfig
+		return ret
+	}).(WorkloadALTSConfigOutput)
+}
+
+// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadALTSConfigPtrOutput) EnableAlts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadALTSConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAlts
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for direct-path (via ALTS) with workload identity.
+type WorkloadALTSConfigResponse struct {
+	// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+	EnableAlts bool `pulumi:"enableAlts"`
+}
+
+// Configuration for direct-path (via ALTS) with workload identity.
+type WorkloadALTSConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadALTSConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadALTSConfigResponse)(nil)).Elem()
+}
+
+func (o WorkloadALTSConfigResponseOutput) ToWorkloadALTSConfigResponseOutput() WorkloadALTSConfigResponseOutput {
+	return o
+}
+
+func (o WorkloadALTSConfigResponseOutput) ToWorkloadALTSConfigResponseOutputWithContext(ctx context.Context) WorkloadALTSConfigResponseOutput {
+	return o
+}
+
+// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadALTSConfigResponseOutput) EnableAlts() pulumi.BoolOutput {
+	return o.ApplyT(func(v WorkloadALTSConfigResponse) bool { return v.EnableAlts }).(pulumi.BoolOutput)
+}
+
 // Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 type WorkloadCertificates struct {
 	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
@@ -17574,6 +18044,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPtrInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigPtrInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsInput)(nil)).Elem(), NetworkTagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkTagsPtrInput)(nil)).Elem(), NetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigDefaultsInput)(nil)).Elem(), NodeConfigDefaultsArgs{})
@@ -17586,6 +18058,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkConfigPtrInput)(nil)).Elem(), NodeNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTypeInput)(nil)).Elem(), NodePoolTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolTypeArrayInput)(nil)).Elem(), NodePoolTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoConfigInput)(nil)).Elem(), NodePoolAutoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoConfigPtrInput)(nil)).Elem(), NodePoolAutoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsInput)(nil)).Elem(), NodePoolDefaultsArgs{})
@@ -17634,6 +18108,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingPtrInput)(nil)).Elem(), VerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICInput)(nil)).Elem(), VirtualNICArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICPtrInput)(nil)).Elem(), VirtualNICArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadALTSConfigInput)(nil)).Elem(), WorkloadALTSConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadALTSConfigPtrInput)(nil)).Elem(), WorkloadALTSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesInput)(nil)).Elem(), WorkloadCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesPtrInput)(nil)).Elem(), WorkloadCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityConfigInput)(nil)).Elem(), WorkloadIdentityConfigArgs{})
@@ -17801,6 +18277,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkPolicyConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyResponseOutput{})
+	pulumi.RegisterOutputType(NetworkTagsOutput{})
+	pulumi.RegisterOutputType(NetworkTagsPtrOutput{})
+	pulumi.RegisterOutputType(NetworkTagsResponseOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigDefaultsOutput{})
@@ -17818,6 +18297,9 @@ func init() {
 	pulumi.RegisterOutputType(NodeNetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeOutput{})
 	pulumi.RegisterOutputType(NodePoolTypeArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolAutoConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingResponseOutput{})
@@ -17895,6 +18377,9 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNICOutput{})
 	pulumi.RegisterOutputType(VirtualNICPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNICResponseOutput{})
+	pulumi.RegisterOutputType(WorkloadALTSConfigOutput{})
+	pulumi.RegisterOutputType(WorkloadALTSConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadALTSConfigResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadCertificatesResponseOutput{})

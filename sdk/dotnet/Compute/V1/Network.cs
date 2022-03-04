@@ -34,10 +34,22 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        /// </summary>
+        [Output("enableUlaInternalIpv6")]
+        public Output<bool> EnableUlaInternalIpv6 { get; private set; } = null!;
+
+        /// <summary>
         /// The gateway address for default routing out of the network, selected by GCP.
         /// </summary>
         [Output("gatewayIPv4")]
         public Output<string> GatewayIPv4 { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        /// </summary>
+        [Output("internalIpv6Range")]
+        public Output<string> InternalIpv6Range { get; private set; } = null!;
 
         /// <summary>
         /// Type of the resource. Always compute#network for networks.
@@ -58,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        /// </summary>
+        [Output("networkFirewallPolicyEnforcementOrder")]
+        public Output<string> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
+
+        /// <summary>
         /// A list of network peerings for the resource.
         /// </summary>
         [Output("peerings")]
@@ -74,6 +92,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Server-defined URL for this resource with the resource id.
+        /// </summary>
+        [Output("selfLinkWithId")]
+        public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
@@ -139,6 +163,18 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        /// </summary>
+        [Input("enableUlaInternalIpv6")]
+        public Input<bool>? EnableUlaInternalIpv6 { get; set; }
+
+        /// <summary>
+        /// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        /// </summary>
+        [Input("internalIpv6Range")]
+        public Input<string>? InternalIpv6Range { get; set; }
+
+        /// <summary>
         /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         /// </summary>
         [Input("mtu")]
@@ -149,6 +185,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        /// </summary>
+        [Input("networkFirewallPolicyEnforcementOrder")]
+        public Input<Pulumi.GoogleNative.Compute.V1.NetworkNetworkFirewallPolicyEnforcementOrder>? NetworkFirewallPolicyEnforcementOrder { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

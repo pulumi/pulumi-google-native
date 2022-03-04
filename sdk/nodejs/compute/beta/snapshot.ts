@@ -60,7 +60,7 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
     /**
-     * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
     /**
@@ -219,7 +219,7 @@ export interface SnapshotArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
      */
     guestFlush?: pulumi.Input<boolean>;
     /**

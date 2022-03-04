@@ -105,6 +105,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
         /// <summary>
+        /// Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+        /// </summary>
+        public readonly bool Spot;
+        /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
@@ -163,6 +167,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
 
+            bool spot,
+
             ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.NodeTaintResponse> taints,
@@ -191,6 +197,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            Spot = spot;
             Tags = tags;
             Taints = taints;
             WorkloadMetadataConfig = workloadMetadataConfig;

@@ -29,7 +29,7 @@ class ConfigArgs:
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Sequence[pulumi.Input['FleetConfigArgs']]] fleet_configs: FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a key-value pair.
-        :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]] scaling_configs: The autoscaling settings.
         """
         pulumi.set(__self__, "config_id", config_id)
@@ -116,7 +116,7 @@ class ConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         """
         return pulumi.get(self, "name")
 
@@ -169,7 +169,7 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]] fleet_configs: FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a key-value pair.
-        :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigArgs']]]] scaling_configs: The autoscaling settings.
         """
         ...
@@ -299,7 +299,7 @@ class Config(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+        The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         """
         return pulumi.get(self, "name")
 

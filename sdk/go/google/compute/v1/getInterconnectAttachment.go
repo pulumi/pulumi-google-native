@@ -31,7 +31,7 @@ type LookupInterconnectAttachmentResult struct {
 	AdminEnabled bool `pulumi:"adminEnabled"`
 	// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
 	Bandwidth string `pulumi:"bandwidth"`
-	// Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+	// This field is not available.
 	CandidateIpv6Subnets []string `pulumi:"candidateIpv6Subnets"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
@@ -39,7 +39,7 @@ type LookupInterconnectAttachmentResult struct {
 	CloudRouterIpAddress string `pulumi:"cloudRouterIpAddress"`
 	// IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
 	CloudRouterIpv6Address string `pulumi:"cloudRouterIpv6Address"`
-	// If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+	// This field is not available.
 	CloudRouterIpv6InterfaceId string `pulumi:"cloudRouterIpv6InterfaceId"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -47,9 +47,9 @@ type LookupInterconnectAttachmentResult struct {
 	CustomerRouterIpAddress string `pulumi:"customerRouterIpAddress"`
 	// IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpv6Address string `pulumi:"customerRouterIpv6Address"`
-	// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+	// This field is not available.
 	CustomerRouterIpv6InterfaceId string `pulumi:"customerRouterIpv6InterfaceId"`
-	// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+	// Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 	DataplaneVersion int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description string `pulumi:"description"`
@@ -138,7 +138,7 @@ func (o LookupInterconnectAttachmentResultOutput) Bandwidth() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+// This field is not available.
 func (o LookupInterconnectAttachmentResultOutput) CandidateIpv6Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) []string { return v.CandidateIpv6Subnets }).(pulumi.StringArrayOutput)
 }
@@ -158,7 +158,7 @@ func (o LookupInterconnectAttachmentResultOutput) CloudRouterIpv6Address() pulum
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CloudRouterIpv6Address }).(pulumi.StringOutput)
 }
 
-// If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+// This field is not available.
 func (o LookupInterconnectAttachmentResultOutput) CloudRouterIpv6InterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CloudRouterIpv6InterfaceId }).(pulumi.StringOutput)
 }
@@ -178,12 +178,12 @@ func (o LookupInterconnectAttachmentResultOutput) CustomerRouterIpv6Address() pu
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CustomerRouterIpv6Address }).(pulumi.StringOutput)
 }
 
-// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+// This field is not available.
 func (o LookupInterconnectAttachmentResultOutput) CustomerRouterIpv6InterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.CustomerRouterIpv6InterfaceId }).(pulumi.StringOutput)
 }
 
-// [Output only for types PARTNER and DEDICATED. Not present for PARTNER_PROVIDER.] Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
+// Dataplane version for this InterconnectAttachment. This field is only present for Dataplane version 2 and higher. Absence of this field in the API output indicates that the Dataplane is version 1.
 func (o LookupInterconnectAttachmentResultOutput) DataplaneVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) int { return v.DataplaneVersion }).(pulumi.IntOutput)
 }

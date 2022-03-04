@@ -5,9 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./backup";
 export * from "./domain";
+export * from "./domainBackupIamPolicy";
 export * from "./domainIamPolicy";
+export * from "./getBackup";
 export * from "./getDomain";
+export * from "./getDomainBackupIamPolicy";
 export * from "./getDomainIamPolicy";
 export * from "./getPeering";
 export * from "./getPeeringIamPolicy";
@@ -15,7 +19,9 @@ export * from "./peering";
 export * from "./peeringIamPolicy";
 
 // Import resources to register:
+import { Backup } from "./backup";
 import { Domain } from "./domain";
+import { DomainBackupIamPolicy } from "./domainBackupIamPolicy";
 import { DomainIamPolicy } from "./domainIamPolicy";
 import { Peering } from "./peering";
 import { PeeringIamPolicy } from "./peeringIamPolicy";
@@ -24,8 +30,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:managedidentities/v1:Backup":
+                return new Backup(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1:Domain":
                 return new Domain(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1:DomainBackupIamPolicy":
+                return new DomainBackupIamPolicy(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1:DomainIamPolicy":
                 return new DomainIamPolicy(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1:Peering":

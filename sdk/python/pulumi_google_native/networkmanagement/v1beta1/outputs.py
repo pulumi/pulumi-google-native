@@ -12,10 +12,12 @@ from ._enums import *
 
 __all__ = [
     'AbortInfoResponse',
+    'AppEngineVersionInfoResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
     'CloudFunctionEndpointResponse',
+    'CloudFunctionInfoResponse',
     'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
@@ -38,6 +40,7 @@ __all__ = [
     'StatusResponse',
     'StepResponse',
     'TraceResponse',
+    'VpcConnectorInfoResponse',
     'VpnGatewayInfoResponse',
     'VpnTunnelInfoResponse',
 ]
@@ -90,6 +93,78 @@ class AbortInfoResponse(dict):
         URI of the resource that caused the abort.
         """
         return pulumi.get(self, "resource_uri")
+
+
+@pulumi.output_type
+class AppEngineVersionInfoResponse(dict):
+    """
+    For display only. Metadata associated with an App Engine version.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEngineVersionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEngineVersionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEngineVersionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 environment: str,
+                 runtime: str,
+                 uri: str):
+        """
+        For display only. Metadata associated with an App Engine version.
+        :param str display_name: Name of an App Engine version.
+        :param str environment: App Engine execution environment for a version.
+        :param str runtime: Runtime of the App Engine version.
+        :param str uri: URI of an App Engine version.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of an App Engine version.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> str:
+        """
+        App Engine execution environment for a version.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def runtime(self) -> str:
+        """
+        Runtime of the App Engine version.
+        """
+        return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of an App Engine version.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -258,6 +333,80 @@ class CloudFunctionEndpointResponse(dict):
         A [Cloud function](https://cloud.google.com/functions) name.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CloudFunctionInfoResponse(dict):
+    """
+    For display only. Metadata associated with a Cloud function.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "versionId":
+            suggest = "version_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudFunctionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudFunctionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudFunctionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 location: str,
+                 uri: str,
+                 version_id: str):
+        """
+        For display only. Metadata associated with a Cloud function.
+        :param str display_name: Name of a Cloud function.
+        :param str location: Location in which the Cloud function is deployed.
+        :param str uri: URI of a Cloud function.
+        :param str version_id: Latest successfully deployed version id of the Cloud function.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of a Cloud function.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location in which the Cloud function is deployed.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of a Cloud function.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        Latest successfully deployed version id of the Cloud function.
+        """
+        return pulumi.get(self, "version_id")
 
 
 @pulumi.output_type
@@ -2008,8 +2157,12 @@ class StepResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "causesDrop":
+        if key == "appEngineVersionInfo":
+            suggest = "app_engine_version_info"
+        elif key == "causesDrop":
             suggest = "causes_drop"
+        elif key == "cloudFunction":
+            suggest = "cloud_function"
         elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
         elif key == "forwardingRule":
@@ -2018,6 +2171,8 @@ class StepResponse(dict):
             suggest = "gke_master"
         elif key == "loadBalancer":
             suggest = "load_balancer"
+        elif key == "vpcConnector":
+            suggest = "vpc_connector"
         elif key == "vpnGateway":
             suggest = "vpn_gateway"
         elif key == "vpnTunnel":
@@ -2036,7 +2191,9 @@ class StepResponse(dict):
 
     def __init__(__self__, *,
                  abort: 'outputs.AbortInfoResponse',
+                 app_engine_version_info: 'outputs.AppEngineVersionInfoResponse',
                  causes_drop: bool,
+                 cloud_function: 'outputs.CloudFunctionInfoResponse',
                  cloud_sql_instance: 'outputs.CloudSQLInstanceInfoResponse',
                  deliver: 'outputs.DeliverInfoResponse',
                  description: str,
@@ -2052,12 +2209,15 @@ class StepResponse(dict):
                  project: str,
                  route: 'outputs.RouteInfoResponse',
                  state: str,
+                 vpc_connector: 'outputs.VpcConnectorInfoResponse',
                  vpn_gateway: 'outputs.VpnGatewayInfoResponse',
                  vpn_tunnel: 'outputs.VpnTunnelInfoResponse'):
         """
         A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
         :param 'AbortInfoResponse' abort: Display information of the final state "abort" and reason.
+        :param 'AppEngineVersionInfoResponse' app_engine_version_info: Display information of an App Engine service version.
         :param bool causes_drop: This is a step that leads to the final state Drop.
+        :param 'CloudFunctionInfoResponse' cloud_function: Display information of a Cloud function.
         :param 'CloudSQLInstanceInfoResponse' cloud_sql_instance: Display information of a Cloud SQL instance.
         :param 'DeliverInfoResponse' deliver: Display information of the final state "deliver" and reason.
         :param str description: A description of the step. Usually this is a summary of the state.
@@ -2073,11 +2233,14 @@ class StepResponse(dict):
         :param str project: Project ID that contains the configuration this step is validating.
         :param 'RouteInfoResponse' route: Display information of a Compute Engine route.
         :param str state: Each step is in one of the pre-defined states.
+        :param 'VpcConnectorInfoResponse' vpc_connector: Display information of a VPC connector.
         :param 'VpnGatewayInfoResponse' vpn_gateway: Display information of a Compute Engine VPN gateway.
         :param 'VpnTunnelInfoResponse' vpn_tunnel: Display information of a Compute Engine VPN tunnel.
         """
         pulumi.set(__self__, "abort", abort)
+        pulumi.set(__self__, "app_engine_version_info", app_engine_version_info)
         pulumi.set(__self__, "causes_drop", causes_drop)
+        pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "deliver", deliver)
         pulumi.set(__self__, "description", description)
@@ -2093,6 +2256,7 @@ class StepResponse(dict):
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "vpc_connector", vpc_connector)
         pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
 
@@ -2105,12 +2269,28 @@ class StepResponse(dict):
         return pulumi.get(self, "abort")
 
     @property
+    @pulumi.getter(name="appEngineVersionInfo")
+    def app_engine_version_info(self) -> 'outputs.AppEngineVersionInfoResponse':
+        """
+        Display information of an App Engine service version.
+        """
+        return pulumi.get(self, "app_engine_version_info")
+
+    @property
     @pulumi.getter(name="causesDrop")
     def causes_drop(self) -> bool:
         """
         This is a step that leads to the final state Drop.
         """
         return pulumi.get(self, "causes_drop")
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> 'outputs.CloudFunctionInfoResponse':
+        """
+        Display information of a Cloud function.
+        """
+        return pulumi.get(self, "cloud_function")
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
@@ -2233,6 +2413,14 @@ class StepResponse(dict):
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="vpcConnector")
+    def vpc_connector(self) -> 'outputs.VpcConnectorInfoResponse':
+        """
+        Display information of a VPC connector.
+        """
+        return pulumi.get(self, "vpc_connector")
+
+    @property
     @pulumi.getter(name="vpnGateway")
     def vpn_gateway(self) -> 'outputs.VpnGatewayInfoResponse':
         """
@@ -2297,6 +2485,67 @@ class TraceResponse(dict):
         A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
         """
         return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class VpcConnectorInfoResponse(dict):
+    """
+    For display only. Metadata associated with a VPC connector.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcConnectorInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcConnectorInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcConnectorInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 location: str,
+                 uri: str):
+        """
+        For display only. Metadata associated with a VPC connector.
+        :param str display_name: Name of a VPC connector.
+        :param str location: Location in which the VPC connector is deployed.
+        :param str uri: URI of a VPC connector.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of a VPC connector.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location in which the VPC connector is deployed.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of a VPC connector.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type

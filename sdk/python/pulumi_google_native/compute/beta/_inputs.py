@@ -65,6 +65,7 @@ __all__ = [
     'FirewallPolicyAssociationArgs',
     'FirewallPolicyRuleMatcherLayer4ConfigArgs',
     'FirewallPolicyRuleMatcherArgs',
+    'FirewallPolicyRuleSecureTagArgs',
     'FirewallPolicyRuleArgs',
     'FixedOrPercentArgs',
     'ForwardingRuleServiceDirectoryRegistrationArgs',
@@ -2798,11 +2799,11 @@ class CircuitBreakersArgs:
         """
         Settings controlling the volume of requests, connections and retries to this backend service.
         :param pulumi.Input['DurationArgs'] connect_timeout: The timeout for new network connections to hosts.
-        :param pulumi.Input[int] max_connections: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] max_pending_requests: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] max_connections: The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] max_pending_requests: The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[int] max_requests: The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
-        :param pulumi.Input[int] max_requests_per_connection: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] max_retries: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] max_requests_per_connection: Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] max_retries: The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
@@ -2833,7 +2834,7 @@ class CircuitBreakersArgs:
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> Optional[pulumi.Input[int]]:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_connections")
 
@@ -2845,7 +2846,7 @@ class CircuitBreakersArgs:
     @pulumi.getter(name="maxPendingRequests")
     def max_pending_requests(self) -> Optional[pulumi.Input[int]]:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The maximum number of pending requests allowed to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_pending_requests")
 
@@ -2869,7 +2870,7 @@ class CircuitBreakersArgs:
     @pulumi.getter(name="maxRequestsPerConnection")
     def max_requests_per_connection(self) -> Optional[pulumi.Input[int]]:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_requests_per_connection")
 
@@ -2881,7 +2882,7 @@ class CircuitBreakersArgs:
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "max_retries")
 
@@ -3999,12 +4000,14 @@ class FirewallPolicyRuleMatcherArgs:
     def __init__(__self__, *,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
-                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         """
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
@@ -4012,6 +4015,8 @@ class FirewallPolicyRuleMatcherArgs:
             pulumi.set(__self__, "layer4_configs", layer4_configs)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
 
     @property
     @pulumi.getter(name="destIpRanges")
@@ -4049,6 +4054,41 @@ class FirewallPolicyRuleMatcherArgs:
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
 
+    @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]:
+        """
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @src_secure_tags.setter
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]):
+        pulumi.set(self, "src_secure_tags", value)
+
+
+@pulumi.input_type
+class FirewallPolicyRuleSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the secure tag, created with TagManager's TagValue API.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
 
 @pulumi.input_type
 class FirewallPolicyRuleArgs:
@@ -4061,6 +4101,7 @@ class FirewallPolicyRuleArgs:
                  match: Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
@@ -4072,6 +4113,7 @@ class FirewallPolicyRuleArgs:
         :param pulumi.Input['FirewallPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
         """
         if action is not None:
@@ -4090,6 +4132,8 @@ class FirewallPolicyRuleArgs:
             pulumi.set(__self__, "priority", priority)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
         if target_service_accounts is not None:
             pulumi.set(__self__, "target_service_accounts", target_service_accounts)
 
@@ -4188,6 +4232,18 @@ class FirewallPolicyRuleArgs:
     @target_resources.setter
     def target_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "target_resources", value)
+
+    @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]:
+        """
+        A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
 
     @property
     @pulumi.getter(name="targetServiceAccounts")
@@ -4375,7 +4431,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -4384,7 +4440,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -5515,7 +5571,7 @@ class HttpRouteActionArgs:
                  weighted_backend_services: Optional[pulumi.Input[Sequence[pulumi.Input['WeightedBackendServiceArgs']]]] = None):
         """
         :param pulumi.Input['CorsPolicyArgs'] cors_policy: The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
-        :param pulumi.Input['HttpFaultInjectionArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
+        :param pulumi.Input['HttpFaultInjectionArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
         :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the maximum duration (timeout) for streams on the selected route. Unlike the timeout field where the timeout duration starts from the time the request has been fully processed (known as *end-of-stream*), the duration in this field is computed from the beginning of the stream until the response has been processed, including all retries. A stream that does not complete in this duration is closed. If not specified, this field uses the maximum maxStreamDuration value among all backend services associated with the route. This field is only allowed if the Url map is used with backend services with loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input['RequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer does not wait for responses from the shadow service. Before sending traffic to the shadow service, the host / authority header is suffixed with -shadow. Not supported when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
         :param pulumi.Input['HttpRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
@@ -5556,7 +5612,7 @@ class HttpRouteActionArgs:
     @pulumi.getter(name="faultInjectionPolicy")
     def fault_injection_policy(self) -> Optional[pulumi.Input['HttpFaultInjectionArgs']]:
         """
-        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. For the requests impacted by fault injection, timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy.
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by a load balancer on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests. timeout and retry_policy is ignored by clients that are configured with a fault_injection_policy if: 1. The traffic is generated by fault injection AND 2. The fault injection is not a delay fault injection.
         """
         return pulumi.get(self, "fault_injection_policy")
 
@@ -7401,7 +7457,7 @@ class NetworkEndpointGroupCloudRunArgs:
         Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
         :param pulumi.Input[str] service: Cloud Run service is the main resource of Cloud Run. The service must be 1-63 characters long, and comply with RFC1035. Example value: "run-service".
         :param pulumi.Input[str] tag: Optional Cloud Run tag represents the "named-revision" to provide additional fine-grained traffic routing information. The tag must be 1-63 characters long, and comply with RFC1035. Example value: "revision-0010".
-        :param pulumi.Input[str] url_mask: A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        :param pulumi.Input[str] url_mask: A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         if service is not None:
             pulumi.set(__self__, "service", service)
@@ -7438,7 +7494,7 @@ class NetworkEndpointGroupCloudRunArgs:
     @pulumi.getter(name="urlMask")
     def url_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        A template to parse service and tag fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask ".domain.com/". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
+        A template to parse <service> and <tag> fields from a request URL. URL mask allows for routing to multiple Run services without having to create multiple network endpoint groups and backend services. For example, request URLs "foo1.domain.com/bar1" and "foo1.domain.com/bar2" can be backed by the same Serverless Network Endpoint Group (NEG) with URL mask "<tag>.domain.com/<service>". The URL mask will parse them to { service="bar1", tag="foo1" } and { service="bar2", tag="foo2" } respectively.
         """
         return pulumi.get(self, "url_mask")
 
@@ -7524,6 +7580,7 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  alias_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]] = None,
+                 internal_ipv6_prefix_length: Optional[pulumi.Input[int]] = None,
                  ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -7536,6 +7593,7 @@ class NetworkInterfaceArgs:
         A network interface resource attached to an instance.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
+        :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface.
         :param pulumi.Input[str] network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
@@ -7549,6 +7607,8 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "access_configs", access_configs)
         if alias_ip_ranges is not None:
             pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        if internal_ipv6_prefix_length is not None:
+            pulumi.set(__self__, "internal_ipv6_prefix_length", internal_ipv6_prefix_length)
         if ipv6_access_configs is not None:
             pulumi.set(__self__, "ipv6_access_configs", ipv6_access_configs)
         if ipv6_address is not None:
@@ -7589,6 +7649,18 @@ class NetworkInterfaceArgs:
     @alias_ip_ranges.setter
     def alias_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]]]):
         pulumi.set(self, "alias_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="internalIpv6PrefixLength")
+    def internal_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        The prefix length of the primary internal IPv6 range.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix_length")
+
+    @internal_ipv6_prefix_length.setter
+    def internal_ipv6_prefix_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "internal_ipv6_prefix_length", value)
 
     @property
     @pulumi.getter(name="ipv6AccessConfigs")
@@ -8865,7 +8937,7 @@ class ResourcePolicyDailyCycleArgs:
                  start_time: Optional[pulumi.Input[str]] = None):
         """
         Time window specified for daily operations.
-        :param pulumi.Input[int] days_in_cycle: Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
+        :param pulumi.Input[int] days_in_cycle: Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
         :param pulumi.Input[str] start_time: Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
         """
         if days_in_cycle is not None:
@@ -8877,7 +8949,7 @@ class ResourcePolicyDailyCycleArgs:
     @pulumi.getter(name="daysInCycle")
     def days_in_cycle(self) -> Optional[pulumi.Input[int]]:
         """
-        Defines a schedule with units measured in months. The value determines how many months pass between the start of each cycle.
+        Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
         """
         return pulumi.get(self, "days_in_cycle")
 
@@ -9472,7 +9544,7 @@ class RouterBgpPeerBfdArgs:
         :param pulumi.Input[int] min_receive_interval: The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
         :param pulumi.Input[int] min_transmit_interval: The minimum interval, in milliseconds, between BFD control packets transmitted to the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the corresponding receive interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
         :param pulumi.Input[int] multiplier: The number of consecutive BFD packets that must be missed before BFD declares that a peer is unavailable. If set, the value must be a value between 5 and 16. The default is 5.
-        :param pulumi.Input['RouterBgpPeerBfdSessionInitializationMode'] session_initialization_mode: The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        :param pulumi.Input['RouterBgpPeerBfdSessionInitializationMode'] session_initialization_mode: The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
         """
         if min_receive_interval is not None:
             pulumi.set(__self__, "min_receive_interval", min_receive_interval)
@@ -9523,7 +9595,7 @@ class RouterBgpPeerBfdArgs:
     @pulumi.getter(name="sessionInitializationMode")
     def session_initialization_mode(self) -> Optional[pulumi.Input['RouterBgpPeerBfdSessionInitializationMode']]:
         """
-        The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+        The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
         """
         return pulumi.get(self, "session_initialization_mode")
 
@@ -11375,9 +11447,9 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
         :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -11438,7 +11510,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -11462,7 +11534,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny()" where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceed_redirect_options below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -12315,7 +12387,7 @@ class SubnetworkLogConfigArgs:
         The available logging options for this subnetwork.
         :param pulumi.Input['SubnetworkLogConfigAggregationInterval'] aggregation_interval: Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
         :param pulumi.Input[bool] enable: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
-        :param pulumi.Input[str] filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+        :param pulumi.Input[str] filter_expr: Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param pulumi.Input['SubnetworkLogConfigMetadata'] metadata: Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metadata_fields: Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" was set to CUSTOM_METADATA.
@@ -12361,7 +12433,7 @@ class SubnetworkLogConfigArgs:
     @pulumi.getter(name="filterExpr")
     def filter_expr(self) -> Optional[pulumi.Input[str]]:
         """
-        Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+        Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
         """
         return pulumi.get(self, "filter_expr")
 

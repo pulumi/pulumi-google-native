@@ -71,6 +71,10 @@ export class Document extends pulumi.CustomResource {
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */
     public readonly rawContent!: pulumi.Output<string>;
+    /**
+     * The current state of the document.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a Document resource with the given unique name, arguments, and options.
@@ -107,6 +111,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rawContent"] = args ? args.rawContent : undefined;
             resourceInputs["latestReloadStatus"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["contentUri"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -117,6 +122,7 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["rawContent"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Document.__pulumiType, name, resourceInputs, opts);

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<ImmutableDictionary<string, string>> Fields { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate.
+        /// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
         /// </summary>
         [Output("isPubliclyReadable")]
         public Output<bool> IsPubliclyReadable { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         }
 
         /// <summary>
-        /// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query instead of using a ``tag:`` predicate.
+        /// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
         /// </summary>
         [Input("isPubliclyReadable")]
         public Input<bool>? IsPubliclyReadable { get; set; }

@@ -486,6 +486,10 @@ export const BackendServiceLocalityLbPolicy = {
      * This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
      */
     RoundRobin: "ROUND_ROBIN",
+    /**
+     * Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+     */
+    WeightedMaglev: "WEIGHTED_MAGLEV",
 } as const;
 
 /**
@@ -1114,7 +1118,7 @@ export const GlobalNetworkEndpointGroupNetworkEndpointType = {
 } as const;
 
 /**
- * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+ * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
  */
 export type GlobalNetworkEndpointGroupNetworkEndpointType = (typeof GlobalNetworkEndpointGroupNetworkEndpointType)[keyof typeof GlobalNetworkEndpointGroupNetworkEndpointType];
 
@@ -1130,7 +1134,7 @@ export const GuestOsFeatureType = {
 } as const;
 
 /**
- * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+ * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
  */
 export type GuestOsFeatureType = (typeof GuestOsFeatureType)[keyof typeof GuestOsFeatureType];
 
@@ -1714,7 +1718,7 @@ export const NetworkEndpointGroupNetworkEndpointType = {
 } as const;
 
 /**
- * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+ * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
  */
 export type NetworkEndpointGroupNetworkEndpointType = (typeof NetworkEndpointGroupNetworkEndpointType)[keyof typeof NetworkEndpointGroupNetworkEndpointType];
 
@@ -1747,13 +1751,22 @@ export const NetworkInterfaceStackType = {
      * The network interface will be assigned IPv4 address.
      */
     Ipv4Only: "IPV4_ONLY",
-    UnspecifiedStackType: "UNSPECIFIED_STACK_TYPE",
 } as const;
 
 /**
  * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
  */
 export type NetworkInterfaceStackType = (typeof NetworkInterfaceStackType)[keyof typeof NetworkInterfaceStackType];
+
+export const NetworkNetworkFirewallPolicyEnforcementOrder = {
+    AfterClassicFirewall: "AFTER_CLASSIC_FIREWALL",
+    BeforeClassicFirewall: "BEFORE_CLASSIC_FIREWALL",
+} as const;
+
+/**
+ * The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+ */
+export type NetworkNetworkFirewallPolicyEnforcementOrder = (typeof NetworkNetworkFirewallPolicyEnforcementOrder)[keyof typeof NetworkNetworkFirewallPolicyEnforcementOrder];
 
 export const NetworkPerformanceConfigTotalEgressBandwidthTier = {
     Default: "DEFAULT",
@@ -1841,7 +1854,7 @@ export const OrganizationSecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+ * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
  */
 export type OrganizationSecurityPolicyType = (typeof OrganizationSecurityPolicyType)[keyof typeof OrganizationSecurityPolicyType];
 
@@ -1982,6 +1995,10 @@ export const RegionBackendServiceLocalityLbPolicy = {
      * This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
      */
     RoundRobin: "ROUND_ROBIN",
+    /**
+     * Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+     */
+    WeightedMaglev: "WEIGHTED_MAGLEV",
 } as const;
 
 /**
@@ -2176,7 +2193,7 @@ export const RegionNetworkEndpointGroupNetworkEndpointType = {
 } as const;
 
 /**
- * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+ * Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
  */
 export type RegionNetworkEndpointGroupNetworkEndpointType = (typeof RegionNetworkEndpointGroupNetworkEndpointType)[keyof typeof RegionNetworkEndpointGroupNetworkEndpointType];
 
@@ -2337,7 +2354,7 @@ export const RouterBgpPeerBfdSessionInitializationMode = {
 } as const;
 
 /**
- * The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+ * The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
  */
 export type RouterBgpPeerBfdSessionInitializationMode = (typeof RouterBgpPeerBfdSessionInitializationMode)[keyof typeof RouterBgpPeerBfdSessionInitializationMode];
 
@@ -2624,7 +2641,7 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 
@@ -2645,7 +2662,7 @@ export const SecurityPolicyType = {
 } as const;
 
 /**
- * The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+ * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
  */
 export type SecurityPolicyType = (typeof SecurityPolicyType)[keyof typeof SecurityPolicyType];
 
@@ -2679,6 +2696,10 @@ export const ShareSettingsShareType = {
      * Default value.
      */
     Local: "LOCAL",
+    /**
+     * Shared-reservation is open to entire Organization
+     */
+    Organization: "ORGANIZATION",
     /**
      * Default value. This value is unused.
      */
@@ -2761,9 +2782,9 @@ export const SubnetworkIpv6AccessType = {
      */
     External: "EXTERNAL",
     /**
-     * IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
+     * VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
      */
-    UnspecifiedIpv6AccessType: "UNSPECIFIED_IPV6_ACCESS_TYPE",
+    Internal: "INTERNAL",
 } as const;
 
 /**
@@ -2869,11 +2890,10 @@ export const SubnetworkStackType = {
      * New VMs in this subnet will only be assigned IPv4 addresses.
      */
     Ipv4Only: "IPV4_ONLY",
-    UnspecifiedStackType: "UNSPECIFIED_STACK_TYPE",
 } as const;
 
 /**
- * The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+ * The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
  */
 export type SubnetworkStackType = (typeof SubnetworkStackType)[keyof typeof SubnetworkStackType];
 

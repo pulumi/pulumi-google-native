@@ -54,6 +54,8 @@ export * from "./getMachineImage";
 export * from "./getMachineImageIamPolicy";
 export * from "./getNetwork";
 export * from "./getNetworkEndpointGroup";
+export * from "./getNetworkFirewallPolicy";
+export * from "./getNetworkFirewallPolicyIamPolicy";
 export * from "./getNodeGroup";
 export * from "./getNodeGroupIamPolicy";
 export * from "./getNodeTemplate";
@@ -72,6 +74,8 @@ export * from "./getRegionHealthCheck";
 export * from "./getRegionHealthCheckService";
 export * from "./getRegionInstanceGroupManager";
 export * from "./getRegionNetworkEndpointGroup";
+export * from "./getRegionNetworkFirewallPolicy";
+export * from "./getRegionNetworkFirewallPolicyIamPolicy";
 export * from "./getRegionNotificationEndpoint";
 export * from "./getRegionSslCertificate";
 export * from "./getRegionTargetHttpProxy";
@@ -126,6 +130,8 @@ export * from "./machineImage";
 export * from "./machineImageIamPolicy";
 export * from "./network";
 export * from "./networkEndpointGroup";
+export * from "./networkFirewallPolicy";
+export * from "./networkFirewallPolicyIamPolicy";
 export * from "./nodeGroup";
 export * from "./nodeGroupIamPolicy";
 export * from "./nodeTemplate";
@@ -144,6 +150,8 @@ export * from "./regionHealthCheck";
 export * from "./regionHealthCheckService";
 export * from "./regionInstanceGroupManager";
 export * from "./regionNetworkEndpointGroup";
+export * from "./regionNetworkFirewallPolicy";
+export * from "./regionNetworkFirewallPolicyIamPolicy";
 export * from "./regionNotificationEndpoint";
 export * from "./regionSslCertificate";
 export * from "./regionTargetHttpProxy";
@@ -216,6 +224,8 @@ import { MachineImage } from "./machineImage";
 import { MachineImageIamPolicy } from "./machineImageIamPolicy";
 import { Network } from "./network";
 import { NetworkEndpointGroup } from "./networkEndpointGroup";
+import { NetworkFirewallPolicy } from "./networkFirewallPolicy";
+import { NetworkFirewallPolicyIamPolicy } from "./networkFirewallPolicyIamPolicy";
 import { NodeGroup } from "./nodeGroup";
 import { NodeGroupIamPolicy } from "./nodeGroupIamPolicy";
 import { NodeTemplate } from "./nodeTemplate";
@@ -234,6 +244,8 @@ import { RegionHealthCheck } from "./regionHealthCheck";
 import { RegionHealthCheckService } from "./regionHealthCheckService";
 import { RegionInstanceGroupManager } from "./regionInstanceGroupManager";
 import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
+import { RegionNetworkFirewallPolicy } from "./regionNetworkFirewallPolicy";
+import { RegionNetworkFirewallPolicyIamPolicy } from "./regionNetworkFirewallPolicyIamPolicy";
 import { RegionNotificationEndpoint } from "./regionNotificationEndpoint";
 import { RegionSslCertificate } from "./regionSslCertificate";
 import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
@@ -342,6 +354,10 @@ const _module = {
                 return new Network(name, <any>undefined, { urn })
             case "google-native:compute/beta:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
+            case "google-native:compute/beta:NetworkFirewallPolicy":
+                return new NetworkFirewallPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/beta:NetworkFirewallPolicyIamPolicy":
+                return new NetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:NodeGroup":
                 return new NodeGroup(name, <any>undefined, { urn })
             case "google-native:compute/beta:NodeGroupIamPolicy":
@@ -378,6 +394,10 @@ const _module = {
                 return new RegionInstanceGroupManager(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionNetworkEndpointGroup":
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
+            case "google-native:compute/beta:RegionNetworkFirewallPolicy":
+                return new RegionNetworkFirewallPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/beta:RegionNetworkFirewallPolicyIamPolicy":
+                return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionNotificationEndpoint":
                 return new RegionNotificationEndpoint(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionSslCertificate":

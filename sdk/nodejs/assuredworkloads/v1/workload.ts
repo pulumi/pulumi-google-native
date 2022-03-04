@@ -64,10 +64,6 @@ export class Workload extends pulumi.CustomResource {
      */
     public /*out*/ readonly kajEnrollmentState!: pulumi.Output<string>;
     /**
-     * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-     */
-    public readonly kmsSettings!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse>;
-    /**
      * Optional. Labels applied to the workload.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -118,7 +114,6 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["enableSovereignControls"] = args ? args.enableSovereignControls : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
-            resourceInputs["kmsSettings"] = args ? args.kmsSettings : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -137,7 +132,6 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["enableSovereignControls"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kajEnrollmentState"] = undefined /*out*/;
-            resourceInputs["kmsSettings"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
@@ -175,10 +169,6 @@ export interface WorkloadArgs {
      */
     etag?: pulumi.Input<string>;
     externalId?: pulumi.Input<string>;
-    /**
-     * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-     */
-    kmsSettings?: pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs>;
     /**
      * Optional. Labels applied to the workload.
      */

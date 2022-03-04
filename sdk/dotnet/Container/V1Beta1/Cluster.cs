@@ -250,6 +250,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<int> NodeIpv4CidrSize { get; private set; } = null!;
 
         /// <summary>
+        /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        /// </summary>
+        [Output("nodePoolAutoConfig")]
+        public Output<Outputs.NodePoolAutoConfigResponse> NodePoolAutoConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         /// </summary>
         [Output("nodePoolDefaults")]
@@ -344,6 +350,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("verticalPodAutoscaling")]
         public Output<Outputs.VerticalPodAutoscalingResponse> VerticalPodAutoscaling { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for direct-path (via ALTS) with workload identity.
+        /// </summary>
+        [Output("workloadAltsConfig")]
+        public Output<Outputs.WorkloadALTSConfigResponse> WorkloadAltsConfig { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
@@ -604,6 +616,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.NetworkPolicyArgs>? NetworkPolicy { get; set; }
 
         /// <summary>
+        /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        /// </summary>
+        [Input("nodePoolAutoConfig")]
+        public Input<Inputs.NodePoolAutoConfigArgs>? NodePoolAutoConfig { get; set; }
+
+        /// <summary>
         /// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         /// </summary>
         [Input("nodePoolDefaults")]
@@ -695,6 +713,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("verticalPodAutoscaling")]
         public Input<Inputs.VerticalPodAutoscalingArgs>? VerticalPodAutoscaling { get; set; }
+
+        /// <summary>
+        /// Configuration for direct-path (via ALTS) with workload identity.
+        /// </summary>
+        [Input("workloadAltsConfig")]
+        public Input<Inputs.WorkloadALTSConfigArgs>? WorkloadAltsConfig { get; set; }
 
         /// <summary>
         /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.

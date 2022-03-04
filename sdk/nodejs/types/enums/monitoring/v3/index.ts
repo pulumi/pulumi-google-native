@@ -188,7 +188,7 @@ export const ContentMatcherMatcher = {
      */
     NotContainsString: "NOT_CONTAINS_STRING",
     /**
-     * Selects regular-expression matching. The match succeeds of the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
+     * Selects regular-expression matching. The match succeeds if the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
      */
     MatchesRegex: "MATCHES_REGEX",
     /**
@@ -416,7 +416,7 @@ export type MetricThresholdComparison = (typeof MetricThresholdComparison)[keyof
 
 export const MetricThresholdEvaluationMissingData = {
     /**
-     * An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+     * An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
      */
     EvaluationMissingDataUnspecified: "EVALUATION_MISSING_DATA_UNSPECIFIED",
     /**
@@ -440,7 +440,7 @@ export type MetricThresholdEvaluationMissingData = (typeof MetricThresholdEvalua
 
 export const MonitoringQueryLanguageConditionEvaluationMissingData = {
     /**
-     * An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+     * An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
      */
     EvaluationMissingDataUnspecified: "EVALUATION_MISSING_DATA_UNSPECIFIED",
     /**

@@ -154,6 +154,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.NetworkPerformanceConfigResponse> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceParamsResponse> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         [Output("privateIpv6GoogleAccess")]
@@ -401,6 +407,12 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("networkPerformanceConfig")]
         public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.

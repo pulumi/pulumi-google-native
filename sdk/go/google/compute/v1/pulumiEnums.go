@@ -8674,7 +8674,7 @@ func (in *globalForwardingRulePscConnectionStatusPtr) ToGlobalForwardingRulePscC
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalForwardingRulePscConnectionStatusPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type GlobalNetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -8851,7 +8851,7 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
@@ -13573,7 +13573,7 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -13926,8 +13926,7 @@ const (
 	// The network interface can have both IPv4 and IPv6 addresses.
 	NetworkInterfaceStackTypeIpv4Ipv6 = NetworkInterfaceStackType("IPV4_IPV6")
 	// The network interface will be assigned IPv4 address.
-	NetworkInterfaceStackTypeIpv4Only             = NetworkInterfaceStackType("IPV4_ONLY")
-	NetworkInterfaceStackTypeUnspecifiedStackType = NetworkInterfaceStackType("UNSPECIFIED_STACK_TYPE")
+	NetworkInterfaceStackTypeIpv4Only = NetworkInterfaceStackType("IPV4_ONLY")
 )
 
 func (NetworkInterfaceStackType) ElementType() reflect.Type {
@@ -14085,6 +14084,171 @@ func (in *networkInterfaceStackTypePtr) ToNetworkInterfaceStackTypePtrOutput() N
 
 func (in *networkInterfaceStackTypePtr) ToNetworkInterfaceStackTypePtrOutputWithContext(ctx context.Context) NetworkInterfaceStackTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceStackTypePtrOutput)
+}
+
+// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+type NetworkNetworkFirewallPolicyEnforcementOrder string
+
+const (
+	NetworkNetworkFirewallPolicyEnforcementOrderAfterClassicFirewall  = NetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL")
+	NetworkNetworkFirewallPolicyEnforcementOrderBeforeClassicFirewall = NetworkNetworkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL")
+)
+
+func (NetworkNetworkFirewallPolicyEnforcementOrder) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToNetworkNetworkFirewallPolicyEnforcementOrderOutput() NetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return pulumi.ToOutput(e).(NetworkNetworkFirewallPolicyEnforcementOrderOutput)
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkNetworkFirewallPolicyEnforcementOrderOutput)
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return e.ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return NetworkNetworkFirewallPolicyEnforcementOrder(e).ToNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx).ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx)
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkNetworkFirewallPolicyEnforcementOrder) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkNetworkFirewallPolicyEnforcementOrderOutput struct{ *pulumi.OutputState }
+
+func (NetworkNetworkFirewallPolicyEnforcementOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderOutput() NetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return o
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return o
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o.ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkNetworkFirewallPolicyEnforcementOrder) *NetworkNetworkFirewallPolicyEnforcementOrder {
+		return &v
+	}).(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkNetworkFirewallPolicyEnforcementOrder) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkNetworkFirewallPolicyEnforcementOrder) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return o
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) Elem() NetworkNetworkFirewallPolicyEnforcementOrderOutput {
+	return o.ApplyT(func(v *NetworkNetworkFirewallPolicyEnforcementOrder) NetworkNetworkFirewallPolicyEnforcementOrder {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkNetworkFirewallPolicyEnforcementOrder
+		return ret
+	}).(NetworkNetworkFirewallPolicyEnforcementOrderOutput)
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkNetworkFirewallPolicyEnforcementOrder) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkNetworkFirewallPolicyEnforcementOrderInput is an input type that accepts NetworkNetworkFirewallPolicyEnforcementOrderArgs and NetworkNetworkFirewallPolicyEnforcementOrderOutput values.
+// You can construct a concrete instance of `NetworkNetworkFirewallPolicyEnforcementOrderInput` via:
+//
+//          NetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
+type NetworkNetworkFirewallPolicyEnforcementOrderInput interface {
+	pulumi.Input
+
+	ToNetworkNetworkFirewallPolicyEnforcementOrderOutput() NetworkNetworkFirewallPolicyEnforcementOrderOutput
+	ToNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(context.Context) NetworkNetworkFirewallPolicyEnforcementOrderOutput
+}
+
+var networkNetworkFirewallPolicyEnforcementOrderPtrType = reflect.TypeOf((**NetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
+
+type NetworkNetworkFirewallPolicyEnforcementOrderPtrInput interface {
+	pulumi.Input
+
+	ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput
+	ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput
+}
+
+type networkNetworkFirewallPolicyEnforcementOrderPtr string
+
+func NetworkNetworkFirewallPolicyEnforcementOrderPtr(v string) NetworkNetworkFirewallPolicyEnforcementOrderPtrInput {
+	return (*networkNetworkFirewallPolicyEnforcementOrderPtr)(&v)
+}
+
+func (*networkNetworkFirewallPolicyEnforcementOrderPtr) ElementType() reflect.Type {
+	return networkNetworkFirewallPolicyEnforcementOrderPtrType
+}
+
+func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return pulumi.ToOutput(in).(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
+}
+
+func (in *networkNetworkFirewallPolicyEnforcementOrderPtr) ToNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
 }
 
 type NetworkPerformanceConfigTotalEgressBandwidthTier string
@@ -17147,7 +17311,7 @@ func (in *regionHealthCheckTypePtr) ToRegionHealthCheckTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(RegionHealthCheckTypePtrOutput)
 }
 
-// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type RegionNetworkEndpointGroupNetworkEndpointType string
 
 const (
@@ -19249,7 +19413,7 @@ func (o RouterBgpPeerAdvertisedGroupsItemArrayOutput) Index(i pulumi.IntInput) R
 	}).(RouterBgpPeerAdvertisedGroupsItemOutput)
 }
 
-// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is PASSIVE.
+// The BFD session initialization mode for this BGP peer. If set to ACTIVE, the Cloud Router will initiate the BFD session for this BGP peer. If set to PASSIVE, the Cloud Router will wait for the peer router to initiate the BFD session for this BGP peer. If set to DISABLED, BFD is disabled for this BGP peer. The default is DISABLED.
 type RouterBgpPeerBfdSessionInitializationMode string
 
 const (
@@ -22136,7 +22300,7 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
@@ -22469,7 +22633,7 @@ func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirect
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
 }
 
-// The type indicates the intended use of the security policy. CLOUD_ARMOR - Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. CLOUD_ARMOR_EDGE - Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
+// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
 type SecurityPolicyType string
 
 const (
@@ -23650,8 +23814,8 @@ type SubnetworkIpv6AccessType string
 const (
 	// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
 	SubnetworkIpv6AccessTypeExternal = SubnetworkIpv6AccessType("EXTERNAL")
-	// IPv6 access type not set. Means this subnet hasn't been turned on IPv6 yet.
-	SubnetworkIpv6AccessTypeUnspecifiedIpv6AccessType = SubnetworkIpv6AccessType("UNSPECIFIED_IPV6_ACCESS_TYPE")
+	// VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
+	SubnetworkIpv6AccessTypeInternal = SubnetworkIpv6AccessType("INTERNAL")
 )
 
 func (SubnetworkIpv6AccessType) ElementType() reflect.Type {
@@ -24655,15 +24819,14 @@ func (in *subnetworkRolePtr) ToSubnetworkRolePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkRolePtrOutput)
 }
 
-// The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
 type SubnetworkStackType string
 
 const (
 	// New VMs in this subnet can have both IPv4 and IPv6 addresses.
 	SubnetworkStackTypeIpv4Ipv6 = SubnetworkStackType("IPV4_IPV6")
 	// New VMs in this subnet will only be assigned IPv4 addresses.
-	SubnetworkStackTypeIpv4Only             = SubnetworkStackType("IPV4_ONLY")
-	SubnetworkStackTypeUnspecifiedStackType = SubnetworkStackType("UNSPECIFIED_STACK_TYPE")
+	SubnetworkStackTypeIpv4Only = SubnetworkStackType("IPV4_ONLY")
 )
 
 func (SubnetworkStackType) ElementType() reflect.Type {
@@ -26500,6 +26663,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceNicTypePtrInput)(nil)).Elem(), NetworkInterfaceNicType("GVNIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceStackTypeInput)(nil)).Elem(), NetworkInterfaceStackType("IPV4_IPV6"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceStackTypePtrInput)(nil)).Elem(), NetworkInterfaceStackType("IPV4_IPV6"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkNetworkFirewallPolicyEnforcementOrderInput)(nil)).Elem(), NetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkNetworkFirewallPolicyEnforcementOrderPtrInput)(nil)).Elem(), NetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkRoutingConfigRoutingModeInput)(nil)).Elem(), NetworkRoutingConfigRoutingMode("GLOBAL"))
@@ -26813,6 +26978,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStackTypeOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceStackTypePtrOutput{})
+	pulumi.RegisterOutputType(NetworkNetworkFirewallPolicyEnforcementOrderOutput{})
+	pulumi.RegisterOutputType(NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierOutput{})
 	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkRoutingConfigRoutingModeOutput{})

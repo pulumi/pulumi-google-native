@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, labels=None, name=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -40,9 +40,6 @@ class GetWorkloadResult:
         if kaj_enrollment_state and not isinstance(kaj_enrollment_state, str):
             raise TypeError("Expected argument 'kaj_enrollment_state' to be a str")
         pulumi.set(__self__, "kaj_enrollment_state", kaj_enrollment_state)
-        if kms_settings and not isinstance(kms_settings, dict):
-            raise TypeError("Expected argument 'kms_settings' to be a dict")
-        pulumi.set(__self__, "kms_settings", kms_settings)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -119,14 +116,6 @@ class GetWorkloadResult:
         return pulumi.get(self, "kaj_enrollment_state")
 
     @property
-    @pulumi.getter(name="kmsSettings")
-    def kms_settings(self) -> 'outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse':
-        """
-        Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-        """
-        return pulumi.get(self, "kms_settings")
-
-    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -188,7 +177,6 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             enable_sovereign_controls=self.enable_sovereign_controls,
             etag=self.etag,
             kaj_enrollment_state=self.kaj_enrollment_state,
-            kms_settings=self.kms_settings,
             labels=self.labels,
             name=self.name,
             provisioned_resources_parent=self.provisioned_resources_parent,
@@ -222,7 +210,6 @@ def get_workload(location: Optional[str] = None,
         enable_sovereign_controls=__ret__.enable_sovereign_controls,
         etag=__ret__.etag,
         kaj_enrollment_state=__ret__.kaj_enrollment_state,
-        kms_settings=__ret__.kms_settings,
         labels=__ret__.labels,
         name=__ret__.name,
         provisioned_resources_parent=__ret__.provisioned_resources_parent,

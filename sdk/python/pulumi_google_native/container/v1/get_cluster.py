@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_defaults=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_identity_config=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -133,6 +133,9 @@ class GetClusterResult:
         if node_ipv4_cidr_size and not isinstance(node_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'node_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "node_ipv4_cidr_size", node_ipv4_cidr_size)
+        if node_pool_auto_config and not isinstance(node_pool_auto_config, dict):
+            raise TypeError("Expected argument 'node_pool_auto_config' to be a dict")
+        pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
         if node_pool_defaults and not isinstance(node_pool_defaults, dict):
             raise TypeError("Expected argument 'node_pool_defaults' to be a dict")
         pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
@@ -484,6 +487,14 @@ class GetClusterResult:
         return pulumi.get(self, "node_ipv4_cidr_size")
 
     @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> 'outputs.NodePoolAutoConfigResponse':
+        """
+        Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
+
+    @property
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> 'outputs.NodePoolDefaultsResponse':
         """
@@ -648,6 +659,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             network_config=self.network_config,
             network_policy=self.network_policy,
             node_ipv4_cidr_size=self.node_ipv4_cidr_size,
+            node_pool_auto_config=self.node_pool_auto_config,
             node_pool_defaults=self.node_pool_defaults,
             node_pools=self.node_pools,
             notification_config=self.notification_config,
@@ -721,6 +733,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         network_config=__ret__.network_config,
         network_policy=__ret__.network_policy,
         node_ipv4_cidr_size=__ret__.node_ipv4_cidr_size,
+        node_pool_auto_config=__ret__.node_pool_auto_config,
         node_pool_defaults=__ret__.node_pool_defaults,
         node_pools=__ret__.node_pools,
         notification_config=__ret__.notification_config,

@@ -55,6 +55,10 @@ export interface GetPublicAdvertisedPrefixResult {
      */
     readonly name: string;
     /**
+     * Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2. 
+     */
+    readonly pdpScope: string;
+    /**
      * The list of public delegated prefixes that exist for this public advertised prefix.
      */
     readonly publicDelegatedPrefixs: outputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefixResponse[];

@@ -199,6 +199,7 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["service"] = service
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
         super(TargetTcpProxy, __self__).__init__(
             'google-native:compute/alpha:TargetTcpProxy',
@@ -228,6 +229,7 @@ class TargetTcpProxy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["proxy_bind"] = None
         __props__.__dict__["proxy_header"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service"] = None
         return TargetTcpProxy(resource_name, opts=opts, __props__=__props__)
@@ -279,6 +281,14 @@ class TargetTcpProxy(pulumi.CustomResource):
         Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         """
         return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="selfLink")

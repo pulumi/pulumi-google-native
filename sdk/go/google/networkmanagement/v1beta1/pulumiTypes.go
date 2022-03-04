@@ -43,6 +43,53 @@ func (o AbortInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AbortInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
 }
 
+// For display only. Metadata associated with an App Engine version.
+type AppEngineVersionInfoResponse struct {
+	// Name of an App Engine version.
+	DisplayName string `pulumi:"displayName"`
+	// App Engine execution environment for a version.
+	Environment string `pulumi:"environment"`
+	// Runtime of the App Engine version.
+	Runtime string `pulumi:"runtime"`
+	// URI of an App Engine version.
+	Uri string `pulumi:"uri"`
+}
+
+// For display only. Metadata associated with an App Engine version.
+type AppEngineVersionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionInfoResponse)(nil)).Elem()
+}
+
+func (o AppEngineVersionInfoResponseOutput) ToAppEngineVersionInfoResponseOutput() AppEngineVersionInfoResponseOutput {
+	return o
+}
+
+func (o AppEngineVersionInfoResponseOutput) ToAppEngineVersionInfoResponseOutputWithContext(ctx context.Context) AppEngineVersionInfoResponseOutput {
+	return o
+}
+
+// Name of an App Engine version.
+func (o AppEngineVersionInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// App Engine execution environment for a version.
+func (o AppEngineVersionInfoResponseOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// Runtime of the App Engine version.
+func (o AppEngineVersionInfoResponseOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// URI of an App Engine version.
+func (o AppEngineVersionInfoResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -709,6 +756,53 @@ func (o CloudFunctionEndpointResponseOutput) ToCloudFunctionEndpointResponseOutp
 // A [Cloud function](https://cloud.google.com/functions) name.
 func (o CloudFunctionEndpointResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudFunctionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// For display only. Metadata associated with a Cloud function.
+type CloudFunctionInfoResponse struct {
+	// Name of a Cloud function.
+	DisplayName string `pulumi:"displayName"`
+	// Location in which the Cloud function is deployed.
+	Location string `pulumi:"location"`
+	// URI of a Cloud function.
+	Uri string `pulumi:"uri"`
+	// Latest successfully deployed version id of the Cloud function.
+	VersionId string `pulumi:"versionId"`
+}
+
+// For display only. Metadata associated with a Cloud function.
+type CloudFunctionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudFunctionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudFunctionInfoResponse)(nil)).Elem()
+}
+
+func (o CloudFunctionInfoResponseOutput) ToCloudFunctionInfoResponseOutput() CloudFunctionInfoResponseOutput {
+	return o
+}
+
+func (o CloudFunctionInfoResponseOutput) ToCloudFunctionInfoResponseOutputWithContext(ctx context.Context) CloudFunctionInfoResponseOutput {
+	return o
+}
+
+// Name of a Cloud function.
+func (o CloudFunctionInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudFunctionInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Location in which the Cloud function is deployed.
+func (o CloudFunctionInfoResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudFunctionInfoResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// URI of a Cloud function.
+func (o CloudFunctionInfoResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudFunctionInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// Latest successfully deployed version id of the Cloud function.
+func (o CloudFunctionInfoResponseOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudFunctionInfoResponse) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
 // For display only. Metadata associated with a Cloud SQL instance.
@@ -2173,8 +2267,12 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 type StepResponse struct {
 	// Display information of the final state "abort" and reason.
 	Abort AbortInfoResponse `pulumi:"abort"`
+	// Display information of an App Engine service version.
+	AppEngineVersionInfo AppEngineVersionInfoResponse `pulumi:"appEngineVersionInfo"`
 	// This is a step that leads to the final state Drop.
 	CausesDrop bool `pulumi:"causesDrop"`
+	// Display information of a Cloud function.
+	CloudFunction CloudFunctionInfoResponse `pulumi:"cloudFunction"`
 	// Display information of a Cloud SQL instance.
 	CloudSqlInstance CloudSQLInstanceInfoResponse `pulumi:"cloudSqlInstance"`
 	// Display information of the final state "deliver" and reason.
@@ -2205,6 +2303,8 @@ type StepResponse struct {
 	Route RouteInfoResponse `pulumi:"route"`
 	// Each step is in one of the pre-defined states.
 	State string `pulumi:"state"`
+	// Display information of a VPC connector.
+	VpcConnector VpcConnectorInfoResponse `pulumi:"vpcConnector"`
 	// Display information of a Compute Engine VPN gateway.
 	VpnGateway VpnGatewayInfoResponse `pulumi:"vpnGateway"`
 	// Display information of a Compute Engine VPN tunnel.
@@ -2231,9 +2331,19 @@ func (o StepResponseOutput) Abort() AbortInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) AbortInfoResponse { return v.Abort }).(AbortInfoResponseOutput)
 }
 
+// Display information of an App Engine service version.
+func (o StepResponseOutput) AppEngineVersionInfo() AppEngineVersionInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) AppEngineVersionInfoResponse { return v.AppEngineVersionInfo }).(AppEngineVersionInfoResponseOutput)
+}
+
 // This is a step that leads to the final state Drop.
 func (o StepResponseOutput) CausesDrop() pulumi.BoolOutput {
 	return o.ApplyT(func(v StepResponse) bool { return v.CausesDrop }).(pulumi.BoolOutput)
+}
+
+// Display information of a Cloud function.
+func (o StepResponseOutput) CloudFunction() CloudFunctionInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) CloudFunctionInfoResponse { return v.CloudFunction }).(CloudFunctionInfoResponseOutput)
 }
 
 // Display information of a Cloud SQL instance.
@@ -2309,6 +2419,11 @@ func (o StepResponseOutput) Route() RouteInfoResponseOutput {
 // Each step is in one of the pre-defined states.
 func (o StepResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v StepResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Display information of a VPC connector.
+func (o StepResponseOutput) VpcConnector() VpcConnectorInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) VpcConnectorInfoResponse { return v.VpcConnector }).(VpcConnectorInfoResponseOutput)
 }
 
 // Display information of a Compute Engine VPN gateway.
@@ -2392,6 +2507,46 @@ func (o TraceResponseArrayOutput) Index(i pulumi.IntInput) TraceResponseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TraceResponse {
 		return vs[0].([]TraceResponse)[vs[1].(int)]
 	}).(TraceResponseOutput)
+}
+
+// For display only. Metadata associated with a VPC connector.
+type VpcConnectorInfoResponse struct {
+	// Name of a VPC connector.
+	DisplayName string `pulumi:"displayName"`
+	// Location in which the VPC connector is deployed.
+	Location string `pulumi:"location"`
+	// URI of a VPC connector.
+	Uri string `pulumi:"uri"`
+}
+
+// For display only. Metadata associated with a VPC connector.
+type VpcConnectorInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (VpcConnectorInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcConnectorInfoResponse)(nil)).Elem()
+}
+
+func (o VpcConnectorInfoResponseOutput) ToVpcConnectorInfoResponseOutput() VpcConnectorInfoResponseOutput {
+	return o
+}
+
+func (o VpcConnectorInfoResponseOutput) ToVpcConnectorInfoResponseOutputWithContext(ctx context.Context) VpcConnectorInfoResponseOutput {
+	return o
+}
+
+// Name of a VPC connector.
+func (o VpcConnectorInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcConnectorInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Location in which the VPC connector is deployed.
+func (o VpcConnectorInfoResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcConnectorInfoResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// URI of a VPC connector.
+func (o VpcConnectorInfoResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcConnectorInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // For display only. Metadata associated with a Compute Engine VPN gateway.
@@ -2550,6 +2705,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterOutputType(AbortInfoResponseOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2565,6 +2721,7 @@ func init() {
 	pulumi.RegisterOutputType(CloudFunctionEndpointOutput{})
 	pulumi.RegisterOutputType(CloudFunctionEndpointPtrOutput{})
 	pulumi.RegisterOutputType(CloudFunctionEndpointResponseOutput{})
+	pulumi.RegisterOutputType(CloudFunctionInfoResponseOutput{})
 	pulumi.RegisterOutputType(CloudSQLInstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(DeliverInfoResponseOutput{})
 	pulumi.RegisterOutputType(DropInfoResponseOutput{})
@@ -2594,6 +2751,7 @@ func init() {
 	pulumi.RegisterOutputType(StepResponseArrayOutput{})
 	pulumi.RegisterOutputType(TraceResponseOutput{})
 	pulumi.RegisterOutputType(TraceResponseArrayOutput{})
+	pulumi.RegisterOutputType(VpcConnectorInfoResponseOutput{})
 	pulumi.RegisterOutputType(VpnGatewayInfoResponseOutput{})
 	pulumi.RegisterOutputType(VpnTunnelInfoResponseOutput{})
 }

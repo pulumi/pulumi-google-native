@@ -28,6 +28,8 @@ type Instance struct {
 	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The max number of shares allowed.
+	MaxShareCount pulumi.StringOutput `pulumi:"maxShareCount"`
 	// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.

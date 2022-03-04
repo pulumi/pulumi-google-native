@@ -26,6 +26,8 @@ type LookupAndroidAppArgs struct {
 }
 
 type LookupAndroidAppResult struct {
+	// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+	ApiKeyId string `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId string `pulumi:"appId"`
 	// The user-assigned display name for the `AndroidApp`.
@@ -68,6 +70,11 @@ func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutput() LookupAnd
 
 func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutputWithContext(ctx context.Context) LookupAndroidAppResultOutput {
 	return o
+}
+
+// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+func (o LookupAndroidAppResultOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.

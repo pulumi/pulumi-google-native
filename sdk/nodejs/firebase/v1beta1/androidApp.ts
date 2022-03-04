@@ -37,6 +37,10 @@ export class AndroidApp extends pulumi.CustomResource {
     }
 
     /**
+     * The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+     */
+    public readonly apiKeyId!: pulumi.Output<string>;
+    /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */
     public readonly appId!: pulumi.Output<string>;
@@ -68,12 +72,14 @@ export class AndroidApp extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
             resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["packageName"] = args ? args.packageName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         } else {
+            resourceInputs["apiKeyId"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -89,6 +95,10 @@ export class AndroidApp extends pulumi.CustomResource {
  * The set of arguments for constructing a AndroidApp resource.
  */
 export interface AndroidAppArgs {
+    /**
+     * The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+     */
+    apiKeyId?: pulumi.Input<string>;
     /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */

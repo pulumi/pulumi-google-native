@@ -29,13 +29,13 @@ type LookupGameServerDeploymentArgs struct {
 type LookupGameServerDeploymentResult struct {
 	// The creation time.
 	CreateTime string `pulumi:"createTime"`
-	// Human readable description of the game server delpoyment.
+	// Human readable description of the game server deployment.
 	Description string `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag string `pulumi:"etag"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name string `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
@@ -79,12 +79,12 @@ func (o LookupGameServerDeploymentResultOutput) CreateTime() pulumi.StringOutput
 	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Human readable description of the game server delpoyment.
+// Human readable description of the game server deployment.
 func (o LookupGameServerDeploymentResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// ETag of the resource.
+// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o LookupGameServerDeploymentResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -94,7 +94,7 @@ func (o LookupGameServerDeploymentResultOutput) Labels() pulumi.StringMapOutput 
 	return o.ApplyT(func(v LookupGameServerDeploymentResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 func (o LookupGameServerDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }

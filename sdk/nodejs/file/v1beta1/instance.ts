@@ -61,6 +61,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The max number of shares allowed.
+     */
+    public /*out*/ readonly maxShareCount!: pulumi.Output<string>;
+    /**
      * The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["maxShareCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -126,6 +131,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["fileShares"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["maxShareCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;

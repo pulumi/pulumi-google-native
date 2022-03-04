@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Output("guestFlush")]
         public Output<bool> GuestFlush { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Input("guestFlush")]
         public Input<bool>? GuestFlush { get; set; }

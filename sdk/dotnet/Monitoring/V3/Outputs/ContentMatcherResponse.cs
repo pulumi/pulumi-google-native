@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class ContentMatcherResponse
     {
         /// <summary>
-        /// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+        /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
         /// </summary>
         public readonly string Content;
         /// <summary>

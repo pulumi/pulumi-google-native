@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_certificates=None, workload_identity_config=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -136,6 +136,9 @@ class GetClusterResult:
         if node_ipv4_cidr_size and not isinstance(node_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'node_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "node_ipv4_cidr_size", node_ipv4_cidr_size)
+        if node_pool_auto_config and not isinstance(node_pool_auto_config, dict):
+            raise TypeError("Expected argument 'node_pool_auto_config' to be a dict")
+        pulumi.set(__self__, "node_pool_auto_config", node_pool_auto_config)
         if node_pool_defaults and not isinstance(node_pool_defaults, dict):
             raise TypeError("Expected argument 'node_pool_defaults' to be a dict")
         pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
@@ -184,6 +187,9 @@ class GetClusterResult:
         if vertical_pod_autoscaling and not isinstance(vertical_pod_autoscaling, dict):
             raise TypeError("Expected argument 'vertical_pod_autoscaling' to be a dict")
         pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+        if workload_alts_config and not isinstance(workload_alts_config, dict):
+            raise TypeError("Expected argument 'workload_alts_config' to be a dict")
+        pulumi.set(__self__, "workload_alts_config", workload_alts_config)
         if workload_certificates and not isinstance(workload_certificates, dict):
             raise TypeError("Expected argument 'workload_certificates' to be a dict")
         pulumi.set(__self__, "workload_certificates", workload_certificates)
@@ -504,6 +510,14 @@ class GetClusterResult:
         return pulumi.get(self, "node_ipv4_cidr_size")
 
     @property
+    @pulumi.getter(name="nodePoolAutoConfig")
+    def node_pool_auto_config(self) -> 'outputs.NodePoolAutoConfigResponse':
+        """
+        Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+        """
+        return pulumi.get(self, "node_pool_auto_config")
+
+    @property
     @pulumi.getter(name="nodePoolDefaults")
     def node_pool_defaults(self) -> 'outputs.NodePoolDefaultsResponse':
         """
@@ -632,6 +646,14 @@ class GetClusterResult:
         return pulumi.get(self, "vertical_pod_autoscaling")
 
     @property
+    @pulumi.getter(name="workloadAltsConfig")
+    def workload_alts_config(self) -> 'outputs.WorkloadALTSConfigResponse':
+        """
+        Configuration for direct-path (via ALTS) with workload identity.
+        """
+        return pulumi.get(self, "workload_alts_config")
+
+    @property
     @pulumi.getter(name="workloadCertificates")
     def workload_certificates(self) -> 'outputs.WorkloadCertificatesResponse':
         """
@@ -693,6 +715,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             network_config=self.network_config,
             network_policy=self.network_policy,
             node_ipv4_cidr_size=self.node_ipv4_cidr_size,
+            node_pool_auto_config=self.node_pool_auto_config,
             node_pool_defaults=self.node_pool_defaults,
             node_pools=self.node_pools,
             notification_config=self.notification_config,
@@ -709,6 +732,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             tpu_config=self.tpu_config,
             tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
             vertical_pod_autoscaling=self.vertical_pod_autoscaling,
+            workload_alts_config=self.workload_alts_config,
             workload_certificates=self.workload_certificates,
             workload_identity_config=self.workload_identity_config)
 
@@ -770,6 +794,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         network_config=__ret__.network_config,
         network_policy=__ret__.network_policy,
         node_ipv4_cidr_size=__ret__.node_ipv4_cidr_size,
+        node_pool_auto_config=__ret__.node_pool_auto_config,
         node_pool_defaults=__ret__.node_pool_defaults,
         node_pools=__ret__.node_pools,
         notification_config=__ret__.notification_config,
@@ -786,6 +811,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         tpu_config=__ret__.tpu_config,
         tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,
         vertical_pod_autoscaling=__ret__.vertical_pod_autoscaling,
+        workload_alts_config=__ret__.workload_alts_config,
         workload_certificates=__ret__.workload_certificates,
         workload_identity_config=__ret__.workload_identity_config)
 

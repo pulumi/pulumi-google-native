@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
+        /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+        /// </summary>
+        [Output("ipv6EndpointType")]
+        public Output<string> Ipv6EndpointType { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#address for addresses.
         /// </summary>
         [Output("kind")]
@@ -197,6 +203,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("ipVersion")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.AddressIpVersion>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The endpoint type of this address, which should be VM. This is used for deciding which endpoint this address will be assigned to during the IPv6 external IP address reservation.
+        /// </summary>
+        [Input("ipv6EndpointType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.AddressIpv6EndpointType>? Ipv6EndpointType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

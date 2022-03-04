@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, content=None, content_uri=None, display_name=None, enable_auto_reload=None, knowledge_types=None, latest_reload_status=None, metadata=None, mime_type=None, name=None, raw_content=None):
+    def __init__(__self__, content=None, content_uri=None, display_name=None, enable_auto_reload=None, knowledge_types=None, latest_reload_status=None, metadata=None, mime_type=None, name=None, raw_content=None, state=None):
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -49,6 +49,9 @@ class GetDocumentResult:
         if raw_content and not isinstance(raw_content, str):
             raise TypeError("Expected argument 'raw_content' to be a str")
         pulumi.set(__self__, "raw_content", raw_content)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -78,7 +81,7 @@ class GetDocumentResult:
     @pulumi.getter(name="enableAutoReload")
     def enable_auto_reload(self) -> bool:
         """
-        Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+        Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
         """
         return pulumi.get(self, "enable_auto_reload")
 
@@ -130,6 +133,14 @@ class GetDocumentResult:
         """
         return pulumi.get(self, "raw_content")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the document.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetDocumentResult(GetDocumentResult):
     # pylint: disable=using-constant-test
@@ -146,7 +157,8 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             metadata=self.metadata,
             mime_type=self.mime_type,
             name=self.name,
-            raw_content=self.raw_content)
+            raw_content=self.raw_content,
+            state=self.state)
 
 
 def get_document(document_id: Optional[str] = None,
@@ -178,7 +190,8 @@ def get_document(document_id: Optional[str] = None,
         metadata=__ret__.metadata,
         mime_type=__ret__.mime_type,
         name=__ret__.name,
-        raw_content=__ret__.raw_content)
+        raw_content=__ret__.raw_content,
+        state=__ret__.state)
 
 
 @_utilities.lift_output_func(get_document)

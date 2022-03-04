@@ -10,6 +10,176 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Metadata for article suggestion models.
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadata struct {
+	// Optional. Type of the article suggestion model. If not provided, model_type is used.
+	TrainingModelType *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType `pulumi:"trainingModelType"`
+}
+
+// GoogleCloudDialogflowV2ArticleSuggestionModelMetadataInput is an input type that accepts GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs and GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2ArticleSuggestionModelMetadataInput` via:
+//
+//          GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs{...}
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutputWithContext(context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput
+}
+
+// Metadata for article suggestion models.
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs struct {
+	// Optional. Type of the article suggestion model. If not provided, model_type is used.
+	TrainingModelType GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrInput `pulumi:"trainingModelType"`
+}
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput {
+	return i.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput)
+}
+
+func (i GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return i.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput).ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrInput is an input type that accepts GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs, GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtr and GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrInput` via:
+//
+//          GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput
+}
+
+type googleCloudDialogflowV2ArticleSuggestionModelMetadataPtrType GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs
+
+func GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtr(v *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrInput {
+	return (*googleCloudDialogflowV2ArticleSuggestionModelMetadataPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2ArticleSuggestionModelMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2ArticleSuggestionModelMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2ArticleSuggestionModelMetadataPtrType) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return i.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2ArticleSuggestionModelMetadataPtrType) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput)
+}
+
+// Metadata for article suggestion models.
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return o.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2ArticleSuggestionModelMetadata) *GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
+		return &v
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput)
+}
+
+// Optional. Type of the article suggestion model. If not provided, model_type is used.
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput) TrainingModelType() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2ArticleSuggestionModelMetadata) *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType {
+		return v.TrainingModelType
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput)
+}
+
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2ArticleSuggestionModelMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput) Elem() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2ArticleSuggestionModelMetadata) GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2ArticleSuggestionModelMetadata
+		return ret
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput)
+}
+
+// Optional. Type of the article suggestion model. If not provided, model_type is used.
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput) TrainingModelType() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2ArticleSuggestionModelMetadata) *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingModelType
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput)
+}
+
+// Metadata for article suggestion models.
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse struct {
+	// Optional. Type of the article suggestion model. If not provided, model_type is used.
+	TrainingModelType string `pulumi:"trainingModelType"`
+}
+
+// Metadata for article suggestion models.
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput {
+	return o
+}
+
+// Optional. Type of the article suggestion model. If not provided, model_type is used.
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput) TrainingModelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse) string {
+		return v.TrainingModelType
+	}).(pulumi.StringOutput)
+}
+
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfig struct {
 	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
@@ -354,6 +524,32 @@ func (o GoogleCloudDialogflowV2ContextResponseArrayOutput) Index(i pulumi.IntInp
 	}).(GoogleCloudDialogflowV2ContextResponseOutput)
 }
 
+// Represents metadata of a conversation.
+type GoogleCloudDialogflowV2ConversationInfoResponse struct {
+	// Optional. The language code of the conversation data within this dataset. See https://cloud.google.com/apis/design/standard_fields for more information. Supports all UTF-8 languages.
+	LanguageCode string `pulumi:"languageCode"`
+}
+
+// Represents metadata of a conversation.
+type GoogleCloudDialogflowV2ConversationInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2ConversationInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2ConversationInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2ConversationInfoResponseOutput) ToGoogleCloudDialogflowV2ConversationInfoResponseOutput() GoogleCloudDialogflowV2ConversationInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ConversationInfoResponseOutput) ToGoogleCloudDialogflowV2ConversationInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ConversationInfoResponseOutput {
+	return o
+}
+
+// Optional. The language code of the conversation data within this dataset. See https://cloud.google.com/apis/design/standard_fields for more information. Supports all UTF-8 languages.
+func (o GoogleCloudDialogflowV2ConversationInfoResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2ConversationInfoResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
 // Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
 type GoogleCloudDialogflowV2ConversationPhoneNumberResponse struct {
 	// The phone number to connect to this conversation.
@@ -573,6 +769,624 @@ func (o GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2EntityTypeEntityResponse {
 		return vs[0].([]GoogleCloudDialogflowV2EntityTypeEntityResponse)[vs[1].(int)]
 	}).(GoogleCloudDialogflowV2EntityTypeEntityResponseOutput)
+}
+
+// The configuration for model evaluation.
+type GoogleCloudDialogflowV2EvaluationConfig struct {
+	// Datasets used for evaluation.
+	Datasets []GoogleCloudDialogflowV2InputDataset `pulumi:"datasets"`
+	// Configuration for smart compose model evalution.
+	SmartComposeConfig *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig `pulumi:"smartComposeConfig"`
+	// Configuration for smart reply model evalution.
+	SmartReplyConfig *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig `pulumi:"smartReplyConfig"`
+}
+
+// GoogleCloudDialogflowV2EvaluationConfigInput is an input type that accepts GoogleCloudDialogflowV2EvaluationConfigArgs and GoogleCloudDialogflowV2EvaluationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2EvaluationConfigInput` via:
+//
+//          GoogleCloudDialogflowV2EvaluationConfigArgs{...}
+type GoogleCloudDialogflowV2EvaluationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2EvaluationConfigOutput() GoogleCloudDialogflowV2EvaluationConfigOutput
+	ToGoogleCloudDialogflowV2EvaluationConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2EvaluationConfigOutput
+}
+
+// The configuration for model evaluation.
+type GoogleCloudDialogflowV2EvaluationConfigArgs struct {
+	// Datasets used for evaluation.
+	Datasets GoogleCloudDialogflowV2InputDatasetArrayInput `pulumi:"datasets"`
+	// Configuration for smart compose model evalution.
+	SmartComposeConfig GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrInput `pulumi:"smartComposeConfig"`
+	// Configuration for smart reply model evalution.
+	SmartReplyConfig GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrInput `pulumi:"smartReplyConfig"`
+}
+
+func (GoogleCloudDialogflowV2EvaluationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigOutput() GoogleCloudDialogflowV2EvaluationConfigOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigOutput).ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2EvaluationConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2EvaluationConfigArgs, GoogleCloudDialogflowV2EvaluationConfigPtr and GoogleCloudDialogflowV2EvaluationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2EvaluationConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2EvaluationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2EvaluationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2EvaluationConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigPtrOutput
+	ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2EvaluationConfigPtrOutput
+}
+
+type googleCloudDialogflowV2EvaluationConfigPtrType GoogleCloudDialogflowV2EvaluationConfigArgs
+
+func GoogleCloudDialogflowV2EvaluationConfigPtr(v *GoogleCloudDialogflowV2EvaluationConfigArgs) GoogleCloudDialogflowV2EvaluationConfigPtrInput {
+	return (*googleCloudDialogflowV2EvaluationConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2EvaluationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2EvaluationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2EvaluationConfigPtrType) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2EvaluationConfigPtrType) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigPtrOutput)
+}
+
+// The configuration for model evaluation.
+type GoogleCloudDialogflowV2EvaluationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigOutput() GoogleCloudDialogflowV2EvaluationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2EvaluationConfig) *GoogleCloudDialogflowV2EvaluationConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2EvaluationConfigPtrOutput)
+}
+
+// Datasets used for evaluation.
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) Datasets() GoogleCloudDialogflowV2InputDatasetArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfig) []GoogleCloudDialogflowV2InputDataset {
+		return v.Datasets
+	}).(GoogleCloudDialogflowV2InputDatasetArrayOutput)
+}
+
+// Configuration for smart compose model evalution.
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) SmartComposeConfig() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfig) *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
+		return v.SmartComposeConfig
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput)
+}
+
+// Configuration for smart reply model evalution.
+func (o GoogleCloudDialogflowV2EvaluationConfigOutput) SmartReplyConfig() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfig) *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
+		return v.SmartReplyConfig
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput)
+}
+
+type GoogleCloudDialogflowV2EvaluationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2EvaluationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigPtrOutput) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigPtrOutput) ToGoogleCloudDialogflowV2EvaluationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigPtrOutput) Elem() GoogleCloudDialogflowV2EvaluationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfig) GoogleCloudDialogflowV2EvaluationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2EvaluationConfig
+		return ret
+	}).(GoogleCloudDialogflowV2EvaluationConfigOutput)
+}
+
+// Datasets used for evaluation.
+func (o GoogleCloudDialogflowV2EvaluationConfigPtrOutput) Datasets() GoogleCloudDialogflowV2InputDatasetArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfig) []GoogleCloudDialogflowV2InputDataset {
+		if v == nil {
+			return nil
+		}
+		return v.Datasets
+	}).(GoogleCloudDialogflowV2InputDatasetArrayOutput)
+}
+
+// Configuration for smart compose model evalution.
+func (o GoogleCloudDialogflowV2EvaluationConfigPtrOutput) SmartComposeConfig() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfig) *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SmartComposeConfig
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput)
+}
+
+// Configuration for smart reply model evalution.
+func (o GoogleCloudDialogflowV2EvaluationConfigPtrOutput) SmartReplyConfig() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfig) *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SmartReplyConfig
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput)
+}
+
+// The configuration for model evaluation.
+type GoogleCloudDialogflowV2EvaluationConfigResponse struct {
+	// Datasets used for evaluation.
+	Datasets []GoogleCloudDialogflowV2InputDatasetResponse `pulumi:"datasets"`
+	// Configuration for smart compose model evalution.
+	SmartComposeConfig GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse `pulumi:"smartComposeConfig"`
+	// Configuration for smart reply model evalution.
+	SmartReplyConfig GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse `pulumi:"smartReplyConfig"`
+}
+
+// The configuration for model evaluation.
+type GoogleCloudDialogflowV2EvaluationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigResponseOutput) ToGoogleCloudDialogflowV2EvaluationConfigResponseOutput() GoogleCloudDialogflowV2EvaluationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigResponseOutput) ToGoogleCloudDialogflowV2EvaluationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigResponseOutput {
+	return o
+}
+
+// Datasets used for evaluation.
+func (o GoogleCloudDialogflowV2EvaluationConfigResponseOutput) Datasets() GoogleCloudDialogflowV2InputDatasetResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigResponse) []GoogleCloudDialogflowV2InputDatasetResponse {
+		return v.Datasets
+	}).(GoogleCloudDialogflowV2InputDatasetResponseArrayOutput)
+}
+
+// Configuration for smart compose model evalution.
+func (o GoogleCloudDialogflowV2EvaluationConfigResponseOutput) SmartComposeConfig() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigResponse) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse {
+		return v.SmartComposeConfig
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput)
+}
+
+// Configuration for smart reply model evalution.
+func (o GoogleCloudDialogflowV2EvaluationConfigResponseOutput) SmartReplyConfig() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigResponse) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse {
+		return v.SmartReplyConfig
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput)
+}
+
+// Smart compose specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig struct {
+	// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+	AllowlistDocument *string `pulumi:"allowlistDocument"`
+	// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+	MaxResultCount int `pulumi:"maxResultCount"`
+}
+
+// GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigInput is an input type that accepts GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs and GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigInput` via:
+//
+//          GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs{...}
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput
+}
+
+// Smart compose specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs struct {
+	// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+	AllowlistDocument pulumi.StringPtrInput `pulumi:"allowlistDocument"`
+	// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+	MaxResultCount pulumi.IntInput `pulumi:"maxResultCount"`
+}
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput).ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs, GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtr and GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput
+}
+
+type googleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrType GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs
+
+func GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtr(v *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrInput {
+	return (*googleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrType) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrType) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput)
+}
+
+// Smart compose specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig) *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput)
+}
+
+// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) AllowlistDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig) *string { return v.AllowlistDocument }).(pulumi.StringPtrOutput)
+}
+
+// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput) MaxResultCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig) int { return v.MaxResultCount }).(pulumi.IntOutput)
+}
+
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput) Elem() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig
+		return ret
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput)
+}
+
+// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput) AllowlistDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowlistDocument
+	}).(pulumi.StringPtrOutput)
+}
+
+// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput) MaxResultCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxResultCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Smart compose specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse struct {
+	// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+	AllowlistDocument string `pulumi:"allowlistDocument"`
+	// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+	MaxResultCount int `pulumi:"maxResultCount"`
+}
+
+// Smart compose specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput() GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput {
+	return o
+}
+
+// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput) AllowlistDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse) string {
+		return v.AllowlistDocument
+	}).(pulumi.StringOutput)
+}
+
+// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput) MaxResultCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse) int { return v.MaxResultCount }).(pulumi.IntOutput)
+}
+
+// Smart reply specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig struct {
+	// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+	AllowlistDocument *string `pulumi:"allowlistDocument"`
+	// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+	MaxResultCount int `pulumi:"maxResultCount"`
+}
+
+// GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigInput is an input type that accepts GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs and GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigInput` via:
+//
+//          GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs{...}
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput
+}
+
+// Smart reply specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs struct {
+	// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+	AllowlistDocument pulumi.StringPtrInput `pulumi:"allowlistDocument"`
+	// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+	MaxResultCount pulumi.IntInput `pulumi:"maxResultCount"`
+}
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput).ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs, GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtr and GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput
+	ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput
+}
+
+type googleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrType GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs
+
+func GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtr(v *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrInput {
+	return (*googleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrType) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrType) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput)
+}
+
+// Smart reply specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig) *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput)
+}
+
+// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) AllowlistDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig) *string { return v.AllowlistDocument }).(pulumi.StringPtrOutput)
+}
+
+// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput) MaxResultCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig) int { return v.MaxResultCount }).(pulumi.IntOutput)
+}
+
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput) Elem() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig
+		return ret
+	}).(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput)
+}
+
+// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput) AllowlistDocument() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowlistDocument
+	}).(pulumi.StringPtrOutput)
+}
+
+// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput) MaxResultCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxResultCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Smart reply specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse struct {
+	// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+	AllowlistDocument string `pulumi:"allowlistDocument"`
+	// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+	MaxResultCount int `pulumi:"maxResultCount"`
+}
+
+// Smart reply specific configuration for evaluation job.
+type GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput() GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput) ToGoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput {
+	return o
+}
+
+// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput) AllowlistDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse) string {
+		return v.AllowlistDocument
+	}).(pulumi.StringOutput)
+}
+
+// The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+func (o GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput) MaxResultCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse) int { return v.MaxResultCount }).(pulumi.IntOutput)
 }
 
 // By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
@@ -1271,6 +2085,32 @@ func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) GenericWebService() Go
 // The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage location for the inputs.
+type GoogleCloudDialogflowV2GcsSourcesResponse struct {
+	// Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case.
+	Uris []string `pulumi:"uris"`
+}
+
+// Google Cloud Storage location for the inputs.
+type GoogleCloudDialogflowV2GcsSourcesResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2GcsSourcesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2GcsSourcesResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2GcsSourcesResponseOutput) ToGoogleCloudDialogflowV2GcsSourcesResponseOutput() GoogleCloudDialogflowV2GcsSourcesResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2GcsSourcesResponseOutput) ToGoogleCloudDialogflowV2GcsSourcesResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2GcsSourcesResponseOutput {
+	return o
+}
+
+// Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case.
+func (o GoogleCloudDialogflowV2GcsSourcesResponseOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2GcsSourcesResponse) []string { return v.Uris }).(pulumi.StringArrayOutput)
 }
 
 // Defines the Human Agent Assist to connect to a conversation.
@@ -4409,6 +5249,180 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) string {
 		return v.OrganizationId
 	}).(pulumi.StringOutput)
+}
+
+// Represents the configuration of importing a set of conversation files in Google Cloud Storage.
+type GoogleCloudDialogflowV2InputConfigResponse struct {
+	// The Cloud Storage URI has the form gs:////agent*.json. Wildcards are allowed and will be expanded into all matched JSON files, which will be read as one conversation per file.
+	GcsSource GoogleCloudDialogflowV2GcsSourcesResponse `pulumi:"gcsSource"`
+}
+
+// Represents the configuration of importing a set of conversation files in Google Cloud Storage.
+type GoogleCloudDialogflowV2InputConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2InputConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2InputConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2InputConfigResponseOutput) ToGoogleCloudDialogflowV2InputConfigResponseOutput() GoogleCloudDialogflowV2InputConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputConfigResponseOutput) ToGoogleCloudDialogflowV2InputConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputConfigResponseOutput {
+	return o
+}
+
+// The Cloud Storage URI has the form gs:////agent*.json. Wildcards are allowed and will be expanded into all matched JSON files, which will be read as one conversation per file.
+func (o GoogleCloudDialogflowV2InputConfigResponseOutput) GcsSource() GoogleCloudDialogflowV2GcsSourcesResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2InputConfigResponse) GoogleCloudDialogflowV2GcsSourcesResponse {
+		return v.GcsSource
+	}).(GoogleCloudDialogflowV2GcsSourcesResponseOutput)
+}
+
+// InputDataset used to create model or do evaluation. NextID:5
+type GoogleCloudDialogflowV2InputDataset struct {
+	// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+	Dataset string `pulumi:"dataset"`
+}
+
+// GoogleCloudDialogflowV2InputDatasetInput is an input type that accepts GoogleCloudDialogflowV2InputDatasetArgs and GoogleCloudDialogflowV2InputDatasetOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2InputDatasetInput` via:
+//
+//          GoogleCloudDialogflowV2InputDatasetArgs{...}
+type GoogleCloudDialogflowV2InputDatasetInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2InputDatasetOutput() GoogleCloudDialogflowV2InputDatasetOutput
+	ToGoogleCloudDialogflowV2InputDatasetOutputWithContext(context.Context) GoogleCloudDialogflowV2InputDatasetOutput
+}
+
+// InputDataset used to create model or do evaluation. NextID:5
+type GoogleCloudDialogflowV2InputDatasetArgs struct {
+	// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+	Dataset pulumi.StringInput `pulumi:"dataset"`
+}
+
+func (GoogleCloudDialogflowV2InputDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2InputDataset)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2InputDatasetArgs) ToGoogleCloudDialogflowV2InputDatasetOutput() GoogleCloudDialogflowV2InputDatasetOutput {
+	return i.ToGoogleCloudDialogflowV2InputDatasetOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2InputDatasetArgs) ToGoogleCloudDialogflowV2InputDatasetOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2InputDatasetOutput)
+}
+
+// GoogleCloudDialogflowV2InputDatasetArrayInput is an input type that accepts GoogleCloudDialogflowV2InputDatasetArray and GoogleCloudDialogflowV2InputDatasetArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2InputDatasetArrayInput` via:
+//
+//          GoogleCloudDialogflowV2InputDatasetArray{ GoogleCloudDialogflowV2InputDatasetArgs{...} }
+type GoogleCloudDialogflowV2InputDatasetArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2InputDatasetArrayOutput() GoogleCloudDialogflowV2InputDatasetArrayOutput
+	ToGoogleCloudDialogflowV2InputDatasetArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2InputDatasetArrayOutput
+}
+
+type GoogleCloudDialogflowV2InputDatasetArray []GoogleCloudDialogflowV2InputDatasetInput
+
+func (GoogleCloudDialogflowV2InputDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2InputDataset)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2InputDatasetArray) ToGoogleCloudDialogflowV2InputDatasetArrayOutput() GoogleCloudDialogflowV2InputDatasetArrayOutput {
+	return i.ToGoogleCloudDialogflowV2InputDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2InputDatasetArray) ToGoogleCloudDialogflowV2InputDatasetArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2InputDatasetArrayOutput)
+}
+
+// InputDataset used to create model or do evaluation. NextID:5
+type GoogleCloudDialogflowV2InputDatasetOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2InputDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2InputDataset)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetOutput) ToGoogleCloudDialogflowV2InputDatasetOutput() GoogleCloudDialogflowV2InputDatasetOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetOutput) ToGoogleCloudDialogflowV2InputDatasetOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputDatasetOutput {
+	return o
+}
+
+// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+func (o GoogleCloudDialogflowV2InputDatasetOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2InputDataset) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowV2InputDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2InputDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2InputDataset)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetArrayOutput) ToGoogleCloudDialogflowV2InputDatasetArrayOutput() GoogleCloudDialogflowV2InputDatasetArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetArrayOutput) ToGoogleCloudDialogflowV2InputDatasetArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputDatasetArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2InputDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2InputDataset {
+		return vs[0].([]GoogleCloudDialogflowV2InputDataset)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2InputDatasetOutput)
+}
+
+// InputDataset used to create model or do evaluation. NextID:5
+type GoogleCloudDialogflowV2InputDatasetResponse struct {
+	// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+	Dataset string `pulumi:"dataset"`
+}
+
+// InputDataset used to create model or do evaluation. NextID:5
+type GoogleCloudDialogflowV2InputDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2InputDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2InputDatasetResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetResponseOutput) ToGoogleCloudDialogflowV2InputDatasetResponseOutput() GoogleCloudDialogflowV2InputDatasetResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetResponseOutput) ToGoogleCloudDialogflowV2InputDatasetResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputDatasetResponseOutput {
+	return o
+}
+
+// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+func (o GoogleCloudDialogflowV2InputDatasetResponseOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2InputDatasetResponse) string { return v.Dataset }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowV2InputDatasetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2InputDatasetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2InputDatasetResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetResponseArrayOutput) ToGoogleCloudDialogflowV2InputDatasetResponseArrayOutput() GoogleCloudDialogflowV2InputDatasetResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetResponseArrayOutput) ToGoogleCloudDialogflowV2InputDatasetResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2InputDatasetResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2InputDatasetResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2InputDatasetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2InputDatasetResponse {
+		return vs[0].([]GoogleCloudDialogflowV2InputDatasetResponse)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2InputDatasetResponseOutput)
 }
 
 // Represents a single followup intent in the chain.
@@ -10684,7 +11698,7 @@ func (o GoogleCloudDialogflowV2LoggingConfigResponseOutput) EnableStackdriverLog
 type GoogleCloudDialogflowV2NotificationConfig struct {
 	// Format of message.
 	MessageFormat *GoogleCloudDialogflowV2NotificationConfigMessageFormat `pulumi:"messageFormat"`
-	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
 	Topic *string `pulumi:"topic"`
 }
 
@@ -10703,7 +11717,7 @@ type GoogleCloudDialogflowV2NotificationConfigInput interface {
 type GoogleCloudDialogflowV2NotificationConfigArgs struct {
 	// Format of message.
 	MessageFormat GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrInput `pulumi:"messageFormat"`
-	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
 
@@ -10792,7 +11806,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigOutput) MessageFormat() GoogleC
 	}).(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput)
 }
 
-// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
 func (o GoogleCloudDialogflowV2NotificationConfigOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
 }
@@ -10831,7 +11845,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) MessageFormat() Goog
 	}).(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput)
 }
 
-// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
 func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfig) *string {
 		if v == nil {
@@ -10845,7 +11859,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) Topic() pulumi.Strin
 type GoogleCloudDialogflowV2NotificationConfigResponse struct {
 	// Format of message.
 	MessageFormat string `pulumi:"messageFormat"`
-	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
 	Topic string `pulumi:"topic"`
 }
 
@@ -10869,9 +11883,272 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) MessageFormat()
 	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfigResponse) string { return v.MessageFormat }).(pulumi.StringOutput)
 }
 
-// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
 func (o GoogleCloudDialogflowV2NotificationConfigResponseOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+// The evaluation metrics for smart reply model.
+type GoogleCloudDialogflowV2SmartReplyMetricsResponse struct {
+	// Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
+	AllowlistCoverage float64 `pulumi:"allowlistCoverage"`
+	// Total number of conversations used to generate this metric.
+	ConversationCount string `pulumi:"conversationCount"`
+	// Metrics of top n smart replies, sorted by TopNMetric.n.
+	TopNMetrics []GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse `pulumi:"topNMetrics"`
+}
+
+// The evaluation metrics for smart reply model.
+type GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyMetricsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput) ToGoogleCloudDialogflowV2SmartReplyMetricsResponseOutput() GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput) ToGoogleCloudDialogflowV2SmartReplyMetricsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput {
+	return o
+}
+
+// Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
+func (o GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput) AllowlistCoverage() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyMetricsResponse) float64 { return v.AllowlistCoverage }).(pulumi.Float64Output)
+}
+
+// Total number of conversations used to generate this metric.
+func (o GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput) ConversationCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyMetricsResponse) string { return v.ConversationCount }).(pulumi.StringOutput)
+}
+
+// Metrics of top n smart replies, sorted by TopNMetric.n.
+func (o GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput) TopNMetrics() GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyMetricsResponse) []GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse {
+		return v.TopNMetrics
+	}).(GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput)
+}
+
+// Evaluation metrics when retrieving `n` smart replies with the model.
+type GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse struct {
+	// Number of retrieved smart replies. For example, when `n` is 3, this evaluation contains metrics for when Dialogflow retrieves 3 smart replies with the model.
+	N int `pulumi:"n"`
+	// Defined as `number of queries whose top n smart replies have at least one similar (token match similarity above the defined threshold) reply as the real reply` divided by `number of queries with at least one smart reply`. Value ranges from 0.0 to 1.0 inclusive.
+	Recall float64 `pulumi:"recall"`
+}
+
+// Evaluation metrics when retrieving `n` smart replies with the model.
+type GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput) ToGoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput() GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput) ToGoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput {
+	return o
+}
+
+// Number of retrieved smart replies. For example, when `n` is 3, this evaluation contains metrics for when Dialogflow retrieves 3 smart replies with the model.
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput) N() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse) int { return v.N }).(pulumi.IntOutput)
+}
+
+// Defined as `number of queries whose top n smart replies have at least one similar (token match similarity above the defined threshold) reply as the real reply` divided by `number of queries with at least one smart reply`. Value ranges from 0.0 to 1.0 inclusive.
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput) Recall() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse) float64 { return v.Recall }).(pulumi.Float64Output)
+}
+
+type GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput) ToGoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput() GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput) ToGoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse {
+		return vs[0].([]GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput)
+}
+
+// Metadata for smart reply models.
+type GoogleCloudDialogflowV2SmartReplyModelMetadata struct {
+	// Optional. Type of the smart reply model. If not provided, model_type is used.
+	TrainingModelType *GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType `pulumi:"trainingModelType"`
+}
+
+// GoogleCloudDialogflowV2SmartReplyModelMetadataInput is an input type that accepts GoogleCloudDialogflowV2SmartReplyModelMetadataArgs and GoogleCloudDialogflowV2SmartReplyModelMetadataOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2SmartReplyModelMetadataInput` via:
+//
+//          GoogleCloudDialogflowV2SmartReplyModelMetadataArgs{...}
+type GoogleCloudDialogflowV2SmartReplyModelMetadataInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataOutput
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutputWithContext(context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataOutput
+}
+
+// Metadata for smart reply models.
+type GoogleCloudDialogflowV2SmartReplyModelMetadataArgs struct {
+	// Optional. Type of the smart reply model. If not provided, model_type is used.
+	TrainingModelType GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrInput `pulumi:"trainingModelType"`
+}
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadata)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2SmartReplyModelMetadataArgs) ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataOutput {
+	return i.ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2SmartReplyModelMetadataArgs) ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SmartReplyModelMetadataOutput)
+}
+
+func (i GoogleCloudDialogflowV2SmartReplyModelMetadataArgs) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return i.ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2SmartReplyModelMetadataArgs) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SmartReplyModelMetadataOutput).ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2SmartReplyModelMetadataPtrInput is an input type that accepts GoogleCloudDialogflowV2SmartReplyModelMetadataArgs, GoogleCloudDialogflowV2SmartReplyModelMetadataPtr and GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2SmartReplyModelMetadataPtrInput` via:
+//
+//          GoogleCloudDialogflowV2SmartReplyModelMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2SmartReplyModelMetadataPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput
+}
+
+type googleCloudDialogflowV2SmartReplyModelMetadataPtrType GoogleCloudDialogflowV2SmartReplyModelMetadataArgs
+
+func GoogleCloudDialogflowV2SmartReplyModelMetadataPtr(v *GoogleCloudDialogflowV2SmartReplyModelMetadataArgs) GoogleCloudDialogflowV2SmartReplyModelMetadataPtrInput {
+	return (*googleCloudDialogflowV2SmartReplyModelMetadataPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2SmartReplyModelMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2SmartReplyModelMetadata)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2SmartReplyModelMetadataPtrType) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return i.ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2SmartReplyModelMetadataPtrType) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput)
+}
+
+// Metadata for smart reply models.
+type GoogleCloudDialogflowV2SmartReplyModelMetadataOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return o.ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2SmartReplyModelMetadata) *GoogleCloudDialogflowV2SmartReplyModelMetadata {
+		return &v
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput)
+}
+
+// Optional. Type of the smart reply model. If not provided, model_type is used.
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataOutput) TrainingModelType() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyModelMetadata) *GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
+		return v.TrainingModelType
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput)
+}
+
+type GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2SmartReplyModelMetadata)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput) Elem() GoogleCloudDialogflowV2SmartReplyModelMetadataOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SmartReplyModelMetadata) GoogleCloudDialogflowV2SmartReplyModelMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2SmartReplyModelMetadata
+		return ret
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataOutput)
+}
+
+// Optional. Type of the smart reply model. If not provided, model_type is used.
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput) TrainingModelType() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SmartReplyModelMetadata) *GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
+		if v == nil {
+			return nil
+		}
+		return v.TrainingModelType
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput)
+}
+
+// Metadata for smart reply models.
+type GoogleCloudDialogflowV2SmartReplyModelMetadataResponse struct {
+	// Optional. Type of the smart reply model. If not provided, model_type is used.
+	TrainingModelType string `pulumi:"trainingModelType"`
+}
+
+// Metadata for smart reply models.
+type GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput {
+	return o
+}
+
+// Optional. Type of the smart reply model. If not provided, model_type is used.
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput) TrainingModelType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SmartReplyModelMetadataResponse) string { return v.TrainingModelType }).(pulumi.StringOutput)
 }
 
 // Configures speech transcription for ConversationProfile.
@@ -11501,12 +12778,20 @@ func (o GoogleRpcStatusResponseOutput) Message() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataInput)(nil)).Elem(), GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2AutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2AutomatedAgentConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2AutomatedAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ContextInput)(nil)).Elem(), GoogleCloudDialogflowV2ContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ContextArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2ContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityInput)(nil)).Elem(), GoogleCloudDialogflowV2EntityTypeEntityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EntityTypeEntityArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2EntityTypeEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2EvaluationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2EvaluationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureArgs{})
@@ -11543,6 +12828,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2InputDatasetInput)(nil)).Elem(), GoogleCloudDialogflowV2InputDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2InputDatasetArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2InputDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageArrayInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBasicCardInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBasicCardArgs{})
@@ -11606,12 +12893,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2LoggingConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2LoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataInput)(nil)).Elem(), GoogleCloudDialogflowV2SmartReplyModelMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SmartReplyModelMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeatureInput)(nil)).Elem(), GoogleCloudDialogflowV2SuggestionFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeaturePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SuggestionFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2TextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2TextToSpeechSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2TextToSpeechSettingsArgs{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput{})
@@ -11619,12 +12911,22 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ContextResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ConversationInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentFeatureOutput{})
@@ -11635,6 +12937,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2GcsSourcesResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput{})
@@ -11681,6 +12984,11 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2InputConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2InputDatasetOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2InputDatasetArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2InputDatasetResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2InputDatasetResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentFollowupIntentInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageOutput{})
@@ -11794,6 +13102,12 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyModelMetadataOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyModelMetadataPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput{})

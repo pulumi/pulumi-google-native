@@ -36,7 +36,7 @@ type LookupConfigResult struct {
 	FleetConfigs []FleetConfigResponse `pulumi:"fleetConfigs"`
 	// The labels associated with this game server config. Each label is a key-value pair.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+	// The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 	Name string `pulumi:"name"`
 	// The autoscaling settings.
 	ScalingConfigs []ScalingConfigResponse `pulumi:"scalingConfigs"`
@@ -98,7 +98,7 @@ func (o LookupConfigResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupConfigResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+// The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
 func (o LookupConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -190,6 +190,8 @@ const (
 	DocumentKnowledgeTypesItemExtractiveQa = DocumentKnowledgeTypesItem("EXTRACTIVE_QA")
 	// The entire document content as a whole can be used for query results. Only for Contact Center Solutions on Dialogflow.
 	DocumentKnowledgeTypesItemArticleSuggestion = DocumentKnowledgeTypesItem("ARTICLE_SUGGESTION")
+	// The document contains agent-facing Smart Reply entries.
+	DocumentKnowledgeTypesItemAgentFacingSmartReply = DocumentKnowledgeTypesItem("AGENT_FACING_SMART_REPLY")
 )
 
 func (DocumentKnowledgeTypesItem) ElementType() reflect.Type {
@@ -730,6 +732,175 @@ func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput
 
 func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeKindPtrOutput)
+}
+
+// Optional. Type of the article suggestion model. If not provided, model_type is used.
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType string
+
+const (
+	// ModelType unspecified.
+	GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeModelTypeUnspecified = GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED")
+	// ModelType smart reply dual encoder model.
+	GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeSmartReplyDualEncoderModel = GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("SMART_REPLY_DUAL_ENCODER_MODEL")
+	// ModelType smart reply bert model.
+	GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeSmartReplyBertModel = GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("SMART_REPLY_BERT_MODEL")
+)
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput)
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput)
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return e.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType(e).ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutputWithContext(ctx).ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return o.ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType {
+		return &v
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput) Elem() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType
+		return ret
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput)
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeInput is an input type that accepts GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeArgs and GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeInput` via:
+//
+//          GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeArgs{...}
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutputWithContext(context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput
+}
+
+var googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType)(nil)).Elem()
+
+type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput
+	ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput
+}
+
+type googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr string
+
+func GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr(v string) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrInput {
+	return (*googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrType
+}
+
+func (in *googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtr) ToGoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput)
 }
 
 // The type of the feature that enabled for fulfillment.
@@ -2100,6 +2271,175 @@ func (in *googleCloudDialogflowV2NotificationConfigMessageFormatPtr) ToGoogleClo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput)
 }
 
+// Optional. Type of the smart reply model. If not provided, model_type is used.
+type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType string
+
+const (
+	// ModelType unspecified.
+	GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeModelTypeUnspecified = GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED")
+	// ModelType smart reply dual encoder model.
+	GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeSmartReplyDualEncoderModel = GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("SMART_REPLY_DUAL_ENCODER_MODEL")
+	// ModelType smart reply bert model.
+	GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeSmartReplyBertModel = GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("SMART_REPLY_BERT_MODEL")
+)
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput)
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput)
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return e.ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType(e).ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutputWithContext(ctx).ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return o.ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) *GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
+		return &v
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput) Elem() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType
+		return ret
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput)
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeInput is an input type that accepts GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeArgs and GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeInput` via:
+//
+//          GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeArgs{...}
+type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutputWithContext(context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput
+}
+
+var googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType)(nil)).Elem()
+
+type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput
+	ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput
+}
+
+type googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr string
+
+func GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr(v string) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrInput {
+	return (*googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrType
+}
+
+func (in *googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput() GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtr) ToGoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput)
+}
+
 // The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
 type GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant string
 
@@ -3363,6 +3703,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeAutoExpansionModePtrInput)(nil)).Elem(), EntityTypeAutoExpansionMode("AUTO_EXPANSION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeKindInput)(nil)).Elem(), EntityTypeKind("KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeKindPtrInput)(nil)).Elem(), EntityTypeKind("KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeInput)(nil)).Elem(), GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureTypeInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2FulfillmentFeatureTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2FulfillmentFeatureType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint("URL_TYPE_HINT_UNSPECIFIED"))
@@ -3379,6 +3721,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2IntentTrainingPhraseTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2IntentTrainingPhraseType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigMessageFormatInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2NotificationConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeInput)(nil)).Elem(), GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant("SPEECH_MODEL_VARIANT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant("SPEECH_MODEL_VARIANT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2SuggestionFeatureTypeInput)(nil)).Elem(), GoogleCloudDialogflowV2SuggestionFeatureType("TYPE_UNSPECIFIED"))
@@ -3403,6 +3747,8 @@ func init() {
 	pulumi.RegisterOutputType(EntityTypeAutoExpansionModePtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeKindOutput{})
 	pulumi.RegisterOutputType(EntityTypeKindPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentFeatureTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput{})
@@ -3419,6 +3765,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentTrainingPhraseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigMessageFormatOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2SuggestionFeatureTypeOutput{})

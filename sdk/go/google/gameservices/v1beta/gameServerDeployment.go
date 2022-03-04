@@ -17,13 +17,13 @@ type GameServerDeployment struct {
 
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Human readable description of the game server delpoyment.
+	// Human readable description of the game server deployment.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -72,14 +72,14 @@ func (GameServerDeploymentState) ElementType() reflect.Type {
 
 type gameServerDeploymentArgs struct {
 	DeploymentId string `pulumi:"deploymentId"`
-	// Human readable description of the game server delpoyment.
+	// Human readable description of the game server deployment.
 	Description *string `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag *string `pulumi:"etag"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
@@ -87,14 +87,14 @@ type gameServerDeploymentArgs struct {
 // The set of arguments for constructing a GameServerDeployment resource.
 type GameServerDeploymentArgs struct {
 	DeploymentId pulumi.StringInput
-	// Human readable description of the game server delpoyment.
+	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrInput
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringPtrInput
 	// The labels associated with this game server deployment. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }

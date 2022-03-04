@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
     public sealed class GetReservationResult
     {
         /// <summary>
+        /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
+        /// </summary>
+        public readonly string Concurrency;
+        /// <summary>
         /// Creation time of the reservation.
         /// </summary>
         public readonly string CreationTime;
@@ -88,6 +92,8 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 
         [OutputConstructor]
         private GetReservationResult(
+            string concurrency,
+
             string creationTime,
 
             bool ignoreIdleSlots,
@@ -100,6 +106,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 
             string updateTime)
         {
+            Concurrency = concurrency;
             CreationTime = creationTime;
             IgnoreIdleSlots = ignoreIdleSlots;
             MultiRegionAuxiliary = multiRegionAuxiliary;

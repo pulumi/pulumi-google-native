@@ -39,6 +39,10 @@ export const DocumentKnowledgeTypesItem = {
      * The entire document content as a whole can be used for query results. Only for Contact Center Solutions on Dialogflow.
      */
     ArticleSuggestion: "ARTICLE_SUGGESTION",
+    /**
+     * The document contains agent-facing Smart Reply entries.
+     */
+    AgentFacingSmartReply: "AGENT_FACING_SMART_REPLY",
 } as const;
 
 export type DocumentKnowledgeTypesItem = (typeof DocumentKnowledgeTypesItem)[keyof typeof DocumentKnowledgeTypesItem];
@@ -82,6 +86,26 @@ export const EntityTypeKind = {
  * Required. Indicates the kind of entity type.
  */
 export type EntityTypeKind = (typeof EntityTypeKind)[keyof typeof EntityTypeKind];
+
+export const GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType = {
+    /**
+     * ModelType unspecified.
+     */
+    ModelTypeUnspecified: "MODEL_TYPE_UNSPECIFIED",
+    /**
+     * ModelType smart reply dual encoder model.
+     */
+    SmartReplyDualEncoderModel: "SMART_REPLY_DUAL_ENCODER_MODEL",
+    /**
+     * ModelType smart reply bert model.
+     */
+    SmartReplyBertModel: "SMART_REPLY_BERT_MODEL",
+} as const;
+
+/**
+ * Optional. Type of the article suggestion model. If not provided, model_type is used.
+ */
+export type GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType = (typeof GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType)[keyof typeof GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType];
 
 export const GoogleCloudDialogflowV2FulfillmentFeatureType = {
     /**
@@ -274,6 +298,26 @@ export const GoogleCloudDialogflowV2NotificationConfigMessageFormat = {
  * Format of message.
  */
 export type GoogleCloudDialogflowV2NotificationConfigMessageFormat = (typeof GoogleCloudDialogflowV2NotificationConfigMessageFormat)[keyof typeof GoogleCloudDialogflowV2NotificationConfigMessageFormat];
+
+export const GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType = {
+    /**
+     * ModelType unspecified.
+     */
+    ModelTypeUnspecified: "MODEL_TYPE_UNSPECIFIED",
+    /**
+     * ModelType smart reply dual encoder model.
+     */
+    SmartReplyDualEncoderModel: "SMART_REPLY_DUAL_ENCODER_MODEL",
+    /**
+     * ModelType smart reply bert model.
+     */
+    SmartReplyBertModel: "SMART_REPLY_BERT_MODEL",
+} as const;
+
+/**
+ * Optional. Type of the smart reply model. If not provided, model_type is used.
+ */
+export type GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType = (typeof GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType)[keyof typeof GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType];
 
 export const GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant = {
     /**

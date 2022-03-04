@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public Output<Outputs.GoogleCloudRetailV2betaRuleResponse> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Output("solutionTypes")]
         public Output<ImmutableArray<string>> SolutionTypes { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         private InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSolutionTypesItem>? _solutionTypes;
 
         /// <summary>
-        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         public InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSolutionTypesItem> SolutionTypes
         {

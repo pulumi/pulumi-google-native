@@ -1479,7 +1479,7 @@ func (o RetryResponseOutput) ToRetryResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
 type SecretEnvVar struct {
 	// Name of the environment variable.
 	Key *string `pulumi:"key"`
@@ -1487,7 +1487,7 @@ type SecretEnvVar struct {
 	Project *string `pulumi:"project"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret *string `pulumi:"secret"`
-	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 	Version *string `pulumi:"version"`
 }
 
@@ -1502,7 +1502,7 @@ type SecretEnvVarInput interface {
 	ToSecretEnvVarOutputWithContext(context.Context) SecretEnvVarOutput
 }
 
-// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
 type SecretEnvVarArgs struct {
 	// Name of the environment variable.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -1510,7 +1510,7 @@ type SecretEnvVarArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringPtrInput `pulumi:"secret"`
-	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -1551,7 +1551,7 @@ func (i SecretEnvVarArray) ToSecretEnvVarArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarArrayOutput)
 }
 
-// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
 type SecretEnvVarOutput struct{ *pulumi.OutputState }
 
 func (SecretEnvVarOutput) ElementType() reflect.Type {
@@ -1581,7 +1581,7 @@ func (o SecretEnvVarOutput) Secret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretEnvVar) *string { return v.Secret }).(pulumi.StringPtrOutput)
 }
 
-// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 func (o SecretEnvVarOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecretEnvVar) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1606,7 +1606,7 @@ func (o SecretEnvVarArrayOutput) Index(i pulumi.IntInput) SecretEnvVarOutput {
 	}).(SecretEnvVarOutput)
 }
 
-// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
 type SecretEnvVarResponse struct {
 	// Name of the environment variable.
 	Key string `pulumi:"key"`
@@ -1614,11 +1614,11 @@ type SecretEnvVarResponse struct {
 	Project string `pulumi:"project"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
-	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 	Version string `pulumi:"version"`
 }
 
-// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
 type SecretEnvVarResponseOutput struct{ *pulumi.OutputState }
 
 func (SecretEnvVarResponseOutput) ElementType() reflect.Type {
@@ -1648,7 +1648,7 @@ func (o SecretEnvVarResponseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
 func (o SecretEnvVarResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Version }).(pulumi.StringOutput)
 }

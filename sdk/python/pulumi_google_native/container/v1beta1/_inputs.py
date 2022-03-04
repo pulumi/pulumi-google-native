@@ -63,11 +63,13 @@ __all__ = [
     'NetworkConfigArgs',
     'NetworkPolicyConfigArgs',
     'NetworkPolicyArgs',
+    'NetworkTagsArgs',
     'NodeConfigDefaultsArgs',
     'NodeConfigArgs',
     'NodeKubeletConfigArgs',
     'NodeManagementArgs',
     'NodeNetworkConfigArgs',
+    'NodePoolAutoConfigArgs',
     'NodePoolAutoscalingArgs',
     'NodePoolDefaultsArgs',
     'NodePoolArgs',
@@ -93,6 +95,7 @@ __all__ = [
     'UpgradeSettingsArgs',
     'VerticalPodAutoscalingArgs',
     'VirtualNICArgs',
+    'WorkloadALTSConfigArgs',
     'WorkloadCertificatesArgs',
     'WorkloadIdentityConfigArgs',
     'WorkloadMetadataConfigArgs',
@@ -459,7 +462,6 @@ class AutoprovisioningNodePoolDefaultsArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
-                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
@@ -471,7 +473,6 @@ class AutoprovisioningNodePoolDefaultsArgs:
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input[str] image_type: The image type to use for NAP created node.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
-        :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
@@ -487,8 +488,6 @@ class AutoprovisioningNodePoolDefaultsArgs:
             pulumi.set(__self__, "image_type", image_type)
         if management is not None:
             pulumi.set(__self__, "management", management)
-        if min_cpu_platform is not None:
-            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if service_account is not None:
@@ -557,18 +556,6 @@ class AutoprovisioningNodePoolDefaultsArgs:
     @management.setter
     def management(self, value: Optional[pulumi.Input['NodeManagementArgs']]):
         pulumi.set(self, "management", value)
-
-    @property
-    @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
-        """
-        Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-        """
-        return pulumi.get(self, "min_cpu_platform")
-
-    @min_cpu_platform.setter
-    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "min_cpu_platform", value)
 
     @property
     @pulumi.getter(name="oauthScopes")
@@ -2249,6 +2236,30 @@ class NetworkPolicyArgs:
 
 
 @pulumi.input_type
+class NetworkTagsArgs:
+    def __init__(__self__, *,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: List of network tags.
+        """
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of network tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
 class NodeConfigDefaultsArgs:
     def __init__(__self__, *,
                  gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None):
@@ -2878,6 +2889,30 @@ class NodeNetworkConfigArgs:
     @pod_range.setter
     def pod_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pod_range", value)
+
+
+@pulumi.input_type
+class NodePoolAutoConfigArgs:
+    def __init__(__self__, *,
+                 network_tags: Optional[pulumi.Input['NetworkTagsArgs']] = None):
+        """
+        node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+        :param pulumi.Input['NetworkTagsArgs'] network_tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        """
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input['NetworkTagsArgs']]:
+        """
+        The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input['NetworkTagsArgs']]):
+        pulumi.set(self, "network_tags", value)
 
 
 @pulumi.input_type
@@ -4053,6 +4088,30 @@ class VirtualNICArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class WorkloadALTSConfigArgs:
+    def __init__(__self__, *,
+                 enable_alts: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for direct-path (via ALTS) with workload identity.
+        :param pulumi.Input[bool] enable_alts: enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        if enable_alts is not None:
+            pulumi.set(__self__, "enable_alts", enable_alts)
+
+    @property
+    @pulumi.getter(name="enableAlts")
+    def enable_alts(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        return pulumi.get(self, "enable_alts")
+
+    @enable_alts.setter
+    def enable_alts(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_alts", value)
 
 
 @pulumi.input_type

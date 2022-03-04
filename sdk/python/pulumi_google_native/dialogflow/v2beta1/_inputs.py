@@ -3583,7 +3583,7 @@ class GoogleCloudDialogflowV2beta1NotificationConfigArgs:
         """
         Defines notification behavior.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat'] message_format: Format of message.
-        :param pulumi.Input[str] topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        :param pulumi.Input[str] topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
         """
         if message_format is not None:
             pulumi.set(__self__, "message_format", message_format)
@@ -3606,7 +3606,7 @@ class GoogleCloudDialogflowV2beta1NotificationConfigArgs:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
         """
         return pulumi.get(self, "topic")
 

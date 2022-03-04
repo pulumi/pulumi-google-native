@@ -98,7 +98,7 @@ type LookupRegionBackendServiceResult struct {
 	// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 	SessionAffinity string             `pulumi:"sessionAffinity"`
 	Subsetting      SubsettingResponse `pulumi:"subsetting"`
-	// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
+	// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 	TimeoutSec int `pulumi:"timeoutSec"`
 }
 
@@ -321,7 +321,7 @@ func (o LookupRegionBackendServiceResultOutput) Subsetting() SubsettingResponseO
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) SubsettingResponse { return v.Subsetting }).(SubsettingResponseOutput)
 }
 
-// Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
+// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
 func (o LookupRegionBackendServiceResultOutput) TimeoutSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) int { return v.TimeoutSec }).(pulumi.IntOutput)
 }

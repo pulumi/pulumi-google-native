@@ -92,6 +92,8 @@ type Cluster struct {
 	NetworkPolicy NetworkPolicyResponseOutput `pulumi:"networkPolicy"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntOutput `pulumi:"nodeIpv4CidrSize"`
+	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	NodePoolAutoConfig NodePoolAutoConfigResponseOutput `pulumi:"nodePoolAutoConfig"`
 	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
 	NodePoolDefaults NodePoolDefaultsResponseOutput `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -124,6 +126,8 @@ type Cluster struct {
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingResponseOutput `pulumi:"verticalPodAutoscaling"`
+	// Configuration for direct-path (via ALTS) with workload identity.
+	WorkloadAltsConfig WorkloadALTSConfigResponseOutput `pulumi:"workloadAltsConfig"`
 	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 	WorkloadCertificates WorkloadCertificatesResponseOutput `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
@@ -232,6 +236,8 @@ type clusterArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
+	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	NodePoolAutoConfig *NodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
 	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
 	NodePoolDefaults *NodePoolDefaults `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -259,6 +265,8 @@ type clusterArgs struct {
 	TpuConfig *TpuConfig `pulumi:"tpuConfig"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
+	// Configuration for direct-path (via ALTS) with workload identity.
+	WorkloadAltsConfig *WorkloadALTSConfig `pulumi:"workloadAltsConfig"`
 	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 	WorkloadCertificates *WorkloadCertificates `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
@@ -330,6 +338,8 @@ type ClusterArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput
+	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+	NodePoolAutoConfig NodePoolAutoConfigPtrInput
 	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
 	NodePoolDefaults NodePoolDefaultsPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
@@ -357,6 +367,8 @@ type ClusterArgs struct {
 	TpuConfig TpuConfigPtrInput
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingPtrInput
+	// Configuration for direct-path (via ALTS) with workload identity.
+	WorkloadAltsConfig WorkloadALTSConfigPtrInput
 	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
 	WorkloadCertificates WorkloadCertificatesPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.

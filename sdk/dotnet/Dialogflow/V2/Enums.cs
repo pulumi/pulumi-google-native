@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// The entire document content as a whole can be used for query results. Only for Contact Center Solutions on Dialogflow.
         /// </summary>
         public static DocumentKnowledgeTypesItem ArticleSuggestion { get; } = new DocumentKnowledgeTypesItem("ARTICLE_SUGGESTION");
+        /// <summary>
+        /// The document contains agent-facing Smart Reply entries.
+        /// </summary>
+        public static DocumentKnowledgeTypesItem AgentFacingSmartReply { get; } = new DocumentKnowledgeTypesItem("AGENT_FACING_SMART_REPLY");
 
         public static bool operator ==(DocumentKnowledgeTypesItem left, DocumentKnowledgeTypesItem right) => left.Equals(right);
         public static bool operator !=(DocumentKnowledgeTypesItem left, DocumentKnowledgeTypesItem right) => !left.Equals(right);
@@ -165,6 +169,47 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is EntityTypeKind other && Equals(other);
         public bool Equals(EntityTypeKind other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Type of the article suggestion model. If not provided, model_type is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType : IEquatable<GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// ModelType unspecified.
+        /// </summary>
+        public static GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType ModelTypeUnspecified { get; } = new GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// ModelType smart reply dual encoder model.
+        /// </summary>
+        public static GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType SmartReplyDualEncoderModel { get; } = new GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("SMART_REPLY_DUAL_ENCODER_MODEL");
+        /// <summary>
+        /// ModelType smart reply bert model.
+        /// </summary>
+        public static GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType SmartReplyBertModel { get; } = new GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType("SMART_REPLY_BERT_MODEL");
+
+        public static bool operator ==(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType left, GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType left, GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -525,6 +570,47 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDialogflowV2NotificationConfigMessageFormat other && Equals(other);
         public bool Equals(GoogleCloudDialogflowV2NotificationConfigMessageFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Type of the smart reply model. If not provided, model_type is used.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType : IEquatable<GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// ModelType unspecified.
+        /// </summary>
+        public static GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType ModelTypeUnspecified { get; } = new GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("MODEL_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// ModelType smart reply dual encoder model.
+        /// </summary>
+        public static GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType SmartReplyDualEncoderModel { get; } = new GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("SMART_REPLY_DUAL_ENCODER_MODEL");
+        /// <summary>
+        /// ModelType smart reply bert model.
+        /// </summary>
+        public static GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType SmartReplyBertModel { get; } = new GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType("SMART_REPLY_BERT_MODEL");
+
+        public static bool operator ==(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType left, GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType left, GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

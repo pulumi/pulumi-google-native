@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> DiskSizeGb { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Output("guestFlush")]
         public Output<bool> GuestFlush { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        /// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         /// </summary>
         [Input("guestFlush")]
         public Input<bool>? GuestFlush { get; set; }

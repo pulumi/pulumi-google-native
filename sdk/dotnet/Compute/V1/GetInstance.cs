@@ -152,6 +152,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public readonly ImmutableArray<Outputs.NetworkInterfaceResponse> NetworkInterfaces;
         public readonly Outputs.NetworkPerformanceConfigResponse NetworkPerformanceConfig;
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        public readonly Outputs.InstanceParamsResponse Params;
+        /// <summary>
         /// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
@@ -260,6 +264,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.NetworkPerformanceConfigResponse networkPerformanceConfig,
 
+            Outputs.InstanceParamsResponse @params,
+
             string privateIpv6GoogleAccess,
 
             Outputs.ReservationAffinityResponse reservationAffinity,
@@ -316,6 +322,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Name = name;
             NetworkInterfaces = networkInterfaces;
             NetworkPerformanceConfig = networkPerformanceConfig;
+            Params = @params;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ReservationAffinity = reservationAffinity;
             ResourcePolicies = resourcePolicies;

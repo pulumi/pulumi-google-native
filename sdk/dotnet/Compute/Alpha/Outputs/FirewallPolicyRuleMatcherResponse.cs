@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestRegionCodes;
         /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        /// </summary>
+        public readonly ImmutableArray<string> DestThreatIntelligences;
+        /// <summary>
         /// Pairs of IP protocols and ports that the rule should match.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> Layer4Configs;
@@ -56,6 +60,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> SrcSecureTags;
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcThreatIntelligences;
 
         [OutputConstructor]
         private FirewallPolicyRuleMatcherResponse(
@@ -67,6 +75,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> destRegionCodes,
 
+            ImmutableArray<string> destThreatIntelligences,
+
             ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> layer4Configs,
 
             ImmutableArray<string> srcAddressGroups,
@@ -77,18 +87,22 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<string> srcRegionCodes,
 
-            ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags)
+            ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags,
+
+            ImmutableArray<string> srcThreatIntelligences)
         {
             DestAddressGroups = destAddressGroups;
             DestFqdns = destFqdns;
             DestIpRanges = destIpRanges;
             DestRegionCodes = destRegionCodes;
+            DestThreatIntelligences = destThreatIntelligences;
             Layer4Configs = layer4Configs;
             SrcAddressGroups = srcAddressGroups;
             SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
             SrcRegionCodes = srcRegionCodes;
             SrcSecureTags = srcSecureTags;
+            SrcThreatIntelligences = srcThreatIntelligences;
         }
     }
 }

@@ -59,6 +59,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
+        /// URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         /// </summary>
         [Output("ruleTupleCount")]

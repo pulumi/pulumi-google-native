@@ -64,11 +64,13 @@ __all__ = [
     'NetworkConfigResponse',
     'NetworkPolicyConfigResponse',
     'NetworkPolicyResponse',
+    'NetworkTagsResponse',
     'NodeConfigDefaultsResponse',
     'NodeConfigResponse',
     'NodeKubeletConfigResponse',
     'NodeManagementResponse',
     'NodeNetworkConfigResponse',
+    'NodePoolAutoConfigResponse',
     'NodePoolAutoscalingResponse',
     'NodePoolDefaultsResponse',
     'NodePoolResponse',
@@ -94,6 +96,7 @@ __all__ = [
     'UpgradeSettingsResponse',
     'VerticalPodAutoscalingResponse',
     'VirtualNICResponse',
+    'WorkloadALTSConfigResponse',
     'WorkloadCertificatesResponse',
     'WorkloadIdentityConfigResponse',
     'WorkloadMetadataConfigResponse',
@@ -523,8 +526,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
             suggest = "disk_type"
         elif key == "imageType":
             suggest = "image_type"
-        elif key == "minCpuPlatform":
-            suggest = "min_cpu_platform"
         elif key == "oauthScopes":
             suggest = "oauth_scopes"
         elif key == "serviceAccount":
@@ -551,7 +552,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
                  disk_type: str,
                  image_type: str,
                  management: 'outputs.NodeManagementResponse',
-                 min_cpu_platform: str,
                  oauth_scopes: Sequence[str],
                  service_account: str,
                  shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
@@ -563,7 +563,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param str image_type: The image type to use for NAP created node.
         :param 'NodeManagementResponse' management: NodeManagement configuration for this NodePool.
-        :param str min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
@@ -574,7 +573,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "management", management)
-        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
@@ -619,14 +617,6 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         NodeManagement configuration for this NodePool.
         """
         return pulumi.get(self, "management")
-
-    @property
-    @pulumi.getter(name="minCpuPlatform")
-    def min_cpu_platform(self) -> str:
-        """
-        Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
-        """
-        return pulumi.get(self, "min_cpu_platform")
 
     @property
     @pulumi.getter(name="oauthScopes")
@@ -2519,6 +2509,28 @@ class NetworkPolicyResponse(dict):
 
 
 @pulumi.output_type
+class NetworkTagsResponse(dict):
+    """
+    Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+    """
+    def __init__(__self__, *,
+                 tags: Sequence[str]):
+        """
+        Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+        :param Sequence[str] tags: List of network tags.
+        """
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        List of network tags.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
 class NodeConfigDefaultsResponse(dict):
     """
     Subset of NodeConfig message that has defaults.
@@ -3111,6 +3123,45 @@ class NodeNetworkConfigResponse(dict):
         The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         return pulumi.get(self, "pod_range")
+
+
+@pulumi.output_type
+class NodePoolAutoConfigResponse(dict):
+    """
+    node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkTags":
+            suggest = "network_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolAutoConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolAutoConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolAutoConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_tags: 'outputs.NetworkTagsResponse'):
+        """
+        node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters
+        :param 'NetworkTagsResponse' network_tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        """
+        pulumi.set(__self__, "network_tags", network_tags)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> 'outputs.NetworkTagsResponse':
+        """
+        The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
+        """
+        return pulumi.get(self, "network_tags")
 
 
 @pulumi.output_type
@@ -4393,6 +4444,45 @@ class VirtualNICResponse(dict):
         Whether gVNIC features are enabled in the node pool.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class WorkloadALTSConfigResponse(dict):
+    """
+    Configuration for direct-path (via ALTS) with workload identity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableAlts":
+            suggest = "enable_alts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadALTSConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadALTSConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadALTSConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_alts: bool):
+        """
+        Configuration for direct-path (via ALTS) with workload identity.
+        :param bool enable_alts: enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        pulumi.set(__self__, "enable_alts", enable_alts)
+
+    @property
+    @pulumi.getter(name="enableAlts")
+    def enable_alts(self) -> bool:
+        """
+        enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        return pulumi.get(self, "enable_alts")
 
 
 @pulumi.output_type

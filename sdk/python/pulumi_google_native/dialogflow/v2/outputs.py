@@ -11,14 +11,20 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse',
     'GoogleCloudDialogflowV2AutomatedAgentConfigResponse',
     'GoogleCloudDialogflowV2ContextResponse',
+    'GoogleCloudDialogflowV2ConversationInfoResponse',
     'GoogleCloudDialogflowV2ConversationPhoneNumberResponse',
     'GoogleCloudDialogflowV2DocumentReloadStatusResponse',
     'GoogleCloudDialogflowV2EntityTypeEntityResponse',
+    'GoogleCloudDialogflowV2EvaluationConfigResponse',
+    'GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse',
+    'GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse',
     'GoogleCloudDialogflowV2FulfillmentFeatureResponse',
     'GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse',
     'GoogleCloudDialogflowV2FulfillmentResponse',
+    'GoogleCloudDialogflowV2GcsSourcesResponse',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigResponse',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse',
@@ -34,6 +40,8 @@ __all__ = [
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigResponse',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse',
+    'GoogleCloudDialogflowV2InputConfigResponse',
+    'GoogleCloudDialogflowV2InputDatasetResponse',
     'GoogleCloudDialogflowV2IntentFollowupIntentInfoResponse',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse',
@@ -68,11 +76,53 @@ __all__ = [
     'GoogleCloudDialogflowV2IntentTrainingPhraseResponse',
     'GoogleCloudDialogflowV2LoggingConfigResponse',
     'GoogleCloudDialogflowV2NotificationConfigResponse',
+    'GoogleCloudDialogflowV2SmartReplyMetricsResponse',
+    'GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse',
+    'GoogleCloudDialogflowV2SmartReplyModelMetadataResponse',
     'GoogleCloudDialogflowV2SpeechToTextConfigResponse',
     'GoogleCloudDialogflowV2SuggestionFeatureResponse',
     'GoogleCloudDialogflowV2TextToSpeechSettingsResponse',
     'GoogleRpcStatusResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse(dict):
+    """
+    Metadata for article suggestion models.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trainingModelType":
+            suggest = "training_model_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 training_model_type: str):
+        """
+        Metadata for article suggestion models.
+        :param str training_model_type: Optional. Type of the article suggestion model. If not provided, model_type is used.
+        """
+        pulumi.set(__self__, "training_model_type", training_model_type)
+
+    @property
+    @pulumi.getter(name="trainingModelType")
+    def training_model_type(self) -> str:
+        """
+        Optional. Type of the article suggestion model. If not provided, model_type is used.
+        """
+        return pulumi.get(self, "training_model_type")
+
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2AutomatedAgentConfigResponse(dict):
@@ -155,6 +205,45 @@ class GoogleCloudDialogflowV2ContextResponse(dict):
         Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
         """
         return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2ConversationInfoResponse(dict):
+    """
+    Represents metadata of a conversation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2ConversationInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2ConversationInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2ConversationInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 language_code: str):
+        """
+        Represents metadata of a conversation.
+        :param str language_code: Optional. The language code of the conversation data within this dataset. See https://cloud.google.com/apis/design/standard_fields for more information. Supports all UTF-8 languages.
+        """
+        pulumi.set(__self__, "language_code", language_code)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        Optional. The language code of the conversation data within this dataset. See https://cloud.google.com/apis/design/standard_fields for more information. Supports all UTF-8 languages.
+        """
+        return pulumi.get(self, "language_code")
 
 
 @pulumi.output_type
@@ -260,6 +349,173 @@ class GoogleCloudDialogflowV2EntityTypeEntityResponse(dict):
         The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2EvaluationConfigResponse(dict):
+    """
+    The configuration for model evaluation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "smartComposeConfig":
+            suggest = "smart_compose_config"
+        elif key == "smartReplyConfig":
+            suggest = "smart_reply_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2EvaluationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2EvaluationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2EvaluationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 datasets: Sequence['outputs.GoogleCloudDialogflowV2InputDatasetResponse'],
+                 smart_compose_config: 'outputs.GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse',
+                 smart_reply_config: 'outputs.GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse'):
+        """
+        The configuration for model evaluation.
+        :param Sequence['GoogleCloudDialogflowV2InputDatasetResponse'] datasets: Datasets used for evaluation.
+        :param 'GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse' smart_compose_config: Configuration for smart compose model evalution.
+        :param 'GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse' smart_reply_config: Configuration for smart reply model evalution.
+        """
+        pulumi.set(__self__, "datasets", datasets)
+        pulumi.set(__self__, "smart_compose_config", smart_compose_config)
+        pulumi.set(__self__, "smart_reply_config", smart_reply_config)
+
+    @property
+    @pulumi.getter
+    def datasets(self) -> Sequence['outputs.GoogleCloudDialogflowV2InputDatasetResponse']:
+        """
+        Datasets used for evaluation.
+        """
+        return pulumi.get(self, "datasets")
+
+    @property
+    @pulumi.getter(name="smartComposeConfig")
+    def smart_compose_config(self) -> 'outputs.GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse':
+        """
+        Configuration for smart compose model evalution.
+        """
+        return pulumi.get(self, "smart_compose_config")
+
+    @property
+    @pulumi.getter(name="smartReplyConfig")
+    def smart_reply_config(self) -> 'outputs.GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse':
+        """
+        Configuration for smart reply model evalution.
+        """
+        return pulumi.get(self, "smart_reply_config")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse(dict):
+    """
+    Smart compose specific configuration for evaluation job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowlistDocument":
+            suggest = "allowlist_document"
+        elif key == "maxResultCount":
+            suggest = "max_result_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowlist_document: str,
+                 max_result_count: int):
+        """
+        Smart compose specific configuration for evaluation job.
+        :param str allowlist_document: The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+        :param int max_result_count: The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        """
+        pulumi.set(__self__, "allowlist_document", allowlist_document)
+        pulumi.set(__self__, "max_result_count", max_result_count)
+
+    @property
+    @pulumi.getter(name="allowlistDocument")
+    def allowlist_document(self) -> str:
+        """
+        The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
+        """
+        return pulumi.get(self, "allowlist_document")
+
+    @property
+    @pulumi.getter(name="maxResultCount")
+    def max_result_count(self) -> int:
+        """
+        The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        """
+        return pulumi.get(self, "max_result_count")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse(dict):
+    """
+    Smart reply specific configuration for evaluation job.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowlistDocument":
+            suggest = "allowlist_document"
+        elif key == "maxResultCount":
+            suggest = "max_result_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowlist_document: str,
+                 max_result_count: int):
+        """
+        Smart reply specific configuration for evaluation job.
+        :param str allowlist_document: The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+        :param int max_result_count: The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        """
+        pulumi.set(__self__, "allowlist_document", allowlist_document)
+        pulumi.set(__self__, "max_result_count", max_result_count)
+
+    @property
+    @pulumi.getter(name="allowlistDocument")
+    def allowlist_document(self) -> str:
+        """
+        The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
+        """
+        return pulumi.get(self, "allowlist_document")
+
+    @property
+    @pulumi.getter(name="maxResultCount")
+    def max_result_count(self) -> int:
+        """
+        The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
+        """
+        return pulumi.get(self, "max_result_count")
 
 
 @pulumi.output_type
@@ -452,6 +708,28 @@ class GoogleCloudDialogflowV2FulfillmentResponse(dict):
         The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2GcsSourcesResponse(dict):
+    """
+    Google Cloud Storage location for the inputs.
+    """
+    def __init__(__self__, *,
+                 uris: Sequence[str]):
+        """
+        Google Cloud Storage location for the inputs.
+        :param Sequence[str] uris: Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case.
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Google Cloud Storage URIs for the inputs. A URI is of the form: gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case.
+        """
+        return pulumi.get(self, "uris")
 
 
 @pulumi.output_type
@@ -1272,6 +1550,67 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
         The organization ID of the Salesforce account.
         """
         return pulumi.get(self, "organization_id")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2InputConfigResponse(dict):
+    """
+    Represents the configuration of importing a set of conversation files in Google Cloud Storage.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsSource":
+            suggest = "gcs_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2InputConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2InputConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2InputConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcs_source: 'outputs.GoogleCloudDialogflowV2GcsSourcesResponse'):
+        """
+        Represents the configuration of importing a set of conversation files in Google Cloud Storage.
+        :param 'GoogleCloudDialogflowV2GcsSourcesResponse' gcs_source: The Cloud Storage URI has the form gs:////agent*.json. Wildcards are allowed and will be expanded into all matched JSON files, which will be read as one conversation per file.
+        """
+        pulumi.set(__self__, "gcs_source", gcs_source)
+
+    @property
+    @pulumi.getter(name="gcsSource")
+    def gcs_source(self) -> 'outputs.GoogleCloudDialogflowV2GcsSourcesResponse':
+        """
+        The Cloud Storage URI has the form gs:////agent*.json. Wildcards are allowed and will be expanded into all matched JSON files, which will be read as one conversation per file.
+        """
+        return pulumi.get(self, "gcs_source")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2InputDatasetResponse(dict):
+    """
+    InputDataset used to create model or do evaluation. NextID:5
+    """
+    def __init__(__self__, *,
+                 dataset: str):
+        """
+        InputDataset used to create model or do evaluation. NextID:5
+        :param str dataset: ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+        """
+        pulumi.set(__self__, "dataset", dataset)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> str:
+        """
+        ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+        """
+        return pulumi.get(self, "dataset")
 
 
 @pulumi.output_type
@@ -3195,7 +3534,7 @@ class GoogleCloudDialogflowV2NotificationConfigResponse(dict):
         """
         Defines notification behavior.
         :param str message_format: Format of message.
-        :param str topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        :param str topic: Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
         """
         pulumi.set(__self__, "message_format", message_format)
         pulumi.set(__self__, "topic", topic)
@@ -3212,9 +3551,146 @@ class GoogleCloudDialogflowV2NotificationConfigResponse(dict):
     @pulumi.getter
     def topic(self) -> str:
         """
-        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
+        Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. For telephony integration to receive notification, make sure either this topic is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. For chat integration to receive notification, make sure API caller has been granted the `Dialogflow Service Agent` role for the topic. Format: `projects//locations//topics/`.
         """
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2SmartReplyMetricsResponse(dict):
+    """
+    The evaluation metrics for smart reply model.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowlistCoverage":
+            suggest = "allowlist_coverage"
+        elif key == "conversationCount":
+            suggest = "conversation_count"
+        elif key == "topNMetrics":
+            suggest = "top_n_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2SmartReplyMetricsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2SmartReplyMetricsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2SmartReplyMetricsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowlist_coverage: float,
+                 conversation_count: str,
+                 top_n_metrics: Sequence['outputs.GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse']):
+        """
+        The evaluation metrics for smart reply model.
+        :param float allowlist_coverage: Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
+        :param str conversation_count: Total number of conversations used to generate this metric.
+        :param Sequence['GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse'] top_n_metrics: Metrics of top n smart replies, sorted by TopNMetric.n.
+        """
+        pulumi.set(__self__, "allowlist_coverage", allowlist_coverage)
+        pulumi.set(__self__, "conversation_count", conversation_count)
+        pulumi.set(__self__, "top_n_metrics", top_n_metrics)
+
+    @property
+    @pulumi.getter(name="allowlistCoverage")
+    def allowlist_coverage(self) -> float:
+        """
+        Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
+        """
+        return pulumi.get(self, "allowlist_coverage")
+
+    @property
+    @pulumi.getter(name="conversationCount")
+    def conversation_count(self) -> str:
+        """
+        Total number of conversations used to generate this metric.
+        """
+        return pulumi.get(self, "conversation_count")
+
+    @property
+    @pulumi.getter(name="topNMetrics")
+    def top_n_metrics(self) -> Sequence['outputs.GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse']:
+        """
+        Metrics of top n smart replies, sorted by TopNMetric.n.
+        """
+        return pulumi.get(self, "top_n_metrics")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse(dict):
+    """
+    Evaluation metrics when retrieving `n` smart replies with the model.
+    """
+    def __init__(__self__, *,
+                 n: int,
+                 recall: float):
+        """
+        Evaluation metrics when retrieving `n` smart replies with the model.
+        :param int n: Number of retrieved smart replies. For example, when `n` is 3, this evaluation contains metrics for when Dialogflow retrieves 3 smart replies with the model.
+        :param float recall: Defined as `number of queries whose top n smart replies have at least one similar (token match similarity above the defined threshold) reply as the real reply` divided by `number of queries with at least one smart reply`. Value ranges from 0.0 to 1.0 inclusive.
+        """
+        pulumi.set(__self__, "n", n)
+        pulumi.set(__self__, "recall", recall)
+
+    @property
+    @pulumi.getter
+    def n(self) -> int:
+        """
+        Number of retrieved smart replies. For example, when `n` is 3, this evaluation contains metrics for when Dialogflow retrieves 3 smart replies with the model.
+        """
+        return pulumi.get(self, "n")
+
+    @property
+    @pulumi.getter
+    def recall(self) -> float:
+        """
+        Defined as `number of queries whose top n smart replies have at least one similar (token match similarity above the defined threshold) reply as the real reply` divided by `number of queries with at least one smart reply`. Value ranges from 0.0 to 1.0 inclusive.
+        """
+        return pulumi.get(self, "recall")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2SmartReplyModelMetadataResponse(dict):
+    """
+    Metadata for smart reply models.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trainingModelType":
+            suggest = "training_model_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2SmartReplyModelMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2SmartReplyModelMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2SmartReplyModelMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 training_model_type: str):
+        """
+        Metadata for smart reply models.
+        :param str training_model_type: Optional. Type of the smart reply model. If not provided, model_type is used.
+        """
+        pulumi.set(__self__, "training_model_type", training_model_type)
+
+    @property
+    @pulumi.getter(name="trainingModelType")
+    def training_model_type(self) -> str:
+        """
+        Optional. Type of the smart reply model. If not provided, model_type is used.
+        """
+        return pulumi.get(self, "training_model_type")
 
 
 @pulumi.output_type

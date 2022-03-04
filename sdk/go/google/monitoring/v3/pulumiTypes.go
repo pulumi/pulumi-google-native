@@ -1804,7 +1804,7 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 
 // Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
 type ContentMatcher struct {
-	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+	// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content *string `pulumi:"content"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	Matcher *ContentMatcherMatcher `pulumi:"matcher"`
@@ -1823,7 +1823,7 @@ type ContentMatcherInput interface {
 
 // Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
 type ContentMatcherArgs struct {
-	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+	// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	Matcher ContentMatcherMatcherPtrInput `pulumi:"matcher"`
@@ -1881,7 +1881,7 @@ func (o ContentMatcherOutput) ToContentMatcherOutputWithContext(ctx context.Cont
 	return o
 }
 
-// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 func (o ContentMatcherOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentMatcher) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -1913,7 +1913,7 @@ func (o ContentMatcherArrayOutput) Index(i pulumi.IntInput) ContentMatcherOutput
 
 // Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
 type ContentMatcherResponse struct {
-	// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+	// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 	Content string `pulumi:"content"`
 	// The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
 	Matcher string `pulumi:"matcher"`
@@ -1934,7 +1934,7 @@ func (o ContentMatcherResponseOutput) ToContentMatcherResponseOutputWithContext(
 	return o
 }
 
-// String or regex content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
+// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
 func (o ContentMatcherResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v ContentMatcherResponse) string { return v.Content }).(pulumi.StringOutput)
 }

@@ -52,7 +52,7 @@ export class InstantSnapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSizeGb!: pulumi.Output<string>;
     /**
-     * Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
      */
     public readonly guestFlush!: pulumi.Output<boolean>;
     /**
@@ -173,7 +173,7 @@ export interface InstantSnapshotArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
      */
     guestFlush?: pulumi.Input<boolean>;
     /**

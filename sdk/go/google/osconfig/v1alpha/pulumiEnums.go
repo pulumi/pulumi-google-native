@@ -183,7 +183,7 @@ func (in *ospolicyModePtr) ToOSPolicyModePtrOutputWithContext(ctx context.Contex
 type OSPolicyResourceExecResourceExecInterpreter string
 
 const (
-	// Defaults to NONE.
+	// Invalid value, the request will return validation error.
 	OSPolicyResourceExecResourceExecInterpreterInterpreterUnspecified = OSPolicyResourceExecResourceExecInterpreter("INTERPRETER_UNSPECIFIED")
 	// If an interpreter is not specified, the source is executed directly. This execution, without an interpreter, only succeeds for executables and scripts that have shebang lines.
 	OSPolicyResourceExecResourceExecInterpreterNone = OSPolicyResourceExecResourceExecInterpreter("NONE")

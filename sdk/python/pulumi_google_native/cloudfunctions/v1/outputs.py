@@ -387,7 +387,7 @@ class RetryResponse(dict):
 @pulumi.output_type
 class SecretEnvVarResponse(dict):
     """
-    Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+    Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
     """
     def __init__(__self__, *,
                  key: str,
@@ -395,11 +395,11 @@ class SecretEnvVarResponse(dict):
                  secret: str,
                  version: str):
         """
-        Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+        Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
         :param str key: Name of the environment variable.
         :param str project: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
-        :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "project", project)
@@ -434,7 +434,7 @@ class SecretEnvVarResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
         return pulumi.get(self, "version")
 

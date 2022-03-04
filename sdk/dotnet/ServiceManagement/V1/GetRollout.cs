@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The user who created the Rollout. Readonly.
+        /// </summary>
+        public readonly string CreatedBy;
+        /// <summary>
         /// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
         /// </summary>
         public readonly Outputs.DeleteServiceStrategyResponse DeleteServiceStrategy;
@@ -84,6 +88,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         private GetRolloutResult(
             string createTime,
 
+            string createdBy,
+
             Outputs.DeleteServiceStrategyResponse deleteServiceStrategy,
 
             string rolloutId,
@@ -95,6 +101,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
             Outputs.TrafficPercentStrategyResponse trafficPercentStrategy)
         {
             CreateTime = createTime;
+            CreatedBy = createdBy;
             DeleteServiceStrategy = deleteServiceStrategy;
             RolloutId = rolloutId;
             ServiceName = serviceName;

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
 {
 
     /// <summary>
-    /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable. Secret value is not a part of the configuration. Secret values are only fetched when a new clone starts.
+    /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
     /// </summary>
     [OutputType]
     public sealed class SecretEnvVarResponse
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Outputs
         /// </summary>
         public readonly string Secret;
         /// <summary>
-        /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new clones start.
+        /// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         /// </summary>
         public readonly string Version;
 

@@ -82,7 +82,7 @@ class GetControlResult:
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> Sequence[str]:
         """
-        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment.
+        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "solution_types")
 

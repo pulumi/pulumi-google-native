@@ -40,7 +40,7 @@ type LookupSnapshotResult struct {
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Number of bytes downloaded to restore a snapshot to a disk.
 	DownloadBytes string `pulumi:"downloadBytes"`
-	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush bool `pulumi:"guestFlush"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeatureResponse `pulumi:"guestOsFeatures"`
@@ -157,7 +157,7 @@ func (o LookupSnapshotResultOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.DownloadBytes }).(pulumi.StringOutput)
 }
 
-// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+// [Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.
 func (o LookupSnapshotResultOutput) GuestFlush() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) bool { return v.GuestFlush }).(pulumi.BoolOutput)
 }

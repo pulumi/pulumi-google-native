@@ -110,7 +110,7 @@ class GetInstantSnapshotResult:
     @pulumi.getter(name="guestFlush")
     def guest_flush(self) -> bool:
         """
-        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+        Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
         """
         return pulumi.get(self, "guest_flush")
 

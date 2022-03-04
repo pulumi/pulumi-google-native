@@ -23,7 +23,7 @@ type RegionInstantSnapshot struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Size of the source disk, specified in GB.
 	DiskSizeGb pulumi.StringOutput `pulumi:"diskSizeGb"`
-	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolOutput `pulumi:"guestFlush"`
 	// Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -97,7 +97,7 @@ func (RegionInstantSnapshotState) ElementType() reflect.Type {
 type regionInstantSnapshotArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush *bool `pulumi:"guestFlush"`
 	// Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
 	Labels map[string]string `pulumi:"labels"`
@@ -114,7 +114,7 @@ type regionInstantSnapshotArgs struct {
 type RegionInstantSnapshotArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+	// Whether to attempt an application consistent instant snapshot by informing the OS to prepare for the snapshot process.
 	GuestFlush pulumi.BoolPtrInput
 	// Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.
 	Labels pulumi.StringMapInput

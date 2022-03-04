@@ -31,6 +31,10 @@ export interface GetRolloutResult {
      */
     readonly createTime: string;
     /**
+     * The user who created the Rollout. Readonly.
+     */
+    readonly createdBy: string;
+    /**
      * The strategy associated with a rollout to delete a `ManagedService`. Readonly.
      */
     readonly deleteServiceStrategy: outputs.servicemanagement.v1.DeleteServiceStrategyResponse;

@@ -60,7 +60,7 @@ class SubnetworkArgs:
         :param pulumi.Input[str] reserved_internal_range: The URL of the reserved internal range.
         :param pulumi.Input['SubnetworkRole'] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
-        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         """
         pulumi.set(__self__, "region", region)
@@ -359,7 +359,7 @@ class SubnetworkArgs:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input['SubnetworkStackType']]:
         """
-        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "stack_type")
 
@@ -433,7 +433,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] reserved_internal_range: The URL of the reserved internal range.
         :param pulumi.Input['SubnetworkRole'] role: The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]] secondary_ip_ranges: An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
-        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input['SubnetworkStackType'] stack_type: The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] vlans: A repeated field indicating the VLAN IDs supported on this subnetwork. During Subnet creation, specifying vlan is valid only if enable_l2 is true. During Subnet Update, specifying vlan is allowed only for l2 enabled subnets. Restricted to only one VLAN.
         """
         ...
@@ -524,6 +524,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
+            __props__.__dict__["internal_ipv6_prefix"] = None
             __props__.__dict__["ipv6_cidr_range"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
@@ -561,6 +562,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["flow_sampling"] = None
         __props__.__dict__["gateway_address"] = None
+        __props__.__dict__["internal_ipv6_prefix"] = None
         __props__.__dict__["ip_cidr_range"] = None
         __props__.__dict__["ipv6_access_type"] = None
         __props__.__dict__["ipv6_cidr_range"] = None
@@ -662,6 +664,14 @@ class Subnetwork(pulumi.CustomResource):
         The gateway address for default routes to reach destination addresses outside this subnetwork.
         """
         return pulumi.get(self, "gateway_address")
+
+    @property
+    @pulumi.getter(name="internalIpv6Prefix")
+    def internal_ipv6_prefix(self) -> pulumi.Output[str]:
+        """
+        The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        """
+        return pulumi.get(self, "internal_ipv6_prefix")
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -803,7 +813,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="stackType")
     def stack_type(self) -> pulumi.Output[str]:
         """
-        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+        The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "stack_type")
 

@@ -74,6 +74,10 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Share-settings for the node group
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.beta.ShareSettingsResponse>;
+    /**
      * The total number of nodes in the node group.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
@@ -107,6 +111,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -126,6 +131,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeTemplate"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["shareSettings"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
@@ -167,6 +173,10 @@ export interface NodeGroupArgs {
     nodeTemplate?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     requestId?: pulumi.Input<string>;
+    /**
+     * Share-settings for the node group
+     */
+    shareSettings?: pulumi.Input<inputs.compute.beta.ShareSettingsArgs>;
     status?: pulumi.Input<enums.compute.beta.NodeGroupStatus>;
     zone?: pulumi.Input<string>;
 }

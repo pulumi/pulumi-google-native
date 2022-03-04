@@ -426,7 +426,7 @@
       }
     }
   },
-  "revision": "20220221",
+  "revision": "20220302",
   "rootUrl": "https://serviceusage.googleapis.com/",
   "schemas": {
     "AdminQuotaPolicy": {

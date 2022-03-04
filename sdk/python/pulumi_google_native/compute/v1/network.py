@@ -18,8 +18,11 @@ class NetworkArgs:
     def __init__(__self__, *,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input['NetworkRoutingConfigArgs']] = None):
@@ -27,18 +30,27 @@ class NetworkArgs:
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
+        :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+        :param pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder'] network_firewall_policy_enforcement_order: The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
         :param pulumi.Input['NetworkRoutingConfigArgs'] routing_config: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         """
         if auto_create_subnetworks is not None:
             pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enable_ula_internal_ipv6 is not None:
+            pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
+        if internal_ipv6_range is not None:
+            pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_firewall_policy_enforcement_order is not None:
+            pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -71,6 +83,30 @@ class NetworkArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="enableUlaInternalIpv6")
+    def enable_ula_internal_ipv6(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        """
+        return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @enable_ula_internal_ipv6.setter
+    def enable_ula_internal_ipv6(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ula_internal_ipv6", value)
+
+    @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        """
+        return pulumi.get(self, "internal_ipv6_range")
+
+    @internal_ipv6_range.setter
+    def internal_ipv6_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_ipv6_range", value)
+
+    @property
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[int]]:
         """
@@ -93,6 +129,18 @@ class NetworkArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
+    def network_firewall_policy_enforcement_order(self) -> Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']]:
+        """
+        The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        """
+        return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @network_firewall_policy_enforcement_order.setter
+    def network_firewall_policy_enforcement_order(self, value: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']]):
+        pulumi.set(self, "network_firewall_policy_enforcement_order", value)
 
     @property
     @pulumi.getter
@@ -132,8 +180,11 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
@@ -145,8 +196,11 @@ class Network(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_subnetworks: Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
+        :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+        :param pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder'] network_firewall_policy_enforcement_order: The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
         :param pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']] routing_config: The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         """
         ...
@@ -175,8 +229,11 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
+                 internal_ipv6_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
@@ -194,8 +251,11 @@ class Network(pulumi.CustomResource):
 
             __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
             __props__.__dict__["description"] = description
+            __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
+            __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["routing_config"] = routing_config
@@ -204,6 +264,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["peerings"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["subnetworks"] = None
         super(Network, __self__).__init__(
             'google-native:compute/v1:Network',
@@ -230,13 +291,17 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["auto_create_subnetworks"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["enable_ula_internal_ipv6"] = None
         __props__.__dict__["gateway_i_pv4"] = None
+        __props__.__dict__["internal_ipv6_range"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["mtu"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["network_firewall_policy_enforcement_order"] = None
         __props__.__dict__["peerings"] = None
         __props__.__dict__["routing_config"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["self_link_with_id"] = None
         __props__.__dict__["subnetworks"] = None
         return Network(resource_name, opts=opts, __props__=__props__)
 
@@ -265,12 +330,28 @@ class Network(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableUlaInternalIpv6")
+    def enable_ula_internal_ipv6(self) -> pulumi.Output[bool]:
+        """
+        Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+        """
+        return pulumi.get(self, "enable_ula_internal_ipv6")
+
+    @property
     @pulumi.getter(name="gatewayIPv4")
     def gateway_i_pv4(self) -> pulumi.Output[str]:
         """
         The gateway address for default routing out of the network, selected by GCP.
         """
         return pulumi.get(self, "gateway_i_pv4")
+
+    @property
+    @pulumi.getter(name="internalIpv6Range")
+    def internal_ipv6_range(self) -> pulumi.Output[str]:
+        """
+        When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        """
+        return pulumi.get(self, "internal_ipv6_range")
 
     @property
     @pulumi.getter
@@ -297,6 +378,14 @@ class Network(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkFirewallPolicyEnforcementOrder")
+    def network_firewall_policy_enforcement_order(self) -> pulumi.Output[str]:
+        """
+        The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+        """
+        return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @property
     @pulumi.getter
     def peerings(self) -> pulumi.Output[Sequence['outputs.NetworkPeeringResponse']]:
         """
@@ -319,6 +408,14 @@ class Network(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="selfLinkWithId")
+    def self_link_with_id(self) -> pulumi.Output[str]:
+        """
+        Server-defined URL for this resource with the resource id.
+        """
+        return pulumi.get(self, "self_link_with_id")
 
     @property
     @pulumi.getter

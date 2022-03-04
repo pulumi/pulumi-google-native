@@ -37,7 +37,7 @@ type LookupInstanceGroupResult struct {
 	Kind string `pulumi:"kind"`
 	// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
 	Name string `pulumi:"name"`
-	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
+	//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "app1", port: 8080}, {name: "app1", port: 8081}, {name: "app2", port: 8082}] Named ports apply to all instances in this instance group.
 	NamedPorts []NamedPortResponse `pulumi:"namedPorts"`
 	// The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
 	Network string `pulumi:"network"`
@@ -111,7 +111,7 @@ func (o LookupInstanceGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group.
+//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "app1", port: 8080}, {name: "app1", port: 8081}, {name: "app2", port: 8082}] Named ports apply to all instances in this instance group.
 func (o LookupInstanceGroupResultOutput) NamedPorts() NamedPortResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceGroupResult) []NamedPortResponse { return v.NamedPorts }).(NamedPortResponseArrayOutput)
 }

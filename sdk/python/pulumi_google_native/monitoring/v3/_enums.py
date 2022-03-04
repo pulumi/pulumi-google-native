@@ -211,7 +211,7 @@ class ContentMatcherMatcher(str, Enum):
     """
     MATCHES_REGEX = "MATCHES_REGEX"
     """
-    Selects regular-expression matching. The match succeeds of the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
+    Selects regular-expression matching. The match succeeds if the output matches the regular expression specified in the content string. Regex matching is only supported for HTTP/HTTPS checks.
     """
     NOT_MATCHES_REGEX = "NOT_MATCHES_REGEX"
     """
@@ -421,7 +421,7 @@ class MetricThresholdEvaluationMissingData(str, Enum):
     """
     EVALUATION_MISSING_DATA_UNSPECIFIED = "EVALUATION_MISSING_DATA_UNSPECIFIED"
     """
-    An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+    An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
     """
     EVALUATION_MISSING_DATA_INACTIVE = "EVALUATION_MISSING_DATA_INACTIVE"
     """
@@ -443,7 +443,7 @@ class MonitoringQueryLanguageConditionEvaluationMissingData(str, Enum):
     """
     EVALUATION_MISSING_DATA_UNSPECIFIED = "EVALUATION_MISSING_DATA_UNSPECIFIED"
     """
-    An unspecified evaluation missing data option, if used, it will default to EVALUATION_MISSING_DATA_ACTIVE.
+    An unspecified evaluation missing data option. Equivalent to EVALUATION_MISSING_DATA_NO_OP.
     """
     EVALUATION_MISSING_DATA_INACTIVE = "EVALUATION_MISSING_DATA_INACTIVE"
     """

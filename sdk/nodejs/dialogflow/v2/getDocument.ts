@@ -66,6 +66,10 @@ export interface GetDocumentResult {
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */
     readonly rawContent: string;
+    /**
+     * The current state of the document.
+     */
+    readonly state: string;
 }
 
 export function getDocumentOutput(args: GetDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDocumentResult> {

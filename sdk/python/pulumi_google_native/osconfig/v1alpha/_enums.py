@@ -37,7 +37,7 @@ class OSPolicyResourceExecResourceExecInterpreter(str, Enum):
     """
     INTERPRETER_UNSPECIFIED = "INTERPRETER_UNSPECIFIED"
     """
-    Defaults to NONE.
+    Invalid value, the request will return validation error.
     """
     NONE = "NONE"
     """

@@ -37,6 +37,10 @@ export class WebApp extends pulumi.CustomResource {
     }
 
     /**
+     * The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+     */
+    public readonly apiKeyId!: pulumi.Output<string>;
+    /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */
     public readonly appId!: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class WebApp extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
             resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["appUrls"] = args ? args.appUrls : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -79,6 +84,7 @@ export class WebApp extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["webId"] = undefined /*out*/;
         } else {
+            resourceInputs["apiKeyId"] = undefined /*out*/;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["appUrls"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -95,6 +101,10 @@ export class WebApp extends pulumi.CustomResource {
  * The set of arguments for constructing a WebApp resource.
  */
 export interface WebAppArgs {
+    /**
+     * The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+     */
+    apiKeyId?: pulumi.Input<string>;
     /**
      * Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
      */

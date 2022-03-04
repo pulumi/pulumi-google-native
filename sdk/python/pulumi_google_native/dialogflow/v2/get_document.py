@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, content_uri=None, display_name=None, enable_auto_reload=None, knowledge_types=None, latest_reload_status=None, metadata=None, mime_type=None, name=None, raw_content=None):
+    def __init__(__self__, content_uri=None, display_name=None, enable_auto_reload=None, knowledge_types=None, latest_reload_status=None, metadata=None, mime_type=None, name=None, raw_content=None, state=None):
         if content_uri and not isinstance(content_uri, str):
             raise TypeError("Expected argument 'content_uri' to be a str")
         pulumi.set(__self__, "content_uri", content_uri)
@@ -46,6 +46,9 @@ class GetDocumentResult:
         if raw_content and not isinstance(raw_content, str):
             raise TypeError("Expected argument 'raw_content' to be a str")
         pulumi.set(__self__, "raw_content", raw_content)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="contentUri")
@@ -119,6 +122,14 @@ class GetDocumentResult:
         """
         return pulumi.get(self, "raw_content")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the document.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetDocumentResult(GetDocumentResult):
     # pylint: disable=using-constant-test
@@ -134,7 +145,8 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             metadata=self.metadata,
             mime_type=self.mime_type,
             name=self.name,
-            raw_content=self.raw_content)
+            raw_content=self.raw_content,
+            state=self.state)
 
 
 def get_document(document_id: Optional[str] = None,
@@ -165,7 +177,8 @@ def get_document(document_id: Optional[str] = None,
         metadata=__ret__.metadata,
         mime_type=__ret__.mime_type,
         name=__ret__.name,
-        raw_content=__ret__.raw_content)
+        raw_content=__ret__.raw_content,
+        state=__ret__.state)
 
 
 @_utilities.lift_output_func(get_document)

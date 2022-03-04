@@ -17,15 +17,15 @@ namespace Pulumi.GoogleNative.GameServices.V1.Outputs
     public sealed class ScalingConfigResponse
     {
         /// <summary>
-        /// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        /// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
         /// </summary>
         public readonly string FleetAutoscalerSpec;
         /// <summary>
-        /// The name of the Scaling Config
+        /// The name of the scaling config.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The schedules to which this Scaling Config applies.
+        /// The schedules to which this scaling config applies.
         /// </summary>
         public readonly ImmutableArray<Outputs.ScheduleResponse> Schedules;
         /// <summary>

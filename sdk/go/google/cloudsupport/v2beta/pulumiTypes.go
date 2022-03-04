@@ -177,8 +177,6 @@ type ActorResponse struct {
 	Email string `pulumi:"email"`
 	// Whether the actor is a Google support actor.
 	GoogleSupport bool `pulumi:"googleSupport"`
-	// An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
-	PrincipalId string `pulumi:"principalId"`
 }
 
 // An object containing information about the effective user and authenticated principal responsible for an action.
@@ -209,11 +207,6 @@ func (o ActorResponseOutput) Email() pulumi.StringOutput {
 // Whether the actor is a Google support actor.
 func (o ActorResponseOutput) GoogleSupport() pulumi.BoolOutput {
 	return o.ApplyT(func(v ActorResponse) bool { return v.GoogleSupport }).(pulumi.BoolOutput)
-}
-
-// An ID representing the user that was authenticated when the corresponding action was taken. This will be an email address, if one is available, or some other unique ID. See https://cloud.google.com/docs/authentication for more information on types of authentication.
-func (o ActorResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ActorResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
 // A classification object with a product type and value.

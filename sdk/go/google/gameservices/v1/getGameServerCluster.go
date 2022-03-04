@@ -29,7 +29,7 @@ type LookupGameServerClusterArgs struct {
 }
 
 type LookupGameServerClusterResult struct {
-	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	// The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
 	ClusterState KubernetesClusterStateResponse `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoResponse `pulumi:"connectionInfo"`
@@ -37,11 +37,11 @@ type LookupGameServerClusterResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Human readable description of the cluster.
 	Description string `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag string `pulumi:"etag"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
 	Name string `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`
@@ -82,7 +82,7 @@ func (o LookupGameServerClusterResultOutput) ToLookupGameServerClusterResultOutp
 	return o
 }
 
-// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+// The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
 func (o LookupGameServerClusterResultOutput) ClusterState() KubernetesClusterStateResponseOutput {
 	return o.ApplyT(func(v LookupGameServerClusterResult) KubernetesClusterStateResponse { return v.ClusterState }).(KubernetesClusterStateResponseOutput)
 }
@@ -102,7 +102,7 @@ func (o LookupGameServerClusterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// ETag of the resource.
+// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 func (o LookupGameServerClusterResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -112,7 +112,7 @@ func (o LookupGameServerClusterResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGameServerClusterResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
 func (o LookupGameServerClusterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGameServerClusterResult) string { return v.Name }).(pulumi.StringOutput)
 }

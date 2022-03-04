@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public static class GetEndpointAttachment
     {
         /// <summary>
-        /// Gets the specified EndpointAttachment.
+        /// Gets the endpoint attachment.
         /// </summary>
         public static Task<GetEndpointAttachmentResult> InvokeAsync(GetEndpointAttachmentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEndpointAttachmentResult>("google-native:apigee/v1:getEndpointAttachment", args ?? new GetEndpointAttachmentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the specified EndpointAttachment.
+        /// Gets the endpoint attachment.
         /// </summary>
         public static Output<GetEndpointAttachmentResult> Invoke(GetEndpointAttachmentInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetEndpointAttachmentResult>("google-native:apigee/v1:getEndpointAttachment", args ?? new GetEndpointAttachmentInvokeArgs(), options.WithDefaults());
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetEndpointAttachmentResult
     {
         /// <summary>
-        /// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
+        /// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
         /// </summary>
         public readonly string Host;
         /// <summary>
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// Name of the Endpoint Attachment in the following format: `organizations/{organization}/endpointAttachments/{endpoint_attachment}`.
+        /// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         /// </summary>
         public readonly string Name;
         /// <summary>

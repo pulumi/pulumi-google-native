@@ -28,6 +28,8 @@ type LookupRolloutArgs struct {
 type LookupRolloutResult struct {
 	// Creation time of the rollout. Readonly.
 	CreateTime string `pulumi:"createTime"`
+	// The user who created the Rollout. Readonly.
+	CreatedBy string `pulumi:"createdBy"`
 	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
 	DeleteServiceStrategy DeleteServiceStrategyResponse `pulumi:"deleteServiceStrategy"`
 	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
@@ -75,6 +77,11 @@ func (o LookupRolloutResultOutput) ToLookupRolloutResultOutputWithContext(ctx co
 // Creation time of the rollout. Readonly.
 func (o LookupRolloutResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user who created the Rollout. Readonly.
+func (o LookupRolloutResultOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRolloutResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
 // The strategy associated with a rollout to delete a `ManagedService`. Readonly.

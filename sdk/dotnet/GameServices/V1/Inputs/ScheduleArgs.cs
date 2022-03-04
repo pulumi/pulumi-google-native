@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
 {
 
     /// <summary>
-    /// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
+    /// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
     /// </summary>
     public sealed class ScheduleArgs : Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public Input<string>? CronJobDuration { get; set; }
 
         /// <summary>
-        /// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. Cron spec specifies the local time as defined by the realm.
+        /// The cron definition of the scheduled event. See https://en.wikipedia.org/wiki/Cron. The cron spec specifies the local time as defined by the realm.
         /// </summary>
         [Input("cronSpec")]
         public Input<string>? CronSpec { get; set; }

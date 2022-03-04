@@ -15,7 +15,7 @@ import (
 type GameServerCluster struct {
 	pulumi.CustomResourceState
 
-	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	// The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
 	ClusterState KubernetesClusterStateResponseOutput `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoResponseOutput `pulumi:"connectionInfo"`
@@ -23,11 +23,11 @@ type GameServerCluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Human readable description of the cluster.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -82,13 +82,13 @@ type gameServerClusterArgs struct {
 	ConnectionInfo *GameServerClusterConnectionInfo `pulumi:"connectionInfo"`
 	// Human readable description of the cluster.
 	Description *string `pulumi:"description"`
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag                *string `pulumi:"etag"`
 	GameServerClusterId string  `pulumi:"gameServerClusterId"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	RealmId string  `pulumi:"realmId"`
@@ -100,13 +100,13 @@ type GameServerClusterArgs struct {
 	ConnectionInfo GameServerClusterConnectionInfoPtrInput
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrInput
-	// ETag of the resource.
+	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
 	Etag                pulumi.StringPtrInput
 	GameServerClusterId pulumi.StringInput
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	RealmId pulumi.StringInput

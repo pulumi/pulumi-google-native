@@ -90,10 +90,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         public readonly string KajEnrollmentState;
         /// <summary>
-        /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
-        /// </summary>
-        public readonly Outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse KmsSettings;
-        /// <summary>
         /// Optional. Labels applied to the workload.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -134,8 +130,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 
             string kajEnrollmentState,
 
-            Outputs.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse kmsSettings,
-
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -155,7 +149,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
             EnableSovereignControls = enableSovereignControls;
             Etag = etag;
             KajEnrollmentState = kajEnrollmentState;
-            KmsSettings = kmsSettings;
             Labels = labels;
             Name = name;
             ProvisionedResourcesParent = provisionedResourcesParent;
