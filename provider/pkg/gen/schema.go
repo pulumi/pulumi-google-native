@@ -863,9 +863,9 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		value := typeSchema.Properties[name]
 		sdkName := apiPropNameToSdkName(typeName, name)
 
-		if isDeprecated(value.Description) {
-			continue
-		}
+		//if isDeprecated(value.Description) {
+		//	continue
+		//}
 		readOnly := value.ReadOnly || isReadOnly(value.Description)
 		if !isOutput && readOnly {
 			continue
@@ -907,10 +907,14 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 				result.requiredSpecs.Add(sdkName)
 			}
 
-			result.specs[sdkName] = schema.PropertySpec{
+			p := schema.PropertySpec{
 				Description: clearDescription(prop.Description),
 				TypeSpec:    *typeSpec,
 			}
+			if isDeprecated(prop.Description) {
+				p.DeprecationMessage = prop.Description
+			}
+			result.specs[sdkName] = p
 		}
 
 		apiProp := resources.CloudAPIProperty{
