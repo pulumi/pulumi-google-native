@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package resources
 
@@ -53,38 +65,42 @@ var resourceMap = &CloudAPIMetadata{
 	},
 	Resources: map[string]CloudAPIResource{
 		"r1": {
-			CreateProperties: map[string]CloudAPIProperty{
-				"name": {},
-				"x-threshold": {
-					SdkName: "threshold",
-				},
-				"structure": {
-					Ref: "#/types/google-native:testing:Structure",
-				},
-				"p1": {
-					Container: "properties",
-				},
-				"p2": {
-					Container: "properties",
-				},
-				"more": {
-					Container: "properties",
-					Ref:       "#/types/google-native:testing:More",
-				},
-				"tags":         {},
-				"untypedArray": {},
-				"untypedDict": {
-					Ref: "pulumi.json#/Any",
+			Create: CloudAPIOperation{
+				SDKProperties: map[string]CloudAPIProperty{
+					"name": {},
+					"x-threshold": {
+						SdkName: "threshold",
+					},
+					"structure": {
+						Ref: "#/types/google-native:testing:Structure",
+					},
+					"p1": {
+						Container: "properties",
+					},
+					"p2": {
+						Container: "properties",
+					},
+					"more": {
+						Container: "properties",
+						Ref:       "#/types/google-native:testing:More",
+					},
+					"tags":         {},
+					"untypedArray": {},
+					"untypedDict": {
+						Ref: "pulumi.json#/Any",
+					},
 				},
 			},
-			UpdateProperties: map[string]CloudAPIProperty{
-				"more": {
-					Container: "properties",
-					Ref:       "#/types/google-native:testing:More",
-				},
-				"tags": {},
-				"tagsFingerprint": {
-					CopyFromOutputs: true,
+			Update: CloudAPIOperation{
+				SDKProperties: map[string]CloudAPIProperty{
+					"more": {
+						Container: "properties",
+						Ref:       "#/types/google-native:testing:More",
+					},
+					"tags": {},
+					"tagsFingerprint": {
+						CopyFromOutputs: true,
+					},
 				},
 			},
 		},
@@ -201,7 +217,7 @@ var sampleAPIUpdatePackage = map[string]interface{}{
 }
 
 func TestSdkPropertiesToRequestBody(t *testing.T) {
-	bodyProperties := resourceMap.Resources["r1"].CreateProperties
+	bodyProperties := resourceMap.Resources["r1"].Create.SDKProperties
 	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, nil)
 	assert.Equal(t, sampleAPIPackage, data)
 }
@@ -237,7 +253,7 @@ func TestSdkPropertiesToRequestBodyWithState(t *testing.T) {
 			"key1": "value1",
 		},
 	}
-	bodyProperties := resourceMap.Resources["r1"].CreateProperties
+	bodyProperties := resourceMap.Resources["r1"].Create.SDKProperties
 	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, state)
 	assert.Equal(t, sampleAPIPackage, data)
 }
@@ -257,7 +273,7 @@ func TestSdkPropertiesToRequestBodyEmptyCollections(t *testing.T) {
 			},
 		},
 	}
-	bodyProperties := resourceMap.Resources["r1"].CreateProperties
+	bodyProperties := resourceMap.Resources["r1"].Create.SDKProperties
 	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, emptyCollectionData, nil)
 	assert.Equal(t, expectedBody, actualBody)
 }
@@ -277,13 +293,13 @@ func TestSdkPropertiesToRequestBodyNilCollections(t *testing.T) {
 			},
 		},
 	}
-	bodyProperties := resourceMap.Resources["r1"].CreateProperties
+	bodyProperties := resourceMap.Resources["r1"].Create.SDKProperties
 	actualBody := c.SdkPropertiesToRequestBody(bodyProperties, nilCollectionData, nil)
 	assert.Equal(t, expectedBody, actualBody)
 }
 
 func TestSdkPropertiesToRequestBodyCopyOutputs(t *testing.T) {
-	bodyProperties := resourceMap.Resources["r1"].UpdateProperties
+	bodyProperties := resourceMap.Resources["r1"].Update.SDKProperties
 	data := c.SdkPropertiesToRequestBody(bodyProperties, sampleSdkProps, sampleSdkState)
 	assert.Equal(t, sampleAPIUpdatePackage, data)
 }

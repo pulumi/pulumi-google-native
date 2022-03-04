@@ -130,7 +130,7 @@ var autonameOverrides = map[string]string{
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
-// that aren't successfully infered from the discovery document.
+// that aren't successfully inferred from the discovery document.
 var csharpNamespaceOverrides = map[string]string{
 	"billingbudgets":       "BillingBudgets",
 	"cloudkms":             "CloudKMS",

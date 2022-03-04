@@ -1,4 +1,17 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package provider
 
 import (
@@ -12,17 +25,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
-func calculateResourceId(res resources.CloudAPIResource, inputs map[string]interface{}, outputs map[string]interface{}) (string, error) {
-	if res.IdProperty != "" {
-		v, ok := outputs[res.IdProperty].(string)
+func calculateResourceID(
+	res resources.CloudAPIResource,
+	inputs map[string]interface{},
+	outputs map[string]interface{},
+) (string, error) {
+	if res.IDProperty != "" {
+		v, ok := outputs[res.IDProperty].(string)
 		if !ok {
-			return "", errors.Errorf("ID property %q not found", res.IdProperty)
+			return "", errors.Errorf("ID property %q not found", res.IDProperty)
 		}
-		return strings.TrimPrefix(v, res.BaseUrl), nil
+		return strings.TrimPrefix(v, res.RootURL), nil
 	}
 
-	id := res.IdPath
-	idParams := res.IdParams
+	id := res.IDPath
+	idParams := res.IDParams
 	for name, alias := range idParams {
 		var propValue string
 		if v, has := evalPropertyValue(inputs, alias); has {
@@ -65,17 +82,20 @@ func evalPropertyValue(values map[string]interface{}, path string) (string, bool
 	return "", false
 }
 
-// buildCreateUrl composes the URL to invoke to create a resource with given inputs.
-func buildCreateUrl(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
-	uri := res.ResourceUrl(res.CreatePath)
-	return buildUrl(uri, res.CreateParams, inputs)
+// buildCreateURL composes the URL to invoke to create a resource with given inputs.
+func buildCreateURL(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
+	return buildURL(res.Create.Endpoint.Template, res.Create.Endpoint.Values, inputs)
 }
 
-func buildFunctionUrl(res resources.CloudAPIFunction, inputs resource.PropertyMap) (string, error) {
-	return buildUrl(res.Url, res.Params, inputs)
+func buildFunctionURL(res resources.CloudAPIFunction, inputs resource.PropertyMap) (string, error) {
+	return buildURL(res.URL.Template, res.URL.Values, inputs)
 }
 
-func buildUrl(uriTemplate string, params []resources.CloudAPIResourceParam, inputs resource.PropertyMap) (string, error) {
+func buildURL(
+	uriTemplate string,
+	params []resources.CloudAPIResourceParam,
+	inputs resource.PropertyMap,
+) (string, error) {
 	queryMap := map[string]string{}
 	uriString := uriTemplate
 	for _, param := range params {
@@ -89,22 +109,23 @@ func buildUrl(uriTemplate string, params []resources.CloudAPIResourceParam, inpu
 		}
 
 		value := inputs[key].StringValue()
-		switch param.Location {
+		switch param.Kind {
 		case "path":
 			uriString = strings.Replace(uriString, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
 		case "query":
 			queryMap[param.Name] = value
 		default:
-			return "", errors.Errorf("unknown param location %q", param.Location)
+			return "", errors.Errorf("unknown param location %q", param.Kind)
 		}
 	}
 	uri, err := url.Parse(uriString)
 	if err != nil {
 		return "", errors.Wrapf(err, "parsing resource URL %q", uriString)
 	}
+	uri.Scheme = "https"
 	query := uri.Query()
 	for key, value := range queryMap {
-		query.Add(key, value)
+		query.Set(key, value)
 	}
 	uri.RawQuery = query.Encode()
 	return uri.String(), nil

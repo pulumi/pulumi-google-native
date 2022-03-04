@@ -1,4 +1,16 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package provider
 
@@ -12,8 +24,8 @@ import (
 
 func TestCalculateResourceId_IdProperty(t *testing.T) {
 	res := resources.CloudAPIResource{
-		BaseUrl:    "https://myapi.google.com",
-		IdProperty: "selfLink",
+		RootURL:    "https://myapi.google.com",
+		IDProperty: "selfLink",
 	}
 	inputs := map[string]interface{}{
 		"name": "foo",
@@ -23,16 +35,16 @@ func TestCalculateResourceId_IdProperty(t *testing.T) {
 		"name":     "foo",
 		"selfLink": "https://myapi.google.com" + expected,
 	}
-	actual, err := calculateResourceId(res, inputs, outputs)
+	actual, err := calculateResourceID(res, inputs, outputs)
 	assert.NoError(t, err)
 	assert.Equal(t, expected, actual)
 }
 
 func TestCalculateResourceId_IdPath(t *testing.T) {
 	res := resources.CloudAPIResource{
-		BaseUrl: "https://myapi.google.com",
-		IdPath:  "/v1/myparent/{parentsId}/myresource/{myresourcesId}",
-		IdParams: map[string]string{
+		RootURL: "https://myapi.google.com",
+		IDPath:  "/v1/myparent/{parentsId}/myresource/{myresourcesId}",
+		IDParams: map[string]string{
 			"parentsId":     "parentId",
 			"myresourcesId": "reference.name",
 		},
@@ -45,7 +57,7 @@ func TestCalculateResourceId_IdPath(t *testing.T) {
 			"name": "myparent/foo/myresource/bar",
 		},
 	}
-	actual, err := calculateResourceId(res, inputs, outputs)
+	actual, err := calculateResourceID(res, inputs, outputs)
 	assert.NoError(t, err)
 	assert.Equal(t, "/v1/myparent/foo/myresource/bar", actual)
 }

@@ -30,6 +30,7 @@ import (
 	"github.com/hashicorp/go-cleanhttp"
 	"github.com/mitchellh/go-homedir"
 	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"golang.org/x/oauth2"
 	"google.golang.org/api/googleapi"
@@ -83,7 +84,11 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 
 // RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
-func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
+func (c *GoogleClient) RequestWithTimeout(
+	method, rawurl string,
+	body map[string]interface{},
+	timeout time.Duration,
+) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", c.userAgent)
 	reqHeaders.Set("Content-Type", "application/json")
@@ -109,6 +114,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	if err != nil {
 		return nil, err
 	}
+	// TODO: request not handling timeout
 	req, err := http.NewRequest(method, u, &buf)
 	if err != nil {
 		return nil, err
@@ -116,7 +122,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	req.Header = reqHeaders
 
 	debugBody, _ := httputil.DumpRequestOut(req, true)
-	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
+	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJSONLines(debugBody))
 
 	res, err = c.http.Do(req)
 	if err != nil {
@@ -126,7 +132,7 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
 	// propagates to our current Go version. This fix will be in Go 1.18.
 	debugResp, _ := httputil.DumpResponse(res, false)
-	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJSONLines(debugResp))
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		googleapi.CloseBody(res)
@@ -156,8 +162,14 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 // multipartBoundary is a random string used to separate parts of multi-part request bodies.
 const multipartBoundary = "boundary-fa78ad331d"
 
-// UploadWithTimeout performs a multi-part upload using the specified HTTP method, rawurl etc. using the specified timeout.
-func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[string]interface{}, binary []byte, timeout time.Duration) (map[string]interface{}, error) {
+// UploadWithTimeout performs a multi-part upload using the specified HTTP method, rawurl, etc. using the specified
+// timeout.
+func (c *GoogleClient) UploadWithTimeout(
+	method, rawurl string,
+	metadata map[string]interface{},
+	binary []byte,
+	timeout time.Duration,
+) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", c.userAgent)
 	reqHeaders.Set("Content-Type", fmt.Sprintf("multipart/related; boundary=%s", multipartBoundary))
@@ -191,6 +203,8 @@ func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[str
 	if err != nil {
 		return nil, err
 	}
+
+	// TODO: request not handling timeout
 	req, err := http.NewRequest(method, u, &buf)
 	if err != nil {
 		return nil, err
@@ -198,7 +212,7 @@ func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[str
 	req.Header = reqHeaders
 
 	debugBody, _ := httputil.DumpRequest(req, true)
-	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
+	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJSONLines(debugBody))
 
 	res, err := c.http.Do(req)
 	if err != nil {
@@ -208,7 +222,7 @@ func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[str
 	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
 	// propagates to our current Go version.
 	debugResp, _ := httputil.DumpResponse(res, false)
-	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJsonLines(debugResp))
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJSONLines(debugResp))
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		googleapi.CloseBody(res)
@@ -343,14 +357,15 @@ func pathOrContents(poc string) (string, bool, error) {
 	return poc, false, nil
 }
 
-// prettyPrintJsonLines iterates through a []byte line-by-line,
+// prettyPrintJSONLines iterates through a []byte line-by-line,
 // transforming any lines that are complete json into pretty-printed json.
-func prettyPrintJsonLines(b []byte) string {
+func prettyPrintJSONLines(b []byte) string {
 	parts := strings.Split(string(b), "\n")
 	for i, p := range parts {
 		if b := []byte(p); json.Valid(b) {
 			var out bytes.Buffer
-			json.Indent(&out, b, "", " ")
+			err := json.Indent(&out, b, "", " ")
+			contract.IgnoreError(err)
 			parts[i] = out.String()
 		}
 	}
