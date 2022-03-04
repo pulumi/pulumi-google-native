@@ -122,6 +122,18 @@ func CombineURL(baseURL, path string) string {
 	return fmt.Sprintf("%s/%s", strings.TrimRight(baseURL, "/"), strings.TrimLeft(path, "/"))
 }
 
+// AssembleURL combines URL fragment strings into a single URL string.
+func AssembleURL(fragments ...string) string {
+	var b strings.Builder
+	for i, fragment := range fragments {
+		if i > 0 && len(fragment) > 0 {
+			b.WriteString("/")
+		}
+		b.WriteString(strings.TrimPrefix(strings.TrimSuffix(fragment, "/"), "/"))
+	}
+	return b.String()
+}
+
 // CloudAPIProperty is a property of a body of an API call payload.
 type CloudAPIProperty struct {
 	Ref                  string            `json:"$ref,omitempty"`

@@ -335,9 +335,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			return ""
 		}
 		if len(method.FlatPath) > 0 {
-			return method.FlatPath
+			return resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.FlatPath)
 		}
-		return method.Path
+
+		return resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.Path)
 	}
 	createPath := methodPath(dd.createMethod)
 
@@ -346,7 +347,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		RootURL: g.rest.BaseUrl,
 		Create: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: resources.CombineURL(baseURL, methodPath(dd.createMethod)),
+				Template: methodPath(dd.createMethod),
 			},
 			Verb: dd.createMethod.HttpMethod,
 		},
