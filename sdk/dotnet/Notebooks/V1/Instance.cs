@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> BootDiskType { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// </summary>
+        [Output("canIpForward")]
+        public Output<bool> CanIpForward { get; private set; } = null!;
+
+        /// <summary>
         /// Use a container image to start the notebook instance.
         /// </summary>
         [Output("containerImage")]
@@ -288,6 +294,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Input("bootDiskType")]
         public Input<Pulumi.GoogleNative.Notebooks.V1.InstanceBootDiskType>? BootDiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// </summary>
+        [Input("canIpForward")]
+        public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
         /// Use a container image to start the notebook instance.

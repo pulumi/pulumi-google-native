@@ -21,6 +21,7 @@ class InstanceArgs:
                  accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  container_image: Optional[pulumi.Input['ContainerImageArgs']] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,7 @@ class InstanceArgs:
         :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
         :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input[bool] can_ip_forward: Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
         :param pulumi.Input['ContainerImageArgs'] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[str] data_disk_size_gb: Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
@@ -86,6 +88,8 @@ class InstanceArgs:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if boot_disk_type is not None:
             pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if can_ip_forward is not None:
+            pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if custom_gpu_driver_path is not None:
@@ -195,6 +199,18 @@ class InstanceArgs:
     @boot_disk_type.setter
     def boot_disk_type(self, value: Optional[pulumi.Input['InstanceBootDiskType']]):
         pulumi.set(self, "boot_disk_type", value)
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        """
+        return pulumi.get(self, "can_ip_forward")
+
+    @can_ip_forward.setter
+    def can_ip_forward(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "can_ip_forward", value)
 
     @property
     @pulumi.getter(name="containerImage")
@@ -511,6 +527,7 @@ class Instance(pulumi.CustomResource):
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
@@ -549,6 +566,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
         :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
+        :param pulumi.Input[bool] can_ip_forward: Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
         :param pulumi.Input[pulumi.InputType['ContainerImageArgs']] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         :param pulumi.Input[str] data_disk_size_gb: Input only. The size of the data disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). You can choose the size of the data disk based on how big your notebooks and data are. If not specified, this defaults to 100.
@@ -603,6 +621,7 @@ class Instance(pulumi.CustomResource):
                  accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  boot_disk_type: Optional[pulumi.Input['InstanceBootDiskType']] = None,
+                 can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
                  custom_gpu_driver_path: Optional[pulumi.Input[str]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
@@ -646,6 +665,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["accelerator_config"] = accelerator_config
             __props__.__dict__["boot_disk_size_gb"] = boot_disk_size_gb
             __props__.__dict__["boot_disk_type"] = boot_disk_type
+            __props__.__dict__["can_ip_forward"] = can_ip_forward
             __props__.__dict__["container_image"] = container_image
             __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
             __props__.__dict__["data_disk_size_gb"] = data_disk_size_gb
@@ -710,6 +730,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["accelerator_config"] = None
         __props__.__dict__["boot_disk_size_gb"] = None
         __props__.__dict__["boot_disk_type"] = None
+        __props__.__dict__["can_ip_forward"] = None
         __props__.__dict__["container_image"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["creator"] = None
@@ -767,6 +788,14 @@ class Instance(pulumi.CustomResource):
         Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         """
         return pulumi.get(self, "boot_disk_type")
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> pulumi.Output[bool]:
+        """
+        Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        """
+        return pulumi.get(self, "can_ip_forward")
 
     @property
     @pulumi.getter(name="containerImage")

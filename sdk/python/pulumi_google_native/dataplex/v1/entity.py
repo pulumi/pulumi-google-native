@@ -37,14 +37,14 @@ class EntityArgs:
         :param pulumi.Input[str] asset: Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
         :param pulumi.Input[str] data_path: Immutable. The storage path of the entity data. For Cloud Storage data, this is the fully-qualified path to the entity, such as gs://bucket/path/to/data. For BigQuery data, this is the name of the table resource, such as projects/project_id/datasets/dataset_id/tables/table_id.
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatArgs'] format: Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-        :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+        :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         :param pulumi.Input['GoogleCloudDataplexV1SchemaArgs'] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
         :param pulumi.Input[str] data_path_pattern: Optional. The set of items within the data path constituting the data in the entity, represented as a glob path. Example: gs://bucket/path/to/data/**/*.csv.
         :param pulumi.Input[str] description: Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
-        :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 63 characters.
-        :param pulumi.Input[str] etag: Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+        :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 256 characters.
+        :param pulumi.Input[str] etag: Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
         """
         pulumi.set(__self__, "asset", asset)
         pulumi.set(__self__, "data_path", data_path)
@@ -111,7 +111,7 @@ class EntityArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[str]:
         """
-        A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+        A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         """
         return pulumi.get(self, "id")
 
@@ -192,7 +192,7 @@ class EntityArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Display name must be shorter than or equal to 63 characters.
+        Optional. Display name must be shorter than or equal to 256 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -204,7 +204,7 @@ class EntityArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+        Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
         """
         return pulumi.get(self, "etag")
 
@@ -281,10 +281,10 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[str] data_path: Immutable. The storage path of the entity data. For Cloud Storage data, this is the fully-qualified path to the entity, such as gs://bucket/path/to/data. For BigQuery data, this is the name of the table resource, such as projects/project_id/datasets/dataset_id/tables/table_id.
         :param pulumi.Input[str] data_path_pattern: Optional. The set of items within the data path constituting the data in the entity, represented as a glob path. Example: gs://bucket/path/to/data/**/*.csv.
         :param pulumi.Input[str] description: Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
-        :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 63 characters.
-        :param pulumi.Input[str] etag: Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+        :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 256 characters.
+        :param pulumi.Input[str] etag: Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1StorageFormatArgs']] format: Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
-        :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+        :param pulumi.Input[str] id: A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
@@ -478,7 +478,7 @@ class Entity(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Optional. Display name must be shorter than or equal to 63 characters.
+        Optional. Display name must be shorter than or equal to 256 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -486,7 +486,7 @@ class Entity(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+        Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
         """
         return pulumi.get(self, "etag")
 

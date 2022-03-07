@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         [Input("acceleratorConfig")]
         public Input<Inputs.RuntimeAcceleratorConfigArgs>? AcceleratorConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Boot image metadata used for runtime upgradeability.
+        /// </summary>
+        [Input("bootImage")]
+        public Input<Inputs.BootImageArgs>? BootImage { get; set; }
+
         [Input("containerImages")]
         private InputList<Inputs.ContainerImageArgs>? _containerImages;
 

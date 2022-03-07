@@ -29,17 +29,33 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// </summary>
         public static PkixPublicKeySignatureAlgorithm RsaPss2048Sha256 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_PSS_2048_SHA256");
         /// <summary>
+        /// RSASSA-PSS 2048 bit key with a SHA256 digest.
+        /// </summary>
+        public static PkixPublicKeySignatureAlgorithm RsaSignPss2048Sha256 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_2048_SHA256");
+        /// <summary>
         /// RSASSA-PSS 3072 bit key with a SHA256 digest.
         /// </summary>
         public static PkixPublicKeySignatureAlgorithm RsaPss3072Sha256 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_PSS_3072_SHA256");
+        /// <summary>
+        /// RSASSA-PSS 3072 bit key with a SHA256 digest.
+        /// </summary>
+        public static PkixPublicKeySignatureAlgorithm RsaSignPss3072Sha256 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_3072_SHA256");
         /// <summary>
         /// RSASSA-PSS 4096 bit key with a SHA256 digest.
         /// </summary>
         public static PkixPublicKeySignatureAlgorithm RsaPss4096Sha256 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_PSS_4096_SHA256");
         /// <summary>
+        /// RSASSA-PSS 4096 bit key with a SHA256 digest.
+        /// </summary>
+        public static PkixPublicKeySignatureAlgorithm RsaSignPss4096Sha256 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_4096_SHA256");
+        /// <summary>
         /// RSASSA-PSS 4096 bit key with a SHA512 digest.
         /// </summary>
         public static PkixPublicKeySignatureAlgorithm RsaPss4096Sha512 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_PSS_4096_SHA512");
+        /// <summary>
+        /// RSASSA-PSS 4096 bit key with a SHA512 digest.
+        /// </summary>
+        public static PkixPublicKeySignatureAlgorithm RsaSignPss4096Sha512 { get; } = new PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_4096_SHA512");
         /// <summary>
         /// RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest.
         /// </summary>

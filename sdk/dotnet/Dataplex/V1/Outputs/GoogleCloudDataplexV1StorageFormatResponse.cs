@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1StorageFormatJsonOptionsResponse Json;
         /// <summary>
-        /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+        /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         /// </summary>
         public readonly string MimeType;
 

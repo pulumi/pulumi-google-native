@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
         [Output("name")]
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.

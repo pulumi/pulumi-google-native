@@ -55,7 +55,7 @@ type Instance struct {
 	ReadEndpoint pulumi.StringOutput `pulumi:"readEndpoint"`
 	// The port number of the exposed readonly redis endpoint. Standard tier only. Write requests should target 'port'.
 	ReadEndpointPort pulumi.IntOutput `pulumi:"readEndpointPort"`
-	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
 	ReadReplicasMode pulumi.StringOutput `pulumi:"readReplicasMode"`
 	// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
 	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
@@ -65,7 +65,7 @@ type Instance struct {
 	ReplicaCount pulumi.IntOutput `pulumi:"replicaCount"`
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
 	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
-	// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringOutput `pulumi:"secondaryIpRange"`
 	// List of server CA certificates for the instance.
 	ServerCaCerts TlsCertificateResponseArrayOutput `pulumi:"serverCaCerts"`
@@ -151,7 +151,7 @@ type instanceArgs struct {
 	// Optional. Persistence configuration parameters
 	PersistenceConfig *PersistenceConfig `pulumi:"persistenceConfig"`
 	Project           *string            `pulumi:"project"`
-	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
 	ReadReplicasMode *InstanceReadReplicasMode `pulumi:"readReplicasMode"`
 	// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
@@ -161,7 +161,7 @@ type instanceArgs struct {
 	ReplicaCount *int `pulumi:"replicaCount"`
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
-	// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange *string `pulumi:"secondaryIpRange"`
 	// The service tier of the instance.
 	Tier InstanceTier `pulumi:"tier"`
@@ -195,7 +195,7 @@ type InstanceArgs struct {
 	// Optional. Persistence configuration parameters
 	PersistenceConfig PersistenceConfigPtrInput
 	Project           pulumi.StringPtrInput
-	// Optional. Read replica mode. Can only be specified when trying to create the instance.
+	// Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
 	ReadReplicasMode InstanceReadReplicasModePtrInput
 	// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
 	RedisConfigs pulumi.StringMapInput
@@ -205,7 +205,7 @@ type InstanceArgs struct {
 	ReplicaCount pulumi.IntPtrInput
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
 	ReservedIpRange pulumi.StringPtrInput
-	// Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+	// Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
 	SecondaryIpRange pulumi.StringPtrInput
 	// The service tier of the instance.
 	Tier InstanceTierInput

@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigResponse',
     'BindingResponse',
+    'BootImageResponse',
     'ContainerImageResponse',
     'DataprocParametersResponse',
     'DiskResponse',
@@ -131,6 +132,18 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class BootImageResponse(dict):
+    """
+    Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+    """
+    def __init__(__self__):
+        """
+        Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1807,6 +1820,8 @@ class VirtualMachineConfigResponse(dict):
         suggest = None
         if key == "acceleratorConfig":
             suggest = "accelerator_config"
+        elif key == "bootImage":
+            suggest = "boot_image"
         elif key == "containerImages":
             suggest = "container_images"
         elif key == "dataDisk":
@@ -1839,6 +1854,7 @@ class VirtualMachineConfigResponse(dict):
 
     def __init__(__self__, *,
                  accelerator_config: 'outputs.RuntimeAcceleratorConfigResponse',
+                 boot_image: 'outputs.BootImageResponse',
                  container_images: Sequence['outputs.ContainerImageResponse'],
                  data_disk: 'outputs.LocalDiskResponse',
                  encryption_config: 'outputs.EncryptionConfigResponse',
@@ -1857,6 +1873,7 @@ class VirtualMachineConfigResponse(dict):
         """
         The config settings for virtual machine.
         :param 'RuntimeAcceleratorConfigResponse' accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
+        :param 'BootImageResponse' boot_image: Optional. Boot image metadata used for runtime upgradeability.
         :param Sequence['ContainerImageResponse'] container_images: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param 'LocalDiskResponse' data_disk: Data disk option configuration settings.
         :param 'EncryptionConfigResponse' encryption_config: Optional. Encryption settings for virtual machine data disk.
@@ -1874,6 +1891,7 @@ class VirtualMachineConfigResponse(dict):
         :param str zone: The zone where the virtual machine is located. If using regional request, the notebooks service will pick a location in the corresponding runtime region. On a get request, zone will always be present. Example: * `us-central1-b`
         """
         pulumi.set(__self__, "accelerator_config", accelerator_config)
+        pulumi.set(__self__, "boot_image", boot_image)
         pulumi.set(__self__, "container_images", container_images)
         pulumi.set(__self__, "data_disk", data_disk)
         pulumi.set(__self__, "encryption_config", encryption_config)
@@ -1897,6 +1915,14 @@ class VirtualMachineConfigResponse(dict):
         Optional. The Compute Engine accelerator configuration for this runtime.
         """
         return pulumi.get(self, "accelerator_config")
+
+    @property
+    @pulumi.getter(name="bootImage")
+    def boot_image(self) -> 'outputs.BootImageResponse':
+        """
+        Optional. Boot image metadata used for runtime upgradeability.
+        """
+        return pulumi.get(self, "boot_image")
 
     @property
     @pulumi.getter(name="containerImages")

@@ -1428,6 +1428,334 @@ func (o DatabaseTypeResponseOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseTypeResponse) string { return v.Provider }).(pulumi.StringOutput)
 }
 
+// Dump flag definition.
+type DumpFlag struct {
+	// The name of the flag
+	Name *string `pulumi:"name"`
+	// The value of the flag.
+	Value *string `pulumi:"value"`
+}
+
+// DumpFlagInput is an input type that accepts DumpFlagArgs and DumpFlagOutput values.
+// You can construct a concrete instance of `DumpFlagInput` via:
+//
+//          DumpFlagArgs{...}
+type DumpFlagInput interface {
+	pulumi.Input
+
+	ToDumpFlagOutput() DumpFlagOutput
+	ToDumpFlagOutputWithContext(context.Context) DumpFlagOutput
+}
+
+// Dump flag definition.
+type DumpFlagArgs struct {
+	// The name of the flag
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The value of the flag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DumpFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DumpFlag)(nil)).Elem()
+}
+
+func (i DumpFlagArgs) ToDumpFlagOutput() DumpFlagOutput {
+	return i.ToDumpFlagOutputWithContext(context.Background())
+}
+
+func (i DumpFlagArgs) ToDumpFlagOutputWithContext(ctx context.Context) DumpFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DumpFlagOutput)
+}
+
+// DumpFlagArrayInput is an input type that accepts DumpFlagArray and DumpFlagArrayOutput values.
+// You can construct a concrete instance of `DumpFlagArrayInput` via:
+//
+//          DumpFlagArray{ DumpFlagArgs{...} }
+type DumpFlagArrayInput interface {
+	pulumi.Input
+
+	ToDumpFlagArrayOutput() DumpFlagArrayOutput
+	ToDumpFlagArrayOutputWithContext(context.Context) DumpFlagArrayOutput
+}
+
+type DumpFlagArray []DumpFlagInput
+
+func (DumpFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DumpFlag)(nil)).Elem()
+}
+
+func (i DumpFlagArray) ToDumpFlagArrayOutput() DumpFlagArrayOutput {
+	return i.ToDumpFlagArrayOutputWithContext(context.Background())
+}
+
+func (i DumpFlagArray) ToDumpFlagArrayOutputWithContext(ctx context.Context) DumpFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DumpFlagArrayOutput)
+}
+
+// Dump flag definition.
+type DumpFlagOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DumpFlag)(nil)).Elem()
+}
+
+func (o DumpFlagOutput) ToDumpFlagOutput() DumpFlagOutput {
+	return o
+}
+
+func (o DumpFlagOutput) ToDumpFlagOutputWithContext(ctx context.Context) DumpFlagOutput {
+	return o
+}
+
+// The name of the flag
+func (o DumpFlagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DumpFlag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The value of the flag.
+func (o DumpFlagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DumpFlag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DumpFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DumpFlag)(nil)).Elem()
+}
+
+func (o DumpFlagArrayOutput) ToDumpFlagArrayOutput() DumpFlagArrayOutput {
+	return o
+}
+
+func (o DumpFlagArrayOutput) ToDumpFlagArrayOutputWithContext(ctx context.Context) DumpFlagArrayOutput {
+	return o
+}
+
+func (o DumpFlagArrayOutput) Index(i pulumi.IntInput) DumpFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DumpFlag {
+		return vs[0].([]DumpFlag)[vs[1].(int)]
+	}).(DumpFlagOutput)
+}
+
+// Dump flag definition.
+type DumpFlagResponse struct {
+	// The name of the flag
+	Name string `pulumi:"name"`
+	// The value of the flag.
+	Value string `pulumi:"value"`
+}
+
+// Dump flag definition.
+type DumpFlagResponseOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DumpFlagResponse)(nil)).Elem()
+}
+
+func (o DumpFlagResponseOutput) ToDumpFlagResponseOutput() DumpFlagResponseOutput {
+	return o
+}
+
+func (o DumpFlagResponseOutput) ToDumpFlagResponseOutputWithContext(ctx context.Context) DumpFlagResponseOutput {
+	return o
+}
+
+// The name of the flag
+func (o DumpFlagResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DumpFlagResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value of the flag.
+func (o DumpFlagResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DumpFlagResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DumpFlagResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DumpFlagResponse)(nil)).Elem()
+}
+
+func (o DumpFlagResponseArrayOutput) ToDumpFlagResponseArrayOutput() DumpFlagResponseArrayOutput {
+	return o
+}
+
+func (o DumpFlagResponseArrayOutput) ToDumpFlagResponseArrayOutputWithContext(ctx context.Context) DumpFlagResponseArrayOutput {
+	return o
+}
+
+func (o DumpFlagResponseArrayOutput) Index(i pulumi.IntInput) DumpFlagResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DumpFlagResponse {
+		return vs[0].([]DumpFlagResponse)[vs[1].(int)]
+	}).(DumpFlagResponseOutput)
+}
+
+// Dump flags definition.
+type DumpFlags struct {
+	// The flags for the initial dump.
+	DumpFlags []DumpFlag `pulumi:"dumpFlags"`
+}
+
+// DumpFlagsInput is an input type that accepts DumpFlagsArgs and DumpFlagsOutput values.
+// You can construct a concrete instance of `DumpFlagsInput` via:
+//
+//          DumpFlagsArgs{...}
+type DumpFlagsInput interface {
+	pulumi.Input
+
+	ToDumpFlagsOutput() DumpFlagsOutput
+	ToDumpFlagsOutputWithContext(context.Context) DumpFlagsOutput
+}
+
+// Dump flags definition.
+type DumpFlagsArgs struct {
+	// The flags for the initial dump.
+	DumpFlags DumpFlagArrayInput `pulumi:"dumpFlags"`
+}
+
+func (DumpFlagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DumpFlags)(nil)).Elem()
+}
+
+func (i DumpFlagsArgs) ToDumpFlagsOutput() DumpFlagsOutput {
+	return i.ToDumpFlagsOutputWithContext(context.Background())
+}
+
+func (i DumpFlagsArgs) ToDumpFlagsOutputWithContext(ctx context.Context) DumpFlagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DumpFlagsOutput)
+}
+
+func (i DumpFlagsArgs) ToDumpFlagsPtrOutput() DumpFlagsPtrOutput {
+	return i.ToDumpFlagsPtrOutputWithContext(context.Background())
+}
+
+func (i DumpFlagsArgs) ToDumpFlagsPtrOutputWithContext(ctx context.Context) DumpFlagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DumpFlagsOutput).ToDumpFlagsPtrOutputWithContext(ctx)
+}
+
+// DumpFlagsPtrInput is an input type that accepts DumpFlagsArgs, DumpFlagsPtr and DumpFlagsPtrOutput values.
+// You can construct a concrete instance of `DumpFlagsPtrInput` via:
+//
+//          DumpFlagsArgs{...}
+//
+//  or:
+//
+//          nil
+type DumpFlagsPtrInput interface {
+	pulumi.Input
+
+	ToDumpFlagsPtrOutput() DumpFlagsPtrOutput
+	ToDumpFlagsPtrOutputWithContext(context.Context) DumpFlagsPtrOutput
+}
+
+type dumpFlagsPtrType DumpFlagsArgs
+
+func DumpFlagsPtr(v *DumpFlagsArgs) DumpFlagsPtrInput {
+	return (*dumpFlagsPtrType)(v)
+}
+
+func (*dumpFlagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DumpFlags)(nil)).Elem()
+}
+
+func (i *dumpFlagsPtrType) ToDumpFlagsPtrOutput() DumpFlagsPtrOutput {
+	return i.ToDumpFlagsPtrOutputWithContext(context.Background())
+}
+
+func (i *dumpFlagsPtrType) ToDumpFlagsPtrOutputWithContext(ctx context.Context) DumpFlagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DumpFlagsPtrOutput)
+}
+
+// Dump flags definition.
+type DumpFlagsOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DumpFlags)(nil)).Elem()
+}
+
+func (o DumpFlagsOutput) ToDumpFlagsOutput() DumpFlagsOutput {
+	return o
+}
+
+func (o DumpFlagsOutput) ToDumpFlagsOutputWithContext(ctx context.Context) DumpFlagsOutput {
+	return o
+}
+
+func (o DumpFlagsOutput) ToDumpFlagsPtrOutput() DumpFlagsPtrOutput {
+	return o.ToDumpFlagsPtrOutputWithContext(context.Background())
+}
+
+func (o DumpFlagsOutput) ToDumpFlagsPtrOutputWithContext(ctx context.Context) DumpFlagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DumpFlags) *DumpFlags {
+		return &v
+	}).(DumpFlagsPtrOutput)
+}
+
+// The flags for the initial dump.
+func (o DumpFlagsOutput) DumpFlags() DumpFlagArrayOutput {
+	return o.ApplyT(func(v DumpFlags) []DumpFlag { return v.DumpFlags }).(DumpFlagArrayOutput)
+}
+
+type DumpFlagsPtrOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DumpFlags)(nil)).Elem()
+}
+
+func (o DumpFlagsPtrOutput) ToDumpFlagsPtrOutput() DumpFlagsPtrOutput {
+	return o
+}
+
+func (o DumpFlagsPtrOutput) ToDumpFlagsPtrOutputWithContext(ctx context.Context) DumpFlagsPtrOutput {
+	return o
+}
+
+func (o DumpFlagsPtrOutput) Elem() DumpFlagsOutput {
+	return o.ApplyT(func(v *DumpFlags) DumpFlags {
+		if v != nil {
+			return *v
+		}
+		var ret DumpFlags
+		return ret
+	}).(DumpFlagsOutput)
+}
+
+// The flags for the initial dump.
+func (o DumpFlagsPtrOutput) DumpFlags() DumpFlagArrayOutput {
+	return o.ApplyT(func(v *DumpFlags) []DumpFlag {
+		if v == nil {
+			return nil
+		}
+		return v.DumpFlags
+	}).(DumpFlagArrayOutput)
+}
+
+// Dump flags definition.
+type DumpFlagsResponse struct {
+	// The flags for the initial dump.
+	DumpFlags []DumpFlagResponse `pulumi:"dumpFlags"`
+}
+
+// Dump flags definition.
+type DumpFlagsResponseOutput struct{ *pulumi.OutputState }
+
+func (DumpFlagsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DumpFlagsResponse)(nil)).Elem()
+}
+
+func (o DumpFlagsResponseOutput) ToDumpFlagsResponseOutput() DumpFlagsResponseOutput {
+	return o
+}
+
+func (o DumpFlagsResponseOutput) ToDumpFlagsResponseOutputWithContext(ctx context.Context) DumpFlagsResponseOutput {
+	return o
+}
+
+// The flags for the initial dump.
+func (o DumpFlagsResponseOutput) DumpFlags() DumpFlagResponseArrayOutput {
+	return o.ApplyT(func(v DumpFlagsResponse) []DumpFlagResponse { return v.DumpFlags }).(DumpFlagResponseArrayOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3544,6 +3872,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsPtrInput)(nil)).Elem(), CloudSqlSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagInput)(nil)).Elem(), DumpFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagArrayInput)(nil)).Elem(), DumpFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsInput)(nil)).Elem(), DumpFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsPtrInput)(nil)).Elem(), DumpFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
@@ -3583,6 +3915,13 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeResponseOutput{})
+	pulumi.RegisterOutputType(DumpFlagOutput{})
+	pulumi.RegisterOutputType(DumpFlagArrayOutput{})
+	pulumi.RegisterOutputType(DumpFlagResponseOutput{})
+	pulumi.RegisterOutputType(DumpFlagResponseArrayOutput{})
+	pulumi.RegisterOutputType(DumpFlagsOutput{})
+	pulumi.RegisterOutputType(DumpFlagsPtrOutput{})
+	pulumi.RegisterOutputType(DumpFlagsResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

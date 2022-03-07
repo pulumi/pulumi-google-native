@@ -45,7 +45,11 @@ export interface GetMigrationJobResult {
      */
     readonly displayName: string;
     /**
-     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+     * The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+     */
+    readonly dumpFlags: outputs.datamigration.v1.DumpFlagsResponse;
+    /**
+     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
      */
     readonly dumpPath: string;
     /**

@@ -179,7 +179,7 @@ func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConnectModePtrOutput)
 }
 
-// Optional. Read replica mode. Can only be specified when trying to create the instance.
+// Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
 type InstanceReadReplicasMode string
 
 const (

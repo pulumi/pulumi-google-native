@@ -18,12 +18,20 @@ const (
 	PkixPublicKeySignatureAlgorithmSignatureAlgorithmUnspecified = PkixPublicKeySignatureAlgorithm("SIGNATURE_ALGORITHM_UNSPECIFIED")
 	// RSASSA-PSS 2048 bit key with a SHA256 digest.
 	PkixPublicKeySignatureAlgorithmRsaPss2048Sha256 = PkixPublicKeySignatureAlgorithm("RSA_PSS_2048_SHA256")
+	// RSASSA-PSS 2048 bit key with a SHA256 digest.
+	PkixPublicKeySignatureAlgorithmRsaSignPss2048Sha256 = PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_2048_SHA256")
 	// RSASSA-PSS 3072 bit key with a SHA256 digest.
 	PkixPublicKeySignatureAlgorithmRsaPss3072Sha256 = PkixPublicKeySignatureAlgorithm("RSA_PSS_3072_SHA256")
+	// RSASSA-PSS 3072 bit key with a SHA256 digest.
+	PkixPublicKeySignatureAlgorithmRsaSignPss3072Sha256 = PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_3072_SHA256")
 	// RSASSA-PSS 4096 bit key with a SHA256 digest.
 	PkixPublicKeySignatureAlgorithmRsaPss4096Sha256 = PkixPublicKeySignatureAlgorithm("RSA_PSS_4096_SHA256")
+	// RSASSA-PSS 4096 bit key with a SHA256 digest.
+	PkixPublicKeySignatureAlgorithmRsaSignPss4096Sha256 = PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_4096_SHA256")
 	// RSASSA-PSS 4096 bit key with a SHA512 digest.
 	PkixPublicKeySignatureAlgorithmRsaPss4096Sha512 = PkixPublicKeySignatureAlgorithm("RSA_PSS_4096_SHA512")
+	// RSASSA-PSS 4096 bit key with a SHA512 digest.
+	PkixPublicKeySignatureAlgorithmRsaSignPss4096Sha512 = PkixPublicKeySignatureAlgorithm("RSA_SIGN_PSS_4096_SHA512")
 	// RSASSA-PKCS1-v1_5 with a 2048 bit key and a SHA256 digest.
 	PkixPublicKeySignatureAlgorithmRsaSignPkcs12048Sha256 = PkixPublicKeySignatureAlgorithm("RSA_SIGN_PKCS1_2048_SHA256")
 	// RSASSA-PKCS1-v1_5 with a 3072 bit key and a SHA256 digest.

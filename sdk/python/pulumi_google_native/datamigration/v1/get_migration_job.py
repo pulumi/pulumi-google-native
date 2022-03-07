@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigrationJobResult:
-    def __init__(__self__, create_time=None, destination=None, destination_database=None, display_name=None, dump_path=None, duration=None, end_time=None, error=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+    def __init__(__self__, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -31,6 +31,9 @@ class GetMigrationJobResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if dump_flags and not isinstance(dump_flags, dict):
+            raise TypeError("Expected argument 'dump_flags' to be a dict")
+        pulumi.set(__self__, "dump_flags", dump_flags)
         if dump_path and not isinstance(dump_path, str):
             raise TypeError("Expected argument 'dump_path' to be a str")
         pulumi.set(__self__, "dump_path", dump_path)
@@ -110,10 +113,18 @@ class GetMigrationJobResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> 'outputs.DumpFlagsResponse':
+        """
+        The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        """
+        return pulumi.get(self, "dump_flags")
+
+    @property
     @pulumi.getter(name="dumpPath")
     def dump_path(self) -> str:
         """
-        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         """
         return pulumi.get(self, "dump_path")
 
@@ -240,6 +251,7 @@ class AwaitableGetMigrationJobResult(GetMigrationJobResult):
             destination=self.destination,
             destination_database=self.destination_database,
             display_name=self.display_name,
+            dump_flags=self.dump_flags,
             dump_path=self.dump_path,
             duration=self.duration,
             end_time=self.end_time,
@@ -279,6 +291,7 @@ def get_migration_job(location: Optional[str] = None,
         destination=__ret__.destination,
         destination_database=__ret__.destination_database,
         display_name=__ret__.display_name,
+        dump_flags=__ret__.dump_flags,
         dump_path=__ret__.dump_path,
         duration=__ret__.duration,
         end_time=__ret__.end_time,

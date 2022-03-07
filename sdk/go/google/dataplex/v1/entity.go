@@ -30,9 +30,9 @@ type Entity struct {
 	DataPathPattern pulumi.StringOutput `pulumi:"dataPathPattern"`
 	// Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Optional. Display name must be shorter than or equal to 63 characters.
+	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormatResponseOutput `pulumi:"format"`
@@ -119,13 +119,13 @@ type entityArgs struct {
 	DataPathPattern *string `pulumi:"dataPathPattern"`
 	// Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
 	Description *string `pulumi:"description"`
-	// Optional. Display name must be shorter than or equal to 63 characters.
+	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag *string `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormat `pulumi:"format"`
-	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
 	Id       string  `pulumi:"id"`
 	LakeId   string  `pulumi:"lakeId"`
 	Location *string `pulumi:"location"`
@@ -150,13 +150,13 @@ type EntityArgs struct {
 	DataPathPattern pulumi.StringPtrInput
 	// Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
 	Description pulumi.StringPtrInput
-	// Optional. Display name must be shorter than or equal to 63 characters.
+	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName pulumi.StringPtrInput
-	// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag pulumi.StringPtrInput
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormatInput
-	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+	// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
 	Id       pulumi.StringInput
 	LakeId   pulumi.StringInput
 	Location pulumi.StringPtrInput

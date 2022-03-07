@@ -108,11 +108,11 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Optional. Display name must be shorter than or equal to 63 characters.
+        /// Optional. Display name must be shorter than or equal to 256 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+        /// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
         /// </summary>
         public readonly string Etag;
         /// <summary>

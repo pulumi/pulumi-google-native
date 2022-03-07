@@ -17,6 +17,8 @@ __all__ = [
     'CloudSqlConnectionProfileResponse',
     'CloudSqlSettingsResponse',
     'DatabaseTypeResponse',
+    'DumpFlagResponse',
+    'DumpFlagsResponse',
     'ExprResponse',
     'MySqlConnectionProfileResponse',
     'PostgreSqlConnectionProfileResponse',
@@ -510,6 +512,78 @@ class DatabaseTypeResponse(dict):
         The database provider.
         """
         return pulumi.get(self, "provider")
+
+
+@pulumi.output_type
+class DumpFlagResponse(dict):
+    """
+    Dump flag definition.
+    """
+    def __init__(__self__, *,
+                 name: str,
+                 value: str):
+        """
+        Dump flag definition.
+        :param str name: The name of the flag
+        :param str value: The value of the flag.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the flag
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the flag.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DumpFlagsResponse(dict):
+    """
+    Dump flags definition.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dumpFlags":
+            suggest = "dump_flags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DumpFlagsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DumpFlagsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DumpFlagsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dump_flags: Sequence['outputs.DumpFlagResponse']):
+        """
+        Dump flags definition.
+        :param Sequence['DumpFlagResponse'] dump_flags: The flags for the initial dump.
+        """
+        pulumi.set(__self__, "dump_flags", dump_flags)
+
+    @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> Sequence['outputs.DumpFlagResponse']:
+        """
+        The flags for the initial dump.
+        """
+        return pulumi.get(self, "dump_flags")
 
 
 @pulumi.output_type

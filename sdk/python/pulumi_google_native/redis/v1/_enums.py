@@ -35,7 +35,7 @@ class InstanceConnectMode(str, Enum):
 
 class InstanceReadReplicasMode(str, Enum):
     """
-    Optional. Read replica mode. Can only be specified when trying to create the instance.
+    Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
     """
     READ_REPLICAS_MODE_UNSPECIFIED = "READ_REPLICAS_MODE_UNSPECIFIED"
     """

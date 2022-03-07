@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly int HeaderRows;
         /// <summary>
-        /// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+        /// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
         /// </summary>
         public readonly string Quote;
 

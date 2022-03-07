@@ -16,6 +16,8 @@ __all__ = [
     'CloudSqlConnectionProfileArgs',
     'CloudSqlSettingsArgs',
     'DatabaseTypeArgs',
+    'DumpFlagsArgs',
+    'DumpFlagArgs',
     'ExprArgs',
     'MySqlConnectionProfileArgs',
     'PostgreSqlConnectionProfileArgs',
@@ -473,6 +475,70 @@ class DatabaseTypeArgs:
     @provider.setter
     def provider(self, value: Optional[pulumi.Input['DatabaseTypeProvider']]):
         pulumi.set(self, "provider", value)
+
+
+@pulumi.input_type
+class DumpFlagsArgs:
+    def __init__(__self__, *,
+                 dump_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DumpFlagArgs']]]] = None):
+        """
+        Dump flags definition.
+        :param pulumi.Input[Sequence[pulumi.Input['DumpFlagArgs']]] dump_flags: The flags for the initial dump.
+        """
+        if dump_flags is not None:
+            pulumi.set(__self__, "dump_flags", dump_flags)
+
+    @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DumpFlagArgs']]]]:
+        """
+        The flags for the initial dump.
+        """
+        return pulumi.get(self, "dump_flags")
+
+    @dump_flags.setter
+    def dump_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DumpFlagArgs']]]]):
+        pulumi.set(self, "dump_flags", value)
+
+
+@pulumi.input_type
+class DumpFlagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Dump flag definition.
+        :param pulumi.Input[str] name: The name of the flag
+        :param pulumi.Input[str] value: The value of the flag.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flag
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the flag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

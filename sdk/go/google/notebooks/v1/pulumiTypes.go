@@ -380,6 +380,146 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+type BootImage struct {
+}
+
+// BootImageInput is an input type that accepts BootImageArgs and BootImageOutput values.
+// You can construct a concrete instance of `BootImageInput` via:
+//
+//          BootImageArgs{...}
+type BootImageInput interface {
+	pulumi.Input
+
+	ToBootImageOutput() BootImageOutput
+	ToBootImageOutputWithContext(context.Context) BootImageOutput
+}
+
+// Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+type BootImageArgs struct {
+}
+
+func (BootImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootImage)(nil)).Elem()
+}
+
+func (i BootImageArgs) ToBootImageOutput() BootImageOutput {
+	return i.ToBootImageOutputWithContext(context.Background())
+}
+
+func (i BootImageArgs) ToBootImageOutputWithContext(ctx context.Context) BootImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootImageOutput)
+}
+
+func (i BootImageArgs) ToBootImagePtrOutput() BootImagePtrOutput {
+	return i.ToBootImagePtrOutputWithContext(context.Background())
+}
+
+func (i BootImageArgs) ToBootImagePtrOutputWithContext(ctx context.Context) BootImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootImageOutput).ToBootImagePtrOutputWithContext(ctx)
+}
+
+// BootImagePtrInput is an input type that accepts BootImageArgs, BootImagePtr and BootImagePtrOutput values.
+// You can construct a concrete instance of `BootImagePtrInput` via:
+//
+//          BootImageArgs{...}
+//
+//  or:
+//
+//          nil
+type BootImagePtrInput interface {
+	pulumi.Input
+
+	ToBootImagePtrOutput() BootImagePtrOutput
+	ToBootImagePtrOutputWithContext(context.Context) BootImagePtrOutput
+}
+
+type bootImagePtrType BootImageArgs
+
+func BootImagePtr(v *BootImageArgs) BootImagePtrInput {
+	return (*bootImagePtrType)(v)
+}
+
+func (*bootImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootImage)(nil)).Elem()
+}
+
+func (i *bootImagePtrType) ToBootImagePtrOutput() BootImagePtrOutput {
+	return i.ToBootImagePtrOutputWithContext(context.Background())
+}
+
+func (i *bootImagePtrType) ToBootImagePtrOutputWithContext(ctx context.Context) BootImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BootImagePtrOutput)
+}
+
+// Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+type BootImageOutput struct{ *pulumi.OutputState }
+
+func (BootImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootImage)(nil)).Elem()
+}
+
+func (o BootImageOutput) ToBootImageOutput() BootImageOutput {
+	return o
+}
+
+func (o BootImageOutput) ToBootImageOutputWithContext(ctx context.Context) BootImageOutput {
+	return o
+}
+
+func (o BootImageOutput) ToBootImagePtrOutput() BootImagePtrOutput {
+	return o.ToBootImagePtrOutputWithContext(context.Background())
+}
+
+func (o BootImageOutput) ToBootImagePtrOutputWithContext(ctx context.Context) BootImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BootImage) *BootImage {
+		return &v
+	}).(BootImagePtrOutput)
+}
+
+type BootImagePtrOutput struct{ *pulumi.OutputState }
+
+func (BootImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BootImage)(nil)).Elem()
+}
+
+func (o BootImagePtrOutput) ToBootImagePtrOutput() BootImagePtrOutput {
+	return o
+}
+
+func (o BootImagePtrOutput) ToBootImagePtrOutputWithContext(ctx context.Context) BootImagePtrOutput {
+	return o
+}
+
+func (o BootImagePtrOutput) Elem() BootImageOutput {
+	return o.ApplyT(func(v *BootImage) BootImage {
+		if v != nil {
+			return *v
+		}
+		var ret BootImage
+		return ret
+	}).(BootImageOutput)
+}
+
+// Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+type BootImageResponse struct {
+}
+
+// Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+type BootImageResponseOutput struct{ *pulumi.OutputState }
+
+func (BootImageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BootImageResponse)(nil)).Elem()
+}
+
+func (o BootImageResponseOutput) ToBootImageResponseOutput() BootImageResponseOutput {
+	return o
+}
+
+func (o BootImageResponseOutput) ToBootImageResponseOutputWithContext(ctx context.Context) BootImageResponseOutput {
+	return o
+}
+
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
 type ContainerImage struct {
 	// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
@@ -4869,6 +5009,8 @@ func (o VirtualMachinePtrOutput) VirtualMachineConfig() VirtualMachineConfigPtrO
 type VirtualMachineConfig struct {
 	// Optional. The Compute Engine accelerator configuration for this runtime.
 	AcceleratorConfig *RuntimeAcceleratorConfig `pulumi:"acceleratorConfig"`
+	// Optional. Boot image metadata used for runtime upgradeability.
+	BootImage *BootImage `pulumi:"bootImage"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	ContainerImages []ContainerImage `pulumi:"containerImages"`
 	// Data disk option configuration settings.
@@ -4912,6 +5054,8 @@ type VirtualMachineConfigInput interface {
 type VirtualMachineConfigArgs struct {
 	// Optional. The Compute Engine accelerator configuration for this runtime.
 	AcceleratorConfig RuntimeAcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
+	// Optional. Boot image metadata used for runtime upgradeability.
+	BootImage BootImagePtrInput `pulumi:"bootImage"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	ContainerImages ContainerImageArrayInput `pulumi:"containerImages"`
 	// Data disk option configuration settings.
@@ -5023,6 +5167,11 @@ func (o VirtualMachineConfigOutput) AcceleratorConfig() RuntimeAcceleratorConfig
 	return o.ApplyT(func(v VirtualMachineConfig) *RuntimeAcceleratorConfig { return v.AcceleratorConfig }).(RuntimeAcceleratorConfigPtrOutput)
 }
 
+// Optional. Boot image metadata used for runtime upgradeability.
+func (o VirtualMachineConfigOutput) BootImage() BootImagePtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfig) *BootImage { return v.BootImage }).(BootImagePtrOutput)
+}
+
 // Optional. Use a list of container images to use as Kernels in the notebook instance.
 func (o VirtualMachineConfigOutput) ContainerImages() ContainerImageArrayOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) []ContainerImage { return v.ContainerImages }).(ContainerImageArrayOutput)
@@ -5120,6 +5269,16 @@ func (o VirtualMachineConfigPtrOutput) AcceleratorConfig() RuntimeAcceleratorCon
 		}
 		return v.AcceleratorConfig
 	}).(RuntimeAcceleratorConfigPtrOutput)
+}
+
+// Optional. Boot image metadata used for runtime upgradeability.
+func (o VirtualMachineConfigPtrOutput) BootImage() BootImagePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfig) *BootImage {
+		if v == nil {
+			return nil
+		}
+		return v.BootImage
+	}).(BootImagePtrOutput)
 }
 
 // Optional. Use a list of container images to use as Kernels in the notebook instance.
@@ -5256,6 +5415,8 @@ func (o VirtualMachineConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 type VirtualMachineConfigResponse struct {
 	// Optional. The Compute Engine accelerator configuration for this runtime.
 	AcceleratorConfig RuntimeAcceleratorConfigResponse `pulumi:"acceleratorConfig"`
+	// Optional. Boot image metadata used for runtime upgradeability.
+	BootImage BootImageResponse `pulumi:"bootImage"`
 	// Optional. Use a list of container images to use as Kernels in the notebook instance.
 	ContainerImages []ContainerImageResponse `pulumi:"containerImages"`
 	// Data disk option configuration settings.
@@ -5306,6 +5467,11 @@ func (o VirtualMachineConfigResponseOutput) ToVirtualMachineConfigResponseOutput
 // Optional. The Compute Engine accelerator configuration for this runtime.
 func (o VirtualMachineConfigResponseOutput) AcceleratorConfig() RuntimeAcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) RuntimeAcceleratorConfigResponse { return v.AcceleratorConfig }).(RuntimeAcceleratorConfigResponseOutput)
+}
+
+// Optional. Boot image metadata used for runtime upgradeability.
+func (o VirtualMachineConfigResponseOutput) BootImage() BootImageResponseOutput {
+	return o.ApplyT(func(v VirtualMachineConfigResponse) BootImageResponse { return v.BootImage }).(BootImageResponseOutput)
 }
 
 // Optional. Use a list of container images to use as Kernels in the notebook instance.
@@ -5648,6 +5814,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigPtrInput)(nil)).Elem(), AcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootImageInput)(nil)).Elem(), BootImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BootImagePtrInput)(nil)).Elem(), BootImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageInput)(nil)).Elem(), ContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImagePtrInput)(nil)).Elem(), ContainerImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerImageArrayInput)(nil)).Elem(), ContainerImageArray{})
@@ -5694,6 +5862,9 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(BootImageOutput{})
+	pulumi.RegisterOutputType(BootImagePtrOutput{})
+	pulumi.RegisterOutputType(BootImageResponseOutput{})
 	pulumi.RegisterOutputType(ContainerImageOutput{})
 	pulumi.RegisterOutputType(ContainerImagePtrOutput{})
 	pulumi.RegisterOutputType(ContainerImageArrayOutput{})

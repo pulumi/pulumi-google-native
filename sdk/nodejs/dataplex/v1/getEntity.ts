@@ -63,11 +63,11 @@ export interface GetEntityResult {
      */
     readonly description: string;
     /**
-     * Optional. Display name must be shorter than or equal to 63 characters.
+     * Optional. Display name must be shorter than or equal to 256 characters.
      */
     readonly displayName: string;
     /**
-     * Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+     * Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
      */
     readonly etag: string;
     /**

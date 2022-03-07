@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
     }
 
     /// <summary>
-    /// Optional. Read replica mode. Can only be specified when trying to create the instance.
+    /// Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
     /// </summary>
     [EnumType]
     public readonly struct InstanceReadReplicasMode : IEquatable<InstanceReadReplicasMode>

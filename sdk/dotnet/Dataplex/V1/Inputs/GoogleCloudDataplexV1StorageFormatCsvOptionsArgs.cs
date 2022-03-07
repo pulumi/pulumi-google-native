@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<int>? HeaderRows { get; set; }
 
         /// <summary>
-        /// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+        /// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
         /// </summary>
         [Input("quote")]
         public Input<string>? Quote { get; set; }

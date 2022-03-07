@@ -22,6 +22,7 @@ class MigrationJobArgs:
                  type: pulumi.Input['MigrationJobType'],
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dump_flags: Optional[pulumi.Input['DumpFlagsArgs']] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -40,7 +41,8 @@ class MigrationJobArgs:
         :param pulumi.Input['MigrationJobType'] type: The migration job type.
         :param pulumi.Input['DatabaseTypeArgs'] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
-        :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        :param pulumi.Input['DumpFlagsArgs'] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
@@ -57,6 +59,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "destination_database", destination_database)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if dump_flags is not None:
+            pulumi.set(__self__, "dump_flags", dump_flags)
         if dump_path is not None:
             pulumi.set(__self__, "dump_path", dump_path)
         if labels is not None:
@@ -150,10 +154,22 @@ class MigrationJobArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> Optional[pulumi.Input['DumpFlagsArgs']]:
+        """
+        The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        """
+        return pulumi.get(self, "dump_flags")
+
+    @dump_flags.setter
+    def dump_flags(self, value: Optional[pulumi.Input['DumpFlagsArgs']]):
+        pulumi.set(self, "dump_flags", value)
+
+    @property
     @pulumi.getter(name="dumpPath")
     def dump_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         """
         return pulumi.get(self, "dump_path")
 
@@ -281,6 +297,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dump_flags: Optional[pulumi.Input[pulumi.InputType['DumpFlagsArgs']]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -304,7 +321,8 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
-        :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        :param pulumi.Input[pulumi.InputType['DumpFlagsArgs']] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
@@ -342,6 +360,7 @@ class MigrationJob(pulumi.CustomResource):
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dump_flags: Optional[pulumi.Input[pulumi.InputType['DumpFlagsArgs']]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -373,6 +392,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["destination"] = destination
             __props__.__dict__["destination_database"] = destination_database
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["dump_flags"] = dump_flags
             __props__.__dict__["dump_path"] = dump_path
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -425,6 +445,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["destination"] = None
         __props__.__dict__["destination_database"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["dump_flags"] = None
         __props__.__dict__["dump_path"] = None
         __props__.__dict__["duration"] = None
         __props__.__dict__["end_time"] = None
@@ -475,10 +496,18 @@ class MigrationJob(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> pulumi.Output['outputs.DumpFlagsResponse']:
+        """
+        The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        """
+        return pulumi.get(self, "dump_flags")
+
+    @property
     @pulumi.getter(name="dumpPath")
     def dump_path(self) -> pulumi.Output[str]:
         """
-        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         """
         return pulumi.get(self, "dump_path")
 

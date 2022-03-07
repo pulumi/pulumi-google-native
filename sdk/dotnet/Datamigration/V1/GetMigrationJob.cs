@@ -78,7 +78,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        /// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        /// </summary>
+        public readonly Outputs.DumpFlagsResponse DumpFlags;
+        /// <summary>
+        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         /// </summary>
         public readonly string DumpPath;
         /// <summary>
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             string displayName,
 
+            Outputs.DumpFlagsResponse dumpFlags,
+
             string dumpPath,
 
             string duration,
@@ -182,6 +188,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             Destination = destination;
             DestinationDatabase = destinationDatabase;
             DisplayName = displayName;
+            DumpFlags = dumpFlags;
             DumpPath = dumpPath;
             Duration = duration;
             EndTime = endTime;

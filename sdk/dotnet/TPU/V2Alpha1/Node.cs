@@ -250,6 +250,9 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// The runtime version running in the Node.
         /// </summary>

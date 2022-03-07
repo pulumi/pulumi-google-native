@@ -52,7 +52,11 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+     * The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+     */
+    public readonly dumpFlags!: pulumi.Output<outputs.datamigration.v1.DumpFlagsResponse>;
+    /**
+     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
      */
     public readonly dumpPath!: pulumi.Output<string>;
     /**
@@ -138,6 +142,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["dumpFlags"] = args ? args.dumpFlags : undefined;
             resourceInputs["dumpPath"] = args ? args.dumpPath : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -163,6 +168,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["destinationDatabase"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["dumpFlags"] = undefined /*out*/;
             resourceInputs["dumpPath"] = undefined /*out*/;
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
@@ -201,7 +207,11 @@ export interface MigrationJobArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+     * The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+     */
+    dumpFlags?: pulumi.Input<inputs.datamigration.v1.DumpFlagsArgs>;
+    /**
+     * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
      */
     dumpPath?: pulumi.Input<string>;
     /**

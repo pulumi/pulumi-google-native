@@ -141,6 +141,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["nodeId"] = args ? args.nodeId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -217,6 +218,7 @@ export interface NodeArgs {
     networkConfig?: pulumi.Input<inputs.tpu.v2alpha1.NetworkConfigArgs>;
     nodeId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    requestId?: pulumi.Input<string>;
     /**
      * The runtime version running in the Node.
      */

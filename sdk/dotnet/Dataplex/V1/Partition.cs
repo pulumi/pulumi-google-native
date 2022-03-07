@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The values must be HTML URL encoded two times before constructing the path. For example, if you have a value of "US:CA", encoded it two times and you get "US%253ACA". Then if you have the 2nd value is "CA#Sunnyvale", encoded two times and you get "CA%2523Sunnyvale". The partition values path is "US%253ACA/CA%2523Sunnyvale". The final URL will be "https://.../partitions/US%253ACA/CA%2523Sunnyvale". The name field in the responses will always have the encoded format.
+        /// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

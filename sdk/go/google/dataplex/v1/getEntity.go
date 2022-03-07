@@ -44,9 +44,9 @@ type LookupEntityResult struct {
 	DataPathPattern string `pulumi:"dataPathPattern"`
 	// Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
 	Description string `pulumi:"description"`
-	// Optional. Display name must be shorter than or equal to 63 characters.
+	// Optional. Display name must be shorter than or equal to 256 characters.
 	DisplayName string `pulumi:"displayName"`
-	// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+	// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 	Etag string `pulumi:"etag"`
 	// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
 	Format GoogleCloudDataplexV1StorageFormatResponse `pulumi:"format"`
@@ -135,12 +135,12 @@ func (o LookupEntityResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Optional. Display name must be shorter than or equal to 63 characters.
+// Optional. Display name must be shorter than or equal to 256 characters.
 func (o LookupEntityResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
 func (o LookupEntityResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityResult) string { return v.Etag }).(pulumi.StringOutput)
 }

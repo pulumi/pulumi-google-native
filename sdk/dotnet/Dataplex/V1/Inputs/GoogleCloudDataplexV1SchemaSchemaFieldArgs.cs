@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<Pulumi.GoogleNative.Dataplex.V1.GoogleCloudDataplexV1SchemaSchemaFieldMode> Mode { get; set; } = null!;
 
         /// <summary>
-        /// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+        /// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

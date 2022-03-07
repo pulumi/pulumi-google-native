@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+        /// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
         /// </summary>
         public readonly string Name;
         /// <summary>

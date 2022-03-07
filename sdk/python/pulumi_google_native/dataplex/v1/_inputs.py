@@ -580,8 +580,8 @@ class GoogleCloudDataplexV1SchemaPartitionFieldArgs:
                  name: pulumi.Input[str],
                  type: pulumi.Input['GoogleCloudDataplexV1SchemaPartitionFieldType']):
         """
-        Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
-        :param pulumi.Input[str] name: Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+        Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
+        :param pulumi.Input[str] name: Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
         :param pulumi.Input['GoogleCloudDataplexV1SchemaPartitionFieldType'] type: Immutable. The type of field.
         """
         pulumi.set(__self__, "name", name)
@@ -591,7 +591,7 @@ class GoogleCloudDataplexV1SchemaPartitionFieldArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+        Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
         """
         return pulumi.get(self, "name")
 
@@ -623,7 +623,7 @@ class GoogleCloudDataplexV1SchemaSchemaFieldArgs:
         """
         Represents a column field within a table schema.
         :param pulumi.Input['GoogleCloudDataplexV1SchemaSchemaFieldMode'] mode: Additional field semantics.
-        :param pulumi.Input[str] name: The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+        :param pulumi.Input[str] name: The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
         :param pulumi.Input['GoogleCloudDataplexV1SchemaSchemaFieldType'] type: The type of field.
         :param pulumi.Input[str] description: Optional. User friendly field description. Must be less than or equal to 1024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1SchemaSchemaFieldArgs']]] fields: Optional. Any nested field for complex types.
@@ -652,7 +652,7 @@ class GoogleCloudDataplexV1SchemaSchemaFieldArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+        The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
         """
         return pulumi.get(self, "name")
 
@@ -706,8 +706,8 @@ class GoogleCloudDataplexV1SchemaArgs:
                  partition_style: Optional[pulumi.Input['GoogleCloudDataplexV1SchemaPartitionStyle']] = None):
         """
         Schema information describing the structure and layout of the data.
-        :param pulumi.Input[bool] user_managed: Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1SchemaSchemaFieldArgs']]] fields: Optional. The sequence of fields describing data in table entities.
+        :param pulumi.Input[bool] user_managed: Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1SchemaSchemaFieldArgs']]] fields: Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1SchemaPartitionFieldArgs']]] partition_fields: Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data.
         :param pulumi.Input['GoogleCloudDataplexV1SchemaPartitionStyle'] partition_style: Optional. The structure of paths containing partition data within the entity.
         """
@@ -723,7 +723,7 @@ class GoogleCloudDataplexV1SchemaArgs:
     @pulumi.getter(name="userManaged")
     def user_managed(self) -> pulumi.Input[bool]:
         """
-        Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+        Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
         """
         return pulumi.get(self, "user_managed")
 
@@ -735,7 +735,7 @@ class GoogleCloudDataplexV1SchemaArgs:
     @pulumi.getter
     def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1SchemaSchemaFieldArgs']]]]:
         """
-        Optional. The sequence of fields describing data in table entities.
+        Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
         """
         return pulumi.get(self, "fields")
 
@@ -780,7 +780,7 @@ class GoogleCloudDataplexV1StorageFormatCsvOptionsArgs:
         :param pulumi.Input[str] delimiter: Optional. The delimiter used to separate values. Defaults to ','.
         :param pulumi.Input[str] encoding: Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8", and "ISO-8859-1". Defaults to UTF-8 if unspecified.
         :param pulumi.Input[int] header_rows: Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. Defaults to 0.
-        :param pulumi.Input[str] quote: Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+        :param pulumi.Input[str] quote: Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
         """
         if delimiter is not None:
             pulumi.set(__self__, "delimiter", delimiter)
@@ -831,7 +831,7 @@ class GoogleCloudDataplexV1StorageFormatCsvOptionsArgs:
     @pulumi.getter
     def quote(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+        Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
         """
         return pulumi.get(self, "quote")
 
@@ -873,7 +873,7 @@ class GoogleCloudDataplexV1StorageFormatArgs:
                  json: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatJsonOptionsArgs']] = None):
         """
         Describes the format of the data within its storage location.
-        :param pulumi.Input[str] mime_type: The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+        :param pulumi.Input[str] mime_type: The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatCompressionFormat'] compression_format: Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatCsvOptionsArgs'] csv: Optional. Additional information about CSV formatted data.
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatJsonOptionsArgs'] json: Optional. Additional information about CSV formatted data.
@@ -890,7 +890,7 @@ class GoogleCloudDataplexV1StorageFormatArgs:
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> pulumi.Input[str]:
         """
-        The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+        The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         """
         return pulumi.get(self, "mime_type")
 

@@ -23,7 +23,9 @@ type MigrationJob struct {
 	DestinationDatabase DatabaseTypeResponseOutput `pulumi:"destinationDatabase"`
 	// The migration job display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+	DumpFlags DumpFlagsResponseOutput `pulumi:"dumpFlags"`
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 	DumpPath pulumi.StringOutput `pulumi:"dumpPath"`
 	// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Duration pulumi.StringOutput `pulumi:"duration"`
@@ -112,7 +114,9 @@ type migrationJobArgs struct {
 	DestinationDatabase *DatabaseType `pulumi:"destinationDatabase"`
 	// The migration job display name.
 	DisplayName *string `pulumi:"displayName"`
-	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+	DumpFlags *DumpFlags `pulumi:"dumpFlags"`
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 	DumpPath *string `pulumi:"dumpPath"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels         map[string]string `pulumi:"labels"`
@@ -146,7 +150,9 @@ type MigrationJobArgs struct {
 	DestinationDatabase DatabaseTypePtrInput
 	// The migration job display name.
 	DisplayName pulumi.StringPtrInput
-	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+	DumpFlags DumpFlagsPtrInput
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 	DumpPath pulumi.StringPtrInput
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels         pulumi.StringMapInput

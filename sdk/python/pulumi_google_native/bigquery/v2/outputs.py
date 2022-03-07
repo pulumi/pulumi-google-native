@@ -2673,6 +2673,8 @@ class JobConfigurationLoadResponse(dict):
             suggest = "null_marker"
         elif key == "parquetOptions":
             suggest = "parquet_options"
+        elif key == "preserveAsciiControlCharacters":
+            suggest = "preserve_ascii_control_characters"
         elif key == "projectionFields":
             suggest = "projection_fields"
         elif key == "rangePartitioning":
@@ -2721,6 +2723,7 @@ class JobConfigurationLoadResponse(dict):
                  max_bad_records: int,
                  null_marker: str,
                  parquet_options: 'outputs.ParquetOptionsResponse',
+                 preserve_ascii_control_characters: bool,
                  projection_fields: Sequence[str],
                  quote: str,
                  range_partitioning: 'outputs.RangePartitioningResponse',
@@ -2750,6 +2753,7 @@ class JobConfigurationLoadResponse(dict):
         :param int max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
         :param str null_marker: [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
         :param 'ParquetOptionsResponse' parquet_options: [Optional] Options to configure parquet support.
+        :param bool preserve_ascii_control_characters: [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
         :param Sequence[str] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
         :param str quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param 'RangePartitioningResponse' range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
@@ -2779,6 +2783,7 @@ class JobConfigurationLoadResponse(dict):
         pulumi.set(__self__, "max_bad_records", max_bad_records)
         pulumi.set(__self__, "null_marker", null_marker)
         pulumi.set(__self__, "parquet_options", parquet_options)
+        pulumi.set(__self__, "preserve_ascii_control_characters", preserve_ascii_control_characters)
         pulumi.set(__self__, "projection_fields", projection_fields)
         pulumi.set(__self__, "quote", quote)
         pulumi.set(__self__, "range_partitioning", range_partitioning)
@@ -2926,6 +2931,14 @@ class JobConfigurationLoadResponse(dict):
         [Optional] Options to configure parquet support.
         """
         return pulumi.get(self, "parquet_options")
+
+    @property
+    @pulumi.getter(name="preserveAsciiControlCharacters")
+    def preserve_ascii_control_characters(self) -> bool:
+        """
+        [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        """
+        return pulumi.get(self, "preserve_ascii_control_characters")
 
     @property
     @pulumi.getter(name="projectionFields")

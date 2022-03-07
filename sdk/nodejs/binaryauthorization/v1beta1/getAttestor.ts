@@ -31,6 +31,10 @@ export interface GetAttestorResult {
      */
     readonly description: string;
     /**
+     * Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+     */
+    readonly etag: string;
+    /**
      * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     readonly name: string;

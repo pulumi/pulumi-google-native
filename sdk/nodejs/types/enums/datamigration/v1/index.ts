@@ -103,6 +103,10 @@ export const CloudSqlSettingsDatabaseVersion = {
      * PostgreSQL 13.
      */
     Postgres13: "POSTGRES_13",
+    /**
+     * PostgreSQL 14.
+     */
+    Postgres14: "POSTGRES_14",
 } as const;
 
 /**

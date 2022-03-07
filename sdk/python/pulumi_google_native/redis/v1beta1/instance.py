@@ -51,12 +51,12 @@ class InstanceArgs:
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input['PersistenceConfigArgs'] persistence_config: Optional. Persistence configuration parameters
-        :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
+        :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
         :param pulumi.Input[str] redis_version: Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
-        :param pulumi.Input[str] secondary_ip_range: Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+        :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -265,7 +265,7 @@ class InstanceArgs:
     @pulumi.getter(name="readReplicasMode")
     def read_replicas_mode(self) -> Optional[pulumi.Input['InstanceReadReplicasMode']]:
         """
-        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -325,7 +325,7 @@ class InstanceArgs:
     @pulumi.getter(name="secondaryIpRange")
     def secondary_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+        Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
         """
         return pulumi.get(self, "secondary_ip_range")
 
@@ -389,12 +389,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[pulumi.InputType['PersistenceConfigArgs']] persistence_config: Optional. Persistence configuration parameters
-        :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replica mode. Can only be specified when trying to create the instance.
+        :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
         :param pulumi.Input[str] redis_version: Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes. The valid range for the Standard Tier with read replicas enabled is [1-5] and defaults to 2. If read replicas are not enabled for a Standard Tier instance, the only valid value is 1 and the default is 1. The valid value for basic tier is 0 and the default is also 0.
         :param pulumi.Input[str] reserved_ip_range: Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29. For READ_REPLICAS_ENABLED the default block size is /28.
-        :param pulumi.Input[str] secondary_ip_range: Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+        :param pulumi.Input[str] secondary_ip_range: Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         :param pulumi.Input['InstanceTransitEncryptionMode'] transit_encryption_mode: Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
         """
@@ -713,7 +713,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="readReplicasMode")
     def read_replicas_mode(self) -> pulumi.Output[str]:
         """
-        Optional. Read replica mode. Can only be specified when trying to create the instance.
+        Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
         """
         return pulumi.get(self, "read_replicas_mode")
 
@@ -753,7 +753,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="secondaryIpRange")
     def secondary_ip_range(self) -> pulumi.Output[str]:
         """
-        Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+        Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
         """
         return pulumi.get(self, "secondary_ip_range")
 

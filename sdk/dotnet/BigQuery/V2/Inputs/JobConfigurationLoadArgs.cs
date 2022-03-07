@@ -120,6 +120,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("parquetOptions")]
         public Input<Inputs.ParquetOptionsArgs>? ParquetOptions { get; set; }
 
+        /// <summary>
+        /// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        /// </summary>
+        [Input("preserveAsciiControlCharacters")]
+        public Input<bool>? PreserveAsciiControlCharacters { get; set; }
+
         [Input("projectionFields")]
         private InputList<string>? _projectionFields;
 

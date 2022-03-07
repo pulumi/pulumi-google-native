@@ -34,7 +34,7 @@ type LookupPartitionResult struct {
 	Etag string `pulumi:"etag"`
 	// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
 	Location string `pulumi:"location"`
-	// The values must be HTML URL encoded two times before constructing the path. For example, if you have a value of "US:CA", encoded it two times and you get "US%253ACA". Then if you have the 2nd value is "CA#Sunnyvale", encoded two times and you get "CA%2523Sunnyvale". The partition values path is "US%253ACA/CA%2523Sunnyvale". The final URL will be "https://.../partitions/US%253ACA/CA%2523Sunnyvale". The name field in the responses will always have the encoded format.
+	// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
 	Name string `pulumi:"name"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values []string `pulumi:"values"`
@@ -86,7 +86,7 @@ func (o LookupPartitionResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartitionResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The values must be HTML URL encoded two times before constructing the path. For example, if you have a value of "US:CA", encoded it two times and you get "US%253ACA". Then if you have the 2nd value is "CA#Sunnyvale", encoded two times and you get "CA%2523Sunnyvale". The partition values path is "US%253ACA/CA%2523Sunnyvale". The final URL will be "https://.../partitions/US%253ACA/CA%2523Sunnyvale". The name field in the responses will always have the encoded format.
+// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
 func (o LookupPartitionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartitionResult) string { return v.Name }).(pulumi.StringOutput)
 }

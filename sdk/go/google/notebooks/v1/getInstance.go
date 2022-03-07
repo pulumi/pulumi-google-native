@@ -33,6 +33,8 @@ type LookupInstanceResult struct {
 	BootDiskSizeGb string `pulumi:"bootDiskSizeGb"`
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 	BootDiskType string `pulumi:"bootDiskType"`
+	// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+	CanIpForward bool `pulumi:"canIpForward"`
 	// Use a container image to start the notebook instance.
 	ContainerImage ContainerImageResponse `pulumi:"containerImage"`
 	// Instance creation time.
@@ -145,6 +147,11 @@ func (o LookupInstanceResultOutput) BootDiskSizeGb() pulumi.StringOutput {
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 func (o LookupInstanceResultOutput) BootDiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.BootDiskType }).(pulumi.StringOutput)
+}
+
+// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+func (o LookupInstanceResultOutput) CanIpForward() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.CanIpForward }).(pulumi.BoolOutput)
 }
 
 // Use a container image to start the notebook instance.

@@ -21,7 +21,15 @@ class PkixPublicKeySignatureAlgorithm(str, Enum):
     """
     RSASSA-PSS 2048 bit key with a SHA256 digest.
     """
+    RSA_SIGN_PSS2048_SHA256 = "RSA_SIGN_PSS_2048_SHA256"
+    """
+    RSASSA-PSS 2048 bit key with a SHA256 digest.
+    """
     RSA_PSS3072_SHA256 = "RSA_PSS_3072_SHA256"
+    """
+    RSASSA-PSS 3072 bit key with a SHA256 digest.
+    """
+    RSA_SIGN_PSS3072_SHA256 = "RSA_SIGN_PSS_3072_SHA256"
     """
     RSASSA-PSS 3072 bit key with a SHA256 digest.
     """
@@ -29,7 +37,15 @@ class PkixPublicKeySignatureAlgorithm(str, Enum):
     """
     RSASSA-PSS 4096 bit key with a SHA256 digest.
     """
+    RSA_SIGN_PSS4096_SHA256 = "RSA_SIGN_PSS_4096_SHA256"
+    """
+    RSASSA-PSS 4096 bit key with a SHA256 digest.
+    """
     RSA_PSS4096_SHA512 = "RSA_PSS_4096_SHA512"
+    """
+    RSASSA-PSS 4096 bit key with a SHA512 digest.
+    """
+    RSA_SIGN_PSS4096_SHA512 = "RSA_SIGN_PSS_4096_SHA512"
     """
     RSASSA-PSS 4096 bit key with a SHA512 digest.
     """

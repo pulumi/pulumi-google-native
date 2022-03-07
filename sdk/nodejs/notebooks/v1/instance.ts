@@ -49,6 +49,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly bootDiskType!: pulumi.Output<string>;
     /**
+     * Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+     */
+    public readonly canIpForward!: pulumi.Output<boolean>;
+    /**
      * Use a container image to start the notebook instance.
      */
     public readonly containerImage!: pulumi.Output<outputs.notebooks.v1.ContainerImageResponse>;
@@ -197,6 +201,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             resourceInputs["bootDiskSizeGb"] = args ? args.bootDiskSizeGb : undefined;
             resourceInputs["bootDiskType"] = args ? args.bootDiskType : undefined;
+            resourceInputs["canIpForward"] = args ? args.canIpForward : undefined;
             resourceInputs["containerImage"] = args ? args.containerImage : undefined;
             resourceInputs["customGpuDriverPath"] = args ? args.customGpuDriverPath : undefined;
             resourceInputs["dataDiskSizeGb"] = args ? args.dataDiskSizeGb : undefined;
@@ -236,6 +241,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["acceleratorConfig"] = undefined /*out*/;
             resourceInputs["bootDiskSizeGb"] = undefined /*out*/;
             resourceInputs["bootDiskType"] = undefined /*out*/;
+            resourceInputs["canIpForward"] = undefined /*out*/;
             resourceInputs["containerImage"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
@@ -290,6 +296,10 @@ export interface InstanceArgs {
      * Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
      */
     bootDiskType?: pulumi.Input<enums.notebooks.v1.InstanceBootDiskType>;
+    /**
+     * Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+     */
+    canIpForward?: pulumi.Input<boolean>;
     /**
      * Use a container image to start the notebook instance.
      */

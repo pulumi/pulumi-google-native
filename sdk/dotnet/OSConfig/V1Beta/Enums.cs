@@ -103,15 +103,19 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         }
 
         /// <summary>
-        /// Invalid for a Windows ExecStepConfig. For a Linux ExecStepConfig, the interpreter will be parsed from the shebang line of the script if unspecified.
+        /// If the interpreter is not specified, the value defaults to `NONE`.
         /// </summary>
         public static ExecStepConfigInterpreter InterpreterUnspecified { get; } = new ExecStepConfigInterpreter("INTERPRETER_UNSPECIFIED");
         /// <summary>
-        /// Indicates that the script is run with `/bin/sh` on Linux and `cmd` on Windows.
+        /// Indicates that the file is run as follows on each operating system: + For Linux VMs, the file is ran as an executable and the interpreter might be parsed from the [shebang line](https://wikipedia.org/wiki/Shebang_(Unix)) of the file. + For Windows VM, this value is not supported.
+        /// </summary>
+        public static ExecStepConfigInterpreter None { get; } = new ExecStepConfigInterpreter("NONE");
+        /// <summary>
+        /// Indicates that the file is run with `/bin/sh` on Linux and `cmd` on Windows.
         /// </summary>
         public static ExecStepConfigInterpreter Shell { get; } = new ExecStepConfigInterpreter("SHELL");
         /// <summary>
-        /// Indicates that the file is run with PowerShell flags `-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`.
+        /// Indicates that the file is run with PowerShell.
         /// </summary>
         public static ExecStepConfigInterpreter Powershell { get; } = new ExecStepConfigInterpreter("POWERSHELL");
 

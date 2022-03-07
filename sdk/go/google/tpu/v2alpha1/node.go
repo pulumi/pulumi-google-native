@@ -120,6 +120,7 @@ type nodeArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	NodeId        *string        `pulumi:"nodeId"`
 	Project       *string        `pulumi:"project"`
+	RequestId     *string        `pulumi:"requestId"`
 	// The runtime version running in the Node.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -151,6 +152,7 @@ type NodeArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	NodeId        pulumi.StringPtrInput
 	Project       pulumi.StringPtrInput
+	RequestId     pulumi.StringPtrInput
 	// The runtime version running in the Node.
 	RuntimeVersion pulumi.StringInput
 	// The scheduling options for this node.

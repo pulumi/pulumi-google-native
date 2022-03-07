@@ -12,6 +12,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigArgs',
     'BindingArgs',
+    'BootImageArgs',
     'ContainerImageArgs',
     'DataprocParametersArgs',
     'EncryptionConfigArgs',
@@ -127,6 +128,15 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class BootImageArgs:
+    def __init__(__self__):
+        """
+        Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -1334,6 +1344,7 @@ class VirtualMachineConfigArgs:
                  data_disk: pulumi.Input['LocalDiskArgs'],
                  machine_type: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['RuntimeAcceleratorConfigArgs']] = None,
+                 boot_image: Optional[pulumi.Input['BootImageArgs']] = None,
                  container_images: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
@@ -1350,6 +1361,7 @@ class VirtualMachineConfigArgs:
         :param pulumi.Input['LocalDiskArgs'] data_disk: Data disk option configuration settings.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param pulumi.Input['RuntimeAcceleratorConfigArgs'] accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
+        :param pulumi.Input['BootImageArgs'] boot_image: Optional. Boot image metadata used for runtime upgradeability.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] container_images: Optional. Use a list of container images to use as Kernels in the notebook instance.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for virtual machine data disk.
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
@@ -1366,6 +1378,8 @@ class VirtualMachineConfigArgs:
         pulumi.set(__self__, "machine_type", machine_type)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
+        if boot_image is not None:
+            pulumi.set(__self__, "boot_image", boot_image)
         if container_images is not None:
             pulumi.set(__self__, "container_images", container_images)
         if encryption_config is not None:
@@ -1424,6 +1438,18 @@ class VirtualMachineConfigArgs:
     @accelerator_config.setter
     def accelerator_config(self, value: Optional[pulumi.Input['RuntimeAcceleratorConfigArgs']]):
         pulumi.set(self, "accelerator_config", value)
+
+    @property
+    @pulumi.getter(name="bootImage")
+    def boot_image(self) -> Optional[pulumi.Input['BootImageArgs']]:
+        """
+        Optional. Boot image metadata used for runtime upgradeability.
+        """
+        return pulumi.get(self, "boot_image")
+
+    @boot_image.setter
+    def boot_image(self, value: Optional[pulumi.Input['BootImageArgs']]):
+        pulumi.set(self, "boot_image", value)
 
     @property
     @pulumi.getter(name="containerImages")

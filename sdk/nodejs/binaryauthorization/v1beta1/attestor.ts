@@ -40,6 +40,10 @@ export class Attestor extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     public readonly name!: pulumi.Output<string>;
@@ -68,12 +72,14 @@ export class Attestor extends pulumi.CustomResource {
             }
             resourceInputs["attestorId"] = args ? args.attestorId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["userOwnedDrydockNote"] = args ? args.userOwnedDrydockNote : undefined;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["userOwnedDrydockNote"] = undefined /*out*/;
@@ -92,6 +98,10 @@ export interface AttestorArgs {
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */

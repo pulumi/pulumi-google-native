@@ -17,6 +17,8 @@ type Attestor struct {
 
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Time when the attestor was last updated.
@@ -70,6 +72,8 @@ type attestorArgs struct {
 	AttestorId string `pulumi:"attestorId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
+	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+	Etag *string `pulumi:"etag"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -82,6 +86,8 @@ type AttestorArgs struct {
 	AttestorId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
+	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+	Etag pulumi.StringPtrInput
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

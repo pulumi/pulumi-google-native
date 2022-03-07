@@ -35,7 +35,9 @@ type LookupMigrationJobResult struct {
 	DestinationDatabase DatabaseTypeResponse `pulumi:"destinationDatabase"`
 	// The migration job display name.
 	DisplayName string `pulumi:"displayName"`
-	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+	// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+	DumpFlags DumpFlagsResponse `pulumi:"dumpFlags"`
+	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 	DumpPath string `pulumi:"dumpPath"`
 	// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Duration string `pulumi:"duration"`
@@ -120,7 +122,12 @@ func (o LookupMigrationJobResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+func (o LookupMigrationJobResultOutput) DumpFlags() DumpFlagsResponseOutput {
+	return o.ApplyT(func(v LookupMigrationJobResult) DumpFlagsResponse { return v.DumpFlags }).(DumpFlagsResponseOutput)
+}
+
+// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 func (o LookupMigrationJobResultOutput) DumpPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.DumpPath }).(pulumi.StringOutput)
 }

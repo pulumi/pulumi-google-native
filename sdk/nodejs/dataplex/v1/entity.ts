@@ -65,11 +65,11 @@ export class Entity extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Optional. Display name must be shorter than or equal to 63 characters.
+     * Optional. Display name must be shorter than or equal to 256 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+     * Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -196,11 +196,11 @@ export interface EntityArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. Display name must be shorter than or equal to 63 characters.
+     * Optional. Display name must be shorter than or equal to 256 characters.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Optional. The etag for this entity. Required for update and delete requests. Must match the server's etag.
+     * Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
      */
     etag?: pulumi.Input<string>;
     /**
@@ -208,7 +208,7 @@ export interface EntityArgs {
      */
     format: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1StorageFormatArgs>;
     /**
-     * A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter.
+     * A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
      */
     id: pulumi.Input<string>;
     lakeId: pulumi.Input<string>;

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, container_image=None, create_time=None, creator=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
+    def __init__(__self__, accelerator_config=None, boot_disk_size_gb=None, boot_disk_type=None, can_ip_forward=None, container_image=None, create_time=None, creator=None, custom_gpu_driver_path=None, data_disk_size_gb=None, data_disk_type=None, disk_encryption=None, disks=None, install_gpu_driver=None, instance_owners=None, kms_key=None, labels=None, machine_type=None, metadata=None, name=None, network=None, nic_type=None, no_proxy_access=None, no_public_ip=None, no_remove_data_disk=None, post_startup_script=None, proxy_uri=None, reservation_affinity=None, service_account=None, service_account_scopes=None, shielded_instance_config=None, state=None, subnet=None, tags=None, update_time=None, upgrade_history=None, vm_image=None):
         if accelerator_config and not isinstance(accelerator_config, dict):
             raise TypeError("Expected argument 'accelerator_config' to be a dict")
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -28,6 +28,9 @@ class GetInstanceResult:
         if boot_disk_type and not isinstance(boot_disk_type, str):
             raise TypeError("Expected argument 'boot_disk_type' to be a str")
         pulumi.set(__self__, "boot_disk_type", boot_disk_type)
+        if can_ip_forward and not isinstance(can_ip_forward, bool):
+            raise TypeError("Expected argument 'can_ip_forward' to be a bool")
+        pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if container_image and not isinstance(container_image, dict):
             raise TypeError("Expected argument 'container_image' to be a dict")
         pulumi.set(__self__, "container_image", container_image)
@@ -148,6 +151,14 @@ class GetInstanceResult:
         Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         """
         return pulumi.get(self, "boot_disk_type")
+
+    @property
+    @pulumi.getter(name="canIpForward")
+    def can_ip_forward(self) -> bool:
+        """
+        Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        """
+        return pulumi.get(self, "can_ip_forward")
 
     @property
     @pulumi.getter(name="containerImage")
@@ -415,6 +426,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             accelerator_config=self.accelerator_config,
             boot_disk_size_gb=self.boot_disk_size_gb,
             boot_disk_type=self.boot_disk_type,
+            can_ip_forward=self.can_ip_forward,
             container_image=self.container_image,
             create_time=self.create_time,
             creator=self.creator,
@@ -470,6 +482,7 @@ def get_instance(instance_id: Optional[str] = None,
         accelerator_config=__ret__.accelerator_config,
         boot_disk_size_gb=__ret__.boot_disk_size_gb,
         boot_disk_type=__ret__.boot_disk_type,
+        can_ip_forward=__ret__.can_ip_forward,
         container_image=__ret__.container_image,
         create_time=__ret__.create_time,
         creator=__ret__.creator,

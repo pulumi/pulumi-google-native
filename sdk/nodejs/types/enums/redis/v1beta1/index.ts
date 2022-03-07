@@ -38,7 +38,7 @@ export const InstanceReadReplicasMode = {
 } as const;
 
 /**
- * Optional. Read replica mode. Can only be specified when trying to create the instance.
+ * Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
  */
 export type InstanceReadReplicasMode = (typeof InstanceReadReplicasMode)[keyof typeof InstanceReadReplicasMode];
 

@@ -6449,6 +6449,8 @@ type JobConfigurationLoad struct {
 	NullMarker *string `pulumi:"nullMarker"`
 	// [Optional] Options to configure parquet support.
 	ParquetOptions *ParquetOptions `pulumi:"parquetOptions"`
+	// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+	PreserveAsciiControlCharacters *bool `pulumi:"preserveAsciiControlCharacters"`
 	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
 	ProjectionFields []string `pulumi:"projectionFields"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
@@ -6519,6 +6521,8 @@ type JobConfigurationLoadArgs struct {
 	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
 	// [Optional] Options to configure parquet support.
 	ParquetOptions ParquetOptionsPtrInput `pulumi:"parquetOptions"`
+	// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+	PreserveAsciiControlCharacters pulumi.BoolPtrInput `pulumi:"preserveAsciiControlCharacters"`
 	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
 	ProjectionFields pulumi.StringArrayInput `pulumi:"projectionFields"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
@@ -6703,6 +6707,11 @@ func (o JobConfigurationLoadOutput) NullMarker() pulumi.StringPtrOutput {
 // [Optional] Options to configure parquet support.
 func (o JobConfigurationLoadOutput) ParquetOptions() ParquetOptionsPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *ParquetOptions { return v.ParquetOptions }).(ParquetOptionsPtrOutput)
+}
+
+// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+func (o JobConfigurationLoadOutput) PreserveAsciiControlCharacters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobConfigurationLoad) *bool { return v.PreserveAsciiControlCharacters }).(pulumi.BoolPtrOutput)
 }
 
 // If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
@@ -6954,6 +6963,16 @@ func (o JobConfigurationLoadPtrOutput) ParquetOptions() ParquetOptionsPtrOutput 
 	}).(ParquetOptionsPtrOutput)
 }
 
+// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+func (o JobConfigurationLoadPtrOutput) PreserveAsciiControlCharacters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationLoad) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveAsciiControlCharacters
+	}).(pulumi.BoolPtrOutput)
+}
+
 // If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
 func (o JobConfigurationLoadPtrOutput) ProjectionFields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobConfigurationLoad) []string {
@@ -7099,6 +7118,8 @@ type JobConfigurationLoadResponse struct {
 	NullMarker string `pulumi:"nullMarker"`
 	// [Optional] Options to configure parquet support.
 	ParquetOptions ParquetOptionsResponse `pulumi:"parquetOptions"`
+	// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+	PreserveAsciiControlCharacters bool `pulumi:"preserveAsciiControlCharacters"`
 	// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
 	ProjectionFields []string `pulumi:"projectionFields"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
@@ -7224,6 +7245,11 @@ func (o JobConfigurationLoadResponseOutput) NullMarker() pulumi.StringOutput {
 // [Optional] Options to configure parquet support.
 func (o JobConfigurationLoadResponseOutput) ParquetOptions() ParquetOptionsResponseOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) ParquetOptionsResponse { return v.ParquetOptions }).(ParquetOptionsResponseOutput)
+}
+
+// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+func (o JobConfigurationLoadResponseOutput) PreserveAsciiControlCharacters() pulumi.BoolOutput {
+	return o.ApplyT(func(v JobConfigurationLoadResponse) bool { return v.PreserveAsciiControlCharacters }).(pulumi.BoolOutput)
 }
 
 // If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.

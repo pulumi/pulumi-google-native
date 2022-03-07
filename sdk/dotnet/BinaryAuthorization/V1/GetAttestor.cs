@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
         public readonly string Name;
@@ -76,6 +80,8 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         private GetAttestorResult(
             string description,
 
+            string etag,
+
             string name,
 
             string updateTime,
@@ -83,6 +89,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
             Outputs.UserOwnedGrafeasNoteResponse userOwnedGrafeasNote)
         {
             Description = description;
+            Etag = etag;
             Name = name;
             UpdateTime = updateTime;
             UserOwnedGrafeasNote = userOwnedGrafeasNote;

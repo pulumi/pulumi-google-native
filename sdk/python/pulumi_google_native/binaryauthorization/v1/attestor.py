@@ -18,18 +18,22 @@ class AttestorArgs:
     def __init__(__self__, *,
                  attestor_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_owned_grafeas_note: Optional[pulumi.Input['UserOwnedGrafeasNoteArgs']] = None):
         """
         The set of arguments for constructing a Attestor resource.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        :param pulumi.Input[str] etag: Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         :param pulumi.Input['UserOwnedGrafeasNoteArgs'] user_owned_grafeas_note: This specifies how an attestation will be read, and how it will be used during policy enforcement.
         """
         pulumi.set(__self__, "attestor_id", attestor_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -57,6 +61,18 @@ class AttestorArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter
@@ -99,6 +115,7 @@ class Attestor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_owned_grafeas_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedGrafeasNoteArgs']]] = None,
@@ -109,6 +126,7 @@ class Attestor(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+        :param pulumi.Input[str] etag: Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         :param pulumi.Input[pulumi.InputType['UserOwnedGrafeasNoteArgs']] user_owned_grafeas_note: This specifies how an attestation will be read, and how it will be used during policy enforcement.
         """
@@ -138,6 +156,7 @@ class Attestor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestor_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  user_owned_grafeas_note: Optional[pulumi.Input[pulumi.InputType['UserOwnedGrafeasNoteArgs']]] = None,
@@ -157,6 +176,7 @@ class Attestor(pulumi.CustomResource):
                 raise TypeError("Missing required property 'attestor_id'")
             __props__.__dict__["attestor_id"] = attestor_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["user_owned_grafeas_note"] = user_owned_grafeas_note
@@ -184,6 +204,7 @@ class Attestor(pulumi.CustomResource):
         __props__ = AttestorArgs.__new__(AttestorArgs)
 
         __props__.__dict__["description"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["user_owned_grafeas_note"] = None
@@ -196,6 +217,14 @@ class Attestor(pulumi.CustomResource):
         Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter

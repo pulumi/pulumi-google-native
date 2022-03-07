@@ -116,6 +116,10 @@ class CloudSqlSettingsDatabaseVersion(str, Enum):
     """
     PostgreSQL 13.
     """
+    POSTGRES14 = "POSTGRES_14"
+    """
+    PostgreSQL 14.
+    """
 
 
 class ConnectionProfileProvider(str, Enum):

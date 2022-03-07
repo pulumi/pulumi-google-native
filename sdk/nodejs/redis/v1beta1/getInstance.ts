@@ -109,7 +109,7 @@ export interface GetInstanceResult {
      */
     readonly readEndpointPort: number;
     /**
-     * Optional. Read replica mode. Can only be specified when trying to create the instance.
+     * Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
      */
     readonly readReplicasMode: string;
     /**
@@ -129,7 +129,7 @@ export interface GetInstanceResult {
      */
     readonly reservedIpRange: string;
     /**
-     * Optional. Additional ip ranges for node placement, beyond those specified in reserved_ip_range. At most 1 secondary IP range is supported. The mask value must not exceed /28. Not supported for BASIC tier. Updates can only add new ranges, once added ranges cannot be changed or deleted. Values in this list cannot overlap with the reserved_ip_range. Not supported during instance creation.
+     * Optional. Additional IP range for node placement. Required when enabling read replicas on an existing instance. For DIRECT_PEERING mode value must be a CIDR range of size /28, or "auto". For PRIVATE_SERVICE_ACCESS mode value must be the name of an allocated address range associated with the private service access connection, or "auto".
      */
     readonly secondaryIpRange: string;
     /**

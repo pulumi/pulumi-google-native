@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetAttestorResult:
-    def __init__(__self__, description=None, name=None, update_time=None, user_owned_drydock_note=None):
+    def __init__(__self__, description=None, etag=None, name=None, update_time=None, user_owned_drydock_note=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -39,6 +42,14 @@ class GetAttestorResult:
         Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter
@@ -72,6 +83,7 @@ class AwaitableGetAttestorResult(GetAttestorResult):
             yield self
         return GetAttestorResult(
             description=self.description,
+            etag=self.etag,
             name=self.name,
             update_time=self.update_time,
             user_owned_drydock_note=self.user_owned_drydock_note)
@@ -94,6 +106,7 @@ def get_attestor(attestor_id: Optional[str] = None,
 
     return AwaitableGetAttestorResult(
         description=__ret__.description,
+        etag=__ret__.etag,
         name=__ret__.name,
         update_time=__ret__.update_time,
         user_owned_drydock_note=__ret__.user_owned_drydock_note)

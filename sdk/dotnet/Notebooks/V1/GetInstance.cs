@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string BootDiskType;
         /// <summary>
+        /// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// </summary>
+        public readonly bool CanIpForward;
+        /// <summary>
         /// Use a container image to start the notebook instance.
         /// </summary>
         public readonly Outputs.ContainerImageResponse ContainerImage;
@@ -210,6 +214,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
 
             string bootDiskType,
 
+            bool canIpForward,
+
             Outputs.ContainerImageResponse containerImage,
 
             string createTime,
@@ -277,6 +283,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
             AcceleratorConfig = acceleratorConfig;
             BootDiskSizeGb = bootDiskSizeGb;
             BootDiskType = bootDiskType;
+            CanIpForward = canIpForward;
             ContainerImage = containerImage;
             CreateTime = createTime;
             Creator = creator;

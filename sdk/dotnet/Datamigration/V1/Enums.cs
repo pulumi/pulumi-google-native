@@ -183,6 +183,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// PostgreSQL 13.
         /// </summary>
         public static CloudSqlSettingsDatabaseVersion Postgres13 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_13");
+        /// <summary>
+        /// PostgreSQL 14.
+        /// </summary>
+        public static CloudSqlSettingsDatabaseVersion Postgres14 { get; } = new CloudSqlSettingsDatabaseVersion("POSTGRES_14");
 
         public static bool operator ==(CloudSqlSettingsDatabaseVersion left, CloudSqlSettingsDatabaseVersion right) => left.Equals(right);
         public static bool operator !=(CloudSqlSettingsDatabaseVersion left, CloudSqlSettingsDatabaseVersion right) => !left.Equals(right);

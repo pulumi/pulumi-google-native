@@ -2414,13 +2414,13 @@ func (o GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput) UpdateTime() pul
 
 // Schema information describing the structure and layout of the data.
 type GoogleCloudDataplexV1Schema struct {
-	// Optional. The sequence of fields describing data in table entities.
+	// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
 	Fields []GoogleCloudDataplexV1SchemaSchemaField `pulumi:"fields"`
 	// Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data.
 	PartitionFields []GoogleCloudDataplexV1SchemaPartitionField `pulumi:"partitionFields"`
 	// Optional. The structure of paths containing partition data within the entity.
 	PartitionStyle *GoogleCloudDataplexV1SchemaPartitionStyle `pulumi:"partitionStyle"`
-	// Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+	// Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
 	UserManaged bool `pulumi:"userManaged"`
 }
 
@@ -2437,13 +2437,13 @@ type GoogleCloudDataplexV1SchemaInput interface {
 
 // Schema information describing the structure and layout of the data.
 type GoogleCloudDataplexV1SchemaArgs struct {
-	// Optional. The sequence of fields describing data in table entities.
+	// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
 	Fields GoogleCloudDataplexV1SchemaSchemaFieldArrayInput `pulumi:"fields"`
 	// Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data.
 	PartitionFields GoogleCloudDataplexV1SchemaPartitionFieldArrayInput `pulumi:"partitionFields"`
 	// Optional. The structure of paths containing partition data within the entity.
 	PartitionStyle GoogleCloudDataplexV1SchemaPartitionStylePtrInput `pulumi:"partitionStyle"`
-	// Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+	// Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
 	UserManaged pulumi.BoolInput `pulumi:"userManaged"`
 }
 
@@ -2474,7 +2474,7 @@ func (o GoogleCloudDataplexV1SchemaOutput) ToGoogleCloudDataplexV1SchemaOutputWi
 	return o
 }
 
-// Optional. The sequence of fields describing data in table entities.
+// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
 func (o GoogleCloudDataplexV1SchemaOutput) Fields() GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1Schema) []GoogleCloudDataplexV1SchemaSchemaField { return v.Fields }).(GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput)
 }
@@ -2493,14 +2493,14 @@ func (o GoogleCloudDataplexV1SchemaOutput) PartitionStyle() GoogleCloudDataplexV
 	}).(GoogleCloudDataplexV1SchemaPartitionStylePtrOutput)
 }
 
-// Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+// Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
 func (o GoogleCloudDataplexV1SchemaOutput) UserManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1Schema) bool { return v.UserManaged }).(pulumi.BoolOutput)
 }
 
-// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
+// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
 type GoogleCloudDataplexV1SchemaPartitionField struct {
-	// Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+	// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
 	Name string `pulumi:"name"`
 	// Immutable. The type of field.
 	Type GoogleCloudDataplexV1SchemaPartitionFieldType `pulumi:"type"`
@@ -2517,9 +2517,9 @@ type GoogleCloudDataplexV1SchemaPartitionFieldInput interface {
 	ToGoogleCloudDataplexV1SchemaPartitionFieldOutputWithContext(context.Context) GoogleCloudDataplexV1SchemaPartitionFieldOutput
 }
 
-// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
+// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
 type GoogleCloudDataplexV1SchemaPartitionFieldArgs struct {
-	// Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+	// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
 	Name pulumi.StringInput `pulumi:"name"`
 	// Immutable. The type of field.
 	Type GoogleCloudDataplexV1SchemaPartitionFieldTypeInput `pulumi:"type"`
@@ -2562,7 +2562,7 @@ func (i GoogleCloudDataplexV1SchemaPartitionFieldArray) ToGoogleCloudDataplexV1S
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput)
 }
 
-// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
+// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
 type GoogleCloudDataplexV1SchemaPartitionFieldOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1SchemaPartitionFieldOutput) ElementType() reflect.Type {
@@ -2577,7 +2577,7 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldOutput) ToGoogleCloudDataplexV1
 	return o
 }
 
-// Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
 func (o GoogleCloudDataplexV1SchemaPartitionFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaPartitionField) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2609,15 +2609,15 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput) Index(i pulumi.Int
 	}).(GoogleCloudDataplexV1SchemaPartitionFieldOutput)
 }
 
-// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
+// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
 type GoogleCloudDataplexV1SchemaPartitionFieldResponse struct {
-	// Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+	// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
 	Name string `pulumi:"name"`
 	// Immutable. The type of field.
 	Type string `pulumi:"type"`
 }
 
-// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration.
+// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
 type GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput) ElementType() reflect.Type {
@@ -2632,7 +2632,7 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput) ToGoogleCloudDa
 	return o
 }
 
-// Partition name is editable if only the partition style is not HIVE compatible. The maximum length allowed is 767 characters.
+// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
 func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaPartitionFieldResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2664,13 +2664,13 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldResponseArrayOutput) Index(i pu
 
 // Schema information describing the structure and layout of the data.
 type GoogleCloudDataplexV1SchemaResponse struct {
-	// Optional. The sequence of fields describing data in table entities.
+	// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
 	Fields []GoogleCloudDataplexV1SchemaSchemaFieldResponse `pulumi:"fields"`
 	// Optional. The sequence of fields describing the partition structure in entities. If this field is empty, there are no partitions within the data.
 	PartitionFields []GoogleCloudDataplexV1SchemaPartitionFieldResponse `pulumi:"partitionFields"`
 	// Optional. The structure of paths containing partition data within the entity.
 	PartitionStyle string `pulumi:"partitionStyle"`
-	// Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+	// Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
 	UserManaged bool `pulumi:"userManaged"`
 }
 
@@ -2689,7 +2689,7 @@ func (o GoogleCloudDataplexV1SchemaResponseOutput) ToGoogleCloudDataplexV1Schema
 	return o
 }
 
-// Optional. The sequence of fields describing data in table entities.
+// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
 func (o GoogleCloudDataplexV1SchemaResponseOutput) Fields() GoogleCloudDataplexV1SchemaSchemaFieldResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaResponse) []GoogleCloudDataplexV1SchemaSchemaFieldResponse {
 		return v.Fields
@@ -2708,7 +2708,7 @@ func (o GoogleCloudDataplexV1SchemaResponseOutput) PartitionStyle() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaResponse) string { return v.PartitionStyle }).(pulumi.StringOutput)
 }
 
-// Whether the schema is user-managed or managed by the service. - Set user_manage to false if you would like Dataplex to help you manage the schema. You will get the full service provided by Dataplex discovery, including new data discovery, schema inference and schema evolution. You can still provide input the schema of the entities, for example renaming a schema field, changing CSV or Json options if you think the discovered values are not as accurate. Dataplex will consider your input as the initial schema (as if they were produced by the previous discovery run), and will evolve schema or flag actions based on that. - Set user_manage to true if you would like to fully manage the entity schema by yourself. This is useful when you would like to manually specify the schema for a table. In this case, the schema defined by the user is guaranteed to be kept unchanged and would not be overwritten. But this also means Dataplex will not provide schema evolution management for you. Dataplex will still be able to manage partition registration (i.e., keeping the list of partitions up to date) when Dataplex discovery is turned on and user_managed is set to true.
+// Set to true if user-managed or false if managed by Dataplex. The default is false (managed by Dataplex). Set to falseto enable Dataplex discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex treats schema input by the user as though produced by a previous Dataplex discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex will not change schema fields.
 func (o GoogleCloudDataplexV1SchemaResponseOutput) UserManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaResponse) bool { return v.UserManaged }).(pulumi.BoolOutput)
 }
@@ -2721,7 +2721,7 @@ type GoogleCloudDataplexV1SchemaSchemaField struct {
 	Fields []GoogleCloudDataplexV1SchemaSchemaField `pulumi:"fields"`
 	// Additional field semantics.
 	Mode GoogleCloudDataplexV1SchemaSchemaFieldMode `pulumi:"mode"`
-	// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+	// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
 	Name string `pulumi:"name"`
 	// The type of field.
 	Type GoogleCloudDataplexV1SchemaSchemaFieldType `pulumi:"type"`
@@ -2746,7 +2746,7 @@ type GoogleCloudDataplexV1SchemaSchemaFieldArgs struct {
 	Fields GoogleCloudDataplexV1SchemaSchemaFieldArrayInput `pulumi:"fields"`
 	// Additional field semantics.
 	Mode GoogleCloudDataplexV1SchemaSchemaFieldModeInput `pulumi:"mode"`
-	// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+	// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The type of field.
 	Type GoogleCloudDataplexV1SchemaSchemaFieldTypeInput `pulumi:"type"`
@@ -2823,7 +2823,7 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldOutput) Mode() GoogleCloudDataplex
 	}).(GoogleCloudDataplexV1SchemaSchemaFieldModeOutput)
 }
 
-// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
 func (o GoogleCloudDataplexV1SchemaSchemaFieldOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaSchemaField) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2863,7 +2863,7 @@ type GoogleCloudDataplexV1SchemaSchemaFieldResponse struct {
 	Fields []GoogleCloudDataplexV1SchemaSchemaFieldResponse `pulumi:"fields"`
 	// Additional field semantics.
 	Mode string `pulumi:"mode"`
-	// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+	// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
 	Name string `pulumi:"name"`
 	// The type of field.
 	Type string `pulumi:"type"`
@@ -2901,7 +2901,7 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput) Mode() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaSchemaFieldResponse) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name of the field. The maximum length is 767 characters. The name must begins with a letter and not contains : and ..
+// The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore.
 func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1SchemaSchemaFieldResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2939,7 +2939,7 @@ type GoogleCloudDataplexV1StorageFormat struct {
 	Csv *GoogleCloudDataplexV1StorageFormatCsvOptions `pulumi:"csv"`
 	// Optional. Additional information about CSV formatted data.
 	Json *GoogleCloudDataplexV1StorageFormatJsonOptions `pulumi:"json"`
-	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 	MimeType string `pulumi:"mimeType"`
 }
 
@@ -2962,7 +2962,7 @@ type GoogleCloudDataplexV1StorageFormatArgs struct {
 	Csv GoogleCloudDataplexV1StorageFormatCsvOptionsPtrInput `pulumi:"csv"`
 	// Optional. Additional information about CSV formatted data.
 	Json GoogleCloudDataplexV1StorageFormatJsonOptionsPtrInput `pulumi:"json"`
-	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 	MimeType pulumi.StringInput `pulumi:"mimeType"`
 }
 
@@ -3012,7 +3012,7 @@ func (o GoogleCloudDataplexV1StorageFormatOutput) Json() GoogleCloudDataplexV1St
 	}).(GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput)
 }
 
-// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 func (o GoogleCloudDataplexV1StorageFormatOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormat) string { return v.MimeType }).(pulumi.StringOutput)
 }
@@ -3025,7 +3025,7 @@ type GoogleCloudDataplexV1StorageFormatCsvOptions struct {
 	Encoding *string `pulumi:"encoding"`
 	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. Defaults to 0.
 	HeaderRows *int `pulumi:"headerRows"`
-	// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+	// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 	Quote *string `pulumi:"quote"`
 }
 
@@ -3048,7 +3048,7 @@ type GoogleCloudDataplexV1StorageFormatCsvOptionsArgs struct {
 	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
 	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. Defaults to 0.
 	HeaderRows pulumi.IntPtrInput `pulumi:"headerRows"`
-	// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+	// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 	Quote pulumi.StringPtrInput `pulumi:"quote"`
 }
 
@@ -3145,7 +3145,7 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsOutput) HeaderRows() pulumi.
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptions) *int { return v.HeaderRows }).(pulumi.IntPtrOutput)
 }
 
-// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptions) *string { return v.Quote }).(pulumi.StringPtrOutput)
 }
@@ -3204,7 +3204,7 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) HeaderRows() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1StorageFormatCsvOptions) *string {
 		if v == nil {
@@ -3222,7 +3222,7 @@ type GoogleCloudDataplexV1StorageFormatCsvOptionsResponse struct {
 	Encoding string `pulumi:"encoding"`
 	// Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. Defaults to 0.
 	HeaderRows int `pulumi:"headerRows"`
-	// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+	// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 	Quote string `pulumi:"quote"`
 }
 
@@ -3256,7 +3256,7 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) HeaderRows()
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptionsResponse) int { return v.HeaderRows }).(pulumi.IntOutput)
 }
 
-// Optional. The character used to quote column values. Accepts '"' and '''. Defaults to '"' if unspecified.
+// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptionsResponse) string { return v.Quote }).(pulumi.StringOutput)
 }
@@ -3437,7 +3437,7 @@ type GoogleCloudDataplexV1StorageFormatResponse struct {
 	Format string `pulumi:"format"`
 	// Optional. Additional information about CSV formatted data.
 	Json GoogleCloudDataplexV1StorageFormatJsonOptionsResponse `pulumi:"json"`
-	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 	MimeType string `pulumi:"mimeType"`
 }
 
@@ -3480,7 +3480,7 @@ func (o GoogleCloudDataplexV1StorageFormatResponseOutput) Json() GoogleCloudData
 	}).(GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput)
 }
 
-// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: - application/x-parquet - application/x-avro - application/x-orc - application/x-tfrecord - application/json - application/{subtypes} - text/csv - text/ - image/{image subtype} - video/{video subtype} - audio/{audio subtype}
+// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 func (o GoogleCloudDataplexV1StorageFormatResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }

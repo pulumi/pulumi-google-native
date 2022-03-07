@@ -41,6 +41,10 @@ export interface GetInstanceResult {
      */
     readonly bootDiskType: string;
     /**
+     * Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+     */
+    readonly canIpForward: boolean;
+    /**
      * Use a container image to start the notebook instance.
      */
     readonly containerImage: outputs.notebooks.v1.ContainerImageResponse;

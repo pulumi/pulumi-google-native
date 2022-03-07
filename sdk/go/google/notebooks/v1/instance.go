@@ -22,6 +22,8 @@ type Instance struct {
 	BootDiskSizeGb pulumi.StringOutput `pulumi:"bootDiskSizeGb"`
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 	BootDiskType pulumi.StringOutput `pulumi:"bootDiskType"`
+	// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+	CanIpForward pulumi.BoolOutput `pulumi:"canIpForward"`
 	// Use a container image to start the notebook instance.
 	ContainerImage ContainerImageResponseOutput `pulumi:"containerImage"`
 	// Instance creation time.
@@ -139,6 +141,8 @@ type instanceArgs struct {
 	BootDiskSizeGb *string `pulumi:"bootDiskSizeGb"`
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 	BootDiskType *InstanceBootDiskType `pulumi:"bootDiskType"`
+	// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+	CanIpForward *bool `pulumi:"canIpForward"`
 	// Use a container image to start the notebook instance.
 	ContainerImage *ContainerImage `pulumi:"containerImage"`
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -202,6 +206,8 @@ type InstanceArgs struct {
 	BootDiskSizeGb pulumi.StringPtrInput
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
 	BootDiskType InstanceBootDiskTypePtrInput
+	// Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
+	CanIpForward pulumi.BoolPtrInput
 	// Use a container image to start the notebook instance.
 	ContainerImage ContainerImagePtrInput
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.

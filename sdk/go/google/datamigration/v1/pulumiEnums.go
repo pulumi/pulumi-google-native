@@ -541,6 +541,8 @@ const (
 	CloudSqlSettingsDatabaseVersionPostgres12 = CloudSqlSettingsDatabaseVersion("POSTGRES_12")
 	// PostgreSQL 13.
 	CloudSqlSettingsDatabaseVersionPostgres13 = CloudSqlSettingsDatabaseVersion("POSTGRES_13")
+	// PostgreSQL 14.
+	CloudSqlSettingsDatabaseVersionPostgres14 = CloudSqlSettingsDatabaseVersion("POSTGRES_14")
 )
 
 func (CloudSqlSettingsDatabaseVersion) ElementType() reflect.Type {

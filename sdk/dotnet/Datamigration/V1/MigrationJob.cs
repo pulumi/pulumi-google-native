@@ -40,7 +40,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        /// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        /// </summary>
+        [Output("dumpFlags")]
+        public Output<Outputs.DumpFlagsResponse> DumpFlags { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         /// </summary>
         [Output("dumpPath")]
         public Output<string> DumpPath { get; private set; } = null!;
@@ -193,7 +199,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+        /// The initial dump flags. This field and the "dump_path" field are mutually exclusive.
+        /// </summary>
+        [Input("dumpFlags")]
+        public Input<Inputs.DumpFlagsArgs>? DumpFlags { get; set; }
+
+        /// <summary>
+        /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         /// </summary>
         [Input("dumpPath")]
         public Input<string>? DumpPath { get; set; }

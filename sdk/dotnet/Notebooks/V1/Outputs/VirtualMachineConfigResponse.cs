@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly Outputs.RuntimeAcceleratorConfigResponse AcceleratorConfig;
         /// <summary>
+        /// Optional. Boot image metadata used for runtime upgradeability.
+        /// </summary>
+        public readonly Outputs.BootImageResponse BootImage;
+        /// <summary>
         /// Optional. Use a list of container images to use as Kernels in the notebook instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerImageResponse> ContainerImages;
@@ -85,6 +89,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         private VirtualMachineConfigResponse(
             Outputs.RuntimeAcceleratorConfigResponse acceleratorConfig,
 
+            Outputs.BootImageResponse bootImage,
+
             ImmutableArray<Outputs.ContainerImageResponse> containerImages,
 
             Outputs.LocalDiskResponse dataDisk,
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             string zone)
         {
             AcceleratorConfig = acceleratorConfig;
+            BootImage = bootImage;
             ContainerImages = containerImages;
             DataDisk = dataDisk;
             EncryptionConfig = encryptionConfig;

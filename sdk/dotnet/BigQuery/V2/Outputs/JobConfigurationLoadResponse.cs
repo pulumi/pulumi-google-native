@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.ParquetOptionsResponse ParquetOptions;
         /// <summary>
+        /// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        /// </summary>
+        public readonly bool PreserveAsciiControlCharacters;
+        /// <summary>
         /// If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
         /// </summary>
         public readonly ImmutableArray<string> ProjectionFields;
@@ -162,6 +166,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.ParquetOptionsResponse parquetOptions,
 
+            bool preserveAsciiControlCharacters,
+
             ImmutableArray<string> projectionFields,
 
             string quote,
@@ -201,6 +207,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             MaxBadRecords = maxBadRecords;
             NullMarker = nullMarker;
             ParquetOptions = parquetOptions;
+            PreserveAsciiControlCharacters = preserveAsciiControlCharacters;
             ProjectionFields = projectionFields;
             Quote = quote;
             RangePartitioning = rangePartitioning;
