@@ -544,6 +544,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
 				return nil
 			}
+			// TODO: This logic could be extracted into something more generic. Currently, the value computation
+			//       is always based on the GET method, so this may not be universally correct.
 			for _, k := range codegen.SortedKeys(vals) {
 				v := resources.CloudAPIResourceParam{
 					Name:    k,

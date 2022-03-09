@@ -677,7 +677,6 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	if err != nil {
 		return nil, err
 	}
-	//uri := res.ResourceURL(req.GetId())
 
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")

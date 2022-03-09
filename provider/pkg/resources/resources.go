@@ -15,9 +15,7 @@
 package resources
 
 import (
-	"bytes"
 	"fmt"
-	"net/http"
 	"strings"
 )
 
@@ -48,7 +46,7 @@ func (e CloudAPIEndpoint) URI(
 	if len(e.SelfLinkProperty) > 0 {
 		v, ok := outputs[e.SelfLinkProperty].(string)
 		if !ok {
-			return "", fmt.Errorf("ID property %q not found", e.SelfLinkProperty)
+			return "", fmt.Errorf("selfLink property %q not found", e.SelfLinkProperty)
 		}
 		return v, nil
 	}
@@ -105,24 +103,10 @@ type CloudAPIOperation struct {
 	SDKProperties map[string]CloudAPIProperty `json:"sdkProperties,omitempty"`
 	// Verb is the REST verb to use for API calls.
 	Verb string `json:"verb,omitempty"`
-
-	// Optional handler function for more complex operations.
-	// If a handler is defined, the endpoint and verb are ignored.
-	// TODO: probably need resource state -- figure this out later
-	//Handler func() error `json:"handler,omitempty"`
 }
 
 func (o CloudAPIOperation) Undefined() bool {
 	return len(o.Verb) == 0
-}
-
-func (o CloudAPIOperation) Request() (*http.Request, error) {
-	// TODO: refactor logic from http.RequestWithTimeout
-	// TODO: expand endpoint template
-	// TODO: marshal body
-	body := bytes.Buffer{}
-	endpoint := ""
-	return http.NewRequest(o.Verb, endpoint, &body)
 }
 
 // CloudAPIResource is a resource in the Google Cloud REST API.
@@ -136,7 +120,6 @@ type CloudAPIResource struct {
 	// Example: `https://cloudkms.googleapis.com/`
 	RootURL     string `json:"rootUrl"`
 	AssetUpload bool   `json:"assetUpload,omitempty"`
-	// TODO: abstract ID property details
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`
