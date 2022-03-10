@@ -36,6 +36,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+     */
+    public readonly consumerAcceptList!: pulumi.Output<string[]>;
+    /**
      * Time the instance was created in milliseconds since epoch.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -84,6 +88,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly runtimeVersion!: pulumi.Output<string>;
     /**
+     * Resource name of the service attachment created for the instance in the format: `projects/*&#47;regions/*&#47;serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+     */
+    public /*out*/ readonly serviceAttachment!: pulumi.Output<string>;
+    /**
      * State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -102,6 +110,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
+            resourceInputs["consumerAcceptList"] = args ? args.consumerAcceptList : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -115,8 +124,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;
+            resourceInputs["serviceAttachment"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["consumerAcceptList"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskEncryptionKeyName"] = undefined /*out*/;
@@ -129,6 +140,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["peeringCidrRange"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;
+            resourceInputs["serviceAttachment"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -140,6 +152,10 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+     */
+    consumerAcceptList?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optional. Description of the instance.
      */

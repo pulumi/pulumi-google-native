@@ -15,6 +15,7 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
+                 consumer_accept_list: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -24,6 +25,7 @@ class InstanceArgs:
                  peering_cidr_range: Optional[pulumi.Input['InstancePeeringCidrRange']] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_accept_list: Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
@@ -33,6 +35,8 @@ class InstanceArgs:
         :param pulumi.Input['InstancePeeringCidrRange'] peering_cidr_range: Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
         """
         pulumi.set(__self__, "organization_id", organization_id)
+        if consumer_accept_list is not None:
+            pulumi.set(__self__, "consumer_accept_list", consumer_accept_list)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key_name is not None:
@@ -56,6 +60,18 @@ class InstanceArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="consumerAcceptList")
+    def consumer_accept_list(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+        """
+        return pulumi.get(self, "consumer_accept_list")
+
+    @consumer_accept_list.setter
+    def consumer_accept_list(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "consumer_accept_list", value)
 
     @property
     @pulumi.getter
@@ -147,6 +163,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 consumer_accept_list: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -161,6 +178,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] consumer_accept_list: Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
         :param pulumi.Input[str] description: Optional. Description of the instance.
         :param pulumi.Input[str] disk_encryption_key_name: Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
         :param pulumi.Input[str] display_name: Optional. Display name for the instance.
@@ -193,6 +211,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 consumer_accept_list: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -213,6 +232,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["consumer_accept_list"] = consumer_accept_list
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key_name"] = disk_encryption_key_name
             __props__.__dict__["display_name"] = display_name
@@ -228,6 +248,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["runtime_version"] = None
+            __props__.__dict__["service_attachment"] = None
             __props__.__dict__["state"] = None
         super(Instance, __self__).__init__(
             'google-native:apigee/v1:Instance',
@@ -251,6 +272,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["consumer_accept_list"] = None
         __props__.__dict__["created_at"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_encryption_key_name"] = None
@@ -263,8 +285,17 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["peering_cidr_range"] = None
         __props__.__dict__["port"] = None
         __props__.__dict__["runtime_version"] = None
+        __props__.__dict__["service_attachment"] = None
         __props__.__dict__["state"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="consumerAcceptList")
+    def consumer_accept_list(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+        """
+        return pulumi.get(self, "consumer_accept_list")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -361,6 +392,14 @@ class Instance(pulumi.CustomResource):
         Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
         """
         return pulumi.get(self, "runtime_version")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> pulumi.Output[str]:
+        """
+        Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+        """
+        return pulumi.get(self, "service_attachment")
 
     @property
     @pulumi.getter

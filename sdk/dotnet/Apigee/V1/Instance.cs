@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+        /// </summary>
+        [Output("consumerAcceptList")]
+        public Output<ImmutableArray<string>> ConsumerAcceptList { get; private set; } = null!;
+
+        /// <summary>
         /// Time the instance was created in milliseconds since epoch.
         /// </summary>
         [Output("createdAt")]
@@ -88,6 +94,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> RuntimeVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+        /// </summary>
+        [Output("serviceAttachment")]
+        public Output<string> ServiceAttachment { get; private set; } = null!;
+
+        /// <summary>
         /// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
         /// </summary>
         [Output("state")]
@@ -138,6 +150,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        [Input("consumerAcceptList")]
+        private InputList<string>? _consumerAcceptList;
+
+        /// <summary>
+        /// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+        /// </summary>
+        public InputList<string> ConsumerAcceptList
+        {
+            get => _consumerAcceptList ?? (_consumerAcceptList = new InputList<string>());
+            set => _consumerAcceptList = value;
+        }
+
         /// <summary>
         /// Optional. Description of the instance.
         /// </summary>

@@ -74,7 +74,7 @@ class GetCertificateMapEntryResult:
     @pulumi.getter
     def hostname(self) -> str:
         """
-        A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+        A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
         """
         return pulumi.get(self, "hostname")
 

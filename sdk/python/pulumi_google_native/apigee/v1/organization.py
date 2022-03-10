@@ -16,7 +16,6 @@ __all__ = ['OrganizationArgs', 'Organization']
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
-                 analytics_region: pulumi.Input[str],
                  parent: pulumi.Input[str],
                  runtime_type: pulumi.Input['OrganizationRuntimeType'],
                  addons_config: Optional[pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs']] = None,
@@ -32,7 +31,6 @@ class OrganizationArgs:
                  type: Optional[pulumi.Input['OrganizationType']] = None):
         """
         The set of arguments for constructing a Organization resource.
-        :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
         :param pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
@@ -46,7 +44,6 @@ class OrganizationArgs:
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationType'] type: Not used by Apigee.
         """
-        pulumi.set(__self__, "analytics_region", analytics_region)
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "runtime_type", runtime_type)
         if addons_config is not None:
@@ -71,18 +68,6 @@ class OrganizationArgs:
             pulumi.set(__self__, "runtime_database_encryption_key_name", runtime_database_encryption_key_name)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="analyticsRegion")
-    def analytics_region(self) -> pulumi.Input[str]:
-        """
-        Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-        """
-        return pulumi.get(self, "analytics_region")
-
-    @analytics_region.setter
-    def analytics_region(self, value: pulumi.Input[str]):
-        pulumi.set(self, "analytics_region", value)
 
     @property
     @pulumi.getter
@@ -244,7 +229,6 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
-                 analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
@@ -265,7 +249,6 @@ class Organization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
-        :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
         :param pulumi.Input['OrganizationBillingType'] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
@@ -304,7 +287,6 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
-                 analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input['OrganizationBillingType']] = None,
@@ -330,9 +312,6 @@ class Organization(pulumi.CustomResource):
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
             __props__.__dict__["addons_config"] = addons_config
-            if analytics_region is None and not opts.urn:
-                raise TypeError("Missing required property 'analytics_region'")
-            __props__.__dict__["analytics_region"] = analytics_region
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["billing_type"] = billing_type
@@ -380,7 +359,6 @@ class Organization(pulumi.CustomResource):
         __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
         __props__.__dict__["addons_config"] = None
-        __props__.__dict__["analytics_region"] = None
         __props__.__dict__["attributes"] = None
         __props__.__dict__["authorized_network"] = None
         __props__.__dict__["billing_type"] = None
@@ -409,14 +387,6 @@ class Organization(pulumi.CustomResource):
         Addon configurations of the Apigee organization.
         """
         return pulumi.get(self, "addons_config")
-
-    @property
-    @pulumi.getter(name="analyticsRegion")
-    def analytics_region(self) -> pulumi.Output[str]:
-        """
-        Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-        """
-        return pulumi.get(self, "analytics_region")
 
     @property
     @pulumi.getter

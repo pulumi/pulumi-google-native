@@ -1177,7 +1177,7 @@ class GoogleCloudApigeeV1TlsInfoArgs:
         """
         TLS configuration information for virtual hosts and TargetServers.
         :param pulumi.Input[bool] enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         :param pulumi.Input[bool] client_auth_enabled: Optional. Enables two-way TLS.
         :param pulumi.Input['GoogleCloudApigeeV1TlsInfoCommonNameArgs'] common_name: The TLS Common Name of the certificate.
         :param pulumi.Input[bool] ignore_validation_errors: If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
@@ -1220,7 +1220,7 @@ class GoogleCloudApigeeV1TlsInfoArgs:
     @pulumi.getter
     def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         """
         return pulumi.get(self, "ciphers")
 

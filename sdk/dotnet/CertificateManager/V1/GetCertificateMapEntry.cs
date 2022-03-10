@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+        /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
         /// </summary>
         public readonly string Hostname;
         /// <summary>

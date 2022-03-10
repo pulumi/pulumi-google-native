@@ -81,7 +81,7 @@ func (o AuthorizationAttemptInfoResponseArrayOutput) Index(i pulumi.IntInput) Au
 type DnsResourceRecordResponse struct {
 	// Data of the DNS Resource Record.
 	Data string `pulumi:"data"`
-	// Fully qualified name of the DNS Resource Record. e.g. "_acme-challenge.example.com."
+	// Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
 	Name string `pulumi:"name"`
 	// Type of the DNS Resource Record. Currently always set to "CNAME".
 	Type string `pulumi:"type"`
@@ -107,7 +107,7 @@ func (o DnsResourceRecordResponseOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsResourceRecordResponse) string { return v.Data }).(pulumi.StringOutput)
 }
 
-// Fully qualified name of the DNS Resource Record. e.g. "_acme-challenge.example.com."
+// Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
 func (o DnsResourceRecordResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsResourceRecordResponse) string { return v.Name }).(pulumi.StringOutput)
 }

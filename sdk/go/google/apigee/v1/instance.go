@@ -15,6 +15,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+	ConsumerAcceptList pulumi.StringArrayOutput `pulumi:"consumerAcceptList"`
 	// Time the instance was created in milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Optional. Description of the instance.
@@ -39,6 +41,8 @@ type Instance struct {
 	Port pulumi.StringOutput `pulumi:"port"`
 	// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
 	RuntimeVersion pulumi.StringOutput `pulumi:"runtimeVersion"`
+	// Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
 	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -85,6 +89,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+	ConsumerAcceptList []string `pulumi:"consumerAcceptList"`
 	// Optional. Description of the instance.
 	Description *string `pulumi:"description"`
 	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
@@ -104,6 +110,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+	ConsumerAcceptList pulumi.StringArrayInput
 	// Optional. Description of the instance.
 	Description pulumi.StringPtrInput
 	// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`

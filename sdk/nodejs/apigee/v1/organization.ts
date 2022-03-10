@@ -41,10 +41,6 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse>;
     /**
-     * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-     */
-    public readonly analyticsRegion!: pulumi.Output<string>;
-    /**
      * Not used by Apigee.
      */
     public readonly attributes!: pulumi.Output<string[]>;
@@ -132,9 +128,6 @@ export class Organization extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.analyticsRegion === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'analyticsRegion'");
-            }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
@@ -142,7 +135,6 @@ export class Organization extends pulumi.CustomResource {
                 throw new Error("Missing required property 'runtimeType'");
             }
             resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
-            resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
             resourceInputs["attributes"] = args ? args.attributes : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["billingType"] = args ? args.billingType : undefined;
@@ -165,7 +157,6 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["addonsConfig"] = undefined /*out*/;
-            resourceInputs["analyticsRegion"] = undefined /*out*/;
             resourceInputs["attributes"] = undefined /*out*/;
             resourceInputs["authorizedNetwork"] = undefined /*out*/;
             resourceInputs["billingType"] = undefined /*out*/;
@@ -199,10 +190,6 @@ export interface OrganizationArgs {
      * Addon configurations of the Apigee organization.
      */
     addonsConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigArgs>;
-    /**
-     * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-     */
-    analyticsRegion: pulumi.Input<string>;
     /**
      * Not used by Apigee.
      */

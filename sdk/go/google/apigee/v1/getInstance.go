@@ -26,6 +26,8 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
+	// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+	ConsumerAcceptList []string `pulumi:"consumerAcceptList"`
 	// Time the instance was created in milliseconds since epoch.
 	CreatedAt string `pulumi:"createdAt"`
 	// Optional. Description of the instance.
@@ -50,6 +52,8 @@ type LookupInstanceResult struct {
 	Port string `pulumi:"port"`
 	// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
+	// Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+	ServiceAttachment string `pulumi:"serviceAttachment"`
 	// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
 	State string `pulumi:"state"`
 }
@@ -84,6 +88,11 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
+}
+
+// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+func (o LookupInstanceResultOutput) ConsumerAcceptList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ConsumerAcceptList }).(pulumi.StringArrayOutput)
 }
 
 // Time the instance was created in milliseconds since epoch.
@@ -144,6 +153,11 @@ func (o LookupInstanceResultOutput) Port() pulumi.StringOutput {
 // Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
 func (o LookupInstanceResultOutput) RuntimeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+func (o LookupInstanceResultOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.ServiceAttachment }).(pulumi.StringOutput)
 }
 
 // State of the instance. Values other than `ACTIVE` means the resource is not ready to use.

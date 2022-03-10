@@ -48,7 +48,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
      */
     public /*out*/ readonly dnsResourceRecord!: pulumi.Output<outputs.certificatemanager.v1.DnsResourceRecordResponse>;
     /**
-     * Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for "example.com" can be used to issue certificates for "example.com" and "*.example.com".
+     * Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export interface DnsAuthorizationArgs {
     description?: pulumi.Input<string>;
     dnsAuthorizationId: pulumi.Input<string>;
     /**
-     * Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for "example.com" can be used to issue certificates for "example.com" and "*.example.com".
+     * Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
      */
     domain: pulumi.Input<string>;
     /**

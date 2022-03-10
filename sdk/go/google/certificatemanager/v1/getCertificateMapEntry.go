@@ -34,7 +34,7 @@ type LookupCertificateMapEntryResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// One or more paragraphs of text description of a certificate map entry.
 	Description string `pulumi:"description"`
-	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+	// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
 	Hostname string `pulumi:"hostname"`
 	// Set of labels associated with a Certificate Map Entry.
 	Labels map[string]string `pulumi:"labels"`
@@ -97,7 +97,7 @@ func (o LookupCertificateMapEntryResultOutput) Description() pulumi.StringOutput
 	return o.ApplyT(func(v LookupCertificateMapEntryResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
 func (o LookupCertificateMapEntryResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateMapEntryResult) string { return v.Hostname }).(pulumi.StringOutput)
 }

@@ -1710,7 +1710,7 @@ class GoogleCloudApigeeV1TlsInfoResponse(dict):
                  trust_store: str):
         """
         TLS configuration information for virtual hosts and TargetServers.
-        :param Sequence[str] ciphers: The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+        :param Sequence[str] ciphers: The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         :param bool client_auth_enabled: Optional. Enables two-way TLS.
         :param 'GoogleCloudApigeeV1TlsInfoCommonNameResponse' common_name: The TLS Common Name of the certificate.
         :param bool enabled: Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
@@ -1734,7 +1734,7 @@ class GoogleCloudApigeeV1TlsInfoResponse(dict):
     @pulumi.getter
     def ciphers(self) -> Sequence[str]:
         """
-        The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+        The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
         """
         return pulumi.get(self, "ciphers")
 
