@@ -55,9 +55,9 @@ func (e CloudAPIEndpoint) URI(
 	idParams := e.Values
 	for _, param := range idParams {
 		var propValue string
-		if v, has := evalPropertyValue(inputs, param.SdkName); has {
+		if v, has := EvalPropertyValue(inputs, param.SdkName); has {
 			propValue = v
-		} else if v, has := evalPropertyValue(outputs, param.SdkName); has {
+		} else if v, has := EvalPropertyValue(outputs, param.SdkName); has {
 			propValue = v
 		}
 
@@ -75,7 +75,7 @@ func (e CloudAPIEndpoint) URI(
 	return id, nil
 }
 
-func evalPropertyValue(values map[string]interface{}, path string) (string, bool) {
+func EvalPropertyValue(values map[string]interface{}, path string) (string, bool) {
 	current := values
 	parts := strings.Split(path, ".")
 	for idx, part := range parts {

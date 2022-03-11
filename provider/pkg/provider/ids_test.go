@@ -62,35 +62,6 @@ func TestCalculateResourceId_IdPath(t *testing.T) {
 	assert.Equal(t, "/v1/myparent/foo/myresource/bar", actual)
 }
 
-func TestEvalPropertyValue(t *testing.T) {
-	values := map[string]interface{}{
-		"a": "123",
-		"b": map[string]interface{}{
-			"c": map[string]interface{}{
-				"d": "456",
-			},
-		},
-		"notastring": 789,
-	}
-
-	a, has := evalPropertyValue(values, "a")
-	assert.True(t, has)
-	assert.Equal(t, "123", a)
-
-	_, has = evalPropertyValue(values, "unknown")
-	assert.False(t, has)
-
-	d, has := evalPropertyValue(values, "b.c.d")
-	assert.True(t, has)
-	assert.Equal(t, "456", d)
-
-	_, has = evalPropertyValue(values, "b.unknown.d")
-	assert.False(t, has)
-
-	_, has = evalPropertyValue(values, "notastring")
-	assert.False(t, has)
-}
-
 func TestGetDefaultName_Generated(t *testing.T) {
 	urn := resource.URN("urn:pulumi:dev::test::test-provider:testModule:TestResource::myName")
 	olds := resource.NewPropertyMapFromMap(map[string]interface{}{})
