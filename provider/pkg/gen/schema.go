@@ -330,43 +330,59 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
 
+	fullPath := func(method *discovery.RestMethod) string {
+		if method == nil {
+			return ""
+		}
+		var pathURL string
+		if len(method.FlatPath) > 0 {
+			pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.FlatPath)
+		} else {
+			pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.Path)
+		}
+
+		queryParams := url.Values{}
+		for param, details := range method.Parameters {
+			if details.Location != "query" || !details.Required {
+				continue
+			}
+			queryParams.Add(param, "{"+param+"}")
+		}
+		if len(queryParams) > 0 {
+			var err error
+			pathURL, err = url.QueryUnescape(pathURL + "?" + queryParams.Encode())
+			if err != nil {
+				fmt.Printf("Failed to unescape query params for resource: %s: %v\n", resourceTok, err)
+				return ""
+			}
+		}
+		return pathURL
+	}
 	methodPath := func(method *discovery.RestMethod) string {
 		if method == nil {
 			return ""
 		}
 		if len(method.FlatPath) > 0 {
-			return resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.FlatPath)
+			return method.FlatPath
 		}
 
-		return resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.Path)
+		return method.Path
 	}
-	createPath := methodPath(dd.createMethod)
+	createPath := fullPath(dd.createMethod)
 
-	baseURL := resources.CombineURL(g.rest.RootUrl, g.rest.BasePath)
 	resourceMeta := resources.CloudAPIResource{
 		RootURL: g.rest.BaseUrl,
 		Create: resources.CloudAPIOperation{
 			Endpoint: resources.CloudAPIEndpoint{
-				Template: methodPath(dd.createMethod),
+				Template: fullPath(dd.createMethod),
 			},
 			Verb: dd.createMethod.HttpMethod,
 		},
-		Delete: resources.CloudAPIOperation{
-			Endpoint: resources.CloudAPIEndpoint{
-				Template: resources.CombineURL(baseURL, methodPath(dd.deleteMethod)),
-			},
-		},
+		Delete: resources.CloudAPIOperation{},
 		Read: resources.CloudAPIOperation{
-			Endpoint: resources.CloudAPIEndpoint{
-				Template: resources.CombineURL(baseURL, methodPath(dd.getMethod)),
-			},
 			Verb: dd.getMethod.HttpMethod,
 		},
-		Update: resources.CloudAPIOperation{
-			Endpoint: resources.CloudAPIEndpoint{
-				Template: resources.CombineURL(baseURL, methodPath(dd.getMethod)),
-			},
-		},
+		Update: resources.CloudAPIOperation{},
 	}
 	patternParams := codegen.NewStringSet()
 
@@ -495,18 +511,24 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		for _, p := range []string{"selfLink", "self"} {
 			if _, has := response.Properties[p]; has {
 				resourceMeta.IDProperty = p
+				resourceMeta.Read.Endpoint.SelfLinkProperty = p
+				resourceMeta.Update.Endpoint.SelfLinkProperty = p
+				resourceMeta.Delete.Endpoint.SelfLinkProperty = p
 				break
 			}
 		}
 
 		// Option 2: the provider has to manually build it from the GET method path.
 		if resourceMeta.IDProperty == "" {
+			var idVals []resources.CloudAPIResourceParam
+			queryValNames := codegen.NewStringSet()
 			idPath := methodPath(dd.getMethod)
 			queryParams := url.Values{}
 			for param, details := range dd.getMethod.Parameters {
 				if details.Location != "query" || !details.Required {
 					continue
 				}
+				queryValNames.Add(param)
 				queryParams.Add(param, "{"+param+"}")
 			}
 			if len(queryParams) > 0 {
@@ -522,25 +544,48 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				fmt.Printf("Failed to build ID params for resource %s: %v\n", resourceTok, err)
 				return nil
 			}
-			resourceMeta.Read.Endpoint.Template = idPath
-			var idVals []resources.CloudAPIResourceParam
+			// TODO: This logic could be extracted into something more generic. Currently, the value computation
+			//       is always based on the GET method, so this may not be universally correct.
 			for _, k := range codegen.SortedKeys(vals) {
-				idVals = append(idVals, resources.CloudAPIResourceParam{
+				v := resources.CloudAPIResourceParam{
 					Name:    k,
 					SdkName: vals[k],
 					Kind:    "path",
-				})
+				}
+				if queryValNames.Has(k) {
+					v.Kind = "query"
+				}
+				idVals = append(idVals, v)
 			}
-			resourceMeta.Read.Endpoint.Values = idVals
+			if p := fullPath(dd.getMethod); len(p) > 0 {
+				resourceMeta.Read.Endpoint.Template = p
+				resourceMeta.Read.Endpoint.Values = idVals
+			}
+			if p := fullPath(dd.updateMethod); len(p) > 0 {
+				resourceMeta.Update.Endpoint.Template = p
+				resourceMeta.Update.Endpoint.Values = idVals
+			}
+			if p := fullPath(dd.deleteMethod); len(p) > 0 {
+				resourceMeta.Delete.Endpoint.Template = p
+				resourceMeta.Delete.Endpoint.Values = idVals
+			}
 			resourceMeta.IDPath = idPath
 			resourceMeta.IDParams = vals
+		}
+	}
+
+	if d := dd.deleteMethod; d != nil {
+		if v := d.HttpMethod; len(v) > 0 {
+			resourceMeta.Delete.Verb = v
+		} else {
+			resourceMeta.Delete.Verb = "DELETE"
 		}
 	}
 
 	// Detect resources that support media upload and mark them as such.
 	if dd.createMethod.MediaUpload != nil && dd.createMethod.MediaUpload.Protocols != nil &&
 		dd.createMethod.MediaUpload.Protocols.Simple != nil {
-		resourceMeta.Create.Endpoint.Template = resources.CombineURL(
+		resourceMeta.Create.Endpoint.Template = resources.AssembleURL(
 			g.rest.RootUrl, dd.createMethod.MediaUpload.Protocols.Simple.Path)
 		resourceMeta.AssetUpload = true
 		inputProperties["source"] = schema.PropertySpec{
@@ -548,12 +593,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				Ref: "pulumi.json#/Asset",
 			},
 		}
-	}
-
-	// TODO: add delete support
-	if dd.deleteMethod != nil {
-		resourceMeta.Delete.Endpoint.Template = resourceMeta.IDPath
-		resourceMeta.Delete.Verb = dd.deleteMethod.HttpMethod
 	}
 
 	description := dd.createMethod.Description
@@ -615,7 +654,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 	}
 	functionMeta := resources.CloudAPIFunction{
 		URL: resources.CloudAPIEndpoint{
-			Template: resources.CombineURL(g.rest.BaseUrl, getPath),
+			Template: resources.AssembleURL(g.rest.BaseUrl, getPath),
 		},
 		Verb: httpMethod,
 	}

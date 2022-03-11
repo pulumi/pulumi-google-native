@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+Improvements:
+
+- Use schema information for all REST operations [#374](https://github.com/pulumi/pulumi-google-native/pull/374)
 
 ## 0.15.0 (2022-02-28)
 Improvements:

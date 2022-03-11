@@ -15,9 +15,7 @@
 package resources
 
 import (
-	"bytes"
 	"fmt"
-	"net/http"
 	"strings"
 )
 
@@ -28,13 +26,73 @@ type CloudAPIMetadata struct {
 	Functions map[string]CloudAPIFunction `json:"functions"`
 }
 
-// CloudAPIEndpoint is an endpoint template and the values needed to instantiate the template.
+// CloudAPIEndpoint contains information needed to construct a REST endpoint.
 type CloudAPIEndpoint struct {
+	// SelfLinkProperty is the name of the resource property containing a selfLink.
+	// Example: `selfLink`
+	SelfLinkProperty string `json:"selfLinkProperty,omitempty"`
 	// Template is the template string for a REST endpoint.
-	// Example: v1/projects/{projectsId}/locations/{locationsId}/registries/{registriesId}
+	// Example: https://sqladmin.googleapis.com/v1/projects/{project}/instances/{instance}/sslCerts
 	Template string `json:"template,omitempty"`
 	// Values are the concrete values needed to instantiate the template.
 	Values []CloudAPIResourceParam `json:"values,omitempty"`
+}
+
+// URI constructs a concrete URI value based on the properties of a created resource.
+func (e CloudAPIEndpoint) URI(
+	inputs map[string]interface{},
+	outputs map[string]interface{},
+) (string, error) {
+	if len(e.SelfLinkProperty) > 0 {
+		v, ok := outputs[e.SelfLinkProperty].(string)
+		if !ok {
+			return "", fmt.Errorf("selfLink property %q not found", e.SelfLinkProperty)
+		}
+		return v, nil
+	}
+
+	id := e.Template
+	idParams := e.Values
+	for _, param := range idParams {
+		var propValue string
+		if v, has := EvalPropertyValue(inputs, param.SdkName); has {
+			propValue = v
+		} else if v, has := EvalPropertyValue(outputs, param.SdkName); has {
+			propValue = v
+		}
+
+		if propValue == "" {
+			return "", fmt.Errorf("property %q/%q not found", param.Name, param.SdkName)
+		}
+
+		// The name property can sometimes contain multiple segments. We only care about the last one
+		// because we flattened the path while building metadata.
+		parts := strings.Split(propValue, "/")
+		propValue = parts[len(parts)-1]
+
+		id = strings.Replace(id, fmt.Sprintf("{%s}", param.Name), propValue, 1)
+	}
+	return id, nil
+}
+
+func EvalPropertyValue(values map[string]interface{}, path string) (string, bool) {
+	current := values
+	parts := strings.Split(path, ".")
+	for idx, part := range parts {
+		value := current[part]
+		if idx == len(parts)-1 {
+			if str, ok := value.(string); ok {
+				return str, true
+			}
+			return "", false
+		}
+		childMap, ok := value.(map[string]interface{})
+		if !ok {
+			return "", false
+		}
+		current = childMap
+	}
+	return "", false
 }
 
 // CloudAPIOperation is a resource operation in the Google Cloud REST API.
@@ -45,24 +103,10 @@ type CloudAPIOperation struct {
 	SDKProperties map[string]CloudAPIProperty `json:"sdkProperties,omitempty"`
 	// Verb is the REST verb to use for API calls.
 	Verb string `json:"verb,omitempty"`
-
-	// Optional handler function for more complex operations.
-	// If a handler is defined, the endpoint and verb are ignored.
-	// TODO: probably need resource state -- figure this out later
-	//Handler func() error `json:"handler,omitempty"`
 }
 
 func (o CloudAPIOperation) Undefined() bool {
 	return len(o.Verb) == 0
-}
-
-func (o CloudAPIOperation) Request() (*http.Request, error) {
-	// TODO: refactor logic from http.RequestWithTimeout
-	// TODO: expand endpoint template
-	// TODO: marshal body
-	body := bytes.Buffer{}
-	endpoint := ""
-	return http.NewRequest(o.Verb, endpoint, &body)
 }
 
 // CloudAPIResource is a resource in the Google Cloud REST API.
@@ -76,7 +120,6 @@ type CloudAPIResource struct {
 	// Example: `https://cloudkms.googleapis.com/`
 	RootURL     string `json:"rootUrl"`
 	AssetUpload bool   `json:"assetUpload,omitempty"`
-	// TODO: abstract ID property details
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`
@@ -111,15 +154,7 @@ type CloudAPIResourceParam struct {
 
 // ResourceURL returns the resource API URL by joining the base URL with the resource path.
 func (r *CloudAPIResource) ResourceURL(path string) string {
-	return CombineURL(r.RootURL, path)
-}
-
-// CombineURL concatenates a base URL of the service with a path of an endpoint.
-func CombineURL(baseURL, path string) string {
-	if strings.HasPrefix(path, "https://") {
-		return path
-	}
-	return fmt.Sprintf("%s/%s", strings.TrimRight(baseURL, "/"), strings.TrimLeft(path, "/"))
+	return AssembleURL(r.RootURL, path)
 }
 
 // AssembleURL combines URL fragment strings into a single URL string.

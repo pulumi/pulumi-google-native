@@ -42,9 +42,9 @@ func calculateResourceID(
 	idParams := res.IDParams
 	for name, alias := range idParams {
 		var propValue string
-		if v, has := evalPropertyValue(inputs, alias); has {
+		if v, has := resources.EvalPropertyValue(inputs, alias); has {
 			propValue = v
-		} else if v, has := evalPropertyValue(outputs, alias); has {
+		} else if v, has := resources.EvalPropertyValue(outputs, alias); has {
 			propValue = v
 		}
 
@@ -60,26 +60,6 @@ func calculateResourceID(
 		id = strings.Replace(id, fmt.Sprintf("{%s}", name), propValue, 1)
 	}
 	return id, nil
-}
-
-func evalPropertyValue(values map[string]interface{}, path string) (string, bool) {
-	current := values
-	parts := strings.Split(path, ".")
-	for idx, part := range parts {
-		value := current[part]
-		if idx == len(parts)-1 {
-			if str, ok := value.(string); ok {
-				return str, true
-			}
-			return "", false
-		}
-		childMap, ok := value.(map[string]interface{})
-		if !ok {
-			return "", false
-		}
-		current = childMap
-	}
-	return "", false
 }
 
 // buildCreateURL composes the URL to invoke to create a resource with given inputs.
