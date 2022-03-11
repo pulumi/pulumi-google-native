@@ -15,9 +15,54 @@
 package resources
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
+
+func TestCalculateResourceId_IdProperty(t *testing.T) {
+	endpoint := CloudAPIEndpoint{
+		SelfLinkProperty: "selfLink",
+	}
+	inputs := map[string]interface{}{
+		"name": "foo",
+	}
+	expected := "https://myapi.google.com/v1/myresource/foo"
+	outputs := map[string]interface{}{
+		"name":     "foo",
+		"selfLink": "https://myapi.google.com/v1/myresource/foo",
+	}
+	actual, err := endpoint.URI(inputs, outputs)
+	assert.NoError(t, err)
+	assert.Equal(t, expected, actual)
+}
+
+func TestCalculateResourceId_IdPath(t *testing.T) {
+	endpoint := CloudAPIEndpoint{
+		Template: "/v1/myparent/{parentsId}/myresource/{myresourcesId}",
+		Values: []CloudAPIResourceParam{
+			{
+				Name:    "parentsId",
+				SdkName: "parentId",
+			},
+			{
+				Name:    "myresourcesId",
+				SdkName: "reference.name",
+			},
+		},
+	}
+	inputs := map[string]interface{}{
+		"parentId": "foo",
+	}
+	outputs := map[string]interface{}{
+		"reference": map[string]interface{}{
+			"name": "myparent/foo/myresource/bar",
+		},
+	}
+	actual, err := endpoint.URI(inputs, outputs)
+	assert.NoError(t, err)
+	assert.Equal(t, "/v1/myparent/foo/myresource/bar", actual)
+}
 
 func TestEvalPropertyValue(t *testing.T) {
 	values := map[string]interface{}{
