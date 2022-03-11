@@ -16,6 +16,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// Clone definition.
+	CloneDefinition CloneDefinitionResponseOutput `pulumi:"cloneDefinition"`
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
 	Clustering ClusteringResponseOutput `pulumi:"clustering"`
 	// The time when this table was created, in milliseconds since the epoch.

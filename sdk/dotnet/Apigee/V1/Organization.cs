@@ -23,12 +23,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1AddonsConfigResponse> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-        /// </summary>
-        [Output("analyticsRegion")]
-        public Output<string> AnalyticsRegion { get; private set; } = null!;
-
-        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Output("attributes")]
@@ -192,12 +186,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("addonsConfig")]
         public Input<Inputs.GoogleCloudApigeeV1AddonsConfigArgs>? AddonsConfig { get; set; }
-
-        /// <summary>
-        /// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-        /// </summary>
-        [Input("analyticsRegion", required: true)]
-        public Input<string> AnalyticsRegion { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<string>? _attributes;

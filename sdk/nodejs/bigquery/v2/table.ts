@@ -37,6 +37,10 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * Clone definition.
+     */
+    public /*out*/ readonly cloneDefinition!: pulumi.Output<outputs.bigquery.v2.CloneDefinitionResponse>;
+    /**
      * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
      */
     public readonly clustering!: pulumi.Output<outputs.bigquery.v2.ClusteringResponse>;
@@ -184,6 +188,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["tableReference"] = args ? args.tableReference : undefined;
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
+            resourceInputs["cloneDefinition"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -199,6 +204,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["streamingBuffer"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
+            resourceInputs["cloneDefinition"] = undefined /*out*/;
             resourceInputs["clustering"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;

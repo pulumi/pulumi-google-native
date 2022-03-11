@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        /// <summary>
+        /// How long to keep generated audit files.
+        /// </summary>
+        [Input("retentionInterval")]
+        public Input<string>? RetentionInterval { get; set; }
+
+        /// <summary>
+        /// How often to upload generated audit files.
+        /// </summary>
+        [Input("uploadInterval")]
+        public Input<string>? UploadInterval { get; set; }
+
         public SqlServerAuditConfigArgs()
         {
         }

@@ -29,10 +29,6 @@ export interface GetOrganizationResult {
      */
     readonly addonsConfig: outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse;
     /**
-     * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-     */
-    readonly analyticsRegion: string;
-    /**
      * Not used by Apigee.
      */
     readonly attributes: string[];

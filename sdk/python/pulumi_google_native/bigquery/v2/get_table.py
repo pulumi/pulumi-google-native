@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_bytes=None, num_long_term_bytes=None, num_physical_bytes=None, num_rows=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_bytes=None, num_long_term_bytes=None, num_physical_bytes=None, num_rows=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+        if clone_definition and not isinstance(clone_definition, dict):
+            raise TypeError("Expected argument 'clone_definition' to be a dict")
+        pulumi.set(__self__, "clone_definition", clone_definition)
         if clustering and not isinstance(clustering, dict):
             raise TypeError("Expected argument 'clustering' to be a dict")
         pulumi.set(__self__, "clustering", clustering)
@@ -106,6 +109,14 @@ class GetTableResult:
         if view and not isinstance(view, dict):
             raise TypeError("Expected argument 'view' to be a dict")
         pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter(name="cloneDefinition")
+    def clone_definition(self) -> 'outputs.CloneDefinitionResponse':
+        """
+        Clone definition.
+        """
+        return pulumi.get(self, "clone_definition")
 
     @property
     @pulumi.getter
@@ -346,6 +357,7 @@ class AwaitableGetTableResult(GetTableResult):
         if False:
             yield self
         return GetTableResult(
+            clone_definition=self.clone_definition,
             clustering=self.clustering,
             creation_time=self.creation_time,
             default_collation=self.default_collation,
@@ -397,6 +409,7 @@ def get_table(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigquery/v2:getTable', __args__, opts=opts, typ=GetTableResult).value
 
     return AwaitableGetTableResult(
+        clone_definition=__ret__.clone_definition,
         clustering=__ret__.clustering,
         creation_time=__ret__.creation_time,
         default_collation=__ret__.default_collation,

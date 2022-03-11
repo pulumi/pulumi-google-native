@@ -31,6 +31,10 @@ export interface GetTableArgs {
 
 export interface GetTableResult {
     /**
+     * Clone definition.
+     */
+    readonly cloneDefinition: outputs.bigquery.v2.CloneDefinitionResponse;
+    /**
      * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
      */
     readonly clustering: outputs.bigquery.v2.ClusteringResponse;

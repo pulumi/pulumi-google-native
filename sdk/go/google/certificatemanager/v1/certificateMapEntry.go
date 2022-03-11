@@ -21,7 +21,7 @@ type CertificateMapEntry struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// One or more paragraphs of text description of a certificate map entry.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+	// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Set of labels associated with a Certificate Map Entry.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -86,7 +86,7 @@ type certificateMapEntryArgs struct {
 	Certificates []string `pulumi:"certificates"`
 	// One or more paragraphs of text description of a certificate map entry.
 	Description *string `pulumi:"description"`
-	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+	// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
 	Hostname *string `pulumi:"hostname"`
 	// Set of labels associated with a Certificate Map Entry.
 	Labels   map[string]string `pulumi:"labels"`
@@ -106,7 +106,7 @@ type CertificateMapEntryArgs struct {
 	Certificates pulumi.StringArrayInput
 	// One or more paragraphs of text description of a certificate map entry.
 	Description pulumi.StringPtrInput
-	// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+	// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
 	Hostname pulumi.StringPtrInput
 	// Set of labels associated with a Certificate Map Entry.
 	Labels   pulumi.StringMapInput

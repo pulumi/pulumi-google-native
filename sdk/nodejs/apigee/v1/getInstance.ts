@@ -26,6 +26,10 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
+     * Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+     */
+    readonly consumerAcceptList: string[];
+    /**
      * Time the instance was created in milliseconds since epoch.
      */
     readonly createdAt: string;
@@ -73,6 +77,10 @@ export interface GetInstanceResult {
      * Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
      */
     readonly runtimeVersion: string;
+    /**
+     * Resource name of the service attachment created for the instance in the format: `projects/*&#47;regions/*&#47;serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+     */
+    readonly serviceAttachment: string;
     /**
      * State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
      */

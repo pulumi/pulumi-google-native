@@ -104,7 +104,7 @@ class DnsResourceRecordResponse(dict):
         """
         The structure describing the DNS Resource Record that needs to be added to DNS configuration for the authorization to be usable by certificate.
         :param str data: Data of the DNS Resource Record.
-        :param str name: Fully qualified name of the DNS Resource Record. e.g. "_acme-challenge.example.com."
+        :param str name: Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
         :param str type: Type of the DNS Resource Record. Currently always set to "CNAME".
         """
         pulumi.set(__self__, "data", data)
@@ -123,7 +123,7 @@ class DnsResourceRecordResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Fully qualified name of the DNS Resource Record. e.g. "_acme-challenge.example.com."
+        Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
         """
         return pulumi.get(self, "name")
 

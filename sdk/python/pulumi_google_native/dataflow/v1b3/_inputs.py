@@ -1642,21 +1642,37 @@ class RuntimeEnvironmentArgs:
 @pulumi.input_type
 class SdkHarnessContainerImageArgs:
     def __init__(__self__, *,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  container_image: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  use_single_core_per_container: Optional[pulumi.Input[bool]] = None):
         """
         Defines a SDK harness container for executing Dataflow pipelines.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] capabilities: The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
         :param pulumi.Input[str] container_image: A docker container image that resides in Google Container Registry.
         :param pulumi.Input[str] environment_id: Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness.
         :param pulumi.Input[bool] use_single_core_per_container: If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed.
         """
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if environment_id is not None:
             pulumi.set(__self__, "environment_id", environment_id)
         if use_single_core_per_container is not None:
             pulumi.set(__self__, "use_single_core_per_container", use_single_core_per_container)
+
+    @property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "capabilities", value)
 
     @property
     @pulumi.getter(name="containerImage")

@@ -42,7 +42,7 @@ export interface GetCertificateMapEntryResult {
      */
     readonly description: string;
     /**
-     * A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+     * A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
      */
     readonly hostname: string;
     /**

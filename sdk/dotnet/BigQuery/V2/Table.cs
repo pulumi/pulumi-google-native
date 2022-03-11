@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>
+        /// Clone definition.
+        /// </summary>
+        [Output("cloneDefinition")]
+        public Output<Outputs.CloneDefinitionResponse> CloneDefinition { get; private set; } = null!;
+
+        /// <summary>
         /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         /// </summary>
         [Output("clustering")]

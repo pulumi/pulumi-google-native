@@ -54,10 +54,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1AddonsConfigResponse AddonsConfig;
         /// <summary>
-        /// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-        /// </summary>
-        public readonly string AnalyticsRegion;
-        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         public readonly ImmutableArray<string> Attributes;
@@ -138,8 +134,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         private GetOrganizationResult(
             Outputs.GoogleCloudApigeeV1AddonsConfigResponse addonsConfig,
 
-            string analyticsRegion,
-
             ImmutableArray<string> attributes,
 
             string authorizedNetwork,
@@ -179,7 +173,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
             string type)
         {
             AddonsConfig = addonsConfig;
-            AnalyticsRegion = analyticsRegion;
             Attributes = attributes;
             AuthorizedNetwork = authorizedNetwork;
             BillingType = billingType;

@@ -4487,7 +4487,7 @@ func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) Index(i pulumi.
 
 // TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfo struct {
-	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 	Ciphers []string `pulumi:"ciphers"`
 	// Optional. Enables two-way TLS.
 	ClientAuthEnabled *bool `pulumi:"clientAuthEnabled"`
@@ -4520,7 +4520,7 @@ type GoogleCloudApigeeV1TlsInfoInput interface {
 
 // TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoArgs struct {
-	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
 	// Optional. Enables two-way TLS.
 	ClientAuthEnabled pulumi.BoolPtrInput `pulumi:"clientAuthEnabled"`
@@ -4618,7 +4618,7 @@ func (o GoogleCloudApigeeV1TlsInfoOutput) ToGoogleCloudApigeeV1TlsInfoPtrOutputW
 	}).(GoogleCloudApigeeV1TlsInfoPtrOutput)
 }
 
-// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 func (o GoogleCloudApigeeV1TlsInfoOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfo) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
 }
@@ -4687,7 +4687,7 @@ func (o GoogleCloudApigeeV1TlsInfoPtrOutput) Elem() GoogleCloudApigeeV1TlsInfoOu
 	}).(GoogleCloudApigeeV1TlsInfoOutput)
 }
 
-// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 func (o GoogleCloudApigeeV1TlsInfoPtrOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1TlsInfo) []string {
 		if v == nil {
@@ -4966,7 +4966,7 @@ func (o GoogleCloudApigeeV1TlsInfoCommonNameResponseOutput) WildcardMatch() pulu
 
 // TLS configuration information for virtual hosts and TargetServers.
 type GoogleCloudApigeeV1TlsInfoResponse struct {
-	// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+	// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 	Ciphers []string `pulumi:"ciphers"`
 	// Optional. Enables two-way TLS.
 	ClientAuthEnabled bool `pulumi:"clientAuthEnabled"`
@@ -5001,7 +5001,7 @@ func (o GoogleCloudApigeeV1TlsInfoResponseOutput) ToGoogleCloudApigeeV1TlsInfoRe
 	return o
 }
 
-// The SSL/TLS cipher suites to be used. Must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites
+// The SSL/TLS cipher suites to be used. For programmable proxies, it must be one of the cipher suite names listed in: http://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#ciphersuites. For configurable proxies, it must follow the configuration specified in: https://commondatastorage.googleapis.com/chromium-boringssl-docs/ssl.h.html#Cipher-suite-configuration. This setting has no effect for configurable proxies when negotiating TLS 1.3.
 func (o GoogleCloudApigeeV1TlsInfoResponseOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1TlsInfoResponse) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
 }

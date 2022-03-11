@@ -373,6 +373,10 @@ const (
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemCsv = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("CSV")
 	// Included file extensions: tsv
 	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemTsv = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TSV")
+	// Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPowerpoint = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("POWERPOINT")
+	// Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemExcel = GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("EXCEL")
 )
 
 func (GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem) ElementType() reflect.Type {

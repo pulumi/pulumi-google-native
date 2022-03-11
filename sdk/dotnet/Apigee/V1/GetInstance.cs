@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+        /// </summary>
+        public readonly ImmutableArray<string> ConsumerAcceptList;
+        /// <summary>
         /// Time the instance was created in milliseconds since epoch.
         /// </summary>
         public readonly string CreatedAt;
@@ -104,12 +108,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string RuntimeVersion;
         /// <summary>
+        /// Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+        /// </summary>
+        public readonly string ServiceAttachment;
+        /// <summary>
         /// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
         /// </summary>
         public readonly string State;
 
         [OutputConstructor]
         private GetInstanceResult(
+            ImmutableArray<string> consumerAcceptList,
+
             string createdAt,
 
             string description,
@@ -134,8 +144,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string runtimeVersion,
 
+            string serviceAttachment,
+
             string state)
         {
+            ConsumerAcceptList = consumerAcceptList;
             CreatedAt = createdAt;
             Description = description;
             DiskEncryptionKeyName = diskEncryptionKeyName;
@@ -148,6 +161,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             PeeringCidrRange = peeringCidrRange;
             Port = port;
             RuntimeVersion = runtimeVersion;
+            ServiceAttachment = serviceAttachment;
             State = state;
         }
     }

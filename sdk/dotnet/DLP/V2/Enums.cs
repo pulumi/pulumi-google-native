@@ -141,6 +141,14 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// Included file extensions: tsv
         /// </summary>
         public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Tsv { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("TSV");
+        /// <summary>
+        /// Powerpoint files &gt;30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+        /// </summary>
+        public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Powerpoint { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("POWERPOINT");
+        /// <summary>
+        /// Excel files &gt;30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+        /// </summary>
+        public static GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem Excel { get; } = new GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem("EXCEL");
 
         public static bool operator ==(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem left, GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem right) => left.Equals(right);
         public static bool operator !=(GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem left, GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem right) => !left.Equals(right);

@@ -6010,6 +6010,10 @@ type SqlServerAuditConfig struct {
 	Bucket *string `pulumi:"bucket"`
 	// This is always sql#sqlServerAuditConfig
 	Kind *string `pulumi:"kind"`
+	// How long to keep generated audit files.
+	RetentionInterval *string `pulumi:"retentionInterval"`
+	// How often to upload generated audit files.
+	UploadInterval *string `pulumi:"uploadInterval"`
 }
 
 // SqlServerAuditConfigInput is an input type that accepts SqlServerAuditConfigArgs and SqlServerAuditConfigOutput values.
@@ -6029,6 +6033,10 @@ type SqlServerAuditConfigArgs struct {
 	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
 	// This is always sql#sqlServerAuditConfig
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// How long to keep generated audit files.
+	RetentionInterval pulumi.StringPtrInput `pulumi:"retentionInterval"`
+	// How often to upload generated audit files.
+	UploadInterval pulumi.StringPtrInput `pulumi:"uploadInterval"`
 }
 
 func (SqlServerAuditConfigArgs) ElementType() reflect.Type {
@@ -6119,6 +6127,16 @@ func (o SqlServerAuditConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlServerAuditConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+// How long to keep generated audit files.
+func (o SqlServerAuditConfigOutput) RetentionInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerAuditConfig) *string { return v.RetentionInterval }).(pulumi.StringPtrOutput)
+}
+
+// How often to upload generated audit files.
+func (o SqlServerAuditConfigOutput) UploadInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlServerAuditConfig) *string { return v.UploadInterval }).(pulumi.StringPtrOutput)
+}
+
 type SqlServerAuditConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SqlServerAuditConfigPtrOutput) ElementType() reflect.Type {
@@ -6163,12 +6181,36 @@ func (o SqlServerAuditConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// How long to keep generated audit files.
+func (o SqlServerAuditConfigPtrOutput) RetentionInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// How often to upload generated audit files.
+func (o SqlServerAuditConfigPtrOutput) UploadInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlServerAuditConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UploadInterval
+	}).(pulumi.StringPtrOutput)
+}
+
 // SQL Server specific audit configuration.
 type SqlServerAuditConfigResponse struct {
 	// The name of the destination bucket (e.g., gs://mybucket).
 	Bucket string `pulumi:"bucket"`
 	// This is always sql#sqlServerAuditConfig
 	Kind string `pulumi:"kind"`
+	// How long to keep generated audit files.
+	RetentionInterval string `pulumi:"retentionInterval"`
+	// How often to upload generated audit files.
+	UploadInterval string `pulumi:"uploadInterval"`
 }
 
 // SQL Server specific audit configuration.
@@ -6194,6 +6236,16 @@ func (o SqlServerAuditConfigResponseOutput) Bucket() pulumi.StringOutput {
 // This is always sql#sqlServerAuditConfig
 func (o SqlServerAuditConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlServerAuditConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// How long to keep generated audit files.
+func (o SqlServerAuditConfigResponseOutput) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAuditConfigResponse) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+// How often to upload generated audit files.
+func (o SqlServerAuditConfigResponseOutput) UploadInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlServerAuditConfigResponse) string { return v.UploadInterval }).(pulumi.StringOutput)
 }
 
 // Represents a Sql Server database on the Cloud SQL instance.

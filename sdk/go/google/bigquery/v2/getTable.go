@@ -28,6 +28,8 @@ type LookupTableArgs struct {
 }
 
 type LookupTableResult struct {
+	// Clone definition.
+	CloneDefinition CloneDefinitionResponse `pulumi:"cloneDefinition"`
 	// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
 	Clustering ClusteringResponse `pulumi:"clustering"`
 	// The time when this table was created, in milliseconds since the epoch.
@@ -120,6 +122,11 @@ func (o LookupTableResultOutput) ToLookupTableResultOutput() LookupTableResultOu
 
 func (o LookupTableResultOutput) ToLookupTableResultOutputWithContext(ctx context.Context) LookupTableResultOutput {
 	return o
+}
+
+// Clone definition.
+func (o LookupTableResultOutput) CloneDefinition() CloneDefinitionResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) CloneDefinitionResponse { return v.CloneDefinition }).(CloneDefinitionResponseOutput)
 }
 
 // [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.

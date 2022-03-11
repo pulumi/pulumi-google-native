@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<Outputs.DnsResourceRecordResponse> DnsResourceRecord { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for "example.com" can be used to issue certificates for "example.com" and "*.example.com".
+        /// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Input<string> DnsAuthorizationId { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for "example.com" can be used to issue certificates for "example.com" and "*.example.com".
+        /// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;

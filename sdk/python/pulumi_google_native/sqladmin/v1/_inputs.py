@@ -2030,16 +2030,24 @@ class SqlScheduledMaintenanceArgs:
 class SqlServerAuditConfigArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None):
+                 kind: Optional[pulumi.Input[str]] = None,
+                 retention_interval: Optional[pulumi.Input[str]] = None,
+                 upload_interval: Optional[pulumi.Input[str]] = None):
         """
         SQL Server specific audit configuration.
         :param pulumi.Input[str] bucket: The name of the destination bucket (e.g., gs://mybucket).
         :param pulumi.Input[str] kind: This is always sql#sqlServerAuditConfig
+        :param pulumi.Input[str] retention_interval: How long to keep generated audit files.
+        :param pulumi.Input[str] upload_interval: How often to upload generated audit files.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if retention_interval is not None:
+            pulumi.set(__self__, "retention_interval", retention_interval)
+        if upload_interval is not None:
+            pulumi.set(__self__, "upload_interval", upload_interval)
 
     @property
     @pulumi.getter
@@ -2064,6 +2072,30 @@ class SqlServerAuditConfigArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="retentionInterval")
+    def retention_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to keep generated audit files.
+        """
+        return pulumi.get(self, "retention_interval")
+
+    @retention_interval.setter
+    def retention_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_interval", value)
+
+    @property
+    @pulumi.getter(name="uploadInterval")
+    def upload_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often to upload generated audit files.
+        """
+        return pulumi.get(self, "upload_interval")
+
+    @upload_interval.setter
+    def upload_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upload_interval", value)
 
 
 @pulumi.input_type

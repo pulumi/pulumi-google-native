@@ -401,6 +401,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["table_reference"] = table_reference
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["view"] = view
+            __props__.__dict__["clone_definition"] = None
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["default_collation"] = None
             __props__.__dict__["etag"] = None
@@ -437,6 +438,7 @@ class Table(pulumi.CustomResource):
 
         __props__ = TableArgs.__new__(TableArgs)
 
+        __props__.__dict__["clone_definition"] = None
         __props__.__dict__["clustering"] = None
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["default_collation"] = None
@@ -467,6 +469,14 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["type"] = None
         __props__.__dict__["view"] = None
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cloneDefinition")
+    def clone_definition(self) -> pulumi.Output['outputs.CloneDefinitionResponse']:
+        """
+        Clone definition.
+        """
+        return pulumi.get(self, "clone_definition")
 
     @property
     @pulumi.getter

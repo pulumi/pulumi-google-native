@@ -24,15 +24,29 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// This is always sql#sqlServerAuditConfig
         /// </summary>
         public readonly string Kind;
+        /// <summary>
+        /// How long to keep generated audit files.
+        /// </summary>
+        public readonly string RetentionInterval;
+        /// <summary>
+        /// How often to upload generated audit files.
+        /// </summary>
+        public readonly string UploadInterval;
 
         [OutputConstructor]
         private SqlServerAuditConfigResponse(
             string bucket,
 
-            string kind)
+            string kind,
+
+            string retentionInterval,
+
+            string uploadInterval)
         {
             Bucket = bucket;
             Kind = kind;
+            RetentionInterval = retentionInterval;
+            UploadInterval = uploadInterval;
         }
     }
 }

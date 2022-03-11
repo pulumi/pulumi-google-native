@@ -171,6 +171,10 @@ class ParserConfigVersion(str, Enum):
     """
     The `parsed_data` includes every given non-empty message field.
     """
+    V3 = "V3"
+    """
+    This version is the same as V2, with the following change. The `parsed_data` contains unescaped escaped field separators, component separators, sub-component separators, repetition separators, escape characters, and truncation characters. If `schema` is specified, the schematized parser uses improved parsing heuristics compared to previous versions.
+    """
 
 
 class SchemaConfigSchemaType(str, Enum):

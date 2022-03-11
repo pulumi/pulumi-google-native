@@ -10323,8 +10323,10 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultResponseOutput) TestTime() p
 
 // Represents configurations for a test case.
 type GoogleCloudDialogflowCxV3beta1TestConfig struct {
-	// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+	// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
 	Flow *string `pulumi:"flow"`
+	// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+	Page *string `pulumi:"page"`
 	// Session parameters to be compared when calculating differences.
 	TrackingParameters []string `pulumi:"trackingParameters"`
 }
@@ -10342,8 +10344,10 @@ type GoogleCloudDialogflowCxV3beta1TestConfigInput interface {
 
 // Represents configurations for a test case.
 type GoogleCloudDialogflowCxV3beta1TestConfigArgs struct {
-	// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+	// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
 	Flow pulumi.StringPtrInput `pulumi:"flow"`
+	// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+	Page pulumi.StringPtrInput `pulumi:"page"`
 	// Session parameters to be compared when calculating differences.
 	TrackingParameters pulumi.StringArrayInput `pulumi:"trackingParameters"`
 }
@@ -10426,9 +10430,14 @@ func (o GoogleCloudDialogflowCxV3beta1TestConfigOutput) ToGoogleCloudDialogflowC
 	}).(GoogleCloudDialogflowCxV3beta1TestConfigPtrOutput)
 }
 
-// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
 func (o GoogleCloudDialogflowCxV3beta1TestConfigOutput) Flow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestConfig) *string { return v.Flow }).(pulumi.StringPtrOutput)
+}
+
+// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+func (o GoogleCloudDialogflowCxV3beta1TestConfigOutput) Page() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestConfig) *string { return v.Page }).(pulumi.StringPtrOutput)
 }
 
 // Session parameters to be compared when calculating differences.
@@ -10460,13 +10469,23 @@ func (o GoogleCloudDialogflowCxV3beta1TestConfigPtrOutput) Elem() GoogleCloudDia
 	}).(GoogleCloudDialogflowCxV3beta1TestConfigOutput)
 }
 
-// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
 func (o GoogleCloudDialogflowCxV3beta1TestConfigPtrOutput) Flow() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TestConfig) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Flow
+	}).(pulumi.StringPtrOutput)
+}
+
+// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+func (o GoogleCloudDialogflowCxV3beta1TestConfigPtrOutput) Page() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Page
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10482,8 +10501,10 @@ func (o GoogleCloudDialogflowCxV3beta1TestConfigPtrOutput) TrackingParameters() 
 
 // Represents configurations for a test case.
 type GoogleCloudDialogflowCxV3beta1TestConfigResponse struct {
-	// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+	// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
 	Flow string `pulumi:"flow"`
+	// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+	Page string `pulumi:"page"`
 	// Session parameters to be compared when calculating differences.
 	TrackingParameters []string `pulumi:"trackingParameters"`
 }
@@ -10503,9 +10524,14 @@ func (o GoogleCloudDialogflowCxV3beta1TestConfigResponseOutput) ToGoogleCloudDia
 	return o
 }
 
-// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
 func (o GoogleCloudDialogflowCxV3beta1TestConfigResponseOutput) Flow() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestConfigResponse) string { return v.Flow }).(pulumi.StringOutput)
+}
+
+// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+func (o GoogleCloudDialogflowCxV3beta1TestConfigResponseOutput) Page() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestConfigResponse) string { return v.Page }).(pulumi.StringOutput)
 }
 
 // Session parameters to be compared when calculating differences.

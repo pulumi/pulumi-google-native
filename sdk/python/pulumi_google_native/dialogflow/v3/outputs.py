@@ -3058,22 +3058,33 @@ class GoogleCloudDialogflowCxV3TestConfigResponse(dict):
 
     def __init__(__self__, *,
                  flow: str,
+                 page: str,
                  tracking_parameters: Sequence[str]):
         """
         Represents configurations for a test case.
-        :param str flow: Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+        :param str flow: Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+        :param str page: The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
         :param Sequence[str] tracking_parameters: Session parameters to be compared when calculating differences.
         """
         pulumi.set(__self__, "flow", flow)
+        pulumi.set(__self__, "page", page)
         pulumi.set(__self__, "tracking_parameters", tracking_parameters)
 
     @property
     @pulumi.getter
     def flow(self) -> str:
         """
-        Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+        Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
         """
         return pulumi.get(self, "flow")
+
+    @property
+    @pulumi.getter
+    def page(self) -> str:
+        """
+        The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+        """
+        return pulumi.get(self, "page")
 
     @property
     @pulumi.getter(name="trackingParameters")

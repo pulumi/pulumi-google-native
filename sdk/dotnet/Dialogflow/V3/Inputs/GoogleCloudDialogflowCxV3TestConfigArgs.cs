@@ -16,10 +16,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3TestConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+        /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
         /// </summary>
         [Input("flow")]
         public Input<string>? Flow { get; set; }
+
+        /// <summary>
+        /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+        /// </summary>
+        [Input("page")]
+        public Input<string>? Page { get; set; }
 
         [Input("trackingParameters")]
         private InputList<string>? _trackingParameters;

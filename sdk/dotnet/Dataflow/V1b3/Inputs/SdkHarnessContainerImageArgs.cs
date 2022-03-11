@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// </summary>
     public sealed class SdkHarnessContainerImageArgs : Pulumi.ResourceArgs
     {
+        [Input("capabilities")]
+        private InputList<string>? _capabilities;
+
+        /// <summary>
+        /// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+        /// </summary>
+        public InputList<string> Capabilities
+        {
+            get => _capabilities ?? (_capabilities = new InputList<string>());
+            set => _capabilities = value;
+        }
+
         /// <summary>
         /// A docker container image that resides in Google Container Registry.
         /// </summary>

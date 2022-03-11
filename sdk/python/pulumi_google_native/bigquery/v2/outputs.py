@@ -25,6 +25,7 @@ __all__ = [
     'BqmlIterationResultResponse',
     'BqmlTrainingRunResponse',
     'BqmlTrainingRunTrainingOptionsResponse',
+    'CloneDefinitionResponse',
     'ClusteringResponse',
     'ConnectionPropertyResponse',
     'CsvOptionsResponse',
@@ -968,6 +969,54 @@ class BqmlTrainingRunTrainingOptionsResponse(dict):
     @pulumi.getter(name="warmStart")
     def warm_start(self) -> bool:
         return pulumi.get(self, "warm_start")
+
+
+@pulumi.output_type
+class CloneDefinitionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseTableReference":
+            suggest = "base_table_reference"
+        elif key == "cloneTime":
+            suggest = "clone_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloneDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloneDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloneDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_table_reference: 'outputs.TableReferenceResponse',
+                 clone_time: str):
+        """
+        :param 'TableReferenceResponse' base_table_reference: [Required] Reference describing the ID of the table that was cloned.
+        :param str clone_time: [Required] The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format.
+        """
+        pulumi.set(__self__, "base_table_reference", base_table_reference)
+        pulumi.set(__self__, "clone_time", clone_time)
+
+    @property
+    @pulumi.getter(name="baseTableReference")
+    def base_table_reference(self) -> 'outputs.TableReferenceResponse':
+        """
+        [Required] Reference describing the ID of the table that was cloned.
+        """
+        return pulumi.get(self, "base_table_reference")
+
+    @property
+    @pulumi.getter(name="cloneTime")
+    def clone_time(self) -> str:
+        """
+        [Required] The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format.
+        """
+        return pulumi.get(self, "clone_time")
 
 
 @pulumi.output_type

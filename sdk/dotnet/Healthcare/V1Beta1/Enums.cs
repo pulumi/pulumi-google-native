@@ -306,6 +306,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// The `parsed_data` includes every given non-empty message field.
         /// </summary>
         public static ParserConfigVersion V2 { get; } = new ParserConfigVersion("V2");
+        /// <summary>
+        /// This version is the same as V2, with the following change. The `parsed_data` contains unescaped escaped field separators, component separators, sub-component separators, repetition separators, escape characters, and truncation characters. If `schema` is specified, the schematized parser uses improved parsing heuristics compared to previous versions.
+        /// </summary>
+        public static ParserConfigVersion V3 { get; } = new ParserConfigVersion("V3");
 
         public static bool operator ==(ParserConfigVersion left, ParserConfigVersion right) => left.Equals(right);
         public static bool operator !=(ParserConfigVersion left, ParserConfigVersion right) => !left.Equals(right);

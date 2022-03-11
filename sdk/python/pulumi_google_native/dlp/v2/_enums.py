@@ -103,6 +103,14 @@ class GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem(str, Enum):
     """
     Included file extensions: tsv
     """
+    POWERPOINT = "POWERPOINT"
+    """
+    Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+    """
+    EXCEL = "EXCEL"
+    """
+    Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+    """
 
 
 class GooglePrivacyDlpV2CloudStorageOptionsSampleMethod(str, Enum):

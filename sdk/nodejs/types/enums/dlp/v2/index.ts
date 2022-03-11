@@ -85,6 +85,14 @@ export const GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = {
      * Included file extensions: tsv
      */
     Tsv: "TSV",
+    /**
+     * Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+     */
+    Powerpoint: "POWERPOINT",
+    /**
+     * Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+     */
+    Excel: "EXCEL",
 } as const;
 
 export type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem = (typeof GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem)[keyof typeof GooglePrivacyDlpV2CloudStorageOptionsFileTypesItem];

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
         /// </summary>
         public readonly string Data;
         /// <summary>
-        /// Fully qualified name of the DNS Resource Record. e.g. "_acme-challenge.example.com."
+        /// Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com`
         /// </summary>
         public readonly string Name;
         /// <summary>

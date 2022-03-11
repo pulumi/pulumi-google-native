@@ -17,9 +17,13 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3TestConfigResponse
     {
         /// <summary>
-        /// Flow name. If not set, default start flow is assumed. Format: `projects//locations//agents//flows/`.
+        /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
         /// </summary>
         public readonly string Flow;
+        /// <summary>
+        /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
+        /// </summary>
+        public readonly string Page;
         /// <summary>
         /// Session parameters to be compared when calculating differences.
         /// </summary>
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         private GoogleCloudDialogflowCxV3TestConfigResponse(
             string flow,
 
+            string page,
+
             ImmutableArray<string> trackingParameters)
         {
             Flow = flow;
+            Page = page;
             TrackingParameters = trackingParameters;
         }
     }

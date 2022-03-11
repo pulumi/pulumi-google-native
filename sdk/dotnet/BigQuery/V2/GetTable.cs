@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class GetTableResult
     {
         /// <summary>
+        /// Clone definition.
+        /// </summary>
+        public readonly Outputs.CloneDefinitionResponse CloneDefinition;
+        /// <summary>
         /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
         /// </summary>
         public readonly Outputs.ClusteringResponse Clustering;
@@ -186,6 +190,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [OutputConstructor]
         private GetTableResult(
+            Outputs.CloneDefinitionResponse cloneDefinition,
+
             Outputs.ClusteringResponse clustering,
 
             string creationTime,
@@ -244,6 +250,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.ViewDefinitionResponse view)
         {
+            CloneDefinition = cloneDefinition;
             Clustering = clustering;
             CreationTime = creationTime;
             DefaultCollation = defaultCollation;

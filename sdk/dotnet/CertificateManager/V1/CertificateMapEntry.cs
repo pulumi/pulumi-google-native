@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+        /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
         /// </summary>
         [Output("hostname")]
         public Output<string> Hostname { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A Hostname (FQDN, e.g. example.com) or a wildcard hostname expression (*.example.com) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+        /// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }

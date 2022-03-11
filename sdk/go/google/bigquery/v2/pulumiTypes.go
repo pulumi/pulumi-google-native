@@ -2328,6 +2328,37 @@ func (o BqmlTrainingRunTrainingOptionsResponseOutput) WarmStart() pulumi.BoolOut
 	return o.ApplyT(func(v BqmlTrainingRunTrainingOptionsResponse) bool { return v.WarmStart }).(pulumi.BoolOutput)
 }
 
+type CloneDefinitionResponse struct {
+	// [Required] Reference describing the ID of the table that was cloned.
+	BaseTableReference TableReferenceResponse `pulumi:"baseTableReference"`
+	// [Required] The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format.
+	CloneTime string `pulumi:"cloneTime"`
+}
+
+type CloneDefinitionResponseOutput struct{ *pulumi.OutputState }
+
+func (CloneDefinitionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloneDefinitionResponse)(nil)).Elem()
+}
+
+func (o CloneDefinitionResponseOutput) ToCloneDefinitionResponseOutput() CloneDefinitionResponseOutput {
+	return o
+}
+
+func (o CloneDefinitionResponseOutput) ToCloneDefinitionResponseOutputWithContext(ctx context.Context) CloneDefinitionResponseOutput {
+	return o
+}
+
+// [Required] Reference describing the ID of the table that was cloned.
+func (o CloneDefinitionResponseOutput) BaseTableReference() TableReferenceResponseOutput {
+	return o.ApplyT(func(v CloneDefinitionResponse) TableReferenceResponse { return v.BaseTableReference }).(TableReferenceResponseOutput)
+}
+
+// [Required] The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format.
+func (o CloneDefinitionResponseOutput) CloneTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneDefinitionResponse) string { return v.CloneTime }).(pulumi.StringOutput)
+}
+
 type Clustering struct {
 	// [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
 	Fields []string `pulumi:"fields"`
@@ -14826,6 +14857,7 @@ func init() {
 	pulumi.RegisterOutputType(BqmlTrainingRunTrainingOptionsOutput{})
 	pulumi.RegisterOutputType(BqmlTrainingRunTrainingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(BqmlTrainingRunTrainingOptionsResponseOutput{})
+	pulumi.RegisterOutputType(CloneDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ClusteringOutput{})
 	pulumi.RegisterOutputType(ClusteringPtrOutput{})
 	pulumi.RegisterOutputType(ClusteringResponseOutput{})

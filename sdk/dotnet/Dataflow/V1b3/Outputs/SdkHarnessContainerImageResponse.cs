@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class SdkHarnessContainerImageResponse
     {
         /// <summary>
+        /// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+        /// </summary>
+        public readonly ImmutableArray<string> Capabilities;
+        /// <summary>
         /// A docker container image that resides in Google Container Registry.
         /// </summary>
         public readonly string ContainerImage;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
         [OutputConstructor]
         private SdkHarnessContainerImageResponse(
+            ImmutableArray<string> capabilities,
+
             string containerImage,
 
             string environmentId,
 
             bool useSingleCorePerContainer)
         {
+            Capabilities = capabilities;
             ContainerImage = containerImage;
             EnvironmentId = environmentId;
             UseSingleCorePerContainer = useSingleCorePerContainer;

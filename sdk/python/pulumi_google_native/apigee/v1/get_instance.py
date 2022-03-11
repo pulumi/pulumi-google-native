@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, ip_range=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, state=None):
+    def __init__(__self__, consumer_accept_list=None, created_at=None, description=None, disk_encryption_key_name=None, display_name=None, host=None, ip_range=None, last_modified_at=None, location=None, name=None, peering_cidr_range=None, port=None, runtime_version=None, service_attachment=None, state=None):
+        if consumer_accept_list and not isinstance(consumer_accept_list, list):
+            raise TypeError("Expected argument 'consumer_accept_list' to be a list")
+        pulumi.set(__self__, "consumer_accept_list", consumer_accept_list)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -54,9 +57,20 @@ class GetInstanceResult:
         if runtime_version and not isinstance(runtime_version, str):
             raise TypeError("Expected argument 'runtime_version' to be a str")
         pulumi.set(__self__, "runtime_version", runtime_version)
+        if service_attachment and not isinstance(service_attachment, str):
+            raise TypeError("Expected argument 'service_attachment' to be a str")
+        pulumi.set(__self__, "service_attachment", service_attachment)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="consumerAcceptList")
+    def consumer_accept_list(self) -> Sequence[str]:
+        """
+        Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+        """
+        return pulumi.get(self, "consumer_accept_list")
 
     @property
     @pulumi.getter(name="createdAt")
@@ -155,6 +169,14 @@ class GetInstanceResult:
         return pulumi.get(self, "runtime_version")
 
     @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> str:
+        """
+        Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -169,6 +191,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            consumer_accept_list=self.consumer_accept_list,
             created_at=self.created_at,
             description=self.description,
             disk_encryption_key_name=self.disk_encryption_key_name,
@@ -181,6 +204,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             peering_cidr_range=self.peering_cidr_range,
             port=self.port,
             runtime_version=self.runtime_version,
+            service_attachment=self.service_attachment,
             state=self.state)
 
 
@@ -200,6 +224,7 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        consumer_accept_list=__ret__.consumer_accept_list,
         created_at=__ret__.created_at,
         description=__ret__.description,
         disk_encryption_key_name=__ret__.disk_encryption_key_name,
@@ -212,6 +237,7 @@ def get_instance(instance_id: Optional[str] = None,
         peering_cidr_range=__ret__.peering_cidr_range,
         port=__ret__.port,
         runtime_version=__ret__.runtime_version,
+        service_attachment=__ret__.service_attachment,
         state=__ret__.state)
 
 
