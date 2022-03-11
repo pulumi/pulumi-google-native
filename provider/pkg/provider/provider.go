@@ -747,6 +747,18 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 	// Extract old inputs from the `__inputs` field of the old state.
 	inputs := parseCheckpointObject(oldState)
 
+	// Look up operation functions by resourceKey
+	// Example: google-native:storage/v1:Bucket
+	// If defined, run that function instead of a single HTTP call
+	if f, ok := ResourceDeleteOverrides[resourceKey]; ok {
+		err := f(p, res, inputs.Mappable(), oldState.Mappable())
+		if err != nil {
+			return nil, err
+		}
+
+		return &empty.Empty{}, nil
+	}
+
 	uri, err := res.Delete.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if err != nil {
 		return nil, err

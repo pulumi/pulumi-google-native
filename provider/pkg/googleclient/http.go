@@ -82,6 +82,9 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 	return googleClient, nil
 }
 
+// HTTPClient returns an initialized HTTP client for Google Cloud.
+func (c *GoogleClient) HTTPClient() *http.Client { return c.http }
+
 // RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
 func (c *GoogleClient) RequestWithTimeout(
