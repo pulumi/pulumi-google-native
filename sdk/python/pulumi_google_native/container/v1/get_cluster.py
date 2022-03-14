@@ -776,6 +776,8 @@ class AwaitableGetClusterResult(GetClusterResult):
 def get_cluster(cluster_id: Optional[str] = None,
                 location: Optional[str] = None,
                 project: Optional[str] = None,
+                project_id: Optional[str] = None,
+                zone: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Gets the details of a specific cluster.
@@ -784,6 +786,8 @@ def get_cluster(cluster_id: Optional[str] = None,
     __args__['clusterId'] = cluster_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['projectId'] = project_id
+    __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -857,6 +861,8 @@ def get_cluster(cluster_id: Optional[str] = None,
 def get_cluster_output(cluster_id: Optional[pulumi.Input[str]] = None,
                        location: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                       project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                       zone: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Gets the details of a specific cluster.

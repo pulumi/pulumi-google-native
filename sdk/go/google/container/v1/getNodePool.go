@@ -25,6 +25,8 @@ type LookupNodePoolArgs struct {
 	Location   string  `pulumi:"location"`
 	NodePoolId string  `pulumi:"nodePoolId"`
 	Project    *string `pulumi:"project"`
+	ProjectId  *string `pulumi:"projectId"`
+	Zone       *string `pulumi:"zone"`
 }
 
 type LookupNodePoolResult struct {
@@ -78,6 +80,8 @@ type LookupNodePoolOutputArgs struct {
 	Location   pulumi.StringInput    `pulumi:"location"`
 	NodePoolId pulumi.StringInput    `pulumi:"nodePoolId"`
 	Project    pulumi.StringPtrInput `pulumi:"project"`
+	ProjectId  pulumi.StringPtrInput `pulumi:"projectId"`
+	Zone       pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (LookupNodePoolOutputArgs) ElementType() reflect.Type {

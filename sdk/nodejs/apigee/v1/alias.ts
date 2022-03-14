@@ -82,6 +82,7 @@ export class Alias extends pulumi.CustomResource {
             resourceInputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
             resourceInputs["keystoreId"] = args ? args.keystoreId : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["certsInfo"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         } else {
@@ -117,4 +118,5 @@ export interface AliasArgs {
     ignoreNewlineValidation?: pulumi.Input<string>;
     keystoreId: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
 }

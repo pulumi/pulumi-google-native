@@ -88,6 +88,7 @@ type aliasArgs struct {
 	IgnoreNewlineValidation *string             `pulumi:"ignoreNewlineValidation"`
 	KeystoreId              string              `pulumi:"keystoreId"`
 	OrganizationId          string              `pulumi:"organizationId"`
+	Password                *string             `pulumi:"password"`
 }
 
 // The set of arguments for constructing a Alias resource.
@@ -105,6 +106,7 @@ type AliasArgs struct {
 	IgnoreNewlineValidation pulumi.StringPtrInput
 	KeystoreId              pulumi.StringInput
 	OrganizationId          pulumi.StringInput
+	Password                pulumi.StringPtrInput
 }
 
 func (AliasArgs) ElementType() reflect.Type {

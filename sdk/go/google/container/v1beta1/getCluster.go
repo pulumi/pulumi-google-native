@@ -24,6 +24,8 @@ type LookupClusterArgs struct {
 	ClusterId string  `pulumi:"clusterId"`
 	Location  string  `pulumi:"location"`
 	Project   *string `pulumi:"project"`
+	ProjectId string  `pulumi:"projectId"`
+	Zone      string  `pulumi:"zone"`
 }
 
 type LookupClusterResult struct {
@@ -196,6 +198,8 @@ type LookupClusterOutputArgs struct {
 	ClusterId pulumi.StringInput    `pulumi:"clusterId"`
 	Location  pulumi.StringInput    `pulumi:"location"`
 	Project   pulumi.StringPtrInput `pulumi:"project"`
+	ProjectId pulumi.StringInput    `pulumi:"projectId"`
+	Zone      pulumi.StringInput    `pulumi:"zone"`
 }
 
 func (LookupClusterOutputArgs) ElementType() reflect.Type {

@@ -18,6 +18,8 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
         "clusterId": args.clusterId,
         "location": args.location,
         "project": args.project,
+        "projectId": args.projectId,
+        "zone": args.zone,
     }, opts);
 }
 
@@ -25,6 +27,8 @@ export interface GetClusterArgs {
     clusterId: string;
     location: string;
     project?: string;
+    projectId?: string;
+    zone?: string;
 }
 
 export interface GetClusterResult {
@@ -290,4 +294,6 @@ export interface GetClusterOutputArgs {
     clusterId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

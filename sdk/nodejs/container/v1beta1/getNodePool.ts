@@ -19,6 +19,8 @@ export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions):
         "location": args.location,
         "nodePoolId": args.nodePoolId,
         "project": args.project,
+        "projectId": args.projectId,
+        "zone": args.zone,
     }, opts);
 }
 
@@ -27,6 +29,8 @@ export interface GetNodePoolArgs {
     location: string;
     nodePoolId: string;
     project?: string;
+    projectId: string;
+    zone: string;
 }
 
 export interface GetNodePoolResult {
@@ -111,4 +115,6 @@ export interface GetNodePoolOutputArgs {
     location: pulumi.Input<string>;
     nodePoolId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    projectId: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

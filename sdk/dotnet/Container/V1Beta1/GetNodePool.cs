@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("projectId", required: true)]
+        public string ProjectId { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public string Zone { get; set; } = null!;
+
         public GetNodePoolArgs()
         {
         }
@@ -57,6 +63,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public GetNodePoolInvokeArgs()
         {

@@ -229,6 +229,8 @@ def get_node_pool(cluster_id: Optional[str] = None,
                   location: Optional[str] = None,
                   node_pool_id: Optional[str] = None,
                   project: Optional[str] = None,
+                  project_id: Optional[str] = None,
+                  zone: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodePoolResult:
     """
     Retrieves the requested node pool.
@@ -238,6 +240,8 @@ def get_node_pool(cluster_id: Optional[str] = None,
     __args__['location'] = location
     __args__['nodePoolId'] = node_pool_id
     __args__['project'] = project
+    __args__['projectId'] = project_id
+    __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -268,6 +272,8 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
                          location: Optional[pulumi.Input[str]] = None,
                          node_pool_id: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         zone: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodePoolResult]:
     """
     Retrieves the requested node pool.
