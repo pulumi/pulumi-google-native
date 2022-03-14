@@ -24,7 +24,9 @@ class DatacenterConnectorArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatacenterConnector resource.
+        :param pulumi.Input[str] datacenter_connector_id: Required. The datacenterConnector identifier.
         :param pulumi.Input[str] registration_id: Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_account: The service account to use in the connector when communicating with the cloud.
         :param pulumi.Input[str] version: The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
         """
@@ -46,6 +48,9 @@ class DatacenterConnectorArgs:
     @property
     @pulumi.getter(name="datacenterConnectorId")
     def datacenter_connector_id(self) -> pulumi.Input[str]:
+        """
+        Required. The datacenterConnector identifier.
+        """
         return pulumi.get(self, "datacenter_connector_id")
 
     @datacenter_connector_id.setter
@@ -94,6 +99,9 @@ class DatacenterConnectorArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -145,7 +153,9 @@ class DatacenterConnector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] datacenter_connector_id: Required. The datacenterConnector identifier.
         :param pulumi.Input[str] registration_id: Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] service_account: The service account to use in the connector when communicating with the cloud.
         :param pulumi.Input[str] version: The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
         """

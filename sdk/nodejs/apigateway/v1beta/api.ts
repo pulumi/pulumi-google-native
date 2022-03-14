@@ -106,6 +106,9 @@ export class Api extends pulumi.CustomResource {
  * The set of arguments for constructing a Api resource.
  */
 export interface ApiArgs {
+    /**
+     * Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+     */
     apiId: pulumi.Input<string>;
     /**
      * Optional. Display name.

@@ -129,6 +129,9 @@ export interface RepositoryArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * The repository id to use for this repository.
+     */
     repositoryId?: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.

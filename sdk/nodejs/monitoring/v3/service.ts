@@ -160,6 +160,9 @@ export interface ServiceArgs {
      * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+     */
     serviceId?: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.

@@ -260,6 +260,9 @@ export interface TriggerArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. ID of the project for which to configure automatic builds.
+     */
     projectId: pulumi.Input<string>;
     /**
      * PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.

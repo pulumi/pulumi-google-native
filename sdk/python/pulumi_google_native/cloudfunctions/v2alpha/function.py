@@ -32,6 +32,7 @@ class FunctionArgs:
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is gen1 or gen2.
         :param pulumi.Input['EventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
+        :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input['ServiceConfigArgs'] service_config: Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
@@ -108,6 +109,9 @@ class FunctionArgs:
     @property
     @pulumi.getter(name="functionId")
     def function_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        """
         return pulumi.get(self, "function_id")
 
     @function_id.setter
@@ -194,6 +198,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of a function.
         :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is gen1 or gen2.
         :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
+        :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[pulumi.InputType['ServiceConfigArgs']] service_config: Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).

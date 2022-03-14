@@ -178,6 +178,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// </summary>
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
 

@@ -172,6 +172,9 @@ export interface OsPolicyAssignmentArgs {
      * List of OS policies to be applied to the VMs.
      */
     osPolicies: pulumi.Input<pulumi.Input<inputs.osconfig.v1alpha.OSPolicyArgs>[]>;
+    /**
+     * Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     */
     osPolicyAssignmentId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

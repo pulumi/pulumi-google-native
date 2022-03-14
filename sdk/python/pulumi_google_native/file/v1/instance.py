@@ -28,6 +28,7 @@ class InstanceArgs:
                  tier: Optional[pulumi.Input['InstanceTier']] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] instance_id: Required. The name of the instance to create. The name must be unique for the specified project and location.
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
@@ -59,6 +60,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the instance to create. The name must be unique for the specified project and location.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -193,6 +197,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the instance (2048 characters or less).
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FileShareConfigArgs']]]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
+        :param pulumi.Input[str] instance_id: Required. The name of the instance to create. The name must be unique for the specified project and location.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.

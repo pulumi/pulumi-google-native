@@ -33,6 +33,7 @@ class TransferConfigArgs:
                  version_info: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TransferConfig resource.
+        :param pulumi.Input[str] authorization_code: Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
         :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created.
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
@@ -44,6 +45,8 @@ class TransferConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         :param pulumi.Input['ScheduleOptionsArgs'] schedule_options: Options customizing the data transfer schedule.
+        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+        :param pulumi.Input[str] version_info: Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
         """
         if authorization_code is not None:
             pulumi.set(__self__, "authorization_code", authorization_code)
@@ -81,6 +84,9 @@ class TransferConfigArgs:
     @property
     @pulumi.getter(name="authorizationCode")
     def authorization_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        """
         return pulumi.get(self, "authorization_code")
 
     @authorization_code.setter
@@ -240,6 +246,9 @@ class TransferConfigArgs:
     @property
     @pulumi.getter(name="serviceAccountName")
     def service_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+        """
         return pulumi.get(self, "service_account_name")
 
     @service_account_name.setter
@@ -249,6 +258,9 @@ class TransferConfigArgs:
     @property
     @pulumi.getter(name="versionInfo")
     def version_info(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        """
         return pulumi.get(self, "version_info")
 
     @version_info.setter
@@ -283,6 +295,7 @@ class TransferConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] authorization_code: Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=authorization_code * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
         :param pulumi.Input[int] data_refresh_window_days: The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
         :param pulumi.Input[str] data_source_id: Data source id. Cannot be changed once data transfer is created.
         :param pulumi.Input[str] destination_dataset_id: The BigQuery target dataset id.
@@ -294,6 +307,8 @@ class TransferConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
         :param pulumi.Input[str] schedule: Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
         :param pulumi.Input[pulumi.InputType['ScheduleOptionsArgs']] schedule_options: Options customizing the data transfer schedule.
+        :param pulumi.Input[str] service_account_name: Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+        :param pulumi.Input[str] version_info: Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
         """
         ...
     @overload

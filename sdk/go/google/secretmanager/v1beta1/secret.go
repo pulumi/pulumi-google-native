@@ -76,7 +76,8 @@ type secretArgs struct {
 	Project *string           `pulumi:"project"`
 	// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication Replication `pulumi:"replication"`
-	SecretId    string      `pulumi:"secretId"`
+	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+	SecretId string `pulumi:"secretId"`
 }
 
 // The set of arguments for constructing a Secret resource.
@@ -86,7 +87,8 @@ type SecretArgs struct {
 	Project pulumi.StringPtrInput
 	// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationInput
-	SecretId    pulumi.StringInput
+	// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+	SecretId pulumi.StringInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {

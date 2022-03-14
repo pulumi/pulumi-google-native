@@ -69,7 +69,8 @@ func (Hl7V2StoreState) ElementType() reflect.Type {
 }
 
 type hl7V2StoreArgs struct {
-	DatasetId    string  `pulumi:"datasetId"`
+	DatasetId string `pulumi:"datasetId"`
+	// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
 	Hl7V2StoreId *string `pulumi:"hl7V2StoreId"`
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   map[string]string `pulumi:"labels"`
@@ -87,7 +88,8 @@ type hl7V2StoreArgs struct {
 
 // The set of arguments for constructing a Hl7V2Store resource.
 type Hl7V2StoreArgs struct {
-	DatasetId    pulumi.StringInput
+	DatasetId pulumi.StringInput
+	// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
 	Hl7V2StoreId pulumi.StringPtrInput
 	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels   pulumi.StringMapInput

@@ -123,6 +123,9 @@ export interface GatewayArgs {
      * Optional. Display name.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+     */
     gatewayId: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources

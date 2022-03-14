@@ -106,5 +106,8 @@ export interface TopicArgs {
      * The settings for this topic's message retention.
      */
     retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfigArgs>;
+    /**
+     * Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+     */
     topicId: pulumi.Input<string>;
 }

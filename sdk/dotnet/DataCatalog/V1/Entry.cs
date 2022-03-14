@@ -244,6 +244,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+        /// </summary>
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
 

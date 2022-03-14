@@ -96,6 +96,9 @@ export interface NamespaceArgs {
      * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     */
     namespaceId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

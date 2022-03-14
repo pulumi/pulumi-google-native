@@ -101,13 +101,16 @@ type targetArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Whether or not the `Target` requires approval.
-	RequireApproval *bool   `pulumi:"requireApproval"`
-	TargetId        string  `pulumi:"targetId"`
-	ValidateOnly    *string `pulumi:"validateOnly"`
+	RequireApproval *bool `pulumi:"requireApproval"`
+	// Required. ID of the `Target`.
+	TargetId string `pulumi:"targetId"`
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Target resource.
@@ -128,13 +131,16 @@ type TargetArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
-	TargetId        pulumi.StringInput
-	ValidateOnly    pulumi.StringPtrInput
+	// Required. ID of the `Target`.
+	TargetId pulumi.StringInput
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly pulumi.StringPtrInput
 }
 
 func (TargetArgs) ElementType() reflect.Type {

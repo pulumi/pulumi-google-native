@@ -34,6 +34,7 @@ class ServiceArgs:
                  tier: Optional[pulumi.Input['ServiceTier']] = None):
         """
         The set of arguments for constructing a Service resource.
+        :param pulumi.Input[str] service_id: Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input['ServiceDatabaseType'] database_type: Immutable. The database type that the Metastore service stores its data.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param pulumi.Input['HiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
@@ -45,6 +46,7 @@ class ServiceArgs:
         :param pulumi.Input['NetworkConfigArgs'] network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         pulumi.set(__self__, "service_id", service_id)
@@ -82,6 +84,9 @@ class ServiceArgs:
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -241,6 +246,9 @@ class ServiceArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -298,6 +306,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
         :param pulumi.Input[int] port: The TCP port at which the metastore service is reached. Default: 9083.
         :param pulumi.Input['ServiceReleaseChannel'] release_channel: Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+        :param pulumi.Input[str] request_id: Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        :param pulumi.Input[str] service_id: Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
         :param pulumi.Input['ServiceTier'] tier: The tier of the service.
         """
         ...

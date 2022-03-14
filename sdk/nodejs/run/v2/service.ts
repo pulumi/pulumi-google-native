@@ -274,6 +274,9 @@ export interface ServiceArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+     */
     serviceId: pulumi.Input<string>;
     /**
      * The template used to create revisions for this Service.
@@ -283,5 +286,8 @@ export interface ServiceArgs {
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
      */
     traffic?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2TrafficTargetArgs>[]>;
+    /**
+     * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+     */
     validateOnly?: pulumi.Input<string>;
 }

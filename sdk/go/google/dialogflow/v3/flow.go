@@ -83,8 +83,9 @@ type flowArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandler `pulumi:"eventHandlers"`
-	LanguageCode  *string                                 `pulumi:"languageCode"`
-	Location      *string                                 `pulumi:"location"`
+	// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	LanguageCode *string `pulumi:"languageCode"`
+	Location     *string `pulumi:"location"`
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name *string `pulumi:"name"`
 	// NLU related settings of the flow.
@@ -105,8 +106,9 @@ type FlowArgs struct {
 	DisplayName pulumi.StringInput
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerArrayInput
-	LanguageCode  pulumi.StringPtrInput
-	Location      pulumi.StringPtrInput
+	// The language of the following fields in `flow`: * `Flow.event_handlers.trigger_fulfillment.messages` * `Flow.event_handlers.trigger_fulfillment.conditional_cases` * `Flow.transition_routes.trigger_fulfillment.messages` * `Flow.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	LanguageCode pulumi.StringPtrInput
+	Location     pulumi.StringPtrInput
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name pulumi.StringPtrInput
 	// NLU related settings of the flow.

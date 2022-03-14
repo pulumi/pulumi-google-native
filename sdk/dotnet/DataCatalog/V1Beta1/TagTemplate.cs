@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. The id of the tag template to create.
+        /// </summary>
         [Input("tagTemplateId", required: true)]
         public Input<string> TagTemplateId { get; set; } = null!;
 

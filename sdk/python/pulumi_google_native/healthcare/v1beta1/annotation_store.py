@@ -21,6 +21,7 @@ class AnnotationStoreArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AnnotationStore resource.
+        :param pulumi.Input[str] annotation_store_id: The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] name: Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """
@@ -48,6 +49,9 @@ class AnnotationStoreArgs:
     @property
     @pulumi.getter(name="annotationStoreId")
     def annotation_store_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        """
         return pulumi.get(self, "annotation_store_id")
 
     @annotation_store_id.setter
@@ -114,6 +118,7 @@ class AnnotationStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] annotation_store_id: The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[str] name: Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         """

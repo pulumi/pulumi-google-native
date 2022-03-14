@@ -90,6 +90,9 @@ export class DicomStore extends pulumi.CustomResource {
  */
 export interface DicomStoreArgs {
     datasetId: pulumi.Input<string>;
+    /**
+     * The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+     */
     dicomStoreId?: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.

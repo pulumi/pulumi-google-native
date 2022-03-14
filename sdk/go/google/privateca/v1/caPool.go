@@ -73,6 +73,7 @@ func (CaPoolState) ElementType() reflect.Type {
 }
 
 type caPoolArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	CaPoolId string `pulumi:"caPoolId"`
 	// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	IssuancePolicy *IssuancePolicy `pulumi:"issuancePolicy"`
@@ -82,13 +83,15 @@ type caPoolArgs struct {
 	Project  *string           `pulumi:"project"`
 	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
 	PublishingOptions *PublishingOptions `pulumi:"publishingOptions"`
-	RequestId         *string            `pulumi:"requestId"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// Immutable. The Tier of this CaPool.
 	Tier CaPoolTier `pulumi:"tier"`
 }
 
 // The set of arguments for constructing a CaPool resource.
 type CaPoolArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	CaPoolId pulumi.StringInput
 	// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
 	IssuancePolicy IssuancePolicyPtrInput
@@ -98,7 +101,8 @@ type CaPoolArgs struct {
 	Project  pulumi.StringPtrInput
 	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
 	PublishingOptions PublishingOptionsPtrInput
-	RequestId         pulumi.StringPtrInput
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 	// Immutable. The Tier of this CaPool.
 	Tier CaPoolTierInput
 }

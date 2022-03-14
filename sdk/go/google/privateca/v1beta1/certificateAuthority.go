@@ -113,6 +113,7 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 }
 
 type certificateAuthorityArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy *CertificateAuthorityPolicy `pulumi:"certificatePolicy"`
@@ -127,9 +128,10 @@ type certificateAuthorityArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime  string  `pulumi:"lifetime"`
-	Location  *string `pulumi:"location"`
-	Project   *string `pulumi:"project"`
+	Lifetime string  `pulumi:"lifetime"`
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig *SubordinateConfig `pulumi:"subordinateConfig"`
@@ -141,6 +143,7 @@ type certificateAuthorityArgs struct {
 
 // The set of arguments for constructing a CertificateAuthority resource.
 type CertificateAuthorityArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	CertificateAuthorityId pulumi.StringInput
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyPtrInput
@@ -155,9 +158,10 @@ type CertificateAuthorityArgs struct {
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
 	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
-	Lifetime  pulumi.StringInput
-	Location  pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Lifetime pulumi.StringInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig SubordinateConfigPtrInput

@@ -23,6 +23,7 @@ class JobTemplateArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a JobTemplate resource.
+        :param pulumi.Input[str] job_template_id: Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
         :param pulumi.Input['JobConfigArgs'] config: The configuration for this template.
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         """
@@ -39,6 +40,9 @@ class JobTemplateArgs:
     @property
     @pulumi.getter(name="jobTemplateId")
     def job_template_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+        """
         return pulumi.get(self, "job_template_id")
 
     @job_template_id.setter
@@ -105,6 +109,7 @@ class JobTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['JobConfigArgs']] config: The configuration for this template.
+        :param pulumi.Input[str] job_template_id: Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
         :param pulumi.Input[str] name: The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
         """
         ...

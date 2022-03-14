@@ -104,6 +104,9 @@ export class ResourceRecordSet extends pulumi.CustomResource {
  * The set of arguments for constructing a ResourceRecordSet resource.
  */
 export interface ResourceRecordSetArgs {
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
     clientOperationId?: pulumi.Input<string>;
     kind?: pulumi.Input<string>;
     location?: pulumi.Input<string>;

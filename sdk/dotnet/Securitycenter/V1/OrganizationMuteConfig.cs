@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
 
+        /// <summary>
+        /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        /// </summary>
         [Input("muteConfigId", required: true)]
         public Input<string> MuteConfigId { get; set; } = null!;
 

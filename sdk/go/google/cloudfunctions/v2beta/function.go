@@ -83,7 +83,8 @@ type functionArgs struct {
 	Environment *FunctionEnvironment `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger *EventTrigger `pulumi:"eventTrigger"`
-	FunctionId   *string       `pulumi:"functionId"`
+	// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	FunctionId *string `pulumi:"functionId"`
 	// Labels associated with this Cloud Function.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -104,7 +105,8 @@ type FunctionArgs struct {
 	Environment FunctionEnvironmentPtrInput
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger EventTriggerPtrInput
-	FunctionId   pulumi.StringPtrInput
+	// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	FunctionId pulumi.StringPtrInput
 	// Labels associated with this Cloud Function.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput

@@ -137,6 +137,9 @@ export interface ExecutionArgs {
      */
     outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional

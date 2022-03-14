@@ -21,6 +21,7 @@ class SnapshotArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
+        :param pulumi.Input[str] snapshot_id: Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         """
@@ -47,6 +48,9 @@ class SnapshotArgs:
     @property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -116,6 +120,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] snapshot_id: Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         """
         ...
     @overload

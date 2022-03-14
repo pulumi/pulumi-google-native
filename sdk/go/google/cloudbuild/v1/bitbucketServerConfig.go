@@ -86,7 +86,8 @@ func (BitbucketServerConfigState) ElementType() reflect.Type {
 
 type bitbucketServerConfigArgs struct {
 	// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
-	ApiKey                  string  `pulumi:"apiKey"`
+	ApiKey string `pulumi:"apiKey"`
+	// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	BitbucketServerConfigId *string `pulumi:"bitbucketServerConfigId"`
 	// Time when the config was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -109,7 +110,8 @@ type bitbucketServerConfigArgs struct {
 // The set of arguments for constructing a BitbucketServerConfig resource.
 type BitbucketServerConfigArgs struct {
 	// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
-	ApiKey                  pulumi.StringInput
+	ApiKey pulumi.StringInput
+	// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	BitbucketServerConfigId pulumi.StringPtrInput
 	// Time when the config was created.
 	CreateTime pulumi.StringPtrInput

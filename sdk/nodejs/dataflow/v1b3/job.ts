@@ -296,5 +296,8 @@ export interface JobArgs {
      * The type of Cloud Dataflow job.
      */
     type?: pulumi.Input<enums.dataflow.v1b3.JobType>;
+    /**
+     * The level of information requested in response.
+     */
     view?: pulumi.Input<string>;
 }

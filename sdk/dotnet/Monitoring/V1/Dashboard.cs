@@ -165,6 +165,9 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         [Input("rowLayout")]
         public Input<Inputs.RowLayoutArgs>? RowLayout { get; set; }
 
+        /// <summary>
+        /// If set, validate the request and preview the review, but do not actually save it.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

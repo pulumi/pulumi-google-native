@@ -31,6 +31,7 @@ class BitbucketServerConfigArgs:
         :param pulumi.Input[str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input['BitbucketServerSecretsArgs'] secrets: Secret Manager secrets needed by the config.
+        :param pulumi.Input[str] bitbucket_server_config_id: Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input[str] create_time: Time when the config was created.
         :param pulumi.Input[str] name: The resource name for the config.
         :param pulumi.Input[str] peered_network: Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
@@ -96,6 +97,9 @@ class BitbucketServerConfigArgs:
     @property
     @pulumi.getter(name="bitbucketServerConfigId")
     def bitbucket_server_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        """
         return pulumi.get(self, "bitbucket_server_config_id")
 
     @bitbucket_server_config_id.setter
@@ -204,6 +208,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_key: Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+        :param pulumi.Input[str] bitbucket_server_config_id: Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input[str] create_time: Time when the config was created.
         :param pulumi.Input[str] host_uri: Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
         :param pulumi.Input[str] name: The resource name for the config.

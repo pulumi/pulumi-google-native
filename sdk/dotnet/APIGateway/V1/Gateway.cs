@@ -121,6 +121,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+        /// </summary>
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
 

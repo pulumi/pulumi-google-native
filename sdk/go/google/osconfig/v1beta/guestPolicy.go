@@ -85,8 +85,9 @@ type guestPolicyArgs struct {
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-	Etag          *string `pulumi:"etag"`
-	GuestPolicyId string  `pulumi:"guestPolicyId"`
+	Etag *string `pulumi:"etag"`
+	// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+	GuestPolicyId string `pulumi:"guestPolicyId"`
 	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
@@ -105,7 +106,8 @@ type GuestPolicyArgs struct {
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-	Etag          pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
 	GuestPolicyId pulumi.StringInput
 	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name pulumi.StringPtrInput

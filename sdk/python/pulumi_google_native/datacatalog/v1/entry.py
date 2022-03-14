@@ -40,6 +40,7 @@ class EntryArgs:
                  user_specified_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Entry resource.
+        :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
         :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryDateShardedSpecArgs'] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
         :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryTableSpecArgs'] bigquery_table_spec: Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
         :param pulumi.Input['GoogleCloudDatacatalogV1BusinessContextArgs'] business_context: Business Context of the entry. Not supported for BigQuery datasets
@@ -114,6 +115,9 @@ class EntryArgs:
     @property
     @pulumi.getter(name="entryId")
     def entry_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+        """
         return pulumi.get(self, "entry_id")
 
     @entry_id.setter
@@ -396,6 +400,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1DatabaseTableSpecArgs']] database_table_spec: Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
         :param pulumi.Input[str] description: Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        :param pulumi.Input[str] entry_id: Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1FilesetSpecArgs']] fileset_spec: Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         :param pulumi.Input[str] fully_qualified_name: Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.

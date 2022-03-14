@@ -77,8 +77,9 @@ type reservationArgs struct {
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
-	Name          *string `pulumi:"name"`
-	Project       *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// The reservation ID. It must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	ReservationId *string `pulumi:"reservationId"`
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
 	SlotCapacity *string `pulumi:"slotCapacity"`
@@ -94,8 +95,9 @@ type ReservationArgs struct {
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
 	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. For the reservation id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
-	Name          pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The reservation ID. It must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	ReservationId pulumi.StringPtrInput
 	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the project's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the project's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`. NOTE: for reservations in US or EU multi-regions slot capacity constraints are checked separately for default and auxiliary regions. See multi_region_auxiliary flag for more details.
 	SlotCapacity pulumi.StringPtrInput

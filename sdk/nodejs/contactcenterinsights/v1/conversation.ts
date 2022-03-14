@@ -183,6 +183,9 @@ export interface ConversationArgs {
      * Call-specific metadata.
      */
     callMetadata?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs>;
+    /**
+     * A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+     */
     conversationId?: pulumi.Input<string>;
     /**
      * The source of the audio and transcription for the conversation.

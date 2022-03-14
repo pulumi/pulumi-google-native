@@ -90,6 +90,7 @@ func (BatchState) ElementType() reflect.Type {
 }
 
 type batchArgs struct {
+	// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
 	BatchId *string `pulumi:"batchId"`
 	// Optional. Environment configuration for the batch execution.
 	EnvironmentConfig *EnvironmentConfig `pulumi:"environmentConfig"`
@@ -99,7 +100,8 @@ type batchArgs struct {
 	Project  *string           `pulumi:"project"`
 	// Optional. PySpark batch config.
 	PysparkBatch *PySparkBatch `pulumi:"pysparkBatch"`
-	RequestId    *string       `pulumi:"requestId"`
+	// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId *string `pulumi:"requestId"`
 	// Optional. Runtime configuration for the batch execution.
 	RuntimeConfig *RuntimeConfig `pulumi:"runtimeConfig"`
 	// Optional. Spark batch config.
@@ -112,6 +114,7 @@ type batchArgs struct {
 
 // The set of arguments for constructing a Batch resource.
 type BatchArgs struct {
+	// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
 	BatchId pulumi.StringPtrInput
 	// Optional. Environment configuration for the batch execution.
 	EnvironmentConfig EnvironmentConfigPtrInput
@@ -121,7 +124,8 @@ type BatchArgs struct {
 	Project  pulumi.StringPtrInput
 	// Optional. PySpark batch config.
 	PysparkBatch PySparkBatchPtrInput
-	RequestId    pulumi.StringPtrInput
+	// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId pulumi.StringPtrInput
 	// Optional. Runtime configuration for the batch execution.
 	RuntimeConfig RuntimeConfigPtrInput
 	// Optional. Spark batch config.

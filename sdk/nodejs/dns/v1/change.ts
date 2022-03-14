@@ -105,6 +105,9 @@ export interface ChangeArgs {
      * Which ResourceRecordSets to add?
      */
     additions?: pulumi.Input<pulumi.Input<inputs.dns.v1.ResourceRecordSetArgs>[]>;
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
     clientOperationId?: pulumi.Input<string>;
     /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.

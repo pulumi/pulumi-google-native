@@ -236,6 +236,9 @@ export interface EntryArgs {
      */
     displayName?: pulumi.Input<string>;
     entryGroupId: pulumi.Input<string>;
+    /**
+     * Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+     */
     entryId: pulumi.Input<string>;
     /**
      * Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.

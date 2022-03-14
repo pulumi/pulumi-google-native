@@ -190,6 +190,9 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
         [Input("source", required: true)]
         public Input<Inputs.EndpointArgs> Source { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project
+        /// </summary>
         [Input("testId", required: true)]
         public Input<string> TestId { get; set; } = null!;
 

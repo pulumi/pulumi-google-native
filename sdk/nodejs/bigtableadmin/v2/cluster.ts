@@ -113,6 +113,9 @@ export interface ClusterArgs {
      * Configuration for this cluster.
      */
     clusterConfig?: pulumi.Input<inputs.bigtableadmin.v2.ClusterConfigArgs>;
+    /**
+     * Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+     */
     clusterId: pulumi.Input<string>;
     /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.

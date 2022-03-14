@@ -28,6 +28,7 @@ class AttributeDefinitionArgs:
         """
         The set of arguments for constructing a AttributeDefinition resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
+        :param pulumi.Input[str] attribute_definition_id: Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
         :param pulumi.Input['AttributeDefinitionCategory'] category: The category of the attribute. The value of this field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
@@ -67,6 +68,9 @@ class AttributeDefinitionArgs:
     @property
     @pulumi.getter(name="attributeDefinitionId")
     def attribute_definition_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+        """
         return pulumi.get(self, "attribute_definition_id")
 
     @attribute_definition_id.setter
@@ -193,6 +197,7 @@ class AttributeDefinition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
+        :param pulumi.Input[str] attribute_definition_id: Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
         :param pulumi.Input['AttributeDefinitionCategory'] category: The category of the attribute. The value of this field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.

@@ -31,10 +31,12 @@ class ZoneArgs:
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input['GoogleCloudDataplexV1ZoneResourceSpecArgs'] resource_spec: Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input['ZoneType'] type: Immutable. The type of the zone.
+        :param pulumi.Input[str] zone_id: Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
         :param pulumi.Input[str] description: Optional. Description of the zone.
         :param pulumi.Input['GoogleCloudDataplexV1ZoneDiscoverySpecArgs'] discovery_spec: Optional. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "lake_id", lake_id)
         pulumi.set(__self__, "resource_spec", resource_spec)
@@ -91,6 +93,9 @@ class ZoneArgs:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
+        """
+        Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -166,6 +171,9 @@ class ZoneArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -202,6 +210,8 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ZoneResourceSpecArgs']] resource_spec: Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input['ZoneType'] type: Immutable. The type of the zone.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[str] zone_id: Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
         """
         ...
     @overload

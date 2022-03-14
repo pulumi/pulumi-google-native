@@ -144,5 +144,8 @@ export interface DashboardArgs {
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
     rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayoutArgs>;
+    /**
+     * If set, validate the request and preview the review, but do not actually save it.
+     */
     validateOnly?: pulumi.Input<string>;
 }

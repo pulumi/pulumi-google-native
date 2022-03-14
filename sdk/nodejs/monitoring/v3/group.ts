@@ -107,5 +107,8 @@ export interface GroupArgs {
      */
     parentName?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * If true, validate this request but do not create the group.
+     */
     validateOnly?: pulumi.Input<string>;
 }

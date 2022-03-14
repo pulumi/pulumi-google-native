@@ -24,11 +24,13 @@ class InstanceArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] database_id: The globally unique identifier of the database instance.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
         :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        :param pulumi.Input[str] validate_only: When set to true, the request will be validated but not submitted.
         """
         if database_id is not None:
             pulumi.set(__self__, "database_id", database_id)
@@ -50,6 +52,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique identifier of the database instance.
+        """
         return pulumi.get(self, "database_id")
 
     @database_id.setter
@@ -128,6 +133,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        When set to true, the request will be validated but not submitted.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -154,11 +162,13 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] database_id: The globally unique identifier of the database instance.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
         :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
+        :param pulumi.Input[str] validate_only: When set to true, the request will be validated but not submitted.
         """
         ...
     @overload

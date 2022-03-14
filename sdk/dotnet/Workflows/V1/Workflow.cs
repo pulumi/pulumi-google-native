@@ -162,6 +162,9 @@ namespace Pulumi.GoogleNative.Workflows.V1
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
 
+        /// <summary>
+        /// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+        /// </summary>
         [Input("workflowId", required: true)]
         public Input<string> WorkflowId { get; set; } = null!;
 

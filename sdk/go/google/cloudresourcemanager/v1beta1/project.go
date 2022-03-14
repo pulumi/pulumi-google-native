@@ -82,7 +82,8 @@ type projectArgs struct {
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
 	ProjectId *string `pulumi:"projectId"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
-	ProjectNumber  *string `pulumi:"projectNumber"`
+	ProjectNumber *string `pulumi:"projectNumber"`
+	// A now unused experiment opt-out option.
 	UseLegacyStack *string `pulumi:"useLegacyStack"`
 }
 
@@ -101,7 +102,8 @@ type ProjectArgs struct {
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
 	ProjectId pulumi.StringPtrInput
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
-	ProjectNumber  pulumi.StringPtrInput
+	ProjectNumber pulumi.StringPtrInput
+	// A now unused experiment opt-out option.
 	UseLegacyStack pulumi.StringPtrInput
 }
 

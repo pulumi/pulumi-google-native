@@ -88,8 +88,10 @@ type workerPoolArgs struct {
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config *PrivatePoolV1Config `pulumi:"privatePoolV1Config"`
 	Project             *string              `pulumi:"project"`
-	ValidateOnly        *string              `pulumi:"validateOnly"`
-	WorkerPoolId        string               `pulumi:"workerPoolId"`
+	// If set, validate the request and preview the response, but do not actually post it.
+	ValidateOnly *string `pulumi:"validateOnly"`
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+	WorkerPoolId string `pulumi:"workerPoolId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
@@ -102,8 +104,10 @@ type WorkerPoolArgs struct {
 	// Legacy Private Pool configuration.
 	PrivatePoolV1Config PrivatePoolV1ConfigPtrInput
 	Project             pulumi.StringPtrInput
-	ValidateOnly        pulumi.StringPtrInput
-	WorkerPoolId        pulumi.StringInput
+	// If set, validate the request and preview the response, but do not actually post it.
+	ValidateOnly pulumi.StringPtrInput
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+	WorkerPoolId pulumi.StringInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

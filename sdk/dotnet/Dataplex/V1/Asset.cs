@@ -139,6 +139,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
     public sealed class AssetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
+        /// </summary>
         [Input("assetId", required: true)]
         public Input<string> AssetId { get; set; } = null!;
 
@@ -187,6 +190,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("resourceSpec", required: true)]
         public Input<Inputs.GoogleCloudDataplexV1AssetResourceSpecArgs> ResourceSpec { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

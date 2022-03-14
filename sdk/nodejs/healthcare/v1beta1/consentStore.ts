@@ -91,6 +91,9 @@ export class ConsentStore extends pulumi.CustomResource {
  * The set of arguments for constructing a ConsentStore resource.
  */
 export interface ConsentStoreArgs {
+    /**
+     * Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
+     */
     consentStoreId: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     /**

@@ -116,7 +116,8 @@ type noteArgs struct {
 	Image *ImageNote `pulumi:"image"`
 	// A detailed description of this note.
 	LongDescription *string `pulumi:"longDescription"`
-	NoteId          string  `pulumi:"noteId"`
+	// Required. The ID to use for this note.
+	NoteId string `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package *PackageNote `pulumi:"package"`
 	Project *string      `pulumi:"project"`
@@ -152,7 +153,8 @@ type NoteArgs struct {
 	Image ImageNotePtrInput
 	// A detailed description of this note.
 	LongDescription pulumi.StringPtrInput
-	NoteId          pulumi.StringInput
+	// Required. The ID to use for this note.
+	NoteId pulumi.StringInput
 	// A note describing a package hosted by various package managers.
 	Package PackageNotePtrInput
 	Project pulumi.StringPtrInput

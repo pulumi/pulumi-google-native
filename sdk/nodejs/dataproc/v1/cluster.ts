@@ -116,6 +116,9 @@ export class Cluster extends pulumi.CustomResource {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Optional. Failure action when primary worker creation fails.
+     */
     actionOnFailedPrimaryWorkers?: pulumi.Input<string>;
     /**
      * The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
@@ -134,5 +137,8 @@ export interface ClusterArgs {
      */
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
+    /**
+     * Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
     requestId?: pulumi.Input<string>;
 }

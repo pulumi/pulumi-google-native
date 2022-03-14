@@ -208,12 +208,18 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// The unqualified resource name.
+        /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

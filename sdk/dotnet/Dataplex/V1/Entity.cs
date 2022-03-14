@@ -226,6 +226,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("type", required: true)]
         public Input<Pulumi.GoogleNative.Dataplex.V1.EntityType> Type { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

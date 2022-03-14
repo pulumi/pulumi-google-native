@@ -70,8 +70,9 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Cloud SQL properties.
-	CloudSql     *CloudSqlProperties `pulumi:"cloudSql"`
-	ConnectionId *string             `pulumi:"connectionId"`
+	CloudSql *CloudSqlProperties `pulumi:"cloudSql"`
+	// Optional. Connection id that should be assigned to the created connection.
+	ConnectionId *string `pulumi:"connectionId"`
 	// User provided description.
 	Description *string `pulumi:"description"`
 	// User provided display name for the connection.
@@ -85,7 +86,8 @@ type connectionArgs struct {
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Cloud SQL properties.
-	CloudSql     CloudSqlPropertiesPtrInput
+	CloudSql CloudSqlPropertiesPtrInput
+	// Optional. Connection id that should be assigned to the created connection.
 	ConnectionId pulumi.StringPtrInput
 	// User provided description.
 	Description pulumi.StringPtrInput

@@ -112,6 +112,9 @@ export class Control extends pulumi.CustomResource {
  */
 export interface ControlArgs {
     catalogId: pulumi.Input<string>;
+    /**
+     * Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+     */
     controlId: pulumi.Input<string>;
     /**
      * The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.

@@ -100,7 +100,8 @@ type workloadArgs struct {
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
 	EnableSovereignControls *bool `pulumi:"enableSovereignControls"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
-	Etag       *string `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
 	ExternalId *string `pulumi:"externalId"`
 	// Optional. Labels applied to the workload.
 	Labels   map[string]string `pulumi:"labels"`
@@ -125,7 +126,8 @@ type WorkloadArgs struct {
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
 	EnableSovereignControls pulumi.BoolPtrInput
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
-	Etag       pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
 	ExternalId pulumi.StringPtrInput
 	// Optional. Labels applied to the workload.
 	Labels   pulumi.StringMapInput

@@ -23,6 +23,7 @@ class DnsAuthorizationArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DnsAuthorization resource.
+        :param pulumi.Input[str] dns_authorization_id: Required. A user-provided name of the dns authorization.
         :param pulumi.Input[str] domain: Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a DnsAuthorization.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a DnsAuthorization.
@@ -44,6 +45,9 @@ class DnsAuthorizationArgs:
     @property
     @pulumi.getter(name="dnsAuthorizationId")
     def dns_authorization_id(self) -> pulumi.Input[str]:
+        """
+        Required. A user-provided name of the dns authorization.
+        """
         return pulumi.get(self, "dns_authorization_id")
 
     @dns_authorization_id.setter
@@ -136,6 +140,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a DnsAuthorization.
+        :param pulumi.Input[str] dns_authorization_id: Required. A user-provided name of the dns authorization.
         :param pulumi.Input[str] domain: Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a DnsAuthorization.
         :param pulumi.Input[str] name: A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.

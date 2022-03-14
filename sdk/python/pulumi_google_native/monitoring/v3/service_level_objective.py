@@ -35,6 +35,7 @@ class ServiceLevelObjectiveArgs:
         :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         :param pulumi.Input[str] rolling_period: A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
         :param pulumi.Input['ServiceLevelIndicatorArgs'] service_level_indicator: The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+        :param pulumi.Input[str] service_level_objective_id: Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         pulumi.set(__self__, "service_id", service_id)
@@ -159,6 +160,9 @@ class ServiceLevelObjectiveArgs:
     @property
     @pulumi.getter(name="serviceLevelObjectiveId")
     def service_level_objective_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        """
         return pulumi.get(self, "service_level_objective_id")
 
     @service_level_objective_id.setter
@@ -207,6 +211,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         :param pulumi.Input[str] rolling_period: A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
         :param pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']] service_level_indicator: The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+        :param pulumi.Input[str] service_level_objective_id: Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         ...

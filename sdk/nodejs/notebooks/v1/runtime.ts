@@ -125,6 +125,9 @@ export interface RuntimeArgs {
     accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. User-defined unique ID of this Runtime.
+     */
     runtimeId: pulumi.Input<string>;
     /**
      * The config settings for software inside the runtime.

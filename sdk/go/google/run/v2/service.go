@@ -136,14 +136,16 @@ type serviceArgs struct {
 	LaunchStage *ServiceLaunchStage `pulumi:"launchStage"`
 	Location    *string             `pulumi:"location"`
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
-	ServiceId string  `pulumi:"serviceId"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+	ServiceId string `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunOpV2RevisionTemplate `pulumi:"template"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-	Traffic      []GoogleCloudRunOpV2TrafficTarget `pulumi:"traffic"`
-	ValidateOnly *string                           `pulumi:"validateOnly"`
+	Traffic []GoogleCloudRunOpV2TrafficTarget `pulumi:"traffic"`
+	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -166,13 +168,15 @@ type ServiceArgs struct {
 	LaunchStage ServiceLaunchStagePtrInput
 	Location    pulumi.StringPtrInput
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId pulumi.StringInput
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunOpV2RevisionTemplateInput
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-	Traffic      GoogleCloudRunOpV2TrafficTargetArrayInput
+	Traffic GoogleCloudRunOpV2TrafficTargetArrayInput
+	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
 	ValidateOnly pulumi.StringPtrInput
 }
 

@@ -24,6 +24,7 @@ class ChannelArgs:
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Channel resource.
+        :param pulumi.Input[str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
@@ -48,6 +49,9 @@ class ChannelArgs:
     @property
     @pulumi.getter(name="channelId")
     def channel_id(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. A unique ID within the site that identifies the channel.
+        """
         return pulumi.get(self, "channel_id")
 
     @channel_id.setter
@@ -152,6 +156,7 @@ class Channel(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] channel_id: Required. Immutable. A unique ID within the site that identifies the channel.
         :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering.
         :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID

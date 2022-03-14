@@ -34,8 +34,10 @@ class NotificationArgs:
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
         if custom_attributes is not None:
@@ -157,6 +159,9 @@ class NotificationArgs:
     @property
     @pulumi.getter(name="provisionalUserProject")
     def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request if the target bucket is requester-pays bucket.
+        """
         return pulumi.get(self, "provisional_user_project")
 
     @provisional_user_project.setter
@@ -190,6 +195,9 @@ class NotificationArgs:
     @property
     @pulumi.getter(name="userProject")
     def user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
         return pulumi.get(self, "user_project")
 
     @user_project.setter
@@ -228,8 +236,10 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         ...
     @overload

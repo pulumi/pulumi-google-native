@@ -22,6 +22,7 @@ class MuteConfigArgs:
         """
         The set of arguments for constructing a MuteConfig resource.
         :param pulumi.Input[str] filter: An expression that defines the filter to apply across create/update events of findings. While creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If a filter contains project = X but is created under the project = Y scope, it might not match any findings. The following field and operator combinations are supported: * severity: `=`, `:` * category: `=`, `:` * resource.name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.type: `=`, `:` * finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` * indicator.domains: `=`, `:`
+        :param pulumi.Input[str] mute_config_id: Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
         :param pulumi.Input[str] description: A description of the mute config.
         :param pulumi.Input[str] display_name: The human readable name to be displayed for the mute config.
         :param pulumi.Input[str] name: This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
@@ -52,6 +53,9 @@ class MuteConfigArgs:
     @property
     @pulumi.getter(name="muteConfigId")
     def mute_config_id(self) -> pulumi.Input[str]:
+        """
+        Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        """
         return pulumi.get(self, "mute_config_id")
 
     @mute_config_id.setter
@@ -125,6 +129,7 @@ class MuteConfig(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the mute config.
         :param pulumi.Input[str] display_name: The human readable name to be displayed for the mute config.
         :param pulumi.Input[str] filter: An expression that defines the filter to apply across create/update events of findings. While creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If a filter contains project = X but is created under the project = Y scope, it might not match any findings. The following field and operator combinations are supported: * severity: `=`, `:` * category: `=`, `:` * resource.name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.type: `=`, `:` * finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` * indicator.domains: `=`, `:`
+        :param pulumi.Input[str] mute_config_id: Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
         :param pulumi.Input[str] name: This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
         """
         ...

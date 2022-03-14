@@ -65,9 +65,10 @@ func (ReservationState) ElementType() reflect.Type {
 type reservationArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-	Name          *string `pulumi:"name"`
-	Project       *string `pulumi:"project"`
-	ReservationId string  `pulumi:"reservationId"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+	ReservationId string `pulumi:"reservationId"`
 	// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
 	ThroughputCapacity *string `pulumi:"throughputCapacity"`
 }
@@ -76,8 +77,9 @@ type reservationArgs struct {
 type ReservationArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-	Name          pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
 	ReservationId pulumi.StringInput
 	// The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
 	ThroughputCapacity pulumi.StringPtrInput

@@ -142,6 +142,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. User-defined unique ID of this schedule.
+        /// </summary>
         [Input("scheduleId", required: true)]
         public Input<string> ScheduleId { get; set; } = null!;
 

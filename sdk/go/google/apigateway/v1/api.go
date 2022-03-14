@@ -74,6 +74,7 @@ func (ApiState) ElementType() reflect.Type {
 }
 
 type apiArgs struct {
+	// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
 	ApiId string `pulumi:"apiId"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -87,6 +88,7 @@ type apiArgs struct {
 
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
+	// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
 	ApiId pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput

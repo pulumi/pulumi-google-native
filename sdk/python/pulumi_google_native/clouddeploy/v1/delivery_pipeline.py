@@ -28,12 +28,15 @@ class DeliveryPipelineArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DeliveryPipeline resource.
+        :param pulumi.Input[str] delivery_pipeline_id: Required. ID of the `DeliveryPipeline`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] name: Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['SerialPipelineArgs'] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[str] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         pulumi.set(__self__, "delivery_pipeline_id", delivery_pipeline_id)
         if annotations is not None:
@@ -60,6 +63,9 @@ class DeliveryPipelineArgs:
     @property
     @pulumi.getter(name="deliveryPipelineId")
     def delivery_pipeline_id(self) -> pulumi.Input[str]:
+        """
+        Required. ID of the `DeliveryPipeline`.
+        """
         return pulumi.get(self, "delivery_pipeline_id")
 
     @delivery_pipeline_id.setter
@@ -147,6 +153,9 @@ class DeliveryPipelineArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -168,6 +177,9 @@ class DeliveryPipelineArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -199,11 +211,14 @@ class DeliveryPipeline(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        :param pulumi.Input[str] delivery_pipeline_id: Required. ID of the `DeliveryPipeline`.
         :param pulumi.Input[str] description: Description of the `DeliveryPipeline`. Max length is 255 characters.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] name: Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SerialPipelineArgs']] serial_pipeline: SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+        :param pulumi.Input[str] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         ...
     @overload

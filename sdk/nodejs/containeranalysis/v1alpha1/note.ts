@@ -232,6 +232,9 @@ export interface NoteArgs {
      * The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
      */
     name?: pulumi.Input<string>;
+    /**
+     * The ID to use for this note.
+     */
     noteId?: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.

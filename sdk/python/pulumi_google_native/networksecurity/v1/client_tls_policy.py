@@ -26,6 +26,7 @@ class ClientTlsPolicyArgs:
                  sni: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClientTlsPolicy resource.
+        :param pulumi.Input[str] client_tls_policy_id: Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
         :param pulumi.Input['GoogleCloudNetworksecurityV1CertificateProviderArgs'] client_certificate: Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the resource.
@@ -54,6 +55,9 @@ class ClientTlsPolicyArgs:
     @property
     @pulumi.getter(name="clientTlsPolicyId")
     def client_tls_policy_id(self) -> pulumi.Input[str]:
+        """
+        Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+        """
         return pulumi.get(self, "client_tls_policy_id")
 
     @client_tls_policy_id.setter
@@ -172,6 +176,7 @@ class ClientTlsPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudNetworksecurityV1CertificateProviderArgs']] client_certificate: Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+        :param pulumi.Input[str] client_tls_policy_id: Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the resource.
         :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`

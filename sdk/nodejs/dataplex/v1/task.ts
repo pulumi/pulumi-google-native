@@ -165,10 +165,16 @@ export interface TaskArgs {
      * Config related to running custom Spark tasks.
      */
     spark?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskSparkTaskConfigArgs>;
+    /**
+     * Required. Task identifier.
+     */
     taskId: pulumi.Input<string>;
     /**
      * Spec related to how often and when a task should be triggered.
      */
     triggerSpec: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1TaskTriggerSpecArgs>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
 }

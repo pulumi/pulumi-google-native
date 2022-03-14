@@ -21,6 +21,7 @@ class ApiArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Api resource.
+        :param pulumi.Input[str] api_id: Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] managed_service: Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
@@ -40,6 +41,9 @@ class ApiArgs:
     @property
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Input[str]:
+        """
+        Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+        """
         return pulumi.get(self, "api_id")
 
     @api_id.setter
@@ -119,6 +123,7 @@ class Api(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_id: Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] managed_service: Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.

@@ -159,5 +159,8 @@ export interface ContentitemArgs {
      * Sql Script related configurations.
      */
     sqlScript?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1ContentSqlScriptArgs>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
 }

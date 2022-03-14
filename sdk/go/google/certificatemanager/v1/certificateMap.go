@@ -71,6 +71,7 @@ func (CertificateMapState) ElementType() reflect.Type {
 }
 
 type certificateMapArgs struct {
+	// Required. A user-provided name of the certificate map.
 	CertificateMapId string `pulumi:"certificateMapId"`
 	// One or more paragraphs of text description of a certificate map.
 	Description *string `pulumi:"description"`
@@ -84,6 +85,7 @@ type certificateMapArgs struct {
 
 // The set of arguments for constructing a CertificateMap resource.
 type CertificateMapArgs struct {
+	// Required. A user-provided name of the certificate map.
 	CertificateMapId pulumi.StringInput
 	// One or more paragraphs of text description of a certificate map.
 	Description pulumi.StringPtrInput

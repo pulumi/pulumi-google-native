@@ -27,11 +27,13 @@ class CertificateTemplateArgs:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateTemplate resource.
+        :param pulumi.Input[str] certificate_template_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input['CertificateIdentityConstraintsArgs'] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input['CertificateExtensionConstraintsArgs'] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input['X509ParametersArgs'] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "certificate_template_id", certificate_template_id)
         if description is not None:
@@ -54,6 +56,9 @@ class CertificateTemplateArgs:
     @property
     @pulumi.getter(name="certificateTemplateId")
     def certificate_template_id(self) -> pulumi.Input[str]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
         return pulumi.get(self, "certificate_template_id")
 
     @certificate_template_id.setter
@@ -141,6 +146,9 @@ class CertificateTemplateArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -169,11 +177,13 @@ class CertificateTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_template_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         :param pulumi.Input[str] description: Optional. A human-readable description of scenarios this template is intended for.
         :param pulumi.Input[pulumi.InputType['CertificateIdentityConstraintsArgs']] identity_constraints: Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[pulumi.InputType['CertificateExtensionConstraintsArgs']] passthrough_extensions: Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
         :param pulumi.Input[pulumi.InputType['X509ParametersArgs']] predefined_values: Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+        :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
     @overload

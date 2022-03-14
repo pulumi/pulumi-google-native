@@ -121,6 +121,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Required. User-defined unique ID of this execution.
+        /// </summary>
         [Input("executionId", required: true)]
         public Input<string> ExecutionId { get; set; } = null!;
 

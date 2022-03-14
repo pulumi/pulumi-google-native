@@ -180,6 +180,9 @@ export interface InstanceArgs {
      * User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * List of messages that describe the current state of the Memcached instance.

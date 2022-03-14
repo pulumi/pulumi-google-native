@@ -89,6 +89,9 @@ export class ResponsePolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a ResponsePolicy resource.
  */
 export interface ResponsePolicyArgs {
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
     clientOperationId?: pulumi.Input<string>;
     /**
      * User-provided description for this Response Policy.

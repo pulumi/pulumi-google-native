@@ -25,6 +25,7 @@ class ResponsePolicyArgs:
                  response_policy_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResponsePolicy resource.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
@@ -51,6 +52,9 @@ class ResponsePolicyArgs:
     @property
     @pulumi.getter(name="clientOperationId")
     def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
         return pulumi.get(self, "client_operation_id")
 
     @client_operation_id.setter
@@ -156,6 +160,7 @@ class ResponsePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).

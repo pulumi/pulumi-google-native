@@ -33,6 +33,7 @@ class ServiceArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
+        :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
         :param pulumi.Input['GoogleCloudRunOpV2RevisionTemplateArgs'] template: The template used to create revisions for this Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
         :param pulumi.Input['GoogleCloudRunOpV2BinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
@@ -44,6 +45,7 @@ class ServiceArgs:
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2TrafficTargetArgs']]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
+        :param pulumi.Input[str] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "template", template)
@@ -77,6 +79,9 @@ class ServiceArgs:
     @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[str]:
+        """
+        Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
@@ -236,6 +241,9 @@ class ServiceArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -278,8 +286,10 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
+        :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2RevisionTemplateArgs']] template: The template used to create revisions for this Service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2TrafficTargetArgs']]]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
+        :param pulumi.Input[str] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         ...
     @overload

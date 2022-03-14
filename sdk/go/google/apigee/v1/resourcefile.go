@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+// Auto-naming is currently not supported for this resource.
 type Resourcefile struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +33,9 @@ func NewResourcefile(ctx *pulumi.Context,
 
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
@@ -77,10 +81,12 @@ type resourcefileArgs struct {
 	Data          *string `pulumi:"data"`
 	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions     []map[string]string `pulumi:"extensions"`
-	Name           *string             `pulumi:"name"`
-	OrganizationId string              `pulumi:"organizationId"`
-	Type           string              `pulumi:"type"`
+	Extensions []map[string]string `pulumi:"extensions"`
+	// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
+	// Required. Resource file type. {{ resource_file_type }}
+	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Resourcefile resource.
@@ -91,10 +97,12 @@ type ResourcefileArgs struct {
 	Data          pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions     pulumi.StringMapArrayInput
-	Name           pulumi.StringPtrInput
+	Extensions pulumi.StringMapArrayInput
+	// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
-	Type           pulumi.StringInput
+	// Required. Resource file type. {{ resource_file_type }}
+	Type pulumi.StringInput
 }
 
 func (ResourcefileArgs) ElementType() reflect.Type {

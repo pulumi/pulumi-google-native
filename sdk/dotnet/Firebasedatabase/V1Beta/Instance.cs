@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The globally unique identifier of the database instance.
+        /// </summary>
         [Input("databaseId")]
         public Input<string>? DatabaseId { get; set; }
 
@@ -126,6 +129,9 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         [Input("type")]
         public Input<Pulumi.GoogleNative.Firebasedatabase.V1Beta.InstanceType>? Type { get; set; }
 
+        /// <summary>
+        /// When set to true, the request will be validated but not submitted.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

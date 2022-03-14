@@ -103,7 +103,8 @@ type instanceArgs struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName *string `pulumi:"displayName"`
-	InstanceId  string  `pulumi:"instanceId"`
+	// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+	InstanceId string `pulumi:"instanceId"`
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages []InstanceMessage `pulumi:"instanceMessages"`
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -130,7 +131,8 @@ type InstanceArgs struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName pulumi.StringPtrInput
-	InstanceId  pulumi.StringInput
+	// Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+	InstanceId pulumi.StringInput
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages InstanceMessageArrayInput
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources

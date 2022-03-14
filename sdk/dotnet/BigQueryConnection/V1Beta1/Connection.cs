@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         [Input("cloudSql")]
         public Input<Inputs.CloudSqlPropertiesArgs>? CloudSql { get; set; }
 
+        /// <summary>
+        /// Optional. Connection id that should be assigned to the created connection.
+        /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
 

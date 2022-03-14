@@ -28,6 +28,8 @@ class TriggerArgs:
         The set of arguments for constructing a Trigger resource.
         :param pulumi.Input['DestinationArgs'] destination: Destination specifies where the events should be sent to.
         :param pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]] matching_criteria: null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
+        :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not actually post it.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
@@ -74,6 +76,9 @@ class TriggerArgs:
     @property
     @pulumi.getter(name="triggerId")
     def trigger_id(self) -> pulumi.Input[str]:
+        """
+        Required. The user-provided ID to be assigned to the trigger.
+        """
         return pulumi.get(self, "trigger_id")
 
     @trigger_id.setter
@@ -83,6 +88,9 @@ class TriggerArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> pulumi.Input[str]:
+        """
+        Required. If set, validate the request and preview the review, but do not actually post it.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -169,6 +177,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
+        :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
+        :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not actually post it.
         """
         ...
     @overload

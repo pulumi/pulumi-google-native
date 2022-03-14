@@ -26,9 +26,11 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+        :param pulumi.Input[str] action_on_failed_primary_workers: Optional. Failure action when primary worker creation fails.
         :param pulumi.Input['ClusterConfigArgs'] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "region", region)
@@ -67,6 +69,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="actionOnFailedPrimaryWorkers")
     def action_on_failed_primary_workers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Failure action when primary worker creation fails.
+        """
         return pulumi.get(self, "action_on_failed_primary_workers")
 
     @action_on_failed_primary_workers.setter
@@ -112,6 +117,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -138,10 +146,12 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] action_on_failed_primary_workers: Optional. Failure action when primary worker creation fails.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         ...
     @overload

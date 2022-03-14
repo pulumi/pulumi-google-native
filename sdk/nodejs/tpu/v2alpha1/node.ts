@@ -216,8 +216,14 @@ export interface NodeArgs {
      * Network configurations for the TPU node.
      */
     networkConfig?: pulumi.Input<inputs.tpu.v2alpha1.NetworkConfigArgs>;
+    /**
+     * The unqualified resource name.
+     */
     nodeId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Idempotent request UUID.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * The runtime version running in the Node.

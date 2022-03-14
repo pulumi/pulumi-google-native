@@ -84,8 +84,9 @@ func (AttributeDefinitionState) ElementType() reflect.Type {
 
 type attributeDefinitionArgs struct {
 	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
-	AllowedValues         []string `pulumi:"allowedValues"`
-	AttributeDefinitionId string   `pulumi:"attributeDefinitionId"`
+	AllowedValues []string `pulumi:"allowedValues"`
+	// Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
+	AttributeDefinitionId string `pulumi:"attributeDefinitionId"`
 	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category AttributeDefinitionCategory `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
@@ -105,7 +106,8 @@ type attributeDefinitionArgs struct {
 // The set of arguments for constructing a AttributeDefinition resource.
 type AttributeDefinitionArgs struct {
 	// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
-	AllowedValues         pulumi.StringArrayInput
+	AllowedValues pulumi.StringArrayInput
+	// Required. The ID of the Attribute definition to create. The string must match the following regex: `_a-zA-Z{0,255}` and must not be a reserved keyword within the Common Expression Language as listed on https://github.com/google/cel-spec/blob/master/doc/langdef.md.
 	AttributeDefinitionId pulumi.StringInput
 	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category AttributeDefinitionCategoryInput

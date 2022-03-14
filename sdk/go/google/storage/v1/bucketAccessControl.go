@@ -119,12 +119,14 @@ type bucketAccessControlArgs struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
-	ProjectTeam            *BucketAccessControlProjectTeam `pulumi:"projectTeam"`
-	ProvisionalUserProject *string                         `pulumi:"provisionalUserProject"`
+	ProjectTeam *BucketAccessControlProjectTeam `pulumi:"projectTeam"`
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
+	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
-	SelfLink    *string `pulumi:"selfLink"`
+	SelfLink *string `pulumi:"selfLink"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject *string `pulumi:"userProject"`
 }
 
@@ -158,12 +160,14 @@ type BucketAccessControlArgs struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
-	ProjectTeam            BucketAccessControlProjectTeamPtrInput
+	ProjectTeam BucketAccessControlProjectTeamPtrInput
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
 	ProvisionalUserProject pulumi.StringPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.
-	SelfLink    pulumi.StringPtrInput
+	SelfLink pulumi.StringPtrInput
+	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrInput
 }
 

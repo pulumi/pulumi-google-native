@@ -118,9 +118,11 @@ type nodeArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Network configurations for the TPU node.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	NodeId        *string        `pulumi:"nodeId"`
-	Project       *string        `pulumi:"project"`
-	RequestId     *string        `pulumi:"requestId"`
+	// The unqualified resource name.
+	NodeId  *string `pulumi:"nodeId"`
+	Project *string `pulumi:"project"`
+	// Idempotent request UUID.
+	RequestId *string `pulumi:"requestId"`
 	// The runtime version running in the Node.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -150,9 +152,11 @@ type NodeArgs struct {
 	Metadata pulumi.StringMapInput
 	// Network configurations for the TPU node.
 	NetworkConfig NetworkConfigPtrInput
-	NodeId        pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
-	RequestId     pulumi.StringPtrInput
+	// The unqualified resource name.
+	NodeId  pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Idempotent request UUID.
+	RequestId pulumi.StringPtrInput
 	// The runtime version running in the Node.
 	RuntimeVersion pulumi.StringInput
 	// The scheduling options for this node.

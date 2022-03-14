@@ -25,6 +25,7 @@ class ImportJobArgs:
         The set of arguments for constructing a ImportJob resource.
         :param pulumi.Input['ImportJobImportMethod'] import_method: Immutable. The wrapping method to be used for incoming key material.
         :param pulumi.Input['ImportJobProtectionLevel'] protection_level: Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        :param pulumi.Input[str] import_job_id: Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         """
         pulumi.set(__self__, "import_method", import_method)
         pulumi.set(__self__, "key_ring_id", key_ring_id)
@@ -72,6 +73,9 @@ class ImportJobArgs:
     @property
     @pulumi.getter(name="importJobId")
     def import_job_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
         return pulumi.get(self, "import_job_id")
 
     @import_job_id.setter
@@ -116,6 +120,7 @@ class ImportJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] import_job_id: Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         :param pulumi.Input['ImportJobImportMethod'] import_method: Immutable. The wrapping method to be used for incoming key material.
         :param pulumi.Input['ImportJobProtectionLevel'] protection_level: Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """

@@ -133,6 +133,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
 
     public sealed class ConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+        /// </summary>
         [Input("apiConfigId", required: true)]
         public Input<string> ApiConfigId { get; set; } = null!;
 

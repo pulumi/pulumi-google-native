@@ -20,6 +20,7 @@ class EndpointAttachmentArgs:
                  service_attachment: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EndpointAttachment resource.
+        :param pulumi.Input[str] endpoint_attachment_id: ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] name: Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*
@@ -46,6 +47,9 @@ class EndpointAttachmentArgs:
     @property
     @pulumi.getter(name="endpointAttachmentId")
     def endpoint_attachment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        """
         return pulumi.get(self, "endpoint_attachment_id")
 
     @endpoint_attachment_id.setter
@@ -106,6 +110,7 @@ class EndpointAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] endpoint_attachment_id: ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
         :param pulumi.Input[str] location: Location of the endpoint attachment.
         :param pulumi.Input[str] name: Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
         :param pulumi.Input[str] service_attachment: Format: projects/*/regions/*/serviceAttachments/*

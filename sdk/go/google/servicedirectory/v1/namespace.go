@@ -67,7 +67,8 @@ type namespaceArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name        *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	NamespaceId string  `pulumi:"namespaceId"`
 	Project     *string `pulumi:"project"`
 }
@@ -78,7 +79,8 @@ type NamespaceArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	NamespaceId pulumi.StringInput
 	Project     pulumi.StringPtrInput
 }

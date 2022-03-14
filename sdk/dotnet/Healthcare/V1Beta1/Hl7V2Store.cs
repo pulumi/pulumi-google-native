@@ -99,6 +99,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the HL7v2 store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// </summary>
         [Input("hl7V2StoreId")]
         public Input<string>? Hl7V2StoreId { get; set; }
 

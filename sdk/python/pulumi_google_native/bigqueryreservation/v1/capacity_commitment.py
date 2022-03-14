@@ -25,6 +25,8 @@ class CapacityCommitmentArgs:
                  slot_count: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CapacityCommitment resource.
+        :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
@@ -50,6 +52,9 @@ class CapacityCommitmentArgs:
     @property
     @pulumi.getter(name="capacityCommitmentId")
     def capacity_commitment_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        """
         return pulumi.get(self, "capacity_commitment_id")
 
     @capacity_commitment_id.setter
@@ -59,6 +64,9 @@ class CapacityCommitmentArgs:
     @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
     def enforce_single_admin_project_per_org(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, fail the request if another project in the organization has a capacity commitment.
+        """
         return pulumi.get(self, "enforce_single_admin_project_per_org")
 
     @enforce_single_admin_project_per_org.setter
@@ -152,6 +160,8 @@ class CapacityCommitment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.

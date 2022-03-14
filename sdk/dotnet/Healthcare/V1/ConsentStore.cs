@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
 
     public sealed class ConsentStoreArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
+        /// </summary>
         [Input("consentStoreId", required: true)]
         public Input<string> ConsentStoreId { get; set; } = null!;
 

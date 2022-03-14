@@ -21,6 +21,7 @@ class DataCollectorArgs:
                  type: Optional[pulumi.Input['DataCollectorType']] = None):
         """
         The set of arguments for constructing a DataCollector resource.
+        :param pulumi.Input[str] data_collector_id: ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
         :param pulumi.Input[str] description: A description of the data collector.
         :param pulumi.Input[str] name: ID of the data collector. Must begin with `dc_`.
         :param pulumi.Input['DataCollectorType'] type: Immutable. The type of data this data collector will collect.
@@ -47,6 +48,9 @@ class DataCollectorArgs:
     @property
     @pulumi.getter(name="dataCollectorId")
     def data_collector_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+        """
         return pulumi.get(self, "data_collector_id")
 
     @data_collector_id.setter
@@ -106,6 +110,7 @@ class DataCollector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] data_collector_id: ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
         :param pulumi.Input[str] description: A description of the data collector.
         :param pulumi.Input[str] name: ID of the data collector. Must begin with `dc_`.
         :param pulumi.Input['DataCollectorType'] type: Immutable. The type of data this data collector will collect.

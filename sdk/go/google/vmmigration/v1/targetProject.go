@@ -74,9 +74,11 @@ type targetProjectArgs struct {
 	Description *string `pulumi:"description"`
 	Location    *string `pulumi:"location"`
 	// The target project ID (number) or project name.
-	Project         *string `pulumi:"project"`
-	RequestId       *string `pulumi:"requestId"`
-	TargetProjectId string  `pulumi:"targetProjectId"`
+	Project *string `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
+	// Required. The target_project identifier.
+	TargetProjectId string `pulumi:"targetProjectId"`
 }
 
 // The set of arguments for constructing a TargetProject resource.
@@ -85,8 +87,10 @@ type TargetProjectArgs struct {
 	Description pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
 	// The target project ID (number) or project name.
-	Project         pulumi.StringPtrInput
-	RequestId       pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
+	// Required. The target_project identifier.
 	TargetProjectId pulumi.StringInput
 }
 

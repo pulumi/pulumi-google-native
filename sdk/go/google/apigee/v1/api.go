@@ -73,30 +73,36 @@ func (ApiState) ElementType() reflect.Type {
 }
 
 type apiArgs struct {
+	// Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
 	Action *string `pulumi:"action"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions     []map[string]string `pulumi:"extensions"`
-	Name           *string             `pulumi:"name"`
-	OrganizationId string              `pulumi:"organizationId"`
-	Validate       *string             `pulumi:"validate"`
+	Extensions []map[string]string `pulumi:"extensions"`
+	// Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
+	// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+	Validate *string `pulumi:"validate"`
 }
 
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
+	// Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
 	Action pulumi.StringPtrInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions     pulumi.StringMapArrayInput
+	Extensions pulumi.StringMapArrayInput
+	// Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
-	Validate       pulumi.StringPtrInput
+	// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+	Validate pulumi.StringPtrInput
 }
 
 func (ApiArgs) ElementType() reflect.Type {

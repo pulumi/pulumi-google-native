@@ -31,6 +31,7 @@ class InstanceArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
         :param pulumi.Input['NodeConfigArgs'] node_config: Configuration for Memcached nodes.
         :param pulumi.Input[int] node_count: Number of nodes in the Memcached instance.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
@@ -69,6 +70,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
+        """
+        Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -240,6 +244,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+        :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.

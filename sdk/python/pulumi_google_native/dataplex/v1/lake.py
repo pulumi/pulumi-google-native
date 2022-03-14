@@ -25,10 +25,12 @@ class LakeArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Lake resource.
+        :param pulumi.Input[str] lake_id: Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
         :param pulumi.Input[str] description: Optional. Description of the lake.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
         :param pulumi.Input['GoogleCloudDataplexV1LakeMetastoreArgs'] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "lake_id", lake_id)
         if description is not None:
@@ -49,6 +51,9 @@ class LakeArgs:
     @property
     @pulumi.getter(name="lakeId")
     def lake_id(self) -> pulumi.Input[str]:
+        """
+        Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+        """
         return pulumi.get(self, "lake_id")
 
     @lake_id.setter
@@ -124,6 +129,9 @@ class LakeArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -154,7 +162,9 @@ class Lake(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the lake.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the lake.
+        :param pulumi.Input[str] lake_id: Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1LakeMetastoreArgs']] metastore: Optional. Settings to manage lake and Dataproc Metastore service instance association.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload

@@ -77,7 +77,8 @@ func (ClientTlsPolicyState) ElementType() reflect.Type {
 type clientTlsPolicyArgs struct {
 	// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	ClientCertificate *GoogleCloudNetworksecurityV1CertificateProvider `pulumi:"clientCertificate"`
-	ClientTlsPolicyId string                                           `pulumi:"clientTlsPolicyId"`
+	// Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+	ClientTlsPolicyId string `pulumi:"clientTlsPolicyId"`
 	// Optional. Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// Optional. Set of label tags associated with the resource.
@@ -96,6 +97,7 @@ type clientTlsPolicyArgs struct {
 type ClientTlsPolicyArgs struct {
 	// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
 	ClientCertificate GoogleCloudNetworksecurityV1CertificateProviderPtrInput
+	// Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
 	ClientTlsPolicyId pulumi.StringInput
 	// Optional. Free-text description of the resource.
 	Description pulumi.StringPtrInput

@@ -30,6 +30,7 @@ class ConnectionProfileArgs:
                  static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
+        :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input['ForwardSshTunnelConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
         :param pulumi.Input['GcsProfileArgs'] gcs_profile: Cloud Storage ConnectionProfile configuration.
@@ -38,6 +39,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input['NoConnectivitySettingsArgs'] no_connectivity: No connectivity option chosen.
         :param pulumi.Input['OracleProfileArgs'] oracle_profile: Oracle ConnectionProfile configuration.
         :param pulumi.Input['PrivateConnectivityArgs'] private_connectivity: Private connectivity.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StaticServiceIpConnectivityArgs'] static_service_ip_connectivity: Static Service IP connectivity.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
@@ -68,6 +70,9 @@ class ConnectionProfileArgs:
     @property
     @pulumi.getter(name="connectionProfileId")
     def connection_profile_id(self) -> pulumi.Input[str]:
+        """
+        Required. The connection profile identifier.
+        """
         return pulumi.get(self, "connection_profile_id")
 
     @connection_profile_id.setter
@@ -191,6 +196,9 @@ class ConnectionProfileArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -235,6 +243,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
         :param pulumi.Input[pulumi.InputType['GcsProfileArgs']] gcs_profile: Cloud Storage ConnectionProfile configuration.
@@ -243,6 +252,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NoConnectivitySettingsArgs']] no_connectivity: No connectivity option chosen.
         :param pulumi.Input[pulumi.InputType['OracleProfileArgs']] oracle_profile: Oracle ConnectionProfile configuration.
         :param pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']] private_connectivity: Private connectivity.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']] static_service_ip_connectivity: Static Service IP connectivity.
         """
         ...

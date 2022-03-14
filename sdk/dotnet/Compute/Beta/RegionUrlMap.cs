@@ -210,6 +210,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

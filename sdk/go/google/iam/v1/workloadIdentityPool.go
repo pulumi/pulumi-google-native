@@ -75,10 +75,11 @@ type workloadIdentityPoolArgs struct {
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the pool. Cannot exceed 32 characters.
-	DisplayName            *string `pulumi:"displayName"`
-	Location               *string `pulumi:"location"`
-	Project                *string `pulumi:"project"`
-	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
+	DisplayName *string `pulumi:"displayName"`
+	Location    *string `pulumi:"location"`
+	Project     *string `pulumi:"project"`
+	// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
 }
 
 // The set of arguments for constructing a WorkloadIdentityPool resource.
@@ -88,9 +89,10 @@ type WorkloadIdentityPoolArgs struct {
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
 	Disabled pulumi.BoolPtrInput
 	// A display name for the pool. Cannot exceed 32 characters.
-	DisplayName            pulumi.StringPtrInput
-	Location               pulumi.StringPtrInput
-	Project                pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	Location    pulumi.StringPtrInput
+	Project     pulumi.StringPtrInput
+	// Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolId pulumi.StringInput
 }
 

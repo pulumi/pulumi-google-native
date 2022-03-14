@@ -72,7 +72,8 @@ type tagArgs struct {
 	PackageId    string  `pulumi:"packageId"`
 	Project      *string `pulumi:"project"`
 	RepositoryId string  `pulumi:"repositoryId"`
-	TagId        *string `pulumi:"tagId"`
+	// The tag id to use for this repository.
+	TagId *string `pulumi:"tagId"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
 	Version *string `pulumi:"version"`
 }
@@ -85,7 +86,8 @@ type TagArgs struct {
 	PackageId    pulumi.StringInput
 	Project      pulumi.StringPtrInput
 	RepositoryId pulumi.StringInput
-	TagId        pulumi.StringPtrInput
+	// The tag id to use for this repository.
+	TagId pulumi.StringPtrInput
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
 	Version pulumi.StringPtrInput
 }

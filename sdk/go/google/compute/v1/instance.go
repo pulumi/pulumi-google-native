@@ -168,7 +168,8 @@ type instanceArgs struct {
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *InstancePrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	Project                 *string                          `pulumi:"project"`
-	RequestId               *string                          `pulumi:"requestId"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
@@ -179,7 +180,8 @@ type instanceArgs struct {
 	ServiceAccounts                 []ServiceAccount                 `pulumi:"serviceAccounts"`
 	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
-	SourceInstanceTemplate          *string                          `pulumi:"sourceInstanceTemplate"`
+	// Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// Source machine image
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
 	// Source machine image encryption key when creating an instance from a machine image.
@@ -226,7 +228,8 @@ type InstanceArgs struct {
 	// The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess InstancePrivateIpv6GoogleAccessPtrInput
 	Project                 pulumi.StringPtrInput
-	RequestId               pulumi.StringPtrInput
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
@@ -237,7 +240,8 @@ type InstanceArgs struct {
 	ServiceAccounts                 ServiceAccountArrayInput
 	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput
-	SourceInstanceTemplate          pulumi.StringPtrInput
+	// Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+	SourceInstanceTemplate pulumi.StringPtrInput
 	// Source machine image
 	SourceMachineImage pulumi.StringPtrInput
 	// Source machine image encryption key when creating an instance from a machine image.

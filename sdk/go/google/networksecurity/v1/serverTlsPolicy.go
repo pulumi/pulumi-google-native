@@ -89,7 +89,8 @@ type serverTlsPolicyArgs struct {
 	Project *string `pulumi:"project"`
 	//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate *GoogleCloudNetworksecurityV1CertificateProvider `pulumi:"serverCertificate"`
-	ServerTlsPolicyId string                                           `pulumi:"serverTlsPolicyId"`
+	// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+	ServerTlsPolicyId string `pulumi:"serverTlsPolicyId"`
 }
 
 // The set of arguments for constructing a ServerTlsPolicy resource.
@@ -108,6 +109,7 @@ type ServerTlsPolicyArgs struct {
 	Project pulumi.StringPtrInput
 	//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
 	ServerCertificate GoogleCloudNetworksecurityV1CertificateProviderPtrInput
+	// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
 	ServerTlsPolicyId pulumi.StringInput
 }
 

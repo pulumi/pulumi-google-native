@@ -111,6 +111,9 @@ export class FeatureConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a FeatureConfig resource.
  */
 export interface FeatureConfigArgs {
+    /**
+     * The ID of the feature config to create.
+     */
     featureConfigId?: pulumi.Input<string>;
     /**
      * GCP labels for this FeatureConfig.
@@ -118,6 +121,9 @@ export interface FeatureConfigArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Idempotent request UUID.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Input only. Immutable. User input of feature spec. Note that this field is immutable. Must create a new FeatureConfig if a new feature spec is needed.

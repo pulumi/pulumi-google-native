@@ -219,12 +219,18 @@ export interface MigrationJobArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * Required. The ID of the instance to create.
+     */
     migrationJobId: pulumi.Input<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.

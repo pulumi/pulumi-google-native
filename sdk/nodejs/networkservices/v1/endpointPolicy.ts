@@ -152,6 +152,9 @@ export interface EndpointPolicyArgs {
      * A matcher that selects endpoints to which the policies should be applied.
      */
     endpointMatcher: pulumi.Input<inputs.networkservices.v1.EndpointMatcherArgs>;
+    /**
+     * Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+     */
     endpointPolicyId: pulumi.Input<string>;
     /**
      * Optional. Set of label tags associated with the EndpointPolicy resource.

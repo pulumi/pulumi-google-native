@@ -94,8 +94,9 @@ type endpointPolicyArgs struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
 	// A matcher that selects endpoints to which the policies should be applied.
-	EndpointMatcher  EndpointMatcher `pulumi:"endpointMatcher"`
-	EndpointPolicyId string          `pulumi:"endpointPolicyId"`
+	EndpointMatcher EndpointMatcher `pulumi:"endpointMatcher"`
+	// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+	EndpointPolicyId string `pulumi:"endpointPolicyId"`
 	// Optional. Set of label tags associated with the EndpointPolicy resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -119,7 +120,8 @@ type EndpointPolicyArgs struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
 	// A matcher that selects endpoints to which the policies should be applied.
-	EndpointMatcher  EndpointMatcherInput
+	EndpointMatcher EndpointMatcherInput
+	// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
 	EndpointPolicyId pulumi.StringInput
 	// Optional. Set of label tags associated with the EndpointPolicy resource.
 	Labels   pulumi.StringMapInput

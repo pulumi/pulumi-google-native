@@ -107,9 +107,11 @@ type zoneArgs struct {
 	// Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec GoogleCloudDataplexV1ZoneResourceSpec `pulumi:"resourceSpec"`
 	// Immutable. The type of the zone.
-	Type         ZoneType `pulumi:"type"`
-	ValidateOnly *string  `pulumi:"validateOnly"`
-	ZoneId       string   `pulumi:"zoneId"`
+	Type ZoneType `pulumi:"type"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
+	// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Zone resource.
@@ -128,9 +130,11 @@ type ZoneArgs struct {
 	// Specification of the resources that are referenced by the assets within this zone.
 	ResourceSpec GoogleCloudDataplexV1ZoneResourceSpecInput
 	// Immutable. The type of the zone.
-	Type         ZoneTypeInput
+	Type ZoneTypeInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
-	ZoneId       pulumi.StringInput
+	// Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
+	ZoneId pulumi.StringInput
 }
 
 func (ZoneArgs) ElementType() reflect.Type {

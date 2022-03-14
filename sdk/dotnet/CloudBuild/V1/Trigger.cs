@@ -300,6 +300,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. ID of the project for which to configure automatic builds.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 

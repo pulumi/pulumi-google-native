@@ -118,5 +118,8 @@ export class HmacKey extends pulumi.CustomResource {
 export interface HmacKeyArgs {
     project?: pulumi.Input<string>;
     serviceAccountEmail: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request.
+     */
     userProject?: pulumi.Input<string>;
 }

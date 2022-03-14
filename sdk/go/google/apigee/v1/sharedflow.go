@@ -70,26 +70,30 @@ func (SharedflowState) ElementType() reflect.Type {
 }
 
 type sharedflowArgs struct {
+	// Required. Must be set to either `import` or `validate`.
 	Action string `pulumi:"action"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions     []map[string]string `pulumi:"extensions"`
-	Name           *string             `pulumi:"name"`
-	OrganizationId string              `pulumi:"organizationId"`
+	Extensions []map[string]string `pulumi:"extensions"`
+	// Required. The name to give the shared flow
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a Sharedflow resource.
 type SharedflowArgs struct {
+	// Required. Must be set to either `import` or `validate`.
 	Action pulumi.StringInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions     pulumi.StringMapArrayInput
+	Extensions pulumi.StringMapArrayInput
+	// Required. The name to give the shared flow
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }

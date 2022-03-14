@@ -162,6 +162,9 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The repository id to use for this repository.
+        /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }
 

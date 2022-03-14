@@ -104,9 +104,10 @@ type osPolicyAssignmentArgs struct {
 	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
 	Name *string `pulumi:"name"`
 	// List of OS policies to be applied to the VMs.
-	OsPolicies           []OSPolicy `pulumi:"osPolicies"`
-	OsPolicyAssignmentId string     `pulumi:"osPolicyAssignmentId"`
-	Project              *string    `pulumi:"project"`
+	OsPolicies []OSPolicy `pulumi:"osPolicies"`
+	// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+	OsPolicyAssignmentId string  `pulumi:"osPolicyAssignmentId"`
+	Project              *string `pulumi:"project"`
 	// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
 	Rollout OSPolicyAssignmentRollout `pulumi:"rollout"`
 }
@@ -123,7 +124,8 @@ type OsPolicyAssignmentArgs struct {
 	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
 	Name pulumi.StringPtrInput
 	// List of OS policies to be applied to the VMs.
-	OsPolicies           OSPolicyArrayInput
+	OsPolicies OSPolicyArrayInput
+	// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
 	OsPolicyAssignmentId pulumi.StringInput
 	Project              pulumi.StringPtrInput
 	// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.

@@ -27,6 +27,7 @@ class CertificateArgs:
                  self_managed: Optional[pulumi.Input['SelfManagedCertificateArgs']] = None):
         """
         The set of arguments for constructing a Certificate resource.
+        :param pulumi.Input[str] certificate_id: Required. A user-provided name of the certificate.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate.
         :param pulumi.Input['ManagedCertificateArgs'] managed: If set, contains configuration and state of a managed certificate.
@@ -55,6 +56,9 @@ class CertificateArgs:
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> pulumi.Input[str]:
+        """
+        Required. A user-provided name of the certificate.
+        """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -172,6 +176,7 @@ class Certificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_id: Required. A user-provided name of the certificate.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate.
         :param pulumi.Input[pulumi.InputType['ManagedCertificateArgs']] managed: If set, contains configuration and state of a managed certificate.

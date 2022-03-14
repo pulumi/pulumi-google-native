@@ -129,5 +129,8 @@ export interface ProjectArgs {
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
     projectNumber?: pulumi.Input<string>;
+    /**
+     * A now unused experiment opt-out option.
+     */
     useLegacyStack?: pulumi.Input<string>;
 }

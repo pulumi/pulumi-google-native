@@ -23,9 +23,12 @@ class ApiArgs:
                  validate: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Api resource.
+        :param pulumi.Input[str] action: Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+        :param pulumi.Input[str] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if action is not None:
@@ -53,6 +56,9 @@ class ApiArgs:
     @property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -98,6 +104,9 @@ class ApiArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -107,6 +116,9 @@ class ApiArgs:
     @property
     @pulumi.getter
     def validate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+        """
         return pulumi.get(self, "validate")
 
     @validate.setter
@@ -132,9 +144,12 @@ class Api(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] action: Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+        :param pulumi.Input[str] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
         ...
     @overload

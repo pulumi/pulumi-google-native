@@ -67,7 +67,8 @@ type productSetArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-	Name         *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
 	ProductSetId *string `pulumi:"productSetId"`
 	Project      *string `pulumi:"project"`
 }
@@ -78,7 +79,8 @@ type ProductSetArgs struct {
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
-	Name         pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
 	ProductSetId pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
 }

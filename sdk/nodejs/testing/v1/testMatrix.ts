@@ -169,6 +169,9 @@ export interface TestMatrixArgs {
      * The cloud project that owns the test matrix.
      */
     project?: pulumi.Input<string>;
+    /**
+     * A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Where the results for the matrix are written.

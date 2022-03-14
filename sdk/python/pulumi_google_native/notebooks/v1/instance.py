@@ -50,6 +50,7 @@ class InstanceArgs:
                  vm_image: Optional[pulumi.Input['VmImageArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[str] machine_type: The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
@@ -146,6 +147,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
+        """
+        Required. User-defined unique ID of this instance.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -573,6 +577,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input['InstanceDataDiskType'] data_disk_type: Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         :param pulumi.Input['InstanceDiskEncryption'] disk_encryption: Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         :param pulumi.Input[bool] install_gpu_driver: Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+        :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.

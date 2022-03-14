@@ -72,12 +72,14 @@ func (FeatureConfigState) ElementType() reflect.Type {
 }
 
 type featureConfigArgs struct {
+	// The ID of the feature config to create.
 	FeatureConfigId *string `pulumi:"featureConfigId"`
 	// GCP labels for this FeatureConfig.
-	Labels    map[string]string `pulumi:"labels"`
-	Location  *string           `pulumi:"location"`
-	Project   *string           `pulumi:"project"`
-	RequestId *string           `pulumi:"requestId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	Project  *string           `pulumi:"project"`
+	// Idempotent request UUID.
+	RequestId *string `pulumi:"requestId"`
 	// Input only. Immutable. User input of feature spec. Note that this field is immutable. Must create a new FeatureConfig if a new feature spec is needed.
 	Spec *FeatureSpec `pulumi:"spec"`
 	// Lifecycle information of the FeatureConfig.
@@ -86,11 +88,13 @@ type featureConfigArgs struct {
 
 // The set of arguments for constructing a FeatureConfig resource.
 type FeatureConfigArgs struct {
+	// The ID of the feature config to create.
 	FeatureConfigId pulumi.StringPtrInput
 	// GCP labels for this FeatureConfig.
-	Labels    pulumi.StringMapInput
-	Location  pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
+	// Idempotent request UUID.
 	RequestId pulumi.StringPtrInput
 	// Input only. Immutable. User input of feature spec. Note that this field is immutable. Must create a new FeatureConfig if a new feature spec is needed.
 	Spec FeatureSpecPtrInput

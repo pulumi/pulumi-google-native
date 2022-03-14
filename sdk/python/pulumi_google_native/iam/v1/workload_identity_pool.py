@@ -21,6 +21,7 @@ class WorkloadIdentityPoolArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPool resource.
+        :param pulumi.Input[str] workload_identity_pool_id: Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
@@ -40,6 +41,9 @@ class WorkloadIdentityPoolArgs:
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
     def workload_identity_pool_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        """
         return pulumi.get(self, "workload_identity_pool_id")
 
     @workload_identity_pool_id.setter
@@ -122,6 +126,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
+        :param pulumi.Input[str] workload_identity_pool_id: Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
         ...
     @overload

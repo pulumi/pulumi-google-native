@@ -153,6 +153,9 @@ export interface EnvironmentArgs {
      * Optional. User friendly display name.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+     */
     environmentId: pulumi.Input<string>;
     /**
      * Infrastructure specification for the Environment.
@@ -169,5 +172,8 @@ export interface EnvironmentArgs {
      * Optional. Configuration for sessions created for this environment.
      */
     sessionSpec?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1EnvironmentSessionSpecArgs>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
 }

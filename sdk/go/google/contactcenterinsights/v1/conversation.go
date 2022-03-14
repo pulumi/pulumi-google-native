@@ -96,8 +96,9 @@ type conversationArgs struct {
 	// An opaque, user-specified string representing the human agent who handled the conversation.
 	AgentId *string `pulumi:"agentId"`
 	// Call-specific metadata.
-	CallMetadata   *GoogleCloudContactcenterinsightsV1ConversationCallMetadata `pulumi:"callMetadata"`
-	ConversationId *string                                                     `pulumi:"conversationId"`
+	CallMetadata *GoogleCloudContactcenterinsightsV1ConversationCallMetadata `pulumi:"callMetadata"`
+	// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+	ConversationId *string `pulumi:"conversationId"`
 	// The source of the audio and transcription for the conversation.
 	DataSource *GoogleCloudContactcenterinsightsV1ConversationDataSource `pulumi:"dataSource"`
 	// The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
@@ -125,7 +126,8 @@ type ConversationArgs struct {
 	// An opaque, user-specified string representing the human agent who handled the conversation.
 	AgentId pulumi.StringPtrInput
 	// Call-specific metadata.
-	CallMetadata   GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput
+	CallMetadata GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput
+	// A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
 	ConversationId pulumi.StringPtrInput
 	// The source of the audio and transcription for the conversation.
 	DataSource GoogleCloudContactcenterinsightsV1ConversationDataSourcePtrInput

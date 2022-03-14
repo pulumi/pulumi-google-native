@@ -151,6 +151,9 @@ export class ManagedZone extends pulumi.CustomResource {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
     clientOperationId?: pulumi.Input<string>;
     cloudLoggingConfig?: pulumi.Input<inputs.dns.v1beta2.ManagedZoneCloudLoggingConfigArgs>;
     /**

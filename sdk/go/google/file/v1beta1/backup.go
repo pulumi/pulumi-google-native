@@ -84,6 +84,7 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
+	// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	BackupId string `pulumi:"backupId"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
@@ -99,6 +100,7 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
+	// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	BackupId pulumi.StringInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput

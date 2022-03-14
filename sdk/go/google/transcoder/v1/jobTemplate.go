@@ -64,9 +64,10 @@ func (JobTemplateState) ElementType() reflect.Type {
 
 type jobTemplateArgs struct {
 	// The configuration for this template.
-	Config        *JobConfig `pulumi:"config"`
-	JobTemplateId string     `pulumi:"jobTemplateId"`
-	Location      *string    `pulumi:"location"`
+	Config *JobConfig `pulumi:"config"`
+	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+	JobTemplateId string  `pulumi:"jobTemplateId"`
+	Location      *string `pulumi:"location"`
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -75,7 +76,8 @@ type jobTemplateArgs struct {
 // The set of arguments for constructing a JobTemplate resource.
 type JobTemplateArgs struct {
 	// The configuration for this template.
-	Config        JobConfigPtrInput
+	Config JobConfigPtrInput
+	// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
 	JobTemplateId pulumi.StringInput
 	Location      pulumi.StringPtrInput
 	// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`

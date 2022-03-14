@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+        /// </summary>
         [Input("reservationId", required: true)]
         public Input<string> ReservationId { get; set; } = null!;
 

@@ -28,12 +28,15 @@ class RolloutArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Rollout resource.
+        :param pulumi.Input[str] rollout_id: Required. ID of the `Rollout`.
         :param pulumi.Input[str] target_id: The ID of Target to which this `Rollout` is deploying.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] description: Description of the `Rollout` for user purposes. Max length is 255 characters.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] name: Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         pulumi.set(__self__, "delivery_pipeline_id", delivery_pipeline_id)
         pulumi.set(__self__, "release_id", release_id)
@@ -79,6 +82,9 @@ class RolloutArgs:
     @property
     @pulumi.getter(name="rolloutId")
     def rollout_id(self) -> pulumi.Input[str]:
+        """
+        Required. ID of the `Rollout`.
+        """
         return pulumi.get(self, "rollout_id")
 
     @rollout_id.setter
@@ -178,6 +184,9 @@ class RolloutArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -187,6 +196,9 @@ class RolloutArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -226,7 +238,10 @@ class Rollout(pulumi.CustomResource):
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] name: Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] rollout_id: Required. ID of the `Rollout`.
         :param pulumi.Input[str] target_id: The ID of Target to which this `Rollout` is deploying.
+        :param pulumi.Input[str] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         ...
     @overload

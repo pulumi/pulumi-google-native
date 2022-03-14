@@ -73,12 +73,14 @@ type hubArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Short description of the hub resource.
 	Description *string `pulumi:"description"`
-	HubId       *string `pulumi:"hubId"`
+	// Optional. Unique id for the Hub to create.
+	HubId *string `pulumi:"hubId"`
 	// User-defined labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Time when the Hub was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -90,12 +92,14 @@ type HubArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// Short description of the hub resource.
 	Description pulumi.StringPtrInput
-	HubId       pulumi.StringPtrInput
+	// Optional. Unique id for the Hub to create.
+	HubId pulumi.StringPtrInput
 	// User-defined labels.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Hub resource.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Time when the Hub was updated.
 	UpdateTime pulumi.StringPtrInput

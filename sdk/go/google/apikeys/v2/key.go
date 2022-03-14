@@ -76,9 +76,10 @@ func (KeyState) ElementType() reflect.Type {
 type keyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName *string `pulumi:"displayName"`
-	KeyId       *string `pulumi:"keyId"`
-	Location    *string `pulumi:"location"`
-	Project     *string `pulumi:"project"`
+	// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+	KeyId    *string `pulumi:"keyId"`
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *V2Restrictions `pulumi:"restrictions"`
 }
@@ -87,9 +88,10 @@ type keyArgs struct {
 type KeyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName pulumi.StringPtrInput
-	KeyId       pulumi.StringPtrInput
-	Location    pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
+	// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+	KeyId    pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// Key restrictions.
 	Restrictions V2RestrictionsPtrInput
 }

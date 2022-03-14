@@ -235,6 +235,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             set => _inputContextNames = value;
         }
 
+        /// <summary>
+        /// Optional. The resource view to apply to the returned intent.
+        /// </summary>
         [Input("intentView")]
         public Input<string>? IntentView { get; set; }
 
@@ -244,6 +247,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("isFallback")]
         public Input<bool>? IsFallback { get; set; }
 
+        /// <summary>
+        /// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+        /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 

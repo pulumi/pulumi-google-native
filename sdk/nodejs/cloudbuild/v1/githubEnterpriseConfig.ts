@@ -127,6 +127,9 @@ export interface GithubEnterpriseConfigArgs {
      * Name to display for this config.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
+     */
     gheConfigId?: pulumi.Input<string>;
     /**
      * The URL of the github enterprise host the configuration is for.
@@ -142,6 +145,9 @@ export interface GithubEnterpriseConfigArgs {
      */
     peeredNetwork?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * ID of the project.
+     */
     projectId?: pulumi.Input<string>;
     /**
      * Names of secrets in Secret Manager.

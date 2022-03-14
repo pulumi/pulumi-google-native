@@ -175,6 +175,9 @@ namespace Pulumi.GoogleNative.Connectors.V1
             set => _configVariables = value;
         }
 
+        /// <summary>
+        /// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+        /// </summary>
         [Input("connectionId", required: true)]
         public Input<string> ConnectionId { get; set; } = null!;
 

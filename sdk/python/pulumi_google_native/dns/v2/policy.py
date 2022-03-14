@@ -30,6 +30,7 @@ class PolicyArgs:
         """
         The set of arguments for constructing a Policy resource.
         :param pulumi.Input['PolicyAlternativeNameServerConfigArgs'] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
@@ -75,6 +76,9 @@ class PolicyArgs:
     @property
     @pulumi.getter(name="clientOperationId")
     def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
         return pulumi.get(self, "client_operation_id")
 
     @client_operation_id.setter
@@ -204,6 +208,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']] alternative_name_server_config: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.

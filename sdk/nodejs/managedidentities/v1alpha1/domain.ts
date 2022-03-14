@@ -153,6 +153,9 @@ export interface DomainArgs {
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric.
+     */
     domainName?: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user provided metadata

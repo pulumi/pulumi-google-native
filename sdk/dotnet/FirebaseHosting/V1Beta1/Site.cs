@@ -112,6 +112,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+        /// </summary>
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;
 

@@ -132,6 +132,9 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The reservation ID. It must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        /// </summary>
         [Input("reservationId")]
         public Input<string>? ReservationId { get; set; }
 

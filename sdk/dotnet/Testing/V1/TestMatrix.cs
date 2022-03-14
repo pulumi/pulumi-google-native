@@ -171,6 +171,9 @@ namespace Pulumi.GoogleNative.Testing.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

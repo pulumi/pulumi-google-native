@@ -87,6 +87,9 @@ export interface SchemaArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+     */
     schemaId?: pulumi.Input<string>;
     /**
      * The type of the schema definition.

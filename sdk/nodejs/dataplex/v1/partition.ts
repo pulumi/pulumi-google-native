@@ -107,6 +107,9 @@ export interface PartitionArgs {
      */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
     /**
      * Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.

@@ -88,6 +88,9 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
 

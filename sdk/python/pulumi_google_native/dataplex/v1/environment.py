@@ -27,11 +27,13 @@ class EnvironmentArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
+        :param pulumi.Input[str] environment_id: Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
         :param pulumi.Input['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs'] infrastructure_spec: Infrastructure specification for the Environment.
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the environment.
         :param pulumi.Input['GoogleCloudDataplexV1EnvironmentSessionSpecArgs'] session_spec: Optional. Configuration for sessions created for this environment.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "infrastructure_spec", infrastructure_spec)
@@ -54,6 +56,9 @@ class EnvironmentArgs:
     @property
     @pulumi.getter(name="environmentId")
     def environment_id(self) -> pulumi.Input[str]:
+        """
+        Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+        """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
@@ -150,6 +155,9 @@ class EnvironmentArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -181,9 +189,11 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
+        :param pulumi.Input[str] environment_id: Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs']] infrastructure_spec: Infrastructure specification for the Environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']] session_spec: Optional. Configuration for sessions created for this environment.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload

@@ -163,6 +163,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         [Input("workerConfig")]
         public Input<Inputs.WorkerConfigArgs>? WorkerConfig { get; set; }
 
+        /// <summary>
+        /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        /// </summary>
         [Input("workerPoolId", required: true)]
         public Input<string> WorkerPoolId { get; set; } = null!;
 

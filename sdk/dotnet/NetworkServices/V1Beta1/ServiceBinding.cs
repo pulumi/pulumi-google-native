@@ -144,6 +144,9 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
+        /// <summary>
+        /// Required. Short name of the ServiceBinding resource to be created.
+        /// </summary>
         [Input("serviceBindingId", required: true)]
         public Input<string> ServiceBindingId { get; set; } = null!;
 

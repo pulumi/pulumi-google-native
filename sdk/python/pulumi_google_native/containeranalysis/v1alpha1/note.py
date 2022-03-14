@@ -49,6 +49,7 @@ class NoteArgs:
         :param pulumi.Input[str] expiration_time: Time of expiration for this note, null if note does not expire.
         :param pulumi.Input[str] long_description: A detailed description of this `Note`.
         :param pulumi.Input[str] name: The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+        :param pulumi.Input[str] note_id: The ID to use for this note.
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_url: URLs associated with this note
         :param pulumi.Input['DocumentNoteArgs'] sbom: A note describing a software bill of materials.
@@ -225,6 +226,9 @@ class NoteArgs:
     @property
     @pulumi.getter(name="noteId")
     def note_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID to use for this note.
+        """
         return pulumi.get(self, "note_id")
 
     @note_id.setter
@@ -391,6 +395,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] expiration_time: Time of expiration for this note, null if note does not expire.
         :param pulumi.Input[str] long_description: A detailed description of this `Note`.
         :param pulumi.Input[str] name: The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
+        :param pulumi.Input[str] note_id: The ID to use for this note.
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note
         :param pulumi.Input[pulumi.InputType['DocumentNoteArgs']] sbom: A note describing a software bill of materials.

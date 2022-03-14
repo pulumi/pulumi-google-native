@@ -168,6 +168,9 @@ export interface PatchDeploymentArgs {
      * Optional. Patch configuration that is applied.
      */
     patchConfig?: pulumi.Input<inputs.osconfig.v1beta.PatchConfigArgs>;
+    /**
+     * Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     */
     patchDeploymentId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

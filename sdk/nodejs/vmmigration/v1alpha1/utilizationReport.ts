@@ -142,12 +142,18 @@ export interface UtilizationReportArgs {
     displayName?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
     requestId?: pulumi.Input<string>;
     sourceId: pulumi.Input<string>;
     /**
      * Time frame of the report.
      */
     timeFrame?: pulumi.Input<enums.vmmigration.v1alpha1.UtilizationReportTimeFrame>;
+    /**
+     * Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+     */
     utilizationReportId: pulumi.Input<string>;
     /**
      * List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.

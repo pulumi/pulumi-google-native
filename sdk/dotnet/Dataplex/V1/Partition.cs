@@ -106,6 +106,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

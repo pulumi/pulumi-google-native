@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 
     public sealed class NotificationConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+        /// </summary>
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
 

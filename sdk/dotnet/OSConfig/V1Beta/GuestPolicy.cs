@@ -132,6 +132,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        /// </summary>
         [Input("guestPolicyId", required: true)]
         public Input<string> GuestPolicyId { get; set; } = null!;
 

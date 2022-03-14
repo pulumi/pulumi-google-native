@@ -136,7 +136,8 @@ type servingConfigArgs struct {
 	RedirectControlIds []string `pulumi:"redirectControlIds"`
 	// Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
 	ReplacementControlIds []string `pulumi:"replacementControlIds"`
-	ServingConfigId       string   `pulumi:"servingConfigId"`
+	// Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+	ServingConfigId string `pulumi:"servingConfigId"`
 	// Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
 	SolutionTypes []ServingConfigSolutionTypesItem `pulumi:"solutionTypes"`
 	// Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -178,7 +179,8 @@ type ServingConfigArgs struct {
 	RedirectControlIds pulumi.StringArrayInput
 	// Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
 	ReplacementControlIds pulumi.StringArrayInput
-	ServingConfigId       pulumi.StringInput
+	// Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+	ServingConfigId pulumi.StringInput
 	// Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
 	SolutionTypes ServingConfigSolutionTypesItemArrayInput
 	// Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.

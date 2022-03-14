@@ -29,6 +29,7 @@ class ConnectionArgs:
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
+        :param pulumi.Input[str] connection_id: Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
         :param pulumi.Input['AuthConfigArgs'] auth_config: Optional. Configuration for establishing the connection's authentication with an external system.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] config_variables: Optional. Configuration for configuring the connection with an external system.
@@ -62,6 +63,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[str]:
+        """
+        Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+        """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
@@ -208,6 +212,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AuthConfigArgs']] auth_config: Optional. Configuration for establishing the connection's authentication with an external system.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigVariableArgs']]]] config_variables: Optional. Configuration for configuring the connection with an external system.
+        :param pulumi.Input[str] connection_id: Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
         :param pulumi.Input[str] description: Optional. Description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources

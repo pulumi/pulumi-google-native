@@ -109,6 +109,9 @@ export class Api extends pulumi.CustomResource {
  * The set of arguments for constructing a Api resource.
  */
 export interface ApiArgs {
+    /**
+     * Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
+     */
     action?: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
@@ -122,7 +125,13 @@ export interface ApiArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+     */
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
+    /**
+     * Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+     */
     validate?: pulumi.Input<string>;
 }

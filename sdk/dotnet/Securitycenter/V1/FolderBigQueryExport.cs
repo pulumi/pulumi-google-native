@@ -109,6 +109,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 
     public sealed class FolderBigQueryExportArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+        /// </summary>
         [Input("bigQueryExportId", required: true)]
         public Input<string> BigQueryExportId { get; set; } = null!;
 

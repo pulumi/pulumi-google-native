@@ -76,6 +76,9 @@ export class AnnotationStore extends pulumi.CustomResource {
  * The set of arguments for constructing a AnnotationStore resource.
  */
 export interface AnnotationStoreArgs {
+    /**
+     * The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     */
     annotationStoreId?: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     /**

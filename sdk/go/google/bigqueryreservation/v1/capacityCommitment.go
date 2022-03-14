@@ -74,7 +74,9 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 }
 
 type capacityCommitmentArgs struct {
-	CapacityCommitmentId            *string `pulumi:"capacityCommitmentId"`
+	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+	CapacityCommitmentId *string `pulumi:"capacityCommitmentId"`
+	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
 	Location                        *string `pulumi:"location"`
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
@@ -90,7 +92,9 @@ type capacityCommitmentArgs struct {
 
 // The set of arguments for constructing a CapacityCommitment resource.
 type CapacityCommitmentArgs struct {
-	CapacityCommitmentId            pulumi.StringPtrInput
+	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+	CapacityCommitmentId pulumi.StringPtrInput
+	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
 	Location                        pulumi.StringPtrInput
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.

@@ -135,6 +135,9 @@ export interface SavedQueryArgs {
      * The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
      */
     name?: pulumi.Input<string>;
+    /**
+     * Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+     */
     savedQueryId: pulumi.Input<string>;
     v1Id: pulumi.Input<string>;
     v1Id1: pulumi.Input<string>;

@@ -144,6 +144,9 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
         [Input("eventTrigger")]
         public Input<Inputs.EventTriggerArgs>? EventTrigger { get; set; }
 
+        /// <summary>
+        /// The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        /// </summary>
         [Input("functionId")]
         public Input<string>? FunctionId { get; set; }
 

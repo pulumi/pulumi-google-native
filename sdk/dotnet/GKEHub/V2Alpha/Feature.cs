@@ -142,6 +142,9 @@ namespace Pulumi.GoogleNative.GKEHub.V2Alpha
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

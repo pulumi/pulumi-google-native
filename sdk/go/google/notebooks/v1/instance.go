@@ -154,8 +154,9 @@ type instanceArgs struct {
 	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 	DiskEncryption *InstanceDiskEncryption `pulumi:"diskEncryption"`
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
-	InstallGpuDriver *bool  `pulumi:"installGpuDriver"`
-	InstanceId       string `pulumi:"instanceId"`
+	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	// Required. User-defined unique ID of this instance.
+	InstanceId string `pulumi:"instanceId"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners []string `pulumi:"instanceOwners"`
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
@@ -220,7 +221,8 @@ type InstanceArgs struct {
 	DiskEncryption InstanceDiskEncryptionPtrInput
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
-	InstanceId       pulumi.StringInput
+	// Required. User-defined unique ID of this instance.
+	InstanceId pulumi.StringInput
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners pulumi.StringArrayInput
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).

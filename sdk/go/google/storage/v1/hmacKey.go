@@ -80,14 +80,16 @@ func (HmacKeyState) ElementType() reflect.Type {
 type hmacKeyArgs struct {
 	Project             *string `pulumi:"project"`
 	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
-	UserProject         *string `pulumi:"userProject"`
+	// The project to be billed for this request.
+	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a HmacKey resource.
 type HmacKeyArgs struct {
 	Project             pulumi.StringPtrInput
 	ServiceAccountEmail pulumi.StringInput
-	UserProject         pulumi.StringPtrInput
+	// The project to be billed for this request.
+	UserProject pulumi.StringPtrInput
 }
 
 func (HmacKeyArgs) ElementType() reflect.Type {

@@ -84,9 +84,10 @@ type entityTypeArgs struct {
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities []GoogleCloudDialogflowV2EntityTypeEntity `pulumi:"entities"`
 	// Indicates the kind of entity type.
-	Kind         EntityTypeKind `pulumi:"kind"`
-	LanguageCode *string        `pulumi:"languageCode"`
-	Location     *string        `pulumi:"location"`
+	Kind EntityTypeKind `pulumi:"kind"`
+	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+	LanguageCode *string `pulumi:"languageCode"`
+	Location     *string `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -103,7 +104,8 @@ type EntityTypeArgs struct {
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities GoogleCloudDialogflowV2EntityTypeEntityArrayInput
 	// Indicates the kind of entity type.
-	Kind         EntityTypeKindInput
+	Kind EntityTypeKindInput
+	// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.

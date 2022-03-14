@@ -98,6 +98,9 @@ export class Alias extends pulumi.CustomResource {
  * The set of arguments for constructing a Alias resource.
  */
 export interface AliasArgs {
+    /**
+     * Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
+     */
     alias?: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
@@ -112,8 +115,17 @@ export interface AliasArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+     */
     format: pulumi.Input<string>;
+    /**
+     * Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+     */
     ignoreExpiryValidation?: pulumi.Input<string>;
+    /**
+     * Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+     */
     ignoreNewlineValidation?: pulumi.Input<string>;
     keystoreId: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;

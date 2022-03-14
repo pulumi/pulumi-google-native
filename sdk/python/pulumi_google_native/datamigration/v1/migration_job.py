@@ -37,6 +37,7 @@ class MigrationJobArgs:
         """
         The set of arguments for constructing a MigrationJob resource.
         :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
+        :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input['MigrationJobType'] type: The migration job type.
         :param pulumi.Input['DatabaseTypeArgs'] destination_database: The database engine type and provider of the destination.
@@ -45,6 +46,7 @@ class MigrationJobArgs:
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
+        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input['DatabaseTypeArgs'] source_database: The database engine type and provider of the source.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
@@ -99,6 +101,9 @@ class MigrationJobArgs:
     @property
     @pulumi.getter(name="migrationJobId")
     def migration_job_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the instance to create.
+        """
         return pulumi.get(self, "migration_job_id")
 
     @migration_job_id.setter
@@ -222,6 +227,9 @@ class MigrationJobArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -324,7 +332,9 @@ class MigrationJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DumpFlagsArgs']] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
+        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.

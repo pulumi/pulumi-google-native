@@ -74,9 +74,10 @@ type tagTemplateArgs struct {
 	Fields   map[string]string `pulumi:"fields"`
 	Location *string           `pulumi:"location"`
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name          *string `pulumi:"name"`
-	Project       *string `pulumi:"project"`
-	TagTemplateId string  `pulumi:"tagTemplateId"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Required. The id of the tag template to create.
+	TagTemplateId string `pulumi:"tagTemplateId"`
 }
 
 // The set of arguments for constructing a TagTemplate resource.
@@ -87,8 +88,9 @@ type TagTemplateArgs struct {
 	Fields   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
-	Name          pulumi.StringPtrInput
-	Project       pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Required. The id of the tag template to create.
 	TagTemplateId pulumi.StringInput
 }
 

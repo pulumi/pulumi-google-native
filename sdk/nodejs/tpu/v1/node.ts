@@ -195,6 +195,9 @@ export interface NodeArgs {
      * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
      */
     network?: pulumi.Input<string>;
+    /**
+     * The unqualified resource name.
+     */
     nodeId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

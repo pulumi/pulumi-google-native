@@ -64,8 +64,9 @@ type schemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition *string `pulumi:"definition"`
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name     *string `pulumi:"name"`
-	Project  *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
 	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
 	Type *SchemaType `pulumi:"type"`
@@ -76,8 +77,9 @@ type SchemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringPtrInput
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name     pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.
 	Type SchemaTypePtrInput

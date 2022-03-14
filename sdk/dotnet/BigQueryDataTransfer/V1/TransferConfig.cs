@@ -156,6 +156,9 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
 
     public sealed class TransferConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;scope=&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=authorization_code * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        /// </summary>
         [Input("authorizationCode")]
         public Input<string>? AuthorizationCode { get; set; }
 
@@ -237,9 +240,15 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Input("scheduleOptions")]
         public Input<Inputs.ScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
+        /// <summary>
+        /// Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
+        /// </summary>
         [Input("serviceAccountName")]
         public Input<string>? ServiceAccountName { get; set; }
 
+        /// <summary>
+        /// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;scope=&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
+        /// </summary>
         [Input("versionInfo")]
         public Input<string>? VersionInfo { get; set; }
 

@@ -26,6 +26,7 @@ class GameServerClusterArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GameServerCluster resource.
+        :param pulumi.Input[str] game_server_cluster_id: Required. The ID of the game server cluster resource to create.
         :param pulumi.Input['GameServerClusterConnectionInfoArgs'] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
@@ -52,6 +53,9 @@ class GameServerClusterArgs:
     @property
     @pulumi.getter(name="gameServerClusterId")
     def game_server_cluster_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the game server cluster resource to create.
+        """
         return pulumi.get(self, "game_server_cluster_id")
 
     @game_server_cluster_id.setter
@@ -169,6 +173,7 @@ class GameServerCluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']] connection_info: The game server cluster connection information. This information is used to manage game server clusters.
         :param pulumi.Input[str] description: Human readable description of the cluster.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        :param pulumi.Input[str] game_server_cluster_id: Required. The ID of the game server cluster resource to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
         """

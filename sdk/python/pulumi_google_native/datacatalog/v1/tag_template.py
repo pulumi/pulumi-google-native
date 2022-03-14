@@ -23,6 +23,7 @@ class TagTemplateArgs:
         """
         The set of arguments for constructing a TagTemplate resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
+        :param pulumi.Input[str] tag_template_id: Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
         :param pulumi.Input[str] display_name: Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
         :param pulumi.Input[bool] is_publicly_readable: Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
@@ -55,6 +56,9 @@ class TagTemplateArgs:
     @property
     @pulumi.getter(name="tagTemplateId")
     def tag_template_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+        """
         return pulumi.get(self, "tag_template_id")
 
     @tag_template_id.setter
@@ -138,6 +142,7 @@ class TagTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] fields: Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. The map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. The IDs have the following limitations: * Can contain uppercase and lowercase letters, numbers (0-9) and underscores (_). * Must be at least 1 character and at most 64 characters long. * Must start with a letter or underscore.
         :param pulumi.Input[bool] is_publicly_readable: Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
         :param pulumi.Input[str] name: The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
+        :param pulumi.Input[str] tag_template_id: Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
         """
         ...
     @overload

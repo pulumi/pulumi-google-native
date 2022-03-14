@@ -26,6 +26,7 @@ class TagValueArgs:
         :param pulumi.Input[str] etag: Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
         :param pulumi.Input[str] name: Immutable. Resource name for TagValue in the format `tagValues/456`.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
+        :param pulumi.Input[str] validate_only: Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
         """
         pulumi.set(__self__, "short_name", short_name)
         if description is not None:
@@ -102,6 +103,9 @@ class TagValueArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -131,6 +135,7 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. Resource name for TagValue in the format `tagValues/456`.
         :param pulumi.Input[str] parent: Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
         :param pulumi.Input[str] short_name: Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        :param pulumi.Input[str] validate_only: Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
         """
         ...
     @overload

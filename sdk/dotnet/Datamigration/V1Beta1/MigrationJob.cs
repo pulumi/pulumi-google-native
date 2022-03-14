@@ -213,6 +213,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Required. The ID of the instance to create.
+        /// </summary>
         [Input("migrationJobId", required: true)]
         public Input<string> MigrationJobId { get; set; } = null!;
 
@@ -225,6 +228,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

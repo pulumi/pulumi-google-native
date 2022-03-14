@@ -154,5 +154,8 @@ export interface ProviderArgs {
     oidc?: pulumi.Input<inputs.iam.v1.OidcArgs>;
     project?: pulumi.Input<string>;
     workloadIdentityPoolId: pulumi.Input<string>;
+    /**
+     * Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+     */
     workloadIdentityPoolProviderId: pulumi.Input<string>;
 }

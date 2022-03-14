@@ -93,6 +93,9 @@ export class Attestor extends pulumi.CustomResource {
  * The set of arguments for constructing a Attestor resource.
  */
 export interface AttestorArgs {
+    /**
+     * Required. The attestors ID.
+     */
     attestorId: pulumi.Input<string>;
     /**
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.

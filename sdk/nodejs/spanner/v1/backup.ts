@@ -132,12 +132,21 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
+    /**
+     * Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+     */
     backupId: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
      */
     database?: pulumi.Input<string>;
+    /**
+     * Required. The encryption type of the backup.
+     */
     encryptionConfigEncryptionType: pulumi.Input<string>;
+    /**
+     * Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+     */
     encryptionConfigKmsKeyName?: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.

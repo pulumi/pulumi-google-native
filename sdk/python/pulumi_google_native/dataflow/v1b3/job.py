@@ -67,6 +67,7 @@ class JobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
+        :param pulumi.Input[str] view: The level of information requested in response.
         """
         if client_request_id is not None:
             pulumi.set(__self__, "client_request_id", client_request_id)
@@ -410,6 +411,9 @@ class JobArgs:
     @property
     @pulumi.getter
     def view(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of information requested in response.
+        """
         return pulumi.get(self, "view")
 
     @view.setter
@@ -479,6 +483,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] temp_files: A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] transform_name_mapping: The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
         :param pulumi.Input['JobType'] type: The type of Cloud Dataflow job.
+        :param pulumi.Input[str] view: The level of information requested in response.
         """
         ...
     @overload

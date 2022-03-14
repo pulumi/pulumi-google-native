@@ -20,8 +20,10 @@ class TargetProjectArgs:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetProject resource.
+        :param pulumi.Input[str] target_project_id: Required. The target_project identifier.
         :param pulumi.Input[str] description: The target project's description.
         :param pulumi.Input[str] project: The target project ID (number) or project name.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "target_project_id", target_project_id)
         if description is not None:
@@ -36,6 +38,9 @@ class TargetProjectArgs:
     @property
     @pulumi.getter(name="targetProjectId")
     def target_project_id(self) -> pulumi.Input[str]:
+        """
+        Required. The target_project identifier.
+        """
         return pulumi.get(self, "target_project_id")
 
     @target_project_id.setter
@@ -78,6 +83,9 @@ class TargetProjectArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -104,6 +112,8 @@ class TargetProject(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The target project's description.
         :param pulumi.Input[str] project: The target project ID (number) or project name.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] target_project_id: Required. The target_project identifier.
         """
         ...
     @overload
