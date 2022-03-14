@@ -81,6 +81,7 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
+	// Required. A user-provided name of the certificate.
 	CertificateId string `pulumi:"certificateId"`
 	// One or more paragraphs of text description of a certificate.
 	Description *string `pulumi:"description"`
@@ -100,6 +101,7 @@ type certificateArgs struct {
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
+	// Required. A user-provided name of the certificate.
 	CertificateId pulumi.StringInput
 	// One or more paragraphs of text description of a certificate.
 	Description pulumi.StringPtrInput

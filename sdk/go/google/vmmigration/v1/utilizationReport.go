@@ -87,11 +87,13 @@ type utilizationReportArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
 	Project     *string `pulumi:"project"`
-	RequestId   *string `pulumi:"requestId"`
-	SourceId    string  `pulumi:"sourceId"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
+	SourceId  string  `pulumi:"sourceId"`
 	// Time frame of the report.
-	TimeFrame           *UtilizationReportTimeFrame `pulumi:"timeFrame"`
-	UtilizationReportId string                      `pulumi:"utilizationReportId"`
+	TimeFrame *UtilizationReportTimeFrame `pulumi:"timeFrame"`
+	// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+	UtilizationReportId string `pulumi:"utilizationReportId"`
 	// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
 	Vms []VmUtilizationInfo `pulumi:"vms"`
 }
@@ -102,10 +104,12 @@ type UtilizationReportArgs struct {
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
 	Project     pulumi.StringPtrInput
-	RequestId   pulumi.StringPtrInput
-	SourceId    pulumi.StringInput
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
+	SourceId  pulumi.StringInput
 	// Time frame of the report.
-	TimeFrame           UtilizationReportTimeFramePtrInput
+	TimeFrame UtilizationReportTimeFramePtrInput
+	// Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
 	UtilizationReportId pulumi.StringInput
 	// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
 	Vms VmUtilizationInfoArrayInput

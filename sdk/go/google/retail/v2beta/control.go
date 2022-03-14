@@ -82,6 +82,7 @@ func (ControlState) ElementType() reflect.Type {
 
 type controlArgs struct {
 	CatalogId string `pulumi:"catalogId"`
+	// Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
 	ControlId string `pulumi:"controlId"`
 	// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
 	DisplayName string `pulumi:"displayName"`
@@ -100,6 +101,7 @@ type controlArgs struct {
 // The set of arguments for constructing a Control resource.
 type ControlArgs struct {
 	CatalogId pulumi.StringInput
+	// Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
 	ControlId pulumi.StringInput
 	// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
 	DisplayName pulumi.StringInput

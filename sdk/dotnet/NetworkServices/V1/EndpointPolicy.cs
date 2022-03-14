@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         [Input("endpointMatcher", required: true)]
         public Input<Inputs.EndpointMatcherArgs> EndpointMatcher { get; set; } = null!;
 
+        /// <summary>
+        /// Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS".
+        /// </summary>
         [Input("endpointPolicyId", required: true)]
         public Input<string> EndpointPolicyId { get; set; } = null!;
 

@@ -93,10 +93,12 @@ type spokeArgs struct {
 	LinkedVpnTunnels []string `pulumi:"linkedVpnTunnels"`
 	Location         *string  `pulumi:"location"`
 	// Immutable. The name of a Spoke resource.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	SpokeId   *string `pulumi:"spokeId"`
+	// Optional. Unique id for the Spoke to create.
+	SpokeId *string `pulumi:"spokeId"`
 	// The time when the Spoke was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -119,10 +121,12 @@ type SpokeArgs struct {
 	LinkedVpnTunnels pulumi.StringArrayInput
 	Location         pulumi.StringPtrInput
 	// Immutable. The name of a Spoke resource.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	SpokeId   pulumi.StringPtrInput
+	// Optional. Unique id for the Spoke to create.
+	SpokeId pulumi.StringPtrInput
 	// The time when the Spoke was updated.
 	UpdateTime pulumi.StringPtrInput
 }

@@ -210,11 +210,17 @@ export interface IntentArgs {
      * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
      */
     inputContextNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Optional. The resource view to apply to the returned intent.
+     */
     intentView?: pulumi.Input<string>;
     /**
      * Optional. Indicates whether this is a fallback intent.
      */
     isFallback?: pulumi.Input<boolean>;
+    /**
+     * Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+     */
     languageCode?: pulumi.Input<string>;
     /**
      * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.

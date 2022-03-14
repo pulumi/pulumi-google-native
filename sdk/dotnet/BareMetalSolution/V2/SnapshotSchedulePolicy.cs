@@ -133,6 +133,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             set => _schedules = value;
         }
 
+        /// <summary>
+        /// Required. Snapshot policy ID
+        /// </summary>
         [Input("snapshotSchedulePolicyId", required: true)]
         public Input<string> SnapshotSchedulePolicyId { get; set; } = null!;
 

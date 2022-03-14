@@ -235,6 +235,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Input("longDescription")]
         public Input<string>? LongDescription { get; set; }
 
+        /// <summary>
+        /// Required. The ID to use for this note.
+        /// </summary>
         [Input("noteId", required: true)]
         public Input<string> NoteId { get; set; } = null!;
 

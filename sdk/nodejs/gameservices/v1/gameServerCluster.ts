@@ -128,6 +128,9 @@ export interface GameServerClusterArgs {
      * Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Required. The ID of the game server cluster resource to create.
+     */
     gameServerClusterId: pulumi.Input<string>;
     /**
      * The labels associated with this game server cluster. Each label is a key-value pair.

@@ -70,7 +70,8 @@ type entryGroupArgs struct {
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
 	Description *string `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-	DisplayName  *string `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
 	EntryGroupId string  `pulumi:"entryGroupId"`
 	Location     *string `pulumi:"location"`
 	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
@@ -83,7 +84,8 @@ type EntryGroupArgs struct {
 	// Entry group description, which can consist of several sentences or paragraphs that describe entry group contents. Default value is an empty string.
 	Description pulumi.StringPtrInput
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
-	DisplayName  pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// Required. The id of the entry group to create. The id must begin with a letter or underscore, contain only English letters, numbers and underscores, and be at most 64 characters.
 	EntryGroupId pulumi.StringInput
 	Location     pulumi.StringPtrInput
 	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.

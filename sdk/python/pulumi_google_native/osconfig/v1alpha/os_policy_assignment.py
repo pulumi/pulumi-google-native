@@ -29,6 +29,7 @@ class OsPolicyAssignmentArgs:
         The set of arguments for constructing a OsPolicyAssignment resource.
         :param pulumi.Input['OSPolicyAssignmentInstanceFilterArgs'] instance_filter: Filter to select VMs.
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyArgs']]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[str] os_policy_assignment_id: Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input['OSPolicyAssignmentRolloutArgs'] rollout: Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         :param pulumi.Input[str] description: OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
@@ -76,6 +77,9 @@ class OsPolicyAssignmentArgs:
     @property
     @pulumi.getter(name="osPolicyAssignmentId")
     def os_policy_assignment_id(self) -> pulumi.Input[str]:
+        """
+        Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        """
         return pulumi.get(self, "os_policy_assignment_id")
 
     @os_policy_assignment_id.setter
@@ -174,6 +178,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OSPolicyAssignmentInstanceFilterArgs']] instance_filter: Filter to select VMs.
         :param pulumi.Input[str] name: Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OSPolicyArgs']]]] os_policies: List of OS policies to be applied to the VMs.
+        :param pulumi.Input[str] os_policy_assignment_id: Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input[pulumi.InputType['OSPolicyAssignmentRolloutArgs']] rollout: Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         """
         ...

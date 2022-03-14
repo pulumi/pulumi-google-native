@@ -172,6 +172,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("sqlScript")]
         public Input<Inputs.GoogleCloudDataplexV1ContentSqlScriptArgs>? SqlScript { get; set; }
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

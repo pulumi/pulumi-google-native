@@ -110,6 +110,9 @@ export class Config extends pulumi.CustomResource {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
+    /**
+     * Required. The ID of the game server config resource to create.
+     */
     configId: pulumi.Input<string>;
     /**
      * The description of the game server config.

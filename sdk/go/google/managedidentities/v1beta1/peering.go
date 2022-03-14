@@ -87,9 +87,10 @@ type peeringArgs struct {
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
 	DomainResource string `pulumi:"domainResource"`
 	// Optional. Resource labels to represent user provided metadata.
-	Labels    map[string]string `pulumi:"labels"`
-	PeeringId string            `pulumi:"peeringId"`
-	Project   *string           `pulumi:"project"`
+	Labels map[string]string `pulumi:"labels"`
+	// Required. Peering Id, unique name to identify peering.
+	PeeringId string  `pulumi:"peeringId"`
+	Project   *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Peering resource.
@@ -99,7 +100,8 @@ type PeeringArgs struct {
 	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
 	DomainResource pulumi.StringInput
 	// Optional. Resource labels to represent user provided metadata.
-	Labels    pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// Required. Peering Id, unique name to identify peering.
 	PeeringId pulumi.StringInput
 	Project   pulumi.StringPtrInput
 }

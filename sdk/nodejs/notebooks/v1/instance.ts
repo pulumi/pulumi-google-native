@@ -324,6 +324,9 @@ export interface InstanceArgs {
      * Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
      */
     installGpuDriver?: pulumi.Input<boolean>;
+    /**
+     * Required. User-defined unique ID of this instance.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.

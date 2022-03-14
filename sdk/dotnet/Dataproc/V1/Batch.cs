@@ -163,6 +163,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
     public sealed class BatchArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
+        /// </summary>
         [Input("batchId")]
         public Input<string>? BatchId { get; set; }
 
@@ -196,6 +199,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("pysparkBatch")]
         public Input<Inputs.PySparkBatchArgs>? PysparkBatch { get; set; }
 
+        /// <summary>
+        /// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

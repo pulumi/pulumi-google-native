@@ -80,6 +80,9 @@ export interface JobTemplateArgs {
      * The configuration for this template.
      */
     config?: pulumi.Input<inputs.transcoder.v1.JobConfigArgs>;
+    /**
+     * Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+     */
     jobTemplateId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**

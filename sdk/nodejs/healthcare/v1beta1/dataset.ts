@@ -72,6 +72,9 @@ export class Dataset extends pulumi.CustomResource {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
+    /**
+     * The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+     */
     datasetId?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**

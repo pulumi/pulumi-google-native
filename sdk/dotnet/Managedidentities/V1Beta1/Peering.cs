@@ -133,6 +133,9 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Required. Peering Id, unique name to identify peering.
+        /// </summary>
         [Input("peeringId", required: true)]
         public Input<string> PeeringId { get; set; } = null!;
 

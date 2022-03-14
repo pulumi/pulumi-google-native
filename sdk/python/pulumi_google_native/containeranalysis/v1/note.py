@@ -35,6 +35,7 @@ class NoteArgs:
                  vulnerability: Optional[pulumi.Input['VulnerabilityNoteArgs']] = None):
         """
         The set of arguments for constructing a Note resource.
+        :param pulumi.Input[str] note_id: Required. The ID to use for this note.
         :param pulumi.Input['AttestationNoteArgs'] attestation: A note describing an attestation role.
         :param pulumi.Input['BuildNoteArgs'] build: A note describing build provenance for a verifiable build.
         :param pulumi.Input['ComplianceNoteArgs'] compliance: A note describing a compliance check.
@@ -88,6 +89,9 @@ class NoteArgs:
     @property
     @pulumi.getter(name="noteId")
     def note_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for this note.
+        """
         return pulumi.get(self, "note_id")
 
     @note_id.setter
@@ -322,6 +326,7 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[str] expiration_time: Time of expiration for this note. Empty if note does not expire.
         :param pulumi.Input[pulumi.InputType['ImageNoteArgs']] image: A note describing a base image.
         :param pulumi.Input[str] long_description: A detailed description of this note.
+        :param pulumi.Input[str] note_id: Required. The ID to use for this note.
         :param pulumi.Input[pulumi.InputType['PackageNoteArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_note_names: Other notes related to this note.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note.

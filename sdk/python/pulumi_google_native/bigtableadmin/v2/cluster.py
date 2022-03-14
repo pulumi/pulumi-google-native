@@ -27,6 +27,7 @@ class ClusterArgs:
                  serve_nodes: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] cluster_id: Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
         :param pulumi.Input['ClusterConfigArgs'] cluster_config: Configuration for this cluster.
         :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
@@ -54,6 +55,9 @@ class ClusterArgs:
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -172,6 +176,7 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] cluster_config: Configuration for this cluster.
+        :param pulumi.Input[str] cluster_id: Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
         :param pulumi.Input['ClusterDefaultStorageType'] default_storage_type: Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. The encryption configuration for CMEK-protected clusters.
         :param pulumi.Input[str] location: Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.

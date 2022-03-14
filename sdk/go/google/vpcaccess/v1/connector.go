@@ -81,6 +81,7 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
+	// Required. The ID to use for this connector.
 	ConnectorId string `pulumi:"connectorId"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
@@ -106,6 +107,7 @@ type connectorArgs struct {
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
+	// Required. The ID to use for this connector.
 	ConnectorId pulumi.StringInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput

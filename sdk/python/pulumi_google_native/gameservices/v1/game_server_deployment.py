@@ -22,6 +22,7 @@ class GameServerDeploymentArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GameServerDeployment resource.
+        :param pulumi.Input[str] deployment_id: Required. The ID of the game server deployment resource to create.
         :param pulumi.Input[str] description: Human readable description of the game server deployment.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a key-value pair.
@@ -44,6 +45,9 @@ class GameServerDeploymentArgs:
     @property
     @pulumi.getter(name="deploymentId")
     def deployment_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the game server deployment resource to create.
+        """
         return pulumi.get(self, "deployment_id")
 
     @deployment_id.setter
@@ -135,6 +139,7 @@ class GameServerDeployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deployment_id: Required. The ID of the game server deployment resource to create.
         :param pulumi.Input[str] description: Human readable description of the game server deployment.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a key-value pair.

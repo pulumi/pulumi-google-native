@@ -87,6 +87,7 @@ func (ImportJobState) ElementType() reflect.Type {
 }
 
 type importJobArgs struct {
+	// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	ImportJobId *string `pulumi:"importJobId"`
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod ImportJobImportMethod `pulumi:"importMethod"`
@@ -99,6 +100,7 @@ type importJobArgs struct {
 
 // The set of arguments for constructing a ImportJob resource.
 type ImportJobArgs struct {
+	// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	ImportJobId pulumi.StringPtrInput
 	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod ImportJobImportMethodInput

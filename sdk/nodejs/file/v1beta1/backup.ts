@@ -136,6 +136,9 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
+    /**
+     * Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+     */
     backupId: pulumi.Input<string>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.

@@ -110,17 +110,26 @@ export interface ObjectIamPolicyArgs {
      * HTTP 1.1  Entity tag for the policy.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * If present, selects a specific revision of this object (as opposed to the latest version, the default).
+     */
     generation?: pulumi.Input<string>;
     /**
      * The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
      */
     kind?: pulumi.Input<string>;
     object: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request if the target bucket is requester-pays bucket.
+     */
     provisionalUserProject?: pulumi.Input<string>;
     /**
      * The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
      */
     resourceId?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
     userProject?: pulumi.Input<string>;
     /**
      * The IAM policy format version.

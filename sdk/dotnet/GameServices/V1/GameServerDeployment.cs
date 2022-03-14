@@ -96,6 +96,9 @@ namespace Pulumi.GoogleNative.GameServices.V1
 
     public sealed class GameServerDeploymentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. The ID of the game server deployment resource to create.
+        /// </summary>
         [Input("deploymentId", required: true)]
         public Input<string> DeploymentId { get; set; } = null!;
 

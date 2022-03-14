@@ -126,6 +126,9 @@ export interface RealmArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. The ID of the realm resource to create.
+     */
     realmId: pulumi.Input<string>;
     /**
      * Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).

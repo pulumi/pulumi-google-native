@@ -79,6 +79,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class AliasArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
+        /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
@@ -109,12 +112,21 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _extensions = value;
         }
 
+        /// <summary>
+        /// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+        /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
+        /// <summary>
+        /// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+        /// </summary>
         [Input("ignoreExpiryValidation")]
         public Input<string>? IgnoreExpiryValidation { get; set; }
 
+        /// <summary>
+        /// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        /// </summary>
         [Input("ignoreNewlineValidation")]
         public Input<string>? IgnoreNewlineValidation { get; set; }
 

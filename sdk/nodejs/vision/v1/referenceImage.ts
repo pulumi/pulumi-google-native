@@ -97,6 +97,9 @@ export interface ReferenceImageArgs {
     name?: pulumi.Input<string>;
     productId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+     */
     referenceImageId?: pulumi.Input<string>;
     /**
      * The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.

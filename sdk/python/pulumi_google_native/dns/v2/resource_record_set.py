@@ -28,6 +28,7 @@ class ResourceRecordSetArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ResourceRecordSet resource.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] name: For example, www.example.com.
         :param pulumi.Input['RRSetRoutingPolicyArgs'] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
@@ -69,6 +70,9 @@ class ResourceRecordSetArgs:
     @property
     @pulumi.getter(name="clientOperationId")
     def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
         return pulumi.get(self, "client_operation_id")
 
     @client_operation_id.setter
@@ -197,6 +201,7 @@ class ResourceRecordSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] name: For example, www.example.com.
         :param pulumi.Input[pulumi.InputType['RRSetRoutingPolicyArgs']] routing_policy: Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.

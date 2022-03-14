@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Required. The ID of the game server cluster resource to create.
+        /// </summary>
         [Input("gameServerClusterId", required: true)]
         public Input<string> GameServerClusterId { get; set; } = null!;
 

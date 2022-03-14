@@ -137,7 +137,8 @@ type instanceArgs struct {
 	ConnectMode *InstanceConnectMode `pulumi:"connectMode"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
-	InstanceId  string  `pulumi:"instanceId"`
+	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+	InstanceId string `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
@@ -181,7 +182,8 @@ type InstanceArgs struct {
 	ConnectMode InstanceConnectModePtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
-	InstanceId  pulumi.StringInput
+	// Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+	InstanceId pulumi.StringInput
 	// Resource labels to represent user provided metadata
 	Labels pulumi.StringMapInput
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.

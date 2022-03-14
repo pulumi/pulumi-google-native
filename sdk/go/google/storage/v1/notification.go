@@ -90,12 +90,14 @@ type notificationArgs struct {
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	ObjectNamePrefix *string `pulumi:"objectNamePrefix"`
 	// The desired content of the Payload.
-	PayloadFormat          *string `pulumi:"payloadFormat"`
+	PayloadFormat *string `pulumi:"payloadFormat"`
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
 	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The canonical URL of this notification.
 	SelfLink *string `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-	Topic       *string `pulumi:"topic"`
+	Topic *string `pulumi:"topic"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject *string `pulumi:"userProject"`
 }
 
@@ -115,12 +117,14 @@ type NotificationArgs struct {
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	ObjectNamePrefix pulumi.StringPtrInput
 	// The desired content of the Payload.
-	PayloadFormat          pulumi.StringPtrInput
+	PayloadFormat pulumi.StringPtrInput
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
 	ProvisionalUserProject pulumi.StringPtrInput
 	// The canonical URL of this notification.
 	SelfLink pulumi.StringPtrInput
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-	Topic       pulumi.StringPtrInput
+	Topic pulumi.StringPtrInput
+	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrInput
 }
 

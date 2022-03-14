@@ -84,7 +84,8 @@ type tagValueArgs struct {
 	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
 	Parent *string `pulumi:"parent"`
 	// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName    string  `pulumi:"shortName"`
+	ShortName string `pulumi:"shortName"`
+	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
@@ -99,7 +100,8 @@ type TagValueArgs struct {
 	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
 	Parent pulumi.StringPtrInput
 	// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName    pulumi.StringInput
+	ShortName pulumi.StringInput
+	// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
 	ValidateOnly pulumi.StringPtrInput
 }
 

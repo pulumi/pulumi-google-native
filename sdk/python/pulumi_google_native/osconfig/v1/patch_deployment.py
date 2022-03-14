@@ -30,6 +30,7 @@ class PatchDeploymentArgs:
         The set of arguments for constructing a PatchDeployment resource.
         :param pulumi.Input['PatchInstanceFilterArgs'] instance_filter: VM instances to patch.
         :param pulumi.Input['OneTimeScheduleArgs'] one_time_schedule: Schedule a one-time execution.
+        :param pulumi.Input[str] patch_deployment_id: Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input['RecurringScheduleArgs'] recurring_schedule: Schedule recurring executions.
         :param pulumi.Input[str] description: Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Optional. Duration of the patch. After the duration ends, the patch times out.
@@ -81,6 +82,9 @@ class PatchDeploymentArgs:
     @property
     @pulumi.getter(name="patchDeploymentId")
     def patch_deployment_id(self) -> pulumi.Input[str]:
+        """
+        Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        """
         return pulumi.get(self, "patch_deployment_id")
 
     @patch_deployment_id.setter
@@ -196,6 +200,7 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
         :param pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
         :param pulumi.Input[pulumi.InputType['PatchConfigArgs']] patch_config: Optional. Patch configuration that is applied.
+        :param pulumi.Input[str] patch_deployment_id: Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
         :param pulumi.Input[pulumi.InputType['RecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
         :param pulumi.Input[pulumi.InputType['PatchRolloutArgs']] rollout: Optional. Rollout strategy of the patch job.
         """

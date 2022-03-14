@@ -72,6 +72,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class AnnotationStoreArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// </summary>
         [Input("annotationStoreId")]
         public Input<string>? AnnotationStoreId { get; set; }
 

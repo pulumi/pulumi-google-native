@@ -113,6 +113,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// If present, selects a specific revision of this object (as opposed to the latest version, the default).
+        /// </summary>
         [Input("generation")]
         public Input<string>? Generation { get; set; }
 
@@ -125,6 +128,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;
 
+        /// <summary>
+        /// The project to be billed for this request if the target bucket is requester-pays bucket.
+        /// </summary>
         [Input("provisionalUserProject")]
         public Input<string>? ProvisionalUserProject { get; set; }
 
@@ -134,6 +140,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
 

@@ -123,6 +123,9 @@ export class Feature extends pulumi.CustomResource {
  * The set of arguments for constructing a Feature resource.
  */
 export interface FeatureArgs {
+    /**
+     * The ID of the feature to create.
+     */
     featureId?: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
@@ -134,6 +137,9 @@ export interface FeatureArgs {
      */
     membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;
+    /**
+     * A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.

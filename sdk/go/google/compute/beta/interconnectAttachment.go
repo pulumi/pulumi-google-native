@@ -165,14 +165,16 @@ type interconnectAttachmentArgs struct {
 	PartnerMetadata *InterconnectAttachmentPartnerMetadata `pulumi:"partnerMetadata"`
 	Project         *string                                `pulumi:"project"`
 	Region          string                                 `pulumi:"region"`
-	RequestId       *string                                `pulumi:"requestId"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router *string `pulumi:"router"`
 	// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
 	StackType *InterconnectAttachmentStackType `pulumi:"stackType"`
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
-	Type         *InterconnectAttachmentType `pulumi:"type"`
-	ValidateOnly *string                     `pulumi:"validateOnly"`
+	Type *InterconnectAttachmentType `pulumi:"type"`
+	// If true, the request will not be committed.
+	ValidateOnly *string `pulumi:"validateOnly"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q *int `pulumi:"vlanTag8021q"`
 }
@@ -215,13 +217,15 @@ type InterconnectAttachmentArgs struct {
 	PartnerMetadata InterconnectAttachmentPartnerMetadataPtrInput
 	Project         pulumi.StringPtrInput
 	Region          pulumi.StringInput
-	RequestId       pulumi.StringPtrInput
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringPtrInput
 	// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
 	StackType InterconnectAttachmentStackTypePtrInput
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
-	Type         InterconnectAttachmentTypePtrInput
+	Type InterconnectAttachmentTypePtrInput
+	// If true, the request will not be committed.
 	ValidateOnly pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntPtrInput

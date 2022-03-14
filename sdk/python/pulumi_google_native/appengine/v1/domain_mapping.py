@@ -23,6 +23,7 @@ class DomainMappingArgs:
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
+        :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input['SslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         pulumi.set(__self__, "app_id", app_id)
@@ -57,6 +58,9 @@ class DomainMappingArgs:
     @property
     @pulumi.getter(name="overrideStrategy")
     def override_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        """
         return pulumi.get(self, "override_strategy")
 
     @override_strategy.setter
@@ -93,6 +97,7 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
+        :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input[pulumi.InputType['SslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
         ...

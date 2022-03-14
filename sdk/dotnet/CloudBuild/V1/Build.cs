@@ -273,6 +273,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. ID of the project.
+        /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 

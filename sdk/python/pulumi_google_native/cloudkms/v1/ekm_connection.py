@@ -22,6 +22,7 @@ class EkmConnectionArgs:
                  service_resolvers: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceResolverArgs']]]] = None):
         """
         The set of arguments for constructing a EkmConnection resource.
+        :param pulumi.Input[str] ekm_connection_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceResolverArgs']]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
         """
@@ -39,6 +40,9 @@ class EkmConnectionArgs:
     @property
     @pulumi.getter(name="ekmConnectionId")
     def ekm_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+        """
         return pulumi.get(self, "ekm_connection_id")
 
     @ekm_connection_id.setter
@@ -106,6 +110,7 @@ class EkmConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] ekm_connection_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceResolverArgs']]]] service_resolvers: A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
         """

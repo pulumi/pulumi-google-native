@@ -133,6 +133,9 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Required. Peering Id, unique name to identify peering. It should follow the regex format "^(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)$"
+        /// </summary>
         [Input("peeringId", required: true)]
         public Input<string> PeeringId { get; set; } = null!;
 

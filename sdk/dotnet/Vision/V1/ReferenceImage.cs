@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        /// </summary>
         [Input("referenceImageId")]
         public Input<string>? ReferenceImageId { get; set; }
 

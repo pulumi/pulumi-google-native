@@ -172,6 +172,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("spark")]
         public Input<Inputs.GoogleCloudDataplexV1TaskSparkTaskConfigArgs>? Spark { get; set; }
 
+        /// <summary>
+        /// Required. Task identifier.
+        /// </summary>
         [Input("taskId", required: true)]
         public Input<string> TaskId { get; set; } = null!;
 
@@ -181,6 +184,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("triggerSpec", required: true)]
         public Input<Inputs.GoogleCloudDataplexV1TaskTriggerSpecArgs> TriggerSpec { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

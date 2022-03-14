@@ -99,7 +99,8 @@ type connectionArgs struct {
 	AuthConfig *AuthConfig `pulumi:"authConfig"`
 	// Optional. Configuration for configuring the connection with an external system.
 	ConfigVariables []ConfigVariable `pulumi:"configVariables"`
-	ConnectionId    string           `pulumi:"connectionId"`
+	// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+	ConnectionId string `pulumi:"connectionId"`
 	// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
 	ConnectorVersion string `pulumi:"connectorVersion"`
 	// Optional. Description of the resource.
@@ -122,7 +123,8 @@ type ConnectionArgs struct {
 	AuthConfig AuthConfigPtrInput
 	// Optional. Configuration for configuring the connection with an external system.
 	ConfigVariables ConfigVariableArrayInput
-	ConnectionId    pulumi.StringInput
+	// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+	ConnectionId pulumi.StringInput
 	// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
 	ConnectorVersion pulumi.StringInput
 	// Optional. Description of the resource.

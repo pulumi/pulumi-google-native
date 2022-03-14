@@ -152,6 +152,9 @@ export class Asset extends pulumi.CustomResource {
  * The set of arguments for constructing a Asset resource.
  */
 export interface AssetArgs {
+    /**
+     * Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
+     */
     assetId: pulumi.Input<string>;
     /**
      * Optional. Description of the asset.
@@ -176,6 +179,9 @@ export interface AssetArgs {
      * Specification of the resource that is referenced by this asset.
      */
     resourceSpec: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1AssetResourceSpecArgs>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;
 }

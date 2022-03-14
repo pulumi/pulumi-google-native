@@ -99,6 +99,9 @@ export interface HistoryArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.

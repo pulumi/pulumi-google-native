@@ -89,13 +89,15 @@ type lakeArgs struct {
 	// Optional. User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. User-defined labels for the lake.
-	Labels   map[string]string `pulumi:"labels"`
-	LakeId   string            `pulumi:"lakeId"`
-	Location *string           `pulumi:"location"`
+	Labels map[string]string `pulumi:"labels"`
+	// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+	LakeId   string  `pulumi:"lakeId"`
+	Location *string `pulumi:"location"`
 	// Optional. Settings to manage lake and Dataproc Metastore service instance association.
-	Metastore    *GoogleCloudDataplexV1LakeMetastore `pulumi:"metastore"`
-	Project      *string                             `pulumi:"project"`
-	ValidateOnly *string                             `pulumi:"validateOnly"`
+	Metastore *GoogleCloudDataplexV1LakeMetastore `pulumi:"metastore"`
+	Project   *string                             `pulumi:"project"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Lake resource.
@@ -105,12 +107,14 @@ type LakeArgs struct {
 	// Optional. User friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// Optional. User-defined labels for the lake.
-	Labels   pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
 	LakeId   pulumi.StringInput
 	Location pulumi.StringPtrInput
 	// Optional. Settings to manage lake and Dataproc Metastore service instance association.
-	Metastore    GoogleCloudDataplexV1LakeMetastorePtrInput
-	Project      pulumi.StringPtrInput
+	Metastore GoogleCloudDataplexV1LakeMetastorePtrInput
+	Project   pulumi.StringPtrInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 }
 

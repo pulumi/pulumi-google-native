@@ -103,11 +103,13 @@ type taskArgs struct {
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
 	// Config related to running custom Spark tasks.
-	Spark  *GoogleCloudDataplexV1TaskSparkTaskConfig `pulumi:"spark"`
-	TaskId string                                    `pulumi:"taskId"`
+	Spark *GoogleCloudDataplexV1TaskSparkTaskConfig `pulumi:"spark"`
+	// Required. Task identifier.
+	TaskId string `pulumi:"taskId"`
 	// Spec related to how often and when a task should be triggered.
-	TriggerSpec  GoogleCloudDataplexV1TaskTriggerSpec `pulumi:"triggerSpec"`
-	ValidateOnly *string                              `pulumi:"validateOnly"`
+	TriggerSpec GoogleCloudDataplexV1TaskTriggerSpec `pulumi:"triggerSpec"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Task resource.
@@ -124,10 +126,12 @@ type TaskArgs struct {
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// Config related to running custom Spark tasks.
-	Spark  GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput
+	Spark GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput
+	// Required. Task identifier.
 	TaskId pulumi.StringInput
 	// Spec related to how often and when a task should be triggered.
-	TriggerSpec  GoogleCloudDataplexV1TaskTriggerSpecInput
+	TriggerSpec GoogleCloudDataplexV1TaskTriggerSpecInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 }
 

@@ -39,6 +39,7 @@ class InstanceArgs:
                  transit_encryption_mode: Optional[pulumi.Input['InstanceTransitEncryptionMode']] = None):
         """
         The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] instance_id: Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
@@ -102,6 +103,9 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
+        """
+        Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -383,6 +387,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
+        :param pulumi.Input[str] instance_id: Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.

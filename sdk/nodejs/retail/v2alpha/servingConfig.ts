@@ -240,6 +240,9 @@ export interface ServingConfigArgs {
      * Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
     replacementControlIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+     */
     servingConfigId: pulumi.Input<string>;
     /**
      * Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.

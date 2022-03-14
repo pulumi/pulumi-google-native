@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Input("shortName", required: true)]
         public Input<string> ShortName { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

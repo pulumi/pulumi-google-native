@@ -22,6 +22,7 @@ class BackupArgs:
                  source_instance: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
+        :param pulumi.Input[str] backup_id: Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
@@ -44,6 +45,9 @@ class BackupArgs:
     @property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -136,6 +140,7 @@ class Backup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backup_id: Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.

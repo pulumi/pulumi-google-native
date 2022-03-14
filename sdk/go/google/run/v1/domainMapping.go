@@ -68,7 +68,8 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
 	ApiVersion *string `pulumi:"apiVersion"`
-	DryRun     *string `pulumi:"dryRun"`
+	// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+	DryRun *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "DomainMapping".
 	Kind     *string `pulumi:"kind"`
 	Location *string `pulumi:"location"`
@@ -85,7 +86,8 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	// The API version for this call such as "domains.cloudrun.com/v1".
 	ApiVersion pulumi.StringPtrInput
-	DryRun     pulumi.StringPtrInput
+	// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+	DryRun pulumi.StringPtrInput
 	// The kind of resource, in this case "DomainMapping".
 	Kind     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput

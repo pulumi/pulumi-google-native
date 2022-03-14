@@ -32,6 +32,7 @@ class EntryArgs:
                  user_specified_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Entry resource.
+        :param pulumi.Input[str] entry_id: Required. The id of the entry to create.
         :param pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs'] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
         :param pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs'] bigquery_table_spec: Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
@@ -82,6 +83,9 @@ class EntryArgs:
     @property
     @pulumi.getter(name="entryId")
     def entry_id(self) -> pulumi.Input[str]:
+        """
+        Required. The id of the entry to create.
+        """
         return pulumi.get(self, "entry_id")
 
     @entry_id.setter
@@ -257,6 +261,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']] bigquery_table_spec: Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
         :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
         :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+        :param pulumi.Input[str] entry_id: Required. The id of the entry to create.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.

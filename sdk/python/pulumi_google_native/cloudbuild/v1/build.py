@@ -34,6 +34,7 @@ class BuildInitArgs:
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Build resource.
+        :param pulumi.Input[str] project_id: Required. ID of the project.
         :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: The operations to be performed on the workspace.
         :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
@@ -82,6 +83,9 @@ class BuildInitArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[str]:
+        """
+        Required. ID of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -298,6 +302,7 @@ class Build(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
         :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
         :param pulumi.Input[pulumi.InputType['BuildOptionsArgs']] options: Special options for this build.
+        :param pulumi.Input[str] project_id: Required. ID of the project.
         :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 

@@ -25,8 +25,10 @@ class SubscriptionArgs:
                  topic: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subscription resource.
+        :param pulumi.Input[str] subscription_id: Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
         :param pulumi.Input['DeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+        :param pulumi.Input[str] skip_backlog: If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
         :param pulumi.Input[str] topic: The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         """
         pulumi.set(__self__, "subscription_id", subscription_id)
@@ -46,6 +48,9 @@ class SubscriptionArgs:
     @property
     @pulumi.getter(name="subscriptionId")
     def subscription_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
+        """
         return pulumi.get(self, "subscription_id")
 
     @subscription_id.setter
@@ -97,6 +102,9 @@ class SubscriptionArgs:
     @property
     @pulumi.getter(name="skipBacklog")
     def skip_backlog(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+        """
         return pulumi.get(self, "skip_backlog")
 
     @skip_backlog.setter
@@ -136,6 +144,8 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DeliveryConfigArgs']] delivery_config: The settings for this subscription's message delivery.
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+        :param pulumi.Input[str] skip_backlog: If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+        :param pulumi.Input[str] subscription_id: Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
         :param pulumi.Input[str] topic: The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         """
         ...

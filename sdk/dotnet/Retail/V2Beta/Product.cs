@@ -447,6 +447,9 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [Input("primaryProductId")]
         public Input<string>? PrimaryProductId { get; set; }
 
+        /// <summary>
+        /// Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
         [Input("productId", required: true)]
         public Input<string> ProductId { get; set; } = null!;
 

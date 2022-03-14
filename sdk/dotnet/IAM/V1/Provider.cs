@@ -172,6 +172,9 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+        /// </summary>
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
 

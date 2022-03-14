@@ -177,6 +177,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1
             set => _osPolicies = value;
         }
 
+        /// <summary>
+        /// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+        /// </summary>
         [Input("osPolicyAssignmentId", required: true)]
         public Input<string> OsPolicyAssignmentId { get; set; } = null!;
 

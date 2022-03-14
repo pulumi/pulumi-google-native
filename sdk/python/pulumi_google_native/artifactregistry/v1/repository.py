@@ -36,6 +36,7 @@ class RepositoryArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
         :param pulumi.Input['MavenRepositoryConfigArgs'] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        :param pulumi.Input[str] repository_id: The repository id to use for this repository.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
         if create_time is not None:
@@ -166,6 +167,9 @@ class RepositoryArgs:
     @property
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The repository id to use for this repository.
+        """
         return pulumi.get(self, "repository_id")
 
     @repository_id.setter
@@ -214,6 +218,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
         :param pulumi.Input[pulumi.InputType['MavenRepositoryConfigArgs']] maven_config: Maven repository config contains repository level configuration for the repositories of maven type.
         :param pulumi.Input[str] name: The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+        :param pulumi.Input[str] repository_id: The repository id to use for this repository.
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         """
         ...

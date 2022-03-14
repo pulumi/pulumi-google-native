@@ -79,10 +79,11 @@ type snapshotArgs struct {
 	Description *string `pulumi:"description"`
 	InstanceId  string  `pulumi:"instanceId"`
 	// Resource labels to represent user provided metadata.
-	Labels     map[string]string `pulumi:"labels"`
-	Location   *string           `pulumi:"location"`
-	Project    *string           `pulumi:"project"`
-	SnapshotId string            `pulumi:"snapshotId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	Project  *string           `pulumi:"project"`
+	// Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+	SnapshotId string `pulumi:"snapshotId"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
@@ -91,9 +92,10 @@ type SnapshotArgs struct {
 	Description pulumi.StringPtrInput
 	InstanceId  pulumi.StringInput
 	// Resource labels to represent user provided metadata.
-	Labels     pulumi.StringMapInput
-	Location   pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
+	// Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
 	SnapshotId pulumi.StringInput
 }
 

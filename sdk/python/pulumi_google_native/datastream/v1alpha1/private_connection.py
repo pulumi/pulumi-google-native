@@ -25,7 +25,9 @@ class PrivateConnectionArgs:
         """
         The set of arguments for constructing a PrivateConnection resource.
         :param pulumi.Input[str] display_name: Display name.
+        :param pulumi.Input[str] private_connection_id: Required. The private connectivity identifier.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['VpcPeeringConfigArgs'] vpc_peering_config: VPC Peering Config
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -56,6 +58,9 @@ class PrivateConnectionArgs:
     @property
     @pulumi.getter(name="privateConnectionId")
     def private_connection_id(self) -> pulumi.Input[str]:
+        """
+        Required. The private connectivity identifier.
+        """
         return pulumi.get(self, "private_connection_id")
 
     @private_connection_id.setter
@@ -95,6 +100,9 @@ class PrivateConnectionArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -135,6 +143,8 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+        :param pulumi.Input[str] private_connection_id: Required. The private connectivity identifier.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['VpcPeeringConfigArgs']] vpc_peering_config: VPC Peering Config
         """
         ...

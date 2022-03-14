@@ -169,6 +169,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 

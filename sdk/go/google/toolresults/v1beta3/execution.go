@@ -88,9 +88,10 @@ type executionArgs struct {
 	ExecutionId *string `pulumi:"executionId"`
 	HistoryId   string  `pulumi:"historyId"`
 	// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
-	Outcome   *Outcome `pulumi:"outcome"`
-	Project   *string  `pulumi:"project"`
-	RequestId *string  `pulumi:"requestId"`
+	Outcome *Outcome `pulumi:"outcome"`
+	Project *string  `pulumi:"project"`
+	// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+	RequestId *string `pulumi:"requestId"`
 	// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
 	Specification *Specification `pulumi:"specification"`
 	// The initial state is IN_PROGRESS. The only legal state transitions is from IN_PROGRESS to COMPLETE. A PRECONDITION_FAILED will be returned if an invalid transition is requested. The state can only be set to COMPLETE once. A FAILED_PRECONDITION will be returned if the state is set to COMPLETE multiple times. If the state is set to COMPLETE, all the in-progress steps within the execution will be set as COMPLETE. If the outcome of the step is not set, the outcome will be set to INCONCLUSIVE. - In response always set - In create/update request: optional
@@ -111,8 +112,9 @@ type ExecutionArgs struct {
 	ExecutionId pulumi.StringPtrInput
 	HistoryId   pulumi.StringInput
 	// Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
-	Outcome   OutcomePtrInput
-	Project   pulumi.StringPtrInput
+	Outcome OutcomePtrInput
+	Project pulumi.StringPtrInput
+	// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
 	RequestId pulumi.StringPtrInput
 	// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
 	Specification SpecificationPtrInput

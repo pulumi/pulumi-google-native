@@ -43,6 +43,8 @@ class NodeArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configurations for the TPU node.
+        :param pulumi.Input[str] node_id: The unqualified resource name.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['SchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
         :param pulumi.Input['ServiceAccountArgs'] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
@@ -198,6 +200,9 @@ class NodeArgs:
     @property
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unqualified resource name.
+        """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
@@ -216,6 +221,9 @@ class NodeArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Idempotent request UUID.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -295,6 +303,8 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configurations for the TPU node.
+        :param pulumi.Input[str] node_id: The unqualified resource name.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
         :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
         :param pulumi.Input[pulumi.InputType['ServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.

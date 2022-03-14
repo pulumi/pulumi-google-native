@@ -142,6 +142,9 @@ export interface SecretArgs {
      * Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
      */
     rotation?: pulumi.Input<inputs.secretmanager.v1.RotationArgs>;
+    /**
+     * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+     */
     secretId: pulumi.Input<string>;
     /**
      * Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

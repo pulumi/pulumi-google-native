@@ -32,6 +32,7 @@ class EntityTypeArgs:
         :param pulumi.Input['EntityTypeAutoExpansionMode'] auto_expansion_mode: Optional. Indicates whether the entity type can be automatically expanded.
         :param pulumi.Input[bool] enable_fuzzy_extraction: Optional. Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]] entities: Optional. The collection of entity entries associated with the entity type.
+        :param pulumi.Input[str] language_code: Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -114,6 +115,9 @@ class EntityTypeArgs:
     @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+        """
         return pulumi.get(self, "language_code")
 
     @language_code.setter
@@ -177,6 +181,7 @@ class EntityType(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_fuzzy_extraction: Optional. Enables fuzzy entity extraction during classification.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1EntityTypeEntityArgs']]]] entities: Optional. The collection of entity entries associated with the entity type.
         :param pulumi.Input['EntityTypeKind'] kind: Indicates the kind of entity type.
+        :param pulumi.Input[str] language_code: Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
         :param pulumi.Input[str] name: The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
         """
         ...

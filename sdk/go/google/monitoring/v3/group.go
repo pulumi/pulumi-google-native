@@ -73,8 +73,9 @@ type groupArgs struct {
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster *bool `pulumi:"isCluster"`
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
-	ParentName   *string `pulumi:"parentName"`
-	Project      *string `pulumi:"project"`
+	ParentName *string `pulumi:"parentName"`
+	Project    *string `pulumi:"project"`
+	// If true, validate this request but do not create the group.
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
@@ -87,8 +88,9 @@ type GroupArgs struct {
 	// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
 	IsCluster pulumi.BoolPtrInput
 	// The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
-	ParentName   pulumi.StringPtrInput
-	Project      pulumi.StringPtrInput
+	ParentName pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
+	// If true, validate this request but do not create the group.
 	ValidateOnly pulumi.StringPtrInput
 }
 

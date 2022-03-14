@@ -29,6 +29,7 @@ class ChangeArgs:
         """
         The set of arguments for constructing a Change resource.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] additions: Which ResourceRecordSets to add?
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
@@ -79,6 +80,9 @@ class ChangeArgs:
     @property
     @pulumi.getter(name="clientOperationId")
     def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
         return pulumi.get(self, "client_operation_id")
 
     @client_operation_id.setter
@@ -189,6 +193,7 @@ class Change(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] additions: Which ResourceRecordSets to add?
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.

@@ -138,6 +138,9 @@ export interface CryptoKeyArgs {
      * Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*&#47;locations/*&#47;ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
      */
     cryptoKeyBackend?: pulumi.Input<string>;
+    /**
+     * Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
     cryptoKeyId?: pulumi.Input<string>;
     /**
      * Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
@@ -166,6 +169,9 @@ export interface CryptoKeyArgs {
      * next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
     rotationPeriod?: pulumi.Input<string>;
+    /**
+     * If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+     */
     skipInitialVersionCreation?: pulumi.Input<string>;
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.

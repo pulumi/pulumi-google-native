@@ -50,8 +50,10 @@ class BucketAccessControlInitArgs:
         :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
         :param pulumi.Input['BucketAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
         if domain is not None:
@@ -201,6 +203,9 @@ class BucketAccessControlInitArgs:
     @property
     @pulumi.getter(name="provisionalUserProject")
     def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request if the target bucket is requester-pays bucket.
+        """
         return pulumi.get(self, "provisional_user_project")
 
     @provisional_user_project.setter
@@ -234,6 +239,9 @@ class BucketAccessControlInitArgs:
     @property
     @pulumi.getter(name="userProject")
     def user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
         return pulumi.get(self, "user_project")
 
     @user_project.setter
@@ -286,8 +294,10 @@ class BucketAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
         :param pulumi.Input[pulumi.InputType['BucketAccessControlProjectTeamArgs']] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         ...
     @overload

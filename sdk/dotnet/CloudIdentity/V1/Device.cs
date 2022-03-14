@@ -235,6 +235,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         [Input("assetTag")]
         public Input<string>? AssetTag { get; set; }
 
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+        /// </summary>
         [Input("customer")]
         public Input<string>? Customer { get; set; }
 

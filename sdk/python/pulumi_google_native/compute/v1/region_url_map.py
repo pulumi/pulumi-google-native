@@ -38,6 +38,7 @@ class RegionUrlMapArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HostRuleArgs']]] host_rules: The list of host rules to use against the URL.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['PathMatcherArgs']]] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[str] request_id: begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapTestArgs']]] tests: The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         pulumi.set(__self__, "region", region)
@@ -181,6 +182,9 @@ class RegionUrlMapArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -231,6 +235,7 @@ class RegionUrlMap(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuleArgs']]]] host_rules: The list of host rules to use against the URL.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]] path_matchers: The list of named PathMatchers to use against the URL.
+        :param pulumi.Input[str] request_id: begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]] tests: The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         """
         ...

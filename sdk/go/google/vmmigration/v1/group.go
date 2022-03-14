@@ -74,10 +74,12 @@ type groupArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name is a user defined name for this group which can be updated.
 	DisplayName *string `pulumi:"displayName"`
-	GroupId     string  `pulumi:"groupId"`
-	Location    *string `pulumi:"location"`
-	Project     *string `pulumi:"project"`
-	RequestId   *string `pulumi:"requestId"`
+	// Required. The group identifier.
+	GroupId  string  `pulumi:"groupId"`
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -86,10 +88,12 @@ type GroupArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name is a user defined name for this group which can be updated.
 	DisplayName pulumi.StringPtrInput
-	GroupId     pulumi.StringInput
-	Location    pulumi.StringPtrInput
-	Project     pulumi.StringPtrInput
-	RequestId   pulumi.StringPtrInput
+	// Required. The group identifier.
+	GroupId  pulumi.StringInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

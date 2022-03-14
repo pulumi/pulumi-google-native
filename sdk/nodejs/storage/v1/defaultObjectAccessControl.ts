@@ -203,6 +203,9 @@ export interface DefaultObjectAccessControlArgs {
      * The project team associated with the entity, if any.
      */
     projectTeam?: pulumi.Input<inputs.storage.v1.DefaultObjectAccessControlProjectTeamArgs>;
+    /**
+     * The project to be billed for this request if the target bucket is requester-pays bucket.
+     */
     provisionalUserProject?: pulumi.Input<string>;
     /**
      * The access permission for the entity.
@@ -212,5 +215,8 @@ export interface DefaultObjectAccessControlArgs {
      * The link to this access-control entry.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
     userProject?: pulumi.Input<string>;
 }

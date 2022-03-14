@@ -89,7 +89,13 @@ export interface DomainMappingArgs {
      * Relative name of the domain serving the application. Example: example.com.
      */
     id?: pulumi.Input<string>;
+    /**
+     * Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+     */
     noManagedCertificate?: pulumi.Input<string>;
+    /**
+     * Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+     */
     overrideStrategy?: pulumi.Input<string>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.

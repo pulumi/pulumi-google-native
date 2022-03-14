@@ -100,5 +100,8 @@ export interface SecretArgs {
      * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     replication: pulumi.Input<inputs.secretmanager.v1beta1.ReplicationArgs>;
+    /**
+     * Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+     */
     secretId: pulumi.Input<string>;
 }

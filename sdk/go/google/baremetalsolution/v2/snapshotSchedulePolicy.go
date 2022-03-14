@@ -79,8 +79,9 @@ type snapshotSchedulePolicyArgs struct {
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
 	// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
-	Schedules                []Schedule `pulumi:"schedules"`
-	SnapshotSchedulePolicyId string     `pulumi:"snapshotSchedulePolicyId"`
+	Schedules []Schedule `pulumi:"schedules"`
+	// Required. Snapshot policy ID
+	SnapshotSchedulePolicyId string `pulumi:"snapshotSchedulePolicyId"`
 	// The state of the snapshot schedule policy.
 	State *SnapshotSchedulePolicyStateEnum `pulumi:"state"`
 }
@@ -96,7 +97,8 @@ type SnapshotSchedulePolicyArgs struct {
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
-	Schedules                ScheduleArrayInput
+	Schedules ScheduleArrayInput
+	// Required. Snapshot policy ID
 	SnapshotSchedulePolicyId pulumi.StringInput
 	// The state of the snapshot schedule policy.
 	State SnapshotSchedulePolicyStateEnumPtrInput

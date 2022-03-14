@@ -80,6 +80,7 @@ func (CertificateMapEntryState) ElementType() reflect.Type {
 }
 
 type certificateMapEntryArgs struct {
+	// Required. A user-provided name of the certificate map entry.
 	CertificateMapEntryId string `pulumi:"certificateMapEntryId"`
 	CertificateMapId      string `pulumi:"certificateMapId"`
 	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
@@ -100,6 +101,7 @@ type certificateMapEntryArgs struct {
 
 // The set of arguments for constructing a CertificateMapEntry resource.
 type CertificateMapEntryArgs struct {
+	// Required. A user-provided name of the certificate map entry.
 	CertificateMapEntryId pulumi.StringInput
 	CertificateMapId      pulumi.StringInput
 	// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.

@@ -73,8 +73,9 @@ func (TransitionRouteGroupState) ElementType() reflect.Type {
 type transitionRouteGroupArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-	DisplayName  string  `pulumi:"displayName"`
-	FlowId       string  `pulumi:"flowId"`
+	DisplayName string `pulumi:"displayName"`
+	FlowId      string `pulumi:"flowId"`
+	// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     *string `pulumi:"location"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
@@ -88,8 +89,9 @@ type transitionRouteGroupArgs struct {
 type TransitionRouteGroupArgs struct {
 	AgentId pulumi.StringInput
 	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-	DisplayName  pulumi.StringInput
-	FlowId       pulumi.StringInput
+	DisplayName pulumi.StringInput
+	FlowId      pulumi.StringInput
+	// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.

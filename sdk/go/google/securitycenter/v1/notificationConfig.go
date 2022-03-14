@@ -72,6 +72,7 @@ func (NotificationConfigState) ElementType() reflect.Type {
 }
 
 type notificationConfigArgs struct {
+	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
 	ConfigId string `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
@@ -86,6 +87,7 @@ type notificationConfigArgs struct {
 
 // The set of arguments for constructing a NotificationConfig resource.
 type NotificationConfigArgs struct {
+	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
 	ConfigId pulumi.StringInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput

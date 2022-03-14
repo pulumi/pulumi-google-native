@@ -140,6 +140,12 @@ export interface WorkerPoolArgs {
      */
     privatePoolV1Config?: pulumi.Input<inputs.cloudbuild.v1.PrivatePoolV1ConfigArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * If set, validate the request and preview the response, but do not actually post it.
+     */
     validateOnly?: pulumi.Input<string>;
+    /**
+     * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+     */
     workerPoolId: pulumi.Input<string>;
 }

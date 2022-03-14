@@ -82,11 +82,13 @@ type privateConnectionArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Labels.
-	Labels              map[string]string `pulumi:"labels"`
-	Location            *string           `pulumi:"location"`
-	PrivateConnectionId string            `pulumi:"privateConnectionId"`
-	Project             *string           `pulumi:"project"`
-	RequestId           *string           `pulumi:"requestId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	// Required. The private connectivity identifier.
+	PrivateConnectionId string  `pulumi:"privateConnectionId"`
+	Project             *string `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// VPC Peering Config
 	VpcPeeringConfig *VpcPeeringConfig `pulumi:"vpcPeeringConfig"`
 }
@@ -96,11 +98,13 @@ type PrivateConnectionArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Labels.
-	Labels              pulumi.StringMapInput
-	Location            pulumi.StringPtrInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	// Required. The private connectivity identifier.
 	PrivateConnectionId pulumi.StringInput
 	Project             pulumi.StringPtrInput
-	RequestId           pulumi.StringPtrInput
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 	// VPC Peering Config
 	VpcPeeringConfig VpcPeeringConfigPtrInput
 }

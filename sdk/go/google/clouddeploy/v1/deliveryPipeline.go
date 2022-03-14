@@ -81,8 +81,9 @@ func (DeliveryPipelineState) ElementType() reflect.Type {
 
 type deliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-	Annotations        map[string]string `pulumi:"annotations"`
-	DeliveryPipelineId string            `pulumi:"deliveryPipelineId"`
+	Annotations map[string]string `pulumi:"annotations"`
+	// Required. ID of the `DeliveryPipeline`.
+	DeliveryPipelineId string `pulumi:"deliveryPipelineId"`
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -91,18 +92,21 @@ type deliveryPipelineArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline *SerialPipeline `pulumi:"serialPipeline"`
-	ValidateOnly   *string         `pulumi:"validateOnly"`
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a DeliveryPipeline resource.
 type DeliveryPipelineArgs struct {
 	// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-	Annotations        pulumi.StringMapInput
+	Annotations pulumi.StringMapInput
+	// Required. ID of the `DeliveryPipeline`.
 	DeliveryPipelineId pulumi.StringInput
 	// Description of the `DeliveryPipeline`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
@@ -112,12 +116,14 @@ type DeliveryPipelineArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 	SerialPipeline SerialPipelinePtrInput
-	ValidateOnly   pulumi.StringPtrInput
+	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
+	ValidateOnly pulumi.StringPtrInput
 }
 
 func (DeliveryPipelineArgs) ElementType() reflect.Type {

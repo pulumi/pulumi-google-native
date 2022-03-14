@@ -118,6 +118,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// If true, validate this request but do not create the group.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

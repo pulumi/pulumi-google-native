@@ -24,6 +24,7 @@ class WorkerPoolArgs:
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
+        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
@@ -46,6 +47,9 @@ class WorkerPoolArgs:
     @property
     @pulumi.getter(name="workerPoolId")
     def worker_pool_id(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        """
         return pulumi.get(self, "worker_pool_id")
 
     @worker_pool_id.setter
@@ -142,6 +146,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
+        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         ...
     @overload

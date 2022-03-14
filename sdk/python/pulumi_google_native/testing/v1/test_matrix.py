@@ -33,6 +33,7 @@ class TestMatrixArgs:
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
+        :param pulumi.Input[str] request_id: A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
         """
         pulumi.set(__self__, "environment_matrix", environment_matrix)
         pulumi.set(__self__, "result_storage", result_storage)
@@ -135,6 +136,9 @@ class TestMatrixArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -169,6 +173,7 @@ class TestMatrix(pulumi.CustomResource):
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
+        :param pulumi.Input[str] request_id: A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
         :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Where the results for the matrix are written.
         :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: How to run the test.
         """

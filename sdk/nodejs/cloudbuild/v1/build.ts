@@ -259,6 +259,9 @@ export interface BuildArgs {
      */
     options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. ID of the project.
+     */
     projectId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

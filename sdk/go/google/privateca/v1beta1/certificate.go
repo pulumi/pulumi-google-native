@@ -87,8 +87,9 @@ func (CertificateState) ElementType() reflect.Type {
 }
 
 type certificateArgs struct {
-	CertificateAuthorityId string  `pulumi:"certificateAuthorityId"`
-	CertificateId          *string `pulumi:"certificateId"`
+	CertificateAuthorityId string `pulumi:"certificateAuthorityId"`
+	// Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+	CertificateId *string `pulumi:"certificateId"`
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config *CertificateConfig `pulumi:"config"`
 	// Optional. Labels with user-defined metadata.
@@ -97,15 +98,17 @@ type certificateArgs struct {
 	Lifetime string  `pulumi:"lifetime"`
 	Location *string `pulumi:"location"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr    *string `pulumi:"pemCsr"`
-	Project   *string `pulumi:"project"`
+	PemCsr  *string `pulumi:"pemCsr"`
+	Project *string `pulumi:"project"`
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a Certificate resource.
 type CertificateArgs struct {
 	CertificateAuthorityId pulumi.StringInput
-	CertificateId          pulumi.StringPtrInput
+	// Optional. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. This field is required when using a CertificateAuthority in the Enterprise CertificateAuthority.Tier, but is optional and its value is ignored otherwise.
+	CertificateId pulumi.StringPtrInput
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config CertificateConfigPtrInput
 	// Optional. Labels with user-defined metadata.
@@ -114,8 +117,9 @@ type CertificateArgs struct {
 	Lifetime pulumi.StringInput
 	Location pulumi.StringPtrInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr    pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	PemCsr  pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 }
 

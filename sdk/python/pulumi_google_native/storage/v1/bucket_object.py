@@ -73,6 +73,10 @@ class BucketObjectArgs:
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
         :param pulumi.Input[str] id: The ID of the object, including the bucket name, object name, and generation number.
+        :param pulumi.Input[str] if_generation_match: Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+        :param pulumi.Input[str] if_generation_not_match: Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+        :param pulumi.Input[str] if_metageneration_match: Makes the operation conditional on whether the object's current metageneration matches the given value.
+        :param pulumi.Input[str] if_metageneration_not_match: Makes the operation conditional on whether the object's current metageneration does not match the given value.
         :param pulumi.Input[str] kind: The kind of item this is. For objects, this is always storage#object.
         :param pulumi.Input[str] kms_key_name: Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
         :param pulumi.Input[str] md5_hash: MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
@@ -81,6 +85,9 @@ class BucketObjectArgs:
         :param pulumi.Input[str] metageneration: The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
         :param pulumi.Input[str] name: The name of the object. Required if not specified by URL parameter.
         :param pulumi.Input['BucketObjectOwnerArgs'] owner: The owner of the object. This will always be the uploader of the object.
+        :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this object.
+        :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
@@ -90,6 +97,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] time_deleted: The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         :param pulumi.Input[str] time_storage_class_updated: The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
         :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format.
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
         if acl is not None:
@@ -356,6 +364,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="ifGenerationMatch")
     def if_generation_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+        """
         return pulumi.get(self, "if_generation_match")
 
     @if_generation_match.setter
@@ -365,6 +376,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="ifGenerationNotMatch")
     def if_generation_not_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+        """
         return pulumi.get(self, "if_generation_not_match")
 
     @if_generation_not_match.setter
@@ -374,6 +388,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="ifMetagenerationMatch")
     def if_metageneration_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Makes the operation conditional on whether the object's current metageneration matches the given value.
+        """
         return pulumi.get(self, "if_metageneration_match")
 
     @if_metageneration_match.setter
@@ -383,6 +400,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="ifMetagenerationNotMatch")
     def if_metageneration_not_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        Makes the operation conditional on whether the object's current metageneration does not match the given value.
+        """
         return pulumi.get(self, "if_metageneration_not_match")
 
     @if_metageneration_not_match.setter
@@ -488,6 +508,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="predefinedAcl")
     def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Apply a predefined set of access controls to this object.
+        """
         return pulumi.get(self, "predefined_acl")
 
     @predefined_acl.setter
@@ -497,6 +520,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter
     def projection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        """
         return pulumi.get(self, "projection")
 
     @projection.setter
@@ -506,6 +532,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="provisionalUserProject")
     def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request if the target bucket is requester-pays bucket.
+        """
         return pulumi.get(self, "provisional_user_project")
 
     @provisional_user_project.setter
@@ -632,6 +661,9 @@ class BucketObjectArgs:
     @property
     @pulumi.getter(name="userProject")
     def user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
         return pulumi.get(self, "user_project")
 
     @user_project.setter
@@ -706,6 +738,10 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
         :param pulumi.Input[str] id: The ID of the object, including the bucket name, object name, and generation number.
+        :param pulumi.Input[str] if_generation_match: Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+        :param pulumi.Input[str] if_generation_not_match: Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+        :param pulumi.Input[str] if_metageneration_match: Makes the operation conditional on whether the object's current metageneration matches the given value.
+        :param pulumi.Input[str] if_metageneration_not_match: Makes the operation conditional on whether the object's current metageneration does not match the given value.
         :param pulumi.Input[str] kind: The kind of item this is. For objects, this is always storage#object.
         :param pulumi.Input[str] kms_key_name: Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
         :param pulumi.Input[str] md5_hash: MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
@@ -714,6 +750,9 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] metageneration: The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
         :param pulumi.Input[str] name: The name of the object. Required if not specified by URL parameter.
         :param pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']] owner: The owner of the object. This will always be the uploader of the object.
+        :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this object.
+        :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
@@ -723,6 +762,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] time_deleted: The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
         :param pulumi.Input[str] time_storage_class_updated: The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
         :param pulumi.Input[str] updated: The modification time of the object metadata in RFC 3339 format.
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         ...
     @overload

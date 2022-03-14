@@ -144,6 +144,9 @@ export interface EntityTypeArgs {
      * Indicates the kind of entity type.
      */
     kind: pulumi.Input<enums.dialogflow.v3.EntityTypeKind>;
+    /**
+     * The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+     */
     languageCode?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**

@@ -107,6 +107,9 @@ export interface ConnectionArgs {
      * Cloud SQL properties.
      */
     cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlPropertiesArgs>;
+    /**
+     * Optional. Connection id that should be assigned to the created connection.
+     */
     connectionId?: pulumi.Input<string>;
     /**
      * User provided description.

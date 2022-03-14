@@ -89,8 +89,9 @@ type clusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The Google Cloud Platform project ID that the cluster belongs to.
-	Project   *string `pulumi:"project"`
-	Region    string  `pulumi:"region"`
+	Project *string `pulumi:"project"`
+	Region  string  `pulumi:"region"`
+	// Optional. A unique id used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 }
 
@@ -103,8 +104,9 @@ type ClusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput
 	// The Google Cloud Platform project ID that the cluster belongs to.
-	Project   pulumi.StringPtrInput
-	Region    pulumi.StringInput
+	Project pulumi.StringPtrInput
+	Region  pulumi.StringInput
+	// Optional. A unique id used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#google.cloud.dataproc.v1beta2.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 }
 

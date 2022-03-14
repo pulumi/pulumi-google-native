@@ -25,6 +25,7 @@ class EnvironmentArgs:
                  vm_image: Optional[pulumi.Input['VmImageArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
+        :param pulumi.Input[str] environment_id: Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
         :param pulumi.Input['ContainerImageArgs'] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
@@ -50,6 +51,9 @@ class EnvironmentArgs:
     @property
     @pulumi.getter(name="environmentId")
     def environment_id(self) -> pulumi.Input[str]:
+        """
+        Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
+        """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
@@ -158,6 +162,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerImageArgs']] container_image: Use a container image to start the notebook instance.
         :param pulumi.Input[str] description: A brief description of this environment.
         :param pulumi.Input[str] display_name: Display name of this environment for the UI.
+        :param pulumi.Input[str] environment_id: Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
         :param pulumi.Input[pulumi.InputType['VmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """

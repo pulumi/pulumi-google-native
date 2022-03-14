@@ -103,9 +103,10 @@ type patchDeploymentArgs struct {
 	// Schedule a one-time execution.
 	OneTimeSchedule OneTimeSchedule `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
-	PatchConfig       *PatchConfig `pulumi:"patchConfig"`
-	PatchDeploymentId string       `pulumi:"patchDeploymentId"`
-	Project           *string      `pulumi:"project"`
+	PatchConfig *PatchConfig `pulumi:"patchConfig"`
+	// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+	PatchDeploymentId string  `pulumi:"patchDeploymentId"`
+	Project           *string `pulumi:"project"`
 	// Schedule recurring executions.
 	RecurringSchedule RecurringSchedule `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
@@ -125,7 +126,8 @@ type PatchDeploymentArgs struct {
 	// Schedule a one-time execution.
 	OneTimeSchedule OneTimeScheduleInput
 	// Optional. Patch configuration that is applied.
-	PatchConfig       PatchConfigPtrInput
+	PatchConfig PatchConfigPtrInput
+	// Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
 	PatchDeploymentId pulumi.StringInput
 	Project           pulumi.StringPtrInput
 	// Schedule recurring executions.

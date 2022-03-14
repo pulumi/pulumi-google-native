@@ -337,6 +337,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
 
+        /// <summary>
+        /// Required. User-defined unique ID of this instance.
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 

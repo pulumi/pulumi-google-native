@@ -97,7 +97,8 @@ type documentArgs struct {
 	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
-	EnableAutoReload        *bool   `pulumi:"enableAutoReload"`
+	EnableAutoReload *bool `pulumi:"enableAutoReload"`
+	// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
 	ImportGcsCustomMetadata *string `pulumi:"importGcsCustomMetadata"`
 	KnowledgeBaseId         string  `pulumi:"knowledgeBaseId"`
 	// The knowledge type of document content.
@@ -123,7 +124,8 @@ type DocumentArgs struct {
 	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringInput
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
-	EnableAutoReload        pulumi.BoolPtrInput
+	EnableAutoReload pulumi.BoolPtrInput
+	// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
 	ImportGcsCustomMetadata pulumi.StringPtrInput
 	KnowledgeBaseId         pulumi.StringInput
 	// The knowledge type of document content.

@@ -319,14 +319,26 @@ export interface BucketArgs {
      * The owner of the bucket. This is always the project team's owner group.
      */
     owner?: pulumi.Input<inputs.storage.v1.BucketOwnerArgs>;
+    /**
+     * Apply a predefined set of access controls to this bucket.
+     */
     predefinedAcl?: pulumi.Input<string>;
+    /**
+     * Apply a predefined set of default object access controls to this bucket.
+     */
     predefinedDefaultObjectAcl?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * The project number of the project the bucket belongs to.
      */
     projectNumber?: pulumi.Input<string>;
+    /**
+     * Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+     */
     projection?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request if the target bucket is requester-pays bucket.
+     */
     provisionalUserProject?: pulumi.Input<string>;
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
@@ -356,6 +368,9 @@ export interface BucketArgs {
      * The modification time of the bucket in RFC 3339 format.
      */
     updated?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request.
+     */
     userProject?: pulumi.Input<string>;
     /**
      * The bucket's versioning configuration.

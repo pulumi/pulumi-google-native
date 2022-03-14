@@ -45,6 +45,7 @@ class EntityArgs:
         :param pulumi.Input[str] description: Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
         :param pulumi.Input[str] display_name: Optional. Display name must be shorter than or equal to 256 characters.
         :param pulumi.Input[str] etag: Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "asset", asset)
         pulumi.set(__self__, "data_path", data_path)
@@ -233,6 +234,9 @@ class EntityArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -288,6 +292,7 @@ class Entity(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1SchemaArgs']] schema: The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
         :param pulumi.Input['EntitySystem'] system: Immutable. Identifies the storage system of the entity data.
         :param pulumi.Input['EntityType'] type: Immutable. The type of entity.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload

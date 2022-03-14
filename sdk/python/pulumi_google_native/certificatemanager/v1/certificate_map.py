@@ -22,6 +22,7 @@ class CertificateMapArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateMap resource.
+        :param pulumi.Input[str] certificate_map_id: Required. A user-provided name of the certificate map.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
@@ -41,6 +42,9 @@ class CertificateMapArgs:
     @property
     @pulumi.getter(name="certificateMapId")
     def certificate_map_id(self) -> pulumi.Input[str]:
+        """
+        Required. A user-provided name of the certificate map.
+        """
         return pulumi.get(self, "certificate_map_id")
 
     @certificate_map_id.setter
@@ -119,6 +123,7 @@ class CertificateMap(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_map_id: Required. A user-provided name of the certificate map.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.

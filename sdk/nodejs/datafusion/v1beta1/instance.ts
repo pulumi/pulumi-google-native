@@ -266,6 +266,9 @@ export interface InstanceArgs {
      * Option to enable Stackdriver Monitoring.
      */
     enableStackdriverMonitoring?: pulumi.Input<boolean>;
+    /**
+     * Required. The name of the instance to create.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.

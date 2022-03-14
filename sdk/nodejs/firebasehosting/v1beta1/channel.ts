@@ -121,6 +121,9 @@ export class Channel extends pulumi.CustomResource {
  * The set of arguments for constructing a Channel resource.
  */
 export interface ChannelArgs {
+    /**
+     * Required. Immutable. A unique ID within the site that identifies the channel.
+     */
     channelId: pulumi.Input<string>;
     /**
      * The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.

@@ -92,7 +92,8 @@ type instanceArgs struct {
 	Etag *string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares []FileShareConfig `pulumi:"fileShares"`
-	InstanceId string            `pulumi:"instanceId"`
+	// Required. The name of the instance to create. The name must be unique for the specified project and location.
+	InstanceId string `pulumi:"instanceId"`
 	// KMS key name used for data encryption.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
@@ -113,6 +114,7 @@ type InstanceArgs struct {
 	Etag pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares FileShareConfigArrayInput
+	// Required. The name of the instance to create. The name must be unique for the specified project and location.
 	InstanceId pulumi.StringInput
 	// KMS key name used for data encryption.
 	KmsKeyName pulumi.StringPtrInput

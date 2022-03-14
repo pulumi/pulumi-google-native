@@ -132,6 +132,9 @@ export interface GuestPolicyArgs {
      * The etag for this guest policy. If this is provided on update, it must match the server's etag.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     */
     guestPolicyId: pulumi.Input<string>;
     /**
      * Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.

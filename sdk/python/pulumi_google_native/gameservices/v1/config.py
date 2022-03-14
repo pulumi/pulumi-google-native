@@ -26,6 +26,7 @@ class ConfigArgs:
                  scaling_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Config resource.
+        :param pulumi.Input[str] config_id: Required. The ID of the game server config resource to create.
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Sequence[pulumi.Input['FleetConfigArgs']]] fleet_configs: FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a key-value pair.
@@ -52,6 +53,9 @@ class ConfigArgs:
     @property
     @pulumi.getter(name="configId")
     def config_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the game server config resource to create.
+        """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
@@ -166,6 +170,7 @@ class Config(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] config_id: Required. The ID of the game server config resource to create.
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]] fleet_configs: FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a key-value pair.

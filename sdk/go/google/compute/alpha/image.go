@@ -136,7 +136,8 @@ type imageArgs struct {
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-	Family      *string `pulumi:"family"`
+	Family *string `pulumi:"family"`
+	// Force image creation if true.
 	ForceCreate *string `pulumi:"forceCreate"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
@@ -154,8 +155,9 @@ type imageArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The parameters of the raw disk image.
-	RawDisk   *ImageRawDisk `pulumi:"rawDisk"`
-	RequestId *string       `pulumi:"requestId"`
+	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
 	RolloutOverride *RolloutPolicy `pulumi:"rolloutOverride"`
 	// Set the secure boot keys of shielded instance.
@@ -193,7 +195,8 @@ type ImageArgs struct {
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.StringPtrInput
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-	Family      pulumi.StringPtrInput
+	Family pulumi.StringPtrInput
+	// Force image creation if true.
 	ForceCreate pulumi.StringPtrInput
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures GuestOsFeatureArrayInput
@@ -211,7 +214,8 @@ type ImageArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The parameters of the raw disk image.
-	RawDisk   ImageRawDiskPtrInput
+	RawDisk ImageRawDiskPtrInput
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible. The rollout policy for this image is read-only, except for allowlisted users. This field might not be configured. To view the latest non-deprecated image in a specific zone, use the imageFamilyViews.get method.
 	RolloutOverride RolloutPolicyPtrInput

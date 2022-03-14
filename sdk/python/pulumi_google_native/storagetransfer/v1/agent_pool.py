@@ -22,6 +22,7 @@ class AgentPoolArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AgentPool resource.
+        :param pulumi.Input[str] agent_pool_id: Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
         :param pulumi.Input['BandwidthLimitArgs'] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
         :param pulumi.Input[str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[str] name: Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
@@ -39,6 +40,9 @@ class AgentPoolArgs:
     @property
     @pulumi.getter(name="agentPoolId")
     def agent_pool_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
+        """
         return pulumi.get(self, "agent_pool_id")
 
     @agent_pool_id.setter
@@ -107,6 +111,7 @@ class AgentPool(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] agent_pool_id: Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
         :param pulumi.Input[pulumi.InputType['BandwidthLimitArgs']] bandwidth_limit: Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
         :param pulumi.Input[str] display_name: Specifies the client-specified AgentPool description.
         :param pulumi.Input[str] name: Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`

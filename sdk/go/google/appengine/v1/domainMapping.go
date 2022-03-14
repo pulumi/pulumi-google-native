@@ -68,7 +68,8 @@ func (DomainMappingState) ElementType() reflect.Type {
 type domainMappingArgs struct {
 	AppId string `pulumi:"appId"`
 	// Relative name of the domain serving the application. Example: example.com.
-	Id               *string `pulumi:"id"`
+	Id *string `pulumi:"id"`
+	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings *SslSettings `pulumi:"sslSettings"`
@@ -78,7 +79,8 @@ type domainMappingArgs struct {
 type DomainMappingArgs struct {
 	AppId pulumi.StringInput
 	// Relative name of the domain serving the application. Example: example.com.
-	Id               pulumi.StringPtrInput
+	Id pulumi.StringPtrInput
+	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy pulumi.StringPtrInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
 	SslSettings SslSettingsPtrInput

@@ -103,6 +103,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("studyConfig", required: true)]
         public Input<Inputs.GoogleCloudMlV1__StudyConfigArgs> StudyConfig { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The ID to use for the study, which will become the final component of the study's resource name.
+        /// </summary>
         [Input("studyId", required: true)]
         public Input<string> StudyId { get; set; } = null!;
 

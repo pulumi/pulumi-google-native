@@ -98,7 +98,8 @@ type serviceArgs struct {
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio *MeshIstio `pulumi:"meshIstio"`
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name      *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
 	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry *Telemetry `pulumi:"telemetry"`
@@ -125,7 +126,8 @@ type ServiceArgs struct {
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioPtrInput
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name      pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Optional. The Service id to use for this Service. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
 	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryPtrInput

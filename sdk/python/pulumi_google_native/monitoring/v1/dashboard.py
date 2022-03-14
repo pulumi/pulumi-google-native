@@ -36,6 +36,7 @@ class DashboardArgs:
         :param pulumi.Input['MosaicLayoutArgs'] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input['RowLayoutArgs'] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
+        :param pulumi.Input[str] validate_only: If set, validate the request and preview the review, but do not actually save it.
         """
         pulumi.set(__self__, "display_name", display_name)
         if column_layout is not None:
@@ -165,6 +166,9 @@ class DashboardArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set, validate the request and preview the review, but do not actually save it.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -201,6 +205,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MosaicLayoutArgs']] mosaic_layout: The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input[pulumi.InputType['RowLayoutArgs']] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
+        :param pulumi.Input[str] validate_only: If set, validate the request and preview the review, but do not actually save it.
         """
         ...
     @overload

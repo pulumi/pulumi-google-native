@@ -317,9 +317,21 @@ export interface BucketObjectArgs {
      * The ID of the object, including the bucket name, object name, and generation number.
      */
     id?: pulumi.Input<string>;
+    /**
+     * Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+     */
     ifGenerationMatch?: pulumi.Input<string>;
+    /**
+     * Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+     */
     ifGenerationNotMatch?: pulumi.Input<string>;
+    /**
+     * Makes the operation conditional on whether the object's current metageneration matches the given value.
+     */
     ifMetagenerationMatch?: pulumi.Input<string>;
+    /**
+     * Makes the operation conditional on whether the object's current metageneration does not match the given value.
+     */
     ifMetagenerationNotMatch?: pulumi.Input<string>;
     /**
      * The kind of item this is. For objects, this is always storage#object.
@@ -353,8 +365,17 @@ export interface BucketObjectArgs {
      * The owner of the object. This will always be the uploader of the object.
      */
     owner?: pulumi.Input<inputs.storage.v1.BucketObjectOwnerArgs>;
+    /**
+     * Apply a predefined set of access controls to this object.
+     */
     predefinedAcl?: pulumi.Input<string>;
+    /**
+     * Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+     */
     projection?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request if the target bucket is requester-pays bucket.
+     */
     provisionalUserProject?: pulumi.Input<string>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
@@ -393,5 +414,8 @@ export interface BucketObjectArgs {
      * The modification time of the object metadata in RFC 3339 format.
      */
     updated?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
     userProject?: pulumi.Input<string>;
 }

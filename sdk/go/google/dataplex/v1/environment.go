@@ -93,8 +93,9 @@ type environmentArgs struct {
 	// Optional. Description of the environment.
 	Description *string `pulumi:"description"`
 	// Optional. User friendly display name.
-	DisplayName   *string `pulumi:"displayName"`
-	EnvironmentId string  `pulumi:"environmentId"`
+	DisplayName *string `pulumi:"displayName"`
+	// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+	EnvironmentId string `pulumi:"environmentId"`
 	// Infrastructure specification for the Environment.
 	InfrastructureSpec GoogleCloudDataplexV1EnvironmentInfrastructureSpec `pulumi:"infrastructureSpec"`
 	// Optional. User defined labels for the environment.
@@ -103,8 +104,9 @@ type environmentArgs struct {
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
 	// Optional. Configuration for sessions created for this environment.
-	SessionSpec  *GoogleCloudDataplexV1EnvironmentSessionSpec `pulumi:"sessionSpec"`
-	ValidateOnly *string                                      `pulumi:"validateOnly"`
+	SessionSpec *GoogleCloudDataplexV1EnvironmentSessionSpec `pulumi:"sessionSpec"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -112,7 +114,8 @@ type EnvironmentArgs struct {
 	// Optional. Description of the environment.
 	Description pulumi.StringPtrInput
 	// Optional. User friendly display name.
-	DisplayName   pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
 	EnvironmentId pulumi.StringInput
 	// Infrastructure specification for the Environment.
 	InfrastructureSpec GoogleCloudDataplexV1EnvironmentInfrastructureSpecInput
@@ -122,7 +125,8 @@ type EnvironmentArgs struct {
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// Optional. Configuration for sessions created for this environment.
-	SessionSpec  GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput
+	SessionSpec GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 }
 

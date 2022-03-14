@@ -25,6 +25,7 @@ class HistoryArgs:
         :param pulumi.Input[str] display_name: A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
         :param pulumi.Input[str] history_id: A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
         :param pulumi.Input[str] name: A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+        :param pulumi.Input[str] request_id: A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
         :param pulumi.Input['HistoryTestPlatform'] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         if display_name is not None:
@@ -88,6 +89,9 @@ class HistoryArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -129,6 +133,7 @@ class History(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
         :param pulumi.Input[str] history_id: A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
         :param pulumi.Input[str] name: A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+        :param pulumi.Input[str] request_id: A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
         :param pulumi.Input['HistoryTestPlatform'] test_platform: The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
         """
         ...

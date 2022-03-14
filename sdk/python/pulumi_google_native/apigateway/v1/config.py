@@ -27,6 +27,7 @@ class ConfigArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Config resource.
+        :param pulumi.Input[str] api_config_id: Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[str] gateway_service_account: Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
         :param pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigGrpcServiceDefinitionArgs']]] grpc_services: Optional. gRPC service definition files. If specified, openapi_documents must not be included.
@@ -56,6 +57,9 @@ class ConfigArgs:
     @property
     @pulumi.getter(name="apiConfigId")
     def api_config_id(self) -> pulumi.Input[str]:
+        """
+        Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+        """
         return pulumi.get(self, "api_config_id")
 
     @api_config_id.setter
@@ -184,6 +188,7 @@ class Config(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_config_id: Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[str] gateway_service_account: Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApigatewayApiConfigGrpcServiceDefinitionArgs']]]] grpc_services: Optional. gRPC service definition files. If specified, openapi_documents must not be included.

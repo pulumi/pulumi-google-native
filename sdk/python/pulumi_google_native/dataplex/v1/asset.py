@@ -29,11 +29,13 @@ class AssetArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Asset resource.
+        :param pulumi.Input[str] asset_id: Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
         :param pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecArgs'] resource_spec: Specification of the resource that is referenced by this asset.
         :param pulumi.Input[str] description: Optional. Description of the asset.
         :param pulumi.Input['GoogleCloudDataplexV1AssetDiscoverySpecArgs'] discovery_spec: Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "asset_id", asset_id)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -58,6 +60,9 @@ class AssetArgs:
     @property
     @pulumi.getter(name="assetId")
     def asset_id(self) -> pulumi.Input[str]:
+        """
+        Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
+        """
         return pulumi.get(self, "asset_id")
 
     @asset_id.setter
@@ -154,6 +159,9 @@ class AssetArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -193,11 +201,13 @@ class Asset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] asset_id: Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
         :param pulumi.Input[str] description: Optional. Description of the asset.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetDiscoverySpecArgs']] discovery_spec: Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the asset.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1AssetResourceSpecArgs']] resource_spec: Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload

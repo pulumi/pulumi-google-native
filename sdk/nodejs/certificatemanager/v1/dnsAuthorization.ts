@@ -113,6 +113,9 @@ export interface DnsAuthorizationArgs {
      * One or more paragraphs of text description of a DnsAuthorization.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Required. A user-provided name of the dns authorization.
+     */
     dnsAuthorizationId: pulumi.Input<string>;
     /**
      * Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.

@@ -109,6 +109,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*.
+        /// </summary>
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 

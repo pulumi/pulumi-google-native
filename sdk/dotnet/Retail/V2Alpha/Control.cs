@@ -100,6 +100,9 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        /// </summary>
         [Input("controlId", required: true)]
         public Input<string> ControlId { get; set; } = null!;
 

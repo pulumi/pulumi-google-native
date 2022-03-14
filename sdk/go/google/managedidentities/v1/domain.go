@@ -101,7 +101,8 @@ type domainArgs struct {
 	AuditLogsEnabled *bool `pulumi:"auditLogsEnabled"`
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
-	DomainName         string   `pulumi:"domainName"`
+	// Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+	DomainName string `pulumi:"domainName"`
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -121,7 +122,8 @@ type DomainArgs struct {
 	AuditLogsEnabled pulumi.BoolPtrInput
 	// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
 	AuthorizedNetworks pulumi.StringArrayInput
-	DomainName         pulumi.StringInput
+	// Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+	DomainName pulumi.StringInput
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels pulumi.StringMapInput
 	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.

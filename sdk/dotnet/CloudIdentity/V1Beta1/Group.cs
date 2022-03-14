@@ -163,6 +163,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Input("groupKey", required: true)]
         public Input<Inputs.EntityKeyArgs> GroupKey { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The initial configuration option for the `Group`.
+        /// </summary>
         [Input("initialGroupConfig", required: true)]
         public Input<string> InitialGroupConfig { get; set; } = null!;
 

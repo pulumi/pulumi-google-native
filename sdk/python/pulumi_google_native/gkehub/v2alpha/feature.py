@@ -26,6 +26,7 @@ class FeatureArgs:
         The set of arguments for constructing a Feature resource.
         :param pulumi.Input['FeatureConfigRefArgs'] feature_config_ref: Reference information for a FeatureConfig applied on the MembershipFeature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this MembershipFeature.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['ResourceStateArgs'] resource_state: Lifecycle information of the resource itself.
         """
         pulumi.set(__self__, "membership_id", membership_id)
@@ -96,6 +97,9 @@ class FeatureArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Idempotent request UUID.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -136,6 +140,7 @@ class Feature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['FeatureConfigRefArgs']] feature_config_ref: Reference information for a FeatureConfig applied on the MembershipFeature.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this MembershipFeature.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[pulumi.InputType['ResourceStateArgs']] resource_state: Lifecycle information of the resource itself.
         """
         ...

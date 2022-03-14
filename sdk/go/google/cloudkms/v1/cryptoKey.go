@@ -85,7 +85,8 @@ func (CryptoKeyState) ElementType() reflect.Type {
 type cryptoKeyArgs struct {
 	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
 	CryptoKeyBackend *string `pulumi:"cryptoKeyBackend"`
-	CryptoKeyId      *string `pulumi:"cryptoKeyId"`
+	// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	CryptoKeyId *string `pulumi:"cryptoKeyId"`
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration *string `pulumi:"destroyScheduledDuration"`
 	// Immutable. Whether this key may contain imported versions only.
@@ -100,7 +101,8 @@ type cryptoKeyArgs struct {
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose *CryptoKeyPurpose `pulumi:"purpose"`
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-	RotationPeriod             *string `pulumi:"rotationPeriod"`
+	RotationPeriod *string `pulumi:"rotationPeriod"`
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
 	SkipInitialVersionCreation *string `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
@@ -110,7 +112,8 @@ type cryptoKeyArgs struct {
 type CryptoKeyArgs struct {
 	// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
 	CryptoKeyBackend pulumi.StringPtrInput
-	CryptoKeyId      pulumi.StringPtrInput
+	// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	CryptoKeyId pulumi.StringPtrInput
 	// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
 	DestroyScheduledDuration pulumi.StringPtrInput
 	// Immutable. Whether this key may contain imported versions only.
@@ -125,7 +128,8 @@ type CryptoKeyArgs struct {
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose CryptoKeyPurposePtrInput
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-	RotationPeriod             pulumi.StringPtrInput
+	RotationPeriod pulumi.StringPtrInput
+	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
 	SkipInitialVersionCreation pulumi.StringPtrInput
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput

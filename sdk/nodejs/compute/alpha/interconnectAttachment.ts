@@ -350,6 +350,9 @@ export interface InterconnectAttachmentArgs {
     partnerMetadata?: pulumi.Input<inputs.compute.alpha.InterconnectAttachmentPartnerMetadataArgs>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
     requestId?: pulumi.Input<string>;
     /**
      * URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
@@ -363,6 +366,9 @@ export interface InterconnectAttachmentArgs {
      * The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
      */
     type?: pulumi.Input<enums.compute.alpha.InterconnectAttachmentType>;
+    /**
+     * If true, the request will not be committed.
+     */
     validateOnly?: pulumi.Input<string>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.

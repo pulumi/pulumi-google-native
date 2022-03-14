@@ -80,8 +80,9 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 
 type connectionProfileArgs struct {
 	// A CloudSQL database connection profile.
-	Cloudsql            *CloudSqlConnectionProfile `pulumi:"cloudsql"`
-	ConnectionProfileId string                     `pulumi:"connectionProfileId"`
+	Cloudsql *CloudSqlConnectionProfile `pulumi:"cloudsql"`
+	// Required. The connection profile identifier.
+	ConnectionProfileId string `pulumi:"connectionProfileId"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
@@ -93,8 +94,9 @@ type connectionProfileArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The database provider.
-	Provider  *ConnectionProfileProvider `pulumi:"provider"`
-	RequestId *string                    `pulumi:"requestId"`
+	Provider *ConnectionProfileProvider `pulumi:"provider"`
+	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	RequestId *string `pulumi:"requestId"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State *ConnectionProfileStateEnum `pulumi:"state"`
 }
@@ -102,7 +104,8 @@ type connectionProfileArgs struct {
 // The set of arguments for constructing a ConnectionProfile resource.
 type ConnectionProfileArgs struct {
 	// A CloudSQL database connection profile.
-	Cloudsql            CloudSqlConnectionProfilePtrInput
+	Cloudsql CloudSqlConnectionProfilePtrInput
+	// Required. The connection profile identifier.
 	ConnectionProfileId pulumi.StringInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
@@ -115,7 +118,8 @@ type ConnectionProfileArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The database provider.
-	Provider  ConnectionProfileProviderPtrInput
+	Provider ConnectionProfileProviderPtrInput
+	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State ConnectionProfileStateEnumPtrInput

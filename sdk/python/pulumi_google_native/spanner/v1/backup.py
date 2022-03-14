@@ -25,7 +25,10 @@ class BackupArgs:
                  version_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Backup resource.
+        :param pulumi.Input[str] backup_id: Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+        :param pulumi.Input[str] encryption_config_encryption_type: Required. The encryption type of the backup.
         :param pulumi.Input[str] database: Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+        :param pulumi.Input[str] encryption_config_kms_key_name: Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
         :param pulumi.Input[str] expire_time: Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
         :param pulumi.Input[str] name: Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         :param pulumi.Input[str] version_time: The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
@@ -49,6 +52,9 @@ class BackupArgs:
     @property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Input[str]:
+        """
+        Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -58,6 +64,9 @@ class BackupArgs:
     @property
     @pulumi.getter(name="encryptionConfigEncryptionType")
     def encryption_config_encryption_type(self) -> pulumi.Input[str]:
+        """
+        Required. The encryption type of the backup.
+        """
         return pulumi.get(self, "encryption_config_encryption_type")
 
     @encryption_config_encryption_type.setter
@@ -88,6 +97,9 @@ class BackupArgs:
     @property
     @pulumi.getter(name="encryptionConfigKmsKeyName")
     def encryption_config_kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        """
         return pulumi.get(self, "encryption_config_kms_key_name")
 
     @encryption_config_kms_key_name.setter
@@ -160,7 +172,10 @@ class Backup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] backup_id: Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
         :param pulumi.Input[str] database: Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+        :param pulumi.Input[str] encryption_config_encryption_type: Required. The encryption type of the backup.
+        :param pulumi.Input[str] encryption_config_kms_key_name: Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
         :param pulumi.Input[str] expire_time: Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
         :param pulumi.Input[str] name: Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         :param pulumi.Input[str] version_time: The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.

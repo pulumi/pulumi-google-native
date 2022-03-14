@@ -77,7 +77,8 @@ type studyArgs struct {
 	Project  *string `pulumi:"project"`
 	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfig `pulumi:"studyConfig"`
-	StudyId     string                       `pulumi:"studyId"`
+	// Required. The ID to use for the study, which will become the final component of the study's resource name.
+	StudyId string `pulumi:"studyId"`
 }
 
 // The set of arguments for constructing a Study resource.
@@ -86,7 +87,8 @@ type StudyArgs struct {
 	Project  pulumi.StringPtrInput
 	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigInput
-	StudyId     pulumi.StringInput
+	// Required. The ID to use for the study, which will become the final component of the study's resource name.
+	StudyId pulumi.StringInput
 }
 
 func (StudyArgs) ElementType() reflect.Type {

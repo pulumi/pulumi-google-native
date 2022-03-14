@@ -91,7 +91,8 @@ type workflowArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
-	WorkflowId     string  `pulumi:"workflowId"`
+	// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+	WorkflowId string `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a Workflow resource.
@@ -108,7 +109,8 @@ type WorkflowArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
-	WorkflowId     pulumi.StringInput
+	// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+	WorkflowId pulumi.StringInput
 }
 
 func (WorkflowArgs) ElementType() reflect.Type {

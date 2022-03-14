@@ -83,8 +83,9 @@ type gameServerClusterArgs struct {
 	// Human readable description of the cluster.
 	Description *string `pulumi:"description"`
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-	Etag                *string `pulumi:"etag"`
-	GameServerClusterId string  `pulumi:"gameServerClusterId"`
+	Etag *string `pulumi:"etag"`
+	// Required. The ID of the game server cluster resource to create.
+	GameServerClusterId string `pulumi:"gameServerClusterId"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -101,7 +102,8 @@ type GameServerClusterArgs struct {
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrInput
 	// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-	Etag                pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Required. The ID of the game server cluster resource to create.
 	GameServerClusterId pulumi.StringInput
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput

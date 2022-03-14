@@ -70,6 +70,7 @@ func (ConsentStoreState) ElementType() reflect.Type {
 }
 
 type consentStoreArgs struct {
+	// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
 	ConsentStoreId string `pulumi:"consentStoreId"`
 	DatasetId      string `pulumi:"datasetId"`
 	// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
@@ -86,6 +87,7 @@ type consentStoreArgs struct {
 
 // The set of arguments for constructing a ConsentStore resource.
 type ConsentStoreArgs struct {
+	// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
 	ConsentStoreId pulumi.StringInput
 	DatasetId      pulumi.StringInput
 	// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.

@@ -65,6 +65,7 @@ func (EkmConnectionState) ElementType() reflect.Type {
 }
 
 type ekmConnectionArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId *string `pulumi:"ekmConnectionId"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag     *string `pulumi:"etag"`
@@ -76,6 +77,7 @@ type ekmConnectionArgs struct {
 
 // The set of arguments for constructing a EkmConnection resource.
 type EkmConnectionArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
 	Etag     pulumi.StringPtrInput

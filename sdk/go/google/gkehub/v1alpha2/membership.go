@@ -95,10 +95,11 @@ type membershipArgs struct {
 	// Optional. The infrastructure type this Membership is running on.
 	InfrastructureType *MembershipInfrastructureType `pulumi:"infrastructureType"`
 	// Optional. GCP labels for this membership.
-	Labels       map[string]string `pulumi:"labels"`
-	Location     *string           `pulumi:"location"`
-	MembershipId string            `pulumi:"membershipId"`
-	Project      *string           `pulumi:"project"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+	MembershipId string  `pulumi:"membershipId"`
+	Project      *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Membership resource.
@@ -112,8 +113,9 @@ type MembershipArgs struct {
 	// Optional. The infrastructure type this Membership is running on.
 	InfrastructureType MembershipInfrastructureTypePtrInput
 	// Optional. GCP labels for this membership.
-	Labels       pulumi.StringMapInput
-	Location     pulumi.StringPtrInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
 	MembershipId pulumi.StringInput
 	Project      pulumi.StringPtrInput
 }

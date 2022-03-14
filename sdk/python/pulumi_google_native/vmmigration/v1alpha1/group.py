@@ -21,8 +21,10 @@ class GroupArgs:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] group_id: Required. The group identifier.
         :param pulumi.Input[str] description: User-provided description of the group.
         :param pulumi.Input[str] display_name: Display name is a user defined name for this group which can be updated.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "group_id", group_id)
         if description is not None:
@@ -39,6 +41,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[str]:
+        """
+        Required. The group identifier.
+        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -90,6 +95,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -117,6 +125,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description of the group.
         :param pulumi.Input[str] display_name: Display name is a user defined name for this group which can be updated.
+        :param pulumi.Input[str] group_id: Required. The group identifier.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         ...
     @overload

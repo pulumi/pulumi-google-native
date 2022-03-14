@@ -156,6 +156,9 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         [Input("serverCertificate")]
         public Input<Inputs.GoogleCloudNetworksecurityV1CertificateProviderArgs>? ServerCertificate { get; set; }
 
+        /// <summary>
+        /// Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
+        /// </summary>
         [Input("serverTlsPolicyId", required: true)]
         public Input<string> ServerTlsPolicyId { get; set; } = null!;
 

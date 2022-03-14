@@ -229,6 +229,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+        /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 

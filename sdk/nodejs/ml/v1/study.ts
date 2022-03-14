@@ -104,5 +104,8 @@ export interface StudyArgs {
      * Configuration of the study.
      */
     studyConfig: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
+    /**
+     * Required. The ID to use for the study, which will become the final component of the study's resource name.
+     */
     studyId: pulumi.Input<string>;
 }

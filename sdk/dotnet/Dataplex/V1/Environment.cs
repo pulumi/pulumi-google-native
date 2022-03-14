@@ -145,6 +145,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
+        /// </summary>
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 
@@ -181,6 +184,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("sessionSpec")]
         public Input<Inputs.GoogleCloudDataplexV1EnvironmentSessionSpecArgs>? SessionSpec { get; set; }
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

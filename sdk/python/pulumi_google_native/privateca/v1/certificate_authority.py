@@ -30,12 +30,14 @@ class CertificateAuthorityArgs:
                  subordinate_config: Optional[pulumi.Input['SubordinateConfigArgs']] = None):
         """
         The set of arguments for constructing a CertificateAuthority resource.
+        :param pulumi.Input[str] certificate_authority_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         :param pulumi.Input['CertificateConfigArgs'] config: Immutable. The config used to create a self-signed X.509 certificate or CSR.
         :param pulumi.Input['KeyVersionSpecArgs'] key_spec: Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         :param pulumi.Input['CertificateAuthorityType'] type: Immutable. The Type of this CertificateAuthority.
         :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+        :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['SubordinateConfigArgs'] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
         """
         pulumi.set(__self__, "ca_pool_id", ca_pool_id)
@@ -69,6 +71,9 @@ class CertificateAuthorityArgs:
     @property
     @pulumi.getter(name="certificateAuthorityId")
     def certificate_authority_id(self) -> pulumi.Input[str]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
         return pulumi.get(self, "certificate_authority_id")
 
     @certificate_authority_id.setter
@@ -168,6 +173,9 @@ class CertificateAuthorityArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -211,11 +219,13 @@ class CertificateAuthority(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_authority_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         :param pulumi.Input[pulumi.InputType['CertificateConfigArgs']] config: Immutable. The config used to create a self-signed X.509 certificate or CSR.
         :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
         :param pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']] key_spec: Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
         :param pulumi.Input[str] lifetime: Immutable. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        :param pulumi.Input[str] request_id: Optional. An ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SubordinateConfigArgs']] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
         :param pulumi.Input['CertificateAuthorityType'] type: Immutable. The Type of this CertificateAuthority.
         """

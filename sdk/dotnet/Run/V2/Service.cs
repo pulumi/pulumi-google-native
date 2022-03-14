@@ -300,6 +300,9 @@ namespace Pulumi.GoogleNative.Run.V2
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
+        /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 
@@ -321,6 +324,9 @@ namespace Pulumi.GoogleNative.Run.V2
             set => _traffic = value;
         }
 
+        /// <summary>
+        /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

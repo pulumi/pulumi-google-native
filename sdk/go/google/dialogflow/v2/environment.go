@@ -77,8 +77,9 @@ type environmentArgs struct {
 	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion *string `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description   *string `pulumi:"description"`
-	EnvironmentId string  `pulumi:"environmentId"`
+	Description *string `pulumi:"description"`
+	// Required. The unique id of the new environment.
+	EnvironmentId string `pulumi:"environmentId"`
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment *GoogleCloudDialogflowV2Fulfillment `pulumi:"fulfillment"`
 	Location    *string                             `pulumi:"location"`
@@ -92,7 +93,8 @@ type EnvironmentArgs struct {
 	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion pulumi.StringPtrInput
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description   pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Required. The unique id of the new environment.
 	EnvironmentId pulumi.StringInput
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2FulfillmentPtrInput

@@ -113,6 +113,9 @@ export interface AuthorizationPolicyArgs {
      * The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
      */
     action: pulumi.Input<enums.networksecurity.v1.AuthorizationPolicyAction>;
+    /**
+     * Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+     */
     authorizationPolicyId: pulumi.Input<string>;
     /**
      * Optional. Free-text description of the resource.

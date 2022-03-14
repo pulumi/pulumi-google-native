@@ -29,12 +29,14 @@ class ConnectionProfileArgs:
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
+        :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input['CloudSqlConnectionProfileArgs'] cloudsql: A CloudSQL database connection profile.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input['MySqlConnectionProfileArgs'] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
+        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
@@ -62,6 +64,9 @@ class ConnectionProfileArgs:
     @property
     @pulumi.getter(name="connectionProfileId")
     def connection_profile_id(self) -> pulumi.Input[str]:
+        """
+        Required. The connection profile identifier.
+        """
         return pulumi.get(self, "connection_profile_id")
 
     @connection_profile_id.setter
@@ -161,6 +166,9 @@ class ConnectionProfileArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -203,11 +211,13 @@ class ConnectionProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']] cloudsql: A CloudSQL database connection profile.
+        :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
+        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         ...

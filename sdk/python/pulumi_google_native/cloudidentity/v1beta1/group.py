@@ -28,6 +28,7 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input['EntityKeyArgs'] group_key: The `EntityKey` of the `Group`.
+        :param pulumi.Input[str] initial_group_config: Required. The initial configuration option for the `Group`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
         :param pulumi.Input[str] parent: Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
         :param pulumi.Input[Sequence[pulumi.Input['EntityKeyArgs']]] additional_group_keys: Additional entity key aliases for a Group.
@@ -66,6 +67,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="initialGroupConfig")
     def initial_group_config(self) -> pulumi.Input[str]:
+        """
+        Required. The initial configuration option for the `Group`.
+        """
         return pulumi.get(self, "initial_group_config")
 
     @initial_group_config.setter
@@ -183,6 +187,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the `Group`.
         :param pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] group_key: The `EntityKey` of the `Group`.
+        :param pulumi.Input[str] initial_group_config: Required. The initial configuration option for the `Group`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
         :param pulumi.Input[str] parent: Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PosixGroupArgs']]]] posix_groups: Optional. The POSIX groups associated with the `Group`.

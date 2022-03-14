@@ -114,6 +114,7 @@ func (DeviceState) ElementType() reflect.Type {
 type deviceArgs struct {
 	// Asset tag of the device.
 	AssetTag *string `pulumi:"assetTag"`
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
 	Customer *string `pulumi:"customer"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
@@ -127,6 +128,7 @@ type deviceArgs struct {
 type DeviceArgs struct {
 	// Asset tag of the device.
 	AssetTag pulumi.StringPtrInput
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
 	Customer pulumi.StringPtrInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput

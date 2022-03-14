@@ -78,7 +78,8 @@ func (ClusterState) ElementType() reflect.Type {
 type clusterArgs struct {
 	// Configuration for this cluster.
 	ClusterConfig *ClusterConfig `pulumi:"clusterConfig"`
-	ClusterId     string         `pulumi:"clusterId"`
+	// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+	ClusterId string `pulumi:"clusterId"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType *ClusterDefaultStorageType `pulumi:"defaultStorageType"`
 	// Immutable. The encryption configuration for CMEK-protected clusters.
@@ -97,7 +98,8 @@ type clusterArgs struct {
 type ClusterArgs struct {
 	// Configuration for this cluster.
 	ClusterConfig ClusterConfigPtrInput
-	ClusterId     pulumi.StringInput
+	// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+	ClusterId pulumi.StringInput
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType ClusterDefaultStorageTypePtrInput
 	// Immutable. The encryption configuration for CMEK-protected clusters.

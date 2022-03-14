@@ -18,6 +18,7 @@ class KeyRingArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KeyRing resource.
+        :param pulumi.Input[str] key_ring_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         """
         if key_ring_id is not None:
             pulumi.set(__self__, "key_ring_id", key_ring_id)
@@ -29,6 +30,9 @@ class KeyRingArgs:
     @property
     @pulumi.getter(name="keyRingId")
     def key_ring_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
         return pulumi.get(self, "key_ring_id")
 
     @key_ring_id.setter
@@ -70,6 +74,7 @@ class KeyRing(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] key_ring_id: Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
         """
         ...
     @overload

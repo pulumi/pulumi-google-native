@@ -24,6 +24,7 @@ class ServiceBindingArgs:
         """
         The set of arguments for constructing a ServiceBinding resource.
         :param pulumi.Input[str] service: The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        :param pulumi.Input[str] service_binding_id: Required. Short name of the ServiceBinding resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[str] endpoint_filter: Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceBinding resource.
@@ -59,6 +60,9 @@ class ServiceBindingArgs:
     @property
     @pulumi.getter(name="serviceBindingId")
     def service_binding_id(self) -> pulumi.Input[str]:
+        """
+        Required. Short name of the ServiceBinding resource to be created.
+        """
         return pulumi.get(self, "service_binding_id")
 
     @service_binding_id.setter
@@ -156,6 +160,7 @@ class ServiceBinding(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
         :param pulumi.Input[str] service: The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        :param pulumi.Input[str] service_binding_id: Required. Short name of the ServiceBinding resource to be created.
         """
         ...
     @overload

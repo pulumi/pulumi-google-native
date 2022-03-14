@@ -134,6 +134,9 @@ export interface BitbucketServerConfigArgs {
      * Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
      */
     apiKey: pulumi.Input<string>;
+    /**
+     * Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+     */
     bitbucketServerConfigId?: pulumi.Input<string>;
     /**
      * Time when the config was created.

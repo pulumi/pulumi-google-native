@@ -24,7 +24,9 @@ class FeatureConfigArgs:
                  state: Optional[pulumi.Input['FeatureConfigStateArgs']] = None):
         """
         The set of arguments for constructing a FeatureConfig resource.
+        :param pulumi.Input[str] feature_config_id: The ID of the feature config to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this FeatureConfig.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['FeatureSpecArgs'] spec: Input only. Immutable. User input of feature spec. Note that this field is immutable. Must create a new FeatureConfig if a new feature spec is needed.
         :param pulumi.Input['FeatureConfigStateArgs'] state: Lifecycle information of the FeatureConfig.
         """
@@ -46,6 +48,9 @@ class FeatureConfigArgs:
     @property
     @pulumi.getter(name="featureConfigId")
     def feature_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the feature config to create.
+        """
         return pulumi.get(self, "feature_config_id")
 
     @feature_config_id.setter
@@ -85,6 +90,9 @@ class FeatureConfigArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Idempotent request UUID.
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -135,7 +143,9 @@ class FeatureConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] feature_config_id: The ID of the feature config to create.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this FeatureConfig.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Input only. Immutable. User input of feature spec. Note that this field is immutable. Must create a new FeatureConfig if a new feature spec is needed.
         :param pulumi.Input[pulumi.InputType['FeatureConfigStateArgs']] state: Lifecycle information of the FeatureConfig.
         """

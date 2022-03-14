@@ -28,6 +28,7 @@ class SpokeArgs:
                  request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Spoke resource.
+        :param pulumi.Input[str] spoke_id: Required. Unique id for the spoke to create.
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[str] hub: Immutable. The name of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -35,6 +36,7 @@ class SpokeArgs:
         :param pulumi.Input['LinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
         :param pulumi.Input['LinkedVpnTunnelsArgs'] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
+        :param pulumi.Input[str] request_id: Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "spoke_id", spoke_id)
         if description is not None:
@@ -61,6 +63,9 @@ class SpokeArgs:
     @property
     @pulumi.getter(name="spokeId")
     def spoke_id(self) -> pulumi.Input[str]:
+        """
+        Required. Unique id for the spoke to create.
+        """
         return pulumi.get(self, "spoke_id")
 
     @spoke_id.setter
@@ -172,6 +177,9 @@ class SpokeArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -208,6 +216,8 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['LinkedRouterApplianceInstancesArgs']] linked_router_appliance_instances: Router appliance instances that are associated with the spoke.
         :param pulumi.Input[pulumi.InputType['LinkedVpnTunnelsArgs']] linked_vpn_tunnels: VPN tunnels that are associated with the spoke.
         :param pulumi.Input[str] name: Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
+        :param pulumi.Input[str] request_id: Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] spoke_id: Required. Unique id for the spoke to create.
         """
         ...
     @overload

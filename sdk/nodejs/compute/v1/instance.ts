@@ -362,6 +362,9 @@ export interface InstanceArgs {
      */
     privateIpv6GoogleAccess?: pulumi.Input<enums.compute.v1.InstancePrivateIpv6GoogleAccess>;
     project?: pulumi.Input<string>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
@@ -381,6 +384,9 @@ export interface InstanceArgs {
     serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.v1.ServiceAccountArgs>[]>;
     shieldedInstanceConfig?: pulumi.Input<inputs.compute.v1.ShieldedInstanceConfigArgs>;
     shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.v1.ShieldedInstanceIntegrityPolicyArgs>;
+    /**
+     * Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+     */
     sourceInstanceTemplate?: pulumi.Input<string>;
     /**
      * Source machine image

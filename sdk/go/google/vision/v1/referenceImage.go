@@ -72,9 +72,10 @@ type referenceImageArgs struct {
 	BoundingPolys []BoundingPoly `pulumi:"boundingPolys"`
 	Location      *string        `pulumi:"location"`
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
-	Name             *string `pulumi:"name"`
-	ProductId        string  `pulumi:"productId"`
-	Project          *string `pulumi:"project"`
+	Name      *string `pulumi:"name"`
+	ProductId string  `pulumi:"productId"`
+	Project   *string `pulumi:"project"`
+	// A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
 	ReferenceImageId *string `pulumi:"referenceImageId"`
 	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri string `pulumi:"uri"`
@@ -86,9 +87,10 @@ type ReferenceImageArgs struct {
 	BoundingPolys BoundingPolyArrayInput
 	Location      pulumi.StringPtrInput
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
-	Name             pulumi.StringPtrInput
-	ProductId        pulumi.StringInput
-	Project          pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
+	ProductId pulumi.StringInput
+	Project   pulumi.StringPtrInput
+	// A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
 	ReferenceImageId pulumi.StringPtrInput
 	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri pulumi.StringInput

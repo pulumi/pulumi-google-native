@@ -86,6 +86,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class EkmConnectionArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
+        /// </summary>
         [Input("ekmConnectionId")]
         public Input<string>? EkmConnectionId { get; set; }
 

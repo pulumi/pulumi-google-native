@@ -100,8 +100,9 @@ type contentitemArgs struct {
 	Path    string  `pulumi:"path"`
 	Project *string `pulumi:"project"`
 	// Sql Script related configurations.
-	SqlScript    *GoogleCloudDataplexV1ContentSqlScript `pulumi:"sqlScript"`
-	ValidateOnly *string                                `pulumi:"validateOnly"`
+	SqlScript *GoogleCloudDataplexV1ContentSqlScript `pulumi:"sqlScript"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Contentitem resource.
@@ -120,7 +121,8 @@ type ContentitemArgs struct {
 	Path    pulumi.StringInput
 	Project pulumi.StringPtrInput
 	// Sql Script related configurations.
-	SqlScript    GoogleCloudDataplexV1ContentSqlScriptPtrInput
+	SqlScript GoogleCloudDataplexV1ContentSqlScriptPtrInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 }
 

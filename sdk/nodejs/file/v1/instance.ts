@@ -155,6 +155,9 @@ export interface InstanceArgs {
      * File system shares on the instance. For this version, only a single file share is supported.
      */
     fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1.FileShareConfigArgs>[]>;
+    /**
+     * Required. The name of the instance to create. The name must be unique for the specified project and location.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * KMS key name used for data encryption.

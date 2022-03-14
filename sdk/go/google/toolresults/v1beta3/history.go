@@ -70,8 +70,9 @@ type historyArgs struct {
 	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
 	HistoryId *string `pulumi:"historyId"`
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
 	RequestId *string `pulumi:"requestId"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform *HistoryTestPlatform `pulumi:"testPlatform"`
@@ -84,8 +85,9 @@ type HistoryArgs struct {
 	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
 	HistoryId pulumi.StringPtrInput
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
 	RequestId pulumi.StringPtrInput
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform HistoryTestPlatformPtrInput

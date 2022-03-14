@@ -24,6 +24,7 @@ class TopicArgs:
                  retention_config: Optional[pulumi.Input['RetentionConfigArgs']] = None):
         """
         The set of arguments for constructing a Topic resource.
+        :param pulumi.Input[str] topic_id: Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
         :param pulumi.Input[str] name: The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         :param pulumi.Input['PartitionConfigArgs'] partition_config: The settings for this topic's partitions.
         :param pulumi.Input['ReservationConfigArgs'] reservation_config: The settings for this topic's Reservation usage.
@@ -46,6 +47,9 @@ class TopicArgs:
     @property
     @pulumi.getter(name="topicId")
     def topic_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+        """
         return pulumi.get(self, "topic_id")
 
     @topic_id.setter
@@ -141,6 +145,7 @@ class Topic(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PartitionConfigArgs']] partition_config: The settings for this topic's partitions.
         :param pulumi.Input[pulumi.InputType['ReservationConfigArgs']] reservation_config: The settings for this topic's Reservation usage.
         :param pulumi.Input[pulumi.InputType['RetentionConfigArgs']] retention_config: The settings for this topic's message retention.
+        :param pulumi.Input[str] topic_id: Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
         """
         ...
     @overload

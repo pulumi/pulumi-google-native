@@ -23,6 +23,7 @@ class KeyArgs:
         """
         The set of arguments for constructing a Key resource.
         :param pulumi.Input[str] display_name: Human-readable display name of this key that you can modify. The maximum length is 63 characters.
+        :param pulumi.Input[str] key_id: User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
         :param pulumi.Input['V2RestrictionsArgs'] restrictions: Key restrictions.
         """
         if display_name is not None:
@@ -51,6 +52,9 @@ class KeyArgs:
     @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+        """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
@@ -106,6 +110,7 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Human-readable display name of this key that you can modify. The maximum length is 63 characters.
+        :param pulumi.Input[str] key_id: User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
         :param pulumi.Input[pulumi.InputType['V2RestrictionsArgs']] restrictions: Key restrictions.
         """
         ...

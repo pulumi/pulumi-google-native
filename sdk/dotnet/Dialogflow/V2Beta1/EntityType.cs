@@ -133,6 +133,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("kind", required: true)]
         public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.EntityTypeKind> Kind { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+        /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 

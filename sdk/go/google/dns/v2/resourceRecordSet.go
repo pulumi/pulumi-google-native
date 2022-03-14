@@ -72,6 +72,7 @@ func (ResourceRecordSetState) ElementType() reflect.Type {
 }
 
 type resourceRecordSetArgs struct {
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	Kind              *string `pulumi:"kind"`
 	Location          *string `pulumi:"location"`
@@ -93,6 +94,7 @@ type resourceRecordSetArgs struct {
 
 // The set of arguments for constructing a ResourceRecordSet resource.
 type ResourceRecordSetArgs struct {
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId pulumi.StringPtrInput
 	Kind              pulumi.StringPtrInput
 	Location          pulumi.StringPtrInput

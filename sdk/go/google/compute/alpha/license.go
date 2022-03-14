@@ -75,8 +75,9 @@ type licenseArgs struct {
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
-	Name                 *string                      `pulumi:"name"`
-	Project              *string                      `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId            *string                      `pulumi:"requestId"`
 	ResourceRequirements *LicenseResourceRequirements `pulumi:"resourceRequirements"`
 	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
@@ -88,8 +89,9 @@ type LicenseArgs struct {
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
-	Name                 pulumi.StringPtrInput
-	Project              pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId            pulumi.StringPtrInput
 	ResourceRequirements LicenseResourceRequirementsPtrInput
 	// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.

@@ -59,6 +59,7 @@ func (DatasetState) ElementType() reflect.Type {
 }
 
 type datasetArgs struct {
+	// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
 	DatasetId *string `pulumi:"datasetId"`
 	Location  *string `pulumi:"location"`
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
@@ -70,6 +71,7 @@ type datasetArgs struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
+	// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
 	DatasetId pulumi.StringPtrInput
 	Location  pulumi.StringPtrInput
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.

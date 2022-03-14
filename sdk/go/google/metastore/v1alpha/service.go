@@ -123,8 +123,10 @@ type serviceArgs struct {
 	Project *string `pulumi:"project"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel *ServiceReleaseChannel `pulumi:"releaseChannel"`
-	RequestId      *string                `pulumi:"requestId"`
-	ServiceId      string                 `pulumi:"serviceId"`
+	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+	RequestId *string `pulumi:"requestId"`
+	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+	ServiceId string `pulumi:"serviceId"`
 	// The tier of the service.
 	Tier *ServiceTier `pulumi:"tier"`
 }
@@ -155,8 +157,10 @@ type ServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel ServiceReleaseChannelPtrInput
-	RequestId      pulumi.StringPtrInput
-	ServiceId      pulumi.StringInput
+	// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+	RequestId pulumi.StringPtrInput
+	// Required. The ID of the metastore service, which is used as the final component of the metastore service's name.This value must be between 2 and 63 characters long inclusive, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+	ServiceId pulumi.StringInput
 	// The tier of the service.
 	Tier ServiceTierPtrInput
 }

@@ -134,6 +134,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("cryptoKeyBackend")]
         public Input<string>? CryptoKeyBackend { get; set; }
 
+        /// <summary>
+        /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        /// </summary>
         [Input("cryptoKeyId")]
         public Input<string>? CryptoKeyId { get; set; }
 
@@ -188,6 +191,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
 
+        /// <summary>
+        /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+        /// </summary>
         [Input("skipInitialVersionCreation")]
         public Input<string>? SkipInitialVersionCreation { get; set; }
 

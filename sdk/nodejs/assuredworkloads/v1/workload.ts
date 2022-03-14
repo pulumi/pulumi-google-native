@@ -168,6 +168,9 @@ export interface WorkloadArgs {
      * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
+     */
     externalId?: pulumi.Input<string>;
     /**
      * Optional. Labels applied to the workload.

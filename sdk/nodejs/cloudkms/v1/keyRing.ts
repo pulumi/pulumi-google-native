@@ -74,6 +74,9 @@ export class KeyRing extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRing resource.
  */
 export interface KeyRingArgs {
+    /**
+     * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
     keyRingId?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

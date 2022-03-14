@@ -310,6 +310,9 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
             set => _replacementControlIds = value;
         }
 
+        /// <summary>
+        /// Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        /// </summary>
         [Input("servingConfigId", required: true)]
         public Input<string> ServingConfigId { get; set; } = null!;
 

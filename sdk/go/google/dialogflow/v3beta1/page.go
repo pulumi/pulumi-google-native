@@ -88,9 +88,10 @@ type pageArgs struct {
 	EventHandlers []GoogleCloudDialogflowCxV3beta1EventHandler `pulumi:"eventHandlers"`
 	FlowId        string                                       `pulumi:"flowId"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
-	Form         *GoogleCloudDialogflowCxV3beta1Form `pulumi:"form"`
-	LanguageCode *string                             `pulumi:"languageCode"`
-	Location     *string                             `pulumi:"location"`
+	Form *GoogleCloudDialogflowCxV3beta1Form `pulumi:"form"`
+	// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+	LanguageCode *string `pulumi:"languageCode"`
+	Location     *string `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -111,7 +112,8 @@ type PageArgs struct {
 	EventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerArrayInput
 	FlowId        pulumi.StringInput
 	// The form associated with the page, used for collecting parameters relevant to the page.
-	Form         GoogleCloudDialogflowCxV3beta1FormPtrInput
+	Form GoogleCloudDialogflowCxV3beta1FormPtrInput
+	// The language of the following fields in `page`: * `Page.entry_fulfillment.messages` * `Page.entry_fulfillment.conditional_cases` * `Page.event_handlers.trigger_fulfillment.messages` * `Page.event_handlers.trigger_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.messages` * `Page.form.parameters.fill_behavior.initial_prompt_fulfillment.conditional_cases` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.messages` * `Page.form.parameters.fill_behavior.reprompt_event_handlers.conditional_cases` * `Page.transition_routes.trigger_fulfillment.messages` * `Page.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringPtrInput
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.

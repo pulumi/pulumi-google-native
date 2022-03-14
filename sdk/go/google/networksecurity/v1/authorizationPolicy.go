@@ -77,8 +77,9 @@ func (AuthorizationPolicyState) ElementType() reflect.Type {
 
 type authorizationPolicyArgs struct {
 	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-	Action                AuthorizationPolicyAction `pulumi:"action"`
-	AuthorizationPolicyId string                    `pulumi:"authorizationPolicyId"`
+	Action AuthorizationPolicyAction `pulumi:"action"`
+	// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+	AuthorizationPolicyId string `pulumi:"authorizationPolicyId"`
 	// Optional. Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
@@ -94,7 +95,8 @@ type authorizationPolicyArgs struct {
 // The set of arguments for constructing a AuthorizationPolicy resource.
 type AuthorizationPolicyArgs struct {
 	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-	Action                AuthorizationPolicyActionInput
+	Action AuthorizationPolicyActionInput
+	// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
 	AuthorizationPolicyId pulumi.StringInput
 	// Optional. Free-text description of the resource.
 	Description pulumi.StringPtrInput

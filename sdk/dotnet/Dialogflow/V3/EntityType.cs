@@ -159,6 +159,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("kind", required: true)]
         public Input<Pulumi.GoogleNative.Dialogflow.V3.EntityTypeKind> Kind { get; set; } = null!;
 
+        /// <summary>
+        /// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 

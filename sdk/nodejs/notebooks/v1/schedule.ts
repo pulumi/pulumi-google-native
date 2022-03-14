@@ -136,6 +136,9 @@ export interface ScheduleArgs {
     executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplateArgs>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. User-defined unique ID of this schedule.
+     */
     scheduleId: pulumi.Input<string>;
     state?: pulumi.Input<enums.notebooks.v1.ScheduleState>;
     /**

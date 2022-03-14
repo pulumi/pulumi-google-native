@@ -124,7 +124,8 @@ type entryArgs struct {
 	// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
 	DisplayName  *string `pulumi:"displayName"`
 	EntryGroupId string  `pulumi:"entryGroupId"`
-	EntryId      string  `pulumi:"entryId"`
+	// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+	EntryId string `pulumi:"entryId"`
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec *GoogleCloudDatacatalogV1FilesetSpec `pulumi:"filesetSpec"`
 	// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
@@ -168,7 +169,8 @@ type EntryArgs struct {
 	// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
 	DisplayName  pulumi.StringPtrInput
 	EntryGroupId pulumi.StringInput
-	EntryId      pulumi.StringInput
+	// Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8.
+	EntryId pulumi.StringInput
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecPtrInput
 	// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`

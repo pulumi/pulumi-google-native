@@ -88,6 +88,9 @@ export interface DomainMappingArgs {
      * Relative name of the domain serving the application. Example: example.com.
      */
     id?: pulumi.Input<string>;
+    /**
+     * Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+     */
     overrideStrategy?: pulumi.Input<string>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.

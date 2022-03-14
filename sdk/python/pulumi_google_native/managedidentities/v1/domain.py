@@ -25,6 +25,7 @@ class DomainArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] domain_name: Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] name: The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
@@ -51,6 +52,9 @@ class DomainArgs:
     @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Input[str]:
+        """
+        Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
+        """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
@@ -175,6 +179,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] admin: Optional. The name of delegated administrator account used to perform Active Directory operations. If not specified, `setupadmin` will be used.
         :param pulumi.Input[bool] audit_logs_enabled: Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_networks: Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
+        :param pulumi.Input[str] domain_name: Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels that can contain user-provided metadata.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] name: The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.

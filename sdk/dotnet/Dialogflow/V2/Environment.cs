@@ -115,6 +115,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Required. The unique id of the new environment.
+        /// </summary>
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
 

@@ -115,9 +115,15 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 
     public sealed class CapacityCommitmentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        /// </summary>
         [Input("capacityCommitmentId")]
         public Input<string>? CapacityCommitmentId { get; set; }
 
+        /// <summary>
+        /// If true, fail the request if another project in the organization has a capacity commitment.
+        /// </summary>
         [Input("enforceSingleAdminProjectPerOrg")]
         public Input<string>? EnforceSingleAdminProjectPerOrg { get; set; }
 

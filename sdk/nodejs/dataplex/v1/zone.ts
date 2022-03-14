@@ -175,6 +175,12 @@ export interface ZoneArgs {
      * Immutable. The type of the zone.
      */
     type: pulumi.Input<enums.dataplex.v1.ZoneType>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
+    /**
+     * Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
+     */
     zoneId: pulumi.Input<string>;
 }

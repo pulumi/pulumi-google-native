@@ -96,6 +96,9 @@ export interface EntryGroupArgs {
      * A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+     */
     entryGroupId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**

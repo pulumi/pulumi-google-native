@@ -157,6 +157,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+        /// </summary>
         [Input("lakeId", required: true)]
         public Input<string> LakeId { get; set; } = null!;
 
@@ -172,6 +175,9 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Optional. Only validate the request, but do not perform mutations. The default is false.
+        /// </summary>
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }
 

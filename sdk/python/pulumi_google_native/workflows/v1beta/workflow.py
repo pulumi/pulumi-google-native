@@ -23,6 +23,7 @@ class WorkflowArgs:
                  source_contents: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Workflow resource.
+        :param pulumi.Input[str] workflow_id: Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
         :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
@@ -48,6 +49,9 @@ class WorkflowArgs:
     @property
     @pulumi.getter(name="workflowId")
     def workflow_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+        """
         return pulumi.get(self, "workflow_id")
 
     @workflow_id.setter
@@ -157,6 +161,7 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
         :param pulumi.Input[str] service_account: The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
+        :param pulumi.Input[str] workflow_id: Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
         """
         ...
     @overload
