@@ -23,9 +23,12 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"regexp"
 	"runtime/debug"
 	"strings"
 	"time"
+
+	jsonpatch "github.com/evanphx/json-patch"
 
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
@@ -683,6 +686,41 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
+	if res.Update.RequiredFieldMaskProperty != "" {
+		newJson, err := json.Marshal(inputs)
+		if err != nil {
+			return nil, errors.Errorf("failed to serialize new inputs as json")
+		}
+		// Extract old inputs from the `__inputs` field of the old state.
+		oldInputs := parseCheckpointObject(oldState)
+		oldJson, err := json.Marshal(oldInputs)
+		if err != nil {
+			return nil, errors.Errorf("failed to serialize existing inputs as json")
+		}
+		patch, err := jsonpatch.CreateMergePatch(oldJson, newJson)
+		if err != nil {
+			return nil, errors.Errorf("failed to generate patch")
+		}
+		var keys []string
+		patchObj := map[string]interface{}{}
+		if err = json.Unmarshal(patch, &patchObj); err != nil {
+			return nil, errors.Errorf("failed to unmarshal patch object")
+		}
+		for k := range patchObj {
+			found := false
+			for name, sdkProp := range res.Update.SDKProperties {
+				if sdkProp.SdkName == k {
+					keys = append(keys, ToSnakeCase(name))
+					found = true
+					break
+				}
+			}
+			if !found {
+				keys = append(keys, ToSnakeCase(k))
+			}
+		}
+		body[res.Update.RequiredFieldMaskProperty] = map[string]interface{}{"paths": keys}
+	}
 
 	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if err != nil {
@@ -885,4 +923,13 @@ func parseCheckpointObject(obj resource.PropertyMap) resource.PropertyMap {
 	}
 
 	return nil
+}
+
+var matchFirstCap = regexp.MustCompile("(.)([A-Z][a-z]+)")
+var matchAllCap = regexp.MustCompile("([a-z0-9])([A-Z])")
+
+func ToSnakeCase(str string) string {
+	snake := matchFirstCap.ReplaceAllString(str, "${1}_${2}")
+	snake = matchAllCap.ReplaceAllString(snake, "${1}_${2}")
+	return strings.ToLower(snake)
 }

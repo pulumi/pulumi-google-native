@@ -101,6 +101,8 @@ type CloudAPIOperation struct {
 	Endpoint CloudAPIEndpoint `json:"endpoint,omitempty"`
 	// SDKProperties define metadata about the SDK representation of this resource.
 	SDKProperties map[string]CloudAPIProperty `json:"sdkProperties,omitempty"`
+	// RequiredFieldMaskProperty identifies an additional field which must be specified as field-mask.
+	RequiredFieldMaskProperty string `json:"fieldMaskProperty,omitempty"`
 	// Verb is the REST verb to use for API calls.
 	Verb string `json:"verb,omitempty"`
 }
@@ -184,7 +186,10 @@ func AssembleURL(fragments ...string) string {
 
 // CloudAPIProperty is a property of a body of an API call payload.
 type CloudAPIProperty struct {
-	Ref                  string            `json:"$ref,omitempty"`
+	Ref      string `json:"$ref,omitempty"`
+	Format   string `json:"format,omitempty"`
+	Required bool   `json:"required,omitempty"`
+
 	Items                *CloudAPIProperty `json:"items,omitempty"`
 	AdditionalProperties *CloudAPIProperty `json:"additionalProperties,omitempty"`
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists

@@ -500,8 +500,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				if _, has := bodyBag.properties[name]; has {
 					resourceMeta.Update.SDKProperties[name] = value
 				} else {
-					// TODO: do we need to handle masks?
-					if !strings.HasSuffix(name, "Mask") {
+					if value.Format == "google-fieldmask" && value.Required {
+						resourceMeta.Update.RequiredFieldMaskProperty = name
+					} else {
 						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, dd.updateMethod.Request.Ref, name)
 					}
 				}
@@ -929,7 +930,10 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		}
 
 		apiProp := resources.CloudAPIProperty{
-			Ref:                  typeSpec.Ref,
+			Ref:      typeSpec.Ref,
+			Format:   prop.Format,
+			Required: prop.Required || isRequired(prop.Description),
+
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
 			CopyFromOutputs:      copyFromOutput,
