@@ -390,6 +390,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("predefinedDefaultObjectAcl")]
         public Input<string>? PredefinedDefaultObjectAcl { get; set; }
 
+        /// <summary>
+        /// A valid API project identifier.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

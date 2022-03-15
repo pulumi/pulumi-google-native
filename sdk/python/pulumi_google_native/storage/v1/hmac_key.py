@@ -18,6 +18,7 @@ class HmacKeyArgs:
                  user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HmacKey resource.
+        :param pulumi.Input[str] service_account_email: Email address of the service account.
         :param pulumi.Input[str] user_project: The project to be billed for this request.
         """
         pulumi.set(__self__, "service_account_email", service_account_email)
@@ -29,6 +30,9 @@ class HmacKeyArgs:
     @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> pulumi.Input[str]:
+        """
+        Email address of the service account.
+        """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
@@ -72,6 +76,7 @@ class HmacKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] service_account_email: Email address of the service account.
         :param pulumi.Input[str] user_project: The project to be billed for this request.
         """
         ...

@@ -147,6 +147,9 @@ export interface NodeGroupArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Initial count of nodes in the node group.
+     */
     initialNodeCount: pulumi.Input<string>;
     /**
      * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.

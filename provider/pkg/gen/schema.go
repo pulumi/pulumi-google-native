@@ -343,7 +343,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		queryParams := url.Values{}
 		for param, details := range method.Parameters {
-			if details.Location != "query" || !details.Required {
+			if details.Location != "query" || !isRequired(details) {
 				continue
 			}
 			queryParams.Add(param, "{"+param+"}")
@@ -358,6 +358,19 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 		return pathURL
 	}
+	resourcePath := func(method *discovery.RestMethod) string {
+		if method == nil {
+			return ""
+		}
+		var pathURL string
+		if len(method.FlatPath) > 0 {
+			pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.FlatPath)
+		} else {
+			pathURL = resources.AssembleURL(g.rest.RootUrl, g.rest.BasePath, method.Path)
+		}
+
+		return pathURL
+	}
 	methodPath := func(method *discovery.RestMethod) string {
 		if method == nil {
 			return ""
@@ -368,7 +381,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		return method.Path
 	}
-	createPath := fullPath(dd.createMethod)
+	createPath := resourcePath(dd.createMethod)
 
 	resourceMeta := resources.CloudAPIResource{
 		RootURL: g.rest.BaseUrl,
@@ -390,7 +403,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
 		param := dd.createMethod.Parameters[name]
-		required := param.Required || isRequired(param.Description)
 		if param.Location != "query" {
 			continue
 		}
@@ -410,7 +422,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			Description: param.Description,
 			TypeSpec:    schema.TypeSpec{Type: "string"},
 		}
-		if required {
+		if isRequired(param) {
 			requiredInputProperties.Add(sdkName)
 		}
 	}
@@ -664,7 +676,6 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 
 	for _, name := range codegen.SortedKeys(dd.getMethod.Parameters) {
 		param := dd.getMethod.Parameters[name]
-		required := param.Required || isRequired(param.Description)
 		if param.Location != "query" {
 			continue
 		}
@@ -682,7 +693,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
-		if required {
+		if isRequired(param) {
 			requiredInputProperties.Add(sdkName)
 		}
 	}
@@ -903,7 +914,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 
 		copyFromOutput := g.shouldCopyFromOutput(name) && !isOutput
 		if !copyFromOutput {
-			if prop.Required || isRequired(prop.Description) || isOutput {
+			if isRequired(prop) || isOutput {
 				result.requiredSpecs.Add(sdkName)
 			}
 
@@ -1132,10 +1143,12 @@ func isDeprecated(description string) bool {
 		strings.Contains(description, "This field is deprecated")
 }
 
-// isRequired returns true if the description of a property or a parameter signals that it is
-// a required property.
-func isRequired(description string) bool {
-	return strings.HasPrefix(description, "Required.")
+// isRequired returns true if the property or a parameter indicates that it is required.
+func isRequired(parameter discovery.JsonSchema) bool {
+	if parameter.Required == true {
+		return true
+	}
+	return strings.HasPrefix(parameter.Description, "Required.")
 }
 
 // isReadOnly returns true if the description of a property or a parameter signals that it is

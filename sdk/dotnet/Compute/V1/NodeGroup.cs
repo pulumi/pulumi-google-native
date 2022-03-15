@@ -147,6 +147,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Initial count of nodes in the node group.
+        /// </summary>
         [Input("initialNodeCount", required: true)]
         public Input<string> InitialNodeCount { get; set; } = null!;
 

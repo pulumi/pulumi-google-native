@@ -327,6 +327,9 @@ export interface BucketArgs {
      * Apply a predefined set of default object access controls to this bucket.
      */
     predefinedDefaultObjectAcl?: pulumi.Input<string>;
+    /**
+     * A valid API project identifier.
+     */
     project?: pulumi.Input<string>;
     /**
      * The project number of the project the bucket belongs to.
