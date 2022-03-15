@@ -372,11 +372,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	resourceMeta := resources.CloudAPIResource{
 		RootURL: g.rest.BaseUrl,
-		Create: resources.CloudAPIOperation{
-			Endpoint: resources.CloudAPIEndpoint{
-				Template: fullPath(dd.createMethod),
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Endpoint: resources.CloudAPIEndpoint{
+					Template: fullPath(dd.createMethod),
+				},
+				Verb: dd.createMethod.HttpMethod,
 			},
-			Verb: dd.createMethod.HttpMethod,
 		},
 		Delete: resources.CloudAPIOperation{},
 		Read: resources.CloudAPIOperation{
@@ -604,10 +606,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		namePattern, err := namePropertyPattern(inputProperties)
 		if err == nil {
 			requiredInputProperties.Delete("name")
-			resourceMeta.AutoNamePattern = namePattern
+			resourceMeta.Create.Autoname.FieldName = namePattern
 		} else if name, ok := autonameOverrides[fmt.Sprintf("%s:%s", g.mod, typeName)]; ok {
 			requiredInputProperties.Delete(name)
-			resourceMeta.AutoNamePattern = fmt.Sprintf("{%s}", name)
+			resourceMeta.Create.Autoname.FieldName = fmt.Sprintf("{%s}", name)
 		} else {
 			description += "\nAuto-naming is currently not supported for this resource."
 		}

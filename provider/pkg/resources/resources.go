@@ -109,12 +109,29 @@ func (o CloudAPIOperation) Undefined() bool {
 	return len(o.Verb) == 0
 }
 
+// ResourceAutoname defines the information to auto-name a resource in the Google Cloud REST API.
+type ResourceAutoname struct {
+	// FieldName contains a string pattern when a default name should be automatically generated if a user hasn't
+	// explicitly specified one.
+	// Example: `projects/{project}/locations/{location}/functions/{name}`
+	FieldName string `json:"fieldName,omitempty"`
+	// ValidationRegex contains a string pattern defining the valid name pattern for a resource.
+	ValidationRegex string `json:"validationRegex,omitempty"`
+}
+
+// CreateAPIOperation is a Create resource operation in the Google Cloud REST API.
+type CreateAPIOperation struct {
+	CloudAPIOperation
+
+	Autoname ResourceAutoname `json:"autoname,omitempty"`
+}
+
 // CloudAPIResource is a resource in the Google Cloud REST API.
 type CloudAPIResource struct {
-	Create CloudAPIOperation `json:"create,omitempty"`
-	Read   CloudAPIOperation `json:"read,omitempty"`
-	Update CloudAPIOperation `json:"update,omitempty"`
-	Delete CloudAPIOperation `json:"delete,omitempty"`
+	Create CreateAPIOperation `json:"create,omitempty"`
+	Read   CloudAPIOperation  `json:"read,omitempty"`
+	Update CloudAPIOperation  `json:"update,omitempty"`
+	Delete CloudAPIOperation  `json:"delete,omitempty"`
 
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
@@ -128,10 +145,6 @@ type CloudAPIResource struct {
 	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
 	IDPath   string            `json:"idPath,omitempty"`
 	IDParams map[string]string `json:"idParams,omitempty"`
-	// AutoNamePattern contains a string pattern when a default name should be automatically generated if a user hasn't
-	// explicitly specified one.
-	// Example: `projects/{project}/locations/{location}/functions/{name}`
-	AutoNamePattern string `json:"autoNamePattern,omitempty"`
 }
 
 // CloudAPIFunction is a function in Google Cloud REST API.
