@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         /// </summary>
         public readonly string ItemGroupId;
         /// <summary>
+        /// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+        /// </summary>
+        public readonly string LanguageCode;
+        /// <summary>
         /// Optional. Metadata specific to retail products.
         /// </summary>
         public readonly Outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse ProductMetadata;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
 
             string itemGroupId,
 
+            string languageCode,
+
             Outputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse productMetadata,
 
             ImmutableArray<string> tags,
@@ -116,6 +122,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
             Description = description;
             ItemAttributes = itemAttributes;
             ItemGroupId = itemGroupId;
+            LanguageCode = languageCode;
             ProductMetadata = productMetadata;
             Tags = tags;
             Title = title;

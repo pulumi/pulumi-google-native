@@ -53,6 +53,12 @@ export class CatalogItem extends pulumi.CustomResource {
      */
     public readonly itemGroupId!: pulumi.Output<string>;
     /**
+     * Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     *
+     * @deprecated Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     */
+    public readonly languageCode!: pulumi.Output<string>;
+    /**
      * Optional. Metadata specific to retail products.
      */
     public readonly productMetadata!: pulumi.Output<outputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse>;
@@ -94,6 +100,7 @@ export class CatalogItem extends pulumi.CustomResource {
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["itemAttributes"] = args ? args.itemAttributes : undefined;
             resourceInputs["itemGroupId"] = args ? args.itemGroupId : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["productMetadata"] = args ? args.productMetadata : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -104,6 +111,7 @@ export class CatalogItem extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["itemAttributes"] = undefined /*out*/;
             resourceInputs["itemGroupId"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["productMetadata"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
@@ -138,6 +146,12 @@ export interface CatalogItemArgs {
      * Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */
     itemGroupId?: pulumi.Input<string>;
+    /**
+     * Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     *
+     * @deprecated Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+     */
+    languageCode?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
      * Optional. Metadata specific to retail products.

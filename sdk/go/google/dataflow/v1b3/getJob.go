@@ -40,6 +40,10 @@ type LookupJobResult struct {
 	CurrentStateTime string `pulumi:"currentStateTime"`
 	// The environment for the job.
 	Environment EnvironmentResponse `pulumi:"environment"`
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	ExecutionInfo JobExecutionInfoResponse `pulumi:"executionInfo"`
 	// This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
 	JobMetadata JobMetadataResponse `pulumi:"jobMetadata"`
 	// User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
@@ -138,6 +142,13 @@ func (o LookupJobResultOutput) CurrentStateTime() pulumi.StringOutput {
 // The environment for the job.
 func (o LookupJobResultOutput) Environment() EnvironmentResponseOutput {
 	return o.ApplyT(func(v LookupJobResult) EnvironmentResponse { return v.Environment }).(EnvironmentResponseOutput)
+}
+
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o LookupJobResultOutput) ExecutionInfo() JobExecutionInfoResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) JobExecutionInfoResponse { return v.ExecutionInfo }).(JobExecutionInfoResponseOutput)
 }
 
 // This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.

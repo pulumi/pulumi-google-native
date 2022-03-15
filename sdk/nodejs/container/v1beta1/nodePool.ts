@@ -92,6 +92,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     *
+     * @deprecated [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     */
+    public /*out*/ readonly statusMessage!: pulumi.Output<string>;
+    /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.v1beta1.UpgradeSettingsResponse>;
@@ -130,10 +136,12 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["instanceGroupUrls"] = undefined /*out*/;
             resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
         } else {
             resourceInputs["autoscaling"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -149,6 +157,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["statusMessage"] = undefined /*out*/;
             resourceInputs["upgradeSettings"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
@@ -165,6 +174,11 @@ export interface NodePoolArgs {
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
     autoscaling?: pulumi.Input<inputs.container.v1beta1.NodePoolAutoscalingArgs>;
+    /**
+     * Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+     *
+     * @deprecated Required. Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+     */
     clusterId: pulumi.Input<string>;
     /**
      * Which conditions caused the current node pool state.
@@ -207,6 +221,11 @@ export interface NodePoolArgs {
      * Specifies the node placement policy.
      */
     placementPolicy?: pulumi.Input<inputs.container.v1beta1.PlacementPolicyArgs>;
+    /**
+     * Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+     *
+     * @deprecated Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+     */
     project?: pulumi.Input<string>;
     /**
      * Upgrade settings control disruption and speed of the upgrade.
@@ -216,4 +235,10 @@ export interface NodePoolArgs {
      * The version of the Kubernetes of this node.
      */
     version?: pulumi.Input<string>;
+    /**
+     * Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+     *
+     * @deprecated Required. Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+     */
+    zone?: pulumi.Input<string>;
 }

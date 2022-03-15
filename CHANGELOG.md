@@ -2,6 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+- Re-introduce deprecated fields [#368](https://github.com/pulumi/pulumi-google-native/pull/368)
 
 Improvements:
 

@@ -98,17 +98,24 @@ class ArtifactArgs:
     def __init__(__self__, *,
                  checksum: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Artifact describes a build product.
         :param pulumi.Input[str] checksum: Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
         :param pulumi.Input[str] id: Artifact ID, if any; for container images, this will be a URL by digest like gcr.io/projectID/imagename@sha256:123456
+        :param pulumi.Input[str] name: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Related artifact names. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. Note that a single Artifact ID can have multiple names, for example if two tags are applied to one image.
         """
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if name is not None:
+            warnings.warn("""Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if names is not None:
             pulumi.set(__self__, "names", names)
 
@@ -135,6 +142,18 @@ class ArtifactArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the artifact. This may be the path to a binary or jar file, or in the case of a container build, the name used to push the container image to Google Container Registry, as presented to `docker push`. This field is deprecated in favor of the plural `names` field; it continues to exist here to allow existing BuildProvenance serialized to json in google.devtools.containeranalysis.v1alpha1.BuildDetails.provenance_bytes to deserialize back into proto.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -312,21 +331,40 @@ class BindingArgs:
 @pulumi.input_type
 class BuildDetailsArgs:
     def __init__(__self__, *,
+                 intoto_provenance: Optional[pulumi.Input['InTotoProvenanceArgs']] = None,
                  intoto_statement: Optional[pulumi.Input['InTotoStatementArgs']] = None,
                  provenance: Optional[pulumi.Input['BuildProvenanceArgs']] = None,
                  provenance_bytes: Optional[pulumi.Input[str]] = None):
         """
         Message encapsulating build provenance details.
+        :param pulumi.Input['InTotoProvenanceArgs'] intoto_provenance: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
         :param pulumi.Input['InTotoStatementArgs'] intoto_statement: In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
         :param pulumi.Input['BuildProvenanceArgs'] provenance: The actual provenance
         :param pulumi.Input[str] provenance_bytes: Serialized JSON representation of the provenance, used in generating the `BuildSignature` in the corresponding Result. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
+        if intoto_provenance is not None:
+            warnings.warn("""Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""", DeprecationWarning)
+            pulumi.log.warn("""intoto_provenance is deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.""")
+        if intoto_provenance is not None:
+            pulumi.set(__self__, "intoto_provenance", intoto_provenance)
         if intoto_statement is not None:
             pulumi.set(__self__, "intoto_statement", intoto_statement)
         if provenance is not None:
             pulumi.set(__self__, "provenance", provenance)
         if provenance_bytes is not None:
             pulumi.set(__self__, "provenance_bytes", provenance_bytes)
+
+    @property
+    @pulumi.getter(name="intotoProvenance")
+    def intoto_provenance(self) -> Optional[pulumi.Input['InTotoProvenanceArgs']]:
+        """
+        Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+        """
+        return pulumi.get(self, "intoto_provenance")
+
+    @intoto_provenance.setter
+    def intoto_provenance(self, value: Optional[pulumi.Input['InTotoProvenanceArgs']]):
+        pulumi.set(self, "intoto_provenance", value)
 
     @property
     @pulumi.getter(name="intotoStatement")

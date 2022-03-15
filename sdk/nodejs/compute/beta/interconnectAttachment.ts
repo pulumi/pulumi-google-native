@@ -96,6 +96,12 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<string>;
     /**
+     * Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+     *
+     * @deprecated [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+     */
+    public /*out*/ readonly googleReferenceId!: pulumi.Output<string>;
+    /**
      * URL of the underlying Interconnect object that this attachment's traffic will traverse through.
      */
     public readonly interconnect!: pulumi.Output<string>;
@@ -221,6 +227,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["customerRouterIpAddress"] = undefined /*out*/;
             resourceInputs["customerRouterIpv6Address"] = undefined /*out*/;
             resourceInputs["dataplaneVersion"] = undefined /*out*/;
+            resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["operationalStatus"] = undefined /*out*/;
@@ -244,6 +251,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["edgeAvailabilityDomain"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
+            resourceInputs["googleReferenceId"] = undefined /*out*/;
             resourceInputs["interconnect"] = undefined /*out*/;
             resourceInputs["ipsecInternalAddresses"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

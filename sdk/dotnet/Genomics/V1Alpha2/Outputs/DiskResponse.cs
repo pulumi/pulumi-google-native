@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
     public sealed class DiskResponse
     {
         /// <summary>
+        /// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+        /// </summary>
+        public readonly bool AutoDelete;
+        /// <summary>
         /// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
         /// </summary>
         public readonly string MountPoint;
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
 
         [OutputConstructor]
         private DiskResponse(
+            bool autoDelete,
+
             string mountPoint,
 
             string name,
@@ -55,6 +61,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
 
             string type)
         {
+            AutoDelete = autoDelete;
             MountPoint = mountPoint;
             Name = name;
             ReadOnly = readOnly;

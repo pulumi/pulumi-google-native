@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string HealthStatusAggregationPolicy;
         /// <summary>
+        /// This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        /// </summary>
+        public readonly string HealthStatusAggregationStrategy;
+        /// <summary>
         /// [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
         /// </summary>
         public readonly string Kind;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string healthStatusAggregationPolicy,
 
+            string healthStatusAggregationStrategy,
+
             string kind,
 
             string name,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Fingerprint = fingerprint;
             HealthChecks = healthChecks;
             HealthStatusAggregationPolicy = healthStatusAggregationPolicy;
+            HealthStatusAggregationStrategy = healthStatusAggregationStrategy;
             Kind = kind;
             Name = name;
             NetworkEndpointGroups = networkEndpointGroups;

@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string ParameterMode;
         /// <summary>
+        /// [Deprecated] This property is deprecated.
+        /// </summary>
+        public readonly bool PreserveNulls;
+        /// <summary>
         /// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         /// </summary>
         public readonly string Priority;
@@ -132,6 +136,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string parameterMode,
 
+            bool preserveNulls,
+
             string priority,
 
             string query,
@@ -166,6 +172,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             MaximumBillingTier = maximumBillingTier;
             MaximumBytesBilled = maximumBytesBilled;
             ParameterMode = parameterMode;
+            PreserveNulls = preserveNulls;
             Priority = priority;
             Query = query;
             QueryParameters = queryParameters;

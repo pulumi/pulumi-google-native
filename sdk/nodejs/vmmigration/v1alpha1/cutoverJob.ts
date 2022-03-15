@@ -43,6 +43,12 @@ export class CutoverJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly computeEngineTargetDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineTargetDetailsResponse>;
     /**
+     * Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+     *
+     * @deprecated Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+     */
+    public /*out*/ readonly computeEngineVmDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.TargetVMDetailsResponse>;
+    /**
      * The time the cutover job was created (as an API call, not when it was actually created in the target).
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -74,6 +80,12 @@ export class CutoverJob extends pulumi.CustomResource {
      * The time the state was last updated.
      */
     public /*out*/ readonly stateTime!: pulumi.Output<string>;
+    /**
+     * Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+     *
+     * @deprecated Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+     */
+    public /*out*/ readonly targetDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.TargetVMDetailsResponse>;
 
     /**
      * Create a CutoverJob resource with the given unique name, arguments, and options.
@@ -102,6 +114,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
+            resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -110,8 +123,10 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["targetDetails"] = undefined /*out*/;
         } else {
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
+            resourceInputs["computeEngineVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -120,6 +135,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["targetDetails"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CutoverJob.__pulumiType, name, resourceInputs, opts);

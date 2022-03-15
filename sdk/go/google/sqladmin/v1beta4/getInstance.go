@@ -44,6 +44,10 @@ type LookupInstanceResult struct {
 	DiskEncryptionConfiguration DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
 	// Disk encryption status specific to an instance.
 	DiskEncryptionStatus DiskEncryptionStatusResponse `pulumi:"diskEncryptionStatus"`
+	// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+	//
+	// Deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+	Etag string `pulumi:"etag"`
 	// The name and status of the failover replica.
 	FailoverReplica InstanceFailoverReplicaResponse `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
@@ -52,6 +56,10 @@ type LookupInstanceResult struct {
 	InstanceType string `pulumi:"instanceType"`
 	// The assigned IP addresses for the instance.
 	IpAddresses []IpMappingResponse `pulumi:"ipAddresses"`
+	// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+	//
+	// Deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+	Ipv6Address string `pulumi:"ipv6Address"`
 	// This is always `sql#instance`.
 	Kind string `pulumi:"kind"`
 	// The current software version on the instance.
@@ -173,6 +181,13 @@ func (o LookupInstanceResultOutput) DiskEncryptionStatus() DiskEncryptionStatusR
 	return o.ApplyT(func(v LookupInstanceResult) DiskEncryptionStatusResponse { return v.DiskEncryptionStatus }).(DiskEncryptionStatusResponseOutput)
 }
 
+// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+//
+// Deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+func (o LookupInstanceResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The name and status of the failover replica.
 func (o LookupInstanceResultOutput) FailoverReplica() InstanceFailoverReplicaResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) InstanceFailoverReplicaResponse { return v.FailoverReplica }).(InstanceFailoverReplicaResponseOutput)
@@ -191,6 +206,13 @@ func (o LookupInstanceResultOutput) InstanceType() pulumi.StringOutput {
 // The assigned IP addresses for the instance.
 func (o LookupInstanceResultOutput) IpAddresses() IpMappingResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []IpMappingResponse { return v.IpAddresses }).(IpMappingResponseArrayOutput)
+}
+
+// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+//
+// Deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+func (o LookupInstanceResultOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 // This is always `sql#instance`.

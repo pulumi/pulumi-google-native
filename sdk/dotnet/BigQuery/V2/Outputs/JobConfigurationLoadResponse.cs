@@ -102,6 +102,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
         /// <summary>
+        /// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+        /// </summary>
+        public readonly string SchemaInline;
+        /// <summary>
+        /// [Deprecated] The format of the schemaInline property.
+        /// </summary>
+        public readonly string SchemaInlineFormat;
+        /// <summary>
         /// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         /// </summary>
         public readonly ImmutableArray<string> SchemaUpdateOptions;
@@ -176,6 +184,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.TableSchemaResponse schema,
 
+            string schemaInline,
+
+            string schemaInlineFormat,
+
             ImmutableArray<string> schemaUpdateOptions,
 
             int skipLeadingRows,
@@ -212,6 +224,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             Quote = quote;
             RangePartitioning = rangePartitioning;
             Schema = schema;
+            SchemaInline = schemaInline;
+            SchemaInlineFormat = schemaInlineFormat;
             SchemaUpdateOptions = schemaUpdateOptions;
             SkipLeadingRows = skipLeadingRows;
             SourceFormat = sourceFormat;

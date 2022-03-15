@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2InspectConfigResponse
     {
         /// <summary>
+        /// Deprecated and unused.
+        /// </summary>
+        public readonly ImmutableArray<string> ContentOptions;
+        /// <summary>
         /// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2CustomInfoTypeResponse> CustomInfoTypes;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
         [OutputConstructor]
         private GooglePrivacyDlpV2InspectConfigResponse(
+            ImmutableArray<string> contentOptions,
+
             ImmutableArray<Outputs.GooglePrivacyDlpV2CustomInfoTypeResponse> customInfoTypes,
 
             bool excludeInfoTypes,
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
             ImmutableArray<Outputs.GooglePrivacyDlpV2InspectionRuleSetResponse> ruleSet)
         {
+            ContentOptions = contentOptions;
             CustomInfoTypes = customInfoTypes;
             ExcludeInfoTypes = excludeInfoTypes;
             IncludeQuote = includeQuote;

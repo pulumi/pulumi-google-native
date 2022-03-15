@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+        /// </summary>
+        [Output("spokes")]
+        public Output<ImmutableArray<string>> Spokes { get; private set; } = null!;
+
+        /// <summary>
         /// The current lifecycle state of this Hub.
         /// </summary>
         [Output("state")]

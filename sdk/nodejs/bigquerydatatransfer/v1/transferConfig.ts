@@ -99,6 +99,12 @@ export class TransferConfig extends pulumi.CustomResource {
      * Data transfer modification time. Ignored by server on input.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
+     *
+     * @deprecated Deprecated. Unique ID of the user on whose behalf transfer is done.
+     */
+    public readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -126,6 +132,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
             resourceInputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["versionInfo"] = args ? args.versionInfo : undefined;
             resourceInputs["datasetRegion"] = undefined /*out*/;
             resourceInputs["nextRunTime"] = undefined /*out*/;
@@ -149,6 +156,7 @@ export class TransferConfig extends pulumi.CustomResource {
             resourceInputs["scheduleOptions"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TransferConfig.__pulumiType, name, resourceInputs, opts);
@@ -213,6 +221,12 @@ export interface TransferConfigArgs {
      * Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
      */
     serviceAccountName?: pulumi.Input<string>;
+    /**
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
+     *
+     * @deprecated Deprecated. Unique ID of the user on whose behalf transfer is done.
+     */
+    userId?: pulumi.Input<string>;
     /**
      * Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
      */

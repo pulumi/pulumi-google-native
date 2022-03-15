@@ -26,7 +26,9 @@ class DiskResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "mountPoint":
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "mountPoint":
             suggest = "mount_point"
         elif key == "readOnly":
             suggest = "read_only"
@@ -45,6 +47,7 @@ class DiskResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 auto_delete: bool,
                  mount_point: str,
                  name: str,
                  read_only: bool,
@@ -53,6 +56,7 @@ class DiskResponse(dict):
                  type: str):
         """
         A Google Compute Engine disk resource specification.
+        :param bool auto_delete: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
         :param str mount_point: Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
         :param str name: The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
         :param bool read_only: Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
@@ -60,12 +64,21 @@ class DiskResponse(dict):
         :param str source: The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
         :param str type: The type of the disk to create.
         """
+        pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "mount_point", mount_point)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "read_only", read_only)
         pulumi.set(__self__, "size_gb", size_gb)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> bool:
+        """
+        Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+        """
+        return pulumi.get(self, "auto_delete")
 
     @property
     @pulumi.getter(name="mountPoint")

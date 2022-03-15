@@ -1580,6 +1580,177 @@ func (in *jobPostingRegionPtr) ToJobPostingRegionPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(JobPostingRegionPtrOutput)
 }
 
+// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+type JobVisibility string
+
+const (
+	// Default value.
+	JobVisibilityVisibilityUnspecified = JobVisibility("VISIBILITY_UNSPECIFIED")
+	// The resource is only visible to the GCP account who owns it.
+	JobVisibilityAccountOnly = JobVisibility("ACCOUNT_ONLY")
+	// The resource is visible to the owner and may be visible to other applications and processes at Google.
+	JobVisibilitySharedWithGoogle = JobVisibility("SHARED_WITH_GOOGLE")
+	// The resource is visible to the owner and may be visible to all other API clients.
+	JobVisibilitySharedWithPublic = JobVisibility("SHARED_WITH_PUBLIC")
+)
+
+func (JobVisibility) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobVisibility)(nil)).Elem()
+}
+
+func (e JobVisibility) ToJobVisibilityOutput() JobVisibilityOutput {
+	return pulumi.ToOutput(e).(JobVisibilityOutput)
+}
+
+func (e JobVisibility) ToJobVisibilityOutputWithContext(ctx context.Context) JobVisibilityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobVisibilityOutput)
+}
+
+func (e JobVisibility) ToJobVisibilityPtrOutput() JobVisibilityPtrOutput {
+	return e.ToJobVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (e JobVisibility) ToJobVisibilityPtrOutputWithContext(ctx context.Context) JobVisibilityPtrOutput {
+	return JobVisibility(e).ToJobVisibilityOutputWithContext(ctx).ToJobVisibilityPtrOutputWithContext(ctx)
+}
+
+func (e JobVisibility) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobVisibility) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobVisibility) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobVisibility) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobVisibilityOutput struct{ *pulumi.OutputState }
+
+func (JobVisibilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobVisibility)(nil)).Elem()
+}
+
+func (o JobVisibilityOutput) ToJobVisibilityOutput() JobVisibilityOutput {
+	return o
+}
+
+func (o JobVisibilityOutput) ToJobVisibilityOutputWithContext(ctx context.Context) JobVisibilityOutput {
+	return o
+}
+
+func (o JobVisibilityOutput) ToJobVisibilityPtrOutput() JobVisibilityPtrOutput {
+	return o.ToJobVisibilityPtrOutputWithContext(context.Background())
+}
+
+func (o JobVisibilityOutput) ToJobVisibilityPtrOutputWithContext(ctx context.Context) JobVisibilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobVisibility) *JobVisibility {
+		return &v
+	}).(JobVisibilityPtrOutput)
+}
+
+func (o JobVisibilityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobVisibilityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobVisibility) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobVisibilityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobVisibilityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobVisibility) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobVisibilityPtrOutput struct{ *pulumi.OutputState }
+
+func (JobVisibilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobVisibility)(nil)).Elem()
+}
+
+func (o JobVisibilityPtrOutput) ToJobVisibilityPtrOutput() JobVisibilityPtrOutput {
+	return o
+}
+
+func (o JobVisibilityPtrOutput) ToJobVisibilityPtrOutputWithContext(ctx context.Context) JobVisibilityPtrOutput {
+	return o
+}
+
+func (o JobVisibilityPtrOutput) Elem() JobVisibilityOutput {
+	return o.ApplyT(func(v *JobVisibility) JobVisibility {
+		if v != nil {
+			return *v
+		}
+		var ret JobVisibility
+		return ret
+	}).(JobVisibilityOutput)
+}
+
+func (o JobVisibilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobVisibility) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobVisibilityInput is an input type that accepts JobVisibilityArgs and JobVisibilityOutput values.
+// You can construct a concrete instance of `JobVisibilityInput` via:
+//
+//          JobVisibilityArgs{...}
+type JobVisibilityInput interface {
+	pulumi.Input
+
+	ToJobVisibilityOutput() JobVisibilityOutput
+	ToJobVisibilityOutputWithContext(context.Context) JobVisibilityOutput
+}
+
+var jobVisibilityPtrType = reflect.TypeOf((**JobVisibility)(nil)).Elem()
+
+type JobVisibilityPtrInput interface {
+	pulumi.Input
+
+	ToJobVisibilityPtrOutput() JobVisibilityPtrOutput
+	ToJobVisibilityPtrOutputWithContext(context.Context) JobVisibilityPtrOutput
+}
+
+type jobVisibilityPtr string
+
+func JobVisibilityPtr(v string) JobVisibilityPtrInput {
+	return (*jobVisibilityPtr)(&v)
+}
+
+func (*jobVisibilityPtr) ElementType() reflect.Type {
+	return jobVisibilityPtrType
+}
+
+func (in *jobVisibilityPtr) ToJobVisibilityPtrOutput() JobVisibilityPtrOutput {
+	return pulumi.ToOutput(in).(JobVisibilityPtrOutput)
+}
+
+func (in *jobVisibilityPtr) ToJobVisibilityPtrOutputWithContext(ctx context.Context) JobVisibilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobVisibilityPtrOutput)
+}
+
 // Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
 type ProcessingOptionsHtmlSanitization string
 
@@ -1769,6 +1940,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobJobLevelPtrInput)(nil)).Elem(), JobJobLevel("JOB_LEVEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPostingRegionInput)(nil)).Elem(), JobPostingRegion("POSTING_REGION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPostingRegionPtrInput)(nil)).Elem(), JobPostingRegion("POSTING_REGION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobVisibilityInput)(nil)).Elem(), JobVisibility("VISIBILITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobVisibilityPtrInput)(nil)).Elem(), JobVisibility("VISIBILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProcessingOptionsHtmlSanitizationInput)(nil)).Elem(), ProcessingOptionsHtmlSanitization("HTML_SANITIZATION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProcessingOptionsHtmlSanitizationPtrInput)(nil)).Elem(), ProcessingOptionsHtmlSanitization("HTML_SANITIZATION_UNSPECIFIED"))
 	pulumi.RegisterOutputType(CompanySizeOutput{})
@@ -1790,6 +1963,8 @@ func init() {
 	pulumi.RegisterOutputType(JobJobLevelPtrOutput{})
 	pulumi.RegisterOutputType(JobPostingRegionOutput{})
 	pulumi.RegisterOutputType(JobPostingRegionPtrOutput{})
+	pulumi.RegisterOutputType(JobVisibilityOutput{})
+	pulumi.RegisterOutputType(JobVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(ProcessingOptionsHtmlSanitizationOutput{})
 	pulumi.RegisterOutputType(ProcessingOptionsHtmlSanitizationPtrOutput{})
 }

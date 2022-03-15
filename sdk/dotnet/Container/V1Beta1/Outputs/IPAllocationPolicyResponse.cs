@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool AllowRouteOverlap;
         /// <summary>
+        /// This field is deprecated, use cluster_ipv4_cidr_block.
+        /// </summary>
+        public readonly string ClusterIpv4Cidr;
+        /// <summary>
         /// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         /// </summary>
         public readonly string ClusterIpv4CidrBlock;
@@ -33,9 +37,17 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool CreateSubnetwork;
         /// <summary>
+        /// This field is deprecated, use node_ipv4_cidr_block.
+        /// </summary>
+        public readonly string NodeIpv4Cidr;
+        /// <summary>
         /// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         /// </summary>
         public readonly string NodeIpv4CidrBlock;
+        /// <summary>
+        /// This field is deprecated, use services_ipv4_cidr_block.
+        /// </summary>
+        public readonly string ServicesIpv4Cidr;
         /// <summary>
         /// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         /// </summary>
@@ -49,6 +61,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string SubnetworkName;
         /// <summary>
+        /// The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
+        /// </summary>
+        public readonly string TpuIpv4CidrBlock;
+        /// <summary>
         /// Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         /// </summary>
         public readonly bool UseIpAliases;
@@ -61,13 +77,19 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         private IPAllocationPolicyResponse(
             bool allowRouteOverlap,
 
+            string clusterIpv4Cidr,
+
             string clusterIpv4CidrBlock,
 
             string clusterSecondaryRangeName,
 
             bool createSubnetwork,
 
+            string nodeIpv4Cidr,
+
             string nodeIpv4CidrBlock,
+
+            string servicesIpv4Cidr,
 
             string servicesIpv4CidrBlock,
 
@@ -75,18 +97,24 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string subnetworkName,
 
+            string tpuIpv4CidrBlock,
+
             bool useIpAliases,
 
             bool useRoutes)
         {
             AllowRouteOverlap = allowRouteOverlap;
+            ClusterIpv4Cidr = clusterIpv4Cidr;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             CreateSubnetwork = createSubnetwork;
+            NodeIpv4Cidr = nodeIpv4Cidr;
             NodeIpv4CidrBlock = nodeIpv4CidrBlock;
+            ServicesIpv4Cidr = servicesIpv4Cidr;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesSecondaryRangeName = servicesSecondaryRangeName;
             SubnetworkName = subnetworkName;
+            TpuIpv4CidrBlock = tpuIpv4CidrBlock;
             UseIpAliases = useIpAliases;
             UseRoutes = useRoutes;
         }

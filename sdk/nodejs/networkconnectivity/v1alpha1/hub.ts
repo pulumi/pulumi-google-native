@@ -51,6 +51,12 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+     *
+     * @deprecated Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+     */
+    public /*out*/ readonly spokes!: pulumi.Output<string[]>;
+    /**
      * The current lifecycle state of this Hub.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -82,6 +88,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["spokes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
         } else {
@@ -89,6 +96,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["spokes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

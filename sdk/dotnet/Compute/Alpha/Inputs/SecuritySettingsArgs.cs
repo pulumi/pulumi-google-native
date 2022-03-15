@@ -16,10 +16,34 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class SecuritySettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// [Deprecated] Use clientTlsPolicy instead.
+        /// </summary>
+        [Input("authentication")]
+        public Input<string>? Authentication { get; set; }
+
+        /// <summary>
+        /// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+        /// </summary>
+        [Input("authenticationPolicy")]
+        public Input<Inputs.AuthenticationPolicyArgs>? AuthenticationPolicy { get; set; }
+
+        /// <summary>
+        /// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+        /// </summary>
+        [Input("authorizationConfig")]
+        public Input<Inputs.AuthorizationConfigArgs>? AuthorizationConfig { get; set; }
+
+        /// <summary>
         /// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         /// </summary>
         [Input("clientTlsPolicy")]
         public Input<string>? ClientTlsPolicy { get; set; }
+
+        /// <summary>
+        /// [Deprecated] TLS Settings for the backend service.
+        /// </summary>
+        [Input("clientTlsSettings")]
+        public Input<Inputs.ClientTlsSettingsArgs>? ClientTlsSettings { get; set; }
 
         [Input("subjectAltNames")]
         private InputList<string>? _subjectAltNames;

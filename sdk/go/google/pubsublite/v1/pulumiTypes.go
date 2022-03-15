@@ -374,6 +374,10 @@ type PartitionConfig struct {
 	Capacity *Capacity `pulumi:"capacity"`
 	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 	Count *string `pulumi:"count"`
+	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	//
+	// Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	Scale *int `pulumi:"scale"`
 }
 
 // PartitionConfigInput is an input type that accepts PartitionConfigArgs and PartitionConfigOutput values.
@@ -393,6 +397,10 @@ type PartitionConfigArgs struct {
 	Capacity CapacityPtrInput `pulumi:"capacity"`
 	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 	Count pulumi.StringPtrInput `pulumi:"count"`
+	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	//
+	// Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
 }
 
 func (PartitionConfigArgs) ElementType() reflect.Type {
@@ -483,6 +491,13 @@ func (o PartitionConfigOutput) Count() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PartitionConfig) *string { return v.Count }).(pulumi.StringPtrOutput)
 }
 
+// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+//
+// Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+func (o PartitionConfigOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PartitionConfig) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
 type PartitionConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PartitionConfigPtrOutput) ElementType() reflect.Type {
@@ -527,12 +542,28 @@ func (o PartitionConfigPtrOutput) Count() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+//
+// Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+func (o PartitionConfigPtrOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PartitionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Scale
+	}).(pulumi.IntPtrOutput)
+}
+
 // The settings for a topic's partitions.
 type PartitionConfigResponse struct {
 	// The capacity configuration.
 	Capacity CapacityResponse `pulumi:"capacity"`
 	// The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 	Count string `pulumi:"count"`
+	// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	//
+	// Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+	Scale int `pulumi:"scale"`
 }
 
 // The settings for a topic's partitions.
@@ -558,6 +589,13 @@ func (o PartitionConfigResponseOutput) Capacity() CapacityResponseOutput {
 // The number of partitions in the topic. Must be at least 1. Once a topic has been created the number of partitions can be increased but not decreased. Message ordering is not guaranteed across a topic resize. For more information see https://cloud.google.com/pubsub/lite/docs/topics#scaling_capacity
 func (o PartitionConfigResponseOutput) Count() pulumi.StringOutput {
 	return o.ApplyT(func(v PartitionConfigResponse) string { return v.Count }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+//
+// Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
+func (o PartitionConfigResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v PartitionConfigResponse) int { return v.Scale }).(pulumi.IntOutput)
 }
 
 // The settings for this topic's Reservation usage.

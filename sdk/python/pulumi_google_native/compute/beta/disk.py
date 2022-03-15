@@ -20,6 +20,7 @@ class DiskArgs:
                  disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
+                 interface: Optional[pulumi.Input['DiskInterface']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -40,6 +41,7 @@ class DiskArgs:
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input['DiskStorageType']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -49,6 +51,7 @@ class DiskArgs:
         :param pulumi.Input['CustomerEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input['DiskInterface'] interface: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of publicly visible licenses. Reserved for Google's use.
@@ -68,6 +71,7 @@ class DiskArgs:
         :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        :param pulumi.Input['DiskStorageType'] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
@@ -79,6 +83,11 @@ class DiskArgs:
             pulumi.set(__self__, "erase_windows_vss_signature", erase_windows_vss_signature)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if interface is not None:
+            warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if license_codes is not None:
@@ -119,6 +128,11 @@ class DiskArgs:
             pulumi.set(__self__, "source_snapshot_encryption_key", source_snapshot_encryption_key)
         if source_storage_object is not None:
             pulumi.set(__self__, "source_storage_object", source_storage_object)
+        if storage_type is not None:
+            warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
+            pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
+        if storage_type is not None:
+            pulumi.set(__self__, "storage_type", storage_type)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_licenses is not None:
@@ -173,6 +187,18 @@ class DiskArgs:
     @guest_os_features.setter
     def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]]):
         pulumi.set(self, "guest_os_features", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input['DiskInterface']]:
+        """
+        [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input['DiskInterface']]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter
@@ -412,6 +438,18 @@ class DiskArgs:
         pulumi.set(self, "source_storage_object", value)
 
     @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> Optional[pulumi.Input['DiskStorageType']]:
+        """
+        [Deprecated] Storage type of the persistent disk.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: Optional[pulumi.Input['DiskStorageType']]):
+        pulumi.set(self, "storage_type", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -454,6 +492,7 @@ class Disk(pulumi.CustomResource):
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
+                 interface: Optional[pulumi.Input['DiskInterface']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -474,6 +513,7 @@ class Disk(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input['DiskStorageType']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -487,6 +527,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input['DiskInterface'] interface: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: A list of publicly visible licenses. Reserved for Google's use.
@@ -506,6 +547,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
+        :param pulumi.Input['DiskStorageType'] storage_type: [Deprecated] Storage type of the persistent disk.
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
@@ -537,6 +579,7 @@ class Disk(pulumi.CustomResource):
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  erase_windows_vss_signature: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
+                 interface: Optional[pulumi.Input['DiskInterface']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -557,6 +600,7 @@ class Disk(pulumi.CustomResource):
                  source_snapshot: Optional[pulumi.Input[str]] = None,
                  source_snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  source_storage_object: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input['DiskStorageType']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -576,6 +620,10 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["erase_windows_vss_signature"] = erase_windows_vss_signature
             __props__.__dict__["guest_os_features"] = guest_os_features
+            if interface is not None and not opts.urn:
+                warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+                pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+            __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["license_codes"] = license_codes
             __props__.__dict__["licenses"] = licenses
@@ -596,6 +644,10 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["source_snapshot"] = source_snapshot
             __props__.__dict__["source_snapshot_encryption_key"] = source_snapshot_encryption_key
             __props__.__dict__["source_storage_object"] = source_storage_object
+            if storage_type is not None and not opts.urn:
+                warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
+                pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
+            __props__.__dict__["storage_type"] = storage_type
             __props__.__dict__["type"] = type
             __props__.__dict__["user_licenses"] = user_licenses
             __props__.__dict__["zone"] = zone
@@ -640,6 +692,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["disk_encryption_key"] = None
         __props__.__dict__["erase_windows_vss_signature"] = None
         __props__.__dict__["guest_os_features"] = None
+        __props__.__dict__["interface"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["label_fingerprint"] = None
         __props__.__dict__["labels"] = None
@@ -670,6 +723,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["source_snapshot_id"] = None
         __props__.__dict__["source_storage_object"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["storage_type"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["user_licenses"] = None
         __props__.__dict__["users"] = None
@@ -715,6 +769,14 @@ class Disk(pulumi.CustomResource):
         A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        """
+        return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter
@@ -955,6 +1017,14 @@ class Disk(pulumi.CustomResource):
         The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Output[str]:
+        """
+        [Deprecated] Storage type of the persistent disk.
+        """
+        return pulumi.get(self, "storage_type")
 
     @property
     @pulumi.getter

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTransferConfigResult:
-    def __init__(__self__, data_refresh_window_days=None, data_source_id=None, dataset_region=None, destination_dataset_id=None, disabled=None, display_name=None, email_preferences=None, name=None, next_run_time=None, notification_pubsub_topic=None, owner_info=None, params=None, schedule=None, schedule_options=None, state=None, update_time=None):
+    def __init__(__self__, data_refresh_window_days=None, data_source_id=None, dataset_region=None, destination_dataset_id=None, disabled=None, display_name=None, email_preferences=None, name=None, next_run_time=None, notification_pubsub_topic=None, owner_info=None, params=None, schedule=None, schedule_options=None, state=None, update_time=None, user_id=None):
         if data_refresh_window_days and not isinstance(data_refresh_window_days, int):
             raise TypeError("Expected argument 'data_refresh_window_days' to be a int")
         pulumi.set(__self__, "data_refresh_window_days", data_refresh_window_days)
@@ -67,6 +67,13 @@ class GetTransferConfigResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if user_id and not isinstance(user_id, str):
+            raise TypeError("Expected argument 'user_id' to be a str")
+        if user_id is not None:
+            warnings.warn("""Deprecated. Unique ID of the user on whose behalf transfer is done.""", DeprecationWarning)
+            pulumi.log.warn("""user_id is deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.""")
+
+        pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter(name="dataRefreshWindowDays")
@@ -196,6 +203,14 @@ class GetTransferConfigResult:
         """
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> str:
+        """
+        Deprecated. Unique ID of the user on whose behalf transfer is done.
+        """
+        return pulumi.get(self, "user_id")
+
 
 class AwaitableGetTransferConfigResult(GetTransferConfigResult):
     # pylint: disable=using-constant-test
@@ -218,7 +233,8 @@ class AwaitableGetTransferConfigResult(GetTransferConfigResult):
             schedule=self.schedule,
             schedule_options=self.schedule_options,
             state=self.state,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            user_id=self.user_id)
 
 
 def get_transfer_config(location: Optional[str] = None,
@@ -254,7 +270,8 @@ def get_transfer_config(location: Optional[str] = None,
         schedule=__ret__.schedule,
         schedule_options=__ret__.schedule_options,
         state=__ret__.state,
-        update_time=__ret__.update_time)
+        update_time=__ret__.update_time,
+        user_id=__ret__.user_id)
 
 
 @_utilities.lift_output_func(get_transfer_config)

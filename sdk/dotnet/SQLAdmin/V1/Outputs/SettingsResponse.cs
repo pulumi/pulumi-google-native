@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly Outputs.SqlActiveDirectoryConfigResponse ActiveDirectoryConfig;
         /// <summary>
+        /// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+        /// </summary>
+        public readonly ImmutableArray<string> AuthorizedGaeApplications;
+        /// <summary>
         /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         /// </summary>
         public readonly string AvailabilityType;
@@ -89,6 +93,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly string PricingPlan;
         /// <summary>
+        /// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+        /// </summary>
+        public readonly string ReplicationType;
+        /// <summary>
         /// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         /// </summary>
         public readonly string SettingsVersion;
@@ -118,6 +126,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
             string activationPolicy,
 
             Outputs.SqlActiveDirectoryConfigResponse activeDirectoryConfig,
+
+            ImmutableArray<string> authorizedGaeApplications,
 
             string availabilityType,
 
@@ -151,6 +161,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 
             string pricingPlan,
 
+            string replicationType,
+
             string settingsVersion,
 
             Outputs.SqlServerAuditConfigResponse sqlServerAuditConfig,
@@ -165,6 +177,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         {
             ActivationPolicy = activationPolicy;
             ActiveDirectoryConfig = activeDirectoryConfig;
+            AuthorizedGaeApplications = authorizedGaeApplications;
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;
             Collation = collation;
@@ -181,6 +194,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
             MaintenanceWindow = maintenanceWindow;
             PasswordValidationPolicy = passwordValidationPolicy;
             PricingPlan = pricingPlan;
+            ReplicationType = replicationType;
             SettingsVersion = settingsVersion;
             SqlServerAuditConfig = sqlServerAuditConfig;
             StorageAutoResize = storageAutoResize;

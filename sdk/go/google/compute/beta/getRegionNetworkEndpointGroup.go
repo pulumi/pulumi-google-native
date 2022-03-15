@@ -43,6 +43,10 @@ type LookupRegionNetworkEndpointGroupResult struct {
 	Description string `pulumi:"description"`
 	// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 	Kind string `pulumi:"kind"`
+	// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+	//
+	// Deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+	LoadBalancer NetworkEndpointGroupLbNetworkEndpointGroupResponse `pulumi:"loadBalancer"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
@@ -140,6 +144,15 @@ func (o LookupRegionNetworkEndpointGroupResultOutput) Description() pulumi.Strin
 // Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
 func (o LookupRegionNetworkEndpointGroupResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+//
+// Deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+func (o LookupRegionNetworkEndpointGroupResultOutput) LoadBalancer() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
+	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) NetworkEndpointGroupLbNetworkEndpointGroupResponse {
+		return v.LoadBalancer
+	}).(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput)
 }
 
 // Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

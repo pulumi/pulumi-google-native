@@ -53,6 +53,10 @@ type LookupRatePlanResult struct {
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
 	// Name of the rate plan.
 	Name string `pulumi:"name"`
+	// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	//
+	// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+	PaymentFundingModel string `pulumi:"paymentFundingModel"`
 	// Details of the revenue sharing model.
 	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRangeResponse `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
@@ -161,6 +165,13 @@ func (o LookupRatePlanResultOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the rate plan.
 func (o LookupRatePlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRatePlanResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+//
+// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+func (o LookupRatePlanResultOutput) PaymentFundingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRatePlanResult) string { return v.PaymentFundingModel }).(pulumi.StringOutput)
 }
 
 // Details of the revenue sharing model.

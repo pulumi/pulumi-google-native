@@ -36,6 +36,10 @@ type LookupCatalogItemResult struct {
 	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapResponse `pulumi:"itemAttributes"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	ItemGroupId string `pulumi:"itemGroupId"`
+	// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	//
+	// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	LanguageCode string `pulumi:"languageCode"`
 	// Optional. Metadata specific to retail products.
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse `pulumi:"productMetadata"`
 	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
@@ -100,6 +104,13 @@ func (o LookupCatalogItemResultOutput) ItemAttributes() GoogleCloudRecommendatio
 // Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 func (o LookupCatalogItemResultOutput) ItemGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogItemResult) string { return v.ItemGroupId }).(pulumi.StringOutput)
+}
+
+// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+//
+// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+func (o LookupCatalogItemResultOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogItemResult) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // Optional. Metadata specific to retail products.

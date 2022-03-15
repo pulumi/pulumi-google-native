@@ -15,6 +15,7 @@ __all__ = [
     'GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs',
     'GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs',
     'GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs',
+    'GoogleCloudDatalabelingV1beta1CsvInstructionArgs',
     'GoogleCloudDatalabelingV1beta1EvaluationConfigArgs',
     'GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs',
     'GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs',
@@ -177,6 +178,30 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs:
     @is_multi_label.setter
     def is_multi_label(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_multi_label", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatalabelingV1beta1CsvInstructionArgs:
+    def __init__(__self__, *,
+                 gcs_file_uri: Optional[pulumi.Input[str]] = None):
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+        :param pulumi.Input[str] gcs_file_uri: CSV file for the instruction. Only gcs path is allowed.
+        """
+        if gcs_file_uri is not None:
+            pulumi.set(__self__, "gcs_file_uri", gcs_file_uri)
+
+    @property
+    @pulumi.getter(name="gcsFileUri")
+    def gcs_file_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        CSV file for the instruction. Only gcs path is allowed.
+        """
+        return pulumi.get(self, "gcs_file_uri")
+
+    @gcs_file_uri.setter
+    def gcs_file_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_file_uri", value)
 
 
 @pulumi.input_type

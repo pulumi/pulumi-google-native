@@ -407,6 +407,38 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    /// </summary>
+    [EnumType]
+    public readonly struct AttachedDiskInitializeParamsInterface : IEquatable<AttachedDiskInitializeParamsInterface>
+    {
+        private readonly string _value;
+
+        private AttachedDiskInitializeParamsInterface(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static AttachedDiskInitializeParamsInterface Nvme { get; } = new AttachedDiskInitializeParamsInterface("NVME");
+        public static AttachedDiskInitializeParamsInterface Scsi { get; } = new AttachedDiskInitializeParamsInterface("SCSI");
+        public static AttachedDiskInitializeParamsInterface Unspecified { get; } = new AttachedDiskInitializeParamsInterface("UNSPECIFIED");
+
+        public static bool operator ==(AttachedDiskInitializeParamsInterface left, AttachedDiskInitializeParamsInterface right) => left.Equals(right);
+        public static bool operator !=(AttachedDiskInitializeParamsInterface left, AttachedDiskInitializeParamsInterface right) => !left.Equals(right);
+
+        public static explicit operator string(AttachedDiskInitializeParamsInterface value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AttachedDiskInitializeParamsInterface other && Equals(other);
+        public bool Equals(AttachedDiskInitializeParamsInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies which action to take on instance update with this disk. Default is to use the existing disk.
     /// </summary>
     [EnumType]
@@ -622,6 +654,44 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is AuditLogConfigLogType other && Equals(other);
         public bool Equals(AuditLogConfigLogType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+    /// </summary>
+    [EnumType]
+    public readonly struct AuthenticationPolicyPrincipalBinding : IEquatable<AuthenticationPolicyPrincipalBinding>
+    {
+        private readonly string _value;
+
+        private AuthenticationPolicyPrincipalBinding(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static AuthenticationPolicyPrincipalBinding Invalid { get; } = new AuthenticationPolicyPrincipalBinding("INVALID");
+        /// <summary>
+        /// Principal will be set to the identity from origin authentication.
+        /// </summary>
+        public static AuthenticationPolicyPrincipalBinding UseOrigin { get; } = new AuthenticationPolicyPrincipalBinding("USE_ORIGIN");
+        /// <summary>
+        /// Principal will be set to the identity from peer authentication.
+        /// </summary>
+        public static AuthenticationPolicyPrincipalBinding UsePeer { get; } = new AuthenticationPolicyPrincipalBinding("USE_PEER");
+
+        public static bool operator ==(AuthenticationPolicyPrincipalBinding left, AuthenticationPolicyPrincipalBinding right) => left.Equals(right);
+        public static bool operator !=(AuthenticationPolicyPrincipalBinding left, AuthenticationPolicyPrincipalBinding right) => !left.Equals(right);
+
+        public static explicit operator string(AuthenticationPolicyPrincipalBinding value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AuthenticationPolicyPrincipalBinding other && Equals(other);
+        public bool Equals(AuthenticationPolicyPrincipalBinding other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -1374,6 +1444,48 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClientTlsSettingsMode : IEquatable<ClientTlsSettingsMode>
+    {
+        private readonly string _value;
+
+        private ClientTlsSettingsMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Do not setup a TLS connection to the backends.
+        /// </summary>
+        public static ClientTlsSettingsMode Disable { get; } = new ClientTlsSettingsMode("DISABLE");
+        public static ClientTlsSettingsMode Invalid { get; } = new ClientTlsSettingsMode("INVALID");
+        /// <summary>
+        /// Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+        /// </summary>
+        public static ClientTlsSettingsMode Mutual { get; } = new ClientTlsSettingsMode("MUTUAL");
+        /// <summary>
+        /// Originate a TLS connection to the backends.
+        /// </summary>
+        public static ClientTlsSettingsMode Simple { get; } = new ClientTlsSettingsMode("SIMPLE");
+
+        public static bool operator ==(ClientTlsSettingsMode left, ClientTlsSettingsMode right) => left.Equals(right);
+        public static bool operator !=(ClientTlsSettingsMode left, ClientTlsSettingsMode right) => !left.Equals(right);
+
+        public static explicit operator string(ClientTlsSettingsMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClientTlsSettingsMode other && Equals(other);
+        public bool Equals(ClientTlsSettingsMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
     [EnumType]
@@ -1660,6 +1772,69 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DiskInstantiationConfigInstantiateFrom other && Equals(other);
         public bool Equals(DiskInstantiationConfigInstantiateFrom other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    /// </summary>
+    [EnumType]
+    public readonly struct DiskInterface : IEquatable<DiskInterface>
+    {
+        private readonly string _value;
+
+        private DiskInterface(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static DiskInterface Nvme { get; } = new DiskInterface("NVME");
+        public static DiskInterface Scsi { get; } = new DiskInterface("SCSI");
+        public static DiskInterface Unspecified { get; } = new DiskInterface("UNSPECIFIED");
+
+        public static bool operator ==(DiskInterface left, DiskInterface right) => left.Equals(right);
+        public static bool operator !=(DiskInterface left, DiskInterface right) => !left.Equals(right);
+
+        public static explicit operator string(DiskInterface value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DiskInterface other && Equals(other);
+        public bool Equals(DiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// [Deprecated] Storage type of the persistent disk.
+    /// </summary>
+    [EnumType]
+    public readonly struct DiskStorageType : IEquatable<DiskStorageType>
+    {
+        private readonly string _value;
+
+        private DiskStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static DiskStorageType Hdd { get; } = new DiskStorageType("HDD");
+        public static DiskStorageType Ssd { get; } = new DiskStorageType("SSD");
+
+        public static bool operator ==(DiskStorageType left, DiskStorageType right) => left.Equals(right);
+        public static bool operator !=(DiskStorageType left, DiskStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(DiskStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DiskStorageType other && Equals(other);
+        public bool Equals(DiskStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -4229,6 +4404,44 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+    /// </summary>
+    [EnumType]
+    public readonly struct MutualTlsMode : IEquatable<MutualTlsMode>
+    {
+        private readonly string _value;
+
+        private MutualTlsMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static MutualTlsMode Invalid { get; } = new MutualTlsMode("INVALID");
+        /// <summary>
+        /// Client certificate can be omitted, connection can be either plaintext or TLS.
+        /// </summary>
+        public static MutualTlsMode Permissive { get; } = new MutualTlsMode("PERMISSIVE");
+        /// <summary>
+        /// Client certificate must be presented, connection is in TLS.
+        /// </summary>
+        public static MutualTlsMode Strict { get; } = new MutualTlsMode("STRICT");
+
+        public static bool operator ==(MutualTlsMode left, MutualTlsMode right) => left.Equals(right);
+        public static bool operator !=(MutualTlsMode left, MutualTlsMode right) => !left.Equals(right);
+
+        public static explicit operator string(MutualTlsMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MutualTlsMode other && Equals(other);
+        public bool Equals(MutualTlsMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
     [EnumType]
@@ -5357,6 +5570,69 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionDiskInterface : IEquatable<RegionDiskInterface>
+    {
+        private readonly string _value;
+
+        private RegionDiskInterface(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionDiskInterface Nvme { get; } = new RegionDiskInterface("NVME");
+        public static RegionDiskInterface Scsi { get; } = new RegionDiskInterface("SCSI");
+        public static RegionDiskInterface Unspecified { get; } = new RegionDiskInterface("UNSPECIFIED");
+
+        public static bool operator ==(RegionDiskInterface left, RegionDiskInterface right) => left.Equals(right);
+        public static bool operator !=(RegionDiskInterface left, RegionDiskInterface right) => !left.Equals(right);
+
+        public static explicit operator string(RegionDiskInterface value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionDiskInterface other && Equals(other);
+        public bool Equals(RegionDiskInterface other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// [Deprecated] Storage type of the persistent disk.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionDiskStorageType : IEquatable<RegionDiskStorageType>
+    {
+        private readonly string _value;
+
+        private RegionDiskStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionDiskStorageType Hdd { get; } = new RegionDiskStorageType("HDD");
+        public static RegionDiskStorageType Ssd { get; } = new RegionDiskStorageType("SSD");
+
+        public static bool operator ==(RegionDiskStorageType left, RegionDiskStorageType right) => left.Equals(right);
+        public static bool operator !=(RegionDiskStorageType left, RegionDiskStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(RegionDiskStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionDiskStorageType other && Equals(other);
+        public bool Equals(RegionDiskStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
     /// </summary>
     [EnumType]
@@ -5386,6 +5662,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RegionHealthCheckServiceHealthStatusAggregationPolicy other && Equals(other);
         public bool Equals(RegionHealthCheckServiceHealthStatusAggregationPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionHealthCheckServiceHealthStatusAggregationStrategy : IEquatable<RegionHealthCheckServiceHealthStatusAggregationStrategy>
+    {
+        private readonly string _value;
+
+        private RegionHealthCheckServiceHealthStatusAggregationStrategy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+        /// </summary>
+        public static RegionHealthCheckServiceHealthStatusAggregationStrategy And { get; } = new RegionHealthCheckServiceHealthStatusAggregationStrategy("AND");
+        /// <summary>
+        /// This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
+        /// </summary>
+        public static RegionHealthCheckServiceHealthStatusAggregationStrategy NoAggregation { get; } = new RegionHealthCheckServiceHealthStatusAggregationStrategy("NO_AGGREGATION");
+
+        public static bool operator ==(RegionHealthCheckServiceHealthStatusAggregationStrategy left, RegionHealthCheckServiceHealthStatusAggregationStrategy right) => left.Equals(right);
+        public static bool operator !=(RegionHealthCheckServiceHealthStatusAggregationStrategy left, RegionHealthCheckServiceHealthStatusAggregationStrategy right) => !left.Equals(right);
+
+        public static explicit operator string(RegionHealthCheckServiceHealthStatusAggregationStrategy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionHealthCheckServiceHealthStatusAggregationStrategy other && Equals(other);
+        public bool Equals(RegionHealthCheckServiceHealthStatusAggregationStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -57,6 +57,19 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
             set => _inventories = value;
         }
 
+        [Input("osShortNames")]
+        private InputList<string>? _osShortNames;
+
+        /// <summary>
+        /// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+        /// </summary>
+        [Obsolete(@"Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.")]
+        public InputList<string> OsShortNames
+        {
+            get => _osShortNames ?? (_osShortNames = new InputList<string>());
+            set => _osShortNames = value;
+        }
+
         public OSPolicyAssignmentInstanceFilterArgs()
         {
         }

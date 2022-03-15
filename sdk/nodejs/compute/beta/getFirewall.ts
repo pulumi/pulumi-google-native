@@ -55,6 +55,12 @@ export interface GetFirewallResult {
      */
     readonly disabled: boolean;
     /**
+     * Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+     *
+     * @deprecated Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+     */
+    readonly enableLogging: boolean;
+    /**
      * Type of the resource. Always compute#firewall for firewall rules.
      */
     readonly kind: string;

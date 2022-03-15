@@ -9325,6 +9325,10 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) Transformations
 
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfig struct {
+	// Deprecated and unused.
+	//
+	// Deprecated: Deprecated and unused.
+	ContentOptions []GooglePrivacyDlpV2InspectConfigContentOptionsItem `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes []GooglePrivacyDlpV2CustomInfoType `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings. This is not used for data profiling.
@@ -9354,6 +9358,10 @@ type GooglePrivacyDlpV2InspectConfigInput interface {
 
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfigArgs struct {
+	// Deprecated and unused.
+	//
+	// Deprecated: Deprecated and unused.
+	ContentOptions GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes GooglePrivacyDlpV2CustomInfoTypeArrayInput `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings. This is not used for data profiling.
@@ -9448,6 +9456,15 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) ToGooglePrivacyDlpV2InspectConfig
 	}).(GooglePrivacyDlpV2InspectConfigPtrOutput)
 }
 
+// Deprecated and unused.
+//
+// Deprecated: Deprecated and unused.
+func (o GooglePrivacyDlpV2InspectConfigOutput) ContentOptions() GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InspectConfigContentOptionsItem {
+		return v.ContentOptions
+	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
+}
+
 // CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 func (o GooglePrivacyDlpV2InspectConfigOutput) CustomInfoTypes() GooglePrivacyDlpV2CustomInfoTypeArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2CustomInfoType { return v.CustomInfoTypes }).(GooglePrivacyDlpV2CustomInfoTypeArrayOutput)
@@ -9507,6 +9524,18 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Elem() GooglePrivacyDlpV2Inspe
 		var ret GooglePrivacyDlpV2InspectConfig
 		return ret
 	}).(GooglePrivacyDlpV2InspectConfigOutput)
+}
+
+// Deprecated and unused.
+//
+// Deprecated: Deprecated and unused.
+func (o GooglePrivacyDlpV2InspectConfigPtrOutput) ContentOptions() GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InspectConfigContentOptionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.ContentOptions
+	}).(GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput)
 }
 
 // CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
@@ -9581,6 +9610,10 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) RuleSet() GooglePrivacyDlpV2In
 
 // Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
 type GooglePrivacyDlpV2InspectConfigResponse struct {
+	// Deprecated and unused.
+	//
+	// Deprecated: Deprecated and unused.
+	ContentOptions []string `pulumi:"contentOptions"`
 	// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
 	CustomInfoTypes []GooglePrivacyDlpV2CustomInfoTypeResponse `pulumi:"customInfoTypes"`
 	// When true, excludes type information of the findings. This is not used for data profiling.
@@ -9610,6 +9643,13 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2Inspe
 
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ToGooglePrivacyDlpV2InspectConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2InspectConfigResponseOutput {
 	return o
+}
+
+// Deprecated and unused.
+//
+// Deprecated: Deprecated and unused.
+func (o GooglePrivacyDlpV2InspectConfigResponseOutput) ContentOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) []string { return v.ContentOptions }).(pulumi.StringArrayOutput)
 }
 
 // CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.

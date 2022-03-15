@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? IngestDelay { get; set; }
 
         /// <summary>
+        /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+        /// </summary>
+        [Input("launchStage")]
+        public Input<Pulumi.GoogleNative.ServiceManagement.V1.MetricDescriptorMetadataLaunchStage>? LaunchStage { get; set; }
+
+        /// <summary>
         /// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
         /// </summary>
         [Input("samplePeriod")]

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, api_config=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None):
+    def __init__(__self__, api_config=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
         if api_config and not isinstance(api_config, dict):
             raise TypeError("Expected argument 'api_config' to be a dict")
         pulumi.set(__self__, "api_config", api_config)
@@ -130,6 +130,13 @@ class GetVersionResult:
         if vpc_access_connector and not isinstance(vpc_access_connector, dict):
             raise TypeError("Expected argument 'vpc_access_connector' to be a dict")
         pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
+        if zones and not isinstance(zones, list):
+            raise TypeError("Expected argument 'zones' to be a list")
+        if zones is not None:
+            warnings.warn("""The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""zones is deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.""")
+
+        pulumi.set(__self__, "zones", zones)
 
     @property
     @pulumi.getter(name="apiConfig")
@@ -427,6 +434,14 @@ class GetVersionResult:
         """
         return pulumi.get(self, "vpc_access_connector")
 
+    @property
+    @pulumi.getter
+    def zones(self) -> Sequence[str]:
+        """
+        The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        """
+        return pulumi.get(self, "zones")
+
 
 class AwaitableGetVersionResult(GetVersionResult):
     # pylint: disable=using-constant-test
@@ -470,7 +485,8 @@ class AwaitableGetVersionResult(GetVersionResult):
             threadsafe=self.threadsafe,
             version_url=self.version_url,
             vm=self.vm,
-            vpc_access_connector=self.vpc_access_connector)
+            vpc_access_connector=self.vpc_access_connector,
+            zones=self.zones)
 
 
 def get_version(app_id: Optional[str] = None,
@@ -529,7 +545,8 @@ def get_version(app_id: Optional[str] = None,
         threadsafe=__ret__.threadsafe,
         version_url=__ret__.version_url,
         vm=__ret__.vm,
-        vpc_access_connector=__ret__.vpc_access_connector)
+        vpc_access_connector=__ret__.vpc_access_connector,
+        zones=__ret__.zones)
 
 
 @_utilities.lift_output_func(get_version)

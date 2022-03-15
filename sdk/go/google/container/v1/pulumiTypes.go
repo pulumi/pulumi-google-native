@@ -1254,6 +1254,10 @@ type AutoprovisioningNodePoolDefaults struct {
 	ImageType *string `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management *NodeManagement `pulumi:"management"`
+	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	//
+	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP when creating node pools.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -1287,6 +1291,10 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementPtrInput `pulumi:"management"`
+	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	//
+	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP when creating node pools.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -1400,6 +1408,13 @@ func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
 }
 
+// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+//
+// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+func (o AutoprovisioningNodePoolDefaultsOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
 // Scopes that are used by NAP when creating node pools.
 func (o AutoprovisioningNodePoolDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
@@ -1494,6 +1509,18 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPt
 	}).(NodeManagementPtrOutput)
 }
 
+// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+//
+// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+func (o AutoprovisioningNodePoolDefaultsPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
 // Scopes that are used by NAP when creating node pools.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) []string {
@@ -1546,6 +1573,10 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	ImageType string `pulumi:"imageType"`
 	// Specifies the node management options for NAP created node-pools.
 	Management NodeManagementResponse `pulumi:"management"`
+	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	//
+	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP when creating node pools.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs.
@@ -1594,6 +1625,13 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.Strin
 // Specifies the node management options for NAP created node-pools.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagementResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
+}
+
+// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+//
+// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+func (o AutoprovisioningNodePoolDefaultsResponseOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
 
 // Scopes that are used by NAP when creating node pools.
@@ -5233,14 +5271,26 @@ type ILBSubsettingConfig struct {
 
 // Configuration for controlling how IPs are allocated in the cluster.
 type IPAllocationPolicy struct {
+	// This field is deprecated, use cluster_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
+	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock *string `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 	ClusterSecondaryRangeName *string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork *bool `pulumi:"createSubnetwork"`
+	// This field is deprecated, use node_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
+	NodeIpv4Cidr *string `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock *string `pulumi:"nodeIpv4CidrBlock"`
+	// This field is deprecated, use services_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
+	ServicesIpv4Cidr *string `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock *string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
@@ -5268,14 +5318,26 @@ type IPAllocationPolicyInput interface {
 
 // Configuration for controlling how IPs are allocated in the cluster.
 type IPAllocationPolicyArgs struct {
+	// This field is deprecated, use cluster_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
+	ClusterIpv4Cidr pulumi.StringPtrInput `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 	ClusterSecondaryRangeName pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork pulumi.BoolPtrInput `pulumi:"createSubnetwork"`
+	// This field is deprecated, use node_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
+	NodeIpv4Cidr pulumi.StringPtrInput `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock pulumi.StringPtrInput `pulumi:"nodeIpv4CidrBlock"`
+	// This field is deprecated, use services_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
+	ServicesIpv4Cidr pulumi.StringPtrInput `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
@@ -5368,6 +5430,13 @@ func (o IPAllocationPolicyOutput) ToIPAllocationPolicyPtrOutputWithContext(ctx c
 	}).(IPAllocationPolicyPtrOutput)
 }
 
+// This field is deprecated, use cluster_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
+func (o IPAllocationPolicyOutput) ClusterIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterIpv4Cidr }).(pulumi.StringPtrOutput)
+}
+
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -5383,9 +5452,23 @@ func (o IPAllocationPolicyOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *bool { return v.CreateSubnetwork }).(pulumi.BoolPtrOutput)
 }
 
+// This field is deprecated, use node_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
+func (o IPAllocationPolicyOutput) NodeIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.NodeIpv4Cidr }).(pulumi.StringPtrOutput)
+}
+
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.NodeIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+// This field is deprecated, use services_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
+func (o IPAllocationPolicyOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IPAllocationPolicy) *string { return v.ServicesIpv4Cidr }).(pulumi.StringPtrOutput)
 }
 
 // The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -5442,6 +5525,18 @@ func (o IPAllocationPolicyPtrOutput) Elem() IPAllocationPolicyOutput {
 	}).(IPAllocationPolicyOutput)
 }
 
+// This field is deprecated, use cluster_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
+func (o IPAllocationPolicyPtrOutput) ClusterIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterIpv4Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyPtrOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
@@ -5472,6 +5567,18 @@ func (o IPAllocationPolicyPtrOutput) CreateSubnetwork() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// This field is deprecated, use node_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
+func (o IPAllocationPolicyPtrOutput) NodeIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeIpv4Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyPtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPAllocationPolicy) *string {
@@ -5479,6 +5586,18 @@ func (o IPAllocationPolicyPtrOutput) NodeIpv4CidrBlock() pulumi.StringPtrOutput 
 			return nil
 		}
 		return v.NodeIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is deprecated, use services_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
+func (o IPAllocationPolicyPtrOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IPAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicesIpv4Cidr
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5544,14 +5663,26 @@ func (o IPAllocationPolicyPtrOutput) UseRoutes() pulumi.BoolPtrOutput {
 
 // Configuration for controlling how IPs are allocated in the cluster.
 type IPAllocationPolicyResponse struct {
+	// This field is deprecated, use cluster_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
+	ClusterIpv4Cidr string `pulumi:"clusterIpv4Cidr"`
 	// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ClusterIpv4CidrBlock string `pulumi:"clusterIpv4CidrBlock"`
 	// The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
 	ClusterSecondaryRangeName string `pulumi:"clusterSecondaryRangeName"`
 	// Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
 	CreateSubnetwork bool `pulumi:"createSubnetwork"`
+	// This field is deprecated, use node_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
+	NodeIpv4Cidr string `pulumi:"nodeIpv4Cidr"`
 	// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	NodeIpv4CidrBlock string `pulumi:"nodeIpv4CidrBlock"`
+	// This field is deprecated, use services_ipv4_cidr_block.
+	//
+	// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
+	ServicesIpv4Cidr string `pulumi:"servicesIpv4Cidr"`
 	// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 	ServicesIpv4CidrBlock string `pulumi:"servicesIpv4CidrBlock"`
 	// The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
@@ -5581,6 +5712,13 @@ func (o IPAllocationPolicyResponseOutput) ToIPAllocationPolicyResponseOutputWith
 	return o
 }
 
+// This field is deprecated, use cluster_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use cluster_ipv4_cidr_block.
+func (o IPAllocationPolicyResponseOutput) ClusterIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4Cidr }).(pulumi.StringOutput)
+}
+
 // The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
@@ -5596,9 +5734,23 @@ func (o IPAllocationPolicyResponseOutput) CreateSubnetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) bool { return v.CreateSubnetwork }).(pulumi.BoolOutput)
 }
 
+// This field is deprecated, use node_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use node_ipv4_cidr_block.
+func (o IPAllocationPolicyResponseOutput) NodeIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.NodeIpv4Cidr }).(pulumi.StringOutput)
+}
+
 // The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
 func (o IPAllocationPolicyResponseOutput) NodeIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.NodeIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// This field is deprecated, use services_ipv4_cidr_block.
+//
+// Deprecated: This field is deprecated, use services_ipv4_cidr_block.
+func (o IPAllocationPolicyResponseOutput) ServicesIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v IPAllocationPolicyResponse) string { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
 }
 
 // The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
@@ -11596,6 +11748,10 @@ type NodePoolResponse struct {
 	SelfLink string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status string `pulumi:"status"`
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	//
+	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	StatusMessage string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -11680,6 +11836,13 @@ func (o NodePoolResponseOutput) SelfLink() pulumi.StringOutput {
 // [Output only] The status of the nodes in this pool instance.
 func (o NodePoolResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+//
+// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+func (o NodePoolResponseOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolResponse) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.
@@ -14379,6 +14542,10 @@ func (o ShieldedNodesResponseOutput) Enabled() pulumi.BoolOutput {
 type StatusCondition struct {
 	// Canonical code of the condition.
 	CanonicalCode *StatusConditionCanonicalCode `pulumi:"canonicalCode"`
+	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+	//
+	// Deprecated: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+	Code *StatusConditionCode `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message *string `pulumi:"message"`
 }
@@ -14398,6 +14565,10 @@ type StatusConditionInput interface {
 type StatusConditionArgs struct {
 	// Canonical code of the condition.
 	CanonicalCode StatusConditionCanonicalCodePtrInput `pulumi:"canonicalCode"`
+	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+	//
+	// Deprecated: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+	Code StatusConditionCodePtrInput `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -14459,6 +14630,13 @@ func (o StatusConditionOutput) CanonicalCode() StatusConditionCanonicalCodePtrOu
 	return o.ApplyT(func(v StatusCondition) *StatusConditionCanonicalCode { return v.CanonicalCode }).(StatusConditionCanonicalCodePtrOutput)
 }
 
+// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+//
+// Deprecated: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+func (o StatusConditionOutput) Code() StatusConditionCodePtrOutput {
+	return o.ApplyT(func(v StatusCondition) *StatusConditionCode { return v.Code }).(StatusConditionCodePtrOutput)
+}
+
 // Human-friendly representation of the condition
 func (o StatusConditionOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
@@ -14488,6 +14666,10 @@ func (o StatusConditionArrayOutput) Index(i pulumi.IntInput) StatusConditionOutp
 type StatusConditionResponse struct {
 	// Canonical code of the condition.
 	CanonicalCode string `pulumi:"canonicalCode"`
+	// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+	//
+	// Deprecated: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+	Code string `pulumi:"code"`
 	// Human-friendly representation of the condition
 	Message string `pulumi:"message"`
 }
@@ -14510,6 +14692,13 @@ func (o StatusConditionResponseOutput) ToStatusConditionResponseOutputWithContex
 // Canonical code of the condition.
 func (o StatusConditionResponseOutput) CanonicalCode() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusConditionResponse) string { return v.CanonicalCode }).(pulumi.StringOutput)
+}
+
+// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+//
+// Deprecated: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+func (o StatusConditionResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v StatusConditionResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
 // Human-friendly representation of the condition

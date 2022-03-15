@@ -92,6 +92,10 @@ type Version struct {
 	Vm pulumi.BoolOutput `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector VpcAccessConnectorResponseOutput `pulumi:"vpcAccessConnector"`
+	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	//
+	// Deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
 // NewVersion registers a new resource with the given unique name, arguments, and options.
@@ -209,6 +213,10 @@ type versionArgs struct {
 	Vm *bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector *VpcAccessConnector `pulumi:"vpcAccessConnector"`
+	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	//
+	// Deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	Zones []string `pulumi:"zones"`
 }
 
 // The set of arguments for constructing a Version resource.
@@ -283,6 +291,10 @@ type VersionArgs struct {
 	Vm pulumi.BoolPtrInput
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector VpcAccessConnectorPtrInput
+	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	//
+	// Deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	Zones pulumi.StringArrayInput
 }
 
 func (VersionArgs) ElementType() reflect.Type {

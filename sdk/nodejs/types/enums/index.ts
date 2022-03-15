@@ -64,6 +64,7 @@ import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as ids from "./ids";
 import * as jobs from "./jobs";
+import * as logging from "./logging";
 import * as memcache from "./memcache";
 import * as metastore from "./metastore";
 import * as ml from "./ml";
@@ -162,6 +163,7 @@ export {
     iam,
     ids,
     jobs,
+    logging,
     memcache,
     metastore,
     ml,

@@ -31,6 +31,10 @@ type LookupCutoverJobArgs struct {
 type LookupCutoverJobResult struct {
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
+	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+	ComputeEngineVmDetails TargetVMDetailsResponse `pulumi:"computeEngineVmDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
@@ -47,6 +51,10 @@ type LookupCutoverJobResult struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+	//
+	// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+	TargetDetails TargetVMDetailsResponse `pulumi:"targetDetails"`
 }
 
 func LookupCutoverJobOutput(ctx *pulumi.Context, args LookupCutoverJobOutputArgs, opts ...pulumi.InvokeOption) LookupCutoverJobResultOutput {
@@ -89,6 +97,13 @@ func (o LookupCutoverJobResultOutput) ComputeEngineTargetDetails() ComputeEngine
 	return o.ApplyT(func(v LookupCutoverJobResult) ComputeEngineTargetDetailsResponse { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
 }
 
+// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+func (o LookupCutoverJobResultOutput) ComputeEngineVmDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) TargetVMDetailsResponse { return v.ComputeEngineVmDetails }).(TargetVMDetailsResponseOutput)
+}
+
 // The time the cutover job was created (as an API call, not when it was actually created in the target).
 func (o LookupCutoverJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -127,6 +142,13 @@ func (o LookupCutoverJobResultOutput) StateMessage() pulumi.StringOutput {
 // The time the state was last updated.
 func (o LookupCutoverJobResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+//
+// Deprecated: Output only. Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+func (o LookupCutoverJobResultOutput) TargetDetails() TargetVMDetailsResponseOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) TargetVMDetailsResponse { return v.TargetDetails }).(TargetVMDetailsResponseOutput)
 }
 
 func init() {

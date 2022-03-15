@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Outputs
         /// </summary>
         public readonly int FileRotationMb;
         /// <summary>
+        /// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+        /// </summary>
+        public readonly string GcsFileFormat;
+        /// <summary>
         /// JSON file format configuration.
         /// </summary>
         public readonly Outputs.JsonFileFormatResponse JsonFileFormat;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Outputs
 
             int fileRotationMb,
 
+            string gcsFileFormat,
+
             Outputs.JsonFileFormatResponse jsonFileFormat,
 
             string path)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Outputs
             AvroFileFormat = avroFileFormat;
             FileRotationInterval = fileRotationInterval;
             FileRotationMb = fileRotationMb;
+            GcsFileFormat = gcsFileFormat;
             JsonFileFormat = jsonFileFormat;
             Path = path;
         }

@@ -178,6 +178,12 @@ export interface GetVersionResult {
      * Enables VPC connectivity for standard apps.
      */
     readonly vpcAccessConnector: outputs.appengine.v1.VpcAccessConnectorResponse;
+    /**
+     * The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     *
+     * @deprecated The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     */
+    readonly zones: string[];
 }
 
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {

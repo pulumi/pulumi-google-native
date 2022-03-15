@@ -35,6 +35,12 @@ export interface GetInstructionResult {
      */
     readonly createTime: string;
     /**
+     * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     *
+     * @deprecated Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+     */
+    readonly csvInstruction: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionResponse;
+    /**
      * The data type of this instruction.
      */
     readonly dataType: string;

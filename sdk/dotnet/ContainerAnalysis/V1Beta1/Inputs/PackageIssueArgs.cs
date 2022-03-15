@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         [Input("packageType")]
         public Input<string>? PackageType { get; set; }
 
+        /// <summary>
+        /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+        /// </summary>
+        [Input("severityName")]
+        public Input<string>? SeverityName { get; set; }
+
         public PackageIssueArgs()
         {
         }

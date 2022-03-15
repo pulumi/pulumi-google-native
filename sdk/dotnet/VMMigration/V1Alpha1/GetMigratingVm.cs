@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly Outputs.ComputeEngineTargetDefaultsResponse ComputeEngineTargetDefaults;
         /// <summary>
+        /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        /// </summary>
+        public readonly Outputs.TargetVMDetailsResponse ComputeEngineVmDefaults;
+        /// <summary>
         /// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
         /// </summary>
         public readonly string CreateTime;
@@ -138,6 +142,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         public readonly string StateTime;
         /// <summary>
+        /// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        /// </summary>
+        public readonly Outputs.TargetVMDetailsResponse TargetDefaults;
+        /// <summary>
         /// The last time the migrating VM resource was updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -145,6 +153,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         [OutputConstructor]
         private GetMigratingVmResult(
             Outputs.ComputeEngineTargetDefaultsResponse computeEngineTargetDefaults,
+
+            Outputs.TargetVMDetailsResponse computeEngineVmDefaults,
 
             string createTime,
 
@@ -176,9 +186,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string stateTime,
 
+            Outputs.TargetVMDetailsResponse targetDefaults,
+
             string updateTime)
         {
             ComputeEngineTargetDefaults = computeEngineTargetDefaults;
+            ComputeEngineVmDefaults = computeEngineVmDefaults;
             CreateTime = createTime;
             CurrentSyncInfo = currentSyncInfo;
             Description = description;
@@ -194,6 +207,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
             SourceVmId = sourceVmId;
             State = state;
             StateTime = stateTime;
+            TargetDefaults = targetDefaults;
             UpdateTime = updateTime;
         }
     }

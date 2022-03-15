@@ -1599,6 +1599,185 @@ func (in *metricDescriptorLaunchStagePtr) ToMetricDescriptorLaunchStagePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorLaunchStagePtrOutput)
 }
 
+// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+type MetricDescriptorMetadataLaunchStage string
+
+const (
+	// Do not use this default value.
+	MetricDescriptorMetadataLaunchStageLaunchStageUnspecified = MetricDescriptorMetadataLaunchStage("LAUNCH_STAGE_UNSPECIFIED")
+	// The feature is not yet implemented. Users can not use it.
+	MetricDescriptorMetadataLaunchStageUnimplemented = MetricDescriptorMetadataLaunchStage("UNIMPLEMENTED")
+	// Prelaunch features are hidden from users and are only visible internally.
+	MetricDescriptorMetadataLaunchStagePrelaunch = MetricDescriptorMetadataLaunchStage("PRELAUNCH")
+	// Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.
+	MetricDescriptorMetadataLaunchStageEarlyAccess = MetricDescriptorMetadataLaunchStage("EARLY_ACCESS")
+	// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don't have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
+	MetricDescriptorMetadataLaunchStageAlpha = MetricDescriptorMetadataLaunchStage("ALPHA")
+	// Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.
+	MetricDescriptorMetadataLaunchStageBeta = MetricDescriptorMetadataLaunchStage("BETA")
+	// GA features are open to all developers and are considered stable and fully qualified for production use.
+	MetricDescriptorMetadataLaunchStageGa = MetricDescriptorMetadataLaunchStage("GA")
+	// Deprecated features are scheduled to be shut down and removed. For more information, see the "Deprecation Policy" section of our Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Platform Subject to the Deprecation Policy (https://cloud.google.com/terms/deprecation) documentation.
+	MetricDescriptorMetadataLaunchStageDeprecated = MetricDescriptorMetadataLaunchStage("DEPRECATED")
+)
+
+func (MetricDescriptorMetadataLaunchStage) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataLaunchStage)(nil)).Elem()
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToMetricDescriptorMetadataLaunchStageOutput() MetricDescriptorMetadataLaunchStageOutput {
+	return pulumi.ToOutput(e).(MetricDescriptorMetadataLaunchStageOutput)
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToMetricDescriptorMetadataLaunchStageOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricDescriptorMetadataLaunchStageOutput)
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToMetricDescriptorMetadataLaunchStagePtrOutput() MetricDescriptorMetadataLaunchStagePtrOutput {
+	return e.ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
+	return MetricDescriptorMetadataLaunchStage(e).ToMetricDescriptorMetadataLaunchStageOutputWithContext(ctx).ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx)
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MetricDescriptorMetadataLaunchStage) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MetricDescriptorMetadataLaunchStageOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataLaunchStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetadataLaunchStage)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToMetricDescriptorMetadataLaunchStageOutput() MetricDescriptorMetadataLaunchStageOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToMetricDescriptorMetadataLaunchStageOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStageOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToMetricDescriptorMetadataLaunchStagePtrOutput() MetricDescriptorMetadataLaunchStagePtrOutput {
+	return o.ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetadataLaunchStage) *MetricDescriptorMetadataLaunchStage {
+		return &v
+	}).(MetricDescriptorMetadataLaunchStagePtrOutput)
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorMetadataLaunchStage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataLaunchStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorMetadataLaunchStage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricDescriptorMetadataLaunchStagePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetadataLaunchStagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptorMetadataLaunchStage)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToMetricDescriptorMetadataLaunchStagePtrOutput() MetricDescriptorMetadataLaunchStagePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetadataLaunchStagePtrOutput) Elem() MetricDescriptorMetadataLaunchStageOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadataLaunchStage) MetricDescriptorMetadataLaunchStage {
+		if v != nil {
+			return *v
+		}
+		var ret MetricDescriptorMetadataLaunchStage
+		return ret
+	}).(MetricDescriptorMetadataLaunchStageOutput)
+}
+
+func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricDescriptorMetadataLaunchStage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MetricDescriptorMetadataLaunchStageInput is an input type that accepts MetricDescriptorMetadataLaunchStageArgs and MetricDescriptorMetadataLaunchStageOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetadataLaunchStageInput` via:
+//
+//          MetricDescriptorMetadataLaunchStageArgs{...}
+type MetricDescriptorMetadataLaunchStageInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataLaunchStageOutput() MetricDescriptorMetadataLaunchStageOutput
+	ToMetricDescriptorMetadataLaunchStageOutputWithContext(context.Context) MetricDescriptorMetadataLaunchStageOutput
+}
+
+var metricDescriptorMetadataLaunchStagePtrType = reflect.TypeOf((**MetricDescriptorMetadataLaunchStage)(nil)).Elem()
+
+type MetricDescriptorMetadataLaunchStagePtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetadataLaunchStagePtrOutput() MetricDescriptorMetadataLaunchStagePtrOutput
+	ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(context.Context) MetricDescriptorMetadataLaunchStagePtrOutput
+}
+
+type metricDescriptorMetadataLaunchStagePtr string
+
+func MetricDescriptorMetadataLaunchStagePtr(v string) MetricDescriptorMetadataLaunchStagePtrInput {
+	return (*metricDescriptorMetadataLaunchStagePtr)(&v)
+}
+
+func (*metricDescriptorMetadataLaunchStagePtr) ElementType() reflect.Type {
+	return metricDescriptorMetadataLaunchStagePtrType
+}
+
+func (in *metricDescriptorMetadataLaunchStagePtr) ToMetricDescriptorMetadataLaunchStagePtrOutput() MetricDescriptorMetadataLaunchStagePtrOutput {
+	return pulumi.ToOutput(in).(MetricDescriptorMetadataLaunchStagePtrOutput)
+}
+
+func (in *metricDescriptorMetadataLaunchStagePtr) ToMetricDescriptorMetadataLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorMetadataLaunchStagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorMetadataLaunchStagePtrOutput)
+}
+
 // Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
 type MetricDescriptorMetricKind string
 
@@ -3388,6 +3567,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorValueTypePtrInput)(nil)).Elem(), LabelDescriptorValueType("STRING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorLaunchStageInput)(nil)).Elem(), MetricDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorLaunchStagePtrInput)(nil)).Elem(), MetricDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataLaunchStageInput)(nil)).Elem(), MetricDescriptorMetadataLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataLaunchStagePtrInput)(nil)).Elem(), MetricDescriptorMetadataLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetricKindInput)(nil)).Elem(), MetricDescriptorMetricKind("METRIC_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetricKindPtrInput)(nil)).Elem(), MetricDescriptorMetricKind("METRIC_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorValueTypeInput)(nil)).Elem(), MetricDescriptorValueType("VALUE_TYPE_UNSPECIFIED"))
@@ -3427,6 +3608,8 @@ func init() {
 	pulumi.RegisterOutputType(LabelDescriptorValueTypePtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorLaunchStageOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorLaunchStagePtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataLaunchStageOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetadataLaunchStagePtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetricKindOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetricKindPtrOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorValueTypeOutput{})

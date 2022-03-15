@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<string> CurrentMasterVersion { get; private set; } = null!;
 
         /// <summary>
+        /// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+        /// </summary>
+        [Output("currentNodeCount")]
+        public Output<int> CurrentNodeCount { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] Deprecated, use [NodePool.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
         /// </summary>
         [Output("currentNodeVersion")]
@@ -112,6 +118,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<bool> EnableKubernetesAlpha { get; private set; } = null!;
 
         /// <summary>
+        /// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
+        /// </summary>
+        [Output("enableTpu")]
+        public Output<bool> EnableTpu { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
         /// </summary>
         [Output("endpoint")]
@@ -134,6 +146,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("initialClusterVersion")]
         public Output<string> InitialClusterVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+        /// </summary>
+        [Output("initialNodeCount")]
+        public Output<int> InitialNodeCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Deprecated. Use node_pools.instance_group_urls.
+        /// </summary>
+        [Output("instanceGroupUrls")]
+        public Output<ImmutableArray<string>> InstanceGroupUrls { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for cluster IP allocation.
@@ -202,6 +226,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.MasterAuthorizedNetworksConfigResponse> MasterAuthorizedNetworksConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
+        /// </summary>
+        [Output("masterIpv4CidrBlock")]
+        public Output<string> MasterIpv4CidrBlock { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         /// </summary>
         [Output("meshCertificates")]
@@ -244,6 +274,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.NetworkPolicyResponse> NetworkPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+        /// </summary>
+        [Output("nodeConfig")]
+        public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
         /// </summary>
         [Output("nodeIpv4CidrSize")]
@@ -278,6 +314,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("podSecurityPolicyConfig")]
         public Output<Outputs.PodSecurityPolicyConfigResponse> PodSecurityPolicyConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
+        /// </summary>
+        [Output("privateCluster")]
+        public Output<bool> PrivateCluster { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for private cluster.
@@ -328,6 +370,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected. On output this shows the subnetwork ID instead of the name.
         /// </summary>
         [Output("subnetwork")]
@@ -368,6 +416,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Output("workloadIdentityConfig")]
         public Output<Outputs.WorkloadIdentityConfigResponse> WorkloadIdentityConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+        /// </summary>
+        [Output("zone")]
+        public Output<string> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -499,6 +553,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<bool>? EnableKubernetesAlpha { get; set; }
 
         /// <summary>
+        /// Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
+        /// </summary>
+        [Input("enableTpu")]
+        public Input<bool>? EnableTpu { get; set; }
+
+        /// <summary>
         /// Configuration for Identity Service component.
         /// </summary>
         [Input("identityServiceConfig")]
@@ -509,6 +569,25 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("initialClusterVersion")]
         public Input<string>? InitialClusterVersion { get; set; }
+
+        /// <summary>
+        /// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+        /// </summary>
+        [Input("initialNodeCount")]
+        public Input<int>? InitialNodeCount { get; set; }
+
+        [Input("instanceGroupUrls")]
+        private InputList<string>? _instanceGroupUrls;
+
+        /// <summary>
+        /// Deprecated. Use node_pools.instance_group_urls.
+        /// </summary>
+        [Obsolete(@"Deprecated. Use node_pools.instance_group_urls.")]
+        public InputList<string> InstanceGroupUrls
+        {
+            get => _instanceGroupUrls ?? (_instanceGroupUrls = new InputList<string>());
+            set => _instanceGroupUrls = value;
+        }
 
         /// <summary>
         /// Configuration for cluster IP allocation.
@@ -574,6 +653,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.MasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
 
         /// <summary>
+        /// The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
+        /// </summary>
+        [Input("masterIpv4CidrBlock")]
+        public Input<string>? MasterIpv4CidrBlock { get; set; }
+
+        /// <summary>
         /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         /// </summary>
         [Input("meshCertificates")]
@@ -614,6 +699,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("networkPolicy")]
         public Input<Inputs.NetworkPolicyArgs>? NetworkPolicy { get; set; }
+
+        /// <summary>
+        /// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+        /// </summary>
+        [Input("nodeConfig")]
+        public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }
 
         /// <summary>
         /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
@@ -658,11 +749,20 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.PodSecurityPolicyConfigArgs>? PodSecurityPolicyConfig { get; set; }
 
         /// <summary>
+        /// If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
+        /// </summary>
+        [Input("privateCluster")]
+        public Input<bool>? PrivateCluster { get; set; }
+
+        /// <summary>
         /// Configuration for private cluster.
         /// </summary>
         [Input("privateClusterConfig")]
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
+        /// <summary>
+        /// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -731,6 +831,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("workloadIdentityConfig")]
         public Input<Inputs.WorkloadIdentityConfigArgs>? WorkloadIdentityConfig { get; set; }
+
+        /// <summary>
+        /// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public ClusterArgs()
         {

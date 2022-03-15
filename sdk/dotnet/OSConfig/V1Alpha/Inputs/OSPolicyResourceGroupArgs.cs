@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
             set => _inventoryFilters = value;
         }
 
+        /// <summary>
+        /// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+        /// </summary>
+        [Input("osFilter")]
+        public Input<Inputs.OSPolicyOSFilterArgs>? OsFilter { get; set; }
+
         [Input("resources", required: true)]
         private InputList<Inputs.OSPolicyResourceArgs>? _resources;
 

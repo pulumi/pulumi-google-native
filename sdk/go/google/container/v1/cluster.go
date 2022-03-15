@@ -34,6 +34,10 @@ type Cluster struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
 	CurrentMasterVersion pulumi.StringOutput `pulumi:"currentMasterVersion"`
+	// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+	//
+	// Deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+	CurrentNodeCount pulumi.IntOutput `pulumi:"currentNodeCount"`
 	// [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
 	CurrentNodeVersion pulumi.StringOutput `pulumi:"currentNodeVersion"`
 	// Configuration of etcd encryption.
@@ -54,6 +58,14 @@ type Cluster struct {
 	IdentityServiceConfig IdentityServiceConfigResponseOutput `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringOutput `pulumi:"initialClusterVersion"`
+	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	//
+	// Deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
+	// Deprecated. Use node_pools.instance_group_urls.
+	//
+	// Deprecated: Deprecated. Use node_pools.instance_group_urls.
+	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyResponseOutput `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
@@ -88,6 +100,10 @@ type Cluster struct {
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyResponseOutput `pulumi:"networkPolicy"`
+	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	//
+	// Deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntOutput `pulumi:"nodeIpv4CidrSize"`
 	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
@@ -114,6 +130,10 @@ type Cluster struct {
 	ShieldedNodes ShieldedNodesResponseOutput `pulumi:"shieldedNodes"`
 	// [Output only] The current status of this cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+	//
+	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
@@ -122,6 +142,10 @@ type Cluster struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingResponseOutput `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponseOutput `pulumi:"workloadIdentityConfig"`
+	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+	//
+	// Deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -193,6 +217,14 @@ type clusterArgs struct {
 	IdentityServiceConfig *IdentityServiceConfig `pulumi:"identityServiceConfig"`
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion *string `pulumi:"initialClusterVersion"`
+	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	//
+	// Deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	InitialNodeCount *int `pulumi:"initialNodeCount"`
+	// Deprecated. Use node_pools.instance_group_urls.
+	//
+	// Deprecated: Deprecated. Use node_pools.instance_group_urls.
+	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// Configuration for the legacy ABAC authorization mode.
@@ -224,6 +256,10 @@ type clusterArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
+	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	//
+	// Deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
 	NodePoolAutoConfig *NodePoolAutoConfig `pulumi:"nodePoolAutoConfig"`
 	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
@@ -236,7 +272,10 @@ type clusterArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
-	Project              *string               `pulumi:"project"`
+	// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+	Project *string `pulumi:"project"`
 	// Release channel configuration.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -251,6 +290,10 @@ type clusterArgs struct {
 	VerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
+	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -285,6 +328,14 @@ type ClusterArgs struct {
 	IdentityServiceConfig IdentityServiceConfigPtrInput
 	// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
 	InitialClusterVersion pulumi.StringPtrInput
+	// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	//
+	// Deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+	InitialNodeCount pulumi.IntPtrInput
+	// Deprecated. Use node_pools.instance_group_urls.
+	//
+	// Deprecated: Deprecated. Use node_pools.instance_group_urls.
+	InstanceGroupUrls pulumi.StringArrayInput
 	// Configuration for cluster IP allocation.
 	IpAllocationPolicy IPAllocationPolicyPtrInput
 	// Configuration for the legacy ABAC authorization mode.
@@ -316,6 +367,10 @@ type ClusterArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput
+	// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	//
+	// Deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+	NodeConfig NodeConfigPtrInput
 	// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
 	NodePoolAutoConfig NodePoolAutoConfigPtrInput
 	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
@@ -328,7 +383,10 @@ type ClusterArgs struct {
 	Parent pulumi.StringPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
-	Project              pulumi.StringPtrInput
+	// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+	Project pulumi.StringPtrInput
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -343,6 +401,10 @@ type ClusterArgs struct {
 	VerticalPodAutoscaling VerticalPodAutoscalingPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigPtrInput
+	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	Zone pulumi.StringPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

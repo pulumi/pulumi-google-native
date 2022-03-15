@@ -27,6 +27,14 @@ type LookupRegionTargetHttpsProxyArgs struct {
 }
 
 type LookupRegionTargetHttpsProxyResult struct {
+	// [Deprecated] Use serverTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use serverTlsPolicy instead.
+	Authentication string `pulumi:"authentication"`
+	// [Deprecated] Use authorizationPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use authorizationPolicy instead.
+	Authorization string `pulumi:"authorization"`
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
 	AuthorizationPolicy string `pulumi:"authorizationPolicy"`
 	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
@@ -94,6 +102,20 @@ func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxy
 
 func (o LookupRegionTargetHttpsProxyResultOutput) ToLookupRegionTargetHttpsProxyResultOutputWithContext(ctx context.Context) LookupRegionTargetHttpsProxyResultOutput {
 	return o
+}
+
+// [Deprecated] Use serverTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use serverTlsPolicy instead.
+func (o LookupRegionTargetHttpsProxyResultOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Authentication }).(pulumi.StringOutput)
+}
+
+// [Deprecated] Use authorizationPolicy instead.
+//
+// Deprecated: [Deprecated] Use authorizationPolicy instead.
+func (o LookupRegionTargetHttpsProxyResultOutput) Authorization() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Authorization }).(pulumi.StringOutput)
 }
 
 // Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.

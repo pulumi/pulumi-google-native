@@ -65,6 +65,12 @@ export class Node extends pulumi.CustomResource {
      */
     public /*out*/ readonly healthDescription!: pulumi.Output<string>;
     /**
+     * DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+     *
+     * @deprecated Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+     */
+    public /*out*/ readonly ipAddress!: pulumi.Output<string>;
+    /**
      * Resource labels to represent user-provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -80,6 +86,12 @@ export class Node extends pulumi.CustomResource {
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
      */
     public /*out*/ readonly networkEndpoints!: pulumi.Output<outputs.tpu.v1alpha1.NetworkEndpointResponse[]>;
+    /**
+     * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+     *
+     * @deprecated Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+     */
+    public /*out*/ readonly port!: pulumi.Output<string>;
     /**
      * The scheduling options for this node.
      */
@@ -138,8 +150,10 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["symptoms"] = undefined /*out*/;
@@ -151,10 +165,12 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["health"] = undefined /*out*/;
             resourceInputs["healthDescription"] = undefined /*out*/;
+            resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

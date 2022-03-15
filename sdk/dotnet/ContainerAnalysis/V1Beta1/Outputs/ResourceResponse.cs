@@ -17,13 +17,28 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class ResourceResponse
     {
         /// <summary>
+        /// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+        /// </summary>
+        public readonly Outputs.HashResponse ContentHash;
+        /// <summary>
+        /// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         /// </summary>
         public readonly string Uri;
 
         [OutputConstructor]
-        private ResourceResponse(string uri)
+        private ResourceResponse(
+            Outputs.HashResponse contentHash,
+
+            string name,
+
+            string uri)
         {
+            ContentHash = contentHash;
+            Name = name;
             Uri = uri;
         }
     }

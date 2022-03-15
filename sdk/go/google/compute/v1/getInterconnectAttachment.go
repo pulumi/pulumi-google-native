@@ -57,6 +57,10 @@ type LookupInterconnectAttachmentResult struct {
 	EdgeAvailabilityDomain string `pulumi:"edgeAvailabilityDomain"`
 	// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly.
 	Encryption string `pulumi:"encryption"`
+	// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+	//
+	// Deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+	GoogleReferenceId string `pulumi:"googleReferenceId"`
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
 	Interconnect string `pulumi:"interconnect"`
 	// A list of URLs of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly.
@@ -201,6 +205,13 @@ func (o LookupInterconnectAttachmentResultOutput) EdgeAvailabilityDomain() pulum
 // Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly.
 func (o LookupInterconnectAttachmentResultOutput) Encryption() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.Encryption }).(pulumi.StringOutput)
+}
+
+// Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+//
+// Deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+func (o LookupInterconnectAttachmentResultOutput) GoogleReferenceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.GoogleReferenceId }).(pulumi.StringOutput)
 }
 
 // URL of the underlying Interconnect object that this attachment's traffic will traverse through.

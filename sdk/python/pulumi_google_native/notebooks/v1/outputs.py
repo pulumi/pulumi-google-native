@@ -569,6 +569,8 @@ class ExecutionTemplateResponse(dict):
             suggest = "output_notebook_folder"
         elif key == "paramsYamlFile":
             suggest = "params_yaml_file"
+        elif key == "scaleTier":
+            suggest = "scale_tier"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "vertexAiParameters":
@@ -597,6 +599,7 @@ class ExecutionTemplateResponse(dict):
                  output_notebook_folder: str,
                  parameters: str,
                  params_yaml_file: str,
+                 scale_tier: str,
                  service_account: str,
                  tensorboard: str,
                  vertex_ai_parameters: 'outputs.VertexAIParametersResponse'):
@@ -613,6 +616,7 @@ class ExecutionTemplateResponse(dict):
         :param str output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: `gs://{bucket_name}/{folder}` Ex: `gs://notebook_user/scheduled_notebooks`
         :param str parameters: Parameters used within the 'input_notebook_file' notebook.
         :param str params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
+        :param str scale_tier: Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
         :param str service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         :param str tensorboard: The name of a Vertex AI [Tensorboard] resource to which this execution will upload Tensorboard logs. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
         :param 'VertexAIParametersResponse' vertex_ai_parameters: Parameters used in Vertex AI JobType executions.
@@ -628,6 +632,7 @@ class ExecutionTemplateResponse(dict):
         pulumi.set(__self__, "output_notebook_folder", output_notebook_folder)
         pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "params_yaml_file", params_yaml_file)
+        pulumi.set(__self__, "scale_tier", scale_tier)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "tensorboard", tensorboard)
         pulumi.set(__self__, "vertex_ai_parameters", vertex_ai_parameters)
@@ -719,6 +724,14 @@ class ExecutionTemplateResponse(dict):
         Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: `gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml`
         """
         return pulumi.get(self, "params_yaml_file")
+
+    @property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> str:
+        """
+        Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+        """
+        return pulumi.get(self, "scale_tier")
 
     @property
     @pulumi.getter(name="serviceAccount")

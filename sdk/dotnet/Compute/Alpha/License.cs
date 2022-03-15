@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>
+        /// Deprecated. This field no longer reflects whether a license charges a usage fee.
+        /// </summary>
+        [Output("chargesUseFee")]
+        public Output<bool> ChargesUseFee { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]

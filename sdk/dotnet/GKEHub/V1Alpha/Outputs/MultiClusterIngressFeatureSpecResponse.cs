@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class MultiClusterIngressFeatureSpecResponse
     {
         /// <summary>
+        /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+        /// </summary>
+        public readonly string Billing;
+        /// <summary>
         /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         /// </summary>
         public readonly string ConfigMembership;
 
         [OutputConstructor]
-        private MultiClusterIngressFeatureSpecResponse(string configMembership)
+        private MultiClusterIngressFeatureSpecResponse(
+            string billing,
+
+            string configMembership)
         {
+            Billing = billing;
             ConfigMembership = configMembership;
         }
     }

@@ -812,6 +812,43 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
     }
 
     /// <summary>
+    /// Required. The type of hash that was performed.
+    /// </summary>
+    [EnumType]
+    public readonly struct HashType : IEquatable<HashType>
+    {
+        private readonly string _value;
+
+        private HashType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown.
+        /// </summary>
+        public static HashType HashTypeUnspecified { get; } = new HashType("HASH_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A SHA-256 hash.
+        /// </summary>
+        public static HashType Sha256 { get; } = new HashType("SHA256");
+
+        public static bool operator ==(HashType left, HashType right) => left.Equals(right);
+        public static bool operator !=(HashType left, HashType right) => !left.Equals(right);
+
+        public static explicit operator string(HashType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is HashType other && Equals(other);
+        public bool Equals(HashType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. The recovered Dockerfile directive used to construct this layer.
     /// </summary>
     [EnumType]

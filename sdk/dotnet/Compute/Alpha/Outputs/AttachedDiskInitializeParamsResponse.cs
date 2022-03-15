@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
+        /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// </summary>
+        public readonly string Interface;
+        /// <summary>
         /// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -107,6 +111,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
+            string @interface,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<string> licenseCodes,
@@ -139,6 +145,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             GuestOsFeatures = guestOsFeatures;
+            Interface = @interface;
             Labels = labels;
             LicenseCodes = licenseCodes;
             Licenses = licenses;

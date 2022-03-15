@@ -115,6 +115,9 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("inspectConfig")]
         public Input<Inputs.GooglePrivacyDlpV2InspectConfigArgs>? InspectConfig { get; set; }
 
+        /// <summary>
+        /// Deprecated. This field has no effect.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

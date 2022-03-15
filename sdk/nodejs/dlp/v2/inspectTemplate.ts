@@ -110,6 +110,11 @@ export interface InspectTemplateArgs {
      * The core content of the template. Configuration of the scanning process.
      */
     inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
+    /**
+     * Deprecated. This field has no effect.
+     *
+     * @deprecated Deprecated. This field has no effect.
+     */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

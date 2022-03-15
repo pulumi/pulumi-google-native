@@ -2896,6 +2896,172 @@ func (o FileIODetailsResponseArrayOutput) Index(i pulumi.IntInput) FileIODetails
 	}).(FileIODetailsResponseOutput)
 }
 
+// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+type JobExecutionInfo struct {
+	// A mapping from each stage to the information about that stage.
+	Stages map[string]string `pulumi:"stages"`
+}
+
+// JobExecutionInfoInput is an input type that accepts JobExecutionInfoArgs and JobExecutionInfoOutput values.
+// You can construct a concrete instance of `JobExecutionInfoInput` via:
+//
+//          JobExecutionInfoArgs{...}
+type JobExecutionInfoInput interface {
+	pulumi.Input
+
+	ToJobExecutionInfoOutput() JobExecutionInfoOutput
+	ToJobExecutionInfoOutputWithContext(context.Context) JobExecutionInfoOutput
+}
+
+// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+type JobExecutionInfoArgs struct {
+	// A mapping from each stage to the information about that stage.
+	Stages pulumi.StringMapInput `pulumi:"stages"`
+}
+
+func (JobExecutionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionInfo)(nil)).Elem()
+}
+
+func (i JobExecutionInfoArgs) ToJobExecutionInfoOutput() JobExecutionInfoOutput {
+	return i.ToJobExecutionInfoOutputWithContext(context.Background())
+}
+
+func (i JobExecutionInfoArgs) ToJobExecutionInfoOutputWithContext(ctx context.Context) JobExecutionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoOutput)
+}
+
+func (i JobExecutionInfoArgs) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
+	return i.ToJobExecutionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i JobExecutionInfoArgs) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoOutput).ToJobExecutionInfoPtrOutputWithContext(ctx)
+}
+
+// JobExecutionInfoPtrInput is an input type that accepts JobExecutionInfoArgs, JobExecutionInfoPtr and JobExecutionInfoPtrOutput values.
+// You can construct a concrete instance of `JobExecutionInfoPtrInput` via:
+//
+//          JobExecutionInfoArgs{...}
+//
+//  or:
+//
+//          nil
+type JobExecutionInfoPtrInput interface {
+	pulumi.Input
+
+	ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput
+	ToJobExecutionInfoPtrOutputWithContext(context.Context) JobExecutionInfoPtrOutput
+}
+
+type jobExecutionInfoPtrType JobExecutionInfoArgs
+
+func JobExecutionInfoPtr(v *JobExecutionInfoArgs) JobExecutionInfoPtrInput {
+	return (*jobExecutionInfoPtrType)(v)
+}
+
+func (*jobExecutionInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionInfo)(nil)).Elem()
+}
+
+func (i *jobExecutionInfoPtrType) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
+	return i.ToJobExecutionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *jobExecutionInfoPtrType) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobExecutionInfoPtrOutput)
+}
+
+// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+type JobExecutionInfoOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionInfo)(nil)).Elem()
+}
+
+func (o JobExecutionInfoOutput) ToJobExecutionInfoOutput() JobExecutionInfoOutput {
+	return o
+}
+
+func (o JobExecutionInfoOutput) ToJobExecutionInfoOutputWithContext(ctx context.Context) JobExecutionInfoOutput {
+	return o
+}
+
+func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
+	return o.ToJobExecutionInfoPtrOutputWithContext(context.Background())
+}
+
+func (o JobExecutionInfoOutput) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobExecutionInfo) *JobExecutionInfo {
+		return &v
+	}).(JobExecutionInfoPtrOutput)
+}
+
+// A mapping from each stage to the information about that stage.
+func (o JobExecutionInfoOutput) Stages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobExecutionInfo) map[string]string { return v.Stages }).(pulumi.StringMapOutput)
+}
+
+type JobExecutionInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobExecutionInfo)(nil)).Elem()
+}
+
+func (o JobExecutionInfoPtrOutput) ToJobExecutionInfoPtrOutput() JobExecutionInfoPtrOutput {
+	return o
+}
+
+func (o JobExecutionInfoPtrOutput) ToJobExecutionInfoPtrOutputWithContext(ctx context.Context) JobExecutionInfoPtrOutput {
+	return o
+}
+
+func (o JobExecutionInfoPtrOutput) Elem() JobExecutionInfoOutput {
+	return o.ApplyT(func(v *JobExecutionInfo) JobExecutionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret JobExecutionInfo
+		return ret
+	}).(JobExecutionInfoOutput)
+}
+
+// A mapping from each stage to the information about that stage.
+func (o JobExecutionInfoPtrOutput) Stages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobExecutionInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Stages
+	}).(pulumi.StringMapOutput)
+}
+
+// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+type JobExecutionInfoResponse struct {
+	// A mapping from each stage to the information about that stage.
+	Stages map[string]string `pulumi:"stages"`
+}
+
+// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+type JobExecutionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (JobExecutionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobExecutionInfoResponse)(nil)).Elem()
+}
+
+func (o JobExecutionInfoResponseOutput) ToJobExecutionInfoResponseOutput() JobExecutionInfoResponseOutput {
+	return o
+}
+
+func (o JobExecutionInfoResponseOutput) ToJobExecutionInfoResponseOutputWithContext(ctx context.Context) JobExecutionInfoResponseOutput {
+	return o
+}
+
+// A mapping from each stage to the information about that stage.
+func (o JobExecutionInfoResponseOutput) Stages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobExecutionInfoResponse) map[string]string { return v.Stages }).(pulumi.StringMapOutput)
+}
+
 // Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
 type JobMetadata struct {
 	// Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -6276,6 +6442,10 @@ type WorkerPool struct {
 	TaskrunnerSettings *TaskRunnerSettings `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy *WorkerPoolTeardownPolicy `pulumi:"teardownPolicy"`
+	// Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+	//
+	// Deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+	WorkerHarnessContainerImage string `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone *string `pulumi:"zone"`
 }
@@ -6333,6 +6503,10 @@ type WorkerPoolArgs struct {
 	TaskrunnerSettings TaskRunnerSettingsPtrInput `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy WorkerPoolTeardownPolicyPtrInput `pulumi:"teardownPolicy"`
+	// Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+	//
+	// Deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+	WorkerHarnessContainerImage pulumi.StringInput `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -6489,6 +6663,13 @@ func (o WorkerPoolOutput) TeardownPolicy() WorkerPoolTeardownPolicyPtrOutput {
 	return o.ApplyT(func(v WorkerPool) *WorkerPoolTeardownPolicy { return v.TeardownPolicy }).(WorkerPoolTeardownPolicyPtrOutput)
 }
 
+// Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+//
+// Deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+func (o WorkerPoolOutput) WorkerHarnessContainerImage() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPool) string { return v.WorkerHarnessContainerImage }).(pulumi.StringOutput)
+}
+
 // Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 func (o WorkerPoolOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerPool) *string { return v.Zone }).(pulumi.StringPtrOutput)
@@ -6556,6 +6737,10 @@ type WorkerPoolResponse struct {
 	TaskrunnerSettings TaskRunnerSettingsResponse `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 	TeardownPolicy string `pulumi:"teardownPolicy"`
+	// Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+	//
+	// Deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+	WorkerHarnessContainerImage string `pulumi:"workerHarnessContainerImage"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone string `pulumi:"zone"`
 }
@@ -6673,6 +6858,13 @@ func (o WorkerPoolResponseOutput) TaskrunnerSettings() TaskRunnerSettingsRespons
 // Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
 func (o WorkerPoolResponseOutput) TeardownPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerPoolResponse) string { return v.TeardownPolicy }).(pulumi.StringOutput)
+}
+
+// Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+//
+// Deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+func (o WorkerPoolResponseOutput) WorkerHarnessContainerImage() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolResponse) string { return v.WorkerHarnessContainerImage }).(pulumi.StringOutput)
 }
 
 // Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
@@ -7023,6 +7215,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionStageSummaryArrayInput)(nil)).Elem(), ExecutionStageSummaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsInput)(nil)).Elem(), FileIODetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileIODetailsArrayInput)(nil)).Elem(), FileIODetailsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionInfoInput)(nil)).Elem(), JobExecutionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobExecutionInfoPtrInput)(nil)).Elem(), JobExecutionInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobMetadataPtrInput)(nil)).Elem(), JobMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageInput)(nil)).Elem(), PackageArgs{})
@@ -7100,6 +7294,9 @@ func init() {
 	pulumi.RegisterOutputType(FileIODetailsArrayOutput{})
 	pulumi.RegisterOutputType(FileIODetailsResponseOutput{})
 	pulumi.RegisterOutputType(FileIODetailsResponseArrayOutput{})
+	pulumi.RegisterOutputType(JobExecutionInfoOutput{})
+	pulumi.RegisterOutputType(JobExecutionInfoPtrOutput{})
+	pulumi.RegisterOutputType(JobExecutionInfoResponseOutput{})
 	pulumi.RegisterOutputType(JobMetadataOutput{})
 	pulumi.RegisterOutputType(JobMetadataPtrOutput{})
 	pulumi.RegisterOutputType(JobMetadataResponseOutput{})

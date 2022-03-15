@@ -17,7 +17,21 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionTargetHttpsProxyResult:
-    def __init__(__self__, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+        if authentication and not isinstance(authentication, str):
+            raise TypeError("Expected argument 'authentication' to be a str")
+        if authentication is not None:
+            warnings.warn("""[Deprecated] Use serverTlsPolicy instead.""", DeprecationWarning)
+            pulumi.log.warn("""authentication is deprecated: [Deprecated] Use serverTlsPolicy instead.""")
+
+        pulumi.set(__self__, "authentication", authentication)
+        if authorization and not isinstance(authorization, str):
+            raise TypeError("Expected argument 'authorization' to be a str")
+        if authorization is not None:
+            warnings.warn("""[Deprecated] Use authorizationPolicy instead.""", DeprecationWarning)
+            pulumi.log.warn("""authorization is deprecated: [Deprecated] Use authorizationPolicy instead.""")
+
+        pulumi.set(__self__, "authorization", authorization)
         if authorization_policy and not isinstance(authorization_policy, str):
             raise TypeError("Expected argument 'authorization_policy' to be a str")
         pulumi.set(__self__, "authorization_policy", authorization_policy)
@@ -69,6 +83,22 @@ class GetRegionTargetHttpsProxyResult:
         if url_map and not isinstance(url_map, str):
             raise TypeError("Expected argument 'url_map' to be a str")
         pulumi.set(__self__, "url_map", url_map)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> str:
+        """
+        [Deprecated] Use serverTlsPolicy instead.
+        """
+        return pulumi.get(self, "authentication")
+
+    @property
+    @pulumi.getter
+    def authorization(self) -> str:
+        """
+        [Deprecated] Use authorizationPolicy instead.
+        """
+        return pulumi.get(self, "authorization")
 
     @property
     @pulumi.getter(name="authorizationPolicy")
@@ -213,6 +243,8 @@ class AwaitableGetRegionTargetHttpsProxyResult(GetRegionTargetHttpsProxyResult):
         if False:
             yield self
         return GetRegionTargetHttpsProxyResult(
+            authentication=self.authentication,
+            authorization=self.authorization,
             authorization_policy=self.authorization_policy,
             certificate_map=self.certificate_map,
             creation_timestamp=self.creation_timestamp,
@@ -250,6 +282,8 @@ def get_region_target_https_proxy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getRegionTargetHttpsProxy', __args__, opts=opts, typ=GetRegionTargetHttpsProxyResult).value
 
     return AwaitableGetRegionTargetHttpsProxyResult(
+        authentication=__ret__.authentication,
+        authorization=__ret__.authorization,
         authorization_policy=__ret__.authorization_policy,
         certificate_map=__ret__.certificate_map,
         creation_timestamp=__ret__.creation_timestamp,

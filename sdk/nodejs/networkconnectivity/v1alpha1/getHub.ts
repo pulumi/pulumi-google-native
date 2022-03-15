@@ -42,6 +42,12 @@ export interface GetHubResult {
      */
     readonly name: string;
     /**
+     * A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+     *
+     * @deprecated Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+     */
+    readonly spokes: string[];
+    /**
      * The current lifecycle state of this Hub.
      */
     readonly state: string;

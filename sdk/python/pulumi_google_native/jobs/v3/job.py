@@ -41,7 +41,8 @@ class JobArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,
-                 responsibilities: Optional[pulumi.Input[str]] = None):
+                 responsibilities: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input['JobVisibility']] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['ApplicationInfoArgs'] application_info: At least one field within ApplicationInfo must be specified. Job application information.
@@ -69,6 +70,7 @@ class JobArgs:
         :param pulumi.Input[int] promotion_value: Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
         :param pulumi.Input[str] qualifications: Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[str] responsibilities: Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
+        :param pulumi.Input['JobVisibility'] visibility: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
         """
         pulumi.set(__self__, "application_info", application_info)
         pulumi.set(__self__, "company_name", company_name)
@@ -117,6 +119,11 @@ class JobArgs:
             pulumi.set(__self__, "qualifications", qualifications)
         if responsibilities is not None:
             pulumi.set(__self__, "responsibilities", responsibilities)
+        if visibility is not None:
+            warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
+            pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
 
     @property
     @pulumi.getter(name="applicationInfo")
@@ -427,6 +434,18 @@ class JobArgs:
     def responsibilities(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "responsibilities", value)
 
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input['JobVisibility']]:
+        """
+        Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input['JobVisibility']]):
+        pulumi.set(self, "visibility", value)
+
 
 class Job(pulumi.CustomResource):
     @overload
@@ -459,6 +478,7 @@ class Job(pulumi.CustomResource):
                  requisition_id: Optional[pulumi.Input[str]] = None,
                  responsibilities: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input['JobVisibility']] = None,
                  __props__=None):
         """
         Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.
@@ -490,6 +510,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] requisition_id: The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] responsibilities: Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[str] title: The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        :param pulumi.Input['JobVisibility'] visibility: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
         """
         ...
     @overload
@@ -541,6 +562,7 @@ class Job(pulumi.CustomResource):
                  requisition_id: Optional[pulumi.Input[str]] = None,
                  responsibilities: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
+                 visibility: Optional[pulumi.Input['JobVisibility']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -589,6 +611,10 @@ class Job(pulumi.CustomResource):
             if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
+            if visibility is not None and not opts.urn:
+                warnings.warn("""Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""", DeprecationWarning)
+                pulumi.log.warn("""visibility is deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.""")
+            __props__.__dict__["visibility"] = visibility
             __props__.__dict__["company_display_name"] = None
             __props__.__dict__["derived_info"] = None
             __props__.__dict__["posting_create_time"] = None
@@ -644,6 +670,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["requisition_id"] = None
         __props__.__dict__["responsibilities"] = None
         __props__.__dict__["title"] = None
+        __props__.__dict__["visibility"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -877,4 +904,12 @@ class Job(pulumi.CustomResource):
         The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         """
         return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> pulumi.Output[str]:
+        """
+        Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+        """
+        return pulumi.get(self, "visibility")
 

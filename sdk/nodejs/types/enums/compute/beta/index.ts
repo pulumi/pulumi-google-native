@@ -719,6 +719,27 @@ export const DiskInstantiationConfigInstantiateFrom = {
  */
 export type DiskInstantiationConfigInstantiateFrom = (typeof DiskInstantiationConfigInstantiateFrom)[keyof typeof DiskInstantiationConfigInstantiateFrom];
 
+export const DiskInterface = {
+    Nvme: "NVME",
+    Scsi: "SCSI",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+ */
+export type DiskInterface = (typeof DiskInterface)[keyof typeof DiskInterface];
+
+export const DiskStorageType = {
+    Hdd: "HDD",
+    Ssd: "SSD",
+} as const;
+
+/**
+ * [Deprecated] Storage type of the persistent disk.
+ */
+export type DiskStorageType = (typeof DiskStorageType)[keyof typeof DiskStorageType];
+
 export const DistributionPolicyTargetShape = {
     /**
      * The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.
@@ -2120,6 +2141,27 @@ export const RegionCommitmentType = {
  */
 export type RegionCommitmentType = (typeof RegionCommitmentType)[keyof typeof RegionCommitmentType];
 
+export const RegionDiskInterface = {
+    Nvme: "NVME",
+    Scsi: "SCSI",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+ */
+export type RegionDiskInterface = (typeof RegionDiskInterface)[keyof typeof RegionDiskInterface];
+
+export const RegionDiskStorageType = {
+    Hdd: "HDD",
+    Ssd: "SSD",
+} as const;
+
+/**
+ * [Deprecated] Storage type of the persistent disk.
+ */
+export type RegionDiskStorageType = (typeof RegionDiskStorageType)[keyof typeof RegionDiskStorageType];
+
 export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
     /**
      * If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
@@ -2135,6 +2177,22 @@ export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
  * Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
  */
 export type RegionHealthCheckServiceHealthStatusAggregationPolicy = (typeof RegionHealthCheckServiceHealthStatusAggregationPolicy)[keyof typeof RegionHealthCheckServiceHealthStatusAggregationPolicy];
+
+export const RegionHealthCheckServiceHealthStatusAggregationStrategy = {
+    /**
+     * This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+     */
+    And: "AND",
+    /**
+     * This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
+     */
+    NoAggregation: "NO_AGGREGATION",
+} as const;
+
+/**
+ * This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+ */
+export type RegionHealthCheckServiceHealthStatusAggregationStrategy = (typeof RegionHealthCheckServiceHealthStatusAggregationStrategy)[keyof typeof RegionHealthCheckServiceHealthStatusAggregationStrategy];
 
 export const RegionHealthCheckType = {
     Grpc: "GRPC",

@@ -33,6 +33,10 @@ type Case struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
 	Priority pulumi.StringOutput `pulumi:"priority"`
+	// The severity of this case. Deprecated. Use priority instead.
+	//
+	// Deprecated: The severity of this case. Deprecated. Use priority instead.
+	Severity pulumi.StringOutput `pulumi:"severity"`
 	// The current status of the support case.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The email addresses to receive updates on this case.
@@ -104,6 +108,10 @@ type caseArgs struct {
 	Name *string `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
 	Priority *CasePriority `pulumi:"priority"`
+	// The severity of this case. Deprecated. Use priority instead.
+	//
+	// Deprecated: The severity of this case. Deprecated. Use priority instead.
+	Severity *CaseSeverity `pulumi:"severity"`
 	// The email addresses to receive updates on this case.
 	SubscriberEmailAddresses []string `pulumi:"subscriberEmailAddresses"`
 	// Whether this case was created for internal API testing and should not be acted on by the support team.
@@ -130,6 +138,10 @@ type CaseArgs struct {
 	Name pulumi.StringPtrInput
 	// The priority of this case. If this is set, do not set severity.
 	Priority CasePriorityPtrInput
+	// The severity of this case. Deprecated. Use priority instead.
+	//
+	// Deprecated: The severity of this case. Deprecated. Use priority instead.
+	Severity CaseSeverityPtrInput
 	// The email addresses to receive updates on this case.
 	SubscriberEmailAddresses pulumi.StringArrayInput
 	// Whether this case was created for internal API testing and should not be acted on by the support team.

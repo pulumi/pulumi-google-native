@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Pulumi.GoogleNative.Container.V1Beta1.StatusConditionCanonicalCode>? CanonicalCode { get; set; }
 
         /// <summary>
+        /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+        /// </summary>
+        [Input("code")]
+        public Input<Pulumi.GoogleNative.Container.V1Beta1.StatusConditionCode>? Code { get; set; }
+
+        /// <summary>
         /// Human-friendly representation of the condition
         /// </summary>
         [Input("message")]

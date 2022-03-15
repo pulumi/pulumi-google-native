@@ -12,6 +12,10 @@ import (
 
 // A Google Compute Engine disk resource specification.
 type Disk struct {
+	// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+	//
+	// Deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+	AutoDelete *bool `pulumi:"autoDelete"`
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint *string `pulumi:"mountPoint"`
 	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
@@ -39,6 +43,10 @@ type DiskInput interface {
 
 // A Google Compute Engine disk resource specification.
 type DiskArgs struct {
+	// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+	//
+	// Deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+	AutoDelete pulumi.BoolPtrInput `pulumi:"autoDelete"`
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint pulumi.StringPtrInput `pulumi:"mountPoint"`
 	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
@@ -105,6 +113,13 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
+// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+//
+// Deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+func (o DiskOutput) AutoDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Disk) *bool { return v.AutoDelete }).(pulumi.BoolPtrOutput)
+}
+
 // Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 func (o DiskOutput) MountPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.MountPoint }).(pulumi.StringPtrOutput)
@@ -157,6 +172,10 @@ func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
 
 // A Google Compute Engine disk resource specification.
 type DiskResponse struct {
+	// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+	//
+	// Deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+	AutoDelete bool `pulumi:"autoDelete"`
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint string `pulumi:"mountPoint"`
 	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
@@ -184,6 +203,13 @@ func (o DiskResponseOutput) ToDiskResponseOutput() DiskResponseOutput {
 
 func (o DiskResponseOutput) ToDiskResponseOutputWithContext(ctx context.Context) DiskResponseOutput {
 	return o
+}
+
+// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+//
+// Deprecated: Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
+func (o DiskResponseOutput) AutoDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiskResponse) bool { return v.AutoDelete }).(pulumi.BoolOutput)
 }
 
 // Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.

@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> InternalIpv6Range { get; private set; } = null!;
 
         /// <summary>
+        /// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        /// </summary>
+        [Output("ipv4Range")]
+        public Output<string> Ipv4Range { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#network for networks.
         /// </summary>
         [Output("kind")]
@@ -173,6 +179,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("internalIpv6Range")]
         public Input<string>? InternalIpv6Range { get; set; }
+
+        /// <summary>
+        /// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        /// </summary>
+        [Input("ipv4Range")]
+        public Input<string>? Ipv4Range { get; set; }
 
         /// <summary>
         /// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.

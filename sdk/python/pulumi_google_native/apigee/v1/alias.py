@@ -23,7 +23,8 @@ class AliasArgs:
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
-                 ignore_newline_validation: Optional[pulumi.Input[str]] = None):
+                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Alias resource.
         :param pulumi.Input[str] format: Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
@@ -33,6 +34,7 @@ class AliasArgs:
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[str] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         :param pulumi.Input[str] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        :param pulumi.Input[str] password: DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "format", format)
@@ -50,6 +52,8 @@ class AliasArgs:
             pulumi.set(__self__, "ignore_expiry_validation", ignore_expiry_validation)
         if ignore_newline_validation is not None:
             pulumi.set(__self__, "ignore_newline_validation", ignore_newline_validation)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter(name="environmentId")
@@ -162,6 +166,18 @@ class AliasArgs:
     def ignore_newline_validation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ignore_newline_validation", value)
 
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
 
 class Alias(pulumi.CustomResource):
     @overload
@@ -178,6 +194,7 @@ class Alias(pulumi.CustomResource):
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
                  keystore_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.
@@ -192,6 +209,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] format: Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
         :param pulumi.Input[str] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         :param pulumi.Input[str] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        :param pulumi.Input[str] password: DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
         """
         ...
     @overload
@@ -228,6 +246,7 @@ class Alias(pulumi.CustomResource):
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
                  keystore_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -258,6 +277,7 @@ class Alias(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["password"] = password
             __props__.__dict__["certs_info"] = None
             __props__.__dict__["type"] = None
         super(Alias, __self__).__init__(

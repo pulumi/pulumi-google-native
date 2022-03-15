@@ -217,6 +217,92 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     }
 
     /// <summary>
+    /// The disk type to use in the VM.
+    /// </summary>
+    [EnumType]
+    public readonly struct TargetVMDetailsDiskType : IEquatable<TargetVMDetailsDiskType>
+    {
+        private readonly string _value;
+
+        private TargetVMDetailsDiskType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified disk type. Will be used as STANDARD.
+        /// </summary>
+        public static TargetVMDetailsDiskType DiskTypeUnspecified { get; } = new TargetVMDetailsDiskType("DISK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A Standard disk type.
+        /// </summary>
+        public static TargetVMDetailsDiskType Standard { get; } = new TargetVMDetailsDiskType("STANDARD");
+        /// <summary>
+        /// An alternative to SSD persistent disks that balance performance and cost.
+        /// </summary>
+        public static TargetVMDetailsDiskType Balanced { get; } = new TargetVMDetailsDiskType("BALANCED");
+        /// <summary>
+        /// SSD hard disk type.
+        /// </summary>
+        public static TargetVMDetailsDiskType Ssd { get; } = new TargetVMDetailsDiskType("SSD");
+
+        public static bool operator ==(TargetVMDetailsDiskType left, TargetVMDetailsDiskType right) => left.Equals(right);
+        public static bool operator !=(TargetVMDetailsDiskType left, TargetVMDetailsDiskType right) => !left.Equals(right);
+
+        public static explicit operator string(TargetVMDetailsDiskType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TargetVMDetailsDiskType other && Equals(other);
+        public bool Equals(TargetVMDetailsDiskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The license type to use in OS adaptation.
+    /// </summary>
+    [EnumType]
+    public readonly struct TargetVMDetailsLicenseType : IEquatable<TargetVMDetailsLicenseType>
+    {
+        private readonly string _value;
+
+        private TargetVMDetailsLicenseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The license type is the default for the OS.
+        /// </summary>
+        public static TargetVMDetailsLicenseType Default { get; } = new TargetVMDetailsLicenseType("DEFAULT");
+        /// <summary>
+        /// The license type is Pay As You Go license type.
+        /// </summary>
+        public static TargetVMDetailsLicenseType Payg { get; } = new TargetVMDetailsLicenseType("PAYG");
+        /// <summary>
+        /// The license type is Bring Your Own License type.
+        /// </summary>
+        public static TargetVMDetailsLicenseType Byol { get; } = new TargetVMDetailsLicenseType("BYOL");
+
+        public static bool operator ==(TargetVMDetailsLicenseType left, TargetVMDetailsLicenseType right) => left.Equals(right);
+        public static bool operator !=(TargetVMDetailsLicenseType left, TargetVMDetailsLicenseType right) => !left.Equals(right);
+
+        public static explicit operator string(TargetVMDetailsLicenseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TargetVMDetailsLicenseType other && Equals(other);
+        public bool Equals(TargetVMDetailsLicenseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Time frame of the report.
     /// </summary>
     [EnumType]

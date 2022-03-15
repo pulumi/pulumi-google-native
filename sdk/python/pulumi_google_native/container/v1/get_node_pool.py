@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodePoolResult:
-    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, pod_ipv4_cidr_size=None, self_link=None, status=None, upgrade_settings=None, version=None):
+    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, pod_ipv4_cidr_size=None, self_link=None, status=None, status_message=None, upgrade_settings=None, version=None):
         if autoscaling and not isinstance(autoscaling, dict):
             raise TypeError("Expected argument 'autoscaling' to be a dict")
         pulumi.set(__self__, "autoscaling", autoscaling)
@@ -58,6 +58,13 @@ class GetNodePoolResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if status_message and not isinstance(status_message, str):
+            raise TypeError("Expected argument 'status_message' to be a str")
+        if status_message is not None:
+            warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""", DeprecationWarning)
+            pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.""")
+
+        pulumi.set(__self__, "status_message", status_message)
         if upgrade_settings and not isinstance(upgrade_settings, dict):
             raise TypeError("Expected argument 'upgrade_settings' to be a dict")
         pulumi.set(__self__, "upgrade_settings", upgrade_settings)
@@ -170,6 +177,14 @@ class GetNodePoolResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> 'outputs.UpgradeSettingsResponse':
         """
@@ -205,6 +220,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             pod_ipv4_cidr_size=self.pod_ipv4_cidr_size,
             self_link=self.self_link,
             status=self.status,
+            status_message=self.status_message,
             upgrade_settings=self.upgrade_settings,
             version=self.version)
 
@@ -213,6 +229,8 @@ def get_node_pool(cluster_id: Optional[str] = None,
                   location: Optional[str] = None,
                   node_pool_id: Optional[str] = None,
                   project: Optional[str] = None,
+                  project_id: Optional[str] = None,
+                  zone: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodePoolResult:
     """
     Retrieves the requested node pool.
@@ -222,6 +240,8 @@ def get_node_pool(cluster_id: Optional[str] = None,
     __args__['location'] = location
     __args__['nodePoolId'] = node_pool_id
     __args__['project'] = project
+    __args__['projectId'] = project_id
+    __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -242,6 +262,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         pod_ipv4_cidr_size=__ret__.pod_ipv4_cidr_size,
         self_link=__ret__.self_link,
         status=__ret__.status,
+        status_message=__ret__.status_message,
         upgrade_settings=__ret__.upgrade_settings,
         version=__ret__.version)
 
@@ -251,6 +272,8 @@ def get_node_pool_output(cluster_id: Optional[pulumi.Input[str]] = None,
                          location: Optional[pulumi.Input[str]] = None,
                          node_pool_id: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
+                         project_id: Optional[pulumi.Input[Optional[str]]] = None,
+                         zone: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodePoolResult]:
     """
     Retrieves the requested node pool.

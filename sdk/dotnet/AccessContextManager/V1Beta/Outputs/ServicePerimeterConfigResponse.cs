@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RestrictedServices;
         /// <summary>
+        /// Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
+        /// </summary>
+        public readonly ImmutableArray<string> UnrestrictedServices;
+        /// <summary>
         /// Beta. Configuration for APIs allowed within Perimeter.
         /// </summary>
         public readonly Outputs.VpcAccessibleServicesResponse VpcAccessibleServices;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Outputs
 
             ImmutableArray<string> restrictedServices,
 
+            ImmutableArray<string> unrestrictedServices,
+
             Outputs.VpcAccessibleServicesResponse vpcAccessibleServices)
         {
             AccessLevels = accessLevels;
             Resources = resources;
             RestrictedServices = restrictedServices;
+            UnrestrictedServices = unrestrictedServices;
             VpcAccessibleServices = vpcAccessibleServices;
         }
     }

@@ -66,6 +66,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public Output<string> Priority { get; private set; } = null!;
 
         /// <summary>
+        /// The severity of this case. Deprecated. Use priority instead.
+        /// </summary>
+        [Output("severity")]
+        public Output<string> Severity { get; private set; } = null!;
+
+        /// <summary>
         /// The current status of the support case.
         /// </summary>
         [Output("state")]
@@ -181,6 +187,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         [Input("priority")]
         public Input<Pulumi.GoogleNative.CloudSupport.V2Beta.CasePriority>? Priority { get; set; }
+
+        /// <summary>
+        /// The severity of this case. Deprecated. Use priority instead.
+        /// </summary>
+        [Input("severity")]
+        public Input<Pulumi.GoogleNative.CloudSupport.V2Beta.CaseSeverity>? Severity { get; set; }
 
         [Input("subscriberEmailAddresses")]
         private InputList<string>? _subscriberEmailAddresses;

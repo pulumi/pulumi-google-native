@@ -2832,6 +2832,175 @@ func (in *settingsPricingPlanPtr) ToSettingsPricingPlanPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsPricingPlanPtrOutput)
 }
 
+// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+type SettingsReplicationType string
+
+const (
+	// This is an unknown replication type for a Cloud SQL instance.
+	SettingsReplicationTypeSqlReplicationTypeUnspecified = SettingsReplicationType("SQL_REPLICATION_TYPE_UNSPECIFIED")
+	// The synchronous replication mode for First Generation instances. It is the default value.
+	SettingsReplicationTypeSynchronous = SettingsReplicationType("SYNCHRONOUS")
+	// The asynchronous replication mode for First Generation instances. It provides a slight performance gain, but if an outage occurs while this option is set to asynchronous, you can lose up to a few seconds of updates to your data.
+	SettingsReplicationTypeAsynchronous = SettingsReplicationType("ASYNCHRONOUS")
+)
+
+func (SettingsReplicationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsReplicationType)(nil)).Elem()
+}
+
+func (e SettingsReplicationType) ToSettingsReplicationTypeOutput() SettingsReplicationTypeOutput {
+	return pulumi.ToOutput(e).(SettingsReplicationTypeOutput)
+}
+
+func (e SettingsReplicationType) ToSettingsReplicationTypeOutputWithContext(ctx context.Context) SettingsReplicationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SettingsReplicationTypeOutput)
+}
+
+func (e SettingsReplicationType) ToSettingsReplicationTypePtrOutput() SettingsReplicationTypePtrOutput {
+	return e.ToSettingsReplicationTypePtrOutputWithContext(context.Background())
+}
+
+func (e SettingsReplicationType) ToSettingsReplicationTypePtrOutputWithContext(ctx context.Context) SettingsReplicationTypePtrOutput {
+	return SettingsReplicationType(e).ToSettingsReplicationTypeOutputWithContext(ctx).ToSettingsReplicationTypePtrOutputWithContext(ctx)
+}
+
+func (e SettingsReplicationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SettingsReplicationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SettingsReplicationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SettingsReplicationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SettingsReplicationTypeOutput struct{ *pulumi.OutputState }
+
+func (SettingsReplicationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsReplicationType)(nil)).Elem()
+}
+
+func (o SettingsReplicationTypeOutput) ToSettingsReplicationTypeOutput() SettingsReplicationTypeOutput {
+	return o
+}
+
+func (o SettingsReplicationTypeOutput) ToSettingsReplicationTypeOutputWithContext(ctx context.Context) SettingsReplicationTypeOutput {
+	return o
+}
+
+func (o SettingsReplicationTypeOutput) ToSettingsReplicationTypePtrOutput() SettingsReplicationTypePtrOutput {
+	return o.ToSettingsReplicationTypePtrOutputWithContext(context.Background())
+}
+
+func (o SettingsReplicationTypeOutput) ToSettingsReplicationTypePtrOutputWithContext(ctx context.Context) SettingsReplicationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsReplicationType) *SettingsReplicationType {
+		return &v
+	}).(SettingsReplicationTypePtrOutput)
+}
+
+func (o SettingsReplicationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SettingsReplicationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SettingsReplicationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SettingsReplicationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsReplicationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SettingsReplicationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsReplicationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsReplicationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsReplicationType)(nil)).Elem()
+}
+
+func (o SettingsReplicationTypePtrOutput) ToSettingsReplicationTypePtrOutput() SettingsReplicationTypePtrOutput {
+	return o
+}
+
+func (o SettingsReplicationTypePtrOutput) ToSettingsReplicationTypePtrOutputWithContext(ctx context.Context) SettingsReplicationTypePtrOutput {
+	return o
+}
+
+func (o SettingsReplicationTypePtrOutput) Elem() SettingsReplicationTypeOutput {
+	return o.ApplyT(func(v *SettingsReplicationType) SettingsReplicationType {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsReplicationType
+		return ret
+	}).(SettingsReplicationTypeOutput)
+}
+
+func (o SettingsReplicationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsReplicationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SettingsReplicationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SettingsReplicationTypeInput is an input type that accepts SettingsReplicationTypeArgs and SettingsReplicationTypeOutput values.
+// You can construct a concrete instance of `SettingsReplicationTypeInput` via:
+//
+//          SettingsReplicationTypeArgs{...}
+type SettingsReplicationTypeInput interface {
+	pulumi.Input
+
+	ToSettingsReplicationTypeOutput() SettingsReplicationTypeOutput
+	ToSettingsReplicationTypeOutputWithContext(context.Context) SettingsReplicationTypeOutput
+}
+
+var settingsReplicationTypePtrType = reflect.TypeOf((**SettingsReplicationType)(nil)).Elem()
+
+type SettingsReplicationTypePtrInput interface {
+	pulumi.Input
+
+	ToSettingsReplicationTypePtrOutput() SettingsReplicationTypePtrOutput
+	ToSettingsReplicationTypePtrOutputWithContext(context.Context) SettingsReplicationTypePtrOutput
+}
+
+type settingsReplicationTypePtr string
+
+func SettingsReplicationTypePtr(v string) SettingsReplicationTypePtrInput {
+	return (*settingsReplicationTypePtr)(&v)
+}
+
+func (*settingsReplicationTypePtr) ElementType() reflect.Type {
+	return settingsReplicationTypePtrType
+}
+
+func (in *settingsReplicationTypePtr) ToSettingsReplicationTypePtrOutput() SettingsReplicationTypePtrOutput {
+	return pulumi.ToOutput(in).(SettingsReplicationTypePtrOutput)
+}
+
+func (in *settingsReplicationTypePtr) ToSettingsReplicationTypePtrOutputWithContext(ctx context.Context) SettingsReplicationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SettingsReplicationTypePtrOutput)
+}
+
 // This field represents the state generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
 type SqlOutOfDiskReportSqlOutOfDiskState string
 
@@ -3035,6 +3204,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsDataDiskTypePtrInput)(nil)).Elem(), SettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPricingPlanInput)(nil)).Elem(), SettingsPricingPlan("SQL_PRICING_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPricingPlanPtrInput)(nil)).Elem(), SettingsPricingPlan("SQL_PRICING_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsReplicationTypeInput)(nil)).Elem(), SettingsReplicationType("SQL_REPLICATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsReplicationTypePtrInput)(nil)).Elem(), SettingsReplicationType("SQL_REPLICATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportSqlOutOfDiskStateInput)(nil)).Elem(), SqlOutOfDiskReportSqlOutOfDiskState("SQL_OUT_OF_DISK_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlOutOfDiskReportSqlOutOfDiskStatePtrInput)(nil)).Elem(), SqlOutOfDiskReportSqlOutOfDiskState("SQL_OUT_OF_DISK_STATE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(BackupRetentionSettingsRetentionUnitOutput{})
@@ -3070,6 +3241,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingsDataDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(SettingsPricingPlanOutput{})
 	pulumi.RegisterOutputType(SettingsPricingPlanPtrOutput{})
+	pulumi.RegisterOutputType(SettingsReplicationTypeOutput{})
+	pulumi.RegisterOutputType(SettingsReplicationTypePtrOutput{})
 	pulumi.RegisterOutputType(SqlOutOfDiskReportSqlOutOfDiskStateOutput{})
 	pulumi.RegisterOutputType(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput{})
 }

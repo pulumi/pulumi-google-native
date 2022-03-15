@@ -10,6 +10,200 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpec struct {
+	// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+	Launch *string `pulumi:"launch"`
+	// Specify `Constraint` for configurations of Cloud Platform resources.
+	Spec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"spec"`
+}
+
+// GoogleCloudOrgpolicyV2AlternatePolicySpecInput is an input type that accepts GoogleCloudOrgpolicyV2AlternatePolicySpecArgs and GoogleCloudOrgpolicyV2AlternatePolicySpecOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2AlternatePolicySpecInput` via:
+//
+//          GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
+type GoogleCloudOrgpolicyV2AlternatePolicySpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecOutput
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecArgs struct {
+	// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+	Launch pulumi.StringPtrInput `pulumi:"launch"`
+	// Specify `Constraint` for configurations of Cloud Platform resources.
+	Spec GoogleCloudOrgpolicyV2PolicySpecPtrInput `pulumi:"spec"`
+}
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput)
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput).ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput is an input type that accepts GoogleCloudOrgpolicyV2AlternatePolicySpecArgs, GoogleCloudOrgpolicyV2AlternatePolicySpecPtr and GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput` via:
+//
+//          GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput
+	ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput
+}
+
+type googleCloudOrgpolicyV2AlternatePolicySpecPtrType GoogleCloudOrgpolicyV2AlternatePolicySpecArgs
+
+func GoogleCloudOrgpolicyV2AlternatePolicySpecPtr(v *GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput {
+	return (*googleCloudOrgpolicyV2AlternatePolicySpecPtrType)(v)
+}
+
+func (*googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (i *googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return i.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudOrgpolicyV2AlternatePolicySpecPtrType) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o.ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudOrgpolicyV2AlternatePolicySpec) *GoogleCloudOrgpolicyV2AlternatePolicySpec {
+		return &v
+	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput)
+}
+
+// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) Launch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpec) *string { return v.Launch }).(pulumi.StringPtrOutput)
+}
+
+// Specify `Constraint` for configurations of Cloud Platform resources.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpec) *GoogleCloudOrgpolicyV2PolicySpec { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+type GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudOrgpolicyV2AlternatePolicySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Elem() GoogleCloudOrgpolicyV2AlternatePolicySpecOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2AlternatePolicySpec) GoogleCloudOrgpolicyV2AlternatePolicySpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudOrgpolicyV2AlternatePolicySpec
+		return ret
+	}).(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput)
+}
+
+// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Launch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2AlternatePolicySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Launch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specify `Constraint` for configurations of Cloud Platform resources.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudOrgpolicyV2AlternatePolicySpec) *GoogleCloudOrgpolicyV2PolicySpec {
+		if v == nil {
+			return nil
+		}
+		return v.Spec
+	}).(GoogleCloudOrgpolicyV2PolicySpecPtrOutput)
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecResponse struct {
+	// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+	Launch string `pulumi:"launch"`
+	// Specify `Constraint` for configurations of Cloud Platform resources.
+	Spec GoogleCloudOrgpolicyV2PolicySpecResponse `pulumi:"spec"`
+}
+
+// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+type GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) ToGoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutputWithContext(ctx context.Context) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o
+}
+
+// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) Launch() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpecResponse) string { return v.Launch }).(pulumi.StringOutput)
+}
+
+// Specify `Constraint` for configurations of Cloud Platform resources.
+func (o GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudOrgpolicyV2AlternatePolicySpecResponse) GoogleCloudOrgpolicyV2PolicySpecResponse {
+		return v.Spec
+	}).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
 // Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
 type GoogleCloudOrgpolicyV2PolicySpec struct {
 	// An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -916,6 +1110,8 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpecInput)(nil)).Elem(), GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{})
@@ -924,6 +1120,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput)(nil)).Elem(), GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprInput)(nil)).Elem(), GoogleTypeExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeExprPtrInput)(nil)).Elem(), GoogleTypeExprArgs{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2AlternatePolicySpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput{})

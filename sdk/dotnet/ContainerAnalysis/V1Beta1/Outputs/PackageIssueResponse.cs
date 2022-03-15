@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// The type of package (e.g. OS, MAVEN, GO).
         /// </summary>
         public readonly string PackageType;
+        /// <summary>
+        /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+        /// </summary>
+        public readonly string SeverityName;
 
         [OutputConstructor]
         private PackageIssueResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
 
             Outputs.VulnerabilityLocationResponse fixedLocation,
 
-            string packageType)
+            string packageType,
+
+            string severityName)
         {
             AffectedLocation = affectedLocation;
             EffectiveSeverity = effectiveSeverity;
             FixedLocation = fixedLocation;
             PackageType = packageType;
+            SeverityName = severityName;
         }
     }
 }

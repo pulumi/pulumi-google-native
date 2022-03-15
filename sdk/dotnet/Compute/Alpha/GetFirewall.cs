@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
+        /// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+        /// </summary>
+        public readonly bool EnableLogging;
+        /// <summary>
         /// Type of the resource. Always compute#firewall for firewall rules.
         /// </summary>
         public readonly string Kind;
@@ -148,6 +152,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             bool disabled,
 
+            bool enableLogging,
+
             string kind,
 
             Outputs.FirewallLogConfigResponse logConfig,
@@ -179,6 +185,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             DestinationRanges = destinationRanges;
             Direction = direction;
             Disabled = disabled;
+            EnableLogging = enableLogging;
             Kind = kind;
             LogConfig = logConfig;
             Name = name;

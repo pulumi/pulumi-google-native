@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("expectedRedirectResponseCode")]
         public Input<int>? ExpectedRedirectResponseCode { get; set; }
 
+        /// <summary>
+        /// The expected URL that should be redirected to for the host and path being tested. [Deprecated] This field is deprecated. Use expected_output_url instead.
+        /// </summary>
+        [Input("expectedUrlRedirect")]
+        public Input<string>? ExpectedUrlRedirect { get; set; }
+
         [Input("headers")]
         private InputList<Inputs.UrlMapTestHeaderArgs>? _headers;
 

@@ -31,6 +31,10 @@ type LookupDatabaseResult struct {
 	Charset string `pulumi:"charset"`
 	// The Cloud SQL collation value.
 	Collation string `pulumi:"collation"`
+	// This field is deprecated and will be removed from a future version of the API.
+	//
+	// Deprecated: This field is deprecated and will be removed from a future version of the API.
+	Etag string `pulumi:"etag"`
 	// The name of the Cloud SQL instance. This does not include the project ID.
 	Instance string `pulumi:"instance"`
 	// This is always `sql#database`.
@@ -85,6 +89,13 @@ func (o LookupDatabaseResultOutput) Charset() pulumi.StringOutput {
 // The Cloud SQL collation value.
 func (o LookupDatabaseResultOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+// This field is deprecated and will be removed from a future version of the API.
+//
+// Deprecated: This field is deprecated and will be removed from a future version of the API.
+func (o LookupDatabaseResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The name of the Cloud SQL instance. This does not include the project ID.

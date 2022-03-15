@@ -499,6 +499,51 @@ namespace Pulumi.GoogleNative.Jobs.V3
     }
 
     /// <summary>
+    /// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+    /// </summary>
+    [EnumType]
+    public readonly struct JobVisibility : IEquatable<JobVisibility>
+    {
+        private readonly string _value;
+
+        private JobVisibility(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static JobVisibility VisibilityUnspecified { get; } = new JobVisibility("VISIBILITY_UNSPECIFIED");
+        /// <summary>
+        /// The resource is only visible to the GCP account who owns it.
+        /// </summary>
+        public static JobVisibility AccountOnly { get; } = new JobVisibility("ACCOUNT_ONLY");
+        /// <summary>
+        /// The resource is visible to the owner and may be visible to other applications and processes at Google.
+        /// </summary>
+        public static JobVisibility SharedWithGoogle { get; } = new JobVisibility("SHARED_WITH_GOOGLE");
+        /// <summary>
+        /// The resource is visible to the owner and may be visible to all other API clients.
+        /// </summary>
+        public static JobVisibility SharedWithPublic { get; } = new JobVisibility("SHARED_WITH_PUBLIC");
+
+        public static bool operator ==(JobVisibility left, JobVisibility right) => left.Equals(right);
+        public static bool operator !=(JobVisibility left, JobVisibility right) => !left.Equals(right);
+
+        public static explicit operator string(JobVisibility value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is JobVisibility other && Equals(other);
+        public bool Equals(JobVisibility other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
     /// </summary>
     [EnumType]

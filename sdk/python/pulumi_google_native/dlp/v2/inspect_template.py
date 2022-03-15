@@ -27,6 +27,7 @@ class InspectTemplateArgs:
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs'] inspect_config: The core content of the template. Configuration of the scanning process.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         if description is not None:
@@ -35,6 +36,9 @@ class InspectTemplateArgs:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_config is not None:
             pulumi.set(__self__, "inspect_config", inspect_config)
+        if location is not None:
+            warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+            pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -81,6 +85,9 @@ class InspectTemplateArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. This field has no effect.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -130,6 +137,7 @@ class InspectTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Short description (max 256 chars).
         :param pulumi.Input[str] display_name: Display name (max 256 chars).
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']] inspect_config: The core content of the template. Configuration of the scanning process.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         ...
@@ -178,6 +186,9 @@ class InspectTemplate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_config"] = inspect_config
+            if location is not None and not opts.urn:
+                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id

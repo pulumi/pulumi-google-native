@@ -68,6 +68,12 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.alpha.GuestOsFeatureResponse[]>;
     /**
+     * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     *
+     * @deprecated [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     */
+    public readonly interface!: pulumi.Output<string>;
+    /**
      * Type of the resource. Always compute#disk for disks.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -212,6 +218,12 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * [Deprecated] Storage type of the persistent disk.
+     *
+     * @deprecated [Deprecated] Storage type of the persistent disk.
+     */
+    public readonly storageType!: pulumi.Output<string>;
+    /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */
     public readonly type!: pulumi.Output<string>;
@@ -248,6 +260,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
             resourceInputs["eraseWindowsVssSignature"] = args ? args.eraseWindowsVssSignature : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
+            resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["licenseCodes"] = args ? args.licenseCodes : undefined;
             resourceInputs["licenses"] = args ? args.licenses : undefined;
@@ -270,6 +283,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
             resourceInputs["sourceSnapshotEncryptionKey"] = args ? args.sourceSnapshotEncryptionKey : undefined;
             resourceInputs["sourceStorageObject"] = args ? args.sourceStorageObject : undefined;
+            resourceInputs["storageType"] = args ? args.storageType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["userLicenses"] = args ? args.userLicenses : undefined;
             resourceInputs["asyncSecondaryDisks"] = undefined /*out*/;
@@ -301,6 +315,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["diskEncryptionKey"] = undefined /*out*/;
             resourceInputs["eraseWindowsVssSignature"] = undefined /*out*/;
             resourceInputs["guestOsFeatures"] = undefined /*out*/;
+            resourceInputs["interface"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -337,6 +352,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["sourceStorageObject"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["storageType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["userLicenses"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
@@ -375,6 +391,12 @@ export interface RegionDiskArgs {
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.alpha.GuestOsFeatureArgs>[]>;
+    /**
+     * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     *
+     * @deprecated [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     */
+    interface?: pulumi.Input<enums.compute.alpha.RegionDiskInterface>;
     /**
      * Labels to apply to this disk. These can be later modified by the setLabels method.
      */
@@ -457,6 +479,12 @@ export interface RegionDiskArgs {
      * The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
      */
     sourceStorageObject?: pulumi.Input<string>;
+    /**
+     * [Deprecated] Storage type of the persistent disk.
+     *
+     * @deprecated [Deprecated] Storage type of the persistent disk.
+     */
+    storageType?: pulumi.Input<enums.compute.alpha.RegionDiskStorageType>;
     /**
      * URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
      */

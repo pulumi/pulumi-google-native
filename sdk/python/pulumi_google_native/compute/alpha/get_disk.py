@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDiskResult:
-    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -43,6 +43,13 @@ class GetDiskResult:
         if guest_os_features and not isinstance(guest_os_features, list):
             raise TypeError("Expected argument 'guest_os_features' to be a list")
         pulumi.set(__self__, "guest_os_features", guest_os_features)
+        if interface and not isinstance(interface, str):
+            raise TypeError("Expected argument 'interface' to be a str")
+        if interface is not None:
+            warnings.warn("""[Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.""")
+
+        pulumi.set(__self__, "interface", interface)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -151,6 +158,13 @@ class GetDiskResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if storage_type and not isinstance(storage_type, str):
+            raise TypeError("Expected argument 'storage_type' to be a str")
+        if storage_type is not None:
+            warnings.warn("""[Deprecated] Storage type of the persistent disk.""", DeprecationWarning)
+            pulumi.log.warn("""storage_type is deprecated: [Deprecated] Storage type of the persistent disk.""")
+
+        pulumi.set(__self__, "storage_type", storage_type)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -227,6 +241,14 @@ class GetDiskResult:
         A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        """
+        [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        """
+        return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter
@@ -517,6 +539,14 @@ class GetDiskResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        [Deprecated] Storage type of the persistent disk.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -563,6 +593,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             disk_encryption_key=self.disk_encryption_key,
             erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
+            interface=self.interface,
             kind=self.kind,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -599,6 +630,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             source_snapshot_id=self.source_snapshot_id,
             source_storage_object=self.source_storage_object,
             status=self.status,
+            storage_type=self.storage_type,
             type=self.type,
             user_licenses=self.user_licenses,
             users=self.users,
@@ -631,6 +663,7 @@ def get_disk(disk: Optional[str] = None,
         disk_encryption_key=__ret__.disk_encryption_key,
         erase_windows_vss_signature=__ret__.erase_windows_vss_signature,
         guest_os_features=__ret__.guest_os_features,
+        interface=__ret__.interface,
         kind=__ret__.kind,
         label_fingerprint=__ret__.label_fingerprint,
         labels=__ret__.labels,
@@ -667,6 +700,7 @@ def get_disk(disk: Optional[str] = None,
         source_snapshot_id=__ret__.source_snapshot_id,
         source_storage_object=__ret__.source_storage_object,
         status=__ret__.status,
+        storage_type=__ret__.storage_type,
         type=__ret__.type,
         user_licenses=__ret__.user_licenses,
         users=__ret__.users,

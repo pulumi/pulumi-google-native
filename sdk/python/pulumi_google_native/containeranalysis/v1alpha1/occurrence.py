@@ -25,6 +25,7 @@ class OccurrenceArgs:
                  dsse_attestation: Optional[pulumi.Input['DSSEAttestationOccurrenceArgs']] = None,
                  envelope: Optional[pulumi.Input['EnvelopeArgs']] = None,
                  installation: Optional[pulumi.Input['InstallationArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -47,6 +48,7 @@ class OccurrenceArgs:
         :param pulumi.Input['DSSEAttestationOccurrenceArgs'] dsse_attestation: This represents a DSSE attestation occurrence
         :param pulumi.Input['EnvelopeArgs'] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input['InstallationArgs'] installation: Describes the installation of a package on the linked resource.
+        :param pulumi.Input[str] name: The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input['ResourceArgs'] resource:  The resource for which the `Occurrence` applies.
@@ -76,6 +78,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "envelope", envelope)
         if installation is not None:
             pulumi.set(__self__, "installation", installation)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if note_name is not None:
             pulumi.set(__self__, "note_name", note_name)
         if project is not None:
@@ -206,6 +210,18 @@ class OccurrenceArgs:
     @installation.setter
     def installation(self, value: Optional[pulumi.Input['InstallationArgs']]):
         pulumi.set(self, "installation", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="noteName")
@@ -351,6 +367,7 @@ class Occurrence(pulumi.CustomResource):
                  dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']]] = None,
                  envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -365,7 +382,6 @@ class Occurrence(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -378,6 +394,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']] dsse_attestation: This represents a DSSE attestation occurrence
         :param pulumi.Input[pulumi.InputType['EnvelopeArgs']] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input[pulumi.InputType['InstallationArgs']] installation: Describes the installation of a package on the linked resource.
+        :param pulumi.Input[str] name: The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource:  The resource for which the `Occurrence` applies.
@@ -397,7 +414,6 @@ class Occurrence(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
-        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param OccurrenceArgs args: The arguments to use to populate this resource's properties.
@@ -423,6 +439,7 @@ class Occurrence(pulumi.CustomResource):
                  dsse_attestation: Optional[pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']]] = None,
                  envelope: Optional[pulumi.Input[pulumi.InputType['EnvelopeArgs']]] = None,
                  installation: Optional[pulumi.Input[pulumi.InputType['InstallationArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  note_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
@@ -455,6 +472,7 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["dsse_attestation"] = dsse_attestation
             __props__.__dict__["envelope"] = envelope
             __props__.__dict__["installation"] = installation
+            __props__.__dict__["name"] = name
             __props__.__dict__["note_name"] = note_name
             __props__.__dict__["project"] = project
             __props__.__dict__["remediation"] = remediation
@@ -468,7 +486,6 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["vulnerability_details"] = vulnerability_details
             __props__.__dict__["create_time"] = None
             __props__.__dict__["kind"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
         super(Occurrence, __self__).__init__(
             'google-native:containeranalysis/v1alpha1:Occurrence',

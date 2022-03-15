@@ -78,6 +78,42 @@ export const ExecutionTemplateJobType = {
  */
 export type ExecutionTemplateJobType = (typeof ExecutionTemplateJobType)[keyof typeof ExecutionTemplateJobType];
 
+export const ExecutionTemplateScaleTier = {
+    /**
+     * Unspecified Scale Tier.
+     */
+    ScaleTierUnspecified: "SCALE_TIER_UNSPECIFIED",
+    /**
+     * A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
+     */
+    Basic: "BASIC",
+    /**
+     * Many workers and a few parameter servers.
+     */
+    Standard1: "STANDARD_1",
+    /**
+     * A large number of workers with many parameter servers.
+     */
+    Premium1: "PREMIUM_1",
+    /**
+     * A single worker instance with a K80 GPU.
+     */
+    BasicGpu: "BASIC_GPU",
+    /**
+     * A single worker instance with a Cloud TPU.
+     */
+    BasicTpu: "BASIC_TPU",
+    /**
+     * The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `ExecutionTemplate.masterType` to specify the type of machine to use for your master node. This is the only required setting.
+     */
+    Custom: "CUSTOM",
+} as const;
+
+/**
+ * Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+ */
+export type ExecutionTemplateScaleTier = (typeof ExecutionTemplateScaleTier)[keyof typeof ExecutionTemplateScaleTier];
+
 export const InstanceBootDiskType = {
     /**
      * Disk type not set.

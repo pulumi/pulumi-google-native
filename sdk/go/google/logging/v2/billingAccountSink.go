@@ -33,6 +33,10 @@ type BillingAccountSink struct {
 	IncludeChildren pulumi.BoolOutput `pulumi:"includeChildren"`
 	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Deprecated. This field is unused.
+	//
+	// Deprecated: Deprecated. This field is unused.
+	OutputVersionFormat pulumi.StringOutput `pulumi:"outputVersionFormat"`
 	// The last update timestamp of the sink.This field may not be present for older sinks.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a writer_identity and no additional permissions are required.
@@ -101,6 +105,10 @@ type billingAccountSinkArgs struct {
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
+	// Deprecated. This field is unused.
+	//
+	// Deprecated: Deprecated. This field is unused.
+	OutputVersionFormat *BillingAccountSinkOutputVersionFormat `pulumi:"outputVersionFormat"`
 	// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 }
@@ -124,6 +132,10 @@ type BillingAccountSinkArgs struct {
 	IncludeChildren pulumi.BoolPtrInput
 	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
+	// Deprecated. This field is unused.
+	//
+	// Deprecated: Deprecated. This field is unused.
+	OutputVersionFormat BillingAccountSinkOutputVersionFormatPtrInput
 	// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
 	UniqueWriterIdentity pulumi.StringPtrInput
 }

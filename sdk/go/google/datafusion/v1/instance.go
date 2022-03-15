@@ -54,6 +54,10 @@ type Instance struct {
 	P4ServiceAccount pulumi.StringOutput `pulumi:"p4ServiceAccount"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolOutput `pulumi:"privateInstance"`
+	// Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+	//
+	// Deprecated: Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// Endpoint on which the Data Fusion UI is accessible.
 	ServiceEndpoint pulumi.StringOutput `pulumi:"serviceEndpoint"`
 	// The current state of this Data Fusion instance.

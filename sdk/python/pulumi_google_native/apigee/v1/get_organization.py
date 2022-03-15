@@ -18,10 +18,17 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationResult:
-    def __init__(__self__, addons_config=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, type=None):
+    def __init__(__self__, addons_config=None, analytics_region=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_type=None, type=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
+        if analytics_region and not isinstance(analytics_region, str):
+            raise TypeError("Expected argument 'analytics_region' to be a str")
+        if analytics_region is not None:
+            warnings.warn("""Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""", DeprecationWarning)
+            pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
+
+        pulumi.set(__self__, "analytics_region", analytics_region)
         if attributes and not isinstance(attributes, list):
             raise TypeError("Expected argument 'attributes' to be a list")
         pulumi.set(__self__, "attributes", attributes)
@@ -76,6 +83,13 @@ class GetOrganizationResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if subscription_type and not isinstance(subscription_type, str):
+            raise TypeError("Expected argument 'subscription_type' to be a str")
+        if subscription_type is not None:
+            warnings.warn("""Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).""", DeprecationWarning)
+            pulumi.log.warn("""subscription_type is deprecated: Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).""")
+
+        pulumi.set(__self__, "subscription_type", subscription_type)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -87,6 +101,14 @@ class GetOrganizationResult:
         Addon configurations of the Apigee organization.
         """
         return pulumi.get(self, "addons_config")
+
+    @property
+    @pulumi.getter(name="analyticsRegion")
+    def analytics_region(self) -> str:
+        """
+        DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        """
+        return pulumi.get(self, "analytics_region")
 
     @property
     @pulumi.getter
@@ -233,6 +255,14 @@ class GetOrganizationResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="subscriptionType")
+    def subscription_type(self) -> str:
+        """
+        DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+        """
+        return pulumi.get(self, "subscription_type")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -248,6 +278,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             yield self
         return GetOrganizationResult(
             addons_config=self.addons_config,
+            analytics_region=self.analytics_region,
             attributes=self.attributes,
             authorized_network=self.authorized_network,
             billing_type=self.billing_type,
@@ -266,6 +297,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
             runtime_database_encryption_key_name=self.runtime_database_encryption_key_name,
             runtime_type=self.runtime_type,
             state=self.state,
+            subscription_type=self.subscription_type,
             type=self.type)
 
 
@@ -284,6 +316,7 @@ def get_organization(organization_id: Optional[str] = None,
 
     return AwaitableGetOrganizationResult(
         addons_config=__ret__.addons_config,
+        analytics_region=__ret__.analytics_region,
         attributes=__ret__.attributes,
         authorized_network=__ret__.authorized_network,
         billing_type=__ret__.billing_type,
@@ -302,6 +335,7 @@ def get_organization(organization_id: Optional[str] = None,
         runtime_database_encryption_key_name=__ret__.runtime_database_encryption_key_name,
         runtime_type=__ret__.runtime_type,
         state=__ret__.state,
+        subscription_type=__ret__.subscription_type,
         type=__ret__.type)
 
 

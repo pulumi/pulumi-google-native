@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class SecuritySettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// [Deprecated] Use clientTlsPolicy instead.
+        /// </summary>
+        [Input("authentication")]
+        public Input<string>? Authentication { get; set; }
+
+        /// <summary>
         /// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         /// </summary>
         [Input("clientTlsPolicy")]

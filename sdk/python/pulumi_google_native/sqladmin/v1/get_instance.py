@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
+    def __init__(__self__, available_maintenance_versions=None, backend_type=None, connection_name=None, create_time=None, current_disk_size=None, database_installed_version=None, database_version=None, disk_encryption_configuration=None, disk_encryption_status=None, etag=None, failover_replica=None, gce_zone=None, instance_type=None, ip_addresses=None, ipv6_address=None, kind=None, maintenance_version=None, master_instance_name=None, max_disk_size=None, name=None, on_premises_configuration=None, out_of_disk_report=None, project=None, region=None, replica_configuration=None, replica_names=None, root_password=None, satisfies_pzs=None, scheduled_maintenance=None, secondary_gce_zone=None, self_link=None, server_ca_cert=None, service_account_email_address=None, settings=None, state=None, suspension_reason=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -46,6 +46,13 @@ class GetInstanceResult:
         if disk_encryption_status and not isinstance(disk_encryption_status, dict):
             raise TypeError("Expected argument 'disk_encryption_status' to be a dict")
         pulumi.set(__self__, "disk_encryption_status", disk_encryption_status)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        if etag is not None:
+            warnings.warn("""This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""", DeprecationWarning)
+            pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.""")
+
+        pulumi.set(__self__, "etag", etag)
         if failover_replica and not isinstance(failover_replica, dict):
             raise TypeError("Expected argument 'failover_replica' to be a dict")
         pulumi.set(__self__, "failover_replica", failover_replica)
@@ -58,6 +65,13 @@ class GetInstanceResult:
         if ip_addresses and not isinstance(ip_addresses, list):
             raise TypeError("Expected argument 'ip_addresses' to be a list")
         pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if ipv6_address and not isinstance(ipv6_address, str):
+            raise TypeError("Expected argument 'ipv6_address' to be a str")
+        if ipv6_address is not None:
+            warnings.warn("""The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""", DeprecationWarning)
+            pulumi.log.warn("""ipv6_address is deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.""")
+
+        pulumi.set(__self__, "ipv6_address", ipv6_address)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -195,6 +209,14 @@ class GetInstanceResult:
         return pulumi.get(self, "disk_encryption_status")
 
     @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
     @pulumi.getter(name="failoverReplica")
     def failover_replica(self) -> 'outputs.InstanceFailoverReplicaResponse':
         """
@@ -225,6 +247,14 @@ class GetInstanceResult:
         The assigned IP addresses for the instance.
         """
         return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> str:
+        """
+        The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+        """
+        return pulumi.get(self, "ipv6_address")
 
     @property
     @pulumi.getter
@@ -410,10 +440,12 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             database_version=self.database_version,
             disk_encryption_configuration=self.disk_encryption_configuration,
             disk_encryption_status=self.disk_encryption_status,
+            etag=self.etag,
             failover_replica=self.failover_replica,
             gce_zone=self.gce_zone,
             instance_type=self.instance_type,
             ip_addresses=self.ip_addresses,
+            ipv6_address=self.ipv6_address,
             kind=self.kind,
             maintenance_version=self.maintenance_version,
             master_instance_name=self.master_instance_name,
@@ -462,10 +494,12 @@ def get_instance(instance: Optional[str] = None,
         database_version=__ret__.database_version,
         disk_encryption_configuration=__ret__.disk_encryption_configuration,
         disk_encryption_status=__ret__.disk_encryption_status,
+        etag=__ret__.etag,
         failover_replica=__ret__.failover_replica,
         gce_zone=__ret__.gce_zone,
         instance_type=__ret__.instance_type,
         ip_addresses=__ret__.ip_addresses,
+        ipv6_address=__ret__.ipv6_address,
         kind=__ret__.kind,
         maintenance_version=__ret__.maintenance_version,
         master_instance_name=__ret__.master_instance_name,

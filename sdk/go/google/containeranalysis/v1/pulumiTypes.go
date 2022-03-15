@@ -1103,6 +1103,10 @@ func (o BuildNoteResponseOutput) BuilderVersion() pulumi.StringOutput {
 
 // Details of a build occurrence.
 type BuildOccurrence struct {
+	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	//
+	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	IntotoProvenance *InTotoProvenance `pulumi:"intotoProvenance"`
 	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 	IntotoStatement *InTotoStatement `pulumi:"intotoStatement"`
 	// The actual provenance for the build.
@@ -1124,6 +1128,10 @@ type BuildOccurrenceInput interface {
 
 // Details of a build occurrence.
 type BuildOccurrenceArgs struct {
+	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	//
+	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	IntotoProvenance InTotoProvenancePtrInput `pulumi:"intotoProvenance"`
 	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 	IntotoStatement InTotoStatementPtrInput `pulumi:"intotoStatement"`
 	// The actual provenance for the build.
@@ -1210,6 +1218,13 @@ func (o BuildOccurrenceOutput) ToBuildOccurrencePtrOutputWithContext(ctx context
 	}).(BuildOccurrencePtrOutput)
 }
 
+// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+//
+// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+func (o BuildOccurrenceOutput) IntotoProvenance() InTotoProvenancePtrOutput {
+	return o.ApplyT(func(v BuildOccurrence) *InTotoProvenance { return v.IntotoProvenance }).(InTotoProvenancePtrOutput)
+}
+
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 func (o BuildOccurrenceOutput) IntotoStatement() InTotoStatementPtrOutput {
 	return o.ApplyT(func(v BuildOccurrence) *InTotoStatement { return v.IntotoStatement }).(InTotoStatementPtrOutput)
@@ -1249,6 +1264,18 @@ func (o BuildOccurrencePtrOutput) Elem() BuildOccurrenceOutput {
 	}).(BuildOccurrenceOutput)
 }
 
+// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+//
+// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+func (o BuildOccurrencePtrOutput) IntotoProvenance() InTotoProvenancePtrOutput {
+	return o.ApplyT(func(v *BuildOccurrence) *InTotoProvenance {
+		if v == nil {
+			return nil
+		}
+		return v.IntotoProvenance
+	}).(InTotoProvenancePtrOutput)
+}
+
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 func (o BuildOccurrencePtrOutput) IntotoStatement() InTotoStatementPtrOutput {
 	return o.ApplyT(func(v *BuildOccurrence) *InTotoStatement {
@@ -1281,6 +1308,10 @@ func (o BuildOccurrencePtrOutput) ProvenanceBytes() pulumi.StringPtrOutput {
 
 // Details of a build occurrence.
 type BuildOccurrenceResponse struct {
+	// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	//
+	// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+	IntotoProvenance InTotoProvenanceResponse `pulumi:"intotoProvenance"`
 	// In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.
 	IntotoStatement InTotoStatementResponse `pulumi:"intotoStatement"`
 	// The actual provenance for the build.
@@ -1302,6 +1333,13 @@ func (o BuildOccurrenceResponseOutput) ToBuildOccurrenceResponseOutput() BuildOc
 
 func (o BuildOccurrenceResponseOutput) ToBuildOccurrenceResponseOutputWithContext(ctx context.Context) BuildOccurrenceResponseOutput {
 	return o
+}
+
+// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+//
+// Deprecated: Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
+func (o BuildOccurrenceResponseOutput) IntotoProvenance() InTotoProvenanceResponseOutput {
+	return o.ApplyT(func(v BuildOccurrenceResponse) InTotoProvenanceResponse { return v.IntotoProvenance }).(InTotoProvenanceResponseOutput)
 }
 
 // In-toto Statement representation as defined in spec. The intoto_statement can contain any type of provenance. The serialized payload of the statement can be stored and signed in the Occurrence's envelope.

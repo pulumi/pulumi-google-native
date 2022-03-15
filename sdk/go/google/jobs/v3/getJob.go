@@ -84,6 +84,10 @@ type LookupJobResult struct {
 	Responsibilities string `pulumi:"responsibilities"`
 	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title string `pulumi:"title"`
+	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	//
+	// Deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	Visibility string `pulumi:"visibility"`
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
@@ -261,6 +265,13 @@ func (o LookupJobResultOutput) Responsibilities() pulumi.StringOutput {
 // The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 func (o LookupJobResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+//
+// Deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+func (o LookupJobResultOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.Visibility }).(pulumi.StringOutput)
 }
 
 func init() {

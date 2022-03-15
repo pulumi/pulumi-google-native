@@ -26,6 +26,10 @@ type LookupFolderPolicyArgs struct {
 }
 
 type LookupFolderPolicyResult struct {
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecResponse `pulumi:"alternate"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name string `pulumi:"name"`
 	// Basic information about the Organization Policy.
@@ -62,6 +66,13 @@ func (o LookupFolderPolicyResultOutput) ToLookupFolderPolicyResultOutput() Looku
 
 func (o LookupFolderPolicyResultOutput) ToLookupFolderPolicyResultOutputWithContext(ctx context.Context) LookupFolderPolicyResultOutput {
 	return o
+}
+
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o LookupFolderPolicyResultOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o.ApplyT(func(v LookupFolderPolicyResult) GoogleCloudOrgpolicyV2AlternatePolicySpecResponse { return v.Alternate }).(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput)
 }
 
 // Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.

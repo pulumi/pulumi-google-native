@@ -132,6 +132,11 @@ export interface DlpJobArgs {
      * The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     jobId?: pulumi.Input<string>;
+    /**
+     * Deprecated. This field has no effect.
+     *
+     * @deprecated Deprecated. This field has no effect.
+     */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

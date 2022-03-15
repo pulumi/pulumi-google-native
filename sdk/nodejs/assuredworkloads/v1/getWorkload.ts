@@ -57,6 +57,12 @@ export interface GetWorkloadResult {
      */
     readonly kajEnrollmentState: string;
     /**
+     * Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+     *
+     * @deprecated Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+     */
+    readonly kmsSettings: outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse;
+    /**
      * Optional. Labels applied to the workload.
      */
     readonly labels: {[key: string]: string};

@@ -62,6 +62,12 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly environment!: pulumi.Output<outputs.dataflow.v1b3.EnvironmentResponse>;
     /**
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
+     */
+    public readonly executionInfo!: pulumi.Output<outputs.dataflow.v1b3.JobExecutionInfoResponse>;
+    /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */
     public readonly jobMetadata!: pulumi.Output<outputs.dataflow.v1b3.JobMetadataResponse>;
@@ -147,6 +153,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["currentState"] = args ? args.currentState : undefined;
             resourceInputs["currentStateTime"] = args ? args.currentStateTime : undefined;
             resourceInputs["environment"] = args ? args.environment : undefined;
+            resourceInputs["executionInfo"] = args ? args.executionInfo : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["jobMetadata"] = args ? args.jobMetadata : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -173,6 +180,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["currentState"] = undefined /*out*/;
             resourceInputs["currentStateTime"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["executionInfo"] = undefined /*out*/;
             resourceInputs["jobMetadata"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -224,6 +232,12 @@ export interface JobArgs {
      * The environment for the job.
      */
     environment?: pulumi.Input<inputs.dataflow.v1b3.EnvironmentArgs>;
+    /**
+     * Deprecated.
+     *
+     * @deprecated Deprecated.
+     */
+    executionInfo?: pulumi.Input<inputs.dataflow.v1b3.JobExecutionInfoArgs>;
     /**
      * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
      */

@@ -1893,6 +1893,175 @@ func (in *ratePlanConsumptionPricingTypePtr) ToRatePlanConsumptionPricingTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(RatePlanConsumptionPricingTypePtrOutput)
 }
 
+// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+type RatePlanPaymentFundingModel string
+
+const (
+	// Billing account type not specified.
+	RatePlanPaymentFundingModelPaymentFundingModelUnspecified = RatePlanPaymentFundingModel("PAYMENT_FUNDING_MODEL_UNSPECIFIED")
+	// Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
+	RatePlanPaymentFundingModelPrepaid = RatePlanPaymentFundingModel("PREPAID")
+	// Postpaid billing account type. Developer is billed through an invoice after using your API products.
+	RatePlanPaymentFundingModelPostpaid = RatePlanPaymentFundingModel("POSTPAID")
+)
+
+func (RatePlanPaymentFundingModel) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanPaymentFundingModel)(nil)).Elem()
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelOutput() RatePlanPaymentFundingModelOutput {
+	return pulumi.ToOutput(e).(RatePlanPaymentFundingModelOutput)
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RatePlanPaymentFundingModelOutput)
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return e.ToRatePlanPaymentFundingModelPtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return RatePlanPaymentFundingModel(e).ToRatePlanPaymentFundingModelOutputWithContext(ctx).ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx)
+}
+
+func (e RatePlanPaymentFundingModel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RatePlanPaymentFundingModel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RatePlanPaymentFundingModel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanPaymentFundingModel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RatePlanPaymentFundingModelOutput struct{ *pulumi.OutputState }
+
+func (RatePlanPaymentFundingModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanPaymentFundingModel)(nil)).Elem()
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelOutput() RatePlanPaymentFundingModelOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return o.ToRatePlanPaymentFundingModelPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatePlanPaymentFundingModel) *RatePlanPaymentFundingModel {
+		return &v
+	}).(RatePlanPaymentFundingModelPtrOutput)
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanPaymentFundingModel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanPaymentFundingModel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RatePlanPaymentFundingModelPtrOutput struct{ *pulumi.OutputState }
+
+func (RatePlanPaymentFundingModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RatePlanPaymentFundingModel)(nil)).Elem()
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) Elem() RatePlanPaymentFundingModelOutput {
+	return o.ApplyT(func(v *RatePlanPaymentFundingModel) RatePlanPaymentFundingModel {
+		if v != nil {
+			return *v
+		}
+		var ret RatePlanPaymentFundingModel
+		return ret
+	}).(RatePlanPaymentFundingModelOutput)
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RatePlanPaymentFundingModel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RatePlanPaymentFundingModelInput is an input type that accepts RatePlanPaymentFundingModelArgs and RatePlanPaymentFundingModelOutput values.
+// You can construct a concrete instance of `RatePlanPaymentFundingModelInput` via:
+//
+//          RatePlanPaymentFundingModelArgs{...}
+type RatePlanPaymentFundingModelInput interface {
+	pulumi.Input
+
+	ToRatePlanPaymentFundingModelOutput() RatePlanPaymentFundingModelOutput
+	ToRatePlanPaymentFundingModelOutputWithContext(context.Context) RatePlanPaymentFundingModelOutput
+}
+
+var ratePlanPaymentFundingModelPtrType = reflect.TypeOf((**RatePlanPaymentFundingModel)(nil)).Elem()
+
+type RatePlanPaymentFundingModelPtrInput interface {
+	pulumi.Input
+
+	ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput
+	ToRatePlanPaymentFundingModelPtrOutputWithContext(context.Context) RatePlanPaymentFundingModelPtrOutput
+}
+
+type ratePlanPaymentFundingModelPtr string
+
+func RatePlanPaymentFundingModelPtr(v string) RatePlanPaymentFundingModelPtrInput {
+	return (*ratePlanPaymentFundingModelPtr)(&v)
+}
+
+func (*ratePlanPaymentFundingModelPtr) ElementType() reflect.Type {
+	return ratePlanPaymentFundingModelPtrType
+}
+
+func (in *ratePlanPaymentFundingModelPtr) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return pulumi.ToOutput(in).(RatePlanPaymentFundingModelPtrOutput)
+}
+
+func (in *ratePlanPaymentFundingModelPtr) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RatePlanPaymentFundingModelPtrOutput)
+}
+
 // Method used to calculate the revenue that is shared with developers.
 type RatePlanRevenueShareType string
 
@@ -2423,6 +2592,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanBillingPeriodPtrInput)(nil)).Elem(), RatePlanBillingPeriod("BILLING_PERIOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanConsumptionPricingTypeInput)(nil)).Elem(), RatePlanConsumptionPricingType("CONSUMPTION_PRICING_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanConsumptionPricingTypePtrInput)(nil)).Elem(), RatePlanConsumptionPricingType("CONSUMPTION_PRICING_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanPaymentFundingModelInput)(nil)).Elem(), RatePlanPaymentFundingModel("PAYMENT_FUNDING_MODEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanPaymentFundingModelPtrInput)(nil)).Elem(), RatePlanPaymentFundingModel("PAYMENT_FUNDING_MODEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanRevenueShareTypeInput)(nil)).Elem(), RatePlanRevenueShareType("REVENUE_SHARE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanRevenueShareTypePtrInput)(nil)).Elem(), RatePlanRevenueShareType("REVENUE_SHARE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanStateEnumInput)(nil)).Elem(), RatePlanStateEnum("STATE_UNSPECIFIED"))
@@ -2451,6 +2622,8 @@ func init() {
 	pulumi.RegisterOutputType(RatePlanBillingPeriodPtrOutput{})
 	pulumi.RegisterOutputType(RatePlanConsumptionPricingTypeOutput{})
 	pulumi.RegisterOutputType(RatePlanConsumptionPricingTypePtrOutput{})
+	pulumi.RegisterOutputType(RatePlanPaymentFundingModelOutput{})
+	pulumi.RegisterOutputType(RatePlanPaymentFundingModelPtrOutput{})
 	pulumi.RegisterOutputType(RatePlanRevenueShareTypeOutput{})
 	pulumi.RegisterOutputType(RatePlanRevenueShareTypePtrOutput{})
 	pulumi.RegisterOutputType(RatePlanStateEnumOutput{})

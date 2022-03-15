@@ -4526,6 +4526,10 @@ func (o MetricAbsenceResponseOutput) Trigger() TriggerResponseOutput {
 type MetricDescriptorMetadata struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay *string `pulumi:"ingestDelay"`
+	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+	//
+	// Deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.
+	LaunchStage *MetricDescriptorMetadataLaunchStage `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod *string `pulumi:"samplePeriod"`
 }
@@ -4545,6 +4549,10 @@ type MetricDescriptorMetadataInput interface {
 type MetricDescriptorMetadataArgs struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay pulumi.StringPtrInput `pulumi:"ingestDelay"`
+	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+	//
+	// Deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.
+	LaunchStage MetricDescriptorMetadataLaunchStagePtrInput `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod pulumi.StringPtrInput `pulumi:"samplePeriod"`
 }
@@ -4632,6 +4640,13 @@ func (o MetricDescriptorMetadataOutput) IngestDelay() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.IngestDelay }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+//
+// Deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.
+func (o MetricDescriptorMetadataOutput) LaunchStage() MetricDescriptorMetadataLaunchStagePtrOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadata) *MetricDescriptorMetadataLaunchStage { return v.LaunchStage }).(MetricDescriptorMetadataLaunchStagePtrOutput)
+}
+
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadata) *string { return v.SamplePeriod }).(pulumi.StringPtrOutput)
@@ -4671,6 +4686,18 @@ func (o MetricDescriptorMetadataPtrOutput) IngestDelay() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+//
+// Deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.
+func (o MetricDescriptorMetadataPtrOutput) LaunchStage() MetricDescriptorMetadataLaunchStagePtrOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetadata) *MetricDescriptorMetadataLaunchStage {
+		if v == nil {
+			return nil
+		}
+		return v.LaunchStage
+	}).(MetricDescriptorMetadataLaunchStagePtrOutput)
+}
+
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetricDescriptorMetadata) *string {
@@ -4685,6 +4712,10 @@ func (o MetricDescriptorMetadataPtrOutput) SamplePeriod() pulumi.StringPtrOutput
 type MetricDescriptorMetadataResponse struct {
 	// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 	IngestDelay string `pulumi:"ingestDelay"`
+	// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+	//
+	// Deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.
+	LaunchStage string `pulumi:"launchStage"`
 	// The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
 	SamplePeriod string `pulumi:"samplePeriod"`
 }
@@ -4707,6 +4738,13 @@ func (o MetricDescriptorMetadataResponseOutput) ToMetricDescriptorMetadataRespon
 // The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
 func (o MetricDescriptorMetadataResponseOutput) IngestDelay() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.IngestDelay }).(pulumi.StringOutput)
+}
+
+// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+//
+// Deprecated: Deprecated. Must use the MetricDescriptor.launch_stage instead.
+func (o MetricDescriptorMetadataResponseOutput) LaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v MetricDescriptorMetadataResponse) string { return v.LaunchStage }).(pulumi.StringOutput)
 }
 
 // The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.

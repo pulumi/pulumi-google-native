@@ -63,6 +63,12 @@ export interface GetBillingAccountSinkResult {
      */
     readonly name: string;
     /**
+     * Deprecated. This field is unused.
+     *
+     * @deprecated Deprecated. This field is unused.
+     */
+    readonly outputVersionFormat: string;
+    /**
      * The last update timestamp of the sink.This field may not be present for older sinks.
      */
     readonly updateTime: string;

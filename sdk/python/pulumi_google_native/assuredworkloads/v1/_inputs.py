@@ -10,8 +10,47 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:
+    def __init__(__self__, *,
+                 next_rotation_time: pulumi.Input[str],
+                 rotation_period: pulumi.Input[str]):
+        """
+        Settings specific to the Key Management Service.
+        :param pulumi.Input[str] next_rotation_time: Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        :param pulumi.Input[str] rotation_period: Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        """
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> pulumi.Input[str]:
+        """
+        Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @next_rotation_time.setter
+    def next_rotation_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "next_rotation_time", value)
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> pulumi.Input[str]:
+        """
+        Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        """
+        return pulumi.get(self, "rotation_period")
+
+    @rotation_period.setter
+    def rotation_period(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rotation_period", value)
+
 
 @pulumi.input_type
 class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:

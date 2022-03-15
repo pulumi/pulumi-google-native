@@ -64,6 +64,12 @@ export class Workload extends pulumi.CustomResource {
      */
     public /*out*/ readonly kajEnrollmentState!: pulumi.Output<string>;
     /**
+     * Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+     *
+     * @deprecated Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+     */
+    public readonly kmsSettings!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse>;
+    /**
      * Optional. Labels applied to the workload.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -114,6 +120,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["enableSovereignControls"] = args ? args.enableSovereignControls : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
+            resourceInputs["kmsSettings"] = args ? args.kmsSettings : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -132,6 +139,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["enableSovereignControls"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kajEnrollmentState"] = undefined /*out*/;
+            resourceInputs["kmsSettings"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["provisionedResourcesParent"] = undefined /*out*/;
@@ -172,6 +180,12 @@ export interface WorkloadArgs {
      * Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
      */
     externalId?: pulumi.Input<string>;
+    /**
+     * Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+     *
+     * @deprecated Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+     */
+    kmsSettings?: pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs>;
     /**
      * Optional. Labels applied to the workload.
      */

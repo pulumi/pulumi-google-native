@@ -1157,12 +1157,23 @@ class MultiClusterIngressFeatureSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 billing: str,
                  config_membership: str):
         """
         **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+        :param str billing: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
         :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
+        pulumi.set(__self__, "billing", billing)
         pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter
+    def billing(self) -> str:
+        """
+        Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+        """
+        return pulumi.get(self, "billing")
 
     @property
     @pulumi.getter(name="configMembership")

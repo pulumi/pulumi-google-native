@@ -41,6 +41,10 @@ type NodePool struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	//
+	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponseOutput `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -91,7 +95,10 @@ func (NodePoolState) ElementType() reflect.Type {
 type nodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
-	ClusterId   string               `pulumi:"clusterId"`
+	// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+	ClusterId string `pulumi:"clusterId"`
 	// Which conditions caused the current node pool state.
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// The node configuration of the pool.
@@ -110,19 +117,29 @@ type nodePoolArgs struct {
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
 	// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent  *string `pulumi:"parent"`
+	Parent *string `pulumi:"parent"`
+	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
 	Project *string `pulumi:"project"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
 	Version *string `pulumi:"version"`
+	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NodePool resource.
 type NodePoolArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingPtrInput
-	ClusterId   pulumi.StringInput
+	// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+	ClusterId pulumi.StringInput
 	// Which conditions caused the current node pool state.
 	Conditions StatusConditionArrayInput
 	// The node configuration of the pool.
@@ -141,12 +158,19 @@ type NodePoolArgs struct {
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigPtrInput
 	// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
-	Parent  pulumi.StringPtrInput
+	Parent pulumi.StringPtrInput
+	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
 	Project pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput
 	// The version of the Kubernetes of this node.
 	Version pulumi.StringPtrInput
+	// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	//
+	// Deprecated: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+	Zone pulumi.StringPtrInput
 }
 
 func (NodePoolArgs) ElementType() reflect.Type {

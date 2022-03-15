@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<Outputs.DiskEncryptionStatusResponse> DiskEncryptionStatus { get; private set; } = null!;
 
         /// <summary>
+        /// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// The name and status of the failover replica.
         /// </summary>
         [Output("failoverReplica")]
@@ -92,6 +98,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Output("ipAddresses")]
         public Output<ImmutableArray<Outputs.IpMappingResponse>> IpAddresses { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+        /// </summary>
+        [Output("ipv6Address")]
+        public Output<string> Ipv6Address { get; private set; } = null!;
 
         /// <summary>
         /// This is always `sql#instance`.
@@ -313,6 +325,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Input<Inputs.DiskEncryptionStatusArgs>? DiskEncryptionStatus { get; set; }
 
         /// <summary>
+        /// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
         /// The name and status of the failover replica.
         /// </summary>
         [Input("failoverReplica")]
@@ -341,6 +359,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
             get => _ipAddresses ?? (_ipAddresses = new InputList<Inputs.IpMappingArgs>());
             set => _ipAddresses = value;
         }
+
+        /// <summary>
+        /// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
 
         /// <summary>
         /// This is always `sql#instance`.

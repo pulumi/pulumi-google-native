@@ -3086,6 +3086,10 @@ func (o MultiCloudClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpec struct {
+	// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+	//
+	// Deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+	Billing *MultiClusterIngressFeatureSpecBilling `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership *string `pulumi:"configMembership"`
 }
@@ -3103,6 +3107,10 @@ type MultiClusterIngressFeatureSpecInput interface {
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecArgs struct {
+	// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+	//
+	// Deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+	Billing MultiClusterIngressFeatureSpecBillingPtrInput `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
 }
@@ -3185,6 +3193,13 @@ func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPt
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
 }
 
+// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+//
+// Deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+func (o MultiClusterIngressFeatureSpecOutput) Billing() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpecBilling { return v.Billing }).(MultiClusterIngressFeatureSpecBillingPtrOutput)
+}
+
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecOutput) ConfigMembership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *string { return v.ConfigMembership }).(pulumi.StringPtrOutput)
@@ -3214,6 +3229,18 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatu
 	}).(MultiClusterIngressFeatureSpecOutput)
 }
 
+// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+//
+// Deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+func (o MultiClusterIngressFeatureSpecPtrOutput) Billing() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpecBilling {
+		if v == nil {
+			return nil
+		}
+		return v.Billing
+	}).(MultiClusterIngressFeatureSpecBillingPtrOutput)
+}
+
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
@@ -3226,6 +3253,10 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.Strin
 
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecResponse struct {
+	// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+	//
+	// Deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+	Billing string `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership string `pulumi:"configMembership"`
 }
@@ -3243,6 +3274,13 @@ func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatu
 
 func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponseOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponseOutput {
 	return o
+}
+
+// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+//
+// Deprecated: Deprecated: This field will be ignored and should not be set. Customer's billing structure.
+func (o MultiClusterIngressFeatureSpecResponseOutput) Billing() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.Billing }).(pulumi.StringOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`

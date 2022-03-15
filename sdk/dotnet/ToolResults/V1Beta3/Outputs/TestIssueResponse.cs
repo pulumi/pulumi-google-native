@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
         /// </summary>
         public readonly string Severity;
         /// <summary>
+        /// Deprecated in favor of stack trace fields inside specific warnings.
+        /// </summary>
+        public readonly Outputs.StackTraceResponse StackTrace;
+        /// <summary>
         /// Type of issue. Required.
         /// </summary>
         public readonly string Type;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
 
             string severity,
 
+            Outputs.StackTraceResponse stackTrace,
+
             string type,
 
             Outputs.AnyResponse warning)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Outputs
             Category = category;
             ErrorMessage = errorMessage;
             Severity = severity;
+            StackTrace = stackTrace;
             Type = type;
             Warning = warning;
         }

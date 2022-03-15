@@ -184,6 +184,12 @@ export class Version extends pulumi.CustomResource {
      * Enables VPC connectivity for standard apps.
      */
     public readonly vpcAccessConnector!: pulumi.Output<outputs.appengine.v1.VpcAccessConnectorResponse>;
+    /**
+     * The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     *
+     * @deprecated The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     */
+    public readonly zones!: pulumi.Output<string[]>;
 
     /**
      * Create a Version resource with the given unique name, arguments, and options.
@@ -237,6 +243,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["threadsafe"] = args ? args.threadsafe : undefined;
             resourceInputs["vm"] = args ? args.vm : undefined;
             resourceInputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
+            resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["diskUsageBytes"] = undefined /*out*/;
@@ -280,6 +287,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["versionUrl"] = undefined /*out*/;
             resourceInputs["vm"] = undefined /*out*/;
             resourceInputs["vpcAccessConnector"] = undefined /*out*/;
+            resourceInputs["zones"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Version.__pulumiType, name, resourceInputs, opts);
@@ -424,4 +432,10 @@ export interface VersionArgs {
      * Enables VPC connectivity for standard apps.
      */
     vpcAccessConnector?: pulumi.Input<inputs.appengine.v1.VpcAccessConnectorArgs>;
+    /**
+     * The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     *
+     * @deprecated The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
 }

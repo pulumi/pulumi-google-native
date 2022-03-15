@@ -931,6 +931,10 @@ type GcsDestinationConfig struct {
 	FileRotationInterval *string `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb *int `pulumi:"fileRotationMb"`
+	// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+	//
+	// Deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+	GcsFileFormat *GcsDestinationConfigGcsFileFormat `pulumi:"gcsFileFormat"`
 	// JSON file format configuration.
 	JsonFileFormat *JsonFileFormat `pulumi:"jsonFileFormat"`
 	// Path inside the Cloud Storage bucket to write data to.
@@ -956,6 +960,10 @@ type GcsDestinationConfigArgs struct {
 	FileRotationInterval pulumi.StringPtrInput `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb pulumi.IntPtrInput `pulumi:"fileRotationMb"`
+	// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+	//
+	// Deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+	GcsFileFormat GcsDestinationConfigGcsFileFormatPtrInput `pulumi:"gcsFileFormat"`
 	// JSON file format configuration.
 	JsonFileFormat JsonFileFormatPtrInput `pulumi:"jsonFileFormat"`
 	// Path inside the Cloud Storage bucket to write data to.
@@ -1055,6 +1063,13 @@ func (o GcsDestinationConfigOutput) FileRotationMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GcsDestinationConfig) *int { return v.FileRotationMb }).(pulumi.IntPtrOutput)
 }
 
+// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+//
+// Deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+func (o GcsDestinationConfigOutput) GcsFileFormat() GcsDestinationConfigGcsFileFormatPtrOutput {
+	return o.ApplyT(func(v GcsDestinationConfig) *GcsDestinationConfigGcsFileFormat { return v.GcsFileFormat }).(GcsDestinationConfigGcsFileFormatPtrOutput)
+}
+
 // JSON file format configuration.
 func (o GcsDestinationConfigOutput) JsonFileFormat() JsonFileFormatPtrOutput {
 	return o.ApplyT(func(v GcsDestinationConfig) *JsonFileFormat { return v.JsonFileFormat }).(JsonFileFormatPtrOutput)
@@ -1119,6 +1134,18 @@ func (o GcsDestinationConfigPtrOutput) FileRotationMb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+//
+// Deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+func (o GcsDestinationConfigPtrOutput) GcsFileFormat() GcsDestinationConfigGcsFileFormatPtrOutput {
+	return o.ApplyT(func(v *GcsDestinationConfig) *GcsDestinationConfigGcsFileFormat {
+		if v == nil {
+			return nil
+		}
+		return v.GcsFileFormat
+	}).(GcsDestinationConfigGcsFileFormatPtrOutput)
+}
+
 // JSON file format configuration.
 func (o GcsDestinationConfigPtrOutput) JsonFileFormat() JsonFileFormatPtrOutput {
 	return o.ApplyT(func(v *GcsDestinationConfig) *JsonFileFormat {
@@ -1147,6 +1174,10 @@ type GcsDestinationConfigResponse struct {
 	FileRotationInterval string `pulumi:"fileRotationInterval"`
 	// The maximum file size to be saved in the bucket.
 	FileRotationMb int `pulumi:"fileRotationMb"`
+	// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+	//
+	// Deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+	GcsFileFormat string `pulumi:"gcsFileFormat"`
 	// JSON file format configuration.
 	JsonFileFormat JsonFileFormatResponse `pulumi:"jsonFileFormat"`
 	// Path inside the Cloud Storage bucket to write data to.
@@ -1181,6 +1212,13 @@ func (o GcsDestinationConfigResponseOutput) FileRotationInterval() pulumi.String
 // The maximum file size to be saved in the bucket.
 func (o GcsDestinationConfigResponseOutput) FileRotationMb() pulumi.IntOutput {
 	return o.ApplyT(func(v GcsDestinationConfigResponse) int { return v.FileRotationMb }).(pulumi.IntOutput)
+}
+
+// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+//
+// Deprecated: File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+func (o GcsDestinationConfigResponseOutput) GcsFileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsDestinationConfigResponse) string { return v.GcsFileFormat }).(pulumi.StringOutput)
 }
 
 // JSON file format configuration.

@@ -18,6 +18,8 @@ export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): P
         "clusterId": args.clusterId,
         "location": args.location,
         "project": args.project,
+        "projectId": args.projectId,
+        "zone": args.zone,
     }, opts);
 }
 
@@ -25,6 +27,8 @@ export interface GetClusterArgs {
     clusterId: string;
     location: string;
     project?: string;
+    projectId?: string;
+    zone?: string;
 }
 
 export interface GetClusterResult {
@@ -69,6 +73,12 @@ export interface GetClusterResult {
      */
     readonly currentMasterVersion: string;
     /**
+     * [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+     *
+     * @deprecated [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+     */
+    readonly currentNodeCount: number;
+    /**
      * [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
      */
     readonly currentNodeVersion: string;
@@ -108,6 +118,18 @@ export interface GetClusterResult {
      * The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
      */
     readonly initialClusterVersion: string;
+    /**
+     * The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+     *
+     * @deprecated The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+     */
+    readonly initialNodeCount: number;
+    /**
+     * Deprecated. Use node_pools.instance_group_urls.
+     *
+     * @deprecated Deprecated. Use node_pools.instance_group_urls.
+     */
+    readonly instanceGroupUrls: string[];
     /**
      * Configuration for cluster IP allocation.
      */
@@ -177,6 +199,12 @@ export interface GetClusterResult {
      */
     readonly networkPolicy: outputs.container.v1.NetworkPolicyResponse;
     /**
+     * Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+     *
+     * @deprecated Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+     */
+    readonly nodeConfig: outputs.container.v1.NodeConfigResponse;
+    /**
      * [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
      */
     readonly nodeIpv4CidrSize: number;
@@ -229,6 +257,12 @@ export interface GetClusterResult {
      */
     readonly status: string;
     /**
+     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+     *
+     * @deprecated [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+     */
+    readonly statusMessage: string;
+    /**
      * The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
      */
     readonly subnetwork: string;
@@ -244,6 +278,12 @@ export interface GetClusterResult {
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
     readonly workloadIdentityConfig: outputs.container.v1.WorkloadIdentityConfigResponse;
+    /**
+     * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+     *
+     * @deprecated [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+     */
+    readonly zone: string;
 }
 
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
@@ -254,4 +294,6 @@ export interface GetClusterOutputArgs {
     clusterId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

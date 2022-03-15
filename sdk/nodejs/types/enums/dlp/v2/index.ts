@@ -261,6 +261,23 @@ export const GooglePrivacyDlpV2ExpressionsLogicalOperator = {
  */
 export type GooglePrivacyDlpV2ExpressionsLogicalOperator = (typeof GooglePrivacyDlpV2ExpressionsLogicalOperator)[keyof typeof GooglePrivacyDlpV2ExpressionsLogicalOperator];
 
+export const GooglePrivacyDlpV2InspectConfigContentOptionsItem = {
+    /**
+     * Includes entire content of a file or a data stream.
+     */
+    ContentUnspecified: "CONTENT_UNSPECIFIED",
+    /**
+     * Text content within the data, excluding any metadata.
+     */
+    ContentText: "CONTENT_TEXT",
+    /**
+     * Images found in the data.
+     */
+    ContentImage: "CONTENT_IMAGE",
+} as const;
+
+export type GooglePrivacyDlpV2InspectConfigContentOptionsItem = (typeof GooglePrivacyDlpV2InspectConfigContentOptionsItem)[keyof typeof GooglePrivacyDlpV2InspectConfigContentOptionsItem];
+
 export const GooglePrivacyDlpV2InspectConfigMinLikelihood = {
     /**
      * Default value; same as POSSIBLE.

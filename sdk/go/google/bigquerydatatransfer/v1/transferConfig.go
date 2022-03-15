@@ -46,6 +46,10 @@ type TransferConfig struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Data transfer modification time. Ignored by server on input.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewTransferConfig registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +119,10 @@ type transferConfigArgs struct {
 	ScheduleOptions *ScheduleOptions `pulumi:"scheduleOptions"`
 	// Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId *string `pulumi:"userId"`
 	// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
 	VersionInfo *string `pulumi:"versionInfo"`
 }
@@ -149,6 +157,10 @@ type TransferConfigArgs struct {
 	ScheduleOptions ScheduleOptionsPtrInput
 	// Optional service account name. If this field is set, transfer config will be created with this service account credential. It requires that requesting user calling this API has permissions to act as this service account. Note that not all data sources support service account credentials when creating transfer config. Please refer to this public guide for the latest list of data sources with service account support: https://cloud.google.com/bigquery-transfer/docs/use-service-accounts
 	ServiceAccountName pulumi.StringPtrInput
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId pulumi.StringPtrInput
 	// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&scope=&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
 	VersionInfo pulumi.StringPtrInput
 }

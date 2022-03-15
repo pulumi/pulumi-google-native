@@ -81,6 +81,12 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly mlDisabled!: pulumi.Output<boolean>;
     /**
+     * Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+     *
+     * @deprecated Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+     */
+    public readonly mlEnabled!: pulumi.Output<boolean>;
+    /**
      * Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
      */
     public readonly name!: pulumi.Output<string>;
@@ -144,6 +150,7 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["messages"] = args ? args.messages : undefined;
             resourceInputs["mlDisabled"] = args ? args.mlDisabled : undefined;
+            resourceInputs["mlEnabled"] = args ? args.mlEnabled : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["outputContexts"] = args ? args.outputContexts : undefined;
             resourceInputs["parameters"] = args ? args.parameters : undefined;
@@ -167,6 +174,7 @@ export class Intent extends pulumi.CustomResource {
             resourceInputs["liveAgentHandoff"] = undefined /*out*/;
             resourceInputs["messages"] = undefined /*out*/;
             resourceInputs["mlDisabled"] = undefined /*out*/;
+            resourceInputs["mlEnabled"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["outputContexts"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
@@ -235,6 +243,12 @@ export interface IntentArgs {
      * Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
      */
     mlDisabled?: pulumi.Input<boolean>;
+    /**
+     * Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+     *
+     * @deprecated Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+     */
+    mlEnabled?: pulumi.Input<boolean>;
     /**
      * Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
      */

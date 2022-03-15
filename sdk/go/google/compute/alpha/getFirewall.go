@@ -40,6 +40,10 @@ type LookupFirewallResult struct {
 	Direction string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled bool `pulumi:"disabled"`
+	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	//
+	// Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	EnableLogging bool `pulumi:"enableLogging"`
 	// Type of the resource. Always compute#firewall for firewall rules.
 	Kind string `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -131,6 +135,13 @@ func (o LookupFirewallResultOutput) Direction() pulumi.StringOutput {
 // Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 func (o LookupFirewallResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFirewallResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+//
+// Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+func (o LookupFirewallResultOutput) EnableLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFirewallResult) bool { return v.EnableLogging }).(pulumi.BoolOutput)
 }
 
 // Type of the resource. Always compute#firewall for firewall rules.

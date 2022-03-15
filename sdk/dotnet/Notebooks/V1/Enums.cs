@@ -126,6 +126,63 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
     /// <summary>
+    /// Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+    /// </summary>
+    [EnumType]
+    public readonly struct ExecutionTemplateScaleTier : IEquatable<ExecutionTemplateScaleTier>
+    {
+        private readonly string _value;
+
+        private ExecutionTemplateScaleTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified Scale Tier.
+        /// </summary>
+        public static ExecutionTemplateScaleTier ScaleTierUnspecified { get; } = new ExecutionTemplateScaleTier("SCALE_TIER_UNSPECIFIED");
+        /// <summary>
+        /// A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
+        /// </summary>
+        public static ExecutionTemplateScaleTier Basic { get; } = new ExecutionTemplateScaleTier("BASIC");
+        /// <summary>
+        /// Many workers and a few parameter servers.
+        /// </summary>
+        public static ExecutionTemplateScaleTier Standard1 { get; } = new ExecutionTemplateScaleTier("STANDARD_1");
+        /// <summary>
+        /// A large number of workers with many parameter servers.
+        /// </summary>
+        public static ExecutionTemplateScaleTier Premium1 { get; } = new ExecutionTemplateScaleTier("PREMIUM_1");
+        /// <summary>
+        /// A single worker instance with a K80 GPU.
+        /// </summary>
+        public static ExecutionTemplateScaleTier BasicGpu { get; } = new ExecutionTemplateScaleTier("BASIC_GPU");
+        /// <summary>
+        /// A single worker instance with a Cloud TPU.
+        /// </summary>
+        public static ExecutionTemplateScaleTier BasicTpu { get; } = new ExecutionTemplateScaleTier("BASIC_TPU");
+        /// <summary>
+        /// The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `ExecutionTemplate.masterType` to specify the type of machine to use for your master node. This is the only required setting.
+        /// </summary>
+        public static ExecutionTemplateScaleTier Custom { get; } = new ExecutionTemplateScaleTier("CUSTOM");
+
+        public static bool operator ==(ExecutionTemplateScaleTier left, ExecutionTemplateScaleTier right) => left.Equals(right);
+        public static bool operator !=(ExecutionTemplateScaleTier left, ExecutionTemplateScaleTier right) => !left.Equals(right);
+
+        public static explicit operator string(ExecutionTemplateScaleTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ExecutionTemplateScaleTier other && Equals(other);
+        public bool Equals(ExecutionTemplateScaleTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
     /// </summary>
     [EnumType]

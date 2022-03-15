@@ -110,6 +110,11 @@ export interface DeidentifyTemplateArgs {
      * Display name (max 256 chars).
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Deprecated. This field has no effect.
+     *
+     * @deprecated Deprecated. This field has no effect.
+     */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

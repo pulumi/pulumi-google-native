@@ -144,6 +144,12 @@ export interface GetJobResult {
      * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
     readonly title: string;
+    /**
+     * Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+     *
+     * @deprecated Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+     */
+    readonly visibility: string;
 }
 
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {

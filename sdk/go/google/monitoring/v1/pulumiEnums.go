@@ -1597,6 +1597,173 @@ func (in *sparkChartViewSparkChartTypePtr) ToSparkChartViewSparkChartTypePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(SparkChartViewSparkChartTypePtrOutput)
 }
 
+// rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+type StatisticalTimeSeriesFilterRankingMethod string
+
+const (
+	// Not allowed in well-formed requests.
+	StatisticalTimeSeriesFilterRankingMethodMethodUnspecified = StatisticalTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED")
+	// Compute the outlier score of each stream.
+	StatisticalTimeSeriesFilterRankingMethodMethodClusterOutlier = StatisticalTimeSeriesFilterRankingMethod("METHOD_CLUSTER_OUTLIER")
+)
+
+func (StatisticalTimeSeriesFilterRankingMethod) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatisticalTimeSeriesFilterRankingMethod)(nil)).Elem()
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStatisticalTimeSeriesFilterRankingMethodOutput() StatisticalTimeSeriesFilterRankingMethodOutput {
+	return pulumi.ToOutput(e).(StatisticalTimeSeriesFilterRankingMethodOutput)
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStatisticalTimeSeriesFilterRankingMethodOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StatisticalTimeSeriesFilterRankingMethodOutput)
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStatisticalTimeSeriesFilterRankingMethodPtrOutput() StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return e.ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(context.Background())
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return StatisticalTimeSeriesFilterRankingMethod(e).ToStatisticalTimeSeriesFilterRankingMethodOutputWithContext(ctx).ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx)
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StatisticalTimeSeriesFilterRankingMethod) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StatisticalTimeSeriesFilterRankingMethodOutput struct{ *pulumi.OutputState }
+
+func (StatisticalTimeSeriesFilterRankingMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatisticalTimeSeriesFilterRankingMethod)(nil)).Elem()
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStatisticalTimeSeriesFilterRankingMethodOutput() StatisticalTimeSeriesFilterRankingMethodOutput {
+	return o
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStatisticalTimeSeriesFilterRankingMethodOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodOutput {
+	return o
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStatisticalTimeSeriesFilterRankingMethodPtrOutput() StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return o.ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(context.Background())
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatisticalTimeSeriesFilterRankingMethod) *StatisticalTimeSeriesFilterRankingMethod {
+		return &v
+	}).(StatisticalTimeSeriesFilterRankingMethodPtrOutput)
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatisticalTimeSeriesFilterRankingMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatisticalTimeSeriesFilterRankingMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatisticalTimeSeriesFilterRankingMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (StatisticalTimeSeriesFilterRankingMethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatisticalTimeSeriesFilterRankingMethod)(nil)).Elem()
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStatisticalTimeSeriesFilterRankingMethodPtrOutput() StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return o
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return o
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) Elem() StatisticalTimeSeriesFilterRankingMethodOutput {
+	return o.ApplyT(func(v *StatisticalTimeSeriesFilterRankingMethod) StatisticalTimeSeriesFilterRankingMethod {
+		if v != nil {
+			return *v
+		}
+		var ret StatisticalTimeSeriesFilterRankingMethod
+		return ret
+	}).(StatisticalTimeSeriesFilterRankingMethodOutput)
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StatisticalTimeSeriesFilterRankingMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StatisticalTimeSeriesFilterRankingMethodInput is an input type that accepts StatisticalTimeSeriesFilterRankingMethodArgs and StatisticalTimeSeriesFilterRankingMethodOutput values.
+// You can construct a concrete instance of `StatisticalTimeSeriesFilterRankingMethodInput` via:
+//
+//          StatisticalTimeSeriesFilterRankingMethodArgs{...}
+type StatisticalTimeSeriesFilterRankingMethodInput interface {
+	pulumi.Input
+
+	ToStatisticalTimeSeriesFilterRankingMethodOutput() StatisticalTimeSeriesFilterRankingMethodOutput
+	ToStatisticalTimeSeriesFilterRankingMethodOutputWithContext(context.Context) StatisticalTimeSeriesFilterRankingMethodOutput
+}
+
+var statisticalTimeSeriesFilterRankingMethodPtrType = reflect.TypeOf((**StatisticalTimeSeriesFilterRankingMethod)(nil)).Elem()
+
+type StatisticalTimeSeriesFilterRankingMethodPtrInput interface {
+	pulumi.Input
+
+	ToStatisticalTimeSeriesFilterRankingMethodPtrOutput() StatisticalTimeSeriesFilterRankingMethodPtrOutput
+	ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput
+}
+
+type statisticalTimeSeriesFilterRankingMethodPtr string
+
+func StatisticalTimeSeriesFilterRankingMethodPtr(v string) StatisticalTimeSeriesFilterRankingMethodPtrInput {
+	return (*statisticalTimeSeriesFilterRankingMethodPtr)(&v)
+}
+
+func (*statisticalTimeSeriesFilterRankingMethodPtr) ElementType() reflect.Type {
+	return statisticalTimeSeriesFilterRankingMethodPtrType
+}
+
+func (in *statisticalTimeSeriesFilterRankingMethodPtr) ToStatisticalTimeSeriesFilterRankingMethodPtrOutput() StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return pulumi.ToOutput(in).(StatisticalTimeSeriesFilterRankingMethodPtrOutput)
+}
+
+func (in *statisticalTimeSeriesFilterRankingMethodPtr) ToStatisticalTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) StatisticalTimeSeriesFilterRankingMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StatisticalTimeSeriesFilterRankingMethodPtrOutput)
+}
+
 // How the text content is formatted.
 type TextFormat string
 
@@ -2292,6 +2459,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PickTimeSeriesFilterRankingMethodPtrInput)(nil)).Elem(), PickTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewSparkChartTypeInput)(nil)).Elem(), SparkChartViewSparkChartType("SPARK_CHART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkChartViewSparkChartTypePtrInput)(nil)).Elem(), SparkChartViewSparkChartType("SPARK_CHART_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatisticalTimeSeriesFilterRankingMethodInput)(nil)).Elem(), StatisticalTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatisticalTimeSeriesFilterRankingMethodPtrInput)(nil)).Elem(), StatisticalTimeSeriesFilterRankingMethod("METHOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TextFormatInput)(nil)).Elem(), TextFormat("FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TextFormatPtrInput)(nil)).Elem(), TextFormat("FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdColorInput)(nil)).Elem(), ThresholdColor("COLOR_UNSPECIFIED"))
@@ -2318,6 +2487,8 @@ func init() {
 	pulumi.RegisterOutputType(PickTimeSeriesFilterRankingMethodPtrOutput{})
 	pulumi.RegisterOutputType(SparkChartViewSparkChartTypeOutput{})
 	pulumi.RegisterOutputType(SparkChartViewSparkChartTypePtrOutput{})
+	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterRankingMethodOutput{})
+	pulumi.RegisterOutputType(StatisticalTimeSeriesFilterRankingMethodPtrOutput{})
 	pulumi.RegisterOutputType(TextFormatOutput{})
 	pulumi.RegisterOutputType(TextFormatPtrOutput{})
 	pulumi.RegisterOutputType(ThresholdColorOutput{})

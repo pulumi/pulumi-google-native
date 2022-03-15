@@ -37,6 +37,12 @@ export interface GetDatabaseResult {
      */
     readonly collation: string;
     /**
+     * This field is deprecated and will be removed from a future version of the API.
+     *
+     * @deprecated This field is deprecated and will be removed from a future version of the API.
+     */
+    readonly etag: string;
+    /**
      * The name of the Cloud SQL instance. This does not include the project ID.
      */
     readonly instance: string;

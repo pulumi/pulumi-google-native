@@ -191,6 +191,17 @@ export const AttachedDiskInitializeParamsArchitecture = {
  */
 export type AttachedDiskInitializeParamsArchitecture = (typeof AttachedDiskInitializeParamsArchitecture)[keyof typeof AttachedDiskInitializeParamsArchitecture];
 
+export const AttachedDiskInitializeParamsInterface = {
+    Nvme: "NVME",
+    Scsi: "SCSI",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+ */
+export type AttachedDiskInitializeParamsInterface = (typeof AttachedDiskInitializeParamsInterface)[keyof typeof AttachedDiskInitializeParamsInterface];
+
 export const AttachedDiskInitializeParamsOnUpdateAction = {
     /**
      * Always recreate the disk.
@@ -287,6 +298,23 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const AuthenticationPolicyPrincipalBinding = {
+    Invalid: "INVALID",
+    /**
+     * Principal will be set to the identity from origin authentication.
+     */
+    UseOrigin: "USE_ORIGIN",
+    /**
+     * Principal will be set to the identity from peer authentication.
+     */
+    UsePeer: "USE_PEER",
+} as const;
+
+/**
+ * Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+ */
+export type AuthenticationPolicyPrincipalBinding = (typeof AuthenticationPolicyPrincipalBinding)[keyof typeof AuthenticationPolicyPrincipalBinding];
 
 export const AuthorizationLoggingOptionsPermissionType = {
     /**
@@ -675,6 +703,27 @@ export const ChannelCredentialsChannelCredentialType = {
  */
 export type ChannelCredentialsChannelCredentialType = (typeof ChannelCredentialsChannelCredentialType)[keyof typeof ChannelCredentialsChannelCredentialType];
 
+export const ClientTlsSettingsMode = {
+    /**
+     * Do not setup a TLS connection to the backends.
+     */
+    Disable: "DISABLE",
+    Invalid: "INVALID",
+    /**
+     * Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+     */
+    Mutual: "MUTUAL",
+    /**
+     * Originate a TLS connection to the backends.
+     */
+    Simple: "SIMPLE",
+} as const;
+
+/**
+ * Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+ */
+export type ClientTlsSettingsMode = (typeof ClientTlsSettingsMode)[keyof typeof ClientTlsSettingsMode];
+
 export const ConditionIam = {
     /**
      * This is deprecated and has no effect. Do not use.
@@ -842,6 +891,27 @@ export const DiskInstantiationConfigInstantiateFrom = {
  * Specifies whether to include the disk and what image to use. Possible values are: - source-image: to use the same image that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - source-image-family: to use the same image family that was used to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks. - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local SSDs, and read-only disks. 
  */
 export type DiskInstantiationConfigInstantiateFrom = (typeof DiskInstantiationConfigInstantiateFrom)[keyof typeof DiskInstantiationConfigInstantiateFrom];
+
+export const DiskInterface = {
+    Nvme: "NVME",
+    Scsi: "SCSI",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+ */
+export type DiskInterface = (typeof DiskInterface)[keyof typeof DiskInterface];
+
+export const DiskStorageType = {
+    Hdd: "HDD",
+    Ssd: "SSD",
+} as const;
+
+/**
+ * [Deprecated] Storage type of the persistent disk.
+ */
+export type DiskStorageType = (typeof DiskStorageType)[keyof typeof DiskStorageType];
 
 export const DistributionPolicyTargetShape = {
     /**
@@ -2039,6 +2109,23 @@ export const MetadataFilterFilterMatchCriteria = {
  */
 export type MetadataFilterFilterMatchCriteria = (typeof MetadataFilterFilterMatchCriteria)[keyof typeof MetadataFilterFilterMatchCriteria];
 
+export const MutualTlsMode = {
+    Invalid: "INVALID",
+    /**
+     * Client certificate can be omitted, connection can be either plaintext or TLS.
+     */
+    Permissive: "PERMISSIVE",
+    /**
+     * Client certificate must be presented, connection is in TLS.
+     */
+    Strict: "STRICT",
+} as const;
+
+/**
+ * Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+ */
+export type MutualTlsMode = (typeof MutualTlsMode)[keyof typeof MutualTlsMode];
+
 export const NetworkEndpointGroupNetworkEndpointType = {
     /**
      * The network endpoint is represented by an IP address.
@@ -2579,6 +2666,27 @@ export const RegionDiskArchitecture = {
  */
 export type RegionDiskArchitecture = (typeof RegionDiskArchitecture)[keyof typeof RegionDiskArchitecture];
 
+export const RegionDiskInterface = {
+    Nvme: "NVME",
+    Scsi: "SCSI",
+    Unspecified: "UNSPECIFIED",
+} as const;
+
+/**
+ * [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+ */
+export type RegionDiskInterface = (typeof RegionDiskInterface)[keyof typeof RegionDiskInterface];
+
+export const RegionDiskStorageType = {
+    Hdd: "HDD",
+    Ssd: "SSD",
+} as const;
+
+/**
+ * [Deprecated] Storage type of the persistent disk.
+ */
+export type RegionDiskStorageType = (typeof RegionDiskStorageType)[keyof typeof RegionDiskStorageType];
+
 export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
     /**
      * If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
@@ -2594,6 +2702,22 @@ export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
  * Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
  */
 export type RegionHealthCheckServiceHealthStatusAggregationPolicy = (typeof RegionHealthCheckServiceHealthStatusAggregationPolicy)[keyof typeof RegionHealthCheckServiceHealthStatusAggregationPolicy];
+
+export const RegionHealthCheckServiceHealthStatusAggregationStrategy = {
+    /**
+     * This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+     */
+    And: "AND",
+    /**
+     * This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
+     */
+    NoAggregation: "NO_AGGREGATION",
+} as const;
+
+/**
+ * This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+ */
+export type RegionHealthCheckServiceHealthStatusAggregationStrategy = (typeof RegionHealthCheckServiceHealthStatusAggregationStrategy)[keyof typeof RegionHealthCheckServiceHealthStatusAggregationStrategy];
 
 export const RegionHealthCheckType = {
     Grpc: "GRPC",

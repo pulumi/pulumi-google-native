@@ -37,6 +37,12 @@ export interface GetMigratingVmResult {
      */
     readonly computeEngineTargetDefaults: outputs.vmmigration.v1alpha1.ComputeEngineTargetDefaultsResponse;
     /**
+     * Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+     *
+     * @deprecated Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+     */
+    readonly computeEngineVmDefaults: outputs.vmmigration.v1alpha1.TargetVMDetailsResponse;
+    /**
      * The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
      */
     readonly createTime: string;
@@ -96,6 +102,12 @@ export interface GetMigratingVmResult {
      * The last time the migrating VM state was updated.
      */
     readonly stateTime: string;
+    /**
+     * The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     *
+     * @deprecated The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     */
+    readonly targetDefaults: outputs.vmmigration.v1alpha1.TargetVMDetailsResponse;
     /**
      * The last time the migrating VM resource was updated.
      */

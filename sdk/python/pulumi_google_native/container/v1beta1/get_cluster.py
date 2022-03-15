@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None):
+    def __init__(__self__, addons_config=None, authenticator_groups_config=None, autopilot=None, autoscaling=None, binary_authorization=None, cluster_ipv4_cidr=None, cluster_telemetry=None, conditions=None, confidential_nodes=None, create_time=None, current_master_version=None, current_node_count=None, current_node_version=None, database_encryption=None, default_max_pods_constraint=None, description=None, enable_kubernetes_alpha=None, enable_tpu=None, endpoint=None, expire_time=None, identity_service_config=None, initial_cluster_version=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policy=None, label_fingerprint=None, legacy_abac=None, location=None, locations=None, logging_config=None, logging_service=None, maintenance_policy=None, master=None, master_auth=None, master_authorized_networks_config=None, master_ipv4_cidr_block=None, mesh_certificates=None, monitoring_config=None, monitoring_service=None, name=None, network=None, network_config=None, network_policy=None, node_config=None, node_ipv4_cidr_size=None, node_pool_auto_config=None, node_pool_defaults=None, node_pools=None, notification_config=None, pod_security_policy_config=None, private_cluster=None, private_cluster_config=None, release_channel=None, resource_labels=None, resource_usage_export_config=None, self_link=None, services_ipv4_cidr=None, shielded_nodes=None, status=None, status_message=None, subnetwork=None, tpu_config=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscaling=None, workload_alts_config=None, workload_certificates=None, workload_identity_config=None, zone=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -52,6 +52,13 @@ class GetClusterResult:
         if current_master_version and not isinstance(current_master_version, str):
             raise TypeError("Expected argument 'current_master_version' to be a str")
         pulumi.set(__self__, "current_master_version", current_master_version)
+        if current_node_count and not isinstance(current_node_count, int):
+            raise TypeError("Expected argument 'current_node_count' to be a int")
+        if current_node_count is not None:
+            warnings.warn("""[Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""", DeprecationWarning)
+            pulumi.log.warn("""current_node_count is deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.""")
+
+        pulumi.set(__self__, "current_node_count", current_node_count)
         if current_node_version and not isinstance(current_node_version, str):
             raise TypeError("Expected argument 'current_node_version' to be a str")
         pulumi.set(__self__, "current_node_version", current_node_version)
@@ -67,6 +74,13 @@ class GetClusterResult:
         if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError("Expected argument 'enable_kubernetes_alpha' to be a bool")
         pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+        if enable_tpu and not isinstance(enable_tpu, bool):
+            raise TypeError("Expected argument 'enable_tpu' to be a bool")
+        if enable_tpu is not None:
+            warnings.warn("""Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""", DeprecationWarning)
+            pulumi.log.warn("""enable_tpu is deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
+
+        pulumi.set(__self__, "enable_tpu", enable_tpu)
         if endpoint and not isinstance(endpoint, str):
             raise TypeError("Expected argument 'endpoint' to be a str")
         pulumi.set(__self__, "endpoint", endpoint)
@@ -79,6 +93,20 @@ class GetClusterResult:
         if initial_cluster_version and not isinstance(initial_cluster_version, str):
             raise TypeError("Expected argument 'initial_cluster_version' to be a str")
         pulumi.set(__self__, "initial_cluster_version", initial_cluster_version)
+        if initial_node_count and not isinstance(initial_node_count, int):
+            raise TypeError("Expected argument 'initial_node_count' to be a int")
+        if initial_node_count is not None:
+            warnings.warn("""The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""", DeprecationWarning)
+            pulumi.log.warn("""initial_node_count is deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"node_config\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.""")
+
+        pulumi.set(__self__, "initial_node_count", initial_node_count)
+        if instance_group_urls and not isinstance(instance_group_urls, list):
+            raise TypeError("Expected argument 'instance_group_urls' to be a list")
+        if instance_group_urls is not None:
+            warnings.warn("""Deprecated. Use node_pools.instance_group_urls.""", DeprecationWarning)
+            pulumi.log.warn("""instance_group_urls is deprecated: Deprecated. Use node_pools.instance_group_urls.""")
+
+        pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         if ip_allocation_policy and not isinstance(ip_allocation_policy, dict):
             raise TypeError("Expected argument 'ip_allocation_policy' to be a dict")
         pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
@@ -112,6 +140,13 @@ class GetClusterResult:
         if master_authorized_networks_config and not isinstance(master_authorized_networks_config, dict):
             raise TypeError("Expected argument 'master_authorized_networks_config' to be a dict")
         pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
+        if master_ipv4_cidr_block and not isinstance(master_ipv4_cidr_block, str):
+            raise TypeError("Expected argument 'master_ipv4_cidr_block' to be a str")
+        if master_ipv4_cidr_block is not None:
+            warnings.warn("""The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""", DeprecationWarning)
+            pulumi.log.warn("""master_ipv4_cidr_block is deprecated: The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.""")
+
+        pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
         if mesh_certificates and not isinstance(mesh_certificates, dict):
             raise TypeError("Expected argument 'mesh_certificates' to be a dict")
         pulumi.set(__self__, "mesh_certificates", mesh_certificates)
@@ -133,6 +168,13 @@ class GetClusterResult:
         if network_policy and not isinstance(network_policy, dict):
             raise TypeError("Expected argument 'network_policy' to be a dict")
         pulumi.set(__self__, "network_policy", network_policy)
+        if node_config and not isinstance(node_config, dict):
+            raise TypeError("Expected argument 'node_config' to be a dict")
+        if node_config is not None:
+            warnings.warn("""Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""", DeprecationWarning)
+            pulumi.log.warn("""node_config is deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a \"node_pool\" object, since this configuration (along with the \"initial_node_count\") will be used to create a \"NodePool\" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.""")
+
+        pulumi.set(__self__, "node_config", node_config)
         if node_ipv4_cidr_size and not isinstance(node_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'node_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "node_ipv4_cidr_size", node_ipv4_cidr_size)
@@ -151,6 +193,13 @@ class GetClusterResult:
         if pod_security_policy_config and not isinstance(pod_security_policy_config, dict):
             raise TypeError("Expected argument 'pod_security_policy_config' to be a dict")
         pulumi.set(__self__, "pod_security_policy_config", pod_security_policy_config)
+        if private_cluster and not isinstance(private_cluster, bool):
+            raise TypeError("Expected argument 'private_cluster' to be a bool")
+        if private_cluster is not None:
+            warnings.warn("""If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""", DeprecationWarning)
+            pulumi.log.warn("""private_cluster is deprecated: If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.""")
+
+        pulumi.set(__self__, "private_cluster", private_cluster)
         if private_cluster_config and not isinstance(private_cluster_config, dict):
             raise TypeError("Expected argument 'private_cluster_config' to be a dict")
         pulumi.set(__self__, "private_cluster_config", private_cluster_config)
@@ -175,6 +224,13 @@ class GetClusterResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if status_message and not isinstance(status_message, str):
+            raise TypeError("Expected argument 'status_message' to be a str")
+        if status_message is not None:
+            warnings.warn("""[Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""", DeprecationWarning)
+            pulumi.log.warn("""status_message is deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.""")
+
+        pulumi.set(__self__, "status_message", status_message)
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError("Expected argument 'subnetwork' to be a str")
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -196,6 +252,13 @@ class GetClusterResult:
         if workload_identity_config and not isinstance(workload_identity_config, dict):
             raise TypeError("Expected argument 'workload_identity_config' to be a dict")
         pulumi.set(__self__, "workload_identity_config", workload_identity_config)
+        if zone and not isinstance(zone, str):
+            raise TypeError("Expected argument 'zone' to be a str")
+        if zone is not None:
+            warnings.warn("""[Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.""")
+
+        pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -286,6 +349,14 @@ class GetClusterResult:
         return pulumi.get(self, "current_master_version")
 
     @property
+    @pulumi.getter(name="currentNodeCount")
+    def current_node_count(self) -> int:
+        """
+        [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+        """
+        return pulumi.get(self, "current_node_count")
+
+    @property
     @pulumi.getter(name="currentNodeVersion")
     def current_node_version(self) -> str:
         """
@@ -326,6 +397,14 @@ class GetClusterResult:
         return pulumi.get(self, "enable_kubernetes_alpha")
 
     @property
+    @pulumi.getter(name="enableTpu")
+    def enable_tpu(self) -> bool:
+        """
+        Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
+        """
+        return pulumi.get(self, "enable_tpu")
+
+    @property
     @pulumi.getter
     def endpoint(self) -> str:
         """
@@ -356,6 +435,22 @@ class GetClusterResult:
         The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         """
         return pulumi.get(self, "initial_cluster_version")
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> int:
+        """
+        The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+        """
+        return pulumi.get(self, "initial_node_count")
+
+    @property
+    @pulumi.getter(name="instanceGroupUrls")
+    def instance_group_urls(self) -> Sequence[str]:
+        """
+        Deprecated. Use node_pools.instance_group_urls.
+        """
+        return pulumi.get(self, "instance_group_urls")
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
@@ -446,6 +541,14 @@ class GetClusterResult:
         return pulumi.get(self, "master_authorized_networks_config")
 
     @property
+    @pulumi.getter(name="masterIpv4CidrBlock")
+    def master_ipv4_cidr_block(self) -> str:
+        """
+        The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
+        """
+        return pulumi.get(self, "master_ipv4_cidr_block")
+
+    @property
     @pulumi.getter(name="meshCertificates")
     def mesh_certificates(self) -> 'outputs.MeshCertificatesResponse':
         """
@@ -502,6 +605,14 @@ class GetClusterResult:
         return pulumi.get(self, "network_policy")
 
     @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> 'outputs.NodeConfigResponse':
+        """
+        Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+        """
+        return pulumi.get(self, "node_config")
+
+    @property
     @pulumi.getter(name="nodeIpv4CidrSize")
     def node_ipv4_cidr_size(self) -> int:
         """
@@ -548,6 +659,14 @@ class GetClusterResult:
         Configuration for the PodSecurityPolicy feature.
         """
         return pulumi.get(self, "pod_security_policy_config")
+
+    @property
+    @pulumi.getter(name="privateCluster")
+    def private_cluster(self) -> bool:
+        """
+        If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
+        """
+        return pulumi.get(self, "private_cluster")
 
     @property
     @pulumi.getter(name="privateClusterConfig")
@@ -614,6 +733,14 @@ class GetClusterResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="statusMessage")
+    def status_message(self) -> str:
+        """
+        [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+        """
+        return pulumi.get(self, "status_message")
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> str:
         """
@@ -669,6 +796,14 @@ class GetClusterResult:
         """
         return pulumi.get(self, "workload_identity_config")
 
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+        """
+        return pulumi.get(self, "zone")
+
 
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
@@ -687,15 +822,19 @@ class AwaitableGetClusterResult(GetClusterResult):
             confidential_nodes=self.confidential_nodes,
             create_time=self.create_time,
             current_master_version=self.current_master_version,
+            current_node_count=self.current_node_count,
             current_node_version=self.current_node_version,
             database_encryption=self.database_encryption,
             default_max_pods_constraint=self.default_max_pods_constraint,
             description=self.description,
             enable_kubernetes_alpha=self.enable_kubernetes_alpha,
+            enable_tpu=self.enable_tpu,
             endpoint=self.endpoint,
             expire_time=self.expire_time,
             identity_service_config=self.identity_service_config,
             initial_cluster_version=self.initial_cluster_version,
+            initial_node_count=self.initial_node_count,
+            instance_group_urls=self.instance_group_urls,
             ip_allocation_policy=self.ip_allocation_policy,
             label_fingerprint=self.label_fingerprint,
             legacy_abac=self.legacy_abac,
@@ -707,6 +846,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             master=self.master,
             master_auth=self.master_auth,
             master_authorized_networks_config=self.master_authorized_networks_config,
+            master_ipv4_cidr_block=self.master_ipv4_cidr_block,
             mesh_certificates=self.mesh_certificates,
             monitoring_config=self.monitoring_config,
             monitoring_service=self.monitoring_service,
@@ -714,12 +854,14 @@ class AwaitableGetClusterResult(GetClusterResult):
             network=self.network,
             network_config=self.network_config,
             network_policy=self.network_policy,
+            node_config=self.node_config,
             node_ipv4_cidr_size=self.node_ipv4_cidr_size,
             node_pool_auto_config=self.node_pool_auto_config,
             node_pool_defaults=self.node_pool_defaults,
             node_pools=self.node_pools,
             notification_config=self.notification_config,
             pod_security_policy_config=self.pod_security_policy_config,
+            private_cluster=self.private_cluster,
             private_cluster_config=self.private_cluster_config,
             release_channel=self.release_channel,
             resource_labels=self.resource_labels,
@@ -728,18 +870,22 @@ class AwaitableGetClusterResult(GetClusterResult):
             services_ipv4_cidr=self.services_ipv4_cidr,
             shielded_nodes=self.shielded_nodes,
             status=self.status,
+            status_message=self.status_message,
             subnetwork=self.subnetwork,
             tpu_config=self.tpu_config,
             tpu_ipv4_cidr_block=self.tpu_ipv4_cidr_block,
             vertical_pod_autoscaling=self.vertical_pod_autoscaling,
             workload_alts_config=self.workload_alts_config,
             workload_certificates=self.workload_certificates,
-            workload_identity_config=self.workload_identity_config)
+            workload_identity_config=self.workload_identity_config,
+            zone=self.zone)
 
 
 def get_cluster(cluster_id: Optional[str] = None,
                 location: Optional[str] = None,
                 project: Optional[str] = None,
+                project_id: Optional[str] = None,
+                zone: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
     Gets the details for a specific cluster.
@@ -748,6 +894,8 @@ def get_cluster(cluster_id: Optional[str] = None,
     __args__['clusterId'] = cluster_id
     __args__['location'] = location
     __args__['project'] = project
+    __args__['projectId'] = project_id
+    __args__['zone'] = zone
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -766,15 +914,19 @@ def get_cluster(cluster_id: Optional[str] = None,
         confidential_nodes=__ret__.confidential_nodes,
         create_time=__ret__.create_time,
         current_master_version=__ret__.current_master_version,
+        current_node_count=__ret__.current_node_count,
         current_node_version=__ret__.current_node_version,
         database_encryption=__ret__.database_encryption,
         default_max_pods_constraint=__ret__.default_max_pods_constraint,
         description=__ret__.description,
         enable_kubernetes_alpha=__ret__.enable_kubernetes_alpha,
+        enable_tpu=__ret__.enable_tpu,
         endpoint=__ret__.endpoint,
         expire_time=__ret__.expire_time,
         identity_service_config=__ret__.identity_service_config,
         initial_cluster_version=__ret__.initial_cluster_version,
+        initial_node_count=__ret__.initial_node_count,
+        instance_group_urls=__ret__.instance_group_urls,
         ip_allocation_policy=__ret__.ip_allocation_policy,
         label_fingerprint=__ret__.label_fingerprint,
         legacy_abac=__ret__.legacy_abac,
@@ -786,6 +938,7 @@ def get_cluster(cluster_id: Optional[str] = None,
         master=__ret__.master,
         master_auth=__ret__.master_auth,
         master_authorized_networks_config=__ret__.master_authorized_networks_config,
+        master_ipv4_cidr_block=__ret__.master_ipv4_cidr_block,
         mesh_certificates=__ret__.mesh_certificates,
         monitoring_config=__ret__.monitoring_config,
         monitoring_service=__ret__.monitoring_service,
@@ -793,12 +946,14 @@ def get_cluster(cluster_id: Optional[str] = None,
         network=__ret__.network,
         network_config=__ret__.network_config,
         network_policy=__ret__.network_policy,
+        node_config=__ret__.node_config,
         node_ipv4_cidr_size=__ret__.node_ipv4_cidr_size,
         node_pool_auto_config=__ret__.node_pool_auto_config,
         node_pool_defaults=__ret__.node_pool_defaults,
         node_pools=__ret__.node_pools,
         notification_config=__ret__.notification_config,
         pod_security_policy_config=__ret__.pod_security_policy_config,
+        private_cluster=__ret__.private_cluster,
         private_cluster_config=__ret__.private_cluster_config,
         release_channel=__ret__.release_channel,
         resource_labels=__ret__.resource_labels,
@@ -807,19 +962,23 @@ def get_cluster(cluster_id: Optional[str] = None,
         services_ipv4_cidr=__ret__.services_ipv4_cidr,
         shielded_nodes=__ret__.shielded_nodes,
         status=__ret__.status,
+        status_message=__ret__.status_message,
         subnetwork=__ret__.subnetwork,
         tpu_config=__ret__.tpu_config,
         tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,
         vertical_pod_autoscaling=__ret__.vertical_pod_autoscaling,
         workload_alts_config=__ret__.workload_alts_config,
         workload_certificates=__ret__.workload_certificates,
-        workload_identity_config=__ret__.workload_identity_config)
+        workload_identity_config=__ret__.workload_identity_config,
+        zone=__ret__.zone)
 
 
 @_utilities.lift_output_func(get_cluster)
 def get_cluster_output(cluster_id: Optional[pulumi.Input[str]] = None,
                        location: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
+                       project_id: Optional[pulumi.Input[str]] = None,
+                       zone: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Gets the details for a specific cluster.

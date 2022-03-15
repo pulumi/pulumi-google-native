@@ -27,6 +27,12 @@ export interface GetLicenseArgs {
 
 export interface GetLicenseResult {
     /**
+     * Deprecated. This field no longer reflects whether a license charges a usage fee.
+     *
+     * @deprecated [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+     */
+    readonly chargesUseFee: boolean;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;

@@ -85,7 +85,10 @@ type jobTriggerArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// For inspect jobs, a snapshot of the configuration.
 	InspectJob *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
-	Location   *string                             `pulumi:"location"`
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location *string `pulumi:"location"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -105,7 +108,10 @@ type JobTriggerArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// For inspect jobs, a snapshot of the configuration.
 	InspectJob GooglePrivacyDlpV2InspectJobConfigPtrInput
-	Location   pulumi.StringPtrInput
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location pulumi.StringPtrInput
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

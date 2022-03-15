@@ -60,6 +60,12 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly enableL2!: pulumi.Output<boolean>;
     /**
+     * Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+     *
+     * @deprecated Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+     */
+    public readonly enablePrivateV6Access!: pulumi.Output<boolean>;
+    /**
      * The range of external IPv6 addresses that are owned by this subnetwork.
      */
     public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
@@ -120,6 +126,12 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
     /**
+     * Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+     *
+     * @deprecated Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+     */
+    public readonly privateIpv6GoogleAccessServiceAccounts!: pulumi.Output<string[]>;
+    /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
     public readonly purpose!: pulumi.Output<string>;
@@ -179,6 +191,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             resourceInputs["enableL2"] = args ? args.enableL2 : undefined;
+            resourceInputs["enablePrivateV6Access"] = args ? args.enablePrivateV6Access : undefined;
             resourceInputs["flowSampling"] = args ? args.flowSampling : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
@@ -188,6 +201,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["privateIpGoogleAccess"] = args ? args.privateIpGoogleAccess : undefined;
             resourceInputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
+            resourceInputs["privateIpv6GoogleAccessServiceAccounts"] = args ? args.privateIpv6GoogleAccessServiceAccounts : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["purpose"] = args ? args.purpose : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -214,6 +228,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["enableFlowLogs"] = undefined /*out*/;
             resourceInputs["enableL2"] = undefined /*out*/;
+            resourceInputs["enablePrivateV6Access"] = undefined /*out*/;
             resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["flowSampling"] = undefined /*out*/;
@@ -229,6 +244,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["privateIpGoogleAccess"] = undefined /*out*/;
             resourceInputs["privateIpv6GoogleAccess"] = undefined /*out*/;
+            resourceInputs["privateIpv6GoogleAccessServiceAccounts"] = undefined /*out*/;
             resourceInputs["purpose"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["reservedInternalRange"] = undefined /*out*/;
@@ -270,6 +286,12 @@ export interface SubnetworkArgs {
      */
     enableL2?: pulumi.Input<boolean>;
     /**
+     * Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+     *
+     * @deprecated Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+     */
+    enablePrivateV6Access?: pulumi.Input<boolean>;
+    /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
      */
     flowSampling?: pulumi.Input<number>;
@@ -305,6 +327,12 @@ export interface SubnetworkArgs {
      * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
      */
     privateIpv6GoogleAccess?: pulumi.Input<enums.compute.alpha.SubnetworkPrivateIpv6GoogleAccess>;
+    /**
+     * Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+     *
+     * @deprecated Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+     */
+    privateIpv6GoogleAccessServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     project?: pulumi.Input<string>;
     /**
      * The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.

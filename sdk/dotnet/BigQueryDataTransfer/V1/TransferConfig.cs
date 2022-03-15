@@ -111,6 +111,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -245,6 +251,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         [Input("serviceAccountName")]
         public Input<string>? ServiceAccountName { get; set; }
+
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         /// <summary>
         /// Optional version info. This is required only if `transferConfig.dataSourceId` is anything else but 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain version info, please make a request to https://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=&amp;scope=&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=version_info * client_id should be OAuth client_id of BigQuery DTS API for the given data source returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.

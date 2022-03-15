@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string InternalIpv6Range;
         /// <summary>
+        /// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        /// </summary>
+        public readonly string Ipv4Range;
+        /// <summary>
         /// Type of the resource. Always compute#network for networks.
         /// </summary>
         public readonly string Kind;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string internalIpv6Range,
 
+            string ipv4Range,
+
             string kind,
 
             int mtu,
@@ -154,6 +160,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             EnableUlaInternalIpv6 = enableUlaInternalIpv6;
             GatewayIPv4 = gatewayIPv4;
             InternalIpv6Range = internalIpv6Range;
+            Ipv4Range = ipv4Range;
             Kind = kind;
             Mtu = mtu;
             Name = name;

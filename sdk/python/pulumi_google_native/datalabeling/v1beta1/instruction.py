@@ -18,6 +18,7 @@ class InstructionArgs:
     def __init__(__self__, *,
                  data_type: pulumi.Input['InstructionDataType'],
                  display_name: pulumi.Input[str],
+                 csv_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  pdf_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -25,11 +26,17 @@ class InstructionArgs:
         The set of arguments for constructing a Instruction resource.
         :param pulumi.Input['InstructionDataType'] data_type: The data type of this instruction.
         :param pulumi.Input[str] display_name: The display name of the instruction. Maximum of 64 characters.
+        :param pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs'] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs'] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         """
         pulumi.set(__self__, "data_type", data_type)
         pulumi.set(__self__, "display_name", display_name)
+        if csv_instruction is not None:
+            warnings.warn("""Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""", DeprecationWarning)
+            pulumi.log.warn("""csv_instruction is deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""")
+        if csv_instruction is not None:
+            pulumi.set(__self__, "csv_instruction", csv_instruction)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if pdf_instruction is not None:
@@ -60,6 +67,18 @@ class InstructionArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="csvInstruction")
+    def csv_instruction(self) -> Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]:
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        """
+        return pulumi.get(self, "csv_instruction")
+
+    @csv_instruction.setter
+    def csv_instruction(self, value: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]):
+        pulumi.set(self, "csv_instruction", value)
 
     @property
     @pulumi.getter
@@ -100,6 +119,7 @@ class Instruction(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
                  data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -112,6 +132,7 @@ class Instruction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']] csv_instruction: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
         :param pulumi.Input['InstructionDataType'] data_type: The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
         :param pulumi.Input[str] display_name: The display name of the instruction. Maximum of 64 characters.
@@ -142,6 +163,7 @@ class Instruction(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 csv_instruction: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1CsvInstructionArgs']]] = None,
                  data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -159,6 +181,10 @@ class Instruction(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstructionArgs.__new__(InstructionArgs)
 
+            if csv_instruction is not None and not opts.urn:
+                warnings.warn("""Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""", DeprecationWarning)
+                pulumi.log.warn("""csv_instruction is deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.""")
+            __props__.__dict__["csv_instruction"] = csv_instruction
             if data_type is None and not opts.urn:
                 raise TypeError("Missing required property 'data_type'")
             __props__.__dict__["data_type"] = data_type
@@ -196,6 +222,7 @@ class Instruction(pulumi.CustomResource):
 
         __props__.__dict__["blocking_resources"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["csv_instruction"] = None
         __props__.__dict__["data_type"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
@@ -219,6 +246,14 @@ class Instruction(pulumi.CustomResource):
         Creation time of instruction.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="csvInstruction")
+    def csv_instruction(self) -> pulumi.Output['outputs.GoogleCloudDatalabelingV1beta1CsvInstructionResponse']:
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+        """
+        return pulumi.get(self, "csv_instruction")
 
     @property
     @pulumi.getter(name="dataType")

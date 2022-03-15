@@ -29,6 +29,12 @@ export interface GetOrganizationResult {
      */
     readonly addonsConfig: outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse;
     /**
+     * DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     *
+     * @deprecated Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     */
+    readonly analyticsRegion: string;
+    /**
      * Not used by Apigee.
      */
     readonly attributes: string[];
@@ -100,6 +106,12 @@ export interface GetOrganizationResult {
      * State of the organization. Values other than ACTIVE means the resource is not ready to use.
      */
     readonly state: string;
+    /**
+     * DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+     *
+     * @deprecated Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+     */
+    readonly subscriptionType: string;
     /**
      * Not used by Apigee.
      */

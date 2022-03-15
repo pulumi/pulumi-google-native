@@ -513,6 +513,67 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
     /// <summary>
+    /// Deprecated. Must use the MetricDescriptor.launch_stage instead.
+    /// </summary>
+    [EnumType]
+    public readonly struct MetricDescriptorMetadataLaunchStage : IEquatable<MetricDescriptorMetadataLaunchStage>
+    {
+        private readonly string _value;
+
+        private MetricDescriptorMetadataLaunchStage(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Do not use this default value.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage LaunchStageUnspecified { get; } = new MetricDescriptorMetadataLaunchStage("LAUNCH_STAGE_UNSPECIFIED");
+        /// <summary>
+        /// The feature is not yet implemented. Users can not use it.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage Unimplemented { get; } = new MetricDescriptorMetadataLaunchStage("UNIMPLEMENTED");
+        /// <summary>
+        /// Prelaunch features are hidden from users and are only visible internally.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage Prelaunch { get; } = new MetricDescriptorMetadataLaunchStage("PRELAUNCH");
+        /// <summary>
+        /// Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage EarlyAccess { get; } = new MetricDescriptorMetadataLaunchStage("EARLY_ACCESS");
+        /// <summary>
+        /// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don't have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage Alpha { get; } = new MetricDescriptorMetadataLaunchStage("ALPHA");
+        /// <summary>
+        /// Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage Beta { get; } = new MetricDescriptorMetadataLaunchStage("BETA");
+        /// <summary>
+        /// GA features are open to all developers and are considered stable and fully qualified for production use.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage Ga { get; } = new MetricDescriptorMetadataLaunchStage("GA");
+        /// <summary>
+        /// Deprecated features are scheduled to be shut down and removed. For more information, see the "Deprecation Policy" section of our Terms of Service (https://cloud.google.com/terms/) and the Google Cloud Platform Subject to the Deprecation Policy (https://cloud.google.com/terms/deprecation) documentation.
+        /// </summary>
+        public static MetricDescriptorMetadataLaunchStage Deprecated { get; } = new MetricDescriptorMetadataLaunchStage("DEPRECATED");
+
+        public static bool operator ==(MetricDescriptorMetadataLaunchStage left, MetricDescriptorMetadataLaunchStage right) => left.Equals(right);
+        public static bool operator !=(MetricDescriptorMetadataLaunchStage left, MetricDescriptorMetadataLaunchStage right) => !left.Equals(right);
+
+        public static explicit operator string(MetricDescriptorMetadataLaunchStage value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is MetricDescriptorMetadataLaunchStage other && Equals(other);
+        public bool Equals(MetricDescriptorMetadataLaunchStage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
     /// </summary>
     [EnumType]

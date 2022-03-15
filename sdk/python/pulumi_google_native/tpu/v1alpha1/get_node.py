@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, description=None, health=None, health_description=None, labels=None, name=None, network=None, network_endpoints=None, scheduling_config=None, service_account=None, state=None, symptoms=None, tensorflow_version=None, use_service_networking=None):
+    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, description=None, health=None, health_description=None, ip_address=None, labels=None, name=None, network=None, network_endpoints=None, port=None, scheduling_config=None, service_account=None, state=None, symptoms=None, tensorflow_version=None, use_service_networking=None):
         if accelerator_type and not isinstance(accelerator_type, str):
             raise TypeError("Expected argument 'accelerator_type' to be a str")
         pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -40,6 +40,13 @@ class GetNodeResult:
         if health_description and not isinstance(health_description, str):
             raise TypeError("Expected argument 'health_description' to be a str")
         pulumi.set(__self__, "health_description", health_description)
+        if ip_address and not isinstance(ip_address, str):
+            raise TypeError("Expected argument 'ip_address' to be a str")
+        if ip_address is not None:
+            warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
+            pulumi.log.warn("""ip_address is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.""")
+
+        pulumi.set(__self__, "ip_address", ip_address)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -52,6 +59,13 @@ class GetNodeResult:
         if network_endpoints and not isinstance(network_endpoints, list):
             raise TypeError("Expected argument 'network_endpoints' to be a list")
         pulumi.set(__self__, "network_endpoints", network_endpoints)
+        if port and not isinstance(port, str):
+            raise TypeError("Expected argument 'port' to be a str")
+        if port is not None:
+            warnings.warn("""Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""", DeprecationWarning)
+            pulumi.log.warn("""port is deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.""")
+
+        pulumi.set(__self__, "port", port)
         if scheduling_config and not isinstance(scheduling_config, dict):
             raise TypeError("Expected argument 'scheduling_config' to be a dict")
         pulumi.set(__self__, "scheduling_config", scheduling_config)
@@ -128,6 +142,14 @@ class GetNodeResult:
         return pulumi.get(self, "health_description")
 
     @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -158,6 +180,14 @@ class GetNodeResult:
         The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
         """
         return pulumi.get(self, "network_endpoints")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="schedulingConfig")
@@ -221,10 +251,12 @@ class AwaitableGetNodeResult(GetNodeResult):
             description=self.description,
             health=self.health,
             health_description=self.health_description,
+            ip_address=self.ip_address,
             labels=self.labels,
             name=self.name,
             network=self.network,
             network_endpoints=self.network_endpoints,
+            port=self.port,
             scheduling_config=self.scheduling_config,
             service_account=self.service_account,
             state=self.state,
@@ -258,10 +290,12 @@ def get_node(location: Optional[str] = None,
         description=__ret__.description,
         health=__ret__.health,
         health_description=__ret__.health_description,
+        ip_address=__ret__.ip_address,
         labels=__ret__.labels,
         name=__ret__.name,
         network=__ret__.network,
         network_endpoints=__ret__.network_endpoints,
+        port=__ret__.port,
         scheduling_config=__ret__.scheduling_config,
         service_account=__ret__.service_account,
         state=__ret__.state,

@@ -253,6 +253,10 @@ type OSPolicyAssignmentInstanceFilter struct {
 	InclusionLabels []OSPolicyAssignmentLabelSet `pulumi:"inclusionLabels"`
 	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
 	Inventories []OSPolicyAssignmentInstanceFilterInventory `pulumi:"inventories"`
+	// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+	//
+	// Deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+	OsShortNames []string `pulumi:"osShortNames"`
 }
 
 // OSPolicyAssignmentInstanceFilterInput is an input type that accepts OSPolicyAssignmentInstanceFilterArgs and OSPolicyAssignmentInstanceFilterOutput values.
@@ -276,6 +280,10 @@ type OSPolicyAssignmentInstanceFilterArgs struct {
 	InclusionLabels OSPolicyAssignmentLabelSetArrayInput `pulumi:"inclusionLabels"`
 	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
 	Inventories OSPolicyAssignmentInstanceFilterInventoryArrayInput `pulumi:"inventories"`
+	// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+	//
+	// Deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+	OsShortNames pulumi.StringArrayInput `pulumi:"osShortNames"`
 }
 
 func (OSPolicyAssignmentInstanceFilterArgs) ElementType() reflect.Type {
@@ -325,6 +333,13 @@ func (o OSPolicyAssignmentInstanceFilterOutput) Inventories() OSPolicyAssignment
 	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilter) []OSPolicyAssignmentInstanceFilterInventory {
 		return v.Inventories
 	}).(OSPolicyAssignmentInstanceFilterInventoryArrayOutput)
+}
+
+// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+//
+// Deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+func (o OSPolicyAssignmentInstanceFilterOutput) OsShortNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilter) []string { return v.OsShortNames }).(pulumi.StringArrayOutput)
 }
 
 // VM inventory details.
@@ -499,6 +514,10 @@ type OSPolicyAssignmentInstanceFilterResponse struct {
 	InclusionLabels []OSPolicyAssignmentLabelSetResponse `pulumi:"inclusionLabels"`
 	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
 	Inventories []OSPolicyAssignmentInstanceFilterInventoryResponse `pulumi:"inventories"`
+	// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+	//
+	// Deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+	OsShortNames []string `pulumi:"osShortNames"`
 }
 
 // Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
@@ -540,6 +559,13 @@ func (o OSPolicyAssignmentInstanceFilterResponseOutput) Inventories() OSPolicyAs
 	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilterResponse) []OSPolicyAssignmentInstanceFilterInventoryResponse {
 		return v.Inventories
 	}).(OSPolicyAssignmentInstanceFilterInventoryResponseArrayOutput)
+}
+
+// Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+//
+// Deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+func (o OSPolicyAssignmentInstanceFilterResponseOutput) OsShortNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v OSPolicyAssignmentInstanceFilterResponse) []string { return v.OsShortNames }).(pulumi.StringArrayOutput)
 }
 
 // Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present.
@@ -945,6 +971,198 @@ func (o OSPolicyInventoryFilterResponseArrayOutput) Index(i pulumi.IntInput) OSP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OSPolicyInventoryFilterResponse {
 		return vs[0].([]OSPolicyInventoryFilterResponse)[vs[1].(int)]
 	}).(OSPolicyInventoryFilterResponseOutput)
+}
+
+// Filtering criteria to select VMs based on OS details.
+type OSPolicyOSFilter struct {
+	// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+	OsShortName *string `pulumi:"osShortName"`
+	// This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+	OsVersion *string `pulumi:"osVersion"`
+}
+
+// OSPolicyOSFilterInput is an input type that accepts OSPolicyOSFilterArgs and OSPolicyOSFilterOutput values.
+// You can construct a concrete instance of `OSPolicyOSFilterInput` via:
+//
+//          OSPolicyOSFilterArgs{...}
+type OSPolicyOSFilterInput interface {
+	pulumi.Input
+
+	ToOSPolicyOSFilterOutput() OSPolicyOSFilterOutput
+	ToOSPolicyOSFilterOutputWithContext(context.Context) OSPolicyOSFilterOutput
+}
+
+// Filtering criteria to select VMs based on OS details.
+type OSPolicyOSFilterArgs struct {
+	// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+	OsShortName pulumi.StringPtrInput `pulumi:"osShortName"`
+	// This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+}
+
+func (OSPolicyOSFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyOSFilter)(nil)).Elem()
+}
+
+func (i OSPolicyOSFilterArgs) ToOSPolicyOSFilterOutput() OSPolicyOSFilterOutput {
+	return i.ToOSPolicyOSFilterOutputWithContext(context.Background())
+}
+
+func (i OSPolicyOSFilterArgs) ToOSPolicyOSFilterOutputWithContext(ctx context.Context) OSPolicyOSFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyOSFilterOutput)
+}
+
+func (i OSPolicyOSFilterArgs) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPtrOutput {
+	return i.ToOSPolicyOSFilterPtrOutputWithContext(context.Background())
+}
+
+func (i OSPolicyOSFilterArgs) ToOSPolicyOSFilterPtrOutputWithContext(ctx context.Context) OSPolicyOSFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyOSFilterOutput).ToOSPolicyOSFilterPtrOutputWithContext(ctx)
+}
+
+// OSPolicyOSFilterPtrInput is an input type that accepts OSPolicyOSFilterArgs, OSPolicyOSFilterPtr and OSPolicyOSFilterPtrOutput values.
+// You can construct a concrete instance of `OSPolicyOSFilterPtrInput` via:
+//
+//          OSPolicyOSFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type OSPolicyOSFilterPtrInput interface {
+	pulumi.Input
+
+	ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPtrOutput
+	ToOSPolicyOSFilterPtrOutputWithContext(context.Context) OSPolicyOSFilterPtrOutput
+}
+
+type ospolicyOSFilterPtrType OSPolicyOSFilterArgs
+
+func OSPolicyOSFilterPtr(v *OSPolicyOSFilterArgs) OSPolicyOSFilterPtrInput {
+	return (*ospolicyOSFilterPtrType)(v)
+}
+
+func (*ospolicyOSFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OSPolicyOSFilter)(nil)).Elem()
+}
+
+func (i *ospolicyOSFilterPtrType) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPtrOutput {
+	return i.ToOSPolicyOSFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *ospolicyOSFilterPtrType) ToOSPolicyOSFilterPtrOutputWithContext(ctx context.Context) OSPolicyOSFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OSPolicyOSFilterPtrOutput)
+}
+
+// Filtering criteria to select VMs based on OS details.
+type OSPolicyOSFilterOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyOSFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyOSFilter)(nil)).Elem()
+}
+
+func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterOutput() OSPolicyOSFilterOutput {
+	return o
+}
+
+func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterOutputWithContext(ctx context.Context) OSPolicyOSFilterOutput {
+	return o
+}
+
+func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPtrOutput {
+	return o.ToOSPolicyOSFilterPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyOSFilterOutput) ToOSPolicyOSFilterPtrOutputWithContext(ctx context.Context) OSPolicyOSFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyOSFilter) *OSPolicyOSFilter {
+		return &v
+	}).(OSPolicyOSFilterPtrOutput)
+}
+
+// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+func (o OSPolicyOSFilterOutput) OsShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSPolicyOSFilter) *string { return v.OsShortName }).(pulumi.StringPtrOutput)
+}
+
+// This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+func (o OSPolicyOSFilterOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSPolicyOSFilter) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+type OSPolicyOSFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyOSFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OSPolicyOSFilter)(nil)).Elem()
+}
+
+func (o OSPolicyOSFilterPtrOutput) ToOSPolicyOSFilterPtrOutput() OSPolicyOSFilterPtrOutput {
+	return o
+}
+
+func (o OSPolicyOSFilterPtrOutput) ToOSPolicyOSFilterPtrOutputWithContext(ctx context.Context) OSPolicyOSFilterPtrOutput {
+	return o
+}
+
+func (o OSPolicyOSFilterPtrOutput) Elem() OSPolicyOSFilterOutput {
+	return o.ApplyT(func(v *OSPolicyOSFilter) OSPolicyOSFilter {
+		if v != nil {
+			return *v
+		}
+		var ret OSPolicyOSFilter
+		return ret
+	}).(OSPolicyOSFilterOutput)
+}
+
+// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+func (o OSPolicyOSFilterPtrOutput) OsShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSPolicyOSFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsShortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+func (o OSPolicyOSFilterPtrOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSPolicyOSFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OsVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filtering criteria to select VMs based on OS details.
+type OSPolicyOSFilterResponse struct {
+	// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+	OsShortName string `pulumi:"osShortName"`
+	// This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+	OsVersion string `pulumi:"osVersion"`
+}
+
+// Filtering criteria to select VMs based on OS details.
+type OSPolicyOSFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyOSFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyOSFilterResponse)(nil)).Elem()
+}
+
+func (o OSPolicyOSFilterResponseOutput) ToOSPolicyOSFilterResponseOutput() OSPolicyOSFilterResponseOutput {
+	return o
+}
+
+func (o OSPolicyOSFilterResponseOutput) ToOSPolicyOSFilterResponseOutputWithContext(ctx context.Context) OSPolicyOSFilterResponseOutput {
+	return o
+}
+
+// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+func (o OSPolicyOSFilterResponseOutput) OsShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v OSPolicyOSFilterResponse) string { return v.OsShortName }).(pulumi.StringOutput)
+}
+
+// This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+func (o OSPolicyOSFilterResponseOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v OSPolicyOSFilterResponse) string { return v.OsVersion }).(pulumi.StringOutput)
 }
 
 // An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
@@ -2479,6 +2697,10 @@ func (o OSPolicyResourceFileResponseOutput) Remote() OSPolicyResourceFileRemoteR
 type OSPolicyResourceGroup struct {
 	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
 	InventoryFilters []OSPolicyInventoryFilter `pulumi:"inventoryFilters"`
+	// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+	//
+	// Deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+	OsFilter *OSPolicyOSFilter `pulumi:"osFilter"`
 	// List of resources configured for this resource group. The resources are executed in the exact order specified here.
 	Resources []OSPolicyResource `pulumi:"resources"`
 }
@@ -2498,6 +2720,10 @@ type OSPolicyResourceGroupInput interface {
 type OSPolicyResourceGroupArgs struct {
 	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
 	InventoryFilters OSPolicyInventoryFilterArrayInput `pulumi:"inventoryFilters"`
+	// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+	//
+	// Deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+	OsFilter OSPolicyOSFilterPtrInput `pulumi:"osFilter"`
 	// List of resources configured for this resource group. The resources are executed in the exact order specified here.
 	Resources OSPolicyResourceArrayInput `pulumi:"resources"`
 }
@@ -2559,6 +2785,13 @@ func (o OSPolicyResourceGroupOutput) InventoryFilters() OSPolicyInventoryFilterA
 	return o.ApplyT(func(v OSPolicyResourceGroup) []OSPolicyInventoryFilter { return v.InventoryFilters }).(OSPolicyInventoryFilterArrayOutput)
 }
 
+// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+//
+// Deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+func (o OSPolicyResourceGroupOutput) OsFilter() OSPolicyOSFilterPtrOutput {
+	return o.ApplyT(func(v OSPolicyResourceGroup) *OSPolicyOSFilter { return v.OsFilter }).(OSPolicyOSFilterPtrOutput)
+}
+
 // List of resources configured for this resource group. The resources are executed in the exact order specified here.
 func (o OSPolicyResourceGroupOutput) Resources() OSPolicyResourceArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourceGroup) []OSPolicyResource { return v.Resources }).(OSPolicyResourceArrayOutput)
@@ -2588,6 +2821,10 @@ func (o OSPolicyResourceGroupArrayOutput) Index(i pulumi.IntInput) OSPolicyResou
 type OSPolicyResourceGroupResponse struct {
 	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
 	InventoryFilters []OSPolicyInventoryFilterResponse `pulumi:"inventoryFilters"`
+	// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+	//
+	// Deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+	OsFilter OSPolicyOSFilterResponse `pulumi:"osFilter"`
 	// List of resources configured for this resource group. The resources are executed in the exact order specified here.
 	Resources []OSPolicyResourceResponse `pulumi:"resources"`
 }
@@ -2610,6 +2847,13 @@ func (o OSPolicyResourceGroupResponseOutput) ToOSPolicyResourceGroupResponseOutp
 // List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
 func (o OSPolicyResourceGroupResponseOutput) InventoryFilters() OSPolicyInventoryFilterResponseArrayOutput {
 	return o.ApplyT(func(v OSPolicyResourceGroupResponse) []OSPolicyInventoryFilterResponse { return v.InventoryFilters }).(OSPolicyInventoryFilterResponseArrayOutput)
+}
+
+// Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+//
+// Deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+func (o OSPolicyResourceGroupResponseOutput) OsFilter() OSPolicyOSFilterResponseOutput {
+	return o.ApplyT(func(v OSPolicyResourceGroupResponse) OSPolicyOSFilterResponse { return v.OsFilter }).(OSPolicyOSFilterResponseOutput)
 }
 
 // List of resources configured for this resource group. The resources are executed in the exact order specified here.
@@ -5585,6 +5829,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyAssignmentRolloutInput)(nil)).Elem(), OSPolicyAssignmentRolloutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInventoryFilterInput)(nil)).Elem(), OSPolicyInventoryFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyInventoryFilterArrayInput)(nil)).Elem(), OSPolicyInventoryFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyOSFilterInput)(nil)).Elem(), OSPolicyOSFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyOSFilterPtrInput)(nil)).Elem(), OSPolicyOSFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceInput)(nil)).Elem(), OSPolicyResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceArrayInput)(nil)).Elem(), OSPolicyResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OSPolicyResourceExecResourceInput)(nil)).Elem(), OSPolicyResourceExecResourceArgs{})
@@ -5647,6 +5893,9 @@ func init() {
 	pulumi.RegisterOutputType(OSPolicyInventoryFilterArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyInventoryFilterResponseOutput{})
 	pulumi.RegisterOutputType(OSPolicyInventoryFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(OSPolicyOSFilterOutput{})
+	pulumi.RegisterOutputType(OSPolicyOSFilterPtrOutput{})
+	pulumi.RegisterOutputType(OSPolicyOSFilterResponseOutput{})
 	pulumi.RegisterOutputType(OSPolicyResourceOutput{})
 	pulumi.RegisterOutputType(OSPolicyResourceArrayOutput{})
 	pulumi.RegisterOutputType(OSPolicyResourceExecResourceOutput{})

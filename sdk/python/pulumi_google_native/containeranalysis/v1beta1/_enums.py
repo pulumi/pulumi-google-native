@@ -24,6 +24,7 @@ __all__ = [
     'FileNoteFileType',
     'GenericSignedAttestationContentType',
     'GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity',
+    'HashType',
     'LayerDirective',
     'PgpSignedAttestationContentType',
     'RelationshipNoteType',
@@ -396,6 +397,20 @@ class GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity(str, Enum):
     CRITICAL = "CRITICAL"
     """
     Critical severity.
+    """
+
+
+class HashType(str, Enum):
+    """
+    Required. The type of hash that was performed.
+    """
+    HASH_TYPE_UNSPECIFIED = "HASH_TYPE_UNSPECIFIED"
+    """
+    Unknown.
+    """
+    SHA256 = "SHA256"
+    """
+    A SHA-256 hash.
     """
 
 
