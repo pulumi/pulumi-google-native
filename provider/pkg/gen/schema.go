@@ -932,7 +932,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		apiProp := resources.CloudAPIProperty{
 			Ref:      typeSpec.Ref,
 			Format:   prop.Format,
-			Required: prop.Required || isRequired(prop.Description),
+			Required: isRequired(prop),
 
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
