@@ -118,6 +118,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Email address of the service account.
+        /// </summary>
         [Input("serviceAccountEmail", required: true)]
         public Input<string> ServiceAccountEmail { get; set; } = null!;
 

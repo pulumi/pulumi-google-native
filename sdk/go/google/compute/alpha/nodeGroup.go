@@ -91,8 +91,9 @@ type nodeGroupArgs struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy *NodeGroupAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description      *string `pulumi:"description"`
-	InitialNodeCount string  `pulumi:"initialNodeCount"`
+	Description *string `pulumi:"description"`
+	// Initial count of nodes in the node group.
+	InitialNodeCount string `pulumi:"initialNodeCount"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint *string `pulumi:"locationHint"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
@@ -116,7 +117,8 @@ type NodeGroupArgs struct {
 	// Specifies how autoscaling should behave.
 	AutoscalingPolicy NodeGroupAutoscalingPolicyPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
-	Description      pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Initial count of nodes in the node group.
 	InitialNodeCount pulumi.StringInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringPtrInput

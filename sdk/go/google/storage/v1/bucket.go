@@ -157,7 +157,8 @@ type bucketArgs struct {
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
 	// Apply a predefined set of default object access controls to this bucket.
 	PredefinedDefaultObjectAcl *string `pulumi:"predefinedDefaultObjectAcl"`
-	Project                    *string `pulumi:"project"`
+	// A valid API project identifier.
+	Project *string `pulumi:"project"`
 	// The project number of the project the bucket belongs to.
 	ProjectNumber *string `pulumi:"projectNumber"`
 	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
@@ -232,7 +233,8 @@ type BucketArgs struct {
 	PredefinedAcl pulumi.StringPtrInput
 	// Apply a predefined set of default object access controls to this bucket.
 	PredefinedDefaultObjectAcl pulumi.StringPtrInput
-	Project                    pulumi.StringPtrInput
+	// A valid API project identifier.
+	Project pulumi.StringPtrInput
 	// The project number of the project the bucket belongs to.
 	ProjectNumber pulumi.StringPtrInput
 	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.

@@ -75,6 +75,7 @@ class BucketArgs:
         :param pulumi.Input['BucketOwnerArgs'] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
         :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
+        :param pulumi.Input[str] project: A valid API project identifier.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
         :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
@@ -429,6 +430,9 @@ class BucketArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        A valid API project identifier.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -661,6 +665,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketOwnerArgs']] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
         :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
+        :param pulumi.Input[str] project: A valid API project identifier.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
         :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
