@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         [Input("action", required: true)]
         public Input<Pulumi.GoogleNative.NetworkSecurity.V1Beta1.AuthorizationPolicyAction> Action { get; set; } = null!;
 
+        /// <summary>
+        /// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+        /// </summary>
         [Input("authorizationPolicyId", required: true)]
         public Input<string> AuthorizationPolicyId { get; set; } = null!;
 

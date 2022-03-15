@@ -152,13 +152,17 @@ type bucketArgs struct {
 	// The name of the bucket.
 	Name *string `pulumi:"name"`
 	// The owner of the bucket. This is always the project team's owner group.
-	Owner                      *BucketOwner `pulumi:"owner"`
-	PredefinedAcl              *string      `pulumi:"predefinedAcl"`
-	PredefinedDefaultObjectAcl *string      `pulumi:"predefinedDefaultObjectAcl"`
-	Project                    *string      `pulumi:"project"`
+	Owner *BucketOwner `pulumi:"owner"`
+	// Apply a predefined set of access controls to this bucket.
+	PredefinedAcl *string `pulumi:"predefinedAcl"`
+	// Apply a predefined set of default object access controls to this bucket.
+	PredefinedDefaultObjectAcl *string `pulumi:"predefinedDefaultObjectAcl"`
+	Project                    *string `pulumi:"project"`
 	// The project number of the project the bucket belongs to.
-	ProjectNumber          *string `pulumi:"projectNumber"`
-	Projection             *string `pulumi:"projection"`
+	ProjectNumber *string `pulumi:"projectNumber"`
+	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+	Projection *string `pulumi:"projection"`
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
 	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
@@ -173,7 +177,8 @@ type bucketArgs struct {
 	// The creation time of the bucket in RFC 3339 format.
 	TimeCreated *string `pulumi:"timeCreated"`
 	// The modification time of the bucket in RFC 3339 format.
-	Updated     *string `pulumi:"updated"`
+	Updated *string `pulumi:"updated"`
+	// The project to be billed for this request.
 	UserProject *string `pulumi:"userProject"`
 	// The bucket's versioning configuration.
 	Versioning *BucketVersioning `pulumi:"versioning"`
@@ -222,13 +227,17 @@ type BucketArgs struct {
 	// The name of the bucket.
 	Name pulumi.StringPtrInput
 	// The owner of the bucket. This is always the project team's owner group.
-	Owner                      BucketOwnerPtrInput
-	PredefinedAcl              pulumi.StringPtrInput
+	Owner BucketOwnerPtrInput
+	// Apply a predefined set of access controls to this bucket.
+	PredefinedAcl pulumi.StringPtrInput
+	// Apply a predefined set of default object access controls to this bucket.
 	PredefinedDefaultObjectAcl pulumi.StringPtrInput
 	Project                    pulumi.StringPtrInput
 	// The project number of the project the bucket belongs to.
-	ProjectNumber          pulumi.StringPtrInput
-	Projection             pulumi.StringPtrInput
+	ProjectNumber pulumi.StringPtrInput
+	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+	Projection pulumi.StringPtrInput
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
 	ProvisionalUserProject pulumi.StringPtrInput
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy BucketRetentionPolicyPtrInput
@@ -243,7 +252,8 @@ type BucketArgs struct {
 	// The creation time of the bucket in RFC 3339 format.
 	TimeCreated pulumi.StringPtrInput
 	// The modification time of the bucket in RFC 3339 format.
-	Updated     pulumi.StringPtrInput
+	Updated pulumi.StringPtrInput
+	// The project to be billed for this request.
 	UserProject pulumi.StringPtrInput
 	// The bucket's versioning configuration.
 	Versioning BucketVersioningPtrInput

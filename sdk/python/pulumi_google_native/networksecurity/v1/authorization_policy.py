@@ -27,6 +27,7 @@ class AuthorizationPolicyArgs:
         """
         The set of arguments for constructing a AuthorizationPolicy resource.
         :param pulumi.Input['AuthorizationPolicyAction'] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
+        :param pulumi.Input[str] authorization_policy_id: Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the AuthorizationPolicy resource.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
@@ -62,6 +63,9 @@ class AuthorizationPolicyArgs:
     @property
     @pulumi.getter(name="authorizationPolicyId")
     def authorization_policy_id(self) -> pulumi.Input[str]:
+        """
+        Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
+        """
         return pulumi.get(self, "authorization_policy_id")
 
     @authorization_policy_id.setter
@@ -155,6 +159,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['AuthorizationPolicyAction'] action: The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
+        :param pulumi.Input[str] authorization_policy_id: Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the AuthorizationPolicy resource.
         :param pulumi.Input[str] name: Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.

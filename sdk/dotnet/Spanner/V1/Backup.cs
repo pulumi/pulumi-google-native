@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
+        /// </summary>
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 
@@ -129,9 +132,15 @@ namespace Pulumi.GoogleNative.Spanner.V1
         [Input("database")]
         public Input<string>? Database { get; set; }
 
+        /// <summary>
+        /// Required. The encryption type of the backup.
+        /// </summary>
         [Input("encryptionConfigEncryptionType", required: true)]
         public Input<string> EncryptionConfigEncryptionType { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
         [Input("encryptionConfigKmsKeyName")]
         public Input<string>? EncryptionConfigKmsKeyName { get; set; }
 

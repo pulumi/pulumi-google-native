@@ -24,6 +24,7 @@ class AttestorArgs:
                  user_owned_drydock_note: Optional[pulumi.Input['UserOwnedDrydockNoteArgs']] = None):
         """
         The set of arguments for constructing a Attestor resource.
+        :param pulumi.Input[str] attestor_id: Required. The attestors ID.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] etag: Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
@@ -44,6 +45,9 @@ class AttestorArgs:
     @property
     @pulumi.getter(name="attestorId")
     def attestor_id(self) -> pulumi.Input[str]:
+        """
+        Required. The attestors ID.
+        """
         return pulumi.get(self, "attestor_id")
 
     @attestor_id.setter
@@ -125,6 +129,7 @@ class Attestor(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] attestor_id: Required. The attestors ID.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
         :param pulumi.Input[str] etag: Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.

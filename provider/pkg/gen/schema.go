@@ -405,7 +405,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		patternParams.Add(sdkName)
 
 		inputProperties[sdkName] = schema.PropertySpec{
-			TypeSpec: schema.TypeSpec{Type: "string"},
+			Description: param.Description,
+			TypeSpec:    schema.TypeSpec{Type: "string"},
 		}
 		if required {
 			requiredInputProperties.Add(sdkName)

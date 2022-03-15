@@ -386,6 +386,9 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         [Input("type")]
         public Input<Pulumi.GoogleNative.Dataflow.V1b3.JobType>? Type { get; set; }
 
+        /// <summary>
+        /// The level of information requested in response.
+        /// </summary>
         [Input("view")]
         public Input<string>? View { get; set; }
 

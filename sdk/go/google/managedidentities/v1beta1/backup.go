@@ -77,6 +77,7 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
+	// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
 	BackupId string `pulumi:"backupId"`
 	DomainId string `pulumi:"domainId"`
 	// Optional. Resource labels to represent user provided metadata.
@@ -86,6 +87,7 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
+	// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
 	BackupId pulumi.StringInput
 	DomainId pulumi.StringInput
 	// Optional. Resource labels to represent user provided metadata.

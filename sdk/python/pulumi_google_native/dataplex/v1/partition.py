@@ -26,6 +26,7 @@ class PartitionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         :param pulumi.Input[str] etag: Optional. The etag for this partition.
         :param pulumi.Input[str] location: Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -107,6 +108,9 @@ class PartitionArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -145,6 +149,7 @@ class Partition(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: Optional. The etag for this partition.
         :param pulumi.Input[str] location: Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         """
         ...

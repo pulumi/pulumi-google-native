@@ -81,6 +81,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the DICOM store that is being created. Any string value up to 256 characters in length.
+        /// </summary>
         [Input("dicomStoreId")]
         public Input<string>? DicomStoreId { get; set; }
 

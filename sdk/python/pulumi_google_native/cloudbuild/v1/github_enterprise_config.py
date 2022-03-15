@@ -31,9 +31,11 @@ class GithubEnterpriseConfigArgs:
         The set of arguments for constructing a GithubEnterpriseConfig resource.
         :param pulumi.Input[str] app_id: The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
         :param pulumi.Input[str] display_name: Name to display for this config.
+        :param pulumi.Input[str] ghe_config_id: Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
         :param pulumi.Input[str] host_url: The URL of the github enterprise host the configuration is for.
         :param pulumi.Input[str] name: Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
         :param pulumi.Input[str] peered_network: Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        :param pulumi.Input[str] project_id: ID of the project.
         :param pulumi.Input['GitHubEnterpriseSecretsArgs'] secrets: Names of secrets in Secret Manager.
         :param pulumi.Input[str] ssl_ca: Optional. SSL certificate to use for requests to GitHub Enterprise.
         :param pulumi.Input[str] webhook_key: The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
@@ -89,6 +91,9 @@ class GithubEnterpriseConfigArgs:
     @property
     @pulumi.getter(name="gheConfigId")
     def ghe_config_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
+        """
         return pulumi.get(self, "ghe_config_id")
 
     @ghe_config_id.setter
@@ -152,6 +157,9 @@ class GithubEnterpriseConfigArgs:
     @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the project.
+        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -220,9 +228,11 @@ class GithubEnterpriseConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
         :param pulumi.Input[str] display_name: Name to display for this config.
+        :param pulumi.Input[str] ghe_config_id: Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
         :param pulumi.Input[str] host_url: The URL of the github enterprise host the configuration is for.
         :param pulumi.Input[str] name: Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
         :param pulumi.Input[str] peered_network: Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+        :param pulumi.Input[str] project_id: ID of the project.
         :param pulumi.Input[pulumi.InputType['GitHubEnterpriseSecretsArgs']] secrets: Names of secrets in Secret Manager.
         :param pulumi.Input[str] ssl_ca: Optional. SSL certificate to use for requests to GitHub Enterprise.
         :param pulumi.Input[str] webhook_key: The key that should be attached to webhook calls to the ReceiveWebhook endpoint.

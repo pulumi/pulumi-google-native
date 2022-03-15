@@ -72,6 +72,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 

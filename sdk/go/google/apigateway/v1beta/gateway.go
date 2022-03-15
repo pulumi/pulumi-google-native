@@ -83,7 +83,8 @@ type gatewayArgs struct {
 	ApiConfig string `pulumi:"apiConfig"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
-	GatewayId   string  `pulumi:"gatewayId"`
+	// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+	GatewayId string `pulumi:"gatewayId"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -96,7 +97,8 @@ type GatewayArgs struct {
 	ApiConfig pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
-	GatewayId   pulumi.StringInput
+	// Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+	GatewayId pulumi.StringInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput

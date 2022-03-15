@@ -92,7 +92,8 @@ type workerPoolArgs struct {
 	Project       *string        `pulumi:"project"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
-	WorkerPoolId string        `pulumi:"workerPoolId"`
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+	WorkerPoolId string `pulumi:"workerPoolId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
@@ -107,6 +108,7 @@ type WorkerPoolArgs struct {
 	Project       pulumi.StringPtrInput
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig WorkerConfigPtrInput
+	// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
 	WorkerPoolId pulumi.StringInput
 }
 

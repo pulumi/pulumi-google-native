@@ -79,8 +79,9 @@ type partitionArgs struct {
 	Etag   *string `pulumi:"etag"`
 	LakeId string  `pulumi:"lakeId"`
 	// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-	Location     *string `pulumi:"location"`
-	Project      *string `pulumi:"project"`
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly *string `pulumi:"validateOnly"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values []string `pulumi:"values"`
@@ -94,8 +95,9 @@ type PartitionArgs struct {
 	Etag   pulumi.StringPtrInput
 	LakeId pulumi.StringInput
 	// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-	Location     pulumi.StringPtrInput
-	Project      pulumi.StringPtrInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values pulumi.StringArrayInput

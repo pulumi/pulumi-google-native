@@ -678,10 +678,6 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, err
 	}
 
-	if strings.HasSuffix(uri, ":getIamPolicy") {
-		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
-	}
-
 	op, err := p.client.RequestWithTimeout(res.Update.Verb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)

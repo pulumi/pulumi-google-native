@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
+        /// </summary>
         [Input("tagTemplateId", required: true)]
         public Input<string> TagTemplateId { get; set; } = null!;
 

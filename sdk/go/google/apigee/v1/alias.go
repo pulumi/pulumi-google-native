@@ -75,6 +75,7 @@ func (AliasState) ElementType() reflect.Type {
 }
 
 type aliasArgs struct {
+	// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
 	Alias *string `pulumi:"alias"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
@@ -82,17 +83,22 @@ type aliasArgs struct {
 	Data          *string `pulumi:"data"`
 	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions              []map[string]string `pulumi:"extensions"`
-	Format                  string              `pulumi:"format"`
-	IgnoreExpiryValidation  *string             `pulumi:"ignoreExpiryValidation"`
-	IgnoreNewlineValidation *string             `pulumi:"ignoreNewlineValidation"`
-	KeystoreId              string              `pulumi:"keystoreId"`
-	OrganizationId          string              `pulumi:"organizationId"`
-	Password                *string             `pulumi:"password"`
+	Extensions []map[string]string `pulumi:"extensions"`
+	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+	Format string `pulumi:"format"`
+	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+	IgnoreExpiryValidation *string `pulumi:"ignoreExpiryValidation"`
+	// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+	IgnoreNewlineValidation *string `pulumi:"ignoreNewlineValidation"`
+	KeystoreId              string  `pulumi:"keystoreId"`
+	OrganizationId          string  `pulumi:"organizationId"`
+	// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+	Password *string `pulumi:"password"`
 }
 
 // The set of arguments for constructing a Alias resource.
 type AliasArgs struct {
+	// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
 	Alias pulumi.StringPtrInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
@@ -100,13 +106,17 @@ type AliasArgs struct {
 	Data          pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions              pulumi.StringMapArrayInput
-	Format                  pulumi.StringInput
-	IgnoreExpiryValidation  pulumi.StringPtrInput
+	Extensions pulumi.StringMapArrayInput
+	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
+	Format pulumi.StringInput
+	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+	IgnoreExpiryValidation pulumi.StringPtrInput
+	// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
 	IgnoreNewlineValidation pulumi.StringPtrInput
 	KeystoreId              pulumi.StringInput
 	OrganizationId          pulumi.StringInput
-	Password                pulumi.StringPtrInput
+	// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
+	Password pulumi.StringPtrInput
 }
 
 func (AliasArgs) ElementType() reflect.Type {

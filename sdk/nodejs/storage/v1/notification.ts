@@ -142,6 +142,9 @@ export interface NotificationArgs {
      * The desired content of the Payload.
      */
     payloadFormat?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request if the target bucket is requester-pays bucket.
+     */
     provisionalUserProject?: pulumi.Input<string>;
     /**
      * The canonical URL of this notification.
@@ -151,5 +154,8 @@ export interface NotificationArgs {
      * The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
      */
     topic?: pulumi.Input<string>;
+    /**
+     * The project to be billed for this request. Required for Requester Pays buckets.
+     */
     userProject?: pulumi.Input<string>;
 }

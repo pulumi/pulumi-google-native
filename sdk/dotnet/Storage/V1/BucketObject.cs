@@ -342,15 +342,27 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+        /// </summary>
         [Input("ifGenerationMatch")]
         public Input<string>? IfGenerationMatch { get; set; }
 
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+        /// </summary>
         [Input("ifGenerationNotMatch")]
         public Input<string>? IfGenerationNotMatch { get; set; }
 
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current metageneration matches the given value.
+        /// </summary>
         [Input("ifMetagenerationMatch")]
         public Input<string>? IfMetagenerationMatch { get; set; }
 
+        /// <summary>
+        /// Makes the operation conditional on whether the object's current metageneration does not match the given value.
+        /// </summary>
         [Input("ifMetagenerationNotMatch")]
         public Input<string>? IfMetagenerationNotMatch { get; set; }
 
@@ -408,12 +420,21 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("owner")]
         public Input<Inputs.BucketObjectOwnerArgs>? Owner { get; set; }
 
+        /// <summary>
+        /// Apply a predefined set of access controls to this object.
+        /// </summary>
         [Input("predefinedAcl")]
         public Input<string>? PredefinedAcl { get; set; }
 
+        /// <summary>
+        /// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+        /// </summary>
         [Input("projection")]
         public Input<string>? Projection { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request if the target bucket is requester-pays bucket.
+        /// </summary>
         [Input("provisionalUserProject")]
         public Input<string>? ProvisionalUserProject { get; set; }
 
@@ -474,6 +495,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("updated")]
         public Input<string>? Updated { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
 

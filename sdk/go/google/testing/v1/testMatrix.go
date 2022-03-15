@@ -103,7 +103,8 @@ type testMatrixArgs struct {
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
 	FlakyTestAttempts *int `pulumi:"flakyTestAttempts"`
 	// The cloud project that owns the test matrix.
-	Project   *string `pulumi:"project"`
+	Project *string `pulumi:"project"`
+	// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
 	RequestId *string `pulumi:"requestId"`
 	// Where the results for the matrix are written.
 	ResultStorage ResultStorage `pulumi:"resultStorage"`
@@ -122,7 +123,8 @@ type TestMatrixArgs struct {
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
 	FlakyTestAttempts pulumi.IntPtrInput
 	// The cloud project that owns the test matrix.
-	Project   pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended.
 	RequestId pulumi.StringPtrInput
 	// Where the results for the matrix are written.
 	ResultStorage ResultStorageInput

@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class AppProfileArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+        /// </summary>
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
 
@@ -105,6 +108,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// If true, ignore safety checks when creating the app profile.
+        /// </summary>
         [Input("ignoreWarnings")]
         public Input<string>? IgnoreWarnings { get; set; }
 

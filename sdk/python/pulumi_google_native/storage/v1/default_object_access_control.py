@@ -54,8 +54,10 @@ class DefaultObjectAccessControlArgs:
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input['DefaultObjectAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         pulumi.set(__self__, "bucket", bucket)
         if domain is not None:
@@ -233,6 +235,9 @@ class DefaultObjectAccessControlArgs:
     @property
     @pulumi.getter(name="provisionalUserProject")
     def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request if the target bucket is requester-pays bucket.
+        """
         return pulumi.get(self, "provisional_user_project")
 
     @provisional_user_project.setter
@@ -266,6 +271,9 @@ class DefaultObjectAccessControlArgs:
     @property
     @pulumi.getter(name="userProject")
     def user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request. Required for Requester Pays buckets.
+        """
         return pulumi.get(self, "user_project")
 
     @user_project.setter
@@ -322,8 +330,10 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[pulumi.InputType['DefaultObjectAccessControlProjectTeamArgs']] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
+        :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         """
         ...
     @overload

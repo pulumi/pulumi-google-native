@@ -85,6 +85,7 @@ func (ManagedZoneState) ElementType() reflect.Type {
 }
 
 type managedZoneArgs struct {
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId  *string                        `pulumi:"clientOperationId"`
 	CloudLoggingConfig *ManagedZoneCloudLoggingConfig `pulumi:"cloudLoggingConfig"`
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
@@ -124,6 +125,7 @@ type managedZoneArgs struct {
 
 // The set of arguments for constructing a ManagedZone resource.
 type ManagedZoneArgs struct {
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId  pulumi.StringPtrInput
 	CloudLoggingConfig ManagedZoneCloudLoggingConfigPtrInput
 	// The time that this resource was created on the server. This is in RFC3339 text format. Output only.

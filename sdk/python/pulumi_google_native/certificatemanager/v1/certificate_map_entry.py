@@ -26,6 +26,7 @@ class CertificateMapEntryArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateMapEntry resource.
+        :param pulumi.Input[str] certificate_map_entry_id: Required. A user-provided name of the certificate map entry.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificates: A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map entry.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
@@ -55,6 +56,9 @@ class CertificateMapEntryArgs:
     @property
     @pulumi.getter(name="certificateMapEntryId")
     def certificate_map_entry_id(self) -> pulumi.Input[str]:
+        """
+        Required. A user-provided name of the certificate map entry.
+        """
         return pulumi.get(self, "certificate_map_entry_id")
 
     @certificate_map_entry_id.setter
@@ -182,6 +186,7 @@ class CertificateMapEntry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] certificate_map_entry_id: Required. A user-provided name of the certificate map entry.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] certificates: A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a certificate map entry.
         :param pulumi.Input[str] hostname: A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.

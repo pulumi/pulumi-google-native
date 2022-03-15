@@ -25,6 +25,7 @@ class GroupArgs:
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+        :param pulumi.Input[str] validate_only: If true, validate this request but do not create the group.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -99,6 +100,9 @@ class GroupArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        If true, validate this request but do not create the group.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -128,6 +132,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] filter: The filter used to determine which monitored resources belong to this group.
         :param pulumi.Input[bool] is_cluster: If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
+        :param pulumi.Input[str] validate_only: If true, validate this request but do not create the group.
         """
         ...
     @overload

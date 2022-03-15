@@ -226,6 +226,9 @@ export interface EntityArgs {
      * Immutable. The type of entity.
      */
     type: pulumi.Input<enums.dataplex.v1.EntityType>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;
 }

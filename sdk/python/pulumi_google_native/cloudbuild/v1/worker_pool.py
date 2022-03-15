@@ -25,9 +25,11 @@ class WorkerPoolArgs:
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
+        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input['PrivatePoolV1ConfigArgs'] private_pool_v1_config: Legacy Private Pool configuration.
+        :param pulumi.Input[str] validate_only: If set, validate the request and preview the response, but do not actually post it.
         """
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if annotations is not None:
@@ -46,6 +48,9 @@ class WorkerPoolArgs:
     @property
     @pulumi.getter(name="workerPoolId")
     def worker_pool_id(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        """
         return pulumi.get(self, "worker_pool_id")
 
     @worker_pool_id.setter
@@ -109,6 +114,9 @@ class WorkerPoolArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set, validate the request and preview the response, but do not actually post it.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -138,6 +146,8 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[str] display_name: A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
         :param pulumi.Input[pulumi.InputType['PrivatePoolV1ConfigArgs']] private_pool_v1_config: Legacy Private Pool configuration.
+        :param pulumi.Input[str] validate_only: If set, validate the request and preview the response, but do not actually post it.
+        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         ...
     @overload

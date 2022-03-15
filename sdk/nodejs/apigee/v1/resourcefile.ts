@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+ * Auto-naming is currently not supported for this resource.
  */
 export class Resourcefile extends pulumi.CustomResource {
     /**
@@ -61,6 +62,9 @@ export class Resourcefile extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -101,7 +105,13 @@ export interface ResourcefileArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
-    name?: pulumi.Input<string>;
+    /**
+     * Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+     */
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
+    /**
+     * Required. Resource file type. {{ resource_file_type }}
+     */
     type: pulumi.Input<string>;
 }

@@ -99,6 +99,9 @@ export class GameServerDeployment extends pulumi.CustomResource {
  * The set of arguments for constructing a GameServerDeployment resource.
  */
 export interface GameServerDeploymentArgs {
+    /**
+     * Required. The ID of the game server deployment resource to create.
+     */
     deploymentId: pulumi.Input<string>;
     /**
      * Human readable description of the game server deployment.

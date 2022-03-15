@@ -117,6 +117,9 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("productCategory")]
         public Input<string>? ProductCategory { get; set; }
 
+        /// <summary>
+        /// A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        /// </summary>
         [Input("productId")]
         public Input<string>? ProductId { get; set; }
 

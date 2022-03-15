@@ -114,6 +114,9 @@ export interface SnapshotSchedulePolicyArgs {
      * The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
      */
     schedules?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.ScheduleArgs>[]>;
+    /**
+     * Required. Snapshot policy ID
+     */
     snapshotSchedulePolicyId: pulumi.Input<string>;
     /**
      * The state of the snapshot schedule policy.

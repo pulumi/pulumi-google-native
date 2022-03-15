@@ -135,6 +135,9 @@ export class Config extends pulumi.CustomResource {
  * The set of arguments for constructing a Config resource.
  */
 export interface ConfigArgs {
+    /**
+     * Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
+     */
     apiConfigId: pulumi.Input<string>;
     apiId: pulumi.Input<string>;
     /**

@@ -30,11 +30,13 @@ class TaskArgs:
         """
         The set of arguments for constructing a Task resource.
         :param pulumi.Input['GoogleCloudDataplexV1TaskExecutionSpecArgs'] execution_spec: Spec related to how a task is executed.
+        :param pulumi.Input[str] task_id: Required. Task identifier.
         :param pulumi.Input['GoogleCloudDataplexV1TaskTriggerSpecArgs'] trigger_spec: Spec related to how often and when a task should be triggered.
         :param pulumi.Input[str] description: Optional. Description of the task.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the task.
         :param pulumi.Input['GoogleCloudDataplexV1TaskSparkTaskConfigArgs'] spark: Config related to running custom Spark tasks.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "execution_spec", execution_spec)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -79,6 +81,9 @@ class TaskArgs:
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> pulumi.Input[str]:
+        """
+        Required. Task identifier.
+        """
         return pulumi.get(self, "task_id")
 
     @task_id.setter
@@ -166,6 +171,9 @@ class TaskArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -201,7 +209,9 @@ class Task(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskExecutionSpecArgs']] execution_spec: Spec related to how a task is executed.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the task.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskSparkTaskConfigArgs']] spark: Config related to running custom Spark tasks.
+        :param pulumi.Input[str] task_id: Required. Task identifier.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1TaskTriggerSpecArgs']] trigger_spec: Spec related to how often and when a task should be triggered.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload

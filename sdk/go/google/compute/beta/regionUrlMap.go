@@ -105,7 +105,8 @@ type regionUrlMapArgs struct {
 	PathMatchers []PathMatcher `pulumi:"pathMatchers"`
 	Project      *string       `pulumi:"project"`
 	Region       string        `pulumi:"region"`
-	RequestId    *string       `pulumi:"requestId"`
+	// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+	RequestId *string `pulumi:"requestId"`
 	// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Tests []UrlMapTest `pulumi:"tests"`
 }
@@ -130,7 +131,8 @@ type RegionUrlMapArgs struct {
 	PathMatchers PathMatcherArrayInput
 	Project      pulumi.StringPtrInput
 	Region       pulumi.StringInput
-	RequestId    pulumi.StringPtrInput
+	// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+	RequestId pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
 	Tests UrlMapTestArrayInput
 }

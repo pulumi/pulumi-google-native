@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Input("cloudsql")]
         public Input<Inputs.CloudSqlConnectionProfileArgs>? Cloudsql { get; set; }
 
+        /// <summary>
+        /// Required. The connection profile identifier.
+        /// </summary>
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
 
@@ -171,6 +174,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Input("provider")]
         public Input<Pulumi.GoogleNative.Datamigration.V1Beta1.ConnectionProfileProvider>? Provider { get; set; }
 
+        /// <summary>
+        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

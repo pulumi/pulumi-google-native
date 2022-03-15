@@ -91,6 +91,9 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * The globally unique identifier of the database instance.
+     */
     databaseId?: pulumi.Input<string>;
     /**
      * Immutable. The globally unique hostname of the database.
@@ -113,5 +116,8 @@ export interface InstanceArgs {
      * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     type?: pulumi.Input<enums.firebasedatabase.v1beta.InstanceType>;
+    /**
+     * When set to true, the request will be validated but not submitted.
+     */
     validateOnly?: pulumi.Input<string>;
 }

@@ -65,6 +65,7 @@ func (ResponsePolicyState) ElementType() reflect.Type {
 }
 
 type responsePolicyArgs struct {
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	// User-provided description for this Response Policy.
 	Description *string `pulumi:"description"`
@@ -82,6 +83,7 @@ type responsePolicyArgs struct {
 
 // The set of arguments for constructing a ResponsePolicy resource.
 type ResponsePolicyArgs struct {
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId pulumi.StringPtrInput
 	// User-provided description for this Response Policy.
 	Description pulumi.StringPtrInput

@@ -33,6 +33,7 @@ class ProjectArgs:
         :param pulumi.Input['ResourceIdArgs'] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
+        :param pulumi.Input[str] use_legacy_stack: A now unused experiment opt-out option.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -138,6 +139,9 @@ class ProjectArgs:
     @property
     @pulumi.getter(name="useLegacyStack")
     def use_legacy_stack(self) -> Optional[pulumi.Input[str]]:
+        """
+        A now unused experiment opt-out option.
+        """
         return pulumi.get(self, "use_legacy_stack")
 
     @use_legacy_stack.setter
@@ -171,6 +175,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceIdArgs']] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
+        :param pulumi.Input[str] use_legacy_stack: A now unused experiment opt-out option.
         """
         ...
     @overload

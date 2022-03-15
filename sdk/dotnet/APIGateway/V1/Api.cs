@@ -103,6 +103,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
 
     public sealed class ApiArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Identifier to assign to the API. Must be unique within scope of the parent resource.
+        /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
 

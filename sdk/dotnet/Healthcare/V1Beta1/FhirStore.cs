@@ -154,6 +154,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("enableUpdateCreate")]
         public Input<bool>? EnableUpdateCreate { get; set; }
 
+        /// <summary>
+        /// The ID of the FHIR store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+        /// </summary>
         [Input("fhirStoreId")]
         public Input<string>? FhirStoreId { get; set; }
 

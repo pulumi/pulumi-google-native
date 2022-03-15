@@ -102,6 +102,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
 
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
+        /// </summary>
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 
@@ -123,6 +126,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Optional. A request ID. Specify a unique request ID to allow the server to ignore the request if it has completed. The server will ignore subsequent requests that provide a duplicate request ID for at least 60 minutes after the first request.For example, if an initial request times out, followed by another request with the same request ID, the server ignores the second request to prevent the creation of duplicate commitments.The request ID must be a valid UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format) A zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

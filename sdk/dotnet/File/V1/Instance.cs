@@ -163,6 +163,9 @@ namespace Pulumi.GoogleNative.File.V1
             set => _fileShares = value;
         }
 
+        /// <summary>
+        /// Required. The name of the instance to create. The name must be unique for the specified project and location.
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 

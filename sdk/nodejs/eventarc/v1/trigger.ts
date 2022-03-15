@@ -160,6 +160,12 @@ export interface TriggerArgs {
      * Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     transport?: pulumi.Input<inputs.eventarc.v1.TransportArgs>;
+    /**
+     * Required. The user-provided ID to be assigned to the trigger.
+     */
     triggerId: pulumi.Input<string>;
+    /**
+     * Required. If set, validate the request and preview the review, but do not post it.
+     */
     validateOnly: pulumi.Input<string>;
 }

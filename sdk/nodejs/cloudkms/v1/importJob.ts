@@ -133,6 +133,9 @@ export class ImportJob extends pulumi.CustomResource {
  * The set of arguments for constructing a ImportJob resource.
  */
 export interface ImportJobArgs {
+    /**
+     * Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+     */
     importJobId?: pulumi.Input<string>;
     /**
      * Immutable. The wrapping method to be used for incoming key material.

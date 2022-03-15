@@ -214,6 +214,9 @@ export interface NoteArgs {
      * A detailed description of this note.
      */
     longDescription?: pulumi.Input<string>;
+    /**
+     * Required. The ID to use for this note.
+     */
     noteId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.

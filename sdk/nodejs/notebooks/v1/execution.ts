@@ -123,6 +123,9 @@ export interface ExecutionArgs {
      * A brief description of this execution.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Required. User-defined unique ID of this execution.
+     */
     executionId: pulumi.Input<string>;
     /**
      * execute metadata including name, hardware spec, region, labels, etc.

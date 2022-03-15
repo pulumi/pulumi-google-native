@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("alternativeNameServerConfig")]
         public Input<Inputs.PolicyAlternativeNameServerConfigArgs>? AlternativeNameServerConfig { get; set; }
 
+        /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }
 

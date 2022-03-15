@@ -24,6 +24,7 @@ class RuntimeArgs:
                  virtual_machine: Optional[pulumi.Input['VirtualMachineArgs']] = None):
         """
         The set of arguments for constructing a Runtime resource.
+        :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
         :param pulumi.Input['VirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
@@ -43,6 +44,9 @@ class RuntimeArgs:
     @property
     @pulumi.getter(name="runtimeId")
     def runtime_id(self) -> pulumi.Input[str]:
+        """
+        Required. User-defined unique ID of this Runtime.
+        """
         return pulumi.get(self, "runtime_id")
 
     @runtime_id.setter
@@ -123,6 +127,7 @@ class Runtime(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
         :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
         :param pulumi.Input[pulumi.InputType['VirtualMachineArgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
         """

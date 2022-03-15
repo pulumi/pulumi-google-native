@@ -73,7 +73,11 @@ class BucketArgs:
         :param pulumi.Input[str] metageneration: The metadata generation of this bucket.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input['BucketOwnerArgs'] owner: The owner of the bucket. This is always the project team's owner group.
+        :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
+        :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
+        :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
@@ -81,6 +85,7 @@ class BucketArgs:
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
+        :param pulumi.Input[str] user_project: The project to be billed for this request.
         :param pulumi.Input['BucketVersioningArgs'] versioning: The bucket's versioning configuration.
         :param pulumi.Input['BucketWebsiteArgs'] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         """
@@ -400,6 +405,9 @@ class BucketArgs:
     @property
     @pulumi.getter(name="predefinedAcl")
     def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Apply a predefined set of access controls to this bucket.
+        """
         return pulumi.get(self, "predefined_acl")
 
     @predefined_acl.setter
@@ -409,6 +417,9 @@ class BucketArgs:
     @property
     @pulumi.getter(name="predefinedDefaultObjectAcl")
     def predefined_default_object_acl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Apply a predefined set of default object access controls to this bucket.
+        """
         return pulumi.get(self, "predefined_default_object_acl")
 
     @predefined_default_object_acl.setter
@@ -439,6 +450,9 @@ class BucketArgs:
     @property
     @pulumi.getter
     def projection(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+        """
         return pulumi.get(self, "projection")
 
     @projection.setter
@@ -448,6 +462,9 @@ class BucketArgs:
     @property
     @pulumi.getter(name="provisionalUserProject")
     def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request if the target bucket is requester-pays bucket.
+        """
         return pulumi.get(self, "provisional_user_project")
 
     @provisional_user_project.setter
@@ -541,6 +558,9 @@ class BucketArgs:
     @property
     @pulumi.getter(name="userProject")
     def user_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project to be billed for this request.
+        """
         return pulumi.get(self, "user_project")
 
     @user_project.setter
@@ -639,7 +659,11 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] metageneration: The metadata generation of this bucket.
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[pulumi.InputType['BucketOwnerArgs']] owner: The owner of the bucket. This is always the project team's owner group.
+        :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this bucket.
+        :param pulumi.Input[str] predefined_default_object_acl: Apply a predefined set of default object access controls to this bucket.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
+        :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
+        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
@@ -647,6 +671,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
+        :param pulumi.Input[str] user_project: The project to be billed for this request.
         :param pulumi.Input[pulumi.InputType['BucketVersioningArgs']] versioning: The bucket's versioning configuration.
         :param pulumi.Input[pulumi.InputType['BucketWebsiteArgs']] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         """

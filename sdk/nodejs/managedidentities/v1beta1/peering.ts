@@ -129,6 +129,9 @@ export interface PeeringArgs {
      * Optional. Resource labels to represent user provided metadata.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Required. Peering Id, unique name to identify peering.
+     */
     peeringId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

@@ -119,6 +119,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request if the target bucket is requester-pays bucket.
+        /// </summary>
         [Input("provisionalUserProject")]
         public Input<string>? ProvisionalUserProject { get; set; }
 
@@ -128,6 +131,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
 

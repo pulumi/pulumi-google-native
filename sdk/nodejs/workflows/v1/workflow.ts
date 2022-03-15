@@ -145,5 +145,8 @@ export interface WorkflowArgs {
      * Workflow code to be executed. The size limit is 128KB.
      */
     sourceContents?: pulumi.Input<string>;
+    /**
+     * Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+     */
     workflowId: pulumi.Input<string>;
 }

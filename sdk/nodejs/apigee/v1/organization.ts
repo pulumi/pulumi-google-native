@@ -239,6 +239,9 @@ export interface OrganizationArgs {
      * Display name for the Apigee organization. Unused, but reserved for future use.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+     */
     parent: pulumi.Input<string>;
     /**
      * Configuration for the Portals settings.

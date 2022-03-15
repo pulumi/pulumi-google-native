@@ -132,7 +132,8 @@ type organizationArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName *string `pulumi:"displayName"`
-	Parent      string  `pulumi:"parent"`
+	// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+	Parent string `pulumi:"parent"`
 	// Configuration for the Portals settings.
 	PortalDisabled *bool `pulumi:"portalDisabled"`
 	// Properties defined in the Apigee organization profile.
@@ -165,7 +166,8 @@ type OrganizationArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringPtrInput
-	Parent      pulumi.StringInput
+	// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+	Parent pulumi.StringInput
 	// Configuration for the Portals settings.
 	PortalDisabled pulumi.BoolPtrInput
 	// Properties defined in the Apigee organization profile.

@@ -88,9 +88,15 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+        /// </summary>
         [Input("noManagedCertificate")]
         public Input<string>? NoManagedCertificate { get; set; }
 
+        /// <summary>
+        /// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+        /// </summary>
         [Input("overrideStrategy")]
         public Input<string>? OverrideStrategy { get; set; }
 

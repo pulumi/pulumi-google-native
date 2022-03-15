@@ -113,12 +113,14 @@ type regionSecurityPolicyArgs struct {
 	Project                *string                               `pulumi:"project"`
 	RecaptchaOptionsConfig *SecurityPolicyRecaptchaOptionsConfig `pulumi:"recaptchaOptionsConfig"`
 	Region                 string                                `pulumi:"region"`
-	RequestId              *string                               `pulumi:"requestId"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules []SecurityPolicyRule `pulumi:"rules"`
 	// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
-	Type         *RegionSecurityPolicyType `pulumi:"type"`
-	ValidateOnly *string                   `pulumi:"validateOnly"`
+	Type *RegionSecurityPolicyType `pulumi:"type"`
+	// If true, the request will not be committed.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a RegionSecurityPolicy resource.
@@ -140,11 +142,13 @@ type RegionSecurityPolicyArgs struct {
 	Project                pulumi.StringPtrInput
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigPtrInput
 	Region                 pulumi.StringInput
-	RequestId              pulumi.StringPtrInput
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+	RequestId pulumi.StringPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
 	Rules SecurityPolicyRuleArrayInput
 	// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
-	Type         RegionSecurityPolicyTypePtrInput
+	Type RegionSecurityPolicyTypePtrInput
+	// If true, the request will not be committed.
 	ValidateOnly pulumi.StringPtrInput
 }
 

@@ -135,6 +135,9 @@ export interface ConnectionProfileArgs {
      * A CloudSQL database connection profile.
      */
     cloudsql?: pulumi.Input<inputs.datamigration.v1.CloudSqlConnectionProfileArgs>;
+    /**
+     * Required. The connection profile identifier.
+     */
     connectionProfileId: pulumi.Input<string>;
     /**
      * The connection profile display name.
@@ -162,6 +165,9 @@ export interface ConnectionProfileArgs {
      * The database provider.
      */
     provider?: pulumi.Input<enums.datamigration.v1.ConnectionProfileProvider>;
+    /**
+     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).

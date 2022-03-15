@@ -69,10 +69,12 @@ type subscriptionArgs struct {
 	DeliveryConfig *DeliveryConfig `pulumi:"deliveryConfig"`
 	Location       *string         `pulumi:"location"`
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-	Name           *string `pulumi:"name"`
-	Project        *string `pulumi:"project"`
-	SkipBacklog    *string `pulumi:"skipBacklog"`
-	SubscriptionId string  `pulumi:"subscriptionId"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+	SkipBacklog *string `pulumi:"skipBacklog"`
+	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
+	SubscriptionId string `pulumi:"subscriptionId"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic *string `pulumi:"topic"`
 }
@@ -83,9 +85,11 @@ type SubscriptionArgs struct {
 	DeliveryConfig DeliveryConfigPtrInput
 	Location       pulumi.StringPtrInput
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-	Name           pulumi.StringPtrInput
-	Project        pulumi.StringPtrInput
-	SkipBacklog    pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+	SkipBacklog pulumi.StringPtrInput
+	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
 	SubscriptionId pulumi.StringInput
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic pulumi.StringPtrInput

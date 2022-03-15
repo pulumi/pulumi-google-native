@@ -25,6 +25,7 @@ class EnvironmentArgs:
                  text_to_speech_settings: Optional[pulumi.Input['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
+        :param pulumi.Input[str] environment_id: Required. The unique id of the new environment.
         :param pulumi.Input[str] agent_version: Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         :param pulumi.Input[str] description: Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input['GoogleCloudDialogflowV2FulfillmentArgs'] fulfillment: Optional. The fulfillment settings to use for this environment.
@@ -47,6 +48,9 @@ class EnvironmentArgs:
     @property
     @pulumi.getter(name="environmentId")
     def environment_id(self) -> pulumi.Input[str]:
+        """
+        Required. The unique id of the new environment.
+        """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
@@ -141,6 +145,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] agent_version: Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
         :param pulumi.Input[str] description: Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+        :param pulumi.Input[str] environment_id: Required. The unique id of the new environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2FulfillmentArgs']] fulfillment: Optional. The fulfillment settings to use for this environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2TextToSpeechSettingsArgs']] text_to_speech_settings: Optional. Text to speech settings for this environment.
         """

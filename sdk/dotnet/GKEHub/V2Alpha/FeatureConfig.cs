@@ -109,6 +109,9 @@ namespace Pulumi.GoogleNative.GKEHub.V2Alpha
 
     public sealed class FeatureConfigArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the feature config to create.
+        /// </summary>
         [Input("featureConfigId")]
         public Input<string>? FeatureConfigId { get; set; }
 
@@ -130,6 +133,9 @@ namespace Pulumi.GoogleNative.GKEHub.V2Alpha
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

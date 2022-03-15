@@ -142,6 +142,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("serviceLevelIndicator")]
         public Input<Inputs.ServiceLevelIndicatorArgs>? ServiceLevelIndicator { get; set; }
 
+        /// <summary>
+        /// Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+        /// </summary>
         [Input("serviceLevelObjectiveId")]
         public Input<string>? ServiceLevelObjectiveId { get; set; }
 

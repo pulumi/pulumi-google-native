@@ -71,6 +71,7 @@ func (GameServerDeploymentState) ElementType() reflect.Type {
 }
 
 type gameServerDeploymentArgs struct {
+	// Required. The ID of the game server deployment resource to create.
 	DeploymentId string `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description *string `pulumi:"description"`
@@ -86,6 +87,7 @@ type gameServerDeploymentArgs struct {
 
 // The set of arguments for constructing a GameServerDeployment resource.
 type GameServerDeploymentArgs struct {
+	// Required. The ID of the game server deployment resource to create.
 	DeploymentId pulumi.StringInput
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrInput

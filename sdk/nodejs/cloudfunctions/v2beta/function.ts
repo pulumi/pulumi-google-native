@@ -137,6 +137,9 @@ export interface FunctionArgs {
      * An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctions.v2beta.EventTriggerArgs>;
+    /**
+     * The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+     */
     functionId?: pulumi.Input<string>;
     /**
      * Labels associated with this Cloud Function.

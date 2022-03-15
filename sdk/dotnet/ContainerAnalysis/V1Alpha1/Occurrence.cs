@@ -252,6 +252,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("installation")]
         public Input<Inputs.InstallationArgs>? Installation { get; set; }
 
+        /// <summary>
+        /// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

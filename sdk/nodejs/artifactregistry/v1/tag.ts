@@ -88,6 +88,9 @@ export interface TagArgs {
     packageId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     repositoryId: pulumi.Input<string>;
+    /**
+     * The tag id to use for this repository.
+     */
     tagId?: pulumi.Input<string>;
     /**
      * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.

@@ -81,6 +81,7 @@ type githubEnterpriseConfigArgs struct {
 	AppId string `pulumi:"appId"`
 	// Name to display for this config.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
 	GheConfigId *string `pulumi:"gheConfigId"`
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl  *string `pulumi:"hostUrl"`
@@ -90,7 +91,8 @@ type githubEnterpriseConfigArgs struct {
 	// Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork *string `pulumi:"peeredNetwork"`
 	Project       *string `pulumi:"project"`
-	ProjectId     *string `pulumi:"projectId"`
+	// ID of the project.
+	ProjectId *string `pulumi:"projectId"`
 	// Names of secrets in Secret Manager.
 	Secrets *GitHubEnterpriseSecrets `pulumi:"secrets"`
 	// Optional. SSL certificate to use for requests to GitHub Enterprise.
@@ -105,6 +107,7 @@ type GithubEnterpriseConfigArgs struct {
 	AppId pulumi.StringInput
 	// Name to display for this config.
 	DisplayName pulumi.StringPtrInput
+	// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
 	GheConfigId pulumi.StringPtrInput
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl  pulumi.StringPtrInput
@@ -114,7 +117,8 @@ type GithubEnterpriseConfigArgs struct {
 	// Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork pulumi.StringPtrInput
 	Project       pulumi.StringPtrInput
-	ProjectId     pulumi.StringPtrInput
+	// ID of the project.
+	ProjectId pulumi.StringPtrInput
 	// Names of secrets in Secret Manager.
 	Secrets GitHubEnterpriseSecretsPtrInput
 	// Optional. SSL certificate to use for requests to GitHub Enterprise.

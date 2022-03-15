@@ -149,5 +149,8 @@ export interface WorkerPoolArgs {
      * Worker configuration for the `WorkerPool`.
      */
     workerConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.WorkerConfigArgs>;
+    /**
+     * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+     */
     workerPoolId: pulumi.Input<string>;
 }

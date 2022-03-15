@@ -89,10 +89,11 @@ type savedQueryArgs struct {
 	// Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
-	Name         *string `pulumi:"name"`
-	SavedQueryId string  `pulumi:"savedQueryId"`
-	V1Id         string  `pulumi:"v1Id"`
-	V1Id1        string  `pulumi:"v1Id1"`
+	Name *string `pulumi:"name"`
+	// Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+	SavedQueryId string `pulumi:"savedQueryId"`
+	V1Id         string `pulumi:"v1Id"`
+	V1Id1        string `pulumi:"v1Id1"`
 }
 
 // The set of arguments for constructing a SavedQuery resource.
@@ -104,7 +105,8 @@ type SavedQueryArgs struct {
 	// Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters.
 	Labels pulumi.StringMapInput
 	// The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
-	Name         pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
 	SavedQueryId pulumi.StringInput
 	V1Id         pulumi.StringInput
 	V1Id1        pulumi.StringInput

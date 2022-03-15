@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Required. A user-provided name of the dns authorization.
+        /// </summary>
         [Input("dnsAuthorizationId", required: true)]
         public Input<string> DnsAuthorizationId { get; set; } = null!;
 

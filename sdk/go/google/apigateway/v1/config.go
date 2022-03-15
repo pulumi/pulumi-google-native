@@ -85,6 +85,7 @@ func (ConfigState) ElementType() reflect.Type {
 }
 
 type configArgs struct {
+	// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
 	ApiConfigId string `pulumi:"apiConfigId"`
 	ApiId       string `pulumi:"apiId"`
 	// Optional. Display name.
@@ -105,6 +106,7 @@ type configArgs struct {
 
 // The set of arguments for constructing a Config resource.
 type ConfigArgs struct {
+	// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
 	ApiConfigId pulumi.StringInput
 	ApiId       pulumi.StringInput
 	// Optional. Display name.

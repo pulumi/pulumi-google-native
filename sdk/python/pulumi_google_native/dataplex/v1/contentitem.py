@@ -34,6 +34,7 @@ class ContentitemArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the content.
         :param pulumi.Input['GoogleCloudDataplexV1ContentNotebookArgs'] notebook: Notebook related configurations.
         :param pulumi.Input['GoogleCloudDataplexV1ContentSqlScriptArgs'] sql_script: Sql Script related configurations.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data_text", data_text)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -155,6 +156,9 @@ class ContentitemArgs:
     @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
@@ -190,6 +194,7 @@ class Contentitem(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentNotebookArgs']] notebook: Notebook related configurations.
         :param pulumi.Input[str] path: The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']] sql_script: Sql Script related configurations.
+        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload

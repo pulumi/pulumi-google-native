@@ -96,6 +96,9 @@ export interface DomainMappingArgs {
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
     apiVersion?: pulumi.Input<string>;
+    /**
+     * Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+     */
     dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".

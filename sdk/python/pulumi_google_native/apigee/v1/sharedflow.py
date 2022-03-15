@@ -22,9 +22,11 @@ class SharedflowArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Sharedflow resource.
+        :param pulumi.Input[str] action: Required. Must be set to either `import` or `validate`.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[str] name: Required. The name to give the shared flow
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -40,6 +42,9 @@ class SharedflowArgs:
     @property
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
+        """
+        Required. Must be set to either `import` or `validate`.
+        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -94,6 +99,9 @@ class SharedflowArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The name to give the shared flow
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -118,9 +126,11 @@ class Sharedflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] action: Required. Must be set to either `import` or `validate`.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[str] name: Required. The name to give the shared flow
         """
         ...
     @overload

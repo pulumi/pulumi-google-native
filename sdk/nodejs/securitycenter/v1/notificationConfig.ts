@@ -96,6 +96,9 @@ export class NotificationConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a NotificationConfig resource.
  */
 export interface NotificationConfigArgs {
+    /**
+     * Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+     */
     configId: pulumi.Input<string>;
     /**
      * The description of the notification config (max of 1024 characters).

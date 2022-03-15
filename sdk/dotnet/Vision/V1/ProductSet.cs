@@ -99,6 +99,9 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        /// </summary>
         [Input("productSetId")]
         public Input<string>? ProductSetId { get; set; }
 

@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("flowId", required: true)]
         public Input<string> FlowId { get; set; } = null!;
 
+        /// <summary>
+        /// The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
+        /// </summary>
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 

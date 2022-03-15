@@ -34,6 +34,7 @@ class ConversationArgs:
         The set of arguments for constructing a Conversation resource.
         :param pulumi.Input[str] agent_id: An opaque, user-specified string representing the human agent who handled the conversation.
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs'] call_metadata: Call-specific metadata.
+        :param pulumi.Input[str] conversation_id: A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
         :param pulumi.Input['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs'] data_source: The source of the audio and transcription for the conversation.
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
@@ -100,6 +101,9 @@ class ConversationArgs:
     @property
     @pulumi.getter(name="conversationId")
     def conversation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
+        """
         return pulumi.get(self, "conversation_id")
 
     @conversation_id.setter
@@ -260,6 +264,7 @@ class Conversation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] agent_id: An opaque, user-specified string representing the human agent who handled the conversation.
         :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs']] call_metadata: Call-specific metadata.
+        :param pulumi.Input[str] conversation_id: A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`
         :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs']] data_source: The source of the audio and transcription for the conversation.
         :param pulumi.Input[str] expire_time: The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.

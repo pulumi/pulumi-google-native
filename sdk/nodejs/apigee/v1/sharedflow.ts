@@ -93,6 +93,9 @@ export class Sharedflow extends pulumi.CustomResource {
  * The set of arguments for constructing a Sharedflow resource.
  */
 export interface SharedflowArgs {
+    /**
+     * Required. Must be set to either `import` or `validate`.
+     */
     action: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
@@ -106,6 +109,9 @@ export interface SharedflowArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * Required. The name to give the shared flow
+     */
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

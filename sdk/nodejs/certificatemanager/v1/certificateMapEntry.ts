@@ -122,6 +122,9 @@ export class CertificateMapEntry extends pulumi.CustomResource {
  * The set of arguments for constructing a CertificateMapEntry resource.
  */
 export interface CertificateMapEntryArgs {
+    /**
+     * Required. A user-provided name of the certificate map entry.
+     */
     certificateMapEntryId: pulumi.Input<string>;
     certificateMapId: pulumi.Input<string>;
     /**

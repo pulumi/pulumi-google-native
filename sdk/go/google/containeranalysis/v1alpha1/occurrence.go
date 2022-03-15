@@ -119,7 +119,8 @@ type occurrenceArgs struct {
 	Envelope *Envelope `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation *Installation `pulumi:"installation"`
-	Name         *string       `pulumi:"name"`
+	// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+	Name *string `pulumi:"name"`
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName *string `pulumi:"noteName"`
 	Project  *string `pulumi:"project"`
@@ -163,7 +164,8 @@ type OccurrenceArgs struct {
 	Envelope EnvelopePtrInput
 	// Describes the installation of a package on the linked resource.
 	Installation InstallationPtrInput
-	Name         pulumi.StringPtrInput
+	// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+	Name pulumi.StringPtrInput
 	// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
 	NoteName pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput

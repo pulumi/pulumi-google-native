@@ -162,9 +162,15 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Required. The user-provided ID to be assigned to the trigger.
+        /// </summary>
         [Input("triggerId", required: true)]
         public Input<string> TriggerId { get; set; } = null!;
 
+        /// <summary>
+        /// Required. If set, validate the request and preview the review, but do not actually post it.
+        /// </summary>
         [Input("validateOnly", required: true)]
         public Input<string> ValidateOnly { get; set; } = null!;
 

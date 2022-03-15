@@ -69,6 +69,7 @@ func (DataCollectorState) ElementType() reflect.Type {
 }
 
 type dataCollectorArgs struct {
+	// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
 	DataCollectorId *string `pulumi:"dataCollectorId"`
 	// A description of the data collector.
 	Description *string `pulumi:"description"`
@@ -81,6 +82,7 @@ type dataCollectorArgs struct {
 
 // The set of arguments for constructing a DataCollector resource.
 type DataCollectorArgs struct {
+	// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
 	DataCollectorId pulumi.StringPtrInput
 	// A description of the data collector.
 	Description pulumi.StringPtrInput

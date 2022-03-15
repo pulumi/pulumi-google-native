@@ -100,7 +100,8 @@ type entryArgs struct {
 	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
 	DisplayName  *string `pulumi:"displayName"`
 	EntryGroupId string  `pulumi:"entryGroupId"`
-	EntryId      string  `pulumi:"entryId"`
+	// Required. The id of the entry to create.
+	EntryId string `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec *GoogleCloudDatacatalogV1beta1GcsFilesetSpec `pulumi:"gcsFilesetSpec"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
@@ -128,7 +129,8 @@ type EntryArgs struct {
 	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
 	DisplayName  pulumi.StringPtrInput
 	EntryGroupId pulumi.StringInput
-	EntryId      pulumi.StringInput
+	// Required. The id of the entry to create.
+	EntryId pulumi.StringInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrInput
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.

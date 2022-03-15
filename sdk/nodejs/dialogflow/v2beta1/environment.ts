@@ -115,6 +115,9 @@ export interface EnvironmentArgs {
      * Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Required. The unique id of the new environment.
+     */
     environmentId: pulumi.Input<string>;
     /**
      * Optional. The fulfillment settings to use for this environment.

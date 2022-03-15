@@ -131,9 +131,10 @@ type buildArgs struct {
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket *string `pulumi:"logsBucket"`
 	// Special options for this build.
-	Options   *BuildOptions `pulumi:"options"`
-	Project   *string       `pulumi:"project"`
-	ProjectId string        `pulumi:"projectId"`
+	Options *BuildOptions `pulumi:"options"`
+	Project *string       `pulumi:"project"`
+	// Required. ID of the project.
+	ProjectId string `pulumi:"projectId"`
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
@@ -164,8 +165,9 @@ type BuildArgs struct {
 	// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
 	LogsBucket pulumi.StringPtrInput
 	// Special options for this build.
-	Options   BuildOptionsPtrInput
-	Project   pulumi.StringPtrInput
+	Options BuildOptionsPtrInput
+	Project pulumi.StringPtrInput
+	// Required. ID of the project.
 	ProjectId pulumi.StringInput
 	// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
 	QueueTtl pulumi.StringPtrInput

@@ -96,6 +96,9 @@ export interface ResponsePolicyRuleArgs {
      * Answer this query with a behavior rather than DNS data.
      */
     behavior?: pulumi.Input<enums.dns.v1beta2.ResponsePolicyRuleBehavior>;
+    /**
+     * For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     */
     clientOperationId?: pulumi.Input<string>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.

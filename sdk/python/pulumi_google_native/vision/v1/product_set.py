@@ -23,6 +23,7 @@ class ProductSetArgs:
         The set of arguments for constructing a ProductSet resource.
         :param pulumi.Input[str] display_name: The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
         :param pulumi.Input[str] name: The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+        :param pulumi.Input[str] product_set_id: A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -71,6 +72,9 @@ class ProductSetArgs:
     @property
     @pulumi.getter(name="productSetId")
     def product_set_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
+        """
         return pulumi.get(self, "product_set_id")
 
     @product_set_id.setter
@@ -105,6 +109,7 @@ class ProductSet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
         :param pulumi.Input[str] name: The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
+        :param pulumi.Input[str] product_set_id: A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
         """
         ...
     @overload

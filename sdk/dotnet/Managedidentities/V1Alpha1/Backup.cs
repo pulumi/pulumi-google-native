@@ -103,6 +103,9 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
 
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain.
+        /// </summary>
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 

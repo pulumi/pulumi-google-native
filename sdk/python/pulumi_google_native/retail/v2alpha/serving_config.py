@@ -40,6 +40,7 @@ class ServingConfigArgs:
         """
         The set of arguments for constructing a ServingConfig resource.
         :param pulumi.Input[str] display_name: The human readable serving config display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param pulumi.Input[str] serving_config_id: Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
         :param pulumi.Input[Sequence[pulumi.Input['ServingConfigSolutionTypesItem']]] solution_types: Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] boost_control_ids: Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and [SearchRequest.boost_spec] are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[str] diversity_level: How much diversity to use in recommendation model results e.g. 'medium-diversity' or 'high-diversity'. Currently supported values: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity' If not specified, we choose default based on recommendation model type. Default value: 'no-diversity'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
@@ -120,6 +121,9 @@ class ServingConfigArgs:
     @property
     @pulumi.getter(name="servingConfigId")
     def serving_config_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+        """
         return pulumi.get(self, "serving_config_id")
 
     @serving_config_id.setter
@@ -385,6 +389,7 @@ class ServingConfig(pulumi.CustomResource):
         :param pulumi.Input[str] price_reranking_level: How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_control_ids: Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replacement_control_ids: Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
+        :param pulumi.Input[str] serving_config_id: Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
         :param pulumi.Input[Sequence[pulumi.Input['ServingConfigSolutionTypesItem']]] solution_types: Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] twoway_synonyms_control_ids: Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
         """

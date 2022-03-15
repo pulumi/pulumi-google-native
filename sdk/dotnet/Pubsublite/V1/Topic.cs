@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("retentionConfig")]
         public Input<Inputs.RetentionConfigArgs>? RetentionConfig { get; set; }
 
+        /// <summary>
+        /// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+        /// </summary>
         [Input("topicId", required: true)]
         public Input<string> TopicId { get; set; } = null!;
 

@@ -95,10 +95,12 @@ type spokeArgs struct {
 	LinkedVpnTunnels *LinkedVpnTunnels `pulumi:"linkedVpnTunnels"`
 	Location         *string           `pulumi:"location"`
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
-	Name      *string `pulumi:"name"`
-	Project   *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	SpokeId   string  `pulumi:"spokeId"`
+	// Required. Unique id for the spoke to create.
+	SpokeId string `pulumi:"spokeId"`
 }
 
 // The set of arguments for constructing a Spoke resource.
@@ -117,10 +119,12 @@ type SpokeArgs struct {
 	LinkedVpnTunnels LinkedVpnTunnelsPtrInput
 	Location         pulumi.StringPtrInput
 	// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
-	Name      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to retry your request. When you need to retry, this ID lets the server know that it can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check to see whether the original operation was received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	SpokeId   pulumi.StringInput
+	// Required. Unique id for the spoke to create.
+	SpokeId pulumi.StringInput
 }
 
 func (SpokeArgs) ElementType() reflect.Type {

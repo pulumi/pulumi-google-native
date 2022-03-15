@@ -76,6 +76,7 @@ func (ConfigState) ElementType() reflect.Type {
 }
 
 type configArgs struct {
+	// Required. The ID of the game server config resource to create.
 	ConfigId string `pulumi:"configId"`
 	// The description of the game server config.
 	Description *string `pulumi:"description"`
@@ -94,6 +95,7 @@ type configArgs struct {
 
 // The set of arguments for constructing a Config resource.
 type ConfigArgs struct {
+	// Required. The ID of the game server config resource to create.
 	ConfigId pulumi.StringInput
 	// The description of the game server config.
 	Description pulumi.StringPtrInput

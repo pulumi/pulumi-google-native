@@ -79,7 +79,8 @@ type environmentArgs struct {
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
-	DisplayName   *string `pulumi:"displayName"`
+	DisplayName *string `pulumi:"displayName"`
+	// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
 	EnvironmentId string  `pulumi:"environmentId"`
 	Location      *string `pulumi:"location"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
@@ -96,7 +97,8 @@ type EnvironmentArgs struct {
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
-	DisplayName   pulumi.StringPtrInput
+	DisplayName pulumi.StringPtrInput
+	// Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash.
 	EnvironmentId pulumi.StringInput
 	Location      pulumi.StringPtrInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`

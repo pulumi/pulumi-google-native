@@ -97,6 +97,9 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
+        /// <summary>
+        /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+        /// </summary>
         [Input("dryRun")]
         public Input<string>? DryRun { get; set; }
 

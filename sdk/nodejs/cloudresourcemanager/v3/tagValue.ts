@@ -129,5 +129,8 @@ export interface TagValueArgs {
      * Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      */
     shortName: pulumi.Input<string>;
+    /**
+     * Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
+     */
     validateOnly?: pulumi.Input<string>;
 }

@@ -88,6 +88,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
     public sealed class ResponsePolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        /// </summary>
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }
 

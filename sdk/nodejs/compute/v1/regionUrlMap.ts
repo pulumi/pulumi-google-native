@@ -181,6 +181,9 @@ export interface RegionUrlMapArgs {
     pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.v1.PathMatcherArgs>[]>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
+    /**
+     * begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.

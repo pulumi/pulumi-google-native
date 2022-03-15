@@ -122,6 +122,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class ImportJobArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        /// </summary>
         [Input("importJobId")]
         public Input<string>? ImportJobId { get; set; }
 

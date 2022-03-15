@@ -90,13 +90,15 @@ func (EndpointState) ElementType() reflect.Type {
 type endpointArgs struct {
 	// User-provided description of the endpoint
 	Description *string `pulumi:"description"`
-	EndpointId  string  `pulumi:"endpointId"`
+	// Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+	EndpointId string `pulumi:"endpointId"`
 	// The labels of the endpoint.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// The fully qualified URL of the network to which the IDS Endpoint is attached.
-	Network   string  `pulumi:"network"`
-	Project   *string `pulumi:"project"`
+	Network string  `pulumi:"network"`
+	Project *string `pulumi:"project"`
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Lowest threat severity that this endpoint will alert on.
 	Severity EndpointSeverity `pulumi:"severity"`
@@ -108,13 +110,15 @@ type endpointArgs struct {
 type EndpointArgs struct {
 	// User-provided description of the endpoint
 	Description pulumi.StringPtrInput
-	EndpointId  pulumi.StringInput
+	// Required. The endpoint identifier. This will be part of the endpoint's resource name. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error.
+	EndpointId pulumi.StringInput
 	// The labels of the endpoint.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The fully qualified URL of the network to which the IDS Endpoint is attached.
-	Network   pulumi.StringInput
-	Project   pulumi.StringPtrInput
+	Network pulumi.StringInput
+	Project pulumi.StringPtrInput
+	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Lowest threat severity that this endpoint will alert on.
 	Severity EndpointSeverityInput

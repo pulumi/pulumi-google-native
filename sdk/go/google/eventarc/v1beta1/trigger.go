@@ -98,8 +98,10 @@ type triggerArgs struct {
 	Project *string `pulumi:"project"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	TriggerId      string  `pulumi:"triggerId"`
-	ValidateOnly   string  `pulumi:"validateOnly"`
+	// Required. The user-provided ID to be assigned to the trigger.
+	TriggerId string `pulumi:"triggerId"`
+	// Required. If set, validate the request and preview the review, but do not actually post it.
+	ValidateOnly string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Trigger resource.
@@ -116,8 +118,10 @@ type TriggerArgs struct {
 	Project pulumi.StringPtrInput
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount pulumi.StringPtrInput
-	TriggerId      pulumi.StringInput
-	ValidateOnly   pulumi.StringInput
+	// Required. The user-provided ID to be assigned to the trigger.
+	TriggerId pulumi.StringInput
+	// Required. If set, validate the request and preview the review, but do not actually post it.
+	ValidateOnly pulumi.StringInput
 }
 
 func (TriggerArgs) ElementType() reflect.Type {

@@ -24,8 +24,10 @@ class SourceArgs:
                  vmware: Optional[pulumi.Input['VmwareSourceDetailsArgs']] = None):
         """
         The set of arguments for constructing a Source resource.
+        :param pulumi.Input[str] source_id: Required. The source identifier.
         :param pulumi.Input[str] description: User-provided description of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the source.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['VmwareSourceDetailsArgs'] vmware: Vmware type source details.
         """
         pulumi.set(__self__, "source_id", source_id)
@@ -45,6 +47,9 @@ class SourceArgs:
     @property
     @pulumi.getter(name="sourceId")
     def source_id(self) -> pulumi.Input[str]:
+        """
+        Required. The source identifier.
+        """
         return pulumi.get(self, "source_id")
 
     @source_id.setter
@@ -96,6 +101,9 @@ class SourceArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -136,6 +144,8 @@ class Source(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the source.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] source_id: Required. The source identifier.
         :param pulumi.Input[pulumi.InputType['VmwareSourceDetailsArgs']] vmware: Vmware type source details.
         """
         ...

@@ -81,8 +81,9 @@ type repositoryArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name         *string `pulumi:"name"`
-	Project      *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// The repository id to use for this repository.
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -102,8 +103,9 @@ type RepositoryArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name         pulumi.StringPtrInput
-	Project      pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput

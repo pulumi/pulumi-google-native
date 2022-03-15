@@ -85,7 +85,8 @@ type featureArgs struct {
 	Location     *string           `pulumi:"location"`
 	MembershipId string            `pulumi:"membershipId"`
 	Project      *string           `pulumi:"project"`
-	RequestId    *string           `pulumi:"requestId"`
+	// Idempotent request UUID.
+	RequestId *string `pulumi:"requestId"`
 	// Lifecycle information of the resource itself.
 	ResourceState *ResourceState `pulumi:"resourceState"`
 }
@@ -99,7 +100,8 @@ type FeatureArgs struct {
 	Location     pulumi.StringPtrInput
 	MembershipId pulumi.StringInput
 	Project      pulumi.StringPtrInput
-	RequestId    pulumi.StringPtrInput
+	// Idempotent request UUID.
+	RequestId pulumi.StringPtrInput
 	// Lifecycle information of the resource itself.
 	ResourceState ResourceStatePtrInput
 }

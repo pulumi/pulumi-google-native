@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("enableAutoReload")]
         public Input<bool>? EnableAutoReload { get; set; }
 
+        /// <summary>
+        /// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
+        /// </summary>
         [Input("importGcsCustomMetadata")]
         public Input<string>? ImportGcsCustomMetadata { get; set; }
 

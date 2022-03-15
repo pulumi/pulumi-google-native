@@ -150,6 +150,9 @@ export interface LakeArgs {
      * Optional. User-defined labels for the lake.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location.
+     */
     lakeId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
@@ -157,5 +160,8 @@ export interface LakeArgs {
      */
     metastore?: pulumi.Input<inputs.dataplex.v1.GoogleCloudDataplexV1LakeMetastoreArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. Only validate the request, but do not perform mutations. The default is false.
+     */
     validateOnly?: pulumi.Input<string>;
 }

@@ -33,6 +33,7 @@ class OrganizationArgs:
         """
         The set of arguments for constructing a Organization resource.
         :param pulumi.Input[str] analytics_region: DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] parent: Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         :param pulumi.Input['OrganizationRuntimeType'] runtime_type: Runtime type of the Apigee organization based on the Apigee subscription purchased.
         :param pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
@@ -90,6 +91,9 @@ class OrganizationArgs:
     @property
     @pulumi.getter
     def parent(self) -> pulumi.Input[str]:
+        """
+        Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+        """
         return pulumi.get(self, "parent")
 
     @parent.setter
@@ -275,6 +279,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] customer_name: Not used by Apigee.
         :param pulumi.Input[str] description: Description of the Apigee organization.
         :param pulumi.Input[str] display_name: Display name for the Apigee organization. Unused, but reserved for future use.
+        :param pulumi.Input[str] parent: Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         :param pulumi.Input[bool] portal_disabled: Configuration for the Portals settings.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Properties defined in the Apigee organization profile.
         :param pulumi.Input[str] runtime_database_encryption_key_name: Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.

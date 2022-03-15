@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Resourcefile")]
     public partial class Resourcefile : Pulumi.CustomResource
@@ -105,12 +106,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _extensions = value;
         }
 
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        /// <summary>
+        /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&amp;{}\[\]()+\-=,.~'` ]{1,255}
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        /// <summary>
+        /// Required. Resource file type. {{ resource_file_type }}
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

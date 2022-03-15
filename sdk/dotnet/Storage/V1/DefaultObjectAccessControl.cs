@@ -221,6 +221,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("projectTeam")]
         public Input<Inputs.DefaultObjectAccessControlProjectTeamArgs>? ProjectTeam { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request if the target bucket is requester-pays bucket.
+        /// </summary>
         [Input("provisionalUserProject")]
         public Input<string>? ProvisionalUserProject { get; set; }
 
@@ -236,6 +239,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
 

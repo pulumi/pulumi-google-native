@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class SharedflowArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Must be set to either `import` or `validate`.
+        /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
 
@@ -111,6 +114,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _extensions = value;
         }
 
+        /// <summary>
+        /// Required. The name to give the shared flow
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

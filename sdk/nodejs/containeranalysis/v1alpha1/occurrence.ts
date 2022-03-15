@@ -233,6 +233,9 @@ export interface OccurrenceArgs {
      * Describes the installation of a package on the linked resource.
      */
     installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
+    /**
+     * The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+     */
     name?: pulumi.Input<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.

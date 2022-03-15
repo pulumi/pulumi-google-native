@@ -102,6 +102,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class ApiArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
@@ -129,12 +132,18 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _extensions = value;
         }
 
+        /// <summary>
+        /// Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        /// <summary>
+        /// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+        /// </summary>
         [Input("validate")]
         public Input<string>? Validate { get; set; }
 

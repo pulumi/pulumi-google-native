@@ -85,8 +85,9 @@ type repositoryArgs struct {
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig *MavenRepositoryConfig `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name         *string `pulumi:"name"`
-	Project      *string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
+	// The repository id to use for this repository.
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -108,8 +109,9 @@ type RepositoryArgs struct {
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigPtrInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
-	Name         pulumi.StringPtrInput
-	Project      pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput

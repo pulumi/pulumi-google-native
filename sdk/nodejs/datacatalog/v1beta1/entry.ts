@@ -170,6 +170,9 @@ export interface EntryArgs {
      */
     displayName?: pulumi.Input<string>;
     entryGroupId: pulumi.Input<string>;
+    /**
+     * Required. The id of the entry to create.
+     */
     entryId: pulumi.Input<string>;
     /**
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.

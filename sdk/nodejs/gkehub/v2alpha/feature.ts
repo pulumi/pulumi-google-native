@@ -131,6 +131,9 @@ export interface FeatureArgs {
     location?: pulumi.Input<string>;
     membershipId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Idempotent request UUID.
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Lifecycle information of the resource itself.

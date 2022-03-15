@@ -68,6 +68,7 @@ func (EndpointAttachmentState) ElementType() reflect.Type {
 }
 
 type endpointAttachmentArgs struct {
+	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Location of the endpoint attachment.
 	Location *string `pulumi:"location"`
@@ -80,6 +81,7 @@ type endpointAttachmentArgs struct {
 
 // The set of arguments for constructing a EndpointAttachment resource.
 type EndpointAttachmentArgs struct {
+	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Location of the endpoint attachment.
 	Location pulumi.StringPtrInput

@@ -26,8 +26,10 @@ class RouteArgs:
         The set of arguments for constructing a Route resource.
         :param pulumi.Input[str] destination_address: Destination address for connection
         :param pulumi.Input[str] display_name: Display name.
+        :param pulumi.Input[str] route_id: Required. The Route identifier.
         :param pulumi.Input[int] destination_port: Destination port for connection
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         pulumi.set(__self__, "destination_address", destination_address)
         pulumi.set(__self__, "display_name", display_name)
@@ -80,6 +82,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="routeId")
     def route_id(self) -> pulumi.Input[str]:
+        """
+        Required. The Route identifier.
+        """
         return pulumi.get(self, "route_id")
 
     @route_id.setter
@@ -131,6 +136,9 @@ class RouteArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -163,6 +171,8 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[int] destination_port: Destination port for connection
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
+        :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] route_id: Required. The Route identifier.
         """
         ...
     @overload

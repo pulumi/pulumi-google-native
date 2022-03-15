@@ -116,14 +116,16 @@ type migratingVmArgs struct {
 	// The display name attached to the MigratingVm by the user.
 	DisplayName *string `pulumi:"displayName"`
 	// The labels of the migrating VM.
-	Labels        map[string]string `pulumi:"labels"`
-	Location      *string           `pulumi:"location"`
-	MigratingVmId string            `pulumi:"migratingVmId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	// Required. The migratingVm identifier.
+	MigratingVmId string `pulumi:"migratingVmId"`
 	// The replication schedule policy.
-	Policy    *SchedulePolicy `pulumi:"policy"`
-	Project   *string         `pulumi:"project"`
-	RequestId *string         `pulumi:"requestId"`
-	SourceId  string          `pulumi:"sourceId"`
+	Policy  *SchedulePolicy `pulumi:"policy"`
+	Project *string         `pulumi:"project"`
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	RequestId *string `pulumi:"requestId"`
+	SourceId  string  `pulumi:"sourceId"`
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
 	SourceVmId *string `pulumi:"sourceVmId"`
 	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
@@ -145,12 +147,14 @@ type MigratingVmArgs struct {
 	// The display name attached to the MigratingVm by the user.
 	DisplayName pulumi.StringPtrInput
 	// The labels of the migrating VM.
-	Labels        pulumi.StringMapInput
-	Location      pulumi.StringPtrInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	// Required. The migratingVm identifier.
 	MigratingVmId pulumi.StringInput
 	// The replication schedule policy.
-	Policy    SchedulePolicyPtrInput
-	Project   pulumi.StringPtrInput
+	Policy  SchedulePolicyPtrInput
+	Project pulumi.StringPtrInput
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	SourceId  pulumi.StringInput
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.

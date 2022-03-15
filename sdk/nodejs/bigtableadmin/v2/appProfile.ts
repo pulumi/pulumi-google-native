@@ -98,6 +98,9 @@ export class AppProfile extends pulumi.CustomResource {
  * The set of arguments for constructing a AppProfile resource.
  */
 export interface AppProfileArgs {
+    /**
+     * Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
+     */
     appProfileId: pulumi.Input<string>;
     /**
      * Long form description of the use case for this AppProfile.
@@ -107,6 +110,9 @@ export interface AppProfileArgs {
      * Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * If true, ignore safety checks when creating the app profile.
+     */
     ignoreWarnings?: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
     /**

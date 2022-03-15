@@ -26,6 +26,7 @@ class ConnectionArgs:
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input['CloudSqlPropertiesArgs'] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input[str] connection_id: Optional. Connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: User provided description.
         :param pulumi.Input[str] friendly_name: User provided display name for the connection.
         :param pulumi.Input[str] name: The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
@@ -60,6 +61,9 @@ class ConnectionArgs:
     @property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Connection id that should be assigned to the created connection.
+        """
         return pulumi.get(self, "connection_id")
 
     @connection_id.setter
@@ -140,6 +144,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']] cloud_sql: Cloud SQL properties.
+        :param pulumi.Input[str] connection_id: Optional. Connection id that should be assigned to the created connection.
         :param pulumi.Input[str] description: User provided description.
         :param pulumi.Input[str] friendly_name: User provided display name for the connection.
         :param pulumi.Input[str] name: The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`

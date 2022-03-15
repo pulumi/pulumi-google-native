@@ -172,6 +172,9 @@ export interface ConnectionArgs {
      * Optional. Configuration for configuring the connection with an external system.
      */
     configVariables?: pulumi.Input<pulumi.Input<inputs.connectors.v1.ConfigVariableArgs>[]>;
+    /**
+     * Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
+     */
     connectionId: pulumi.Input<string>;
     /**
      * Connector version on which the connection is created. The format is: projects/*&#47;locations/global/providers/*&#47;connectors/*&#47;versions/*

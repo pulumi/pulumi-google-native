@@ -20,6 +20,7 @@ class ReservationArgs:
                  throughput_capacity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
+        :param pulumi.Input[str] reservation_id: Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
         :param pulumi.Input[str] name: The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
         :param pulumi.Input[str] throughput_capacity: The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
         """
@@ -36,6 +37,9 @@ class ReservationArgs:
     @property
     @pulumi.getter(name="reservationId")
     def reservation_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
+        """
         return pulumi.get(self, "reservation_id")
 
     @reservation_id.setter
@@ -102,6 +106,7 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+        :param pulumi.Input[str] reservation_id: Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`.
         :param pulumi.Input[str] throughput_capacity: The reserved throughput capacity. Every unit of throughput capacity is equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed messages. Any topics which are declared as using capacity from a Reservation will consume resources from this reservation instead of being charged individually.
         """
         ...

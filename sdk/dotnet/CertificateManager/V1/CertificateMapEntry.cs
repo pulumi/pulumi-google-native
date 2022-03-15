@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
     public sealed class CertificateMapEntryArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. A user-provided name of the certificate map entry.
+        /// </summary>
         [Input("certificateMapEntryId", required: true)]
         public Input<string> CertificateMapEntryId { get; set; } = null!;
 

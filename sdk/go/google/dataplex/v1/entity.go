@@ -135,9 +135,10 @@ type entityArgs struct {
 	// Immutable. Identifies the storage system of the entity data.
 	System EntitySystem `pulumi:"system"`
 	// Immutable. The type of entity.
-	Type         EntityType `pulumi:"type"`
-	ValidateOnly *string    `pulumi:"validateOnly"`
-	Zone         *string    `pulumi:"zone"`
+	Type EntityType `pulumi:"type"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
+	Zone         *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Entity resource.
@@ -166,7 +167,8 @@ type EntityArgs struct {
 	// Immutable. Identifies the storage system of the entity data.
 	System EntitySystemInput
 	// Immutable. The type of entity.
-	Type         EntityTypeInput
+	Type EntityTypeInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 	Zone         pulumi.StringPtrInput
 }

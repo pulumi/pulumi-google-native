@@ -118,7 +118,8 @@ type noteArgs struct {
 	// A detailed description of this `Note`.
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name   *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The ID to use for this note.
 	NoteId *string `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
 	Package *Package `pulumi:"package"`
@@ -162,7 +163,8 @@ type NoteArgs struct {
 	// A detailed description of this `Note`.
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name   pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The ID to use for this note.
 	NoteId pulumi.StringPtrInput
 	// A note describing a package hosted by various package managers.
 	Package PackagePtrInput

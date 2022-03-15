@@ -86,7 +86,8 @@ type realmArgs struct {
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	RealmId string  `pulumi:"realmId"`
+	// Required. The ID of the realm resource to create.
+	RealmId string `pulumi:"realmId"`
 	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone string `pulumi:"timeZone"`
 }
@@ -103,6 +104,7 @@ type RealmArgs struct {
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// Required. The ID of the realm resource to create.
 	RealmId pulumi.StringInput
 	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
 	TimeZone pulumi.StringInput

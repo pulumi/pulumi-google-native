@@ -69,6 +69,7 @@ func (AttestorState) ElementType() reflect.Type {
 }
 
 type attestorArgs struct {
+	// Required. The attestors ID.
 	AttestorId string `pulumi:"attestorId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
@@ -83,6 +84,7 @@ type attestorArgs struct {
 
 // The set of arguments for constructing a Attestor resource.
 type AttestorArgs struct {
+	// Required. The attestors ID.
 	AttestorId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput

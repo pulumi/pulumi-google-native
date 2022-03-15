@@ -38,6 +38,7 @@ class ManagedZoneArgs:
                  visibility: Optional[pulumi.Input['ManagedZoneVisibility']] = None):
         """
         The set of arguments for constructing a ManagedZone resource.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
@@ -98,6 +99,9 @@ class ManagedZoneArgs:
     @property
     @pulumi.getter(name="clientOperationId")
     def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+        """
         return pulumi.get(self, "client_operation_id")
 
     @client_operation_id.setter
@@ -352,6 +356,7 @@ class ManagedZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[str] creation_time: The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".

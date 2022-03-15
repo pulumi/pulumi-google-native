@@ -172,6 +172,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
 
+        /// <summary>
+        /// Required. The id of the entry to create.
+        /// </summary>
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
 

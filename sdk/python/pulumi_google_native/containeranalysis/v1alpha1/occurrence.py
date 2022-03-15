@@ -48,6 +48,7 @@ class OccurrenceArgs:
         :param pulumi.Input['DSSEAttestationOccurrenceArgs'] dsse_attestation: This represents a DSSE attestation occurrence
         :param pulumi.Input['EnvelopeArgs'] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input['InstallationArgs'] installation: Describes the installation of a package on the linked resource.
+        :param pulumi.Input[str] name: The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input['ResourceArgs'] resource:  The resource for which the `Occurrence` applies.
@@ -213,6 +214,9 @@ class OccurrenceArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -390,6 +394,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DSSEAttestationOccurrenceArgs']] dsse_attestation: This represents a DSSE attestation occurrence
         :param pulumi.Input[pulumi.InputType['EnvelopeArgs']] envelope: https://github.com/secure-systems-lab/dsse
         :param pulumi.Input[pulumi.InputType['InstallationArgs']] installation: Describes the installation of a package on the linked resource.
+        :param pulumi.Input[str] name: The name of the project. Should be of the form "projects/{project_id}". @Deprecated
         :param pulumi.Input[str] note_name: An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the `Note`
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource:  The resource for which the `Occurrence` applies.

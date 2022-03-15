@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("apiKey", required: true)]
         public Input<string> ApiKey { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        /// </summary>
         [Input("bitbucketServerConfigId")]
         public Input<string>? BitbucketServerConfigId { get; set; }
 

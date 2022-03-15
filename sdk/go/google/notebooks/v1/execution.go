@@ -80,7 +80,8 @@ func (ExecutionState) ElementType() reflect.Type {
 type executionArgs struct {
 	// A brief description of this execution.
 	Description *string `pulumi:"description"`
-	ExecutionId string  `pulumi:"executionId"`
+	// Required. User-defined unique ID of this execution.
+	ExecutionId string `pulumi:"executionId"`
 	// execute metadata including name, hardware spec, region, labels, etc.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
 	Location          *string            `pulumi:"location"`
@@ -93,6 +94,7 @@ type executionArgs struct {
 type ExecutionArgs struct {
 	// A brief description of this execution.
 	Description pulumi.StringPtrInput
+	// Required. User-defined unique ID of this execution.
 	ExecutionId pulumi.StringInput
 	// execute metadata including name, hardware spec, region, labels, etc.
 	ExecutionTemplate ExecutionTemplatePtrInput

@@ -23,6 +23,7 @@ class RealmArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Realm resource.
+        :param pulumi.Input[str] realm_id: Required. The ID of the realm resource to create.
         :param pulumi.Input[str] time_zone: Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
         :param pulumi.Input[str] description: Human readable description of the realm.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
@@ -47,6 +48,9 @@ class RealmArgs:
     @property
     @pulumi.getter(name="realmId")
     def realm_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID of the realm resource to create.
+        """
         return pulumi.get(self, "realm_id")
 
     @realm_id.setter
@@ -155,6 +159,7 @@ class Realm(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this realm. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
+        :param pulumi.Input[str] realm_id: Required. The ID of the realm resource to create.
         :param pulumi.Input[str] time_zone: Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
         """
         ...

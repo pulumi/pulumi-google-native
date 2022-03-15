@@ -38,6 +38,8 @@ class SpokeArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
         :param pulumi.Input[str] name: Immutable. The name of a Spoke resource.
+        :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] spoke_id: Optional. Unique id for the Spoke to create.
         :param pulumi.Input[str] update_time: The time when the Spoke was updated.
         """
         if create_time is not None:
@@ -184,6 +186,9 @@ class SpokeArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -193,6 +198,9 @@ class SpokeArgs:
     @property
     @pulumi.getter(name="spokeId")
     def spoke_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Unique id for the Spoke to create.
+        """
         return pulumi.get(self, "spoke_id")
 
     @spoke_id.setter
@@ -244,6 +252,8 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]] linked_router_appliance_instances: The URIs of linked Router appliance resources
         :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
         :param pulumi.Input[str] name: Immutable. The name of a Spoke resource.
+        :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] spoke_id: Optional. Unique id for the Spoke to create.
         :param pulumi.Input[str] update_time: The time when the Spoke was updated.
         """
         ...

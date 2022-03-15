@@ -113,6 +113,9 @@ export class OrganizationBigQueryExport extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationBigQueryExport resource.
  */
 export interface OrganizationBigQueryExportArgs {
+    /**
+     * Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
+     */
     bigQueryExportId: pulumi.Input<string>;
     /**
      * The dataset to write findings' updates to. Its format is "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).

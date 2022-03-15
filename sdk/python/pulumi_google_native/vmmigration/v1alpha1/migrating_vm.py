@@ -31,12 +31,14 @@ class MigratingVmArgs:
                  target_defaults: Optional[pulumi.Input['TargetVMDetailsArgs']] = None):
         """
         The set of arguments for constructing a MigratingVm resource.
+        :param pulumi.Input[str] migrating_vm_id: Required. The migratingVm identifier.
         :param pulumi.Input['ComputeEngineTargetDefaultsArgs'] compute_engine_target_defaults: Details of the target VM in Compute Engine.
         :param pulumi.Input['TargetVMDetailsArgs'] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
         :param pulumi.Input[str] display_name: The display name attached to the MigratingVm by the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
         :param pulumi.Input['SchedulePolicyArgs'] policy: The replication schedule policy.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
         :param pulumi.Input['TargetVMDetailsArgs'] target_defaults: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
@@ -74,6 +76,9 @@ class MigratingVmArgs:
     @property
     @pulumi.getter(name="migratingVmId")
     def migrating_vm_id(self) -> pulumi.Input[str]:
+        """
+        Required. The migratingVm identifier.
+        """
         return pulumi.get(self, "migrating_vm_id")
 
     @migrating_vm_id.setter
@@ -182,6 +187,9 @@ class MigratingVmArgs:
     @property
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
@@ -243,7 +251,9 @@ class MigratingVm(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
         :param pulumi.Input[str] display_name: The display name attached to the MigratingVm by the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
+        :param pulumi.Input[str] migrating_vm_id: Required. The migratingVm identifier.
         :param pulumi.Input[pulumi.InputType['SchedulePolicyArgs']] policy: The replication schedule policy.
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
         :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] target_defaults: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """

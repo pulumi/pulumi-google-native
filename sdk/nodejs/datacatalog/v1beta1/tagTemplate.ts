@@ -98,5 +98,8 @@ export interface TagTemplateArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. The id of the tag template to create.
+     */
     tagTemplateId: pulumi.Input<string>;
 }

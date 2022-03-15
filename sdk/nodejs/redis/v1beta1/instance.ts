@@ -275,6 +275,9 @@ export interface InstanceArgs {
      * An arbitrary and optional user-provided name for the instance.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Required. The logical name of the Redis instance in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project / location
+     */
     instanceId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata

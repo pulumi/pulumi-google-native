@@ -23,6 +23,7 @@ class StudyArgs:
         """
         The set of arguments for constructing a Study resource.
         :param pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'] study_config: Configuration of the study.
+        :param pulumi.Input[str] study_id: Required. The ID to use for the study, which will become the final component of the study's resource name.
         """
         pulumi.set(__self__, "study_config", study_config)
         pulumi.set(__self__, "study_id", study_id)
@@ -46,6 +47,9 @@ class StudyArgs:
     @property
     @pulumi.getter(name="studyId")
     def study_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for the study, which will become the final component of the study's resource name.
+        """
         return pulumi.get(self, "study_id")
 
     @study_id.setter
@@ -88,6 +92,7 @@ class Study(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']] study_config: Configuration of the study.
+        :param pulumi.Input[str] study_id: Required. The ID to use for the study, which will become the final component of the study's resource name.
         """
         ...
     @overload

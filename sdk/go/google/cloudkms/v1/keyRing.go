@@ -61,6 +61,7 @@ func (KeyRingState) ElementType() reflect.Type {
 }
 
 type keyRingArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	KeyRingId *string `pulumi:"keyRingId"`
 	Location  *string `pulumi:"location"`
 	Project   *string `pulumi:"project"`
@@ -68,6 +69,7 @@ type keyRingArgs struct {
 
 // The set of arguments for constructing a KeyRing resource.
 type KeyRingArgs struct {
+	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
 	KeyRingId pulumi.StringPtrInput
 	Location  pulumi.StringPtrInput
 	Project   pulumi.StringPtrInput

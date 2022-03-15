@@ -85,6 +85,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class EndpointAttachmentArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+        /// </summary>
         [Input("endpointAttachmentId")]
         public Input<string>? EndpointAttachmentId { get; set; }
 

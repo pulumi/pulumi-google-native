@@ -87,6 +87,9 @@ export class EndpointAttachment extends pulumi.CustomResource {
  * The set of arguments for constructing a EndpointAttachment resource.
  */
 export interface EndpointAttachmentArgs {
+    /**
+     * ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
+     */
     endpointAttachmentId?: pulumi.Input<string>;
     /**
      * Location of the endpoint attachment.

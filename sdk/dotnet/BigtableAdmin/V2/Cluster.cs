@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("clusterConfig")]
         public Input<Inputs.ClusterConfigArgs>? ClusterConfig { get; set; }
 
+        /// <summary>
+        /// Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`.
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 

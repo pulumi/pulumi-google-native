@@ -252,6 +252,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The ID to use for this note.
+        /// </summary>
         [Input("noteId")]
         public Input<string>? NoteId { get; set; }
 

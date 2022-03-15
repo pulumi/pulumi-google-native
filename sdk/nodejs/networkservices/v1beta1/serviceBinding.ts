@@ -130,5 +130,8 @@ export interface ServiceBindingArgs {
      * The full service directory service name of the format /projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      */
     service: pulumi.Input<string>;
+    /**
+     * Required. Short name of the ServiceBinding resource to be created.
+     */
     serviceBindingId: pulumi.Input<string>;
 }

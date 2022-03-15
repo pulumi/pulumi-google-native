@@ -74,8 +74,9 @@ func (ChangeState) ElementType() reflect.Type {
 
 type changeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions         []ResourceRecordSetType `pulumi:"additions"`
-	ClientOperationId *string                 `pulumi:"clientOperationId"`
+	Additions []ResourceRecordSetType `pulumi:"additions"`
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+	ClientOperationId *string `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions []ResourceRecordSetType `pulumi:"deletions"`
 	// Unique identifier for the resource; defined by the server (output only).
@@ -94,7 +95,8 @@ type changeArgs struct {
 // The set of arguments for constructing a Change resource.
 type ChangeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions         ResourceRecordSetTypeArrayInput
+	Additions ResourceRecordSetTypeArrayInput
+	// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
 	ClientOperationId pulumi.StringPtrInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions ResourceRecordSetTypeArrayInput

@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
     public sealed class ChannelArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Required. Immutable. A unique ID within the site that identifies the channel.
+        /// </summary>
         [Input("channelId", required: true)]
         public Input<string> ChannelId { get; set; } = null!;
 

@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class DataCollectorArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+        /// </summary>
         [Input("dataCollectorId")]
         public Input<string>? DataCollectorId { get; set; }
 

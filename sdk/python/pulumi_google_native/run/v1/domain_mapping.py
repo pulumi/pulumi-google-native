@@ -27,6 +27,7 @@ class DomainMappingArgs:
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] api_version: The API version for this call such as "domains.cloudrun.com/v1".
+        :param pulumi.Input[str] dry_run: Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
         :param pulumi.Input[str] kind: The kind of resource, in this case "DomainMapping".
         :param pulumi.Input['ObjectMetaArgs'] metadata: Metadata associated with this BuildTemplate.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
@@ -64,6 +65,9 @@ class DomainMappingArgs:
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+        """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
@@ -158,6 +162,7 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_version: The API version for this call such as "domains.cloudrun.com/v1".
+        :param pulumi.Input[str] dry_run: Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
         :param pulumi.Input[str] kind: The kind of resource, in this case "DomainMapping".
         :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this BuildTemplate.
         :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.

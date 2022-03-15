@@ -93,6 +93,9 @@ export class DataCollector extends pulumi.CustomResource {
  * The set of arguments for constructing a DataCollector resource.
  */
 export interface DataCollectorArgs {
+    /**
+     * ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
+     */
     dataCollectorId?: pulumi.Input<string>;
     /**
      * A description of the data collector.

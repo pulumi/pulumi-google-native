@@ -22,6 +22,7 @@ class PeeringArgs:
         The set of arguments for constructing a Peering resource.
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
+        :param pulumi.Input[str] peering_id: Required. Peering Id, unique name to identify peering.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         """
         pulumi.set(__self__, "authorized_network", authorized_network)
@@ -59,6 +60,9 @@ class PeeringArgs:
     @property
     @pulumi.getter(name="peeringId")
     def peering_id(self) -> pulumi.Input[str]:
+        """
+        Required. Peering Id, unique name to identify peering.
+        """
         return pulumi.get(self, "peering_id")
 
     @peering_id.setter
@@ -107,6 +111,7 @@ class Peering(pulumi.CustomResource):
         :param pulumi.Input[str] authorized_network: The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
         :param pulumi.Input[str] domain_resource: Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] peering_id: Required. Peering Id, unique name to identify peering.
         """
         ...
     @overload

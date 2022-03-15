@@ -93,6 +93,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/admin#resource_names for resource name constraints.
+        /// </summary>
         [Input("schemaId")]
         public Input<string>? SchemaId { get; set; }
 

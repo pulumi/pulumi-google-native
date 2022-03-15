@@ -102,5 +102,8 @@ export interface SiteArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     project?: pulumi.Input<string>;
+    /**
+     * Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+     */
     siteId: pulumi.Input<string>;
 }

@@ -47,7 +47,9 @@ class IntentArgs:
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
+        :param pulumi.Input[str] intent_view: Optional. The resource view to apply to the returned intent.
         :param pulumi.Input[bool] is_fallback: Optional. Indicates whether this is a fallback intent.
+        :param pulumi.Input[str] language_code: Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
         :param pulumi.Input[bool] ml_disabled: Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
@@ -185,6 +187,9 @@ class IntentArgs:
     @property
     @pulumi.getter(name="intentView")
     def intent_view(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The resource view to apply to the returned intent.
+        """
         return pulumi.get(self, "intent_view")
 
     @intent_view.setter
@@ -206,6 +211,9 @@ class IntentArgs:
     @property
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+        """
         return pulumi.get(self, "language_code")
 
     @language_code.setter
@@ -416,7 +424,9 @@ class Intent(pulumi.CustomResource):
         :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
+        :param pulumi.Input[str] intent_view: Optional. The resource view to apply to the returned intent.
         :param pulumi.Input[bool] is_fallback: Optional. Indicates whether this is a fallback intent.
+        :param pulumi.Input[str] language_code: Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
         :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
         :param pulumi.Input[bool] ml_disabled: Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.

@@ -174,6 +174,9 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value.
+        /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 

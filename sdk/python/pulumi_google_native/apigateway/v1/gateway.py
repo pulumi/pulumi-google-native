@@ -22,6 +22,7 @@ class GatewayArgs:
         """
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        :param pulumi.Input[str] gateway_id: Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
@@ -51,6 +52,9 @@ class GatewayArgs:
     @property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> pulumi.Input[str]:
+        """
+        Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
+        """
         return pulumi.get(self, "gateway_id")
 
     @gateway_id.setter
@@ -120,6 +124,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
         :param pulumi.Input[str] display_name: Optional. Display name.
+        :param pulumi.Input[str] gateway_id: Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
         ...

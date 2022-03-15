@@ -150,10 +150,14 @@ type bucketObjectArgs struct {
 	// The content generation of this object. Used for object versioning.
 	Generation *string `pulumi:"generation"`
 	// The ID of the object, including the bucket name, object name, and generation number.
-	Id                       *string `pulumi:"id"`
-	IfGenerationMatch        *string `pulumi:"ifGenerationMatch"`
-	IfGenerationNotMatch     *string `pulumi:"ifGenerationNotMatch"`
-	IfMetagenerationMatch    *string `pulumi:"ifMetagenerationMatch"`
+	Id *string `pulumi:"id"`
+	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+	IfGenerationMatch *string `pulumi:"ifGenerationMatch"`
+	// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+	IfGenerationNotMatch *string `pulumi:"ifGenerationNotMatch"`
+	// Makes the operation conditional on whether the object's current metageneration matches the given value.
+	IfMetagenerationMatch *string `pulumi:"ifMetagenerationMatch"`
+	// Makes the operation conditional on whether the object's current metageneration does not match the given value.
 	IfMetagenerationNotMatch *string `pulumi:"ifMetagenerationNotMatch"`
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind *string `pulumi:"kind"`
@@ -170,10 +174,13 @@ type bucketObjectArgs struct {
 	// The name of the object. Required if not specified by URL parameter.
 	Name *string `pulumi:"name"`
 	// The owner of the object. This will always be the uploader of the object.
-	Owner                  *BucketObjectOwner `pulumi:"owner"`
-	PredefinedAcl          *string            `pulumi:"predefinedAcl"`
-	Projection             *string            `pulumi:"projection"`
-	ProvisionalUserProject *string            `pulumi:"provisionalUserProject"`
+	Owner *BucketObjectOwner `pulumi:"owner"`
+	// Apply a predefined set of access controls to this object.
+	PredefinedAcl *string `pulumi:"predefinedAcl"`
+	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+	Projection *string `pulumi:"projection"`
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
+	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime *string `pulumi:"retentionExpirationTime"`
 	// The link to this object.
@@ -192,7 +199,8 @@ type bucketObjectArgs struct {
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated *string `pulumi:"timeStorageClassUpdated"`
 	// The modification time of the object metadata in RFC 3339 format.
-	Updated     *string `pulumi:"updated"`
+	Updated *string `pulumi:"updated"`
+	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject *string `pulumi:"userProject"`
 }
 
@@ -227,10 +235,14 @@ type BucketObjectArgs struct {
 	// The content generation of this object. Used for object versioning.
 	Generation pulumi.StringPtrInput
 	// The ID of the object, including the bucket name, object name, and generation number.
-	Id                       pulumi.StringPtrInput
-	IfGenerationMatch        pulumi.StringPtrInput
-	IfGenerationNotMatch     pulumi.StringPtrInput
-	IfMetagenerationMatch    pulumi.StringPtrInput
+	Id pulumi.StringPtrInput
+	// Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
+	IfGenerationMatch pulumi.StringPtrInput
+	// Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
+	IfGenerationNotMatch pulumi.StringPtrInput
+	// Makes the operation conditional on whether the object's current metageneration matches the given value.
+	IfMetagenerationMatch pulumi.StringPtrInput
+	// Makes the operation conditional on whether the object's current metageneration does not match the given value.
 	IfMetagenerationNotMatch pulumi.StringPtrInput
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind pulumi.StringPtrInput
@@ -247,9 +259,12 @@ type BucketObjectArgs struct {
 	// The name of the object. Required if not specified by URL parameter.
 	Name pulumi.StringPtrInput
 	// The owner of the object. This will always be the uploader of the object.
-	Owner                  BucketObjectOwnerPtrInput
-	PredefinedAcl          pulumi.StringPtrInput
-	Projection             pulumi.StringPtrInput
+	Owner BucketObjectOwnerPtrInput
+	// Apply a predefined set of access controls to this object.
+	PredefinedAcl pulumi.StringPtrInput
+	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
+	Projection pulumi.StringPtrInput
+	// The project to be billed for this request if the target bucket is requester-pays bucket.
 	ProvisionalUserProject pulumi.StringPtrInput
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime pulumi.StringPtrInput
@@ -269,7 +284,8 @@ type BucketObjectArgs struct {
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated pulumi.StringPtrInput
 	// The modification time of the object metadata in RFC 3339 format.
-	Updated     pulumi.StringPtrInput
+	Updated pulumi.StringPtrInput
+	// The project to be billed for this request. Required for Requester Pays buckets.
 	UserProject pulumi.StringPtrInput
 }
 

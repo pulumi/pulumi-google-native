@@ -116,6 +116,9 @@ export interface ClientTlsPolicyArgs {
      * Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
      */
     clientCertificate?: pulumi.Input<inputs.networksecurity.v1.GoogleCloudNetworksecurityV1CertificateProviderArgs>;
+    /**
+     * Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy".
+     */
     clientTlsPolicyId: pulumi.Input<string>;
     /**
      * Optional. Free-text description of the resource.

@@ -29,6 +29,7 @@ class ConnectorArgs:
                  subnet: Optional[pulumi.Input['SubnetArgs']] = None):
         """
         The set of arguments for constructing a Connector resource.
+        :param pulumi.Input[str] connector_id: Required. The ID to use for this connector.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
@@ -66,6 +67,9 @@ class ConnectorArgs:
     @property
     @pulumi.getter(name="connectorId")
     def connector_id(self) -> pulumi.Input[str]:
+        """
+        Required. The ID to use for this connector.
+        """
         return pulumi.get(self, "connector_id")
 
     @connector_id.setter
@@ -222,6 +226,7 @@ class Connector(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] connector_id: Required. The ID to use for this connector.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.

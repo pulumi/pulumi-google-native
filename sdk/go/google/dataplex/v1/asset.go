@@ -92,6 +92,7 @@ func (AssetState) ElementType() reflect.Type {
 }
 
 type assetArgs struct {
+	// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
 	AssetId string `pulumi:"assetId"`
 	// Optional. Description of the asset.
 	Description *string `pulumi:"description"`
@@ -106,12 +107,14 @@ type assetArgs struct {
 	Project  *string           `pulumi:"project"`
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpec `pulumi:"resourceSpec"`
-	ValidateOnly *string                                `pulumi:"validateOnly"`
-	Zone         *string                                `pulumi:"zone"`
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
+	ValidateOnly *string `pulumi:"validateOnly"`
+	Zone         *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Asset resource.
 type AssetArgs struct {
+	// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
 	AssetId pulumi.StringInput
 	// Optional. Description of the asset.
 	Description pulumi.StringPtrInput
@@ -126,6 +129,7 @@ type AssetArgs struct {
 	Project  pulumi.StringPtrInput
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpecInput
+	// Optional. Only validate the request, but do not perform mutations. The default is false.
 	ValidateOnly pulumi.StringPtrInput
 	Zone         pulumi.StringPtrInput
 }

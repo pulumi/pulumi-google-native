@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Required. The ID of the realm resource to create.
+        /// </summary>
         [Input("realmId", required: true)]
         public Input<string> RealmId { get; set; } = null!;
 

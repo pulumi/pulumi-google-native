@@ -82,7 +82,8 @@ type runtimeArgs struct {
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	Location     *string              `pulumi:"location"`
 	Project      *string              `pulumi:"project"`
-	RuntimeId    string               `pulumi:"runtimeId"`
+	// Required. User-defined unique ID of this Runtime.
+	RuntimeId string `pulumi:"runtimeId"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig *RuntimeSoftwareConfig `pulumi:"softwareConfig"`
 	// Use a Compute Engine VM image to start the managed notebook instance.
@@ -95,7 +96,8 @@ type RuntimeArgs struct {
 	AccessConfig RuntimeAccessConfigPtrInput
 	Location     pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
-	RuntimeId    pulumi.StringInput
+	// Required. User-defined unique ID of this Runtime.
+	RuntimeId pulumi.StringInput
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigPtrInput
 	// Use a Compute Engine VM image to start the managed notebook instance.

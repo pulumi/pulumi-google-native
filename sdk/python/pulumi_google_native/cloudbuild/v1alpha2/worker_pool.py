@@ -23,6 +23,7 @@ class WorkerPoolArgs:
         """
         The set of arguments for constructing a WorkerPool resource.
         :param pulumi.Input[str] region: Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Worker configuration for the `WorkerPool`.
         """
@@ -50,6 +51,9 @@ class WorkerPoolArgs:
     @property
     @pulumi.getter(name="workerPoolId")
     def worker_pool_id(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
+        """
         return pulumi.get(self, "worker_pool_id")
 
     @worker_pool_id.setter
@@ -110,6 +114,7 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input[str] region: Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
+        :param pulumi.Input[str] worker_pool_id: Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
         """
         ...
     @overload

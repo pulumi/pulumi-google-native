@@ -77,7 +77,8 @@ type topicArgs struct {
 	ReservationConfig *ReservationConfig `pulumi:"reservationConfig"`
 	// The settings for this topic's message retention.
 	RetentionConfig *RetentionConfig `pulumi:"retentionConfig"`
-	TopicId         string           `pulumi:"topicId"`
+	// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+	TopicId string `pulumi:"topicId"`
 }
 
 // The set of arguments for constructing a Topic resource.
@@ -92,7 +93,8 @@ type TopicArgs struct {
 	ReservationConfig ReservationConfigPtrInput
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigPtrInput
-	TopicId         pulumi.StringInput
+	// Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
+	TopicId pulumi.StringInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

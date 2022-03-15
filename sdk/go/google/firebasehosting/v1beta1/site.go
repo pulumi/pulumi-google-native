@@ -75,7 +75,8 @@ type siteArgs struct {
 	// Optional. User-specified labels for the Hosting site.
 	Labels  map[string]string `pulumi:"labels"`
 	Project *string           `pulumi:"project"`
-	SiteId  string            `pulumi:"siteId"`
+	// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a Site resource.
@@ -85,7 +86,8 @@ type SiteArgs struct {
 	// Optional. User-specified labels for the Hosting site.
 	Labels  pulumi.StringMapInput
 	Project pulumi.StringPtrInput
-	SiteId  pulumi.StringInput
+	// Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label.
+	SiteId pulumi.StringInput
 }
 
 func (SiteArgs) ElementType() reflect.Type {

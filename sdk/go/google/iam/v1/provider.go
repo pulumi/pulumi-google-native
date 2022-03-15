@@ -95,10 +95,11 @@ type providerArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
 	// An OpenId Connect 1.0 identity provider.
-	Oidc                           *Oidc   `pulumi:"oidc"`
-	Project                        *string `pulumi:"project"`
-	WorkloadIdentityPoolId         string  `pulumi:"workloadIdentityPoolId"`
-	WorkloadIdentityPoolProviderId string  `pulumi:"workloadIdentityPoolProviderId"`
+	Oidc                   *Oidc   `pulumi:"oidc"`
+	Project                *string `pulumi:"project"`
+	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
+	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -117,9 +118,10 @@ type ProviderArgs struct {
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
 	// An OpenId Connect 1.0 identity provider.
-	Oidc                           OidcPtrInput
-	Project                        pulumi.StringPtrInput
-	WorkloadIdentityPoolId         pulumi.StringInput
+	Oidc                   OidcPtrInput
+	Project                pulumi.StringPtrInput
+	WorkloadIdentityPoolId pulumi.StringInput
+	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolProviderId pulumi.StringInput
 }
 

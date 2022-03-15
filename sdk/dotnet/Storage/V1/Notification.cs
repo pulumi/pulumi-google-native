@@ -166,6 +166,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("payloadFormat")]
         public Input<string>? PayloadFormat { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request if the target bucket is requester-pays bucket.
+        /// </summary>
         [Input("provisionalUserProject")]
         public Input<string>? ProvisionalUserProject { get; set; }
 
@@ -181,6 +184,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("topic")]
         public Input<string>? Topic { get; set; }
 
+        /// <summary>
+        /// The project to be billed for this request. Required for Requester Pays buckets.
+        /// </summary>
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
 

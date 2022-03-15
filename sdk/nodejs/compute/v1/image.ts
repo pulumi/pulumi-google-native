@@ -261,6 +261,9 @@ export interface ImageArgs {
      * The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
      */
     family?: pulumi.Input<string>;
+    /**
+     * Force image creation if true.
+     */
     forceCreate?: pulumi.Input<string>;
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
@@ -291,6 +294,9 @@ export interface ImageArgs {
      * The parameters of the raw disk image.
      */
     rawDisk?: pulumi.Input<inputs.compute.v1.ImageRawDiskArgs>;
+    /**
+     * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     */
     requestId?: pulumi.Input<string>;
     /**
      * Set the secure boot keys of shielded instance.

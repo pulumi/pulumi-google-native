@@ -154,6 +154,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         [Input("rotation")]
         public Input<Inputs.RotationArgs>? Rotation { get; set; }
 
+        /// <summary>
+        /// Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+        /// </summary>
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
 

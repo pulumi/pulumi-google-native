@@ -87,7 +87,8 @@ type serviceBindingArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
-	Service          string `pulumi:"service"`
+	Service string `pulumi:"service"`
+	// Required. Short name of the ServiceBinding resource to be created.
 	ServiceBindingId string `pulumi:"serviceBindingId"`
 }
 
@@ -104,7 +105,8 @@ type ServiceBindingArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
-	Service          pulumi.StringInput
+	Service pulumi.StringInput
+	// Required. Short name of the ServiceBinding resource to be created.
 	ServiceBindingId pulumi.StringInput
 }
 

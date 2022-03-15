@@ -139,6 +139,9 @@ export interface ServiceLevelObjectiveArgs {
      * The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
      */
     serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicatorArgs>;
+    /**
+     * Optional. The ServiceLevelObjective id to use for this ServiceLevelObjective. If omitted, an id will be generated instead. Must match the pattern [a-z0-9\-]+
+     */
     serviceLevelObjectiveId?: pulumi.Input<string>;
     /**
      * Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.

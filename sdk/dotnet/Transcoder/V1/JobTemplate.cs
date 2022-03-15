@@ -78,6 +78,9 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         [Input("config")]
         public Input<Inputs.JobConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
+        /// </summary>
         [Input("jobTemplateId", required: true)]
         public Input<string> JobTemplateId { get; set; } = null!;
 

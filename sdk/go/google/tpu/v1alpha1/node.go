@@ -117,9 +117,11 @@ type nodeArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
-	Network   *string `pulumi:"network"`
-	NodeId    *string `pulumi:"nodeId"`
-	Project   *string `pulumi:"project"`
+	Network *string `pulumi:"network"`
+	// The unqualified resource name.
+	NodeId  *string `pulumi:"nodeId"`
+	Project *string `pulumi:"project"`
+	// Idempotent request UUID.
 	RequestId *string `pulumi:"requestId"`
 	// The scheduling options for this node.
 	SchedulingConfig *SchedulingConfig `pulumi:"schedulingConfig"`
@@ -143,9 +145,11 @@ type NodeArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
-	Network   pulumi.StringPtrInput
-	NodeId    pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Network pulumi.StringPtrInput
+	// The unqualified resource name.
+	NodeId  pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
+	// Idempotent request UUID.
 	RequestId pulumi.StringPtrInput
 	// The scheduling options for this node.
 	SchedulingConfig SchedulingConfigPtrInput

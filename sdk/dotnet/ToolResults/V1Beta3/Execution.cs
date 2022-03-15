@@ -153,6 +153,9 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+        /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 

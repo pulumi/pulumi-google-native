@@ -91,8 +91,9 @@ type dashboardArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
-	RowLayout    *RowLayout `pulumi:"rowLayout"`
-	ValidateOnly *string    `pulumi:"validateOnly"`
+	RowLayout *RowLayout `pulumi:"rowLayout"`
+	// If set, validate the request and preview the review, but do not actually save it.
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
@@ -113,7 +114,8 @@ type DashboardArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
-	RowLayout    RowLayoutPtrInput
+	RowLayout RowLayoutPtrInput
+	// If set, validate the request and preview the review, but do not actually save it.
 	ValidateOnly pulumi.StringPtrInput
 }
 

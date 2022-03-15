@@ -4,6 +4,10 @@ CHANGELOG
 ## HEAD (Unreleased)
 - Re-introduce deprecated fields [#368](https://github.com/pulumi/pulumi-google-native/pull/368)
 
+Improvements:
+
+- Add missing descriptions for many resource properties [#384](https://github.com/pulumi/pulumi-google-native/pull/384)
+
 ## 0.16.0 (2022-03-11)
 Improvements:
 
