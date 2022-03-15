@@ -1940,6 +1940,8 @@ class JobConfigurationLoadArgs:
                  quote: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
+                 schema_inline: Optional[pulumi.Input[str]] = None,
+                 schema_inline_format: Optional[pulumi.Input[str]] = None,
                  schema_update_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  skip_leading_rows: Optional[pulumi.Input[int]] = None,
                  source_format: Optional[pulumi.Input[str]] = None,
@@ -1970,6 +1972,8 @@ class JobConfigurationLoadArgs:
         :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
+        :param pulumi.Input[str] schema_inline: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+        :param pulumi.Input[str] schema_inline_format: [Deprecated] The format of the schemaInline property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schema_update_options: Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
         :param pulumi.Input[int] skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
         :param pulumi.Input[str] source_format: [Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups, specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.
@@ -2022,6 +2026,16 @@ class JobConfigurationLoadArgs:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if schema_inline is not None:
+            warnings.warn("""[Deprecated] The inline schema. For CSV schemas, specify as \"Field1:Type1[,Field2:Type2]*\". For example, \"foo:STRING, bar:INTEGER, baz:FLOAT\".""", DeprecationWarning)
+            pulumi.log.warn("""schema_inline is deprecated: [Deprecated] The inline schema. For CSV schemas, specify as \"Field1:Type1[,Field2:Type2]*\". For example, \"foo:STRING, bar:INTEGER, baz:FLOAT\".""")
+        if schema_inline is not None:
+            pulumi.set(__self__, "schema_inline", schema_inline)
+        if schema_inline_format is not None:
+            warnings.warn("""[Deprecated] The format of the schemaInline property.""", DeprecationWarning)
+            pulumi.log.warn("""schema_inline_format is deprecated: [Deprecated] The format of the schemaInline property.""")
+        if schema_inline_format is not None:
+            pulumi.set(__self__, "schema_inline_format", schema_inline_format)
         if schema_update_options is not None:
             pulumi.set(__self__, "schema_update_options", schema_update_options)
         if skip_leading_rows is not None:
@@ -2302,6 +2316,30 @@ class JobConfigurationLoadArgs:
         pulumi.set(self, "schema", value)
 
     @property
+    @pulumi.getter(name="schemaInline")
+    def schema_inline(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+        """
+        return pulumi.get(self, "schema_inline")
+
+    @schema_inline.setter
+    def schema_inline(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_inline", value)
+
+    @property
+    @pulumi.getter(name="schemaInlineFormat")
+    def schema_inline_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Deprecated] The format of the schemaInline property.
+        """
+        return pulumi.get(self, "schema_inline_format")
+
+    @schema_inline_format.setter
+    def schema_inline_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_inline_format", value)
+
+    @property
     @pulumi.getter(name="schemaUpdateOptions")
     def schema_update_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -2401,6 +2439,7 @@ class JobConfigurationQueryArgs:
                  maximum_billing_tier: Optional[pulumi.Input[int]] = None,
                  maximum_bytes_billed: Optional[pulumi.Input[str]] = None,
                  parameter_mode: Optional[pulumi.Input[str]] = None,
+                 preserve_nulls: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]]] = None,
@@ -2425,6 +2464,7 @@ class JobConfigurationQueryArgs:
         :param pulumi.Input[int] maximum_billing_tier: [Optional] Limits the billing tier for this job. Queries that have resource usage beyond this tier will fail (without incurring a charge). If unspecified, this will be set to your project default.
         :param pulumi.Input[str] maximum_bytes_billed: [Optional] Limits the bytes billed for this job. Queries that will have bytes billed beyond this limit will fail (without incurring a charge). If unspecified, this will be set to your project default.
         :param pulumi.Input[str] parameter_mode: Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
+        :param pulumi.Input[bool] preserve_nulls: [Deprecated] This property is deprecated.
         :param pulumi.Input[str] priority: [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
         :param pulumi.Input[str] query: [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
         :param pulumi.Input[Sequence[pulumi.Input['QueryParameterArgs']]] query_parameters: Query parameters for standard SQL queries.
@@ -2461,6 +2501,11 @@ class JobConfigurationQueryArgs:
             pulumi.set(__self__, "maximum_bytes_billed", maximum_bytes_billed)
         if parameter_mode is not None:
             pulumi.set(__self__, "parameter_mode", parameter_mode)
+        if preserve_nulls is not None:
+            warnings.warn("""[Deprecated] This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""preserve_nulls is deprecated: [Deprecated] This property is deprecated.""")
+        if preserve_nulls is not None:
+            pulumi.set(__self__, "preserve_nulls", preserve_nulls)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if query is not None:
@@ -2627,6 +2672,18 @@ class JobConfigurationQueryArgs:
     @parameter_mode.setter
     def parameter_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parameter_mode", value)
+
+    @property
+    @pulumi.getter(name="preserveNulls")
+    def preserve_nulls(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Deprecated] This property is deprecated.
+        """
+        return pulumi.get(self, "preserve_nulls")
+
+    @preserve_nulls.setter
+    def preserve_nulls(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_nulls", value)
 
     @property
     @pulumi.getter

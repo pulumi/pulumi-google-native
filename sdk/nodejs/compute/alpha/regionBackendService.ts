@@ -134,6 +134,12 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly outlierDetection!: pulumi.Output<outputs.compute.alpha.OutlierDetectionResponse>;
     /**
+     * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+     *
+     * @deprecated Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+     */
+    public readonly port!: pulumi.Output<number>;
+    /**
      * A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
      */
     public readonly portName!: pulumi.Output<string>;
@@ -215,6 +221,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["outlierDetection"] = args ? args.outlierDetection : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["portName"] = args ? args.portName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
@@ -260,6 +267,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["outlierDetection"] = undefined /*out*/;
+            resourceInputs["port"] = undefined /*out*/;
             resourceInputs["portName"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
@@ -364,6 +372,12 @@ export interface RegionBackendServiceArgs {
      * Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     outlierDetection?: pulumi.Input<inputs.compute.alpha.OutlierDetectionArgs>;
+    /**
+     * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+     *
+     * @deprecated Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port.
+     */
+    port?: pulumi.Input<number>;
     /**
      * A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
      */

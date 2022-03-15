@@ -25,6 +25,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<Outputs.ComputeEngineTargetDetailsResponse> ComputeEngineTargetDetails { get; private set; } = null!;
 
         /// <summary>
+        /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+        /// </summary>
+        [Output("computeEngineVmDetails")]
+        public Output<Outputs.TargetVMDetailsResponse> ComputeEngineVmDetails { get; private set; } = null!;
+
+        /// <summary>
         /// The time the cutover job was created (as an API call, not when it was actually created in the target).
         /// </summary>
         [Output("createTime")]
@@ -71,6 +77,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         [Output("stateTime")]
         public Output<string> StateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+        /// </summary>
+        [Output("targetDetails")]
+        public Output<Outputs.TargetVMDetailsResponse> TargetDetails { get; private set; } = null!;
 
 
         /// <summary>

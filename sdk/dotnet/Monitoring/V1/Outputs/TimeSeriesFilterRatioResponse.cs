@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// Apply a second aggregation after the ratio is computed.
         /// </summary>
         public readonly Outputs.AggregationResponse SecondaryAggregation;
+        /// <summary>
+        /// Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+        /// </summary>
+        public readonly Outputs.StatisticalTimeSeriesFilterResponse StatisticalTimeSeriesFilter;
 
         [OutputConstructor]
         private TimeSeriesFilterRatioResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.PickTimeSeriesFilterResponse pickTimeSeriesFilter,
 
-            Outputs.AggregationResponse secondaryAggregation)
+            Outputs.AggregationResponse secondaryAggregation,
+
+            Outputs.StatisticalTimeSeriesFilterResponse statisticalTimeSeriesFilter)
         {
             Denominator = denominator;
             Numerator = numerator;
             PickTimeSeriesFilter = pickTimeSeriesFilter;
             SecondaryAggregation = secondaryAggregation;
+            StatisticalTimeSeriesFilter = statisticalTimeSeriesFilter;
         }
     }
 }

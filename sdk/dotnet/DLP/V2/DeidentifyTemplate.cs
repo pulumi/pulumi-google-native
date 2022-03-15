@@ -115,6 +115,9 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Deprecated. This field has no effect.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

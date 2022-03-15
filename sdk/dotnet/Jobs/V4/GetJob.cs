@@ -177,6 +177,10 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         /// </summary>
         public readonly string Title;
+        /// <summary>
+        /// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+        /// </summary>
+        public readonly string Visibility;
 
         [OutputConstructor]
         private GetJobResult(
@@ -236,7 +240,9 @@ namespace Pulumi.GoogleNative.Jobs.V4
 
             string responsibilities,
 
-            string title)
+            string title,
+
+            string visibility)
         {
             Addresses = addresses;
             ApplicationInfo = applicationInfo;
@@ -267,6 +273,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
             RequisitionId = requisitionId;
             Responsibilities = responsibilities;
             Title = title;
+            Visibility = visibility;
         }
     }
 }

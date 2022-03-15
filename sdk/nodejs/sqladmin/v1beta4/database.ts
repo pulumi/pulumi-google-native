@@ -44,6 +44,12 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly collation!: pulumi.Output<string>;
     /**
+     * This field is deprecated and will be removed from a future version of the API.
+     *
+     * @deprecated This field is deprecated and will be removed from a future version of the API.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The name of the Cloud SQL instance. This does not include the project ID.
      */
     public readonly instance!: pulumi.Output<string>;
@@ -81,6 +87,7 @@ export class Database extends pulumi.CustomResource {
             }
             resourceInputs["charset"] = args ? args.charset : undefined;
             resourceInputs["collation"] = args ? args.collation : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -90,6 +97,7 @@ export class Database extends pulumi.CustomResource {
         } else {
             resourceInputs["charset"] = undefined /*out*/;
             resourceInputs["collation"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["instance"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -114,6 +122,12 @@ export interface DatabaseArgs {
      * The Cloud SQL collation value.
      */
     collation?: pulumi.Input<string>;
+    /**
+     * This field is deprecated and will be removed from a future version of the API.
+     *
+     * @deprecated This field is deprecated and will be removed from a future version of the API.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * The name of the Cloud SQL instance. This does not include the project ID.
      */

@@ -24,6 +24,7 @@ __all__ = [
     'ExecutionStageStateResponse',
     'ExecutionStageSummaryResponse',
     'FileIODetailsResponse',
+    'JobExecutionInfoResponse',
     'JobMetadataResponse',
     'PackageResponse',
     'ParameterMetadataResponse',
@@ -1105,6 +1106,28 @@ class FileIODetailsResponse(dict):
         File Pattern used to access files by the connector.
         """
         return pulumi.get(self, "file_pattern")
+
+
+@pulumi.output_type
+class JobExecutionInfoResponse(dict):
+    """
+    Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+    """
+    def __init__(__self__, *,
+                 stages: Mapping[str, str]):
+        """
+        Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+        :param Mapping[str, str] stages: A mapping from each stage to the information about that stage.
+        """
+        pulumi.set(__self__, "stages", stages)
+
+    @property
+    @pulumi.getter
+    def stages(self) -> Mapping[str, str]:
+        """
+        A mapping from each stage to the information about that stage.
+        """
+        return pulumi.get(self, "stages")
 
 
 @pulumi.output_type
@@ -2355,6 +2378,8 @@ class WorkerPoolResponse(dict):
             suggest = "taskrunner_settings"
         elif key == "teardownPolicy":
             suggest = "teardown_policy"
+        elif key == "workerHarnessContainerImage":
+            suggest = "worker_harness_container_image"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkerPoolResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2388,6 +2413,7 @@ class WorkerPoolResponse(dict):
                  subnetwork: str,
                  taskrunner_settings: 'outputs.TaskRunnerSettingsResponse',
                  teardown_policy: str,
+                 worker_harness_container_image: str,
                  zone: str):
         """
         Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
@@ -2411,6 +2437,7 @@ class WorkerPoolResponse(dict):
         :param str subnetwork: Subnetwork to which VMs will be assigned, if desired. Expected to be of the form "regions/REGION/subnetworks/SUBNETWORK".
         :param 'TaskRunnerSettingsResponse' taskrunner_settings: Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
         :param str teardown_policy: Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
+        :param str worker_harness_container_image: Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
         :param str zone: Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
         """
         pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
@@ -2433,6 +2460,7 @@ class WorkerPoolResponse(dict):
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "taskrunner_settings", taskrunner_settings)
         pulumi.set(__self__, "teardown_policy", teardown_policy)
+        pulumi.set(__self__, "worker_harness_container_image", worker_harness_container_image)
         pulumi.set(__self__, "zone", zone)
 
     @property
@@ -2594,6 +2622,14 @@ class WorkerPoolResponse(dict):
         Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
         """
         return pulumi.get(self, "teardown_policy")
+
+    @property
+    @pulumi.getter(name="workerHarnessContainerImage")
+    def worker_harness_container_image(self) -> str:
+        """
+        Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+        """
+        return pulumi.get(self, "worker_harness_container_image")
 
     @property
     @pulumi.getter

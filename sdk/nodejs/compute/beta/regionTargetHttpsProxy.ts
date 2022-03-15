@@ -36,6 +36,18 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
     }
 
     /**
+     * [Deprecated] Use serverTlsPolicy instead.
+     *
+     * @deprecated [Deprecated] Use serverTlsPolicy instead.
+     */
+    public readonly authentication!: pulumi.Output<string>;
+    /**
+     * [Deprecated] Use authorizationPolicy instead.
+     *
+     * @deprecated [Deprecated] Use authorizationPolicy instead.
+     */
+    public readonly authorization!: pulumi.Output<string>;
+    /**
      * Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
      */
     public readonly authorizationPolicy!: pulumi.Output<string>;
@@ -114,6 +126,8 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["authentication"] = args ? args.authentication : undefined;
+            resourceInputs["authorization"] = args ? args.authorization : undefined;
             resourceInputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
             resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -133,6 +147,8 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
+            resourceInputs["authentication"] = undefined /*out*/;
+            resourceInputs["authorization"] = undefined /*out*/;
             resourceInputs["authorizationPolicy"] = undefined /*out*/;
             resourceInputs["certificateMap"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -159,6 +175,18 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
  * The set of arguments for constructing a RegionTargetHttpsProxy resource.
  */
 export interface RegionTargetHttpsProxyArgs {
+    /**
+     * [Deprecated] Use serverTlsPolicy instead.
+     *
+     * @deprecated [Deprecated] Use serverTlsPolicy instead.
+     */
+    authentication?: pulumi.Input<string>;
+    /**
+     * [Deprecated] Use authorizationPolicy instead.
+     *
+     * @deprecated [Deprecated] Use authorizationPolicy instead.
+     */
+    authorization?: pulumi.Input<string>;
     /**
      * Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
      */

@@ -40,6 +40,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// The last time this resource was scanned.
         /// </summary>
         public readonly string LastScanTime;
+        /// <summary>
+        /// An operation that indicates the status of the current scan. This field is deprecated, do not use.
+        /// </summary>
+        public readonly Outputs.OperationResponse Operation;
 
         [OutputConstructor]
         private DiscoveredResponse(
@@ -53,7 +57,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string cpe,
 
-            string lastScanTime)
+            string lastScanTime,
+
+            Outputs.OperationResponse operation)
         {
             AnalysisStatus = analysisStatus;
             AnalysisStatusError = analysisStatusError;
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             ContinuousAnalysis = continuousAnalysis;
             Cpe = cpe;
             LastScanTime = lastScanTime;
+            Operation = operation;
         }
     }
 }

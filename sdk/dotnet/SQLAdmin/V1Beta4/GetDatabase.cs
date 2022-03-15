@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly string Collation;
         /// <summary>
+        /// This field is deprecated and will be removed from a future version of the API.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The name of the Cloud SQL instance. This does not include the project ID.
         /// </summary>
         public readonly string Instance;
@@ -97,6 +101,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 
             string collation,
 
+            string etag,
+
             string instance,
 
             string kind,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         {
             Charset = charset;
             Collation = collation;
+            Etag = etag;
             Instance = instance;
             Kind = kind;
             Name = name;

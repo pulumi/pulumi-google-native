@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInterconnectAttachmentResult:
-    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, router=None, satisfies_pzs=None, self_link=None, stack_type=None, state=None, type=None, vlan_tag8021q=None):
+    def __init__(__self__, admin_enabled=None, bandwidth=None, candidate_ipv6_subnets=None, candidate_subnets=None, cloud_router_ip_address=None, cloud_router_ipv6_address=None, cloud_router_ipv6_interface_id=None, creation_timestamp=None, customer_router_ip_address=None, customer_router_ipv6_address=None, customer_router_ipv6_interface_id=None, dataplane_version=None, description=None, edge_availability_domain=None, encryption=None, google_reference_id=None, interconnect=None, ipsec_internal_addresses=None, kind=None, label_fingerprint=None, labels=None, mtu=None, name=None, operational_status=None, pairing_key=None, partner_asn=None, partner_metadata=None, private_interconnect_info=None, region=None, router=None, satisfies_pzs=None, self_link=None, stack_type=None, state=None, type=None, vlan_tag8021q=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -64,6 +64,13 @@ class GetInterconnectAttachmentResult:
         if encryption and not isinstance(encryption, str):
             raise TypeError("Expected argument 'encryption' to be a str")
         pulumi.set(__self__, "encryption", encryption)
+        if google_reference_id and not isinstance(google_reference_id, str):
+            raise TypeError("Expected argument 'google_reference_id' to be a str")
+        if google_reference_id is not None:
+            warnings.warn("""[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""", DeprecationWarning)
+            pulumi.log.warn("""google_reference_id is deprecated: [Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.""")
+
+        pulumi.set(__self__, "google_reference_id", google_reference_id)
         if interconnect and not isinstance(interconnect, str):
             raise TypeError("Expected argument 'interconnect' to be a str")
         pulumi.set(__self__, "interconnect", interconnect)
@@ -244,6 +251,14 @@ class GetInterconnectAttachmentResult:
         Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         """
         return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="googleReferenceId")
+    def google_reference_id(self) -> str:
+        """
+        Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+        """
+        return pulumi.get(self, "google_reference_id")
 
     @property
     @pulumi.getter
@@ -427,6 +442,7 @@ class AwaitableGetInterconnectAttachmentResult(GetInterconnectAttachmentResult):
             description=self.description,
             edge_availability_domain=self.edge_availability_domain,
             encryption=self.encryption,
+            google_reference_id=self.google_reference_id,
             interconnect=self.interconnect,
             ipsec_internal_addresses=self.ipsec_internal_addresses,
             kind=self.kind,
@@ -482,6 +498,7 @@ def get_interconnect_attachment(interconnect_attachment: Optional[str] = None,
         description=__ret__.description,
         edge_availability_domain=__ret__.edge_availability_domain,
         encryption=__ret__.encryption,
+        google_reference_id=__ret__.google_reference_id,
         interconnect=__ret__.interconnect,
         ipsec_internal_addresses=__ret__.ipsec_internal_addresses,
         kind=__ret__.kind,

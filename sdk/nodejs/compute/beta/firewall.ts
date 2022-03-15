@@ -64,6 +64,12 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
+     * Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+     *
+     * @deprecated Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+     */
+    public readonly enableLogging!: pulumi.Output<boolean>;
+    /**
      * Type of the resource. Always compute#firewall for firewall rules.
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
@@ -125,6 +131,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["destinationRanges"] = args ? args.destinationRanges : undefined;
             resourceInputs["direction"] = args ? args.direction : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
@@ -147,6 +154,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["destinationRanges"] = undefined /*out*/;
             resourceInputs["direction"] = undefined /*out*/;
             resourceInputs["disabled"] = undefined /*out*/;
+            resourceInputs["enableLogging"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["logConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -192,6 +200,12 @@ export interface FirewallArgs {
      * Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
      */
     disabled?: pulumi.Input<boolean>;
+    /**
+     * Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+     *
+     * @deprecated Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+     */
+    enableLogging?: pulumi.Input<boolean>;
     /**
      * This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
      */

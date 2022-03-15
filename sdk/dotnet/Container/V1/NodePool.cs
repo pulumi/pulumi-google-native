@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        /// </summary>
+        [Output("statusMessage")]
+        public Output<string> StatusMessage { get; private set; } = null!;
+
+        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         [Output("upgradeSettings")]
@@ -156,6 +162,9 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("autoscaling")]
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
+        /// <summary>
+        /// Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
+        /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
@@ -228,6 +237,9 @@ namespace Pulumi.GoogleNative.Container.V1
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        /// <summary>
+        /// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -242,6 +254,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
+
+        /// <summary>
+        /// Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
+        /// </summary>
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public NodePoolArgs()
         {

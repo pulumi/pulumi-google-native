@@ -3071,6 +3071,183 @@ func (in *statusConditionCanonicalCodePtr) ToStatusConditionCanonicalCodePtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(StatusConditionCanonicalCodePtrOutput)
 }
 
+// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+type StatusConditionCode string
+
+const (
+	// UNKNOWN indicates a generic condition.
+	StatusConditionCodeUnknown = StatusConditionCode("UNKNOWN")
+	// GCE_STOCKOUT indicates that Google Compute Engine resources are temporarily unavailable.
+	StatusConditionCodeGceStockout = StatusConditionCode("GCE_STOCKOUT")
+	// GKE_SERVICE_ACCOUNT_DELETED indicates that the user deleted their robot service account.
+	StatusConditionCodeGkeServiceAccountDeleted = StatusConditionCode("GKE_SERVICE_ACCOUNT_DELETED")
+	// Google Compute Engine quota was exceeded.
+	StatusConditionCodeGceQuotaExceeded = StatusConditionCode("GCE_QUOTA_EXCEEDED")
+	// Cluster state was manually changed by an SRE due to a system logic error.
+	StatusConditionCodeSetByOperator = StatusConditionCode("SET_BY_OPERATOR")
+	// Unable to perform an encrypt operation against the CloudKMS key used for etcd level encryption.
+	StatusConditionCodeCloudKmsKeyError = StatusConditionCode("CLOUD_KMS_KEY_ERROR")
+	// Cluster CA is expiring soon.
+	StatusConditionCodeCaExpiring = StatusConditionCode("CA_EXPIRING")
+)
+
+func (StatusConditionCode) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusConditionCode)(nil)).Elem()
+}
+
+func (e StatusConditionCode) ToStatusConditionCodeOutput() StatusConditionCodeOutput {
+	return pulumi.ToOutput(e).(StatusConditionCodeOutput)
+}
+
+func (e StatusConditionCode) ToStatusConditionCodeOutputWithContext(ctx context.Context) StatusConditionCodeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StatusConditionCodeOutput)
+}
+
+func (e StatusConditionCode) ToStatusConditionCodePtrOutput() StatusConditionCodePtrOutput {
+	return e.ToStatusConditionCodePtrOutputWithContext(context.Background())
+}
+
+func (e StatusConditionCode) ToStatusConditionCodePtrOutputWithContext(ctx context.Context) StatusConditionCodePtrOutput {
+	return StatusConditionCode(e).ToStatusConditionCodeOutputWithContext(ctx).ToStatusConditionCodePtrOutputWithContext(ctx)
+}
+
+func (e StatusConditionCode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatusConditionCode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StatusConditionCode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StatusConditionCode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StatusConditionCodeOutput struct{ *pulumi.OutputState }
+
+func (StatusConditionCodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StatusConditionCode)(nil)).Elem()
+}
+
+func (o StatusConditionCodeOutput) ToStatusConditionCodeOutput() StatusConditionCodeOutput {
+	return o
+}
+
+func (o StatusConditionCodeOutput) ToStatusConditionCodeOutputWithContext(ctx context.Context) StatusConditionCodeOutput {
+	return o
+}
+
+func (o StatusConditionCodeOutput) ToStatusConditionCodePtrOutput() StatusConditionCodePtrOutput {
+	return o.ToStatusConditionCodePtrOutputWithContext(context.Background())
+}
+
+func (o StatusConditionCodeOutput) ToStatusConditionCodePtrOutputWithContext(ctx context.Context) StatusConditionCodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StatusConditionCode) *StatusConditionCode {
+		return &v
+	}).(StatusConditionCodePtrOutput)
+}
+
+func (o StatusConditionCodeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StatusConditionCodeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatusConditionCode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StatusConditionCodeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatusConditionCodeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StatusConditionCode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StatusConditionCodePtrOutput struct{ *pulumi.OutputState }
+
+func (StatusConditionCodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StatusConditionCode)(nil)).Elem()
+}
+
+func (o StatusConditionCodePtrOutput) ToStatusConditionCodePtrOutput() StatusConditionCodePtrOutput {
+	return o
+}
+
+func (o StatusConditionCodePtrOutput) ToStatusConditionCodePtrOutputWithContext(ctx context.Context) StatusConditionCodePtrOutput {
+	return o
+}
+
+func (o StatusConditionCodePtrOutput) Elem() StatusConditionCodeOutput {
+	return o.ApplyT(func(v *StatusConditionCode) StatusConditionCode {
+		if v != nil {
+			return *v
+		}
+		var ret StatusConditionCode
+		return ret
+	}).(StatusConditionCodeOutput)
+}
+
+func (o StatusConditionCodePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StatusConditionCodePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StatusConditionCode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StatusConditionCodeInput is an input type that accepts StatusConditionCodeArgs and StatusConditionCodeOutput values.
+// You can construct a concrete instance of `StatusConditionCodeInput` via:
+//
+//          StatusConditionCodeArgs{...}
+type StatusConditionCodeInput interface {
+	pulumi.Input
+
+	ToStatusConditionCodeOutput() StatusConditionCodeOutput
+	ToStatusConditionCodeOutputWithContext(context.Context) StatusConditionCodeOutput
+}
+
+var statusConditionCodePtrType = reflect.TypeOf((**StatusConditionCode)(nil)).Elem()
+
+type StatusConditionCodePtrInput interface {
+	pulumi.Input
+
+	ToStatusConditionCodePtrOutput() StatusConditionCodePtrOutput
+	ToStatusConditionCodePtrOutputWithContext(context.Context) StatusConditionCodePtrOutput
+}
+
+type statusConditionCodePtr string
+
+func StatusConditionCodePtr(v string) StatusConditionCodePtrInput {
+	return (*statusConditionCodePtr)(&v)
+}
+
+func (*statusConditionCodePtr) ElementType() reflect.Type {
+	return statusConditionCodePtrType
+}
+
+func (in *statusConditionCodePtr) ToStatusConditionCodePtrOutput() StatusConditionCodePtrOutput {
+	return pulumi.ToOutput(in).(StatusConditionCodePtrOutput)
+}
+
+func (in *statusConditionCodePtr) ToStatusConditionCodePtrOutputWithContext(ctx context.Context) StatusConditionCodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StatusConditionCodePtrOutput)
+}
+
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.
 type WorkloadMetadataConfigMode string
 
@@ -3278,6 +3455,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SandboxConfigTypePtrInput)(nil)).Elem(), SandboxConfigType("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCanonicalCodeInput)(nil)).Elem(), StatusConditionCanonicalCode("OK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCanonicalCodePtrInput)(nil)).Elem(), StatusConditionCanonicalCode("OK"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodeInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodePtrInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModeInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModePtrInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypeOutput{})
@@ -3317,6 +3496,8 @@ func init() {
 	pulumi.RegisterOutputType(SandboxConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(StatusConditionCanonicalCodeOutput{})
 	pulumi.RegisterOutputType(StatusConditionCanonicalCodePtrOutput{})
+	pulumi.RegisterOutputType(StatusConditionCodeOutput{})
+	pulumi.RegisterOutputType(StatusConditionCodePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigModeOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigModePtrOutput{})
 }

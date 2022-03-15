@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBillingAccountSinkResult:
-    def __init__(__self__, bigquery_options=None, create_time=None, description=None, destination=None, disabled=None, exclusions=None, filter=None, include_children=None, name=None, update_time=None, writer_identity=None):
+    def __init__(__self__, bigquery_options=None, create_time=None, description=None, destination=None, disabled=None, exclusions=None, filter=None, include_children=None, name=None, output_version_format=None, update_time=None, writer_identity=None):
         if bigquery_options and not isinstance(bigquery_options, dict):
             raise TypeError("Expected argument 'bigquery_options' to be a dict")
         pulumi.set(__self__, "bigquery_options", bigquery_options)
@@ -46,6 +46,13 @@ class GetBillingAccountSinkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if output_version_format and not isinstance(output_version_format, str):
+            raise TypeError("Expected argument 'output_version_format' to be a str")
+        if output_version_format is not None:
+            warnings.warn("""Deprecated. This field is unused.""", DeprecationWarning)
+            pulumi.log.warn("""output_version_format is deprecated: Deprecated. This field is unused.""")
+
+        pulumi.set(__self__, "output_version_format", output_version_format)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -126,6 +133,14 @@ class GetBillingAccountSinkResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="outputVersionFormat")
+    def output_version_format(self) -> str:
+        """
+        Deprecated. This field is unused.
+        """
+        return pulumi.get(self, "output_version_format")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -157,6 +172,7 @@ class AwaitableGetBillingAccountSinkResult(GetBillingAccountSinkResult):
             filter=self.filter,
             include_children=self.include_children,
             name=self.name,
+            output_version_format=self.output_version_format,
             update_time=self.update_time,
             writer_identity=self.writer_identity)
 
@@ -186,6 +202,7 @@ def get_billing_account_sink(billing_account_id: Optional[str] = None,
         filter=__ret__.filter,
         include_children=__ret__.include_children,
         name=__ret__.name,
+        output_version_format=__ret__.output_version_format,
         update_time=__ret__.update_time,
         writer_identity=__ret__.writer_identity)
 

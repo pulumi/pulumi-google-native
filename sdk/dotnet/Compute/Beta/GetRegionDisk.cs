@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>
+        /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// </summary>
+        public readonly string Interface;
+        /// <summary>
         /// Type of the resource. Always compute#disk for disks.
         /// </summary>
         public readonly string Kind;
@@ -202,6 +206,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// [Deprecated] Storage type of the persistent disk.
+        /// </summary>
+        public readonly string StorageType;
+        /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         /// </summary>
         public readonly string Type;
@@ -229,6 +237,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
             bool eraseWindowsVssSignature,
 
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
+
+            string @interface,
 
             string kind,
 
@@ -290,6 +300,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string status,
 
+            string storageType,
+
             string type,
 
             ImmutableArray<string> userLicenses,
@@ -303,6 +315,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             DiskEncryptionKey = diskEncryptionKey;
             EraseWindowsVssSignature = eraseWindowsVssSignature;
             GuestOsFeatures = guestOsFeatures;
+            Interface = @interface;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;
@@ -333,6 +346,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             SourceSnapshotId = sourceSnapshotId;
             SourceStorageObject = sourceStorageObject;
             Status = status;
+            StorageType = storageType;
             Type = type;
             UserLicenses = userLicenses;
             Users = users;

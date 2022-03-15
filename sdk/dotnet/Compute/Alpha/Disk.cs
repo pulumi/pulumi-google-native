@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<Outputs.GuestOsFeatureResponse>> GuestOsFeatures { get; private set; } = null!;
 
         /// <summary>
+        /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// </summary>
+        [Output("interface")]
+        public Output<string> Interface { get; private set; } = null!;
+
+        /// <summary>
         /// Type of the resource. Always compute#disk for disks.
         /// </summary>
         [Output("kind")]
@@ -280,6 +286,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// [Deprecated] Storage type of the persistent disk.
+        /// </summary>
+        [Output("storageType")]
+        public Output<string> StorageType { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         /// </summary>
         [Output("type")]
@@ -389,6 +401,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.GuestOsFeatureArgs>());
             set => _guestOsFeatures = value;
         }
+
+        /// <summary>
+        /// [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// </summary>
+        [Input("interface")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.DiskInterface>? Interface { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -542,6 +560,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("sourceStorageObject")]
         public Input<string>? SourceStorageObject { get; set; }
+
+        /// <summary>
+        /// [Deprecated] Storage type of the persistent disk.
+        /// </summary>
+        [Input("storageType")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.DiskStorageType>? StorageType { get; set; }
 
         /// <summary>
         /// URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.

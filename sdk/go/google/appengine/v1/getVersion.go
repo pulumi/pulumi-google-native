@@ -102,6 +102,10 @@ type LookupVersionResult struct {
 	Vm bool `pulumi:"vm"`
 	// Enables VPC connectivity for standard apps.
 	VpcAccessConnector VpcAccessConnectorResponse `pulumi:"vpcAccessConnector"`
+	// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	//
+	// Deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+	Zones []string `pulumi:"zones"`
 }
 
 func LookupVersionOutput(ctx *pulumi.Context, args LookupVersionOutputArgs, opts ...pulumi.InvokeOption) LookupVersionResultOutput {
@@ -321,6 +325,13 @@ func (o LookupVersionResultOutput) Vm() pulumi.BoolOutput {
 // Enables VPC connectivity for standard apps.
 func (o LookupVersionResultOutput) VpcAccessConnector() VpcAccessConnectorResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) VpcAccessConnectorResponse { return v.VpcAccessConnector }).(VpcAccessConnectorResponseOutput)
+}
+
+// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+//
+// Deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+func (o LookupVersionResultOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupVersionResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }
 
 func init() {

@@ -17,6 +17,7 @@ __all__ = [
     'OSPolicyAssignmentLabelSetResponse',
     'OSPolicyAssignmentRolloutResponse',
     'OSPolicyInventoryFilterResponse',
+    'OSPolicyOSFilterResponse',
     'OSPolicyResourceExecResourceExecResponse',
     'OSPolicyResourceExecResourceResponse',
     'OSPolicyResourceFileGcsResponse',
@@ -138,6 +139,8 @@ class OSPolicyAssignmentInstanceFilterResponse(dict):
             suggest = "exclusion_labels"
         elif key == "inclusionLabels":
             suggest = "inclusion_labels"
+        elif key == "osShortNames":
+            suggest = "os_short_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OSPolicyAssignmentInstanceFilterResponse. Access the value via the '{suggest}' property getter instead.")
@@ -154,18 +157,21 @@ class OSPolicyAssignmentInstanceFilterResponse(dict):
                  all: bool,
                  exclusion_labels: Sequence['outputs.OSPolicyAssignmentLabelSetResponse'],
                  inclusion_labels: Sequence['outputs.OSPolicyAssignmentLabelSetResponse'],
-                 inventories: Sequence['outputs.OSPolicyAssignmentInstanceFilterInventoryResponse']):
+                 inventories: Sequence['outputs.OSPolicyAssignmentInstanceFilterInventoryResponse'],
+                 os_short_names: Sequence[str]):
         """
         Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
         :param bool all: Target all VMs in the project. If true, no other criteria is permitted.
         :param Sequence['OSPolicyAssignmentLabelSetResponse'] exclusion_labels: List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
         :param Sequence['OSPolicyAssignmentLabelSetResponse'] inclusion_labels: List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
         :param Sequence['OSPolicyAssignmentInstanceFilterInventoryResponse'] inventories: List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        :param Sequence[str] os_short_names: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
         """
         pulumi.set(__self__, "all", all)
         pulumi.set(__self__, "exclusion_labels", exclusion_labels)
         pulumi.set(__self__, "inclusion_labels", inclusion_labels)
         pulumi.set(__self__, "inventories", inventories)
+        pulumi.set(__self__, "os_short_names", os_short_names)
 
     @property
     @pulumi.getter
@@ -198,6 +204,14 @@ class OSPolicyAssignmentInstanceFilterResponse(dict):
         List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
         """
         return pulumi.get(self, "inventories")
+
+    @property
+    @pulumi.getter(name="osShortNames")
+    def os_short_names(self) -> Sequence[str]:
+        """
+        Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+        """
+        return pulumi.get(self, "os_short_names")
 
 
 @pulumi.output_type
@@ -322,6 +336,58 @@ class OSPolicyInventoryFilterResponse(dict):
     def os_version(self) -> str:
         """
         The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        """
+        return pulumi.get(self, "os_version")
+
+
+@pulumi.output_type
+class OSPolicyOSFilterResponse(dict):
+    """
+    Filtering criteria to select VMs based on OS details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osShortName":
+            suggest = "os_short_name"
+        elif key == "osVersion":
+            suggest = "os_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OSPolicyOSFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OSPolicyOSFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OSPolicyOSFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 os_short_name: str,
+                 os_version: str):
+        """
+        Filtering criteria to select VMs based on OS details.
+        :param str os_short_name: This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+        :param str os_version: This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+        """
+        pulumi.set(__self__, "os_short_name", os_short_name)
+        pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osShortName")
+    def os_short_name(self) -> str:
+        """
+        This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+        """
+        return pulumi.get(self, "os_short_name")
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> str:
+        """
+        This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
         """
         return pulumi.get(self, "os_version")
 
@@ -686,6 +752,8 @@ class OSPolicyResourceGroupResponse(dict):
         suggest = None
         if key == "inventoryFilters":
             suggest = "inventory_filters"
+        elif key == "osFilter":
+            suggest = "os_filter"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OSPolicyResourceGroupResponse. Access the value via the '{suggest}' property getter instead.")
@@ -700,13 +768,16 @@ class OSPolicyResourceGroupResponse(dict):
 
     def __init__(__self__, *,
                  inventory_filters: Sequence['outputs.OSPolicyInventoryFilterResponse'],
+                 os_filter: 'outputs.OSPolicyOSFilterResponse',
                  resources: Sequence['outputs.OSPolicyResourceResponse']):
         """
         Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
         :param Sequence['OSPolicyInventoryFilterResponse'] inventory_filters: List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+        :param 'OSPolicyOSFilterResponse' os_filter: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
         :param Sequence['OSPolicyResourceResponse'] resources: List of resources configured for this resource group. The resources are executed in the exact order specified here.
         """
         pulumi.set(__self__, "inventory_filters", inventory_filters)
+        pulumi.set(__self__, "os_filter", os_filter)
         pulumi.set(__self__, "resources", resources)
 
     @property
@@ -716,6 +787,14 @@ class OSPolicyResourceGroupResponse(dict):
         List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
         """
         return pulumi.get(self, "inventory_filters")
+
+    @property
+    @pulumi.getter(name="osFilter")
+    def os_filter(self) -> 'outputs.OSPolicyOSFilterResponse':
+        """
+        Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+        """
+        return pulumi.get(self, "os_filter")
 
     @property
     @pulumi.getter

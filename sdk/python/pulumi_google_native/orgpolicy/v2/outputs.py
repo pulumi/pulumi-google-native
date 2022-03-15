@@ -10,11 +10,45 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
+    'GoogleCloudOrgpolicyV2AlternatePolicySpecResponse',
     'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse',
     'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse',
     'GoogleCloudOrgpolicyV2PolicySpecResponse',
     'GoogleTypeExprResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudOrgpolicyV2AlternatePolicySpecResponse(dict):
+    """
+    Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+    """
+    def __init__(__self__, *,
+                 launch: str,
+                 spec: 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse'):
+        """
+        Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
+        :param str launch: Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+        :param 'GoogleCloudOrgpolicyV2PolicySpecResponse' spec: Specify `Constraint` for configurations of Cloud Platform resources.
+        """
+        pulumi.set(__self__, "launch", launch)
+        pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def launch(self) -> str:
+        """
+        Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
+        """
+        return pulumi.get(self, "launch")
+
+    @property
+    @pulumi.getter
+    def spec(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse':
+        """
+        Specify `Constraint` for configurations of Cloud Platform resources.
+        """
+        return pulumi.get(self, "spec")
+
 
 @pulumi.output_type
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):

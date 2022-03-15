@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     public sealed class IPAllocationPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// This field is deprecated, use cluster_ipv4_cidr_block.
+        /// </summary>
+        [Input("clusterIpv4Cidr")]
+        public Input<string>? ClusterIpv4Cidr { get; set; }
+
+        /// <summary>
         /// The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         /// </summary>
         [Input("clusterIpv4CidrBlock")]
@@ -34,10 +40,22 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<bool>? CreateSubnetwork { get; set; }
 
         /// <summary>
+        /// This field is deprecated, use node_ipv4_cidr_block.
+        /// </summary>
+        [Input("nodeIpv4Cidr")]
+        public Input<string>? NodeIpv4Cidr { get; set; }
+
+        /// <summary>
         /// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         /// </summary>
         [Input("nodeIpv4CidrBlock")]
         public Input<string>? NodeIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// This field is deprecated, use services_ipv4_cidr_block.
+        /// </summary>
+        [Input("servicesIpv4Cidr")]
+        public Input<string>? ServicesIpv4Cidr { get; set; }
 
         /// <summary>
         /// The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.

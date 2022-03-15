@@ -16,6 +16,7 @@ __all__ = [
     'OSPolicyAssignmentLabelSetArgs',
     'OSPolicyAssignmentRolloutArgs',
     'OSPolicyInventoryFilterArgs',
+    'OSPolicyOSFilterArgs',
     'OSPolicyResourceExecResourceExecArgs',
     'OSPolicyResourceExecResourceArgs',
     'OSPolicyResourceFileGcsArgs',
@@ -125,13 +126,15 @@ class OSPolicyAssignmentInstanceFilterArgs:
                  all: Optional[pulumi.Input[bool]] = None,
                  exclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentLabelSetArgs']]]] = None,
                  inclusion_labels: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentLabelSetArgs']]]] = None,
-                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentInstanceFilterInventoryArgs']]]] = None):
+                 inventories: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentInstanceFilterInventoryArgs']]]] = None,
+                 os_short_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
         :param pulumi.Input[bool] all: Target all VMs in the project. If true, no other criteria is permitted.
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentLabelSetArgs']]] exclusion_labels: List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentLabelSetArgs']]] inclusion_labels: List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentInstanceFilterInventoryArgs']]] inventories: List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] os_short_names: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
         """
         if all is not None:
             pulumi.set(__self__, "all", all)
@@ -141,6 +144,11 @@ class OSPolicyAssignmentInstanceFilterArgs:
             pulumi.set(__self__, "inclusion_labels", inclusion_labels)
         if inventories is not None:
             pulumi.set(__self__, "inventories", inventories)
+        if os_short_names is not None:
+            warnings.warn("""Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.""", DeprecationWarning)
+            pulumi.log.warn("""os_short_names is deprecated: Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.""")
+        if os_short_names is not None:
+            pulumi.set(__self__, "os_short_names", os_short_names)
 
     @property
     @pulumi.getter
@@ -189,6 +197,18 @@ class OSPolicyAssignmentInstanceFilterArgs:
     @inventories.setter
     def inventories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyAssignmentInstanceFilterInventoryArgs']]]]):
         pulumi.set(self, "inventories", value)
+
+    @property
+    @pulumi.getter(name="osShortNames")
+    def os_short_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
+        """
+        return pulumi.get(self, "os_short_names")
+
+    @os_short_names.setter
+    def os_short_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "os_short_names", value)
 
 
 @pulumi.input_type
@@ -284,6 +304,46 @@ class OSPolicyInventoryFilterArgs:
     def os_version(self) -> Optional[pulumi.Input[str]]:
         """
         The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        """
+        return pulumi.get(self, "os_version")
+
+    @os_version.setter
+    def os_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version", value)
+
+
+@pulumi.input_type
+class OSPolicyOSFilterArgs:
+    def __init__(__self__, *,
+                 os_short_name: Optional[pulumi.Input[str]] = None,
+                 os_version: Optional[pulumi.Input[str]] = None):
+        """
+        Filtering criteria to select VMs based on OS details.
+        :param pulumi.Input[str] os_short_name: This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+        :param pulumi.Input[str] os_version: This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
+        """
+        if os_short_name is not None:
+            pulumi.set(__self__, "os_short_name", os_short_name)
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osShortName")
+    def os_short_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
+        """
+        return pulumi.get(self, "os_short_name")
+
+    @os_short_name.setter
+    def os_short_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_short_name", value)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        This value should match the version emitted by the OS inventory agent. Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*`
         """
         return pulumi.get(self, "os_version")
 
@@ -673,15 +733,22 @@ class OSPolicyResourceFileArgs:
 class OSPolicyResourceGroupArgs:
     def __init__(__self__, *,
                  resources: pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceArgs']]],
-                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyInventoryFilterArgs']]]] = None):
+                 inventory_filters: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyInventoryFilterArgs']]]] = None,
+                 os_filter: Optional[pulumi.Input['OSPolicyOSFilterArgs']] = None):
         """
         Resource groups provide a mechanism to group OS policy resources. Resource groups enable OS policy authors to create a single OS policy to be applied to VMs running different operating Systems. When the OS policy is applied to a target VM, the appropriate resource group within the OS policy is selected based on the `OSFilter` specified within the resource group.
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceArgs']]] resources: List of resources configured for this resource group. The resources are executed in the exact order specified here.
         :param pulumi.Input[Sequence[pulumi.Input['OSPolicyInventoryFilterArgs']]] inventory_filters: List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+        :param pulumi.Input['OSPolicyOSFilterArgs'] os_filter: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
         """
         pulumi.set(__self__, "resources", resources)
         if inventory_filters is not None:
             pulumi.set(__self__, "inventory_filters", inventory_filters)
+        if os_filter is not None:
+            warnings.warn("""Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group""", DeprecationWarning)
+            pulumi.log.warn("""os_filter is deprecated: Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group""")
+        if os_filter is not None:
+            pulumi.set(__self__, "os_filter", os_filter)
 
     @property
     @pulumi.getter
@@ -706,6 +773,18 @@ class OSPolicyResourceGroupArgs:
     @inventory_filters.setter
     def inventory_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OSPolicyInventoryFilterArgs']]]]):
         pulumi.set(self, "inventory_filters", value)
+
+    @property
+    @pulumi.getter(name="osFilter")
+    def os_filter(self) -> Optional[pulumi.Input['OSPolicyOSFilterArgs']]:
+        """
+        Deprecated. Use the `inventory_filters` field instead. Used to specify the OS filter for a resource group
+        """
+        return pulumi.get(self, "os_filter")
+
+    @os_filter.setter
+    def os_filter(self, value: Optional[pulumi.Input['OSPolicyOSFilterArgs']]):
+        pulumi.set(self, "os_filter", value)
 
 
 @pulumi.input_type

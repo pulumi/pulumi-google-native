@@ -13,6 +13,7 @@ __all__ = [
     'JobJobBenefitsItem',
     'JobJobLevel',
     'JobPostingRegion',
+    'JobVisibility',
     'ProcessingOptionsHtmlSanitization',
 ]
 
@@ -321,6 +322,28 @@ class JobPostingRegion(str, Enum):
     TELECOMMUTE = "TELECOMMUTE"
     """
     Job allows employees to work remotely (telecommute). If locations are provided with this value, the job is considered as having a location, but telecommuting is allowed.
+    """
+
+
+class JobVisibility(str, Enum):
+    """
+    Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+    """
+    VISIBILITY_UNSPECIFIED = "VISIBILITY_UNSPECIFIED"
+    """
+    Default value.
+    """
+    ACCOUNT_ONLY = "ACCOUNT_ONLY"
+    """
+    The resource is only visible to the GCP account who owns it.
+    """
+    SHARED_WITH_GOOGLE = "SHARED_WITH_GOOGLE"
+    """
+    The resource is visible to the owner and may be visible to other applications and processes at Google.
+    """
+    SHARED_WITH_PUBLIC = "SHARED_WITH_PUBLIC"
+    """
+    The resource is visible to the owner and may be visible to all other API clients.
     """
 
 

@@ -19,6 +19,8 @@ export function getNodePool(args: GetNodePoolArgs, opts?: pulumi.InvokeOptions):
         "location": args.location,
         "nodePoolId": args.nodePoolId,
         "project": args.project,
+        "projectId": args.projectId,
+        "zone": args.zone,
     }, opts);
 }
 
@@ -27,6 +29,8 @@ export interface GetNodePoolArgs {
     location: string;
     nodePoolId: string;
     project?: string;
+    projectId?: string;
+    zone?: string;
 }
 
 export interface GetNodePoolResult {
@@ -83,6 +87,12 @@ export interface GetNodePoolResult {
      */
     readonly status: string;
     /**
+     * [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     *
+     * @deprecated [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+     */
+    readonly statusMessage: string;
+    /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
     readonly upgradeSettings: outputs.container.v1.UpgradeSettingsResponse;
@@ -101,4 +111,6 @@ export interface GetNodePoolOutputArgs {
     location: pulumi.Input<string>;
     nodePoolId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }

@@ -89,6 +89,12 @@ export class RatePlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+     *
+     * @deprecated DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+     */
+    public readonly paymentFundingModel!: pulumi.Output<string>;
+    /**
      * Details of the revenue sharing model.
      */
     public readonly revenueShareRates!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1RevenueShareRangeResponse[]>;
@@ -138,6 +144,7 @@ export class RatePlan extends pulumi.CustomResource {
             resourceInputs["fixedFeeFrequency"] = args ? args.fixedFeeFrequency : undefined;
             resourceInputs["fixedRecurringFee"] = args ? args.fixedRecurringFee : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
+            resourceInputs["paymentFundingModel"] = args ? args.paymentFundingModel : undefined;
             resourceInputs["revenueShareRates"] = args ? args.revenueShareRates : undefined;
             resourceInputs["revenueShareType"] = args ? args.revenueShareType : undefined;
             resourceInputs["setupFee"] = args ? args.setupFee : undefined;
@@ -160,6 +167,7 @@ export class RatePlan extends pulumi.CustomResource {
             resourceInputs["fixedRecurringFee"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["paymentFundingModel"] = undefined /*out*/;
             resourceInputs["revenueShareRates"] = undefined /*out*/;
             resourceInputs["revenueShareType"] = undefined /*out*/;
             resourceInputs["setupFee"] = undefined /*out*/;
@@ -217,6 +225,12 @@ export interface RatePlanArgs {
      */
     fixedRecurringFee?: pulumi.Input<inputs.apigee.v1.GoogleTypeMoneyArgs>;
     organizationId: pulumi.Input<string>;
+    /**
+     * DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+     *
+     * @deprecated DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+     */
+    paymentFundingModel?: pulumi.Input<enums.apigee.v1.RatePlanPaymentFundingModel>;
     /**
      * Details of the revenue sharing model.
      */

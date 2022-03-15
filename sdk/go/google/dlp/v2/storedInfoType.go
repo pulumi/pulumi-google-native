@@ -67,9 +67,12 @@ func (StoredInfoTypeState) ElementType() reflect.Type {
 
 type storedInfoTypeArgs struct {
 	// Configuration of the storedInfoType to create.
-	Config   GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
-	Location *string                                `pulumi:"location"`
-	Project  *string                                `pulumi:"project"`
+	Config GooglePrivacyDlpV2StoredInfoTypeConfig `pulumi:"config"`
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
+	Location *string `pulumi:"location"`
+	Project  *string `pulumi:"project"`
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	StoredInfoTypeId *string `pulumi:"storedInfoTypeId"`
 }
@@ -77,7 +80,10 @@ type storedInfoTypeArgs struct {
 // The set of arguments for constructing a StoredInfoType resource.
 type StoredInfoTypeArgs struct {
 	// Configuration of the storedInfoType to create.
-	Config   GooglePrivacyDlpV2StoredInfoTypeConfigInput
+	Config GooglePrivacyDlpV2StoredInfoTypeConfigInput
+	// Deprecated. This field has no effect.
+	//
+	// Deprecated: Deprecated. This field has no effect.
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

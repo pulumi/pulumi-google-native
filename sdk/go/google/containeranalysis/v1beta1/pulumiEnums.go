@@ -3252,6 +3252,173 @@ func (in *grafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtr) ToGrafeasV1bet
 	return pulumi.ToOutputWithContext(ctx, in).(GrafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtrOutput)
 }
 
+// Required. The type of hash that was performed.
+type HashType string
+
+const (
+	// Unknown.
+	HashTypeHashTypeUnspecified = HashType("HASH_TYPE_UNSPECIFIED")
+	// A SHA-256 hash.
+	HashTypeSha256 = HashType("SHA256")
+)
+
+func (HashType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashType)(nil)).Elem()
+}
+
+func (e HashType) ToHashTypeOutput() HashTypeOutput {
+	return pulumi.ToOutput(e).(HashTypeOutput)
+}
+
+func (e HashType) ToHashTypeOutputWithContext(ctx context.Context) HashTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HashTypeOutput)
+}
+
+func (e HashType) ToHashTypePtrOutput() HashTypePtrOutput {
+	return e.ToHashTypePtrOutputWithContext(context.Background())
+}
+
+func (e HashType) ToHashTypePtrOutputWithContext(ctx context.Context) HashTypePtrOutput {
+	return HashType(e).ToHashTypeOutputWithContext(ctx).ToHashTypePtrOutputWithContext(ctx)
+}
+
+func (e HashType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HashType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HashType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HashType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HashTypeOutput struct{ *pulumi.OutputState }
+
+func (HashTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashType)(nil)).Elem()
+}
+
+func (o HashTypeOutput) ToHashTypeOutput() HashTypeOutput {
+	return o
+}
+
+func (o HashTypeOutput) ToHashTypeOutputWithContext(ctx context.Context) HashTypeOutput {
+	return o
+}
+
+func (o HashTypeOutput) ToHashTypePtrOutput() HashTypePtrOutput {
+	return o.ToHashTypePtrOutputWithContext(context.Background())
+}
+
+func (o HashTypeOutput) ToHashTypePtrOutputWithContext(ctx context.Context) HashTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HashType) *HashType {
+		return &v
+	}).(HashTypePtrOutput)
+}
+
+func (o HashTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HashTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HashType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HashTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HashTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HashType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HashTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HashTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HashType)(nil)).Elem()
+}
+
+func (o HashTypePtrOutput) ToHashTypePtrOutput() HashTypePtrOutput {
+	return o
+}
+
+func (o HashTypePtrOutput) ToHashTypePtrOutputWithContext(ctx context.Context) HashTypePtrOutput {
+	return o
+}
+
+func (o HashTypePtrOutput) Elem() HashTypeOutput {
+	return o.ApplyT(func(v *HashType) HashType {
+		if v != nil {
+			return *v
+		}
+		var ret HashType
+		return ret
+	}).(HashTypeOutput)
+}
+
+func (o HashTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HashTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HashType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HashTypeInput is an input type that accepts HashTypeArgs and HashTypeOutput values.
+// You can construct a concrete instance of `HashTypeInput` via:
+//
+//          HashTypeArgs{...}
+type HashTypeInput interface {
+	pulumi.Input
+
+	ToHashTypeOutput() HashTypeOutput
+	ToHashTypeOutputWithContext(context.Context) HashTypeOutput
+}
+
+var hashTypePtrType = reflect.TypeOf((**HashType)(nil)).Elem()
+
+type HashTypePtrInput interface {
+	pulumi.Input
+
+	ToHashTypePtrOutput() HashTypePtrOutput
+	ToHashTypePtrOutputWithContext(context.Context) HashTypePtrOutput
+}
+
+type hashTypePtr string
+
+func HashTypePtr(v string) HashTypePtrInput {
+	return (*hashTypePtr)(&v)
+}
+
+func (*hashTypePtr) ElementType() reflect.Type {
+	return hashTypePtrType
+}
+
+func (in *hashTypePtr) ToHashTypePtrOutput() HashTypePtrOutput {
+	return pulumi.ToOutput(in).(HashTypePtrOutput)
+}
+
+func (in *hashTypePtr) ToHashTypePtrOutputWithContext(ctx context.Context) HashTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HashTypePtrOutput)
+}
+
 // Required. The recovered Dockerfile directive used to construct this layer.
 type LayerDirective string
 
@@ -4254,6 +4421,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GenericSignedAttestationContentTypePtrInput)(nil)).Elem(), GenericSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1beta1VulnerabilityDetailsEffectiveSeverityInput)(nil)).Elem(), GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity("SEVERITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtrInput)(nil)).Elem(), GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity("SEVERITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HashTypeInput)(nil)).Elem(), HashType("HASH_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*HashTypePtrInput)(nil)).Elem(), HashType("HASH_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectiveInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectivePtrInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypeInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
@@ -4302,6 +4471,8 @@ func init() {
 	pulumi.RegisterOutputType(GenericSignedAttestationContentTypePtrOutput{})
 	pulumi.RegisterOutputType(GrafeasV1beta1VulnerabilityDetailsEffectiveSeverityOutput{})
 	pulumi.RegisterOutputType(GrafeasV1beta1VulnerabilityDetailsEffectiveSeverityPtrOutput{})
+	pulumi.RegisterOutputType(HashTypeOutput{})
+	pulumi.RegisterOutputType(HashTypePtrOutput{})
 	pulumi.RegisterOutputType(LayerDirectiveOutput{})
 	pulumi.RegisterOutputType(LayerDirectivePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypeOutput{})

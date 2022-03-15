@@ -18,6 +18,10 @@ type Organization struct {
 
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponseOutput `pulumi:"addonsConfig"`
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	//
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	AnalyticsRegion pulumi.StringOutput `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
 	Attributes pulumi.StringArrayOutput `pulumi:"attributes"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
@@ -54,6 +58,10 @@ type Organization struct {
 	RuntimeType pulumi.StringOutput `pulumi:"runtimeType"`
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
+	// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+	//
+	// Deprecated: Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+	SubscriptionType pulumi.StringOutput `pulumi:"subscriptionType"`
 	// Not used by Apigee.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -65,6 +73,9 @@ func NewOrganization(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AnalyticsRegion == nil {
+		return nil, errors.New("invalid value for required argument 'AnalyticsRegion'")
+	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
@@ -105,6 +116,10 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig *GoogleCloudApigeeV1AddonsConfig `pulumi:"addonsConfig"`
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	//
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	AnalyticsRegion string `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
 	Attributes []string `pulumi:"attributes"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
@@ -135,6 +150,10 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigPtrInput
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	//
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	AnalyticsRegion pulumi.StringInput
 	// Not used by Apigee.
 	Attributes pulumi.StringArrayInput
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.

@@ -34,6 +34,7 @@ __all__ = [
     'PrimaryStepResponse',
     'SkippedDetailResponse',
     'SpecificationResponse',
+    'StackTraceResponse',
     'StepDimensionValueEntryResponse',
     'StepLabelsEntryResponse',
     'SuccessDetailResponse',
@@ -1374,6 +1375,28 @@ class SpecificationResponse(dict):
 
 
 @pulumi.output_type
+class StackTraceResponse(dict):
+    """
+    A stacktrace.
+    """
+    def __init__(__self__, *,
+                 exception: str):
+        """
+        A stacktrace.
+        :param str exception: The stack trace message. Required
+        """
+        pulumi.set(__self__, "exception", exception)
+
+    @property
+    @pulumi.getter
+    def exception(self) -> str:
+        """
+        The stack trace message. Required
+        """
+        return pulumi.get(self, "exception")
+
+
+@pulumi.output_type
 class StepDimensionValueEntryResponse(dict):
     def __init__(__self__, *,
                  key: str,
@@ -1601,6 +1624,8 @@ class TestIssueResponse(dict):
         suggest = None
         if key == "errorMessage":
             suggest = "error_message"
+        elif key == "stackTrace":
+            suggest = "stack_trace"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TestIssueResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1617,6 +1642,7 @@ class TestIssueResponse(dict):
                  category: str,
                  error_message: str,
                  severity: str,
+                 stack_trace: 'outputs.StackTraceResponse',
                  type: str,
                  warning: 'outputs.AnyResponse'):
         """
@@ -1624,12 +1650,14 @@ class TestIssueResponse(dict):
         :param str category: Category of issue. Required.
         :param str error_message: A brief human-readable message describing the issue. Required.
         :param str severity: Severity of issue. Required.
+        :param 'StackTraceResponse' stack_trace: Deprecated in favor of stack trace fields inside specific warnings.
         :param str type: Type of issue. Required.
         :param 'AnyResponse' warning: Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "severity", severity)
+        pulumi.set(__self__, "stack_trace", stack_trace)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "warning", warning)
 
@@ -1656,6 +1684,14 @@ class TestIssueResponse(dict):
         Severity of issue. Required.
         """
         return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter(name="stackTrace")
+    def stack_trace(self) -> 'outputs.StackTraceResponse':
+        """
+        Deprecated in favor of stack trace fields inside specific warnings.
+        """
+        return pulumi.get(self, "stack_trace")
 
     @property
     @pulumi.getter

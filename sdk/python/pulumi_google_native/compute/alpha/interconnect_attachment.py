@@ -566,6 +566,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["customer_router_ip_address"] = None
             __props__.__dict__["customer_router_ipv6_address"] = None
             __props__.__dict__["dataplane_version"] = None
+            __props__.__dict__["google_reference_id"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
@@ -611,6 +612,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["edge_availability_domain"] = None
         __props__.__dict__["encryption"] = None
+        __props__.__dict__["google_reference_id"] = None
         __props__.__dict__["interconnect"] = None
         __props__.__dict__["ipsec_internal_addresses"] = None
         __props__.__dict__["kind"] = None
@@ -753,6 +755,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         """
         return pulumi.get(self, "encryption")
+
+    @property
+    @pulumi.getter(name="googleReferenceId")
+    def google_reference_id(self) -> pulumi.Output[str]:
+        """
+        Google reference ID, to be used when raising support tickets with Google or otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
+        """
+        return pulumi.get(self, "google_reference_id")
 
     @property
     @pulumi.getter

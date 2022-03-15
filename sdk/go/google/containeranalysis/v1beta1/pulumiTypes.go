@@ -4443,6 +4443,10 @@ type Discovered struct {
 	AnalysisStatusError *Status `pulumi:"analysisStatusError"`
 	// Whether the resource is continuously analyzed.
 	ContinuousAnalysis *DiscoveredContinuousAnalysis `pulumi:"continuousAnalysis"`
+	// The last time continuous analysis was done for this resource. Deprecated, do not use.
+	//
+	// Deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.
+	LastAnalysisTime *string `pulumi:"lastAnalysisTime"`
 }
 
 // DiscoveredInput is an input type that accepts DiscoveredArgs and DiscoveredOutput values.
@@ -4464,6 +4468,10 @@ type DiscoveredArgs struct {
 	AnalysisStatusError StatusPtrInput `pulumi:"analysisStatusError"`
 	// Whether the resource is continuously analyzed.
 	ContinuousAnalysis DiscoveredContinuousAnalysisPtrInput `pulumi:"continuousAnalysis"`
+	// The last time continuous analysis was done for this resource. Deprecated, do not use.
+	//
+	// Deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.
+	LastAnalysisTime pulumi.StringPtrInput `pulumi:"lastAnalysisTime"`
 }
 
 func (DiscoveredArgs) ElementType() reflect.Type {
@@ -4559,6 +4567,13 @@ func (o DiscoveredOutput) ContinuousAnalysis() DiscoveredContinuousAnalysisPtrOu
 	return o.ApplyT(func(v Discovered) *DiscoveredContinuousAnalysis { return v.ContinuousAnalysis }).(DiscoveredContinuousAnalysisPtrOutput)
 }
 
+// The last time continuous analysis was done for this resource. Deprecated, do not use.
+//
+// Deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.
+func (o DiscoveredOutput) LastAnalysisTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Discovered) *string { return v.LastAnalysisTime }).(pulumi.StringPtrOutput)
+}
+
 type DiscoveredPtrOutput struct{ *pulumi.OutputState }
 
 func (DiscoveredPtrOutput) ElementType() reflect.Type {
@@ -4613,6 +4628,18 @@ func (o DiscoveredPtrOutput) ContinuousAnalysis() DiscoveredContinuousAnalysisPt
 	}).(DiscoveredContinuousAnalysisPtrOutput)
 }
 
+// The last time continuous analysis was done for this resource. Deprecated, do not use.
+//
+// Deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.
+func (o DiscoveredPtrOutput) LastAnalysisTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Discovered) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastAnalysisTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Provides information about the analysis status of a discovered resource.
 type DiscoveredResponse struct {
 	// The status of discovery for the resource.
@@ -4621,6 +4648,10 @@ type DiscoveredResponse struct {
 	AnalysisStatusError StatusResponse `pulumi:"analysisStatusError"`
 	// Whether the resource is continuously analyzed.
 	ContinuousAnalysis string `pulumi:"continuousAnalysis"`
+	// The last time continuous analysis was done for this resource. Deprecated, do not use.
+	//
+	// Deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.
+	LastAnalysisTime string `pulumi:"lastAnalysisTime"`
 }
 
 // Provides information about the analysis status of a discovered resource.
@@ -4651,6 +4682,13 @@ func (o DiscoveredResponseOutput) AnalysisStatusError() StatusResponseOutput {
 // Whether the resource is continuously analyzed.
 func (o DiscoveredResponseOutput) ContinuousAnalysis() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveredResponse) string { return v.ContinuousAnalysis }).(pulumi.StringOutput)
+}
+
+// The last time continuous analysis was done for this resource. Deprecated, do not use.
+//
+// Deprecated: The last time continuous analysis was done for this resource. Deprecated, do not use.
+func (o DiscoveredResponseOutput) LastAnalysisTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscoveredResponse) string { return v.LastAnalysisTime }).(pulumi.StringOutput)
 }
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
@@ -9206,6 +9244,198 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) Type() pulumi.StringOu
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetailsResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Container message for hash values.
+type Hash struct {
+	// The type of hash that was performed.
+	Type HashType `pulumi:"type"`
+	// The hash value.
+	Value string `pulumi:"value"`
+}
+
+// HashInput is an input type that accepts HashArgs and HashOutput values.
+// You can construct a concrete instance of `HashInput` via:
+//
+//          HashArgs{...}
+type HashInput interface {
+	pulumi.Input
+
+	ToHashOutput() HashOutput
+	ToHashOutputWithContext(context.Context) HashOutput
+}
+
+// Container message for hash values.
+type HashArgs struct {
+	// The type of hash that was performed.
+	Type HashTypeInput `pulumi:"type"`
+	// The hash value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (HashArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hash)(nil)).Elem()
+}
+
+func (i HashArgs) ToHashOutput() HashOutput {
+	return i.ToHashOutputWithContext(context.Background())
+}
+
+func (i HashArgs) ToHashOutputWithContext(ctx context.Context) HashOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashOutput)
+}
+
+func (i HashArgs) ToHashPtrOutput() HashPtrOutput {
+	return i.ToHashPtrOutputWithContext(context.Background())
+}
+
+func (i HashArgs) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashOutput).ToHashPtrOutputWithContext(ctx)
+}
+
+// HashPtrInput is an input type that accepts HashArgs, HashPtr and HashPtrOutput values.
+// You can construct a concrete instance of `HashPtrInput` via:
+//
+//          HashArgs{...}
+//
+//  or:
+//
+//          nil
+type HashPtrInput interface {
+	pulumi.Input
+
+	ToHashPtrOutput() HashPtrOutput
+	ToHashPtrOutputWithContext(context.Context) HashPtrOutput
+}
+
+type hashPtrType HashArgs
+
+func HashPtr(v *HashArgs) HashPtrInput {
+	return (*hashPtrType)(v)
+}
+
+func (*hashPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hash)(nil)).Elem()
+}
+
+func (i *hashPtrType) ToHashPtrOutput() HashPtrOutput {
+	return i.ToHashPtrOutputWithContext(context.Background())
+}
+
+func (i *hashPtrType) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HashPtrOutput)
+}
+
+// Container message for hash values.
+type HashOutput struct{ *pulumi.OutputState }
+
+func (HashOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hash)(nil)).Elem()
+}
+
+func (o HashOutput) ToHashOutput() HashOutput {
+	return o
+}
+
+func (o HashOutput) ToHashOutputWithContext(ctx context.Context) HashOutput {
+	return o
+}
+
+func (o HashOutput) ToHashPtrOutput() HashPtrOutput {
+	return o.ToHashPtrOutputWithContext(context.Background())
+}
+
+func (o HashOutput) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Hash) *Hash {
+		return &v
+	}).(HashPtrOutput)
+}
+
+// The type of hash that was performed.
+func (o HashOutput) Type() HashTypeOutput {
+	return o.ApplyT(func(v Hash) HashType { return v.Type }).(HashTypeOutput)
+}
+
+// The hash value.
+func (o HashOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v Hash) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type HashPtrOutput struct{ *pulumi.OutputState }
+
+func (HashPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hash)(nil)).Elem()
+}
+
+func (o HashPtrOutput) ToHashPtrOutput() HashPtrOutput {
+	return o
+}
+
+func (o HashPtrOutput) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOutput {
+	return o
+}
+
+func (o HashPtrOutput) Elem() HashOutput {
+	return o.ApplyT(func(v *Hash) Hash {
+		if v != nil {
+			return *v
+		}
+		var ret Hash
+		return ret
+	}).(HashOutput)
+}
+
+// The type of hash that was performed.
+func (o HashPtrOutput) Type() HashTypePtrOutput {
+	return o.ApplyT(func(v *Hash) *HashType {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(HashTypePtrOutput)
+}
+
+// The hash value.
+func (o HashPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Hash) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Container message for hash values.
+type HashResponse struct {
+	// The type of hash that was performed.
+	Type string `pulumi:"type"`
+	// The hash value.
+	Value string `pulumi:"value"`
+}
+
+// Container message for hash values.
+type HashResponseOutput struct{ *pulumi.OutputState }
+
+func (HashResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HashResponse)(nil)).Elem()
+}
+
+func (o HashResponseOutput) ToHashResponseOutput() HashResponseOutput {
+	return o
+}
+
+func (o HashResponseOutput) ToHashResponseOutputWithContext(ctx context.Context) HashResponseOutput {
+	return o
+}
+
+// The type of hash that was performed.
+func (o HashResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The hash value.
+func (o HashResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HashResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type Hint struct {
 	// The human readable name of this attestation authority, for example "qa".
@@ -11841,6 +12071,10 @@ type PackageIssue struct {
 	FixedLocation *VulnerabilityLocation `pulumi:"fixedLocation"`
 	// The type of package (e.g. OS, MAVEN, GO).
 	PackageType *string `pulumi:"packageType"`
+	// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+	//
+	// Deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+	SeverityName *string `pulumi:"severityName"`
 }
 
 // PackageIssueInput is an input type that accepts PackageIssueArgs and PackageIssueOutput values.
@@ -11862,6 +12096,10 @@ type PackageIssueArgs struct {
 	FixedLocation VulnerabilityLocationPtrInput `pulumi:"fixedLocation"`
 	// The type of package (e.g. OS, MAVEN, GO).
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
+	// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+	//
+	// Deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+	SeverityName pulumi.StringPtrInput `pulumi:"severityName"`
 }
 
 func (PackageIssueArgs) ElementType() reflect.Type {
@@ -11931,6 +12169,13 @@ func (o PackageIssueOutput) PackageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PackageIssue) *string { return v.PackageType }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+//
+// Deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+func (o PackageIssueOutput) SeverityName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PackageIssue) *string { return v.SeverityName }).(pulumi.StringPtrOutput)
+}
+
 type PackageIssueArrayOutput struct{ *pulumi.OutputState }
 
 func (PackageIssueArrayOutput) ElementType() reflect.Type {
@@ -11961,6 +12206,10 @@ type PackageIssueResponse struct {
 	FixedLocation VulnerabilityLocationResponse `pulumi:"fixedLocation"`
 	// The type of package (e.g. OS, MAVEN, GO).
 	PackageType string `pulumi:"packageType"`
+	// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+	//
+	// Deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+	SeverityName string `pulumi:"severityName"`
 }
 
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
@@ -11996,6 +12245,13 @@ func (o PackageIssueResponseOutput) FixedLocation() VulnerabilityLocationRespons
 // The type of package (e.g. OS, MAVEN, GO).
 func (o PackageIssueResponseOutput) PackageType() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageIssueResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+//
+// Deprecated: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+func (o PackageIssueResponseOutput) SeverityName() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageIssueResponse) string { return v.SeverityName }).(pulumi.StringOutput)
 }
 
 type PackageIssueResponseArrayOutput struct{ *pulumi.OutputState }
@@ -13208,6 +13464,14 @@ func (o RepoIdResponseOutput) Uid() pulumi.StringOutput {
 
 // An entity that can have metadata. For example, a Docker image.
 type Resource struct {
+	// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+	//
+	// Deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+	ContentHash *Hash `pulumi:"contentHash"`
+	// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+	//
+	// Deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+	Name *string `pulumi:"name"`
 	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 	Uri string `pulumi:"uri"`
 }
@@ -13225,6 +13489,14 @@ type ResourceInput interface {
 
 // An entity that can have metadata. For example, a Docker image.
 type ResourceArgs struct {
+	// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+	//
+	// Deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+	ContentHash HashPtrInput `pulumi:"contentHash"`
+	// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+	//
+	// Deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
@@ -13256,6 +13528,20 @@ func (o ResourceOutput) ToResourceOutputWithContext(ctx context.Context) Resourc
 	return o
 }
 
+// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+//
+// Deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+func (o ResourceOutput) ContentHash() HashPtrOutput {
+	return o.ApplyT(func(v Resource) *Hash { return v.ContentHash }).(HashPtrOutput)
+}
+
+// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+//
+// Deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+func (o ResourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Resource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
 // The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 func (o ResourceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v Resource) string { return v.Uri }).(pulumi.StringOutput)
@@ -13263,6 +13549,14 @@ func (o ResourceOutput) Uri() pulumi.StringOutput {
 
 // An entity that can have metadata. For example, a Docker image.
 type ResourceResponse struct {
+	// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+	//
+	// Deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+	ContentHash HashResponse `pulumi:"contentHash"`
+	// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+	//
+	// Deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+	Name string `pulumi:"name"`
 	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 	Uri string `pulumi:"uri"`
 }
@@ -13280,6 +13574,20 @@ func (o ResourceResponseOutput) ToResourceResponseOutput() ResourceResponseOutpu
 
 func (o ResourceResponseOutput) ToResourceResponseOutputWithContext(ctx context.Context) ResourceResponseOutput {
 	return o
+}
+
+// Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+//
+// Deprecated: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+func (o ResourceResponseOutput) ContentHash() HashResponseOutput {
+	return o.ApplyT(func(v ResourceResponse) HashResponse { return v.ContentHash }).(HashResponseOutput)
+}
+
+// Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+//
+// Deprecated: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+func (o ResourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
@@ -15474,6 +15782,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1beta1PackageDetailsPtrInput)(nil)).Elem(), GrafeasV1beta1PackageDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1beta1VulnerabilityDetailsInput)(nil)).Elem(), GrafeasV1beta1VulnerabilityDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1beta1VulnerabilityDetailsPtrInput)(nil)).Elem(), GrafeasV1beta1VulnerabilityDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashInput)(nil)).Elem(), HashArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HashPtrInput)(nil)).Elem(), HashArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintPtrInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InTotoInput)(nil)).Elem(), InTotoArgs{})
@@ -15668,6 +15978,9 @@ func init() {
 	pulumi.RegisterOutputType(GrafeasV1beta1VulnerabilityDetailsOutput{})
 	pulumi.RegisterOutputType(GrafeasV1beta1VulnerabilityDetailsPtrOutput{})
 	pulumi.RegisterOutputType(GrafeasV1beta1VulnerabilityDetailsResponseOutput{})
+	pulumi.RegisterOutputType(HashOutput{})
+	pulumi.RegisterOutputType(HashPtrOutput{})
+	pulumi.RegisterOutputType(HashResponseOutput{})
 	pulumi.RegisterOutputType(HintOutput{})
 	pulumi.RegisterOutputType(HintPtrOutput{})
 	pulumi.RegisterOutputType(HintResponseOutput{})

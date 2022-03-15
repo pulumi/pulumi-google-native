@@ -28,6 +28,7 @@ class RatePlanArgs:
                  end_time: Optional[pulumi.Input[str]] = None,
                  fixed_fee_frequency: Optional[pulumi.Input[int]] = None,
                  fixed_recurring_fee: Optional[pulumi.Input['GoogleTypeMoneyArgs']] = None,
+                 payment_funding_model: Optional[pulumi.Input['RatePlanPaymentFundingModel']] = None,
                  revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1RevenueShareRangeArgs']]]] = None,
                  revenue_share_type: Optional[pulumi.Input['RatePlanRevenueShareType']] = None,
                  setup_fee: Optional[pulumi.Input['GoogleTypeMoneyArgs']] = None,
@@ -45,6 +46,7 @@ class RatePlanArgs:
         :param pulumi.Input[str] end_time: Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
         :param pulumi.Input[int] fixed_fee_frequency: Frequency at which the fixed fee is charged.
         :param pulumi.Input['GoogleTypeMoneyArgs'] fixed_recurring_fee: Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
+        :param pulumi.Input['RatePlanPaymentFundingModel'] payment_funding_model: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1RevenueShareRangeArgs']]] revenue_share_rates: Details of the revenue sharing model.
         :param pulumi.Input['RatePlanRevenueShareType'] revenue_share_type: Method used to calculate the revenue that is shared with developers.
         :param pulumi.Input['GoogleTypeMoneyArgs'] setup_fee: Initial, one-time fee paid when purchasing the API product.
@@ -73,6 +75,11 @@ class RatePlanArgs:
             pulumi.set(__self__, "fixed_fee_frequency", fixed_fee_frequency)
         if fixed_recurring_fee is not None:
             pulumi.set(__self__, "fixed_recurring_fee", fixed_recurring_fee)
+        if payment_funding_model is not None:
+            warnings.warn("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""", DeprecationWarning)
+            pulumi.log.warn("""payment_funding_model is deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
+        if payment_funding_model is not None:
+            pulumi.set(__self__, "payment_funding_model", payment_funding_model)
         if revenue_share_rates is not None:
             pulumi.set(__self__, "revenue_share_rates", revenue_share_rates)
         if revenue_share_type is not None:
@@ -223,6 +230,18 @@ class RatePlanArgs:
         pulumi.set(self, "fixed_recurring_fee", value)
 
     @property
+    @pulumi.getter(name="paymentFundingModel")
+    def payment_funding_model(self) -> Optional[pulumi.Input['RatePlanPaymentFundingModel']]:
+        """
+        DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+        """
+        return pulumi.get(self, "payment_funding_model")
+
+    @payment_funding_model.setter
+    def payment_funding_model(self, value: Optional[pulumi.Input['RatePlanPaymentFundingModel']]):
+        pulumi.set(self, "payment_funding_model", value)
+
+    @property
     @pulumi.getter(name="revenueShareRates")
     def revenue_share_rates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]:
         """
@@ -300,6 +319,7 @@ class RatePlan(pulumi.CustomResource):
                  fixed_fee_frequency: Optional[pulumi.Input[int]] = None,
                  fixed_recurring_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 payment_funding_model: Optional[pulumi.Input['RatePlanPaymentFundingModel']] = None,
                  revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]] = None,
                  revenue_share_type: Optional[pulumi.Input['RatePlanRevenueShareType']] = None,
                  setup_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
@@ -322,6 +342,7 @@ class RatePlan(pulumi.CustomResource):
         :param pulumi.Input[str] end_time: Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
         :param pulumi.Input[int] fixed_fee_frequency: Frequency at which the fixed fee is charged.
         :param pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']] fixed_recurring_fee: Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
+        :param pulumi.Input['RatePlanPaymentFundingModel'] payment_funding_model: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]] revenue_share_rates: Details of the revenue sharing model.
         :param pulumi.Input['RatePlanRevenueShareType'] revenue_share_type: Method used to calculate the revenue that is shared with developers.
         :param pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']] setup_fee: Initial, one-time fee paid when purchasing the API product.
@@ -365,6 +386,7 @@ class RatePlan(pulumi.CustomResource):
                  fixed_fee_frequency: Optional[pulumi.Input[int]] = None,
                  fixed_recurring_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
+                 payment_funding_model: Optional[pulumi.Input['RatePlanPaymentFundingModel']] = None,
                  revenue_share_rates: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1RevenueShareRangeArgs']]]]] = None,
                  revenue_share_type: Optional[pulumi.Input['RatePlanRevenueShareType']] = None,
                  setup_fee: Optional[pulumi.Input[pulumi.InputType['GoogleTypeMoneyArgs']]] = None,
@@ -398,6 +420,10 @@ class RatePlan(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if payment_funding_model is not None and not opts.urn:
+                warnings.warn("""DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""", DeprecationWarning)
+                pulumi.log.warn("""payment_funding_model is deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.""")
+            __props__.__dict__["payment_funding_model"] = payment_funding_model
             __props__.__dict__["revenue_share_rates"] = revenue_share_rates
             __props__.__dict__["revenue_share_type"] = revenue_share_type
             __props__.__dict__["setup_fee"] = setup_fee
@@ -441,6 +467,7 @@ class RatePlan(pulumi.CustomResource):
         __props__.__dict__["fixed_recurring_fee"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["payment_funding_model"] = None
         __props__.__dict__["revenue_share_rates"] = None
         __props__.__dict__["revenue_share_type"] = None
         __props__.__dict__["setup_fee"] = None
@@ -551,6 +578,14 @@ class RatePlan(pulumi.CustomResource):
         Name of the rate plan.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="paymentFundingModel")
+    def payment_funding_model(self) -> pulumi.Output[str]:
+        """
+        DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+        """
+        return pulumi.get(self, "payment_funding_model")
 
     @property
     @pulumi.getter(name="revenueShareRates")

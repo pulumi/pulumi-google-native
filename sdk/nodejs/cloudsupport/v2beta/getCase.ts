@@ -61,6 +61,12 @@ export interface GetCaseResult {
      */
     readonly priority: string;
     /**
+     * The severity of this case. Deprecated. Use priority instead.
+     *
+     * @deprecated The severity of this case. Deprecated. Use priority instead.
+     */
+    readonly severity: string;
+    /**
      * The current status of the support case.
      */
     readonly state: string;

@@ -16,6 +16,10 @@ import (
 type FolderPolicy struct {
 	pulumi.CustomResourceState
 
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput `pulumi:"alternate"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Basic information about the Organization Policy.
@@ -64,7 +68,11 @@ func (FolderPolicyState) ElementType() reflect.Type {
 }
 
 type folderPolicyArgs struct {
-	FolderId string `pulumi:"folderId"`
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate *GoogleCloudOrgpolicyV2AlternatePolicySpec `pulumi:"alternate"`
+	FolderId  string                                     `pulumi:"folderId"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// Basic information about the Organization Policy.
@@ -73,7 +81,11 @@ type folderPolicyArgs struct {
 
 // The set of arguments for constructing a FolderPolicy resource.
 type FolderPolicyArgs struct {
-	FolderId pulumi.StringInput
+	// Deprecated.
+	//
+	// Deprecated: Deprecated.
+	Alternate GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput
+	FolderId  pulumi.StringInput
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// Basic information about the Organization Policy.

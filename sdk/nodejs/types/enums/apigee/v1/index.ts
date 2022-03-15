@@ -270,6 +270,26 @@ export const RatePlanConsumptionPricingType = {
  */
 export type RatePlanConsumptionPricingType = (typeof RatePlanConsumptionPricingType)[keyof typeof RatePlanConsumptionPricingType];
 
+export const RatePlanPaymentFundingModel = {
+    /**
+     * Billing account type not specified.
+     */
+    PaymentFundingModelUnspecified: "PAYMENT_FUNDING_MODEL_UNSPECIFIED",
+    /**
+     * Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
+     */
+    Prepaid: "PREPAID",
+    /**
+     * Postpaid billing account type. Developer is billed through an invoice after using your API products.
+     */
+    Postpaid: "POSTPAID",
+} as const;
+
+/**
+ * DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+ */
+export type RatePlanPaymentFundingModel = (typeof RatePlanPaymentFundingModel)[keyof typeof RatePlanPaymentFundingModel];
+
 export const RatePlanRevenueShareType = {
     /**
      * Revenue share type is not specified.

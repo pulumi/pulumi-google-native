@@ -18,6 +18,7 @@ class DatabaseArgs:
                  instance: pulumi.Input[str],
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class DatabaseArgs:
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
         :param pulumi.Input[str] charset: The Cloud SQL charset value.
         :param pulumi.Input[str] collation: The Cloud SQL collation value.
+        :param pulumi.Input[str] etag: This field is deprecated and will be removed from a future version of the API.
         :param pulumi.Input[str] kind: This is always `sql#database`.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
         :param pulumi.Input[str] project: The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
@@ -38,6 +40,11 @@ class DatabaseArgs:
             pulumi.set(__self__, "charset", charset)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if etag is not None:
+            warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
+            pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
@@ -84,6 +91,18 @@ class DatabaseArgs:
     @collation.setter
     def collation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is deprecated and will be removed from a future version of the API.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter
@@ -150,6 +169,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -164,6 +184,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] charset: The Cloud SQL charset value.
         :param pulumi.Input[str] collation: The Cloud SQL collation value.
+        :param pulumi.Input[str] etag: This field is deprecated and will be removed from a future version of the API.
         :param pulumi.Input[str] instance: The name of the Cloud SQL instance. This does not include the project ID.
         :param pulumi.Input[str] kind: This is always `sql#database`.
         :param pulumi.Input[str] name: The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
@@ -196,6 +217,7 @@ class Database(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  charset: Optional[pulumi.Input[str]] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -216,6 +238,10 @@ class Database(pulumi.CustomResource):
 
             __props__.__dict__["charset"] = charset
             __props__.__dict__["collation"] = collation
+            if etag is not None and not opts.urn:
+                warnings.warn("""This field is deprecated and will be removed from a future version of the API.""", DeprecationWarning)
+                pulumi.log.warn("""etag is deprecated: This field is deprecated and will be removed from a future version of the API.""")
+            __props__.__dict__["etag"] = etag
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
@@ -248,6 +274,7 @@ class Database(pulumi.CustomResource):
 
         __props__.__dict__["charset"] = None
         __props__.__dict__["collation"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["instance"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
@@ -271,6 +298,14 @@ class Database(pulumi.CustomResource):
         The Cloud SQL collation value.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This field is deprecated and will be removed from a future version of the API.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCaseResult:
-    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, name=None, priority=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
+    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, name=None, priority=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
         if classification and not isinstance(classification, dict):
             raise TypeError("Expected argument 'classification' to be a dict")
         pulumi.set(__self__, "classification", classification)
@@ -43,6 +43,13 @@ class GetCaseResult:
         if priority and not isinstance(priority, str):
             raise TypeError("Expected argument 'priority' to be a str")
         pulumi.set(__self__, "priority", priority)
+        if severity and not isinstance(severity, str):
+            raise TypeError("Expected argument 'severity' to be a str")
+        if severity is not None:
+            warnings.warn("""The severity of this case. Deprecated. Use priority instead.""", DeprecationWarning)
+            pulumi.log.warn("""severity is deprecated: The severity of this case. Deprecated. Use priority instead.""")
+
+        pulumi.set(__self__, "severity", severity)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -125,6 +132,14 @@ class GetCaseResult:
 
     @property
     @pulumi.getter
+    def severity(self) -> str:
+        """
+        The severity of this case. Deprecated. Use priority instead.
+        """
+        return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
     def state(self) -> str:
         """
         The current status of the support case.
@@ -178,6 +193,7 @@ class AwaitableGetCaseResult(GetCaseResult):
             escalated=self.escalated,
             name=self.name,
             priority=self.priority,
+            severity=self.severity,
             state=self.state,
             subscriber_email_addresses=self.subscriber_email_addresses,
             test_case=self.test_case,
@@ -211,6 +227,7 @@ def get_case(case_id: Optional[str] = None,
         escalated=__ret__.escalated,
         name=__ret__.name,
         priority=__ret__.priority,
+        severity=__ret__.severity,
         state=__ret__.state,
         subscriber_email_addresses=__ret__.subscriber_email_addresses,
         test_case=__ret__.test_case,

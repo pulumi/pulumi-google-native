@@ -26,6 +26,10 @@ type LookupLicenseArgs struct {
 }
 
 type LookupLicenseResult struct {
+	// Deprecated. This field no longer reflects whether a license charges a usage fee.
+	//
+	// Deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+	ChargesUseFee bool `pulumi:"chargesUseFee"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -75,6 +79,13 @@ func (o LookupLicenseResultOutput) ToLookupLicenseResultOutput() LookupLicenseRe
 
 func (o LookupLicenseResultOutput) ToLookupLicenseResultOutputWithContext(ctx context.Context) LookupLicenseResultOutput {
 	return o
+}
+
+// Deprecated. This field no longer reflects whether a license charges a usage fee.
+//
+// Deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+func (o LookupLicenseResultOutput) ChargesUseFee() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLicenseResult) bool { return v.ChargesUseFee }).(pulumi.BoolOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -36,6 +36,12 @@ export class License extends pulumi.CustomResource {
     }
 
     /**
+     * Deprecated. This field no longer reflects whether a license charges a usage fee.
+     *
+     * @deprecated [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+     */
+    public /*out*/ readonly chargesUseFee!: pulumi.Output<boolean>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -86,12 +92,14 @@ export class License extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
             resourceInputs["transferable"] = args ? args.transferable : undefined;
+            resourceInputs["chargesUseFee"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["licenseCode"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
         } else {
+            resourceInputs["chargesUseFee"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;

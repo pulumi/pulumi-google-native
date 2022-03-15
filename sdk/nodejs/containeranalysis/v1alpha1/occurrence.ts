@@ -7,7 +7,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
- * Auto-naming is currently not supported for this resource.
  */
 export class Occurrence extends pulumi.CustomResource {
     /**
@@ -83,7 +82,7 @@ export class Occurrence extends pulumi.CustomResource {
     /**
      * The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
@@ -149,6 +148,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["dsseAttestation"] = args ? args.dsseAttestation : undefined;
             resourceInputs["envelope"] = args ? args.envelope : undefined;
             resourceInputs["installation"] = args ? args.installation : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["noteName"] = args ? args.noteName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["remediation"] = args ? args.remediation : undefined;
@@ -162,7 +162,6 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["vulnerabilityDetails"] = args ? args.vulnerabilityDetails : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["attestation"] = undefined /*out*/;
@@ -234,6 +233,10 @@ export interface OccurrenceArgs {
      * Describes the installation of a package on the linked resource.
      */
     installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
+    /**
+     * The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+     */
+    name?: pulumi.Input<string>;
     /**
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */

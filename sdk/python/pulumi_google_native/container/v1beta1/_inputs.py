@@ -462,6 +462,7 @@ class AutoprovisioningNodePoolDefaultsArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
+                 min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  oauth_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
@@ -473,6 +474,7 @@ class AutoprovisioningNodePoolDefaultsArgs:
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input[str] image_type: The image type to use for NAP created node.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
+        :param pulumi.Input[str] min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
@@ -488,6 +490,11 @@ class AutoprovisioningNodePoolDefaultsArgs:
             pulumi.set(__self__, "image_type", image_type)
         if management is not None:
             pulumi.set(__self__, "management", management)
+        if min_cpu_platform is not None:
+            warnings.warn("""Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass \"automatic\" as field value.""", DeprecationWarning)
+            pulumi.log.warn("""min_cpu_platform is deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass \"automatic\" as field value.""")
+        if min_cpu_platform is not None:
+            pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if oauth_scopes is not None:
             pulumi.set(__self__, "oauth_scopes", oauth_scopes)
         if service_account is not None:
@@ -556,6 +563,18 @@ class AutoprovisioningNodePoolDefaultsArgs:
     @management.setter
     def management(self, value: Optional[pulumi.Input['NodeManagementArgs']]):
         pulumi.set(self, "management", value)
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        """
+        return pulumi.get(self, "min_cpu_platform")
+
+    @min_cpu_platform.setter
+    def min_cpu_platform(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_cpu_platform", value)
 
     @property
     @pulumi.getter(name="oauthScopes")
@@ -1306,44 +1325,72 @@ class HttpLoadBalancingArgs:
 class IPAllocationPolicyArgs:
     def __init__(__self__, *,
                  allow_route_overlap: Optional[pulumi.Input[bool]] = None,
+                 cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  create_subnetwork: Optional[pulumi.Input[bool]] = None,
+                 node_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  node_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  services_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  subnetwork_name: Optional[pulumi.Input[str]] = None,
+                 tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  use_ip_aliases: Optional[pulumi.Input[bool]] = None,
                  use_routes: Optional[pulumi.Input[bool]] = None):
         """
         Configuration for controlling how IPs are allocated in the cluster.
         :param pulumi.Input[bool] allow_route_overlap: If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
+        :param pulumi.Input[str] cluster_ipv4_cidr: This field is deprecated, use cluster_ipv4_cidr_block.
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs. If this field is set, then `cluster.cluster_ipv4_cidr` must be left blank. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] cluster_secondary_range_name: The name of the secondary range to be used for the cluster CIDR block. The secondary range will be used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param pulumi.Input[bool] create_subnetwork: Whether a new subnetwork will be created automatically for the cluster. This field is only applicable when `use_ip_aliases` is true.
+        :param pulumi.Input[str] node_ipv4_cidr: This field is deprecated, use node_ipv4_cidr_block.
         :param pulumi.Input[str] node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+        :param pulumi.Input[str] services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param pulumi.Input[str] services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param pulumi.Input[str] services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases and create_subnetwork is false.
         :param pulumi.Input[str] subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
+        :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
         :param pulumi.Input[bool] use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         :param pulumi.Input[bool] use_routes: Whether routes will be used for pod IPs in the cluster. This is used in conjunction with use_ip_aliases. It cannot be true if use_ip_aliases is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
         """
         if allow_route_overlap is not None:
             pulumi.set(__self__, "allow_route_overlap", allow_route_overlap)
+        if cluster_ipv4_cidr is not None:
+            warnings.warn("""This field is deprecated, use cluster_ipv4_cidr_block.""", DeprecationWarning)
+            pulumi.log.warn("""cluster_ipv4_cidr is deprecated: This field is deprecated, use cluster_ipv4_cidr_block.""")
+        if cluster_ipv4_cidr is not None:
+            pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
             pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         if create_subnetwork is not None:
             pulumi.set(__self__, "create_subnetwork", create_subnetwork)
+        if node_ipv4_cidr is not None:
+            warnings.warn("""This field is deprecated, use node_ipv4_cidr_block.""", DeprecationWarning)
+            pulumi.log.warn("""node_ipv4_cidr is deprecated: This field is deprecated, use node_ipv4_cidr_block.""")
+        if node_ipv4_cidr is not None:
+            pulumi.set(__self__, "node_ipv4_cidr", node_ipv4_cidr)
         if node_ipv4_cidr_block is not None:
             pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
+        if services_ipv4_cidr is not None:
+            warnings.warn("""This field is deprecated, use services_ipv4_cidr_block.""", DeprecationWarning)
+            pulumi.log.warn("""services_ipv4_cidr is deprecated: This field is deprecated, use services_ipv4_cidr_block.""")
+        if services_ipv4_cidr is not None:
+            pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         if services_ipv4_cidr_block is not None:
             pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         if services_secondary_range_name is not None:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         if subnetwork_name is not None:
             pulumi.set(__self__, "subnetwork_name", subnetwork_name)
+        if tpu_ipv4_cidr_block is not None:
+            warnings.warn("""The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.""", DeprecationWarning)
+            pulumi.log.warn("""tpu_ipv4_cidr_block is deprecated: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.""")
+        if tpu_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         if use_ip_aliases is not None:
             pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
         if use_routes is not None:
@@ -1360,6 +1407,18 @@ class IPAllocationPolicyArgs:
     @allow_route_overlap.setter
     def allow_route_overlap(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_route_overlap", value)
+
+    @property
+    @pulumi.getter(name="clusterIpv4Cidr")
+    def cluster_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is deprecated, use cluster_ipv4_cidr_block.
+        """
+        return pulumi.get(self, "cluster_ipv4_cidr")
+
+    @cluster_ipv4_cidr.setter
+    def cluster_ipv4_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_ipv4_cidr", value)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -1398,6 +1457,18 @@ class IPAllocationPolicyArgs:
         pulumi.set(self, "create_subnetwork", value)
 
     @property
+    @pulumi.getter(name="nodeIpv4Cidr")
+    def node_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is deprecated, use node_ipv4_cidr_block.
+        """
+        return pulumi.get(self, "node_ipv4_cidr")
+
+    @node_ipv4_cidr.setter
+    def node_ipv4_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_ipv4_cidr", value)
+
+    @property
     @pulumi.getter(name="nodeIpv4CidrBlock")
     def node_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1408,6 +1479,18 @@ class IPAllocationPolicyArgs:
     @node_ipv4_cidr_block.setter
     def node_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_ipv4_cidr_block", value)
+
+    @property
+    @pulumi.getter(name="servicesIpv4Cidr")
+    def services_ipv4_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is deprecated, use services_ipv4_cidr_block.
+        """
+        return pulumi.get(self, "services_ipv4_cidr")
+
+    @services_ipv4_cidr.setter
+    def services_ipv4_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "services_ipv4_cidr", value)
 
     @property
     @pulumi.getter(name="servicesIpv4CidrBlock")
@@ -1444,6 +1527,18 @@ class IPAllocationPolicyArgs:
     @subnetwork_name.setter
     def subnetwork_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_name", value)
+
+    @property
+    @pulumi.getter(name="tpuIpv4CidrBlock")
+    def tpu_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use. This field is deprecated, use cluster.tpu_config.ipv4_cidr_block instead.
+        """
+        return pulumi.get(self, "tpu_ipv4_cidr_block")
+
+    @tpu_ipv4_cidr_block.setter
+    def tpu_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tpu_ipv4_cidr_block", value)
 
     @property
     @pulumi.getter(name="useIpAliases")
@@ -3855,14 +3950,21 @@ class ShieldedNodesArgs:
 class StatusConditionArgs:
     def __init__(__self__, *,
                  canonical_code: Optional[pulumi.Input['StatusConditionCanonicalCode']] = None,
+                 code: Optional[pulumi.Input['StatusConditionCode']] = None,
                  message: Optional[pulumi.Input[str]] = None):
         """
         StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
         :param pulumi.Input['StatusConditionCanonicalCode'] canonical_code: Canonical code of the condition.
+        :param pulumi.Input['StatusConditionCode'] code: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
         :param pulumi.Input[str] message: Human-friendly representation of the condition
         """
         if canonical_code is not None:
             pulumi.set(__self__, "canonical_code", canonical_code)
+        if code is not None:
+            warnings.warn("""Machine-friendly representation of the condition Deprecated. Use canonical_code instead.""", DeprecationWarning)
+            pulumi.log.warn("""code is deprecated: Machine-friendly representation of the condition Deprecated. Use canonical_code instead.""")
+        if code is not None:
+            pulumi.set(__self__, "code", code)
         if message is not None:
             pulumi.set(__self__, "message", message)
 
@@ -3877,6 +3979,18 @@ class StatusConditionArgs:
     @canonical_code.setter
     def canonical_code(self, value: Optional[pulumi.Input['StatusConditionCanonicalCode']]):
         pulumi.set(self, "canonical_code", value)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input['StatusConditionCode']]:
+        """
+        Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input['StatusConditionCode']]):
+        pulumi.set(self, "code", value)
 
     @property
     @pulumi.getter

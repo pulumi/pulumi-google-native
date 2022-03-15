@@ -2996,6 +2996,10 @@ func (o OperationErrorResponseOutput) Errors() OperationErrorErrorsItemResponseA
 type OperationResponse struct {
 	// The value of `requestId` if you provided it in the request. Not present otherwise.
 	ClientOperationId string `pulumi:"clientOperationId"`
+	// [Deprecated] This field is deprecated.
+	//
+	// Deprecated: [Deprecated] This field is deprecated.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// A textual description of the operation, which is set when the operation is created.
 	Description string `pulumi:"description"`
 	// The time that this operation was completed. This value is in RFC3339 text format.
@@ -3058,6 +3062,13 @@ func (o OperationResponseOutput) ToOperationResponseOutputWithContext(ctx contex
 // The value of `requestId` if you provided it in the request. Not present otherwise.
 func (o OperationResponseOutput) ClientOperationId() pulumi.StringOutput {
 	return o.ApplyT(func(v OperationResponse) string { return v.ClientOperationId }).(pulumi.StringOutput)
+}
+
+// [Deprecated] This field is deprecated.
+//
+// Deprecated: [Deprecated] This field is deprecated.
+func (o OperationResponseOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v OperationResponse) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
 // A textual description of the operation, which is set when the operation is created.

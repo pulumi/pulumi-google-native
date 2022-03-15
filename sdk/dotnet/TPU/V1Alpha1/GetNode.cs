@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         /// </summary>
         public readonly string HealthDescription;
         /// <summary>
+        /// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+        /// </summary>
+        public readonly string IpAddress;
+        /// <summary>
         /// Resource labels to represent user-provided metadata.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -105,6 +109,10 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkEndpointResponse> NetworkEndpoints;
+        /// <summary>
+        /// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+        /// </summary>
+        public readonly string Port;
         /// <summary>
         /// The scheduling options for this node.
         /// </summary>
@@ -146,6 +154,8 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
 
             string healthDescription,
 
+            string ipAddress,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -153,6 +163,8 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
             string network,
 
             ImmutableArray<Outputs.NetworkEndpointResponse> networkEndpoints,
+
+            string port,
 
             Outputs.SchedulingConfigResponse schedulingConfig,
 
@@ -173,10 +185,12 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
             Description = description;
             Health = health;
             HealthDescription = healthDescription;
+            IpAddress = ipAddress;
             Labels = labels;
             Name = name;
             Network = network;
             NetworkEndpoints = networkEndpoints;
+            Port = port;
             SchedulingConfig = schedulingConfig;
             ServiceAccount = serviceAccount;
             State = state;

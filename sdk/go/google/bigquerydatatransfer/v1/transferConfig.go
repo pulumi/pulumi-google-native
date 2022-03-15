@@ -46,6 +46,10 @@ type TransferConfig struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Data transfer modification time. Ignored by server on input.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewTransferConfig registers a new resource with the given unique name, arguments, and options.
@@ -115,6 +119,10 @@ type transferConfigArgs struct {
 	ScheduleOptions *ScheduleOptions `pulumi:"scheduleOptions"`
 	// Optional service account name. If this field is set, transfer config will be created with this service account credentials. It requires that requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName *string `pulumi:"serviceAccountName"`
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId *string `pulumi:"userId"`
 	// Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.
 	VersionInfo *string `pulumi:"versionInfo"`
 }
@@ -149,6 +157,10 @@ type TransferConfigArgs struct {
 	ScheduleOptions ScheduleOptionsPtrInput
 	// Optional service account name. If this field is set, transfer config will be created with this service account credentials. It requires that requesting user calling this API has permissions to act as this service account.
 	ServiceAccountName pulumi.StringPtrInput
+	// Deprecated. Unique ID of the user on whose behalf transfer is done.
+	//
+	// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+	UserId pulumi.StringPtrInput
 	// Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.
 	VersionInfo pulumi.StringPtrInput
 }

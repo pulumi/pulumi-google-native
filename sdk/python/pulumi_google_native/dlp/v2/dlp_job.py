@@ -25,12 +25,16 @@ class DlpJobArgs:
         The set of arguments for constructing a DlpJob resource.
         :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: An inspection job scans a storage repository for InfoTypes.
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs'] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
         if inspect_job is not None:
             pulumi.set(__self__, "inspect_job", inspect_job)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
+        if location is not None:
+            warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+            pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -65,6 +69,9 @@ class DlpJobArgs:
     @property
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. This field has no effect.
+        """
         return pulumi.get(self, "location")
 
     @location.setter
@@ -112,6 +119,7 @@ class DlpJob(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']] inspect_job: An inspection job scans a storage repository for InfoTypes.
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[str] location: Deprecated. This field has no effect.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
         ...
@@ -158,6 +166,9 @@ class DlpJob(pulumi.CustomResource):
 
             __props__.__dict__["inspect_job"] = inspect_job
             __props__.__dict__["job_id"] = job_id
+            if location is not None and not opts.urn:
+                warnings.warn("""Deprecated. This field has no effect.""", DeprecationWarning)
+                pulumi.log.warn("""location is deprecated: Deprecated. This field has no effect.""")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["risk_job"] = risk_job

@@ -21,9 +21,17 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly bool CanReschedule;
         /// <summary>
+        /// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+        /// </summary>
+        public readonly string Date;
+        /// <summary>
         /// The start time window of the maintenance disruption.
         /// </summary>
         public readonly Outputs.UpcomingMaintenanceTimeWindowResponse StartTimeWindow;
+        /// <summary>
+        /// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+        /// </summary>
+        public readonly string Time;
         /// <summary>
         /// Defines the type of maintenance.
         /// </summary>
@@ -33,12 +41,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private UpcomingMaintenanceResponse(
             bool canReschedule,
 
+            string date,
+
             Outputs.UpcomingMaintenanceTimeWindowResponse startTimeWindow,
+
+            string time,
 
             string type)
         {
             CanReschedule = canReschedule;
+            Date = date;
             StartTimeWindow = startTimeWindow;
+            Time = time;
             Type = type;
         }
     }

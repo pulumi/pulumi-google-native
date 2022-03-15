@@ -24,6 +24,10 @@ type CatalogItem struct {
 	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput `pulumi:"itemAttributes"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	ItemGroupId pulumi.StringOutput `pulumi:"itemGroupId"`
+	// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	//
+	// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// Optional. Metadata specific to retail products.
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput `pulumi:"productMetadata"`
 	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
@@ -94,7 +98,11 @@ type catalogItemArgs struct {
 	ItemAttributes *GoogleCloudRecommendationengineV1beta1FeatureMap `pulumi:"itemAttributes"`
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	ItemGroupId *string `pulumi:"itemGroupId"`
-	Location    *string `pulumi:"location"`
+	// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	//
+	// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	LanguageCode *string `pulumi:"languageCode"`
+	Location     *string `pulumi:"location"`
 	// Optional. Metadata specific to retail products.
 	ProductMetadata *GoogleCloudRecommendationengineV1beta1ProductCatalogItem `pulumi:"productMetadata"`
 	Project         *string                                                   `pulumi:"project"`
@@ -117,7 +125,11 @@ type CatalogItemArgs struct {
 	ItemAttributes GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput
 	// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	ItemGroupId pulumi.StringPtrInput
-	Location    pulumi.StringPtrInput
+	// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	//
+	// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+	LanguageCode pulumi.StringPtrInput
+	Location     pulumi.StringPtrInput
 	// Optional. Metadata specific to retail products.
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput
 	Project         pulumi.StringPtrInput

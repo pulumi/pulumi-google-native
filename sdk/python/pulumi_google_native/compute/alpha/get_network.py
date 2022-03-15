@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNetworkResult:
-    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
+    def __init__(__self__, auto_create_subnetworks=None, creation_timestamp=None, description=None, enable_ula_internal_ipv6=None, firewall_policy=None, gateway_i_pv4=None, internal_ipv6_range=None, ipv4_range=None, kind=None, mtu=None, name=None, network_firewall_policy_enforcement_order=None, peerings=None, region=None, routing_config=None, self_link=None, self_link_with_id=None, subnetworks=None):
         if auto_create_subnetworks and not isinstance(auto_create_subnetworks, bool):
             raise TypeError("Expected argument 'auto_create_subnetworks' to be a bool")
         pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
@@ -40,6 +40,13 @@ class GetNetworkResult:
         if internal_ipv6_range and not isinstance(internal_ipv6_range, str):
             raise TypeError("Expected argument 'internal_ipv6_range' to be a str")
         pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
+        if ipv4_range and not isinstance(ipv4_range, str):
+            raise TypeError("Expected argument 'ipv4_range' to be a str")
+        if ipv4_range is not None:
+            warnings.warn("""Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""", DeprecationWarning)
+            pulumi.log.warn("""ipv4_range is deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""")
+
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -126,6 +133,14 @@ class GetNetworkResult:
         When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
         """
         return pulumi.get(self, "internal_ipv6_range")
+
+    @property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> str:
+        """
+        Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        """
+        return pulumi.get(self, "ipv4_range")
 
     @property
     @pulumi.getter
@@ -221,6 +236,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             firewall_policy=self.firewall_policy,
             gateway_i_pv4=self.gateway_i_pv4,
             internal_ipv6_range=self.internal_ipv6_range,
+            ipv4_range=self.ipv4_range,
             kind=self.kind,
             mtu=self.mtu,
             name=self.name,
@@ -256,6 +272,7 @@ def get_network(network: Optional[str] = None,
         firewall_policy=__ret__.firewall_policy,
         gateway_i_pv4=__ret__.gateway_i_pv4,
         internal_ipv6_range=__ret__.internal_ipv6_range,
+        ipv4_range=__ret__.ipv4_range,
         kind=__ret__.kind,
         mtu=__ret__.mtu,
         name=__ret__.name,

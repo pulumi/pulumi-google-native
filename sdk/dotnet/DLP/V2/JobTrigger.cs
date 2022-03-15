@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("inspectJob")]
         public Input<Inputs.GooglePrivacyDlpV2InspectJobConfigArgs>? InspectJob { get; set; }
 
+        /// <summary>
+        /// Deprecated. This field has no effect.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

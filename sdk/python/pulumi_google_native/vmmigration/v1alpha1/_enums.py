@@ -10,6 +10,8 @@ __all__ = [
     'ComputeSchedulingOnHostMaintenance',
     'ComputeSchedulingRestartType',
     'SchedulingNodeAffinityOperator',
+    'TargetVMDetailsDiskType',
+    'TargetVMDetailsLicenseType',
     'UtilizationReportTimeFrame',
     'VmwareVmDetailsPowerState',
 ]
@@ -106,6 +108,46 @@ class SchedulingNodeAffinityOperator(str, Enum):
     NOT_IN = "NOT_IN"
     """
     The node resource group should not be in these resources affinity.
+    """
+
+
+class TargetVMDetailsDiskType(str, Enum):
+    """
+    The disk type to use in the VM.
+    """
+    DISK_TYPE_UNSPECIFIED = "DISK_TYPE_UNSPECIFIED"
+    """
+    An unspecified disk type. Will be used as STANDARD.
+    """
+    STANDARD = "STANDARD"
+    """
+    A Standard disk type.
+    """
+    BALANCED = "BALANCED"
+    """
+    An alternative to SSD persistent disks that balance performance and cost.
+    """
+    SSD = "SSD"
+    """
+    SSD hard disk type.
+    """
+
+
+class TargetVMDetailsLicenseType(str, Enum):
+    """
+    The license type to use in OS adaptation.
+    """
+    DEFAULT = "DEFAULT"
+    """
+    The license type is the default for the OS.
+    """
+    PAYG = "PAYG"
+    """
+    The license type is Pay As You Go license type.
+    """
+    BYOL = "BYOL"
+    """
+    The license type is Bring Your Own License type.
     """
 
 

@@ -72,6 +72,12 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Deprecated. This field is unused.
+     *
+     * @deprecated Deprecated. This field is unused.
+     */
+    public readonly outputVersionFormat!: pulumi.Output<string>;
+    /**
      * The last update timestamp of the sink.This field may not be present for older sinks.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -106,6 +112,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["includeChildren"] = args ? args.includeChildren : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputVersionFormat"] = args ? args.outputVersionFormat : undefined;
             resourceInputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -120,6 +127,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["includeChildren"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outputVersionFormat"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["writerIdentity"] = undefined /*out*/;
         }
@@ -165,6 +173,12 @@ export interface BillingAccountSinkArgs {
      * The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Deprecated. This field is unused.
+     *
+     * @deprecated Deprecated. This field is unused.
+     */
+    outputVersionFormat?: pulumi.Input<enums.logging.v2.BillingAccountSinkOutputVersionFormat>;
     /**
      * Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
      */

@@ -73,6 +73,10 @@ type Job struct {
 	Responsibilities pulumi.StringOutput `pulumi:"responsibilities"`
 	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title pulumi.StringOutput `pulumi:"title"`
+	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	//
+	// Deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	Visibility pulumi.StringOutput `pulumi:"visibility"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -180,6 +184,10 @@ type jobArgs struct {
 	Responsibilities *string `pulumi:"responsibilities"`
 	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title string `pulumi:"title"`
+	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	//
+	// Deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	Visibility *JobVisibility `pulumi:"visibility"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -235,6 +243,10 @@ type JobArgs struct {
 	Responsibilities pulumi.StringPtrInput
 	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title pulumi.StringInput
+	// Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	//
+	// Deprecated: Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
+	Visibility JobVisibilityPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

@@ -244,6 +244,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         [Output("vpcAccessConnector")]
         public Output<Outputs.VpcAccessConnectorResponse> VpcAccessConnector { get; private set; } = null!;
 
+        /// <summary>
+        /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        /// </summary>
+        [Output("zones")]
+        public Output<ImmutableArray<string>> Zones { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Version resource with the given unique name, arguments, and options.
@@ -540,6 +546,19 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         [Input("vpcAccessConnector")]
         public Input<Inputs.VpcAccessConnectorArgs>? VpcAccessConnector { get; set; }
+
+        [Input("zones")]
+        private InputList<string>? _zones;
+
+        /// <summary>
+        /// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+        /// </summary>
+        [Obsolete(@"The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.")]
+        public InputList<string> Zones
+        {
+            get => _zones ?? (_zones = new InputList<string>());
+            set => _zones = value;
+        }
 
         public VersionArgs()
         {

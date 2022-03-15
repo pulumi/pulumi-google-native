@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public Input<int>? FileRotationMb { get; set; }
 
         /// <summary>
+        /// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
+        /// </summary>
+        [Input("gcsFileFormat")]
+        public Input<Pulumi.GoogleNative.Datastream.V1Alpha1.GcsDestinationConfigGcsFileFormat>? GcsFileFormat { get; set; }
+
+        /// <summary>
         /// JSON file format configuration.
         /// </summary>
         [Input("jsonFileFormat")]

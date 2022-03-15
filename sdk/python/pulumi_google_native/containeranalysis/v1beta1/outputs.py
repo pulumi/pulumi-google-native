@@ -54,6 +54,7 @@ __all__ = [
     'GrafeasV1beta1IntotoSignatureResponse',
     'GrafeasV1beta1PackageDetailsResponse',
     'GrafeasV1beta1VulnerabilityDetailsResponse',
+    'HashResponse',
     'HintResponse',
     'InTotoResponse',
     'InstallationResponse',
@@ -1417,6 +1418,8 @@ class DiscoveredResponse(dict):
             suggest = "analysis_status_error"
         elif key == "continuousAnalysis":
             suggest = "continuous_analysis"
+        elif key == "lastAnalysisTime":
+            suggest = "last_analysis_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DiscoveredResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1432,16 +1435,19 @@ class DiscoveredResponse(dict):
     def __init__(__self__, *,
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
-                 continuous_analysis: str):
+                 continuous_analysis: str,
+                 last_analysis_time: str):
         """
         Provides information about the analysis status of a discovered resource.
         :param str analysis_status: The status of discovery for the resource.
         :param 'StatusResponse' analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage is output only and populated by the API.
         :param str continuous_analysis: Whether the resource is continuously analyzed.
+        :param str last_analysis_time: The last time continuous analysis was done for this resource. Deprecated, do not use.
         """
         pulumi.set(__self__, "analysis_status", analysis_status)
         pulumi.set(__self__, "analysis_status_error", analysis_status_error)
         pulumi.set(__self__, "continuous_analysis", continuous_analysis)
+        pulumi.set(__self__, "last_analysis_time", last_analysis_time)
 
     @property
     @pulumi.getter(name="analysisStatus")
@@ -1466,6 +1472,14 @@ class DiscoveredResponse(dict):
         Whether the resource is continuously analyzed.
         """
         return pulumi.get(self, "continuous_analysis")
+
+    @property
+    @pulumi.getter(name="lastAnalysisTime")
+    def last_analysis_time(self) -> str:
+        """
+        The last time continuous analysis was done for this resource. Deprecated, do not use.
+        """
+        return pulumi.get(self, "last_analysis_time")
 
 
 @pulumi.output_type
@@ -2716,6 +2730,39 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
 
 
 @pulumi.output_type
+class HashResponse(dict):
+    """
+    Container message for hash values.
+    """
+    def __init__(__self__, *,
+                 type: str,
+                 value: str):
+        """
+        Container message for hash values.
+        :param str type: The type of hash that was performed.
+        :param str value: The hash value.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of hash that was performed.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The hash value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class HintResponse(dict):
     """
     This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -3489,6 +3536,8 @@ class PackageIssueResponse(dict):
             suggest = "fixed_location"
         elif key == "packageType":
             suggest = "package_type"
+        elif key == "severityName":
+            suggest = "severity_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PackageIssueResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3505,18 +3554,21 @@ class PackageIssueResponse(dict):
                  affected_location: 'outputs.VulnerabilityLocationResponse',
                  effective_severity: str,
                  fixed_location: 'outputs.VulnerabilityLocationResponse',
-                 package_type: str):
+                 package_type: str,
+                 severity_name: str):
         """
         This message wraps a location affected by a vulnerability and its associated fix (if one is available).
         :param 'VulnerabilityLocationResponse' affected_location: The location of the vulnerability.
         :param str effective_severity: The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
         :param 'VulnerabilityLocationResponse' fixed_location: The location of the available fix for vulnerability.
         :param str package_type: The type of package (e.g. OS, MAVEN, GO).
+        :param str severity_name: Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
         """
         pulumi.set(__self__, "affected_location", affected_location)
         pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "fixed_location", fixed_location)
         pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "severity_name", severity_name)
 
     @property
     @pulumi.getter(name="affectedLocation")
@@ -3549,6 +3601,14 @@ class PackageIssueResponse(dict):
         The type of package (e.g. OS, MAVEN, GO).
         """
         return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter(name="severityName")
+    def severity_name(self) -> str:
+        """
+        Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
+        """
+        return pulumi.get(self, "severity_name")
 
 
 @pulumi.output_type
@@ -3862,13 +3922,52 @@ class ResourceResponse(dict):
     """
     An entity that can have metadata. For example, a Docker image.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentHash":
+            suggest = "content_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 content_hash: 'outputs.HashResponse',
+                 name: str,
                  uri: str):
         """
         An entity that can have metadata. For example, a Docker image.
+        :param 'HashResponse' content_hash: Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+        :param str name: Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
         :param str uri: The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         """
+        pulumi.set(__self__, "content_hash", content_hash)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="contentHash")
+    def content_hash(self) -> 'outputs.HashResponse':
+        """
+        Deprecated, do not use. Use uri instead. The hash of the resource content. For example, the Docker digest.
+        """
+        return pulumi.get(self, "content_hash")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Deprecated, do not use. Use uri instead. The name of the resource. For example, the name of a Docker image - "Debian".
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter

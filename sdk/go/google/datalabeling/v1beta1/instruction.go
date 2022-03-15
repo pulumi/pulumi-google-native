@@ -20,6 +20,10 @@ type Instruction struct {
 	BlockingResources pulumi.StringArrayOutput `pulumi:"blockingResources"`
 	// Creation time of instruction.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	//
+	// Deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput `pulumi:"csvInstruction"`
 	// The data type of this instruction.
 	DataType pulumi.StringOutput `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
@@ -79,6 +83,10 @@ func (InstructionState) ElementType() reflect.Type {
 }
 
 type instructionArgs struct {
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	//
+	// Deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction *GoogleCloudDatalabelingV1beta1CsvInstruction `pulumi:"csvInstruction"`
 	// The data type of this instruction.
 	DataType InstructionDataType `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
@@ -92,6 +100,10 @@ type instructionArgs struct {
 
 // The set of arguments for constructing a Instruction resource.
 type InstructionArgs struct {
+	// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	//
+	// Deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+	CsvInstruction GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput
 	// The data type of this instruction.
 	DataType InstructionDataTypeInput
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.

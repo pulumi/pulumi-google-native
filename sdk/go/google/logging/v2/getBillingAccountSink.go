@@ -44,6 +44,10 @@ type LookupBillingAccountSinkResult struct {
 	IncludeChildren bool `pulumi:"includeChildren"`
 	// The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name string `pulumi:"name"`
+	// Deprecated. This field is unused.
+	//
+	// Deprecated: Deprecated. This field is unused.
+	OutputVersionFormat string `pulumi:"outputVersionFormat"`
 	// The last update timestamp of the sink.This field may not be present for older sinks.
 	UpdateTime string `pulumi:"updateTime"`
 	// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a writer_identity and no additional permissions are required.
@@ -125,6 +129,13 @@ func (o LookupBillingAccountSinkResultOutput) IncludeChildren() pulumi.BoolOutpu
 // The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 func (o LookupBillingAccountSinkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingAccountSinkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Deprecated. This field is unused.
+//
+// Deprecated: Deprecated. This field is unused.
+func (o LookupBillingAccountSinkResultOutput) OutputVersionFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBillingAccountSinkResult) string { return v.OutputVersionFormat }).(pulumi.StringOutput)
 }
 
 // The last update timestamp of the sink.This field may not be present for older sinks.

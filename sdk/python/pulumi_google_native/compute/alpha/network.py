@@ -20,6 +20,7 @@ class NetworkArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
+                 ipv4_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
@@ -32,6 +33,7 @@ class NetworkArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
         :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        :param pulumi.Input[str] ipv4_range: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder'] network_firewall_policy_enforcement_order: The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
@@ -46,6 +48,11 @@ class NetworkArgs:
             pulumi.set(__self__, "enable_ula_internal_ipv6", enable_ula_internal_ipv6)
         if internal_ipv6_range is not None:
             pulumi.set(__self__, "internal_ipv6_range", internal_ipv6_range)
+        if ipv4_range is not None:
+            warnings.warn("""Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""", DeprecationWarning)
+            pulumi.log.warn("""ipv4_range is deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""")
+        if ipv4_range is not None:
+            pulumi.set(__self__, "ipv4_range", ipv4_range)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -106,6 +113,18 @@ class NetworkArgs:
     @internal_ipv6_range.setter
     def internal_ipv6_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "internal_ipv6_range", value)
+
+    @property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @ipv4_range.setter
+    def ipv4_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv4_range", value)
 
     @property
     @pulumi.getter
@@ -186,6 +205,7 @@ class Network(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
+                 ipv4_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
@@ -202,6 +222,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
         :param pulumi.Input[str] internal_ipv6_range: When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+        :param pulumi.Input[str] ipv4_range: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder'] network_firewall_policy_enforcement_order: The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
@@ -236,6 +257,7 @@ class Network(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
                  internal_ipv6_range: Optional[pulumi.Input[str]] = None,
+                 ipv4_range: Optional[pulumi.Input[str]] = None,
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input['NetworkNetworkFirewallPolicyEnforcementOrder']] = None,
@@ -258,6 +280,10 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
             __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
+            if ipv4_range is not None and not opts.urn:
+                warnings.warn("""Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""", DeprecationWarning)
+                pulumi.log.warn("""ipv4_range is deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.""")
+            __props__.__dict__["ipv4_range"] = ipv4_range
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
@@ -302,6 +328,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["firewall_policy"] = None
         __props__.__dict__["gateway_i_pv4"] = None
         __props__.__dict__["internal_ipv6_range"] = None
+        __props__.__dict__["ipv4_range"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["mtu"] = None
         __props__.__dict__["name"] = None
@@ -369,6 +396,14 @@ class Network(pulumi.CustomResource):
         When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
         """
         return pulumi.get(self, "internal_ipv6_range")
+
+    @property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> pulumi.Output[str]:
+        """
+        Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+        """
+        return pulumi.get(self, "ipv4_range")
 
     @property
     @pulumi.getter

@@ -314,6 +314,22 @@ export const SparkChartViewSparkChartType = {
  */
 export type SparkChartViewSparkChartType = (typeof SparkChartViewSparkChartType)[keyof typeof SparkChartViewSparkChartType];
 
+export const StatisticalTimeSeriesFilterRankingMethod = {
+    /**
+     * Not allowed in well-formed requests.
+     */
+    MethodUnspecified: "METHOD_UNSPECIFIED",
+    /**
+     * Compute the outlier score of each stream.
+     */
+    MethodClusterOutlier: "METHOD_CLUSTER_OUTLIER",
+} as const;
+
+/**
+ * rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+ */
+export type StatisticalTimeSeriesFilterRankingMethod = (typeof StatisticalTimeSeriesFilterRankingMethod)[keyof typeof StatisticalTimeSeriesFilterRankingMethod];
+
 export const TextFormat = {
     /**
      * Format is unspecified. Defaults to MARKDOWN.

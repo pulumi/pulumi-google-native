@@ -15,6 +15,7 @@ __all__ = [
     'GooglePrivacyDlpV2CustomInfoTypeLikelihood',
     'GooglePrivacyDlpV2ExclusionRuleMatchingType',
     'GooglePrivacyDlpV2ExpressionsLogicalOperator',
+    'GooglePrivacyDlpV2InspectConfigContentOptionsItem',
     'GooglePrivacyDlpV2InspectConfigMinLikelihood',
     'GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood',
     'GooglePrivacyDlpV2OutputStorageConfigOutputSchema',
@@ -260,6 +261,21 @@ class GooglePrivacyDlpV2ExpressionsLogicalOperator(str, Enum):
     AND_ = "AND"
     """
     Conditional AND
+    """
+
+
+class GooglePrivacyDlpV2InspectConfigContentOptionsItem(str, Enum):
+    CONTENT_UNSPECIFIED = "CONTENT_UNSPECIFIED"
+    """
+    Includes entire content of a file or a data stream.
+    """
+    CONTENT_TEXT = "CONTENT_TEXT"
+    """
+    Text content within the data, excluding any metadata.
+    """
+    CONTENT_IMAGE = "CONTENT_IMAGE"
+    """
+    Images found in the data.
     """
 
 

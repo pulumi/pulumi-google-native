@@ -29,6 +29,7 @@ __all__ = [
     'SchedulePolicyResponse',
     'SchedulingNodeAffinityResponse',
     'StatusResponse',
+    'TargetVMDetailsResponse',
     'UpgradeStatusResponse',
     'VmUtilizationInfoResponse',
     'VmUtilizationMetricsResponse',
@@ -220,10 +221,14 @@ class CloneJobResponse(dict):
         suggest = None
         if key == "computeEngineTargetDetails":
             suggest = "compute_engine_target_details"
+        elif key == "computeEngineVmDetails":
+            suggest = "compute_engine_vm_details"
         elif key == "createTime":
             suggest = "create_time"
         elif key == "stateTime":
             suggest = "state_time"
+        elif key == "targetDetails":
+            suggest = "target_details"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CloneJobResponse. Access the value via the '{suggest}' property getter instead.")
@@ -238,26 +243,32 @@ class CloneJobResponse(dict):
 
     def __init__(__self__, *,
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
+                 compute_engine_vm_details: 'outputs.TargetVMDetailsResponse',
                  create_time: str,
                  error: 'outputs.StatusResponse',
                  name: str,
                  state: str,
-                 state_time: str):
+                 state_time: str,
+                 target_details: 'outputs.TargetVMDetailsResponse'):
         """
         CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
+        :param 'TargetVMDetailsResponse' compute_engine_vm_details: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         :param str create_time: The time the clone job was created (as an API call, not when it was actually created in the target).
         :param 'StatusResponse' error: Provides details for the errors that led to the Clone Job's state.
         :param str name: The name of the clone.
         :param str state: State of the clone job.
         :param str state_time: The time the state was last updated.
+        :param 'TargetVMDetailsResponse' target_details: Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
+        pulumi.set(__self__, "compute_engine_vm_details", compute_engine_vm_details)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_time", state_time)
+        pulumi.set(__self__, "target_details", target_details)
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -266,6 +277,14 @@ class CloneJobResponse(dict):
         Details of the target VM in Compute Engine.
         """
         return pulumi.get(self, "compute_engine_target_details")
+
+    @property
+    @pulumi.getter(name="computeEngineVmDetails")
+    def compute_engine_vm_details(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_details")
 
     @property
     @pulumi.getter(name="createTime")
@@ -306,6 +325,14 @@ class CloneJobResponse(dict):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter(name="targetDetails")
+    def target_details(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "target_details")
 
 
 @pulumi.output_type
@@ -885,6 +912,8 @@ class CutoverJobResponse(dict):
         suggest = None
         if key == "computeEngineTargetDetails":
             suggest = "compute_engine_target_details"
+        elif key == "computeEngineVmDetails":
+            suggest = "compute_engine_vm_details"
         elif key == "createTime":
             suggest = "create_time"
         elif key == "progressPercent":
@@ -893,6 +922,8 @@ class CutoverJobResponse(dict):
             suggest = "state_message"
         elif key == "stateTime":
             suggest = "state_time"
+        elif key == "targetDetails":
+            suggest = "target_details"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CutoverJobResponse. Access the value via the '{suggest}' property getter instead.")
@@ -907,6 +938,7 @@ class CutoverJobResponse(dict):
 
     def __init__(__self__, *,
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
+                 compute_engine_vm_details: 'outputs.TargetVMDetailsResponse',
                  create_time: str,
                  error: 'outputs.StatusResponse',
                  name: str,
@@ -914,10 +946,12 @@ class CutoverJobResponse(dict):
                  progress_percent: int,
                  state: str,
                  state_message: str,
-                 state_time: str):
+                 state_time: str,
+                 target_details: 'outputs.TargetVMDetailsResponse'):
         """
         CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
+        :param 'TargetVMDetailsResponse' compute_engine_vm_details: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
         :param str create_time: The time the cutover job was created (as an API call, not when it was actually created in the target).
         :param 'StatusResponse' error: Provides details for the errors that led to the Cutover Job's state.
         :param str name: The name of the cutover job.
@@ -926,8 +960,10 @@ class CutoverJobResponse(dict):
         :param str state: State of the cutover job.
         :param str state_message: A message providing possible extra details about the current state.
         :param str state_time: The time the state was last updated.
+        :param 'TargetVMDetailsResponse' target_details: Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
+        pulumi.set(__self__, "compute_engine_vm_details", compute_engine_vm_details)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
@@ -936,6 +972,7 @@ class CutoverJobResponse(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_message", state_message)
         pulumi.set(__self__, "state_time", state_time)
+        pulumi.set(__self__, "target_details", target_details)
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -944,6 +981,14 @@ class CutoverJobResponse(dict):
         Details of the target VM in Compute Engine.
         """
         return pulumi.get(self, "compute_engine_target_details")
+
+    @property
+    @pulumi.getter(name="computeEngineVmDetails")
+    def compute_engine_vm_details(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_details")
 
     @property
     @pulumi.getter(name="createTime")
@@ -1008,6 +1053,14 @@ class CutoverJobResponse(dict):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter(name="targetDetails")
+    def target_details(self) -> 'outputs.TargetVMDetailsResponse':
+        """
+        Details of the VM to create as the target of this cutover job. Deprecated: Use compute_engine_target_details instead.
+        """
+        return pulumi.get(self, "target_details")
 
 
 @pulumi.output_type
@@ -1539,6 +1592,291 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class TargetVMDetailsResponse(dict):
+    """
+    TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appliedLicense":
+            suggest = "applied_license"
+        elif key == "bootOption":
+            suggest = "boot_option"
+        elif key == "computeScheduling":
+            suggest = "compute_scheduling"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "externalIp":
+            suggest = "external_ip"
+        elif key == "internalIp":
+            suggest = "internal_ip"
+        elif key == "licenseType":
+            suggest = "license_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "machineTypeSeries":
+            suggest = "machine_type_series"
+        elif key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "networkTags":
+            suggest = "network_tags"
+        elif key == "secureBoot":
+            suggest = "secure_boot"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "targetProject":
+            suggest = "target_project"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetVMDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetVMDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetVMDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 applied_license: 'outputs.AppliedLicenseResponse',
+                 boot_option: str,
+                 compute_scheduling: 'outputs.ComputeSchedulingResponse',
+                 disk_type: str,
+                 external_ip: str,
+                 internal_ip: str,
+                 labels: Mapping[str, str],
+                 license_type: str,
+                 machine_type: str,
+                 machine_type_series: str,
+                 metadata: Mapping[str, str],
+                 name: str,
+                 network: str,
+                 network_interfaces: Sequence['outputs.NetworkInterfaceResponse'],
+                 network_tags: Sequence[str],
+                 project: str,
+                 secure_boot: bool,
+                 service_account: str,
+                 subnetwork: str,
+                 target_project: str,
+                 zone: str):
+        """
+        TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+        :param 'AppliedLicenseResponse' applied_license: The OS license returned from the adaptation module report.
+        :param str boot_option: The VM Boot Option, as set in the source vm.
+        :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
+        :param str disk_type: The disk type to use in the VM.
+        :param str external_ip: The external IP to define in the VM.
+        :param str internal_ip: The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param Mapping[str, str] labels: A map of labels to associate with the VM.
+        :param str license_type: The license type to use in OS adaptation.
+        :param str machine_type: The machine type to create the VM with.
+        :param str machine_type_series: The machine type series to create the VM with.
+        :param Mapping[str, str] metadata: The metadata key/value pairs to assign to the VM.
+        :param str name: The name of the VM to create.
+        :param str network: The network to connect the VM to.
+        :param Sequence['NetworkInterfaceResponse'] network_interfaces: List of NICs connected to this VM.
+        :param Sequence[str] network_tags: A map of network tags to associate with the VM.
+        :param str project: The project in which to create the VM.
+        :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        :param str service_account: The service account to associate the VM with.
+        :param str subnetwork: The subnetwork to connect the VM to.
+        :param str target_project: The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+        :param str zone: The zone in which to create the VM.
+        """
+        pulumi.set(__self__, "applied_license", applied_license)
+        pulumi.set(__self__, "boot_option", boot_option)
+        pulumi.set(__self__, "compute_scheduling", compute_scheduling)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "external_ip", external_ip)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "license_type", license_type)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "machine_type_series", machine_type_series)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_interfaces", network_interfaces)
+        pulumi.set(__self__, "network_tags", network_tags)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "secure_boot", secure_boot)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        pulumi.set(__self__, "target_project", target_project)
+        pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="appliedLicense")
+    def applied_license(self) -> 'outputs.AppliedLicenseResponse':
+        """
+        The OS license returned from the adaptation module report.
+        """
+        return pulumi.get(self, "applied_license")
+
+    @property
+    @pulumi.getter(name="bootOption")
+    def boot_option(self) -> str:
+        """
+        The VM Boot Option, as set in the source vm.
+        """
+        return pulumi.get(self, "boot_option")
+
+    @property
+    @pulumi.getter(name="computeScheduling")
+    def compute_scheduling(self) -> 'outputs.ComputeSchedulingResponse':
+        """
+        Compute instance scheduling information (if empty default is used).
+        """
+        return pulumi.get(self, "compute_scheduling")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The disk type to use in the VM.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> str:
+        """
+        The external IP to define in the VM.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        """
+        The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        A map of labels to associate with the VM.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> str:
+        """
+        The license type to use in OS adaptation.
+        """
+        return pulumi.get(self, "license_type")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        The machine type to create the VM with.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="machineTypeSeries")
+    def machine_type_series(self) -> str:
+        """
+        The machine type series to create the VM with.
+        """
+        return pulumi.get(self, "machine_type_series")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        The metadata key/value pairs to assign to the VM.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the VM to create.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network to connect the VM to.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Sequence['outputs.NetworkInterfaceResponse']:
+        """
+        List of NICs connected to this VM.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Sequence[str]:
+        """
+        A map of network tags to associate with the VM.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project in which to create the VM.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> bool:
+        """
+        Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        """
+        return pulumi.get(self, "secure_boot")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        The service account to associate the VM with.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        The subnetwork to connect the VM to.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> str:
+        """
+        The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+        """
+        return pulumi.get(self, "target_project")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        """
+        The zone in which to create the VM.
+        """
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type

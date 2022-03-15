@@ -449,6 +449,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["gcs_bucket"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["p4_service_account"] = None
+            __props__.__dict__["service_account"] = None
             __props__.__dict__["service_endpoint"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
@@ -495,6 +496,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["options"] = None
         __props__.__dict__["p4_service_account"] = None
         __props__.__dict__["private_instance"] = None
+        __props__.__dict__["service_account"] = None
         __props__.__dict__["service_endpoint"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
@@ -656,6 +658,14 @@ class Instance(pulumi.CustomResource):
         Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
         """
         return pulumi.get(self, "private_instance")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Output[str]:
+        """
+        Deprecated. Use tenant_project_id instead to extract the tenant project ID.
+        """
+        return pulumi.get(self, "service_account")
 
     @property
     @pulumi.getter(name="serviceEndpoint")

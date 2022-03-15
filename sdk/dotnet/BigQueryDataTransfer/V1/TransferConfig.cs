@@ -111,6 +111,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a TransferConfig resource with the given unique name, arguments, and options.
@@ -245,6 +251,12 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// </summary>
         [Input("serviceAccountName")]
         public Input<string>? ServiceAccountName { get; set; }
+
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         /// <summary>
         /// Optional version info. If users want to find a very recent access token, that is, immediately after approving access, users have to set the version_info claim in the token request. To obtain the version_info, users must use the "none+gsession" response type. which be return a version_info back in the authorization response which be be put in a JWT claim in the token request.

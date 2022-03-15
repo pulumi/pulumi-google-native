@@ -29,6 +29,7 @@ __all__ = [
     'RowArgs',
     'ScorecardArgs',
     'SparkChartViewArgs',
+    'StatisticalTimeSeriesFilterArgs',
     'TableDataSetArgs',
     'TableDisplayOptionsArgs',
     'TextArgs',
@@ -815,6 +816,46 @@ class SparkChartViewArgs:
 
 
 @pulumi.input_type
+class StatisticalTimeSeriesFilterArgs:
+    def __init__(__self__, *,
+                 num_time_series: Optional[pulumi.Input[int]] = None,
+                 ranking_method: Optional[pulumi.Input['StatisticalTimeSeriesFilterRankingMethod']] = None):
+        """
+        A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
+        :param pulumi.Input[int] num_time_series: How many time series to output.
+        :param pulumi.Input['StatisticalTimeSeriesFilterRankingMethod'] ranking_method: rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+        """
+        if num_time_series is not None:
+            pulumi.set(__self__, "num_time_series", num_time_series)
+        if ranking_method is not None:
+            pulumi.set(__self__, "ranking_method", ranking_method)
+
+    @property
+    @pulumi.getter(name="numTimeSeries")
+    def num_time_series(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many time series to output.
+        """
+        return pulumi.get(self, "num_time_series")
+
+    @num_time_series.setter
+    def num_time_series(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_time_series", value)
+
+    @property
+    @pulumi.getter(name="rankingMethod")
+    def ranking_method(self) -> Optional[pulumi.Input['StatisticalTimeSeriesFilterRankingMethod']]:
+        """
+        rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+        """
+        return pulumi.get(self, "ranking_method")
+
+    @ranking_method.setter
+    def ranking_method(self, value: Optional[pulumi.Input['StatisticalTimeSeriesFilterRankingMethod']]):
+        pulumi.set(self, "ranking_method", value)
+
+
+@pulumi.input_type
 class TableDataSetArgs:
     def __init__(__self__, *,
                  time_series_query: pulumi.Input['TimeSeriesQueryArgs'],
@@ -1131,13 +1172,15 @@ class TimeSeriesFilterRatioArgs:
                  denominator: Optional[pulumi.Input['RatioPartArgs']] = None,
                  numerator: Optional[pulumi.Input['RatioPartArgs']] = None,
                  pick_time_series_filter: Optional[pulumi.Input['PickTimeSeriesFilterArgs']] = None,
-                 secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None):
+                 secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
+                 statistical_time_series_filter: Optional[pulumi.Input['StatisticalTimeSeriesFilterArgs']] = None):
         """
         A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
         :param pulumi.Input['RatioPartArgs'] denominator: The denominator of the ratio.
         :param pulumi.Input['RatioPartArgs'] numerator: The numerator of the ratio.
         :param pulumi.Input['PickTimeSeriesFilterArgs'] pick_time_series_filter: Ranking based time series filter.
         :param pulumi.Input['AggregationArgs'] secondary_aggregation: Apply a second aggregation after the ratio is computed.
+        :param pulumi.Input['StatisticalTimeSeriesFilterArgs'] statistical_time_series_filter: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
         """
         if denominator is not None:
             pulumi.set(__self__, "denominator", denominator)
@@ -1147,6 +1190,11 @@ class TimeSeriesFilterRatioArgs:
             pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
         if secondary_aggregation is not None:
             pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
+        if statistical_time_series_filter is not None:
+            warnings.warn("""Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""", DeprecationWarning)
+            pulumi.log.warn("""statistical_time_series_filter is deprecated: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""")
+        if statistical_time_series_filter is not None:
+            pulumi.set(__self__, "statistical_time_series_filter", statistical_time_series_filter)
 
     @property
     @pulumi.getter
@@ -1196,6 +1244,18 @@ class TimeSeriesFilterRatioArgs:
     def secondary_aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
         pulumi.set(self, "secondary_aggregation", value)
 
+    @property
+    @pulumi.getter(name="statisticalTimeSeriesFilter")
+    def statistical_time_series_filter(self) -> Optional[pulumi.Input['StatisticalTimeSeriesFilterArgs']]:
+        """
+        Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+        """
+        return pulumi.get(self, "statistical_time_series_filter")
+
+    @statistical_time_series_filter.setter
+    def statistical_time_series_filter(self, value: Optional[pulumi.Input['StatisticalTimeSeriesFilterArgs']]):
+        pulumi.set(self, "statistical_time_series_filter", value)
+
 
 @pulumi.input_type
 class TimeSeriesFilterArgs:
@@ -1203,13 +1263,15 @@ class TimeSeriesFilterArgs:
                  filter: pulumi.Input[str],
                  aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
                  pick_time_series_filter: Optional[pulumi.Input['PickTimeSeriesFilterArgs']] = None,
-                 secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None):
+                 secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
+                 statistical_time_series_filter: Optional[pulumi.Input['StatisticalTimeSeriesFilterArgs']] = None):
         """
         A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
         :param pulumi.Input[str] filter: The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         :param pulumi.Input['AggregationArgs'] aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
         :param pulumi.Input['PickTimeSeriesFilterArgs'] pick_time_series_filter: Ranking based time series filter.
         :param pulumi.Input['AggregationArgs'] secondary_aggregation: Apply a second aggregation after aggregation is applied.
+        :param pulumi.Input['StatisticalTimeSeriesFilterArgs'] statistical_time_series_filter: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
         """
         pulumi.set(__self__, "filter", filter)
         if aggregation is not None:
@@ -1218,6 +1280,11 @@ class TimeSeriesFilterArgs:
             pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
         if secondary_aggregation is not None:
             pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
+        if statistical_time_series_filter is not None:
+            warnings.warn("""Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""", DeprecationWarning)
+            pulumi.log.warn("""statistical_time_series_filter is deprecated: Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.""")
+        if statistical_time_series_filter is not None:
+            pulumi.set(__self__, "statistical_time_series_filter", statistical_time_series_filter)
 
     @property
     @pulumi.getter
@@ -1266,6 +1333,18 @@ class TimeSeriesFilterArgs:
     @secondary_aggregation.setter
     def secondary_aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
         pulumi.set(self, "secondary_aggregation", value)
+
+    @property
+    @pulumi.getter(name="statisticalTimeSeriesFilter")
+    def statistical_time_series_filter(self) -> Optional[pulumi.Input['StatisticalTimeSeriesFilterArgs']]:
+        """
+        Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
+        """
+        return pulumi.get(self, "statistical_time_series_filter")
+
+    @statistical_time_series_filter.setter
+    def statistical_time_series_filter(self, value: Optional[pulumi.Input['StatisticalTimeSeriesFilterArgs']]):
+        pulumi.set(self, "statistical_time_series_filter", value)
 
 
 @pulumi.input_type

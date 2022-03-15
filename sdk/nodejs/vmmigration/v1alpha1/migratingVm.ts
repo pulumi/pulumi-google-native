@@ -41,6 +41,12 @@ export class MigratingVm extends pulumi.CustomResource {
      */
     public readonly computeEngineTargetDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineTargetDefaultsResponse>;
     /**
+     * Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+     *
+     * @deprecated Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+     */
+    public readonly computeEngineVmDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.TargetVMDetailsResponse>;
+    /**
      * The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -101,6 +107,12 @@ export class MigratingVm extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateTime!: pulumi.Output<string>;
     /**
+     * The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     *
+     * @deprecated The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     */
+    public readonly targetDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.TargetVMDetailsResponse>;
+    /**
      * The last time the migrating VM resource was updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -123,6 +135,7 @@ export class MigratingVm extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sourceId'");
             }
             resourceInputs["computeEngineTargetDefaults"] = args ? args.computeEngineTargetDefaults : undefined;
+            resourceInputs["computeEngineVmDefaults"] = args ? args.computeEngineVmDefaults : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -133,6 +146,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["sourceVmId"] = args ? args.sourceVmId : undefined;
+            resourceInputs["targetDefaults"] = args ? args.targetDefaults : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -146,6 +160,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["computeEngineTargetDefaults"] = undefined /*out*/;
+            resourceInputs["computeEngineVmDefaults"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -161,6 +176,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["sourceVmId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["targetDefaults"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -176,6 +192,12 @@ export interface MigratingVmArgs {
      * Details of the target VM in Compute Engine.
      */
     computeEngineTargetDefaults?: pulumi.Input<inputs.vmmigration.v1alpha1.ComputeEngineTargetDefaultsArgs>;
+    /**
+     * Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+     *
+     * @deprecated Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+     */
+    computeEngineVmDefaults?: pulumi.Input<inputs.vmmigration.v1alpha1.TargetVMDetailsArgs>;
     /**
      * The description attached to the migrating VM by the user.
      */
@@ -207,4 +229,10 @@ export interface MigratingVmArgs {
      * The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
      */
     sourceVmId?: pulumi.Input<string>;
+    /**
+     * The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     *
+     * @deprecated The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     */
+    targetDefaults?: pulumi.Input<inputs.vmmigration.v1alpha1.TargetVMDetailsArgs>;
 }

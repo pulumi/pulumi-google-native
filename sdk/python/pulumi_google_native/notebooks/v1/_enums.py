@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AcceleratorConfigType',
     'ExecutionTemplateJobType',
+    'ExecutionTemplateScaleTier',
     'InstanceBootDiskType',
     'InstanceDataDiskType',
     'InstanceDiskEncryption',
@@ -92,6 +93,40 @@ class ExecutionTemplateJobType(str, Enum):
     DATAPROC = "DATAPROC"
     """
     Run execution on a cluster with Dataproc as a job. https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs
+    """
+
+
+class ExecutionTemplateScaleTier(str, Enum):
+    """
+    Required. Scale tier of the hardware used for notebook execution. DEPRECATED Will be discontinued. As right now only CUSTOM is supported.
+    """
+    SCALE_TIER_UNSPECIFIED = "SCALE_TIER_UNSPECIFIED"
+    """
+    Unspecified Scale Tier.
+    """
+    BASIC = "BASIC"
+    """
+    A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets.
+    """
+    STANDARD1 = "STANDARD_1"
+    """
+    Many workers and a few parameter servers.
+    """
+    PREMIUM1 = "PREMIUM_1"
+    """
+    A large number of workers with many parameter servers.
+    """
+    BASIC_GPU = "BASIC_GPU"
+    """
+    A single worker instance with a K80 GPU.
+    """
+    BASIC_TPU = "BASIC_TPU"
+    """
+    A single worker instance with a Cloud TPU.
+    """
+    CUSTOM = "CUSTOM"
+    """
+    The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `ExecutionTemplate.masterType` to specify the type of machine to use for your master node. This is the only required setting.
     """
 
 

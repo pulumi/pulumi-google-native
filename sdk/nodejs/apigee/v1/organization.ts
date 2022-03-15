@@ -41,6 +41,12 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse>;
     /**
+     * DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     *
+     * @deprecated Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     */
+    public readonly analyticsRegion!: pulumi.Output<string>;
+    /**
      * Not used by Apigee.
      */
     public readonly attributes!: pulumi.Output<string[]>;
@@ -113,6 +119,12 @@ export class Organization extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+     *
+     * @deprecated Output only. DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+     */
+    public /*out*/ readonly subscriptionType!: pulumi.Output<string>;
+    /**
      * Not used by Apigee.
      */
     public readonly type!: pulumi.Output<string>;
@@ -128,6 +140,9 @@ export class Organization extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.analyticsRegion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'analyticsRegion'");
+            }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
@@ -135,6 +150,7 @@ export class Organization extends pulumi.CustomResource {
                 throw new Error("Missing required property 'runtimeType'");
             }
             resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
+            resourceInputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
             resourceInputs["attributes"] = args ? args.attributes : undefined;
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["billingType"] = args ? args.billingType : undefined;
@@ -155,8 +171,10 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subscriptionType"] = undefined /*out*/;
         } else {
             resourceInputs["addonsConfig"] = undefined /*out*/;
+            resourceInputs["analyticsRegion"] = undefined /*out*/;
             resourceInputs["attributes"] = undefined /*out*/;
             resourceInputs["authorizedNetwork"] = undefined /*out*/;
             resourceInputs["billingType"] = undefined /*out*/;
@@ -175,6 +193,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = undefined /*out*/;
             resourceInputs["runtimeType"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["subscriptionType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -190,6 +209,12 @@ export interface OrganizationArgs {
      * Addon configurations of the Apigee organization.
      */
     addonsConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigArgs>;
+    /**
+     * DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     *
+     * @deprecated Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     */
+    analyticsRegion: pulumi.Input<string>;
     /**
      * Not used by Apigee.
      */

@@ -25,6 +25,8 @@ type LookupNodePoolArgs struct {
 	Location   string  `pulumi:"location"`
 	NodePoolId string  `pulumi:"nodePoolId"`
 	Project    *string `pulumi:"project"`
+	ProjectId  string  `pulumi:"projectId"`
+	Zone       string  `pulumi:"zone"`
 }
 
 type LookupNodePoolResult struct {
@@ -56,6 +58,10 @@ type LookupNodePoolResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// [Output only] The status of the nodes in this pool instance.
 	Status string `pulumi:"status"`
+	// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	//
+	// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+	StatusMessage string `pulumi:"statusMessage"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
 	// The version of the Kubernetes of this node.
@@ -76,6 +82,8 @@ type LookupNodePoolOutputArgs struct {
 	Location   pulumi.StringInput    `pulumi:"location"`
 	NodePoolId pulumi.StringInput    `pulumi:"nodePoolId"`
 	Project    pulumi.StringPtrInput `pulumi:"project"`
+	ProjectId  pulumi.StringInput    `pulumi:"projectId"`
+	Zone       pulumi.StringInput    `pulumi:"zone"`
 }
 
 func (LookupNodePoolOutputArgs) ElementType() reflect.Type {
@@ -164,6 +172,13 @@ func (o LookupNodePoolResultOutput) SelfLink() pulumi.StringOutput {
 // [Output only] The status of the nodes in this pool instance.
 func (o LookupNodePoolResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+//
+// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+func (o LookupNodePoolResultOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
 // Upgrade settings control disruption and speed of the upgrade.

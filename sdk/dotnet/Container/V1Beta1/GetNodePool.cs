@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("projectId", required: true)]
+        public string ProjectId { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public string Zone { get; set; } = null!;
+
         public GetNodePoolArgs()
         {
         }
@@ -57,6 +63,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("zone", required: true)]
+        public Input<string> Zone { get; set; } = null!;
 
         public GetNodePoolInvokeArgs()
         {
@@ -124,6 +136,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+        /// </summary>
+        public readonly string StatusMessage;
+        /// <summary>
         /// Upgrade settings control disruption and speed of the upgrade.
         /// </summary>
         public readonly Outputs.UpgradeSettingsResponse UpgradeSettings;
@@ -162,6 +178,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             string status,
 
+            string statusMessage,
+
             Outputs.UpgradeSettingsResponse upgradeSettings,
 
             string version)
@@ -180,6 +198,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             PodIpv4CidrSize = podIpv4CidrSize;
             SelfLink = selfLink;
             Status = status;
+            StatusMessage = statusMessage;
             UpgradeSettings = upgradeSettings;
             Version = version;
         }

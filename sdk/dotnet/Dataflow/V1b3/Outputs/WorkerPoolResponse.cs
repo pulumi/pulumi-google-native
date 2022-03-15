@@ -97,6 +97,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly string TeardownPolicy;
         /// <summary>
+        /// Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+        /// </summary>
+        public readonly string WorkerHarnessContainerImage;
+        /// <summary>
         /// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
         /// </summary>
         public readonly string Zone;
@@ -143,6 +147,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string teardownPolicy,
 
+            string workerHarnessContainerImage,
+
             string zone)
         {
             AutoscalingSettings = autoscalingSettings;
@@ -165,6 +171,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
             Subnetwork = subnetwork;
             TaskrunnerSettings = taskrunnerSettings;
             TeardownPolicy = teardownPolicy;
+            WorkerHarnessContainerImage = workerHarnessContainerImage;
             Zone = zone;
         }
     }

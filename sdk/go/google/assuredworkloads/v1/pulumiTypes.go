@@ -10,6 +10,198 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Settings specific to the Key Management Service.
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	NextRotationTime string `pulumi:"nextRotationTime"`
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	RotationPeriod string `pulumi:"rotationPeriod"`
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs and GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput
+}
+
+// Settings specific to the Key Management Service.
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs struct {
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
+}
+
+func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput)
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput).ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs, GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtr and GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput
+}
+
+type googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs
+
+func GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtr(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput {
+	return (*googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType)(v)
+}
+
+func (*googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadKMSSettings)(nil)).Elem()
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrType) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
+}
+
+// Settings specific to the Key Management Service.
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return o.ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
+		return &v
+	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
+}
+
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) string { return v.NextRotationTime }).(pulumi.StringOutput)
+}
+
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadKMSSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudAssuredworkloadsV1WorkloadKMSSettings
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput)
+}
+
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NextRotationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RotationPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings specific to the Key Management Service.
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse struct {
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	NextRotationTime string `pulumi:"nextRotationTime"`
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	RotationPeriod string `pulumi:"rotationPeriod"`
+}
+
+// Settings specific to the Key Management Service.
+type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput {
+	return o
+}
+
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) string { return v.NextRotationTime }).(pulumi.StringOutput)
+}
+
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
 // Represent the resources that are children of this Workload.
 type GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse struct {
 	// Resource identifier. For a project this represents project_number.
@@ -281,8 +473,13 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput)(nil)).Elem(), GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput{})

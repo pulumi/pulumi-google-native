@@ -15,6 +15,7 @@ __all__ = [
     'NetworkInterfaceArgs',
     'SchedulePolicyArgs',
     'SchedulingNodeAffinityArgs',
+    'TargetVMDetailsArgs',
     'VmUtilizationInfoArgs',
     'VmUtilizationMetricsArgs',
     'VmwareSourceDetailsArgs',
@@ -519,6 +520,302 @@ class SchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class TargetVMDetailsArgs:
+    def __init__(__self__, *,
+                 compute_scheduling: Optional[pulumi.Input['ComputeSchedulingArgs']] = None,
+                 disk_type: Optional[pulumi.Input['TargetVMDetailsDiskType']] = None,
+                 external_ip: Optional[pulumi.Input[str]] = None,
+                 internal_ip: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 license_type: Optional[pulumi.Input['TargetVMDetailsLicenseType']] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 machine_type_series: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 secure_boot: Optional[pulumi.Input[bool]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 target_project: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
+        :param pulumi.Input['ComputeSchedulingArgs'] compute_scheduling: Compute instance scheduling information (if empty default is used).
+        :param pulumi.Input['TargetVMDetailsDiskType'] disk_type: The disk type to use in the VM.
+        :param pulumi.Input[str] external_ip: The external IP to define in the VM.
+        :param pulumi.Input[str] internal_ip: The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels to associate with the VM.
+        :param pulumi.Input['TargetVMDetailsLicenseType'] license_type: The license type to use in OS adaptation.
+        :param pulumi.Input[str] machine_type: The machine type to create the VM with.
+        :param pulumi.Input[str] machine_type_series: The machine type series to create the VM with.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs to assign to the VM.
+        :param pulumi.Input[str] name: The name of the VM to create.
+        :param pulumi.Input[str] network: The network to connect the VM to.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: List of NICs connected to this VM.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: A map of network tags to associate with the VM.
+        :param pulumi.Input[bool] secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        :param pulumi.Input[str] service_account: The service account to associate the VM with.
+        :param pulumi.Input[str] subnetwork: The subnetwork to connect the VM to.
+        :param pulumi.Input[str] target_project: The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+        :param pulumi.Input[str] zone: The zone in which to create the VM.
+        """
+        if compute_scheduling is not None:
+            pulumi.set(__self__, "compute_scheduling", compute_scheduling)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+        if external_ip is not None:
+            pulumi.set(__self__, "external_ip", external_ip)
+        if internal_ip is not None:
+            pulumi.set(__self__, "internal_ip", internal_ip)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if license_type is not None:
+            pulumi.set(__self__, "license_type", license_type)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if machine_type_series is not None:
+            pulumi.set(__self__, "machine_type_series", machine_type_series)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if secure_boot is not None:
+            pulumi.set(__self__, "secure_boot", secure_boot)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if target_project is not None:
+            pulumi.set(__self__, "target_project", target_project)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="computeScheduling")
+    def compute_scheduling(self) -> Optional[pulumi.Input['ComputeSchedulingArgs']]:
+        """
+        Compute instance scheduling information (if empty default is used).
+        """
+        return pulumi.get(self, "compute_scheduling")
+
+    @compute_scheduling.setter
+    def compute_scheduling(self, value: Optional[pulumi.Input['ComputeSchedulingArgs']]):
+        pulumi.set(self, "compute_scheduling", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input['TargetVMDetailsDiskType']]:
+        """
+        The disk type to use in the VM.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input['TargetVMDetailsDiskType']]):
+        pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external IP to define in the VM.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @external_ip.setter
+    def external_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ip", value)
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The internal IP to define in the VM. The formats accepted are: `ephemeral` \ ipv4 address \ a named address resource full path.
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @internal_ip.setter
+    def internal_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "internal_ip", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of labels to associate with the VM.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="licenseType")
+    def license_type(self) -> Optional[pulumi.Input['TargetVMDetailsLicenseType']]:
+        """
+        The license type to use in OS adaptation.
+        """
+        return pulumi.get(self, "license_type")
+
+    @license_type.setter
+    def license_type(self, value: Optional[pulumi.Input['TargetVMDetailsLicenseType']]):
+        pulumi.set(self, "license_type", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine type to create the VM with.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="machineTypeSeries")
+    def machine_type_series(self) -> Optional[pulumi.Input[str]]:
+        """
+        The machine type series to create the VM with.
+        """
+        return pulumi.get(self, "machine_type_series")
+
+    @machine_type_series.setter
+    def machine_type_series(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type_series", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The metadata key/value pairs to assign to the VM.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VM to create.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network to connect the VM to.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]:
+        """
+        List of NICs connected to this VM.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A map of network tags to associate with the VM.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
+        """
+        return pulumi.get(self, "secure_boot")
+
+    @secure_boot.setter
+    def secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "secure_boot", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account to associate the VM with.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subnetwork to connect the VM to.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter(name="targetProject")
+    def target_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
+        """
+        return pulumi.get(self, "target_project")
+
+    @target_project.setter
+    def target_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_project", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone in which to create the VM.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type

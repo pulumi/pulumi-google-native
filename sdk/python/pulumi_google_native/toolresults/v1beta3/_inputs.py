@@ -33,6 +33,7 @@ __all__ = [
     'PrimaryStepArgs',
     'SkippedDetailArgs',
     'SpecificationArgs',
+    'StackTraceArgs',
     'StepDimensionValueEntryArgs',
     'StepLabelsEntryArgs',
     'SuccessDetailArgs',
@@ -1240,6 +1241,30 @@ class SpecificationArgs:
 
 
 @pulumi.input_type
+class StackTraceArgs:
+    def __init__(__self__, *,
+                 exception: Optional[pulumi.Input[str]] = None):
+        """
+        A stacktrace.
+        :param pulumi.Input[str] exception: The stack trace message. Required
+        """
+        if exception is not None:
+            pulumi.set(__self__, "exception", exception)
+
+    @property
+    @pulumi.getter
+    def exception(self) -> Optional[pulumi.Input[str]]:
+        """
+        The stack trace message. Required
+        """
+        return pulumi.get(self, "exception")
+
+    @exception.setter
+    def exception(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exception", value)
+
+
+@pulumi.input_type
 class StepDimensionValueEntryArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
@@ -1455,6 +1480,7 @@ class TestIssueArgs:
                  category: Optional[pulumi.Input['TestIssueCategory']] = None,
                  error_message: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['TestIssueSeverity']] = None,
+                 stack_trace: Optional[pulumi.Input['StackTraceArgs']] = None,
                  type: Optional[pulumi.Input['TestIssueType']] = None,
                  warning: Optional[pulumi.Input['AnyArgs']] = None):
         """
@@ -1462,6 +1488,7 @@ class TestIssueArgs:
         :param pulumi.Input['TestIssueCategory'] category: Category of issue. Required.
         :param pulumi.Input[str] error_message: A brief human-readable message describing the issue. Required.
         :param pulumi.Input['TestIssueSeverity'] severity: Severity of issue. Required.
+        :param pulumi.Input['StackTraceArgs'] stack_trace: Deprecated in favor of stack trace fields inside specific warnings.
         :param pulumi.Input['TestIssueType'] type: Type of issue. Required.
         :param pulumi.Input['AnyArgs'] warning: Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
         """
@@ -1471,6 +1498,11 @@ class TestIssueArgs:
             pulumi.set(__self__, "error_message", error_message)
         if severity is not None:
             pulumi.set(__self__, "severity", severity)
+        if stack_trace is not None:
+            warnings.warn("""Deprecated in favor of stack trace fields inside specific warnings.""", DeprecationWarning)
+            pulumi.log.warn("""stack_trace is deprecated: Deprecated in favor of stack trace fields inside specific warnings.""")
+        if stack_trace is not None:
+            pulumi.set(__self__, "stack_trace", stack_trace)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if warning is not None:
@@ -1511,6 +1543,18 @@ class TestIssueArgs:
     @severity.setter
     def severity(self, value: Optional[pulumi.Input['TestIssueSeverity']]):
         pulumi.set(self, "severity", value)
+
+    @property
+    @pulumi.getter(name="stackTrace")
+    def stack_trace(self) -> Optional[pulumi.Input['StackTraceArgs']]:
+        """
+        Deprecated in favor of stack trace fields inside specific warnings.
+        """
+        return pulumi.get(self, "stack_trace")
+
+    @stack_trace.setter
+    def stack_trace(self, value: Optional[pulumi.Input['StackTraceArgs']]):
+        pulumi.set(self, "stack_trace", value)
 
     @property
     @pulumi.getter

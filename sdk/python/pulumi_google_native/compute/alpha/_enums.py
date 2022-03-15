@@ -15,12 +15,14 @@ __all__ = [
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval',
     'AttachedDiskInitializeParamsArchitecture',
+    'AttachedDiskInitializeParamsInterface',
     'AttachedDiskInitializeParamsOnUpdateAction',
     'AttachedDiskInterface',
     'AttachedDiskMode',
     'AttachedDiskSavedState',
     'AttachedDiskType',
     'AuditLogConfigLogType',
+    'AuthenticationPolicyPrincipalBinding',
     'AuthorizationLoggingOptionsPermissionType',
     'AutoscalingPolicyCpuUtilizationPredictiveMethod',
     'AutoscalingPolicyCustomMetricUtilizationUtilizationTargetType',
@@ -38,12 +40,15 @@ __all__ = [
     'BackendServiceSessionAffinity',
     'CallCredentialsCallCredentialType',
     'ChannelCredentialsChannelCredentialType',
+    'ClientTlsSettingsMode',
     'ConditionIam',
     'ConditionOp',
     'ConditionSys',
     'DeprecationStatusState',
     'DiskArchitecture',
     'DiskInstantiationConfigInstantiateFrom',
+    'DiskInterface',
+    'DiskStorageType',
     'DistributionPolicyTargetShape',
     'ExternalVpnGatewayRedundancyType',
     'FileContentBufferFileType',
@@ -109,6 +114,7 @@ __all__ = [
     'LogConfigCloudAuditOptionsLogName',
     'LogConfigDataAccessOptionsLogMode',
     'MetadataFilterFilterMatchCriteria',
+    'MutualTlsMode',
     'NetworkEndpointGroupNetworkEndpointType',
     'NetworkEndpointGroupType',
     'NetworkFirewallPolicyVpcNetworkScope',
@@ -137,7 +143,10 @@ __all__ = [
     'RegionCommitmentPlan',
     'RegionCommitmentType',
     'RegionDiskArchitecture',
+    'RegionDiskInterface',
+    'RegionDiskStorageType',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
+    'RegionHealthCheckServiceHealthStatusAggregationStrategy',
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
     'RegionInstanceGroupManagerListManagedInstancesResults',
@@ -392,6 +401,15 @@ class AttachedDiskInitializeParamsArchitecture(str, Enum):
     """
 
 
+class AttachedDiskInitializeParamsInterface(str, Enum):
+    """
+    [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    """
+    NVME = "NVME"
+    SCSI = "SCSI"
+    UNSPECIFIED = "UNSPECIFIED"
+
+
 class AttachedDiskInitializeParamsOnUpdateAction(str, Enum):
     """
     Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -474,6 +492,21 @@ class AuditLogConfigLogType(str, Enum):
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
     """
     Default case. Should never be this.
+    """
+
+
+class AuthenticationPolicyPrincipalBinding(str, Enum):
+    """
+    Define whether peer or origin identity should be used for principal. Default value is USE_PEER. If peer (or origin) identity is not available, either because peer/origin authentication is not defined, or failed, principal will be left unset. In other words, binding rule does not affect the decision to accept or reject request. This field can be set to one of the following: USE_PEER: Principal will be set to the identity from peer authentication. USE_ORIGIN: Principal will be set to the identity from origin authentication.
+    """
+    INVALID = "INVALID"
+    USE_ORIGIN = "USE_ORIGIN"
+    """
+    Principal will be set to the identity from origin authentication.
+    """
+    USE_PEER = "USE_PEER"
+    """
+    Principal will be set to the identity from peer authentication.
     """
 
 
@@ -830,6 +863,25 @@ class ChannelCredentialsChannelCredentialType(str, Enum):
     INVALID = "INVALID"
 
 
+class ClientTlsSettingsMode(str, Enum):
+    """
+    Indicates whether connections to this port should be secured using TLS. The value of this field determines how TLS is enforced. This can be set to one of the following values: DISABLE: Do not setup a TLS connection to the backends. SIMPLE: Originate a TLS connection to the backends. MUTUAL: Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+    """
+    DISABLE = "DISABLE"
+    """
+    Do not setup a TLS connection to the backends.
+    """
+    INVALID = "INVALID"
+    MUTUAL = "MUTUAL"
+    """
+    Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
+    """
+    SIMPLE = "SIMPLE"
+    """
+    Originate a TLS connection to the backends.
+    """
+
+
 class ConditionIam(str, Enum):
     """
     This is deprecated and has no effect. Do not use.
@@ -984,6 +1036,23 @@ class DiskInstantiationConfigInstantiateFrom(str, Enum):
     """
     Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks.
     """
+
+
+class DiskInterface(str, Enum):
+    """
+    [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    """
+    NVME = "NVME"
+    SCSI = "SCSI"
+    UNSPECIFIED = "UNSPECIFIED"
+
+
+class DiskStorageType(str, Enum):
+    """
+    [Deprecated] Storage type of the persistent disk.
+    """
+    HDD = "HDD"
+    SSD = "SSD"
 
 
 class DistributionPolicyTargetShape(str, Enum):
@@ -2052,6 +2121,21 @@ class MetadataFilterFilterMatchCriteria(str, Enum):
     """
 
 
+class MutualTlsMode(str, Enum):
+    """
+    Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
+    """
+    INVALID = "INVALID"
+    PERMISSIVE = "PERMISSIVE"
+    """
+    Client certificate can be omitted, connection can be either plaintext or TLS.
+    """
+    STRICT = "STRICT"
+    """
+    Client certificate must be presented, connection is in TLS.
+    """
+
+
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -2536,6 +2620,23 @@ class RegionDiskArchitecture(str, Enum):
     """
 
 
+class RegionDiskInterface(str, Enum):
+    """
+    [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    """
+    NVME = "NVME"
+    SCSI = "SCSI"
+    UNSPECIFIED = "UNSPECIFIED"
+
+
+class RegionDiskStorageType(str, Enum):
+    """
+    [Deprecated] Storage type of the persistent disk.
+    """
+    HDD = "HDD"
+    SSD = "SSD"
+
+
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     """
     Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
@@ -2547,6 +2648,20 @@ class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     NO_AGGREGATION = "NO_AGGREGATION"
     """
     An EndpointHealth message is returned for each backend in the health check service.
+    """
+
+
+class RegionHealthCheckServiceHealthStatusAggregationStrategy(str, Enum):
+    """
+    This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+    """
+    AND_ = "AND"
+    """
+    This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+    """
+    NO_AGGREGATION = "NO_AGGREGATION"
+    """
+    This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
     """
 
 

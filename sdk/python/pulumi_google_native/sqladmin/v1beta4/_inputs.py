@@ -1491,6 +1491,7 @@ class SettingsArgs:
     def __init__(__self__, *,
                  activation_policy: Optional[pulumi.Input['SettingsActivationPolicy']] = None,
                  active_directory_config: Optional[pulumi.Input['SqlActiveDirectoryConfigArgs']] = None,
+                 authorized_gae_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  availability_type: Optional[pulumi.Input['SettingsAvailabilityType']] = None,
                  backup_configuration: Optional[pulumi.Input['BackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
@@ -1507,6 +1508,7 @@ class SettingsArgs:
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
                  password_validation_policy: Optional[pulumi.Input['PasswordValidationPolicyArgs']] = None,
                  pricing_plan: Optional[pulumi.Input['SettingsPricingPlan']] = None,
+                 replication_type: Optional[pulumi.Input['SettingsReplicationType']] = None,
                  settings_version: Optional[pulumi.Input[str]] = None,
                  sql_server_audit_config: Optional[pulumi.Input['SqlServerAuditConfigArgs']] = None,
                  storage_auto_resize: Optional[pulumi.Input[bool]] = None,
@@ -1517,6 +1519,7 @@ class SettingsArgs:
         Database instance settings.
         :param pulumi.Input['SettingsActivationPolicy'] activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param pulumi.Input['SqlActiveDirectoryConfigArgs'] active_directory_config: Active Directory configuration, relevant only for Cloud SQL for SQL Server.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_gae_applications: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
         :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param pulumi.Input['BackupConfigurationArgs'] backup_configuration: The daily backup configuration for the instance.
         :param pulumi.Input[str] collation: The name of server Instance collation.
@@ -1533,6 +1536,7 @@ class SettingsArgs:
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
         :param pulumi.Input['PasswordValidationPolicyArgs'] password_validation_policy: The local user password validation policy of the instance.
         :param pulumi.Input['SettingsPricingPlan'] pricing_plan: The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
+        :param pulumi.Input['SettingsReplicationType'] replication_type: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
         :param pulumi.Input[str] settings_version: The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
         :param pulumi.Input['SqlServerAuditConfigArgs'] sql_server_audit_config: SQL Server specific audit configuration.
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
@@ -1544,6 +1548,11 @@ class SettingsArgs:
             pulumi.set(__self__, "activation_policy", activation_policy)
         if active_directory_config is not None:
             pulumi.set(__self__, "active_directory_config", active_directory_config)
+        if authorized_gae_applications is not None:
+            warnings.warn("""The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""", DeprecationWarning)
+            pulumi.log.warn("""authorized_gae_applications is deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.""")
+        if authorized_gae_applications is not None:
+            pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -1576,6 +1585,11 @@ class SettingsArgs:
             pulumi.set(__self__, "password_validation_policy", password_validation_policy)
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
+        if replication_type is not None:
+            warnings.warn("""The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.""", DeprecationWarning)
+            pulumi.log.warn("""replication_type is deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.""")
+        if replication_type is not None:
+            pulumi.set(__self__, "replication_type", replication_type)
         if settings_version is not None:
             pulumi.set(__self__, "settings_version", settings_version)
         if sql_server_audit_config is not None:
@@ -1612,6 +1626,18 @@ class SettingsArgs:
     @active_directory_config.setter
     def active_directory_config(self, value: Optional[pulumi.Input['SqlActiveDirectoryConfigArgs']]):
         pulumi.set(self, "active_directory_config", value)
+
+    @property
+    @pulumi.getter(name="authorizedGaeApplications")
+    def authorized_gae_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+        """
+        return pulumi.get(self, "authorized_gae_applications")
+
+    @authorized_gae_applications.setter
+    def authorized_gae_applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_gae_applications", value)
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -1804,6 +1830,18 @@ class SettingsArgs:
     @pricing_plan.setter
     def pricing_plan(self, value: Optional[pulumi.Input['SettingsPricingPlan']]):
         pulumi.set(self, "pricing_plan", value)
+
+    @property
+    @pulumi.getter(name="replicationType")
+    def replication_type(self) -> Optional[pulumi.Input['SettingsReplicationType']]:
+        """
+        The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+        """
+        return pulumi.get(self, "replication_type")
+
+    @replication_type.setter
+    def replication_type(self, value: Optional[pulumi.Input['SettingsReplicationType']]):
+        pulumi.set(self, "replication_type", value)
 
     @property
     @pulumi.getter(name="settingsVersion")

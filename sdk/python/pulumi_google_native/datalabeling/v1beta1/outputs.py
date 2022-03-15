@@ -17,6 +17,7 @@ __all__ = [
     'GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse',
     'GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse',
     'GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse',
+    'GoogleCloudDatalabelingV1beta1CsvInstructionResponse',
     'GoogleCloudDatalabelingV1beta1EvaluationConfigResponse',
     'GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse',
     'GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse',
@@ -309,6 +310,45 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse(dict):
         Whether the classification task is multi-label or not.
         """
         return pulumi.get(self, "is_multi_label")
+
+
+@pulumi.output_type
+class GoogleCloudDatalabelingV1beta1CsvInstructionResponse(dict):
+    """
+    Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsFileUri":
+            suggest = "gcs_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1CsvInstructionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1CsvInstructionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1CsvInstructionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcs_file_uri: str):
+        """
+        Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
+        :param str gcs_file_uri: CSV file for the instruction. Only gcs path is allowed.
+        """
+        pulumi.set(__self__, "gcs_file_uri", gcs_file_uri)
+
+    @property
+    @pulumi.getter(name="gcsFileUri")
+    def gcs_file_uri(self) -> str:
+        """
+        CSV file for the instruction. Only gcs path is allowed.
+        """
+        return pulumi.get(self, "gcs_file_uri")
 
 
 @pulumi.output_type

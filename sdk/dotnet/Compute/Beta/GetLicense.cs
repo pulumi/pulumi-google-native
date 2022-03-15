@@ -56,6 +56,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetLicenseResult
     {
         /// <summary>
+        /// Deprecated. This field no longer reflects whether a license charges a usage fee.
+        /// </summary>
+        public readonly bool ChargesUseFee;
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
@@ -87,6 +91,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [OutputConstructor]
         private GetLicenseResult(
+            bool chargesUseFee,
+
             string creationTimestamp,
 
             string description,
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             bool transferable)
         {
+            ChargesUseFee = chargesUseFee;
             CreationTimestamp = creationTimestamp;
             Description = description;
             Kind = kind;

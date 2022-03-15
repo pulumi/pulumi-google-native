@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         public readonly string Priority;
         /// <summary>
+        /// The severity of this case. Deprecated. Use priority instead.
+        /// </summary>
+        public readonly string Severity;
+        /// <summary>
         /// The current status of the support case.
         /// </summary>
         public readonly string State;
@@ -132,6 +136,8 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 
             string priority,
 
+            string severity,
+
             string state,
 
             ImmutableArray<string> subscriberEmailAddresses,
@@ -150,6 +156,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
             Escalated = escalated;
             Name = name;
             Priority = priority;
+            Severity = severity;
             State = state;
             SubscriberEmailAddresses = subscriberEmailAddresses;
             TestCase = testCase;

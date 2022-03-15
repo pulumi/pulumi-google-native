@@ -15,6 +15,14 @@ import (
 type RegionTargetHttpsProxy struct {
 	pulumi.CustomResourceState
 
+	// [Deprecated] Use serverTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use serverTlsPolicy instead.
+	Authentication pulumi.StringOutput `pulumi:"authentication"`
+	// [Deprecated] Use authorizationPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use authorizationPolicy instead.
+	Authorization pulumi.StringOutput `pulumi:"authorization"`
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
 	AuthorizationPolicy pulumi.StringOutput `pulumi:"authorizationPolicy"`
 	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
@@ -91,6 +99,14 @@ func (RegionTargetHttpsProxyState) ElementType() reflect.Type {
 }
 
 type regionTargetHttpsProxyArgs struct {
+	// [Deprecated] Use serverTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use serverTlsPolicy instead.
+	Authentication *string `pulumi:"authentication"`
+	// [Deprecated] Use authorizationPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use authorizationPolicy instead.
+	Authorization *string `pulumi:"authorization"`
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
 	AuthorizationPolicy *string `pulumi:"authorizationPolicy"`
 	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
@@ -121,6 +137,14 @@ type regionTargetHttpsProxyArgs struct {
 
 // The set of arguments for constructing a RegionTargetHttpsProxy resource.
 type RegionTargetHttpsProxyArgs struct {
+	// [Deprecated] Use serverTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use serverTlsPolicy instead.
+	Authentication pulumi.StringPtrInput
+	// [Deprecated] Use authorizationPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use authorizationPolicy instead.
+	Authorization pulumi.StringPtrInput
 	// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
 	AuthorizationPolicy pulumi.StringPtrInput
 	// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.

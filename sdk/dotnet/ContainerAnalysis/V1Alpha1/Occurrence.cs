@@ -11,7 +11,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
-    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:Occurrence")]
     public partial class Occurrence : Pulumi.CustomResource
@@ -252,6 +251,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("installation")]
         public Input<Inputs.InstallationArgs>? Installation { get; set; }
+
+        /// <summary>
+        /// The name of the project. Should be of the form "projects/{project_id}". @Deprecated
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.

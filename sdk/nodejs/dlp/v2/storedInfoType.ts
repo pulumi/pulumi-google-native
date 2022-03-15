@@ -88,6 +88,11 @@ export interface StoredInfoTypeArgs {
      * Configuration of the storedInfoType to create.
      */
     config: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
+    /**
+     * Deprecated. This field has no effect.
+     *
+     * @deprecated Deprecated. This field has no effect.
+     */
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

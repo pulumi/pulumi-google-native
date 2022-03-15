@@ -92,6 +92,12 @@ export interface GetTransferConfigResult {
      * Data transfer modification time. Ignored by server on input.
      */
     readonly updateTime: string;
+    /**
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
+     *
+     * @deprecated Deprecated. Unique ID of the user on whose behalf transfer is done.
+     */
+    readonly userId: string;
 }
 
 export function getTransferConfigOutput(args: GetTransferConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferConfigResult> {

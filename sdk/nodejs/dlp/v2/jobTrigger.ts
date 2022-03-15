@@ -136,6 +136,11 @@ export interface JobTriggerArgs {
      * For inspect jobs, a snapshot of the configuration.
      */
     inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
+    /**
+     * Deprecated. This field has no effect.
+     *
+     * @deprecated Deprecated. This field has no effect.
+     */
     location?: pulumi.Input<string>;
     /**
      * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.

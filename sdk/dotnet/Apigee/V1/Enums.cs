@@ -507,6 +507,47 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
     /// <summary>
+    /// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+    /// </summary>
+    [EnumType]
+    public readonly struct RatePlanPaymentFundingModel : IEquatable<RatePlanPaymentFundingModel>
+    {
+        private readonly string _value;
+
+        private RatePlanPaymentFundingModel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Billing account type not specified.
+        /// </summary>
+        public static RatePlanPaymentFundingModel PaymentFundingModelUnspecified { get; } = new RatePlanPaymentFundingModel("PAYMENT_FUNDING_MODEL_UNSPECIFIED");
+        /// <summary>
+        /// Prepaid billing account type. Developer pays in advance for the use of your API products. Funds are deducted from their prepaid account balance. **Note**: Not supported by Apigee at this time.
+        /// </summary>
+        public static RatePlanPaymentFundingModel Prepaid { get; } = new RatePlanPaymentFundingModel("PREPAID");
+        /// <summary>
+        /// Postpaid billing account type. Developer is billed through an invoice after using your API products.
+        /// </summary>
+        public static RatePlanPaymentFundingModel Postpaid { get; } = new RatePlanPaymentFundingModel("POSTPAID");
+
+        public static bool operator ==(RatePlanPaymentFundingModel left, RatePlanPaymentFundingModel right) => left.Equals(right);
+        public static bool operator !=(RatePlanPaymentFundingModel left, RatePlanPaymentFundingModel right) => !left.Equals(right);
+
+        public static explicit operator string(RatePlanPaymentFundingModel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RatePlanPaymentFundingModel other && Equals(other);
+        public bool Equals(RatePlanPaymentFundingModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Method used to calculate the revenue that is shared with developers.
     /// </summary>
     [EnumType]

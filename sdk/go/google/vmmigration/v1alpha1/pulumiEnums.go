@@ -857,6 +857,346 @@ func (in *schedulingNodeAffinityOperatorPtr) ToSchedulingNodeAffinityOperatorPtr
 	return pulumi.ToOutputWithContext(ctx, in).(SchedulingNodeAffinityOperatorPtrOutput)
 }
 
+// The disk type to use in the VM.
+type TargetVMDetailsDiskType string
+
+const (
+	// An unspecified disk type. Will be used as STANDARD.
+	TargetVMDetailsDiskTypeDiskTypeUnspecified = TargetVMDetailsDiskType("DISK_TYPE_UNSPECIFIED")
+	// A Standard disk type.
+	TargetVMDetailsDiskTypeStandard = TargetVMDetailsDiskType("STANDARD")
+	// An alternative to SSD persistent disks that balance performance and cost.
+	TargetVMDetailsDiskTypeBalanced = TargetVMDetailsDiskType("BALANCED")
+	// SSD hard disk type.
+	TargetVMDetailsDiskTypeSsd = TargetVMDetailsDiskType("SSD")
+)
+
+func (TargetVMDetailsDiskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetailsDiskType)(nil)).Elem()
+}
+
+func (e TargetVMDetailsDiskType) ToTargetVMDetailsDiskTypeOutput() TargetVMDetailsDiskTypeOutput {
+	return pulumi.ToOutput(e).(TargetVMDetailsDiskTypeOutput)
+}
+
+func (e TargetVMDetailsDiskType) ToTargetVMDetailsDiskTypeOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TargetVMDetailsDiskTypeOutput)
+}
+
+func (e TargetVMDetailsDiskType) ToTargetVMDetailsDiskTypePtrOutput() TargetVMDetailsDiskTypePtrOutput {
+	return e.ToTargetVMDetailsDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e TargetVMDetailsDiskType) ToTargetVMDetailsDiskTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypePtrOutput {
+	return TargetVMDetailsDiskType(e).ToTargetVMDetailsDiskTypeOutputWithContext(ctx).ToTargetVMDetailsDiskTypePtrOutputWithContext(ctx)
+}
+
+func (e TargetVMDetailsDiskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetVMDetailsDiskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetVMDetailsDiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TargetVMDetailsDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TargetVMDetailsDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetailsDiskType)(nil)).Elem()
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToTargetVMDetailsDiskTypeOutput() TargetVMDetailsDiskTypeOutput {
+	return o
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToTargetVMDetailsDiskTypeOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypeOutput {
+	return o
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToTargetVMDetailsDiskTypePtrOutput() TargetVMDetailsDiskTypePtrOutput {
+	return o.ToTargetVMDetailsDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToTargetVMDetailsDiskTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetVMDetailsDiskType) *TargetVMDetailsDiskType {
+		return &v
+	}).(TargetVMDetailsDiskTypePtrOutput)
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetVMDetailsDiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetVMDetailsDiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetVMDetailsDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsDiskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetVMDetailsDiskType)(nil)).Elem()
+}
+
+func (o TargetVMDetailsDiskTypePtrOutput) ToTargetVMDetailsDiskTypePtrOutput() TargetVMDetailsDiskTypePtrOutput {
+	return o
+}
+
+func (o TargetVMDetailsDiskTypePtrOutput) ToTargetVMDetailsDiskTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypePtrOutput {
+	return o
+}
+
+func (o TargetVMDetailsDiskTypePtrOutput) Elem() TargetVMDetailsDiskTypeOutput {
+	return o.ApplyT(func(v *TargetVMDetailsDiskType) TargetVMDetailsDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret TargetVMDetailsDiskType
+		return ret
+	}).(TargetVMDetailsDiskTypeOutput)
+}
+
+func (o TargetVMDetailsDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetVMDetailsDiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TargetVMDetailsDiskTypeInput is an input type that accepts TargetVMDetailsDiskTypeArgs and TargetVMDetailsDiskTypeOutput values.
+// You can construct a concrete instance of `TargetVMDetailsDiskTypeInput` via:
+//
+//          TargetVMDetailsDiskTypeArgs{...}
+type TargetVMDetailsDiskTypeInput interface {
+	pulumi.Input
+
+	ToTargetVMDetailsDiskTypeOutput() TargetVMDetailsDiskTypeOutput
+	ToTargetVMDetailsDiskTypeOutputWithContext(context.Context) TargetVMDetailsDiskTypeOutput
+}
+
+var targetVMDetailsDiskTypePtrType = reflect.TypeOf((**TargetVMDetailsDiskType)(nil)).Elem()
+
+type TargetVMDetailsDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToTargetVMDetailsDiskTypePtrOutput() TargetVMDetailsDiskTypePtrOutput
+	ToTargetVMDetailsDiskTypePtrOutputWithContext(context.Context) TargetVMDetailsDiskTypePtrOutput
+}
+
+type targetVMDetailsDiskTypePtr string
+
+func TargetVMDetailsDiskTypePtr(v string) TargetVMDetailsDiskTypePtrInput {
+	return (*targetVMDetailsDiskTypePtr)(&v)
+}
+
+func (*targetVMDetailsDiskTypePtr) ElementType() reflect.Type {
+	return targetVMDetailsDiskTypePtrType
+}
+
+func (in *targetVMDetailsDiskTypePtr) ToTargetVMDetailsDiskTypePtrOutput() TargetVMDetailsDiskTypePtrOutput {
+	return pulumi.ToOutput(in).(TargetVMDetailsDiskTypePtrOutput)
+}
+
+func (in *targetVMDetailsDiskTypePtr) ToTargetVMDetailsDiskTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TargetVMDetailsDiskTypePtrOutput)
+}
+
+// The license type to use in OS adaptation.
+type TargetVMDetailsLicenseType string
+
+const (
+	// The license type is the default for the OS.
+	TargetVMDetailsLicenseTypeDefault = TargetVMDetailsLicenseType("DEFAULT")
+	// The license type is Pay As You Go license type.
+	TargetVMDetailsLicenseTypePayg = TargetVMDetailsLicenseType("PAYG")
+	// The license type is Bring Your Own License type.
+	TargetVMDetailsLicenseTypeByol = TargetVMDetailsLicenseType("BYOL")
+)
+
+func (TargetVMDetailsLicenseType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetailsLicenseType)(nil)).Elem()
+}
+
+func (e TargetVMDetailsLicenseType) ToTargetVMDetailsLicenseTypeOutput() TargetVMDetailsLicenseTypeOutput {
+	return pulumi.ToOutput(e).(TargetVMDetailsLicenseTypeOutput)
+}
+
+func (e TargetVMDetailsLicenseType) ToTargetVMDetailsLicenseTypeOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TargetVMDetailsLicenseTypeOutput)
+}
+
+func (e TargetVMDetailsLicenseType) ToTargetVMDetailsLicenseTypePtrOutput() TargetVMDetailsLicenseTypePtrOutput {
+	return e.ToTargetVMDetailsLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (e TargetVMDetailsLicenseType) ToTargetVMDetailsLicenseTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypePtrOutput {
+	return TargetVMDetailsLicenseType(e).ToTargetVMDetailsLicenseTypeOutputWithContext(ctx).ToTargetVMDetailsLicenseTypePtrOutputWithContext(ctx)
+}
+
+func (e TargetVMDetailsLicenseType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetVMDetailsLicenseType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetVMDetailsLicenseType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TargetVMDetailsLicenseType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TargetVMDetailsLicenseTypeOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsLicenseTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetVMDetailsLicenseType)(nil)).Elem()
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToTargetVMDetailsLicenseTypeOutput() TargetVMDetailsLicenseTypeOutput {
+	return o
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToTargetVMDetailsLicenseTypeOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypeOutput {
+	return o
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToTargetVMDetailsLicenseTypePtrOutput() TargetVMDetailsLicenseTypePtrOutput {
+	return o.ToTargetVMDetailsLicenseTypePtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToTargetVMDetailsLicenseTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetVMDetailsLicenseType) *TargetVMDetailsLicenseType {
+		return &v
+	}).(TargetVMDetailsLicenseTypePtrOutput)
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetVMDetailsLicenseType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsLicenseTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetVMDetailsLicenseType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetVMDetailsLicenseTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetVMDetailsLicenseTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetVMDetailsLicenseType)(nil)).Elem()
+}
+
+func (o TargetVMDetailsLicenseTypePtrOutput) ToTargetVMDetailsLicenseTypePtrOutput() TargetVMDetailsLicenseTypePtrOutput {
+	return o
+}
+
+func (o TargetVMDetailsLicenseTypePtrOutput) ToTargetVMDetailsLicenseTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypePtrOutput {
+	return o
+}
+
+func (o TargetVMDetailsLicenseTypePtrOutput) Elem() TargetVMDetailsLicenseTypeOutput {
+	return o.ApplyT(func(v *TargetVMDetailsLicenseType) TargetVMDetailsLicenseType {
+		if v != nil {
+			return *v
+		}
+		var ret TargetVMDetailsLicenseType
+		return ret
+	}).(TargetVMDetailsLicenseTypeOutput)
+}
+
+func (o TargetVMDetailsLicenseTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetVMDetailsLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetVMDetailsLicenseType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TargetVMDetailsLicenseTypeInput is an input type that accepts TargetVMDetailsLicenseTypeArgs and TargetVMDetailsLicenseTypeOutput values.
+// You can construct a concrete instance of `TargetVMDetailsLicenseTypeInput` via:
+//
+//          TargetVMDetailsLicenseTypeArgs{...}
+type TargetVMDetailsLicenseTypeInput interface {
+	pulumi.Input
+
+	ToTargetVMDetailsLicenseTypeOutput() TargetVMDetailsLicenseTypeOutput
+	ToTargetVMDetailsLicenseTypeOutputWithContext(context.Context) TargetVMDetailsLicenseTypeOutput
+}
+
+var targetVMDetailsLicenseTypePtrType = reflect.TypeOf((**TargetVMDetailsLicenseType)(nil)).Elem()
+
+type TargetVMDetailsLicenseTypePtrInput interface {
+	pulumi.Input
+
+	ToTargetVMDetailsLicenseTypePtrOutput() TargetVMDetailsLicenseTypePtrOutput
+	ToTargetVMDetailsLicenseTypePtrOutputWithContext(context.Context) TargetVMDetailsLicenseTypePtrOutput
+}
+
+type targetVMDetailsLicenseTypePtr string
+
+func TargetVMDetailsLicenseTypePtr(v string) TargetVMDetailsLicenseTypePtrInput {
+	return (*targetVMDetailsLicenseTypePtr)(&v)
+}
+
+func (*targetVMDetailsLicenseTypePtr) ElementType() reflect.Type {
+	return targetVMDetailsLicenseTypePtrType
+}
+
+func (in *targetVMDetailsLicenseTypePtr) ToTargetVMDetailsLicenseTypePtrOutput() TargetVMDetailsLicenseTypePtrOutput {
+	return pulumi.ToOutput(in).(TargetVMDetailsLicenseTypePtrOutput)
+}
+
+func (in *targetVMDetailsLicenseTypePtr) ToTargetVMDetailsLicenseTypePtrOutputWithContext(ctx context.Context) TargetVMDetailsLicenseTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TargetVMDetailsLicenseTypePtrOutput)
+}
+
 // Time frame of the report.
 type UtilizationReportTimeFrame string
 
@@ -1210,6 +1550,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingRestartTypePtrInput)(nil)).Elem(), ComputeSchedulingRestartType("RESTART_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityOperatorInput)(nil)).Elem(), SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityOperatorPtrInput)(nil)).Elem(), SchedulingNodeAffinityOperator("OPERATOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsDiskTypeInput)(nil)).Elem(), TargetVMDetailsDiskType("DISK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsDiskTypePtrInput)(nil)).Elem(), TargetVMDetailsDiskType("DISK_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsLicenseTypeInput)(nil)).Elem(), TargetVMDetailsLicenseType("DEFAULT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetVMDetailsLicenseTypePtrInput)(nil)).Elem(), TargetVMDetailsLicenseType("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UtilizationReportTimeFrameInput)(nil)).Elem(), UtilizationReportTimeFrame("TIME_FRAME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UtilizationReportTimeFramePtrInput)(nil)).Elem(), UtilizationReportTimeFrame("TIME_FRAME_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPowerStateInput)(nil)).Elem(), VmwareVmDetailsPowerState("POWER_STATE_UNSPECIFIED"))
@@ -1224,6 +1568,10 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingRestartTypePtrOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityOperatorPtrOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsDiskTypeOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsDiskTypePtrOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsLicenseTypeOutput{})
+	pulumi.RegisterOutputType(TargetVMDetailsLicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(UtilizationReportTimeFrameOutput{})
 	pulumi.RegisterOutputType(UtilizationReportTimeFramePtrOutput{})
 	pulumi.RegisterOutputType(VmwareVmDetailsPowerStateOutput{})

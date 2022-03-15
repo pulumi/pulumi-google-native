@@ -2198,6 +2198,8 @@ class MetricDescriptorMetadataResponse(dict):
         suggest = None
         if key == "ingestDelay":
             suggest = "ingest_delay"
+        elif key == "launchStage":
+            suggest = "launch_stage"
         elif key == "samplePeriod":
             suggest = "sample_period"
 
@@ -2214,13 +2216,16 @@ class MetricDescriptorMetadataResponse(dict):
 
     def __init__(__self__, *,
                  ingest_delay: str,
+                 launch_stage: str,
                  sample_period: str):
         """
         Additional annotations that can be used to guide the usage of a metric.
         :param str ingest_delay: The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
+        :param str launch_stage: Deprecated. Must use the MetricDescriptor.launch_stage instead.
         :param str sample_period: The sampling period of metric data points. For metrics which are written periodically, consecutive data points are stored at this time interval, excluding data loss due to errors. Metrics with a higher granularity have a smaller sampling period.
         """
         pulumi.set(__self__, "ingest_delay", ingest_delay)
+        pulumi.set(__self__, "launch_stage", launch_stage)
         pulumi.set(__self__, "sample_period", sample_period)
 
     @property
@@ -2230,6 +2235,14 @@ class MetricDescriptorMetadataResponse(dict):
         The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
         """
         return pulumi.get(self, "ingest_delay")
+
+    @property
+    @pulumi.getter(name="launchStage")
+    def launch_stage(self) -> str:
+        """
+        Deprecated. Must use the MetricDescriptor.launch_stage instead.
+        """
+        return pulumi.get(self, "launch_stage")
 
     @property
     @pulumi.getter(name="samplePeriod")

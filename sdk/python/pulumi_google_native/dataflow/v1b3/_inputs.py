@@ -23,6 +23,7 @@ __all__ = [
     'ExecutionStageStateArgs',
     'ExecutionStageSummaryArgs',
     'FileIODetailsArgs',
+    'JobExecutionInfoArgs',
     'JobMetadataArgs',
     'PackageArgs',
     'PipelineDescriptionArgs',
@@ -1117,6 +1118,30 @@ class FileIODetailsArgs:
     @file_pattern.setter
     def file_pattern(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_pattern", value)
+
+
+@pulumi.input_type
+class JobExecutionInfoArgs:
+    def __init__(__self__, *,
+                 stages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] stages: A mapping from each stage to the information about that stage.
+        """
+        if stages is not None:
+            pulumi.set(__self__, "stages", stages)
+
+    @property
+    @pulumi.getter
+    def stages(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping from each stage to the information about that stage.
+        """
+        return pulumi.get(self, "stages")
+
+    @stages.setter
+    def stages(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "stages", value)
 
 
 @pulumi.input_type
@@ -2370,6 +2395,7 @@ class TransformSummaryArgs:
 @pulumi.input_type
 class WorkerPoolArgs:
     def __init__(__self__, *,
+                 worker_harness_container_image: pulumi.Input[str],
                  autoscaling_settings: Optional[pulumi.Input['AutoscalingSettingsArgs']] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['DiskArgs']]]] = None,
                  default_package_set: Optional[pulumi.Input['WorkerPoolDefaultPackageSet']] = None,
@@ -2393,6 +2419,7 @@ class WorkerPoolArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
+        :param pulumi.Input[str] worker_harness_container_image: Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
         :param pulumi.Input['AutoscalingSettingsArgs'] autoscaling_settings: Settings for autoscaling of this WorkerPool.
         :param pulumi.Input[Sequence[pulumi.Input['DiskArgs']]] data_disks: Data disks that are used by a VM in this workflow.
         :param pulumi.Input['WorkerPoolDefaultPackageSet'] default_package_set: The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
@@ -2415,6 +2442,10 @@ class WorkerPoolArgs:
         :param pulumi.Input['WorkerPoolTeardownPolicy'] teardown_policy: Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
         :param pulumi.Input[str] zone: Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
         """
+        if worker_harness_container_image is not None:
+            warnings.warn("""Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.""", DeprecationWarning)
+            pulumi.log.warn("""worker_harness_container_image is deprecated: Required. Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.""")
+        pulumi.set(__self__, "worker_harness_container_image", worker_harness_container_image)
         if autoscaling_settings is not None:
             pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if data_disks is not None:
@@ -2457,6 +2488,18 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "teardown_policy", teardown_policy)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="workerHarnessContainerImage")
+    def worker_harness_container_image(self) -> pulumi.Input[str]:
+        """
+        Docker container image that executes the Cloud Dataflow worker harness, residing in Google Container Registry. Deprecated for the Fn API path. Use sdk_harness_container_images instead.
+        """
+        return pulumi.get(self, "worker_harness_container_image")
+
+    @worker_harness_container_image.setter
+    def worker_harness_container_image(self, value: pulumi.Input[str]):
+        pulumi.set(self, "worker_harness_container_image", value)
 
     @property
     @pulumi.getter(name="autoscalingSettings")

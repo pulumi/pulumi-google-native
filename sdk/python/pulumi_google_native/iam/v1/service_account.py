@@ -16,6 +16,7 @@ class ServiceAccountArgs:
                  account_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -23,6 +24,7 @@ class ServiceAccountArgs:
         :param pulumi.Input[str] account_id: The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
         :param pulumi.Input[str] description: Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
         :param pulumi.Input[str] display_name: Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+        :param pulumi.Input[str] etag: Deprecated. Do not use.
         :param pulumi.Input[str] name: The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -30,6 +32,11 @@ class ServiceAccountArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
+            pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -73,6 +80,18 @@ class ServiceAccountArgs:
 
     @property
     @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated. Do not use.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
@@ -101,6 +120,7 @@ class ServiceAccount(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -113,6 +133,7 @@ class ServiceAccount(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
         :param pulumi.Input[str] description: Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
         :param pulumi.Input[str] display_name: Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
+        :param pulumi.Input[str] etag: Deprecated. Do not use.
         :param pulumi.Input[str] name: The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
         """
         ...
@@ -143,6 +164,7 @@ class ServiceAccount(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -162,6 +184,10 @@ class ServiceAccount(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if etag is not None and not opts.urn:
+                warnings.warn("""Deprecated. Do not use.""", DeprecationWarning)
+                pulumi.log.warn("""etag is deprecated: Deprecated. Do not use.""")
+            __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["disabled"] = None
@@ -194,6 +220,7 @@ class ServiceAccount(pulumi.CustomResource):
         __props__.__dict__["disabled"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["email"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["oauth2_client_id"] = None
         __props__.__dict__["project"] = None
@@ -231,6 +258,14 @@ class ServiceAccount(pulumi.CustomResource):
         The email address of the service account.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        Deprecated. Do not use.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter

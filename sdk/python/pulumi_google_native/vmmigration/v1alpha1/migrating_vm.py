@@ -19,6 +19,7 @@ class MigratingVmArgs:
                  migrating_vm_id: pulumi.Input[str],
                  source_id: pulumi.Input[str],
                  compute_engine_target_defaults: Optional[pulumi.Input['ComputeEngineTargetDefaultsArgs']] = None,
+                 compute_engine_vm_defaults: Optional[pulumi.Input['TargetVMDetailsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -26,22 +27,30 @@ class MigratingVmArgs:
                  policy: Optional[pulumi.Input['SchedulePolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 source_vm_id: Optional[pulumi.Input[str]] = None):
+                 source_vm_id: Optional[pulumi.Input[str]] = None,
+                 target_defaults: Optional[pulumi.Input['TargetVMDetailsArgs']] = None):
         """
         The set of arguments for constructing a MigratingVm resource.
         :param pulumi.Input[str] migrating_vm_id: Required. The migratingVm identifier.
         :param pulumi.Input['ComputeEngineTargetDefaultsArgs'] compute_engine_target_defaults: Details of the target VM in Compute Engine.
+        :param pulumi.Input['TargetVMDetailsArgs'] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
         :param pulumi.Input[str] display_name: The display name attached to the MigratingVm by the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
         :param pulumi.Input['SchedulePolicyArgs'] policy: The replication schedule policy.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
+        :param pulumi.Input['TargetVMDetailsArgs'] target_defaults: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         pulumi.set(__self__, "migrating_vm_id", migrating_vm_id)
         pulumi.set(__self__, "source_id", source_id)
         if compute_engine_target_defaults is not None:
             pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
+        if compute_engine_vm_defaults is not None:
+            warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
+        if compute_engine_vm_defaults is not None:
+            pulumi.set(__self__, "compute_engine_vm_defaults", compute_engine_vm_defaults)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -58,6 +67,11 @@ class MigratingVmArgs:
             pulumi.set(__self__, "request_id", request_id)
         if source_vm_id is not None:
             pulumi.set(__self__, "source_vm_id", source_vm_id)
+        if target_defaults is not None:
+            warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+        if target_defaults is not None:
+            pulumi.set(__self__, "target_defaults", target_defaults)
 
     @property
     @pulumi.getter(name="migratingVmId")
@@ -91,6 +105,18 @@ class MigratingVmArgs:
     @compute_engine_target_defaults.setter
     def compute_engine_target_defaults(self, value: Optional[pulumi.Input['ComputeEngineTargetDefaultsArgs']]):
         pulumi.set(self, "compute_engine_target_defaults", value)
+
+    @property
+    @pulumi.getter(name="computeEngineVmDefaults")
+    def compute_engine_vm_defaults(self) -> Optional[pulumi.Input['TargetVMDetailsArgs']]:
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_defaults")
+
+    @compute_engine_vm_defaults.setter
+    def compute_engine_vm_defaults(self, value: Optional[pulumi.Input['TargetVMDetailsArgs']]):
+        pulumi.set(self, "compute_engine_vm_defaults", value)
 
     @property
     @pulumi.getter
@@ -182,6 +208,18 @@ class MigratingVmArgs:
     def source_vm_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_vm_id", value)
 
+    @property
+    @pulumi.getter(name="targetDefaults")
+    def target_defaults(self) -> Optional[pulumi.Input['TargetVMDetailsArgs']]:
+        """
+        The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        """
+        return pulumi.get(self, "target_defaults")
+
+    @target_defaults.setter
+    def target_defaults(self, value: Optional[pulumi.Input['TargetVMDetailsArgs']]):
+        pulumi.set(self, "target_defaults", value)
+
 
 class MigratingVm(pulumi.CustomResource):
     @overload
@@ -189,6 +227,7 @@ class MigratingVm(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_engine_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']]] = None,
+                 compute_engine_vm_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -199,6 +238,7 @@ class MigratingVm(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  source_vm_id: Optional[pulumi.Input[str]] = None,
+                 target_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
                  __props__=None):
         """
         Creates a new MigratingVm in a given Source.
@@ -207,6 +247,7 @@ class MigratingVm(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']] compute_engine_target_defaults: Details of the target VM in Compute Engine.
+        :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] compute_engine_vm_defaults: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
         :param pulumi.Input[str] description: The description attached to the migrating VM by the user.
         :param pulumi.Input[str] display_name: The display name attached to the MigratingVm by the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
@@ -214,6 +255,7 @@ class MigratingVm(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SchedulePolicyArgs']] policy: The replication schedule policy.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
+        :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] target_defaults: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         ...
     @overload
@@ -241,6 +283,7 @@ class MigratingVm(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compute_engine_target_defaults: Optional[pulumi.Input[pulumi.InputType['ComputeEngineTargetDefaultsArgs']]] = None,
+                 compute_engine_vm_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -251,6 +294,7 @@ class MigratingVm(pulumi.CustomResource):
                  request_id: Optional[pulumi.Input[str]] = None,
                  source_id: Optional[pulumi.Input[str]] = None,
                  source_vm_id: Optional[pulumi.Input[str]] = None,
+                 target_defaults: Optional[pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -264,6 +308,10 @@ class MigratingVm(pulumi.CustomResource):
             __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
             __props__.__dict__["compute_engine_target_defaults"] = compute_engine_target_defaults
+            if compute_engine_vm_defaults is not None and not opts.urn:
+                warnings.warn("""Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+                pulumi.log.warn("""compute_engine_vm_defaults is deprecated: Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.""")
+            __props__.__dict__["compute_engine_vm_defaults"] = compute_engine_vm_defaults
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
@@ -278,6 +326,10 @@ class MigratingVm(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["source_vm_id"] = source_vm_id
+            if target_defaults is not None and not opts.urn:
+                warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+                pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+            __props__.__dict__["target_defaults"] = target_defaults
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
             __props__.__dict__["error"] = None
@@ -312,6 +364,7 @@ class MigratingVm(pulumi.CustomResource):
         __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
         __props__.__dict__["compute_engine_target_defaults"] = None
+        __props__.__dict__["compute_engine_vm_defaults"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_sync_info"] = None
         __props__.__dict__["description"] = None
@@ -327,6 +380,7 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["source_vm_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["state_time"] = None
+        __props__.__dict__["target_defaults"] = None
         __props__.__dict__["update_time"] = None
         return MigratingVm(resource_name, opts=opts, __props__=__props__)
 
@@ -337,6 +391,14 @@ class MigratingVm(pulumi.CustomResource):
         Details of the target VM in Compute Engine.
         """
         return pulumi.get(self, "compute_engine_target_defaults")
+
+    @property
+    @pulumi.getter(name="computeEngineVmDefaults")
+    def compute_engine_vm_defaults(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
+        """
+        Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        """
+        return pulumi.get(self, "compute_engine_vm_defaults")
 
     @property
     @pulumi.getter(name="createTime")
@@ -457,6 +519,14 @@ class MigratingVm(pulumi.CustomResource):
         The last time the migrating VM state was updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter(name="targetDefaults")
+    def target_defaults(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
+        """
+        The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        """
+        return pulumi.get(self, "target_defaults")
 
     @property
     @pulumi.getter(name="updateTime")

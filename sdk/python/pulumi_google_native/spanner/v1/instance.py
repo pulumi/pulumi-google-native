@@ -16,6 +16,7 @@ class InstanceArgs:
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
+                 endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -26,6 +27,7 @@ class InstanceArgs:
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_uris: Deprecated. This field is not populated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
         :param pulumi.Input[int] node_count: The number of nodes allocated to this instance. At most one of either node_count or processing_units should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
@@ -34,6 +36,11 @@ class InstanceArgs:
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_id", instance_id)
+        if endpoint_uris is not None:
+            warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
+            pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
+        if endpoint_uris is not None:
+            pulumi.set(__self__, "endpoint_uris", endpoint_uris)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -80,6 +87,18 @@ class InstanceArgs:
     @instance_id.setter
     def instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="endpointUris")
+    def endpoint_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Deprecated. This field is not populated.
+        """
+        return pulumi.get(self, "endpoint_uris")
+
+    @endpoint_uris.setter
+    def endpoint_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "endpoint_uris", value)
 
     @property
     @pulumi.getter
@@ -146,6 +165,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -160,6 +180,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_uris: Deprecated. This field is not populated.
         :param pulumi.Input[str] instance_id: The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
         :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
@@ -192,6 +213,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 endpoint_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -216,6 +238,10 @@ class Instance(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            if endpoint_uris is not None and not opts.urn:
+                warnings.warn("""Deprecated. This field is not populated.""", DeprecationWarning)
+                pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
+            __props__.__dict__["endpoint_uris"] = endpoint_uris
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -249,6 +275,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["config"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["endpoint_uris"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["node_count"] = None
@@ -271,6 +298,14 @@ class Instance(pulumi.CustomResource):
         The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="endpointUris")
+    def endpoint_uris(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Deprecated. This field is not populated.
+        """
+        return pulumi.get(self, "endpoint_uris")
 
     @property
     @pulumi.getter

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, aggregation_interval=None, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, enable_l2=None, external_ipv6_prefix=None, fingerprint=None, flow_sampling=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, metadata=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, vlans=None):
+    def __init__(__self__, aggregation_interval=None, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, enable_l2=None, enable_private_v6_access=None, external_ipv6_prefix=None, fingerprint=None, flow_sampling=None, gateway_address=None, internal_ipv6_prefix=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, metadata=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, private_ipv6_google_access_service_accounts=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, vlans=None):
         if aggregation_interval and not isinstance(aggregation_interval, str):
             raise TypeError("Expected argument 'aggregation_interval' to be a str")
         pulumi.set(__self__, "aggregation_interval", aggregation_interval)
@@ -37,6 +37,13 @@ class GetSubnetworkResult:
         if enable_l2 and not isinstance(enable_l2, bool):
             raise TypeError("Expected argument 'enable_l2' to be a bool")
         pulumi.set(__self__, "enable_l2", enable_l2)
+        if enable_private_v6_access and not isinstance(enable_private_v6_access, bool):
+            raise TypeError("Expected argument 'enable_private_v6_access' to be a bool")
+        if enable_private_v6_access is not None:
+            warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
+            pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
+
+        pulumi.set(__self__, "enable_private_v6_access", enable_private_v6_access)
         if external_ipv6_prefix and not isinstance(external_ipv6_prefix, str):
             raise TypeError("Expected argument 'external_ipv6_prefix' to be a str")
         pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
@@ -82,6 +89,13 @@ class GetSubnetworkResult:
         if private_ipv6_google_access and not isinstance(private_ipv6_google_access, str):
             raise TypeError("Expected argument 'private_ipv6_google_access' to be a str")
         pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if private_ipv6_google_access_service_accounts and not isinstance(private_ipv6_google_access_service_accounts, list):
+            raise TypeError("Expected argument 'private_ipv6_google_access_service_accounts' to be a list")
+        if private_ipv6_google_access_service_accounts is not None:
+            warnings.warn("""Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.""", DeprecationWarning)
+            pulumi.log.warn("""private_ipv6_google_access_service_accounts is deprecated: Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.""")
+
+        pulumi.set(__self__, "private_ipv6_google_access_service_accounts", private_ipv6_google_access_service_accounts)
         if purpose and not isinstance(purpose, str):
             raise TypeError("Expected argument 'purpose' to be a str")
         pulumi.set(__self__, "purpose", purpose)
@@ -160,6 +174,14 @@ class GetSubnetworkResult:
         Enables Layer2 communication on the subnetwork.
         """
         return pulumi.get(self, "enable_l2")
+
+    @property
+    @pulumi.getter(name="enablePrivateV6Access")
+    def enable_private_v6_access(self) -> bool:
+        """
+        Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+        """
+        return pulumi.get(self, "enable_private_v6_access")
 
     @property
     @pulumi.getter(name="externalIpv6Prefix")
@@ -282,6 +304,14 @@ class GetSubnetworkResult:
         return pulumi.get(self, "private_ipv6_google_access")
 
     @property
+    @pulumi.getter(name="privateIpv6GoogleAccessServiceAccounts")
+    def private_ipv6_google_access_service_accounts(self) -> Sequence[str]:
+        """
+        Deprecated in favor of enable PrivateIpv6GoogleAccess on instance directly. The service accounts can be used to selectively turn on Private IPv6 Google Access only on the VMs primary service account matching the value. This value only takes effect when PrivateIpv6GoogleAccess is ENABLE_OUTBOUND_VM_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS or ENABLE_BIDIRECTIONAL_ACCESS_TO_GOOGLE_FOR_SERVICE_ACCOUNTS.
+        """
+        return pulumi.get(self, "private_ipv6_google_access_service_accounts")
+
+    @property
     @pulumi.getter
     def purpose(self) -> str:
         """
@@ -374,6 +404,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             description=self.description,
             enable_flow_logs=self.enable_flow_logs,
             enable_l2=self.enable_l2,
+            enable_private_v6_access=self.enable_private_v6_access,
             external_ipv6_prefix=self.external_ipv6_prefix,
             fingerprint=self.fingerprint,
             flow_sampling=self.flow_sampling,
@@ -389,6 +420,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             network=self.network,
             private_ip_google_access=self.private_ip_google_access,
             private_ipv6_google_access=self.private_ipv6_google_access,
+            private_ipv6_google_access_service_accounts=self.private_ipv6_google_access_service_accounts,
             purpose=self.purpose,
             region=self.region,
             reserved_internal_range=self.reserved_internal_range,
@@ -425,6 +457,7 @@ def get_subnetwork(project: Optional[str] = None,
         description=__ret__.description,
         enable_flow_logs=__ret__.enable_flow_logs,
         enable_l2=__ret__.enable_l2,
+        enable_private_v6_access=__ret__.enable_private_v6_access,
         external_ipv6_prefix=__ret__.external_ipv6_prefix,
         fingerprint=__ret__.fingerprint,
         flow_sampling=__ret__.flow_sampling,
@@ -440,6 +473,7 @@ def get_subnetwork(project: Optional[str] = None,
         network=__ret__.network,
         private_ip_google_access=__ret__.private_ip_google_access,
         private_ipv6_google_access=__ret__.private_ipv6_google_access,
+        private_ipv6_google_access_service_accounts=__ret__.private_ipv6_google_access_service_accounts,
         purpose=__ret__.purpose,
         region=__ret__.region,
         reserved_internal_range=__ret__.reserved_internal_range,

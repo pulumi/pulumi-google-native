@@ -38,6 +38,10 @@ type LookupNetworkResult struct {
 	GatewayIPv4 string `pulumi:"gatewayIPv4"`
 	// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
 	InternalIpv6Range string `pulumi:"internalIpv6Range"`
+	// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+	//
+	// Deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+	Ipv4Range string `pulumi:"ipv4Range"`
 	// Type of the resource. Always compute#network for networks.
 	Kind string `pulumi:"kind"`
 	// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
@@ -118,6 +122,13 @@ func (o LookupNetworkResultOutput) GatewayIPv4() pulumi.StringOutput {
 // When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
 func (o LookupNetworkResultOutput) InternalIpv6Range() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.InternalIpv6Range }).(pulumi.StringOutput)
+}
+
+// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+//
+// Deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+func (o LookupNetworkResultOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.Ipv4Range }).(pulumi.StringOutput)
 }
 
 // Type of the resource. Always compute#network for networks.

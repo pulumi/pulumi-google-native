@@ -6459,6 +6459,14 @@ type JobConfigurationLoad struct {
 	RangePartitioning *RangePartitioning `pulumi:"rangePartitioning"`
 	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 	Schema *TableSchema `pulumi:"schema"`
+	// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+	//
+	// Deprecated: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+	SchemaInline *string `pulumi:"schemaInline"`
+	// [Deprecated] The format of the schemaInline property.
+	//
+	// Deprecated: [Deprecated] The format of the schemaInline property.
+	SchemaInlineFormat *string `pulumi:"schemaInlineFormat"`
 	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -6531,6 +6539,14 @@ type JobConfigurationLoadArgs struct {
 	RangePartitioning RangePartitioningPtrInput `pulumi:"rangePartitioning"`
 	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 	Schema TableSchemaPtrInput `pulumi:"schema"`
+	// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+	//
+	// Deprecated: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+	SchemaInline pulumi.StringPtrInput `pulumi:"schemaInline"`
+	// [Deprecated] The format of the schemaInline property.
+	//
+	// Deprecated: [Deprecated] The format of the schemaInline property.
+	SchemaInlineFormat pulumi.StringPtrInput `pulumi:"schemaInlineFormat"`
 	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions pulumi.StringArrayInput `pulumi:"schemaUpdateOptions"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -6732,6 +6748,20 @@ func (o JobConfigurationLoadOutput) RangePartitioning() RangePartitioningPtrOutp
 // [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 func (o JobConfigurationLoadOutput) Schema() TableSchemaPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *TableSchema { return v.Schema }).(TableSchemaPtrOutput)
+}
+
+// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+//
+// Deprecated: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+func (o JobConfigurationLoadOutput) SchemaInline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.SchemaInline }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] The format of the schemaInline property.
+//
+// Deprecated: [Deprecated] The format of the schemaInline property.
+func (o JobConfigurationLoadOutput) SchemaInlineFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.SchemaInlineFormat }).(pulumi.StringPtrOutput)
 }
 
 // Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
@@ -7013,6 +7043,30 @@ func (o JobConfigurationLoadPtrOutput) Schema() TableSchemaPtrOutput {
 	}).(TableSchemaPtrOutput)
 }
 
+// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+//
+// Deprecated: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+func (o JobConfigurationLoadPtrOutput) SchemaInline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaInline
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] The format of the schemaInline property.
+//
+// Deprecated: [Deprecated] The format of the schemaInline property.
+func (o JobConfigurationLoadPtrOutput) SchemaInlineFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaInlineFormat
+	}).(pulumi.StringPtrOutput)
+}
+
 // Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 func (o JobConfigurationLoadPtrOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *JobConfigurationLoad) []string {
@@ -7128,6 +7182,14 @@ type JobConfigurationLoadResponse struct {
 	RangePartitioning RangePartitioningResponse `pulumi:"rangePartitioning"`
 	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 	Schema TableSchemaResponse `pulumi:"schema"`
+	// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+	//
+	// Deprecated: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+	SchemaInline string `pulumi:"schemaInline"`
+	// [Deprecated] The format of the schemaInline property.
+	//
+	// Deprecated: [Deprecated] The format of the schemaInline property.
+	SchemaInlineFormat string `pulumi:"schemaInlineFormat"`
 	// Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 	SchemaUpdateOptions []string `pulumi:"schemaUpdateOptions"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when loading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped.
@@ -7272,6 +7334,20 @@ func (o JobConfigurationLoadResponseOutput) Schema() TableSchemaResponseOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) TableSchemaResponse { return v.Schema }).(TableSchemaResponseOutput)
 }
 
+// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+//
+// Deprecated: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
+func (o JobConfigurationLoadResponseOutput) SchemaInline() pulumi.StringOutput {
+	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.SchemaInline }).(pulumi.StringOutput)
+}
+
+// [Deprecated] The format of the schemaInline property.
+//
+// Deprecated: [Deprecated] The format of the schemaInline property.
+func (o JobConfigurationLoadResponseOutput) SchemaInlineFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.SchemaInlineFormat }).(pulumi.StringOutput)
+}
+
 // Allows the schema of the destination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
 func (o JobConfigurationLoadResponseOutput) SchemaUpdateOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) []string { return v.SchemaUpdateOptions }).(pulumi.StringArrayOutput)
@@ -7332,6 +7408,10 @@ type JobConfigurationQuery struct {
 	MaximumBytesBilled *string `pulumi:"maximumBytesBilled"`
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode *string `pulumi:"parameterMode"`
+	// [Deprecated] This property is deprecated.
+	//
+	// Deprecated: [Deprecated] This property is deprecated.
+	PreserveNulls *bool `pulumi:"preserveNulls"`
 	// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
 	Priority *string `pulumi:"priority"`
 	// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
@@ -7392,6 +7472,10 @@ type JobConfigurationQueryArgs struct {
 	MaximumBytesBilled pulumi.StringPtrInput `pulumi:"maximumBytesBilled"`
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode pulumi.StringPtrInput `pulumi:"parameterMode"`
+	// [Deprecated] This property is deprecated.
+	//
+	// Deprecated: [Deprecated] This property is deprecated.
+	PreserveNulls pulumi.BoolPtrInput `pulumi:"preserveNulls"`
 	// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
@@ -7551,6 +7635,13 @@ func (o JobConfigurationQueryOutput) MaximumBytesBilled() pulumi.StringPtrOutput
 // Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 func (o JobConfigurationQueryOutput) ParameterMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobConfigurationQuery) *string { return v.ParameterMode }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] This property is deprecated.
+//
+// Deprecated: [Deprecated] This property is deprecated.
+func (o JobConfigurationQueryOutput) PreserveNulls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobConfigurationQuery) *bool { return v.PreserveNulls }).(pulumi.BoolPtrOutput)
 }
 
 // [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
@@ -7752,6 +7843,18 @@ func (o JobConfigurationQueryPtrOutput) ParameterMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Deprecated] This property is deprecated.
+//
+// Deprecated: [Deprecated] This property is deprecated.
+func (o JobConfigurationQueryPtrOutput) PreserveNulls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveNulls
+	}).(pulumi.BoolPtrOutput)
+}
+
 // [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
 func (o JobConfigurationQueryPtrOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobConfigurationQuery) *string {
@@ -7887,6 +7990,10 @@ type JobConfigurationQueryResponse struct {
 	MaximumBytesBilled string `pulumi:"maximumBytesBilled"`
 	// Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 	ParameterMode string `pulumi:"parameterMode"`
+	// [Deprecated] This property is deprecated.
+	//
+	// Deprecated: [Deprecated] This property is deprecated.
+	PreserveNulls bool `pulumi:"preserveNulls"`
 	// [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
 	Priority string `pulumi:"priority"`
 	// [Required] SQL query text to execute. The useLegacySql field can be used to indicate whether the query uses legacy SQL or standard SQL.
@@ -7985,6 +8092,13 @@ func (o JobConfigurationQueryResponseOutput) MaximumBytesBilled() pulumi.StringO
 // Standard SQL only. Set to POSITIONAL to use positional (?) query parameters or to NAMED to use named (@myparam) query parameters in this query.
 func (o JobConfigurationQueryResponseOutput) ParameterMode() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConfigurationQueryResponse) string { return v.ParameterMode }).(pulumi.StringOutput)
+}
+
+// [Deprecated] This property is deprecated.
+//
+// Deprecated: [Deprecated] This property is deprecated.
+func (o JobConfigurationQueryResponseOutput) PreserveNulls() pulumi.BoolOutput {
+	return o.ApplyT(func(v JobConfigurationQueryResponse) bool { return v.PreserveNulls }).(pulumi.BoolOutput)
 }
 
 // [Optional] Specifies a priority for the query. Possible values include INTERACTIVE and BATCH. The default value is INTERACTIVE.
@@ -8757,6 +8871,14 @@ type JobStatistics2Response struct {
 	MlStatistics MlStatisticsResponse `pulumi:"mlStatistics"`
 	// [Output-only, Beta] Information about create model query job progress.
 	ModelTraining BigQueryModelTrainingResponse `pulumi:"modelTraining"`
+	// [Output-only, Beta] Deprecated; do not use.
+	//
+	// Deprecated: [Output-only, Beta] Deprecated; do not use.
+	ModelTrainingCurrentIteration int `pulumi:"modelTrainingCurrentIteration"`
+	// [Output-only, Beta] Deprecated; do not use.
+	//
+	// Deprecated: [Output-only, Beta] Deprecated; do not use.
+	ModelTrainingExpectedTotalIteration string `pulumi:"modelTrainingExpectedTotalIteration"`
 	// The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
 	NumDmlAffectedRows string `pulumi:"numDmlAffectedRows"`
 	// Describes execution plan for the query.
@@ -8869,6 +8991,20 @@ func (o JobStatistics2ResponseOutput) MlStatistics() MlStatisticsResponseOutput 
 // [Output-only, Beta] Information about create model query job progress.
 func (o JobStatistics2ResponseOutput) ModelTraining() BigQueryModelTrainingResponseOutput {
 	return o.ApplyT(func(v JobStatistics2Response) BigQueryModelTrainingResponse { return v.ModelTraining }).(BigQueryModelTrainingResponseOutput)
+}
+
+// [Output-only, Beta] Deprecated; do not use.
+//
+// Deprecated: [Output-only, Beta] Deprecated; do not use.
+func (o JobStatistics2ResponseOutput) ModelTrainingCurrentIteration() pulumi.IntOutput {
+	return o.ApplyT(func(v JobStatistics2Response) int { return v.ModelTrainingCurrentIteration }).(pulumi.IntOutput)
+}
+
+// [Output-only, Beta] Deprecated; do not use.
+//
+// Deprecated: [Output-only, Beta] Deprecated; do not use.
+func (o JobStatistics2ResponseOutput) ModelTrainingExpectedTotalIteration() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatistics2Response) string { return v.ModelTrainingExpectedTotalIteration }).(pulumi.StringOutput)
 }
 
 // The number of rows affected by a DML statement. Present only for DML statements INSERT, UPDATE or DELETE.
@@ -9106,6 +9242,10 @@ type JobStatisticsResponse struct {
 	SessionInfo SessionInfoResponse `pulumi:"sessionInfo"`
 	// Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 	StartTime string `pulumi:"startTime"`
+	// [Deprecated] Use the bytes processed in the query statistics instead.
+	//
+	// Deprecated: [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
+	TotalBytesProcessed string `pulumi:"totalBytesProcessed"`
 	// Slot-milliseconds for the job.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
 	// [Alpha] Information of the multi-statement transaction if this job is part of one.
@@ -9199,6 +9339,13 @@ func (o JobStatisticsResponseOutput) SessionInfo() SessionInfoResponseOutput {
 // Start time of this job, in milliseconds since the epoch. This field will be present when the job transitions from the PENDING state to either RUNNING or DONE.
 func (o JobStatisticsResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// [Deprecated] Use the bytes processed in the query statistics instead.
+//
+// Deprecated: [Output-only] [Deprecated] Use the bytes processed in the query statistics instead.
+func (o JobStatisticsResponseOutput) TotalBytesProcessed() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatisticsResponse) string { return v.TotalBytesProcessed }).(pulumi.StringOutput)
 }
 
 // Slot-milliseconds for the job.

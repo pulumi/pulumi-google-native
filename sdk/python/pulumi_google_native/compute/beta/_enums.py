@@ -38,6 +38,8 @@ __all__ = [
     'ConditionSys',
     'DeprecationStatusState',
     'DiskInstantiationConfigInstantiateFrom',
+    'DiskInterface',
+    'DiskStorageType',
     'DistributionPolicyTargetShape',
     'ExternalVpnGatewayRedundancyType',
     'FileContentBufferFileType',
@@ -113,7 +115,10 @@ __all__ = [
     'RegionCommitmentCategory',
     'RegionCommitmentPlan',
     'RegionCommitmentType',
+    'RegionDiskInterface',
+    'RegionDiskStorageType',
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
+    'RegionHealthCheckServiceHealthStatusAggregationStrategy',
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
     'RegionNetworkEndpointGroupNetworkEndpointType',
@@ -824,6 +829,23 @@ class DiskInstantiationConfigInstantiateFrom(str, Enum):
     """
     Use the same source image family used for creation of the source instance's corresponding disk. The request will fail if the source image of the source disk does not belong to any image family. Applicable to: boot disk, additional read-write disks.
     """
+
+
+class DiskInterface(str, Enum):
+    """
+    [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    """
+    NVME = "NVME"
+    SCSI = "SCSI"
+    UNSPECIFIED = "UNSPECIFIED"
+
+
+class DiskStorageType(str, Enum):
+    """
+    [Deprecated] Storage type of the persistent disk.
+    """
+    HDD = "HDD"
+    SSD = "SSD"
 
 
 class DistributionPolicyTargetShape(str, Enum):
@@ -2077,6 +2099,23 @@ class RegionCommitmentType(str, Enum):
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 
+class RegionDiskInterface(str, Enum):
+    """
+    [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+    """
+    NVME = "NVME"
+    SCSI = "SCSI"
+    UNSPECIFIED = "UNSPECIFIED"
+
+
+class RegionDiskStorageType(str, Enum):
+    """
+    [Deprecated] Storage type of the persistent disk.
+    """
+    HDD = "HDD"
+    SSD = "SSD"
+
+
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     """
     Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
@@ -2088,6 +2127,20 @@ class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     NO_AGGREGATION = "NO_AGGREGATION"
     """
     An EndpointHealth message is returned for each backend in the health check service.
+    """
+
+
+class RegionHealthCheckServiceHealthStatusAggregationStrategy(str, Enum):
+    """
+    This field is deprecated. Use health_status_aggregation_policy instead. Policy for how the results from multiple health checks for the same endpoint are aggregated. - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+    """
+    AND_ = "AND"
+    """
+    This is deprecated. Use health_status_aggregation_policy instead. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY.
+    """
+    NO_AGGREGATION = "NO_AGGREGATION"
+    """
+    This is deprecated. Use health_status_aggregation_policy instead. An EndpointHealth message is returned for each backend in the health check service.
     """
 
 

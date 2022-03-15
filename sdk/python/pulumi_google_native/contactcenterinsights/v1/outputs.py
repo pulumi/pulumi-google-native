@@ -803,7 +803,9 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dialogflowParticipantName":
+        if key == "dialogflowParticipant":
+            suggest = "dialogflow_participant"
+        elif key == "dialogflowParticipantName":
             suggest = "dialogflow_participant_name"
         elif key == "obfuscatedExternalUserId":
             suggest = "obfuscated_external_user_id"
@@ -822,21 +824,32 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 dialogflow_participant: str,
                  dialogflow_participant_name: str,
                  obfuscated_external_user_id: str,
                  role: str,
                  user_id: str):
         """
         The call participant speaking for a given utterance.
+        :param str dialogflow_participant: Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
         :param str dialogflow_participant_name: The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
         :param str obfuscated_external_user_id: Obfuscated user ID from Dialogflow.
         :param str role: The role of the participant.
         :param str user_id: A user-specified ID representing the participant.
         """
+        pulumi.set(__self__, "dialogflow_participant", dialogflow_participant)
         pulumi.set(__self__, "dialogflow_participant_name", dialogflow_participant_name)
         pulumi.set(__self__, "obfuscated_external_user_id", obfuscated_external_user_id)
         pulumi.set(__self__, "role", role)
         pulumi.set(__self__, "user_id", user_id)
+
+    @property
+    @pulumi.getter(name="dialogflowParticipant")
+    def dialogflow_participant(self) -> str:
+        """
+        Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+        """
+        return pulumi.get(self, "dialogflow_participant")
 
     @property
     @pulumi.getter(name="dialogflowParticipantName")

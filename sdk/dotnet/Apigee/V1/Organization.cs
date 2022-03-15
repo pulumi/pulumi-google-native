@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1AddonsConfigResponse> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// </summary>
+        [Output("analyticsRegion")]
+        public Output<string> AnalyticsRegion { get; private set; } = null!;
+
+        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Output("attributes")]
@@ -131,6 +137,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+        /// </summary>
+        [Output("subscriptionType")]
+        public Output<string> SubscriptionType { get; private set; } = null!;
+
+        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Output("type")]
@@ -186,6 +198,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("addonsConfig")]
         public Input<Inputs.GoogleCloudApigeeV1AddonsConfigArgs>? AddonsConfig { get; set; }
+
+        /// <summary>
+        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// </summary>
+        [Input("analyticsRegion", required: true)]
+        public Input<string> AnalyticsRegion { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<string>? _attributes;

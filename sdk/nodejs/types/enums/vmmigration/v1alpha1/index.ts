@@ -106,6 +106,50 @@ export const SchedulingNodeAffinityOperator = {
  */
 export type SchedulingNodeAffinityOperator = (typeof SchedulingNodeAffinityOperator)[keyof typeof SchedulingNodeAffinityOperator];
 
+export const TargetVMDetailsDiskType = {
+    /**
+     * An unspecified disk type. Will be used as STANDARD.
+     */
+    DiskTypeUnspecified: "DISK_TYPE_UNSPECIFIED",
+    /**
+     * A Standard disk type.
+     */
+    Standard: "STANDARD",
+    /**
+     * An alternative to SSD persistent disks that balance performance and cost.
+     */
+    Balanced: "BALANCED",
+    /**
+     * SSD hard disk type.
+     */
+    Ssd: "SSD",
+} as const;
+
+/**
+ * The disk type to use in the VM.
+ */
+export type TargetVMDetailsDiskType = (typeof TargetVMDetailsDiskType)[keyof typeof TargetVMDetailsDiskType];
+
+export const TargetVMDetailsLicenseType = {
+    /**
+     * The license type is the default for the OS.
+     */
+    Default: "DEFAULT",
+    /**
+     * The license type is Pay As You Go license type.
+     */
+    Payg: "PAYG",
+    /**
+     * The license type is Bring Your Own License type.
+     */
+    Byol: "BYOL",
+} as const;
+
+/**
+ * The license type to use in OS adaptation.
+ */
+export type TargetVMDetailsLicenseType = (typeof TargetVMDetailsLicenseType)[keyof typeof TargetVMDetailsLicenseType];
+
 export const UtilizationReportTimeFrame = {
     /**
      * The time frame was not specified and will default to WEEK.

@@ -14,6 +14,7 @@ __all__ = [
     'PickTimeSeriesFilterDirection',
     'PickTimeSeriesFilterRankingMethod',
     'SparkChartViewSparkChartType',
+    'StatisticalTimeSeriesFilterRankingMethod',
     'TextFormat',
     'ThresholdColor',
     'ThresholdDirection',
@@ -312,6 +313,20 @@ class SparkChartViewSparkChartType(str, Enum):
     SPARK_BAR = "SPARK_BAR"
     """
     The sparkbar will be rendered as a small bar chart.
+    """
+
+
+class StatisticalTimeSeriesFilterRankingMethod(str, Enum):
+    """
+    rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
+    """
+    METHOD_UNSPECIFIED = "METHOD_UNSPECIFIED"
+    """
+    Not allowed in well-formed requests.
+    """
+    METHOD_CLUSTER_OUTLIER = "METHOD_CLUSTER_OUTLIER"
+    """
+    Compute the outlier score of each stream.
     """
 
 

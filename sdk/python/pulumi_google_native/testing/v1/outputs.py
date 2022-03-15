@@ -45,6 +45,7 @@ __all__ = [
     'ShardResponse',
     'ShardingOptionResponse',
     'StartActivityIntentResponse',
+    'SystraceSetupResponse',
     'TestDetailsResponse',
     'TestExecutionResponse',
     'TestSetupResponse',
@@ -2033,6 +2034,41 @@ class StartActivityIntentResponse(dict):
 
 
 @pulumi.output_type
+class SystraceSetupResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationSeconds":
+            suggest = "duration_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SystraceSetupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SystraceSetupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SystraceSetupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration_seconds: int):
+        """
+        :param int duration_seconds: Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+        """
+        pulumi.set(__self__, "duration_seconds", duration_seconds)
+
+    @property
+    @pulumi.getter(name="durationSeconds")
+    def duration_seconds(self) -> int:
+        """
+        Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+        """
+        return pulumi.get(self, "duration_seconds")
+
+
+@pulumi.output_type
 class TestDetailsResponse(dict):
     """
     Additional details about the progress of the running test.
@@ -2256,7 +2292,8 @@ class TestSetupResponse(dict):
                  dont_autogrant_permissions: bool,
                  environment_variables: Sequence['outputs.EnvironmentVariableResponse'],
                  files_to_push: Sequence['outputs.DeviceFileResponse'],
-                 network_profile: str):
+                 network_profile: str,
+                 systrace: 'outputs.SystraceSetupResponse'):
         """
         A description of how to set up the Android device prior to running the test.
         :param 'AccountResponse' account: The device will be logged in on this account for the duration of the test.
@@ -2266,6 +2303,7 @@ class TestSetupResponse(dict):
         :param Sequence['EnvironmentVariableResponse'] environment_variables: Environment variables to set for the test (only applicable for instrumentation tests).
         :param Sequence['DeviceFileResponse'] files_to_push: List of files to push to the device before starting the test.
         :param str network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
+        :param 'SystraceSetupResponse' systrace: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "additional_apks", additional_apks)
@@ -2274,6 +2312,7 @@ class TestSetupResponse(dict):
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "files_to_push", files_to_push)
         pulumi.set(__self__, "network_profile", network_profile)
+        pulumi.set(__self__, "systrace", systrace)
 
     @property
     @pulumi.getter
@@ -2330,6 +2369,14 @@ class TestSetupResponse(dict):
         The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
         """
         return pulumi.get(self, "network_profile")
+
+    @property
+    @pulumi.getter
+    def systrace(self) -> 'outputs.SystraceSetupResponse':
+        """
+        Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+        """
+        return pulumi.get(self, "systrace")
 
 
 @pulumi.output_type

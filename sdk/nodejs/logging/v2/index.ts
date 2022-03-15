@@ -10,6 +10,9 @@ export * from "./billingAccountSink";
 export * from "./getBillingAccountExclusion";
 export * from "./getBillingAccountSink";
 
+// Export enums:
+export * from "../../types/enums/logging/v2";
+
 // Import resources to register:
 import { BillingAccountExclusion } from "./billingAccountExclusion";
 import { BillingAccountSink } from "./billingAccountSink";

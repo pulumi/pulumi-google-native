@@ -37,6 +37,12 @@ export interface GetCloneJobResult {
      */
     readonly computeEngineTargetDetails: outputs.vmmigration.v1alpha1.ComputeEngineTargetDetailsResponse;
     /**
+     * Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+     *
+     * @deprecated Output only. Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_details instead.
+     */
+    readonly computeEngineVmDetails: outputs.vmmigration.v1alpha1.TargetVMDetailsResponse;
+    /**
      * The time the clone job was created (as an API call, not when it was actually created in the target).
      */
     readonly createTime: string;
@@ -56,6 +62,12 @@ export interface GetCloneJobResult {
      * The time the state was last updated.
      */
     readonly stateTime: string;
+    /**
+     * Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+     *
+     * @deprecated Output only. Details of the VM to create as the target of this clone job. Deprecated: Use compute_engine_target_details instead.
+     */
+    readonly targetDetails: outputs.vmmigration.v1alpha1.TargetVMDetailsResponse;
 }
 
 export function getCloneJobOutput(args: GetCloneJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloneJobResult> {

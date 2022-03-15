@@ -883,6 +883,10 @@ func (o GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponseArra
 
 // The call participant speaking for a given utterance.
 type GoogleCloudContactcenterinsightsV1ConversationParticipantResponse struct {
+	// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+	//
+	// Deprecated: Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+	DialogflowParticipant string `pulumi:"dialogflowParticipant"`
 	// The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
 	DialogflowParticipantName string `pulumi:"dialogflowParticipantName"`
 	// Obfuscated user ID from Dialogflow.
@@ -906,6 +910,15 @@ func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput)
 
 func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput) ToGoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput {
 	return o
+}
+
+// Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+//
+// Deprecated: Deprecated. Use `dialogflow_participant_name` instead. The name of the Dialogflow participant. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}
+func (o GoogleCloudContactcenterinsightsV1ConversationParticipantResponseOutput) DialogflowParticipant() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1ConversationParticipantResponse) string {
+		return v.DialogflowParticipant
+	}).(pulumi.StringOutput)
 }
 
 // The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant}

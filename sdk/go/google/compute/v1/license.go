@@ -14,6 +14,10 @@ import (
 type License struct {
 	pulumi.CustomResourceState
 
+	// Deprecated. This field no longer reflects whether a license charges a usage fee.
+	//
+	// Deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+	ChargesUseFee pulumi.BoolOutput `pulumi:"chargesUseFee"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource; provided by the client when the resource is created.

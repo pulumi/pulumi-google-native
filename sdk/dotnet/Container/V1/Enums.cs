@@ -842,6 +842,63 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
+    /// </summary>
+    [EnumType]
+    public readonly struct StatusConditionCode : IEquatable<StatusConditionCode>
+    {
+        private readonly string _value;
+
+        private StatusConditionCode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// UNKNOWN indicates a generic condition.
+        /// </summary>
+        public static StatusConditionCode Unknown { get; } = new StatusConditionCode("UNKNOWN");
+        /// <summary>
+        /// GCE_STOCKOUT indicates that Google Compute Engine resources are temporarily unavailable.
+        /// </summary>
+        public static StatusConditionCode GceStockout { get; } = new StatusConditionCode("GCE_STOCKOUT");
+        /// <summary>
+        /// GKE_SERVICE_ACCOUNT_DELETED indicates that the user deleted their robot service account.
+        /// </summary>
+        public static StatusConditionCode GkeServiceAccountDeleted { get; } = new StatusConditionCode("GKE_SERVICE_ACCOUNT_DELETED");
+        /// <summary>
+        /// Google Compute Engine quota was exceeded.
+        /// </summary>
+        public static StatusConditionCode GceQuotaExceeded { get; } = new StatusConditionCode("GCE_QUOTA_EXCEEDED");
+        /// <summary>
+        /// Cluster state was manually changed by an SRE due to a system logic error.
+        /// </summary>
+        public static StatusConditionCode SetByOperator { get; } = new StatusConditionCode("SET_BY_OPERATOR");
+        /// <summary>
+        /// Unable to perform an encrypt operation against the CloudKMS key used for etcd level encryption.
+        /// </summary>
+        public static StatusConditionCode CloudKmsKeyError { get; } = new StatusConditionCode("CLOUD_KMS_KEY_ERROR");
+        /// <summary>
+        /// Cluster CA is expiring soon.
+        /// </summary>
+        public static StatusConditionCode CaExpiring { get; } = new StatusConditionCode("CA_EXPIRING");
+
+        public static bool operator ==(StatusConditionCode left, StatusConditionCode right) => left.Equals(right);
+        public static bool operator !=(StatusConditionCode left, StatusConditionCode right) => !left.Equals(right);
+
+        public static explicit operator string(StatusConditionCode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is StatusConditionCode other && Equals(other);
+        public bool Equals(StatusConditionCode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
     /// </summary>
     [EnumType]

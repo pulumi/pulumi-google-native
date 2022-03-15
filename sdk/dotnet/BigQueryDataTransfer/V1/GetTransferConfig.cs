@@ -125,6 +125,10 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         /// Data transfer modification time. Ignored by server on input.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// Deprecated. Unique ID of the user on whose behalf transfer is done.
+        /// </summary>
+        public readonly string UserId;
 
         [OutputConstructor]
         private GetTransferConfigResult(
@@ -158,7 +162,9 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
 
             string state,
 
-            string updateTime)
+            string updateTime,
+
+            string userId)
         {
             DataRefreshWindowDays = dataRefreshWindowDays;
             DataSourceId = dataSourceId;
@@ -176,6 +182,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
             ScheduleOptions = scheduleOptions;
             State = state;
             UpdateTime = updateTime;
+            UserId = userId;
         }
     }
 }

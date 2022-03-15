@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<Outputs.ComputeEngineTargetDefaultsResponse> ComputeEngineTargetDefaults { get; private set; } = null!;
 
         /// <summary>
+        /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        /// </summary>
+        [Output("computeEngineVmDefaults")]
+        public Output<Outputs.TargetVMDetailsResponse> ComputeEngineVmDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
         /// </summary>
         [Output("createTime")]
@@ -113,6 +119,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Output<string> StateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        /// </summary>
+        [Output("targetDefaults")]
+        public Output<Outputs.TargetVMDetailsResponse> TargetDefaults { get; private set; } = null!;
+
+        /// <summary>
         /// The last time the migrating VM resource was updated.
         /// </summary>
         [Output("updateTime")]
@@ -170,6 +182,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public Input<Inputs.ComputeEngineTargetDefaultsArgs>? ComputeEngineTargetDefaults { get; set; }
 
         /// <summary>
+        /// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
+        /// </summary>
+        [Input("computeEngineVmDefaults")]
+        public Input<Inputs.TargetVMDetailsArgs>? ComputeEngineVmDefaults { get; set; }
+
+        /// <summary>
         /// The description attached to the migrating VM by the user.
         /// </summary>
         [Input("description")]
@@ -225,6 +243,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         /// </summary>
         [Input("sourceVmId")]
         public Input<string>? SourceVmId { get; set; }
+
+        /// <summary>
+        /// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        /// </summary>
+        [Input("targetDefaults")]
+        public Input<Inputs.TargetVMDetailsArgs>? TargetDefaults { get; set; }
 
         public MigratingVmArgs()
         {

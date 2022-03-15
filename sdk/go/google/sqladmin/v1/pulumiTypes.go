@@ -4624,6 +4624,10 @@ type Settings struct {
 	ActivationPolicy *SettingsActivationPolicy `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig *SqlActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
+	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	//
+	// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
 	// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType *SettingsAvailabilityType `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
@@ -4656,6 +4660,10 @@ type Settings struct {
 	PasswordValidationPolicy *PasswordValidationPolicy `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 	PricingPlan *SettingsPricingPlan `pulumi:"pricingPlan"`
+	// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+	//
+	// Deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+	ReplicationType *SettingsReplicationType `pulumi:"replicationType"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion *string `pulumi:"settingsVersion"`
 	// SQL Server specific audit configuration.
@@ -4687,6 +4695,10 @@ type SettingsArgs struct {
 	ActivationPolicy SettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
+	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	//
+	// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	AuthorizedGaeApplications pulumi.StringArrayInput `pulumi:"authorizedGaeApplications"`
 	// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType SettingsAvailabilityTypePtrInput `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
@@ -4719,6 +4731,10 @@ type SettingsArgs struct {
 	PasswordValidationPolicy PasswordValidationPolicyPtrInput `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 	PricingPlan SettingsPricingPlanPtrInput `pulumi:"pricingPlan"`
+	// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+	//
+	// Deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+	ReplicationType SettingsReplicationTypePtrInput `pulumi:"replicationType"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion pulumi.StringPtrInput `pulumi:"settingsVersion"`
 	// SQL Server specific audit configuration.
@@ -4821,6 +4837,13 @@ func (o SettingsOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOutpu
 	return o.ApplyT(func(v Settings) *SqlActiveDirectoryConfig { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigPtrOutput)
 }
 
+// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+//
+// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+func (o SettingsOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Settings) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
+}
+
 // Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 func (o SettingsOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsAvailabilityType { return v.AvailabilityType }).(SettingsAvailabilityTypePtrOutput)
@@ -4901,6 +4924,13 @@ func (o SettingsOutput) PricingPlan() SettingsPricingPlanPtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsPricingPlan { return v.PricingPlan }).(SettingsPricingPlanPtrOutput)
 }
 
+// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+//
+// Deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+func (o SettingsOutput) ReplicationType() SettingsReplicationTypePtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsReplicationType { return v.ReplicationType }).(SettingsReplicationTypePtrOutput)
+}
+
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 func (o SettingsOutput) SettingsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.SettingsVersion }).(pulumi.StringPtrOutput)
@@ -4973,6 +5003,18 @@ func (o SettingsPtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOu
 		}
 		return v.ActiveDirectoryConfig
 	}).(SqlActiveDirectoryConfigPtrOutput)
+}
+
+// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+//
+// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+func (o SettingsPtrOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Settings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizedGaeApplications
+	}).(pulumi.StringArrayOutput)
 }
 
 // Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
@@ -5135,6 +5177,18 @@ func (o SettingsPtrOutput) PricingPlan() SettingsPricingPlanPtrOutput {
 	}).(SettingsPricingPlanPtrOutput)
 }
 
+// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+//
+// Deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+func (o SettingsPtrOutput) ReplicationType() SettingsReplicationTypePtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsReplicationType {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationType
+	}).(SettingsReplicationTypePtrOutput)
+}
+
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 func (o SettingsPtrOutput) SettingsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Settings) *string {
@@ -5201,6 +5255,10 @@ type SettingsResponse struct {
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigResponse `pulumi:"activeDirectoryConfig"`
+	// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	//
+	// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+	AuthorizedGaeApplications []string `pulumi:"authorizedGaeApplications"`
 	// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
 	AvailabilityType string `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
@@ -5233,6 +5291,10 @@ type SettingsResponse struct {
 	PasswordValidationPolicy PasswordValidationPolicyResponse `pulumi:"passwordValidationPolicy"`
 	// The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 	PricingPlan string `pulumi:"pricingPlan"`
+	// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+	//
+	// Deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+	ReplicationType string `pulumi:"replicationType"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion string `pulumi:"settingsVersion"`
 	// SQL Server specific audit configuration.
@@ -5270,6 +5332,13 @@ func (o SettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
 // Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 func (o SettingsResponseOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigResponseOutput {
 	return o.ApplyT(func(v SettingsResponse) SqlActiveDirectoryConfigResponse { return v.ActiveDirectoryConfig }).(SqlActiveDirectoryConfigResponseOutput)
+}
+
+// The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+//
+// Deprecated: The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.
+func (o SettingsResponseOutput) AuthorizedGaeApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsResponse) []string { return v.AuthorizedGaeApplications }).(pulumi.StringArrayOutput)
 }
 
 // Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
@@ -5350,6 +5419,13 @@ func (o SettingsResponseOutput) PasswordValidationPolicy() PasswordValidationPol
 // The pricing plan for this instance. This can be either `PER_USE` or `PACKAGE`. Only `PER_USE` is supported for Second Generation instances.
 func (o SettingsResponseOutput) PricingPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.PricingPlan }).(pulumi.StringOutput)
+}
+
+// The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+//
+// Deprecated: The type of replication this instance uses. This can be either `ASYNCHRONOUS` or `SYNCHRONOUS`. (Deprecated) This property was only applicable to First Generation instances.
+func (o SettingsResponseOutput) ReplicationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.ReplicationType }).(pulumi.StringOutput)
 }
 
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.

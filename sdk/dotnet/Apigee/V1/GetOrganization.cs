@@ -54,6 +54,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1AddonsConfigResponse AddonsConfig;
         /// <summary>
+        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// </summary>
+        public readonly string AnalyticsRegion;
+        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         public readonly ImmutableArray<string> Attributes;
@@ -126,6 +130,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// DEPRECATED: This will eventually be replaced by BillingType. Subscription type of the Apigee organization. Valid values include trial (free, limited, and for evaluation purposes only) or paid (full subscription has been purchased). See [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+        /// </summary>
+        public readonly string SubscriptionType;
+        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         public readonly string Type;
@@ -133,6 +141,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [OutputConstructor]
         private GetOrganizationResult(
             Outputs.GoogleCloudApigeeV1AddonsConfigResponse addonsConfig,
+
+            string analyticsRegion,
 
             ImmutableArray<string> attributes,
 
@@ -170,9 +180,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string state,
 
+            string subscriptionType,
+
             string type)
         {
             AddonsConfig = addonsConfig;
+            AnalyticsRegion = analyticsRegion;
             Attributes = attributes;
             AuthorizedNetwork = authorizedNetwork;
             BillingType = billingType;
@@ -191,6 +204,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             RuntimeDatabaseEncryptionKeyName = runtimeDatabaseEncryptionKeyName;
             RuntimeType = runtimeType;
             State = state;
+            SubscriptionType = subscriptionType;
             Type = type;
         }
     }

@@ -28,6 +28,10 @@ type Firewall struct {
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	//
+	// Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	EnableLogging pulumi.BoolOutput `pulumi:"enableLogging"`
 	// Type of the resource. Always compute#firewall for firewall rules.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -103,6 +107,10 @@ type firewallArgs struct {
 	Direction *FirewallDirection `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled *bool `pulumi:"disabled"`
+	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	//
+	// Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	EnableLogging *bool `pulumi:"enableLogging"`
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
 	LogConfig *FirewallLogConfig `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
@@ -140,6 +148,10 @@ type FirewallArgs struct {
 	Direction FirewallDirectionPtrInput
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled pulumi.BoolPtrInput
+	// Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	//
+	// Deprecated: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
+	EnableLogging pulumi.BoolPtrInput
 	// This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
 	LogConfig FirewallLogConfigPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.

@@ -42,6 +42,7 @@ __all__ = [
     'RoboStartingIntentArgs',
     'ShardingOptionArgs',
     'StartActivityIntentArgs',
+    'SystraceSetupArgs',
     'TestSetupArgs',
     'TestSpecificationArgs',
     'TestTargetsForShardArgs',
@@ -1623,6 +1624,29 @@ class StartActivityIntentArgs:
 
 
 @pulumi.input_type
+class SystraceSetupArgs:
+    def __init__(__self__, *,
+                 duration_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] duration_seconds: Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+        """
+        if duration_seconds is not None:
+            pulumi.set(__self__, "duration_seconds", duration_seconds)
+
+    @property
+    @pulumi.getter(name="durationSeconds")
+    def duration_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
+        """
+        return pulumi.get(self, "duration_seconds")
+
+    @duration_seconds.setter
+    def duration_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration_seconds", value)
+
+
+@pulumi.input_type
 class TestSetupArgs:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input['AccountArgs']] = None,
@@ -1631,7 +1655,8 @@ class TestSetupArgs:
                  dont_autogrant_permissions: Optional[pulumi.Input[bool]] = None,
                  environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableArgs']]]] = None,
                  files_to_push: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceFileArgs']]]] = None,
-                 network_profile: Optional[pulumi.Input[str]] = None):
+                 network_profile: Optional[pulumi.Input[str]] = None,
+                 systrace: Optional[pulumi.Input['SystraceSetupArgs']] = None):
         """
         A description of how to set up the Android device prior to running the test.
         :param pulumi.Input['AccountArgs'] account: The device will be logged in on this account for the duration of the test.
@@ -1641,6 +1666,7 @@ class TestSetupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EnvironmentVariableArgs']]] environment_variables: Environment variables to set for the test (only applicable for instrumentation tests).
         :param pulumi.Input[Sequence[pulumi.Input['DeviceFileArgs']]] files_to_push: List of files to push to the device before starting the test.
         :param pulumi.Input[str] network_profile: The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
+        :param pulumi.Input['SystraceSetupArgs'] systrace: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
@@ -1656,6 +1682,11 @@ class TestSetupArgs:
             pulumi.set(__self__, "files_to_push", files_to_push)
         if network_profile is not None:
             pulumi.set(__self__, "network_profile", network_profile)
+        if systrace is not None:
+            warnings.warn("""Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.""", DeprecationWarning)
+            pulumi.log.warn("""systrace is deprecated: Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.""")
+        if systrace is not None:
+            pulumi.set(__self__, "systrace", systrace)
 
     @property
     @pulumi.getter
@@ -1740,6 +1771,18 @@ class TestSetupArgs:
     @network_profile.setter
     def network_profile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_profile", value)
+
+    @property
+    @pulumi.getter
+    def systrace(self) -> Optional[pulumi.Input['SystraceSetupArgs']]:
+        """
+        Deprecated: Systrace uses Python 2 which has been sunset 2020-01-01. Support of Systrace may stop at any time, at which point no Systrace file will be provided in the results. Systrace configuration for the run. If set a systrace will be taken, starting on test start and lasting for the configured duration. The systrace file thus obtained is put in the results bucket together with the other artifacts from the run.
+        """
+        return pulumi.get(self, "systrace")
+
+    @systrace.setter
+    def systrace(self, value: Optional[pulumi.Input['SystraceSetupArgs']]):
+        pulumi.set(self, "systrace", value)
 
 
 @pulumi.input_type

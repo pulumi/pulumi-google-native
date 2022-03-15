@@ -4871,6 +4871,172 @@ func (o SpecificationResponseOutput) IosTest() IosTestResponseOutput {
 	return o.ApplyT(func(v SpecificationResponse) IosTestResponse { return v.IosTest }).(IosTestResponseOutput)
 }
 
+// A stacktrace.
+type StackTrace struct {
+	// The stack trace message. Required
+	Exception *string `pulumi:"exception"`
+}
+
+// StackTraceInput is an input type that accepts StackTraceArgs and StackTraceOutput values.
+// You can construct a concrete instance of `StackTraceInput` via:
+//
+//          StackTraceArgs{...}
+type StackTraceInput interface {
+	pulumi.Input
+
+	ToStackTraceOutput() StackTraceOutput
+	ToStackTraceOutputWithContext(context.Context) StackTraceOutput
+}
+
+// A stacktrace.
+type StackTraceArgs struct {
+	// The stack trace message. Required
+	Exception pulumi.StringPtrInput `pulumi:"exception"`
+}
+
+func (StackTraceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTrace)(nil)).Elem()
+}
+
+func (i StackTraceArgs) ToStackTraceOutput() StackTraceOutput {
+	return i.ToStackTraceOutputWithContext(context.Background())
+}
+
+func (i StackTraceArgs) ToStackTraceOutputWithContext(ctx context.Context) StackTraceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceOutput)
+}
+
+func (i StackTraceArgs) ToStackTracePtrOutput() StackTracePtrOutput {
+	return i.ToStackTracePtrOutputWithContext(context.Background())
+}
+
+func (i StackTraceArgs) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTraceOutput).ToStackTracePtrOutputWithContext(ctx)
+}
+
+// StackTracePtrInput is an input type that accepts StackTraceArgs, StackTracePtr and StackTracePtrOutput values.
+// You can construct a concrete instance of `StackTracePtrInput` via:
+//
+//          StackTraceArgs{...}
+//
+//  or:
+//
+//          nil
+type StackTracePtrInput interface {
+	pulumi.Input
+
+	ToStackTracePtrOutput() StackTracePtrOutput
+	ToStackTracePtrOutputWithContext(context.Context) StackTracePtrOutput
+}
+
+type stackTracePtrType StackTraceArgs
+
+func StackTracePtr(v *StackTraceArgs) StackTracePtrInput {
+	return (*stackTracePtrType)(v)
+}
+
+func (*stackTracePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackTrace)(nil)).Elem()
+}
+
+func (i *stackTracePtrType) ToStackTracePtrOutput() StackTracePtrOutput {
+	return i.ToStackTracePtrOutputWithContext(context.Background())
+}
+
+func (i *stackTracePtrType) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StackTracePtrOutput)
+}
+
+// A stacktrace.
+type StackTraceOutput struct{ *pulumi.OutputState }
+
+func (StackTraceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTrace)(nil)).Elem()
+}
+
+func (o StackTraceOutput) ToStackTraceOutput() StackTraceOutput {
+	return o
+}
+
+func (o StackTraceOutput) ToStackTraceOutputWithContext(ctx context.Context) StackTraceOutput {
+	return o
+}
+
+func (o StackTraceOutput) ToStackTracePtrOutput() StackTracePtrOutput {
+	return o.ToStackTracePtrOutputWithContext(context.Background())
+}
+
+func (o StackTraceOutput) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StackTrace) *StackTrace {
+		return &v
+	}).(StackTracePtrOutput)
+}
+
+// The stack trace message. Required
+func (o StackTraceOutput) Exception() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StackTrace) *string { return v.Exception }).(pulumi.StringPtrOutput)
+}
+
+type StackTracePtrOutput struct{ *pulumi.OutputState }
+
+func (StackTracePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StackTrace)(nil)).Elem()
+}
+
+func (o StackTracePtrOutput) ToStackTracePtrOutput() StackTracePtrOutput {
+	return o
+}
+
+func (o StackTracePtrOutput) ToStackTracePtrOutputWithContext(ctx context.Context) StackTracePtrOutput {
+	return o
+}
+
+func (o StackTracePtrOutput) Elem() StackTraceOutput {
+	return o.ApplyT(func(v *StackTrace) StackTrace {
+		if v != nil {
+			return *v
+		}
+		var ret StackTrace
+		return ret
+	}).(StackTraceOutput)
+}
+
+// The stack trace message. Required
+func (o StackTracePtrOutput) Exception() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StackTrace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exception
+	}).(pulumi.StringPtrOutput)
+}
+
+// A stacktrace.
+type StackTraceResponse struct {
+	// The stack trace message. Required
+	Exception string `pulumi:"exception"`
+}
+
+// A stacktrace.
+type StackTraceResponseOutput struct{ *pulumi.OutputState }
+
+func (StackTraceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StackTraceResponse)(nil)).Elem()
+}
+
+func (o StackTraceResponseOutput) ToStackTraceResponseOutput() StackTraceResponseOutput {
+	return o
+}
+
+func (o StackTraceResponseOutput) ToStackTraceResponseOutputWithContext(ctx context.Context) StackTraceResponseOutput {
+	return o
+}
+
+// The stack trace message. Required
+func (o StackTraceResponseOutput) Exception() pulumi.StringOutput {
+	return o.ApplyT(func(v StackTraceResponse) string { return v.Exception }).(pulumi.StringOutput)
+}
+
 type StepDimensionValueEntry struct {
 	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
@@ -5801,6 +5967,10 @@ type TestIssue struct {
 	ErrorMessage *string `pulumi:"errorMessage"`
 	// Severity of issue. Required.
 	Severity *TestIssueSeverity `pulumi:"severity"`
+	// Deprecated in favor of stack trace fields inside specific warnings.
+	//
+	// Deprecated: Deprecated in favor of stack trace fields inside specific warnings.
+	StackTrace *StackTrace `pulumi:"stackTrace"`
 	// Type of issue. Required.
 	Type *TestIssueType `pulumi:"type"`
 	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
@@ -5826,6 +5996,10 @@ type TestIssueArgs struct {
 	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
 	// Severity of issue. Required.
 	Severity TestIssueSeverityPtrInput `pulumi:"severity"`
+	// Deprecated in favor of stack trace fields inside specific warnings.
+	//
+	// Deprecated: Deprecated in favor of stack trace fields inside specific warnings.
+	StackTrace StackTracePtrInput `pulumi:"stackTrace"`
 	// Type of issue. Required.
 	Type TestIssueTypePtrInput `pulumi:"type"`
 	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
@@ -5899,6 +6073,13 @@ func (o TestIssueOutput) Severity() TestIssueSeverityPtrOutput {
 	return o.ApplyT(func(v TestIssue) *TestIssueSeverity { return v.Severity }).(TestIssueSeverityPtrOutput)
 }
 
+// Deprecated in favor of stack trace fields inside specific warnings.
+//
+// Deprecated: Deprecated in favor of stack trace fields inside specific warnings.
+func (o TestIssueOutput) StackTrace() StackTracePtrOutput {
+	return o.ApplyT(func(v TestIssue) *StackTrace { return v.StackTrace }).(StackTracePtrOutput)
+}
+
 // Type of issue. Required.
 func (o TestIssueOutput) Type() TestIssueTypePtrOutput {
 	return o.ApplyT(func(v TestIssue) *TestIssueType { return v.Type }).(TestIssueTypePtrOutput)
@@ -5937,6 +6118,10 @@ type TestIssueResponse struct {
 	ErrorMessage string `pulumi:"errorMessage"`
 	// Severity of issue. Required.
 	Severity string `pulumi:"severity"`
+	// Deprecated in favor of stack trace fields inside specific warnings.
+	//
+	// Deprecated: Deprecated in favor of stack trace fields inside specific warnings.
+	StackTrace StackTraceResponse `pulumi:"stackTrace"`
 	// Type of issue. Required.
 	Type string `pulumi:"type"`
 	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
@@ -5971,6 +6156,13 @@ func (o TestIssueResponseOutput) ErrorMessage() pulumi.StringOutput {
 // Severity of issue. Required.
 func (o TestIssueResponseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v TestIssueResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Deprecated in favor of stack trace fields inside specific warnings.
+//
+// Deprecated: Deprecated in favor of stack trace fields inside specific warnings.
+func (o TestIssueResponseOutput) StackTrace() StackTraceResponseOutput {
+	return o.ApplyT(func(v TestIssueResponse) StackTraceResponse { return v.StackTrace }).(StackTraceResponseOutput)
 }
 
 // Type of issue. Required.
@@ -7421,6 +7613,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SkippedDetailPtrInput)(nil)).Elem(), SkippedDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpecificationInput)(nil)).Elem(), SpecificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpecificationPtrInput)(nil)).Elem(), SpecificationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackTraceInput)(nil)).Elem(), StackTraceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StackTracePtrInput)(nil)).Elem(), StackTraceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StepDimensionValueEntryInput)(nil)).Elem(), StepDimensionValueEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StepDimensionValueEntryArrayInput)(nil)).Elem(), StepDimensionValueEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StepLabelsEntryInput)(nil)).Elem(), StepLabelsEntryArgs{})
@@ -7520,6 +7714,9 @@ func init() {
 	pulumi.RegisterOutputType(SpecificationOutput{})
 	pulumi.RegisterOutputType(SpecificationPtrOutput{})
 	pulumi.RegisterOutputType(SpecificationResponseOutput{})
+	pulumi.RegisterOutputType(StackTraceOutput{})
+	pulumi.RegisterOutputType(StackTracePtrOutput{})
+	pulumi.RegisterOutputType(StackTraceResponseOutput{})
 	pulumi.RegisterOutputType(StepDimensionValueEntryOutput{})
 	pulumi.RegisterOutputType(StepDimensionValueEntryArrayOutput{})
 	pulumi.RegisterOutputType(StepDimensionValueEntryResponseOutput{})
