@@ -65,29 +65,31 @@ var resourceMap = &CloudAPIMetadata{
 	},
 	Resources: map[string]CloudAPIResource{
 		"r1": {
-			Create: CloudAPIOperation{
-				SDKProperties: map[string]CloudAPIProperty{
-					"name": {},
-					"x-threshold": {
-						SdkName: "threshold",
-					},
-					"structure": {
-						Ref: "#/types/google-native:testing:Structure",
-					},
-					"p1": {
-						Container: "properties",
-					},
-					"p2": {
-						Container: "properties",
-					},
-					"more": {
-						Container: "properties",
-						Ref:       "#/types/google-native:testing:More",
-					},
-					"tags":         {},
-					"untypedArray": {},
-					"untypedDict": {
-						Ref: "pulumi.json#/Any",
+			Create: CreateAPIOperation{
+				CloudAPIOperation: CloudAPIOperation{
+					SDKProperties: map[string]CloudAPIProperty{
+						"name": {},
+						"x-threshold": {
+							SdkName: "threshold",
+						},
+						"structure": {
+							Ref: "#/types/google-native:testing:Structure",
+						},
+						"p1": {
+							Container: "properties",
+						},
+						"p2": {
+							Container: "properties",
+						},
+						"more": {
+							Container: "properties",
+							Ref:       "#/types/google-native:testing:More",
+						},
+						"tags":         {},
+						"untypedArray": {},
+						"untypedDict": {
+							Ref: "pulumi.json#/Any",
+						},
 					},
 				},
 			},

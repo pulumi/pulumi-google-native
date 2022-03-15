@@ -24,14 +24,16 @@ import (
 
 func TestGetInputsFromState(t *testing.T) {
 	res := resources.CloudAPIResource{
-		Create: resources.CloudAPIOperation{
-			SDKProperties: map[string]resources.CloudAPIProperty{
-				"p1": {},
-				"p2": {
-					Container: "c1",
-				},
-				"p3": {
-					SdkName: "p3sdk",
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				SDKProperties: map[string]resources.CloudAPIProperty{
+					"p1": {},
+					"p2": {
+						Container: "c1",
+					},
+					"p3": {
+						SdkName: "p3sdk",
+					},
 				},
 			},
 		},
