@@ -596,6 +596,14 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			resourceMeta.IDParams = vals
 		}
 	}
+	if resourceTok == "google-native:cloudkms/v1:CryptoKey" {
+		resourceMeta.Update.Endpoint.Values = append(resourceMeta.Update.Endpoint.Values,
+			resources.CloudAPIResourceParam{
+				Name:    "updateMask",
+				SdkName: "updateMask",
+				Kind:    "query",
+			})
+	}
 
 	if d := dd.deleteMethod; d != nil {
 		if v := d.HttpMethod; len(v) > 0 {
