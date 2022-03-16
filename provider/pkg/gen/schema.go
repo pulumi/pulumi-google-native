@@ -548,6 +548,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			idPath := methodPath(dd.getMethod)
 			queryParams := url.Values{}
 			for param, details := range dd.getMethod.Parameters {
+				// TODO: this may need to be changed to isRequired(details)
 				if details.Location != "query" || !details.Required {
 					continue
 				}
@@ -596,13 +597,18 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			resourceMeta.IDParams = vals
 		}
 	}
-	if resourceTok == "google-native:cloudkms/v1:CryptoKey" {
-		resourceMeta.Update.Endpoint.Values = append(resourceMeta.Update.Endpoint.Values,
-			resources.CloudAPIResourceParam{
-				Name:    "updateMask",
-				SdkName: "updateMask",
-				Kind:    "query",
-			})
+
+	if dd.updateMethod != nil {
+		for name, value := range dd.updateMethod.Parameters {
+			if value.Format == "google-fieldmask" && isRequired(value) {
+				resourceMeta.Update.Endpoint.Values = append(resourceMeta.Update.Endpoint.Values,
+					resources.CloudAPIResourceParam{
+						Name:    name,
+						SdkName: name,
+						Kind:    value.Location,
+					})
+			}
+		}
 	}
 
 	if d := dd.deleteMethod; d != nil {
