@@ -270,7 +270,12 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 
 	// Auto-naming.
-	nameKey := resource.PropertyKey("name")
+	var nameKey resource.PropertyKey
+	if autonameFieldRegex.MatchString(res.Create.Autoname.FieldName) {
+		nameKey = resource.PropertyKey(res.Create.Autoname.FieldName)
+	} else {
+		nameKey = "name"
+	}
 	if res.Create.Autoname.FieldName != "" && !news.HasValue(nameKey) {
 		news[nameKey] = getDefaultName(urn, res.Create.Autoname.FieldName, olds, news)
 	}
@@ -669,6 +674,12 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
+	}
+
+	if res.Update.Undefined() {
+		logging.V(1).Infof("update is currently undefined for resource: %q. %s will not be updated",
+			resourceKey, req.GetId())
+		return &rpc.UpdateResponse{}, nil
 	}
 
 	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)

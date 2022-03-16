@@ -619,9 +619,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err == nil {
 			requiredInputProperties.Delete("name")
 			resourceMeta.Create.Autoname.FieldName = namePattern
-		} else if name, ok := autonameOverrides[fmt.Sprintf("%s:%s", g.mod, typeName)]; ok {
+		} else if name, ok := autonameOverrides[fmt.Sprintf("google-native:%s:%s", g.mod, typeName)]; ok {
 			requiredInputProperties.Delete(name)
-			resourceMeta.Create.Autoname.FieldName = fmt.Sprintf("{%s}", name)
+			resourceMeta.Create.Autoname.FieldName = fmt.Sprintf("%s", name)
 		} else {
 			description += "\nAuto-naming is currently not supported for this resource."
 		}

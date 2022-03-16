@@ -17,6 +17,7 @@ package provider
 import (
 	"fmt"
 	"net/url"
+	"regexp"
 	"strings"
 
 	"github.com/pkg/errors"
@@ -111,11 +112,19 @@ func buildURL(
 	return uri.String(), nil
 }
 
+var autonameFieldRegex = regexp.MustCompile(`^\w+$`) // Only word characters allowed
+
 // getDefaultName generates a random name for a resource based on its URN name, a given pattern,
 // and other properties.
-func getDefaultName(urn resource.URN, pattern string,
-	olds, news resource.PropertyMap) resource.PropertyValue {
+func getDefaultName(
+	urn resource.URN,
+	pattern string,
+	olds, news resource.PropertyMap,
+) resource.PropertyValue {
 	if v, ok := olds[resource.PropertyKey("name")]; ok {
+		return v
+	}
+	if v, ok := olds[resource.PropertyKey(pattern)]; ok {
 		return v
 	}
 
@@ -124,6 +133,11 @@ func getDefaultName(urn resource.URN, pattern string,
 	// Resource name is URN name + "-" + random suffix.
 	random, err := resource.NewUniqueHex(name+"-", 7, 0)
 	contract.AssertNoError(err)
+
+	// Simple field replacement, so just return the autoname.
+	if autonameFieldRegex.MatchString(pattern) {
+		return resource.NewStringProperty(random)
+	}
 
 	result := strings.Replace(pattern, "{name}", random, 1)
 	for key, value := range news {
