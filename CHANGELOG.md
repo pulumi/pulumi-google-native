@@ -2,12 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-
 Improvements:
 
 - Re-introduce deprecated fields [#368](https://github.com/pulumi/pulumi-google-native/pull/368)
 - Check for override functions on resource delete [#381](https://github.com/pulumi/pulumi-google-native/pull/381)
 - Add missing descriptions for many resource properties [#384](https://github.com/pulumi/pulumi-google-native/pull/384)
+- Handle updateMask for Update operations [#386](https://github.com/pulumi/pulumi-google-native/pull/38**6)
 
 ## 0.16.0 (2022-03-11)
 Improvements:
