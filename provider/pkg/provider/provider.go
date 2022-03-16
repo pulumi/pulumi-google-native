@@ -685,7 +685,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
-	if res.Update.RequiredFieldMaskProperty != "" {
+	if res.Update.UpdateMask.BodyPropertyName != "" || res.Update.UpdateMask.QueryParamName != "" {
 		newJson, err := json.Marshal(inputs)
 		if err != nil {
 			return nil, errors.Errorf("failed to serialize new inputs as json")
@@ -718,7 +718,13 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 				keys = append(keys, strcase.ToSnake(k))
 			}
 		}
-		body[res.Update.RequiredFieldMaskProperty] = map[string]interface{}{"paths": keys}
+		if res.Update.UpdateMask.QueryParamName != "" {
+			inputs[resource.PropertyKey(res.Update.UpdateMask.QueryParamName)] =
+				resource.NewStringProperty(strings.Join(keys, ","))
+		}
+		if res.Update.UpdateMask.BodyPropertyName != "" {
+			body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
+		}
 	}
 
 	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())

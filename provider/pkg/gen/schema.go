@@ -397,7 +397,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		Read: resources.CloudAPIOperation{
 			Verb: dd.getMethod.HttpMethod,
 		},
-		Update: resources.CloudAPIOperation{},
+		Update: resources.UpdateAPIOperation{},
 	}
 	patternParams := codegen.NewStringSet()
 
@@ -496,12 +496,19 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				return err
 			}
 
+			for name, param := range dd.updateMethod.Parameters {
+				if param.Format == "google-fieldmask" && isRequired(param) {
+					contract.Assert(param.Location == "query")
+					resourceMeta.Update.UpdateMask.QueryParamName = name
+				}
+			}
+
 			for name, value := range updateBag.properties {
 				if _, has := bodyBag.properties[name]; has {
 					resourceMeta.Update.SDKProperties[name] = value
 				} else {
 					if value.Format == "google-fieldmask" && value.Required {
-						resourceMeta.Update.RequiredFieldMaskProperty = name
+						resourceMeta.Update.UpdateMask.BodyPropertyName = name
 					} else {
 						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, dd.updateMethod.Request.Ref, name)
 					}
