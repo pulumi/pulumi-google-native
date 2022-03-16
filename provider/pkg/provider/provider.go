@@ -23,15 +23,14 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"regexp"
 	"runtime/debug"
 	"strings"
 	"time"
 
 	jsonpatch "github.com/evanphx/json-patch"
-
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
+	"github.com/iancoleman/strcase"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
@@ -710,13 +709,13 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 			found := false
 			for name, sdkProp := range res.Update.SDKProperties {
 				if sdkProp.SdkName == k {
-					keys = append(keys, ToSnakeCase(name))
+					keys = append(keys, strcase.ToSnake(name))
 					found = true
 					break
 				}
 			}
 			if !found {
-				keys = append(keys, ToSnakeCase(k))
+				keys = append(keys, strcase.ToSnake(k))
 			}
 		}
 		body[res.Update.RequiredFieldMaskProperty] = map[string]interface{}{"paths": keys}
@@ -923,13 +922,4 @@ func parseCheckpointObject(obj resource.PropertyMap) resource.PropertyMap {
 	}
 
 	return nil
-}
-
-var matchFirstCap = regexp.MustCompile("(.)([A-Z][a-z]+)")
-var matchAllCap = regexp.MustCompile("([a-z0-9])([A-Z])")
-
-func ToSnakeCase(str string) string {
-	snake := matchFirstCap.ReplaceAllString(str, "${1}_${2}")
-	snake = matchAllCap.ReplaceAllString(snake, "${1}_${2}")
-	return strings.ToLower(snake)
 }
