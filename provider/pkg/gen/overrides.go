@@ -125,11 +125,11 @@ var resourceNamePropertyOverrides = map[string]string{
 // autonameOverrides is a map of exceptions to the property used for auto-naming.
 // The key is the resource token, and the value is the property to use for auto-naming.
 var autonameOverrides = map[string]string{
-	"cloudkms/v1:CryptoKey":        "cryptoKeyId",
-	"cloudkms/v1:CryptoKeyVersion": "cryptoKeyId",
-	"cloudkms/v1:EkmConnection":    "ekmConnectionId",
-	"cloudkms/v1:ImportJob":        "importJobId",
-	"cloudkms/v1:KeyRing":          "keyRingId",
+	"google-native:cloudkms/v1:CryptoKey":        "cryptoKeyId",
+	"google-native:cloudkms/v1:CryptoKeyVersion": "cryptoKeyId",
+	"google-native:cloudkms/v1:EkmConnection":    "ekmConnectionId",
+	"google-native:cloudkms/v1:ImportJob":        "importJobId",
+	"google-native:cloudkms/v1:KeyRing":          "keyRingId",
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
