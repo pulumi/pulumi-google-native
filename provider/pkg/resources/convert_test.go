@@ -93,15 +93,17 @@ var resourceMap = &CloudAPIMetadata{
 					},
 				},
 			},
-			Update: CloudAPIOperation{
-				SDKProperties: map[string]CloudAPIProperty{
-					"more": {
-						Container: "properties",
-						Ref:       "#/types/google-native:testing:More",
-					},
-					"tags": {},
-					"tagsFingerprint": {
-						CopyFromOutputs: true,
+			Update: UpdateAPIOperation{
+				CloudAPIOperation: CloudAPIOperation{
+					SDKProperties: map[string]CloudAPIProperty{
+						"more": {
+							Container: "properties",
+							Ref:       "#/types/google-native:testing:More",
+						},
+						"tags": {},
+						"tagsFingerprint": {
+							CopyFromOutputs: true,
+						},
 					},
 				},
 			},

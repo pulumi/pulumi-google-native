@@ -3,6 +3,7 @@ module github.com/pulumi/pulumi-google-native/provider
 go 1.17
 
 require (
+	github.com/evanphx/json-patch v0.5.2
 	github.com/gedex/inflector v0.0.0-20170307190818-16278e9db813
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
 	github.com/golang/protobuf v1.5.2

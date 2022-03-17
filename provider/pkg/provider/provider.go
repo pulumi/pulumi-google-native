@@ -27,8 +27,10 @@ import (
 	"strings"
 	"time"
 
+	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
+	"github.com/iancoleman/strcase"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
@@ -683,6 +685,47 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
+	if res.Update.UpdateMask.BodyPropertyName != "" || res.Update.UpdateMask.QueryParamName != "" {
+		newJson, err := json.Marshal(inputs)
+		if err != nil {
+			return nil, errors.Errorf("failed to serialize new inputs as json")
+		}
+		// Extract old inputs from the `__inputs` field of the old state.
+		oldInputs := parseCheckpointObject(oldState)
+		oldJson, err := json.Marshal(oldInputs)
+		if err != nil {
+			return nil, errors.Errorf("failed to serialize existing inputs as json")
+		}
+		patch, err := jsonpatch.CreateMergePatch(oldJson, newJson)
+		if err != nil {
+			return nil, errors.Errorf("failed to generate patch")
+		}
+		var keys []string
+		patchObj := map[string]interface{}{}
+		if err = json.Unmarshal(patch, &patchObj); err != nil {
+			return nil, errors.Errorf("failed to unmarshal patch object")
+		}
+		for k := range patchObj {
+			found := false
+			for name, sdkProp := range res.Update.SDKProperties {
+				if sdkProp.SdkName == k {
+					keys = append(keys, strcase.ToSnake(name))
+					found = true
+					break
+				}
+			}
+			if !found {
+				keys = append(keys, strcase.ToSnake(k))
+			}
+		}
+		if res.Update.UpdateMask.QueryParamName != "" {
+			inputs[resource.PropertyKey(res.Update.UpdateMask.QueryParamName)] =
+				resource.NewStringProperty(strings.Join(keys, ","))
+		}
+		if res.Update.UpdateMask.BodyPropertyName != "" {
+			body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
+		}
+	}
 
 	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if err != nil {

@@ -126,11 +126,26 @@ type CreateAPIOperation struct {
 	Autoname ResourceAutoname `json:"autoname,omitempty"`
 }
 
+type UpdateAPIOperation struct {
+	CloudAPIOperation
+
+	UpdateMask UpdateMask `json:"updateMask,omitempty"`
+}
+
+// UpdateMask specifies where update mask field is specified for updates.
+type UpdateMask struct {
+	// BodyPropertyName identifies an additional field which must be specified as field-mask in the request body.
+	BodyPropertyName string `json:"bodyPropertyName,omitempty"`
+	// QueryParamName identifies an additional query param name that must be specified as field-mask in the query
+	// params.
+	QueryParamName string `json:"queryParamName,omitempty"`
+}
+
 // CloudAPIResource is a resource in the Google Cloud REST API.
 type CloudAPIResource struct {
 	Create CreateAPIOperation `json:"create,omitempty"`
 	Read   CloudAPIOperation  `json:"read,omitempty"`
-	Update CloudAPIOperation  `json:"update,omitempty"`
+	Update UpdateAPIOperation `json:"update,omitempty"`
 	Delete CloudAPIOperation  `json:"delete,omitempty"`
 
 	// RootURL is the root URL of the REST API.
@@ -184,7 +199,10 @@ func AssembleURL(fragments ...string) string {
 
 // CloudAPIProperty is a property of a body of an API call payload.
 type CloudAPIProperty struct {
-	Ref                  string            `json:"$ref,omitempty"`
+	Ref      string `json:"$ref,omitempty"`
+	Format   string `json:"format,omitempty"`
+	Required bool   `json:"required,omitempty"`
+
 	Items                *CloudAPIProperty `json:"items,omitempty"`
 	AdditionalProperties *CloudAPIProperty `json:"additionalProperties,omitempty"`
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists

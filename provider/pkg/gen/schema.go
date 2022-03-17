@@ -397,7 +397,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		Read: resources.CloudAPIOperation{
 			Verb: dd.getMethod.HttpMethod,
 		},
-		Update: resources.CloudAPIOperation{},
+		Update: resources.UpdateAPIOperation{},
 	}
 	patternParams := codegen.NewStringSet()
 
@@ -496,12 +496,20 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				return err
 			}
 
+			for name, param := range dd.updateMethod.Parameters {
+				if param.Format == "google-fieldmask" && isRequired(param) {
+					contract.Assert(param.Location == "query")
+					resourceMeta.Update.UpdateMask.QueryParamName = name
+				}
+			}
+
 			for name, value := range updateBag.properties {
 				if _, has := bodyBag.properties[name]; has {
 					resourceMeta.Update.SDKProperties[name] = value
 				} else {
-					// TODO: do we need to handle masks?
-					if !strings.HasSuffix(name, "Mask") {
+					if value.Format == "google-fieldmask" && value.Required {
+						resourceMeta.Update.UpdateMask.BodyPropertyName = name
+					} else {
 						fmt.Printf("unknown update property %s: %s.%s\n", resourceTok, dd.updateMethod.Request.Ref, name)
 					}
 				}
@@ -540,6 +548,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			idPath := methodPath(dd.getMethod)
 			queryParams := url.Values{}
 			for param, details := range dd.getMethod.Parameters {
+				// TODO: this may need to be changed to isRequired(details)
 				if details.Location != "query" || !details.Required {
 					continue
 				}
@@ -586,6 +595,19 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			}
 			resourceMeta.IDPath = idPath
 			resourceMeta.IDParams = vals
+		}
+	}
+
+	if dd.updateMethod != nil {
+		for name, value := range dd.updateMethod.Parameters {
+			if value.Format == "google-fieldmask" && isRequired(value) {
+				resourceMeta.Update.Endpoint.Values = append(resourceMeta.Update.Endpoint.Values,
+					resources.CloudAPIResourceParam{
+						Name:    name,
+						SdkName: name,
+						Kind:    value.Location,
+					})
+			}
 		}
 	}
 
@@ -929,7 +951,10 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 		}
 
 		apiProp := resources.CloudAPIProperty{
-			Ref:                  typeSpec.Ref,
+			Ref:      typeSpec.Ref,
+			Format:   prop.Format,
+			Required: isRequired(prop),
+
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
 			CopyFromOutputs:      copyFromOutput,
