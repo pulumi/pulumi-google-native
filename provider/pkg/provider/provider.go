@@ -104,7 +104,6 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	}
 
 	p.setLoggingContext(ctx)
-	time.Sleep(5 * time.Second)
 
 	impersonateServiceAccountDelegatesString := p.getConfig(
 		"impersonateServiceAccountDelegates", "")
