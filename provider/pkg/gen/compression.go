@@ -43,7 +43,9 @@ func DecompressSchema(compressedSchema []byte) ([]byte, error) {
 		return nil, errors.Wrap(err, "expand compressed schema")
 	}
 	uncompressedBuf := bytes.Buffer{}
-	if _, err = io.CopyN(&uncompressedBuf, uncompressed, 1024); err != nil {
+	//nolint: gosec
+	// Ignore warning about decompression bomb since we control the input.
+	if _, err = io.Copy(&uncompressedBuf, uncompressed); err != nil {
 		return nil, err
 	}
 	if err = uncompressed.Close(); err != nil {

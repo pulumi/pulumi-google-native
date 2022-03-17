@@ -3,6 +3,11 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+## 0.17.1 (2022-03-17)
+Bug fixes:
+
+- Fix regression in schema decompressor [#397](https://github.com/pulumi/pulumi-google-native/pull/397)
+
 ## 0.17.0 (2022-03-16)
 Improvements:
 
