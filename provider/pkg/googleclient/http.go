@@ -296,22 +296,24 @@ func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
 
 	cleanCtx := context.WithValue(ctx, oauth2.HTTPClient, cleanhttp.DefaultClient())
 
-	// 1. OAUTH2 TRANSPORT/CLIENT - sets up proper auth headers
+	// OAUTH2 TRANSPORT/CLIENT - sets up proper auth headers
 	client := oauth2.NewClient(cleanCtx, ts)
-
-	// 3. Retry Transport - retries common temporary errors
-	// Keep order for wrapping logging so we log each retried request as well.
-	// This value should be used if needed to create shallow copies with additional retry predicates.
-	// See ClientWithAdditionalRetries
-	//retryTransport := &retryTransport{
-	//	retryPredicates: defaultErrorRetryPredicates,
-	//	internal:        loggingTransport,
-	//}
 
 	// Set final transport value.
 	// This timeout is a timeout per HTTP request, not per logical operation.
 	client.Timeout = 30 * time.Second
-
+	currTransport := client.Transport
+	if currTransport == nil {
+		currTransport = http.DefaultTransport
+	}
+	client.Transport = NewTransportWithDefaultRetries(currTransport).WithAddedPredicates(
+		/* Adding some known retryable 409 errors */
+		isSqlOperationInProgressError,
+		isMonitoringConcurrentEditError,
+		isAppEngineRetryableError,
+		datastoreIndex409Contention,
+		iapClient409Operation,
+		isCloudRunCreationConflict)
 	c.http = client
 	return nil
 }
