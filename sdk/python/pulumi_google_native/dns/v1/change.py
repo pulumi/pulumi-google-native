@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
-from ._enums import *
 from ._inputs import *
 
 __all__ = ['ChangeArgs', 'Change']
@@ -24,8 +23,7 @@ class ChangeArgs:
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['ChangeStatus']] = None):
+                 start_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Change resource.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] additions: Which ResourceRecordSets to add?
@@ -34,7 +32,6 @@ class ChangeArgs:
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        :param pulumi.Input['ChangeStatus'] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         if additions is not None:
@@ -53,8 +50,6 @@ class ChangeArgs:
             pulumi.set(__self__, "project", project)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -155,18 +150,6 @@ class ChangeArgs:
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ChangeStatus']]:
-        """
-        Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['ChangeStatus']]):
-        pulumi.set(self, "status", value)
-
 
 class Change(pulumi.CustomResource):
     @overload
@@ -182,7 +165,6 @@ class Change(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['ChangeStatus']] = None,
                  __props__=None):
         """
         Atomically updates the ResourceRecordSet collection.
@@ -198,7 +180,6 @@ class Change(pulumi.CustomResource):
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
         :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        :param pulumi.Input['ChangeStatus'] status: Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
         """
         ...
     @overload
@@ -236,7 +217,6 @@ class Change(pulumi.CustomResource):
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['ChangeStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -260,7 +240,7 @@ class Change(pulumi.CustomResource):
             __props__.__dict__["managed_zone"] = managed_zone
             __props__.__dict__["project"] = project
             __props__.__dict__["start_time"] = start_time
-            __props__.__dict__["status"] = status
+            __props__.__dict__["status"] = None
         super(Change, __self__).__init__(
             'google-native:dns/v1:Change',
             resource_name,

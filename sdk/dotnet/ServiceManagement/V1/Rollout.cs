@@ -136,12 +136,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.ServiceManagement.V1.RolloutStatus>? Status { get; set; }
-
-        /// <summary>
         /// Google Service Control selects service configurations based on traffic percentage.
         /// </summary>
         [Input("trafficPercentStrategy")]

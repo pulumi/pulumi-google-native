@@ -88,8 +88,6 @@ type changeArgs struct {
 	Project     *string `pulumi:"project"`
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime *string `pulumi:"startTime"`
-	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-	Status *ChangeStatus `pulumi:"status"`
 }
 
 // The set of arguments for constructing a Change resource.
@@ -109,8 +107,6 @@ type ChangeArgs struct {
 	Project     pulumi.StringPtrInput
 	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
 	StartTime pulumi.StringPtrInput
-	// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-	Status ChangeStatusPtrInput
 }
 
 func (ChangeArgs) ElementType() reflect.Type {

@@ -87,7 +87,7 @@ export class BackupRun extends pulumi.CustomResource {
     /**
      * The status of this run.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
@@ -125,9 +125,9 @@ export class BackupRun extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["windowStartTime"] = args ? args.windowStartTime : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["backupKind"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -207,10 +207,6 @@ export interface BackupRunArgs {
      * The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     startTime?: pulumi.Input<string>;
-    /**
-     * The status of this run.
-     */
-    status?: pulumi.Input<enums.sqladmin.v1beta4.BackupRunStatus>;
     /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */

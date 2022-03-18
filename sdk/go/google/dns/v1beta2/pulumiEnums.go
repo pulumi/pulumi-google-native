@@ -18,163 +18,6 @@ const (
 	ChangeStatusDone    = ChangeStatus("done")
 )
 
-func (ChangeStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChangeStatus)(nil)).Elem()
-}
-
-func (e ChangeStatus) ToChangeStatusOutput() ChangeStatusOutput {
-	return pulumi.ToOutput(e).(ChangeStatusOutput)
-}
-
-func (e ChangeStatus) ToChangeStatusOutputWithContext(ctx context.Context) ChangeStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ChangeStatusOutput)
-}
-
-func (e ChangeStatus) ToChangeStatusPtrOutput() ChangeStatusPtrOutput {
-	return e.ToChangeStatusPtrOutputWithContext(context.Background())
-}
-
-func (e ChangeStatus) ToChangeStatusPtrOutputWithContext(ctx context.Context) ChangeStatusPtrOutput {
-	return ChangeStatus(e).ToChangeStatusOutputWithContext(ctx).ToChangeStatusPtrOutputWithContext(ctx)
-}
-
-func (e ChangeStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ChangeStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ChangeStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ChangeStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ChangeStatusOutput struct{ *pulumi.OutputState }
-
-func (ChangeStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChangeStatus)(nil)).Elem()
-}
-
-func (o ChangeStatusOutput) ToChangeStatusOutput() ChangeStatusOutput {
-	return o
-}
-
-func (o ChangeStatusOutput) ToChangeStatusOutputWithContext(ctx context.Context) ChangeStatusOutput {
-	return o
-}
-
-func (o ChangeStatusOutput) ToChangeStatusPtrOutput() ChangeStatusPtrOutput {
-	return o.ToChangeStatusPtrOutputWithContext(context.Background())
-}
-
-func (o ChangeStatusOutput) ToChangeStatusPtrOutputWithContext(ctx context.Context) ChangeStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChangeStatus) *ChangeStatus {
-		return &v
-	}).(ChangeStatusPtrOutput)
-}
-
-func (o ChangeStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ChangeStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ChangeStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ChangeStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ChangeStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ChangeStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ChangeStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (ChangeStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ChangeStatus)(nil)).Elem()
-}
-
-func (o ChangeStatusPtrOutput) ToChangeStatusPtrOutput() ChangeStatusPtrOutput {
-	return o
-}
-
-func (o ChangeStatusPtrOutput) ToChangeStatusPtrOutputWithContext(ctx context.Context) ChangeStatusPtrOutput {
-	return o
-}
-
-func (o ChangeStatusPtrOutput) Elem() ChangeStatusOutput {
-	return o.ApplyT(func(v *ChangeStatus) ChangeStatus {
-		if v != nil {
-			return *v
-		}
-		var ret ChangeStatus
-		return ret
-	}).(ChangeStatusOutput)
-}
-
-func (o ChangeStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ChangeStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ChangeStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ChangeStatusInput is an input type that accepts ChangeStatusArgs and ChangeStatusOutput values.
-// You can construct a concrete instance of `ChangeStatusInput` via:
-//
-//          ChangeStatusArgs{...}
-type ChangeStatusInput interface {
-	pulumi.Input
-
-	ToChangeStatusOutput() ChangeStatusOutput
-	ToChangeStatusOutputWithContext(context.Context) ChangeStatusOutput
-}
-
-var changeStatusPtrType = reflect.TypeOf((**ChangeStatus)(nil)).Elem()
-
-type ChangeStatusPtrInput interface {
-	pulumi.Input
-
-	ToChangeStatusPtrOutput() ChangeStatusPtrOutput
-	ToChangeStatusPtrOutputWithContext(context.Context) ChangeStatusPtrOutput
-}
-
-type changeStatusPtr string
-
-func ChangeStatusPtr(v string) ChangeStatusPtrInput {
-	return (*changeStatusPtr)(&v)
-}
-
-func (*changeStatusPtr) ElementType() reflect.Type {
-	return changeStatusPtrType
-}
-
-func (in *changeStatusPtr) ToChangeStatusPtrOutput() ChangeStatusPtrOutput {
-	return pulumi.ToOutput(in).(ChangeStatusPtrOutput)
-}
-
-func (in *changeStatusPtr) ToChangeStatusPtrOutputWithContext(ctx context.Context) ChangeStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ChangeStatusPtrOutput)
-}
-
 // String mnemonic specifying the DNSSEC algorithm of this key.
 type DnsKeySpecAlgorithm string
 
@@ -1508,8 +1351,6 @@ func (in *responsePolicyRuleBehaviorPtr) ToResponsePolicyRuleBehaviorPtrOutputWi
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStatusInput)(nil)).Elem(), ChangeStatus("pending"))
-	pulumi.RegisterInputType(reflect.TypeOf((*ChangeStatusPtrInput)(nil)).Elem(), ChangeStatus("pending"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsKeySpecAlgorithmInput)(nil)).Elem(), DnsKeySpecAlgorithm("rsasha1"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsKeySpecAlgorithmPtrInput)(nil)).Elem(), DnsKeySpecAlgorithm("rsasha1"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsKeySpecKeyTypeInput)(nil)).Elem(), DnsKeySpecKeyType("keySigning"))
@@ -1526,8 +1367,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerForwardingPath("default"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleBehaviorInput)(nil)).Elem(), ResponsePolicyRuleBehavior("behaviorUnspecified"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleBehaviorPtrInput)(nil)).Elem(), ResponsePolicyRuleBehavior("behaviorUnspecified"))
-	pulumi.RegisterOutputType(ChangeStatusOutput{})
-	pulumi.RegisterOutputType(ChangeStatusPtrOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecAlgorithmOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecKeyTypeOutput{})

@@ -16265,163 +16265,6 @@ const (
 	NodeGroupStatusReady    = NodeGroupStatus("READY")
 )
 
-func (NodeGroupStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeGroupStatus)(nil)).Elem()
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusOutput() NodeGroupStatusOutput {
-	return pulumi.ToOutput(e).(NodeGroupStatusOutput)
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusOutputWithContext(ctx context.Context) NodeGroupStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(NodeGroupStatusOutput)
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return e.ToNodeGroupStatusPtrOutputWithContext(context.Background())
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return NodeGroupStatus(e).ToNodeGroupStatusOutputWithContext(ctx).ToNodeGroupStatusPtrOutputWithContext(ctx)
-}
-
-func (e NodeGroupStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodeGroupStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodeGroupStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e NodeGroupStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type NodeGroupStatusOutput struct{ *pulumi.OutputState }
-
-func (NodeGroupStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeGroupStatus)(nil)).Elem()
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusOutput() NodeGroupStatusOutput {
-	return o
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusOutputWithContext(ctx context.Context) NodeGroupStatusOutput {
-	return o
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return o.ToNodeGroupStatusPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroupStatus) *NodeGroupStatus {
-		return &v
-	}).(NodeGroupStatusPtrOutput)
-}
-
-func (o NodeGroupStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeGroupStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o NodeGroupStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeGroupStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type NodeGroupStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeGroupStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeGroupStatus)(nil)).Elem()
-}
-
-func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return o
-}
-
-func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return o
-}
-
-func (o NodeGroupStatusPtrOutput) Elem() NodeGroupStatusOutput {
-	return o.ApplyT(func(v *NodeGroupStatus) NodeGroupStatus {
-		if v != nil {
-			return *v
-		}
-		var ret NodeGroupStatus
-		return ret
-	}).(NodeGroupStatusOutput)
-}
-
-func (o NodeGroupStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodeGroupStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// NodeGroupStatusInput is an input type that accepts NodeGroupStatusArgs and NodeGroupStatusOutput values.
-// You can construct a concrete instance of `NodeGroupStatusInput` via:
-//
-//          NodeGroupStatusArgs{...}
-type NodeGroupStatusInput interface {
-	pulumi.Input
-
-	ToNodeGroupStatusOutput() NodeGroupStatusOutput
-	ToNodeGroupStatusOutputWithContext(context.Context) NodeGroupStatusOutput
-}
-
-var nodeGroupStatusPtrType = reflect.TypeOf((**NodeGroupStatus)(nil)).Elem()
-
-type NodeGroupStatusPtrInput interface {
-	pulumi.Input
-
-	ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput
-	ToNodeGroupStatusPtrOutputWithContext(context.Context) NodeGroupStatusPtrOutput
-}
-
-type nodeGroupStatusPtr string
-
-func NodeGroupStatusPtr(v string) NodeGroupStatusPtrInput {
-	return (*nodeGroupStatusPtr)(&v)
-}
-
-func (*nodeGroupStatusPtr) ElementType() reflect.Type {
-	return nodeGroupStatusPtrType
-}
-
-func (in *nodeGroupStatusPtr) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return pulumi.ToOutput(in).(NodeGroupStatusPtrOutput)
-}
-
-func (in *nodeGroupStatusPtr) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupStatusPtrOutput)
-}
-
 // CPU overcommit.
 type NodeTemplateCpuOvercommitType string
 
@@ -17108,163 +16951,6 @@ const (
 	// Reverse DNS lookup is successful.
 	PublicAdvertisedPrefixStatusValidated = PublicAdvertisedPrefixStatus("VALIDATED")
 )
-
-func (PublicAdvertisedPrefixStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicAdvertisedPrefixStatus)(nil)).Elem()
-}
-
-func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusOutput() PublicAdvertisedPrefixStatusOutput {
-	return pulumi.ToOutput(e).(PublicAdvertisedPrefixStatusOutput)
-}
-
-func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PublicAdvertisedPrefixStatusOutput)
-}
-
-func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
-	return e.ToPublicAdvertisedPrefixStatusPtrOutputWithContext(context.Background())
-}
-
-func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
-	return PublicAdvertisedPrefixStatus(e).ToPublicAdvertisedPrefixStatusOutputWithContext(ctx).ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx)
-}
-
-func (e PublicAdvertisedPrefixStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicAdvertisedPrefixStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PublicAdvertisedPrefixStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PublicAdvertisedPrefixStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type PublicAdvertisedPrefixStatusOutput struct{ *pulumi.OutputState }
-
-func (PublicAdvertisedPrefixStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublicAdvertisedPrefixStatus)(nil)).Elem()
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusOutput() PublicAdvertisedPrefixStatusOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
-	return o.ToPublicAdvertisedPrefixStatusPtrOutputWithContext(context.Background())
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicAdvertisedPrefixStatus) *PublicAdvertisedPrefixStatus {
-		return &v
-	}).(PublicAdvertisedPrefixStatusPtrOutput)
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicAdvertisedPrefixStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PublicAdvertisedPrefixStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicAdvertisedPrefixStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type PublicAdvertisedPrefixStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (PublicAdvertisedPrefixStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublicAdvertisedPrefixStatus)(nil)).Elem()
-}
-
-func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
-	return o
-}
-
-func (o PublicAdvertisedPrefixStatusPtrOutput) Elem() PublicAdvertisedPrefixStatusOutput {
-	return o.ApplyT(func(v *PublicAdvertisedPrefixStatus) PublicAdvertisedPrefixStatus {
-		if v != nil {
-			return *v
-		}
-		var ret PublicAdvertisedPrefixStatus
-		return ret
-	}).(PublicAdvertisedPrefixStatusOutput)
-}
-
-func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicAdvertisedPrefixStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// PublicAdvertisedPrefixStatusInput is an input type that accepts PublicAdvertisedPrefixStatusArgs and PublicAdvertisedPrefixStatusOutput values.
-// You can construct a concrete instance of `PublicAdvertisedPrefixStatusInput` via:
-//
-//          PublicAdvertisedPrefixStatusArgs{...}
-type PublicAdvertisedPrefixStatusInput interface {
-	pulumi.Input
-
-	ToPublicAdvertisedPrefixStatusOutput() PublicAdvertisedPrefixStatusOutput
-	ToPublicAdvertisedPrefixStatusOutputWithContext(context.Context) PublicAdvertisedPrefixStatusOutput
-}
-
-var publicAdvertisedPrefixStatusPtrType = reflect.TypeOf((**PublicAdvertisedPrefixStatus)(nil)).Elem()
-
-type PublicAdvertisedPrefixStatusPtrInput interface {
-	pulumi.Input
-
-	ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput
-	ToPublicAdvertisedPrefixStatusPtrOutputWithContext(context.Context) PublicAdvertisedPrefixStatusPtrOutput
-}
-
-type publicAdvertisedPrefixStatusPtr string
-
-func PublicAdvertisedPrefixStatusPtr(v string) PublicAdvertisedPrefixStatusPtrInput {
-	return (*publicAdvertisedPrefixStatusPtr)(&v)
-}
-
-func (*publicAdvertisedPrefixStatusPtr) ElementType() reflect.Type {
-	return publicAdvertisedPrefixStatusPtrType
-}
-
-func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
-	return pulumi.ToOutput(in).(PublicAdvertisedPrefixStatusPtrOutput)
-}
-
-func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixStatusPtrOutput)
-}
 
 // Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
 type RegionBackendServiceCompressionMode string
@@ -29693,8 +29379,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyModePtrInput)(nil)).Elem(), NodeGroupAutoscalingPolicyMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenancePolicyInput)(nil)).Elem(), NodeGroupMaintenancePolicy("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenancePolicyPtrInput)(nil)).Elem(), NodeGroupMaintenancePolicy("DEFAULT"))
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupStatusInput)(nil)).Elem(), NodeGroupStatus("CREATING"))
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupStatusPtrInput)(nil)).Elem(), NodeGroupStatus("CREATING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateCpuOvercommitTypeInput)(nil)).Elem(), NodeTemplateCpuOvercommitType("CPU_OVERCOMMIT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateCpuOvercommitTypePtrInput)(nil)).Elem(), NodeTemplateCpuOvercommitType("CPU_OVERCOMMIT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationSecurityPolicyTypeInput)(nil)).Elem(), OrganizationSecurityPolicyType("CLOUD_ARMOR"))
@@ -29703,8 +29387,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringEnablePtrInput)(nil)).Elem(), PacketMirroringEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterDirectionInput)(nil)).Elem(), PacketMirroringFilterDirection("BOTH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterDirectionPtrInput)(nil)).Elem(), PacketMirroringFilterDirection("BOTH"))
-	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("INITIAL"))
-	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusPtrInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("INITIAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceCompressionModeInput)(nil)).Elem(), RegionBackendServiceCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceCompressionModePtrInput)(nil)).Elem(), RegionBackendServiceCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLoadBalancingSchemeInput)(nil)).Elem(), RegionBackendServiceLoadBalancingScheme("EXTERNAL"))
@@ -30044,8 +29726,6 @@ func init() {
 	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyModePtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(NodeGroupMaintenancePolicyPtrOutput{})
-	pulumi.RegisterOutputType(NodeGroupStatusOutput{})
-	pulumi.RegisterOutputType(NodeGroupStatusPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateCpuOvercommitTypeOutput{})
 	pulumi.RegisterOutputType(NodeTemplateCpuOvercommitTypePtrOutput{})
 	pulumi.RegisterOutputType(OrganizationSecurityPolicyTypeOutput{})
@@ -30054,8 +29734,6 @@ func init() {
 	pulumi.RegisterOutputType(PacketMirroringEnablePtrOutput{})
 	pulumi.RegisterOutputType(PacketMirroringFilterDirectionOutput{})
 	pulumi.RegisterOutputType(PacketMirroringFilterDirectionPtrOutput{})
-	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusOutput{})
-	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCompressionModeOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCompressionModePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLoadBalancingSchemeOutput{})

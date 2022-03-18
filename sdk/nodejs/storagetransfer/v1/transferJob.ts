@@ -80,7 +80,7 @@ export class TransferJob extends pulumi.CustomResource {
     /**
      * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Transfer specification.
      */
@@ -104,11 +104,11 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["transferSpec"] = args ? args.transferSpec : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["deletionTime"] = undefined /*out*/;
             resourceInputs["lastModificationTime"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["deletionTime"] = undefined /*out*/;
@@ -160,10 +160,6 @@ export interface TransferJobArgs {
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
     schedule?: pulumi.Input<inputs.storagetransfer.v1.ScheduleArgs>;
-    /**
-     * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-     */
-    status?: pulumi.Input<enums.storagetransfer.v1.TransferJobStatus>;
     /**
      * Transfer specification.
      */

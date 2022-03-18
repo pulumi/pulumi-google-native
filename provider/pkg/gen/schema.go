@@ -471,6 +471,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 
 		for name, prop := range bodyBag.specs {
+			// If the create request
+			if dd.createMethod.Request.Ref == dd.getMethod.Response.Ref && name == "status" {
+				continue
+			}
 			inputProperties[name] = prop
 		}
 		for name := range bodyBag.requiredSpecs {

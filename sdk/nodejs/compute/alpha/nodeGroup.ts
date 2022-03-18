@@ -85,7 +85,7 @@ export class NodeGroup extends pulumi.CustomResource {
      * The total number of nodes in the node group.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The name of the zone where the node group resides, such as us-central1-a.
      */
@@ -116,7 +116,6 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -124,6 +123,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["autoscalingPolicy"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -189,6 +189,5 @@ export interface NodeGroupArgs {
      * Share-settings for the node group
      */
     shareSettings?: pulumi.Input<inputs.compute.alpha.ShareSettingsArgs>;
-    status?: pulumi.Input<enums.compute.alpha.NodeGroupStatus>;
     zone?: pulumi.Input<string>;
 }

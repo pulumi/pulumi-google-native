@@ -58,7 +58,7 @@ export class Change extends pulumi.CustomResource {
     /**
      * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a Change resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["managedZone"] = args ? args.managedZone : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["additions"] = undefined /*out*/;
             resourceInputs["deletions"] = undefined /*out*/;
@@ -128,8 +128,4 @@ export interface ChangeArgs {
      * The time that this operation was started by the server (output only). This is in RFC3339 text format.
      */
     startTime?: pulumi.Input<string>;
-    /**
-     * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-     */
-    status?: pulumi.Input<enums.dns.v1beta2.ChangeStatus>;
 }

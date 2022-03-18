@@ -213,12 +213,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _scopes = value;
         }
 
-        /// <summary>
-        /// Status of the credential. Valid values include `approved` or `revoked`.
-        /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
-
         public AppArgs()
         {
         }

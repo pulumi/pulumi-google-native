@@ -2295,163 +2295,6 @@ const (
 	RolloutStatusFailedRolledBack = RolloutStatus("FAILED_ROLLED_BACK")
 )
 
-func (RolloutStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolloutStatus)(nil)).Elem()
-}
-
-func (e RolloutStatus) ToRolloutStatusOutput() RolloutStatusOutput {
-	return pulumi.ToOutput(e).(RolloutStatusOutput)
-}
-
-func (e RolloutStatus) ToRolloutStatusOutputWithContext(ctx context.Context) RolloutStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RolloutStatusOutput)
-}
-
-func (e RolloutStatus) ToRolloutStatusPtrOutput() RolloutStatusPtrOutput {
-	return e.ToRolloutStatusPtrOutputWithContext(context.Background())
-}
-
-func (e RolloutStatus) ToRolloutStatusPtrOutputWithContext(ctx context.Context) RolloutStatusPtrOutput {
-	return RolloutStatus(e).ToRolloutStatusOutputWithContext(ctx).ToRolloutStatusPtrOutputWithContext(ctx)
-}
-
-func (e RolloutStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RolloutStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RolloutStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RolloutStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type RolloutStatusOutput struct{ *pulumi.OutputState }
-
-func (RolloutStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RolloutStatus)(nil)).Elem()
-}
-
-func (o RolloutStatusOutput) ToRolloutStatusOutput() RolloutStatusOutput {
-	return o
-}
-
-func (o RolloutStatusOutput) ToRolloutStatusOutputWithContext(ctx context.Context) RolloutStatusOutput {
-	return o
-}
-
-func (o RolloutStatusOutput) ToRolloutStatusPtrOutput() RolloutStatusPtrOutput {
-	return o.ToRolloutStatusPtrOutputWithContext(context.Background())
-}
-
-func (o RolloutStatusOutput) ToRolloutStatusPtrOutputWithContext(ctx context.Context) RolloutStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolloutStatus) *RolloutStatus {
-		return &v
-	}).(RolloutStatusPtrOutput)
-}
-
-func (o RolloutStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o RolloutStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RolloutStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o RolloutStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RolloutStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RolloutStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type RolloutStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (RolloutStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RolloutStatus)(nil)).Elem()
-}
-
-func (o RolloutStatusPtrOutput) ToRolloutStatusPtrOutput() RolloutStatusPtrOutput {
-	return o
-}
-
-func (o RolloutStatusPtrOutput) ToRolloutStatusPtrOutputWithContext(ctx context.Context) RolloutStatusPtrOutput {
-	return o
-}
-
-func (o RolloutStatusPtrOutput) Elem() RolloutStatusOutput {
-	return o.ApplyT(func(v *RolloutStatus) RolloutStatus {
-		if v != nil {
-			return *v
-		}
-		var ret RolloutStatus
-		return ret
-	}).(RolloutStatusOutput)
-}
-
-func (o RolloutStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RolloutStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RolloutStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// RolloutStatusInput is an input type that accepts RolloutStatusArgs and RolloutStatusOutput values.
-// You can construct a concrete instance of `RolloutStatusInput` via:
-//
-//          RolloutStatusArgs{...}
-type RolloutStatusInput interface {
-	pulumi.Input
-
-	ToRolloutStatusOutput() RolloutStatusOutput
-	ToRolloutStatusOutputWithContext(context.Context) RolloutStatusOutput
-}
-
-var rolloutStatusPtrType = reflect.TypeOf((**RolloutStatus)(nil)).Elem()
-
-type RolloutStatusPtrInput interface {
-	pulumi.Input
-
-	ToRolloutStatusPtrOutput() RolloutStatusPtrOutput
-	ToRolloutStatusPtrOutputWithContext(context.Context) RolloutStatusPtrOutput
-}
-
-type rolloutStatusPtr string
-
-func RolloutStatusPtr(v string) RolloutStatusPtrInput {
-	return (*rolloutStatusPtr)(&v)
-}
-
-func (*rolloutStatusPtr) ElementType() reflect.Type {
-	return rolloutStatusPtrType
-}
-
-func (in *rolloutStatusPtr) ToRolloutStatusPtrOutput() RolloutStatusPtrOutput {
-	return pulumi.ToOutput(in).(RolloutStatusPtrOutput)
-}
-
-func (in *rolloutStatusPtr) ToRolloutStatusPtrOutputWithContext(ctx context.Context) RolloutStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RolloutStatusPtrOutput)
-}
-
 // The source syntax.
 type TypeSyntax string
 
@@ -2646,8 +2489,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorValueTypePtrInput)(nil)).Elem(), MetricDescriptorValueType("VALUE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceDescriptorLaunchStageInput)(nil)).Elem(), MonitoredResourceDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceDescriptorLaunchStagePtrInput)(nil)).Elem(), MonitoredResourceDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RolloutStatusInput)(nil)).Elem(), RolloutStatus("ROLLOUT_STATUS_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RolloutStatusPtrInput)(nil)).Elem(), RolloutStatus("ROLLOUT_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeSyntaxInput)(nil)).Elem(), TypeSyntax("SYNTAX_PROTO2"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeSyntaxPtrInput)(nil)).Elem(), TypeSyntax("SYNTAX_PROTO2"))
 	pulumi.RegisterOutputType(ApiSyntaxOutput{})
@@ -2676,8 +2517,6 @@ func init() {
 	pulumi.RegisterOutputType(MetricDescriptorValueTypePtrOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceDescriptorLaunchStageOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceDescriptorLaunchStagePtrOutput{})
-	pulumi.RegisterOutputType(RolloutStatusOutput{})
-	pulumi.RegisterOutputType(RolloutStatusPtrOutput{})
 	pulumi.RegisterOutputType(TypeSyntaxOutput{})
 	pulumi.RegisterOutputType(TypeSyntaxPtrOutput{})
 }

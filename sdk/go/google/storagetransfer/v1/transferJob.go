@@ -95,8 +95,6 @@ type transferJobArgs struct {
 	Project *string `pulumi:"project"`
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule *Schedule `pulumi:"schedule"`
-	// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-	Status *TransferJobStatus `pulumi:"status"`
 	// Transfer specification.
 	TransferSpec *TransferSpec `pulumi:"transferSpec"`
 }
@@ -117,8 +115,6 @@ type TransferJobArgs struct {
 	Project pulumi.StringPtrInput
 	// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
 	Schedule SchedulePtrInput
-	// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-	Status TransferJobStatusPtrInput
 	// Transfer specification.
 	TransferSpec TransferSpecPtrInput
 }
