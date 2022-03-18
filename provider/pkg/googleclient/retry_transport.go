@@ -15,8 +15,6 @@ import (
 	"time"
 
 	"github.com/hashicorp/errwrap"
-
-	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"google.golang.org/api/googleapi"
 )
@@ -27,7 +25,7 @@ import (
 // Do not use for waiting on operations or polling of resource state,
 // especially if the expected state (operation done, resource ready, etc)
 // takes longer to reach than the default client Timeout.
-// In those cases, retryTimeDuration(...)/resource.Retry with appropriate timeout
+// In those cases, retryTimeDuration(...)/Retry with appropriate timeout
 // and error predicates/handling should be used as a wrapper around the request
 // instead.
 //
@@ -60,8 +58,9 @@ func NewTransportWithDefaultRetries(t http.RoundTripper) *retryTransport {
 	}
 }
 
-// Helper method to create a shallow copy of an HTTP client with a shallow-copied retryTransport
-// s.t. the base HTTP transport is the same (i.e. client connection pools are shared, retryPredicates are different)
+// ClientWithAdditionalRetries is a helper method to create a shallow copy of an HTTP client with a shallow-copied
+// retryTransport s.t. the base HTTP transport is the same (i.e. client connection pools are shared,
+// retryPredicates are different)
 func ClientWithAdditionalRetries(baseClient *http.Client, predicates ...RetryErrorPredicateFunc) *http.Client {
 	copied := *baseClient
 	baseRetryTransport := NewTransportWithDefaultRetries(baseClient.Transport)
@@ -69,7 +68,7 @@ func ClientWithAdditionalRetries(baseClient *http.Client, predicates ...RetryErr
 	return &copied
 }
 
-// Returns a shallow copy of the retry transport with additional retry
+// WithAddedPredicates returns a shallow copy of the retry transport with additional retry
 // predicates but same wrapped http.RoundTripper
 func (t *retryTransport) WithAddedPredicates(predicates ...RetryErrorPredicateFunc) *retryTransport {
 	copyT := *t
@@ -186,7 +185,7 @@ func copyHttpRequest(req *http.Request) (*http.Request, error) {
 // checkForRetryableError uses the googleapi.CheckResponse util to check for
 // errors in the response, and determines whether there is a retryable error.
 // in response/response error.
-func (t *retryTransport) checkForRetryableError(resp *http.Response, respErr error) *resource.RetryError {
+func (t *retryTransport) checkForRetryableError(resp *http.Response, respErr error) *retryError {
 	var errToCheck error
 
 	if respErr != nil {
@@ -201,7 +200,7 @@ func (t *retryTransport) checkForRetryableError(resp *http.Response, respErr err
 			// error code and messages in the response body.
 			dumpBytes, err := httputil.DumpResponse(resp, true)
 			if err != nil {
-				return resource.NonRetryableError(fmt.Errorf("unable to check response for error: %v", err))
+				return nonRetryableError(fmt.Errorf("unable to check response for error: %v", err))
 			}
 			respToCheck.Body = ioutil.NopCloser(bytes.NewReader(dumpBytes))
 		}
@@ -212,9 +211,9 @@ func (t *retryTransport) checkForRetryableError(resp *http.Response, respErr err
 		return nil
 	}
 	if isRetryableError(errToCheck, t.retryPredicates...) {
-		return resource.RetryableError(errToCheck)
+		return retryableError(errToCheck)
 	}
-	return resource.NonRetryableError(errToCheck)
+	return nonRetryableError(errToCheck)
 }
 
 func isRetryableError(topErr error, customPredicates ...RetryErrorPredicateFunc) bool {
@@ -239,4 +238,45 @@ func isRetryableError(topErr error, customPredicates ...RetryErrorPredicateFunc)
 		}
 	})
 	return isRetryable
+}
+
+// retryError is the required return type of RetryFunc. It forces client code
+// to choose whether or not a given error is retryable.
+type retryError struct {
+	Err       error
+	Retryable bool
+}
+
+func (e *retryError) Unwrap() error {
+	return e.Err
+}
+
+// retryableError is a helper to create a retryError that's retryable from a
+// given error. To prevent logic errors, will return an error when passed a
+// nil error.
+func retryableError(err error) *retryError {
+	if err == nil {
+		return &retryError{
+			Err: errors.New("empty retryable error received. " +
+				"This is a bug with the google-native provider and should be " +
+				"reported as a GitHub issue in the provider repository"),
+			Retryable: false,
+		}
+	}
+	return &retryError{Err: err, Retryable: true}
+}
+
+// nonRetryableError is a helper to create a retryError that's _not_ retryable
+// from a given error. To prevent logic errors, will return an error when
+// passed a nil error.
+func nonRetryableError(err error) *retryError {
+	if err == nil {
+		return &retryError{
+			Err: errors.New("empty non-retryable error received. " +
+				"This is a bug with the google-native provider and should be " +
+				"reported as a GitHub issue in the provider repository"),
+			Retryable: false,
+		}
+	}
+	return &retryError{Err: err, Retryable: false}
 }
