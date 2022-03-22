@@ -342,7 +342,7 @@ jobs:
       - name: Install dependencies
         run: make install_${{ matrix.language}}_sdk
       - name: Configure GCP credentials
-        uses: google-github-actions/setup-gcloud@master
+        uses: google-github-actions/setup-gcloud@v0
         with:
           export_default_credentials: true
           project_id: ${{ env.GOOGLE_PROJECT }}
