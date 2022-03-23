@@ -410,6 +410,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
+	logging.V(9).Infof("Looked up metadata for %q: %+v", resourceKey, res)
 
 	uri, err := buildCreateURL(res, inputs)
 	if err != nil {
@@ -441,7 +442,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.RootURL, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Create.Polling.Strategy, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -498,7 +499,8 @@ func (p *googleCloudProvider) prepareAPIInputs(
 // Note that both a response and an error can be returned in case of a partially-failed deployment
 // (e.g., resource is created but failed to initialize to completion).
 func (p *googleCloudProvider) waitForResourceOpCompletion(
-	baseURL string,
+	rootURL string,
+	pollingStrategy resources.PollingStrategy,
 	resp map[string]interface{},
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
@@ -508,64 +510,87 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		Jitter: true,
 	}
 	for {
-		logging.V(9).Infof("waiting for completion: %+v", resp)
+		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
 
-		// There are two styles of operations: one returns a 'done' boolean flag, another one returns status='DONE'.
-		done, hasDone := resp["done"].(bool)
-		status, hasStatus := resp["status"].(string)
-		if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
-			// Extract an error message from the response, if any.
-			var err error
-			if failure, has := resp["error"]; has {
-				err = errors.Errorf("operation errored with %+v", failure)
-			} else if statusMessage, has := resp["statusMessage"]; has {
-				err = errors.Errorf("operation failed with %q", statusMessage)
-			}
-			// Extract the resource response, if any.
-			// A partial error could happen, so both response and error could be available.
-			if response, has := resp["response"].(map[string]interface{}); has {
-				return response, err
-			}
-			if operationType, has := resp["operationType"].(string); has &&
-				strings.Contains(strings.ToLower(operationType), "delete") {
-				return resp, err
-			}
-			// Check if there's a target link.
-			if targetLink, has := resp["targetLink"].(string); has {
-				// Try reading resource state.
-				state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
-				if getErr != nil {
-					if err != nil {
-						// Return the original creation error if resource read failed.
-						return nil, err
-					}
-					return nil, getErr
-				}
-				// A partial error could happen, so both response and error could be available.
-				return state, err
-			}
-			// At this point, we assume either a complete failure or a clean response.
+		var pollURI string
+
+		// if the resource has a custom polling strategy, use that.
+		switch pollingStrategy {
+		case resources.KNativeStatusPoll:
+			logging.V(9).Info("Getting self link URL")
+			sl, err := getKNativeSelfLinkURL(resp)
 			if err != nil {
 				return nil, err
 			}
-			return resp, nil
-		}
+			logging.V(9).Infof("selfLink: %q from response: %+v", sl, resp)
+			pollURI = sl
+			completed, err := knativeStatusCheck(resp)
+			if err != nil {
+				return nil, err
+			}
+			if completed {
+				return resp, nil
+			}
+		default:
+			// Otherwise there are two styles of operations: one returns a 'done' boolean flag,
+			// another one returns status='DONE'.
+			done, hasDone := resp["done"].(bool)
+			status, hasStatus := resp["status"].(string)
+			if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
+				// Extract an error message from the response, if any.
+				var err error
+				if failure, has := resp["error"]; has {
+					err = errors.Errorf("operation errored with %+v", failure)
+				} else if statusMessage, has := resp["statusMessage"]; has {
+					err = errors.Errorf("operation failed with %q", statusMessage)
+				}
+				// Extract the resource response, if any.
+				// A partial error could happen, so both response and error could be available.
+				if response, has := resp["response"].(map[string]interface{}); has {
+					return response, err
+				}
+				if operationType, has := resp["operationType"].(string); has &&
+					strings.Contains(strings.ToLower(operationType), "delete") {
+					return resp, err
+				}
+				// Check if there's a target link.
+				if targetLink, has := resp["targetLink"].(string); has {
+					// Try reading resource state.
+					state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
+					if getErr != nil {
+						if err != nil {
+							// Return the original creation error if resource read failed.
+							return nil, err
+						}
+						return nil, getErr
+					}
+					// A partial error could happen, so both response and error could be available.
+					return state, err
+				}
+				// At this point, we assume either a complete failure or a clean response.
+				if err != nil {
+					return nil, err
+				}
+				return resp, nil
+			}
 
-		var pollURI string
-		if selfLink, has := resp["selfLink"].(string); has && hasStatus {
-			pollURI = selfLink
-		} else {
-			if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
-				pollURI = fmt.Sprintf("%s/v1/%s", baseURL, name)
+			if selfLink, has := resp["selfLink"].(string); has && hasStatus {
+				pollURI = selfLink
+			} else {
+				if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
+					pollURI = fmt.Sprintf("%s/v1/%s", rootURL, name)
+				}
 			}
 		}
 
 		if pollURI == "" {
+			logging.V(3).Infof("No pollURI found for rootURL: %q", rootURL)
 			return resp, nil
 		}
 
 		time.Sleep(retryPolicy.Duration())
 
+		logging.V(9).Infof("Polling URL: %q", pollURI)
 		op, err := p.client.RequestWithTimeout("GET", pollURI, nil, 0)
 		if err != nil {
 			return nil, errors.Wrapf(err, "polling operation status")
@@ -737,7 +762,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.RootURL, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Update.Polling.Strategy, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -820,7 +845,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.RootURL, resp)
+	_, err = p.waitForResourceOpCompletion(res.RootURL, resources.DefaultPoll, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}

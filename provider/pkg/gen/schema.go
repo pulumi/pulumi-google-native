@@ -25,6 +25,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/imdario/mergo"
+
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
@@ -471,7 +473,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 
 		for name, prop := range bodyBag.specs {
-			// If the create request
+			// If the create request has a status field, lets skip it from being marked as an input.
 			if dd.createMethod.Request.Ref == dd.getMethod.Response.Ref && name == "status" {
 				continue
 			}
@@ -673,6 +675,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		InputProperties: inputProperties,
 		RequiredInputs:  requiredInputProperties.SortedValues(),
 	}
+
+	if md, ok := metadataOverrides[resourceTok]; ok {
+		if err := mergo.Merge(&resourceMeta, md); err != nil {
+			return fmt.Errorf("failed to merge metadata for resource: %q", resourceTok)
+		}
+	}
+
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil

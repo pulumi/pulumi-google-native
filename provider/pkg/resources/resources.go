@@ -102,7 +102,8 @@ type CloudAPIOperation struct {
 	// SDKProperties define metadata about the SDK representation of this resource.
 	SDKProperties map[string]CloudAPIProperty `json:"sdkProperties,omitempty"`
 	// Verb is the REST verb to use for API calls.
-	Verb string `json:"verb,omitempty"`
+	Verb    string  `json:"verb,omitempty"`
+	Polling Polling `json:"polling,omitempty"`
 }
 
 func (o CloudAPIOperation) Undefined() bool {
@@ -119,10 +120,23 @@ type ResourceAutoname struct {
 	ValidationRegex string `json:"validationRegex,omitempty"`
 }
 
+type PollingStrategy string
+
+const (
+	DefaultPoll       = PollingStrategy("")
+	KNativeStatusPoll = PollingStrategy("KNativeStatusPoll")
+)
+
+// Polling specifies the polling strategy to use for a resource.
+type Polling struct {
+	// Strategy defines the polling strategy to use for this resource. If empty,
+	// the default polling behavior around operations is in effect.
+	Strategy PollingStrategy `json:"strategy,omitempty"`
+}
+
 // CreateAPIOperation is a Create resource operation in the Google Cloud REST API.
 type CreateAPIOperation struct {
 	CloudAPIOperation
-
 	Autoname ResourceAutoname `json:"autoname,omitempty"`
 }
 

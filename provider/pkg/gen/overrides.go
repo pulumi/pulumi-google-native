@@ -14,6 +14,8 @@
 
 package gen
 
+import "github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
 // that is present in the discovery document.
 var resourceNameByTypeOverrides = map[string]string{
@@ -130,6 +132,30 @@ var autonameOverrides = map[string]string{
 	"google-native:cloudkms/v1:EkmConnection":    "ekmConnectionId",
 	"google-native:cloudkms/v1:ImportJob":        "importJobId",
 	"google-native:cloudkms/v1:KeyRing":          "keyRingId",
+}
+
+// metadataOverrides is a map of values static overlays to merge into the metadata for
+// individual resource tokens. In case of conflict, the values in this mapping are preferred.
+var metadataOverrides = map[string]resources.CloudAPIResource{
+	"google-native:run/v1:Service": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+	},
+	"google-native:run/v1:DomainMapping": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+	},
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
