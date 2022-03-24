@@ -2,7 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None) 
+Bug fixes:
+
+- Add custom retry logic for cloud run [#411](https://github.com/pulumi/pulumi-google-native/pull/411)
 
 ## 0.18.0 (2022-03-30)
 - Reflect renamed types as defined in cloud run v2 API specs [#419](https://github.com/pulumi/pulumi-google-native/pull/419)
