@@ -54,7 +54,7 @@ export class Change extends pulumi.CustomResource {
     /**
      * The time that this operation was started by the server (output only). This is in RFC3339 text format.
      */
-    public readonly startTime!: pulumi.Output<string>;
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
     /**
      * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
      */
@@ -77,12 +77,11 @@ export class Change extends pulumi.CustomResource {
             resourceInputs["additions"] = args ? args.additions : undefined;
             resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             resourceInputs["deletions"] = args ? args.deletions : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["isServing"] = args ? args.isServing : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["managedZone"] = args ? args.managedZone : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["additions"] = undefined /*out*/;
@@ -114,18 +113,10 @@ export interface ChangeArgs {
      */
     deletions?: pulumi.Input<pulumi.Input<inputs.dns.v1.ResourceRecordSetArgs>[]>;
     /**
-     * Unique identifier for the resource; defined by the server (output only).
-     */
-    id?: pulumi.Input<string>;
-    /**
      * If the DNS queries for the zone will be served.
      */
     isServing?: pulumi.Input<boolean>;
     kind?: pulumi.Input<string>;
     managedZone: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * The time that this operation was started by the server (output only). This is in RFC3339 text format.
-     */
-    startTime?: pulumi.Input<string>;
 }

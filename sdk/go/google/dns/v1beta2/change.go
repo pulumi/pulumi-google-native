@@ -79,15 +79,11 @@ type changeArgs struct {
 	ClientOperationId *string `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions []ResourceRecordSetType `pulumi:"deletions"`
-	// Unique identifier for the resource; defined by the server (output only).
-	Id *string `pulumi:"id"`
 	// If the DNS queries for the zone will be served.
 	IsServing   *bool   `pulumi:"isServing"`
 	Kind        *string `pulumi:"kind"`
 	ManagedZone string  `pulumi:"managedZone"`
 	Project     *string `pulumi:"project"`
-	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
-	StartTime *string `pulumi:"startTime"`
 }
 
 // The set of arguments for constructing a Change resource.
@@ -98,15 +94,11 @@ type ChangeArgs struct {
 	ClientOperationId pulumi.StringPtrInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions ResourceRecordSetTypeArrayInput
-	// Unique identifier for the resource; defined by the server (output only).
-	Id pulumi.StringPtrInput
 	// If the DNS queries for the zone will be served.
 	IsServing   pulumi.BoolPtrInput
 	Kind        pulumi.StringPtrInput
 	ManagedZone pulumi.StringInput
 	Project     pulumi.StringPtrInput
-	// The time that this operation was started by the server (output only). This is in RFC3339 text format.
-	StartTime pulumi.StringPtrInput
 }
 
 func (ChangeArgs) ElementType() reflect.Type {

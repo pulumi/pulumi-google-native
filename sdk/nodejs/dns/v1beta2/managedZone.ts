@@ -72,7 +72,7 @@ export class ManagedZone extends pulumi.CustomResource {
     /**
      * Delegate your managed_zone to these virtual name servers; defined by the server (output only)
      */
-    public readonly nameServers!: pulumi.Output<string[]>;
+    public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
     /**
      * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
      */
@@ -112,18 +112,17 @@ export class ManagedZone extends pulumi.CustomResource {
             resourceInputs["dnsName"] = args ? args.dnsName : undefined;
             resourceInputs["dnssecConfig"] = args ? args.dnssecConfig : undefined;
             resourceInputs["forwardingConfig"] = args ? args.forwardingConfig : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nameServerSet"] = args ? args.nameServerSet : undefined;
-            resourceInputs["nameServers"] = args ? args.nameServers : undefined;
             resourceInputs["peeringConfig"] = args ? args.peeringConfig : undefined;
             resourceInputs["privateVisibilityConfig"] = args ? args.privateVisibilityConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reverseLookupConfig"] = args ? args.reverseLookupConfig : undefined;
             resourceInputs["serviceDirectoryConfig"] = args ? args.serviceDirectoryConfig : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["nameServers"] = undefined /*out*/;
         } else {
             resourceInputs["cloudLoggingConfig"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -176,10 +175,6 @@ export interface ManagedZoneArgs {
      * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
      */
     forwardingConfig?: pulumi.Input<inputs.dns.v1beta2.ManagedZoneForwardingConfigArgs>;
-    /**
-     * Unique identifier for the resource; defined by the server (output only)
-     */
-    id?: pulumi.Input<string>;
     kind?: pulumi.Input<string>;
     /**
      * User labels.
@@ -193,10 +188,6 @@ export interface ManagedZoneArgs {
      * Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
      */
     nameServerSet?: pulumi.Input<string>;
-    /**
-     * Delegate your managed_zone to these virtual name servers; defined by the server (output only)
-     */
-    nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
      */

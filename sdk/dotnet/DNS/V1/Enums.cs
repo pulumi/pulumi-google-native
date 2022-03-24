@@ -8,37 +8,6 @@ using Pulumi;
 namespace Pulumi.GoogleNative.DNS.V1
 {
     /// <summary>
-    /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-    /// </summary>
-    [EnumType]
-    public readonly struct ChangeStatus : IEquatable<ChangeStatus>
-    {
-        private readonly string _value;
-
-        private ChangeStatus(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ChangeStatus Pending { get; } = new ChangeStatus("pending");
-        public static ChangeStatus Done { get; } = new ChangeStatus("done");
-
-        public static bool operator ==(ChangeStatus left, ChangeStatus right) => left.Equals(right);
-        public static bool operator !=(ChangeStatus left, ChangeStatus right) => !left.Equals(right);
-
-        public static explicit operator string(ChangeStatus value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ChangeStatus other && Equals(other);
-        public bool Equals(ChangeStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// String mnemonic specifying the DNSSEC algorithm of this key.
     /// </summary>
     [EnumType]

@@ -15449,6 +15449,163 @@ const (
 	PublicAdvertisedPrefixStatusValidated = PublicAdvertisedPrefixStatus("VALIDATED")
 )
 
+func (PublicAdvertisedPrefixStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicAdvertisedPrefixStatus)(nil)).Elem()
+}
+
+func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusOutput() PublicAdvertisedPrefixStatusOutput {
+	return pulumi.ToOutput(e).(PublicAdvertisedPrefixStatusOutput)
+}
+
+func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicAdvertisedPrefixStatusOutput)
+}
+
+func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
+	return e.ToPublicAdvertisedPrefixStatusPtrOutputWithContext(context.Background())
+}
+
+func (e PublicAdvertisedPrefixStatus) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
+	return PublicAdvertisedPrefixStatus(e).ToPublicAdvertisedPrefixStatusOutputWithContext(ctx).ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx)
+}
+
+func (e PublicAdvertisedPrefixStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicAdvertisedPrefixStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublicAdvertisedPrefixStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublicAdvertisedPrefixStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicAdvertisedPrefixStatusOutput struct{ *pulumi.OutputState }
+
+func (PublicAdvertisedPrefixStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicAdvertisedPrefixStatus)(nil)).Elem()
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusOutput() PublicAdvertisedPrefixStatusOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
+	return o.ToPublicAdvertisedPrefixStatusPtrOutputWithContext(context.Background())
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicAdvertisedPrefixStatus) *PublicAdvertisedPrefixStatus {
+		return &v
+	}).(PublicAdvertisedPrefixStatusPtrOutput)
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicAdvertisedPrefixStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicAdvertisedPrefixStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicAdvertisedPrefixStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicAdvertisedPrefixStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicAdvertisedPrefixStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicAdvertisedPrefixStatus)(nil)).Elem()
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
+	return o
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) Elem() PublicAdvertisedPrefixStatusOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefixStatus) PublicAdvertisedPrefixStatus {
+		if v != nil {
+			return *v
+		}
+		var ret PublicAdvertisedPrefixStatus
+		return ret
+	}).(PublicAdvertisedPrefixStatusOutput)
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicAdvertisedPrefixStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublicAdvertisedPrefixStatusInput is an input type that accepts PublicAdvertisedPrefixStatusArgs and PublicAdvertisedPrefixStatusOutput values.
+// You can construct a concrete instance of `PublicAdvertisedPrefixStatusInput` via:
+//
+//          PublicAdvertisedPrefixStatusArgs{...}
+type PublicAdvertisedPrefixStatusInput interface {
+	pulumi.Input
+
+	ToPublicAdvertisedPrefixStatusOutput() PublicAdvertisedPrefixStatusOutput
+	ToPublicAdvertisedPrefixStatusOutputWithContext(context.Context) PublicAdvertisedPrefixStatusOutput
+}
+
+var publicAdvertisedPrefixStatusPtrType = reflect.TypeOf((**PublicAdvertisedPrefixStatus)(nil)).Elem()
+
+type PublicAdvertisedPrefixStatusPtrInput interface {
+	pulumi.Input
+
+	ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput
+	ToPublicAdvertisedPrefixStatusPtrOutputWithContext(context.Context) PublicAdvertisedPrefixStatusPtrOutput
+}
+
+type publicAdvertisedPrefixStatusPtr string
+
+func PublicAdvertisedPrefixStatusPtr(v string) PublicAdvertisedPrefixStatusPtrInput {
+	return (*publicAdvertisedPrefixStatusPtr)(&v)
+}
+
+func (*publicAdvertisedPrefixStatusPtr) ElementType() reflect.Type {
+	return publicAdvertisedPrefixStatusPtrType
+}
+
+func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutput() PublicAdvertisedPrefixStatusPtrOutput {
+	return pulumi.ToOutput(in).(PublicAdvertisedPrefixStatusPtrOutput)
+}
+
+func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutputWithContext(ctx context.Context) PublicAdvertisedPrefixStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixStatusPtrOutput)
+}
+
 // Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 type RegionBackendServiceLoadBalancingScheme string
 
@@ -26696,6 +26853,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringEnablePtrInput)(nil)).Elem(), PacketMirroringEnable("FALSE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterDirectionInput)(nil)).Elem(), PacketMirroringFilterDirection("BOTH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterDirectionPtrInput)(nil)).Elem(), PacketMirroringFilterDirection("BOTH"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("INITIAL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusPtrInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("INITIAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLoadBalancingSchemeInput)(nil)).Elem(), RegionBackendServiceLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLoadBalancingSchemePtrInput)(nil)).Elem(), RegionBackendServiceLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLocalityLbPolicyInput)(nil)).Elem(), RegionBackendServiceLocalityLbPolicy("INVALID_LB_POLICY"))
@@ -27011,6 +27170,8 @@ func init() {
 	pulumi.RegisterOutputType(PacketMirroringEnablePtrOutput{})
 	pulumi.RegisterOutputType(PacketMirroringFilterDirectionOutput{})
 	pulumi.RegisterOutputType(PacketMirroringFilterDirectionPtrOutput{})
+	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusOutput{})
+	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLoadBalancingSchemeOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLoadBalancingSchemePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLocalityLbPolicyOutput{})

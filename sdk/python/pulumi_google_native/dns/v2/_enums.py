@@ -5,7 +5,6 @@
 from enum import Enum
 
 __all__ = [
-    'ChangeStatus',
     'DnsKeySpecAlgorithm',
     'DnsKeySpecKeyType',
     'ManagedZoneDnsSecConfigNonExistence',
@@ -15,14 +14,6 @@ __all__ = [
     'PolicyAlternativeNameServerConfigTargetNameServerForwardingPath',
     'ResponsePolicyRuleBehavior',
 ]
-
-
-class ChangeStatus(str, Enum):
-    """
-    Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-    """
-    PENDING = "PENDING"
-    DONE = "DONE"
 
 
 class DnsKeySpecAlgorithm(str, Enum):

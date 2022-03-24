@@ -10,14 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-type ChangeStatus string
-
-const (
-	ChangeStatusPending = ChangeStatus("pending")
-	ChangeStatusDone    = ChangeStatus("done")
-)
-
 // String mnemonic specifying the DNSSEC algorithm of this key.
 type DnsKeySpecAlgorithm string
 

@@ -127,12 +127,6 @@ namespace Pulumi.GoogleNative.DNS.V1
         }
 
         /// <summary>
-        /// Unique identifier for the resource; defined by the server (output only).
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// If the DNS queries for the zone will be served.
         /// </summary>
         [Input("isServing")]
@@ -146,12 +140,6 @@ namespace Pulumi.GoogleNative.DNS.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
 
         public ChangeArgs()
         {

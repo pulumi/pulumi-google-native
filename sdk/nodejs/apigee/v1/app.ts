@@ -86,7 +86,7 @@ export class App extends pulumi.CustomResource {
     /**
      * Status of the credential. Valid values include `approved` or `revoked`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -115,10 +115,10 @@ export class App extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["credentials"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["apiProducts"] = undefined /*out*/;
             resourceInputs["appFamily"] = undefined /*out*/;
@@ -180,4 +180,8 @@ export interface AppArgs {
      * Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Status of the credential. Valid values include `approved` or `revoked`.
+     */
+    status?: pulumi.Input<string>;
 }

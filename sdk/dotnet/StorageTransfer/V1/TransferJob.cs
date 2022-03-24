@@ -177,6 +177,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Input<Inputs.ScheduleArgs>? Schedule { get; set; }
 
         /// <summary>
+        /// Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
+        /// </summary>
+        [Input("status")]
+        public Input<Pulumi.GoogleNative.StorageTransfer.V1.TransferJobStatus>? Status { get; set; }
+
+        /// <summary>
         /// Transfer specification.
         /// </summary>
         [Input("transferSpec")]

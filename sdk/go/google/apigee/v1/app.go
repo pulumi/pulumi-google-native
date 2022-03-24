@@ -107,6 +107,8 @@ type appArgs struct {
 	OrganizationId string  `pulumi:"organizationId"`
 	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
 	Scopes []string `pulumi:"scopes"`
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a App resource.
@@ -130,6 +132,8 @@ type AppArgs struct {
 	OrganizationId pulumi.StringInput
 	// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
 	Scopes pulumi.StringArrayInput
+	// Status of the credential. Valid values include `approved` or `revoked`.
+	Status pulumi.StringPtrInput
 }
 
 func (AppArgs) ElementType() reflect.Type {

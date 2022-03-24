@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['PublicAdvertisedPrefixArgs', 'PublicAdvertisedPrefix']
 
@@ -19,7 +20,8 @@ class PublicAdvertisedPrefixArgs:
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None):
         """
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
@@ -27,6 +29,7 @@ class PublicAdvertisedPrefixArgs:
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['PublicAdvertisedPrefixStatus'] status: The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -40,6 +43,8 @@ class PublicAdvertisedPrefixArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -110,6 +115,18 @@ class PublicAdvertisedPrefixArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['PublicAdvertisedPrefixStatus']]:
+        """
+        The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']]):
+        pulumi.set(self, "status", value)
+
 
 class PublicAdvertisedPrefix(pulumi.CustomResource):
     @overload
@@ -122,6 +139,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None,
                  __props__=None):
         """
         Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
@@ -133,6 +151,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         :param pulumi.Input[str] ip_cidr_range: The IPv4 address range, in CIDR format, represented by this public advertised prefix.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['PublicAdvertisedPrefixStatus'] status: The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed. 
         """
         ...
     @overload
@@ -164,6 +183,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input['PublicAdvertisedPrefixStatus']] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -182,13 +202,13 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["status"] = status
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["public_delegated_prefixs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret"] = None
-            __props__.__dict__["status"] = None
         super(PublicAdvertisedPrefix, __self__).__init__(
             'google-native:compute/beta:PublicAdvertisedPrefix',
             resource_name,

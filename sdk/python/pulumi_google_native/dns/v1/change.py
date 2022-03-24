@@ -19,19 +19,15 @@ class ChangeArgs:
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Change resource.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] additions: Which ResourceRecordSets to add?
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
-        :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
-        :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         if additions is not None:
@@ -40,16 +36,12 @@ class ChangeArgs:
             pulumi.set(__self__, "client_operation_id", client_operation_id)
         if deletions is not None:
             pulumi.set(__self__, "deletions", deletions)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if is_serving is not None:
             pulumi.set(__self__, "is_serving", is_serving)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
 
     @property
     @pulumi.getter(name="managedZone")
@@ -97,18 +89,6 @@ class ChangeArgs:
         pulumi.set(self, "deletions", value)
 
     @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier for the resource; defined by the server (output only).
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
     @pulumi.getter(name="isServing")
     def is_serving(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -138,18 +118,6 @@ class ChangeArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
 
 class Change(pulumi.CustomResource):
     @overload
@@ -159,12 +127,10 @@ class Change(pulumi.CustomResource):
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Atomically updates the ResourceRecordSet collection.
@@ -177,9 +143,7 @@ class Change(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] additions: Which ResourceRecordSets to add?
         :param pulumi.Input[str] client_operation_id: For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]] deletions: Which ResourceRecordSets to remove? Must match existing data exactly.
-        :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[bool] is_serving: If the DNS queries for the zone will be served.
-        :param pulumi.Input[str] start_time: The time that this operation was started by the server (output only). This is in RFC3339 text format.
         """
         ...
     @overload
@@ -211,12 +175,10 @@ class Change(pulumi.CustomResource):
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -232,14 +194,13 @@ class Change(pulumi.CustomResource):
             __props__.__dict__["additions"] = additions
             __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["deletions"] = deletions
-            __props__.__dict__["id"] = id
             __props__.__dict__["is_serving"] = is_serving
             __props__.__dict__["kind"] = kind
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
             __props__.__dict__["managed_zone"] = managed_zone
             __props__.__dict__["project"] = project
-            __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["start_time"] = None
             __props__.__dict__["status"] = None
         super(Change, __self__).__init__(
             'google-native:dns/v1:Change',

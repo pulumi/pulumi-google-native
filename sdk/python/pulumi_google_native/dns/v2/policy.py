@@ -21,7 +21,6 @@ class PolicyArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,7 +33,6 @@ class PolicyArgs:
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
-        :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[str] name: User-assigned name for this policy.
         :param pulumi.Input[Sequence[pulumi.Input['PolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
         """
@@ -48,8 +46,6 @@ class PolicyArgs:
             pulumi.set(__self__, "enable_inbound_forwarding", enable_inbound_forwarding)
         if enable_logging is not None:
             pulumi.set(__self__, "enable_logging", enable_logging)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if location is not None:
@@ -123,18 +119,6 @@ class PolicyArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier for the resource; defined by the server (output only).
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kind")
 
@@ -195,7 +179,6 @@ class Policy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -212,7 +195,6 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] description: A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         :param pulumi.Input[bool] enable_inbound_forwarding: Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
         :param pulumi.Input[bool] enable_logging: Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
-        :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[str] name: User-assigned name for this policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
         """
@@ -245,7 +227,6 @@ class Policy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -268,7 +249,6 @@ class Policy(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding
             __props__.__dict__["enable_logging"] = enable_logging
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name

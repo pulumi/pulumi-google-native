@@ -24,7 +24,8 @@ class AppArgs:
                  callback_url: Optional[pulumi.Input[str]] = None,
                  key_expires_in: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[str] developer_id: ID of the developer.
@@ -36,6 +37,7 @@ class AppArgs:
         :param pulumi.Input[str] key_expires_in: Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
         :param pulumi.Input[str] name: Name of the developer app.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+        :param pulumi.Input[str] status: Status of the credential. Valid values include `approved` or `revoked`.
         """
         pulumi.set(__self__, "developer_id", developer_id)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -55,6 +57,8 @@ class AppArgs:
             pulumi.set(__self__, "name", name)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="developerId")
@@ -173,6 +177,18 @@ class AppArgs:
     def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
 
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status of the credential. Valid values include `approved` or `revoked`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
 
 class App(pulumi.CustomResource):
     @overload
@@ -189,6 +205,7 @@ class App(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI.
@@ -204,6 +221,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[str] key_expires_in: Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
         :param pulumi.Input[str] name: Name of the developer app.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+        :param pulumi.Input[str] status: Status of the credential. Valid values include `approved` or `revoked`.
         """
         ...
     @overload
@@ -239,6 +257,7 @@ class App(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -265,10 +284,10 @@ class App(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["scopes"] = scopes
+            __props__.__dict__["status"] = status
             __props__.__dict__["created_at"] = None
             __props__.__dict__["credentials"] = None
             __props__.__dict__["last_modified_at"] = None
-            __props__.__dict__["status"] = None
         super(App, __self__).__init__(
             'google-native:apigee/v1:App',
             resource_name,
