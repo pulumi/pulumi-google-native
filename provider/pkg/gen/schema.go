@@ -26,7 +26,6 @@ import (
 	"strings"
 
 	"github.com/imdario/mergo"
-
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
@@ -472,9 +471,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			return err
 		}
 
+		isOutput := func(desc string) bool {
+			lowerDesc := strings.ToLower(desc)
+			return isReadOnly(lowerDesc) || !(strings.Contains(lowerDesc,
+				"values include") || strings.Contains(lowerDesc, "value must be specified"))
+		}
 		for name, prop := range bodyBag.specs {
-			// If the create request has a status field, lets skip it from being marked as an input.
-			if dd.createMethod.Request.Ref == dd.getMethod.Response.Ref && name == "status" {
+			// If the create request has a status field, lets skip it from being marked as a required input.
+			if dd.createMethod.Request.Ref == dd.getMethod.Response.Ref && name == "status" && isOutput(prop.
+				Description) {
 				continue
 			}
 			inputProperties[name] = prop
@@ -1196,6 +1201,7 @@ func isReadOnly(description string) bool {
 	return strings.HasPrefix(lowerDesc, "[output only]") ||
 		strings.HasPrefix(lowerDesc, "[output-only]") ||
 		strings.HasPrefix(lowerDesc, "output only.") ||
+		strings.Contains(lowerDesc, "(output only)") ||
 		strings.HasSuffix(lowerDesc, "@outputonly")
 }
 
