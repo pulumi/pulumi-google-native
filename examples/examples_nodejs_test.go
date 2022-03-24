@@ -1,4 +1,4 @@
-// Copyright 2016-2021, Pulumi Corporation.  All rights reserved.
+// Copyright 2016-2022, Pulumi Corporation.  All rights reserved.
 // +build nodejs all
 
 package examples
@@ -23,8 +23,11 @@ func TestGKE(t *testing.T) {
 func TestCloudRunTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:         filepath.Join(getCwd(t), "cloudrun-ts"),
+			Dir:         filepath.Join(getCwd(t), "cloudrun-ts", "step1"),
 			SkipRefresh: true,
+			EditDirs: []integration.EditDir{
+				{Dir: filepath.Join(getCwd(t), "cloudrun-ts", "step2")},
+			},
 		})
 
 	integration.ProgramTest(t, &test)
