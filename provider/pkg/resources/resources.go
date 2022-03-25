@@ -102,8 +102,8 @@ type CloudAPIOperation struct {
 	// SDKProperties define metadata about the SDK representation of this resource.
 	SDKProperties map[string]CloudAPIProperty `json:"sdkProperties,omitempty"`
 	// Verb is the REST verb to use for API calls.
-	Verb    string  `json:"verb,omitempty"`
-	Polling Polling `json:"polling,omitempty"`
+	Verb    string   `json:"verb,omitempty"`
+	Polling *Polling `json:"polling,omitempty"`
 }
 
 func (o CloudAPIOperation) Undefined() bool {

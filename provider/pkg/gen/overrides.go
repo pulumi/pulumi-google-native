@@ -140,19 +140,19 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 	"google-native:run/v1:Service": {
 		Create: resources.CreateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
-				Polling: resources.Polling{Strategy: resources.KNativeStatusPoll},
+				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
 			},
 		},
 		Update: resources.UpdateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
-				Polling: resources.Polling{Strategy: resources.KNativeStatusPoll},
+				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
 			},
 		},
 	},
 	"google-native:run/v1:DomainMapping": {
 		Create: resources.CreateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
-				Polling: resources.Polling{Strategy: resources.KNativeStatusPoll},
+				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
 			},
 		},
 	},

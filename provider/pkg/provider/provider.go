@@ -442,7 +442,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Create.Polling.Strategy, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Create.Polling, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -500,7 +500,7 @@ func (p *googleCloudProvider) prepareAPIInputs(
 // (e.g., resource is created but failed to initialize to completion).
 func (p *googleCloudProvider) waitForResourceOpCompletion(
 	rootURL string,
-	pollingStrategy resources.PollingStrategy,
+	polling *resources.Polling,
 	resp map[string]interface{},
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
@@ -508,6 +508,10 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		Max:    15 * time.Second,
 		Factor: 1.5,
 		Jitter: true,
+	}
+	var pollingStrategy = resources.DefaultPoll
+	if polling != nil {
+		pollingStrategy = polling.Strategy
 	}
 	for {
 		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
@@ -762,7 +766,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Update.Polling.Strategy, op)
+	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Update.Polling, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -845,7 +849,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.RootURL, resources.DefaultPoll, resp)
+	_, err = p.waitForResourceOpCompletion(res.RootURL, res.Delete.Polling, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}

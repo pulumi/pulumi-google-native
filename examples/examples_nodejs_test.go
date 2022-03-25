@@ -26,7 +26,7 @@ func TestCloudRunTs(t *testing.T) {
 			Dir:         filepath.Join(getCwd(t), "cloudrun-ts", "step1"),
 			SkipRefresh: true,
 			EditDirs: []integration.EditDir{
-				{Dir: filepath.Join(getCwd(t), "cloudrun-ts", "step2")},
+				{Dir: filepath.Join(getCwd(t), "cloudrun-ts", "step2"), Additive: true},
 			},
 		})
 

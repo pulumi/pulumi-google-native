@@ -473,8 +473,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		isOutput := func(desc string) bool {
 			lowerDesc := strings.ToLower(desc)
-			return isReadOnly(lowerDesc) || !(strings.Contains(lowerDesc,
-				"values include") || strings.Contains(lowerDesc, "value must be specified"))
+			return isReadOnly(lowerDesc) ||
+				!(strings.Contains(lowerDesc, "values include") ||
+					strings.Contains(lowerDesc, "value must be specified"))
 		}
 		for name, prop := range bodyBag.specs {
 			// If the create request has a status field, lets skip it from being marked as a required input.
