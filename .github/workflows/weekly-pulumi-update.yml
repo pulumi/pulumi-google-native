@@ -1,7 +1,7 @@
 name: weekly-pulumi-update
 "on":
   schedule:
-    - cron: "35 12 * * 4"
+    - cron: 35 12 * * 4
   workflow_dispatch: {}
 
 env:
