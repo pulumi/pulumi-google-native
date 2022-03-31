@@ -124,7 +124,7 @@ class GetEntitlementResult:
     @pulumi.getter(name="purchaseOrderId")
     def purchase_order_id(self) -> str:
         """
-        Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+        Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
         """
         return pulumi.get(self, "purchase_order_id")
 

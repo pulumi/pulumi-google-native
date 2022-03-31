@@ -66,6 +66,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly string Config;
         /// <summary>
+        /// The time at which the instance was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         /// </summary>
         public readonly string DisplayName;
@@ -93,10 +97,16 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// The time at which the instance was most recently updated.
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetInstanceResult(
             string config,
+
+            string createTime,
 
             string displayName,
 
@@ -110,9 +120,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             int processingUnits,
 
-            string state)
+            string state,
+
+            string updateTime)
         {
             Config = config;
+            CreateTime = createTime;
             DisplayName = displayName;
             EndpointUris = endpointUris;
             Labels = labels;
@@ -120,6 +133,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
             NodeCount = nodeCount;
             ProcessingUnits = processingUnits;
             State = state;
+            UpdateTime = updateTime;
         }
     }
 }

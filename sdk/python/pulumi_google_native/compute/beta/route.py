@@ -347,6 +347,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["next_hop_interconnect_attachment"] = None
             __props__.__dict__["next_hop_peering"] = None
+            __props__.__dict__["route_status"] = None
             __props__.__dict__["route_type"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["warnings"] = None
@@ -388,6 +389,7 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["next_hop_peering"] = None
         __props__.__dict__["next_hop_vpn_tunnel"] = None
         __props__.__dict__["priority"] = None
+        __props__.__dict__["route_status"] = None
         __props__.__dict__["route_type"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["tags"] = None
@@ -521,6 +523,14 @@ class Route(pulumi.CustomResource):
         The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> pulumi.Output[str]:
+        """
+        [Output only] The status of the route.
+        """
+        return pulumi.get(self, "route_status")
 
     @property
     @pulumi.getter(name="routeType")

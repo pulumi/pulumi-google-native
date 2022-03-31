@@ -11,11 +11,11 @@ namespace Pulumi.GoogleNative.Run.V2
     /// The sandbox environment to host this Revision.
     /// </summary>
     [EnumType]
-    public readonly struct GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment : IEquatable<GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment>
+    public readonly struct GoogleCloudRunV2RevisionTemplateExecutionEnvironment : IEquatable<GoogleCloudRunV2RevisionTemplateExecutionEnvironment>
     {
         private readonly string _value;
 
-        private GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment(string value)
+        private GoogleCloudRunV2RevisionTemplateExecutionEnvironment(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -23,24 +23,24 @@ namespace Pulumi.GoogleNative.Run.V2
         /// <summary>
         /// Unspecified
         /// </summary>
-        public static GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentUnspecified { get; } = new GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED");
+        public static GoogleCloudRunV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentUnspecified { get; } = new GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED");
         /// <summary>
         /// Uses the Google-default environment.
         /// </summary>
-        public static GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentDefault { get; } = new GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_DEFAULT");
+        public static GoogleCloudRunV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentDefault { get; } = new GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_DEFAULT");
         /// <summary>
         /// Uses Second Generation environment.
         /// </summary>
-        public static GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentGen2 { get; } = new GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN2");
+        public static GoogleCloudRunV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentGen2 { get; } = new GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN2");
 
-        public static bool operator ==(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment left, GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment right) => left.Equals(right);
-        public static bool operator !=(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment left, GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment right) => !left.Equals(right);
+        public static bool operator ==(GoogleCloudRunV2RevisionTemplateExecutionEnvironment left, GoogleCloudRunV2RevisionTemplateExecutionEnvironment right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRunV2RevisionTemplateExecutionEnvironment left, GoogleCloudRunV2RevisionTemplateExecutionEnvironment right) => !left.Equals(right);
 
-        public static explicit operator string(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment value) => value._value;
+        public static explicit operator string(GoogleCloudRunV2RevisionTemplateExecutionEnvironment value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment other && Equals(other);
-        public bool Equals(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is GoogleCloudRunV2RevisionTemplateExecutionEnvironment other && Equals(other);
+        public bool Equals(GoogleCloudRunV2RevisionTemplateExecutionEnvironment other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -52,11 +52,11 @@ namespace Pulumi.GoogleNative.Run.V2
     /// The allocation type for this traffic target.
     /// </summary>
     [EnumType]
-    public readonly struct GoogleCloudRunOpV2TrafficTargetType : IEquatable<GoogleCloudRunOpV2TrafficTargetType>
+    public readonly struct GoogleCloudRunV2TrafficTargetType : IEquatable<GoogleCloudRunV2TrafficTargetType>
     {
         private readonly string _value;
 
-        private GoogleCloudRunOpV2TrafficTargetType(string value)
+        private GoogleCloudRunV2TrafficTargetType(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -64,24 +64,24 @@ namespace Pulumi.GoogleNative.Run.V2
         /// <summary>
         /// Unspecified instance allocation type.
         /// </summary>
-        public static GoogleCloudRunOpV2TrafficTargetType TrafficTargetAllocationTypeUnspecified { get; } = new GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED");
+        public static GoogleCloudRunV2TrafficTargetType TrafficTargetAllocationTypeUnspecified { get; } = new GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED");
         /// <summary>
         /// Allocates instances to the Service's latest ready Revision.
         /// </summary>
-        public static GoogleCloudRunOpV2TrafficTargetType TrafficTargetAllocationTypeLatest { get; } = new GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST");
+        public static GoogleCloudRunV2TrafficTargetType TrafficTargetAllocationTypeLatest { get; } = new GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST");
         /// <summary>
         /// Allocates instances to a Revision by name.
         /// </summary>
-        public static GoogleCloudRunOpV2TrafficTargetType TrafficTargetAllocationTypeRevision { get; } = new GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION");
+        public static GoogleCloudRunV2TrafficTargetType TrafficTargetAllocationTypeRevision { get; } = new GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION");
 
-        public static bool operator ==(GoogleCloudRunOpV2TrafficTargetType left, GoogleCloudRunOpV2TrafficTargetType right) => left.Equals(right);
-        public static bool operator !=(GoogleCloudRunOpV2TrafficTargetType left, GoogleCloudRunOpV2TrafficTargetType right) => !left.Equals(right);
+        public static bool operator ==(GoogleCloudRunV2TrafficTargetType left, GoogleCloudRunV2TrafficTargetType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRunV2TrafficTargetType left, GoogleCloudRunV2TrafficTargetType right) => !left.Equals(right);
 
-        public static explicit operator string(GoogleCloudRunOpV2TrafficTargetType value) => value._value;
+        public static explicit operator string(GoogleCloudRunV2TrafficTargetType value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GoogleCloudRunOpV2TrafficTargetType other && Equals(other);
-        public bool Equals(GoogleCloudRunOpV2TrafficTargetType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is GoogleCloudRunV2TrafficTargetType other && Equals(other);
+        public bool Equals(GoogleCloudRunV2TrafficTargetType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -93,11 +93,11 @@ namespace Pulumi.GoogleNative.Run.V2
     /// Traffic VPC egress settings.
     /// </summary>
     [EnumType]
-    public readonly struct GoogleCloudRunOpV2VpcAccessEgress : IEquatable<GoogleCloudRunOpV2VpcAccessEgress>
+    public readonly struct GoogleCloudRunV2VpcAccessEgress : IEquatable<GoogleCloudRunV2VpcAccessEgress>
     {
         private readonly string _value;
 
-        private GoogleCloudRunOpV2VpcAccessEgress(string value)
+        private GoogleCloudRunV2VpcAccessEgress(string value)
         {
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
@@ -105,24 +105,24 @@ namespace Pulumi.GoogleNative.Run.V2
         /// <summary>
         /// Unspecified
         /// </summary>
-        public static GoogleCloudRunOpV2VpcAccessEgress VpcEgressUnspecified { get; } = new GoogleCloudRunOpV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED");
+        public static GoogleCloudRunV2VpcAccessEgress VpcEgressUnspecified { get; } = new GoogleCloudRunV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED");
         /// <summary>
         /// All outbound traffic is routed through the VPC connector.
         /// </summary>
-        public static GoogleCloudRunOpV2VpcAccessEgress AllTraffic { get; } = new GoogleCloudRunOpV2VpcAccessEgress("ALL_TRAFFIC");
+        public static GoogleCloudRunV2VpcAccessEgress AllTraffic { get; } = new GoogleCloudRunV2VpcAccessEgress("ALL_TRAFFIC");
         /// <summary>
         /// Only private IP ranges are routed through the VPC connector.
         /// </summary>
-        public static GoogleCloudRunOpV2VpcAccessEgress PrivateRangesOnly { get; } = new GoogleCloudRunOpV2VpcAccessEgress("PRIVATE_RANGES_ONLY");
+        public static GoogleCloudRunV2VpcAccessEgress PrivateRangesOnly { get; } = new GoogleCloudRunV2VpcAccessEgress("PRIVATE_RANGES_ONLY");
 
-        public static bool operator ==(GoogleCloudRunOpV2VpcAccessEgress left, GoogleCloudRunOpV2VpcAccessEgress right) => left.Equals(right);
-        public static bool operator !=(GoogleCloudRunOpV2VpcAccessEgress left, GoogleCloudRunOpV2VpcAccessEgress right) => !left.Equals(right);
+        public static bool operator ==(GoogleCloudRunV2VpcAccessEgress left, GoogleCloudRunV2VpcAccessEgress right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRunV2VpcAccessEgress left, GoogleCloudRunV2VpcAccessEgress right) => !left.Equals(right);
 
-        public static explicit operator string(GoogleCloudRunOpV2VpcAccessEgress value) => value._value;
+        public static explicit operator string(GoogleCloudRunV2VpcAccessEgress value) => value._value;
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is GoogleCloudRunOpV2VpcAccessEgress other && Equals(other);
-        public bool Equals(GoogleCloudRunOpV2VpcAccessEgress other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+        public override bool Equals(object? obj) => obj is GoogleCloudRunV2VpcAccessEgress other && Equals(other);
+        public bool Equals(GoogleCloudRunV2VpcAccessEgress other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -38,7 +38,7 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the instance state, if available.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
-	// field indicates all the reasons the instance is in "SUSPENDED" state.
+	// Field indicates all the reasons the instance is in "SUSPENDED" state.
 	SuspensionReasons pulumi.StringArrayOutput `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`

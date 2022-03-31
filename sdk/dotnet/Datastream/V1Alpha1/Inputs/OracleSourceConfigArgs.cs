@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public Input<Inputs.OracleRdbmsArgs>? Allowlist { get; set; }
 
         /// <summary>
+        /// Drop large object values.
+        /// </summary>
+        [Input("dropLargeObjects")]
+        public Input<Inputs.OracleDropLargeObjectsArgs>? DropLargeObjects { get; set; }
+
+        /// <summary>
         /// Oracle objects to exclude from the stream.
         /// </summary>
         [Input("rejectlist")]

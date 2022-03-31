@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly double CompletionRatio;
         /// <summary>
+        /// Statistics for a copy job.
+        /// </summary>
+        public readonly Outputs.JobStatistics5Response Copy;
+        /// <summary>
         /// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
         /// </summary>
         public readonly string CreationTime;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private JobStatisticsResponse(
             double completionRatio,
 
+            Outputs.JobStatistics5Response copy,
+
             string creationTime,
 
             string endTime,
@@ -125,6 +131,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             Outputs.TransactionInfoResponse transactionInfo)
         {
             CompletionRatio = completionRatio;
+            Copy = copy;
             CreationTime = creationTime;
             EndTime = endTime;
             Extract = extract;

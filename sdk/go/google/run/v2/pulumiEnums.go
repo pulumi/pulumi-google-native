@@ -11,128 +11,128 @@ import (
 )
 
 // The sandbox environment to host this Revision.
-type GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment string
+type GoogleCloudRunV2RevisionTemplateExecutionEnvironment string
 
 const (
 	// Unspecified
-	GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentUnspecified = GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED")
+	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentUnspecified = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED")
 	// Uses the Google-default environment.
-	GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentDefault = GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_DEFAULT")
+	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentDefault = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_DEFAULT")
 	// Uses Second Generation environment.
-	GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentGen2 = GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
+	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentGen2 = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
 )
 
-func (GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
+func (GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput {
-	return pulumi.ToOutput(e).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput)
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput)
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput)
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput)
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return e.ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(context.Background())
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
+	return e.ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(context.Background())
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment(e).ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutputWithContext(ctx).ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx)
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
+	return GoogleCloudRunV2RevisionTemplateExecutionEnvironment(e).ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutputWithContext(ctx).ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx)
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToStringOutput() pulumi.StringOutput {
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput struct{ *pulumi.OutputState }
+type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
+func (GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return o.ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(context.Background())
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
+	return o.ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) *GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2RevisionTemplateExecutionEnvironment) *GoogleCloudRunV2RevisionTemplateExecutionEnvironment {
 		return &v
-	}).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput)
+	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) string {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) *string {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2RevisionTemplateExecutionEnvironment) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
+func (GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2RevisionTemplateExecutionEnvironment) GoogleCloudRunV2RevisionTemplateExecutionEnvironment {
 		if v != nil {
 			return *v
 		}
-		var ret GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment
+		var ret GoogleCloudRunV2RevisionTemplateExecutionEnvironment
 		return ret
-	}).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput)
+	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput)
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment) *string {
+func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunV2RevisionTemplateExecutionEnvironment) *string {
 		if e == nil {
 			return nil
 		}
@@ -141,167 +141,167 @@ func (o GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStrin
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentArgs and GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentInput` via:
+// GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs and GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput` via:
 //
-//          GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentArgs{...}
-type GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentInput interface {
+//          GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs{...}
+type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput interface {
 	pulumi.Input
 
-	ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput
-	ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput
+	ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput
+	ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutputWithContext(context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput
 }
 
-var googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrType = reflect.TypeOf((**GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
+var googleCloudRunV2RevisionTemplateExecutionEnvironmentPtrType = reflect.TypeOf((**GoogleCloudRunV2RevisionTemplateExecutionEnvironment)(nil)).Elem()
 
-type GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrInput interface {
+type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput
-	ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput
+	ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput
+	ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput
 }
 
-type googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtr string
+type googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr string
 
-func GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtr(v string) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrInput {
-	return (*googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtr)(&v)
+func GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtr(v string) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput {
+	return (*googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr)(&v)
 }
 
-func (*googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtr) ElementType() reflect.Type {
-	return googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrType
+func (*googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ElementType() reflect.Type {
+	return googleCloudRunV2RevisionTemplateExecutionEnvironmentPtrType
 }
 
-func (in *googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return pulumi.ToOutput(in).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput)
+func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
-func (in *googleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput)
+func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
 // The allocation type for this traffic target.
-type GoogleCloudRunOpV2TrafficTargetType string
+type GoogleCloudRunV2TrafficTargetType string
 
 const (
 	// Unspecified instance allocation type.
-	GoogleCloudRunOpV2TrafficTargetTypeTrafficTargetAllocationTypeUnspecified = GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED")
+	GoogleCloudRunV2TrafficTargetTypeTrafficTargetAllocationTypeUnspecified = GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED")
 	// Allocates instances to the Service's latest ready Revision.
-	GoogleCloudRunOpV2TrafficTargetTypeTrafficTargetAllocationTypeLatest = GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST")
+	GoogleCloudRunV2TrafficTargetTypeTrafficTargetAllocationTypeLatest = GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST")
 	// Allocates instances to a Revision by name.
-	GoogleCloudRunOpV2TrafficTargetTypeTrafficTargetAllocationTypeRevision = GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION")
+	GoogleCloudRunV2TrafficTargetTypeTrafficTargetAllocationTypeRevision = GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION")
 )
 
-func (GoogleCloudRunOpV2TrafficTargetType) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetType)(nil)).Elem()
+func (GoogleCloudRunV2TrafficTargetType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TrafficTargetType)(nil)).Elem()
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToGoogleCloudRunOpV2TrafficTargetTypeOutput() GoogleCloudRunOpV2TrafficTargetTypeOutput {
-	return pulumi.ToOutput(e).(GoogleCloudRunOpV2TrafficTargetTypeOutput)
+func (e GoogleCloudRunV2TrafficTargetType) ToGoogleCloudRunV2TrafficTargetTypeOutput() GoogleCloudRunV2TrafficTargetTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRunV2TrafficTargetTypeOutput)
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToGoogleCloudRunOpV2TrafficTargetTypeOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunOpV2TrafficTargetTypeOutput)
+func (e GoogleCloudRunV2TrafficTargetType) ToGoogleCloudRunV2TrafficTargetTypeOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunV2TrafficTargetTypeOutput)
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutput() GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
-	return e.ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(context.Background())
+func (e GoogleCloudRunV2TrafficTargetType) ToGoogleCloudRunV2TrafficTargetTypePtrOutput() GoogleCloudRunV2TrafficTargetTypePtrOutput {
+	return e.ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(context.Background())
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
-	return GoogleCloudRunOpV2TrafficTargetType(e).ToGoogleCloudRunOpV2TrafficTargetTypeOutputWithContext(ctx).ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(ctx)
+func (e GoogleCloudRunV2TrafficTargetType) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
+	return GoogleCloudRunV2TrafficTargetType(e).ToGoogleCloudRunV2TrafficTargetTypeOutputWithContext(ctx).ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx)
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToStringOutput() pulumi.StringOutput {
+func (e GoogleCloudRunV2TrafficTargetType) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e GoogleCloudRunV2TrafficTargetType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e GoogleCloudRunV2TrafficTargetType) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e GoogleCloudRunOpV2TrafficTargetType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e GoogleCloudRunV2TrafficTargetType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type GoogleCloudRunOpV2TrafficTargetTypeOutput struct{ *pulumi.OutputState }
+type GoogleCloudRunV2TrafficTargetTypeOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudRunOpV2TrafficTargetTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetType)(nil)).Elem()
+func (GoogleCloudRunV2TrafficTargetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TrafficTargetType)(nil)).Elem()
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToGoogleCloudRunOpV2TrafficTargetTypeOutput() GoogleCloudRunOpV2TrafficTargetTypeOutput {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToGoogleCloudRunV2TrafficTargetTypeOutput() GoogleCloudRunV2TrafficTargetTypeOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToGoogleCloudRunOpV2TrafficTargetTypeOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetTypeOutput {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToGoogleCloudRunV2TrafficTargetTypeOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypeOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutput() GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
-	return o.ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(context.Background())
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToGoogleCloudRunV2TrafficTargetTypePtrOutput() GoogleCloudRunV2TrafficTargetTypePtrOutput {
+	return o.ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2TrafficTargetType) *GoogleCloudRunOpV2TrafficTargetType {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2TrafficTargetType) *GoogleCloudRunV2TrafficTargetType {
 		return &v
-	}).(GoogleCloudRunOpV2TrafficTargetTypePtrOutput)
+	}).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunOpV2TrafficTargetType) string {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2TrafficTargetType) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunOpV2TrafficTargetType) *string {
+func (o GoogleCloudRunV2TrafficTargetTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2TrafficTargetType) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudRunOpV2TrafficTargetTypePtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudRunV2TrafficTargetTypePtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudRunOpV2TrafficTargetTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2TrafficTargetType)(nil)).Elem()
+func (GoogleCloudRunV2TrafficTargetTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2TrafficTargetType)(nil)).Elem()
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypePtrOutput) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutput() GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
+func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToGoogleCloudRunV2TrafficTargetTypePtrOutput() GoogleCloudRunV2TrafficTargetTypePtrOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypePtrOutput) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
+func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypePtrOutput) Elem() GoogleCloudRunOpV2TrafficTargetTypeOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2TrafficTargetType) GoogleCloudRunOpV2TrafficTargetType {
+func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) Elem() GoogleCloudRunV2TrafficTargetTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2TrafficTargetType) GoogleCloudRunV2TrafficTargetType {
 		if v != nil {
 			return *v
 		}
-		var ret GoogleCloudRunOpV2TrafficTargetType
+		var ret GoogleCloudRunV2TrafficTargetType
 		return ret
-	}).(GoogleCloudRunOpV2TrafficTargetTypeOutput)
+	}).(GoogleCloudRunV2TrafficTargetTypeOutput)
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2TrafficTargetTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunOpV2TrafficTargetType) *string {
+func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunV2TrafficTargetType) *string {
 		if e == nil {
 			return nil
 		}
@@ -310,167 +310,167 @@ func (o GoogleCloudRunOpV2TrafficTargetTypePtrOutput) ToStringPtrOutputWithConte
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunOpV2TrafficTargetTypeInput is an input type that accepts GoogleCloudRunOpV2TrafficTargetTypeArgs and GoogleCloudRunOpV2TrafficTargetTypeOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2TrafficTargetTypeInput` via:
+// GoogleCloudRunV2TrafficTargetTypeInput is an input type that accepts GoogleCloudRunV2TrafficTargetTypeArgs and GoogleCloudRunV2TrafficTargetTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2TrafficTargetTypeInput` via:
 //
-//          GoogleCloudRunOpV2TrafficTargetTypeArgs{...}
-type GoogleCloudRunOpV2TrafficTargetTypeInput interface {
+//          GoogleCloudRunV2TrafficTargetTypeArgs{...}
+type GoogleCloudRunV2TrafficTargetTypeInput interface {
 	pulumi.Input
 
-	ToGoogleCloudRunOpV2TrafficTargetTypeOutput() GoogleCloudRunOpV2TrafficTargetTypeOutput
-	ToGoogleCloudRunOpV2TrafficTargetTypeOutputWithContext(context.Context) GoogleCloudRunOpV2TrafficTargetTypeOutput
+	ToGoogleCloudRunV2TrafficTargetTypeOutput() GoogleCloudRunV2TrafficTargetTypeOutput
+	ToGoogleCloudRunV2TrafficTargetTypeOutputWithContext(context.Context) GoogleCloudRunV2TrafficTargetTypeOutput
 }
 
-var googleCloudRunOpV2TrafficTargetTypePtrType = reflect.TypeOf((**GoogleCloudRunOpV2TrafficTargetType)(nil)).Elem()
+var googleCloudRunV2TrafficTargetTypePtrType = reflect.TypeOf((**GoogleCloudRunV2TrafficTargetType)(nil)).Elem()
 
-type GoogleCloudRunOpV2TrafficTargetTypePtrInput interface {
+type GoogleCloudRunV2TrafficTargetTypePtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudRunOpV2TrafficTargetTypePtrOutput() GoogleCloudRunOpV2TrafficTargetTypePtrOutput
-	ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(context.Context) GoogleCloudRunOpV2TrafficTargetTypePtrOutput
+	ToGoogleCloudRunV2TrafficTargetTypePtrOutput() GoogleCloudRunV2TrafficTargetTypePtrOutput
+	ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput
 }
 
-type googleCloudRunOpV2TrafficTargetTypePtr string
+type googleCloudRunV2TrafficTargetTypePtr string
 
-func GoogleCloudRunOpV2TrafficTargetTypePtr(v string) GoogleCloudRunOpV2TrafficTargetTypePtrInput {
-	return (*googleCloudRunOpV2TrafficTargetTypePtr)(&v)
+func GoogleCloudRunV2TrafficTargetTypePtr(v string) GoogleCloudRunV2TrafficTargetTypePtrInput {
+	return (*googleCloudRunV2TrafficTargetTypePtr)(&v)
 }
 
-func (*googleCloudRunOpV2TrafficTargetTypePtr) ElementType() reflect.Type {
-	return googleCloudRunOpV2TrafficTargetTypePtrType
+func (*googleCloudRunV2TrafficTargetTypePtr) ElementType() reflect.Type {
+	return googleCloudRunV2TrafficTargetTypePtrType
 }
 
-func (in *googleCloudRunOpV2TrafficTargetTypePtr) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutput() GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
-	return pulumi.ToOutput(in).(GoogleCloudRunOpV2TrafficTargetTypePtrOutput)
+func (in *googleCloudRunV2TrafficTargetTypePtr) ToGoogleCloudRunV2TrafficTargetTypePtrOutput() GoogleCloudRunV2TrafficTargetTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
 }
 
-func (in *googleCloudRunOpV2TrafficTargetTypePtr) ToGoogleCloudRunOpV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2TrafficTargetTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunOpV2TrafficTargetTypePtrOutput)
+func (in *googleCloudRunV2TrafficTargetTypePtr) ToGoogleCloudRunV2TrafficTargetTypePtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TrafficTargetTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2TrafficTargetTypePtrOutput)
 }
 
 // Traffic VPC egress settings.
-type GoogleCloudRunOpV2VpcAccessEgress string
+type GoogleCloudRunV2VpcAccessEgress string
 
 const (
 	// Unspecified
-	GoogleCloudRunOpV2VpcAccessEgressVpcEgressUnspecified = GoogleCloudRunOpV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED")
+	GoogleCloudRunV2VpcAccessEgressVpcEgressUnspecified = GoogleCloudRunV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED")
 	// All outbound traffic is routed through the VPC connector.
-	GoogleCloudRunOpV2VpcAccessEgressAllTraffic = GoogleCloudRunOpV2VpcAccessEgress("ALL_TRAFFIC")
+	GoogleCloudRunV2VpcAccessEgressAllTraffic = GoogleCloudRunV2VpcAccessEgress("ALL_TRAFFIC")
 	// Only private IP ranges are routed through the VPC connector.
-	GoogleCloudRunOpV2VpcAccessEgressPrivateRangesOnly = GoogleCloudRunOpV2VpcAccessEgress("PRIVATE_RANGES_ONLY")
+	GoogleCloudRunV2VpcAccessEgressPrivateRangesOnly = GoogleCloudRunV2VpcAccessEgress("PRIVATE_RANGES_ONLY")
 )
 
-func (GoogleCloudRunOpV2VpcAccessEgress) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessEgress)(nil)).Elem()
+func (GoogleCloudRunV2VpcAccessEgress) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2VpcAccessEgress)(nil)).Elem()
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToGoogleCloudRunOpV2VpcAccessEgressOutput() GoogleCloudRunOpV2VpcAccessEgressOutput {
-	return pulumi.ToOutput(e).(GoogleCloudRunOpV2VpcAccessEgressOutput)
+func (e GoogleCloudRunV2VpcAccessEgress) ToGoogleCloudRunV2VpcAccessEgressOutput() GoogleCloudRunV2VpcAccessEgressOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRunV2VpcAccessEgressOutput)
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToGoogleCloudRunOpV2VpcAccessEgressOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessEgressOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunOpV2VpcAccessEgressOutput)
+func (e GoogleCloudRunV2VpcAccessEgress) ToGoogleCloudRunV2VpcAccessEgressOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunV2VpcAccessEgressOutput)
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutput() GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
-	return e.ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(context.Background())
+func (e GoogleCloudRunV2VpcAccessEgress) ToGoogleCloudRunV2VpcAccessEgressPtrOutput() GoogleCloudRunV2VpcAccessEgressPtrOutput {
+	return e.ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(context.Background())
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
-	return GoogleCloudRunOpV2VpcAccessEgress(e).ToGoogleCloudRunOpV2VpcAccessEgressOutputWithContext(ctx).ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(ctx)
+func (e GoogleCloudRunV2VpcAccessEgress) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
+	return GoogleCloudRunV2VpcAccessEgress(e).ToGoogleCloudRunV2VpcAccessEgressOutputWithContext(ctx).ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx)
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToStringOutput() pulumi.StringOutput {
+func (e GoogleCloudRunV2VpcAccessEgress) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e GoogleCloudRunV2VpcAccessEgress) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e GoogleCloudRunV2VpcAccessEgress) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e GoogleCloudRunOpV2VpcAccessEgress) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e GoogleCloudRunV2VpcAccessEgress) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type GoogleCloudRunOpV2VpcAccessEgressOutput struct{ *pulumi.OutputState }
+type GoogleCloudRunV2VpcAccessEgressOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudRunOpV2VpcAccessEgressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessEgress)(nil)).Elem()
+func (GoogleCloudRunV2VpcAccessEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2VpcAccessEgress)(nil)).Elem()
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToGoogleCloudRunOpV2VpcAccessEgressOutput() GoogleCloudRunOpV2VpcAccessEgressOutput {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToGoogleCloudRunV2VpcAccessEgressOutput() GoogleCloudRunV2VpcAccessEgressOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToGoogleCloudRunOpV2VpcAccessEgressOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessEgressOutput {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToGoogleCloudRunV2VpcAccessEgressOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutput() GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
-	return o.ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(context.Background())
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToGoogleCloudRunV2VpcAccessEgressPtrOutput() GoogleCloudRunV2VpcAccessEgressPtrOutput {
+	return o.ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunOpV2VpcAccessEgress) *GoogleCloudRunOpV2VpcAccessEgress {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2VpcAccessEgress) *GoogleCloudRunV2VpcAccessEgress {
 		return &v
-	}).(GoogleCloudRunOpV2VpcAccessEgressPtrOutput)
+	}).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToStringOutput() pulumi.StringOutput {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunOpV2VpcAccessEgress) string {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2VpcAccessEgress) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunOpV2VpcAccessEgress) *string {
+func (o GoogleCloudRunV2VpcAccessEgressOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2VpcAccessEgress) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudRunOpV2VpcAccessEgressPtrOutput struct{ *pulumi.OutputState }
+type GoogleCloudRunV2VpcAccessEgressPtrOutput struct{ *pulumi.OutputState }
 
-func (GoogleCloudRunOpV2VpcAccessEgressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudRunOpV2VpcAccessEgress)(nil)).Elem()
+func (GoogleCloudRunV2VpcAccessEgressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2VpcAccessEgress)(nil)).Elem()
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressPtrOutput) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutput() GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
+func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToGoogleCloudRunV2VpcAccessEgressPtrOutput() GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressPtrOutput) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
+func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
 	return o
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressPtrOutput) Elem() GoogleCloudRunOpV2VpcAccessEgressOutput {
-	return o.ApplyT(func(v *GoogleCloudRunOpV2VpcAccessEgress) GoogleCloudRunOpV2VpcAccessEgress {
+func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) Elem() GoogleCloudRunV2VpcAccessEgressOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2VpcAccessEgress) GoogleCloudRunV2VpcAccessEgress {
 		if v != nil {
 			return *v
 		}
-		var ret GoogleCloudRunOpV2VpcAccessEgress
+		var ret GoogleCloudRunV2VpcAccessEgress
 		return ret
-	}).(GoogleCloudRunOpV2VpcAccessEgressOutput)
+	}).(GoogleCloudRunV2VpcAccessEgressOutput)
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o GoogleCloudRunOpV2VpcAccessEgressPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunOpV2VpcAccessEgress) *string {
+func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunV2VpcAccessEgress) *string {
 		if e == nil {
 			return nil
 		}
@@ -479,42 +479,42 @@ func (o GoogleCloudRunOpV2VpcAccessEgressPtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// GoogleCloudRunOpV2VpcAccessEgressInput is an input type that accepts GoogleCloudRunOpV2VpcAccessEgressArgs and GoogleCloudRunOpV2VpcAccessEgressOutput values.
-// You can construct a concrete instance of `GoogleCloudRunOpV2VpcAccessEgressInput` via:
+// GoogleCloudRunV2VpcAccessEgressInput is an input type that accepts GoogleCloudRunV2VpcAccessEgressArgs and GoogleCloudRunV2VpcAccessEgressOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2VpcAccessEgressInput` via:
 //
-//          GoogleCloudRunOpV2VpcAccessEgressArgs{...}
-type GoogleCloudRunOpV2VpcAccessEgressInput interface {
+//          GoogleCloudRunV2VpcAccessEgressArgs{...}
+type GoogleCloudRunV2VpcAccessEgressInput interface {
 	pulumi.Input
 
-	ToGoogleCloudRunOpV2VpcAccessEgressOutput() GoogleCloudRunOpV2VpcAccessEgressOutput
-	ToGoogleCloudRunOpV2VpcAccessEgressOutputWithContext(context.Context) GoogleCloudRunOpV2VpcAccessEgressOutput
+	ToGoogleCloudRunV2VpcAccessEgressOutput() GoogleCloudRunV2VpcAccessEgressOutput
+	ToGoogleCloudRunV2VpcAccessEgressOutputWithContext(context.Context) GoogleCloudRunV2VpcAccessEgressOutput
 }
 
-var googleCloudRunOpV2VpcAccessEgressPtrType = reflect.TypeOf((**GoogleCloudRunOpV2VpcAccessEgress)(nil)).Elem()
+var googleCloudRunV2VpcAccessEgressPtrType = reflect.TypeOf((**GoogleCloudRunV2VpcAccessEgress)(nil)).Elem()
 
-type GoogleCloudRunOpV2VpcAccessEgressPtrInput interface {
+type GoogleCloudRunV2VpcAccessEgressPtrInput interface {
 	pulumi.Input
 
-	ToGoogleCloudRunOpV2VpcAccessEgressPtrOutput() GoogleCloudRunOpV2VpcAccessEgressPtrOutput
-	ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(context.Context) GoogleCloudRunOpV2VpcAccessEgressPtrOutput
+	ToGoogleCloudRunV2VpcAccessEgressPtrOutput() GoogleCloudRunV2VpcAccessEgressPtrOutput
+	ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput
 }
 
-type googleCloudRunOpV2VpcAccessEgressPtr string
+type googleCloudRunV2VpcAccessEgressPtr string
 
-func GoogleCloudRunOpV2VpcAccessEgressPtr(v string) GoogleCloudRunOpV2VpcAccessEgressPtrInput {
-	return (*googleCloudRunOpV2VpcAccessEgressPtr)(&v)
+func GoogleCloudRunV2VpcAccessEgressPtr(v string) GoogleCloudRunV2VpcAccessEgressPtrInput {
+	return (*googleCloudRunV2VpcAccessEgressPtr)(&v)
 }
 
-func (*googleCloudRunOpV2VpcAccessEgressPtr) ElementType() reflect.Type {
-	return googleCloudRunOpV2VpcAccessEgressPtrType
+func (*googleCloudRunV2VpcAccessEgressPtr) ElementType() reflect.Type {
+	return googleCloudRunV2VpcAccessEgressPtrType
 }
 
-func (in *googleCloudRunOpV2VpcAccessEgressPtr) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutput() GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
-	return pulumi.ToOutput(in).(GoogleCloudRunOpV2VpcAccessEgressPtrOutput)
+func (in *googleCloudRunV2VpcAccessEgressPtr) ToGoogleCloudRunV2VpcAccessEgressPtrOutput() GoogleCloudRunV2VpcAccessEgressPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
 }
 
-func (in *googleCloudRunOpV2VpcAccessEgressPtr) ToGoogleCloudRunOpV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunOpV2VpcAccessEgressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunOpV2VpcAccessEgressPtrOutput)
+func (in *googleCloudRunV2VpcAccessEgressPtr) ToGoogleCloudRunV2VpcAccessEgressPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2VpcAccessEgressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2VpcAccessEgressPtrOutput)
 }
 
 // The log type that this config enables.
@@ -1039,24 +1039,24 @@ func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutputWithContext(ctx co
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrInput)(nil)).Elem(), GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetTypeInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2TrafficTargetTypePtrInput)(nil)).Elem(), GoogleCloudRunOpV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessEgressInput)(nil)).Elem(), GoogleCloudRunOpV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunOpV2VpcAccessEgressPtrInput)(nil)).Elem(), GoogleCloudRunOpV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput)(nil)).Elem(), GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput)(nil)).Elem(), GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TrafficTargetTypeInput)(nil)).Elem(), GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TrafficTargetTypePtrInput)(nil)).Elem(), GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2VpcAccessEgressInput)(nil)).Elem(), GoogleCloudRunV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2VpcAccessEgressPtrInput)(nil)).Elem(), GoogleCloudRunV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIngressInput)(nil)).Elem(), ServiceIngress("INGRESS_TRAFFIC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIngressPtrInput)(nil)).Elem(), ServiceIngress("INGRESS_TRAFFIC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLaunchStageInput)(nil)).Elem(), ServiceLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLaunchStagePtrInput)(nil)).Elem(), ServiceLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2RevisionTemplateExecutionEnvironmentPtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2TrafficTargetTypeOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2TrafficTargetTypePtrOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2VpcAccessEgressOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunOpV2VpcAccessEgressPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2VpcAccessEgressOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2VpcAccessEgressPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(ServiceIngressOutput{})

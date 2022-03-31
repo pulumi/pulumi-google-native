@@ -30,3 +30,43 @@ export const InstanceMessageCode = {
  * A code that correspond to one type of user-facing message.
  */
 export type InstanceMessageCode = (typeof InstanceMessageCode)[keyof typeof InstanceMessageCode];
+
+export const WeeklyMaintenanceWindowDay = {
+    /**
+     * The day of the week is unspecified.
+     */
+    DayOfWeekUnspecified: "DAY_OF_WEEK_UNSPECIFIED",
+    /**
+     * Monday
+     */
+    Monday: "MONDAY",
+    /**
+     * Tuesday
+     */
+    Tuesday: "TUESDAY",
+    /**
+     * Wednesday
+     */
+    Wednesday: "WEDNESDAY",
+    /**
+     * Thursday
+     */
+    Thursday: "THURSDAY",
+    /**
+     * Friday
+     */
+    Friday: "FRIDAY",
+    /**
+     * Saturday
+     */
+    Saturday: "SATURDAY",
+    /**
+     * Sunday
+     */
+    Sunday: "SUNDAY",
+} as const;
+
+/**
+ * Required. Allows to define schedule that runs specified day of the week.
+ */
+export type WeeklyMaintenanceWindowDay = (typeof WeeklyMaintenanceWindowDay)[keyof typeof WeeklyMaintenanceWindowDay];

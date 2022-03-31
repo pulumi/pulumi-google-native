@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.APIKeys.V2
     public sealed class GetKeyResult
     {
         /// <summary>
+        /// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Annotations;
+        /// <summary>
         /// A timestamp identifying the time this key was originally created.
         /// </summary>
         public readonly string CreateTime;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.APIKeys.V2
 
         [OutputConstructor]
         private GetKeyResult(
+            ImmutableDictionary<string, string> annotations,
+
             string createTime,
 
             string deleteTime,
@@ -118,6 +124,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
 
             string updateTime)
         {
+            Annotations = annotations;
             CreateTime = createTime;
             DeleteTime = deleteTime;
             DisplayName = displayName;

@@ -2392,7 +2392,7 @@ class NodeConfigDefaultsResponse(dict):
 @pulumi.output_type
 class NodeConfigResponse(dict):
     """
-    Parameters that describe the nodes in a cluster.
+    Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2473,7 +2473,7 @@ class NodeConfigResponse(dict):
                  taints: Sequence['outputs.NodeTaintResponse'],
                  workload_metadata_config: 'outputs.WorkloadMetadataConfigResponse'):
         """
-        Parameters that describe the nodes in a cluster.
+        Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
         :param Sequence['AcceleratorConfigResponse'] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Advanced features for the Compute Engine VM.
         :param str boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption

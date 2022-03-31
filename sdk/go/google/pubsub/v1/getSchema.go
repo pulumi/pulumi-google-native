@@ -31,6 +31,10 @@ type LookupSchemaResult struct {
 	Definition string `pulumi:"definition"`
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name string `pulumi:"name"`
+	// The timestamp that the revision was created.
+	RevisionCreateTime string `pulumi:"revisionCreateTime"`
+	// Immutable. The revision ID of the schema.
+	RevisionId string `pulumi:"revisionId"`
 	// The type of the schema definition.
 	Type string `pulumi:"type"`
 }
@@ -76,6 +80,16 @@ func (o LookupSchemaResultOutput) Definition() pulumi.StringOutput {
 // Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 func (o LookupSchemaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSchemaResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The timestamp that the revision was created.
+func (o LookupSchemaResultOutput) RevisionCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaResult) string { return v.RevisionCreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The revision ID of the schema.
+func (o LookupSchemaResultOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaResult) string { return v.RevisionId }).(pulumi.StringOutput)
 }
 
 // The type of the schema definition.

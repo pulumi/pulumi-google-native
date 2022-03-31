@@ -45,6 +45,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    public readonly ddosProtectionConfig!: pulumi.Output<outputs.compute.beta.SecurityPolicyDdosProtectionConfigResponse>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -78,6 +79,10 @@ export class SecurityPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly parent!: pulumi.Output<string>;
     public readonly recaptchaOptionsConfig!: pulumi.Output<outputs.compute.beta.SecurityPolicyRecaptchaOptionsConfigResponse>;
+    /**
+     * URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+     */
+    public /*out*/ readonly region!: pulumi.Output<string>;
     /**
      * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
@@ -113,6 +118,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["adaptiveProtectionConfig"] = args ? args.adaptiveProtectionConfig : undefined;
             resourceInputs["advancedOptionsConfig"] = args ? args.advancedOptionsConfig : undefined;
             resourceInputs["associations"] = args ? args.associations : undefined;
+            resourceInputs["ddosProtectionConfig"] = args ? args.ddosProtectionConfig : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -128,6 +134,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -136,6 +143,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["advancedOptionsConfig"] = undefined /*out*/;
             resourceInputs["associations"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["ddosProtectionConfig"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -145,6 +153,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["parent"] = undefined /*out*/;
             resourceInputs["recaptchaOptionsConfig"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -166,6 +175,7 @@ export interface SecurityPolicyArgs {
      * A list of associations that belong to this policy.
      */
     associations?: pulumi.Input<pulumi.Input<inputs.compute.beta.SecurityPolicyAssociationArgs>[]>;
+    ddosProtectionConfig?: pulumi.Input<inputs.compute.beta.SecurityPolicyDdosProtectionConfigArgs>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

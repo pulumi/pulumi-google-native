@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string AbortCause;
         /// <summary>
+        /// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+        /// </summary>
+        public readonly Outputs.EdgeLocationResponse DestinationEgressLocation;
+        /// <summary>
         /// The source and destination endpoints derived from the test input and used for active probing.
         /// </summary>
         public readonly Outputs.EndpointInfoResponse EndpointInfo;
@@ -53,6 +57,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         private ProbingDetailsResponse(
             string abortCause,
 
+            Outputs.EdgeLocationResponse destinationEgressLocation,
+
             Outputs.EndpointInfoResponse endpointInfo,
 
             Outputs.StatusResponse error,
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
             string verifyTime)
         {
             AbortCause = abortCause;
+            DestinationEgressLocation = destinationEgressLocation;
             EndpointInfo = endpointInfo;
             Error = error;
             ProbingLatency = probingLatency;

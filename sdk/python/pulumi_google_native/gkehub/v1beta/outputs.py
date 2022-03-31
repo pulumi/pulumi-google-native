@@ -11,6 +11,8 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AnthosObservabilityFeatureSpecResponse',
+    'AnthosObservabilityMembershipSpecResponse',
     'AppDevExperienceFeatureSpecResponse',
     'AppDevExperienceFeatureStateResponse',
     'AuditConfigResponse',
@@ -24,6 +26,108 @@ __all__ = [
     'MultiClusterIngressFeatureSpecResponse',
     'StatusResponse',
 ]
+
+@pulumi.output_type
+class AnthosObservabilityFeatureSpecResponse(dict):
+    """
+    **Anthos Observability**: Spec
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMembershipSpec":
+            suggest = "default_membership_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnthosObservabilityFeatureSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnthosObservabilityFeatureSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnthosObservabilityFeatureSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_membership_spec: 'outputs.AnthosObservabilityMembershipSpecResponse'):
+        """
+        **Anthos Observability**: Spec
+        :param 'AnthosObservabilityMembershipSpecResponse' default_membership_spec: default membership spec for unconfigured memberships
+        """
+        pulumi.set(__self__, "default_membership_spec", default_membership_spec)
+
+    @property
+    @pulumi.getter(name="defaultMembershipSpec")
+    def default_membership_spec(self) -> 'outputs.AnthosObservabilityMembershipSpecResponse':
+        """
+        default membership spec for unconfigured memberships
+        """
+        return pulumi.get(self, "default_membership_spec")
+
+
+@pulumi.output_type
+class AnthosObservabilityMembershipSpecResponse(dict):
+    """
+    **Anthosobservability**: Per-Membership Feature spec.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "doNotOptimizeMetrics":
+            suggest = "do_not_optimize_metrics"
+        elif key == "enableStackdriverOnApplications":
+            suggest = "enable_stackdriver_on_applications"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnthosObservabilityMembershipSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnthosObservabilityMembershipSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnthosObservabilityMembershipSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 do_not_optimize_metrics: bool,
+                 enable_stackdriver_on_applications: bool,
+                 version: str):
+        """
+        **Anthosobservability**: Per-Membership Feature spec.
+        :param bool do_not_optimize_metrics: use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        :param bool enable_stackdriver_on_applications: enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+        :param str version: the version of stackdriver operator used by this feature
+        """
+        pulumi.set(__self__, "do_not_optimize_metrics", do_not_optimize_metrics)
+        pulumi.set(__self__, "enable_stackdriver_on_applications", enable_stackdriver_on_applications)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="doNotOptimizeMetrics")
+    def do_not_optimize_metrics(self) -> bool:
+        """
+        use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        """
+        return pulumi.get(self, "do_not_optimize_metrics")
+
+    @property
+    @pulumi.getter(name="enableStackdriverOnApplications")
+    def enable_stackdriver_on_applications(self) -> bool:
+        """
+        enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+        """
+        return pulumi.get(self, "enable_stackdriver_on_applications")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        the version of stackdriver operator used by this feature
+        """
+        return pulumi.get(self, "version")
+
 
 @pulumi.output_type
 class AppDevExperienceFeatureSpecResponse(dict):
@@ -228,15 +332,26 @@ class CommonFeatureSpecResponse(dict):
     CommonFeatureSpec contains Hub-wide configuration information
     """
     def __init__(__self__, *,
+                 anthosobservability: 'outputs.AnthosObservabilityFeatureSpecResponse',
                  appdevexperience: 'outputs.AppDevExperienceFeatureSpecResponse',
                  multiclusteringress: 'outputs.MultiClusterIngressFeatureSpecResponse'):
         """
         CommonFeatureSpec contains Hub-wide configuration information
+        :param 'AnthosObservabilityFeatureSpecResponse' anthosobservability: Anthos Observability spec
         :param 'AppDevExperienceFeatureSpecResponse' appdevexperience: Appdevexperience specific spec.
         :param 'MultiClusterIngressFeatureSpecResponse' multiclusteringress: Multicluster Ingress-specific spec.
         """
+        pulumi.set(__self__, "anthosobservability", anthosobservability)
         pulumi.set(__self__, "appdevexperience", appdevexperience)
         pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def anthosobservability(self) -> 'outputs.AnthosObservabilityFeatureSpecResponse':
+        """
+        Anthos Observability spec
+        """
+        return pulumi.get(self, "anthosobservability")
 
     @property
     @pulumi.getter

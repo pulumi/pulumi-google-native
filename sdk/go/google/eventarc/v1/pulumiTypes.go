@@ -738,6 +738,8 @@ type Destination struct {
 	CloudRun *CloudRun `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke *GKE `pulumi:"gke"`
+	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow *string `pulumi:"workflow"`
 }
 
 // DestinationInput is an input type that accepts DestinationArgs and DestinationOutput values.
@@ -759,6 +761,8 @@ type DestinationArgs struct {
 	CloudRun CloudRunPtrInput `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEPtrInput `pulumi:"gke"`
+	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow pulumi.StringPtrInput `pulumi:"workflow"`
 }
 
 func (DestinationArgs) ElementType() reflect.Type {
@@ -803,6 +807,11 @@ func (o DestinationOutput) Gke() GKEPtrOutput {
 	return o.ApplyT(func(v Destination) *GKE { return v.Gke }).(GKEPtrOutput)
 }
 
+// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+func (o DestinationOutput) Workflow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Destination) *string { return v.Workflow }).(pulumi.StringPtrOutput)
+}
+
 // Represents a target of an invocation over HTTP.
 type DestinationResponse struct {
 	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
@@ -811,6 +820,8 @@ type DestinationResponse struct {
 	CloudRun CloudRunResponse `pulumi:"cloudRun"`
 	// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 	Gke GKEResponse `pulumi:"gke"`
+	// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+	Workflow string `pulumi:"workflow"`
 }
 
 // Represents a target of an invocation over HTTP.
@@ -841,6 +852,11 @@ func (o DestinationResponseOutput) CloudRun() CloudRunResponseOutput {
 // A GKE service capable of receiving events. The service should be running in the same project as the trigger.
 func (o DestinationResponseOutput) Gke() GKEResponseOutput {
 	return o.ApplyT(func(v DestinationResponse) GKEResponse { return v.Gke }).(GKEResponseOutput)
+}
+
+// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+func (o DestinationResponseOutput) Workflow() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationResponse) string { return v.Workflow }).(pulumi.StringOutput)
 }
 
 // Filters events based on exact matches on the CloudEvents attributes.

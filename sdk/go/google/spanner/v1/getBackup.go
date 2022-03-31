@@ -37,8 +37,12 @@ type LookupBackupResult struct {
 	EncryptionInfo EncryptionInfoResponse `pulumi:"encryptionInfo"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
 	ExpireTime string `pulumi:"expireTime"`
+	// The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
+	MaxExpireTime string `pulumi:"maxExpireTime"`
 	// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
 	Name string `pulumi:"name"`
+	// The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
+	ReferencingBackups []string `pulumi:"referencingBackups"`
 	// The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
 	ReferencingDatabases []string `pulumi:"referencingDatabases"`
 	// Size of the backup in bytes.
@@ -107,9 +111,19 @@ func (o LookupBackupResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
+// The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
+func (o LookupBackupResultOutput) MaxExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.MaxExpireTime }).(pulumi.StringOutput)
+}
+
 // Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
 func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
+func (o LookupBackupResultOutput) ReferencingBackups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupBackupResult) []string { return v.ReferencingBackups }).(pulumi.StringArrayOutput)
 }
 
 // The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.

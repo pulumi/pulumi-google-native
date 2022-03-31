@@ -2171,7 +2171,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    /// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     /// </summary>
     [EnumType]
     public readonly struct GuestOsFeatureType : IEquatable<GuestOsFeatureType>
@@ -4226,6 +4226,38 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
+    /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionSecurityPolicyType : IEquatable<RegionSecurityPolicyType>
+    {
+        private readonly string _value;
+
+        private RegionSecurityPolicyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RegionSecurityPolicyType CloudArmor { get; } = new RegionSecurityPolicyType("CLOUD_ARMOR");
+        public static RegionSecurityPolicyType CloudArmorEdge { get; } = new RegionSecurityPolicyType("CLOUD_ARMOR_EDGE");
+        public static RegionSecurityPolicyType CloudArmorNetwork { get; } = new RegionSecurityPolicyType("CLOUD_ARMOR_NETWORK");
+
+        public static bool operator ==(RegionSecurityPolicyType left, RegionSecurityPolicyType right) => left.Equals(right);
+        public static bool operator !=(RegionSecurityPolicyType left, RegionSecurityPolicyType right) => !left.Equals(right);
+
+        public static explicit operator string(RegionSecurityPolicyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionSecurityPolicyType other && Equals(other);
+        public bool Equals(RegionSecurityPolicyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
     /// </summary>
     [EnumType]
@@ -5187,6 +5219,34 @@ namespace Pulumi.GoogleNative.Compute.V1
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct SecurityPolicyDdosProtectionConfigDdosProtection : IEquatable<SecurityPolicyDdosProtectionConfigDdosProtection>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyDdosProtectionConfigDdosProtection(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyDdosProtectionConfigDdosProtection Advanced { get; } = new SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED");
+        public static SecurityPolicyDdosProtectionConfigDdosProtection Standard { get; } = new SecurityPolicyDdosProtectionConfigDdosProtection("STANDARD");
+
+        public static bool operator ==(SecurityPolicyDdosProtectionConfigDdosProtection left, SecurityPolicyDdosProtectionConfigDdosProtection right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyDdosProtectionConfigDdosProtection left, SecurityPolicyDdosProtectionConfigDdosProtection right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyDdosProtectionConfigDdosProtection value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyDdosProtectionConfigDdosProtection other && Equals(other);
+        public bool Equals(SecurityPolicyDdosProtectionConfigDdosProtection other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
     /// </summary>
@@ -5300,6 +5360,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         public static SecurityPolicyType CloudArmor { get; } = new SecurityPolicyType("CLOUD_ARMOR");
         public static SecurityPolicyType CloudArmorEdge { get; } = new SecurityPolicyType("CLOUD_ARMOR_EDGE");
+        public static SecurityPolicyType CloudArmorNetwork { get; } = new SecurityPolicyType("CLOUD_ARMOR_NETWORK");
 
         public static bool operator ==(SecurityPolicyType left, SecurityPolicyType right) => left.Equals(right);
         public static bool operator !=(SecurityPolicyType left, SecurityPolicyType right) => !left.Equals(right);

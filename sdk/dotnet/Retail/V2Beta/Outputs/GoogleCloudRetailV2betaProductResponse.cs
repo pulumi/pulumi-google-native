@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
         /// </summary>
         public readonly string Gtin;
         /// <summary>
-        /// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+        /// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2betaImageResponse> Images;
         /// <summary>

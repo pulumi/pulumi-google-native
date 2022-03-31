@@ -39,6 +39,18 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         [Input("appPackageId")]
         public Input<string>? AppPackageId { get; set; }
 
+        /// <summary>
+        /// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+        /// </summary>
+        [Input("maxDepth")]
+        public Input<int>? MaxDepth { get; set; }
+
+        /// <summary>
+        /// The max number of steps Robo can execute. Default is no limit.
+        /// </summary>
+        [Input("maxSteps")]
+        public Input<int>? MaxSteps { get; set; }
+
         [Input("roboDirectives")]
         private InputList<Inputs.RoboDirectiveArgs>? _roboDirectives;
 

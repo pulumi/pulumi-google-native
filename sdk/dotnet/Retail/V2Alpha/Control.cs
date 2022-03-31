@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<Outputs.GoogleCloudRetailV2alphaRuleResponse> Rule { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        /// </summary>
+        [Output("searchSolutionUseCase")]
+        public Output<ImmutableArray<string>> SearchSolutionUseCase { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Output("solutionTypes")]
@@ -135,6 +141,18 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         /// </summary>
         [Input("rule")]
         public Input<Inputs.GoogleCloudRetailV2alphaRuleArgs>? Rule { get; set; }
+
+        [Input("searchSolutionUseCase", required: true)]
+        private InputList<Pulumi.GoogleNative.Retail.V2Alpha.ControlSearchSolutionUseCaseItem>? _searchSolutionUseCase;
+
+        /// <summary>
+        /// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Retail.V2Alpha.ControlSearchSolutionUseCaseItem> SearchSolutionUseCase
+        {
+            get => _searchSolutionUseCase ?? (_searchSolutionUseCase = new InputList<Pulumi.GoogleNative.Retail.V2Alpha.ControlSearchSolutionUseCaseItem>());
+            set => _searchSolutionUseCase = value;
+        }
 
         [Input("solutionTypes", required: true)]
         private InputList<Pulumi.GoogleNative.Retail.V2Alpha.ControlSolutionTypesItem>? _solutionTypes;

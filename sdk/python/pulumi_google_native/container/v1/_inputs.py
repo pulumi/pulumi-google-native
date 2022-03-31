@@ -2132,7 +2132,7 @@ class NodeConfigArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['WorkloadMetadataConfigArgs']] = None):
         """
-        Parameters that describe the nodes in a cluster.
+        Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Advanced features for the Compute Engine VM.
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption

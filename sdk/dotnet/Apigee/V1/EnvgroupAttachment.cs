@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Environment { get; private set; } = null!;
 
         /// <summary>
+        /// ID of the environment group.
+        /// </summary>
+        [Output("environmentGroupId")]
+        public Output<string> EnvironmentGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the environment group attachment.
         /// </summary>
         [Output("name")]

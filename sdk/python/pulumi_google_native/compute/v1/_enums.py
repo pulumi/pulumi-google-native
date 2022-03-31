@@ -108,6 +108,7 @@ __all__ = [
     'RegionHealthCheckServiceHealthStatusAggregationPolicy',
     'RegionHealthCheckType',
     'RegionNetworkEndpointGroupNetworkEndpointType',
+    'RegionSecurityPolicyType',
     'RegionSslCertificateType',
     'RegionTargetHttpsProxyQuicOverride',
     'ReservationAffinityConsumeReservationType',
@@ -135,6 +136,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility',
     'SecurityPolicyAdvancedOptionsConfigJsonParsing',
     'SecurityPolicyAdvancedOptionsConfigLogLevel',
+    'SecurityPolicyDdosProtectionConfigDdosProtection',
     'SecurityPolicyRuleMatcherVersionedExpr',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
     'SecurityPolicyRuleRedirectOptionsType',
@@ -1133,7 +1135,7 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
 
 class GuestOsFeatureType(str, Enum):
     """
-    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     """
     FEATURE_TYPE_UNSPECIFIED = "FEATURE_TYPE_UNSPECIFIED"
     GVNIC = "GVNIC"
@@ -2013,6 +2015,15 @@ class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
 
 
+class RegionSecurityPolicyType(str, Enum):
+    """
+    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    """
+    CLOUD_ARMOR = "CLOUD_ARMOR"
+    CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
+
+
 class RegionSslCertificateType(str, Enum):
     """
     (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -2354,6 +2365,11 @@ class SecurityPolicyAdvancedOptionsConfigLogLevel(str, Enum):
     VERBOSE = "VERBOSE"
 
 
+class SecurityPolicyDdosProtectionConfigDdosProtection(str, Enum):
+    ADVANCED = "ADVANCED"
+    STANDARD = "STANDARD"
+
+
 class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
     """
     Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
@@ -2389,6 +2405,7 @@ class SecurityPolicyType(str, Enum):
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
 
 
 class ServerBindingType(str, Enum):

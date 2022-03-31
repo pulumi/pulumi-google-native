@@ -1197,6 +1197,7 @@ class AttachedDiskResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 architecture: str,
                  auto_delete: bool,
                  boot: bool,
                  device_name: str,
@@ -1218,6 +1219,7 @@ class AttachedDiskResponse(dict):
                  user_licenses: Sequence[str]):
         """
         An instance-attached disk resource.
+        :param str architecture: The architecture of the attached disk. Valid values are ARM64 or X86_64.
         :param bool auto_delete: Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
         :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         :param str device_name: Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
@@ -1238,6 +1240,7 @@ class AttachedDiskResponse(dict):
         :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT.
         :param Sequence[str] user_licenses: A list of user provided licenses. It represents a list of URLs to the license resource. Unlike regular licenses, user provided licenses can be modified after the disk is created.
         """
+        pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "boot", boot)
         pulumi.set(__self__, "device_name", device_name)
@@ -1257,6 +1260,14 @@ class AttachedDiskResponse(dict):
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_licenses", user_licenses)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The architecture of the attached disk. Valid values are ARM64 or X86_64.
+        """
+        return pulumi.get(self, "architecture")
 
     @property
     @pulumi.getter(name="autoDelete")
@@ -5771,7 +5782,7 @@ class GuestOsFeatureResponse(dict):
                  type: str):
         """
         Guest OS features.
-        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         pulumi.set(__self__, "type", type)
 
@@ -5779,7 +5790,7 @@ class GuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -10256,7 +10267,7 @@ class NetworkEndpointGroupServerlessDeploymentResponse(dict):
                  version: str):
         """
         Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
-        :param str platform: The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        :param str platform: The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         :param str resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
         :param str url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         :param str version: The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
@@ -10270,7 +10281,7 @@ class NetworkEndpointGroupServerlessDeploymentResponse(dict):
     @pulumi.getter
     def platform(self) -> str:
         """
-        The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         """
         return pulumi.get(self, "platform")
 
@@ -10366,7 +10377,7 @@ class NetworkInterfaceResponse(dict):
         :param str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.
         :param str ipv6_address: An IPv6 internal network address for this network interface.
         :param str kind: Type of the resource. Always compute#networkInterface for network interfaces.
-        :param str name: The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+        :param str name: The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
         :param str network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param str network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param str nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -10460,7 +10471,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+        The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
         """
         return pulumi.get(self, "name")
 
@@ -10611,6 +10622,8 @@ class NetworkPeeringResponse(dict):
             suggest = "import_subnet_routes_with_public_ip"
         elif key == "peerMtu":
             suggest = "peer_mtu"
+        elif key == "stackType":
+            suggest = "stack_type"
         elif key == "stateDetails":
             suggest = "state_details"
 
@@ -10636,6 +10649,7 @@ class NetworkPeeringResponse(dict):
                  name: str,
                  network: str,
                  peer_mtu: int,
+                 stack_type: str,
                  state: str,
                  state_details: str):
         """
@@ -10650,6 +10664,7 @@ class NetworkPeeringResponse(dict):
         :param str name: Name of this peering. Provided by the client when the peering is created. The name must comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all the following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param str network: The URL of the peer network. It can be either full URL or partial URL. The peer network may belong to a different project. If the partial URL does not contain project, it is assumed that the peer network is in the same project as the current network.
         :param int peer_mtu: Maximum Transmission Unit in bytes.
+        :param str stack_type: Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
         :param str state: State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
         :param str state_details: Details about the current state of the peering.
         """
@@ -10663,6 +10678,7 @@ class NetworkPeeringResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "peer_mtu", peer_mtu)
+        pulumi.set(__self__, "stack_type", stack_type)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_details", state_details)
 
@@ -10745,6 +10761,14 @@ class NetworkPeeringResponse(dict):
         Maximum Transmission Unit in bytes.
         """
         return pulumi.get(self, "peer_mtu")
+
+    @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> str:
+        """
+        Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+        """
+        return pulumi.get(self, "stack_type")
 
     @property
     @pulumi.getter
@@ -13671,6 +13695,8 @@ class ResourceStatusSchedulingResponse(dict):
         suggest = None
         if key == "availabilityDomain":
             suggest = "availability_domain"
+        elif key == "terminationTimestamp":
+            suggest = "termination_timestamp"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ResourceStatusSchedulingResponse. Access the value via the '{suggest}' property getter instead.")
@@ -13684,11 +13710,14 @@ class ResourceStatusSchedulingResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 availability_domain: int):
+                 availability_domain: int,
+                 termination_timestamp: str):
         """
         :param int availability_domain: Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
+        :param str termination_timestamp: Time in future when the instance will be terminated in RFC3339 text format.
         """
         pulumi.set(__self__, "availability_domain", availability_domain)
+        pulumi.set(__self__, "termination_timestamp", termination_timestamp)
 
     @property
     @pulumi.getter(name="availabilityDomain")
@@ -13697,6 +13726,14 @@ class ResourceStatusSchedulingResponse(dict):
         Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
         """
         return pulumi.get(self, "availability_domain")
+
+    @property
+    @pulumi.getter(name="terminationTimestamp")
+    def termination_timestamp(self) -> str:
+        """
+        Time in future when the instance will be terminated in RFC3339 text format.
+        """
+        return pulumi.get(self, "termination_timestamp")
 
 
 @pulumi.output_type

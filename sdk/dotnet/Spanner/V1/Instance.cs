@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string> Config { get; private set; } = null!;
 
         /// <summary>
+        /// The time at which the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         /// </summary>
         [Output("displayName")]
@@ -62,6 +68,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The time at which the instance was most recently updated.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>

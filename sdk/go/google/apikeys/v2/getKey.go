@@ -27,6 +27,8 @@ type LookupKeyArgs struct {
 }
 
 type LookupKeyResult struct {
+	// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	Annotations map[string]string `pulumi:"annotations"`
 	// A timestamp identifying the time this key was originally created.
 	CreateTime string `pulumi:"createTime"`
 	// A timestamp when this key was deleted. If the resource is not deleted, this must be empty.
@@ -78,6 +80,11 @@ func (o LookupKeyResultOutput) ToLookupKeyResultOutput() LookupKeyResultOutput {
 
 func (o LookupKeyResultOutput) ToLookupKeyResultOutputWithContext(ctx context.Context) LookupKeyResultOutput {
 	return o
+}
+
+// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+func (o LookupKeyResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupKeyResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // A timestamp identifying the time this key was originally created.

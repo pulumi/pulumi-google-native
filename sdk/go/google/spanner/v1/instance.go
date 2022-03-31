@@ -17,6 +17,8 @@ type Instance struct {
 
 	// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
 	Config pulumi.StringOutput `pulumi:"config"`
+	// The time at which the instance was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Deprecated. This field is not populated.
@@ -33,6 +35,8 @@ type Instance struct {
 	ProcessingUnits pulumi.IntOutput `pulumi:"processingUnits"`
 	// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The time at which the instance was most recently updated.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.

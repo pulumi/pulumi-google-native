@@ -160,6 +160,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SourceInstantSnapshotId;
         /// <summary>
+        /// URL of the resource policy which created this scheduled snapshot.
+        /// </summary>
+        public readonly string SourceSnapshotSchedulePolicy;
+        /// <summary>
+        /// ID of the resource policy which created this scheduled snapshot.
+        /// </summary>
+        public readonly string SourceSnapshotSchedulePolicyId;
+        /// <summary>
         /// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
         /// </summary>
         public readonly string Status;
@@ -234,6 +242,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string sourceInstantSnapshotId,
 
+            string sourceSnapshotSchedulePolicy,
+
+            string sourceSnapshotSchedulePolicyId,
+
             string status,
 
             string storageBytes,
@@ -270,6 +282,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SourceDiskId = sourceDiskId;
             SourceInstantSnapshot = sourceInstantSnapshot;
             SourceInstantSnapshotId = sourceInstantSnapshotId;
+            SourceSnapshotSchedulePolicy = sourceSnapshotSchedulePolicy;
+            SourceSnapshotSchedulePolicyId = sourceSnapshotSchedulePolicyId;
             Status = status;
             StorageBytes = storageBytes;
             StorageBytesStatus = storageBytesStatus;

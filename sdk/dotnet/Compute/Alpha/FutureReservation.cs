@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Type of the resource. Always compute#futureReservation for future reservations.
+        /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
@@ -134,9 +137,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
 
         /// <summary>
         /// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

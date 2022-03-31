@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Domains.V1.Inputs
         }
 
         /// <summary>
-        /// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        /// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See https://cldr.unicode.org/ and https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
         /// </summary>
         [Input("regionCode", required: true)]
         public Input<string> RegionCode { get; set; } = null!;

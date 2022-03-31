@@ -10,6 +10,8 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AnthosObservabilityFeatureSpecArgs',
+    'AnthosObservabilityMembershipSpecArgs',
     'AppDevExperienceFeatureSpecArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
@@ -18,6 +20,86 @@ __all__ = [
     'ExprArgs',
     'MultiClusterIngressFeatureSpecArgs',
 ]
+
+@pulumi.input_type
+class AnthosObservabilityFeatureSpecArgs:
+    def __init__(__self__, *,
+                 default_membership_spec: Optional[pulumi.Input['AnthosObservabilityMembershipSpecArgs']] = None):
+        """
+        **Anthos Observability**: Spec
+        :param pulumi.Input['AnthosObservabilityMembershipSpecArgs'] default_membership_spec: default membership spec for unconfigured memberships
+        """
+        if default_membership_spec is not None:
+            pulumi.set(__self__, "default_membership_spec", default_membership_spec)
+
+    @property
+    @pulumi.getter(name="defaultMembershipSpec")
+    def default_membership_spec(self) -> Optional[pulumi.Input['AnthosObservabilityMembershipSpecArgs']]:
+        """
+        default membership spec for unconfigured memberships
+        """
+        return pulumi.get(self, "default_membership_spec")
+
+    @default_membership_spec.setter
+    def default_membership_spec(self, value: Optional[pulumi.Input['AnthosObservabilityMembershipSpecArgs']]):
+        pulumi.set(self, "default_membership_spec", value)
+
+
+@pulumi.input_type
+class AnthosObservabilityMembershipSpecArgs:
+    def __init__(__self__, *,
+                 do_not_optimize_metrics: Optional[pulumi.Input[bool]] = None,
+                 enable_stackdriver_on_applications: Optional[pulumi.Input[bool]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        **Anthosobservability**: Per-Membership Feature spec.
+        :param pulumi.Input[bool] do_not_optimize_metrics: use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        :param pulumi.Input[bool] enable_stackdriver_on_applications: enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+        :param pulumi.Input[str] version: the version of stackdriver operator used by this feature
+        """
+        if do_not_optimize_metrics is not None:
+            pulumi.set(__self__, "do_not_optimize_metrics", do_not_optimize_metrics)
+        if enable_stackdriver_on_applications is not None:
+            pulumi.set(__self__, "enable_stackdriver_on_applications", enable_stackdriver_on_applications)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="doNotOptimizeMetrics")
+    def do_not_optimize_metrics(self) -> Optional[pulumi.Input[bool]]:
+        """
+        use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        """
+        return pulumi.get(self, "do_not_optimize_metrics")
+
+    @do_not_optimize_metrics.setter
+    def do_not_optimize_metrics(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "do_not_optimize_metrics", value)
+
+    @property
+    @pulumi.getter(name="enableStackdriverOnApplications")
+    def enable_stackdriver_on_applications(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+        """
+        return pulumi.get(self, "enable_stackdriver_on_applications")
+
+    @enable_stackdriver_on_applications.setter
+    def enable_stackdriver_on_applications(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_stackdriver_on_applications", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        the version of stackdriver operator used by this feature
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
 
 @pulumi.input_type
 class AppDevExperienceFeatureSpecArgs:
@@ -167,17 +249,33 @@ class BindingArgs:
 @pulumi.input_type
 class CommonFeatureSpecArgs:
     def __init__(__self__, *,
+                 anthosobservability: Optional[pulumi.Input['AnthosObservabilityFeatureSpecArgs']] = None,
                  appdevexperience: Optional[pulumi.Input['AppDevExperienceFeatureSpecArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
         """
         CommonFeatureSpec contains Hub-wide configuration information
+        :param pulumi.Input['AnthosObservabilityFeatureSpecArgs'] anthosobservability: Anthos Observability spec
         :param pulumi.Input['AppDevExperienceFeatureSpecArgs'] appdevexperience: Appdevexperience specific spec.
         :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
         """
+        if anthosobservability is not None:
+            pulumi.set(__self__, "anthosobservability", anthosobservability)
         if appdevexperience is not None:
             pulumi.set(__self__, "appdevexperience", appdevexperience)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def anthosobservability(self) -> Optional[pulumi.Input['AnthosObservabilityFeatureSpecArgs']]:
+        """
+        Anthos Observability spec
+        """
+        return pulumi.get(self, "anthosobservability")
+
+    @anthosobservability.setter
+    def anthosobservability(self, value: Optional[pulumi.Input['AnthosObservabilityFeatureSpecArgs']]):
+        pulumi.set(self, "anthosobservability", value)
 
     @property
     @pulumi.getter

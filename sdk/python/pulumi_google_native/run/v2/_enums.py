@@ -5,16 +5,16 @@
 from enum import Enum
 
 __all__ = [
-    'GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment',
-    'GoogleCloudRunOpV2TrafficTargetType',
-    'GoogleCloudRunOpV2VpcAccessEgress',
+    'GoogleCloudRunV2RevisionTemplateExecutionEnvironment',
+    'GoogleCloudRunV2TrafficTargetType',
+    'GoogleCloudRunV2VpcAccessEgress',
     'GoogleIamV1AuditLogConfigLogType',
     'ServiceIngress',
     'ServiceLaunchStage',
 ]
 
 
-class GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment(str, Enum):
+class GoogleCloudRunV2RevisionTemplateExecutionEnvironment(str, Enum):
     """
     The sandbox environment to host this Revision.
     """
@@ -32,7 +32,7 @@ class GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment(str, Enum):
     """
 
 
-class GoogleCloudRunOpV2TrafficTargetType(str, Enum):
+class GoogleCloudRunV2TrafficTargetType(str, Enum):
     """
     The allocation type for this traffic target.
     """
@@ -50,7 +50,7 @@ class GoogleCloudRunOpV2TrafficTargetType(str, Enum):
     """
 
 
-class GoogleCloudRunOpV2VpcAccessEgress(str, Enum):
+class GoogleCloudRunV2VpcAccessEgress(str, Enum):
     """
     Traffic VPC egress settings.
     """

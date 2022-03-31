@@ -17,13 +17,10 @@ if typing.TYPE_CHECKING:
     v1beta = __v1beta
     import pulumi_google_native.gkehub.v1beta1 as __v1beta1
     v1beta1 = __v1beta1
-    import pulumi_google_native.gkehub.v2alpha as __v2alpha
-    v2alpha = __v2alpha
 else:
     v1 = _utilities.lazy_import('pulumi_google_native.gkehub.v1')
     v1alpha = _utilities.lazy_import('pulumi_google_native.gkehub.v1alpha')
     v1alpha2 = _utilities.lazy_import('pulumi_google_native.gkehub.v1alpha2')
     v1beta = _utilities.lazy_import('pulumi_google_native.gkehub.v1beta')
     v1beta1 = _utilities.lazy_import('pulumi_google_native.gkehub.v1beta1')
-    v2alpha = _utilities.lazy_import('pulumi_google_native.gkehub.v2alpha')
 

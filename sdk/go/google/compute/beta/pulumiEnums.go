@@ -9684,7 +9684,7 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
@@ -16592,9 +16592,10 @@ func (in *nodeTemplateCpuOvercommitTypePtr) ToNodeTemplateCpuOvercommitTypePtrOu
 type OrganizationSecurityPolicyType string
 
 const (
-	OrganizationSecurityPolicyTypeCloudArmor     = OrganizationSecurityPolicyType("CLOUD_ARMOR")
-	OrganizationSecurityPolicyTypeCloudArmorEdge = OrganizationSecurityPolicyType("CLOUD_ARMOR_EDGE")
-	OrganizationSecurityPolicyTypeFirewall       = OrganizationSecurityPolicyType("FIREWALL")
+	OrganizationSecurityPolicyTypeCloudArmor        = OrganizationSecurityPolicyType("CLOUD_ARMOR")
+	OrganizationSecurityPolicyTypeCloudArmorEdge    = OrganizationSecurityPolicyType("CLOUD_ARMOR_EDGE")
+	OrganizationSecurityPolicyTypeCloudArmorNetwork = OrganizationSecurityPolicyType("CLOUD_ARMOR_NETWORK")
+	OrganizationSecurityPolicyTypeFirewall          = OrganizationSecurityPolicyType("FIREWALL")
 )
 
 func (OrganizationSecurityPolicyType) ElementType() reflect.Type {
@@ -19820,6 +19821,173 @@ func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToRegionNetworkEndpo
 
 func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToRegionNetworkEndpointGroupNetworkEndpointTypePtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput)
+}
+
+// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+type RegionSecurityPolicyType string
+
+const (
+	RegionSecurityPolicyTypeCloudArmor        = RegionSecurityPolicyType("CLOUD_ARMOR")
+	RegionSecurityPolicyTypeCloudArmorEdge    = RegionSecurityPolicyType("CLOUD_ARMOR_EDGE")
+	RegionSecurityPolicyTypeCloudArmorNetwork = RegionSecurityPolicyType("CLOUD_ARMOR_NETWORK")
+	RegionSecurityPolicyTypeFirewall          = RegionSecurityPolicyType("FIREWALL")
+)
+
+func (RegionSecurityPolicyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSecurityPolicyType)(nil)).Elem()
+}
+
+func (e RegionSecurityPolicyType) ToRegionSecurityPolicyTypeOutput() RegionSecurityPolicyTypeOutput {
+	return pulumi.ToOutput(e).(RegionSecurityPolicyTypeOutput)
+}
+
+func (e RegionSecurityPolicyType) ToRegionSecurityPolicyTypeOutputWithContext(ctx context.Context) RegionSecurityPolicyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionSecurityPolicyTypeOutput)
+}
+
+func (e RegionSecurityPolicyType) ToRegionSecurityPolicyTypePtrOutput() RegionSecurityPolicyTypePtrOutput {
+	return e.ToRegionSecurityPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (e RegionSecurityPolicyType) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
+	return RegionSecurityPolicyType(e).ToRegionSecurityPolicyTypeOutputWithContext(ctx).ToRegionSecurityPolicyTypePtrOutputWithContext(ctx)
+}
+
+func (e RegionSecurityPolicyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSecurityPolicyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSecurityPolicyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionSecurityPolicyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionSecurityPolicyTypeOutput struct{ *pulumi.OutputState }
+
+func (RegionSecurityPolicyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSecurityPolicyType)(nil)).Elem()
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToRegionSecurityPolicyTypeOutput() RegionSecurityPolicyTypeOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToRegionSecurityPolicyTypeOutputWithContext(ctx context.Context) RegionSecurityPolicyTypeOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToRegionSecurityPolicyTypePtrOutput() RegionSecurityPolicyTypePtrOutput {
+	return o.ToRegionSecurityPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionSecurityPolicyType) *RegionSecurityPolicyType {
+		return &v
+	}).(RegionSecurityPolicyTypePtrOutput)
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSecurityPolicyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSecurityPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSecurityPolicyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionSecurityPolicyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionSecurityPolicyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSecurityPolicyType)(nil)).Elem()
+}
+
+func (o RegionSecurityPolicyTypePtrOutput) ToRegionSecurityPolicyTypePtrOutput() RegionSecurityPolicyTypePtrOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyTypePtrOutput) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
+	return o
+}
+
+func (o RegionSecurityPolicyTypePtrOutput) Elem() RegionSecurityPolicyTypeOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicyType) RegionSecurityPolicyType {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSecurityPolicyType
+		return ret
+	}).(RegionSecurityPolicyTypeOutput)
+}
+
+func (o RegionSecurityPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSecurityPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionSecurityPolicyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionSecurityPolicyTypeInput is an input type that accepts RegionSecurityPolicyTypeArgs and RegionSecurityPolicyTypeOutput values.
+// You can construct a concrete instance of `RegionSecurityPolicyTypeInput` via:
+//
+//          RegionSecurityPolicyTypeArgs{...}
+type RegionSecurityPolicyTypeInput interface {
+	pulumi.Input
+
+	ToRegionSecurityPolicyTypeOutput() RegionSecurityPolicyTypeOutput
+	ToRegionSecurityPolicyTypeOutputWithContext(context.Context) RegionSecurityPolicyTypeOutput
+}
+
+var regionSecurityPolicyTypePtrType = reflect.TypeOf((**RegionSecurityPolicyType)(nil)).Elem()
+
+type RegionSecurityPolicyTypePtrInput interface {
+	pulumi.Input
+
+	ToRegionSecurityPolicyTypePtrOutput() RegionSecurityPolicyTypePtrOutput
+	ToRegionSecurityPolicyTypePtrOutputWithContext(context.Context) RegionSecurityPolicyTypePtrOutput
+}
+
+type regionSecurityPolicyTypePtr string
+
+func RegionSecurityPolicyTypePtr(v string) RegionSecurityPolicyTypePtrInput {
+	return (*regionSecurityPolicyTypePtr)(&v)
+}
+
+func (*regionSecurityPolicyTypePtr) ElementType() reflect.Type {
+	return regionSecurityPolicyTypePtrType
+}
+
+func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutput() RegionSecurityPolicyTypePtrOutput {
+	return pulumi.ToOutput(in).(RegionSecurityPolicyTypePtrOutput)
+}
+
+func (in *regionSecurityPolicyTypePtr) ToRegionSecurityPolicyTypePtrOutputWithContext(ctx context.Context) RegionSecurityPolicyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionSecurityPolicyTypePtrOutput)
 }
 
 // (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -24636,6 +24804,170 @@ func (in *securityPolicyAdvancedOptionsConfigLogLevelPtr) ToSecurityPolicyAdvanc
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
 }
 
+type SecurityPolicyDdosProtectionConfigDdosProtection string
+
+const (
+	SecurityPolicyDdosProtectionConfigDdosProtectionAdvanced = SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED")
+	SecurityPolicyDdosProtectionConfigDdosProtectionStandard = SecurityPolicyDdosProtectionConfigDdosProtection("STANDARD")
+)
+
+func (SecurityPolicyDdosProtectionConfigDdosProtection) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfigDdosProtection)(nil)).Elem()
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToSecurityPolicyDdosProtectionConfigDdosProtectionOutput() SecurityPolicyDdosProtectionConfigDdosProtectionOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyDdosProtectionConfigDdosProtectionOutput)
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToSecurityPolicyDdosProtectionConfigDdosProtectionOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyDdosProtectionConfigDdosProtectionOutput)
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return e.ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return SecurityPolicyDdosProtectionConfigDdosProtection(e).ToSecurityPolicyDdosProtectionConfigDdosProtectionOutputWithContext(ctx).ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyDdosProtectionConfigDdosProtection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyDdosProtectionConfigDdosProtectionOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfigDdosProtection)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionOutput() SecurityPolicyDdosProtectionConfigDdosProtectionOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o.ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyDdosProtectionConfigDdosProtection) *SecurityPolicyDdosProtectionConfigDdosProtection {
+		return &v
+	}).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyDdosProtectionConfigDdosProtection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyDdosProtectionConfigDdosProtection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyDdosProtectionConfigDdosProtection)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) Elem() SecurityPolicyDdosProtectionConfigDdosProtectionOutput {
+	return o.ApplyT(func(v *SecurityPolicyDdosProtectionConfigDdosProtection) SecurityPolicyDdosProtectionConfigDdosProtection {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyDdosProtectionConfigDdosProtection
+		return ret
+	}).(SecurityPolicyDdosProtectionConfigDdosProtectionOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyDdosProtectionConfigDdosProtection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyDdosProtectionConfigDdosProtectionInput is an input type that accepts SecurityPolicyDdosProtectionConfigDdosProtectionArgs and SecurityPolicyDdosProtectionConfigDdosProtectionOutput values.
+// You can construct a concrete instance of `SecurityPolicyDdosProtectionConfigDdosProtectionInput` via:
+//
+//          SecurityPolicyDdosProtectionConfigDdosProtectionArgs{...}
+type SecurityPolicyDdosProtectionConfigDdosProtectionInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyDdosProtectionConfigDdosProtectionOutput() SecurityPolicyDdosProtectionConfigDdosProtectionOutput
+	ToSecurityPolicyDdosProtectionConfigDdosProtectionOutputWithContext(context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionOutput
+}
+
+var securityPolicyDdosProtectionConfigDdosProtectionPtrType = reflect.TypeOf((**SecurityPolicyDdosProtectionConfigDdosProtection)(nil)).Elem()
+
+type SecurityPolicyDdosProtectionConfigDdosProtectionPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput
+	ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput
+}
+
+type securityPolicyDdosProtectionConfigDdosProtectionPtr string
+
+func SecurityPolicyDdosProtectionConfigDdosProtectionPtr(v string) SecurityPolicyDdosProtectionConfigDdosProtectionPtrInput {
+	return (*securityPolicyDdosProtectionConfigDdosProtectionPtr)(&v)
+}
+
+func (*securityPolicyDdosProtectionConfigDdosProtectionPtr) ElementType() reflect.Type {
+	return securityPolicyDdosProtectionConfigDdosProtectionPtrType
+}
+
+func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+func (in *securityPolicyDdosProtectionConfigDdosProtectionPtr) ToSecurityPolicyDdosProtectionConfigDdosProtectionPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
 // The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
 type SecurityPolicyRuleDirection string
 
@@ -25305,9 +25637,10 @@ func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirect
 type SecurityPolicyType string
 
 const (
-	SecurityPolicyTypeCloudArmor     = SecurityPolicyType("CLOUD_ARMOR")
-	SecurityPolicyTypeCloudArmorEdge = SecurityPolicyType("CLOUD_ARMOR_EDGE")
-	SecurityPolicyTypeFirewall       = SecurityPolicyType("FIREWALL")
+	SecurityPolicyTypeCloudArmor        = SecurityPolicyType("CLOUD_ARMOR")
+	SecurityPolicyTypeCloudArmorEdge    = SecurityPolicyType("CLOUD_ARMOR_EDGE")
+	SecurityPolicyTypeCloudArmorNetwork = SecurityPolicyType("CLOUD_ARMOR_NETWORK")
+	SecurityPolicyTypeFirewall          = SecurityPolicyType("FIREWALL")
 )
 
 func (SecurityPolicyType) ElementType() reflect.Type {
@@ -29402,6 +29735,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionInstanceGroupManagerFailoverActionPtrInput)(nil)).Elem(), RegionInstanceGroupManagerFailoverAction("NO_FAILOVER"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypeInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypePtrInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypeInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypePtrInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverrideInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
@@ -29461,6 +29796,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonParsing("DISABLED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigLogLevelInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigLogLevel("NORMAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigLogLevel("NORMAL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigDdosProtectionInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigDdosProtectionPtrInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleDirectionInput)(nil)).Elem(), SecurityPolicyRuleDirection("EGRESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleDirectionPtrInput)(nil)).Elem(), SecurityPolicyRuleDirection("EGRESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("FIREWALL"))
@@ -29749,6 +30086,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerFailoverActionPtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput{})
+	pulumi.RegisterOutputType(RegionSecurityPolicyTypeOutput{})
+	pulumi.RegisterOutputType(RegionSecurityPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypeOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverrideOutput{})
@@ -29808,6 +30147,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigLogLevelOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigDdosProtectionOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleDirectionOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleDirectionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprOutput{})

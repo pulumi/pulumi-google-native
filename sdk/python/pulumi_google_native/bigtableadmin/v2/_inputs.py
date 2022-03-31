@@ -148,7 +148,7 @@ class AutoscalingTargetsArgs:
                  cpu_utilization_percent: Optional[pulumi.Input[int]] = None):
         """
         The Autoscaling targets for a Cluster. These determine the recommended nodes.
-        :param pulumi.Input[int] cpu_utilization_percent: The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+        :param pulumi.Input[int] cpu_utilization_percent: The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
         """
         if cpu_utilization_percent is not None:
             pulumi.set(__self__, "cpu_utilization_percent", cpu_utilization_percent)
@@ -157,7 +157,7 @@ class AutoscalingTargetsArgs:
     @pulumi.getter(name="cpuUtilizationPercent")
     def cpu_utilization_percent(self) -> Optional[pulumi.Input[int]]:
         """
-        The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80.
+        The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
         """
         return pulumi.get(self, "cpu_utilization_percent")
 

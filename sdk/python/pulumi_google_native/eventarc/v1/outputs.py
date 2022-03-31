@@ -240,16 +240,19 @@ class DestinationResponse(dict):
     def __init__(__self__, *,
                  cloud_function: str,
                  cloud_run: 'outputs.CloudRunResponse',
-                 gke: 'outputs.GKEResponse'):
+                 gke: 'outputs.GKEResponse',
+                 workflow: str):
         """
         Represents a target of an invocation over HTTP.
         :param str cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
         :param 'CloudRunResponse' cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param 'GKEResponse' gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param str workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_run", cloud_run)
         pulumi.set(__self__, "gke", gke)
+        pulumi.set(__self__, "workflow", workflow)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -274,6 +277,14 @@ class DestinationResponse(dict):
         A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         """
         return pulumi.get(self, "gke")
+
+    @property
+    @pulumi.getter
+    def workflow(self) -> str:
+        """
+        The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        """
+        return pulumi.get(self, "workflow")
 
 
 @pulumi.output_type

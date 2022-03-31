@@ -73,6 +73,9 @@ class GetNetworkEdgeSecurityServiceResult:
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        [Output only] Type of the resource. Always compute#networkEdgeSecurityService for NetworkEdgeSecurityServices
+        """
         return pulumi.get(self, "kind")
 
     @property

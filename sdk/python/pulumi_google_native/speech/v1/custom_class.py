@@ -22,7 +22,7 @@ class CustomClassArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CustomClass resource.
-        :param pulumi.Input[str] custom_class_id: The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[str] custom_class_id: The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
         :param pulumi.Input[Sequence[pulumi.Input['ClassItemArgs']]] items: A collection of class items.
         :param pulumi.Input[str] name: The resource name of the custom class.
         """
@@ -40,7 +40,7 @@ class CustomClassArgs:
     @pulumi.getter(name="customClassId")
     def custom_class_id(self) -> pulumi.Input[str]:
         """
-        The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
         """
         return pulumi.get(self, "custom_class_id")
 
@@ -107,7 +107,7 @@ class CustomClass(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_class_id: The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[str] custom_class_id: The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClassItemArgs']]]] items: A collection of class items.
         :param pulumi.Input[str] name: The resource name of the custom class.
         """

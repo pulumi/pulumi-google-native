@@ -407,7 +407,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="suspensionReasons")
     def suspension_reasons(self) -> pulumi.Output[Sequence[str]]:
         """
-        field indicates all the reasons the instance is in "SUSPENDED" state.
+        Field indicates all the reasons the instance is in "SUSPENDED" state.
         """
         return pulumi.get(self, "suspension_reasons")
 

@@ -15,6 +15,8 @@ import (
 type Key struct {
 	pulumi.CustomResourceState
 
+	// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// A timestamp identifying the time this key was originally created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A timestamp when this key was deleted. If the resource is not deleted, this must be empty.
@@ -74,6 +76,8 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
+	// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	Annotations map[string]string `pulumi:"annotations"`
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
@@ -86,6 +90,8 @@ type keyArgs struct {
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
+	// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	Annotations pulumi.StringMapInput
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName pulumi.StringPtrInput
 	// User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.

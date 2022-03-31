@@ -112,6 +112,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    public readonly noAutomateDnsZone!: pulumi.Output<boolean>;
+    /**
      * This field can be used only if: - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or SCTP. Packets addressed to ports in the specified range will be forwarded to target or backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding target have constraints on the acceptable ports. For more information, see [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
      */
     public readonly portRange!: pulumi.Output<string>;
@@ -187,6 +191,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkTier"] = args ? args.networkTier : undefined;
+            resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
             resourceInputs["ports"] = args ? args.ports : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -226,6 +231,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkTier"] = undefined /*out*/;
+            resourceInputs["noAutomateDnsZone"] = undefined /*out*/;
             resourceInputs["portRange"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
@@ -309,6 +315,10 @@ export interface ForwardingRuleArgs {
      * This signifies the networking tier used for configuring this load balancer and can only take the following values: PREMIUM, STANDARD. For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid value is PREMIUM. If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be equal to the networkTier of the Address.
      */
     networkTier?: pulumi.Input<enums.compute.alpha.ForwardingRuleNetworkTier>;
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    noAutomateDnsZone?: pulumi.Input<boolean>;
     /**
      * This field can be used only if: - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or SCTP. Packets addressed to ports in the specified range will be forwarded to target or backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding target have constraints on the acceptable ports. For more information, see [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
      */

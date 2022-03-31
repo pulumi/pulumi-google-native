@@ -32,6 +32,10 @@ export interface GetInstanceResult {
      */
     readonly config: string;
     /**
+     * The time at which the instance was created.
+     */
+    readonly createTime: string;
+    /**
      * The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
      */
     readonly displayName: string;
@@ -61,6 +65,10 @@ export interface GetInstanceResult {
      * The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
      */
     readonly state: string;
+    /**
+     * The time at which the instance was most recently updated.
+     */
+    readonly updateTime: string;
 }
 
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {

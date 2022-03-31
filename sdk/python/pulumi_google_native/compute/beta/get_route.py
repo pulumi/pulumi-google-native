@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_type=None, self_link=None, tags=None, warnings=None):
+    def __init__(__self__, as_paths=None, creation_timestamp=None, description=None, dest_range=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, tags=None, warnings=None):
         if as_paths and not isinstance(as_paths, list):
             raise TypeError("Expected argument 'as_paths' to be a list")
         pulumi.set(__self__, "as_paths", as_paths)
@@ -67,6 +67,9 @@ class GetRouteResult:
         if priority and not isinstance(priority, int):
             raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
+        if route_status and not isinstance(route_status, str):
+            raise TypeError("Expected argument 'route_status' to be a str")
+        pulumi.set(__self__, "route_status", route_status)
         if route_type and not isinstance(route_type, str):
             raise TypeError("Expected argument 'route_type' to be a str")
         pulumi.set(__self__, "route_type", route_type)
@@ -209,6 +212,14 @@ class GetRouteResult:
         return pulumi.get(self, "priority")
 
     @property
+    @pulumi.getter(name="routeStatus")
+    def route_status(self) -> str:
+        """
+        [Output only] The status of the route.
+        """
+        return pulumi.get(self, "route_status")
+
+    @property
     @pulumi.getter(name="routeType")
     def route_type(self) -> str:
         """
@@ -263,6 +274,7 @@ class AwaitableGetRouteResult(GetRouteResult):
             next_hop_peering=self.next_hop_peering,
             next_hop_vpn_tunnel=self.next_hop_vpn_tunnel,
             priority=self.priority,
+            route_status=self.route_status,
             route_type=self.route_type,
             self_link=self.self_link,
             tags=self.tags,
@@ -301,6 +313,7 @@ def get_route(project: Optional[str] = None,
         next_hop_peering=__ret__.next_hop_peering,
         next_hop_vpn_tunnel=__ret__.next_hop_vpn_tunnel,
         priority=__ret__.priority,
+        route_status=__ret__.route_status,
         route_type=__ret__.route_type,
         self_link=__ret__.self_link,
         tags=__ret__.tags,

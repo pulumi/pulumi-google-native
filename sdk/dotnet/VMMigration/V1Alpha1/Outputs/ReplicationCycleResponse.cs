@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
+        /// The cycle's steps list representing its progress.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.CycleStepResponse> Steps;
+        /// <summary>
         /// The accumulated duration the replication cycle was paused.
         /// </summary>
         public readonly string TotalPauseDuration;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Outputs
 
             string startTime,
 
+            ImmutableArray<Outputs.CycleStepResponse> steps,
+
             string totalPauseDuration)
         {
             Progress = progress;
             ProgressPercent = progressPercent;
             StartTime = startTime;
+            Steps = steps;
             TotalPauseDuration = totalPauseDuration;
         }
     }

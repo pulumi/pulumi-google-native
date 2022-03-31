@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationSecurityPolicyResult:
-    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, creation_timestamp=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, recaptcha_options_config=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
+    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, associations=None, creation_timestamp=None, ddos_protection_config=None, description=None, display_name=None, fingerprint=None, kind=None, label_fingerprint=None, labels=None, name=None, parent=None, recaptcha_options_config=None, region=None, rule_tuple_count=None, rules=None, self_link=None, self_link_with_id=None, type=None):
         if adaptive_protection_config and not isinstance(adaptive_protection_config, dict):
             raise TypeError("Expected argument 'adaptive_protection_config' to be a dict")
         pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -31,6 +31,9 @@ class GetOrganizationSecurityPolicyResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if ddos_protection_config and not isinstance(ddos_protection_config, dict):
+            raise TypeError("Expected argument 'ddos_protection_config' to be a dict")
+        pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -58,6 +61,9 @@ class GetOrganizationSecurityPolicyResult:
         if recaptcha_options_config and not isinstance(recaptcha_options_config, dict):
             raise TypeError("Expected argument 'recaptcha_options_config' to be a dict")
         pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if rule_tuple_count and not isinstance(rule_tuple_count, int):
             raise TypeError("Expected argument 'rule_tuple_count' to be a int")
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
@@ -99,6 +105,11 @@ class GetOrganizationSecurityPolicyResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="ddosProtectionConfig")
+    def ddos_protection_config(self) -> 'outputs.SecurityPolicyDdosProtectionConfigResponse':
+        return pulumi.get(self, "ddos_protection_config")
 
     @property
     @pulumi.getter
@@ -170,6 +181,14 @@ class GetOrganizationSecurityPolicyResult:
         return pulumi.get(self, "recaptcha_options_config")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="ruleTupleCount")
     def rule_tuple_count(self) -> int:
         """
@@ -220,6 +239,7 @@ class AwaitableGetOrganizationSecurityPolicyResult(GetOrganizationSecurityPolicy
             advanced_options_config=self.advanced_options_config,
             associations=self.associations,
             creation_timestamp=self.creation_timestamp,
+            ddos_protection_config=self.ddos_protection_config,
             description=self.description,
             display_name=self.display_name,
             fingerprint=self.fingerprint,
@@ -229,6 +249,7 @@ class AwaitableGetOrganizationSecurityPolicyResult(GetOrganizationSecurityPolicy
             name=self.name,
             parent=self.parent,
             recaptcha_options_config=self.recaptcha_options_config,
+            region=self.region,
             rule_tuple_count=self.rule_tuple_count,
             rules=self.rules,
             self_link=self.self_link,
@@ -254,6 +275,7 @@ def get_organization_security_policy(security_policy: Optional[str] = None,
         advanced_options_config=__ret__.advanced_options_config,
         associations=__ret__.associations,
         creation_timestamp=__ret__.creation_timestamp,
+        ddos_protection_config=__ret__.ddos_protection_config,
         description=__ret__.description,
         display_name=__ret__.display_name,
         fingerprint=__ret__.fingerprint,
@@ -263,6 +285,7 @@ def get_organization_security_policy(security_policy: Optional[str] = None,
         name=__ret__.name,
         parent=__ret__.parent,
         recaptcha_options_config=__ret__.recaptcha_options_config,
+        region=__ret__.region,
         rule_tuple_count=__ret__.rule_tuple_count,
         rules=__ret__.rules,
         self_link=__ret__.self_link,

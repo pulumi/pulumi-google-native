@@ -17,7 +17,6 @@ __all__ = ['FutureReservationArgs', 'FutureReservation']
 class FutureReservationArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -38,8 +37,6 @@ class FutureReservationArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
@@ -68,15 +65,6 @@ class FutureReservationArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -175,7 +163,6 @@ class FutureReservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -223,7 +210,6 @@ class FutureReservation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -245,7 +231,6 @@ class FutureReservation(pulumi.CustomResource):
             __props__ = FutureReservationArgs.__new__(FutureReservationArgs)
 
             __props__.__dict__["description"] = description
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
             __props__.__dict__["project"] = project
@@ -255,6 +240,7 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["time_window"] = time_window
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["status"] = None
@@ -313,6 +299,9 @@ class FutureReservation(pulumi.CustomResource):
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
+        """
+        Type of the resource. Always compute#futureReservation for future reservations.
+        """
         return pulumi.get(self, "kind")
 
     @property

@@ -1166,6 +1166,10 @@ type AndroidRoboTest struct {
 	AppInitialActivity *string `pulumi:"appInitialActivity"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId *string `pulumi:"appPackageId"`
+	// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+	MaxDepth *int `pulumi:"maxDepth"`
+	// The max number of steps Robo can execute. Default is no limit.
+	MaxSteps *int `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives []RoboDirective `pulumi:"roboDirectives"`
 	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
@@ -1197,6 +1201,10 @@ type AndroidRoboTestArgs struct {
 	AppInitialActivity pulumi.StringPtrInput `pulumi:"appInitialActivity"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId pulumi.StringPtrInput `pulumi:"appPackageId"`
+	// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+	MaxDepth pulumi.IntPtrInput `pulumi:"maxDepth"`
+	// The max number of steps Robo can execute. Default is no limit.
+	MaxSteps pulumi.IntPtrInput `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives RoboDirectiveArrayInput `pulumi:"roboDirectives"`
 	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
@@ -1305,6 +1313,16 @@ func (o AndroidRoboTestOutput) AppPackageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AndroidRoboTest) *string { return v.AppPackageId }).(pulumi.StringPtrOutput)
 }
 
+// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+func (o AndroidRoboTestOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AndroidRoboTest) *int { return v.MaxDepth }).(pulumi.IntPtrOutput)
+}
+
+// The max number of steps Robo can execute. Default is no limit.
+func (o AndroidRoboTestOutput) MaxSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AndroidRoboTest) *int { return v.MaxSteps }).(pulumi.IntPtrOutput)
+}
+
 // A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 func (o AndroidRoboTestOutput) RoboDirectives() RoboDirectiveArrayOutput {
 	return o.ApplyT(func(v AndroidRoboTest) []RoboDirective { return v.RoboDirectives }).(RoboDirectiveArrayOutput)
@@ -1389,6 +1407,26 @@ func (o AndroidRoboTestPtrOutput) AppPackageId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+func (o AndroidRoboTestPtrOutput) MaxDepth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDepth
+	}).(pulumi.IntPtrOutput)
+}
+
+// The max number of steps Robo can execute. Default is no limit.
+func (o AndroidRoboTestPtrOutput) MaxSteps() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AndroidRoboTest) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSteps
+	}).(pulumi.IntPtrOutput)
+}
+
 // A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 func (o AndroidRoboTestPtrOutput) RoboDirectives() RoboDirectiveArrayOutput {
 	return o.ApplyT(func(v *AndroidRoboTest) []RoboDirective {
@@ -1439,6 +1477,10 @@ type AndroidRoboTestResponse struct {
 	AppInitialActivity string `pulumi:"appInitialActivity"`
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId string `pulumi:"appPackageId"`
+	// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+	MaxDepth int `pulumi:"maxDepth"`
+	// The max number of steps Robo can execute. Default is no limit.
+	MaxSteps int `pulumi:"maxSteps"`
 	// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
 	RoboDirectives []RoboDirectiveResponse `pulumi:"roboDirectives"`
 	// The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
@@ -1482,6 +1524,16 @@ func (o AndroidRoboTestResponseOutput) AppInitialActivity() pulumi.StringOutput 
 // The java package for the application under test. The default value is determined by examining the application's manifest.
 func (o AndroidRoboTestResponseOutput) AppPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v AndroidRoboTestResponse) string { return v.AppPackageId }).(pulumi.StringOutput)
+}
+
+// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+func (o AndroidRoboTestResponseOutput) MaxDepth() pulumi.IntOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) int { return v.MaxDepth }).(pulumi.IntOutput)
+}
+
+// The max number of steps Robo can execute. Default is no limit.
+func (o AndroidRoboTestResponseOutput) MaxSteps() pulumi.IntOutput {
+	return o.ApplyT(func(v AndroidRoboTestResponse) int { return v.MaxSteps }).(pulumi.IntOutput)
 }
 
 // A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.

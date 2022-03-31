@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.APIKeys.V2
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>
+        /// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// A timestamp identifying the time this key was originally created.
         /// </summary>
         [Output("createTime")]
@@ -115,6 +121,18 @@ namespace Pulumi.GoogleNative.APIKeys.V2
 
     public sealed class KeyArgs : Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
         /// </summary>

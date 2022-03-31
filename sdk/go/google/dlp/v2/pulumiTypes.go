@@ -20688,7 +20688,7 @@ func (o GooglePrivacyDlpV2WordListResponseOutput) Words() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2WordListResponse) []string { return v.Words }).(pulumi.StringArrayOutput)
 }
 
-// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
 type GoogleProtobufEmpty struct {
 }
 
@@ -20703,7 +20703,7 @@ type GoogleProtobufEmptyInput interface {
 	ToGoogleProtobufEmptyOutputWithContext(context.Context) GoogleProtobufEmptyOutput
 }
 
-// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
 type GoogleProtobufEmptyArgs struct {
 }
 
@@ -20760,7 +20760,7 @@ func (i *googleProtobufEmptyPtrType) ToGoogleProtobufEmptyPtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleProtobufEmptyPtrOutput)
 }
 
-// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
 type GoogleProtobufEmptyOutput struct{ *pulumi.OutputState }
 
 func (GoogleProtobufEmptyOutput) ElementType() reflect.Type {
@@ -20809,11 +20809,11 @@ func (o GoogleProtobufEmptyPtrOutput) Elem() GoogleProtobufEmptyOutput {
 	}).(GoogleProtobufEmptyOutput)
 }
 
-// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
 type GoogleProtobufEmptyResponse struct {
 }
 
-// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
+// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
 type GoogleProtobufEmptyResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleProtobufEmptyResponseOutput) ElementType() reflect.Type {

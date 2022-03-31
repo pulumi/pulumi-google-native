@@ -162,6 +162,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
     'SecurityPolicyAdvancedOptionsConfigArgs',
+    'SecurityPolicyDdosProtectionConfigArgs',
     'SecurityPolicyRecaptchaOptionsConfigArgs',
     'SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs',
     'SecurityPolicyRuleHttpHeaderActionArgs',
@@ -4275,7 +4276,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -4284,7 +4285,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -10668,6 +10669,23 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     @log_level.setter
     def log_level(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigLogLevel']]):
         pulumi.set(self, "log_level", value)
+
+
+@pulumi.input_type
+class SecurityPolicyDdosProtectionConfigArgs:
+    def __init__(__self__, *,
+                 ddos_protection: Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigDdosProtection']] = None):
+        if ddos_protection is not None:
+            pulumi.set(__self__, "ddos_protection", ddos_protection)
+
+    @property
+    @pulumi.getter(name="ddosProtection")
+    def ddos_protection(self) -> Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigDdosProtection']]:
+        return pulumi.get(self, "ddos_protection")
+
+    @ddos_protection.setter
+    def ddos_protection(self, value: Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigDdosProtection']]):
+        pulumi.set(self, "ddos_protection", value)
 
 
 @pulumi.input_type

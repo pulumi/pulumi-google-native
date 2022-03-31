@@ -9318,7 +9318,7 @@ func (o NetworkTagsResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkTagsResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfig `pulumi:"accelerators"`
@@ -9385,7 +9385,7 @@ type NodeConfigInput interface {
 	ToNodeConfigOutputWithContext(context.Context) NodeConfigOutput
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigArrayInput `pulumi:"accelerators"`
@@ -9494,7 +9494,7 @@ func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigOutput) ElementType() reflect.Type {
@@ -10099,7 +10099,7 @@ func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput 
 	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigResponse struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
@@ -10155,7 +10155,7 @@ type NodeConfigResponse struct {
 	WorkloadMetadataConfig WorkloadMetadataConfigResponse `pulumi:"workloadMetadataConfig"`
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigResponseOutput) ElementType() reflect.Type {

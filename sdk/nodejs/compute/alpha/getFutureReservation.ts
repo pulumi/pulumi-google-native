@@ -36,6 +36,9 @@ export interface GetFutureReservationResult {
      * An optional description of this resource. Provide this property when you create the future reservation.
      */
     readonly description: string;
+    /**
+     * Type of the resource. Always compute#futureReservation for future reservations.
+     */
     readonly kind: string;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.

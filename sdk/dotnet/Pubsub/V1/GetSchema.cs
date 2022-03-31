@@ -70,6 +70,14 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The timestamp that the revision was created.
+        /// </summary>
+        public readonly string RevisionCreateTime;
+        /// <summary>
+        /// Immutable. The revision ID of the schema.
+        /// </summary>
+        public readonly string RevisionId;
+        /// <summary>
         /// The type of the schema definition.
         /// </summary>
         public readonly string Type;
@@ -80,10 +88,16 @@ namespace Pulumi.GoogleNative.Pubsub.V1
 
             string name,
 
+            string revisionCreateTime,
+
+            string revisionId,
+
             string type)
         {
             Definition = definition;
             Name = name;
+            RevisionCreateTime = revisionCreateTime;
+            RevisionId = revisionId;
             Type = type;
         }
     }

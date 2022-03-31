@@ -913,7 +913,7 @@ class GitFileSourceArgs:
         :param pulumi.Input[str] path: The path of the file, with the repo root as the root of the path.
         :param pulumi.Input['GitFileSourceRepoType'] repo_type: See RepoType above.
         :param pulumi.Input[str] revision: The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
-        :param pulumi.Input[str] uri: The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        :param pulumi.Input[str] uri: The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
         if bitbucket_server_config is not None:
             pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
@@ -992,7 +992,7 @@ class GitFileSourceArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
         """
         return pulumi.get(self, "uri")
 
@@ -1255,7 +1255,7 @@ class GitRepoSourceArgs:
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. `projects/{project}/githubEnterpriseConfigs/{id}`.
         :param pulumi.Input[str] ref: The branch or tag to use. Must start with "refs/" (required).
         :param pulumi.Input['GitRepoSourceRepoType'] repo_type: See RepoType below.
-        :param pulumi.Input[str] uri: The URI of the repo (required).
+        :param pulumi.Input[str] uri: The URI of the repo. Either uri or repository can be specified and is required.
         """
         if bitbucket_server_config is not None:
             pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
@@ -1320,7 +1320,7 @@ class GitRepoSourceArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The URI of the repo (required).
+        The URI of the repo. Either uri or repository can be specified and is required.
         """
         return pulumi.get(self, "uri")
 

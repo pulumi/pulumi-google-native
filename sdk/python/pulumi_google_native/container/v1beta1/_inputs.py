@@ -2384,6 +2384,7 @@ class NodeConfigArgs:
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
+                 confidential_nodes: Optional[pulumi.Input['ConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['EphemeralStorageConfigArgs']] = None,
@@ -2409,10 +2410,11 @@ class NodeConfigArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['WorkloadMetadataConfigArgs']] = None):
         """
-        Parameters that describe the nodes in a cluster.
+        Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Advanced features for the Compute Engine VM.
         :param pulumi.Input[str] boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param pulumi.Input['EphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
@@ -2444,6 +2446,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -2528,6 +2532,18 @@ class NodeConfigArgs:
     @boot_disk_kms_key.setter
     def boot_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "boot_disk_kms_key", value)
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional[pulumi.Input['ConfidentialNodesArgs']]:
+        """
+        Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        """
+        return pulumi.get(self, "confidential_nodes")
+
+    @confidential_nodes.setter
+    def confidential_nodes(self, value: Optional[pulumi.Input['ConfidentialNodesArgs']]):
+        pulumi.set(self, "confidential_nodes", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")

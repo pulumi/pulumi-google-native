@@ -81,7 +81,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusMessage!: pulumi.Output<string>;
     /**
-     * field indicates all the reasons the instance is in "SUSPENDED" state.
+     * Field indicates all the reasons the instance is in "SUSPENDED" state.
      */
     public /*out*/ readonly suspensionReasons!: pulumi.Output<string[]>;
     /**

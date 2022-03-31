@@ -82,6 +82,8 @@ type runtimeArgs struct {
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	Location     *string              `pulumi:"location"`
 	Project      *string              `pulumi:"project"`
+	// Idempotent request UUID.
+	RequestId *string `pulumi:"requestId"`
 	// Required. User-defined unique ID of this Runtime.
 	RuntimeId string `pulumi:"runtimeId"`
 	// The config settings for software inside the runtime.
@@ -96,6 +98,8 @@ type RuntimeArgs struct {
 	AccessConfig RuntimeAccessConfigPtrInput
 	Location     pulumi.StringPtrInput
 	Project      pulumi.StringPtrInput
+	// Idempotent request UUID.
+	RequestId pulumi.StringPtrInput
 	// Required. User-defined unique ID of this Runtime.
 	RuntimeId pulumi.StringInput
 	// The config settings for software inside the runtime.

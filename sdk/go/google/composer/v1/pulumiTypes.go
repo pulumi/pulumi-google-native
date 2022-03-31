@@ -172,9 +172,9 @@ func (o AllowedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AllowedIpRan
 	}).(AllowedIpRangeResponseOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfig struct {
-	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType *string `pulumi:"machineType"`
 }
 
@@ -189,9 +189,9 @@ type DatabaseConfigInput interface {
 	ToDatabaseConfigOutputWithContext(context.Context) DatabaseConfigOutput
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigArgs struct {
-	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 }
 
@@ -248,7 +248,7 @@ func (i *databaseConfigPtrType) ToDatabaseConfigPtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseConfigPtrOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConfigOutput) ElementType() reflect.Type {
@@ -273,7 +273,7 @@ func (o DatabaseConfigOutput) ToDatabaseConfigPtrOutputWithContext(ctx context.C
 	}).(DatabaseConfigPtrOutput)
 }
 
-// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -302,7 +302,7 @@ func (o DatabaseConfigPtrOutput) Elem() DatabaseConfigOutput {
 	}).(DatabaseConfigOutput)
 }
 
-// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseConfig) *string {
 		if v == nil {
@@ -312,13 +312,13 @@ func (o DatabaseConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigResponse struct {
-	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	MachineType string `pulumi:"machineType"`
 }
 
-// The configuration of Cloud SQL instance that is used by the Apache Airflow software. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseConfigResponseOutput) ElementType() reflect.Type {
@@ -333,7 +333,7 @@ func (o DatabaseConfigResponseOutput) ToDatabaseConfigResponseOutputWithContext(
 	return o
 }
 
-// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o DatabaseConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -506,7 +506,7 @@ func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
 
 // Configuration information for an environment.
 type EnvironmentConfig struct {
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
@@ -543,7 +543,7 @@ type EnvironmentConfigInput interface {
 
 // Configuration information for an environment.
 type EnvironmentConfigArgs struct {
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
@@ -645,7 +645,7 @@ func (o EnvironmentConfigOutput) ToEnvironmentConfigPtrOutputWithContext(ctx con
 	}).(EnvironmentConfigPtrOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
 }
@@ -724,7 +724,7 @@ func (o EnvironmentConfigPtrOutput) Elem() EnvironmentConfigOutput {
 	}).(EnvironmentConfigOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *DatabaseConfig {
 		if v == nil {
@@ -840,7 +840,7 @@ type EnvironmentConfigResponse struct {
 	AirflowUri string `pulumi:"airflowUri"`
 	// The Cloud Storage prefix of the DAGs for this environment. Although Cloud Storage objects reside in a flat namespace, a hierarchical file tree can be simulated using "/"-delimited object name prefixes. DAG objects for this environment reside in a simulated directory with the given prefix.
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
-	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigResponse `pulumi:"databaseConfig"`
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
@@ -891,7 +891,7 @@ func (o EnvironmentConfigResponseOutput) DagGcsPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
 }
 
-// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 func (o EnvironmentConfigResponseOutput) DatabaseConfig() DatabaseConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) DatabaseConfigResponse { return v.DatabaseConfig }).(DatabaseConfigResponseOutput)
 }
@@ -1443,7 +1443,7 @@ func (o MaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfig struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy *IPAllocationPolicy `pulumi:"ipAllocationPolicy"`
@@ -1476,7 +1476,7 @@ type NodeConfigInput interface {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigArgs struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
@@ -1574,7 +1574,7 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) 
 	}).(NodeConfigPtrOutput)
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -1643,7 +1643,7 @@ func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
 	}).(NodeConfigOutput)
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *int {
 		if v == nil {
@@ -1735,7 +1735,7 @@ func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 
 // The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
 type NodeConfigResponse struct {
-	// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Optional. The configuration for controlling how IPs are allocated in the GKE cluster.
 	IpAllocationPolicy IPAllocationPolicyResponse `pulumi:"ipAllocationPolicy"`
@@ -1770,7 +1770,7 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o NodeConfigResponseOutput) DiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.DiskSizeGb }).(pulumi.IntOutput)
 }
@@ -2574,7 +2574,7 @@ type SoftwareConfig struct {
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
 	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 	EnvVariables map[string]string `pulumi:"envVariables"`
-	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
 	ImageVersion *string `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
@@ -2601,7 +2601,7 @@ type SoftwareConfigArgs struct {
 	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
 	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
-	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
@@ -2699,7 +2699,7 @@ func (o SoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
-// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
 func (o SoftwareConfigOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SoftwareConfig) *string { return v.ImageVersion }).(pulumi.StringPtrOutput)
 }
@@ -2763,7 +2763,7 @@ func (o SoftwareConfigPtrOutput) EnvVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
 func (o SoftwareConfigPtrOutput) ImageVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareConfig) *string {
 		if v == nil {
@@ -2809,7 +2809,7 @@ type SoftwareConfigResponse struct {
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
 	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 	EnvVariables map[string]string `pulumi:"envVariables"`
-	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
+	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
 	ImageVersion string `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
@@ -2844,7 +2844,7 @@ func (o SoftwareConfigResponseOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
 }
 
-// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+\.[0-9]+\.[0-9]+|latest)-airflow-[0-9]+\.[0-9]+(\.[0-9]+.*)?`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the version is a [semantic version](https://semver.org) or `latest`. When the patch version is omitted, the current Cloud Composer patch version is selected. When `latest` is provided instead of an explicit version number, the server replaces `latest` with the current Cloud Composer version and stores that version number in the same field. The portion of the image version that follows *airflow-* is an official Apache Airflow repository [release name](https://github.com/apache/incubator-airflow/releases). See also [Version List](/composer/docs/concepts/versioning/composer-versions).
+// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
 func (o SoftwareConfigResponseOutput) ImageVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) string { return v.ImageVersion }).(pulumi.StringOutput)
 }

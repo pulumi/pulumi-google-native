@@ -77,4 +77,65 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Required. Allows to define schedule that runs specified day of the week.
+    /// </summary>
+    [EnumType]
+    public readonly struct WeeklyMaintenanceWindowDay : IEquatable<WeeklyMaintenanceWindowDay>
+    {
+        private readonly string _value;
+
+        private WeeklyMaintenanceWindowDay(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The day of the week is unspecified.
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay DayOfWeekUnspecified { get; } = new WeeklyMaintenanceWindowDay("DAY_OF_WEEK_UNSPECIFIED");
+        /// <summary>
+        /// Monday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Monday { get; } = new WeeklyMaintenanceWindowDay("MONDAY");
+        /// <summary>
+        /// Tuesday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Tuesday { get; } = new WeeklyMaintenanceWindowDay("TUESDAY");
+        /// <summary>
+        /// Wednesday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Wednesday { get; } = new WeeklyMaintenanceWindowDay("WEDNESDAY");
+        /// <summary>
+        /// Thursday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Thursday { get; } = new WeeklyMaintenanceWindowDay("THURSDAY");
+        /// <summary>
+        /// Friday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Friday { get; } = new WeeklyMaintenanceWindowDay("FRIDAY");
+        /// <summary>
+        /// Saturday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Saturday { get; } = new WeeklyMaintenanceWindowDay("SATURDAY");
+        /// <summary>
+        /// Sunday
+        /// </summary>
+        public static WeeklyMaintenanceWindowDay Sunday { get; } = new WeeklyMaintenanceWindowDay("SUNDAY");
+
+        public static bool operator ==(WeeklyMaintenanceWindowDay left, WeeklyMaintenanceWindowDay right) => left.Equals(right);
+        public static bool operator !=(WeeklyMaintenanceWindowDay left, WeeklyMaintenanceWindowDay right) => !left.Equals(right);
+
+        public static explicit operator string(WeeklyMaintenanceWindowDay value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WeeklyMaintenanceWindowDay other && Equals(other);
+        public bool Equals(WeeklyMaintenanceWindowDay other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -2497,6 +2497,8 @@ func (o AttachedDiskInitializeParamsResponseOutput) SourceSnapshotEncryptionKey(
 
 // An instance-attached disk resource.
 type AttachedDiskResponse struct {
+	// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete bool `pulumi:"autoDelete"`
 	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
@@ -2550,6 +2552,11 @@ func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutput() AttachedDiskR
 
 func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutputWithContext(ctx context.Context) AttachedDiskResponseOutput {
 	return o
+}
+
+// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+func (o AttachedDiskResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -16248,7 +16255,7 @@ func (o GrpcServiceConfigResponseOutput) TargetUri() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -16265,7 +16272,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -16321,7 +16328,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -16348,7 +16355,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -16367,7 +16374,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -29229,7 +29236,7 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Zone() pulumi.
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeployment struct {
-	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 	Platform *string `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource *string `pulumi:"resource"`
@@ -29252,7 +29259,7 @@ type NetworkEndpointGroupServerlessDeploymentInput interface {
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeploymentArgs struct {
-	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
@@ -29340,7 +29347,7 @@ func (o NetworkEndpointGroupServerlessDeploymentOutput) ToNetworkEndpointGroupSe
 	}).(NetworkEndpointGroupServerlessDeploymentPtrOutput)
 }
 
-// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 func (o NetworkEndpointGroupServerlessDeploymentOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
@@ -29384,7 +29391,7 @@ func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Elem() NetworkEndpoin
 	}).(NetworkEndpointGroupServerlessDeploymentOutput)
 }
 
-// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
 		if v == nil {
@@ -29426,7 +29433,7 @@ func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Version() pulumi.Stri
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeploymentResponse struct {
-	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 	Platform string `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource string `pulumi:"resource"`
@@ -29451,7 +29458,7 @@ func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) ToNetworkEndpoin
 	return o
 }
 
-// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.Platform }).(pulumi.StringOutput)
 }
@@ -29688,7 +29695,7 @@ type NetworkInterfaceResponse struct {
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind string `pulumi:"kind"`
-	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+	// The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
 	Name string `pulumi:"name"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network string `pulumi:"network"`
@@ -29761,7 +29768,7 @@ func (o NetworkInterfaceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+// The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
 func (o NetworkInterfaceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -30029,6 +30036,8 @@ type NetworkPeeringResponse struct {
 	Network string `pulumi:"network"`
 	// Maximum Transmission Unit in bytes.
 	PeerMtu int `pulumi:"peerMtu"`
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+	StackType string `pulumi:"stackType"`
 	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 	State string `pulumi:"state"`
 	// Details about the current state of the peering.
@@ -30098,6 +30107,11 @@ func (o NetworkPeeringResponseOutput) Network() pulumi.StringOutput {
 // Maximum Transmission Unit in bytes.
 func (o NetworkPeeringResponseOutput) PeerMtu() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) int { return v.PeerMtu }).(pulumi.IntOutput)
+}
+
+// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+func (o NetworkPeeringResponseOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPeeringResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
@@ -38699,6 +38713,8 @@ func (o ResourceStatusResponseOutput) UpcomingMaintenance() ResourceStatusUpcomi
 type ResourceStatusSchedulingResponse struct {
 	// Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
+	// Time in future when the instance will be terminated in RFC3339 text format.
+	TerminationTimestamp string `pulumi:"terminationTimestamp"`
 }
 
 type ResourceStatusSchedulingResponseOutput struct{ *pulumi.OutputState }
@@ -38718,6 +38734,11 @@ func (o ResourceStatusSchedulingResponseOutput) ToResourceStatusSchedulingRespon
 // Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
 func (o ResourceStatusSchedulingResponseOutput) AvailabilityDomain() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceStatusSchedulingResponse) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
+}
+
+// Time in future when the instance will be terminated in RFC3339 text format.
+func (o ResourceStatusSchedulingResponseOutput) TerminationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusSchedulingResponse) string { return v.TerminationTimestamp }).(pulumi.StringOutput)
 }
 
 type ResourceStatusUpcomingMaintenanceResponse struct {

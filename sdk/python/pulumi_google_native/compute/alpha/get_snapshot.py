@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, guest_flush=None, guest_os_features=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_instant_snapshot=None, source_instant_snapshot_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None, user_licenses=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -97,6 +97,12 @@ class GetSnapshotResult:
         if source_instant_snapshot_id and not isinstance(source_instant_snapshot_id, str):
             raise TypeError("Expected argument 'source_instant_snapshot_id' to be a str")
         pulumi.set(__self__, "source_instant_snapshot_id", source_instant_snapshot_id)
+        if source_snapshot_schedule_policy and not isinstance(source_snapshot_schedule_policy, str):
+            raise TypeError("Expected argument 'source_snapshot_schedule_policy' to be a str")
+        pulumi.set(__self__, "source_snapshot_schedule_policy", source_snapshot_schedule_policy)
+        if source_snapshot_schedule_policy_id and not isinstance(source_snapshot_schedule_policy_id, str):
+            raise TypeError("Expected argument 'source_snapshot_schedule_policy_id' to be a str")
+        pulumi.set(__self__, "source_snapshot_schedule_policy_id", source_snapshot_schedule_policy_id)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -322,6 +328,22 @@ class GetSnapshotResult:
         return pulumi.get(self, "source_instant_snapshot_id")
 
     @property
+    @pulumi.getter(name="sourceSnapshotSchedulePolicy")
+    def source_snapshot_schedule_policy(self) -> str:
+        """
+        URL of the resource policy which created this scheduled snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_schedule_policy")
+
+    @property
+    @pulumi.getter(name="sourceSnapshotSchedulePolicyId")
+    def source_snapshot_schedule_policy_id(self) -> str:
+        """
+        ID of the resource policy which created this scheduled snapshot.
+        """
+        return pulumi.get(self, "source_snapshot_schedule_policy_id")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
@@ -394,6 +416,8 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             source_disk_id=self.source_disk_id,
             source_instant_snapshot=self.source_instant_snapshot,
             source_instant_snapshot_id=self.source_instant_snapshot_id,
+            source_snapshot_schedule_policy=self.source_snapshot_schedule_policy,
+            source_snapshot_schedule_policy_id=self.source_snapshot_schedule_policy_id,
             status=self.status,
             storage_bytes=self.storage_bytes,
             storage_bytes_status=self.storage_bytes_status,
@@ -443,6 +467,8 @@ def get_snapshot(project: Optional[str] = None,
         source_disk_id=__ret__.source_disk_id,
         source_instant_snapshot=__ret__.source_instant_snapshot,
         source_instant_snapshot_id=__ret__.source_instant_snapshot_id,
+        source_snapshot_schedule_policy=__ret__.source_snapshot_schedule_policy,
+        source_snapshot_schedule_policy_id=__ret__.source_snapshot_schedule_policy_id,
         status=__ret__.status,
         storage_bytes=__ret__.storage_bytes,
         storage_bytes_status=__ret__.storage_bytes_status,

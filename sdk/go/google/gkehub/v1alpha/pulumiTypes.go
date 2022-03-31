@@ -10,6 +10,394 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// **Anthos Observability**: Spec
+type AnthosObservabilityFeatureSpec struct {
+	// default membership spec for unconfigured memberships
+	DefaultMembershipSpec *AnthosObservabilityMembershipSpec `pulumi:"defaultMembershipSpec"`
+}
+
+// AnthosObservabilityFeatureSpecInput is an input type that accepts AnthosObservabilityFeatureSpecArgs and AnthosObservabilityFeatureSpecOutput values.
+// You can construct a concrete instance of `AnthosObservabilityFeatureSpecInput` via:
+//
+//          AnthosObservabilityFeatureSpecArgs{...}
+type AnthosObservabilityFeatureSpecInput interface {
+	pulumi.Input
+
+	ToAnthosObservabilityFeatureSpecOutput() AnthosObservabilityFeatureSpecOutput
+	ToAnthosObservabilityFeatureSpecOutputWithContext(context.Context) AnthosObservabilityFeatureSpecOutput
+}
+
+// **Anthos Observability**: Spec
+type AnthosObservabilityFeatureSpecArgs struct {
+	// default membership spec for unconfigured memberships
+	DefaultMembershipSpec AnthosObservabilityMembershipSpecPtrInput `pulumi:"defaultMembershipSpec"`
+}
+
+func (AnthosObservabilityFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (i AnthosObservabilityFeatureSpecArgs) ToAnthosObservabilityFeatureSpecOutput() AnthosObservabilityFeatureSpecOutput {
+	return i.ToAnthosObservabilityFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i AnthosObservabilityFeatureSpecArgs) ToAnthosObservabilityFeatureSpecOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosObservabilityFeatureSpecOutput)
+}
+
+func (i AnthosObservabilityFeatureSpecArgs) ToAnthosObservabilityFeatureSpecPtrOutput() AnthosObservabilityFeatureSpecPtrOutput {
+	return i.ToAnthosObservabilityFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AnthosObservabilityFeatureSpecArgs) ToAnthosObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosObservabilityFeatureSpecOutput).ToAnthosObservabilityFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// AnthosObservabilityFeatureSpecPtrInput is an input type that accepts AnthosObservabilityFeatureSpecArgs, AnthosObservabilityFeatureSpecPtr and AnthosObservabilityFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `AnthosObservabilityFeatureSpecPtrInput` via:
+//
+//          AnthosObservabilityFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type AnthosObservabilityFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToAnthosObservabilityFeatureSpecPtrOutput() AnthosObservabilityFeatureSpecPtrOutput
+	ToAnthosObservabilityFeatureSpecPtrOutputWithContext(context.Context) AnthosObservabilityFeatureSpecPtrOutput
+}
+
+type anthosObservabilityFeatureSpecPtrType AnthosObservabilityFeatureSpecArgs
+
+func AnthosObservabilityFeatureSpecPtr(v *AnthosObservabilityFeatureSpecArgs) AnthosObservabilityFeatureSpecPtrInput {
+	return (*anthosObservabilityFeatureSpecPtrType)(v)
+}
+
+func (*anthosObservabilityFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnthosObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (i *anthosObservabilityFeatureSpecPtrType) ToAnthosObservabilityFeatureSpecPtrOutput() AnthosObservabilityFeatureSpecPtrOutput {
+	return i.ToAnthosObservabilityFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *anthosObservabilityFeatureSpecPtrType) ToAnthosObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosObservabilityFeatureSpecPtrOutput)
+}
+
+// **Anthos Observability**: Spec
+type AnthosObservabilityFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (AnthosObservabilityFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (o AnthosObservabilityFeatureSpecOutput) ToAnthosObservabilityFeatureSpecOutput() AnthosObservabilityFeatureSpecOutput {
+	return o
+}
+
+func (o AnthosObservabilityFeatureSpecOutput) ToAnthosObservabilityFeatureSpecOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecOutput {
+	return o
+}
+
+func (o AnthosObservabilityFeatureSpecOutput) ToAnthosObservabilityFeatureSpecPtrOutput() AnthosObservabilityFeatureSpecPtrOutput {
+	return o.ToAnthosObservabilityFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AnthosObservabilityFeatureSpecOutput) ToAnthosObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnthosObservabilityFeatureSpec) *AnthosObservabilityFeatureSpec {
+		return &v
+	}).(AnthosObservabilityFeatureSpecPtrOutput)
+}
+
+// default membership spec for unconfigured memberships
+func (o AnthosObservabilityFeatureSpecOutput) DefaultMembershipSpec() AnthosObservabilityMembershipSpecPtrOutput {
+	return o.ApplyT(func(v AnthosObservabilityFeatureSpec) *AnthosObservabilityMembershipSpec {
+		return v.DefaultMembershipSpec
+	}).(AnthosObservabilityMembershipSpecPtrOutput)
+}
+
+type AnthosObservabilityFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AnthosObservabilityFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnthosObservabilityFeatureSpec)(nil)).Elem()
+}
+
+func (o AnthosObservabilityFeatureSpecPtrOutput) ToAnthosObservabilityFeatureSpecPtrOutput() AnthosObservabilityFeatureSpecPtrOutput {
+	return o
+}
+
+func (o AnthosObservabilityFeatureSpecPtrOutput) ToAnthosObservabilityFeatureSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecPtrOutput {
+	return o
+}
+
+func (o AnthosObservabilityFeatureSpecPtrOutput) Elem() AnthosObservabilityFeatureSpecOutput {
+	return o.ApplyT(func(v *AnthosObservabilityFeatureSpec) AnthosObservabilityFeatureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AnthosObservabilityFeatureSpec
+		return ret
+	}).(AnthosObservabilityFeatureSpecOutput)
+}
+
+// default membership spec for unconfigured memberships
+func (o AnthosObservabilityFeatureSpecPtrOutput) DefaultMembershipSpec() AnthosObservabilityMembershipSpecPtrOutput {
+	return o.ApplyT(func(v *AnthosObservabilityFeatureSpec) *AnthosObservabilityMembershipSpec {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultMembershipSpec
+	}).(AnthosObservabilityMembershipSpecPtrOutput)
+}
+
+// **Anthos Observability**: Spec
+type AnthosObservabilityFeatureSpecResponse struct {
+	// default membership spec for unconfigured memberships
+	DefaultMembershipSpec AnthosObservabilityMembershipSpecResponse `pulumi:"defaultMembershipSpec"`
+}
+
+// **Anthos Observability**: Spec
+type AnthosObservabilityFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (AnthosObservabilityFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosObservabilityFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o AnthosObservabilityFeatureSpecResponseOutput) ToAnthosObservabilityFeatureSpecResponseOutput() AnthosObservabilityFeatureSpecResponseOutput {
+	return o
+}
+
+func (o AnthosObservabilityFeatureSpecResponseOutput) ToAnthosObservabilityFeatureSpecResponseOutputWithContext(ctx context.Context) AnthosObservabilityFeatureSpecResponseOutput {
+	return o
+}
+
+// default membership spec for unconfigured memberships
+func (o AnthosObservabilityFeatureSpecResponseOutput) DefaultMembershipSpec() AnthosObservabilityMembershipSpecResponseOutput {
+	return o.ApplyT(func(v AnthosObservabilityFeatureSpecResponse) AnthosObservabilityMembershipSpecResponse {
+		return v.DefaultMembershipSpec
+	}).(AnthosObservabilityMembershipSpecResponseOutput)
+}
+
+// **Anthosobservability**: Per-Membership Feature spec.
+type AnthosObservabilityMembershipSpec struct {
+	// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+	DoNotOptimizeMetrics *bool `pulumi:"doNotOptimizeMetrics"`
+	// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+	EnableStackdriverOnApplications *bool `pulumi:"enableStackdriverOnApplications"`
+	// the version of stackdriver operator used by this feature
+	Version *string `pulumi:"version"`
+}
+
+// AnthosObservabilityMembershipSpecInput is an input type that accepts AnthosObservabilityMembershipSpecArgs and AnthosObservabilityMembershipSpecOutput values.
+// You can construct a concrete instance of `AnthosObservabilityMembershipSpecInput` via:
+//
+//          AnthosObservabilityMembershipSpecArgs{...}
+type AnthosObservabilityMembershipSpecInput interface {
+	pulumi.Input
+
+	ToAnthosObservabilityMembershipSpecOutput() AnthosObservabilityMembershipSpecOutput
+	ToAnthosObservabilityMembershipSpecOutputWithContext(context.Context) AnthosObservabilityMembershipSpecOutput
+}
+
+// **Anthosobservability**: Per-Membership Feature spec.
+type AnthosObservabilityMembershipSpecArgs struct {
+	// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+	DoNotOptimizeMetrics pulumi.BoolPtrInput `pulumi:"doNotOptimizeMetrics"`
+	// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+	EnableStackdriverOnApplications pulumi.BoolPtrInput `pulumi:"enableStackdriverOnApplications"`
+	// the version of stackdriver operator used by this feature
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (AnthosObservabilityMembershipSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (i AnthosObservabilityMembershipSpecArgs) ToAnthosObservabilityMembershipSpecOutput() AnthosObservabilityMembershipSpecOutput {
+	return i.ToAnthosObservabilityMembershipSpecOutputWithContext(context.Background())
+}
+
+func (i AnthosObservabilityMembershipSpecArgs) ToAnthosObservabilityMembershipSpecOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosObservabilityMembershipSpecOutput)
+}
+
+func (i AnthosObservabilityMembershipSpecArgs) ToAnthosObservabilityMembershipSpecPtrOutput() AnthosObservabilityMembershipSpecPtrOutput {
+	return i.ToAnthosObservabilityMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i AnthosObservabilityMembershipSpecArgs) ToAnthosObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosObservabilityMembershipSpecOutput).ToAnthosObservabilityMembershipSpecPtrOutputWithContext(ctx)
+}
+
+// AnthosObservabilityMembershipSpecPtrInput is an input type that accepts AnthosObservabilityMembershipSpecArgs, AnthosObservabilityMembershipSpecPtr and AnthosObservabilityMembershipSpecPtrOutput values.
+// You can construct a concrete instance of `AnthosObservabilityMembershipSpecPtrInput` via:
+//
+//          AnthosObservabilityMembershipSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type AnthosObservabilityMembershipSpecPtrInput interface {
+	pulumi.Input
+
+	ToAnthosObservabilityMembershipSpecPtrOutput() AnthosObservabilityMembershipSpecPtrOutput
+	ToAnthosObservabilityMembershipSpecPtrOutputWithContext(context.Context) AnthosObservabilityMembershipSpecPtrOutput
+}
+
+type anthosObservabilityMembershipSpecPtrType AnthosObservabilityMembershipSpecArgs
+
+func AnthosObservabilityMembershipSpecPtr(v *AnthosObservabilityMembershipSpecArgs) AnthosObservabilityMembershipSpecPtrInput {
+	return (*anthosObservabilityMembershipSpecPtrType)(v)
+}
+
+func (*anthosObservabilityMembershipSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnthosObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (i *anthosObservabilityMembershipSpecPtrType) ToAnthosObservabilityMembershipSpecPtrOutput() AnthosObservabilityMembershipSpecPtrOutput {
+	return i.ToAnthosObservabilityMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *anthosObservabilityMembershipSpecPtrType) ToAnthosObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnthosObservabilityMembershipSpecPtrOutput)
+}
+
+// **Anthosobservability**: Per-Membership Feature spec.
+type AnthosObservabilityMembershipSpecOutput struct{ *pulumi.OutputState }
+
+func (AnthosObservabilityMembershipSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (o AnthosObservabilityMembershipSpecOutput) ToAnthosObservabilityMembershipSpecOutput() AnthosObservabilityMembershipSpecOutput {
+	return o
+}
+
+func (o AnthosObservabilityMembershipSpecOutput) ToAnthosObservabilityMembershipSpecOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecOutput {
+	return o
+}
+
+func (o AnthosObservabilityMembershipSpecOutput) ToAnthosObservabilityMembershipSpecPtrOutput() AnthosObservabilityMembershipSpecPtrOutput {
+	return o.ToAnthosObservabilityMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (o AnthosObservabilityMembershipSpecOutput) ToAnthosObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnthosObservabilityMembershipSpec) *AnthosObservabilityMembershipSpec {
+		return &v
+	}).(AnthosObservabilityMembershipSpecPtrOutput)
+}
+
+// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+func (o AnthosObservabilityMembershipSpecOutput) DoNotOptimizeMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnthosObservabilityMembershipSpec) *bool { return v.DoNotOptimizeMetrics }).(pulumi.BoolPtrOutput)
+}
+
+// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+func (o AnthosObservabilityMembershipSpecOutput) EnableStackdriverOnApplications() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AnthosObservabilityMembershipSpec) *bool { return v.EnableStackdriverOnApplications }).(pulumi.BoolPtrOutput)
+}
+
+// the version of stackdriver operator used by this feature
+func (o AnthosObservabilityMembershipSpecOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AnthosObservabilityMembershipSpec) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type AnthosObservabilityMembershipSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (AnthosObservabilityMembershipSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnthosObservabilityMembershipSpec)(nil)).Elem()
+}
+
+func (o AnthosObservabilityMembershipSpecPtrOutput) ToAnthosObservabilityMembershipSpecPtrOutput() AnthosObservabilityMembershipSpecPtrOutput {
+	return o
+}
+
+func (o AnthosObservabilityMembershipSpecPtrOutput) ToAnthosObservabilityMembershipSpecPtrOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecPtrOutput {
+	return o
+}
+
+func (o AnthosObservabilityMembershipSpecPtrOutput) Elem() AnthosObservabilityMembershipSpecOutput {
+	return o.ApplyT(func(v *AnthosObservabilityMembershipSpec) AnthosObservabilityMembershipSpec {
+		if v != nil {
+			return *v
+		}
+		var ret AnthosObservabilityMembershipSpec
+		return ret
+	}).(AnthosObservabilityMembershipSpecOutput)
+}
+
+// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+func (o AnthosObservabilityMembershipSpecPtrOutput) DoNotOptimizeMetrics() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnthosObservabilityMembershipSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DoNotOptimizeMetrics
+	}).(pulumi.BoolPtrOutput)
+}
+
+// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+func (o AnthosObservabilityMembershipSpecPtrOutput) EnableStackdriverOnApplications() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnthosObservabilityMembershipSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverOnApplications
+	}).(pulumi.BoolPtrOutput)
+}
+
+// the version of stackdriver operator used by this feature
+func (o AnthosObservabilityMembershipSpecPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AnthosObservabilityMembershipSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// **Anthosobservability**: Per-Membership Feature spec.
+type AnthosObservabilityMembershipSpecResponse struct {
+	// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+	DoNotOptimizeMetrics bool `pulumi:"doNotOptimizeMetrics"`
+	// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+	EnableStackdriverOnApplications bool `pulumi:"enableStackdriverOnApplications"`
+	// the version of stackdriver operator used by this feature
+	Version string `pulumi:"version"`
+}
+
+// **Anthosobservability**: Per-Membership Feature spec.
+type AnthosObservabilityMembershipSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (AnthosObservabilityMembershipSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnthosObservabilityMembershipSpecResponse)(nil)).Elem()
+}
+
+func (o AnthosObservabilityMembershipSpecResponseOutput) ToAnthosObservabilityMembershipSpecResponseOutput() AnthosObservabilityMembershipSpecResponseOutput {
+	return o
+}
+
+func (o AnthosObservabilityMembershipSpecResponseOutput) ToAnthosObservabilityMembershipSpecResponseOutputWithContext(ctx context.Context) AnthosObservabilityMembershipSpecResponseOutput {
+	return o
+}
+
+// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+func (o AnthosObservabilityMembershipSpecResponseOutput) DoNotOptimizeMetrics() pulumi.BoolOutput {
+	return o.ApplyT(func(v AnthosObservabilityMembershipSpecResponse) bool { return v.DoNotOptimizeMetrics }).(pulumi.BoolOutput)
+}
+
+// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+func (o AnthosObservabilityMembershipSpecResponseOutput) EnableStackdriverOnApplications() pulumi.BoolOutput {
+	return o.ApplyT(func(v AnthosObservabilityMembershipSpecResponse) bool { return v.EnableStackdriverOnApplications }).(pulumi.BoolOutput)
+}
+
+// the version of stackdriver operator used by this feature
+func (o AnthosObservabilityMembershipSpecResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v AnthosObservabilityMembershipSpecResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
 // Spec for App Dev Experience Feature.
 type AppDevExperienceFeatureSpec struct {
 }
@@ -1052,6 +1440,8 @@ func (o CloudAuditLoggingFeatureSpecResponseOutput) AllowlistedServiceAccounts()
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpec struct {
+	// Anthos Observability spec
+	Anthosobservability *AnthosObservabilityFeatureSpec `pulumi:"anthosobservability"`
 	// Appdevexperience specific spec.
 	Appdevexperience *AppDevExperienceFeatureSpec `pulumi:"appdevexperience"`
 	// Cloud Audit Logging-specific spec.
@@ -1075,6 +1465,8 @@ type CommonFeatureSpecInput interface {
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecArgs struct {
+	// Anthos Observability spec
+	Anthosobservability AnthosObservabilityFeatureSpecPtrInput `pulumi:"anthosobservability"`
 	// Appdevexperience specific spec.
 	Appdevexperience AppDevExperienceFeatureSpecPtrInput `pulumi:"appdevexperience"`
 	// Cloud Audit Logging-specific spec.
@@ -1163,6 +1555,11 @@ func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx con
 	}).(CommonFeatureSpecPtrOutput)
 }
 
+// Anthos Observability spec
+func (o CommonFeatureSpecOutput) Anthosobservability() AnthosObservabilityFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *AnthosObservabilityFeatureSpec { return v.Anthosobservability }).(AnthosObservabilityFeatureSpecPtrOutput)
+}
+
 // Appdevexperience specific spec.
 func (o CommonFeatureSpecOutput) Appdevexperience() AppDevExperienceFeatureSpecPtrOutput {
 	return o.ApplyT(func(v CommonFeatureSpec) *AppDevExperienceFeatureSpec { return v.Appdevexperience }).(AppDevExperienceFeatureSpecPtrOutput)
@@ -1207,6 +1604,16 @@ func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
 	}).(CommonFeatureSpecOutput)
 }
 
+// Anthos Observability spec
+func (o CommonFeatureSpecPtrOutput) Anthosobservability() AnthosObservabilityFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *AnthosObservabilityFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Anthosobservability
+	}).(AnthosObservabilityFeatureSpecPtrOutput)
+}
+
 // Appdevexperience specific spec.
 func (o CommonFeatureSpecPtrOutput) Appdevexperience() AppDevExperienceFeatureSpecPtrOutput {
 	return o.ApplyT(func(v *CommonFeatureSpec) *AppDevExperienceFeatureSpec {
@@ -1249,6 +1656,8 @@ func (o CommonFeatureSpecPtrOutput) Workloadcertificate() FeatureSpecPtrOutput {
 
 // CommonFeatureSpec contains Hub-wide configuration information
 type CommonFeatureSpecResponse struct {
+	// Anthos Observability spec
+	Anthosobservability AnthosObservabilityFeatureSpecResponse `pulumi:"anthosobservability"`
 	// Appdevexperience specific spec.
 	Appdevexperience AppDevExperienceFeatureSpecResponse `pulumi:"appdevexperience"`
 	// Cloud Audit Logging-specific spec.
@@ -1272,6 +1681,11 @@ func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponseOutput() Com
 
 func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponseOutputWithContext(ctx context.Context) CommonFeatureSpecResponseOutput {
 	return o
+}
+
+// Anthos Observability spec
+func (o CommonFeatureSpecResponseOutput) Anthosobservability() AnthosObservabilityFeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) AnthosObservabilityFeatureSpecResponse { return v.Anthosobservability }).(AnthosObservabilityFeatureSpecResponseOutput)
 }
 
 // Appdevexperience specific spec.
@@ -3962,6 +4376,10 @@ func (o StatusResponseOutput) Description() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnthosObservabilityFeatureSpecInput)(nil)).Elem(), AnthosObservabilityFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnthosObservabilityFeatureSpecPtrInput)(nil)).Elem(), AnthosObservabilityFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnthosObservabilityMembershipSpecInput)(nil)).Elem(), AnthosObservabilityMembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnthosObservabilityMembershipSpecPtrInput)(nil)).Elem(), AnthosObservabilityMembershipSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDevExperienceFeatureSpecPtrInput)(nil)).Elem(), AppDevExperienceFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
@@ -3998,6 +4416,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OnPremClusterPtrInput)(nil)).Elem(), OnPremClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsInput)(nil)).Elem(), ResourceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceOptionsPtrInput)(nil)).Elem(), ResourceOptionsArgs{})
+	pulumi.RegisterOutputType(AnthosObservabilityFeatureSpecOutput{})
+	pulumi.RegisterOutputType(AnthosObservabilityFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(AnthosObservabilityFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(AnthosObservabilityMembershipSpecOutput{})
+	pulumi.RegisterOutputType(AnthosObservabilityMembershipSpecPtrOutput{})
+	pulumi.RegisterOutputType(AnthosObservabilityMembershipSpecResponseOutput{})
 	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecOutput{})
 	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppDevExperienceFeatureSpecResponseOutput{})

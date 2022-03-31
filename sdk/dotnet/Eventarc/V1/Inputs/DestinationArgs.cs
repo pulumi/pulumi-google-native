@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         [Input("gke")]
         public Input<Inputs.GKEArgs>? Gke { get; set; }
 
+        /// <summary>
+        /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        /// </summary>
+        [Input("workflow")]
+        public Input<string>? Workflow { get; set; }
+
         public DestinationArgs()
         {
         }

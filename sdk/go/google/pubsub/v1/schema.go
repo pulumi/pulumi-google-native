@@ -18,6 +18,10 @@ type Schema struct {
 	Definition pulumi.StringOutput `pulumi:"definition"`
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The timestamp that the revision was created.
+	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
+	// Immutable. The revision ID of the schema.
+	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
 	// The type of the schema definition.
 	Type pulumi.StringOutput `pulumi:"type"`
 }

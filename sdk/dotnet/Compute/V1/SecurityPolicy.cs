@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        [Output("ddosProtectionConfig")]
+        public Output<Outputs.SecurityPolicyDdosProtectionConfigResponse> DdosProtectionConfig { get; private set; } = null!;
+
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
@@ -53,6 +56,12 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Output("recaptchaOptionsConfig")]
         public Output<Outputs.SecurityPolicyRecaptchaOptionsConfigResponse> RecaptchaOptionsConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
@@ -122,6 +131,9 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("advancedOptionsConfig")]
         public Input<Inputs.SecurityPolicyAdvancedOptionsConfigArgs>? AdvancedOptionsConfig { get; set; }
+
+        [Input("ddosProtectionConfig")]
+        public Input<Inputs.SecurityPolicyDdosProtectionConfigArgs>? DdosProtectionConfig { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.

@@ -17,13 +17,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetSchemaResult:
-    def __init__(__self__, definition=None, name=None, type=None):
+    def __init__(__self__, definition=None, name=None, revision_create_time=None, revision_id=None, type=None):
         if definition and not isinstance(definition, str):
             raise TypeError("Expected argument 'definition' to be a str")
         pulumi.set(__self__, "definition", definition)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if revision_create_time and not isinstance(revision_create_time, str):
+            raise TypeError("Expected argument 'revision_create_time' to be a str")
+        pulumi.set(__self__, "revision_create_time", revision_create_time)
+        if revision_id and not isinstance(revision_id, str):
+            raise TypeError("Expected argument 'revision_id' to be a str")
+        pulumi.set(__self__, "revision_id", revision_id)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -45,6 +51,22 @@ class GetSchemaResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="revisionCreateTime")
+    def revision_create_time(self) -> str:
+        """
+        The timestamp that the revision was created.
+        """
+        return pulumi.get(self, "revision_create_time")
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> str:
+        """
+        Immutable. The revision ID of the schema.
+        """
+        return pulumi.get(self, "revision_id")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -61,6 +83,8 @@ class AwaitableGetSchemaResult(GetSchemaResult):
         return GetSchemaResult(
             definition=self.definition,
             name=self.name,
+            revision_create_time=self.revision_create_time,
+            revision_id=self.revision_id,
             type=self.type)
 
 
@@ -84,6 +108,8 @@ def get_schema(project: Optional[str] = None,
     return AwaitableGetSchemaResult(
         definition=__ret__.definition,
         name=__ret__.name,
+        revision_create_time=__ret__.revision_create_time,
+        revision_id=__ret__.revision_id,
         type=__ret__.type)
 
 

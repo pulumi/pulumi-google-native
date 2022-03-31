@@ -162,6 +162,8 @@ class Schema(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["schema_id"] = schema_id
             __props__.__dict__["type"] = type
+            __props__.__dict__["revision_create_time"] = None
+            __props__.__dict__["revision_id"] = None
         super(Schema, __self__).__init__(
             'google-native:pubsub/v1:Schema',
             resource_name,
@@ -186,6 +188,8 @@ class Schema(pulumi.CustomResource):
 
         __props__.__dict__["definition"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["revision_create_time"] = None
+        __props__.__dict__["revision_id"] = None
         __props__.__dict__["type"] = None
         return Schema(resource_name, opts=opts, __props__=__props__)
 
@@ -204,6 +208,22 @@ class Schema(pulumi.CustomResource):
         Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="revisionCreateTime")
+    def revision_create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp that the revision was created.
+        """
+        return pulumi.get(self, "revision_create_time")
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> pulumi.Output[str]:
+        """
+        Immutable. The revision ID of the schema.
+        """
+        return pulumi.get(self, "revision_id")
 
     @property
     @pulumi.getter

@@ -186,6 +186,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigResponse',
     'SecurityPolicyAdvancedOptionsConfigResponse',
     'SecurityPolicyAssociationResponse',
+    'SecurityPolicyDdosProtectionConfigResponse',
     'SecurityPolicyRecaptchaOptionsConfigResponse',
     'SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse',
     'SecurityPolicyRuleHttpHeaderActionResponse',
@@ -4770,7 +4771,7 @@ class GuestOsFeatureResponse(dict):
                  type: str):
         """
         Guest OS features.
-        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param str type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         pulumi.set(__self__, "type", type)
 
@@ -4778,7 +4779,7 @@ class GuestOsFeatureResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -8554,7 +8555,7 @@ class NetworkEndpointGroupServerlessDeploymentResponse(dict):
                  version: str):
         """
         Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
-        :param str platform: The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        :param str platform: The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         :param str resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
         :param str url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         :param str version: The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
@@ -8568,7 +8569,7 @@ class NetworkEndpointGroupServerlessDeploymentResponse(dict):
     @pulumi.getter
     def platform(self) -> str:
         """
-        The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         """
         return pulumi.get(self, "platform")
 
@@ -8663,7 +8664,7 @@ class NetworkInterfaceResponse(dict):
         :param str ipv6_access_type: One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.
         :param str ipv6_address: An IPv6 internal network address for this network interface.
         :param str kind: Type of the resource. Always compute#networkInterface for network interfaces.
-        :param str name: The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+        :param str name: The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
         :param str network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param str network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param str nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -8755,7 +8756,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+        The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
         """
         return pulumi.get(self, "name")
 
@@ -13239,6 +13240,35 @@ class SecurityPolicyAssociationResponse(dict):
         The security policy ID of the association.
         """
         return pulumi.get(self, "security_policy_id")
+
+
+@pulumi.output_type
+class SecurityPolicyDdosProtectionConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ddosProtection":
+            suggest = "ddos_protection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyDdosProtectionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyDdosProtectionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyDdosProtectionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ddos_protection: str):
+        pulumi.set(__self__, "ddos_protection", ddos_protection)
+
+    @property
+    @pulumi.getter(name="ddosProtection")
+    def ddos_protection(self) -> str:
+        return pulumi.get(self, "ddos_protection")
 
 
 @pulumi.output_type

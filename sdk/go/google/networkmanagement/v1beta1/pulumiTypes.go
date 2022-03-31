@@ -932,6 +932,32 @@ func (o DropInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v DropInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
 }
 
+// Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+type EdgeLocationResponse struct {
+	// Name of the metropolitan area.
+	MetropolitanArea string `pulumi:"metropolitanArea"`
+}
+
+// Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+type EdgeLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (EdgeLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EdgeLocationResponse)(nil)).Elem()
+}
+
+func (o EdgeLocationResponseOutput) ToEdgeLocationResponseOutput() EdgeLocationResponseOutput {
+	return o
+}
+
+func (o EdgeLocationResponseOutput) ToEdgeLocationResponseOutputWithContext(ctx context.Context) EdgeLocationResponseOutput {
+	return o
+}
+
+// Name of the metropolitan area.
+func (o EdgeLocationResponseOutput) MetropolitanArea() pulumi.StringOutput {
+	return o.ApplyT(func(v EdgeLocationResponse) string { return v.MetropolitanArea }).(pulumi.StringOutput)
+}
+
 // Source or destination of the Connectivity Test.
 type Endpoint struct {
 	// A [Cloud function](https://cloud.google.com/functions).
@@ -2023,6 +2049,8 @@ func (o NetworkInfoResponseOutput) Uri() pulumi.StringOutput {
 type ProbingDetailsResponse struct {
 	// The reason probing was aborted.
 	AbortCause string `pulumi:"abortCause"`
+	// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+	DestinationEgressLocation EdgeLocationResponse `pulumi:"destinationEgressLocation"`
 	// The source and destination endpoints derived from the test input and used for active probing.
 	EndpointInfo EndpointInfoResponse `pulumi:"endpointInfo"`
 	// Details about an internal failure or the cancellation of active probing.
@@ -2057,6 +2085,11 @@ func (o ProbingDetailsResponseOutput) ToProbingDetailsResponseOutputWithContext(
 // The reason probing was aborted.
 func (o ProbingDetailsResponseOutput) AbortCause() pulumi.StringOutput {
 	return o.ApplyT(func(v ProbingDetailsResponse) string { return v.AbortCause }).(pulumi.StringOutput)
+}
+
+// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+func (o ProbingDetailsResponseOutput) DestinationEgressLocation() EdgeLocationResponseOutput {
+	return o.ApplyT(func(v ProbingDetailsResponse) EdgeLocationResponse { return v.DestinationEgressLocation }).(EdgeLocationResponseOutput)
 }
 
 // The source and destination endpoints derived from the test input and used for active probing.
@@ -2725,6 +2758,7 @@ func init() {
 	pulumi.RegisterOutputType(CloudSQLInstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(DeliverInfoResponseOutput{})
 	pulumi.RegisterOutputType(DropInfoResponseOutput{})
+	pulumi.RegisterOutputType(EdgeLocationResponseOutput{})
 	pulumi.RegisterOutputType(EndpointOutput{})
 	pulumi.RegisterOutputType(EndpointInfoResponseOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})

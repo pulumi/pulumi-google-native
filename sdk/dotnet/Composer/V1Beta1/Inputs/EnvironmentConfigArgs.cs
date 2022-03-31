@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     public sealed class EnvironmentConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         [Input("databaseConfig")]
         public Input<Inputs.DatabaseConfigArgs>? DatabaseConfig { get; set; }

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, authorized_network=None, create_time=None, discovery_endpoint=None, display_name=None, instance_messages=None, labels=None, memcache_full_version=None, memcache_nodes=None, memcache_version=None, name=None, node_config=None, node_count=None, parameters=None, state=None, update_available=None, update_time=None, zones=None):
+    def __init__(__self__, authorized_network=None, create_time=None, discovery_endpoint=None, display_name=None, instance_messages=None, labels=None, maintenance_policy=None, maintenance_schedule=None, memcache_full_version=None, memcache_nodes=None, memcache_version=None, name=None, node_config=None, node_count=None, parameters=None, state=None, update_available=None, update_time=None, zones=None):
         if authorized_network and not isinstance(authorized_network, str):
             raise TypeError("Expected argument 'authorized_network' to be a str")
         pulumi.set(__self__, "authorized_network", authorized_network)
@@ -37,6 +37,12 @@ class GetInstanceResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if maintenance_policy and not isinstance(maintenance_policy, dict):
+            raise TypeError("Expected argument 'maintenance_policy' to be a dict")
+        pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedule and not isinstance(maintenance_schedule, dict):
+            raise TypeError("Expected argument 'maintenance_schedule' to be a dict")
+        pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if memcache_full_version and not isinstance(memcache_full_version, str):
             raise TypeError("Expected argument 'memcache_full_version' to be a str")
         pulumi.set(__self__, "memcache_full_version", memcache_full_version)
@@ -118,6 +124,22 @@ class GetInstanceResult:
         Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> 'outputs.GoogleCloudMemcacheV1beta2MaintenancePolicyResponse':
+        """
+        The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> 'outputs.MaintenanceScheduleResponse':
+        """
+        Published maintenance schedule.
+        """
+        return pulumi.get(self, "maintenance_schedule")
 
     @property
     @pulumi.getter(name="memcacheFullVersion")
@@ -220,6 +242,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             display_name=self.display_name,
             instance_messages=self.instance_messages,
             labels=self.labels,
+            maintenance_policy=self.maintenance_policy,
+            maintenance_schedule=self.maintenance_schedule,
             memcache_full_version=self.memcache_full_version,
             memcache_nodes=self.memcache_nodes,
             memcache_version=self.memcache_version,
@@ -257,6 +281,8 @@ def get_instance(instance_id: Optional[str] = None,
         display_name=__ret__.display_name,
         instance_messages=__ret__.instance_messages,
         labels=__ret__.labels,
+        maintenance_policy=__ret__.maintenance_policy,
+        maintenance_schedule=__ret__.maintenance_schedule,
         memcache_full_version=__ret__.memcache_full_version,
         memcache_nodes=__ret__.memcache_nodes,
         memcache_version=__ret__.memcache_version,

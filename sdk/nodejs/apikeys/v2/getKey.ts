@@ -29,6 +29,10 @@ export interface GetKeyArgs {
 
 export interface GetKeyResult {
     /**
+     * Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     */
+    readonly annotations: {[key: string]: string};
+    /**
      * A timestamp identifying the time this key was originally created.
      */
     readonly createTime: string;

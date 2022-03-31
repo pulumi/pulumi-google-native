@@ -2,6 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+- Reflect renamed types as defined in cloud run v2 API specs [#419](https://github.com/pulumi/pulumi-google-native/pull/419)
+- Following resources have been dropped [#419](https://github.com/pulumi/pulumi-google-native/pull/419):
+  * `google-native:gkehub/v2alpha:FeatureConfig`
+  * `google-native:gkehub/v2alpha:Feature`
+- Following resources had some of their inputs removed (marked as output fields) [#419](https://github.com/pulumi/pulumi-google-native/pull/419):
+  * `google-native:compute/alpha:FutureReservation`
+  * `google-native:compute/alpha:NetworkEdgeSecurityService`
 
 ## 0.17.1 (2022-03-17)
 Bug fixes:

@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     public sealed class SourceConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// MySQL data source configuration
+        /// MySQL data source configuration.
         /// </summary>
         [Input("mysqlSourceConfig")]
         public Input<Inputs.MysqlSourceConfigArgs>? MysqlSourceConfig { get; set; }
 
         /// <summary>
-        /// Oracle data source configuration
+        /// Oracle data source configuration.
         /// </summary>
         [Input("oracleSourceConfig")]
         public Input<Inputs.OracleSourceConfigArgs>? OracleSourceConfig { get; set; }

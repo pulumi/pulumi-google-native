@@ -90,6 +90,7 @@ export class Runtime extends pulumi.CustomResource {
             resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["runtimeId"] = args ? args.runtimeId : undefined;
             resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
             resourceInputs["virtualMachine"] = args ? args.virtualMachine : undefined;
@@ -125,6 +126,10 @@ export interface RuntimeArgs {
     accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Idempotent request UUID.
+     */
+    requestId?: pulumi.Input<string>;
     /**
      * Required. User-defined unique ID of this Runtime.
      */

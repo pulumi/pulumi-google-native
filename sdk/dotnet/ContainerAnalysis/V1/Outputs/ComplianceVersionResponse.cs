@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
     public sealed class ComplianceVersionResponse
     {
         /// <summary>
+        /// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
+        /// </summary>
+        public readonly string BenchmarkDocument;
+        /// <summary>
         /// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
         /// </summary>
         public readonly string CpeUri;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
         [OutputConstructor]
         private ComplianceVersionResponse(
+            string benchmarkDocument,
+
             string cpeUri,
 
             string version)
         {
+            BenchmarkDocument = benchmarkDocument;
             CpeUri = cpeUri;
             Version = version;
         }

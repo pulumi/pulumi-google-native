@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// </summary>
         public readonly int MinInstanceCount;
         /// <summary>
+        /// The name of service revision.
+        /// </summary>
+        public readonly string Revision;
+        /// <summary>
         /// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         /// </summary>
         public readonly string Service;
@@ -79,6 +83,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
 
             int minInstanceCount,
 
+            string revision,
+
             string service,
 
             string serviceAccountEmail,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
             IngressSettings = ingressSettings;
             MaxInstanceCount = maxInstanceCount;
             MinInstanceCount = minInstanceCount;
+            Revision = revision;
             Service = service;
             ServiceAccountEmail = serviceAccountEmail;
             TimeoutSeconds = timeoutSeconds;

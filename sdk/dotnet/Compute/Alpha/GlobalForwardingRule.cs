@@ -130,6 +130,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NetworkTier { get; private set; } = null!;
 
         /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        /// </summary>
+        [Output("noAutomateDnsZone")]
+        public Output<bool> NoAutomateDnsZone { get; private set; } = null!;
+
+        /// <summary>
         /// This field can be used only if: - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or SCTP. Packets addressed to ports in the specified range will be forwarded to target or backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding target have constraints on the acceptable ports. For more information, see [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?
         /// </summary>
         [Output("portRange")]
@@ -347,6 +353,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("networkTier")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.GlobalForwardingRuleNetworkTier>? NetworkTier { get; set; }
+
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        /// </summary>
+        [Input("noAutomateDnsZone")]
+        public Input<bool>? NoAutomateDnsZone { get; set; }
 
         /// <summary>
         /// This field can be used only if: - Load balancing scheme is one of EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED - IPProtocol is one of TCP, UDP, or SCTP. Packets addressed to ports in the specified range will be forwarded to target or backend_service. You can only use one of ports, port_range, or allPorts. The three are mutually exclusive. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint ports. Some types of forwarding target have constraints on the acceptable ports. For more information, see [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications). @pattern: \\d+(?:-\\d+)?

@@ -128,6 +128,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Idempotent request UUID.
+        /// </summary>
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
+        /// <summary>
         /// Required. User-defined unique ID of this Runtime.
         /// </summary>
         [Input("runtimeId", required: true)]

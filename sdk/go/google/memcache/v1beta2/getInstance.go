@@ -39,6 +39,10 @@ type LookupInstanceResult struct {
 	InstanceMessages []InstanceMessageResponse `pulumi:"instanceMessages"`
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels map[string]string `pulumi:"labels"`
+	// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+	MaintenancePolicy GoogleCloudMemcacheV1beta2MaintenancePolicyResponse `pulumi:"maintenancePolicy"`
+	// Published maintenance schedule.
+	MaintenanceSchedule MaintenanceScheduleResponse `pulumi:"maintenanceSchedule"`
 	// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
 	MemcacheFullVersion string `pulumi:"memcacheFullVersion"`
 	// List of Memcached nodes. Refer to Node message for more details.
@@ -124,6 +128,18 @@ func (o LookupInstanceResultOutput) InstanceMessages() InstanceMessageResponseAr
 // Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+func (o LookupInstanceResultOutput) MaintenancePolicy() GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) GoogleCloudMemcacheV1beta2MaintenancePolicyResponse {
+		return v.MaintenancePolicy
+	}).(GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput)
+}
+
+// Published maintenance schedule.
+func (o LookupInstanceResultOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) MaintenanceScheduleResponse { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
 }
 
 // The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".

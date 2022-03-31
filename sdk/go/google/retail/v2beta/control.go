@@ -26,6 +26,8 @@ type Control struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2betaRuleResponseOutput `pulumi:"rule"`
+	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+	SearchSolutionUseCase pulumi.StringArrayOutput `pulumi:"searchSolutionUseCase"`
 	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes pulumi.StringArrayOutput `pulumi:"solutionTypes"`
 }
@@ -45,6 +47,9 @@ func NewControl(ctx *pulumi.Context,
 	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.SearchSolutionUseCase == nil {
+		return nil, errors.New("invalid value for required argument 'SearchSolutionUseCase'")
 	}
 	if args.SolutionTypes == nil {
 		return nil, errors.New("invalid value for required argument 'SolutionTypes'")
@@ -94,6 +99,8 @@ type controlArgs struct {
 	Project *string `pulumi:"project"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule *GoogleCloudRetailV2betaRule `pulumi:"rule"`
+	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+	SearchSolutionUseCase []ControlSearchSolutionUseCaseItem `pulumi:"searchSolutionUseCase"`
 	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes []ControlSolutionTypesItem `pulumi:"solutionTypes"`
 }
@@ -113,6 +120,8 @@ type ControlArgs struct {
 	Project pulumi.StringPtrInput
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2betaRulePtrInput
+	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+	SearchSolutionUseCase ControlSearchSolutionUseCaseItemArrayInput
 	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes ControlSolutionTypesItemArrayInput
 }

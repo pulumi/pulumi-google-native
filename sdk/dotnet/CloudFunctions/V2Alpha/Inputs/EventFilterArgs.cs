@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public Input<string> Attribute { get; set; } = null!;
 
         /// <summary>
+        /// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        /// </summary>
+        [Input("operator")]
+        public Input<string>? Operator { get; set; }
+
+        /// <summary>
         /// The value for the attribute.
         /// </summary>
         [Input("value", required: true)]

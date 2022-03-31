@@ -15,6 +15,7 @@ __all__ = ['KeyArgs', 'Key']
 @pulumi.input_type
 class KeyArgs:
     def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -22,10 +23,13 @@ class KeyArgs:
                  restrictions: Optional[pulumi.Input['V2RestrictionsArgs']] = None):
         """
         The set of arguments for constructing a Key resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         :param pulumi.Input[str] display_name: Human-readable display name of this key that you can modify. The maximum length is 63 characters.
         :param pulumi.Input[str] key_id: User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
         :param pulumi.Input['V2RestrictionsArgs'] restrictions: Key restrictions.
         """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if key_id is not None:
@@ -36,6 +40,18 @@ class KeyArgs:
             pulumi.set(__self__, "project", project)
         if restrictions is not None:
             pulumi.set(__self__, "restrictions", restrictions)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -97,6 +113,7 @@ class Key(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -109,6 +126,7 @@ class Key(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
         :param pulumi.Input[str] display_name: Human-readable display name of this key that you can modify. The maximum length is 63 characters.
         :param pulumi.Input[str] key_id: User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
         :param pulumi.Input[pulumi.InputType['V2RestrictionsArgs']] restrictions: Key restrictions.
@@ -138,6 +156,7 @@ class Key(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -155,6 +174,7 @@ class Key(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyArgs.__new__(KeyArgs)
 
+            __props__.__dict__["annotations"] = annotations
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["key_id"] = key_id
             __props__.__dict__["location"] = location
@@ -189,6 +209,7 @@ class Key(pulumi.CustomResource):
 
         __props__ = KeyArgs.__new__(KeyArgs)
 
+        __props__.__dict__["annotations"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delete_time"] = None
         __props__.__dict__["display_name"] = None
@@ -199,6 +220,14 @@ class Key(pulumi.CustomResource):
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Key(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")

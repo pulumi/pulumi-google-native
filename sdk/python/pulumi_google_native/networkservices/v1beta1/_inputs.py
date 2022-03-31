@@ -15,8 +15,42 @@ __all__ = [
     'BindingArgs',
     'EndpointMatcherArgs',
     'ExprArgs',
+    'GrpcRouteDestinationArgs',
+    'GrpcRouteFaultInjectionPolicyAbortArgs',
+    'GrpcRouteFaultInjectionPolicyDelayArgs',
+    'GrpcRouteFaultInjectionPolicyArgs',
+    'GrpcRouteHeaderMatchArgs',
+    'GrpcRouteMethodMatchArgs',
+    'GrpcRouteRetryPolicyArgs',
+    'GrpcRouteRouteActionArgs',
+    'GrpcRouteRouteMatchArgs',
+    'GrpcRouteRouteRuleArgs',
+    'HttpRouteCorsPolicyArgs',
+    'HttpRouteDestinationArgs',
+    'HttpRouteFaultInjectionPolicyAbortArgs',
+    'HttpRouteFaultInjectionPolicyDelayArgs',
+    'HttpRouteFaultInjectionPolicyArgs',
+    'HttpRouteHeaderMatchIntegerRangeArgs',
+    'HttpRouteHeaderMatchArgs',
+    'HttpRouteHeaderModifierArgs',
+    'HttpRouteQueryParameterMatchArgs',
+    'HttpRouteRedirectArgs',
+    'HttpRouteRequestMirrorPolicyArgs',
+    'HttpRouteRetryPolicyArgs',
+    'HttpRouteRouteActionArgs',
+    'HttpRouteRouteMatchArgs',
+    'HttpRouteRouteRuleArgs',
+    'HttpRouteURLRewriteArgs',
     'MetadataLabelMatcherArgs',
     'MetadataLabelsArgs',
+    'TcpRouteRouteActionArgs',
+    'TcpRouteRouteDestinationArgs',
+    'TcpRouteRouteMatchArgs',
+    'TcpRouteRouteRuleArgs',
+    'TlsRouteRouteActionArgs',
+    'TlsRouteRouteDestinationArgs',
+    'TlsRouteRouteMatchArgs',
+    'TlsRouteRouteRuleArgs',
     'TrafficPortSelectorArgs',
 ]
 
@@ -253,6 +287,1632 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class GrpcRouteDestinationArgs:
+    def __init__(__self__, *,
+                 service_name: pulumi.Input[str],
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        The destination to which traffic will be routed.
+        :param pulumi.Input[str] service_name: The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
+        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class GrpcRouteFaultInjectionPolicyAbortArgs:
+    def __init__(__self__, *,
+                 http_status: Optional[pulumi.Input[int]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
+        """
+        Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        :param pulumi.Input[int] http_status: The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
+        :param pulumi.Input[int] percentage: The percentage of traffic which will be aborted. The value must be between [0, 100]
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
+        """
+        return pulumi.get(self, "http_status")
+
+    @http_status.setter
+    def http_status(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_status", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of traffic which will be aborted. The value must be between [0, 100]
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percentage", value)
+
+
+@pulumi.input_type
+class GrpcRouteFaultInjectionPolicyDelayArgs:
+    def __init__(__self__, *,
+                 fixed_delay: Optional[pulumi.Input[str]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
+        """
+        Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        :param pulumi.Input[str] fixed_delay: Specify a fixed delay before forwarding the request.
+        :param pulumi.Input[int] percentage: The percentage of traffic on which delay will be injected. The value must be between [0, 100]
+        """
+        if fixed_delay is not None:
+            pulumi.set(__self__, "fixed_delay", fixed_delay)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="fixedDelay")
+    def fixed_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify a fixed delay before forwarding the request.
+        """
+        return pulumi.get(self, "fixed_delay")
+
+    @fixed_delay.setter
+    def fixed_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_delay", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of traffic on which delay will be injected. The value must be between [0, 100]
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percentage", value)
+
+
+@pulumi.input_type
+class GrpcRouteFaultInjectionPolicyArgs:
+    def __init__(__self__, *,
+                 abort: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyAbortArgs']] = None,
+                 delay: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyDelayArgs']] = None):
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests.
+        :param pulumi.Input['GrpcRouteFaultInjectionPolicyAbortArgs'] abort: The specification for aborting to client requests.
+        :param pulumi.Input['GrpcRouteFaultInjectionPolicyDelayArgs'] delay: The specification for injecting delay to client requests.
+        """
+        if abort is not None:
+            pulumi.set(__self__, "abort", abort)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+
+    @property
+    @pulumi.getter
+    def abort(self) -> Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyAbortArgs']]:
+        """
+        The specification for aborting to client requests.
+        """
+        return pulumi.get(self, "abort")
+
+    @abort.setter
+    def abort(self, value: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyAbortArgs']]):
+        pulumi.set(self, "abort", value)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyDelayArgs']]:
+        """
+        The specification for injecting delay to client requests.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyDelayArgs']]):
+        pulumi.set(self, "delay", value)
+
+
+@pulumi.input_type
+class GrpcRouteHeaderMatchArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 type: Optional[pulumi.Input['GrpcRouteHeaderMatchType']] = None):
+        """
+        A match against a collection of headers.
+        :param pulumi.Input[str] key: The key of the header.
+        :param pulumi.Input[str] value: The value of the header.
+        :param pulumi.Input['GrpcRouteHeaderMatchType'] type: Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key of the header.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the header.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['GrpcRouteHeaderMatchType']]:
+        """
+        Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['GrpcRouteHeaderMatchType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GrpcRouteMethodMatchArgs:
+    def __init__(__self__, *,
+                 grpc_method: pulumi.Input[str],
+                 grpc_service: pulumi.Input[str],
+                 case_sensitive: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input['GrpcRouteMethodMatchType']] = None):
+        """
+        Specifies a match against a method.
+        :param pulumi.Input[str] grpc_method: Name of the method to match against. If unspecified, will match all methods.
+        :param pulumi.Input[str] grpc_service: Name of the service to match against. If unspecified, will match all services.
+        :param pulumi.Input[bool] case_sensitive: Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
+        :param pulumi.Input['GrpcRouteMethodMatchType'] type: Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+        """
+        pulumi.set(__self__, "grpc_method", grpc_method)
+        pulumi.set(__self__, "grpc_service", grpc_service)
+        if case_sensitive is not None:
+            pulumi.set(__self__, "case_sensitive", case_sensitive)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="grpcMethod")
+    def grpc_method(self) -> pulumi.Input[str]:
+        """
+        Name of the method to match against. If unspecified, will match all methods.
+        """
+        return pulumi.get(self, "grpc_method")
+
+    @grpc_method.setter
+    def grpc_method(self, value: pulumi.Input[str]):
+        pulumi.set(self, "grpc_method", value)
+
+    @property
+    @pulumi.getter(name="grpcService")
+    def grpc_service(self) -> pulumi.Input[str]:
+        """
+        Name of the service to match against. If unspecified, will match all services.
+        """
+        return pulumi.get(self, "grpc_service")
+
+    @grpc_service.setter
+    def grpc_service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "grpc_service", value)
+
+    @property
+    @pulumi.getter(name="caseSensitive")
+    def case_sensitive(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
+        """
+        return pulumi.get(self, "case_sensitive")
+
+    @case_sensitive.setter
+    def case_sensitive(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "case_sensitive", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['GrpcRouteMethodMatchType']]:
+        """
+        Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['GrpcRouteMethodMatchType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GrpcRouteRetryPolicyArgs:
+    def __init__(__self__, *,
+                 num_retries: Optional[pulumi.Input[int]] = None,
+                 retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The specifications for retries.
+        :param pulumi.Input[int] num_retries: Specifies the allowed number of retries. This number must be > 0. If not specpfied, default to 1.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: - connect-failure: Router will retry on failures connecting to Backend Services, for example due to connection timeouts. - refused-stream: Router will retry if the backend service resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: Router will retry if the gRPC status code in the response header is set to cancelled - deadline-exceeded: Router will retry if the gRPC status code in the response header is set to deadline-exceeded - resource-exhausted: Router will retry if the gRPC status code in the response header is set to resource-exhausted - unavailable: Router will retry if the gRPC status code in the response header is set to unavailable
+        """
+        if num_retries is not None:
+            pulumi.set(__self__, "num_retries", num_retries)
+        if retry_conditions is not None:
+            pulumi.set(__self__, "retry_conditions", retry_conditions)
+
+    @property
+    @pulumi.getter(name="numRetries")
+    def num_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the allowed number of retries. This number must be > 0. If not specpfied, default to 1.
+        """
+        return pulumi.get(self, "num_retries")
+
+    @num_retries.setter
+    def num_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_retries", value)
+
+    @property
+    @pulumi.getter(name="retryConditions")
+    def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        - connect-failure: Router will retry on failures connecting to Backend Services, for example due to connection timeouts. - refused-stream: Router will retry if the backend service resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: Router will retry if the gRPC status code in the response header is set to cancelled - deadline-exceeded: Router will retry if the gRPC status code in the response header is set to deadline-exceeded - resource-exhausted: Router will retry if the gRPC status code in the response header is set to resource-exhausted - unavailable: Router will retry if the gRPC status code in the response header is set to unavailable
+        """
+        return pulumi.get(self, "retry_conditions")
+
+    @retry_conditions.setter
+    def retry_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retry_conditions", value)
+
+
+@pulumi.input_type
+class GrpcRouteRouteActionArgs:
+    def __init__(__self__, *,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteDestinationArgs']]]] = None,
+                 fault_injection_policy: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyArgs']] = None,
+                 retry_policy: Optional[pulumi.Input['GrpcRouteRetryPolicyArgs']] = None,
+                 timeout: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies how to route matched traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteDestinationArgs']]] destinations: Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
+        :param pulumi.Input['GrpcRouteFaultInjectionPolicyArgs'] fault_injection_policy: Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
+        :param pulumi.Input['GrpcRouteRetryPolicyArgs'] retry_policy: Optional. Specifies the retry policy associated with this route.
+        :param pulumi.Input[str] timeout: Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if fault_injection_policy is not None:
+            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteDestinationArgs']]]]:
+        """
+        Optional. The destination services to which traffic should be forwarded. If multiple destinations are specified, traffic will be split between Backend Service(s) according to the weight field of these destinations.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter(name="faultInjectionPolicy")
+    def fault_injection_policy(self) -> Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyArgs']]:
+        """
+        Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
+        """
+        return pulumi.get(self, "fault_injection_policy")
+
+    @fault_injection_policy.setter
+    def fault_injection_policy(self, value: Optional[pulumi.Input['GrpcRouteFaultInjectionPolicyArgs']]):
+        pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['GrpcRouteRetryPolicyArgs']]:
+        """
+        Optional. Specifies the retry policy associated with this route.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['GrpcRouteRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeout", value)
+
+
+@pulumi.input_type
+class GrpcRouteRouteMatchArgs:
+    def __init__(__self__, *,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteHeaderMatchArgs']]]] = None,
+                 method: Optional[pulumi.Input['GrpcRouteMethodMatchArgs']] = None):
+        """
+        Criteria for matching traffic. A RouteMatch will be considered to match when all supplied fields match.
+        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteHeaderMatchArgs']]] headers: Optional. Specifies a collection of headers to match.
+        :param pulumi.Input['GrpcRouteMethodMatchArgs'] method: Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
+        """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteHeaderMatchArgs']]]]:
+        """
+        Optional. Specifies a collection of headers to match.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteHeaderMatchArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input['GrpcRouteMethodMatchArgs']]:
+        """
+        Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input['GrpcRouteMethodMatchArgs']]):
+        pulumi.set(self, "method", value)
+
+
+@pulumi.input_type
+class GrpcRouteRouteRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['GrpcRouteRouteActionArgs'],
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRouteMatchArgs']]]] = None):
+        """
+        Describes how to route traffic.
+        :param pulumi.Input['GrpcRouteRouteActionArgs'] action: A detailed rule defining how to route traffic. This field is required.
+        :param pulumi.Input[Sequence[pulumi.Input['GrpcRouteRouteMatchArgs']]] matches: Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic.
+        """
+        pulumi.set(__self__, "action", action)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['GrpcRouteRouteActionArgs']:
+        """
+        A detailed rule defining how to route traffic. This field is required.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['GrpcRouteRouteActionArgs']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRouteMatchArgs']]]]:
+        """
+        Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic.
+        """
+        return pulumi.get(self, "matches")
+
+    @matches.setter
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrpcRouteRouteMatchArgs']]]]):
+        pulumi.set(self, "matches", value)
+
+
+@pulumi.input_type
+class HttpRouteCorsPolicyArgs:
+    def __init__(__self__, *,
+                 allow_credentials: Optional[pulumi.Input[bool]] = None,
+                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origin_regexes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[str]] = None):
+        """
+        The Specification for allowing client side cross-origin requests.
+        :param pulumi.Input[bool] allow_credentials: In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for Access-Control-Allow-Headers header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for Access-Control-Allow-Methods header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allow_origins or an item in allow_origin_regexes.
+        :param pulumi.Input[bool] disabled: If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: Specifies the content for Access-Control-Expose-Headers header.
+        :param pulumi.Input[str] max_age: Specifies how long result of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+        """
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allow_headers is not None:
+            pulumi.set(__self__, "allow_headers", allow_headers)
+        if allow_methods is not None:
+            pulumi.set(__self__, "allow_methods", allow_methods)
+        if allow_origin_regexes is not None:
+            pulumi.set(__self__, "allow_origin_regexes", allow_origin_regexes)
+        if allow_origins is not None:
+            pulumi.set(__self__, "allow_origins", allow_origins)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowHeaders")
+    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the content for Access-Control-Allow-Headers header.
+        """
+        return pulumi.get(self, "allow_headers")
+
+    @allow_headers.setter
+    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_headers", value)
+
+    @property
+    @pulumi.getter(name="allowMethods")
+    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the content for Access-Control-Allow-Methods header.
+        """
+        return pulumi.get(self, "allow_methods")
+
+    @allow_methods.setter
+    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_methods", value)
+
+    @property
+    @pulumi.getter(name="allowOriginRegexes")
+    def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax.
+        """
+        return pulumi.get(self, "allow_origin_regexes")
+
+    @allow_origin_regexes.setter
+    def allow_origin_regexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_origin_regexes", value)
+
+    @property
+    @pulumi.getter(name="allowOrigins")
+    def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allow_origins or an item in allow_origin_regexes.
+        """
+        return pulumi.get(self, "allow_origins")
+
+    @allow_origins.setter
+    def allow_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allow_origins", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies the content for Access-Control-Expose-Headers header.
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how long result of a preflight request can be cached in seconds. This translates to the Access-Control-Max-Age header.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_age", value)
+
+
+@pulumi.input_type
+class HttpRouteDestinationArgs:
+    def __init__(__self__, *,
+                 service_name: Optional[pulumi.Input[str]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        Specifications of a destination to which the request should be routed to.
+        :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
+        :param pulumi.Input[int] weight: Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class HttpRouteFaultInjectionPolicyAbortArgs:
+    def __init__(__self__, *,
+                 http_status: Optional[pulumi.Input[int]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
+        """
+        Specification of how client requests are aborted as part of fault injection before being sent to a destination.
+        :param pulumi.Input[int] http_status: The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
+        :param pulumi.Input[int] percentage: The percentage of traffic which will be aborted. The value must be between [0, 100]
+        """
+        if http_status is not None:
+            pulumi.set(__self__, "http_status", http_status)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="httpStatus")
+    def http_status(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
+        """
+        return pulumi.get(self, "http_status")
+
+    @http_status.setter
+    def http_status(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_status", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of traffic which will be aborted. The value must be between [0, 100]
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percentage", value)
+
+
+@pulumi.input_type
+class HttpRouteFaultInjectionPolicyDelayArgs:
+    def __init__(__self__, *,
+                 fixed_delay: Optional[pulumi.Input[str]] = None,
+                 percentage: Optional[pulumi.Input[int]] = None):
+        """
+        Specification of how client requests are delayed as part of fault injection before being sent to a destination.
+        :param pulumi.Input[str] fixed_delay: Specify a fixed delay before forwarding the request.
+        :param pulumi.Input[int] percentage: The percentage of traffic on which delay will be injected. The value must be between [0, 100]
+        """
+        if fixed_delay is not None:
+            pulumi.set(__self__, "fixed_delay", fixed_delay)
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter(name="fixedDelay")
+    def fixed_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify a fixed delay before forwarding the request.
+        """
+        return pulumi.get(self, "fixed_delay")
+
+    @fixed_delay.setter
+    def fixed_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fixed_delay", value)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of traffic on which delay will be injected. The value must be between [0, 100]
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percentage", value)
+
+
+@pulumi.input_type
+class HttpRouteFaultInjectionPolicyArgs:
+    def __init__(__self__, *,
+                 abort: Optional[pulumi.Input['HttpRouteFaultInjectionPolicyAbortArgs']] = None,
+                 delay: Optional[pulumi.Input['HttpRouteFaultInjectionPolicyDelayArgs']] = None):
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced by client proxy on a percentage of requests before sending those requests to the destination service. Similarly requests can be aborted by client proxy for a percentage of requests.
+        :param pulumi.Input['HttpRouteFaultInjectionPolicyAbortArgs'] abort: The specification for aborting to client requests.
+        :param pulumi.Input['HttpRouteFaultInjectionPolicyDelayArgs'] delay: The specification for injecting delay to client requests.
+        """
+        if abort is not None:
+            pulumi.set(__self__, "abort", abort)
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+
+    @property
+    @pulumi.getter
+    def abort(self) -> Optional[pulumi.Input['HttpRouteFaultInjectionPolicyAbortArgs']]:
+        """
+        The specification for aborting to client requests.
+        """
+        return pulumi.get(self, "abort")
+
+    @abort.setter
+    def abort(self, value: Optional[pulumi.Input['HttpRouteFaultInjectionPolicyAbortArgs']]):
+        pulumi.set(self, "abort", value)
+
+    @property
+    @pulumi.getter
+    def delay(self) -> Optional[pulumi.Input['HttpRouteFaultInjectionPolicyDelayArgs']]:
+        """
+        The specification for injecting delay to client requests.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: Optional[pulumi.Input['HttpRouteFaultInjectionPolicyDelayArgs']]):
+        pulumi.set(self, "delay", value)
+
+
+@pulumi.input_type
+class HttpRouteHeaderMatchIntegerRangeArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[int]] = None,
+                 start: Optional[pulumi.Input[int]] = None):
+        """
+        Represents an integer value range.
+        :param pulumi.Input[int] end: End of the range (exclusive)
+        :param pulumi.Input[int] start: Start of the range (inclusive)
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[int]]:
+        """
+        End of the range (exclusive)
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[int]]:
+        """
+        Start of the range (inclusive)
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class HttpRouteHeaderMatchArgs:
+    def __init__(__self__, *,
+                 exact_match: Optional[pulumi.Input[str]] = None,
+                 header: Optional[pulumi.Input[str]] = None,
+                 invert_match: Optional[pulumi.Input[bool]] = None,
+                 prefix_match: Optional[pulumi.Input[str]] = None,
+                 present_match: Optional[pulumi.Input[bool]] = None,
+                 range_match: Optional[pulumi.Input['HttpRouteHeaderMatchIntegerRangeArgs']] = None,
+                 regex_match: Optional[pulumi.Input[str]] = None,
+                 suffix_match: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies how to select a route rule based on HTTP request headers.
+        :param pulumi.Input[str] exact_match: The value of the header should match exactly the content of exact_match.
+        :param pulumi.Input[str] header: The name of the HTTP header to match against.
+        :param pulumi.Input[bool] invert_match: If specified, the match result will be inverted before checking. Default value is set to false.
+        :param pulumi.Input[str] prefix_match: The value of the header must start with the contents of prefix_match.
+        :param pulumi.Input[bool] present_match: A header with header_name must exist. The match takes place whether or not the header has a value.
+        :param pulumi.Input['HttpRouteHeaderMatchIntegerRangeArgs'] range_match: If specified, the rule will match if the request header value is within the range.
+        :param pulumi.Input[str] regex_match: The value of the header must match the regular expression specified in regex_match. For regular expression grammar, please see: https://github.com/google/re2/wiki/Syntax
+        :param pulumi.Input[str] suffix_match: The value of the header must end with the contents of suffix_match.
+        """
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+        if header is not None:
+            pulumi.set(__self__, "header", header)
+        if invert_match is not None:
+            pulumi.set(__self__, "invert_match", invert_match)
+        if prefix_match is not None:
+            pulumi.set(__self__, "prefix_match", prefix_match)
+        if present_match is not None:
+            pulumi.set(__self__, "present_match", present_match)
+        if range_match is not None:
+            pulumi.set(__self__, "range_match", range_match)
+        if regex_match is not None:
+            pulumi.set(__self__, "regex_match", regex_match)
+        if suffix_match is not None:
+            pulumi.set(__self__, "suffix_match", suffix_match)
+
+    @property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the header should match exactly the content of exact_match.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @exact_match.setter
+    def exact_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exact_match", value)
+
+    @property
+    @pulumi.getter
+    def header(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the HTTP header to match against.
+        """
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header", value)
+
+    @property
+    @pulumi.getter(name="invertMatch")
+    def invert_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If specified, the match result will be inverted before checking. Default value is set to false.
+        """
+        return pulumi.get(self, "invert_match")
+
+    @invert_match.setter
+    def invert_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invert_match", value)
+
+    @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the header must start with the contents of prefix_match.
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @prefix_match.setter
+    def prefix_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_match", value)
+
+    @property
+    @pulumi.getter(name="presentMatch")
+    def present_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A header with header_name must exist. The match takes place whether or not the header has a value.
+        """
+        return pulumi.get(self, "present_match")
+
+    @present_match.setter
+    def present_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "present_match", value)
+
+    @property
+    @pulumi.getter(name="rangeMatch")
+    def range_match(self) -> Optional[pulumi.Input['HttpRouteHeaderMatchIntegerRangeArgs']]:
+        """
+        If specified, the rule will match if the request header value is within the range.
+        """
+        return pulumi.get(self, "range_match")
+
+    @range_match.setter
+    def range_match(self, value: Optional[pulumi.Input['HttpRouteHeaderMatchIntegerRangeArgs']]):
+        pulumi.set(self, "range_match", value)
+
+    @property
+    @pulumi.getter(name="regexMatch")
+    def regex_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the header must match the regular expression specified in regex_match. For regular expression grammar, please see: https://github.com/google/re2/wiki/Syntax
+        """
+        return pulumi.get(self, "regex_match")
+
+    @regex_match.setter
+    def regex_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex_match", value)
+
+    @property
+    @pulumi.getter(name="suffixMatch")
+    def suffix_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the header must end with the contents of suffix_match.
+        """
+        return pulumi.get(self, "suffix_match")
+
+    @suffix_match.setter
+    def suffix_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "suffix_match", value)
+
+
+@pulumi.input_type
+class HttpRouteHeaderModifierArgs:
+    def __init__(__self__, *,
+                 add: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 remove: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 set: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The specification for modifying HTTP header in HTTP request and HTTP response.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] add: Add the headers with given map where key is the name of the header, value is the value of the header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] remove: Remove headers (matching by header names) specified in the list.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] set: Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        if add is not None:
+            pulumi.set(__self__, "add", add)
+        if remove is not None:
+            pulumi.set(__self__, "remove", remove)
+        if set is not None:
+            pulumi.set(__self__, "set", set)
+
+    @property
+    @pulumi.getter
+    def add(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Add the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        return pulumi.get(self, "add")
+
+    @add.setter
+    def add(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "add", value)
+
+    @property
+    @pulumi.getter
+    def remove(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Remove headers (matching by header names) specified in the list.
+        """
+        return pulumi.get(self, "remove")
+
+    @remove.setter
+    def remove(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "remove", value)
+
+    @property
+    @pulumi.getter
+    def set(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
+        """
+        return pulumi.get(self, "set")
+
+    @set.setter
+    def set(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "set", value)
+
+
+@pulumi.input_type
+class HttpRouteQueryParameterMatchArgs:
+    def __init__(__self__, *,
+                 exact_match: Optional[pulumi.Input[str]] = None,
+                 present_match: Optional[pulumi.Input[bool]] = None,
+                 query_parameter: Optional[pulumi.Input[str]] = None,
+                 regex_match: Optional[pulumi.Input[str]] = None):
+        """
+        Specifications to match a query parameter in the request.
+        :param pulumi.Input[str] exact_match: The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set.
+        :param pulumi.Input[bool] present_match: Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not. Only one of exact_match, regex_match, or present_match must be set.
+        :param pulumi.Input[str] query_parameter: The name of the query parameter to match.
+        :param pulumi.Input[str] regex_match: The value of the query parameter must match the regular expression specified by regex_match. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of exact_match, regex_match, or present_match must be set.
+        """
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+        if present_match is not None:
+            pulumi.set(__self__, "present_match", present_match)
+        if query_parameter is not None:
+            pulumi.set(__self__, "query_parameter", query_parameter)
+        if regex_match is not None:
+            pulumi.set(__self__, "regex_match", regex_match)
+
+    @property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @exact_match.setter
+    def exact_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "exact_match", value)
+
+    @property
+    @pulumi.getter(name="presentMatch")
+    def present_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies that the QueryParameterMatcher matches if request contains query parameter, irrespective of whether the parameter has a value or not. Only one of exact_match, regex_match, or present_match must be set.
+        """
+        return pulumi.get(self, "present_match")
+
+    @present_match.setter
+    def present_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "present_match", value)
+
+    @property
+    @pulumi.getter(name="queryParameter")
+    def query_parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the query parameter to match.
+        """
+        return pulumi.get(self, "query_parameter")
+
+    @query_parameter.setter
+    def query_parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_parameter", value)
+
+    @property
+    @pulumi.getter(name="regexMatch")
+    def regex_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the query parameter must match the regular expression specified by regex_match. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of exact_match, regex_match, or present_match must be set.
+        """
+        return pulumi.get(self, "regex_match")
+
+    @regex_match.setter
+    def regex_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex_match", value)
+
+
+@pulumi.input_type
+class HttpRouteRedirectArgs:
+    def __init__(__self__, *,
+                 host_redirect: Optional[pulumi.Input[str]] = None,
+                 https_redirect: Optional[pulumi.Input[bool]] = None,
+                 path_redirect: Optional[pulumi.Input[str]] = None,
+                 port_redirect: Optional[pulumi.Input[int]] = None,
+                 prefix_rewrite: Optional[pulumi.Input[str]] = None,
+                 response_code: Optional[pulumi.Input['HttpRouteRedirectResponseCode']] = None,
+                 strip_query: Optional[pulumi.Input[bool]] = None):
+        """
+        The specification for redirecting traffic.
+        :param pulumi.Input[str] host_redirect: The host that will be used in the redirect response instead of the one that was supplied in the request.
+        :param pulumi.Input[bool] https_redirect: If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. The default is set to false.
+        :param pulumi.Input[str] path_redirect: The path that will be used in the redirect response instead of the one that was supplied in the request. path_redirect can not be supplied together with prefix_redirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+        :param pulumi.Input[int] port_redirect: The port that will be used in the redirected request instead of the one that was supplied in the request.
+        :param pulumi.Input[str] prefix_rewrite: Indicates that during redirection, the matched prefix (or path) should be swapped with this value. This option allows URLs be dynamically created based on the request.
+        :param pulumi.Input['HttpRouteRedirectResponseCode'] response_code: The HTTP Status code to use for the redirect.
+        :param pulumi.Input[bool] strip_query: if set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+        """
+        if host_redirect is not None:
+            pulumi.set(__self__, "host_redirect", host_redirect)
+        if https_redirect is not None:
+            pulumi.set(__self__, "https_redirect", https_redirect)
+        if path_redirect is not None:
+            pulumi.set(__self__, "path_redirect", path_redirect)
+        if port_redirect is not None:
+            pulumi.set(__self__, "port_redirect", port_redirect)
+        if prefix_rewrite is not None:
+            pulumi.set(__self__, "prefix_rewrite", prefix_rewrite)
+        if response_code is not None:
+            pulumi.set(__self__, "response_code", response_code)
+        if strip_query is not None:
+            pulumi.set(__self__, "strip_query", strip_query)
+
+    @property
+    @pulumi.getter(name="hostRedirect")
+    def host_redirect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host that will be used in the redirect response instead of the one that was supplied in the request.
+        """
+        return pulumi.get(self, "host_redirect")
+
+    @host_redirect.setter
+    def host_redirect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_redirect", value)
+
+    @property
+    @pulumi.getter(name="httpsRedirect")
+    def https_redirect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the URL scheme in the redirected request is set to https. If set to false, the URL scheme of the redirected request will remain the same as that of the request. The default is set to false.
+        """
+        return pulumi.get(self, "https_redirect")
+
+    @https_redirect.setter
+    def https_redirect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "https_redirect", value)
+
+    @property
+    @pulumi.getter(name="pathRedirect")
+    def path_redirect(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path that will be used in the redirect response instead of the one that was supplied in the request. path_redirect can not be supplied together with prefix_redirect. Supply one alone or neither. If neither is supplied, the path of the original request will be used for the redirect.
+        """
+        return pulumi.get(self, "path_redirect")
+
+    @path_redirect.setter
+    def path_redirect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_redirect", value)
+
+    @property
+    @pulumi.getter(name="portRedirect")
+    def port_redirect(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port that will be used in the redirected request instead of the one that was supplied in the request.
+        """
+        return pulumi.get(self, "port_redirect")
+
+    @port_redirect.setter
+    def port_redirect(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port_redirect", value)
+
+    @property
+    @pulumi.getter(name="prefixRewrite")
+    def prefix_rewrite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates that during redirection, the matched prefix (or path) should be swapped with this value. This option allows URLs be dynamically created based on the request.
+        """
+        return pulumi.get(self, "prefix_rewrite")
+
+    @prefix_rewrite.setter
+    def prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_rewrite", value)
+
+    @property
+    @pulumi.getter(name="responseCode")
+    def response_code(self) -> Optional[pulumi.Input['HttpRouteRedirectResponseCode']]:
+        """
+        The HTTP Status code to use for the redirect.
+        """
+        return pulumi.get(self, "response_code")
+
+    @response_code.setter
+    def response_code(self, value: Optional[pulumi.Input['HttpRouteRedirectResponseCode']]):
+        pulumi.set(self, "response_code", value)
+
+    @property
+    @pulumi.getter(name="stripQuery")
+    def strip_query(self) -> Optional[pulumi.Input[bool]]:
+        """
+        if set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained. The default is set to false.
+        """
+        return pulumi.get(self, "strip_query")
+
+    @strip_query.setter
+    def strip_query(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strip_query", value)
+
+
+@pulumi.input_type
+class HttpRouteRequestMirrorPolicyArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input['HttpRouteDestinationArgs']] = None):
+        """
+        Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
+        :param pulumi.Input['HttpRouteDestinationArgs'] destination: The destination the requests will be mirrored to. The weight of the destination will be ignored.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input['HttpRouteDestinationArgs']]:
+        """
+        The destination the requests will be mirrored to. The weight of the destination will be ignored.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input['HttpRouteDestinationArgs']]):
+        pulumi.set(self, "destination", value)
+
+
+@pulumi.input_type
+class HttpRouteRetryPolicyArgs:
+    def __init__(__self__, *,
+                 num_retries: Optional[pulumi.Input[int]] = None,
+                 per_try_timeout: Optional[pulumi.Input[str]] = None,
+                 retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The specifications for retries.
+        :param pulumi.Input[int] num_retries: Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
+        :param pulumi.Input[str] per_try_timeout: Specifies a non-zero timeout per retry attempt.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: Specifies one or more conditions when this retry policy applies. Valid values are: 5xx: Proxy will attempt a retry if the destination service responds with any 5xx response code, of if the destination service does not respond at all, example: disconnect, reset, read timeout, connection failure and refused streams. gateway-error: Similar to 5xx, but only applies to response codes 502, 503, 504. reset: Proxy will attempt a retry if the destination service does not respond at all (disconnect/reset/read timeout) connect-failure: Proxy will retry on failures connecting to destination for example due to connection timeouts. retriable-4xx: Proxy will retry fro retriable 4xx response codes. Currently the only retriable error supported is 409. refused-stream: Proxy will retry if the destination resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        """
+        if num_retries is not None:
+            pulumi.set(__self__, "num_retries", num_retries)
+        if per_try_timeout is not None:
+            pulumi.set(__self__, "per_try_timeout", per_try_timeout)
+        if retry_conditions is not None:
+            pulumi.set(__self__, "retry_conditions", retry_conditions)
+
+    @property
+    @pulumi.getter(name="numRetries")
+    def num_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
+        """
+        return pulumi.get(self, "num_retries")
+
+    @num_retries.setter
+    def num_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "num_retries", value)
+
+    @property
+    @pulumi.getter(name="perTryTimeout")
+    def per_try_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a non-zero timeout per retry attempt.
+        """
+        return pulumi.get(self, "per_try_timeout")
+
+    @per_try_timeout.setter
+    def per_try_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "per_try_timeout", value)
+
+    @property
+    @pulumi.getter(name="retryConditions")
+    def retry_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies one or more conditions when this retry policy applies. Valid values are: 5xx: Proxy will attempt a retry if the destination service responds with any 5xx response code, of if the destination service does not respond at all, example: disconnect, reset, read timeout, connection failure and refused streams. gateway-error: Similar to 5xx, but only applies to response codes 502, 503, 504. reset: Proxy will attempt a retry if the destination service does not respond at all (disconnect/reset/read timeout) connect-failure: Proxy will retry on failures connecting to destination for example due to connection timeouts. retriable-4xx: Proxy will retry fro retriable 4xx response codes. Currently the only retriable error supported is 409. refused-stream: Proxy will retry if the destination resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry.
+        """
+        return pulumi.get(self, "retry_conditions")
+
+    @retry_conditions.setter
+    def retry_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "retry_conditions", value)
+
+
+@pulumi.input_type
+class HttpRouteRouteActionArgs:
+    def __init__(__self__, *,
+                 cors_policy: Optional[pulumi.Input['HttpRouteCorsPolicyArgs']] = None,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteDestinationArgs']]]] = None,
+                 fault_injection_policy: Optional[pulumi.Input['HttpRouteFaultInjectionPolicyArgs']] = None,
+                 redirect: Optional[pulumi.Input['HttpRouteRedirectArgs']] = None,
+                 request_header_modifier: Optional[pulumi.Input['HttpRouteHeaderModifierArgs']] = None,
+                 request_mirror_policy: Optional[pulumi.Input['HttpRouteRequestMirrorPolicyArgs']] = None,
+                 response_header_modifier: Optional[pulumi.Input['HttpRouteHeaderModifierArgs']] = None,
+                 retry_policy: Optional[pulumi.Input['HttpRouteRetryPolicyArgs']] = None,
+                 timeout: Optional[pulumi.Input[str]] = None,
+                 url_rewrite: Optional[pulumi.Input['HttpRouteURLRewriteArgs']] = None):
+        """
+        The specifications for routing traffic and applying associated policies.
+        :param pulumi.Input['HttpRouteCorsPolicyArgs'] cors_policy: The specification for allowing client side cross-origin requests.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteDestinationArgs']]] destinations: The destination to which traffic should be forwarded.
+        :param pulumi.Input['HttpRouteFaultInjectionPolicyArgs'] fault_injection_policy: The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
+        :param pulumi.Input['HttpRouteRedirectArgs'] redirect: If set, the request is directed as configured by this field.
+        :param pulumi.Input['HttpRouteHeaderModifierArgs'] request_header_modifier: The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        :param pulumi.Input['HttpRouteRequestMirrorPolicyArgs'] request_mirror_policy: Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
+        :param pulumi.Input['HttpRouteHeaderModifierArgs'] response_header_modifier: The specification for modifying the headers of a response prior to sending the response back to the client.
+        :param pulumi.Input['HttpRouteRetryPolicyArgs'] retry_policy: Specifies the retry policy associated with this route.
+        :param pulumi.Input[str] timeout: Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
+        :param pulumi.Input['HttpRouteURLRewriteArgs'] url_rewrite: The specification for rewrite URL before forwarding requests to the destination.
+        """
+        if cors_policy is not None:
+            pulumi.set(__self__, "cors_policy", cors_policy)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if fault_injection_policy is not None:
+            pulumi.set(__self__, "fault_injection_policy", fault_injection_policy)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+        if request_header_modifier is not None:
+            pulumi.set(__self__, "request_header_modifier", request_header_modifier)
+        if request_mirror_policy is not None:
+            pulumi.set(__self__, "request_mirror_policy", request_mirror_policy)
+        if response_header_modifier is not None:
+            pulumi.set(__self__, "response_header_modifier", response_header_modifier)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if url_rewrite is not None:
+            pulumi.set(__self__, "url_rewrite", url_rewrite)
+
+    @property
+    @pulumi.getter(name="corsPolicy")
+    def cors_policy(self) -> Optional[pulumi.Input['HttpRouteCorsPolicyArgs']]:
+        """
+        The specification for allowing client side cross-origin requests.
+        """
+        return pulumi.get(self, "cors_policy")
+
+    @cors_policy.setter
+    def cors_policy(self, value: Optional[pulumi.Input['HttpRouteCorsPolicyArgs']]):
+        pulumi.set(self, "cors_policy", value)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteDestinationArgs']]]]:
+        """
+        The destination to which traffic should be forwarded.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter(name="faultInjectionPolicy")
+    def fault_injection_policy(self) -> Optional[pulumi.Input['HttpRouteFaultInjectionPolicyArgs']]:
+        """
+        The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced on a percentage of requests before sending those requests to the backend service. Similarly requests from clients can be aborted for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy
+        """
+        return pulumi.get(self, "fault_injection_policy")
+
+    @fault_injection_policy.setter
+    def fault_injection_policy(self, value: Optional[pulumi.Input['HttpRouteFaultInjectionPolicyArgs']]):
+        pulumi.set(self, "fault_injection_policy", value)
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['HttpRouteRedirectArgs']]:
+        """
+        If set, the request is directed as configured by this field.
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['HttpRouteRedirectArgs']]):
+        pulumi.set(self, "redirect", value)
+
+    @property
+    @pulumi.getter(name="requestHeaderModifier")
+    def request_header_modifier(self) -> Optional[pulumi.Input['HttpRouteHeaderModifierArgs']]:
+        """
+        The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
+        """
+        return pulumi.get(self, "request_header_modifier")
+
+    @request_header_modifier.setter
+    def request_header_modifier(self, value: Optional[pulumi.Input['HttpRouteHeaderModifierArgs']]):
+        pulumi.set(self, "request_header_modifier", value)
+
+    @property
+    @pulumi.getter(name="requestMirrorPolicy")
+    def request_mirror_policy(self) -> Optional[pulumi.Input['HttpRouteRequestMirrorPolicyArgs']]:
+        """
+        Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination. Proxy will not wait for the shadow destination to respond before returning the response. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
+        """
+        return pulumi.get(self, "request_mirror_policy")
+
+    @request_mirror_policy.setter
+    def request_mirror_policy(self, value: Optional[pulumi.Input['HttpRouteRequestMirrorPolicyArgs']]):
+        pulumi.set(self, "request_mirror_policy", value)
+
+    @property
+    @pulumi.getter(name="responseHeaderModifier")
+    def response_header_modifier(self) -> Optional[pulumi.Input['HttpRouteHeaderModifierArgs']]:
+        """
+        The specification for modifying the headers of a response prior to sending the response back to the client.
+        """
+        return pulumi.get(self, "response_header_modifier")
+
+    @response_header_modifier.setter
+    def response_header_modifier(self, value: Optional[pulumi.Input['HttpRouteHeaderModifierArgs']]):
+        pulumi.set(self, "response_header_modifier", value)
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['HttpRouteRetryPolicyArgs']]:
+        """
+        Specifies the retry policy associated with this route.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['HttpRouteRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="urlRewrite")
+    def url_rewrite(self) -> Optional[pulumi.Input['HttpRouteURLRewriteArgs']]:
+        """
+        The specification for rewrite URL before forwarding requests to the destination.
+        """
+        return pulumi.get(self, "url_rewrite")
+
+    @url_rewrite.setter
+    def url_rewrite(self, value: Optional[pulumi.Input['HttpRouteURLRewriteArgs']]):
+        pulumi.set(self, "url_rewrite", value)
+
+
+@pulumi.input_type
+class HttpRouteRouteMatchArgs:
+    def __init__(__self__, *,
+                 full_path_match: Optional[pulumi.Input[str]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteHeaderMatchArgs']]]] = None,
+                 ignore_case: Optional[pulumi.Input[bool]] = None,
+                 prefix_match: Optional[pulumi.Input[str]] = None,
+                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteQueryParameterMatchArgs']]]] = None,
+                 regex_match: Optional[pulumi.Input[str]] = None):
+        """
+        RouteMatch defines specifications used to match requests. If multiple match types are set, this RouteMatch will match if ALL type of matches are matched.
+        :param pulumi.Input[str] full_path_match: The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteHeaderMatchArgs']]] headers: Specifies a list of HTTP request headers to match against. ALL of the supplied headers must be matched.
+        :param pulumi.Input[bool] ignore_case: Specifies if prefix_match and full_path_match matches are case sensitive. The default value is false.
+        :param pulumi.Input[str] prefix_match: The HTTP request path value must begin with specified prefix_match. prefix_match must begin with a /. Only one of full_path_match, prefix_match, or regex_match should be used.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteQueryParameterMatchArgs']]] query_parameters: Specifies a list of query parameters to match against. ALL of the query parameters must be matched.
+        :param pulumi.Input[str] regex_match: The HTTP request path value must satisfy the regular expression specified by regex_match after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of full_path_match, prefix_match, or regex_match should be used.
+        """
+        if full_path_match is not None:
+            pulumi.set(__self__, "full_path_match", full_path_match)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if ignore_case is not None:
+            pulumi.set(__self__, "ignore_case", ignore_case)
+        if prefix_match is not None:
+            pulumi.set(__self__, "prefix_match", prefix_match)
+        if query_parameters is not None:
+            pulumi.set(__self__, "query_parameters", query_parameters)
+        if regex_match is not None:
+            pulumi.set(__self__, "regex_match", regex_match)
+
+    @property
+    @pulumi.getter(name="fullPathMatch")
+    def full_path_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
+        """
+        return pulumi.get(self, "full_path_match")
+
+    @full_path_match.setter
+    def full_path_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "full_path_match", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteHeaderMatchArgs']]]]:
+        """
+        Specifies a list of HTTP request headers to match against. ALL of the supplied headers must be matched.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteHeaderMatchArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter(name="ignoreCase")
+    def ignore_case(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies if prefix_match and full_path_match matches are case sensitive. The default value is false.
+        """
+        return pulumi.get(self, "ignore_case")
+
+    @ignore_case.setter
+    def ignore_case(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_case", value)
+
+    @property
+    @pulumi.getter(name="prefixMatch")
+    def prefix_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP request path value must begin with specified prefix_match. prefix_match must begin with a /. Only one of full_path_match, prefix_match, or regex_match should be used.
+        """
+        return pulumi.get(self, "prefix_match")
+
+    @prefix_match.setter
+    def prefix_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_match", value)
+
+    @property
+    @pulumi.getter(name="queryParameters")
+    def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteQueryParameterMatchArgs']]]]:
+        """
+        Specifies a list of query parameters to match against. ALL of the query parameters must be matched.
+        """
+        return pulumi.get(self, "query_parameters")
+
+    @query_parameters.setter
+    def query_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteQueryParameterMatchArgs']]]]):
+        pulumi.set(self, "query_parameters", value)
+
+    @property
+    @pulumi.getter(name="regexMatch")
+    def regex_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP request path value must satisfy the regular expression specified by regex_match after removing any query parameters and anchor supplied with the original URL. For regular expression grammar, please see https://github.com/google/re2/wiki/Syntax Only one of full_path_match, prefix_match, or regex_match should be used.
+        """
+        return pulumi.get(self, "regex_match")
+
+    @regex_match.setter
+    def regex_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex_match", value)
+
+
+@pulumi.input_type
+class HttpRouteRouteRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input['HttpRouteRouteActionArgs']] = None,
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRouteMatchArgs']]]] = None):
+        """
+        Specifies how to match traffic and how to route traffic when traffic is matched.
+        :param pulumi.Input['HttpRouteRouteActionArgs'] action: The detailed rule defining how to route matched traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRouteMatchArgs']]] matches: A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input['HttpRouteRouteActionArgs']]:
+        """
+        The detailed rule defining how to route matched traffic.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input['HttpRouteRouteActionArgs']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRouteMatchArgs']]]]:
+        """
+        A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list.
+        """
+        return pulumi.get(self, "matches")
+
+    @matches.setter
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRouteMatchArgs']]]]):
+        pulumi.set(self, "matches", value)
+
+
+@pulumi.input_type
+class HttpRouteURLRewriteArgs:
+    def __init__(__self__, *,
+                 host_rewrite: Optional[pulumi.Input[str]] = None,
+                 path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
+        """
+        The specification for modifying the URL of the request, prior to forwarding the request to the destination.
+        :param pulumi.Input[str] host_rewrite: Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+        :param pulumi.Input[str] path_prefix_rewrite: Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+        """
+        if host_rewrite is not None:
+            pulumi.set(__self__, "host_rewrite", host_rewrite)
+        if path_prefix_rewrite is not None:
+            pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+
+    @property
+    @pulumi.getter(name="hostRewrite")
+    def host_rewrite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
+        """
+        return pulumi.get(self, "host_rewrite")
+
+    @host_rewrite.setter
+    def host_rewrite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_rewrite", value)
+
+    @property
+    @pulumi.getter(name="pathPrefixRewrite")
+    def path_prefix_rewrite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
+        """
+        return pulumi.get(self, "path_prefix_rewrite")
+
+    @path_prefix_rewrite.setter
+    def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_prefix_rewrite", value)
+
+
+@pulumi.input_type
 class MetadataLabelMatcherArgs:
     def __init__(__self__, *,
                  metadata_label_match_criteria: Optional[pulumi.Input['MetadataLabelMatcherMetadataLabelMatchCriteria']] = None,
@@ -328,6 +1988,302 @@ class MetadataLabelsArgs:
     @label_value.setter
     def label_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "label_value", value)
+
+
+@pulumi.input_type
+class TcpRouteRouteActionArgs:
+    def __init__(__self__, *,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]]] = None,
+                 original_destination: Optional[pulumi.Input[bool]] = None):
+        """
+        The specifications for routing traffic and applying associated policies.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]] destinations: Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+        :param pulumi.Input[bool] original_destination: Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if original_destination is not None:
+            pulumi.set(__self__, "original_destination", original_destination)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]]]:
+        """
+        Optional. The destination services to which traffic should be forwarded. At least one destination service is required.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteDestinationArgs']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter(name="originalDestination")
+    def original_destination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, Router will use the destination IP and port of the original connection as the destination of the request. Default is false.
+        """
+        return pulumi.get(self, "original_destination")
+
+    @original_destination.setter
+    def original_destination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "original_destination", value)
+
+
+@pulumi.input_type
+class TcpRouteRouteDestinationArgs:
+    def __init__(__self__, *,
+                 service_name: pulumi.Input[str],
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        Describe the destination for traffic to be routed to.
+        :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
+        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon from the exact proportion defined here depending on the precision an implementation supports. If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend. If weights are specified for any one service name, they need to be specified for all of them. If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class TcpRouteRouteMatchArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 port: pulumi.Input[str]):
+        """
+        RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+        :param pulumi.Input[str] address: Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+        :param pulumi.Input[str] port: Specifies the destination port to match against.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[str]:
+        """
+        Specifies the destination port to match against.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[str]):
+        pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class TcpRouteRouteRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['TcpRouteRouteActionArgs'],
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteMatchArgs']]]] = None):
+        """
+        Specifies how to match traffic and how to route traffic when traffic is matched.
+        :param pulumi.Input['TcpRouteRouteActionArgs'] action: The detailed rule defining how to route matched traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteMatchArgs']]] matches: Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+        """
+        pulumi.set(__self__, "action", action)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['TcpRouteRouteActionArgs']:
+        """
+        The detailed rule defining how to route matched traffic.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['TcpRouteRouteActionArgs']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteMatchArgs']]]]:
+        """
+        Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+        """
+        return pulumi.get(self, "matches")
+
+    @matches.setter
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteMatchArgs']]]]):
+        pulumi.set(self, "matches", value)
+
+
+@pulumi.input_type
+class TlsRouteRouteActionArgs:
+    def __init__(__self__, *,
+                 destinations: pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteDestinationArgs']]]):
+        """
+        The specifications for routing traffic and applying associated policies.
+        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteDestinationArgs']]] destinations: The destination services to which traffic should be forwarded. At least one destination service is required.
+        """
+        pulumi.set(__self__, "destinations", destinations)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteDestinationArgs']]]:
+        """
+        The destination services to which traffic should be forwarded. At least one destination service is required.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteDestinationArgs']]]):
+        pulumi.set(self, "destinations", value)
+
+
+@pulumi.input_type
+class TlsRouteRouteDestinationArgs:
+    def __init__(__self__, *,
+                 service_name: pulumi.Input[str],
+                 weight: Optional[pulumi.Input[int]] = None):
+        """
+        Describe the destination for traffic to be routed to.
+        :param pulumi.Input[str] service_name: The URL of a BackendService to route traffic to.
+        :param pulumi.Input[int] weight: Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        """
+        pulumi.set(__self__, "service_name", service_name)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> pulumi.Input[str]:
+        """
+        The URL of a BackendService to route traffic to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_name", value)
+
+    @property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to sum up to 100.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "weight", value)
+
+
+@pulumi.input_type
+class TlsRouteRouteMatchArgs:
+    def __init__(__self__, *,
+                 alpn: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sni_host: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        RouteMatch defines the predicate used to match requests to a given action. Multiple match types are “AND”ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alpn: Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sni_host: Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+        """
+        if alpn is not None:
+            pulumi.set(__self__, "alpn", alpn)
+        if sni_host is not None:
+            pulumi.set(__self__, "sni_host", sni_host)
+
+    @property
+    @pulumi.getter
+    def alpn(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. ALPN (Application-Layer Protocol Negotiation) to match against. Examples: "http/1.1", "h2". At least one of sni_host and alpn is required. Up to 5 alpns across all matches can be set.
+        """
+        return pulumi.get(self, "alpn")
+
+    @alpn.setter
+    def alpn(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alpn", value)
+
+    @property
+    @pulumi.getter(name="sniHost")
+    def sni_host(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. www.example.com will be first matched against www.example.com, then *.example.com, then *.com. Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 5 sni hosts across all matches can be set.
+        """
+        return pulumi.get(self, "sni_host")
+
+    @sni_host.setter
+    def sni_host(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sni_host", value)
+
+
+@pulumi.input_type
+class TlsRouteRouteRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input['TlsRouteRouteActionArgs'],
+                 matches: pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteMatchArgs']]]):
+        """
+        Specifies how to match traffic and how to route traffic when traffic is matched.
+        :param pulumi.Input['TlsRouteRouteActionArgs'] action: The detailed rule defining how to route matched traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteMatchArgs']]] matches: RouteMatch defines the predicate used to match requests to a given action. Multiple match types are “OR”ed for evaluation.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "matches", matches)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input['TlsRouteRouteActionArgs']:
+        """
+        The detailed rule defining how to route matched traffic.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input['TlsRouteRouteActionArgs']):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def matches(self) -> pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteMatchArgs']]]:
+        """
+        RouteMatch defines the predicate used to match requests to a given action. Multiple match types are “OR”ed for evaluation.
+        """
+        return pulumi.get(self, "matches")
+
+    @matches.setter
+    def matches(self, value: pulumi.Input[Sequence[pulumi.Input['TlsRouteRouteMatchArgs']]]):
+        pulumi.set(self, "matches", value)
 
 
 @pulumi.input_type

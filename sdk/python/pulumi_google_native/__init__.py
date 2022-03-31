@@ -538,6 +538,7 @@ _utilities.register(
   "mod": "baremetalsolution/v2",
   "fqn": "pulumi_google_native.baremetalsolution.v2",
   "classes": {
+   "google-native:baremetalsolution/v2:ProvisioningConfig": "ProvisioningConfig",
    "google-native:baremetalsolution/v2:Snapshot": "Snapshot",
    "google-native:baremetalsolution/v2:SnapshotSchedulePolicy": "SnapshotSchedulePolicy"
   }
@@ -1096,6 +1097,7 @@ _utilities.register(
    "google-native:compute/beta:MachineImage": "MachineImage",
    "google-native:compute/beta:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/beta:Network": "Network",
+   "google-native:compute/beta:NetworkEdgeSecurityService": "NetworkEdgeSecurityService",
    "google-native:compute/beta:NetworkEndpointGroup": "NetworkEndpointGroup",
    "google-native:compute/beta:NetworkFirewallPolicy": "NetworkFirewallPolicy",
    "google-native:compute/beta:NetworkFirewallPolicyIamPolicy": "NetworkFirewallPolicyIamPolicy",
@@ -1120,6 +1122,7 @@ _utilities.register(
    "google-native:compute/beta:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/beta:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
    "google-native:compute/beta:RegionNotificationEndpoint": "RegionNotificationEndpoint",
+   "google-native:compute/beta:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/beta:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/beta:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/beta:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
@@ -1190,6 +1193,7 @@ _utilities.register(
    "google-native:compute/v1:MachineImage": "MachineImage",
    "google-native:compute/v1:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/v1:Network": "Network",
+   "google-native:compute/v1:NetworkEdgeSecurityService": "NetworkEdgeSecurityService",
    "google-native:compute/v1:NetworkEndpointGroup": "NetworkEndpointGroup",
    "google-native:compute/v1:NetworkFirewallPolicy": "NetworkFirewallPolicy",
    "google-native:compute/v1:NetworkFirewallPolicyIamPolicy": "NetworkFirewallPolicyIamPolicy",
@@ -1212,6 +1216,7 @@ _utilities.register(
    "google-native:compute/v1:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/v1:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
    "google-native:compute/v1:RegionNotificationEndpoint": "RegionNotificationEndpoint",
+   "google-native:compute/v1:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/v1:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/v1:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/v1:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
@@ -1919,15 +1924,6 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
-  "mod": "gkehub/v2alpha",
-  "fqn": "pulumi_google_native.gkehub.v2alpha",
-  "classes": {
-   "google-native:gkehub/v2alpha:Feature": "Feature",
-   "google-native:gkehub/v2alpha:FeatureConfig": "FeatureConfig"
-  }
- },
- {
-  "pkg": "google-native",
   "mod": "healthcare/v1",
   "fqn": "pulumi_google_native.healthcare.v1",
   "classes": {
@@ -1993,6 +1989,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.iap.v1",
   "classes": {
    "google-native:iap/v1:Brand": "Brand",
+   "google-native:iap/v1:DestGroup": "DestGroup",
    "google-native:iap/v1:IdentityAwareProxyClient": "IdentityAwareProxyClient",
    "google-native:iap/v1:V1IamPolicy": "V1IamPolicy"
   }
@@ -2248,8 +2245,16 @@ _utilities.register(
   "classes": {
    "google-native:networkservices/v1beta1:EndpointPolicy": "EndpointPolicy",
    "google-native:networkservices/v1beta1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
+   "google-native:networkservices/v1beta1:Gateway": "Gateway",
+   "google-native:networkservices/v1beta1:GatewayIamPolicy": "GatewayIamPolicy",
+   "google-native:networkservices/v1beta1:GrpcRoute": "GrpcRoute",
+   "google-native:networkservices/v1beta1:HttpRoute": "HttpRoute",
+   "google-native:networkservices/v1beta1:Mesh": "Mesh",
+   "google-native:networkservices/v1beta1:MeshIamPolicy": "MeshIamPolicy",
    "google-native:networkservices/v1beta1:ServiceBinding": "ServiceBinding",
-   "google-native:networkservices/v1beta1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
+   "google-native:networkservices/v1beta1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy",
+   "google-native:networkservices/v1beta1:TcpRoute": "TcpRoute",
+   "google-native:networkservices/v1beta1:TlsRoute": "TlsRoute"
   }
  },
  {

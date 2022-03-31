@@ -36,6 +36,10 @@ export interface GetEnvgroupAttachmentResult {
      */
     readonly environment: string;
     /**
+     * ID of the environment group.
+     */
+    readonly environmentGroupId: string;
+    /**
      * ID of the environment group attachment.
      */
     readonly name: string;

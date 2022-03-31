@@ -1085,7 +1085,7 @@ export const GuestOsFeatureType = {
 } as const;
 
 /**
- * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+ * The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
  */
 export type GuestOsFeatureType = (typeof GuestOsFeatureType)[keyof typeof GuestOsFeatureType];
 
@@ -2057,6 +2057,17 @@ export const RegionNetworkEndpointGroupNetworkEndpointType = {
  */
 export type RegionNetworkEndpointGroupNetworkEndpointType = (typeof RegionNetworkEndpointGroupNetworkEndpointType)[keyof typeof RegionNetworkEndpointGroupNetworkEndpointType];
 
+export const RegionSecurityPolicyType = {
+    CloudArmor: "CLOUD_ARMOR",
+    CloudArmorEdge: "CLOUD_ARMOR_EDGE",
+    CloudArmorNetwork: "CLOUD_ARMOR_NETWORK",
+} as const;
+
+/**
+ * The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+ */
+export type RegionSecurityPolicyType = (typeof RegionSecurityPolicyType)[keyof typeof RegionSecurityPolicyType];
+
 export const RegionSslCertificateType = {
     /**
      * Google-managed SSLCertificate.
@@ -2452,6 +2463,13 @@ export const SecurityPolicyAdvancedOptionsConfigLogLevel = {
 
 export type SecurityPolicyAdvancedOptionsConfigLogLevel = (typeof SecurityPolicyAdvancedOptionsConfigLogLevel)[keyof typeof SecurityPolicyAdvancedOptionsConfigLogLevel];
 
+export const SecurityPolicyDdosProtectionConfigDdosProtection = {
+    Advanced: "ADVANCED",
+    Standard: "STANDARD",
+} as const;
+
+export type SecurityPolicyDdosProtectionConfigDdosProtection = (typeof SecurityPolicyDdosProtectionConfigDdosProtection)[keyof typeof SecurityPolicyDdosProtectionConfigDdosProtection];
+
 export const SecurityPolicyRuleMatcherVersionedExpr = {
     /**
      * Matches the source IP address of a request to the IP ranges supplied in config.
@@ -2490,6 +2508,7 @@ export type SecurityPolicyRuleRedirectOptionsType = (typeof SecurityPolicyRuleRe
 export const SecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
     CloudArmorEdge: "CLOUD_ARMOR_EDGE",
+    CloudArmorNetwork: "CLOUD_ARMOR_NETWORK",
 } as const;
 
 /**

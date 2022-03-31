@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// <summary>
         /// Settings for the Binary Authorization feature.
         /// </summary>
-        public readonly Outputs.GoogleCloudRunOpV2BinaryAuthorizationResponse BinaryAuthorization;
+        public readonly Outputs.GoogleCloudRunV2BinaryAuthorizationResponse BinaryAuthorization;
         /// <summary>
         /// Arbitrary identifier for the API client.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// <summary>
         /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GoogleCloudRunOpV2ConditionResponse> Conditions;
+        public readonly ImmutableArray<Outputs.GoogleCloudRunV2ConditionResponse> Conditions;
         /// <summary>
         /// The creation time.
         /// </summary>
@@ -148,19 +148,19 @@ namespace Pulumi.GoogleNative.Run.V2
         /// <summary>
         /// The template used to create revisions for this Service.
         /// </summary>
-        public readonly Outputs.GoogleCloudRunOpV2RevisionTemplateResponse Template;
+        public readonly Outputs.GoogleCloudRunV2RevisionTemplateResponse Template;
         /// <summary>
         /// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         /// </summary>
-        public readonly Outputs.GoogleCloudRunOpV2ConditionResponse TerminalCondition;
+        public readonly Outputs.GoogleCloudRunV2ConditionResponse TerminalCondition;
         /// <summary>
         /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GoogleCloudRunOpV2TrafficTargetResponse> Traffic;
+        public readonly ImmutableArray<Outputs.GoogleCloudRunV2TrafficTargetResponse> Traffic;
         /// <summary>
         /// Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GoogleCloudRunOpV2TrafficTargetStatusResponse> TrafficStatuses;
+        public readonly ImmutableArray<Outputs.GoogleCloudRunV2TrafficTargetStatusResponse> TrafficStatuses;
         /// <summary>
         /// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         /// </summary>
@@ -178,13 +178,13 @@ namespace Pulumi.GoogleNative.Run.V2
         private GetServiceResult(
             ImmutableDictionary<string, string> annotations,
 
-            Outputs.GoogleCloudRunOpV2BinaryAuthorizationResponse binaryAuthorization,
+            Outputs.GoogleCloudRunV2BinaryAuthorizationResponse binaryAuthorization,
 
             string client,
 
             string clientVersion,
 
-            ImmutableArray<Outputs.GoogleCloudRunOpV2ConditionResponse> conditions,
+            ImmutableArray<Outputs.GoogleCloudRunV2ConditionResponse> conditions,
 
             string createTime,
 
@@ -218,13 +218,13 @@ namespace Pulumi.GoogleNative.Run.V2
 
             bool reconciling,
 
-            Outputs.GoogleCloudRunOpV2RevisionTemplateResponse template,
+            Outputs.GoogleCloudRunV2RevisionTemplateResponse template,
 
-            Outputs.GoogleCloudRunOpV2ConditionResponse terminalCondition,
+            Outputs.GoogleCloudRunV2ConditionResponse terminalCondition,
 
-            ImmutableArray<Outputs.GoogleCloudRunOpV2TrafficTargetResponse> traffic,
+            ImmutableArray<Outputs.GoogleCloudRunV2TrafficTargetResponse> traffic,
 
-            ImmutableArray<Outputs.GoogleCloudRunOpV2TrafficTargetStatusResponse> trafficStatuses,
+            ImmutableArray<Outputs.GoogleCloudRunV2TrafficTargetStatusResponse> trafficStatuses,
 
             string uid,
 

@@ -31,7 +31,8 @@ type LookupFutureReservationResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the future reservation.
 	Description string `pulumi:"description"`
-	Kind        string `pulumi:"kind"`
+	// Type of the resource. Always compute#futureReservation for future reservations.
+	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
@@ -95,6 +96,7 @@ func (o LookupFutureReservationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFutureReservationResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Type of the resource. Always compute#futureReservation for future reservations.
 func (o LookupFutureReservationResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFutureReservationResult) string { return v.Kind }).(pulumi.StringOutput)
 }

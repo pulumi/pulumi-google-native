@@ -2690,7 +2690,7 @@ type GitFileSource struct {
 	RepoType *GitFileSourceRepoType `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision *string `pulumi:"revision"`
-	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -2717,7 +2717,7 @@ type GitFileSourceArgs struct {
 	RepoType GitFileSourceRepoTypePtrInput `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
-	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -2824,7 +2824,7 @@ func (o GitFileSourceOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitFileSource) *string { return v.Revision }).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourceOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitFileSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -2903,7 +2903,7 @@ func (o GitFileSourcePtrOutput) Revision() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitFileSource) *string {
 		if v == nil {
@@ -2925,7 +2925,7 @@ type GitFileSourceResponse struct {
 	RepoType string `pulumi:"repoType"`
 	// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional). This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If unspecified, the revision from which the trigger invocation originated is assumed to be the revision from which to read the specified path.
 	Revision string `pulumi:"revision"`
-	// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+	// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 	Uri string `pulumi:"uri"`
 }
 
@@ -2969,7 +2969,7 @@ func (o GitFileSourceResponseOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Revision }).(pulumi.StringOutput)
 }
 
-// The URI of the repo (optional). If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+// The URI of the repo. Either uri or repository can be specified. If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
 func (o GitFileSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitFileSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -3628,7 +3628,7 @@ type GitRepoSource struct {
 	Ref *string `pulumi:"ref"`
 	// See RepoType below.
 	RepoType *GitRepoSourceRepoType `pulumi:"repoType"`
-	// The URI of the repo (required).
+	// The URI of the repo. Either uri or repository can be specified and is required.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -3653,7 +3653,7 @@ type GitRepoSourceArgs struct {
 	Ref pulumi.StringPtrInput `pulumi:"ref"`
 	// See RepoType below.
 	RepoType GitRepoSourceRepoTypePtrInput `pulumi:"repoType"`
-	// The URI of the repo (required).
+	// The URI of the repo. Either uri or repository can be specified and is required.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -3755,7 +3755,7 @@ func (o GitRepoSourceOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *GitRepoSourceRepoType { return v.RepoType }).(GitRepoSourceRepoTypePtrOutput)
 }
 
-// The URI of the repo (required).
+// The URI of the repo. Either uri or repository can be specified and is required.
 func (o GitRepoSourceOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitRepoSource) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -3824,7 +3824,7 @@ func (o GitRepoSourcePtrOutput) RepoType() GitRepoSourceRepoTypePtrOutput {
 	}).(GitRepoSourceRepoTypePtrOutput)
 }
 
-// The URI of the repo (required).
+// The URI of the repo. Either uri or repository can be specified and is required.
 func (o GitRepoSourcePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitRepoSource) *string {
 		if v == nil {
@@ -3844,7 +3844,7 @@ type GitRepoSourceResponse struct {
 	Ref string `pulumi:"ref"`
 	// See RepoType below.
 	RepoType string `pulumi:"repoType"`
-	// The URI of the repo (required).
+	// The URI of the repo. Either uri or repository can be specified and is required.
 	Uri string `pulumi:"uri"`
 }
 
@@ -3883,7 +3883,7 @@ func (o GitRepoSourceResponseOutput) RepoType() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.RepoType }).(pulumi.StringOutput)
 }
 
-// The URI of the repo (required).
+// The URI of the repo. Either uri or repository can be specified and is required.
 func (o GitRepoSourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GitRepoSourceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }

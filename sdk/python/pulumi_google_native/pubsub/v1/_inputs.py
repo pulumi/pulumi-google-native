@@ -245,7 +245,7 @@ class OidcTokenArgs:
         """
         Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
         :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-        :param pulumi.Input[str] service_account_email: [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
+        :param pulumi.Input[str] service_account_email: [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. See [Setting up push authentication](/pubsub/docs/push#setting_up_for_push_authentication) for more details.
         """
         if audience is not None:
             pulumi.set(__self__, "audience", audience)
@@ -268,7 +268,7 @@ class OidcTokenArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
+        [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. See [Setting up push authentication](/pubsub/docs/push#setting_up_for_push_authentication) for more details.
         """
         return pulumi.get(self, "service_account_email")
 

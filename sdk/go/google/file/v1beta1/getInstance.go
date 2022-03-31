@@ -51,7 +51,7 @@ type LookupInstanceResult struct {
 	State string `pulumi:"state"`
 	// Additional information about the instance state, if available.
 	StatusMessage string `pulumi:"statusMessage"`
-	// field indicates all the reasons the instance is in "SUSPENDED" state.
+	// Field indicates all the reasons the instance is in "SUSPENDED" state.
 	SuspensionReasons []string `pulumi:"suspensionReasons"`
 	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
@@ -150,7 +150,7 @@ func (o LookupInstanceResultOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
-// field indicates all the reasons the instance is in "SUSPENDED" state.
+// Field indicates all the reasons the instance is in "SUSPENDED" state.
 func (o LookupInstanceResultOutput) SuspensionReasons() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
 }

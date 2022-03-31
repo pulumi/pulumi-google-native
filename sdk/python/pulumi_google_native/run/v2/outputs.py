@@ -11,24 +11,24 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
-    'GoogleCloudRunOpV2BinaryAuthorizationResponse',
-    'GoogleCloudRunOpV2CloudSqlInstanceResponse',
-    'GoogleCloudRunOpV2ConditionResponse',
-    'GoogleCloudRunOpV2ContainerPortResponse',
-    'GoogleCloudRunOpV2ContainerResponse',
-    'GoogleCloudRunOpV2EnvVarResponse',
-    'GoogleCloudRunOpV2EnvVarSourceResponse',
-    'GoogleCloudRunOpV2ResourceRequirementsResponse',
-    'GoogleCloudRunOpV2RevisionScalingResponse',
-    'GoogleCloudRunOpV2RevisionTemplateResponse',
-    'GoogleCloudRunOpV2SecretKeySelectorResponse',
-    'GoogleCloudRunOpV2SecretVolumeSourceResponse',
-    'GoogleCloudRunOpV2TrafficTargetResponse',
-    'GoogleCloudRunOpV2TrafficTargetStatusResponse',
-    'GoogleCloudRunOpV2VersionToPathResponse',
-    'GoogleCloudRunOpV2VolumeMountResponse',
-    'GoogleCloudRunOpV2VolumeResponse',
-    'GoogleCloudRunOpV2VpcAccessResponse',
+    'GoogleCloudRunV2BinaryAuthorizationResponse',
+    'GoogleCloudRunV2CloudSqlInstanceResponse',
+    'GoogleCloudRunV2ConditionResponse',
+    'GoogleCloudRunV2ContainerPortResponse',
+    'GoogleCloudRunV2ContainerResponse',
+    'GoogleCloudRunV2EnvVarResponse',
+    'GoogleCloudRunV2EnvVarSourceResponse',
+    'GoogleCloudRunV2ResourceRequirementsResponse',
+    'GoogleCloudRunV2RevisionScalingResponse',
+    'GoogleCloudRunV2RevisionTemplateResponse',
+    'GoogleCloudRunV2SecretKeySelectorResponse',
+    'GoogleCloudRunV2SecretVolumeSourceResponse',
+    'GoogleCloudRunV2TrafficTargetResponse',
+    'GoogleCloudRunV2TrafficTargetStatusResponse',
+    'GoogleCloudRunV2VersionToPathResponse',
+    'GoogleCloudRunV2VolumeMountResponse',
+    'GoogleCloudRunV2VolumeResponse',
+    'GoogleCloudRunV2VpcAccessResponse',
     'GoogleIamV1AuditConfigResponse',
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
@@ -36,7 +36,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class GoogleCloudRunOpV2BinaryAuthorizationResponse(dict):
+class GoogleCloudRunV2BinaryAuthorizationResponse(dict):
     """
     Settings for Binary Authorization feature.
     """
@@ -49,14 +49,14 @@ class GoogleCloudRunOpV2BinaryAuthorizationResponse(dict):
             suggest = "use_default"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2BinaryAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2BinaryAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2BinaryAuthorizationResponse.__key_warning(key)
+        GoogleCloudRunV2BinaryAuthorizationResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2BinaryAuthorizationResponse.__key_warning(key)
+        GoogleCloudRunV2BinaryAuthorizationResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -88,7 +88,7 @@ class GoogleCloudRunOpV2BinaryAuthorizationResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2CloudSqlInstanceResponse(dict):
+class GoogleCloudRunV2CloudSqlInstanceResponse(dict):
     """
     Represents a specific Cloud SQL instance.
     """
@@ -110,7 +110,7 @@ class GoogleCloudRunOpV2CloudSqlInstanceResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2ConditionResponse(dict):
+class GoogleCloudRunV2ConditionResponse(dict):
     """
     Defines a status condition for a resource.
     """
@@ -129,14 +129,14 @@ class GoogleCloudRunOpV2ConditionResponse(dict):
             suggest = "revision_reason"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2ConditionResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ConditionResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2ConditionResponse.__key_warning(key)
+        GoogleCloudRunV2ConditionResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2ConditionResponse.__key_warning(key)
+        GoogleCloudRunV2ConditionResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -256,7 +256,7 @@ class GoogleCloudRunOpV2ConditionResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2ContainerPortResponse(dict):
+class GoogleCloudRunV2ContainerPortResponse(dict):
     """
     ContainerPort represents a network port in a single container.
     """
@@ -267,14 +267,14 @@ class GoogleCloudRunOpV2ContainerPortResponse(dict):
             suggest = "container_port"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2ContainerPortResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ContainerPortResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2ContainerPortResponse.__key_warning(key)
+        GoogleCloudRunV2ContainerPortResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2ContainerPortResponse.__key_warning(key)
+        GoogleCloudRunV2ContainerPortResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -306,7 +306,7 @@ class GoogleCloudRunOpV2ContainerPortResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2ContainerResponse(dict):
+class GoogleCloudRunV2ContainerResponse(dict):
     """
     A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
     """
@@ -317,35 +317,35 @@ class GoogleCloudRunOpV2ContainerResponse(dict):
             suggest = "volume_mounts"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2ContainerResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ContainerResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2ContainerResponse.__key_warning(key)
+        GoogleCloudRunV2ContainerResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2ContainerResponse.__key_warning(key)
+        GoogleCloudRunV2ContainerResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  args: Sequence[str],
                  command: Sequence[str],
-                 env: Sequence['outputs.GoogleCloudRunOpV2EnvVarResponse'],
+                 env: Sequence['outputs.GoogleCloudRunV2EnvVarResponse'],
                  image: str,
                  name: str,
-                 ports: Sequence['outputs.GoogleCloudRunOpV2ContainerPortResponse'],
-                 resources: 'outputs.GoogleCloudRunOpV2ResourceRequirementsResponse',
-                 volume_mounts: Sequence['outputs.GoogleCloudRunOpV2VolumeMountResponse']):
+                 ports: Sequence['outputs.GoogleCloudRunV2ContainerPortResponse'],
+                 resources: 'outputs.GoogleCloudRunV2ResourceRequirementsResponse',
+                 volume_mounts: Sequence['outputs.GoogleCloudRunV2VolumeMountResponse']):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence['GoogleCloudRunOpV2EnvVarResponse'] env: List of environment variables to set in the container.
+        :param Sequence['GoogleCloudRunV2EnvVarResponse'] env: List of environment variables to set in the container.
         :param str image: URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
         :param str name: Name of the container specified as a DNS_LABEL.
-        :param Sequence['GoogleCloudRunOpV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
-        :param 'GoogleCloudRunOpV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-        :param Sequence['GoogleCloudRunOpV2VolumeMountResponse'] volume_mounts: Volume to mount into the container's filesystem.
+        :param Sequence['GoogleCloudRunV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+        :param 'GoogleCloudRunV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param Sequence['GoogleCloudRunV2VolumeMountResponse'] volume_mounts: Volume to mount into the container's filesystem.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
@@ -374,7 +374,7 @@ class GoogleCloudRunOpV2ContainerResponse(dict):
 
     @property
     @pulumi.getter
-    def env(self) -> Sequence['outputs.GoogleCloudRunOpV2EnvVarResponse']:
+    def env(self) -> Sequence['outputs.GoogleCloudRunV2EnvVarResponse']:
         """
         List of environment variables to set in the container.
         """
@@ -398,7 +398,7 @@ class GoogleCloudRunOpV2ContainerResponse(dict):
 
     @property
     @pulumi.getter
-    def ports(self) -> Sequence['outputs.GoogleCloudRunOpV2ContainerPortResponse']:
+    def ports(self) -> Sequence['outputs.GoogleCloudRunV2ContainerPortResponse']:
         """
         List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         """
@@ -406,7 +406,7 @@ class GoogleCloudRunOpV2ContainerResponse(dict):
 
     @property
     @pulumi.getter
-    def resources(self) -> 'outputs.GoogleCloudRunOpV2ResourceRequirementsResponse':
+    def resources(self) -> 'outputs.GoogleCloudRunV2ResourceRequirementsResponse':
         """
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
@@ -414,7 +414,7 @@ class GoogleCloudRunOpV2ContainerResponse(dict):
 
     @property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Sequence['outputs.GoogleCloudRunOpV2VolumeMountResponse']:
+    def volume_mounts(self) -> Sequence['outputs.GoogleCloudRunV2VolumeMountResponse']:
         """
         Volume to mount into the container's filesystem.
         """
@@ -422,7 +422,7 @@ class GoogleCloudRunOpV2ContainerResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2EnvVarResponse(dict):
+class GoogleCloudRunV2EnvVarResponse(dict):
     """
     EnvVar represents an environment variable present in a Container.
     """
@@ -433,25 +433,25 @@ class GoogleCloudRunOpV2EnvVarResponse(dict):
             suggest = "value_source"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2EnvVarResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2EnvVarResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2EnvVarResponse.__key_warning(key)
+        GoogleCloudRunV2EnvVarResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2EnvVarResponse.__key_warning(key)
+        GoogleCloudRunV2EnvVarResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  name: str,
                  value: str,
-                 value_source: 'outputs.GoogleCloudRunOpV2EnvVarSourceResponse'):
+                 value_source: 'outputs.GoogleCloudRunV2EnvVarSourceResponse'):
         """
         EnvVar represents an environment variable present in a Container.
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
-        :param 'GoogleCloudRunOpV2EnvVarSourceResponse' value_source: Source for the environment variable's value.
+        :param 'GoogleCloudRunV2EnvVarSourceResponse' value_source: Source for the environment variable's value.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -475,7 +475,7 @@ class GoogleCloudRunOpV2EnvVarResponse(dict):
 
     @property
     @pulumi.getter(name="valueSource")
-    def value_source(self) -> 'outputs.GoogleCloudRunOpV2EnvVarSourceResponse':
+    def value_source(self) -> 'outputs.GoogleCloudRunV2EnvVarSourceResponse':
         """
         Source for the environment variable's value.
         """
@@ -483,7 +483,7 @@ class GoogleCloudRunOpV2EnvVarResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2EnvVarSourceResponse(dict):
+class GoogleCloudRunV2EnvVarSourceResponse(dict):
     """
     EnvVarSource represents a source for the value of an EnvVar.
     """
@@ -494,27 +494,27 @@ class GoogleCloudRunOpV2EnvVarSourceResponse(dict):
             suggest = "secret_key_ref"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2EnvVarSourceResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2EnvVarSourceResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2EnvVarSourceResponse.__key_warning(key)
+        GoogleCloudRunV2EnvVarSourceResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2EnvVarSourceResponse.__key_warning(key)
+        GoogleCloudRunV2EnvVarSourceResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 secret_key_ref: 'outputs.GoogleCloudRunOpV2SecretKeySelectorResponse'):
+                 secret_key_ref: 'outputs.GoogleCloudRunV2SecretKeySelectorResponse'):
         """
         EnvVarSource represents a source for the value of an EnvVar.
-        :param 'GoogleCloudRunOpV2SecretKeySelectorResponse' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
+        :param 'GoogleCloudRunV2SecretKeySelectorResponse' secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
         """
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> 'outputs.GoogleCloudRunOpV2SecretKeySelectorResponse':
+    def secret_key_ref(self) -> 'outputs.GoogleCloudRunV2SecretKeySelectorResponse':
         """
         Selects a secret and a specific version from Cloud Secret Manager.
         """
@@ -522,7 +522,7 @@ class GoogleCloudRunOpV2EnvVarSourceResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2ResourceRequirementsResponse(dict):
+class GoogleCloudRunV2ResourceRequirementsResponse(dict):
     """
     ResourceRequirements describes the compute resource requirements.
     """
@@ -533,14 +533,14 @@ class GoogleCloudRunOpV2ResourceRequirementsResponse(dict):
             suggest = "cpu_idle"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2ResourceRequirementsResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ResourceRequirementsResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2ResourceRequirementsResponse.__key_warning(key)
+        GoogleCloudRunV2ResourceRequirementsResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2ResourceRequirementsResponse.__key_warning(key)
+        GoogleCloudRunV2ResourceRequirementsResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -572,7 +572,7 @@ class GoogleCloudRunOpV2ResourceRequirementsResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2RevisionScalingResponse(dict):
+class GoogleCloudRunV2RevisionScalingResponse(dict):
     """
     Settings for revision-level scaling settings.
     """
@@ -585,14 +585,14 @@ class GoogleCloudRunOpV2RevisionScalingResponse(dict):
             suggest = "min_instance_count"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2RevisionScalingResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2RevisionScalingResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2RevisionScalingResponse.__key_warning(key)
+        GoogleCloudRunV2RevisionScalingResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2RevisionScalingResponse.__key_warning(key)
+        GoogleCloudRunV2RevisionScalingResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -624,7 +624,7 @@ class GoogleCloudRunOpV2RevisionScalingResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
+class GoogleCloudRunV2RevisionTemplateResponse(dict):
     """
     RevisionTemplate describes the data a revision should have when created from a template.
     """
@@ -643,45 +643,45 @@ class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
             suggest = "vpc_access"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2RevisionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2RevisionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2RevisionTemplateResponse.__key_warning(key)
+        GoogleCloudRunV2RevisionTemplateResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2RevisionTemplateResponse.__key_warning(key)
+        GoogleCloudRunV2RevisionTemplateResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
                  confidential: bool,
                  container_concurrency: int,
-                 containers: Sequence['outputs.GoogleCloudRunOpV2ContainerResponse'],
+                 containers: Sequence['outputs.GoogleCloudRunV2ContainerResponse'],
                  encryption_key: str,
                  execution_environment: str,
                  labels: Mapping[str, str],
                  revision: str,
-                 scaling: 'outputs.GoogleCloudRunOpV2RevisionScalingResponse',
+                 scaling: 'outputs.GoogleCloudRunV2RevisionScalingResponse',
                  service_account: str,
                  timeout: str,
-                 volumes: Sequence['outputs.GoogleCloudRunOpV2VolumeResponse'],
-                 vpc_access: 'outputs.GoogleCloudRunOpV2VpcAccessResponse'):
+                 volumes: Sequence['outputs.GoogleCloudRunV2VolumeResponse'],
+                 vpc_access: 'outputs.GoogleCloudRunV2VpcAccessResponse'):
         """
         RevisionTemplate describes the data a revision should have when created from a template.
         :param Mapping[str, str] annotations: KRM-style annotations for the resource.
         :param bool confidential: Enables Confidential Cloud Run in Revisions created using this template.
         :param int container_concurrency: Sets the maximum number of requests that each serving instance can receive.
-        :param Sequence['GoogleCloudRunOpV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this Revision.
+        :param Sequence['GoogleCloudRunV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this Revision.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
         :param Mapping[str, str] labels: KRM-style labels for the resource.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-        :param 'GoogleCloudRunOpV2RevisionScalingResponse' scaling: Scaling settings for this Revision.
+        :param 'GoogleCloudRunV2RevisionScalingResponse' scaling: Scaling settings for this Revision.
         :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         :param str timeout: Max allowed time for an instance to respond to a request.
-        :param Sequence['GoogleCloudRunOpV2VolumeResponse'] volumes: A list of Volumes to make available to containers.
-        :param 'GoogleCloudRunOpV2VpcAccessResponse' vpc_access: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param Sequence['GoogleCloudRunV2VolumeResponse'] volumes: A list of Volumes to make available to containers.
+        :param 'GoogleCloudRunV2VpcAccessResponse' vpc_access: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "confidential", confidential)
@@ -723,7 +723,7 @@ class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
 
     @property
     @pulumi.getter
-    def containers(self) -> Sequence['outputs.GoogleCloudRunOpV2ContainerResponse']:
+    def containers(self) -> Sequence['outputs.GoogleCloudRunV2ContainerResponse']:
         """
         Holds the single container that defines the unit of execution for this Revision.
         """
@@ -763,7 +763,7 @@ class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
 
     @property
     @pulumi.getter
-    def scaling(self) -> 'outputs.GoogleCloudRunOpV2RevisionScalingResponse':
+    def scaling(self) -> 'outputs.GoogleCloudRunV2RevisionScalingResponse':
         """
         Scaling settings for this Revision.
         """
@@ -787,7 +787,7 @@ class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
 
     @property
     @pulumi.getter
-    def volumes(self) -> Sequence['outputs.GoogleCloudRunOpV2VolumeResponse']:
+    def volumes(self) -> Sequence['outputs.GoogleCloudRunV2VolumeResponse']:
         """
         A list of Volumes to make available to containers.
         """
@@ -795,7 +795,7 @@ class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
 
     @property
     @pulumi.getter(name="vpcAccess")
-    def vpc_access(self) -> 'outputs.GoogleCloudRunOpV2VpcAccessResponse':
+    def vpc_access(self) -> 'outputs.GoogleCloudRunV2VpcAccessResponse':
         """
         VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
@@ -803,7 +803,7 @@ class GoogleCloudRunOpV2RevisionTemplateResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2SecretKeySelectorResponse(dict):
+class GoogleCloudRunV2SecretKeySelectorResponse(dict):
     """
     SecretEnvVarSource represents a source for the value of an EnvVar.
     """
@@ -836,7 +836,7 @@ class GoogleCloudRunOpV2SecretKeySelectorResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2SecretVolumeSourceResponse(dict):
+class GoogleCloudRunV2SecretVolumeSourceResponse(dict):
     """
     The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
     """
@@ -847,24 +847,24 @@ class GoogleCloudRunOpV2SecretVolumeSourceResponse(dict):
             suggest = "default_mode"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2SecretVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2SecretVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2SecretVolumeSourceResponse.__key_warning(key)
+        GoogleCloudRunV2SecretVolumeSourceResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2SecretVolumeSourceResponse.__key_warning(key)
+        GoogleCloudRunV2SecretVolumeSourceResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  default_mode: int,
-                 items: Sequence['outputs.GoogleCloudRunOpV2VersionToPathResponse'],
+                 items: Sequence['outputs.GoogleCloudRunV2VersionToPathResponse'],
                  secret: str):
         """
         The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
         :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
-        :param Sequence['GoogleCloudRunOpV2VersionToPathResponse'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        :param Sequence['GoogleCloudRunV2VersionToPathResponse'] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         """
         pulumi.set(__self__, "default_mode", default_mode)
@@ -881,7 +881,7 @@ class GoogleCloudRunOpV2SecretVolumeSourceResponse(dict):
 
     @property
     @pulumi.getter
-    def items(self) -> Sequence['outputs.GoogleCloudRunOpV2VersionToPathResponse']:
+    def items(self) -> Sequence['outputs.GoogleCloudRunV2VersionToPathResponse']:
         """
         If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         """
@@ -897,7 +897,7 @@ class GoogleCloudRunOpV2SecretVolumeSourceResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2TrafficTargetResponse(dict):
+class GoogleCloudRunV2TrafficTargetResponse(dict):
     """
     Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
     """
@@ -952,7 +952,7 @@ class GoogleCloudRunOpV2TrafficTargetResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2TrafficTargetStatusResponse(dict):
+class GoogleCloudRunV2TrafficTargetStatusResponse(dict):
     """
     Represents the observed state of a single `TrafficTarget` entry.
     """
@@ -1018,7 +1018,7 @@ class GoogleCloudRunOpV2TrafficTargetStatusResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2VersionToPathResponse(dict):
+class GoogleCloudRunV2VersionToPathResponse(dict):
     """
     VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path.
     """
@@ -1062,7 +1062,7 @@ class GoogleCloudRunOpV2VersionToPathResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2VolumeMountResponse(dict):
+class GoogleCloudRunV2VolumeMountResponse(dict):
     """
     VolumeMount describes a mounting of a Volume within a container.
     """
@@ -1073,14 +1073,14 @@ class GoogleCloudRunOpV2VolumeMountResponse(dict):
             suggest = "mount_path"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2VolumeMountResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2VolumeMountResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2VolumeMountResponse.__key_warning(key)
+        GoogleCloudRunV2VolumeMountResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2VolumeMountResponse.__key_warning(key)
+        GoogleCloudRunV2VolumeMountResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -1112,7 +1112,7 @@ class GoogleCloudRunOpV2VolumeMountResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2VolumeResponse(dict):
+class GoogleCloudRunV2VolumeResponse(dict):
     """
     Volume represents a named volume in a container.
     """
@@ -1123,25 +1123,25 @@ class GoogleCloudRunOpV2VolumeResponse(dict):
             suggest = "cloud_sql_instance"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunOpV2VolumeResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2VolumeResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GoogleCloudRunOpV2VolumeResponse.__key_warning(key)
+        GoogleCloudRunV2VolumeResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GoogleCloudRunOpV2VolumeResponse.__key_warning(key)
+        GoogleCloudRunV2VolumeResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 cloud_sql_instance: 'outputs.GoogleCloudRunOpV2CloudSqlInstanceResponse',
+                 cloud_sql_instance: 'outputs.GoogleCloudRunV2CloudSqlInstanceResponse',
                  name: str,
-                 secret: 'outputs.GoogleCloudRunOpV2SecretVolumeSourceResponse'):
+                 secret: 'outputs.GoogleCloudRunV2SecretVolumeSourceResponse'):
         """
         Volume represents a named volume in a container.
-        :param 'GoogleCloudRunOpV2CloudSqlInstanceResponse' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param 'GoogleCloudRunV2CloudSqlInstanceResponse' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         :param str name: Volume's name.
-        :param 'GoogleCloudRunOpV2SecretVolumeSourceResponse' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        :param 'GoogleCloudRunV2SecretVolumeSourceResponse' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "name", name)
@@ -1149,7 +1149,7 @@ class GoogleCloudRunOpV2VolumeResponse(dict):
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> 'outputs.GoogleCloudRunOpV2CloudSqlInstanceResponse':
+    def cloud_sql_instance(self) -> 'outputs.GoogleCloudRunV2CloudSqlInstanceResponse':
         """
         For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         """
@@ -1165,7 +1165,7 @@ class GoogleCloudRunOpV2VolumeResponse(dict):
 
     @property
     @pulumi.getter
-    def secret(self) -> 'outputs.GoogleCloudRunOpV2SecretVolumeSourceResponse':
+    def secret(self) -> 'outputs.GoogleCloudRunV2SecretVolumeSourceResponse':
         """
         Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
@@ -1173,7 +1173,7 @@ class GoogleCloudRunOpV2VolumeResponse(dict):
 
 
 @pulumi.output_type
-class GoogleCloudRunOpV2VpcAccessResponse(dict):
+class GoogleCloudRunV2VpcAccessResponse(dict):
     """
     VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
     """

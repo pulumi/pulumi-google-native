@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Output("creationTimestamp")]
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
+        [Output("ddosProtectionConfig")]
+        public Output<Outputs.SecurityPolicyDdosProtectionConfigResponse> DdosProtectionConfig { get; private set; } = null!;
+
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
@@ -83,6 +86,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Output("recaptchaOptionsConfig")]
         public Output<Outputs.SecurityPolicyRecaptchaOptionsConfigResponse> RecaptchaOptionsConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
@@ -176,6 +185,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
             get => _associations ?? (_associations = new InputList<Inputs.SecurityPolicyAssociationArgs>());
             set => _associations = value;
         }
+
+        [Input("ddosProtectionConfig")]
+        public Input<Inputs.SecurityPolicyDdosProtectionConfigArgs>? DdosProtectionConfig { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.

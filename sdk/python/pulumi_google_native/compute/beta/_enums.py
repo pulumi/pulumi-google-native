@@ -122,6 +122,7 @@ __all__ = [
     'RegionHealthCheckType',
     'RegionInstanceGroupManagerFailoverAction',
     'RegionNetworkEndpointGroupNetworkEndpointType',
+    'RegionSecurityPolicyType',
     'RegionSslCertificateType',
     'RegionTargetHttpsProxyQuicOverride',
     'ReservationAffinityConsumeReservationType',
@@ -150,6 +151,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibility',
     'SecurityPolicyAdvancedOptionsConfigJsonParsing',
     'SecurityPolicyAdvancedOptionsConfigLogLevel',
+    'SecurityPolicyDdosProtectionConfigDdosProtection',
     'SecurityPolicyRuleDirection',
     'SecurityPolicyRuleMatcherVersionedExpr',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
@@ -1209,7 +1211,7 @@ class GlobalNetworkEndpointGroupNetworkEndpointType(str, Enum):
 
 class GuestOsFeatureType(str, Enum):
     """
-    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+    The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
     """
     FEATURE_TYPE_UNSPECIFIED = "FEATURE_TYPE_UNSPECIFIED"
     GVNIC = "GVNIC"
@@ -1856,6 +1858,7 @@ class OrganizationSecurityPolicyType(str, Enum):
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
 
 
@@ -2197,6 +2200,16 @@ class RegionNetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     The network endpoint is handled by specified serverless infrastructure.
     """
+
+
+class RegionSecurityPolicyType(str, Enum):
+    """
+    The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+    """
+    CLOUD_ARMOR = "CLOUD_ARMOR"
+    CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
+    FIREWALL = "FIREWALL"
 
 
 class RegionSslCertificateType(str, Enum):
@@ -2554,6 +2567,11 @@ class SecurityPolicyAdvancedOptionsConfigLogLevel(str, Enum):
     VERBOSE = "VERBOSE"
 
 
+class SecurityPolicyDdosProtectionConfigDdosProtection(str, Enum):
+    ADVANCED = "ADVANCED"
+    STANDARD = "STANDARD"
+
+
 class SecurityPolicyRuleDirection(str, Enum):
     """
     The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
@@ -2599,6 +2617,7 @@ class SecurityPolicyType(str, Enum):
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
 
 

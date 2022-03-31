@@ -28,6 +28,7 @@ __all__ = [
     'MysqlSslConfigResponse',
     'MysqlTableResponse',
     'OracleColumnResponse',
+    'OracleDropLargeObjectsResponse',
     'OracleProfileResponse',
     'OracleRdbmsResponse',
     'OracleSchemaResponse',
@@ -988,7 +989,7 @@ class MysqlTableResponse(dict):
                  table: str):
         """
         MySQL table.
-        :param Sequence['MysqlColumnResponse'] mysql_columns: MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+        :param Sequence['MysqlColumnResponse'] mysql_columns: MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
         :param str table: Table name.
         """
         pulumi.set(__self__, "mysql_columns", mysql_columns)
@@ -998,7 +999,7 @@ class MysqlTableResponse(dict):
     @pulumi.getter(name="mysqlColumns")
     def mysql_columns(self) -> Sequence['outputs.MysqlColumnResponse']:
         """
-        MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+        MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
         """
         return pulumi.get(self, "mysql_columns")
 
@@ -1140,6 +1141,18 @@ class OracleColumnResponse(dict):
         Column scale.
         """
         return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class OracleDropLargeObjectsResponse(dict):
+    """
+    Configuration to drop large object values.
+    """
+    def __init__(__self__):
+        """
+        Configuration to drop large object values.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1335,7 +1348,9 @@ class OracleSourceConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeObjects":
+        if key == "dropLargeObjects":
+            suggest = "drop_large_objects"
+        elif key == "excludeObjects":
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
@@ -1352,15 +1367,26 @@ class OracleSourceConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 drop_large_objects: 'outputs.OracleDropLargeObjectsResponse',
                  exclude_objects: 'outputs.OracleRdbmsResponse',
                  include_objects: 'outputs.OracleRdbmsResponse'):
         """
         Oracle data source configuration
+        :param 'OracleDropLargeObjectsResponse' drop_large_objects: Drop large object values.
         :param 'OracleRdbmsResponse' exclude_objects: Oracle objects to exclude from the stream.
         :param 'OracleRdbmsResponse' include_objects: Oracle objects to include in the stream.
         """
+        pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
+
+    @property
+    @pulumi.getter(name="dropLargeObjects")
+    def drop_large_objects(self) -> 'outputs.OracleDropLargeObjectsResponse':
+        """
+        Drop large object values.
+        """
+        return pulumi.get(self, "drop_large_objects")
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -1406,7 +1432,7 @@ class OracleTableResponse(dict):
                  table: str):
         """
         Oracle table.
-        :param Sequence['OracleColumnResponse'] oracle_columns: Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+        :param Sequence['OracleColumnResponse'] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         :param str table: Table name.
         """
         pulumi.set(__self__, "oracle_columns", oracle_columns)
@@ -1416,7 +1442,7 @@ class OracleTableResponse(dict):
     @pulumi.getter(name="oracleColumns")
     def oracle_columns(self) -> Sequence['outputs.OracleColumnResponse']:
         """
-        Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         """
         return pulumi.get(self, "oracle_columns")
 
@@ -1500,8 +1526,8 @@ class SourceConfigResponse(dict):
                  source_connection_profile: str):
         """
         The configuration of the stream source.
-        :param 'MysqlSourceConfigResponse' mysql_source_config: MySQL data source configuration
-        :param 'OracleSourceConfigResponse' oracle_source_config: Oracle data source configuration
+        :param 'MysqlSourceConfigResponse' mysql_source_config: MySQL data source configuration.
+        :param 'OracleSourceConfigResponse' oracle_source_config: Oracle data source configuration.
         :param str source_connection_profile: Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         """
         pulumi.set(__self__, "mysql_source_config", mysql_source_config)
@@ -1512,7 +1538,7 @@ class SourceConfigResponse(dict):
     @pulumi.getter(name="mysqlSourceConfig")
     def mysql_source_config(self) -> 'outputs.MysqlSourceConfigResponse':
         """
-        MySQL data source configuration
+        MySQL data source configuration.
         """
         return pulumi.get(self, "mysql_source_config")
 
@@ -1520,7 +1546,7 @@ class SourceConfigResponse(dict):
     @pulumi.getter(name="oracleSourceConfig")
     def oracle_source_config(self) -> 'outputs.OracleSourceConfigResponse':
         """
-        Oracle data source configuration
+        Oracle data source configuration.
         """
         return pulumi.get(self, "oracle_source_config")
 

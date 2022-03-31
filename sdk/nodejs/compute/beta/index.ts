@@ -53,6 +53,7 @@ export * from "./getLicenseIamPolicy";
 export * from "./getMachineImage";
 export * from "./getMachineImageIamPolicy";
 export * from "./getNetwork";
+export * from "./getNetworkEdgeSecurityService";
 export * from "./getNetworkEndpointGroup";
 export * from "./getNetworkFirewallPolicy";
 export * from "./getNetworkFirewallPolicyIamPolicy";
@@ -77,6 +78,7 @@ export * from "./getRegionNetworkEndpointGroup";
 export * from "./getRegionNetworkFirewallPolicy";
 export * from "./getRegionNetworkFirewallPolicyIamPolicy";
 export * from "./getRegionNotificationEndpoint";
+export * from "./getRegionSecurityPolicy";
 export * from "./getRegionSslCertificate";
 export * from "./getRegionTargetHttpProxy";
 export * from "./getRegionTargetHttpsProxy";
@@ -129,6 +131,7 @@ export * from "./licenseIamPolicy";
 export * from "./machineImage";
 export * from "./machineImageIamPolicy";
 export * from "./network";
+export * from "./networkEdgeSecurityService";
 export * from "./networkEndpointGroup";
 export * from "./networkFirewallPolicy";
 export * from "./networkFirewallPolicyIamPolicy";
@@ -153,6 +156,7 @@ export * from "./regionNetworkEndpointGroup";
 export * from "./regionNetworkFirewallPolicy";
 export * from "./regionNetworkFirewallPolicyIamPolicy";
 export * from "./regionNotificationEndpoint";
+export * from "./regionSecurityPolicy";
 export * from "./regionSslCertificate";
 export * from "./regionTargetHttpProxy";
 export * from "./regionTargetHttpsProxy";
@@ -223,6 +227,7 @@ import { LicenseIamPolicy } from "./licenseIamPolicy";
 import { MachineImage } from "./machineImage";
 import { MachineImageIamPolicy } from "./machineImageIamPolicy";
 import { Network } from "./network";
+import { NetworkEdgeSecurityService } from "./networkEdgeSecurityService";
 import { NetworkEndpointGroup } from "./networkEndpointGroup";
 import { NetworkFirewallPolicy } from "./networkFirewallPolicy";
 import { NetworkFirewallPolicyIamPolicy } from "./networkFirewallPolicyIamPolicy";
@@ -247,6 +252,7 @@ import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
 import { RegionNetworkFirewallPolicy } from "./regionNetworkFirewallPolicy";
 import { RegionNetworkFirewallPolicyIamPolicy } from "./regionNetworkFirewallPolicyIamPolicy";
 import { RegionNotificationEndpoint } from "./regionNotificationEndpoint";
+import { RegionSecurityPolicy } from "./regionSecurityPolicy";
 import { RegionSslCertificate } from "./regionSslCertificate";
 import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
 import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
@@ -352,6 +358,8 @@ const _module = {
                 return new MachineImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "google-native:compute/beta:NetworkEdgeSecurityService":
+                return new NetworkEdgeSecurityService(name, <any>undefined, { urn })
             case "google-native:compute/beta:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/beta:NetworkFirewallPolicy":
@@ -400,6 +408,8 @@ const _module = {
                 return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionNotificationEndpoint":
                 return new RegionNotificationEndpoint(name, <any>undefined, { urn })
+            case "google-native:compute/beta:RegionSecurityPolicy":
+                return new RegionSecurityPolicy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionTargetHttpProxy":

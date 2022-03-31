@@ -2637,7 +2637,7 @@ class NodeConfigDefaultsResponse(dict):
 @pulumi.output_type
 class NodeConfigResponse(dict):
     """
-    Parameters that describe the nodes in a cluster.
+    Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2646,6 +2646,8 @@ class NodeConfigResponse(dict):
             suggest = "advanced_machine_features"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
+        elif key == "confidentialNodes":
+            suggest = "confidential_nodes"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -2696,6 +2698,7 @@ class NodeConfigResponse(dict):
                  accelerators: Sequence['outputs.AcceleratorConfigResponse'],
                  advanced_machine_features: 'outputs.AdvancedMachineFeaturesResponse',
                  boot_disk_kms_key: str,
+                 confidential_nodes: 'outputs.ConfidentialNodesResponse',
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_config: 'outputs.EphemeralStorageConfigResponse',
@@ -2721,10 +2724,11 @@ class NodeConfigResponse(dict):
                  taints: Sequence['outputs.NodeTaintResponse'],
                  workload_metadata_config: 'outputs.WorkloadMetadataConfigResponse'):
         """
-        Parameters that describe the nodes in a cluster.
+        Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
         :param Sequence['AcceleratorConfigResponse'] accelerators: A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
         :param 'AdvancedMachineFeaturesResponse' advanced_machine_features: Advanced features for the Compute Engine VM.
         :param str boot_disk_kms_key:  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
+        :param 'ConfidentialNodesResponse' confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param 'EphemeralStorageConfigResponse' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
@@ -2753,6 +2757,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
@@ -2801,6 +2806,14 @@ class NodeConfigResponse(dict):
          The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         """
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> 'outputs.ConfidentialNodesResponse':
+        """
+        Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        """
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="diskSizeGb")

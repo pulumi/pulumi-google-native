@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class CommonFeatureSpecResponse
     {
         /// <summary>
+        /// Anthos Observability spec
+        /// </summary>
+        public readonly Outputs.AnthosObservabilityFeatureSpecResponse Anthosobservability;
+        /// <summary>
         /// Appdevexperience specific spec.
         /// </summary>
         public readonly Outputs.AppDevExperienceFeatureSpecResponse Appdevexperience;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
         [OutputConstructor]
         private CommonFeatureSpecResponse(
+            Outputs.AnthosObservabilityFeatureSpecResponse anthosobservability,
+
             Outputs.AppDevExperienceFeatureSpecResponse appdevexperience,
 
             Outputs.CloudAuditLoggingFeatureSpecResponse cloudauditlogging,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
             Outputs.FeatureSpecResponse workloadcertificate)
         {
+            Anthosobservability = anthosobservability;
             Appdevexperience = appdevexperience;
             Cloudauditlogging = cloudauditlogging;
             Multiclusteringress = multiclusteringress;

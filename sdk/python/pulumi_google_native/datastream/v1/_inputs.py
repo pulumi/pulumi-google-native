@@ -26,6 +26,7 @@ __all__ = [
     'MysqlSslConfigArgs',
     'MysqlTableArgs',
     'OracleColumnArgs',
+    'OracleDropLargeObjectsArgs',
     'OracleProfileArgs',
     'OracleRdbmsArgs',
     'OracleSchemaArgs',
@@ -759,7 +760,7 @@ class MysqlTableArgs:
                  table: Optional[pulumi.Input[str]] = None):
         """
         MySQL table.
-        :param pulumi.Input[Sequence[pulumi.Input['MysqlColumnArgs']]] mysql_columns: MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['MysqlColumnArgs']]] mysql_columns: MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
         :param pulumi.Input[str] table: Table name.
         """
         if mysql_columns is not None:
@@ -771,7 +772,7 @@ class MysqlTableArgs:
     @pulumi.getter(name="mysqlColumns")
     def mysql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MysqlColumnArgs']]]]:
         """
-        MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+        MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
         """
         return pulumi.get(self, "mysql_columns")
 
@@ -945,6 +946,15 @@ class OracleColumnArgs:
 
 
 @pulumi.input_type
+class OracleDropLargeObjectsArgs:
+    def __init__(__self__):
+        """
+        Configuration to drop large object values.
+        """
+        pass
+
+
+@pulumi.input_type
 class OracleProfileArgs:
     def __init__(__self__, *,
                  database_service: pulumi.Input[str],
@@ -1111,17 +1121,33 @@ class OracleSchemaArgs:
 @pulumi.input_type
 class OracleSourceConfigArgs:
     def __init__(__self__, *,
+                 drop_large_objects: Optional[pulumi.Input['OracleDropLargeObjectsArgs']] = None,
                  exclude_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
                  include_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None):
         """
         Oracle data source configuration
+        :param pulumi.Input['OracleDropLargeObjectsArgs'] drop_large_objects: Drop large object values.
         :param pulumi.Input['OracleRdbmsArgs'] exclude_objects: Oracle objects to exclude from the stream.
         :param pulumi.Input['OracleRdbmsArgs'] include_objects: Oracle objects to include in the stream.
         """
+        if drop_large_objects is not None:
+            pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         if exclude_objects is not None:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
+
+    @property
+    @pulumi.getter(name="dropLargeObjects")
+    def drop_large_objects(self) -> Optional[pulumi.Input['OracleDropLargeObjectsArgs']]:
+        """
+        Drop large object values.
+        """
+        return pulumi.get(self, "drop_large_objects")
+
+    @drop_large_objects.setter
+    def drop_large_objects(self, value: Optional[pulumi.Input['OracleDropLargeObjectsArgs']]):
+        pulumi.set(self, "drop_large_objects", value)
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -1155,7 +1181,7 @@ class OracleTableArgs:
                  table: Optional[pulumi.Input[str]] = None):
         """
         Oracle table.
-        :param pulumi.Input[Sequence[pulumi.Input['OracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+        :param pulumi.Input[Sequence[pulumi.Input['OracleColumnArgs']]] oracle_columns: Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         :param pulumi.Input[str] table: Table name.
         """
         if oracle_columns is not None:
@@ -1167,7 +1193,7 @@ class OracleTableArgs:
     @pulumi.getter(name="oracleColumns")
     def oracle_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OracleColumnArgs']]]]:
         """
-        Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+        Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         """
         return pulumi.get(self, "oracle_columns")
 
@@ -1220,8 +1246,8 @@ class SourceConfigArgs:
         """
         The configuration of the stream source.
         :param pulumi.Input[str] source_connection_profile: Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
-        :param pulumi.Input['MysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration
-        :param pulumi.Input['OracleSourceConfigArgs'] oracle_source_config: Oracle data source configuration
+        :param pulumi.Input['MysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration.
+        :param pulumi.Input['OracleSourceConfigArgs'] oracle_source_config: Oracle data source configuration.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
         if mysql_source_config is not None:
@@ -1245,7 +1271,7 @@ class SourceConfigArgs:
     @pulumi.getter(name="mysqlSourceConfig")
     def mysql_source_config(self) -> Optional[pulumi.Input['MysqlSourceConfigArgs']]:
         """
-        MySQL data source configuration
+        MySQL data source configuration.
         """
         return pulumi.get(self, "mysql_source_config")
 
@@ -1257,7 +1283,7 @@ class SourceConfigArgs:
     @pulumi.getter(name="oracleSourceConfig")
     def oracle_source_config(self) -> Optional[pulumi.Input['OracleSourceConfigArgs']]:
         """
-        Oracle data source configuration
+        Oracle data source configuration.
         """
         return pulumi.get(self, "oracle_source_config")
 

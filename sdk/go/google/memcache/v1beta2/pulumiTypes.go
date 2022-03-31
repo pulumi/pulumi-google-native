@@ -10,6 +10,216 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Maintenance policy per instance.
+type GoogleCloudMemcacheV1beta2MaintenancePolicy struct {
+	// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description *string `pulumi:"description"`
+	// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
+	WeeklyMaintenanceWindow []WeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindow"`
+}
+
+// GoogleCloudMemcacheV1beta2MaintenancePolicyInput is an input type that accepts GoogleCloudMemcacheV1beta2MaintenancePolicyArgs and GoogleCloudMemcacheV1beta2MaintenancePolicyOutput values.
+// You can construct a concrete instance of `GoogleCloudMemcacheV1beta2MaintenancePolicyInput` via:
+//
+//          GoogleCloudMemcacheV1beta2MaintenancePolicyArgs{...}
+type GoogleCloudMemcacheV1beta2MaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyOutput
+	ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutputWithContext(context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyOutput
+}
+
+// Maintenance policy per instance.
+type GoogleCloudMemcacheV1beta2MaintenancePolicyArgs struct {
+	// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
+	WeeklyMaintenanceWindow WeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindow"`
+}
+
+func (GoogleCloudMemcacheV1beta2MaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudMemcacheV1beta2MaintenancePolicy)(nil)).Elem()
+}
+
+func (i GoogleCloudMemcacheV1beta2MaintenancePolicyArgs) ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyOutput {
+	return i.ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudMemcacheV1beta2MaintenancePolicyArgs) ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMemcacheV1beta2MaintenancePolicyOutput)
+}
+
+func (i GoogleCloudMemcacheV1beta2MaintenancePolicyArgs) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return i.ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudMemcacheV1beta2MaintenancePolicyArgs) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMemcacheV1beta2MaintenancePolicyOutput).ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudMemcacheV1beta2MaintenancePolicyPtrInput is an input type that accepts GoogleCloudMemcacheV1beta2MaintenancePolicyArgs, GoogleCloudMemcacheV1beta2MaintenancePolicyPtr and GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudMemcacheV1beta2MaintenancePolicyPtrInput` via:
+//
+//          GoogleCloudMemcacheV1beta2MaintenancePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudMemcacheV1beta2MaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput
+	ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput
+}
+
+type googleCloudMemcacheV1beta2MaintenancePolicyPtrType GoogleCloudMemcacheV1beta2MaintenancePolicyArgs
+
+func GoogleCloudMemcacheV1beta2MaintenancePolicyPtr(v *GoogleCloudMemcacheV1beta2MaintenancePolicyArgs) GoogleCloudMemcacheV1beta2MaintenancePolicyPtrInput {
+	return (*googleCloudMemcacheV1beta2MaintenancePolicyPtrType)(v)
+}
+
+func (*googleCloudMemcacheV1beta2MaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudMemcacheV1beta2MaintenancePolicy)(nil)).Elem()
+}
+
+func (i *googleCloudMemcacheV1beta2MaintenancePolicyPtrType) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return i.ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudMemcacheV1beta2MaintenancePolicyPtrType) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput)
+}
+
+// Maintenance policy per instance.
+type GoogleCloudMemcacheV1beta2MaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudMemcacheV1beta2MaintenancePolicy)(nil)).Elem()
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyOutput {
+	return o
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyOutput {
+	return o
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return o.ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudMemcacheV1beta2MaintenancePolicy) *GoogleCloudMemcacheV1beta2MaintenancePolicy {
+		return &v
+	}).(GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput)
+}
+
+// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudMemcacheV1beta2MaintenancePolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v GoogleCloudMemcacheV1beta2MaintenancePolicy) []WeeklyMaintenanceWindow {
+		return v.WeeklyMaintenanceWindow
+	}).(WeeklyMaintenanceWindowArrayOutput)
+}
+
+type GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudMemcacheV1beta2MaintenancePolicy)(nil)).Elem()
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput) Elem() GoogleCloudMemcacheV1beta2MaintenancePolicyOutput {
+	return o.ApplyT(func(v *GoogleCloudMemcacheV1beta2MaintenancePolicy) GoogleCloudMemcacheV1beta2MaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudMemcacheV1beta2MaintenancePolicy
+		return ret
+	}).(GoogleCloudMemcacheV1beta2MaintenancePolicyOutput)
+}
+
+// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMemcacheV1beta2MaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudMemcacheV1beta2MaintenancePolicy) []WeeklyMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyMaintenanceWindow
+	}).(WeeklyMaintenanceWindowArrayOutput)
+}
+
+// Maintenance policy per instance.
+type GoogleCloudMemcacheV1beta2MaintenancePolicyResponse struct {
+	// The time when the policy was created.
+	CreateTime string `pulumi:"createTime"`
+	// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description string `pulumi:"description"`
+	// The time when the policy was updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
+	WeeklyMaintenanceWindow []WeeklyMaintenanceWindowResponse `pulumi:"weeklyMaintenanceWindow"`
+}
+
+// Maintenance policy per instance.
+type GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudMemcacheV1beta2MaintenancePolicyResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput() GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput {
+	return o
+}
+
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) ToGoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutputWithContext(ctx context.Context) GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput {
+	return o
+}
+
+// The time when the policy was created.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMemcacheV1beta2MaintenancePolicyResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMemcacheV1beta2MaintenancePolicyResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the policy was updated.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMemcacheV1beta2MaintenancePolicyResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
+func (o GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudMemcacheV1beta2MaintenancePolicyResponse) []WeeklyMaintenanceWindowResponse {
+		return v.WeeklyMaintenanceWindow
+	}).(WeeklyMaintenanceWindowResponseArrayOutput)
+}
+
 type InstanceMessage struct {
 	// A code that correspond to one type of user-facing message.
 	Code *InstanceMessageCode `pulumi:"code"`
@@ -165,6 +375,46 @@ func (o InstanceMessageResponseArrayOutput) Index(i pulumi.IntInput) InstanceMes
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMessageResponse {
 		return vs[0].([]InstanceMessageResponse)[vs[1].(int)]
 	}).(InstanceMessageResponseOutput)
+}
+
+// Upcoming maintenance schedule.
+type MaintenanceScheduleResponse struct {
+	// The end time of any upcoming scheduled maintenance for this instance.
+	EndTime string `pulumi:"endTime"`
+	// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
+	ScheduleDeadlineTime string `pulumi:"scheduleDeadlineTime"`
+	// The start time of any upcoming scheduled maintenance for this instance.
+	StartTime string `pulumi:"startTime"`
+}
+
+// Upcoming maintenance schedule.
+type MaintenanceScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceScheduleResponse)(nil)).Elem()
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput {
+	return o
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
+	return o
+}
+
+// The end time of any upcoming scheduled maintenance for this instance.
+func (o MaintenanceScheduleResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The deadline that the maintenance schedule start time can not go beyond, including reschedule.
+func (o MaintenanceScheduleResponseOutput) ScheduleDeadlineTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.ScheduleDeadlineTime }).(pulumi.StringOutput)
+}
+
+// The start time of any upcoming scheduled maintenance for this instance.
+func (o MaintenanceScheduleResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 type MemcacheParameters struct {
@@ -511,16 +761,332 @@ func (o NodeResponseArrayOutput) Index(i pulumi.IntInput) NodeResponseOutput {
 	}).(NodeResponseOutput)
 }
 
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDay struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// TimeOfDayInput is an input type that accepts TimeOfDayArgs and TimeOfDayOutput values.
+// You can construct a concrete instance of `TimeOfDayInput` via:
+//
+//          TimeOfDayArgs{...}
+type TimeOfDayInput interface {
+	pulumi.Input
+
+	ToTimeOfDayOutput() TimeOfDayOutput
+	ToTimeOfDayOutputWithContext(context.Context) TimeOfDayOutput
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (TimeOfDayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDay)(nil)).Elem()
+}
+
+func (i TimeOfDayArgs) ToTimeOfDayOutput() TimeOfDayOutput {
+	return i.ToTimeOfDayOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDay)(nil)).Elem()
+}
+
+func (o TimeOfDayOutput) ToTimeOfDayOutput() TimeOfDayOutput {
+	return o
+}
+
+func (o TimeOfDayOutput) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponse struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds int `pulumi:"seconds"`
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return o
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayResponseOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayResponseOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+// Time window specified for weekly operations.
+type WeeklyMaintenanceWindow struct {
+	// Allows to define schedule that runs specified day of the week.
+	Day WeeklyMaintenanceWindowDay `pulumi:"day"`
+	// Duration of the time window.
+	Duration string `pulumi:"duration"`
+	// Start time of the window in UTC.
+	StartTime TimeOfDay `pulumi:"startTime"`
+}
+
+// WeeklyMaintenanceWindowInput is an input type that accepts WeeklyMaintenanceWindowArgs and WeeklyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowInput` via:
+//
+//          WeeklyMaintenanceWindowArgs{...}
+type WeeklyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowOutput() WeeklyMaintenanceWindowOutput
+	ToWeeklyMaintenanceWindowOutputWithContext(context.Context) WeeklyMaintenanceWindowOutput
+}
+
+// Time window specified for weekly operations.
+type WeeklyMaintenanceWindowArgs struct {
+	// Allows to define schedule that runs specified day of the week.
+	Day WeeklyMaintenanceWindowDayInput `pulumi:"day"`
+	// Duration of the time window.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Start time of the window in UTC.
+	StartTime TimeOfDayInput `pulumi:"startTime"`
+}
+
+func (WeeklyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutput() WeeklyMaintenanceWindowOutput {
+	return i.ToWeeklyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowOutput)
+}
+
+// WeeklyMaintenanceWindowArrayInput is an input type that accepts WeeklyMaintenanceWindowArray and WeeklyMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowArrayInput` via:
+//
+//          WeeklyMaintenanceWindowArray{ WeeklyMaintenanceWindowArgs{...} }
+type WeeklyMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowArrayOutput() WeeklyMaintenanceWindowArrayOutput
+	ToWeeklyMaintenanceWindowArrayOutputWithContext(context.Context) WeeklyMaintenanceWindowArrayOutput
+}
+
+type WeeklyMaintenanceWindowArray []WeeklyMaintenanceWindowInput
+
+func (WeeklyMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceWindowArray) ToWeeklyMaintenanceWindowArrayOutput() WeeklyMaintenanceWindowArrayOutput {
+	return i.ToWeeklyMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceWindowArray) ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowArrayOutput)
+}
+
+// Time window specified for weekly operations.
+type WeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutput() WeeklyMaintenanceWindowOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowOutput {
+	return o
+}
+
+// Allows to define schedule that runs specified day of the week.
+func (o WeeklyMaintenanceWindowOutput) Day() WeeklyMaintenanceWindowDayOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindow) WeeklyMaintenanceWindowDay { return v.Day }).(WeeklyMaintenanceWindowDayOutput)
+}
+
+// Duration of the time window.
+func (o WeeklyMaintenanceWindowOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Start time of the window in UTC.
+func (o WeeklyMaintenanceWindowOutput) StartTime() TimeOfDayOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindow) TimeOfDay { return v.StartTime }).(TimeOfDayOutput)
+}
+
+type WeeklyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutput() WeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WeeklyMaintenanceWindow {
+		return vs[0].([]WeeklyMaintenanceWindow)[vs[1].(int)]
+	}).(WeeklyMaintenanceWindowOutput)
+}
+
+// Time window specified for weekly operations.
+type WeeklyMaintenanceWindowResponse struct {
+	// Allows to define schedule that runs specified day of the week.
+	Day string `pulumi:"day"`
+	// Duration of the time window.
+	Duration string `pulumi:"duration"`
+	// Start time of the window in UTC.
+	StartTime TimeOfDayResponse `pulumi:"startTime"`
+}
+
+// Time window specified for weekly operations.
+type WeeklyMaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowResponseOutput) ToWeeklyMaintenanceWindowResponseOutput() WeeklyMaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowResponseOutput) ToWeeklyMaintenanceWindowResponseOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseOutput {
+	return o
+}
+
+// Allows to define schedule that runs specified day of the week.
+func (o WeeklyMaintenanceWindowResponseOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Duration of the time window.
+func (o WeeklyMaintenanceWindowResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Start time of the window in UTC.
+func (o WeeklyMaintenanceWindowResponseOutput) StartTime() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) TimeOfDayResponse { return v.StartTime }).(TimeOfDayResponseOutput)
+}
+
+type WeeklyMaintenanceWindowResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowResponseArrayOutput() WeeklyMaintenanceWindowResponseArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WeeklyMaintenanceWindowResponse {
+		return vs[0].([]WeeklyMaintenanceWindowResponse)[vs[1].(int)]
+	}).(WeeklyMaintenanceWindowResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudMemcacheV1beta2MaintenancePolicyInput)(nil)).Elem(), GoogleCloudMemcacheV1beta2MaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudMemcacheV1beta2MaintenancePolicyPtrInput)(nil)).Elem(), GoogleCloudMemcacheV1beta2MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageInput)(nil)).Elem(), InstanceMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMessageArrayInput)(nil)).Elem(), InstanceMessageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersInput)(nil)).Elem(), MemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MemcacheParametersPtrInput)(nil)).Elem(), MemcacheParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeOfDayInput)(nil)).Elem(), TimeOfDayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowInput)(nil)).Elem(), WeeklyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WeeklyMaintenanceWindowArrayInput)(nil)).Elem(), WeeklyMaintenanceWindowArray{})
+	pulumi.RegisterOutputType(GoogleCloudMemcacheV1beta2MaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GoogleCloudMemcacheV1beta2MaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceMessageOutput{})
 	pulumi.RegisterOutputType(InstanceMessageArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMessageResponseOutput{})
 	pulumi.RegisterOutputType(InstanceMessageResponseArrayOutput{})
+	pulumi.RegisterOutputType(MaintenanceScheduleResponseOutput{})
 	pulumi.RegisterOutputType(MemcacheParametersOutput{})
 	pulumi.RegisterOutputType(MemcacheParametersPtrOutput{})
 	pulumi.RegisterOutputType(MemcacheParametersResponseOutput{})
@@ -528,4 +1094,10 @@ func init() {
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodeResponseOutput{})
 	pulumi.RegisterOutputType(NodeResponseArrayOutput{})
+	pulumi.RegisterOutputType(TimeOfDayOutput{})
+	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowResponseArrayOutput{})
 }

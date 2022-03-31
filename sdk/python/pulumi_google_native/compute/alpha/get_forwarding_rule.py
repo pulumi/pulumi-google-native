@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetForwardingRuleResult:
-    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, port_range=None, ports=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, self_link_with_id=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, self_link_with_id=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -76,6 +76,9 @@ class GetForwardingRuleResult:
         if network_tier and not isinstance(network_tier, str):
             raise TypeError("Expected argument 'network_tier' to be a str")
         pulumi.set(__self__, "network_tier", network_tier)
+        if no_automate_dns_zone and not isinstance(no_automate_dns_zone, bool):
+            raise TypeError("Expected argument 'no_automate_dns_zone' to be a bool")
+        pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range and not isinstance(port_range, str):
             raise TypeError("Expected argument 'port_range' to be a str")
         pulumi.set(__self__, "port_range", port_range)
@@ -269,6 +272,14 @@ class GetForwardingRuleResult:
         return pulumi.get(self, "network_tier")
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> bool:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> str:
         """
@@ -392,6 +403,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             name=self.name,
             network=self.network,
             network_tier=self.network_tier,
+            no_automate_dns_zone=self.no_automate_dns_zone,
             port_range=self.port_range,
             ports=self.ports,
             psc_connection_id=self.psc_connection_id,
@@ -444,6 +456,7 @@ def get_forwarding_rule(forwarding_rule: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         network_tier=__ret__.network_tier,
+        no_automate_dns_zone=__ret__.no_automate_dns_zone,
         port_range=__ret__.port_range,
         ports=__ret__.ports,
         psc_connection_id=__ret__.psc_connection_id,

@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int PeerMtu;
         /// <summary>
+        /// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+        /// </summary>
+        public readonly string StackType;
+        /// <summary>
         /// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
         /// </summary>
         public readonly string State;
@@ -87,6 +91,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int peerMtu,
 
+            string stackType,
+
             string state,
 
             string stateDetails)
@@ -101,6 +107,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Name = name;
             Network = network;
             PeerMtu = peerMtu;
+            StackType = stackType;
             State = state;
             StateDetails = stateDetails;
         }

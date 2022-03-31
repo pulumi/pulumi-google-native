@@ -59,6 +59,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
+        public readonly Outputs.SecurityPolicyDdosProtectionConfigResponse DdosProtectionConfig;
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
@@ -93,6 +94,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public readonly string Parent;
         public readonly Outputs.SecurityPolicyRecaptchaOptionsConfigResponse RecaptchaOptionsConfig;
         /// <summary>
+        /// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>
         public readonly int RuleTupleCount;
@@ -123,6 +128,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string creationTimestamp,
 
+            Outputs.SecurityPolicyDdosProtectionConfigResponse ddosProtectionConfig,
+
             string description,
 
             string displayName,
@@ -141,6 +148,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.SecurityPolicyRecaptchaOptionsConfigResponse recaptchaOptionsConfig,
 
+            string region,
+
             int ruleTupleCount,
 
             ImmutableArray<Outputs.SecurityPolicyRuleResponse> rules,
@@ -155,6 +164,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             AdvancedOptionsConfig = advancedOptionsConfig;
             Associations = associations;
             CreationTimestamp = creationTimestamp;
+            DdosProtectionConfig = ddosProtectionConfig;
             Description = description;
             DisplayName = displayName;
             Fingerprint = fingerprint;
@@ -164,6 +174,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Name = name;
             Parent = parent;
             RecaptchaOptionsConfig = recaptchaOptionsConfig;
+            Region = region;
             RuleTupleCount = ruleTupleCount;
             Rules = rules;
             SelfLink = selfLink;

@@ -151,7 +151,7 @@ class GetInstanceResult:
     @pulumi.getter(name="suspensionReasons")
     def suspension_reasons(self) -> Sequence[str]:
         """
-        field indicates all the reasons the instance is in "SUSPENDED" state.
+        Field indicates all the reasons the instance is in "SUSPENDED" state.
         """
         return pulumi.get(self, "suspension_reasons")
 

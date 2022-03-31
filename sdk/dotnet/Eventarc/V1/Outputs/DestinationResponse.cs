@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
         /// A GKE service capable of receiving events. The service should be running in the same project as the trigger.
         /// </summary>
         public readonly Outputs.GKEResponse Gke;
+        /// <summary>
+        /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        /// </summary>
+        public readonly string Workflow;
 
         [OutputConstructor]
         private DestinationResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
 
             Outputs.CloudRunResponse cloudRun,
 
-            Outputs.GKEResponse gke)
+            Outputs.GKEResponse gke,
+
+            string workflow)
         {
             CloudFunction = cloudFunction;
             CloudRun = cloudRun;
             Gke = gke;
+            Workflow = workflow;
         }
     }
 }

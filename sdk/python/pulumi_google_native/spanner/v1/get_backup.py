@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, create_time=None, database=None, database_dialect=None, encryption_info=None, expire_time=None, name=None, referencing_databases=None, size_bytes=None, state=None, version_time=None):
+    def __init__(__self__, create_time=None, database=None, database_dialect=None, encryption_info=None, expire_time=None, max_expire_time=None, name=None, referencing_backups=None, referencing_databases=None, size_bytes=None, state=None, version_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -34,9 +34,15 @@ class GetBackupResult:
         if expire_time and not isinstance(expire_time, str):
             raise TypeError("Expected argument 'expire_time' to be a str")
         pulumi.set(__self__, "expire_time", expire_time)
+        if max_expire_time and not isinstance(max_expire_time, str):
+            raise TypeError("Expected argument 'max_expire_time' to be a str")
+        pulumi.set(__self__, "max_expire_time", max_expire_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if referencing_backups and not isinstance(referencing_backups, list):
+            raise TypeError("Expected argument 'referencing_backups' to be a list")
+        pulumi.set(__self__, "referencing_backups", referencing_backups)
         if referencing_databases and not isinstance(referencing_databases, list):
             raise TypeError("Expected argument 'referencing_databases' to be a list")
         pulumi.set(__self__, "referencing_databases", referencing_databases)
@@ -91,12 +97,28 @@ class GetBackupResult:
         return pulumi.get(self, "expire_time")
 
     @property
+    @pulumi.getter(name="maxExpireTime")
+    def max_expire_time(self) -> str:
+        """
+        The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
+        """
+        return pulumi.get(self, "max_expire_time")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
         Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="referencingBackups")
+    def referencing_backups(self) -> Sequence[str]:
+        """
+        The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
+        """
+        return pulumi.get(self, "referencing_backups")
 
     @property
     @pulumi.getter(name="referencingDatabases")
@@ -142,7 +164,9 @@ class AwaitableGetBackupResult(GetBackupResult):
             database_dialect=self.database_dialect,
             encryption_info=self.encryption_info,
             expire_time=self.expire_time,
+            max_expire_time=self.max_expire_time,
             name=self.name,
+            referencing_backups=self.referencing_backups,
             referencing_databases=self.referencing_databases,
             size_bytes=self.size_bytes,
             state=self.state,
@@ -172,7 +196,9 @@ def get_backup(backup_id: Optional[str] = None,
         database_dialect=__ret__.database_dialect,
         encryption_info=__ret__.encryption_info,
         expire_time=__ret__.expire_time,
+        max_expire_time=__ret__.max_expire_time,
         name=__ret__.name,
+        referencing_backups=__ret__.referencing_backups,
         referencing_databases=__ret__.referencing_databases,
         size_bytes=__ret__.size_bytes,
         state=__ret__.state,

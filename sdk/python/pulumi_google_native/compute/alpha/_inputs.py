@@ -5266,7 +5266,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -5275,7 +5275,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -8993,7 +8993,7 @@ class NetworkEndpointGroupServerlessDeploymentArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
-        :param pulumi.Input[str] platform: The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        :param pulumi.Input[str] platform: The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         :param pulumi.Input[str] resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
         :param pulumi.Input[str] url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         :param pulumi.Input[str] version: The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
@@ -9011,7 +9011,7 @@ class NetworkEndpointGroupServerlessDeploymentArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         """
         return pulumi.get(self, "platform")
 

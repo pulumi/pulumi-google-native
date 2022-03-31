@@ -254,7 +254,7 @@ export const MonitoringComponentConfigEnableComponentsItem = {
      */
     SystemComponents: "SYSTEM_COMPONENTS",
     /**
-     * workloads
+     * Deprecated: Use Google Cloud Managed Service for Prometheus.
      */
     Workloads: "WORKLOADS",
 } as const;

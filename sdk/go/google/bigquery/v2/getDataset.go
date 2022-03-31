@@ -55,6 +55,8 @@ type LookupDatasetResult struct {
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location string `pulumi:"location"`
+	// [Optional] Number of hours for the max time travel for all tables in the dataset.
+	MaxTimeTravelHours string `pulumi:"maxTimeTravelHours"`
 	// Reserved for future use.
 	SatisfiesPZS bool `pulumi:"satisfiesPZS"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
@@ -167,6 +169,11 @@ func (o LookupDatasetResultOutput) LastModifiedTime() pulumi.StringOutput {
 // The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 func (o LookupDatasetResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// [Optional] Number of hours for the max time travel for all tables in the dataset.
+func (o LookupDatasetResultOutput) MaxTimeTravelHours() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.MaxTimeTravelHours }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.

@@ -44,6 +44,8 @@ type Dataset struct {
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// [Optional] Number of hours for the max time travel for all tables in the dataset.
+	MaxTimeTravelHours pulumi.StringOutput `pulumi:"maxTimeTravelHours"`
 	// Reserved for future use.
 	SatisfiesPZS pulumi.BoolOutput `pulumi:"satisfiesPZS"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
@@ -110,7 +112,9 @@ type datasetArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location *string `pulumi:"location"`
-	Project  *string `pulumi:"project"`
+	// [Optional] Number of hours for the max time travel for all tables in the dataset.
+	MaxTimeTravelHours *string `pulumi:"maxTimeTravelHours"`
+	Project            *string `pulumi:"project"`
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
 	Tags []DatasetTagsItem `pulumi:"tags"`
 }
@@ -136,7 +140,9 @@ type DatasetArgs struct {
 	Labels pulumi.StringMapInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
 	Location pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// [Optional] Number of hours for the max time travel for all tables in the dataset.
+	MaxTimeTravelHours pulumi.StringPtrInput
+	Project            pulumi.StringPtrInput
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
 	Tags DatasetTagsItemArrayInput
 }
