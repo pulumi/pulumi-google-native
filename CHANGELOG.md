@@ -1,6 +1,9 @@
 CHANGELOG
 =========
 
+## HEAD (Unreleased)
+(None) 
+
 ## 0.18.0 (2022-03-30)
 - Reflect renamed types as defined in cloud run v2 API specs [#419](https://github.com/pulumi/pulumi-google-native/pull/419)
 - Following resources have been dropped [#419](https://github.com/pulumi/pulumi-google-native/pull/419):
