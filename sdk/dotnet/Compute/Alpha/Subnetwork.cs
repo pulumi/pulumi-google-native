@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> EnablePrivateV6Access { get; private set; } = null!;
 
         /// <summary>
-        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// The external IPv6 address range that is assigned to this subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
         public Output<string> ExternalIpv6Prefix { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> GatewayAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        /// The internal IPv6 address range that is assigned to this subnetwork.
         /// </summary>
         [Output("internalIpv6Prefix")]
         public Output<string> InternalIpv6Prefix { get; private set; } = null!;
@@ -94,13 +94,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
         /// </summary>
         [Output("ipv6AccessType")]
         public Output<string> Ipv6AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
+        /// This field is for internal use.
         /// </summary>
         [Output("ipv6CidrRange")]
         public Output<string> Ipv6CidrRange { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> PrivateIpGoogleAccess { get; private set; } = null!;
 
         /// <summary>
-        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+        /// This field is for internal use. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Output("privateIpv6GoogleAccess")]
         public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
@@ -307,7 +307,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? IpCidrRange { get; set; }
 
         /// <summary>
-        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
         /// </summary>
         [Input("ipv6AccessType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkIpv6AccessType>? Ipv6AccessType { get; set; }
@@ -343,7 +343,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<bool>? PrivateIpGoogleAccess { get; set; }
 
         /// <summary>
-        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+        /// This field is for internal use. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         [Input("privateIpv6GoogleAccess")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubnetworkPrivateIpv6GoogleAccess>? PrivateIpv6GoogleAccess { get; set; }

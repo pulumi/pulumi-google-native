@@ -905,6 +905,10 @@ const (
 	InstanceDatabaseVersionMysql8018 = InstanceDatabaseVersion("MYSQL_8_0_18")
 	// The database major version is MySQL 8.0 and the minor version is 26.
 	InstanceDatabaseVersionMysql8026 = InstanceDatabaseVersion("MYSQL_8_0_26")
+	// The database major version is MySQL 8.0 and the minor version is 27.
+	InstanceDatabaseVersionMysql8027 = InstanceDatabaseVersion("MYSQL_8_0_27")
+	// The database major version is MySQL 8.0 and the minor version is 28.
+	InstanceDatabaseVersionMysql8028 = InstanceDatabaseVersion("MYSQL_8_0_28")
 	// The database version is PostgreSQL 13.
 	InstanceDatabaseVersionPostgres13 = InstanceDatabaseVersion("POSTGRES_13")
 	// The database version is PostgreSQL 14.

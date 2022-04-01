@@ -31,6 +31,10 @@ export interface GetDashboardResult {
      */
     readonly columnLayout: outputs.monitoring.v1.ColumnLayoutResponse;
     /**
+     * Filters to reduce the amount of data charted based on the filter criteria.
+     */
+    readonly dashboardFilters: outputs.monitoring.v1.DashboardFilterResponse[];
+    /**
      * The mutable, human-readable name.
      */
     readonly displayName: string;

@@ -17,6 +17,7 @@ __all__ = [
     'CollapsibleGroupArgs',
     'ColumnLayoutArgs',
     'ColumnArgs',
+    'DashboardFilterArgs',
     'DataSetArgs',
     'EmptyArgs',
     'GaugeViewArgs',
@@ -288,6 +289,77 @@ class ColumnArgs:
     @widgets.setter
     def widgets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WidgetArgs']]]]):
         pulumi.set(self, "widgets", value)
+
+
+@pulumi.input_type
+class DashboardFilterArgs:
+    def __init__(__self__, *,
+                 label_key: pulumi.Input[str],
+                 filter_type: Optional[pulumi.Input['DashboardFilterFilterType']] = None,
+                 string_value: Optional[pulumi.Input[str]] = None,
+                 template_variable: Optional[pulumi.Input[str]] = None):
+        """
+        A filter to reduce the amount of data charted in relevant widgets.
+        :param pulumi.Input[str] label_key: The key for the label
+        :param pulumi.Input['DashboardFilterFilterType'] filter_type: The specified filter type
+        :param pulumi.Input[str] string_value: A variable-length string value.
+        :param pulumi.Input[str] template_variable: The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+        """
+        pulumi.set(__self__, "label_key", label_key)
+        if filter_type is not None:
+            pulumi.set(__self__, "filter_type", filter_type)
+        if string_value is not None:
+            pulumi.set(__self__, "string_value", string_value)
+        if template_variable is not None:
+            pulumi.set(__self__, "template_variable", template_variable)
+
+    @property
+    @pulumi.getter(name="labelKey")
+    def label_key(self) -> pulumi.Input[str]:
+        """
+        The key for the label
+        """
+        return pulumi.get(self, "label_key")
+
+    @label_key.setter
+    def label_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "label_key", value)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> Optional[pulumi.Input['DashboardFilterFilterType']]:
+        """
+        The specified filter type
+        """
+        return pulumi.get(self, "filter_type")
+
+    @filter_type.setter
+    def filter_type(self, value: Optional[pulumi.Input['DashboardFilterFilterType']]):
+        pulumi.set(self, "filter_type", value)
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        A variable-length string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @string_value.setter
+    def string_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "string_value", value)
+
+    @property
+    @pulumi.getter(name="templateVariable")
+    def template_variable(self) -> Optional[pulumi.Input[str]]:
+        """
+        The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+        """
+        return pulumi.get(self, "template_variable")
+
+    @template_variable.setter
+    def template_variable(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_variable", value)
 
 
 @pulumi.input_type

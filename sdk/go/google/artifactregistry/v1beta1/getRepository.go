@@ -39,6 +39,8 @@ type LookupRepositoryResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name string `pulumi:"name"`
+	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+	SizeBytes string `pulumi:"sizeBytes"`
 	// The time when the repository was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -104,6 +106,11 @@ func (o LookupRepositoryResultOutput) Labels() pulumi.StringMapOutput {
 // The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+func (o LookupRepositoryResultOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.SizeBytes }).(pulumi.StringOutput)
 }
 
 // The time when the repository was last updated.

@@ -346,7 +346,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhraseType(str, Enum):
     """
     TEMPLATE = "TEMPLATE"
     """
-    Templates are not annotated with entity types, but they can contain @-prefixed entity type names as substrings. Template mode has been deprecated. Example mode is the only supported way to create new training phrases. If you have existing training phrases that you've created in template mode, those will continue to work.
+    Templates are not annotated with entity types, but they can contain @-prefixed entity type names as substrings. Note: Template mode has been deprecated. Example mode is the only supported way to create new training phrases. If you have existing training phrases in template mode, they will be removed during training and it can cause a drop in agent performance.
     """
 
 

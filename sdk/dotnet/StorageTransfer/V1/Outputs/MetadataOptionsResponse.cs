@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
     /// <summary>
-    /// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
+    /// Specifies the metadata options for running a transfer.
     /// </summary>
     [OutputType]
     public sealed class MetadataOptionsResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string Acl;
         /// <summary>
-        /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+        /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         public readonly string Gid;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string KmsKey;
         /// <summary>
-        /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+        /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         public readonly string Mode;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string StorageClass;
         /// <summary>
-        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         public readonly string Symlink;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// </summary>
         public readonly string TimeCreated;
         /// <summary>
-        /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+        /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         public readonly string Uid;
 

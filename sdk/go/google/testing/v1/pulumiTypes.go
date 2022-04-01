@@ -7154,7 +7154,7 @@ func (o TestSpecificationResponseOutput) TestTimeout() pulumi.StringOutput {
 
 // Test targets for a shard.
 type TestTargetsForShard struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
 	TestTargets []string `pulumi:"testTargets"`
 }
 
@@ -7171,7 +7171,7 @@ type TestTargetsForShardInput interface {
 
 // Test targets for a shard.
 type TestTargetsForShardArgs struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
 	TestTargets pulumi.StringArrayInput `pulumi:"testTargets"`
 }
 
@@ -7227,7 +7227,7 @@ func (o TestTargetsForShardOutput) ToTestTargetsForShardOutputWithContext(ctx co
 	return o
 }
 
-// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
 func (o TestTargetsForShardOutput) TestTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TestTargetsForShard) []string { return v.TestTargets }).(pulumi.StringArrayOutput)
 }
@@ -7254,7 +7254,7 @@ func (o TestTargetsForShardArrayOutput) Index(i pulumi.IntInput) TestTargetsForS
 
 // Test targets for a shard.
 type TestTargetsForShardResponse struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+	// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
 	TestTargets []string `pulumi:"testTargets"`
 }
 
@@ -7273,7 +7273,7 @@ func (o TestTargetsForShardResponseOutput) ToTestTargetsForShardResponseOutputWi
 	return o
 }
 
-// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+// Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
 func (o TestTargetsForShardResponseOutput) TestTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TestTargetsForShardResponse) []string { return v.TestTargets }).(pulumi.StringArrayOutput)
 }

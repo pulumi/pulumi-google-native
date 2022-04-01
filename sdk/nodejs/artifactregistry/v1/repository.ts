@@ -64,6 +64,10 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+     */
+    public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
+    /**
      * The time when the repository was last updated.
      */
     public readonly updateTime!: pulumi.Output<string>;
@@ -90,6 +94,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["sizeBytes"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -98,6 +103,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["mavenConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

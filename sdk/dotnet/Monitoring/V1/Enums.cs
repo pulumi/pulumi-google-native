@@ -284,6 +284,59 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     }
 
     /// <summary>
+    /// The specified filter type
+    /// </summary>
+    [EnumType]
+    public readonly struct DashboardFilterFilterType : IEquatable<DashboardFilterFilterType>
+    {
+        private readonly string _value;
+
+        private DashboardFilterFilterType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Filter type is unspecified. This is not valid in a well-formed request.
+        /// </summary>
+        public static DashboardFilterFilterType FilterTypeUnspecified { get; } = new DashboardFilterFilterType("FILTER_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Filter on a resource label value
+        /// </summary>
+        public static DashboardFilterFilterType ResourceLabel { get; } = new DashboardFilterFilterType("RESOURCE_LABEL");
+        /// <summary>
+        /// Filter on a metrics label value
+        /// </summary>
+        public static DashboardFilterFilterType MetricLabel { get; } = new DashboardFilterFilterType("METRIC_LABEL");
+        /// <summary>
+        /// Filter on a user metadata label value
+        /// </summary>
+        public static DashboardFilterFilterType UserMetadataLabel { get; } = new DashboardFilterFilterType("USER_METADATA_LABEL");
+        /// <summary>
+        /// Filter on a system metadata label value
+        /// </summary>
+        public static DashboardFilterFilterType SystemMetadataLabel { get; } = new DashboardFilterFilterType("SYSTEM_METADATA_LABEL");
+        /// <summary>
+        /// Filter on a group id
+        /// </summary>
+        public static DashboardFilterFilterType Group { get; } = new DashboardFilterFilterType("GROUP");
+
+        public static bool operator ==(DashboardFilterFilterType left, DashboardFilterFilterType right) => left.Equals(right);
+        public static bool operator !=(DashboardFilterFilterType left, DashboardFilterFilterType right) => !left.Equals(right);
+
+        public static explicit operator string(DashboardFilterFilterType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DashboardFilterFilterType other && Equals(other);
+        public bool Equals(DashboardFilterFilterType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// How this data should be plotted on the chart.
     /// </summary>
     [EnumType]

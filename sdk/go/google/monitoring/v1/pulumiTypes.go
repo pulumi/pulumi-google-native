@@ -1272,6 +1272,200 @@ func (o ColumnResponseArrayOutput) Index(i pulumi.IntInput) ColumnResponseOutput
 	}).(ColumnResponseOutput)
 }
 
+// A filter to reduce the amount of data charted in relevant widgets.
+type DashboardFilter struct {
+	// The specified filter type
+	FilterType *DashboardFilterFilterType `pulumi:"filterType"`
+	// The key for the label
+	LabelKey string `pulumi:"labelKey"`
+	// A variable-length string value.
+	StringValue *string `pulumi:"stringValue"`
+	// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+	TemplateVariable *string `pulumi:"templateVariable"`
+}
+
+// DashboardFilterInput is an input type that accepts DashboardFilterArgs and DashboardFilterOutput values.
+// You can construct a concrete instance of `DashboardFilterInput` via:
+//
+//          DashboardFilterArgs{...}
+type DashboardFilterInput interface {
+	pulumi.Input
+
+	ToDashboardFilterOutput() DashboardFilterOutput
+	ToDashboardFilterOutputWithContext(context.Context) DashboardFilterOutput
+}
+
+// A filter to reduce the amount of data charted in relevant widgets.
+type DashboardFilterArgs struct {
+	// The specified filter type
+	FilterType DashboardFilterFilterTypePtrInput `pulumi:"filterType"`
+	// The key for the label
+	LabelKey pulumi.StringInput `pulumi:"labelKey"`
+	// A variable-length string value.
+	StringValue pulumi.StringPtrInput `pulumi:"stringValue"`
+	// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+	TemplateVariable pulumi.StringPtrInput `pulumi:"templateVariable"`
+}
+
+func (DashboardFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardFilter)(nil)).Elem()
+}
+
+func (i DashboardFilterArgs) ToDashboardFilterOutput() DashboardFilterOutput {
+	return i.ToDashboardFilterOutputWithContext(context.Background())
+}
+
+func (i DashboardFilterArgs) ToDashboardFilterOutputWithContext(ctx context.Context) DashboardFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterOutput)
+}
+
+// DashboardFilterArrayInput is an input type that accepts DashboardFilterArray and DashboardFilterArrayOutput values.
+// You can construct a concrete instance of `DashboardFilterArrayInput` via:
+//
+//          DashboardFilterArray{ DashboardFilterArgs{...} }
+type DashboardFilterArrayInput interface {
+	pulumi.Input
+
+	ToDashboardFilterArrayOutput() DashboardFilterArrayOutput
+	ToDashboardFilterArrayOutputWithContext(context.Context) DashboardFilterArrayOutput
+}
+
+type DashboardFilterArray []DashboardFilterInput
+
+func (DashboardFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardFilter)(nil)).Elem()
+}
+
+func (i DashboardFilterArray) ToDashboardFilterArrayOutput() DashboardFilterArrayOutput {
+	return i.ToDashboardFilterArrayOutputWithContext(context.Background())
+}
+
+func (i DashboardFilterArray) ToDashboardFilterArrayOutputWithContext(ctx context.Context) DashboardFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardFilterArrayOutput)
+}
+
+// A filter to reduce the amount of data charted in relevant widgets.
+type DashboardFilterOutput struct{ *pulumi.OutputState }
+
+func (DashboardFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardFilter)(nil)).Elem()
+}
+
+func (o DashboardFilterOutput) ToDashboardFilterOutput() DashboardFilterOutput {
+	return o
+}
+
+func (o DashboardFilterOutput) ToDashboardFilterOutputWithContext(ctx context.Context) DashboardFilterOutput {
+	return o
+}
+
+// The specified filter type
+func (o DashboardFilterOutput) FilterType() DashboardFilterFilterTypePtrOutput {
+	return o.ApplyT(func(v DashboardFilter) *DashboardFilterFilterType { return v.FilterType }).(DashboardFilterFilterTypePtrOutput)
+}
+
+// The key for the label
+func (o DashboardFilterOutput) LabelKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardFilter) string { return v.LabelKey }).(pulumi.StringOutput)
+}
+
+// A variable-length string value.
+func (o DashboardFilterOutput) StringValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardFilter) *string { return v.StringValue }).(pulumi.StringPtrOutput)
+}
+
+// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+func (o DashboardFilterOutput) TemplateVariable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardFilter) *string { return v.TemplateVariable }).(pulumi.StringPtrOutput)
+}
+
+type DashboardFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardFilter)(nil)).Elem()
+}
+
+func (o DashboardFilterArrayOutput) ToDashboardFilterArrayOutput() DashboardFilterArrayOutput {
+	return o
+}
+
+func (o DashboardFilterArrayOutput) ToDashboardFilterArrayOutputWithContext(ctx context.Context) DashboardFilterArrayOutput {
+	return o
+}
+
+func (o DashboardFilterArrayOutput) Index(i pulumi.IntInput) DashboardFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardFilter {
+		return vs[0].([]DashboardFilter)[vs[1].(int)]
+	}).(DashboardFilterOutput)
+}
+
+// A filter to reduce the amount of data charted in relevant widgets.
+type DashboardFilterResponse struct {
+	// The specified filter type
+	FilterType string `pulumi:"filterType"`
+	// The key for the label
+	LabelKey string `pulumi:"labelKey"`
+	// A variable-length string value.
+	StringValue string `pulumi:"stringValue"`
+	// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+	TemplateVariable string `pulumi:"templateVariable"`
+}
+
+// A filter to reduce the amount of data charted in relevant widgets.
+type DashboardFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (DashboardFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardFilterResponse)(nil)).Elem()
+}
+
+func (o DashboardFilterResponseOutput) ToDashboardFilterResponseOutput() DashboardFilterResponseOutput {
+	return o
+}
+
+func (o DashboardFilterResponseOutput) ToDashboardFilterResponseOutputWithContext(ctx context.Context) DashboardFilterResponseOutput {
+	return o
+}
+
+// The specified filter type
+func (o DashboardFilterResponseOutput) FilterType() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardFilterResponse) string { return v.FilterType }).(pulumi.StringOutput)
+}
+
+// The key for the label
+func (o DashboardFilterResponseOutput) LabelKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardFilterResponse) string { return v.LabelKey }).(pulumi.StringOutput)
+}
+
+// A variable-length string value.
+func (o DashboardFilterResponseOutput) StringValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardFilterResponse) string { return v.StringValue }).(pulumi.StringOutput)
+}
+
+// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+func (o DashboardFilterResponseOutput) TemplateVariable() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardFilterResponse) string { return v.TemplateVariable }).(pulumi.StringOutput)
+}
+
+type DashboardFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DashboardFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DashboardFilterResponse)(nil)).Elem()
+}
+
+func (o DashboardFilterResponseArrayOutput) ToDashboardFilterResponseArrayOutput() DashboardFilterResponseArrayOutput {
+	return o
+}
+
+func (o DashboardFilterResponseArrayOutput) ToDashboardFilterResponseArrayOutputWithContext(ctx context.Context) DashboardFilterResponseArrayOutput {
+	return o
+}
+
+func (o DashboardFilterResponseArrayOutput) Index(i pulumi.IntInput) DashboardFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DashboardFilterResponse {
+		return vs[0].([]DashboardFilterResponse)[vs[1].(int)]
+	}).(DashboardFilterResponseOutput)
+}
+
 // Groups a time series query definition with charting options.
 type DataSet struct {
 	// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
@@ -6482,6 +6676,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnArrayInput)(nil)).Elem(), ColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutInput)(nil)).Elem(), ColumnLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutPtrInput)(nil)).Elem(), ColumnLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterInput)(nil)).Elem(), DashboardFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterArrayInput)(nil)).Elem(), DashboardFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetInput)(nil)).Elem(), DataSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetArrayInput)(nil)).Elem(), DataSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EmptyInput)(nil)).Elem(), EmptyArgs{})
@@ -6553,6 +6749,10 @@ func init() {
 	pulumi.RegisterOutputType(ColumnLayoutResponseOutput{})
 	pulumi.RegisterOutputType(ColumnResponseOutput{})
 	pulumi.RegisterOutputType(ColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(DashboardFilterOutput{})
+	pulumi.RegisterOutputType(DashboardFilterArrayOutput{})
+	pulumi.RegisterOutputType(DashboardFilterResponseOutput{})
+	pulumi.RegisterOutputType(DashboardFilterResponseArrayOutput{})
 	pulumi.RegisterOutputType(DataSetOutput{})
 	pulumi.RegisterOutputType(DataSetArrayOutput{})
 	pulumi.RegisterOutputType(DataSetResponseOutput{})

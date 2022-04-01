@@ -24,6 +24,8 @@ type EndpointAttachment struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Format: projects/*/regions/*/serviceAttachments/*
 	ServiceAttachment pulumi.StringOutput `pulumi:"serviceAttachment"`
+	// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+	State pulumi.StringOutput `pulumi:"state"`
 }
 
 // NewEndpointAttachment registers a new resource with the given unique name, arguments, and options.

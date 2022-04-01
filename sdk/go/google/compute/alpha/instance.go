@@ -41,7 +41,7 @@ type Instance struct {
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
 	InstanceEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"instanceEncryptionKey"`
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType pulumi.StringOutput `pulumi:"keyRevocationActionType"`
 	// Type of the resource. Always compute#instance for instances.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -176,7 +176,7 @@ type instanceArgs struct {
 	Hostname *string `pulumi:"hostname"`
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
 	InstanceEncryptionKey *CustomerEncryptionKey `pulumi:"instanceEncryptionKey"`
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType *InstanceKeyRevocationActionType `pulumi:"keyRevocationActionType"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels map[string]string `pulumi:"labels"`
@@ -252,7 +252,7 @@ type InstanceArgs struct {
 	Hostname pulumi.StringPtrInput
 	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
 	InstanceEncryptionKey CustomerEncryptionKeyPtrInput
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType InstanceKeyRevocationActionTypePtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels pulumi.StringMapInput

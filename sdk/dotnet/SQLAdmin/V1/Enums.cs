@@ -318,6 +318,14 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public static InstanceDatabaseVersion Mysql8026 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_26");
         /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 27.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8027 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_27");
+        /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 28.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8028 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_28");
+        /// <summary>
         /// The database version is PostgreSQL 13.
         /// </summary>
         public static InstanceDatabaseVersion Postgres13 { get; } = new InstanceDatabaseVersion("POSTGRES_13");

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, name=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, name=None, size_bytes=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +40,9 @@ class GetRepositoryResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if size_bytes and not isinstance(size_bytes, str):
+            raise TypeError("Expected argument 'size_bytes' to be a str")
+        pulumi.set(__self__, "size_bytes", size_bytes)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -101,6 +104,14 @@ class GetRepositoryResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="sizeBytes")
+    def size_bytes(self) -> str:
+        """
+        The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+        """
+        return pulumi.get(self, "size_bytes")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -122,6 +133,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             labels=self.labels,
             maven_config=self.maven_config,
             name=self.name,
+            size_bytes=self.size_bytes,
             update_time=self.update_time)
 
 
@@ -150,6 +162,7 @@ def get_repository(location: Optional[str] = None,
         labels=__ret__.labels,
         maven_config=__ret__.maven_config,
         name=__ret__.name,
+        size_bytes=__ret__.size_bytes,
         update_time=__ret__.update_time)
 
 

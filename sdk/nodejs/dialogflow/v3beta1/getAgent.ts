@@ -57,6 +57,10 @@ export interface GetAgentResult {
      */
     readonly enableStackdriverLogging: boolean;
     /**
+     * Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+     */
+    readonly locked: boolean;
+    /**
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     readonly name: string;

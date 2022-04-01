@@ -1991,7 +1991,7 @@ class TestTargetsForShardArgs:
                  test_targets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Test targets for a shard.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] test_targets: Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] test_targets: Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
         """
         if test_targets is not None:
             pulumi.set(__self__, "test_targets", test_targets)
@@ -2000,7 +2000,7 @@ class TestTargetsForShardArgs:
     @pulumi.getter(name="testTargets")
     def test_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+        Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
         """
         return pulumi.get(self, "test_targets")
 

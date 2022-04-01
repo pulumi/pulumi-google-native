@@ -36,6 +36,7 @@ __all__ = [
     'BackendServiceConnectionTrackingPolicyTrackingMode',
     'BackendServiceLoadBalancingScheme',
     'BackendServiceLocalityLbPolicy',
+    'BackendServiceLocalityLoadBalancingPolicyConfigPolicyName',
     'BackendServiceProtocol',
     'BackendServiceSessionAffinity',
     'CallCredentialsCallCredentialType',
@@ -727,6 +728,41 @@ class BackendServiceLoadBalancingScheme(str, Enum):
 class BackendServiceLocalityLbPolicy(str, Enum):
     """
     The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+    """
+    INVALID_LB_POLICY = "INVALID_LB_POLICY"
+    LEAST_REQUEST = "LEAST_REQUEST"
+    """
+    An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+    """
+    MAGLEV = "MAGLEV"
+    """
+    This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+    """
+    ORIGINAL_DESTINATION = "ORIGINAL_DESTINATION"
+    """
+    Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+    """
+    RANDOM = "RANDOM"
+    """
+    The load balancer selects a random healthy host.
+    """
+    RING_HASH = "RING_HASH"
+    """
+    The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+    """
+    ROUND_ROBIN = "ROUND_ROBIN"
+    """
+    This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+    """
+    WEIGHTED_MAGLEV = "WEIGHTED_MAGLEV"
+    """
+    Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+    """
+
+
+class BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(str, Enum):
+    """
+    The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
@@ -1824,7 +1860,7 @@ class InstanceGroupManagerUpdatePolicyType(str, Enum):
 
 class InstanceKeyRevocationActionType(str, Enum):
     """
-    KeyRevocationActionType of the instance.
+    KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
     """
     KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
     """
@@ -1878,7 +1914,7 @@ class InstancePrivateIpv6GoogleAccess(str, Enum):
 
 class InstancePropertiesKeyRevocationActionType(str, Enum):
     """
-    KeyRevocationActionType of the instance.
+    KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
     """
     KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
     """
@@ -2328,6 +2364,7 @@ class OrganizationSecurityPolicyType(str, Enum):
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_INTERNAL_SERVICE = "CLOUD_ARMOR_INTERNAL_SERVICE"
     CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
 
@@ -2777,6 +2814,7 @@ class RegionSecurityPolicyType(str, Enum):
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_INTERNAL_SERVICE = "CLOUD_ARMOR_INTERNAL_SERVICE"
     CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
 
@@ -3354,6 +3392,7 @@ class SecurityPolicyType(str, Enum):
     """
     CLOUD_ARMOR = "CLOUD_ARMOR"
     CLOUD_ARMOR_EDGE = "CLOUD_ARMOR_EDGE"
+    CLOUD_ARMOR_INTERNAL_SERVICE = "CLOUD_ARMOR_INTERNAL_SERVICE"
     CLOUD_ARMOR_NETWORK = "CLOUD_ARMOR_NETWORK"
     FIREWALL = "FIREWALL"
 
@@ -3497,11 +3536,11 @@ class SubnetworkAggregationInterval(str, Enum):
 
 class SubnetworkIpv6AccessType(str, Enum):
     """
-    The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+    The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
     """
     EXTERNAL = "EXTERNAL"
     """
-    VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
+    VMs on this subnet will be assigned IPv6 addresses that are accessible via the Internet, as well as the VPC network.
     """
     INTERNAL = "INTERNAL"
     """
@@ -3540,7 +3579,7 @@ class SubnetworkMetadata(str, Enum):
 
 class SubnetworkPrivateIpv6GoogleAccess(str, Enum):
     """
-    The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+    This field is for internal use. This field can be both set at resource creation time and updated using patch.
     """
     DISABLE_GOOGLE_ACCESS = "DISABLE_GOOGLE_ACCESS"
     """

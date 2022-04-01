@@ -591,6 +591,43 @@ export const BackendServiceLocalityLbPolicy = {
  */
 export type BackendServiceLocalityLbPolicy = (typeof BackendServiceLocalityLbPolicy)[keyof typeof BackendServiceLocalityLbPolicy];
 
+export const BackendServiceLocalityLoadBalancingPolicyConfigPolicyName = {
+    InvalidLbPolicy: "INVALID_LB_POLICY",
+    /**
+     * An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+     */
+    LeastRequest: "LEAST_REQUEST",
+    /**
+     * This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+     */
+    Maglev: "MAGLEV",
+    /**
+     * Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+     */
+    OriginalDestination: "ORIGINAL_DESTINATION",
+    /**
+     * The load balancer selects a random healthy host.
+     */
+    Random: "RANDOM",
+    /**
+     * The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+     */
+    RingHash: "RING_HASH",
+    /**
+     * This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+     */
+    RoundRobin: "ROUND_ROBIN",
+    /**
+     * Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+     */
+    WeightedMaglev: "WEIGHTED_MAGLEV",
+} as const;
+
+/**
+ * The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+ */
+export type BackendServiceLocalityLoadBalancingPolicyConfigPolicyName = (typeof BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)[keyof typeof BackendServiceLocalityLoadBalancingPolicyConfigPolicyName];
+
 export const BackendServiceProtocol = {
     /**
      * ALL includes TCP, UDP, ICMP, ESP, AH and SCTP. Note that this should never be used together with target_xx_proxies.
@@ -1794,7 +1831,7 @@ export const InstanceKeyRevocationActionType = {
 } as const;
 
 /**
- * KeyRevocationActionType of the instance.
+ * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
  */
 export type InstanceKeyRevocationActionType = (typeof InstanceKeyRevocationActionType)[keyof typeof InstanceKeyRevocationActionType];
 
@@ -1854,7 +1891,7 @@ export const InstancePropertiesKeyRevocationActionType = {
 } as const;
 
 /**
- * KeyRevocationActionType of the instance.
+ * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
  */
 export type InstancePropertiesKeyRevocationActionType = (typeof InstancePropertiesKeyRevocationActionType)[keyof typeof InstancePropertiesKeyRevocationActionType];
 
@@ -2343,6 +2380,7 @@ export type NodeTemplateCpuOvercommitType = (typeof NodeTemplateCpuOvercommitTyp
 export const OrganizationSecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
     CloudArmorEdge: "CLOUD_ARMOR_EDGE",
+    CloudArmorInternalService: "CLOUD_ARMOR_INTERNAL_SERVICE",
     CloudArmorNetwork: "CLOUD_ARMOR_NETWORK",
     Firewall: "FIREWALL",
 } as const;
@@ -2842,6 +2880,7 @@ export type RegionNetworkNetworkFirewallPolicyEnforcementOrder = (typeof RegionN
 export const RegionSecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
     CloudArmorEdge: "CLOUD_ARMOR_EDGE",
+    CloudArmorInternalService: "CLOUD_ARMOR_INTERNAL_SERVICE",
     CloudArmorNetwork: "CLOUD_ARMOR_NETWORK",
     Firewall: "FIREWALL",
 } as const;
@@ -3511,6 +3550,7 @@ export type SecurityPolicyRuleRedirectOptionsType = (typeof SecurityPolicyRuleRe
 export const SecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
     CloudArmorEdge: "CLOUD_ARMOR_EDGE",
+    CloudArmorInternalService: "CLOUD_ARMOR_INTERNAL_SERVICE",
     CloudArmorNetwork: "CLOUD_ARMOR_NETWORK",
     Firewall: "FIREWALL",
 } as const;
@@ -3677,7 +3717,7 @@ export type SubnetworkAggregationInterval = (typeof SubnetworkAggregationInterva
 
 export const SubnetworkIpv6AccessType = {
     /**
-     * VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
+     * VMs on this subnet will be assigned IPv6 addresses that are accessible via the Internet, as well as the VPC network.
      */
     External: "EXTERNAL",
     /**
@@ -3687,7 +3727,7 @@ export const SubnetworkIpv6AccessType = {
 } as const;
 
 /**
- * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+ * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
  */
 export type SubnetworkIpv6AccessType = (typeof SubnetworkIpv6AccessType)[keyof typeof SubnetworkIpv6AccessType];
 
@@ -3746,7 +3786,7 @@ export const SubnetworkPrivateIpv6GoogleAccess = {
 } as const;
 
 /**
- * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+ * This field is for internal use. This field can be both set at resource creation time and updated using patch.
  */
 export type SubnetworkPrivateIpv6GoogleAccess = (typeof SubnetworkPrivateIpv6GoogleAccess)[keyof typeof SubnetworkPrivateIpv6GoogleAccess];
 

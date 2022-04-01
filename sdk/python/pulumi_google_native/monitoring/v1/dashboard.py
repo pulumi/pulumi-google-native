@@ -18,6 +18,7 @@ class DashboardArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  column_layout: Optional[pulumi.Input['ColumnLayoutArgs']] = None,
+                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input['GridLayoutArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,6 +31,7 @@ class DashboardArgs:
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] display_name: The mutable, human-readable name.
         :param pulumi.Input['ColumnLayoutArgs'] column_layout: The content is divided into equally spaced columns and the widgets are arranged vertically.
+        :param pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]] dashboard_filters: Filters to reduce the amount of data charted based on the filter criteria.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
         :param pulumi.Input['GridLayoutArgs'] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied to the dashboard
@@ -41,6 +43,8 @@ class DashboardArgs:
         pulumi.set(__self__, "display_name", display_name)
         if column_layout is not None:
             pulumi.set(__self__, "column_layout", column_layout)
+        if dashboard_filters is not None:
+            pulumi.set(__self__, "dashboard_filters", dashboard_filters)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if grid_layout is not None:
@@ -81,6 +85,18 @@ class DashboardArgs:
     @column_layout.setter
     def column_layout(self, value: Optional[pulumi.Input['ColumnLayoutArgs']]):
         pulumi.set(self, "column_layout", value)
+
+    @property
+    @pulumi.getter(name="dashboardFilters")
+    def dashboard_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]]:
+        """
+        Filters to reduce the amount of data charted based on the filter criteria.
+        """
+        return pulumi.get(self, "dashboard_filters")
+
+    @dashboard_filters.setter
+    def dashboard_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DashboardFilterArgs']]]]):
+        pulumi.set(self, "dashboard_filters", value)
 
     @property
     @pulumi.getter
@@ -182,6 +198,7 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
+                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
@@ -198,6 +215,7 @@ class Dashboard(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ColumnLayoutArgs']] column_layout: The content is divided into equally spaced columns and the widgets are arranged vertically.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]] dashboard_filters: Filters to reduce the amount of data charted based on the filter criteria.
         :param pulumi.Input[str] display_name: The mutable, human-readable name.
         :param pulumi.Input[str] etag: etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
         :param pulumi.Input[pulumi.InputType['GridLayoutArgs']] grid_layout: Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
@@ -232,6 +250,7 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
+                 dashboard_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DashboardFilterArgs']]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
@@ -254,6 +273,7 @@ class Dashboard(pulumi.CustomResource):
             __props__ = DashboardArgs.__new__(DashboardArgs)
 
             __props__.__dict__["column_layout"] = column_layout
+            __props__.__dict__["dashboard_filters"] = dashboard_filters
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -288,6 +308,7 @@ class Dashboard(pulumi.CustomResource):
         __props__ = DashboardArgs.__new__(DashboardArgs)
 
         __props__.__dict__["column_layout"] = None
+        __props__.__dict__["dashboard_filters"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["grid_layout"] = None
@@ -304,6 +325,14 @@ class Dashboard(pulumi.CustomResource):
         The content is divided into equally spaced columns and the widgets are arranged vertically.
         """
         return pulumi.get(self, "column_layout")
+
+    @property
+    @pulumi.getter(name="dashboardFilters")
+    def dashboard_filters(self) -> pulumi.Output[Sequence['outputs.DashboardFilterResponse']]:
+        """
+        Filters to reduce the amount of data charted based on the filter criteria.
+        """
+        return pulumi.get(self, "dashboard_filters")
 
     @property
     @pulumi.getter(name="displayName")

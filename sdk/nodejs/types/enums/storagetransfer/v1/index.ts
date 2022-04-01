@@ -76,7 +76,7 @@ export const MetadataOptionsGid = {
 } as const;
 
 /**
- * Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+ * Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
  */
 export type MetadataOptionsGid = (typeof MetadataOptionsGid)[keyof typeof MetadataOptionsGid];
 
@@ -116,7 +116,7 @@ export const MetadataOptionsMode = {
 } as const;
 
 /**
- * Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+ * Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
  */
 export type MetadataOptionsMode = (typeof MetadataOptionsMode)[keyof typeof MetadataOptionsMode];
 
@@ -172,7 +172,7 @@ export const MetadataOptionsSymlink = {
 } as const;
 
 /**
- * Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+ * Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
  */
 export type MetadataOptionsSymlink = (typeof MetadataOptionsSymlink)[keyof typeof MetadataOptionsSymlink];
 
@@ -232,7 +232,7 @@ export const MetadataOptionsUid = {
 } as const;
 
 /**
- * Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+ * Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
  */
 export type MetadataOptionsUid = (typeof MetadataOptionsUid)[keyof typeof MetadataOptionsUid];
 
@@ -300,3 +300,27 @@ export const TransferJobStatus = {
  * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
  */
 export type TransferJobStatus = (typeof TransferJobStatus)[keyof typeof TransferJobStatus];
+
+export const TransferOptionsOverwriteWhen = {
+    /**
+     * Indicate the option is not set.
+     */
+    OverwriteWhenUnspecified: "OVERWRITE_WHEN_UNSPECIFIED",
+    /**
+     * Overwrite destination object with source if the two objects are different.
+     */
+    Different: "DIFFERENT",
+    /**
+     * Never overwrite destination object.
+     */
+    Never: "NEVER",
+    /**
+     * Always overwrite destination object.
+     */
+    Always: "ALWAYS",
+} as const;
+
+/**
+ * When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+ */
+export type TransferOptionsOverwriteWhen = (typeof TransferOptionsOverwriteWhen)[keyof typeof TransferOptionsOverwriteWhen];

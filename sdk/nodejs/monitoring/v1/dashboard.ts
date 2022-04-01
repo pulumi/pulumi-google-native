@@ -40,6 +40,10 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly columnLayout!: pulumi.Output<outputs.monitoring.v1.ColumnLayoutResponse>;
     /**
+     * Filters to reduce the amount of data charted based on the filter criteria.
+     */
+    public readonly dashboardFilters!: pulumi.Output<outputs.monitoring.v1.DashboardFilterResponse[]>;
+    /**
      * The mutable, human-readable name.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class Dashboard extends pulumi.CustomResource {
                 throw new Error("Missing required property 'displayName'");
             }
             resourceInputs["columnLayout"] = args ? args.columnLayout : undefined;
+            resourceInputs["dashboardFilters"] = args ? args.dashboardFilters : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["gridLayout"] = args ? args.gridLayout : undefined;
@@ -94,6 +99,7 @@ export class Dashboard extends pulumi.CustomResource {
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             resourceInputs["columnLayout"] = undefined /*out*/;
+            resourceInputs["dashboardFilters"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["gridLayout"] = undefined /*out*/;
@@ -115,6 +121,10 @@ export interface DashboardArgs {
      * The content is divided into equally spaced columns and the widgets are arranged vertically.
      */
     columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayoutArgs>;
+    /**
+     * Filters to reduce the amount of data charted based on the filter criteria.
+     */
+    dashboardFilters?: pulumi.Input<pulumi.Input<inputs.monitoring.v1.DashboardFilterArgs>[]>;
     /**
      * The mutable, human-readable name.
      */

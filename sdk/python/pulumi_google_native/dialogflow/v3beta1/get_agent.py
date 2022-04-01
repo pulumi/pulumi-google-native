@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAgentResult:
-    def __init__(__self__, advanced_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, time_zone=None):
+    def __init__(__self__, advanced_settings=None, avatar_uri=None, default_language_code=None, description=None, display_name=None, enable_spell_correction=None, enable_stackdriver_logging=None, locked=None, name=None, security_settings=None, speech_to_text_settings=None, start_flow=None, supported_language_codes=None, time_zone=None):
         if advanced_settings and not isinstance(advanced_settings, dict):
             raise TypeError("Expected argument 'advanced_settings' to be a dict")
         pulumi.set(__self__, "advanced_settings", advanced_settings)
@@ -40,6 +40,9 @@ class GetAgentResult:
         if enable_stackdriver_logging and not isinstance(enable_stackdriver_logging, bool):
             raise TypeError("Expected argument 'enable_stackdriver_logging' to be a bool")
         pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+        if locked and not isinstance(locked, bool):
+            raise TypeError("Expected argument 'locked' to be a bool")
+        pulumi.set(__self__, "locked", locked)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -117,6 +120,14 @@ class GetAgentResult:
 
     @property
     @pulumi.getter
+    def locked(self) -> bool:
+        """
+        Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+        """
+        return pulumi.get(self, "locked")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -177,6 +188,7 @@ class AwaitableGetAgentResult(GetAgentResult):
             display_name=self.display_name,
             enable_spell_correction=self.enable_spell_correction,
             enable_stackdriver_logging=self.enable_stackdriver_logging,
+            locked=self.locked,
             name=self.name,
             security_settings=self.security_settings,
             speech_to_text_settings=self.speech_to_text_settings,
@@ -210,6 +222,7 @@ def get_agent(agent_id: Optional[str] = None,
         display_name=__ret__.display_name,
         enable_spell_correction=__ret__.enable_spell_correction,
         enable_stackdriver_logging=__ret__.enable_stackdriver_logging,
+        locked=__ret__.locked,
         name=__ret__.name,
         security_settings=__ret__.security_settings,
         speech_to_text_settings=__ret__.speech_to_text_settings,

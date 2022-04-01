@@ -28,6 +28,8 @@ type LookupDashboardArgs struct {
 type LookupDashboardResult struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout ColumnLayoutResponse `pulumi:"columnLayout"`
+	// Filters to reduce the amount of data charted based on the filter criteria.
+	DashboardFilters []DashboardFilterResponse `pulumi:"dashboardFilters"`
 	// The mutable, human-readable name.
 	DisplayName string `pulumi:"displayName"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
@@ -79,6 +81,11 @@ func (o LookupDashboardResultOutput) ToLookupDashboardResultOutputWithContext(ct
 // The content is divided into equally spaced columns and the widgets are arranged vertically.
 func (o LookupDashboardResultOutput) ColumnLayout() ColumnLayoutResponseOutput {
 	return o.ApplyT(func(v LookupDashboardResult) ColumnLayoutResponse { return v.ColumnLayout }).(ColumnLayoutResponseOutput)
+}
+
+// Filters to reduce the amount of data charted based on the filter criteria.
+func (o LookupDashboardResultOutput) DashboardFilters() DashboardFilterResponseArrayOutput {
+	return o.ApplyT(func(v LookupDashboardResult) []DashboardFilterResponse { return v.DashboardFilters }).(DashboardFilterResponseArrayOutput)
 }
 
 // The mutable, human-readable name.

@@ -34,6 +34,8 @@ type LookupEndpointAttachmentResult struct {
 	Name string `pulumi:"name"`
 	// Format: projects/*/regions/*/serviceAttachments/*
 	ServiceAttachment string `pulumi:"serviceAttachment"`
+	// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+	State string `pulumi:"state"`
 }
 
 func LookupEndpointAttachmentOutput(ctx *pulumi.Context, args LookupEndpointAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupEndpointAttachmentResultOutput {
@@ -86,6 +88,11 @@ func (o LookupEndpointAttachmentResultOutput) Name() pulumi.StringOutput {
 // Format: projects/*/regions/*/serviceAttachments/*
 func (o LookupEndpointAttachmentResultOutput) ServiceAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointAttachmentResult) string { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+func (o LookupEndpointAttachmentResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointAttachmentResult) string { return v.State }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+        /// </summary>
+        public readonly string SizeBytes;
+        /// <summary>
         /// The time when the repository was last updated.
         /// </summary>
         public readonly string UpdateTime;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
             string name,
 
+            string sizeBytes,
+
             string updateTime)
         {
             CreateTime = createTime;
@@ -119,6 +125,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
             Labels = labels;
             MavenConfig = mavenConfig;
             Name = name;
+            SizeBytes = sizeBytes;
             UpdateTime = updateTime;
         }
     }

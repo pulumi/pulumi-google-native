@@ -28,6 +28,8 @@ type Repository struct {
 	MavenConfig MavenRepositoryConfigResponseOutput `pulumi:"mavenConfig"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }

@@ -66,7 +66,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly enablePrivateV6Access!: pulumi.Output<boolean>;
     /**
-     * The range of external IPv6 addresses that are owned by this subnetwork.
+     * The external IPv6 address range that is assigned to this subnetwork.
      */
     public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
     /**
@@ -82,7 +82,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly gatewayAddress!: pulumi.Output<string>;
     /**
-     * The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+     * The internal IPv6 address range that is assigned to this subnetwork.
      */
     public /*out*/ readonly internalIpv6Prefix!: pulumi.Output<string>;
     /**
@@ -90,11 +90,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
-     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
      */
     public readonly ipv6AccessType!: pulumi.Output<string>;
     /**
-     * The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
+     * This field is for internal use.
      */
     public /*out*/ readonly ipv6CidrRange!: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly privateIpGoogleAccess!: pulumi.Output<boolean>;
     /**
-     * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+     * This field is for internal use. This field can be both set at resource creation time and updated using patch.
      */
     public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
     /**
@@ -300,7 +300,7 @@ export interface SubnetworkArgs {
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
-     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
      */
     ipv6AccessType?: pulumi.Input<enums.compute.alpha.SubnetworkIpv6AccessType>;
     /**
@@ -324,7 +324,7 @@ export interface SubnetworkArgs {
      */
     privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
-     * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+     * This field is for internal use. This field can be both set at resource creation time and updated using patch.
      */
     privateIpv6GoogleAccess?: pulumi.Input<enums.compute.alpha.SubnetworkPrivateIpv6GoogleAccess>;
     /**

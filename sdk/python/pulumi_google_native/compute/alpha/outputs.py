@@ -44,6 +44,9 @@ __all__ = [
     'BackendServiceFailoverPolicyResponse',
     'BackendServiceIAPOAuth2ClientInfoResponse',
     'BackendServiceIAPResponse',
+    'BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse',
+    'BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse',
+    'BackendServiceLocalityLoadBalancingPolicyConfigResponse',
     'BackendServiceLogConfigResponse',
     'BindingResponse',
     'CacheKeyPolicyResponse',
@@ -3169,6 +3172,103 @@ class BackendServiceIAPResponse(dict):
         SHA256 hash value for the field oauth2_client_secret above.
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse(dict):
+    """
+    The configuration for a custom policy implemented by the user and deployed with the client.
+    """
+    def __init__(__self__, *,
+                 data: str,
+                 name: str):
+        """
+        The configuration for a custom policy implemented by the user and deployed with the client.
+        :param str data: An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        :param str name: Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def data(self) -> str:
+        """
+        An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse(dict):
+    """
+    The configuration for a built-in load balancing policy.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        The configuration for a built-in load balancing policy.
+        :param str name: The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLoadBalancingPolicyConfigResponse(dict):
+    """
+    Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customPolicy":
+            suggest = "custom_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceLocalityLoadBalancingPolicyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceLocalityLoadBalancingPolicyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceLocalityLoadBalancingPolicyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_policy: 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse',
+                 policy: 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse'):
+        """
+        Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+        """
+        pulumi.set(__self__, "custom_policy", custom_policy)
+        pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="customPolicy")
+    def custom_policy(self) -> 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse':
+        return pulumi.get(self, "custom_policy")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse':
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type
@@ -8463,7 +8563,7 @@ class InstancePropertiesResponse(dict):
         :param Sequence['AttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from these properties.
         :param 'DisplayDeviceResponse' display_device: Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
-        :param str key_revocation_action_type: KeyRevocationActionType of the instance.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from these properties.
         :param str machine_type: The machine type to use for instances that are created from these properties.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -8568,7 +8668,7 @@ class InstancePropertiesResponse(dict):
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> str:
         """
-        KeyRevocationActionType of the instance.
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
@@ -17676,7 +17776,7 @@ class SourceInstancePropertiesResponse(dict):
         :param str description: An optional text description for the instances that are created from this machine image.
         :param Sequence['SavedAttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from this machine image.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from this machine image.
-        :param str key_revocation_action_type: KeyRevocationActionType of the instance.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from this machine image.
         :param str machine_type: The machine type to use for instances that are created from this machine image.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -17747,7 +17847,7 @@ class SourceInstancePropertiesResponse(dict):
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> str:
         """
-        KeyRevocationActionType of the instance.
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         """
         return pulumi.get(self, "key_revocation_action_type")
 

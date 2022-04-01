@@ -742,6 +742,181 @@ func (in *chartOptionsModePtr) ToChartOptionsModePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(ChartOptionsModePtrOutput)
 }
 
+// The specified filter type
+type DashboardFilterFilterType string
+
+const (
+	// Filter type is unspecified. This is not valid in a well-formed request.
+	DashboardFilterFilterTypeFilterTypeUnspecified = DashboardFilterFilterType("FILTER_TYPE_UNSPECIFIED")
+	// Filter on a resource label value
+	DashboardFilterFilterTypeResourceLabel = DashboardFilterFilterType("RESOURCE_LABEL")
+	// Filter on a metrics label value
+	DashboardFilterFilterTypeMetricLabel = DashboardFilterFilterType("METRIC_LABEL")
+	// Filter on a user metadata label value
+	DashboardFilterFilterTypeUserMetadataLabel = DashboardFilterFilterType("USER_METADATA_LABEL")
+	// Filter on a system metadata label value
+	DashboardFilterFilterTypeSystemMetadataLabel = DashboardFilterFilterType("SYSTEM_METADATA_LABEL")
+	// Filter on a group id
+	DashboardFilterFilterTypeGroup = DashboardFilterFilterType("GROUP")
+)
+
+func (DashboardFilterFilterType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardFilterFilterType)(nil)).Elem()
+}
+
+func (e DashboardFilterFilterType) ToDashboardFilterFilterTypeOutput() DashboardFilterFilterTypeOutput {
+	return pulumi.ToOutput(e).(DashboardFilterFilterTypeOutput)
+}
+
+func (e DashboardFilterFilterType) ToDashboardFilterFilterTypeOutputWithContext(ctx context.Context) DashboardFilterFilterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DashboardFilterFilterTypeOutput)
+}
+
+func (e DashboardFilterFilterType) ToDashboardFilterFilterTypePtrOutput() DashboardFilterFilterTypePtrOutput {
+	return e.ToDashboardFilterFilterTypePtrOutputWithContext(context.Background())
+}
+
+func (e DashboardFilterFilterType) ToDashboardFilterFilterTypePtrOutputWithContext(ctx context.Context) DashboardFilterFilterTypePtrOutput {
+	return DashboardFilterFilterType(e).ToDashboardFilterFilterTypeOutputWithContext(ctx).ToDashboardFilterFilterTypePtrOutputWithContext(ctx)
+}
+
+func (e DashboardFilterFilterType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DashboardFilterFilterType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DashboardFilterFilterType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DashboardFilterFilterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DashboardFilterFilterTypeOutput struct{ *pulumi.OutputState }
+
+func (DashboardFilterFilterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardFilterFilterType)(nil)).Elem()
+}
+
+func (o DashboardFilterFilterTypeOutput) ToDashboardFilterFilterTypeOutput() DashboardFilterFilterTypeOutput {
+	return o
+}
+
+func (o DashboardFilterFilterTypeOutput) ToDashboardFilterFilterTypeOutputWithContext(ctx context.Context) DashboardFilterFilterTypeOutput {
+	return o
+}
+
+func (o DashboardFilterFilterTypeOutput) ToDashboardFilterFilterTypePtrOutput() DashboardFilterFilterTypePtrOutput {
+	return o.ToDashboardFilterFilterTypePtrOutputWithContext(context.Background())
+}
+
+func (o DashboardFilterFilterTypeOutput) ToDashboardFilterFilterTypePtrOutputWithContext(ctx context.Context) DashboardFilterFilterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardFilterFilterType) *DashboardFilterFilterType {
+		return &v
+	}).(DashboardFilterFilterTypePtrOutput)
+}
+
+func (o DashboardFilterFilterTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DashboardFilterFilterTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DashboardFilterFilterType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DashboardFilterFilterTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardFilterFilterTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DashboardFilterFilterType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DashboardFilterFilterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DashboardFilterFilterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardFilterFilterType)(nil)).Elem()
+}
+
+func (o DashboardFilterFilterTypePtrOutput) ToDashboardFilterFilterTypePtrOutput() DashboardFilterFilterTypePtrOutput {
+	return o
+}
+
+func (o DashboardFilterFilterTypePtrOutput) ToDashboardFilterFilterTypePtrOutputWithContext(ctx context.Context) DashboardFilterFilterTypePtrOutput {
+	return o
+}
+
+func (o DashboardFilterFilterTypePtrOutput) Elem() DashboardFilterFilterTypeOutput {
+	return o.ApplyT(func(v *DashboardFilterFilterType) DashboardFilterFilterType {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardFilterFilterType
+		return ret
+	}).(DashboardFilterFilterTypeOutput)
+}
+
+func (o DashboardFilterFilterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardFilterFilterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DashboardFilterFilterType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DashboardFilterFilterTypeInput is an input type that accepts DashboardFilterFilterTypeArgs and DashboardFilterFilterTypeOutput values.
+// You can construct a concrete instance of `DashboardFilterFilterTypeInput` via:
+//
+//          DashboardFilterFilterTypeArgs{...}
+type DashboardFilterFilterTypeInput interface {
+	pulumi.Input
+
+	ToDashboardFilterFilterTypeOutput() DashboardFilterFilterTypeOutput
+	ToDashboardFilterFilterTypeOutputWithContext(context.Context) DashboardFilterFilterTypeOutput
+}
+
+var dashboardFilterFilterTypePtrType = reflect.TypeOf((**DashboardFilterFilterType)(nil)).Elem()
+
+type DashboardFilterFilterTypePtrInput interface {
+	pulumi.Input
+
+	ToDashboardFilterFilterTypePtrOutput() DashboardFilterFilterTypePtrOutput
+	ToDashboardFilterFilterTypePtrOutputWithContext(context.Context) DashboardFilterFilterTypePtrOutput
+}
+
+type dashboardFilterFilterTypePtr string
+
+func DashboardFilterFilterTypePtr(v string) DashboardFilterFilterTypePtrInput {
+	return (*dashboardFilterFilterTypePtr)(&v)
+}
+
+func (*dashboardFilterFilterTypePtr) ElementType() reflect.Type {
+	return dashboardFilterFilterTypePtrType
+}
+
+func (in *dashboardFilterFilterTypePtr) ToDashboardFilterFilterTypePtrOutput() DashboardFilterFilterTypePtrOutput {
+	return pulumi.ToOutput(in).(DashboardFilterFilterTypePtrOutput)
+}
+
+func (in *dashboardFilterFilterTypePtr) ToDashboardFilterFilterTypePtrOutputWithContext(ctx context.Context) DashboardFilterFilterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DashboardFilterFilterTypePtrOutput)
+}
+
 // How this data should be plotted on the chart.
 type DataSetPlotType string
 
@@ -2449,6 +2624,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AxisScalePtrInput)(nil)).Elem(), AxisScale("SCALE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsModeInput)(nil)).Elem(), ChartOptionsMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChartOptionsModePtrInput)(nil)).Elem(), ChartOptionsMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterFilterTypeInput)(nil)).Elem(), DashboardFilterFilterType("FILTER_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterFilterTypePtrInput)(nil)).Elem(), DashboardFilterFilterType("FILTER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetPlotTypeInput)(nil)).Elem(), DataSetPlotType("PLOT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetPlotTypePtrInput)(nil)).Elem(), DataSetPlotType("PLOT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetTargetAxisInput)(nil)).Elem(), DataSetTargetAxis("TARGET_AXIS_UNSPECIFIED"))
@@ -2477,6 +2654,8 @@ func init() {
 	pulumi.RegisterOutputType(AxisScalePtrOutput{})
 	pulumi.RegisterOutputType(ChartOptionsModeOutput{})
 	pulumi.RegisterOutputType(ChartOptionsModePtrOutput{})
+	pulumi.RegisterOutputType(DashboardFilterFilterTypeOutput{})
+	pulumi.RegisterOutputType(DashboardFilterFilterTypePtrOutput{})
 	pulumi.RegisterOutputType(DataSetPlotTypeOutput{})
 	pulumi.RegisterOutputType(DataSetPlotTypePtrOutput{})
 	pulumi.RegisterOutputType(DataSetTargetAxisOutput{})

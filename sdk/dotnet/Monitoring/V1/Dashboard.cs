@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public Output<Outputs.ColumnLayoutResponse> ColumnLayout { get; private set; } = null!;
 
         /// <summary>
+        /// Filters to reduce the amount of data charted based on the filter criteria.
+        /// </summary>
+        [Output("dashboardFilters")]
+        public Output<ImmutableArray<Outputs.DashboardFilterResponse>> DashboardFilters { get; private set; } = null!;
+
+        /// <summary>
         /// The mutable, human-readable name.
         /// </summary>
         [Output("displayName")]
@@ -113,6 +119,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         [Input("columnLayout")]
         public Input<Inputs.ColumnLayoutArgs>? ColumnLayout { get; set; }
+
+        [Input("dashboardFilters")]
+        private InputList<Inputs.DashboardFilterArgs>? _dashboardFilters;
+
+        /// <summary>
+        /// Filters to reduce the amount of data charted based on the filter criteria.
+        /// </summary>
+        public InputList<Inputs.DashboardFilterArgs> DashboardFilters
+        {
+            get => _dashboardFilters ?? (_dashboardFilters = new InputList<Inputs.DashboardFilterArgs>());
+            set => _dashboardFilters = value;
+        }
 
         /// <summary>
         /// The mutable, human-readable name.
