@@ -4134,6 +4134,8 @@ type PasswordValidationPolicy struct {
 	Complexity *PasswordValidationPolicyComplexity `pulumi:"complexity"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring *bool `pulumi:"disallowUsernameSubstring"`
+	// Whether the password policy is enabled or not.
+	EnablePasswordPolicy *bool `pulumi:"enablePasswordPolicy"`
 	// Minimum number of characters allowed.
 	MinLength *int `pulumi:"minLength"`
 	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
@@ -4159,6 +4161,8 @@ type PasswordValidationPolicyArgs struct {
 	Complexity PasswordValidationPolicyComplexityPtrInput `pulumi:"complexity"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring pulumi.BoolPtrInput `pulumi:"disallowUsernameSubstring"`
+	// Whether the password policy is enabled or not.
+	EnablePasswordPolicy pulumi.BoolPtrInput `pulumi:"enablePasswordPolicy"`
 	// Minimum number of characters allowed.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
 	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
@@ -4255,6 +4259,11 @@ func (o PasswordValidationPolicyOutput) DisallowUsernameSubstring() pulumi.BoolP
 	return o.ApplyT(func(v PasswordValidationPolicy) *bool { return v.DisallowUsernameSubstring }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the password policy is enabled or not.
+func (o PasswordValidationPolicyOutput) EnablePasswordPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PasswordValidationPolicy) *bool { return v.EnablePasswordPolicy }).(pulumi.BoolPtrOutput)
+}
+
 // Minimum number of characters allowed.
 func (o PasswordValidationPolicyOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *int { return v.MinLength }).(pulumi.IntPtrOutput)
@@ -4314,6 +4323,16 @@ func (o PasswordValidationPolicyPtrOutput) DisallowUsernameSubstring() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether the password policy is enabled or not.
+func (o PasswordValidationPolicyPtrOutput) EnablePasswordPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PasswordValidationPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePasswordPolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Minimum number of characters allowed.
 func (o PasswordValidationPolicyPtrOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PasswordValidationPolicy) *int {
@@ -4350,6 +4369,8 @@ type PasswordValidationPolicyResponse struct {
 	Complexity string `pulumi:"complexity"`
 	// Disallow username as a part of the password.
 	DisallowUsernameSubstring bool `pulumi:"disallowUsernameSubstring"`
+	// Whether the password policy is enabled or not.
+	EnablePasswordPolicy bool `pulumi:"enablePasswordPolicy"`
 	// Minimum number of characters allowed.
 	MinLength int `pulumi:"minLength"`
 	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
@@ -4381,6 +4402,11 @@ func (o PasswordValidationPolicyResponseOutput) Complexity() pulumi.StringOutput
 // Disallow username as a part of the password.
 func (o PasswordValidationPolicyResponseOutput) DisallowUsernameSubstring() pulumi.BoolOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) bool { return v.DisallowUsernameSubstring }).(pulumi.BoolOutput)
+}
+
+// Whether the password policy is enabled or not.
+func (o PasswordValidationPolicyResponseOutput) EnablePasswordPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v PasswordValidationPolicyResponse) bool { return v.EnablePasswordPolicy }).(pulumi.BoolOutput)
 }
 
 // Minimum number of characters allowed.

@@ -3462,6 +3462,146 @@ func (o OracleColumnResponseArrayOutput) Index(i pulumi.IntInput) OracleColumnRe
 	}).(OracleColumnResponseOutput)
 }
 
+// Configuration to drop large object values.
+type OracleDropLargeObjects struct {
+}
+
+// OracleDropLargeObjectsInput is an input type that accepts OracleDropLargeObjectsArgs and OracleDropLargeObjectsOutput values.
+// You can construct a concrete instance of `OracleDropLargeObjectsInput` via:
+//
+//          OracleDropLargeObjectsArgs{...}
+type OracleDropLargeObjectsInput interface {
+	pulumi.Input
+
+	ToOracleDropLargeObjectsOutput() OracleDropLargeObjectsOutput
+	ToOracleDropLargeObjectsOutputWithContext(context.Context) OracleDropLargeObjectsOutput
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsArgs struct {
+}
+
+func (OracleDropLargeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsOutput() OracleDropLargeObjectsOutput {
+	return i.ToOracleDropLargeObjectsOutputWithContext(context.Background())
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsOutputWithContext(ctx context.Context) OracleDropLargeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleDropLargeObjectsOutput)
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return i.ToOracleDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleDropLargeObjectsOutput).ToOracleDropLargeObjectsPtrOutputWithContext(ctx)
+}
+
+// OracleDropLargeObjectsPtrInput is an input type that accepts OracleDropLargeObjectsArgs, OracleDropLargeObjectsPtr and OracleDropLargeObjectsPtrOutput values.
+// You can construct a concrete instance of `OracleDropLargeObjectsPtrInput` via:
+//
+//          OracleDropLargeObjectsArgs{...}
+//
+//  or:
+//
+//          nil
+type OracleDropLargeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput
+	ToOracleDropLargeObjectsPtrOutputWithContext(context.Context) OracleDropLargeObjectsPtrOutput
+}
+
+type oracleDropLargeObjectsPtrType OracleDropLargeObjectsArgs
+
+func OracleDropLargeObjectsPtr(v *OracleDropLargeObjectsArgs) OracleDropLargeObjectsPtrInput {
+	return (*oracleDropLargeObjectsPtrType)(v)
+}
+
+func (*oracleDropLargeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (i *oracleDropLargeObjectsPtrType) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return i.ToOracleDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *oracleDropLargeObjectsPtrType) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleDropLargeObjectsPtrOutput)
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsOutput struct{ *pulumi.OutputState }
+
+func (OracleDropLargeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsOutput() OracleDropLargeObjectsOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsOutputWithContext(ctx context.Context) OracleDropLargeObjectsOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return o.ToOracleDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleDropLargeObjects) *OracleDropLargeObjects {
+		return &v
+	}).(OracleDropLargeObjectsPtrOutput)
+}
+
+type OracleDropLargeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (OracleDropLargeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (o OracleDropLargeObjectsPtrOutput) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsPtrOutput) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsPtrOutput) Elem() OracleDropLargeObjectsOutput {
+	return o.ApplyT(func(v *OracleDropLargeObjects) OracleDropLargeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret OracleDropLargeObjects
+		return ret
+	}).(OracleDropLargeObjectsOutput)
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsResponse struct {
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsResponseOutput struct{ *pulumi.OutputState }
+
+func (OracleDropLargeObjectsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleDropLargeObjectsResponse)(nil)).Elem()
+}
+
+func (o OracleDropLargeObjectsResponseOutput) ToOracleDropLargeObjectsResponseOutput() OracleDropLargeObjectsResponseOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsResponseOutput) ToOracleDropLargeObjectsResponseOutputWithContext(ctx context.Context) OracleDropLargeObjectsResponseOutput {
+	return o
+}
+
 // Oracle database profile.
 type OracleProfile struct {
 	// Connection string attributes
@@ -4090,6 +4230,8 @@ func (o OracleSchemaResponseArrayOutput) Index(i pulumi.IntInput) OracleSchemaRe
 type OracleSourceConfig struct {
 	// Oracle objects to include in the stream.
 	Allowlist *OracleRdbms `pulumi:"allowlist"`
+	// Drop large object values.
+	DropLargeObjects *OracleDropLargeObjects `pulumi:"dropLargeObjects"`
 	// Oracle objects to exclude from the stream.
 	Rejectlist *OracleRdbms `pulumi:"rejectlist"`
 }
@@ -4109,6 +4251,8 @@ type OracleSourceConfigInput interface {
 type OracleSourceConfigArgs struct {
 	// Oracle objects to include in the stream.
 	Allowlist OracleRdbmsPtrInput `pulumi:"allowlist"`
+	// Drop large object values.
+	DropLargeObjects OracleDropLargeObjectsPtrInput `pulumi:"dropLargeObjects"`
 	// Oracle objects to exclude from the stream.
 	Rejectlist OracleRdbmsPtrInput `pulumi:"rejectlist"`
 }
@@ -4196,6 +4340,11 @@ func (o OracleSourceConfigOutput) Allowlist() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *OracleRdbms { return v.Allowlist }).(OracleRdbmsPtrOutput)
 }
 
+// Drop large object values.
+func (o OracleSourceConfigOutput) DropLargeObjects() OracleDropLargeObjectsPtrOutput {
+	return o.ApplyT(func(v OracleSourceConfig) *OracleDropLargeObjects { return v.DropLargeObjects }).(OracleDropLargeObjectsPtrOutput)
+}
+
 // Oracle objects to exclude from the stream.
 func (o OracleSourceConfigOutput) Rejectlist() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *OracleRdbms { return v.Rejectlist }).(OracleRdbmsPtrOutput)
@@ -4235,6 +4384,16 @@ func (o OracleSourceConfigPtrOutput) Allowlist() OracleRdbmsPtrOutput {
 	}).(OracleRdbmsPtrOutput)
 }
 
+// Drop large object values.
+func (o OracleSourceConfigPtrOutput) DropLargeObjects() OracleDropLargeObjectsPtrOutput {
+	return o.ApplyT(func(v *OracleSourceConfig) *OracleDropLargeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.DropLargeObjects
+	}).(OracleDropLargeObjectsPtrOutput)
+}
+
 // Oracle objects to exclude from the stream.
 func (o OracleSourceConfigPtrOutput) Rejectlist() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v *OracleSourceConfig) *OracleRdbms {
@@ -4249,6 +4408,8 @@ func (o OracleSourceConfigPtrOutput) Rejectlist() OracleRdbmsPtrOutput {
 type OracleSourceConfigResponse struct {
 	// Oracle objects to include in the stream.
 	Allowlist OracleRdbmsResponse `pulumi:"allowlist"`
+	// Drop large object values.
+	DropLargeObjects OracleDropLargeObjectsResponse `pulumi:"dropLargeObjects"`
 	// Oracle objects to exclude from the stream.
 	Rejectlist OracleRdbmsResponse `pulumi:"rejectlist"`
 }
@@ -4271,6 +4432,11 @@ func (o OracleSourceConfigResponseOutput) ToOracleSourceConfigResponseOutputWith
 // Oracle objects to include in the stream.
 func (o OracleSourceConfigResponseOutput) Allowlist() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) OracleRdbmsResponse { return v.Allowlist }).(OracleRdbmsResponseOutput)
+}
+
+// Drop large object values.
+func (o OracleSourceConfigResponseOutput) DropLargeObjects() OracleDropLargeObjectsResponseOutput {
+	return o.ApplyT(func(v OracleSourceConfigResponse) OracleDropLargeObjectsResponse { return v.DropLargeObjects }).(OracleDropLargeObjectsResponseOutput)
 }
 
 // Oracle objects to exclude from the stream.
@@ -5079,6 +5245,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NoConnectivitySettingsPtrInput)(nil)).Elem(), NoConnectivitySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnInput)(nil)).Elem(), OracleColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnArrayInput)(nil)).Elem(), OracleColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleDropLargeObjectsInput)(nil)).Elem(), OracleDropLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleDropLargeObjectsPtrInput)(nil)).Elem(), OracleDropLargeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfileInput)(nil)).Elem(), OracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfilePtrInput)(nil)).Elem(), OracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleRdbmsInput)(nil)).Elem(), OracleRdbmsArgs{})
@@ -5152,6 +5320,9 @@ func init() {
 	pulumi.RegisterOutputType(OracleColumnArrayOutput{})
 	pulumi.RegisterOutputType(OracleColumnResponseOutput{})
 	pulumi.RegisterOutputType(OracleColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(OracleDropLargeObjectsOutput{})
+	pulumi.RegisterOutputType(OracleDropLargeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(OracleDropLargeObjectsResponseOutput{})
 	pulumi.RegisterOutputType(OracleProfileOutput{})
 	pulumi.RegisterOutputType(OracleProfilePtrOutput{})
 	pulumi.RegisterOutputType(OracleProfileResponseOutput{})

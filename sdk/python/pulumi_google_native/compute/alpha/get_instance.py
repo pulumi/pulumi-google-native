@@ -289,7 +289,7 @@ class GetInstanceResult:
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> str:
         """
-        KeyRevocationActionType of the instance.
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         """
         return pulumi.get(self, "key_revocation_action_type")
 

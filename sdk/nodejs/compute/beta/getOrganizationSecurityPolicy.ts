@@ -34,6 +34,7 @@ export interface GetOrganizationSecurityPolicyResult {
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
+    readonly ddosProtectionConfig: outputs.compute.beta.SecurityPolicyDdosProtectionConfigResponse;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -67,6 +68,10 @@ export interface GetOrganizationSecurityPolicyResult {
      */
     readonly parent: string;
     readonly recaptchaOptionsConfig: outputs.compute.beta.SecurityPolicyRecaptchaOptionsConfigResponse;
+    /**
+     * URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+     */
+    readonly region: string;
     /**
      * Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */

@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> PemCertificate { get; private set; } = null!;
 
         /// <summary>
-        /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.
         /// </summary>
         [Output("sanDnsnames")]
         public Output<ImmutableArray<string>> SanDnsnames { get; private set; } = null!;

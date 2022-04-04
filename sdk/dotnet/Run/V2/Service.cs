@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Settings for the Binary Authorization feature.
         /// </summary>
         [Output("binaryAuthorization")]
-        public Output<Outputs.GoogleCloudRunOpV2BinaryAuthorizationResponse> BinaryAuthorization { get; private set; } = null!;
+        public Output<Outputs.GoogleCloudRunV2BinaryAuthorizationResponse> BinaryAuthorization { get; private set; } = null!;
 
         /// <summary>
         /// Arbitrary identifier for the API client.
@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         /// </summary>
         [Output("conditions")]
-        public Output<ImmutableArray<Outputs.GoogleCloudRunOpV2ConditionResponse>> Conditions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GoogleCloudRunV2ConditionResponse>> Conditions { get; private set; } = null!;
 
         /// <summary>
         /// The creation time.
@@ -145,25 +145,25 @@ namespace Pulumi.GoogleNative.Run.V2
         /// The template used to create revisions for this Service.
         /// </summary>
         [Output("template")]
-        public Output<Outputs.GoogleCloudRunOpV2RevisionTemplateResponse> Template { get; private set; } = null!;
+        public Output<Outputs.GoogleCloudRunV2RevisionTemplateResponse> Template { get; private set; } = null!;
 
         /// <summary>
         /// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         /// </summary>
         [Output("terminalCondition")]
-        public Output<Outputs.GoogleCloudRunOpV2ConditionResponse> TerminalCondition { get; private set; } = null!;
+        public Output<Outputs.GoogleCloudRunV2ConditionResponse> TerminalCondition { get; private set; } = null!;
 
         /// <summary>
         /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         /// </summary>
         [Output("traffic")]
-        public Output<ImmutableArray<Outputs.GoogleCloudRunOpV2TrafficTargetResponse>> Traffic { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GoogleCloudRunV2TrafficTargetResponse>> Traffic { get; private set; } = null!;
 
         /// <summary>
         /// Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         /// </summary>
         [Output("trafficStatuses")]
-        public Output<ImmutableArray<Outputs.GoogleCloudRunOpV2TrafficTargetStatusResponse>> TrafficStatuses { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GoogleCloudRunV2TrafficTargetStatusResponse>> TrafficStatuses { get; private set; } = null!;
 
         /// <summary>
         /// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -244,7 +244,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Settings for the Binary Authorization feature.
         /// </summary>
         [Input("binaryAuthorization")]
-        public Input<Inputs.GoogleCloudRunOpV2BinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
+        public Input<Inputs.GoogleCloudRunV2BinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
         /// Arbitrary identifier for the API client.
@@ -310,17 +310,17 @@ namespace Pulumi.GoogleNative.Run.V2
         /// The template used to create revisions for this Service.
         /// </summary>
         [Input("template", required: true)]
-        public Input<Inputs.GoogleCloudRunOpV2RevisionTemplateArgs> Template { get; set; } = null!;
+        public Input<Inputs.GoogleCloudRunV2RevisionTemplateArgs> Template { get; set; } = null!;
 
         [Input("traffic")]
-        private InputList<Inputs.GoogleCloudRunOpV2TrafficTargetArgs>? _traffic;
+        private InputList<Inputs.GoogleCloudRunV2TrafficTargetArgs>? _traffic;
 
         /// <summary>
         /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         /// </summary>
-        public InputList<Inputs.GoogleCloudRunOpV2TrafficTargetArgs> Traffic
+        public InputList<Inputs.GoogleCloudRunV2TrafficTargetArgs> Traffic
         {
-            get => _traffic ?? (_traffic = new InputList<Inputs.GoogleCloudRunOpV2TrafficTargetArgs>());
+            get => _traffic ?? (_traffic = new InputList<Inputs.GoogleCloudRunV2TrafficTargetArgs>());
             set => _traffic = value;
         }
 

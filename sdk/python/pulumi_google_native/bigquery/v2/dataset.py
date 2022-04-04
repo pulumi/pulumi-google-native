@@ -26,6 +26,7 @@ class DatasetArgs:
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]]] = None):
         """
@@ -39,6 +40,7 @@ class DatasetArgs:
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetTagsItemArgs']]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         if access is not None:
@@ -61,6 +63,8 @@ class DatasetArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_time_travel_hours is not None:
+            pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if tags is not None:
@@ -184,6 +188,18 @@ class DatasetArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maxTimeTravelHours")
+    def max_time_travel_hours(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Number of hours for the max time travel for all tables in the dataset.
+        """
+        return pulumi.get(self, "max_time_travel_hours")
+
+    @max_time_travel_hours.setter
+    def max_time_travel_hours(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_time_travel_hours", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -220,6 +236,7 @@ class Dataset(pulumi.CustomResource):
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
                  __props__=None):
@@ -238,6 +255,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[bool] is_case_insensitive: [Optional] Indicates if table names are case insensitive in the dataset.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        :param pulumi.Input[str] max_time_travel_hours: [Optional] Number of hours for the max time travel for all tables in the dataset.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]] tags: [Optional]The tags associated with this dataset. Tag keys are globally unique.
         """
         ...
@@ -275,6 +293,7 @@ class Dataset(pulumi.CustomResource):
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetTagsItemArgs']]]]] = None,
                  __props__=None):
@@ -299,6 +318,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["is_case_insensitive"] = is_case_insensitive
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["creation_time"] = None
@@ -345,6 +365,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["last_modified_time"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["max_time_travel_hours"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["tags"] = None
@@ -466,6 +487,14 @@ class Dataset(pulumi.CustomResource):
         The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maxTimeTravelHours")
+    def max_time_travel_hours(self) -> pulumi.Output[str]:
+        """
+        [Optional] Number of hours for the max time travel for all tables in the dataset.
+        """
+        return pulumi.get(self, "max_time_travel_hours")
 
     @property
     @pulumi.getter(name="satisfiesPZS")

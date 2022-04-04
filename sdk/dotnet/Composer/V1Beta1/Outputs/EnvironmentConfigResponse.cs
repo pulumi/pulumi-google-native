@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly string DagGcsPrefix;
         /// <summary>
-        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         public readonly Outputs.DatabaseConfigResponse DatabaseConfig;
         /// <summary>

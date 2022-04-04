@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public Input<bool>? DisallowUsernameSubstring { get; set; }
 
         /// <summary>
+        /// Whether the password policy is enabled or not.
+        /// </summary>
+        [Input("enablePasswordPolicy")]
+        public Input<bool>? EnablePasswordPolicy { get; set; }
+
+        /// <summary>
         /// Minimum number of characters allowed.
         /// </summary>
         [Input("minLength")]

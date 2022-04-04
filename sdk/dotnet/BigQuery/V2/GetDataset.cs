@@ -113,6 +113,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string Location;
         /// <summary>
+        /// [Optional] Number of hours for the max time travel for all tables in the dataset.
+        /// </summary>
+        public readonly string MaxTimeTravelHours;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPZS;
@@ -157,6 +161,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string location,
 
+            string maxTimeTravelHours,
+
             bool satisfiesPZS,
 
             string selfLink,
@@ -178,6 +184,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Labels = labels;
             LastModifiedTime = lastModifiedTime;
             Location = location;
+            MaxTimeTravelHours = maxTimeTravelHours;
             SatisfiesPZS = satisfiesPZS;
             SelfLink = selfLink;
             Tags = tags;

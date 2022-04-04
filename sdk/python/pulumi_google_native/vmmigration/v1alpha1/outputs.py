@@ -19,7 +19,11 @@ __all__ = [
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
     'CutoverJobResponse',
+    'CycleStepResponse',
+    'InitializingReplicationStepResponse',
     'NetworkInterfaceResponse',
+    'PostProcessingStepResponse',
+    'ReplicatingStepResponse',
     'ReplicationCycleResponse',
     'ReplicationSyncResponse',
     'SchedulePolicyResponse',
@@ -1060,6 +1064,107 @@ class CutoverJobResponse(dict):
 
 
 @pulumi.output_type
+class CycleStepResponse(dict):
+    """
+    CycleStep hold information about a step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "initializingReplication":
+            suggest = "initializing_replication"
+        elif key == "postProcessing":
+            suggest = "post_processing"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CycleStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CycleStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CycleStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 initializing_replication: 'outputs.InitializingReplicationStepResponse',
+                 post_processing: 'outputs.PostProcessingStepResponse',
+                 replicating: 'outputs.ReplicatingStepResponse',
+                 start_time: str):
+        """
+        CycleStep hold information about a step progress.
+        :param str end_time: The time the cycle step has ended.
+        :param 'InitializingReplicationStepResponse' initializing_replication: Initializing replication step.
+        :param 'PostProcessingStepResponse' post_processing: Post processing step.
+        :param 'ReplicatingStepResponse' replicating: Replicating step.
+        :param str start_time: The time the cycle step has started.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "initializing_replication", initializing_replication)
+        pulumi.set(__self__, "post_processing", post_processing)
+        pulumi.set(__self__, "replicating", replicating)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the cycle step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="initializingReplication")
+    def initializing_replication(self) -> 'outputs.InitializingReplicationStepResponse':
+        """
+        Initializing replication step.
+        """
+        return pulumi.get(self, "initializing_replication")
+
+    @property
+    @pulumi.getter(name="postProcessing")
+    def post_processing(self) -> 'outputs.PostProcessingStepResponse':
+        """
+        Post processing step.
+        """
+        return pulumi.get(self, "post_processing")
+
+    @property
+    @pulumi.getter
+    def replicating(self) -> 'outputs.ReplicatingStepResponse':
+        """
+        Replicating step.
+        """
+        return pulumi.get(self, "replicating")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the cycle step has started.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InitializingReplicationStepResponse(dict):
+    """
+    InitializingReplicationStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        InitializingReplicationStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
 class NetworkInterfaceResponse(dict):
     """
     NetworkInterface represents a NIC of a VM.
@@ -1134,6 +1239,96 @@ class NetworkInterfaceResponse(dict):
 
 
 @pulumi.output_type
+class PostProcessingStepResponse(dict):
+    """
+    PostProcessingStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        PostProcessingStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
+class ReplicatingStepResponse(dict):
+    """
+    ReplicatingStep contains specific step details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastThirtyMinutesAverageBytesPerSecond":
+            suggest = "last_thirty_minutes_average_bytes_per_second"
+        elif key == "lastTwoMinutesAverageBytesPerSecond":
+            suggest = "last_two_minutes_average_bytes_per_second"
+        elif key == "replicatedBytes":
+            suggest = "replicated_bytes"
+        elif key == "totalBytes":
+            suggest = "total_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReplicatingStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReplicatingStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReplicatingStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_thirty_minutes_average_bytes_per_second: str,
+                 last_two_minutes_average_bytes_per_second: str,
+                 replicated_bytes: str,
+                 total_bytes: str):
+        """
+        ReplicatingStep contains specific step details.
+        :param str last_thirty_minutes_average_bytes_per_second: The source disks replication rate for the last 30 minutes in bytes per second.
+        :param str last_two_minutes_average_bytes_per_second: The source disks replication rate for the last 2 minutes in bytes per second.
+        :param str replicated_bytes: Replicated bytes in the step.
+        :param str total_bytes: Total bytes to be handled in the step.
+        """
+        pulumi.set(__self__, "last_thirty_minutes_average_bytes_per_second", last_thirty_minutes_average_bytes_per_second)
+        pulumi.set(__self__, "last_two_minutes_average_bytes_per_second", last_two_minutes_average_bytes_per_second)
+        pulumi.set(__self__, "replicated_bytes", replicated_bytes)
+        pulumi.set(__self__, "total_bytes", total_bytes)
+
+    @property
+    @pulumi.getter(name="lastThirtyMinutesAverageBytesPerSecond")
+    def last_thirty_minutes_average_bytes_per_second(self) -> str:
+        """
+        The source disks replication rate for the last 30 minutes in bytes per second.
+        """
+        return pulumi.get(self, "last_thirty_minutes_average_bytes_per_second")
+
+    @property
+    @pulumi.getter(name="lastTwoMinutesAverageBytesPerSecond")
+    def last_two_minutes_average_bytes_per_second(self) -> str:
+        """
+        The source disks replication rate for the last 2 minutes in bytes per second.
+        """
+        return pulumi.get(self, "last_two_minutes_average_bytes_per_second")
+
+    @property
+    @pulumi.getter(name="replicatedBytes")
+    def replicated_bytes(self) -> str:
+        """
+        Replicated bytes in the step.
+        """
+        return pulumi.get(self, "replicated_bytes")
+
+    @property
+    @pulumi.getter(name="totalBytes")
+    def total_bytes(self) -> str:
+        """
+        Total bytes to be handled in the step.
+        """
+        return pulumi.get(self, "total_bytes")
+
+
+@pulumi.output_type
 class ReplicationCycleResponse(dict):
     """
     ReplicationCycle contains information about the current replication cycle status.
@@ -1163,17 +1358,20 @@ class ReplicationCycleResponse(dict):
                  progress: int,
                  progress_percent: int,
                  start_time: str,
+                 steps: Sequence['outputs.CycleStepResponse'],
                  total_pause_duration: str):
         """
         ReplicationCycle contains information about the current replication cycle status.
         :param int progress: The current progress in percentage of this cycle.
         :param int progress_percent: The current progress in percentage of this cycle.
         :param str start_time: The time the replication cycle has started.
+        :param Sequence['CycleStepResponse'] steps: The cycle's steps list representing its progress.
         :param str total_pause_duration: The accumulated duration the replication cycle was paused.
         """
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "progress_percent", progress_percent)
         pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "total_pause_duration", total_pause_duration)
 
     @property
@@ -1199,6 +1397,14 @@ class ReplicationCycleResponse(dict):
         The time the replication cycle has started.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CycleStepResponse']:
+        """
+        The cycle's steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
 
     @property
     @pulumi.getter(name="totalPauseDuration")

@@ -28,6 +28,18 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The timestamp that the revision was created.
+        /// </summary>
+        [Output("revisionCreateTime")]
+        public Output<string> RevisionCreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The revision ID of the schema.
+        /// </summary>
+        [Output("revisionId")]
+        public Output<string> RevisionId { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the schema definition.
         /// </summary>
         [Output("type")]

@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Environment;
         /// <summary>
+        /// ID of the environment group.
+        /// </summary>
+        public readonly string EnvironmentGroupId;
+        /// <summary>
         /// ID of the environment group attachment.
         /// </summary>
         public readonly string Name;
@@ -80,10 +84,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string environment,
 
+            string environmentGroupId,
+
             string name)
         {
             CreatedAt = createdAt;
             Environment = environment;
+            EnvironmentGroupId = environmentGroupId;
             Name = name;
         }
     }

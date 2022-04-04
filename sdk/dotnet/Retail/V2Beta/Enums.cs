@@ -8,6 +8,44 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Retail.V2Beta
 {
     [EnumType]
+    public readonly struct ControlSearchSolutionUseCaseItem : IEquatable<ControlSearchSolutionUseCaseItem>
+    {
+        private readonly string _value;
+
+        private ControlSearchSolutionUseCaseItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The value when it's unspecified. Defaults to SEARCH.
+        /// </summary>
+        public static ControlSearchSolutionUseCaseItem SearchSolutionUseCaseUnspecified { get; } = new ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_UNSPECIFIED");
+        /// <summary>
+        /// Search use case. Expects the traffic has a non-empty query.
+        /// </summary>
+        public static ControlSearchSolutionUseCaseItem SearchSolutionUseCaseSearch { get; } = new ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_SEARCH");
+        /// <summary>
+        /// Browse use case. Expects the traffic has an empty query.
+        /// </summary>
+        public static ControlSearchSolutionUseCaseItem SearchSolutionUseCaseBrowse { get; } = new ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_BROWSE");
+
+        public static bool operator ==(ControlSearchSolutionUseCaseItem left, ControlSearchSolutionUseCaseItem right) => left.Equals(right);
+        public static bool operator !=(ControlSearchSolutionUseCaseItem left, ControlSearchSolutionUseCaseItem right) => !left.Equals(right);
+
+        public static explicit operator string(ControlSearchSolutionUseCaseItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ControlSearchSolutionUseCaseItem other && Equals(other);
+        public bool Equals(ControlSearchSolutionUseCaseItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct ControlSolutionTypesItem : IEquatable<ControlSolutionTypesItem>
     {
         private readonly string _value;

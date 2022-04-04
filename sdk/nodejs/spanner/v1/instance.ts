@@ -39,6 +39,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<string>;
     /**
+     * The time at which the instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -68,6 +72,10 @@ export class Instance extends pulumi.CustomResource {
      * The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The time at which the instance was most recently updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -98,9 +106,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
             resourceInputs["processingUnits"] = args ? args.processingUnits : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["endpointUris"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -108,6 +119,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["nodeCount"] = undefined /*out*/;
             resourceInputs["processingUnits"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);

@@ -86,6 +86,14 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        /// </summary>
+        public readonly Outputs.GoogleCloudMemcacheV1beta2MaintenancePolicyResponse MaintenancePolicy;
+        /// <summary>
+        /// Published maintenance schedule.
+        /// </summary>
+        public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
+        /// <summary>
         /// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
         /// </summary>
         public readonly string MemcacheFullVersion;
@@ -144,6 +152,10 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.GoogleCloudMemcacheV1beta2MaintenancePolicyResponse maintenancePolicy,
+
+            Outputs.MaintenanceScheduleResponse maintenanceSchedule,
+
             string memcacheFullVersion,
 
             ImmutableArray<Outputs.NodeResponse> memcacheNodes,
@@ -172,6 +184,8 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
             DisplayName = displayName;
             InstanceMessages = instanceMessages;
             Labels = labels;
+            MaintenancePolicy = maintenancePolicy;
+            MaintenanceSchedule = maintenanceSchedule;
             MemcacheFullVersion = memcacheFullVersion;
             MemcacheNodes = memcacheNodes;
             MemcacheVersion = memcacheVersion;

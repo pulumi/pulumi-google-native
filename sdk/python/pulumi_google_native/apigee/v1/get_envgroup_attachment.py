@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvgroupAttachmentResult:
-    def __init__(__self__, created_at=None, environment=None, name=None):
+    def __init__(__self__, created_at=None, environment=None, environment_group_id=None, name=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if environment and not isinstance(environment, str):
             raise TypeError("Expected argument 'environment' to be a str")
         pulumi.set(__self__, "environment", environment)
+        if environment_group_id and not isinstance(environment_group_id, str):
+            raise TypeError("Expected argument 'environment_group_id' to be a str")
+        pulumi.set(__self__, "environment_group_id", environment_group_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -45,6 +48,14 @@ class GetEnvgroupAttachmentResult:
         return pulumi.get(self, "environment")
 
     @property
+    @pulumi.getter(name="environmentGroupId")
+    def environment_group_id(self) -> str:
+        """
+        ID of the environment group.
+        """
+        return pulumi.get(self, "environment_group_id")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -61,6 +72,7 @@ class AwaitableGetEnvgroupAttachmentResult(GetEnvgroupAttachmentResult):
         return GetEnvgroupAttachmentResult(
             created_at=self.created_at,
             environment=self.environment,
+            environment_group_id=self.environment_group_id,
             name=self.name)
 
 
@@ -84,6 +96,7 @@ def get_envgroup_attachment(attachment_id: Optional[str] = None,
     return AwaitableGetEnvgroupAttachmentResult(
         created_at=__ret__.created_at,
         environment=__ret__.environment,
+        environment_group_id=__ret__.environment_group_id,
         name=__ret__.name)
 
 

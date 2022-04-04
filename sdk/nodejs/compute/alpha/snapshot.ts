@@ -140,6 +140,14 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly sourceInstantSnapshotId!: pulumi.Output<string>;
     /**
+     * URL of the resource policy which created this scheduled snapshot.
+     */
+    public /*out*/ readonly sourceSnapshotSchedulePolicy!: pulumi.Output<string>;
+    /**
+     * ID of the resource policy which created this scheduled snapshot.
+     */
+    public /*out*/ readonly sourceSnapshotSchedulePolicyId!: pulumi.Output<string>;
+    /**
      * The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -200,6 +208,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
+            resourceInputs["sourceSnapshotSchedulePolicy"] = undefined /*out*/;
+            resourceInputs["sourceSnapshotSchedulePolicyId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
             resourceInputs["storageBytesStatus"] = undefined /*out*/;
@@ -231,6 +241,8 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["sourceDiskId"] = undefined /*out*/;
             resourceInputs["sourceInstantSnapshot"] = undefined /*out*/;
             resourceInputs["sourceInstantSnapshotId"] = undefined /*out*/;
+            resourceInputs["sourceSnapshotSchedulePolicy"] = undefined /*out*/;
+            resourceInputs["sourceSnapshotSchedulePolicyId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["storageBytes"] = undefined /*out*/;
             resourceInputs["storageBytesStatus"] = undefined /*out*/;

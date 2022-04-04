@@ -19,6 +19,8 @@ type EnvgroupAttachment struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// ID of the attached environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
+	// ID of the environment group.
+	EnvironmentGroupId pulumi.StringOutput `pulumi:"environmentGroupId"`
 	// ID of the environment group attachment.
 	Name pulumi.StringOutput `pulumi:"name"`
 }

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     public sealed class SourceConfigResponse
     {
         /// <summary>
-        /// MySQL data source configuration
+        /// MySQL data source configuration.
         /// </summary>
         public readonly Outputs.MysqlSourceConfigResponse MysqlSourceConfig;
         /// <summary>
-        /// Oracle data source configuration
+        /// Oracle data source configuration.
         /// </summary>
         public readonly Outputs.OracleSourceConfigResponse OracleSourceConfig;
         /// <summary>

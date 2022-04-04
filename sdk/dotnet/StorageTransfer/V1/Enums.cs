@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+    /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsGid : IEquatable<MetadataOptionsGid>
@@ -211,7 +211,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+    /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsMode : IEquatable<MetadataOptionsMode>
@@ -309,7 +309,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+    /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsSymlink : IEquatable<MetadataOptionsSymlink>
@@ -432,7 +432,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+    /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     /// </summary>
     [EnumType]
     public readonly struct MetadataOptionsUid : IEquatable<MetadataOptionsUid>
@@ -593,6 +593,51 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TransferJobStatus other && Equals(other);
         public bool Equals(TransferJobStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+    /// </summary>
+    [EnumType]
+    public readonly struct TransferOptionsOverwriteWhen : IEquatable<TransferOptionsOverwriteWhen>
+    {
+        private readonly string _value;
+
+        private TransferOptionsOverwriteWhen(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Indicate the option is not set.
+        /// </summary>
+        public static TransferOptionsOverwriteWhen OverwriteWhenUnspecified { get; } = new TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED");
+        /// <summary>
+        /// Overwrite destination object with source if the two objects are different.
+        /// </summary>
+        public static TransferOptionsOverwriteWhen Different { get; } = new TransferOptionsOverwriteWhen("DIFFERENT");
+        /// <summary>
+        /// Never overwrite destination object.
+        /// </summary>
+        public static TransferOptionsOverwriteWhen Never { get; } = new TransferOptionsOverwriteWhen("NEVER");
+        /// <summary>
+        /// Always overwrite destination object.
+        /// </summary>
+        public static TransferOptionsOverwriteWhen Always { get; } = new TransferOptionsOverwriteWhen("ALWAYS");
+
+        public static bool operator ==(TransferOptionsOverwriteWhen left, TransferOptionsOverwriteWhen right) => left.Equals(right);
+        public static bool operator !=(TransferOptionsOverwriteWhen left, TransferOptionsOverwriteWhen right) => !left.Equals(right);
+
+        public static explicit operator string(TransferOptionsOverwriteWhen value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TransferOptionsOverwriteWhen other && Equals(other);
+        public bool Equals(TransferOptionsOverwriteWhen other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

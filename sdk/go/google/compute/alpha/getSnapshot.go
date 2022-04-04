@@ -78,6 +78,10 @@ type LookupSnapshotResult struct {
 	SourceInstantSnapshot string `pulumi:"sourceInstantSnapshot"`
 	// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
 	SourceInstantSnapshotId string `pulumi:"sourceInstantSnapshotId"`
+	// URL of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicy string `pulumi:"sourceSnapshotSchedulePolicy"`
+	// ID of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicyId string `pulumi:"sourceSnapshotSchedulePolicyId"`
 	// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
 	Status string `pulumi:"status"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.
@@ -250,6 +254,16 @@ func (o LookupSnapshotResultOutput) SourceInstantSnapshot() pulumi.StringOutput 
 // The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
 func (o LookupSnapshotResultOutput) SourceInstantSnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceInstantSnapshotId }).(pulumi.StringOutput)
+}
+
+// URL of the resource policy which created this scheduled snapshot.
+func (o LookupSnapshotResultOutput) SourceSnapshotSchedulePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceSnapshotSchedulePolicy }).(pulumi.StringOutput)
+}
+
+// ID of the resource policy which created this scheduled snapshot.
+func (o LookupSnapshotResultOutput) SourceSnapshotSchedulePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SourceSnapshotSchedulePolicyId }).(pulumi.StringOutput)
 }
 
 // The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.

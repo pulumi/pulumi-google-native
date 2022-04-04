@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly int Priority;
         /// <summary>
+        /// [Output only] The status of the route.
+        /// </summary>
+        public readonly string RouteStatus;
+        /// <summary>
         /// The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
         /// </summary>
         public readonly string RouteType;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             int priority,
 
+            string routeStatus,
+
             string routeType,
 
             string selfLink,
@@ -187,6 +193,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             NextHopPeering = nextHopPeering;
             NextHopVpnTunnel = nextHopVpnTunnel;
             Priority = priority;
+            RouteStatus = routeStatus;
             RouteType = routeType;
             SelfLink = selfLink;
             Tags = tags;

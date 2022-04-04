@@ -442,6 +442,10 @@ class AndroidRoboTestResponse(dict):
             suggest = "app_initial_activity"
         elif key == "appPackageId":
             suggest = "app_package_id"
+        elif key == "maxDepth":
+            suggest = "max_depth"
+        elif key == "maxSteps":
+            suggest = "max_steps"
         elif key == "roboDirectives":
             suggest = "robo_directives"
         elif key == "roboMode":
@@ -467,6 +471,8 @@ class AndroidRoboTestResponse(dict):
                  app_bundle: 'outputs.AppBundleResponse',
                  app_initial_activity: str,
                  app_package_id: str,
+                 max_depth: int,
+                 max_steps: int,
                  robo_directives: Sequence['outputs.RoboDirectiveResponse'],
                  robo_mode: str,
                  robo_script: 'outputs.FileReferenceResponse',
@@ -477,6 +483,8 @@ class AndroidRoboTestResponse(dict):
         :param 'AppBundleResponse' app_bundle: A multi-apk app bundle for the application under test.
         :param str app_initial_activity: The initial activity that should be used to start the app.
         :param str app_package_id: The java package for the application under test. The default value is determined by examining the application's manifest.
+        :param int max_depth: The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+        :param int max_steps: The max number of steps Robo can execute. Default is no limit.
         :param Sequence['RoboDirectiveResponse'] robo_directives: A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
         :param str robo_mode: The mode in which Robo should run. Most clients should allow the server to populate this field automatically.
         :param 'FileReferenceResponse' robo_script: A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
@@ -486,6 +494,8 @@ class AndroidRoboTestResponse(dict):
         pulumi.set(__self__, "app_bundle", app_bundle)
         pulumi.set(__self__, "app_initial_activity", app_initial_activity)
         pulumi.set(__self__, "app_package_id", app_package_id)
+        pulumi.set(__self__, "max_depth", max_depth)
+        pulumi.set(__self__, "max_steps", max_steps)
         pulumi.set(__self__, "robo_directives", robo_directives)
         pulumi.set(__self__, "robo_mode", robo_mode)
         pulumi.set(__self__, "robo_script", robo_script)
@@ -522,6 +532,22 @@ class AndroidRoboTestResponse(dict):
         The java package for the application under test. The default value is determined by examining the application's manifest.
         """
         return pulumi.get(self, "app_package_id")
+
+    @property
+    @pulumi.getter(name="maxDepth")
+    def max_depth(self) -> int:
+        """
+        The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+        """
+        return pulumi.get(self, "max_depth")
+
+    @property
+    @pulumi.getter(name="maxSteps")
+    def max_steps(self) -> int:
+        """
+        The max number of steps Robo can execute. Default is no limit.
+        """
+        return pulumi.get(self, "max_steps")
 
     @property
     @pulumi.getter(name="roboDirectives")
@@ -2561,7 +2587,7 @@ class TestTargetsForShardResponse(dict):
                  test_targets: Sequence[str]):
         """
         Test targets for a shard.
-        :param Sequence[str] test_targets: Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+        :param Sequence[str] test_targets: Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
         """
         pulumi.set(__self__, "test_targets", test_targets)
 
@@ -2569,7 +2595,7 @@ class TestTargetsForShardResponse(dict):
     @pulumi.getter(name="testTargets")
     def test_targets(self) -> Sequence[str]:
         """
-        Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of shard_test_targets must be greater than 0.
+        Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
         """
         return pulumi.get(self, "test_targets")
 

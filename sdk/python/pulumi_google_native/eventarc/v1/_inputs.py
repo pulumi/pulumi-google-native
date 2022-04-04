@@ -217,12 +217,14 @@ class DestinationArgs:
     def __init__(__self__, *,
                  cloud_function: Optional[pulumi.Input[str]] = None,
                  cloud_run: Optional[pulumi.Input['CloudRunArgs']] = None,
-                 gke: Optional[pulumi.Input['GKEArgs']] = None):
+                 gke: Optional[pulumi.Input['GKEArgs']] = None,
+                 workflow: Optional[pulumi.Input[str]] = None):
         """
         Represents a target of an invocation over HTTP.
         :param pulumi.Input[str] cloud_function: The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
         :param pulumi.Input['CloudRunArgs'] cloud_run: Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
         :param pulumi.Input['GKEArgs'] gke: A GKE service capable of receiving events. The service should be running in the same project as the trigger.
+        :param pulumi.Input[str] workflow: The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
         """
         if cloud_function is not None:
             pulumi.set(__self__, "cloud_function", cloud_function)
@@ -230,6 +232,8 @@ class DestinationArgs:
             pulumi.set(__self__, "cloud_run", cloud_run)
         if gke is not None:
             pulumi.set(__self__, "gke", gke)
+        if workflow is not None:
+            pulumi.set(__self__, "workflow", workflow)
 
     @property
     @pulumi.getter(name="cloudFunction")
@@ -266,6 +270,18 @@ class DestinationArgs:
     @gke.setter
     def gke(self, value: Optional[pulumi.Input['GKEArgs']]):
         pulumi.set(self, "gke", value)
+
+    @property
+    @pulumi.getter
+    def workflow(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
+        """
+        return pulumi.get(self, "workflow")
+
+    @workflow.setter
+    def workflow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow", value)
 
 
 @pulumi.input_type

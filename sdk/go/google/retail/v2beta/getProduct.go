@@ -57,7 +57,7 @@ type LookupProductResult struct {
 	FulfillmentInfo []GoogleCloudRetailV2betaFulfillmentInfoResponse `pulumi:"fulfillmentInfo"`
 	// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
 	Gtin string `pulumi:"gtin"`
-	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 	Images []GoogleCloudRetailV2betaImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
@@ -200,7 +200,7 @@ func (o LookupProductResultOutput) Gtin() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Gtin }).(pulumi.StringOutput)
 }
 
-// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 func (o LookupProductResultOutput) Images() GoogleCloudRetailV2betaImageResponseArrayOutput {
 	return o.ApplyT(func(v LookupProductResult) []GoogleCloudRetailV2betaImageResponse { return v.Images }).(GoogleCloudRetailV2betaImageResponseArrayOutput)
 }

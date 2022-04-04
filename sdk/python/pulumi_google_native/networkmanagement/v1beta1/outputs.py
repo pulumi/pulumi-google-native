@@ -21,6 +21,7 @@ __all__ = [
     'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
+    'EdgeLocationResponse',
     'EndpointInfoResponse',
     'EndpointResponse',
     'ExprResponse',
@@ -607,6 +608,45 @@ class DropInfoResponse(dict):
         URI of the resource that caused the drop.
         """
         return pulumi.get(self, "resource_uri")
+
+
+@pulumi.output_type
+class EdgeLocationResponse(dict):
+    """
+    Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metropolitanArea":
+            suggest = "metropolitan_area"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EdgeLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EdgeLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EdgeLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metropolitan_area: str):
+        """
+        Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+        :param str metropolitan_area: Name of the metropolitan area.
+        """
+        pulumi.set(__self__, "metropolitan_area", metropolitan_area)
+
+    @property
+    @pulumi.getter(name="metropolitanArea")
+    def metropolitan_area(self) -> str:
+        """
+        Name of the metropolitan area.
+        """
+        return pulumi.get(self, "metropolitan_area")
 
 
 @pulumi.output_type
@@ -1778,6 +1818,8 @@ class ProbingDetailsResponse(dict):
         suggest = None
         if key == "abortCause":
             suggest = "abort_cause"
+        elif key == "destinationEgressLocation":
+            suggest = "destination_egress_location"
         elif key == "endpointInfo":
             suggest = "endpoint_info"
         elif key == "probingLatency":
@@ -1802,6 +1844,7 @@ class ProbingDetailsResponse(dict):
 
     def __init__(__self__, *,
                  abort_cause: str,
+                 destination_egress_location: 'outputs.EdgeLocationResponse',
                  endpoint_info: 'outputs.EndpointInfoResponse',
                  error: 'outputs.StatusResponse',
                  probing_latency: 'outputs.LatencyDistributionResponse',
@@ -1812,6 +1855,7 @@ class ProbingDetailsResponse(dict):
         """
         Results of active probing from the last run of the test.
         :param str abort_cause: The reason probing was aborted.
+        :param 'EdgeLocationResponse' destination_egress_location: The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
         :param 'EndpointInfoResponse' endpoint_info: The source and destination endpoints derived from the test input and used for active probing.
         :param 'StatusResponse' error: Details about an internal failure or the cancellation of active probing.
         :param 'LatencyDistributionResponse' probing_latency: Latency as measured by active probing in one direction: from the source to the destination endpoint.
@@ -1821,6 +1865,7 @@ class ProbingDetailsResponse(dict):
         :param str verify_time: The time that reachability was assessed through active probing.
         """
         pulumi.set(__self__, "abort_cause", abort_cause)
+        pulumi.set(__self__, "destination_egress_location", destination_egress_location)
         pulumi.set(__self__, "endpoint_info", endpoint_info)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "probing_latency", probing_latency)
@@ -1836,6 +1881,14 @@ class ProbingDetailsResponse(dict):
         The reason probing was aborted.
         """
         return pulumi.get(self, "abort_cause")
+
+    @property
+    @pulumi.getter(name="destinationEgressLocation")
+    def destination_egress_location(self) -> 'outputs.EdgeLocationResponse':
+        """
+        The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the Google network. This will only be populated for a connectivity test which has an internet destination/source address. The absence of this field *must not* be used as an indication that the destination/source is part of the Google network.
+        """
+        return pulumi.get(self, "destination_egress_location")
 
     @property
     @pulumi.getter(name="endpointInfo")

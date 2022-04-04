@@ -607,7 +607,7 @@ func (in *metadataOptionsAclPtr) ToMetadataOptionsAclPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsAclPtrOutput)
 }
 
-// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsGid string
 
 const (
@@ -945,7 +945,7 @@ func (in *metadataOptionsKmsKeyPtr) ToMetadataOptionsKmsKeyPtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsKmsKeyPtrOutput)
 }
 
-// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsMode string
 
 const (
@@ -1291,7 +1291,7 @@ func (in *metadataOptionsStorageClassPtr) ToMetadataOptionsStorageClassPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsStorageClassPtrOutput)
 }
 
-// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsSymlink string
 
 const (
@@ -1798,7 +1798,7 @@ func (in *metadataOptionsTimeCreatedPtr) ToMetadataOptionsTimeCreatedPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataOptionsTimeCreatedPtrOutput)
 }
 
-// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
 type MetadataOptionsUid string
 
 const (
@@ -2522,6 +2522,177 @@ func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(TransferJobStatusPtrOutput)
 }
 
+// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+type TransferOptionsOverwriteWhen string
+
+const (
+	// Indicate the option is not set.
+	TransferOptionsOverwriteWhenOverwriteWhenUnspecified = TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED")
+	// Overwrite destination object with source if the two objects are different.
+	TransferOptionsOverwriteWhenDifferent = TransferOptionsOverwriteWhen("DIFFERENT")
+	// Never overwrite destination object.
+	TransferOptionsOverwriteWhenNever = TransferOptionsOverwriteWhen("NEVER")
+	// Always overwrite destination object.
+	TransferOptionsOverwriteWhenAlways = TransferOptionsOverwriteWhen("ALWAYS")
+)
+
+func (TransferOptionsOverwriteWhen) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferOptionsOverwriteWhen)(nil)).Elem()
+}
+
+func (e TransferOptionsOverwriteWhen) ToTransferOptionsOverwriteWhenOutput() TransferOptionsOverwriteWhenOutput {
+	return pulumi.ToOutput(e).(TransferOptionsOverwriteWhenOutput)
+}
+
+func (e TransferOptionsOverwriteWhen) ToTransferOptionsOverwriteWhenOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TransferOptionsOverwriteWhenOutput)
+}
+
+func (e TransferOptionsOverwriteWhen) ToTransferOptionsOverwriteWhenPtrOutput() TransferOptionsOverwriteWhenPtrOutput {
+	return e.ToTransferOptionsOverwriteWhenPtrOutputWithContext(context.Background())
+}
+
+func (e TransferOptionsOverwriteWhen) ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenPtrOutput {
+	return TransferOptionsOverwriteWhen(e).ToTransferOptionsOverwriteWhenOutputWithContext(ctx).ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx)
+}
+
+func (e TransferOptionsOverwriteWhen) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TransferOptionsOverwriteWhen) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TransferOptionsOverwriteWhen) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TransferOptionsOverwriteWhen) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TransferOptionsOverwriteWhenOutput struct{ *pulumi.OutputState }
+
+func (TransferOptionsOverwriteWhenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferOptionsOverwriteWhen)(nil)).Elem()
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToTransferOptionsOverwriteWhenOutput() TransferOptionsOverwriteWhenOutput {
+	return o
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToTransferOptionsOverwriteWhenOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenOutput {
+	return o
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToTransferOptionsOverwriteWhenPtrOutput() TransferOptionsOverwriteWhenPtrOutput {
+	return o.ToTransferOptionsOverwriteWhenPtrOutputWithContext(context.Background())
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferOptionsOverwriteWhen) *TransferOptionsOverwriteWhen {
+		return &v
+	}).(TransferOptionsOverwriteWhenPtrOutput)
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TransferOptionsOverwriteWhen) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TransferOptionsOverwriteWhenOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TransferOptionsOverwriteWhen) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferOptionsOverwriteWhenPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferOptionsOverwriteWhenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferOptionsOverwriteWhen)(nil)).Elem()
+}
+
+func (o TransferOptionsOverwriteWhenPtrOutput) ToTransferOptionsOverwriteWhenPtrOutput() TransferOptionsOverwriteWhenPtrOutput {
+	return o
+}
+
+func (o TransferOptionsOverwriteWhenPtrOutput) ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenPtrOutput {
+	return o
+}
+
+func (o TransferOptionsOverwriteWhenPtrOutput) Elem() TransferOptionsOverwriteWhenOutput {
+	return o.ApplyT(func(v *TransferOptionsOverwriteWhen) TransferOptionsOverwriteWhen {
+		if v != nil {
+			return *v
+		}
+		var ret TransferOptionsOverwriteWhen
+		return ret
+	}).(TransferOptionsOverwriteWhenOutput)
+}
+
+func (o TransferOptionsOverwriteWhenPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TransferOptionsOverwriteWhenPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TransferOptionsOverwriteWhen) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TransferOptionsOverwriteWhenInput is an input type that accepts TransferOptionsOverwriteWhenArgs and TransferOptionsOverwriteWhenOutput values.
+// You can construct a concrete instance of `TransferOptionsOverwriteWhenInput` via:
+//
+//          TransferOptionsOverwriteWhenArgs{...}
+type TransferOptionsOverwriteWhenInput interface {
+	pulumi.Input
+
+	ToTransferOptionsOverwriteWhenOutput() TransferOptionsOverwriteWhenOutput
+	ToTransferOptionsOverwriteWhenOutputWithContext(context.Context) TransferOptionsOverwriteWhenOutput
+}
+
+var transferOptionsOverwriteWhenPtrType = reflect.TypeOf((**TransferOptionsOverwriteWhen)(nil)).Elem()
+
+type TransferOptionsOverwriteWhenPtrInput interface {
+	pulumi.Input
+
+	ToTransferOptionsOverwriteWhenPtrOutput() TransferOptionsOverwriteWhenPtrOutput
+	ToTransferOptionsOverwriteWhenPtrOutputWithContext(context.Context) TransferOptionsOverwriteWhenPtrOutput
+}
+
+type transferOptionsOverwriteWhenPtr string
+
+func TransferOptionsOverwriteWhenPtr(v string) TransferOptionsOverwriteWhenPtrInput {
+	return (*transferOptionsOverwriteWhenPtr)(&v)
+}
+
+func (*transferOptionsOverwriteWhenPtr) ElementType() reflect.Type {
+	return transferOptionsOverwriteWhenPtrType
+}
+
+func (in *transferOptionsOverwriteWhenPtr) ToTransferOptionsOverwriteWhenPtrOutput() TransferOptionsOverwriteWhenPtrOutput {
+	return pulumi.ToOutput(in).(TransferOptionsOverwriteWhenPtrOutput)
+}
+
+func (in *transferOptionsOverwriteWhenPtr) ToTransferOptionsOverwriteWhenPtrOutputWithContext(ctx context.Context) TransferOptionsOverwriteWhenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TransferOptionsOverwriteWhenPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionStatesItemInput)(nil)).Elem(), LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigLogActionStatesItemPtrInput)(nil)).Elem(), LoggingConfigLogActionStatesItem("LOGGABLE_ACTION_STATE_UNSPECIFIED"))
@@ -2554,6 +2725,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigPayloadFormatPtrInput)(nil)).Elem(), NotificationConfigPayloadFormat("PAYLOAD_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobStatusPtrInput)(nil)).Elem(), TransferJobStatus("STATUS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsOverwriteWhenInput)(nil)).Elem(), TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferOptionsOverwriteWhenPtrInput)(nil)).Elem(), TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED"))
 	pulumi.RegisterOutputType(LoggingConfigLogActionStatesItemOutput{})
 	pulumi.RegisterOutputType(LoggingConfigLogActionStatesItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigLogActionStatesItemArrayOutput{})
@@ -2585,4 +2758,6 @@ func init() {
 	pulumi.RegisterOutputType(NotificationConfigPayloadFormatPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobStatusOutput{})
 	pulumi.RegisterOutputType(TransferJobStatusPtrOutput{})
+	pulumi.RegisterOutputType(TransferOptionsOverwriteWhenOutput{})
+	pulumi.RegisterOutputType(TransferOptionsOverwriteWhenPtrOutput{})
 }

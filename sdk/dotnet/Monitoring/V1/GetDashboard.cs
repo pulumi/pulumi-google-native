@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         public readonly Outputs.ColumnLayoutResponse ColumnLayout;
         /// <summary>
+        /// Filters to reduce the amount of data charted based on the filter criteria.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DashboardFilterResponse> DashboardFilters;
+        /// <summary>
         /// The mutable, human-readable name.
         /// </summary>
         public readonly string DisplayName;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         private GetDashboardResult(
             Outputs.ColumnLayoutResponse columnLayout,
 
+            ImmutableArray<Outputs.DashboardFilterResponse> dashboardFilters,
+
             string displayName,
 
             string etag,
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
             Outputs.RowLayoutResponse rowLayout)
         {
             ColumnLayout = columnLayout;
+            DashboardFilters = dashboardFilters;
             DisplayName = displayName;
             Etag = etag;
             GridLayout = gridLayout;

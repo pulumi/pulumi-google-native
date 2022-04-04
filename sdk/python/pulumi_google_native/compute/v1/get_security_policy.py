@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecurityPolicyResult:
-    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, recaptcha_options_config=None, rules=None, self_link=None, type=None):
+    def __init__(__self__, adaptive_protection_config=None, advanced_options_config=None, creation_timestamp=None, ddos_protection_config=None, description=None, fingerprint=None, kind=None, name=None, recaptcha_options_config=None, region=None, rules=None, self_link=None, type=None):
         if adaptive_protection_config and not isinstance(adaptive_protection_config, dict):
             raise TypeError("Expected argument 'adaptive_protection_config' to be a dict")
         pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
@@ -28,6 +28,9 @@ class GetSecurityPolicyResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if ddos_protection_config and not isinstance(ddos_protection_config, dict):
+            raise TypeError("Expected argument 'ddos_protection_config' to be a dict")
+        pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -43,6 +46,9 @@ class GetSecurityPolicyResult:
         if recaptcha_options_config and not isinstance(recaptcha_options_config, dict):
             raise TypeError("Expected argument 'recaptcha_options_config' to be a dict")
         pulumi.set(__self__, "recaptcha_options_config", recaptcha_options_config)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if rules and not isinstance(rules, list):
             raise TypeError("Expected argument 'rules' to be a list")
         pulumi.set(__self__, "rules", rules)
@@ -70,6 +76,11 @@ class GetSecurityPolicyResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="ddosProtectionConfig")
+    def ddos_protection_config(self) -> 'outputs.SecurityPolicyDdosProtectionConfigResponse':
+        return pulumi.get(self, "ddos_protection_config")
 
     @property
     @pulumi.getter
@@ -110,6 +121,14 @@ class GetSecurityPolicyResult:
 
     @property
     @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
     def rules(self) -> Sequence['outputs.SecurityPolicyRuleResponse']:
         """
         A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
@@ -142,11 +161,13 @@ class AwaitableGetSecurityPolicyResult(GetSecurityPolicyResult):
             adaptive_protection_config=self.adaptive_protection_config,
             advanced_options_config=self.advanced_options_config,
             creation_timestamp=self.creation_timestamp,
+            ddos_protection_config=self.ddos_protection_config,
             description=self.description,
             fingerprint=self.fingerprint,
             kind=self.kind,
             name=self.name,
             recaptcha_options_config=self.recaptcha_options_config,
+            region=self.region,
             rules=self.rules,
             self_link=self.self_link,
             type=self.type)
@@ -171,11 +192,13 @@ def get_security_policy(project: Optional[str] = None,
         adaptive_protection_config=__ret__.adaptive_protection_config,
         advanced_options_config=__ret__.advanced_options_config,
         creation_timestamp=__ret__.creation_timestamp,
+        ddos_protection_config=__ret__.ddos_protection_config,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
         kind=__ret__.kind,
         name=__ret__.name,
         recaptcha_options_config=__ret__.recaptcha_options_config,
+        region=__ret__.region,
         rules=__ret__.rules,
         self_link=__ret__.self_link,
         type=__ret__.type)

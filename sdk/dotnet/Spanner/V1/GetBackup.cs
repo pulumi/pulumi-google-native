@@ -82,9 +82,17 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
+        /// The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
+        /// </summary>
+        public readonly string MaxExpireTime;
+        /// <summary>
         /// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
+        /// </summary>
+        public readonly ImmutableArray<string> ReferencingBackups;
         /// <summary>
         /// The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
         /// </summary>
@@ -114,7 +122,11 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             string expireTime,
 
+            string maxExpireTime,
+
             string name,
+
+            ImmutableArray<string> referencingBackups,
 
             ImmutableArray<string> referencingDatabases,
 
@@ -129,7 +141,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
             DatabaseDialect = databaseDialect;
             EncryptionInfo = encryptionInfo;
             ExpireTime = expireTime;
+            MaxExpireTime = maxExpireTime;
             Name = name;
+            ReferencingBackups = referencingBackups;
             ReferencingDatabases = referencingDatabases;
             SizeBytes = sizeBytes;
             State = state;

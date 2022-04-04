@@ -53,6 +53,14 @@ export interface GetInstanceResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+     */
+    readonly maintenancePolicy: outputs.memcache.v1beta2.GoogleCloudMemcacheV1beta2MaintenancePolicyResponse;
+    /**
+     * Published maintenance schedule.
+     */
+    readonly maintenanceSchedule: outputs.memcache.v1beta2.MaintenanceScheduleResponse;
+    /**
      * The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
      */
     readonly memcacheFullVersion: string;

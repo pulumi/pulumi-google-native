@@ -31,7 +31,8 @@ type LookupSecurityPolicyResult struct {
 	// A list of associations that belong to this policy.
 	Associations []SecurityPolicyAssociationResponse `pulumi:"associations"`
 	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp string `pulumi:"creationTimestamp"`
+	CreationTimestamp    string                                     `pulumi:"creationTimestamp"`
+	DdosProtectionConfig SecurityPolicyDdosProtectionConfigResponse `pulumi:"ddosProtectionConfig"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
 	// User-provided name of the Organization security plicy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL. The name must be 1-63 characters long, and comply with https://www.ietf.org/rfc/rfc1035.txt. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -49,6 +50,8 @@ type LookupSecurityPolicyResult struct {
 	// The parent of the security policy.
 	Parent                 string                                       `pulumi:"parent"`
 	RecaptchaOptionsConfig SecurityPolicyRecaptchaOptionsConfigResponse `pulumi:"recaptchaOptionsConfig"`
+	// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+	Region string `pulumi:"region"`
 	// Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
@@ -115,6 +118,12 @@ func (o LookupSecurityPolicyResultOutput) CreationTimestamp() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+func (o LookupSecurityPolicyResultOutput) DdosProtectionConfig() SecurityPolicyDdosProtectionConfigResponseOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) SecurityPolicyDdosProtectionConfigResponse {
+		return v.DdosProtectionConfig
+	}).(SecurityPolicyDdosProtectionConfigResponseOutput)
+}
+
 // An optional description of this resource. Provide this property when you create the resource.
 func (o LookupSecurityPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Description }).(pulumi.StringOutput)
@@ -159,6 +168,11 @@ func (o LookupSecurityPolicyResultOutput) RecaptchaOptionsConfig() SecurityPolic
 	return o.ApplyT(func(v LookupSecurityPolicyResult) SecurityPolicyRecaptchaOptionsConfigResponse {
 		return v.RecaptchaOptionsConfig
 	}).(SecurityPolicyRecaptchaOptionsConfigResponseOutput)
+}
+
+// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+func (o LookupSecurityPolicyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.

@@ -52,6 +52,18 @@ namespace Pulumi.GoogleNative.Memcache.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.GoogleCloudMemcacheV1MaintenancePolicyResponse> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Published maintenance schedule.
+        /// </summary>
+        [Output("maintenanceSchedule")]
+        public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
+
+        /// <summary>
         /// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
         /// </summary>
         [Output("memcacheFullVersion")]
@@ -200,6 +212,12 @@ namespace Pulumi.GoogleNative.Memcache.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.GoogleCloudMemcacheV1MaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.

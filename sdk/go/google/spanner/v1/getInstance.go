@@ -29,6 +29,8 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	// The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
 	Config string `pulumi:"config"`
+	// The time at which the instance was created.
+	CreateTime string `pulumi:"createTime"`
 	// The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
 	DisplayName string `pulumi:"displayName"`
 	// Deprecated. This field is not populated.
@@ -45,6 +47,8 @@ type LookupInstanceResult struct {
 	ProcessingUnits int `pulumi:"processingUnits"`
 	// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 	State string `pulumi:"state"`
+	// The time at which the instance was most recently updated.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -85,6 +89,11 @@ func (o LookupInstanceResultOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Config }).(pulumi.StringOutput)
 }
 
+// The time at which the instance was created.
+func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -120,6 +129,11 @@ func (o LookupInstanceResultOutput) ProcessingUnits() pulumi.IntOutput {
 // The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
 func (o LookupInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The time at which the instance was most recently updated.
+func (o LookupInstanceResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

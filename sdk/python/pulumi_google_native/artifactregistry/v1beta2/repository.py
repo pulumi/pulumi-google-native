@@ -279,6 +279,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["size_bytes"] = None
         super(Repository, __self__).__init__(
             'google-native:artifactregistry/v1beta2:Repository',
             resource_name,
@@ -308,6 +309,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["maven_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["size_bytes"] = None
         __props__.__dict__["update_time"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
 
@@ -366,6 +368,14 @@ class Repository(pulumi.CustomResource):
         The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sizeBytes")
+    def size_bytes(self) -> pulumi.Output[str]:
+        """
+        The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+        """
+        return pulumi.get(self, "size_bytes")
 
     @property
     @pulumi.getter(name="updateTime")

@@ -24,6 +24,7 @@ class AgentArgs:
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class AgentArgs:
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+        :param pulumi.Input[bool] locked: Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs'] speech_to_text_settings: Speech recognition related settings.
@@ -61,6 +63,8 @@ class AgentArgs:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -181,6 +185,18 @@ class AgentArgs:
 
     @property
     @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "locked", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -262,6 +278,7 @@ class Agent(pulumi.CustomResource):
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
@@ -282,6 +299,7 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+        :param pulumi.Input[bool] locked: Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
         :param pulumi.Input[str] name: The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] speech_to_text_settings: Speech recognition related settings.
@@ -321,6 +339,7 @@ class Agent(pulumi.CustomResource):
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
@@ -352,6 +371,7 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["enable_spell_correction"] = enable_spell_correction
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["location"] = location
+            __props__.__dict__["locked"] = locked
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
@@ -390,6 +410,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["enable_spell_correction"] = None
         __props__.__dict__["enable_stackdriver_logging"] = None
+        __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["speech_to_text_settings"] = None
@@ -453,6 +474,14 @@ class Agent(pulumi.CustomResource):
         Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> pulumi.Output[bool]:
+        """
+        Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+        """
+        return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter

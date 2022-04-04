@@ -29,6 +29,8 @@ type Agent struct {
 	EnableSpellCorrection pulumi.BoolOutput `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging pulumi.BoolOutput `pulumi:"enableStackdriverLogging"`
+	// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
@@ -106,6 +108,8 @@ type agentArgs struct {
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging *bool   `pulumi:"enableStackdriverLogging"`
 	Location                 *string `pulumi:"location"`
+	// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+	Locked *bool `pulumi:"locked"`
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -138,6 +142,8 @@ type AgentArgs struct {
 	// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	Location                 pulumi.StringPtrInput
+	// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+	Locked pulumi.BoolPtrInput
 	// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput

@@ -54,6 +54,7 @@ __all__ = [
     'JobStatistics2Response',
     'JobStatistics3Response',
     'JobStatistics4Response',
+    'JobStatistics5Response',
     'JobStatisticsReservationUsageItemResponse',
     'JobStatisticsResponse',
     'JobStatusResponse',
@@ -4321,6 +4322,54 @@ class JobStatistics4Response(dict):
 
 
 @pulumi.output_type
+class JobStatistics5Response(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "copiedLogicalBytes":
+            suggest = "copied_logical_bytes"
+        elif key == "copiedRows":
+            suggest = "copied_rows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatistics5Response. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatistics5Response.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatistics5Response.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 copied_logical_bytes: str,
+                 copied_rows: str):
+        """
+        :param str copied_logical_bytes: Number of logical bytes copied to the destination table.
+        :param str copied_rows: Number of rows copied to the destination table.
+        """
+        pulumi.set(__self__, "copied_logical_bytes", copied_logical_bytes)
+        pulumi.set(__self__, "copied_rows", copied_rows)
+
+    @property
+    @pulumi.getter(name="copiedLogicalBytes")
+    def copied_logical_bytes(self) -> str:
+        """
+        Number of logical bytes copied to the destination table.
+        """
+        return pulumi.get(self, "copied_logical_bytes")
+
+    @property
+    @pulumi.getter(name="copiedRows")
+    def copied_rows(self) -> str:
+        """
+        Number of rows copied to the destination table.
+        """
+        return pulumi.get(self, "copied_rows")
+
+
+@pulumi.output_type
 class JobStatisticsReservationUsageItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4415,6 +4464,7 @@ class JobStatisticsResponse(dict):
 
     def __init__(__self__, *,
                  completion_ratio: float,
+                 copy: 'outputs.JobStatistics5Response',
                  creation_time: str,
                  end_time: str,
                  extract: 'outputs.JobStatistics4Response',
@@ -4434,6 +4484,7 @@ class JobStatisticsResponse(dict):
                  transaction_info: 'outputs.TransactionInfoResponse'):
         """
         :param float completion_ratio: [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
+        :param 'JobStatistics5Response' copy: Statistics for a copy job.
         :param str creation_time: Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
         :param str end_time: End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
         :param 'JobStatistics4Response' extract: Statistics for an extract job.
@@ -4453,6 +4504,7 @@ class JobStatisticsResponse(dict):
         :param 'TransactionInfoResponse' transaction_info: [Alpha] Information of the multi-statement transaction if this job is part of one.
         """
         pulumi.set(__self__, "completion_ratio", completion_ratio)
+        pulumi.set(__self__, "copy", copy)
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "extract", extract)
@@ -4478,6 +4530,14 @@ class JobStatisticsResponse(dict):
         [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
         """
         return pulumi.get(self, "completion_ratio")
+
+    @property
+    @pulumi.getter
+    def copy(self) -> 'outputs.JobStatistics5Response':
+        """
+        Statistics for a copy job.
+        """
+        return pulumi.get(self, "copy")
 
     @property
     @pulumi.getter(name="creationTime")

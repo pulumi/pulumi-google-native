@@ -262,7 +262,7 @@ class MonitoringComponentConfigEnableComponentsItem(str, Enum):
     """
     WORKLOADS = "WORKLOADS"
     """
-    workloads
+    Deprecated: Use Google Cloud Managed Service for Prometheus.
     """
 
 

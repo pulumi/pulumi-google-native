@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<Outputs.CustomerEncryptionKeyResponse> InstanceEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// KeyRevocationActionType of the instance.
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         [Output("keyRevocationActionType")]
         public Output<string> KeyRevocationActionType { get; private set; } = null!;
@@ -436,7 +436,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Inputs.CustomerEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
 
         /// <summary>
-        /// KeyRevocationActionType of the instance.
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         [Input("keyRevocationActionType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceKeyRevocationActionType>? KeyRevocationActionType { get; set; }

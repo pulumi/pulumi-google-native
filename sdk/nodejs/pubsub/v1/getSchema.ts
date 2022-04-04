@@ -36,6 +36,14 @@ export interface GetSchemaResult {
      */
     readonly name: string;
     /**
+     * The timestamp that the revision was created.
+     */
+    readonly revisionCreateTime: string;
+    /**
+     * Immutable. The revision ID of the schema.
+     */
+    readonly revisionId: string;
+    /**
      * The type of the schema definition.
      */
     readonly type: string;

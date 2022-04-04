@@ -82,7 +82,7 @@ export interface GetInstanceResult {
      */
     readonly instanceEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
-     * KeyRevocationActionType of the instance.
+     * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */
     readonly keyRevocationActionType: string;
     /**

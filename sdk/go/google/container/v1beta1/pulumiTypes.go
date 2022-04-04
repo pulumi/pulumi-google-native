@@ -10647,7 +10647,7 @@ func (o NetworkTagsResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkTagsResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfig struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfig `pulumi:"accelerators"`
@@ -10655,6 +10655,8 @@ type NodeConfig struct {
 	AdvancedMachineFeatures *AdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
+	// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+	ConfidentialNodes *ConfidentialNodes `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
@@ -10716,7 +10718,7 @@ type NodeConfigInput interface {
 	ToNodeConfigOutputWithContext(context.Context) NodeConfigOutput
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigArgs struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators AcceleratorConfigArrayInput `pulumi:"accelerators"`
@@ -10724,6 +10726,8 @@ type NodeConfigArgs struct {
 	AdvancedMachineFeatures AdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
+	// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+	ConfidentialNodes ConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
@@ -10827,7 +10831,7 @@ func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigOutput) ElementType() reflect.Type {
@@ -10865,6 +10869,11 @@ func (o NodeConfigOutput) AdvancedMachineFeatures() AdvancedMachineFeaturesPtrOu
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
+// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+func (o NodeConfigOutput) ConfidentialNodes() ConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *ConfidentialNodes { return v.ConfidentialNodes }).(ConfidentialNodesPtrOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -11039,6 +11048,16 @@ func (o NodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 		}
 		return v.BootDiskKmsKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+func (o NodeConfigPtrOutput) ConfidentialNodes() ConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *ConfidentialNodes {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialNodes
+	}).(ConfidentialNodesPtrOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
@@ -11447,7 +11466,7 @@ func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput 
 	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigResponse struct {
 	// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.
 	Accelerators []AcceleratorConfigResponse `pulumi:"accelerators"`
@@ -11455,6 +11474,8 @@ type NodeConfigResponse struct {
 	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
 	//  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 	BootDiskKmsKey string `pulumi:"bootDiskKmsKey"`
+	// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+	ConfidentialNodes ConfidentialNodesResponse `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
@@ -11505,7 +11526,7 @@ type NodeConfigResponse struct {
 	WorkloadMetadataConfig WorkloadMetadataConfigResponse `pulumi:"workloadMetadataConfig"`
 }
 
-// Parameters that describe the nodes in a cluster.
+// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
 type NodeConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigResponseOutput) ElementType() reflect.Type {
@@ -11533,6 +11554,11 @@ func (o NodeConfigResponseOutput) AdvancedMachineFeatures() AdvancedMachineFeatu
 //  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
 func (o NodeConfigResponseOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+func (o NodeConfigResponseOutput) ConfidentialNodes() ConfidentialNodesResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) ConfidentialNodesResponse { return v.ConfidentialNodes }).(ConfidentialNodesResponseOutput)
 }
 
 // Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.

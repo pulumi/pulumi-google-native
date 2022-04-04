@@ -250,7 +250,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["processing_units"] = processing_units
             __props__.__dict__["project"] = project
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["update_time"] = None
         super(Instance, __self__).__init__(
             'google-native:spanner/v1:Instance',
             resource_name,
@@ -274,6 +276,7 @@ class Instance(pulumi.CustomResource):
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
         __props__.__dict__["config"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["endpoint_uris"] = None
         __props__.__dict__["labels"] = None
@@ -281,6 +284,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["node_count"] = None
         __props__.__dict__["processing_units"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["update_time"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -290,6 +294,14 @@ class Instance(pulumi.CustomResource):
         The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the instance was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="displayName")
@@ -346,4 +358,12 @@ class Instance(pulumi.CustomResource):
         The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The time at which the instance was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
 

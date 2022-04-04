@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
 {
 
     /// <summary>
-    /// Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
+    /// Specifies the metadata options for running a transfer.
     /// </summary>
     public sealed class MetadataOptionsArgs : Pulumi.ResourceArgs
     {
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsAcl>? Acl { get; set; }
 
         /// <summary>
-        /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+        /// Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         [Input("gid")]
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsGid>? Gid { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsKmsKey>? KmsKey { get; set; }
 
         /// <summary>
-        /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+        /// Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         [Input("mode")]
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsMode>? Mode { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsStorageClass>? StorageClass { get; set; }
 
         /// <summary>
-        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+        /// Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         [Input("symlink")]
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsSymlink>? Symlink { get; set; }
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsTimeCreated>? TimeCreated { get; set; }
 
         /// <summary>
-        /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+        /// Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         /// </summary>
         [Input("uid")]
         public Input<Pulumi.GoogleNative.StorageTransfer.V1.MetadataOptionsUid>? Uid { get; set; }

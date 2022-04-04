@@ -60,6 +60,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+     */
+    public readonly maintenancePolicy!: pulumi.Output<outputs.memcache.v1beta2.GoogleCloudMemcacheV1beta2MaintenancePolicyResponse>;
+    /**
+     * Published maintenance schedule.
+     */
+    public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.memcache.v1beta2.MaintenanceScheduleResponse>;
+    /**
      * The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
      */
     public /*out*/ readonly memcacheFullVersion!: pulumi.Output<string>;
@@ -130,6 +138,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceMessages"] = args ? args.instanceMessages : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["memcacheVersion"] = args ? args.memcacheVersion : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
@@ -139,6 +148,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zones"] = args ? args.zones : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoint"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedule"] = undefined /*out*/;
             resourceInputs["memcacheFullVersion"] = undefined /*out*/;
             resourceInputs["memcacheNodes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -151,6 +161,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["instanceMessages"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
+            resourceInputs["maintenancePolicy"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedule"] = undefined /*out*/;
             resourceInputs["memcacheFullVersion"] = undefined /*out*/;
             resourceInputs["memcacheNodes"] = undefined /*out*/;
             resourceInputs["memcacheVersion"] = undefined /*out*/;
@@ -193,6 +205,10 @@ export interface InstanceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.memcache.v1beta2.GoogleCloudMemcacheV1beta2MaintenancePolicyArgs>;
     /**
      * The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
      */

@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         /// </summary>
         public readonly bool DisallowUsernameSubstring;
         /// <summary>
+        /// Whether the password policy is enabled or not.
+        /// </summary>
+        public readonly bool EnablePasswordPolicy;
+        /// <summary>
         /// Minimum number of characters allowed.
         /// </summary>
         public readonly int MinLength;
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
 
             bool disallowUsernameSubstring,
 
+            bool enablePasswordPolicy,
+
             int minLength,
 
             string passwordChangeInterval,
@@ -51,6 +57,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Outputs
         {
             Complexity = complexity;
             DisallowUsernameSubstring = disallowUsernameSubstring;
+            EnablePasswordPolicy = enablePasswordPolicy;
             MinLength = minLength;
             PasswordChangeInterval = passwordChangeInterval;
             ReuseInterval = reuseInterval;

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         /// </summary>
         public readonly string Attribute;
         /// <summary>
+        /// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        /// </summary>
+        public readonly string Operator;
+        /// <summary>
         /// The value for the attribute.
         /// </summary>
         public readonly string Value;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
         private EventFilterResponse(
             string attribute,
 
+            string @operator,
+
             string value)
         {
             Attribute = attribute;
+            Operator = @operator;
             Value = value;
         }
     }

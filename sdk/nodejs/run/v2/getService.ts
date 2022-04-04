@@ -35,7 +35,7 @@ export interface GetServiceResult {
     /**
      * Settings for the Binary Authorization feature.
      */
-    readonly binaryAuthorization: outputs.run.v2.GoogleCloudRunOpV2BinaryAuthorizationResponse;
+    readonly binaryAuthorization: outputs.run.v2.GoogleCloudRunV2BinaryAuthorizationResponse;
     /**
      * Arbitrary identifier for the API client.
      */
@@ -47,7 +47,7 @@ export interface GetServiceResult {
     /**
      * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
-    readonly conditions: outputs.run.v2.GoogleCloudRunOpV2ConditionResponse[];
+    readonly conditions: outputs.run.v2.GoogleCloudRunV2ConditionResponse[];
     /**
      * The creation time.
      */
@@ -115,19 +115,19 @@ export interface GetServiceResult {
     /**
      * The template used to create revisions for this Service.
      */
-    readonly template: outputs.run.v2.GoogleCloudRunOpV2RevisionTemplateResponse;
+    readonly template: outputs.run.v2.GoogleCloudRunV2RevisionTemplateResponse;
     /**
      * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
-    readonly terminalCondition: outputs.run.v2.GoogleCloudRunOpV2ConditionResponse;
+    readonly terminalCondition: outputs.run.v2.GoogleCloudRunV2ConditionResponse;
     /**
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
      */
-    readonly traffic: outputs.run.v2.GoogleCloudRunOpV2TrafficTargetResponse[];
+    readonly traffic: outputs.run.v2.GoogleCloudRunV2TrafficTargetResponse[];
     /**
      * Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
-    readonly trafficStatuses: outputs.run.v2.GoogleCloudRunOpV2TrafficTargetStatusResponse[];
+    readonly trafficStatuses: outputs.run.v2.GoogleCloudRunV2TrafficTargetStatusResponse[];
     /**
      * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */

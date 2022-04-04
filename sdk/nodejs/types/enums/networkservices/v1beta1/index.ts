@@ -46,6 +46,98 @@ export const EndpointPolicyType = {
  */
 export type EndpointPolicyType = (typeof EndpointPolicyType)[keyof typeof EndpointPolicyType];
 
+export const GatewayType = {
+    /**
+     * The type of the customer managed gateway is unspecified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * The type of the customer managed gateway is TrafficDirector Open Mesh.
+     */
+    OpenMesh: "OPEN_MESH",
+    /**
+     * The type of the customer managed gateway is SecureWebGateway (SWG).
+     */
+    SecureWebGateway: "SECURE_WEB_GATEWAY",
+} as const;
+
+/**
+ * Immutable. The type of the customer managed gateway.
+ */
+export type GatewayType = (typeof GatewayType)[keyof typeof GatewayType];
+
+export const GrpcRouteHeaderMatchType = {
+    /**
+     * Unspecified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Will only match the exact value provided.
+     */
+    Exact: "EXACT",
+    /**
+     * Will match paths conforming to the prefix specified by value. RE2 syntax is supported.
+     */
+    RegularExpression: "REGULAR_EXPRESSION",
+} as const;
+
+/**
+ * Optional. Specifies how to match against the value of the header. If not specified, a default value of EXACT is used.
+ */
+export type GrpcRouteHeaderMatchType = (typeof GrpcRouteHeaderMatchType)[keyof typeof GrpcRouteHeaderMatchType];
+
+export const GrpcRouteMethodMatchType = {
+    /**
+     * Unspecified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * Will only match the exact name provided.
+     */
+    Exact: "EXACT",
+    /**
+     * Will interpret grpc_method and grpc_service as regexes. RE2 syntax is supported.
+     */
+    RegularExpression: "REGULAR_EXPRESSION",
+} as const;
+
+/**
+ * Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used.
+ */
+export type GrpcRouteMethodMatchType = (typeof GrpcRouteMethodMatchType)[keyof typeof GrpcRouteMethodMatchType];
+
+export const HttpRouteRedirectResponseCode = {
+    /**
+     * Default value
+     */
+    ResponseCodeUnspecified: "RESPONSE_CODE_UNSPECIFIED",
+    /**
+     * Corresponds to 301.
+     */
+    MovedPermanentlyDefault: "MOVED_PERMANENTLY_DEFAULT",
+    /**
+     * Corresponds to 302.
+     */
+    Found: "FOUND",
+    /**
+     * Corresponds to 303.
+     */
+    SeeOther: "SEE_OTHER",
+    /**
+     * Corresponds to 307. In this case, the request method will be retained.
+     */
+    TemporaryRedirect: "TEMPORARY_REDIRECT",
+    /**
+     * Corresponds to 308. In this case, the request method will be retained.
+     */
+    PermanentRedirect: "PERMANENT_REDIRECT",
+} as const;
+
+/**
+ * The HTTP Status code to use for the redirect.
+ */
+export type HttpRouteRedirectResponseCode = (typeof HttpRouteRedirectResponseCode)[keyof typeof HttpRouteRedirectResponseCode];
+
 export const MetadataLabelMatcherMetadataLabelMatchCriteria = {
     /**
      * Default value. Should not be used.

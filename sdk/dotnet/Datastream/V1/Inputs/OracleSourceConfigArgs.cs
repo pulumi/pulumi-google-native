@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     public sealed class OracleSourceConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Drop large object values.
+        /// </summary>
+        [Input("dropLargeObjects")]
+        public Input<Inputs.OracleDropLargeObjectsArgs>? DropLargeObjects { get; set; }
+
+        /// <summary>
         /// Oracle objects to exclude from the stream.
         /// </summary>
         [Input("excludeObjects")]

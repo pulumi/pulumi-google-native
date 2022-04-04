@@ -96,6 +96,10 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number>;
     /**
+     * [Output only] The status of the route.
+     */
+    public /*out*/ readonly routeStatus!: pulumi.Output<string>;
+    /**
      * The type of this route, which can be one of the following values: - 'TRANSIT' for a transit route that this router learned from another Cloud Router and will readvertise to one of its BGP peers - 'SUBNET' for a route from a subnet of the VPC - 'BGP' for a route learned from a BGP peer of this router - 'STATIC' for a static route
      */
     public /*out*/ readonly routeType!: pulumi.Output<string>;
@@ -141,6 +145,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["nextHopPeering"] = undefined /*out*/;
+            resourceInputs["routeStatus"] = undefined /*out*/;
             resourceInputs["routeType"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["warnings"] = undefined /*out*/;
@@ -160,6 +165,7 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["nextHopPeering"] = undefined /*out*/;
             resourceInputs["nextHopVpnTunnel"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["routeStatus"] = undefined /*out*/;
             resourceInputs["routeType"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;

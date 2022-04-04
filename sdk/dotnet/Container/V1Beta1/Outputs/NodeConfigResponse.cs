@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// Parameters that describe the nodes in a cluster.
+    /// Parameters that describe the nodes in a cluster. *Note:* GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     /// </summary>
     [OutputType]
     public sealed class NodeConfigResponse
@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         ///  The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         /// </summary>
         public readonly string BootDiskKmsKey;
+        /// <summary>
+        /// Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
+        /// </summary>
+        public readonly Outputs.ConfidentialNodesResponse ConfidentialNodes;
         /// <summary>
         /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         /// </summary>
@@ -133,6 +137,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string bootDiskKmsKey,
 
+            Outputs.ConfidentialNodesResponse confidentialNodes,
+
             int diskSizeGb,
 
             string diskType,
@@ -184,6 +190,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             Accelerators = accelerators;
             AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
+            ConfidentialNodes = confidentialNodes;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EphemeralStorageConfig = ephemeralStorageConfig;

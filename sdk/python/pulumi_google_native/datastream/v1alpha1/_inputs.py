@@ -27,6 +27,7 @@ __all__ = [
     'MysqlTableArgs',
     'NoConnectivitySettingsArgs',
     'OracleColumnArgs',
+    'OracleDropLargeObjectsArgs',
     'OracleProfileArgs',
     'OracleRdbmsArgs',
     'OracleSchemaArgs',
@@ -974,6 +975,15 @@ class OracleColumnArgs:
 
 
 @pulumi.input_type
+class OracleDropLargeObjectsArgs:
+    def __init__(__self__):
+        """
+        Configuration to drop large object values.
+        """
+        pass
+
+
+@pulumi.input_type
 class OracleProfileArgs:
     def __init__(__self__, *,
                  database_service: pulumi.Input[str],
@@ -1141,14 +1151,18 @@ class OracleSchemaArgs:
 class OracleSourceConfigArgs:
     def __init__(__self__, *,
                  allowlist: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
+                 drop_large_objects: Optional[pulumi.Input['OracleDropLargeObjectsArgs']] = None,
                  rejectlist: Optional[pulumi.Input['OracleRdbmsArgs']] = None):
         """
         Oracle data source configuration
         :param pulumi.Input['OracleRdbmsArgs'] allowlist: Oracle objects to include in the stream.
+        :param pulumi.Input['OracleDropLargeObjectsArgs'] drop_large_objects: Drop large object values.
         :param pulumi.Input['OracleRdbmsArgs'] rejectlist: Oracle objects to exclude from the stream.
         """
         if allowlist is not None:
             pulumi.set(__self__, "allowlist", allowlist)
+        if drop_large_objects is not None:
+            pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         if rejectlist is not None:
             pulumi.set(__self__, "rejectlist", rejectlist)
 
@@ -1163,6 +1177,18 @@ class OracleSourceConfigArgs:
     @allowlist.setter
     def allowlist(self, value: Optional[pulumi.Input['OracleRdbmsArgs']]):
         pulumi.set(self, "allowlist", value)
+
+    @property
+    @pulumi.getter(name="dropLargeObjects")
+    def drop_large_objects(self) -> Optional[pulumi.Input['OracleDropLargeObjectsArgs']]:
+        """
+        Drop large object values.
+        """
+        return pulumi.get(self, "drop_large_objects")
+
+    @drop_large_objects.setter
+    def drop_large_objects(self, value: Optional[pulumi.Input['OracleDropLargeObjectsArgs']]):
+        pulumi.set(self, "drop_large_objects", value)
 
     @property
     @pulumi.getter

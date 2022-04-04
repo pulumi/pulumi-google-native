@@ -92,7 +92,7 @@ export interface PhraseSetArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+     * The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
      */
     phraseSetId: pulumi.Input<string>;
     /**

@@ -267,14 +267,18 @@ class BuildConfigArgs:
 class EventFilterArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 operator: Optional[pulumi.Input[str]] = None):
         """
         Filters events based on exact matches on the CloudEvents attributes.
         :param pulumi.Input[str] attribute: The name of a CloudEvents attribute.
         :param pulumi.Input[str] value: The value for the attribute.
+        :param pulumi.Input[str] operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "value", value)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
 
     @property
     @pulumi.getter
@@ -299,6 +303,18 @@ class EventFilterArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator", value)
 
 
 @pulumi.input_type

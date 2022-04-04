@@ -19,6 +19,7 @@ __all__ = [
     'NotificationConfigEventTypesItem',
     'NotificationConfigPayloadFormat',
     'TransferJobStatus',
+    'TransferOptionsOverwriteWhen',
 ]
 
 
@@ -76,7 +77,7 @@ class MetadataOptionsAcl(str, Enum):
 
 class MetadataOptionsGid(str, Enum):
     """
-    Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+    Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     """
     GID_UNSPECIFIED = "GID_UNSPECIFIED"
     """
@@ -112,7 +113,7 @@ class MetadataOptionsKmsKey(str, Enum):
 
 class MetadataOptionsMode(str, Enum):
     """
-    Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+    Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
     """
@@ -164,7 +165,7 @@ class MetadataOptionsStorageClass(str, Enum):
 
 class MetadataOptionsSymlink(str, Enum):
     """
-    Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+    Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     """
     SYMLINK_UNSPECIFIED = "SYMLINK_UNSPECIFIED"
     """
@@ -218,7 +219,7 @@ class MetadataOptionsTimeCreated(str, Enum):
 
 class MetadataOptionsUid(str, Enum):
     """
-    Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+    Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
     """
     UID_UNSPECIFIED = "UID_UNSPECIFIED"
     """
@@ -290,4 +291,26 @@ class TransferJobStatus(str, Enum):
     DELETED = "DELETED"
     """
     This is a soft delete state. After a transfer job is set to this state, the job and all the transfer executions are subject to garbage collection. Transfer jobs become eligible for garbage collection 30 days after their status is set to `DELETED`.
+    """
+
+
+class TransferOptionsOverwriteWhen(str, Enum):
+    """
+    When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+    """
+    OVERWRITE_WHEN_UNSPECIFIED = "OVERWRITE_WHEN_UNSPECIFIED"
+    """
+    Indicate the option is not set.
+    """
+    DIFFERENT = "DIFFERENT"
+    """
+    Overwrite destination object with source if the two objects are different.
+    """
+    NEVER = "NEVER"
+    """
+    Never overwrite destination object.
+    """
+    ALWAYS = "ALWAYS"
+    """
+    Always overwrite destination object.
     """

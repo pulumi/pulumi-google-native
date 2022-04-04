@@ -5,8 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getProvisioningConfig";
 export * from "./getSnapshot";
 export * from "./getSnapshotSchedulePolicy";
+export * from "./provisioningConfig";
 export * from "./snapshot";
 export * from "./snapshotSchedulePolicy";
 
@@ -14,6 +16,7 @@ export * from "./snapshotSchedulePolicy";
 export * from "../../types/enums/baremetalsolution/v2";
 
 // Import resources to register:
+import { ProvisioningConfig } from "./provisioningConfig";
 import { Snapshot } from "./snapshot";
 import { SnapshotSchedulePolicy } from "./snapshotSchedulePolicy";
 
@@ -21,6 +24,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:baremetalsolution/v2:ProvisioningConfig":
+                return new ProvisioningConfig(name, <any>undefined, { urn })
             case "google-native:baremetalsolution/v2:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
             case "google-native:baremetalsolution/v2:SnapshotSchedulePolicy":

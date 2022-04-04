@@ -15,7 +15,6 @@ class NetworkEdgeSecurityServiceArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -32,8 +31,6 @@ class NetworkEdgeSecurityServiceArgs:
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -65,15 +62,6 @@ class NetworkEdgeSecurityServiceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
 
     @property
     @pulumi.getter
@@ -139,7 +127,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -183,7 +170,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -203,7 +189,6 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             __props__ = NetworkEdgeSecurityServiceArgs.__new__(NetworkEdgeSecurityServiceArgs)
 
             __props__.__dict__["description"] = description
-            __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if region is None and not opts.urn:
@@ -214,6 +199,7 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
         super(NetworkEdgeSecurityService, __self__).__init__(
@@ -276,6 +262,9 @@ class NetworkEdgeSecurityService(pulumi.CustomResource):
     @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
+        """
+        [Output only] Type of the resource. Always compute#networkEdgeSecurityService for NetworkEdgeSecurityServices
+        """
         return pulumi.get(self, "kind")
 
     @property

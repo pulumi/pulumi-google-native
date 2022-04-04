@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         /// </summary>
         public readonly bool OverwriteObjectsAlreadyExistingInSink;
+        /// <summary>
+        /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+        /// </summary>
+        public readonly string OverwriteWhen;
 
         [OutputConstructor]
         private TransferOptionsResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             Outputs.MetadataOptionsResponse metadataOptions,
 
-            bool overwriteObjectsAlreadyExistingInSink)
+            bool overwriteObjectsAlreadyExistingInSink,
+
+            string overwriteWhen)
         {
             DeleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             DeleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
             MetadataOptions = metadataOptions;
             OverwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
+            OverwriteWhen = overwriteWhen;
         }
     }
 }

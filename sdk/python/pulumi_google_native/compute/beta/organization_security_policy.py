@@ -19,6 +19,7 @@ class OrganizationSecurityPolicyArgs:
                  adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]]] = None,
+                 ddos_protection_config: Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -46,6 +47,8 @@ class OrganizationSecurityPolicyArgs:
             pulumi.set(__self__, "advanced_options_config", advanced_options_config)
         if associations is not None:
             pulumi.set(__self__, "associations", associations)
+        if ddos_protection_config is not None:
+            pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -94,6 +97,15 @@ class OrganizationSecurityPolicyArgs:
     @associations.setter
     def associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAssociationArgs']]]]):
         pulumi.set(self, "associations", value)
+
+    @property
+    @pulumi.getter(name="ddosProtectionConfig")
+    def ddos_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigArgs']]:
+        return pulumi.get(self, "ddos_protection_config")
+
+    @ddos_protection_config.setter
+    def ddos_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigArgs']]):
+        pulumi.set(self, "ddos_protection_config", value)
 
     @property
     @pulumi.getter
@@ -209,6 +221,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyDdosProtectionConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -261,6 +274,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
                  adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
                  associations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyAssociationArgs']]]]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyDdosProtectionConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -285,6 +299,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
             __props__.__dict__["advanced_options_config"] = advanced_options_config
             __props__.__dict__["associations"] = associations
+            __props__.__dict__["ddos_protection_config"] = ddos_protection_config
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
@@ -299,6 +314,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["parent"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["rule_tuple_count"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -328,6 +344,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["advanced_options_config"] = None
         __props__.__dict__["associations"] = None
         __props__.__dict__["creation_timestamp"] = None
+        __props__.__dict__["ddos_protection_config"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["fingerprint"] = None
@@ -337,6 +354,7 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["parent"] = None
         __props__.__dict__["recaptcha_options_config"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["rule_tuple_count"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
@@ -369,6 +387,11 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="ddosProtectionConfig")
+    def ddos_protection_config(self) -> pulumi.Output['outputs.SecurityPolicyDdosProtectionConfigResponse']:
+        return pulumi.get(self, "ddos_protection_config")
 
     @property
     @pulumi.getter
@@ -438,6 +461,14 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="recaptchaOptionsConfig")
     def recaptcha_options_config(self) -> pulumi.Output['outputs.SecurityPolicyRecaptchaOptionsConfigResponse']:
         return pulumi.get(self, "recaptcha_options_config")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="ruleTupleCount")

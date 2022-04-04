@@ -520,7 +520,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public static MonitoringComponentConfigEnableComponentsItem SystemComponents { get; } = new MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS");
         /// <summary>
-        /// workloads
+        /// Deprecated: Use Google Cloud Managed Service for Prometheus.
         /// </summary>
         public static MonitoringComponentConfigEnableComponentsItem Workloads { get; } = new MonitoringComponentConfigEnableComponentsItem("WORKLOADS");
 

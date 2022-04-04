@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'InstanceMemcacheVersion',
     'InstanceMessageCode',
+    'WeeklyMaintenanceWindowDay',
 ]
 
 
@@ -32,4 +33,42 @@ class InstanceMessageCode(str, Enum):
     ZONE_DISTRIBUTION_UNBALANCED = "ZONE_DISTRIBUTION_UNBALANCED"
     """
     Memcached nodes are distributed unevenly.
+    """
+
+
+class WeeklyMaintenanceWindowDay(str, Enum):
+    """
+    Required. Allows to define schedule that runs specified day of the week.
+    """
+    DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    """
+    The day of the week is unspecified.
+    """
+    MONDAY = "MONDAY"
+    """
+    Monday
+    """
+    TUESDAY = "TUESDAY"
+    """
+    Tuesday
+    """
+    WEDNESDAY = "WEDNESDAY"
+    """
+    Wednesday
+    """
+    THURSDAY = "THURSDAY"
+    """
+    Thursday
+    """
+    FRIDAY = "FRIDAY"
+    """
+    Friday
+    """
+    SATURDAY = "SATURDAY"
+    """
+    Saturday
+    """
+    SUNDAY = "SUNDAY"
+    """
+    Sunday
     """

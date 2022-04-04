@@ -104,6 +104,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// [Optional] Number of hours for the max time travel for all tables in the dataset.
+        /// </summary>
+        [Output("maxTimeTravelHours")]
+        public Output<string> MaxTimeTravelHours { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPZS")]
@@ -234,6 +240,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// [Optional] Number of hours for the max time travel for all tables in the dataset.
+        /// </summary>
+        [Input("maxTimeTravelHours")]
+        public Input<string>? MaxTimeTravelHours { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

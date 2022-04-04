@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetKeyResult:
-    def __init__(__self__, create_time=None, delete_time=None, display_name=None, etag=None, key_string=None, name=None, restrictions=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, delete_time=None, display_name=None, etag=None, key_string=None, name=None, restrictions=None, uid=None, update_time=None):
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -46,6 +49,14 @@ class GetKeyResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")
@@ -126,6 +137,7 @@ class AwaitableGetKeyResult(GetKeyResult):
         if False:
             yield self
         return GetKeyResult(
+            annotations=self.annotations,
             create_time=self.create_time,
             delete_time=self.delete_time,
             display_name=self.display_name,
@@ -155,6 +167,7 @@ def get_key(key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apikeys/v2:getKey', __args__, opts=opts, typ=GetKeyResult).value
 
     return AwaitableGetKeyResult(
+        annotations=__ret__.annotations,
         create_time=__ret__.create_time,
         delete_time=__ret__.delete_time,
         display_name=__ret__.display_name,

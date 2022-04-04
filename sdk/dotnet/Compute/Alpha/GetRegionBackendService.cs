@@ -136,6 +136,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string LoadBalancingScheme;
         /// <summary>
+        /// A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.BackendServiceLocalityLoadBalancingPolicyConfigResponse> LocalityLbPolicies;
+        /// <summary>
         /// The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         /// </summary>
         public readonly string LocalityLbPolicy;
@@ -205,7 +209,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public readonly string SessionAffinity;
         public readonly Outputs.SubsettingResponse Subsetting;
         /// <summary>
-        /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
+        /// The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         /// </summary>
         public readonly int TimeoutSec;
 
@@ -250,6 +254,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             string kind,
 
             string loadBalancingScheme,
+
+            ImmutableArray<Outputs.BackendServiceLocalityLoadBalancingPolicyConfigResponse> localityLbPolicies,
 
             string localityLbPolicy,
 
@@ -309,6 +315,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Iap = iap;
             Kind = kind;
             LoadBalancingScheme = loadBalancingScheme;
+            LocalityLbPolicies = localityLbPolicies;
             LocalityLbPolicy = localityLbPolicy;
             LogConfig = logConfig;
             MaxStreamDuration = maxStreamDuration;

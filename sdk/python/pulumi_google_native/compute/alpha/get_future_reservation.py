@@ -75,6 +75,9 @@ class GetFutureReservationResult:
     @property
     @pulumi.getter
     def kind(self) -> str:
+        """
+        Type of the resource. Always compute#futureReservation for future reservations.
+        """
         return pulumi.get(self, "kind")
 
     @property

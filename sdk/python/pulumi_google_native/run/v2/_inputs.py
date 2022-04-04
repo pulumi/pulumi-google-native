@@ -10,22 +10,22 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
-    'GoogleCloudRunOpV2BinaryAuthorizationArgs',
-    'GoogleCloudRunOpV2CloudSqlInstanceArgs',
-    'GoogleCloudRunOpV2ContainerPortArgs',
-    'GoogleCloudRunOpV2ContainerArgs',
-    'GoogleCloudRunOpV2EnvVarSourceArgs',
-    'GoogleCloudRunOpV2EnvVarArgs',
-    'GoogleCloudRunOpV2ResourceRequirementsArgs',
-    'GoogleCloudRunOpV2RevisionScalingArgs',
-    'GoogleCloudRunOpV2RevisionTemplateArgs',
-    'GoogleCloudRunOpV2SecretKeySelectorArgs',
-    'GoogleCloudRunOpV2SecretVolumeSourceArgs',
-    'GoogleCloudRunOpV2TrafficTargetArgs',
-    'GoogleCloudRunOpV2VersionToPathArgs',
-    'GoogleCloudRunOpV2VolumeMountArgs',
-    'GoogleCloudRunOpV2VolumeArgs',
-    'GoogleCloudRunOpV2VpcAccessArgs',
+    'GoogleCloudRunV2BinaryAuthorizationArgs',
+    'GoogleCloudRunV2CloudSqlInstanceArgs',
+    'GoogleCloudRunV2ContainerPortArgs',
+    'GoogleCloudRunV2ContainerArgs',
+    'GoogleCloudRunV2EnvVarSourceArgs',
+    'GoogleCloudRunV2EnvVarArgs',
+    'GoogleCloudRunV2ResourceRequirementsArgs',
+    'GoogleCloudRunV2RevisionScalingArgs',
+    'GoogleCloudRunV2RevisionTemplateArgs',
+    'GoogleCloudRunV2SecretKeySelectorArgs',
+    'GoogleCloudRunV2SecretVolumeSourceArgs',
+    'GoogleCloudRunV2TrafficTargetArgs',
+    'GoogleCloudRunV2VersionToPathArgs',
+    'GoogleCloudRunV2VolumeMountArgs',
+    'GoogleCloudRunV2VolumeArgs',
+    'GoogleCloudRunV2VpcAccessArgs',
     'GoogleIamV1AuditConfigArgs',
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
@@ -33,7 +33,7 @@ __all__ = [
 ]
 
 @pulumi.input_type
-class GoogleCloudRunOpV2BinaryAuthorizationArgs:
+class GoogleCloudRunV2BinaryAuthorizationArgs:
     def __init__(__self__, *,
                  breakglass_justification: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
@@ -73,7 +73,7 @@ class GoogleCloudRunOpV2BinaryAuthorizationArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2CloudSqlInstanceArgs:
+class GoogleCloudRunV2CloudSqlInstanceArgs:
     def __init__(__self__, *,
                  connections: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -97,7 +97,7 @@ class GoogleCloudRunOpV2CloudSqlInstanceArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2ContainerPortArgs:
+class GoogleCloudRunV2ContainerPortArgs:
     def __init__(__self__, *,
                  container_port: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -137,26 +137,26 @@ class GoogleCloudRunOpV2ContainerPortArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2ContainerArgs:
+class GoogleCloudRunV2ContainerArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[str],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  command: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 env: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2EnvVarArgs']]]] = None,
+                 env: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerPortArgs']]]] = None,
-                 resources: Optional[pulumi.Input['GoogleCloudRunOpV2ResourceRequirementsArgs']] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeMountArgs']]]] = None):
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]]] = None,
+                 resources: Optional[pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs']] = None,
+                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]]] = None):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
         :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2EnvVarArgs']]] env: List of environment variables to set in the container.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]] env: List of environment variables to set in the container.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
-        :param pulumi.Input['GoogleCloudRunOpV2ResourceRequirementsArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+        :param pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs'] resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
         """
         pulumi.set(__self__, "image", image)
         if args is not None:
@@ -212,14 +212,14 @@ class GoogleCloudRunOpV2ContainerArgs:
 
     @property
     @pulumi.getter
-    def env(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2EnvVarArgs']]]]:
+    def env(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]]]:
         """
         List of environment variables to set in the container.
         """
         return pulumi.get(self, "env")
 
     @env.setter
-    def env(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2EnvVarArgs']]]]):
+    def env(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]]]):
         pulumi.set(self, "env", value)
 
     @property
@@ -236,76 +236,76 @@ class GoogleCloudRunOpV2ContainerArgs:
 
     @property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerPortArgs']]]]:
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]]]:
         """
         List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerPortArgs']]]]):
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2ResourceRequirementsArgs']]:
+    def resources(self) -> Optional[pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs']]:
         """
         Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2ResourceRequirementsArgs']]):
+    def resources(self, value: Optional[pulumi.Input['GoogleCloudRunV2ResourceRequirementsArgs']]):
         pulumi.set(self, "resources", value)
 
     @property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeMountArgs']]]]:
+    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]]]:
         """
         Volume to mount into the container's filesystem.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeMountArgs']]]]):
+    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2EnvVarSourceArgs:
+class GoogleCloudRunV2EnvVarSourceArgs:
     def __init__(__self__, *,
-                 secret_key_ref: Optional[pulumi.Input['GoogleCloudRunOpV2SecretKeySelectorArgs']] = None):
+                 secret_key_ref: Optional[pulumi.Input['GoogleCloudRunV2SecretKeySelectorArgs']] = None):
         """
         EnvVarSource represents a source for the value of an EnvVar.
-        :param pulumi.Input['GoogleCloudRunOpV2SecretKeySelectorArgs'] secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
+        :param pulumi.Input['GoogleCloudRunV2SecretKeySelectorArgs'] secret_key_ref: Selects a secret and a specific version from Cloud Secret Manager.
         """
         if secret_key_ref is not None:
             pulumi.set(__self__, "secret_key_ref", secret_key_ref)
 
     @property
     @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2SecretKeySelectorArgs']]:
+    def secret_key_ref(self) -> Optional[pulumi.Input['GoogleCloudRunV2SecretKeySelectorArgs']]:
         """
         Selects a secret and a specific version from Cloud Secret Manager.
         """
         return pulumi.get(self, "secret_key_ref")
 
     @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2SecretKeySelectorArgs']]):
+    def secret_key_ref(self, value: Optional[pulumi.Input['GoogleCloudRunV2SecretKeySelectorArgs']]):
         pulumi.set(self, "secret_key_ref", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2EnvVarArgs:
+class GoogleCloudRunV2EnvVarArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
                  value: Optional[pulumi.Input[str]] = None,
-                 value_source: Optional[pulumi.Input['GoogleCloudRunOpV2EnvVarSourceArgs']] = None):
+                 value_source: Optional[pulumi.Input['GoogleCloudRunV2EnvVarSourceArgs']] = None):
         """
         EnvVar represents an environment variable present in a Container.
         :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
         :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "", and the maximum length is 32768 bytes.
-        :param pulumi.Input['GoogleCloudRunOpV2EnvVarSourceArgs'] value_source: Source for the environment variable's value.
+        :param pulumi.Input['GoogleCloudRunV2EnvVarSourceArgs'] value_source: Source for the environment variable's value.
         """
         pulumi.set(__self__, "name", name)
         if value is not None:
@@ -339,19 +339,19 @@ class GoogleCloudRunOpV2EnvVarArgs:
 
     @property
     @pulumi.getter(name="valueSource")
-    def value_source(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2EnvVarSourceArgs']]:
+    def value_source(self) -> Optional[pulumi.Input['GoogleCloudRunV2EnvVarSourceArgs']]:
         """
         Source for the environment variable's value.
         """
         return pulumi.get(self, "value_source")
 
     @value_source.setter
-    def value_source(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2EnvVarSourceArgs']]):
+    def value_source(self, value: Optional[pulumi.Input['GoogleCloudRunV2EnvVarSourceArgs']]):
         pulumi.set(self, "value_source", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2ResourceRequirementsArgs:
+class GoogleCloudRunV2ResourceRequirementsArgs:
     def __init__(__self__, *,
                  cpu_idle: Optional[pulumi.Input[bool]] = None,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -391,7 +391,7 @@ class GoogleCloudRunOpV2ResourceRequirementsArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2RevisionScalingArgs:
+class GoogleCloudRunV2RevisionScalingArgs:
     def __init__(__self__, *,
                  max_instance_count: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None):
@@ -431,36 +431,36 @@ class GoogleCloudRunOpV2RevisionScalingArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2RevisionTemplateArgs:
+class GoogleCloudRunV2RevisionTemplateArgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  confidential: Optional[pulumi.Input[bool]] = None,
                  container_concurrency: Optional[pulumi.Input[int]] = None,
-                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerArgs']]]] = None,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
-                 execution_environment: Optional[pulumi.Input['GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment']] = None,
+                 execution_environment: Optional[pulumi.Input['GoogleCloudRunV2RevisionTemplateExecutionEnvironment']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  revision: Optional[pulumi.Input[str]] = None,
-                 scaling: Optional[pulumi.Input['GoogleCloudRunOpV2RevisionScalingArgs']] = None,
+                 scaling: Optional[pulumi.Input['GoogleCloudRunV2RevisionScalingArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeArgs']]]] = None,
-                 vpc_access: Optional[pulumi.Input['GoogleCloudRunOpV2VpcAccessArgs']] = None):
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]]] = None,
+                 vpc_access: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessArgs']] = None):
         """
         RevisionTemplate describes the data a revision should have when created from a template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
         :param pulumi.Input[bool] confidential: Enables Confidential Cloud Run in Revisions created using this template.
         :param pulumi.Input[int] container_concurrency: Sets the maximum number of requests that each serving instance can receive.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerArgs']]] containers: Holds the single container that defines the unit of execution for this Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]] containers: Holds the single container that defines the unit of execution for this Revision.
         :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
-        :param pulumi.Input['GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment'] execution_environment: The sandbox environment to host this Revision.
+        :param pulumi.Input['GoogleCloudRunV2RevisionTemplateExecutionEnvironment'] execution_environment: The sandbox environment to host this Revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
-        :param pulumi.Input['GoogleCloudRunOpV2RevisionScalingArgs'] scaling: Scaling settings for this Revision.
+        :param pulumi.Input['GoogleCloudRunV2RevisionScalingArgs'] scaling: Scaling settings for this Revision.
         :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         :param pulumi.Input[str] timeout: Max allowed time for an instance to respond to a request.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeArgs']]] volumes: A list of Volumes to make available to containers.
-        :param pulumi.Input['GoogleCloudRunOpV2VpcAccessArgs'] vpc_access: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]] volumes: A list of Volumes to make available to containers.
+        :param pulumi.Input['GoogleCloudRunV2VpcAccessArgs'] vpc_access: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -527,14 +527,14 @@ class GoogleCloudRunOpV2RevisionTemplateArgs:
 
     @property
     @pulumi.getter
-    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerArgs']]]]:
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]]:
         """
         Holds the single container that defines the unit of execution for this Revision.
         """
         return pulumi.get(self, "containers")
 
     @containers.setter
-    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2ContainerArgs']]]]):
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]]):
         pulumi.set(self, "containers", value)
 
     @property
@@ -551,14 +551,14 @@ class GoogleCloudRunOpV2RevisionTemplateArgs:
 
     @property
     @pulumi.getter(name="executionEnvironment")
-    def execution_environment(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment']]:
+    def execution_environment(self) -> Optional[pulumi.Input['GoogleCloudRunV2RevisionTemplateExecutionEnvironment']]:
         """
         The sandbox environment to host this Revision.
         """
         return pulumi.get(self, "execution_environment")
 
     @execution_environment.setter
-    def execution_environment(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment']]):
+    def execution_environment(self, value: Optional[pulumi.Input['GoogleCloudRunV2RevisionTemplateExecutionEnvironment']]):
         pulumi.set(self, "execution_environment", value)
 
     @property
@@ -587,14 +587,14 @@ class GoogleCloudRunOpV2RevisionTemplateArgs:
 
     @property
     @pulumi.getter
-    def scaling(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2RevisionScalingArgs']]:
+    def scaling(self) -> Optional[pulumi.Input['GoogleCloudRunV2RevisionScalingArgs']]:
         """
         Scaling settings for this Revision.
         """
         return pulumi.get(self, "scaling")
 
     @scaling.setter
-    def scaling(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2RevisionScalingArgs']]):
+    def scaling(self, value: Optional[pulumi.Input['GoogleCloudRunV2RevisionScalingArgs']]):
         pulumi.set(self, "scaling", value)
 
     @property
@@ -623,31 +623,31 @@ class GoogleCloudRunOpV2RevisionTemplateArgs:
 
     @property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeArgs']]]]:
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]]]:
         """
         A list of Volumes to make available to containers.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VolumeArgs']]]]):
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
     @property
     @pulumi.getter(name="vpcAccess")
-    def vpc_access(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2VpcAccessArgs']]:
+    def vpc_access(self) -> Optional[pulumi.Input['GoogleCloudRunV2VpcAccessArgs']]:
         """
         VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
         return pulumi.get(self, "vpc_access")
 
     @vpc_access.setter
-    def vpc_access(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2VpcAccessArgs']]):
+    def vpc_access(self, value: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessArgs']]):
         pulumi.set(self, "vpc_access", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2SecretKeySelectorArgs:
+class GoogleCloudRunV2SecretKeySelectorArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[str],
                  version: Optional[pulumi.Input[str]] = None):
@@ -686,16 +686,16 @@ class GoogleCloudRunOpV2SecretKeySelectorArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2SecretVolumeSourceArgs:
+class GoogleCloudRunV2SecretVolumeSourceArgs:
     def __init__(__self__, *,
                  secret: pulumi.Input[str],
                  default_mode: Optional[pulumi.Input[int]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VersionToPathArgs']]]] = None):
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VersionToPathArgs']]]] = None):
         """
         The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret.
         :param pulumi.Input[str] secret: The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         :param pulumi.Input[int] default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VersionToPathArgs']]] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VersionToPathArgs']]] items: If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         """
         pulumi.set(__self__, "secret", secret)
         if default_mode is not None:
@@ -729,30 +729,30 @@ class GoogleCloudRunOpV2SecretVolumeSourceArgs:
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VersionToPathArgs']]]]:
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VersionToPathArgs']]]]:
         """
         If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2VersionToPathArgs']]]]):
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VersionToPathArgs']]]]):
         pulumi.set(self, "items", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2TrafficTargetArgs:
+class GoogleCloudRunV2TrafficTargetArgs:
     def __init__(__self__, *,
                  percent: Optional[pulumi.Input[int]] = None,
                  revision: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['GoogleCloudRunOpV2TrafficTargetType']] = None):
+                 type: Optional[pulumi.Input['GoogleCloudRunV2TrafficTargetType']] = None):
         """
         Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
         :param pulumi.Input[int] percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         :param pulumi.Input[str] revision: Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param pulumi.Input[str] tag: Indicates a string to be part of the URI to exclusively reference this target.
-        :param pulumi.Input['GoogleCloudRunOpV2TrafficTargetType'] type: The allocation type for this traffic target.
+        :param pulumi.Input['GoogleCloudRunV2TrafficTargetType'] type: The allocation type for this traffic target.
         """
         if percent is not None:
             pulumi.set(__self__, "percent", percent)
@@ -801,19 +801,19 @@ class GoogleCloudRunOpV2TrafficTargetArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2TrafficTargetType']]:
+    def type(self) -> Optional[pulumi.Input['GoogleCloudRunV2TrafficTargetType']]:
         """
         The allocation type for this traffic target.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2TrafficTargetType']]):
+    def type(self, value: Optional[pulumi.Input['GoogleCloudRunV2TrafficTargetType']]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2VersionToPathArgs:
+class GoogleCloudRunV2VersionToPathArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  mode: Optional[pulumi.Input[int]] = None,
@@ -868,7 +868,7 @@ class GoogleCloudRunOpV2VersionToPathArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2VolumeMountArgs:
+class GoogleCloudRunV2VolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: pulumi.Input[str],
                  name: pulumi.Input[str]):
@@ -906,16 +906,16 @@ class GoogleCloudRunOpV2VolumeMountArgs:
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2VolumeArgs:
+class GoogleCloudRunV2VolumeArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 cloud_sql_instance: Optional[pulumi.Input['GoogleCloudRunOpV2CloudSqlInstanceArgs']] = None,
-                 secret: Optional[pulumi.Input['GoogleCloudRunOpV2SecretVolumeSourceArgs']] = None):
+                 cloud_sql_instance: Optional[pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs']] = None,
+                 secret: Optional[pulumi.Input['GoogleCloudRunV2SecretVolumeSourceArgs']] = None):
         """
         Volume represents a named volume in a container.
         :param pulumi.Input[str] name: Volume's name.
-        :param pulumi.Input['GoogleCloudRunOpV2CloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
-        :param pulumi.Input['GoogleCloudRunOpV2SecretVolumeSourceArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+        :param pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+        :param pulumi.Input['GoogleCloudRunV2SecretVolumeSourceArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
         pulumi.set(__self__, "name", name)
         if cloud_sql_instance is not None:
@@ -937,38 +937,38 @@ class GoogleCloudRunOpV2VolumeArgs:
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
-    def cloud_sql_instance(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2CloudSqlInstanceArgs']]:
+    def cloud_sql_instance(self) -> Optional[pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs']]:
         """
         For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         """
         return pulumi.get(self, "cloud_sql_instance")
 
     @cloud_sql_instance.setter
-    def cloud_sql_instance(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2CloudSqlInstanceArgs']]):
+    def cloud_sql_instance(self, value: Optional[pulumi.Input['GoogleCloudRunV2CloudSqlInstanceArgs']]):
         pulumi.set(self, "cloud_sql_instance", value)
 
     @property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2SecretVolumeSourceArgs']]:
+    def secret(self) -> Optional[pulumi.Input['GoogleCloudRunV2SecretVolumeSourceArgs']]:
         """
         Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2SecretVolumeSourceArgs']]):
+    def secret(self, value: Optional[pulumi.Input['GoogleCloudRunV2SecretVolumeSourceArgs']]):
         pulumi.set(self, "secret", value)
 
 
 @pulumi.input_type
-class GoogleCloudRunOpV2VpcAccessArgs:
+class GoogleCloudRunV2VpcAccessArgs:
     def __init__(__self__, *,
                  connector: Optional[pulumi.Input[str]] = None,
-                 egress: Optional[pulumi.Input['GoogleCloudRunOpV2VpcAccessEgress']] = None):
+                 egress: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']] = None):
         """
         VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
         :param pulumi.Input[str] connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
-        :param pulumi.Input['GoogleCloudRunOpV2VpcAccessEgress'] egress: Traffic VPC egress settings.
+        :param pulumi.Input['GoogleCloudRunV2VpcAccessEgress'] egress: Traffic VPC egress settings.
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -989,14 +989,14 @@ class GoogleCloudRunOpV2VpcAccessArgs:
 
     @property
     @pulumi.getter
-    def egress(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2VpcAccessEgress']]:
+    def egress(self) -> Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']]:
         """
         Traffic VPC egress settings.
         """
         return pulumi.get(self, "egress")
 
     @egress.setter
-    def egress(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2VpcAccessEgress']]):
+    def egress(self, value: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessEgress']]):
         pulumi.set(self, "egress", value)
 
 

@@ -71,7 +71,7 @@ export class Entitlement extends pulumi.CustomResource {
      */
     public /*out*/ readonly provisioningState!: pulumi.Output<string>;
     /**
-     * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+     * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
      */
     public readonly purchaseOrderId!: pulumi.Output<string>;
     /**
@@ -164,7 +164,7 @@ export interface EntitlementArgs {
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ParameterArgs>[]>;
     /**
-     * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+     * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
      */
     purchaseOrderId?: pulumi.Input<string>;
     /**

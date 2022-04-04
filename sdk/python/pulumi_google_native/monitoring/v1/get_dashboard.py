@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDashboardResult:
-    def __init__(__self__, column_layout=None, display_name=None, etag=None, grid_layout=None, labels=None, mosaic_layout=None, name=None, row_layout=None):
+    def __init__(__self__, column_layout=None, dashboard_filters=None, display_name=None, etag=None, grid_layout=None, labels=None, mosaic_layout=None, name=None, row_layout=None):
         if column_layout and not isinstance(column_layout, dict):
             raise TypeError("Expected argument 'column_layout' to be a dict")
         pulumi.set(__self__, "column_layout", column_layout)
+        if dashboard_filters and not isinstance(dashboard_filters, list):
+            raise TypeError("Expected argument 'dashboard_filters' to be a list")
+        pulumi.set(__self__, "dashboard_filters", dashboard_filters)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -51,6 +54,14 @@ class GetDashboardResult:
         The content is divided into equally spaced columns and the widgets are arranged vertically.
         """
         return pulumi.get(self, "column_layout")
+
+    @property
+    @pulumi.getter(name="dashboardFilters")
+    def dashboard_filters(self) -> Sequence['outputs.DashboardFilterResponse']:
+        """
+        Filters to reduce the amount of data charted based on the filter criteria.
+        """
+        return pulumi.get(self, "dashboard_filters")
 
     @property
     @pulumi.getter(name="displayName")
@@ -116,6 +127,7 @@ class AwaitableGetDashboardResult(GetDashboardResult):
             yield self
         return GetDashboardResult(
             column_layout=self.column_layout,
+            dashboard_filters=self.dashboard_filters,
             display_name=self.display_name,
             etag=self.etag,
             grid_layout=self.grid_layout,
@@ -142,6 +154,7 @@ def get_dashboard(dashboard_id: Optional[str] = None,
 
     return AwaitableGetDashboardResult(
         column_layout=__ret__.column_layout,
+        dashboard_filters=__ret__.dashboard_filters,
         display_name=__ret__.display_name,
         etag=__ret__.etag,
         grid_layout=__ret__.grid_layout,

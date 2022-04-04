@@ -41,6 +41,10 @@ export interface GetEndpointAttachmentResult {
      * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      */
     readonly serviceAttachment: string;
+    /**
+     * State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+     */
+    readonly state: string;
 }
 
 export function getEndpointAttachmentOutput(args: GetEndpointAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAttachmentResult> {

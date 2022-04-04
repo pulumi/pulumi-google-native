@@ -6,8 +6,10 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .get_provisioning_config import *
 from .get_snapshot import *
 from .get_snapshot_schedule_policy import *
+from .provisioning_config import *
 from .snapshot import *
 from .snapshot_schedule_policy import *
 from ._inputs import *

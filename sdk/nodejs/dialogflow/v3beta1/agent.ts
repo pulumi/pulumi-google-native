@@ -64,6 +64,10 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean>;
     /**
+     * Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+     */
+    public readonly locked!: pulumi.Output<boolean>;
+    /**
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
@@ -131,6 +136,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["enableSpellCorrection"] = undefined /*out*/;
             resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
+            resourceInputs["locked"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["securitySettings"] = undefined /*out*/;
             resourceInputs["speechToTextSettings"] = undefined /*out*/;
@@ -176,6 +182,10 @@ export interface AgentArgs {
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
+    /**
+     * Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+     */
+    locked?: pulumi.Input<boolean>;
     /**
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */

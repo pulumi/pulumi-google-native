@@ -17,9 +17,9 @@ __all__ = ['ServiceArgs', 'Service']
 class ServiceArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
-                 template: pulumi.Input['GoogleCloudRunOpV2RevisionTemplateArgs'],
+                 template: pulumi.Input['GoogleCloudRunV2RevisionTemplateArgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input['GoogleCloudRunOpV2BinaryAuthorizationArgs']] = None,
+                 binary_authorization: Optional[pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -29,14 +29,14 @@ class ServiceArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2TrafficTargetArgs']]]] = None,
+                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
-        :param pulumi.Input['GoogleCloudRunOpV2RevisionTemplateArgs'] template: The template used to create revisions for this Service.
+        :param pulumi.Input['GoogleCloudRunV2RevisionTemplateArgs'] template: The template used to create revisions for this Service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
-        :param pulumi.Input['GoogleCloudRunOpV2BinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
@@ -44,7 +44,7 @@ class ServiceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2TrafficTargetArgs']]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         :param pulumi.Input[str] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         pulumi.set(__self__, "service_id", service_id)
@@ -90,14 +90,14 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def template(self) -> pulumi.Input['GoogleCloudRunOpV2RevisionTemplateArgs']:
+    def template(self) -> pulumi.Input['GoogleCloudRunV2RevisionTemplateArgs']:
         """
         The template used to create revisions for this Service.
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: pulumi.Input['GoogleCloudRunOpV2RevisionTemplateArgs']):
+    def template(self, value: pulumi.Input['GoogleCloudRunV2RevisionTemplateArgs']):
         pulumi.set(self, "template", value)
 
     @property
@@ -114,14 +114,14 @@ class ServiceArgs:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> Optional[pulumi.Input['GoogleCloudRunOpV2BinaryAuthorizationArgs']]:
+    def binary_authorization(self) -> Optional[pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs']]:
         """
         Settings for the Binary Authorization feature.
         """
         return pulumi.get(self, "binary_authorization")
 
     @binary_authorization.setter
-    def binary_authorization(self, value: Optional[pulumi.Input['GoogleCloudRunOpV2BinaryAuthorizationArgs']]):
+    def binary_authorization(self, value: Optional[pulumi.Input['GoogleCloudRunV2BinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
 
     @property
@@ -228,14 +228,14 @@ class ServiceArgs:
 
     @property
     @pulumi.getter
-    def traffic(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2TrafficTargetArgs']]]]:
+    def traffic(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         """
         return pulumi.get(self, "traffic")
 
     @traffic.setter
-    def traffic(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunOpV2TrafficTargetArgs']]]]):
+    def traffic(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2TrafficTargetArgs']]]]):
         pulumi.set(self, "traffic", value)
 
     @property
@@ -257,7 +257,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2BinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -268,8 +268,8 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2RevisionTemplateArgs']]] = None,
-                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2TrafficTargetArgs']]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']]] = None,
+                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -278,7 +278,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2BinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']] binary_authorization: Settings for the Binary Authorization feature.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
@@ -287,8 +287,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input['ServiceLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
         :param pulumi.Input[str] name: The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
         :param pulumi.Input[str] service_id: Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2RevisionTemplateArgs']] template: The template used to create revisions for this Service.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2TrafficTargetArgs']]]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']] template: The template used to create revisions for this Service.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]] traffic: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         :param pulumi.Input[str] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
         ...
@@ -316,7 +316,7 @@ class Service(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2BinaryAuthorizationArgs']]] = None,
+                 binary_authorization: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2BinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -327,8 +327,8 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2RevisionTemplateArgs']]] = None,
-                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunOpV2TrafficTargetArgs']]]]] = None,
+                 template: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRunV2RevisionTemplateArgs']]] = None,
+                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRunV2TrafficTargetArgs']]]]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -440,7 +440,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> pulumi.Output['outputs.GoogleCloudRunOpV2BinaryAuthorizationResponse']:
+    def binary_authorization(self) -> pulumi.Output['outputs.GoogleCloudRunV2BinaryAuthorizationResponse']:
         """
         Settings for the Binary Authorization feature.
         """
@@ -464,7 +464,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def conditions(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRunOpV2ConditionResponse']]:
+    def conditions(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRunV2ConditionResponse']]:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """
@@ -600,7 +600,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def template(self) -> pulumi.Output['outputs.GoogleCloudRunOpV2RevisionTemplateResponse']:
+    def template(self) -> pulumi.Output['outputs.GoogleCloudRunV2RevisionTemplateResponse']:
         """
         The template used to create revisions for this Service.
         """
@@ -608,7 +608,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="terminalCondition")
-    def terminal_condition(self) -> pulumi.Output['outputs.GoogleCloudRunOpV2ConditionResponse']:
+    def terminal_condition(self) -> pulumi.Output['outputs.GoogleCloudRunV2ConditionResponse']:
         """
         The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """
@@ -616,7 +616,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def traffic(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRunOpV2TrafficTargetResponse']]:
+    def traffic(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRunV2TrafficTargetResponse']]:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         """
@@ -624,7 +624,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trafficStatuses")
-    def traffic_statuses(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRunOpV2TrafficTargetStatusResponse']]:
+    def traffic_statuses(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRunV2TrafficTargetStatusResponse']]:
         """
         Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """

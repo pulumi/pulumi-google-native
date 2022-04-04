@@ -512,7 +512,7 @@ class LoggingConfigResponse(dict):
 @pulumi.output_type
 class MetadataOptionsResponse(dict):
     """
-    Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
+    Specifies the metadata options for running a transfer.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -548,16 +548,16 @@ class MetadataOptionsResponse(dict):
                  time_created: str,
                  uid: str):
         """
-        Specifies the metadata options for running a transfer. These options only apply to transfers involving a POSIX filesystem and are ignored for other transfers.
+        Specifies the metadata options for running a transfer.
         :param str acl: Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
-        :param str gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+        :param str gid: Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         :param str kms_key: Specifies how each object's Cloud KMS customer-managed encryption key (CMEK) is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as KMS_KEY_DESTINATION_BUCKET_DEFAULT.
-        :param str mode: Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+        :param str mode: Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         :param str storage_class: Specifies the storage class to set on objects being transferred to Google Cloud Storage buckets. If unspecified, the default behavior is the same as STORAGE_CLASS_DESTINATION_BUCKET_DEFAULT.
-        :param str symlink: Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+        :param str symlink: Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         :param str temporary_hold: Specifies how each object's temporary hold status should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TEMPORARY_HOLD_PRESERVE.
         :param str time_created: Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
-        :param str uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+        :param str uid: Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         """
         pulumi.set(__self__, "acl", acl)
         pulumi.set(__self__, "gid", gid)
@@ -581,7 +581,7 @@ class MetadataOptionsResponse(dict):
     @pulumi.getter
     def gid(self) -> str:
         """
-        Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved.
+        Specifies how each file's POSIX group ID (GID) attribute should be handled by the transfer. By default, GID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         """
         return pulumi.get(self, "gid")
 
@@ -597,7 +597,7 @@ class MetadataOptionsResponse(dict):
     @pulumi.getter
     def mode(self) -> str:
         """
-        Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved.
+        Specifies how each file's mode attribute should be handled by the transfer. By default, mode is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         """
         return pulumi.get(self, "mode")
 
@@ -613,7 +613,7 @@ class MetadataOptionsResponse(dict):
     @pulumi.getter
     def symlink(self) -> str:
         """
-        Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved.
+        Specifies how symlinks should be handled by the transfer. By default, symlinks are not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         """
         return pulumi.get(self, "symlink")
 
@@ -637,7 +637,7 @@ class MetadataOptionsResponse(dict):
     @pulumi.getter
     def uid(self) -> str:
         """
-        Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved.
+        Specifies how each file's POSIX user ID (UID) attribute should be handled by the transfer. By default, UID is not preserved. Only applicable to transfers involving POSIX file systems, and ignored for other transfers.
         """
         return pulumi.get(self, "uid")
 
@@ -1034,6 +1034,8 @@ class TransferOptionsResponse(dict):
             suggest = "metadata_options"
         elif key == "overwriteObjectsAlreadyExistingInSink":
             suggest = "overwrite_objects_already_existing_in_sink"
+        elif key == "overwriteWhen":
+            suggest = "overwrite_when"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TransferOptionsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1050,18 +1052,21 @@ class TransferOptionsResponse(dict):
                  delete_objects_from_source_after_transfer: bool,
                  delete_objects_unique_in_sink: bool,
                  metadata_options: 'outputs.MetadataOptionsResponse',
-                 overwrite_objects_already_existing_in_sink: bool):
+                 overwrite_objects_already_existing_in_sink: bool,
+                 overwrite_when: str):
         """
         TransferOptions define the actions to be performed on objects in a transfer.
         :param bool delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
         :param bool delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
         :param 'MetadataOptionsResponse' metadata_options: Represents the selected metadata options for a transfer job. This feature is in Preview.
         :param bool overwrite_objects_already_existing_in_sink: When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
+        :param str overwrite_when: When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         """
         pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
         pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
         pulumi.set(__self__, "metadata_options", metadata_options)
         pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
+        pulumi.set(__self__, "overwrite_when", overwrite_when)
 
     @property
     @pulumi.getter(name="deleteObjectsFromSourceAfterTransfer")
@@ -1094,6 +1099,14 @@ class TransferOptionsResponse(dict):
         When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
+
+    @property
+    @pulumi.getter(name="overwriteWhen")
+    def overwrite_when(self) -> str:
+        """
+        When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+        """
+        return pulumi.get(self, "overwrite_when")
 
 
 @pulumi.output_type

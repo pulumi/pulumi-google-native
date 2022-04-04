@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         public readonly string StatusMessage;
         /// <summary>
-        /// field indicates all the reasons the instance is in "SUSPENDED" state.
+        /// Field indicates all the reasons the instance is in "SUSPENDED" state.
         /// </summary>
         public readonly ImmutableArray<string> SuspensionReasons;
         /// <summary>

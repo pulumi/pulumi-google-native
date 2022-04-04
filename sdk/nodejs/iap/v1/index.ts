@@ -6,7 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./brand";
+export * from "./destGroup";
 export * from "./getBrand";
+export * from "./getDestGroup";
 export * from "./getIdentityAwareProxyClient";
 export * from "./getV1IamPolicy";
 export * from "./identityAwareProxyClient";
@@ -14,6 +16,7 @@ export * from "./v1iamPolicy";
 
 // Import resources to register:
 import { Brand } from "./brand";
+import { DestGroup } from "./destGroup";
 import { IdentityAwareProxyClient } from "./identityAwareProxyClient";
 import { V1IamPolicy } from "./v1iamPolicy";
 
@@ -23,6 +26,8 @@ const _module = {
         switch (type) {
             case "google-native:iap/v1:Brand":
                 return new Brand(name, <any>undefined, { urn })
+            case "google-native:iap/v1:DestGroup":
+                return new DestGroup(name, <any>undefined, { urn })
             case "google-native:iap/v1:IdentityAwareProxyClient":
                 return new IdentityAwareProxyClient(name, <any>undefined, { urn })
             case "google-native:iap/v1:V1IamPolicy":

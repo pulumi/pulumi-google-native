@@ -11497,7 +11497,7 @@ func (o GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponseArrayOutput)
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebService struct {
-	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password *string `pulumi:"password"`
@@ -11522,7 +11522,7 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceInput interface {
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs struct {
-	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 	AllowedCaCerts pulumi.StringArrayInput `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -11612,7 +11612,7 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) ToGoogleCl
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput)
 }
 
-// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) []string { return v.AllowedCaCerts }).(pulumi.StringArrayOutput)
 }
@@ -11663,7 +11663,7 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Elem() 
 	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput)
 }
 
-// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) []string {
 		if v == nil {
@@ -11715,7 +11715,7 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Usernam
 
 // Represents configuration for a generic web service.
 type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse struct {
-	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+	// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 	AllowedCaCerts []string `pulumi:"allowedCaCerts"`
 	// The password for HTTP Basic authentication.
 	Password string `pulumi:"password"`
@@ -11742,7 +11742,7 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) To
 	return o
 }
 
-// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")
+// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject alt name". For instance a certificate can be self-signed using the following command, ```openssl x509 -req -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf "\nsubjectAltName='DNS:www.example.com'")```
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) AllowedCaCerts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse) []string {
 		return v.AllowedCaCerts

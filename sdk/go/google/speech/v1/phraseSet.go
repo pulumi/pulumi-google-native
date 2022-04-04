@@ -70,7 +70,7 @@ type phraseSetArgs struct {
 	Location *string  `pulumi:"location"`
 	// The resource name of the phrase set.
 	Name *string `pulumi:"name"`
-	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
 	PhraseSetId string `pulumi:"phraseSetId"`
 	// A list of word and phrases.
 	Phrases []Phrase `pulumi:"phrases"`
@@ -84,7 +84,7 @@ type PhraseSetArgs struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the phrase set.
 	Name pulumi.StringPtrInput
-	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	// The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
 	PhraseSetId pulumi.StringInput
 	// A list of word and phrases.
 	Phrases PhraseArrayInput

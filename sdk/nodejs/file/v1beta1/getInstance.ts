@@ -77,7 +77,7 @@ export interface GetInstanceResult {
      */
     readonly statusMessage: string;
     /**
-     * field indicates all the reasons the instance is in "SUSPENDED" state.
+     * Field indicates all the reasons the instance is in "SUSPENDED" state.
      */
     readonly suspensionReasons: string[];
     /**

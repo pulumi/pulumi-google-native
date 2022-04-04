@@ -31,6 +31,8 @@ type LookupEnvgroupAttachmentResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// ID of the attached environment.
 	Environment string `pulumi:"environment"`
+	// ID of the environment group.
+	EnvironmentGroupId string `pulumi:"environmentGroupId"`
 	// ID of the environment group attachment.
 	Name string `pulumi:"name"`
 }
@@ -76,6 +78,11 @@ func (o LookupEnvgroupAttachmentResultOutput) CreatedAt() pulumi.StringOutput {
 // ID of the attached environment.
 func (o LookupEnvgroupAttachmentResultOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvgroupAttachmentResult) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// ID of the environment group.
+func (o LookupEnvgroupAttachmentResultOutput) EnvironmentGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvgroupAttachmentResult) string { return v.EnvironmentGroupId }).(pulumi.StringOutput)
 }
 
 // ID of the environment group attachment.

@@ -18,13 +18,13 @@ type Service struct {
 	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
-	BinaryAuthorization GoogleCloudRunOpV2BinaryAuthorizationResponseOutput `pulumi:"binaryAuthorization"`
+	BinaryAuthorization GoogleCloudRunV2BinaryAuthorizationResponseOutput `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringOutput `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion pulumi.StringOutput `pulumi:"clientVersion"`
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-	Conditions GoogleCloudRunOpV2ConditionResponseArrayOutput `pulumi:"conditions"`
+	Conditions GoogleCloudRunV2ConditionResponseArrayOutput `pulumi:"conditions"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Email address of the authenticated creator.
@@ -58,13 +58,13 @@ type Service struct {
 	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// The template used to create revisions for this Service.
-	Template GoogleCloudRunOpV2RevisionTemplateResponseOutput `pulumi:"template"`
+	Template GoogleCloudRunV2RevisionTemplateResponseOutput `pulumi:"template"`
 	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-	TerminalCondition GoogleCloudRunOpV2ConditionResponseOutput `pulumi:"terminalCondition"`
+	TerminalCondition GoogleCloudRunV2ConditionResponseOutput `pulumi:"terminalCondition"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-	Traffic GoogleCloudRunOpV2TrafficTargetResponseArrayOutput `pulumi:"traffic"`
+	Traffic GoogleCloudRunV2TrafficTargetResponseArrayOutput `pulumi:"traffic"`
 	// Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-	TrafficStatuses GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput `pulumi:"trafficStatuses"`
+	TrafficStatuses GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput `pulumi:"trafficStatuses"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The last-modified time.
@@ -121,7 +121,7 @@ type serviceArgs struct {
 	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
-	BinaryAuthorization *GoogleCloudRunOpV2BinaryAuthorization `pulumi:"binaryAuthorization"`
+	BinaryAuthorization *GoogleCloudRunV2BinaryAuthorization `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
@@ -141,9 +141,9 @@ type serviceArgs struct {
 	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId string `pulumi:"serviceId"`
 	// The template used to create revisions for this Service.
-	Template GoogleCloudRunOpV2RevisionTemplate `pulumi:"template"`
+	Template GoogleCloudRunV2RevisionTemplate `pulumi:"template"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-	Traffic []GoogleCloudRunOpV2TrafficTarget `pulumi:"traffic"`
+	Traffic []GoogleCloudRunV2TrafficTarget `pulumi:"traffic"`
 	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
@@ -153,7 +153,7 @@ type ServiceArgs struct {
 	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
-	BinaryAuthorization GoogleCloudRunOpV2BinaryAuthorizationPtrInput
+	BinaryAuthorization GoogleCloudRunV2BinaryAuthorizationPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
@@ -173,9 +173,9 @@ type ServiceArgs struct {
 	// Required. The unique identifier for the Service. The name of the service becomes {parent}/services/{service_id}.
 	ServiceId pulumi.StringInput
 	// The template used to create revisions for this Service.
-	Template GoogleCloudRunOpV2RevisionTemplateInput
+	Template GoogleCloudRunV2RevisionTemplateInput
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-	Traffic GoogleCloudRunOpV2TrafficTargetArrayInput
+	Traffic GoogleCloudRunV2TrafficTargetArrayInput
 	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
 	ValidateOnly pulumi.StringPtrInput
 }

@@ -43,6 +43,10 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
      */
     public readonly environment!: pulumi.Output<string>;
     /**
+     * ID of the environment group.
+     */
+    public /*out*/ readonly environmentGroupId!: pulumi.Output<string>;
+    /**
      * ID of the environment group attachment.
      */
     public readonly name!: pulumi.Output<string>;
@@ -72,9 +76,11 @@ export class EnvgroupAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["environmentGroupId"] = undefined /*out*/;
         } else {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["environment"] = undefined /*out*/;
+            resourceInputs["environmentGroupId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

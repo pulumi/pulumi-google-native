@@ -89,7 +89,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
-     * KeyRevocationActionType of the instance.
+     * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */
     public readonly keyRevocationActionType!: pulumi.Output<string>;
     /**
@@ -403,7 +403,7 @@ export interface InstanceArgs {
      */
     instanceEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
-     * KeyRevocationActionType of the instance.
+     * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */
     keyRevocationActionType?: pulumi.Input<enums.compute.alpha.InstanceKeyRevocationActionType>;
     /**

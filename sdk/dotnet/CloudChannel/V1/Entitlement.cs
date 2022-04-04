@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> ProvisioningState { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+        /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
         /// </summary>
         [Output("purchaseOrderId")]
         public Output<string> PurchaseOrderId { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         }
 
         /// <summary>
-        /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
+        /// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
         /// </summary>
         [Input("purchaseOrderId")]
         public Input<string>? PurchaseOrderId { get; set; }

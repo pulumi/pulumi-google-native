@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointAttachmentResult:
-    def __init__(__self__, host=None, location=None, name=None, service_attachment=None):
+    def __init__(__self__, host=None, location=None, name=None, service_attachment=None, state=None):
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
@@ -30,6 +30,9 @@ class GetEndpointAttachmentResult:
         if service_attachment and not isinstance(service_attachment, str):
             raise TypeError("Expected argument 'service_attachment' to be a str")
         pulumi.set(__self__, "service_attachment", service_attachment)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
@@ -63,6 +66,14 @@ class GetEndpointAttachmentResult:
         """
         return pulumi.get(self, "service_attachment")
 
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+        """
+        return pulumi.get(self, "state")
+
 
 class AwaitableGetEndpointAttachmentResult(GetEndpointAttachmentResult):
     # pylint: disable=using-constant-test
@@ -73,7 +84,8 @@ class AwaitableGetEndpointAttachmentResult(GetEndpointAttachmentResult):
             host=self.host,
             location=self.location,
             name=self.name,
-            service_attachment=self.service_attachment)
+            service_attachment=self.service_attachment,
+            state=self.state)
 
 
 def get_endpoint_attachment(endpoint_attachment_id: Optional[str] = None,
@@ -95,7 +107,8 @@ def get_endpoint_attachment(endpoint_attachment_id: Optional[str] = None,
         host=__ret__.host,
         location=__ret__.location,
         name=__ret__.name,
-        service_attachment=__ret__.service_attachment)
+        service_attachment=__ret__.service_attachment,
+        state=__ret__.state)
 
 
 @_utilities.lift_output_func(get_endpoint_attachment)

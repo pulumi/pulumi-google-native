@@ -2,7 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment = {
+export const GoogleCloudRunV2RevisionTemplateExecutionEnvironment = {
     /**
      * Unspecified
      */
@@ -20,9 +20,9 @@ export const GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment = {
 /**
  * The sandbox environment to host this Revision.
  */
-export type GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment = (typeof GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment)[keyof typeof GoogleCloudRunOpV2RevisionTemplateExecutionEnvironment];
+export type GoogleCloudRunV2RevisionTemplateExecutionEnvironment = (typeof GoogleCloudRunV2RevisionTemplateExecutionEnvironment)[keyof typeof GoogleCloudRunV2RevisionTemplateExecutionEnvironment];
 
-export const GoogleCloudRunOpV2TrafficTargetType = {
+export const GoogleCloudRunV2TrafficTargetType = {
     /**
      * Unspecified instance allocation type.
      */
@@ -40,9 +40,9 @@ export const GoogleCloudRunOpV2TrafficTargetType = {
 /**
  * The allocation type for this traffic target.
  */
-export type GoogleCloudRunOpV2TrafficTargetType = (typeof GoogleCloudRunOpV2TrafficTargetType)[keyof typeof GoogleCloudRunOpV2TrafficTargetType];
+export type GoogleCloudRunV2TrafficTargetType = (typeof GoogleCloudRunV2TrafficTargetType)[keyof typeof GoogleCloudRunV2TrafficTargetType];
 
-export const GoogleCloudRunOpV2VpcAccessEgress = {
+export const GoogleCloudRunV2VpcAccessEgress = {
     /**
      * Unspecified
      */
@@ -60,7 +60,7 @@ export const GoogleCloudRunOpV2VpcAccessEgress = {
 /**
  * Traffic VPC egress settings.
  */
-export type GoogleCloudRunOpV2VpcAccessEgress = (typeof GoogleCloudRunOpV2VpcAccessEgress)[keyof typeof GoogleCloudRunOpV2VpcAccessEgress];
+export type GoogleCloudRunV2VpcAccessEgress = (typeof GoogleCloudRunV2VpcAccessEgress)[keyof typeof GoogleCloudRunV2VpcAccessEgress];
 
 export const GoogleIamV1AuditLogConfigLogType = {
     /**

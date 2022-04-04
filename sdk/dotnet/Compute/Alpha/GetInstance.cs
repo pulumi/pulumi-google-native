@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse InstanceEncryptionKey;
         /// <summary>
-        /// KeyRevocationActionType of the instance.
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         public readonly string KeyRevocationActionType;
         /// <summary>

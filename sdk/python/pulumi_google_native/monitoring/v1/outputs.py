@@ -18,6 +18,7 @@ __all__ = [
     'CollapsibleGroupResponse',
     'ColumnLayoutResponse',
     'ColumnResponse',
+    'DashboardFilterResponse',
     'DataSetResponse',
     'EmptyResponse',
     'GaugeViewResponse',
@@ -277,6 +278,84 @@ class ColumnResponse(dict):
 
 
 @pulumi.output_type
+class DashboardFilterResponse(dict):
+    """
+    A filter to reduce the amount of data charted in relevant widgets.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterType":
+            suggest = "filter_type"
+        elif key == "labelKey":
+            suggest = "label_key"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "templateVariable":
+            suggest = "template_variable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DashboardFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DashboardFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DashboardFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter_type: str,
+                 label_key: str,
+                 string_value: str,
+                 template_variable: str):
+        """
+        A filter to reduce the amount of data charted in relevant widgets.
+        :param str filter_type: The specified filter type
+        :param str label_key: The key for the label
+        :param str string_value: A variable-length string value.
+        :param str template_variable: The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+        """
+        pulumi.set(__self__, "filter_type", filter_type)
+        pulumi.set(__self__, "label_key", label_key)
+        pulumi.set(__self__, "string_value", string_value)
+        pulumi.set(__self__, "template_variable", template_variable)
+
+    @property
+    @pulumi.getter(name="filterType")
+    def filter_type(self) -> str:
+        """
+        The specified filter type
+        """
+        return pulumi.get(self, "filter_type")
+
+    @property
+    @pulumi.getter(name="labelKey")
+    def label_key(self) -> str:
+        """
+        The key for the label
+        """
+        return pulumi.get(self, "label_key")
+
+    @property
+    @pulumi.getter(name="stringValue")
+    def string_value(self) -> str:
+        """
+        A variable-length string value.
+        """
+        return pulumi.get(self, "string_value")
+
+    @property
+    @pulumi.getter(name="templateVariable")
+    def template_variable(self) -> str:
+        """
+        The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
+        """
+        return pulumi.get(self, "template_variable")
+
+
+@pulumi.output_type
 class DataSetResponse(dict):
     """
     Groups a time series query definition with charting options.
@@ -370,11 +449,11 @@ class DataSetResponse(dict):
 @pulumi.output_type
 class EmptyResponse(dict):
     """
-    A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
+    A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } 
     """
     def __init__(__self__):
         """
-        A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty JSON object {}.
+        A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } 
         """
         pass
 

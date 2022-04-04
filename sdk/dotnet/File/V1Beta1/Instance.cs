@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public Output<string> StatusMessage { get; private set; } = null!;
 
         /// <summary>
-        /// field indicates all the reasons the instance is in "SUSPENDED" state.
+        /// Field indicates all the reasons the instance is in "SUSPENDED" state.
         /// </summary>
         [Output("suspensionReasons")]
         public Output<ImmutableArray<string>> SuspensionReasons { get; private set; } = null!;

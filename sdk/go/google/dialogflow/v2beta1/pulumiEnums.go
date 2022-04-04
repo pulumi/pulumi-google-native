@@ -2454,7 +2454,7 @@ const (
 	GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeTypeUnspecified = GoogleCloudDialogflowV2beta1IntentTrainingPhraseType("TYPE_UNSPECIFIED")
 	// Examples do not contain @-prefixed entity type names, but example parts can be annotated with entity types.
 	GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeExample = GoogleCloudDialogflowV2beta1IntentTrainingPhraseType("EXAMPLE")
-	// Templates are not annotated with entity types, but they can contain @-prefixed entity type names as substrings. Template mode has been deprecated. Example mode is the only supported way to create new training phrases. If you have existing training phrases that you've created in template mode, those will continue to work.
+	// Templates are not annotated with entity types, but they can contain @-prefixed entity type names as substrings. Note: Template mode has been deprecated. Example mode is the only supported way to create new training phrases. If you have existing training phrases in template mode, they will be removed during training and it can cause a drop in agent performance.
 	GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeTemplate = GoogleCloudDialogflowV2beta1IntentTrainingPhraseType("TEMPLATE")
 )
 

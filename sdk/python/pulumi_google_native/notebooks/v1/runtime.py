@@ -20,12 +20,14 @@ class RuntimeArgs:
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
                  virtual_machine: Optional[pulumi.Input['VirtualMachineArgs']] = None):
         """
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
         :param pulumi.Input['VirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
         """
@@ -36,6 +38,8 @@ class RuntimeArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if virtual_machine is not None:
@@ -84,6 +88,18 @@ class RuntimeArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Idempotent request UUID.
+        """
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="softwareConfig")
     def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]:
         """
@@ -116,6 +132,7 @@ class Runtime(pulumi.CustomResource):
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  runtime_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
                  virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
@@ -127,6 +144,7 @@ class Runtime(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
         :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
         :param pulumi.Input[pulumi.InputType['VirtualMachineArgs']] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
@@ -159,6 +177,7 @@ class Runtime(pulumi.CustomResource):
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  runtime_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
                  virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
@@ -177,6 +196,7 @@ class Runtime(pulumi.CustomResource):
             __props__.__dict__["access_config"] = access_config
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             if runtime_id is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime_id'")
             __props__.__dict__["runtime_id"] = runtime_id

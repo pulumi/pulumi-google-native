@@ -43,7 +43,10 @@ export class FutureReservation extends pulumi.CustomResource {
      * An optional description of this resource. Provide this property when you create the future reservation.
      */
     public readonly description!: pulumi.Output<string>;
-    public readonly kind!: pulumi.Output<string>;
+    /**
+     * Type of the resource. Always compute#futureReservation for future reservations.
+     */
+    public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -93,7 +96,6 @@ export class FutureReservation extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -103,6 +105,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["timeWindow"] = args ? args.timeWindow : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -133,7 +136,6 @@ export interface FutureReservationArgs {
      * An optional description of this resource. Provide this property when you create the future reservation.
      */
     description?: pulumi.Input<string>;
-    kind?: pulumi.Input<string>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

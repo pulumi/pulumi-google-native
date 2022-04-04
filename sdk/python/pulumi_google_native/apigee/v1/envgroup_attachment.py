@@ -140,6 +140,7 @@ class EnvgroupAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["created_at"] = None
+            __props__.__dict__["environment_group_id"] = None
         super(EnvgroupAttachment, __self__).__init__(
             'google-native:apigee/v1:EnvgroupAttachment',
             resource_name,
@@ -164,6 +165,7 @@ class EnvgroupAttachment(pulumi.CustomResource):
 
         __props__.__dict__["created_at"] = None
         __props__.__dict__["environment"] = None
+        __props__.__dict__["environment_group_id"] = None
         __props__.__dict__["name"] = None
         return EnvgroupAttachment(resource_name, opts=opts, __props__=__props__)
 
@@ -182,6 +184,14 @@ class EnvgroupAttachment(pulumi.CustomResource):
         ID of the attached environment.
         """
         return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter(name="environmentGroupId")
+    def environment_group_id(self) -> pulumi.Output[str]:
+        """
+        ID of the environment group.
+        """
+        return pulumi.get(self, "environment_group_id")
 
     @property
     @pulumi.getter

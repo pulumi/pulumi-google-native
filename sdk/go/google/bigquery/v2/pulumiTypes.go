@@ -9191,6 +9191,37 @@ func (o JobStatistics4ResponseOutput) InputBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v JobStatistics4Response) string { return v.InputBytes }).(pulumi.StringOutput)
 }
 
+type JobStatistics5Response struct {
+	// Number of logical bytes copied to the destination table.
+	CopiedLogicalBytes string `pulumi:"copiedLogicalBytes"`
+	// Number of rows copied to the destination table.
+	CopiedRows string `pulumi:"copiedRows"`
+}
+
+type JobStatistics5ResponseOutput struct{ *pulumi.OutputState }
+
+func (JobStatistics5ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatistics5Response)(nil)).Elem()
+}
+
+func (o JobStatistics5ResponseOutput) ToJobStatistics5ResponseOutput() JobStatistics5ResponseOutput {
+	return o
+}
+
+func (o JobStatistics5ResponseOutput) ToJobStatistics5ResponseOutputWithContext(ctx context.Context) JobStatistics5ResponseOutput {
+	return o
+}
+
+// Number of logical bytes copied to the destination table.
+func (o JobStatistics5ResponseOutput) CopiedLogicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatistics5Response) string { return v.CopiedLogicalBytes }).(pulumi.StringOutput)
+}
+
+// Number of rows copied to the destination table.
+func (o JobStatistics5ResponseOutput) CopiedRows() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatistics5Response) string { return v.CopiedRows }).(pulumi.StringOutput)
+}
+
 type JobStatisticsReservationUsageItemResponse struct {
 	// Reservation name or "unreserved" for on-demand resources usage.
 	Name string `pulumi:"name"`
@@ -9245,6 +9276,8 @@ func (o JobStatisticsReservationUsageItemResponseArrayOutput) Index(i pulumi.Int
 type JobStatisticsResponse struct {
 	// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
 	CompletionRatio float64 `pulumi:"completionRatio"`
+	// Statistics for a copy job.
+	Copy JobStatistics5Response `pulumi:"copy"`
 	// Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
 	CreationTime string `pulumi:"creationTime"`
 	// End time of this job, in milliseconds since the epoch. This field will be present whenever a job is in the DONE state.
@@ -9300,6 +9333,11 @@ func (o JobStatisticsResponseOutput) ToJobStatisticsResponseOutputWithContext(ct
 // [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and EXTRACT jobs.
 func (o JobStatisticsResponseOutput) CompletionRatio() pulumi.Float64Output {
 	return o.ApplyT(func(v JobStatisticsResponse) float64 { return v.CompletionRatio }).(pulumi.Float64Output)
+}
+
+// Statistics for a copy job.
+func (o JobStatisticsResponseOutput) Copy() JobStatistics5ResponseOutput {
+	return o.ApplyT(func(v JobStatisticsResponse) JobStatistics5Response { return v.Copy }).(JobStatistics5ResponseOutput)
 }
 
 // Creation time of this job, in milliseconds since the epoch. This field will be present on all jobs.
@@ -15079,6 +15117,7 @@ func init() {
 	pulumi.RegisterOutputType(JobStatistics2ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics3ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatistics4ResponseOutput{})
+	pulumi.RegisterOutputType(JobStatistics5ResponseOutput{})
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseOutput{})
 	pulumi.RegisterOutputType(JobStatisticsReservationUsageItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatisticsResponseOutput{})

@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string RepoType;
         /// <summary>
-        /// The URI of the repo (required).
+        /// The URI of the repo. Either uri or repository can be specified and is required.
         /// </summary>
         public readonly string Uri;
 

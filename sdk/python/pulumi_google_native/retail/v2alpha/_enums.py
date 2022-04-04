@@ -5,12 +5,28 @@
 from enum import Enum
 
 __all__ = [
+    'ControlSearchSolutionUseCaseItem',
     'ControlSolutionTypesItem',
     'GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode',
     'ProductAvailability',
     'ProductType',
     'ServingConfigSolutionTypesItem',
 ]
+
+
+class ControlSearchSolutionUseCaseItem(str, Enum):
+    SEARCH_SOLUTION_USE_CASE_UNSPECIFIED = "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
+    """
+    The value when it's unspecified. Defaults to SEARCH.
+    """
+    SEARCH_SOLUTION_USE_CASE_SEARCH = "SEARCH_SOLUTION_USE_CASE_SEARCH"
+    """
+    Search use case. Expects the traffic has a non-empty query.
+    """
+    SEARCH_SOLUTION_USE_CASE_BROWSE = "SEARCH_SOLUTION_USE_CASE_BROWSE"
+    """
+    Browse use case. Expects the traffic has an empty query.
+    """
 
 
 class ControlSolutionTypesItem(str, Enum):

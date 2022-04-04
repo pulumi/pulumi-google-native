@@ -1823,7 +1823,7 @@ const (
 	MonitoringComponentConfigEnableComponentsItemComponentUnspecified = MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED")
 	// system components
 	MonitoringComponentConfigEnableComponentsItemSystemComponents = MonitoringComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
-	// workloads
+	// Deprecated: Use Google Cloud Managed Service for Prometheus.
 	MonitoringComponentConfigEnableComponentsItemWorkloads = MonitoringComponentConfigEnableComponentsItem("WORKLOADS")
 )
 

@@ -84,6 +84,10 @@ export interface GetDatasetResult {
      */
     readonly location: string;
     /**
+     * [Optional] Number of hours for the max time travel for all tables in the dataset.
+     */
+    readonly maxTimeTravelHours: string;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPZS: boolean;

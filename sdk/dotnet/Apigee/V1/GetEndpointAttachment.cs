@@ -71,6 +71,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Format: projects/*/regions/*/serviceAttachments/*
         /// </summary>
         public readonly string ServiceAttachment;
+        /// <summary>
+        /// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
         private GetEndpointAttachmentResult(
@@ -80,12 +84,15 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string name,
 
-            string serviceAttachment)
+            string serviceAttachment,
+
+            string state)
         {
             Host = host;
             Location = location;
             Name = name;
             ServiceAttachment = serviceAttachment;
+            State = state;
         }
     }
 }

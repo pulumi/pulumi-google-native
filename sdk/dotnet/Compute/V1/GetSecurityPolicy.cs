@@ -61,6 +61,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
+        public readonly Outputs.SecurityPolicyDdosProtectionConfigResponse DdosProtectionConfig;
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
@@ -78,6 +79,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         public readonly Outputs.SecurityPolicyRecaptchaOptionsConfigResponse RecaptchaOptionsConfig;
+        /// <summary>
+        /// URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        /// </summary>
+        public readonly string Region;
         /// <summary>
         /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         /// </summary>
@@ -99,6 +104,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string creationTimestamp,
 
+            Outputs.SecurityPolicyDdosProtectionConfigResponse ddosProtectionConfig,
+
             string description,
 
             string fingerprint,
@@ -109,6 +116,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.SecurityPolicyRecaptchaOptionsConfigResponse recaptchaOptionsConfig,
 
+            string region,
+
             ImmutableArray<Outputs.SecurityPolicyRuleResponse> rules,
 
             string selfLink,
@@ -118,11 +127,13 @@ namespace Pulumi.GoogleNative.Compute.V1
             AdaptiveProtectionConfig = adaptiveProtectionConfig;
             AdvancedOptionsConfig = advancedOptionsConfig;
             CreationTimestamp = creationTimestamp;
+            DdosProtectionConfig = ddosProtectionConfig;
             Description = description;
             Fingerprint = fingerprint;
             Kind = kind;
             Name = name;
             RecaptchaOptionsConfig = recaptchaOptionsConfig;
+            Region = region;
             Rules = rules;
             SelfLink = selfLink;
             Type = type;

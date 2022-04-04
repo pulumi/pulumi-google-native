@@ -18,6 +18,7 @@ class SecurityPolicyArgs:
     def __init__(__self__, *,
                  adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
                  advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
+                 ddos_protection_config: Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,8 @@ class SecurityPolicyArgs:
             pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
         if advanced_options_config is not None:
             pulumi.set(__self__, "advanced_options_config", advanced_options_config)
+        if ddos_protection_config is not None:
+            pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -69,6 +72,15 @@ class SecurityPolicyArgs:
     @advanced_options_config.setter
     def advanced_options_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]):
         pulumi.set(self, "advanced_options_config", value)
+
+    @property
+    @pulumi.getter(name="ddosProtectionConfig")
+    def ddos_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigArgs']]:
+        return pulumi.get(self, "ddos_protection_config")
+
+    @ddos_protection_config.setter
+    def ddos_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyDdosProtectionConfigArgs']]):
+        pulumi.set(self, "ddos_protection_config", value)
 
     @property
     @pulumi.getter
@@ -156,6 +168,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyDdosProtectionConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -201,6 +214,7 @@ class SecurityPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
                  advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
+                 ddos_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyDdosProtectionConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -222,6 +236,7 @@ class SecurityPolicy(pulumi.CustomResource):
 
             __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
             __props__.__dict__["advanced_options_config"] = advanced_options_config
+            __props__.__dict__["ddos_protection_config"] = ddos_protection_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -232,6 +247,7 @@ class SecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
         super(SecurityPolicy, __self__).__init__(
             'google-native:compute/v1:SecurityPolicy',
@@ -258,11 +274,13 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["adaptive_protection_config"] = None
         __props__.__dict__["advanced_options_config"] = None
         __props__.__dict__["creation_timestamp"] = None
+        __props__.__dict__["ddos_protection_config"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["recaptcha_options_config"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["type"] = None
@@ -285,6 +303,11 @@ class SecurityPolicy(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="ddosProtectionConfig")
+    def ddos_protection_config(self) -> pulumi.Output['outputs.SecurityPolicyDdosProtectionConfigResponse']:
+        return pulumi.get(self, "ddos_protection_config")
 
     @property
     @pulumi.getter
@@ -322,6 +345,14 @@ class SecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="recaptchaOptionsConfig")
     def recaptcha_options_config(self) -> pulumi.Output['outputs.SecurityPolicyRecaptchaOptionsConfigResponse']:
         return pulumi.get(self, "recaptcha_options_config")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional security policy resides. This field is not applicable to global security policies.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter

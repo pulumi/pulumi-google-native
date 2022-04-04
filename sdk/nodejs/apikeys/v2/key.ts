@@ -37,6 +37,10 @@ export class Key extends pulumi.CustomResource {
     }
 
     /**
+     * Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    /**
      * A timestamp identifying the time this key was originally created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -84,6 +88,7 @@ export class Key extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["keyId"] = args ? args.keyId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -97,6 +102,7 @@ export class Key extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -116,6 +122,10 @@ export class Key extends pulumi.CustomResource {
  * The set of arguments for constructing a Key resource.
  */
 export interface KeyArgs {
+    /**
+     * Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Human-readable display name of this key that you can modify. The maximum length is 63 characters.
      */

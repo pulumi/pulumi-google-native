@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+        /// </summary>
+        [Output("sizeBytes")]
+        public Output<string> SizeBytes { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the repository was last updated.
         /// </summary>
         [Output("updateTime")]

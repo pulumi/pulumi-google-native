@@ -33,6 +33,14 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly string AppPackageId;
         /// <summary>
+        /// The max depth of the traversal stack Robo can explore. Needs to be at least 2 to make Robo explore the app beyond the first activity. Default is 50.
+        /// </summary>
+        public readonly int MaxDepth;
+        /// <summary>
+        /// The max number of steps Robo can execute. Default is no limit.
+        /// </summary>
+        public readonly int MaxSteps;
+        /// <summary>
         /// A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided.
         /// </summary>
         public readonly ImmutableArray<Outputs.RoboDirectiveResponse> RoboDirectives;
@@ -59,6 +67,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             string appPackageId,
 
+            int maxDepth,
+
+            int maxSteps,
+
             ImmutableArray<Outputs.RoboDirectiveResponse> roboDirectives,
 
             string roboMode,
@@ -71,6 +83,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
             AppBundle = appBundle;
             AppInitialActivity = appInitialActivity;
             AppPackageId = appPackageId;
+            MaxDepth = maxDepth;
+            MaxSteps = maxSteps;
             RoboDirectives = roboDirectives;
             RoboMode = roboMode;
             RoboScript = roboScript;

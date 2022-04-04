@@ -9,6 +9,7 @@ __all__ = [
     'AggregationPerSeriesAligner',
     'AxisScale',
     'ChartOptionsMode',
+    'DashboardFilterFilterType',
     'DataSetPlotType',
     'DataSetTargetAxis',
     'PickTimeSeriesFilterDirection',
@@ -203,6 +204,36 @@ class ChartOptionsMode(str, Enum):
     STATS = "STATS"
     """
     The chart displays statistics such as average, median, 95th percentile, and more.
+    """
+
+
+class DashboardFilterFilterType(str, Enum):
+    """
+    The specified filter type
+    """
+    FILTER_TYPE_UNSPECIFIED = "FILTER_TYPE_UNSPECIFIED"
+    """
+    Filter type is unspecified. This is not valid in a well-formed request.
+    """
+    RESOURCE_LABEL = "RESOURCE_LABEL"
+    """
+    Filter on a resource label value
+    """
+    METRIC_LABEL = "METRIC_LABEL"
+    """
+    Filter on a metrics label value
+    """
+    USER_METADATA_LABEL = "USER_METADATA_LABEL"
+    """
+    Filter on a user metadata label value
+    """
+    SYSTEM_METADATA_LABEL = "SYSTEM_METADATA_LABEL"
+    """
+    Filter on a system metadata label value
+    """
+    GROUP = "GROUP"
+    """
+    Filter on a group id
     """
 
 

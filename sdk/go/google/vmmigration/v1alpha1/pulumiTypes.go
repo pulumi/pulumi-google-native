@@ -1296,6 +1296,99 @@ func (o CutoverJobResponseArrayOutput) Index(i pulumi.IntInput) CutoverJobRespon
 	}).(CutoverJobResponseOutput)
 }
 
+// CycleStep hold information about a step progress.
+type CycleStepResponse struct {
+	// The time the cycle step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Initializing replication step.
+	InitializingReplication InitializingReplicationStepResponse `pulumi:"initializingReplication"`
+	// Post processing step.
+	PostProcessing PostProcessingStepResponse `pulumi:"postProcessing"`
+	// Replicating step.
+	Replicating ReplicatingStepResponse `pulumi:"replicating"`
+	// The time the cycle step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// CycleStep hold information about a step progress.
+type CycleStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CycleStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CycleStepResponse)(nil)).Elem()
+}
+
+func (o CycleStepResponseOutput) ToCycleStepResponseOutput() CycleStepResponseOutput {
+	return o
+}
+
+func (o CycleStepResponseOutput) ToCycleStepResponseOutputWithContext(ctx context.Context) CycleStepResponseOutput {
+	return o
+}
+
+// The time the cycle step has ended.
+func (o CycleStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CycleStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Initializing replication step.
+func (o CycleStepResponseOutput) InitializingReplication() InitializingReplicationStepResponseOutput {
+	return o.ApplyT(func(v CycleStepResponse) InitializingReplicationStepResponse { return v.InitializingReplication }).(InitializingReplicationStepResponseOutput)
+}
+
+// Post processing step.
+func (o CycleStepResponseOutput) PostProcessing() PostProcessingStepResponseOutput {
+	return o.ApplyT(func(v CycleStepResponse) PostProcessingStepResponse { return v.PostProcessing }).(PostProcessingStepResponseOutput)
+}
+
+// Replicating step.
+func (o CycleStepResponseOutput) Replicating() ReplicatingStepResponseOutput {
+	return o.ApplyT(func(v CycleStepResponse) ReplicatingStepResponse { return v.Replicating }).(ReplicatingStepResponseOutput)
+}
+
+// The time the cycle step has started.
+func (o CycleStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CycleStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type CycleStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CycleStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CycleStepResponse)(nil)).Elem()
+}
+
+func (o CycleStepResponseArrayOutput) ToCycleStepResponseArrayOutput() CycleStepResponseArrayOutput {
+	return o
+}
+
+func (o CycleStepResponseArrayOutput) ToCycleStepResponseArrayOutputWithContext(ctx context.Context) CycleStepResponseArrayOutput {
+	return o
+}
+
+func (o CycleStepResponseArrayOutput) Index(i pulumi.IntInput) CycleStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CycleStepResponse {
+		return vs[0].([]CycleStepResponse)[vs[1].(int)]
+	}).(CycleStepResponseOutput)
+}
+
+// InitializingReplicationStep contains specific step details.
+type InitializingReplicationStepResponse struct {
+}
+
+// InitializingReplicationStep contains specific step details.
+type InitializingReplicationStepResponseOutput struct{ *pulumi.OutputState }
+
+func (InitializingReplicationStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InitializingReplicationStepResponse)(nil)).Elem()
+}
+
+func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutput() InitializingReplicationStepResponseOutput {
+	return o
+}
+
+func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutputWithContext(ctx context.Context) InitializingReplicationStepResponseOutput {
+	return o
+}
+
 // NetworkInterface represents a NIC of a VM.
 type NetworkInterface struct {
 	// The external IP to define in the NIC.
@@ -1490,6 +1583,72 @@ func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInt
 	}).(NetworkInterfaceResponseOutput)
 }
 
+// PostProcessingStep contains specific step details.
+type PostProcessingStepResponse struct {
+}
+
+// PostProcessingStep contains specific step details.
+type PostProcessingStepResponseOutput struct{ *pulumi.OutputState }
+
+func (PostProcessingStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostProcessingStepResponse)(nil)).Elem()
+}
+
+func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutput() PostProcessingStepResponseOutput {
+	return o
+}
+
+func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutputWithContext(ctx context.Context) PostProcessingStepResponseOutput {
+	return o
+}
+
+// ReplicatingStep contains specific step details.
+type ReplicatingStepResponse struct {
+	// The source disks replication rate for the last 30 minutes in bytes per second.
+	LastThirtyMinutesAverageBytesPerSecond string `pulumi:"lastThirtyMinutesAverageBytesPerSecond"`
+	// The source disks replication rate for the last 2 minutes in bytes per second.
+	LastTwoMinutesAverageBytesPerSecond string `pulumi:"lastTwoMinutesAverageBytesPerSecond"`
+	// Replicated bytes in the step.
+	ReplicatedBytes string `pulumi:"replicatedBytes"`
+	// Total bytes to be handled in the step.
+	TotalBytes string `pulumi:"totalBytes"`
+}
+
+// ReplicatingStep contains specific step details.
+type ReplicatingStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplicatingStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicatingStepResponse)(nil)).Elem()
+}
+
+func (o ReplicatingStepResponseOutput) ToReplicatingStepResponseOutput() ReplicatingStepResponseOutput {
+	return o
+}
+
+func (o ReplicatingStepResponseOutput) ToReplicatingStepResponseOutputWithContext(ctx context.Context) ReplicatingStepResponseOutput {
+	return o
+}
+
+// The source disks replication rate for the last 30 minutes in bytes per second.
+func (o ReplicatingStepResponseOutput) LastThirtyMinutesAverageBytesPerSecond() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.LastThirtyMinutesAverageBytesPerSecond }).(pulumi.StringOutput)
+}
+
+// The source disks replication rate for the last 2 minutes in bytes per second.
+func (o ReplicatingStepResponseOutput) LastTwoMinutesAverageBytesPerSecond() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.LastTwoMinutesAverageBytesPerSecond }).(pulumi.StringOutput)
+}
+
+// Replicated bytes in the step.
+func (o ReplicatingStepResponseOutput) ReplicatedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.ReplicatedBytes }).(pulumi.StringOutput)
+}
+
+// Total bytes to be handled in the step.
+func (o ReplicatingStepResponseOutput) TotalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.TotalBytes }).(pulumi.StringOutput)
+}
+
 // ReplicationCycle contains information about the current replication cycle status.
 type ReplicationCycleResponse struct {
 	// The current progress in percentage of this cycle.
@@ -1498,6 +1657,8 @@ type ReplicationCycleResponse struct {
 	ProgressPercent int `pulumi:"progressPercent"`
 	// The time the replication cycle has started.
 	StartTime string `pulumi:"startTime"`
+	// The cycle's steps list representing its progress.
+	Steps []CycleStepResponse `pulumi:"steps"`
 	// The accumulated duration the replication cycle was paused.
 	TotalPauseDuration string `pulumi:"totalPauseDuration"`
 }
@@ -1530,6 +1691,11 @@ func (o ReplicationCycleResponseOutput) ProgressPercent() pulumi.IntOutput {
 // The time the replication cycle has started.
 func (o ReplicationCycleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The cycle's steps list representing its progress.
+func (o ReplicationCycleResponseOutput) Steps() CycleStepResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) []CycleStepResponse { return v.Steps }).(CycleStepResponseArrayOutput)
 }
 
 // The accumulated duration the replication cycle was paused.
@@ -4128,10 +4294,15 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(CycleStepResponseOutput{})
+	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(PostProcessingStepResponseOutput{})
+	pulumi.RegisterOutputType(ReplicatingStepResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationCycleResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationSyncResponseOutput{})
 	pulumi.RegisterOutputType(SchedulePolicyOutput{})

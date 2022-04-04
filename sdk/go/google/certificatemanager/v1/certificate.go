@@ -29,7 +29,7 @@ type Certificate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The PEM-encoded certificate chain.
 	PemCertificate pulumi.StringOutput `pulumi:"pemCertificate"`
-	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6). Managed certificates that haven't been provisioned yet have this field populated with a value of the managed.domains field.
 	SanDnsnames pulumi.StringArrayOutput `pulumi:"sanDnsnames"`
 	// Immutable. The scope of the certificate.
 	Scope pulumi.StringOutput `pulumi:"scope"`

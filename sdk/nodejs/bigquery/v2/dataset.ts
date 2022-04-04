@@ -94,6 +94,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * [Optional] Number of hours for the max time travel for all tables in the dataset.
+     */
+    public readonly maxTimeTravelHours!: pulumi.Output<string>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPZS!: pulumi.Output<boolean>;
@@ -127,6 +131,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -152,6 +157,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["maxTimeTravelHours"] = undefined /*out*/;
             resourceInputs["satisfiesPZS"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -202,6 +208,10 @@ export interface DatasetArgs {
      * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
      */
     location?: pulumi.Input<string>;
+    /**
+     * [Optional] Number of hours for the max time travel for all tables in the dataset.
+     */
+    maxTimeTravelHours?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * [Optional]The tags associated with this dataset. Tag keys are globally unique.

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("serviceAttachment")]
         public Output<string> ServiceAttachment { get; private set; } = null!;
 
+        /// <summary>
+        /// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a EndpointAttachment resource with the given unique name, arguments, and options.

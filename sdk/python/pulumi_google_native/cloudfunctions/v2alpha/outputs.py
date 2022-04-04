@@ -303,13 +303,16 @@ class EventFilterResponse(dict):
     """
     def __init__(__self__, *,
                  attribute: str,
+                 operator: str,
                  value: str):
         """
         Filters events based on exact matches on the CloudEvents attributes.
         :param str attribute: The name of a CloudEvents attribute.
+        :param str operator: Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
         :param str value: The value for the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
+        pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -319,6 +322,14 @@ class EventFilterResponse(dict):
         The name of a CloudEvents attribute.
         """
         return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+        """
+        return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
@@ -703,6 +714,7 @@ class ServiceConfigResponse(dict):
                  ingress_settings: str,
                  max_instance_count: int,
                  min_instance_count: int,
+                 revision: str,
                  service: str,
                  service_account_email: str,
                  timeout_seconds: int,
@@ -717,6 +729,7 @@ class ServiceConfigResponse(dict):
         :param str ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param int max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
+        :param str revision: The name of service revision.
         :param str service: Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         :param str service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -730,6 +743,7 @@ class ServiceConfigResponse(dict):
         pulumi.set(__self__, "ingress_settings", ingress_settings)
         pulumi.set(__self__, "max_instance_count", max_instance_count)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
+        pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
@@ -784,6 +798,14 @@ class ServiceConfigResponse(dict):
         The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         """
         return pulumi.get(self, "min_instance_count")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> str:
+        """
+        The name of service revision.
+        """
+        return pulumi.get(self, "revision")
 
     @property
     @pulumi.getter

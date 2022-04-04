@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         }
 
         /// <summary>
-        /// KeyRevocationActionType of the instance.
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         /// </summary>
         [Input("keyRevocationActionType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.InstancePropertiesKeyRevocationActionType>? KeyRevocationActionType { get; set; }

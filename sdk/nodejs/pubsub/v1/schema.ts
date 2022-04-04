@@ -44,6 +44,14 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The timestamp that the revision was created.
+     */
+    public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
+    /**
+     * Immutable. The revision ID of the schema.
+     */
+    public /*out*/ readonly revisionId!: pulumi.Output<string>;
+    /**
      * The type of the schema definition.
      */
     public readonly type!: pulumi.Output<string>;
@@ -64,9 +72,13 @@ export class Schema extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["schemaId"] = args ? args.schemaId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
         } else {
             resourceInputs["definition"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["revisionCreateTime"] = undefined /*out*/;
+            resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

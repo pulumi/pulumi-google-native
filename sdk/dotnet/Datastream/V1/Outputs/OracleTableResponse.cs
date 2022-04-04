@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     public sealed class OracleTableResponse
     {
         /// <summary>
-        /// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+        /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// </summary>
         public readonly ImmutableArray<Outputs.OracleColumnResponse> OracleColumns;
         /// <summary>

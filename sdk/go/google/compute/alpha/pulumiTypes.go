@@ -2497,6 +2497,8 @@ func (o AttachedDiskInitializeParamsResponseOutput) SourceSnapshotEncryptionKey(
 
 // An instance-attached disk resource.
 type AttachedDiskResponse struct {
+	// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+	Architecture string `pulumi:"architecture"`
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
 	AutoDelete bool `pulumi:"autoDelete"`
 	// Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
@@ -2550,6 +2552,11 @@ func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutput() AttachedDiskR
 
 func (o AttachedDiskResponseOutput) ToAttachedDiskResponseOutputWithContext(ctx context.Context) AttachedDiskResponseOutput {
 	return o
+}
+
+// The architecture of the attached disk. Valid values are ARM64 or X86_64.
+func (o AttachedDiskResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedDiskResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -7950,6 +7957,526 @@ func (o BackendServiceIAPResponseOutput) Oauth2ClientSecret() pulumi.StringOutpu
 // SHA256 hash value for the field oauth2_client_secret above.
 func (o BackendServiceIAPResponseOutput) Oauth2ClientSecretSha256() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceIAPResponse) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfig struct {
+	CustomPolicy *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy `pulumi:"customPolicy"`
+	Policy       *BackendServiceLocalityLoadBalancingPolicyConfigPolicy       `pulumi:"policy"`
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigArgs and BackendServiceLocalityLoadBalancingPolicyConfigOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigOutput() BackendServiceLocalityLoadBalancingPolicyConfigOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigOutput
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigArgs struct {
+	CustomPolicy BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput `pulumi:"customPolicy"`
+	Policy       BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput       `pulumi:"policy"`
+}
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigOutput() BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigOutput)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigArrayInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigArray and BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigArrayInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigArray{ BackendServiceLocalityLoadBalancingPolicyConfigArgs{...} }
+type BackendServiceLocalityLoadBalancingPolicyConfigArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigArray []BackendServiceLocalityLoadBalancingPolicyConfigInput
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArray) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArray) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput)
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigOutput() BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) CustomPolicy() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfig) *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
+		return v.CustomPolicy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) Policy() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfig) *BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
+		return v.Policy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) Index(i pulumi.IntInput) BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceLocalityLoadBalancingPolicyConfig {
+		return vs[0].([]BackendServiceLocalityLoadBalancingPolicyConfig)[vs[1].(int)]
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigOutput)
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy struct {
+	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+	Data *string `pulumi:"data"`
+	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	Name *string `pulumi:"name"`
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs and BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs struct {
+	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput)
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput).ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs, BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtr and BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput
+}
+
+type backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs
+
+func BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtr(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput {
+	return (*backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType)(v)
+}
+
+func (*backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput)
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
+		return &v
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput)
+}
+
+// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Elem() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+		return ret
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput)
+}
+
+// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse struct {
+	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+	Data string `pulumi:"data"`
+	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	Name string `pulumi:"name"`
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput {
+	return o
+}
+
+// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicy struct {
+	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	Name *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName `pulumi:"name"`
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs and BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs struct {
+	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	Name BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput `pulumi:"name"`
+}
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput)
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput).ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs, BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtr and BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput
+}
+
+type backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs
+
+func BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtr(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput {
+	return (*backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType)(v)
+}
+
+func (*backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
+		return &v
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
+}
+
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) Name() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
+		return v.Name
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Elem() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicy) BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+		return ret
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput)
+}
+
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Name() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse struct {
+	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	Name string `pulumi:"name"`
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput {
+	return o
+}
+
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigResponse struct {
+	CustomPolicy BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse `pulumi:"customPolicy"`
+	Policy       BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse       `pulumi:"policy"`
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseOutput() BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) CustomPolicy() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigResponse) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse {
+		return v.CustomPolicy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) Policy() BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigResponse) BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse {
+		return v.Policy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLocalityLoadBalancingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) Index(i pulumi.IntInput) BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceLocalityLoadBalancingPolicyConfigResponse {
+		return vs[0].([]BackendServiceLocalityLoadBalancingPolicyConfigResponse)[vs[1].(int)]
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput)
 }
 
 // The available logging options for the load balancer traffic served by this backend service.
@@ -16248,7 +16775,7 @@ func (o GrpcServiceConfigResponseOutput) TargetUri() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -16265,7 +16792,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -16321,7 +16848,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -16348,7 +16875,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -16367,7 +16894,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -23279,7 +23806,7 @@ type InstanceProperties struct {
 	DisplayDevice *DisplayDevice `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType *InstancePropertiesKeyRevocationActionType `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels map[string]string `pulumi:"labels"`
@@ -23343,7 +23870,7 @@ type InstancePropertiesArgs struct {
 	DisplayDevice DisplayDevicePtrInput `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType InstancePropertiesKeyRevocationActionTypePtrInput `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -23493,7 +24020,7 @@ func (o InstancePropertiesOutput) GuestAccelerators() AcceleratorConfigArrayOutp
 	return o.ApplyT(func(v InstanceProperties) []AcceleratorConfig { return v.GuestAccelerators }).(AcceleratorConfigArrayOutput)
 }
 
-// KeyRevocationActionType of the instance.
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 func (o InstancePropertiesOutput) KeyRevocationActionType() InstancePropertiesKeyRevocationActionTypePtrOutput {
 	return o.ApplyT(func(v InstanceProperties) *InstancePropertiesKeyRevocationActionType {
 		return v.KeyRevocationActionType
@@ -23683,7 +24210,7 @@ func (o InstancePropertiesPtrOutput) GuestAccelerators() AcceleratorConfigArrayO
 	}).(AcceleratorConfigArrayOutput)
 }
 
-// KeyRevocationActionType of the instance.
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 func (o InstancePropertiesPtrOutput) KeyRevocationActionType() InstancePropertiesKeyRevocationActionTypePtrOutput {
 	return o.ApplyT(func(v *InstanceProperties) *InstancePropertiesKeyRevocationActionType {
 		if v == nil {
@@ -24070,7 +24597,7 @@ type InstancePropertiesResponse struct {
 	DisplayDevice DisplayDeviceResponse `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels map[string]string `pulumi:"labels"`
@@ -24159,7 +24686,7 @@ func (o InstancePropertiesResponseOutput) GuestAccelerators() AcceleratorConfigR
 	return o.ApplyT(func(v InstancePropertiesResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
 }
 
-// KeyRevocationActionType of the instance.
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 func (o InstancePropertiesResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
@@ -29229,7 +29756,7 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Zone() pulumi.
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeployment struct {
-	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 	Platform *string `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource *string `pulumi:"resource"`
@@ -29252,7 +29779,7 @@ type NetworkEndpointGroupServerlessDeploymentInput interface {
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeploymentArgs struct {
-	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
@@ -29340,7 +29867,7 @@ func (o NetworkEndpointGroupServerlessDeploymentOutput) ToNetworkEndpointGroupSe
 	}).(NetworkEndpointGroupServerlessDeploymentPtrOutput)
 }
 
-// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 func (o NetworkEndpointGroupServerlessDeploymentOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeployment) *string { return v.Platform }).(pulumi.StringPtrOutput)
 }
@@ -29384,7 +29911,7 @@ func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Elem() NetworkEndpoin
 	}).(NetworkEndpointGroupServerlessDeploymentOutput)
 }
 
-// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroupServerlessDeployment) *string {
 		if v == nil {
@@ -29426,7 +29953,7 @@ func (o NetworkEndpointGroupServerlessDeploymentPtrOutput) Version() pulumi.Stri
 
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeploymentResponse struct {
-	// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 	Platform string `pulumi:"platform"`
 	// The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name
 	Resource string `pulumi:"resource"`
@@ -29451,7 +29978,7 @@ func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) ToNetworkEndpoin
 	return o
 }
 
-// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com
+// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
 func (o NetworkEndpointGroupServerlessDeploymentResponseOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkEndpointGroupServerlessDeploymentResponse) string { return v.Platform }).(pulumi.StringOutput)
 }
@@ -29688,7 +30215,7 @@ type NetworkInterfaceResponse struct {
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind string `pulumi:"kind"`
-	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+	// The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
 	Name string `pulumi:"name"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network string `pulumi:"network"`
@@ -29761,7 +30288,7 @@ func (o NetworkInterfaceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+// The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
 func (o NetworkInterfaceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -30029,6 +30556,8 @@ type NetworkPeeringResponse struct {
 	Network string `pulumi:"network"`
 	// Maximum Transmission Unit in bytes.
 	PeerMtu int `pulumi:"peerMtu"`
+	// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+	StackType string `pulumi:"stackType"`
 	// State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
 	State string `pulumi:"state"`
 	// Details about the current state of the peering.
@@ -30098,6 +30627,11 @@ func (o NetworkPeeringResponseOutput) Network() pulumi.StringOutput {
 // Maximum Transmission Unit in bytes.
 func (o NetworkPeeringResponseOutput) PeerMtu() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkPeeringResponse) int { return v.PeerMtu }).(pulumi.IntOutput)
+}
+
+// Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY.
+func (o NetworkPeeringResponseOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPeeringResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
 
 // State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE` when there's a matching configuration in the peer network.
@@ -38699,6 +39233,8 @@ func (o ResourceStatusResponseOutput) UpcomingMaintenance() ResourceStatusUpcomi
 type ResourceStatusSchedulingResponse struct {
 	// Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
 	AvailabilityDomain int `pulumi:"availabilityDomain"`
+	// Time in future when the instance will be terminated in RFC3339 text format.
+	TerminationTimestamp string `pulumi:"terminationTimestamp"`
 }
 
 type ResourceStatusSchedulingResponseOutput struct{ *pulumi.OutputState }
@@ -38718,6 +39254,11 @@ func (o ResourceStatusSchedulingResponseOutput) ToResourceStatusSchedulingRespon
 // Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
 func (o ResourceStatusSchedulingResponseOutput) AvailabilityDomain() pulumi.IntOutput {
 	return o.ApplyT(func(v ResourceStatusSchedulingResponse) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
+}
+
+// Time in future when the instance will be terminated in RFC3339 text format.
+func (o ResourceStatusSchedulingResponseOutput) TerminationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceStatusSchedulingResponse) string { return v.TerminationTimestamp }).(pulumi.StringOutput)
 }
 
 type ResourceStatusUpcomingMaintenanceResponse struct {
@@ -49489,7 +50030,7 @@ type SourceInstancePropertiesResponse struct {
 	Disks []SavedAttachedDiskResponse `pulumi:"disks"`
 	// A list of guest accelerator cards' type and count to use for instances created from this machine image.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance.
+	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from this machine image.
 	Labels map[string]string `pulumi:"labels"`
@@ -49551,7 +50092,7 @@ func (o SourceInstancePropertiesResponseOutput) GuestAccelerators() AcceleratorC
 	return o.ApplyT(func(v SourceInstancePropertiesResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
 }
 
-// KeyRevocationActionType of the instance.
+// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 func (o SourceInstancePropertiesResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceInstancePropertiesResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
@@ -53790,6 +54331,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPPtrInput)(nil)).Elem(), BackendServiceIAPArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPOAuth2ClientInfoInput)(nil)).Elem(), BackendServiceIAPOAuth2ClientInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPOAuth2ClientInfoPtrInput)(nil)).Elem(), BackendServiceIAPOAuth2ClientInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigArrayInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigPtrInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
@@ -54310,6 +54857,16 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceIAPOAuth2ClientInfoPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceIAPOAuth2ClientInfoResponseOutput{})
 	pulumi.RegisterOutputType(BackendServiceIAPResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigResponseOutput{})

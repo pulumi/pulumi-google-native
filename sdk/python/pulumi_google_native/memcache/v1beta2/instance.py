@@ -24,6 +24,7 @@ class InstanceArgs:
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs']] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
@@ -38,6 +39,7 @@ class InstanceArgs:
         :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        :param pulumi.Input['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs'] maintenance_policy: The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input['MemcacheParametersArgs'] parameters: User defined parameters to apply to the memcached process on each node.
@@ -56,6 +58,8 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if memcache_version is not None:
             pulumi.set(__self__, "memcache_version", memcache_version)
         if name is not None:
@@ -161,6 +165,18 @@ class InstanceArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs']]:
+        """
+        The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
     @pulumi.getter(name="memcacheVersion")
     def memcache_version(self) -> Optional[pulumi.Input['InstanceMemcacheVersion']]:
         """
@@ -229,6 +245,7 @@ class Instance(pulumi.CustomResource):
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs']]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
@@ -247,6 +264,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]] instance_messages: List of messages that describe the current state of the Memcached instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        :param pulumi.Input[pulumi.InputType['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs']] maintenance_policy: The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
         :param pulumi.Input['InstanceMemcacheVersion'] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Configuration for Memcached nodes.
@@ -284,6 +302,7 @@ class Instance(pulumi.CustomResource):
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMemcacheV1beta2MaintenancePolicyArgs']]] = None,
                  memcache_version: Optional[pulumi.Input['InstanceMemcacheVersion']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
@@ -311,6 +330,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["instance_messages"] = instance_messages
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["memcache_version"] = memcache_version
             __props__.__dict__["name"] = name
             if node_config is None and not opts.urn:
@@ -324,6 +344,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zones"] = zones
             __props__.__dict__["create_time"] = None
             __props__.__dict__["discovery_endpoint"] = None
+            __props__.__dict__["maintenance_schedule"] = None
             __props__.__dict__["memcache_full_version"] = None
             __props__.__dict__["memcache_nodes"] = None
             __props__.__dict__["state"] = None
@@ -357,6 +378,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["instance_messages"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["maintenance_policy"] = None
+        __props__.__dict__["maintenance_schedule"] = None
         __props__.__dict__["memcache_full_version"] = None
         __props__.__dict__["memcache_nodes"] = None
         __props__.__dict__["memcache_version"] = None
@@ -417,6 +440,22 @@ class Instance(pulumi.CustomResource):
         Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output['outputs.GoogleCloudMemcacheV1beta2MaintenancePolicyResponse']:
+        """
+        The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> pulumi.Output['outputs.MaintenanceScheduleResponse']:
+        """
+        Published maintenance schedule.
+        """
+        return pulumi.get(self, "maintenance_schedule")
 
     @property
     @pulumi.getter(name="memcacheFullVersion")

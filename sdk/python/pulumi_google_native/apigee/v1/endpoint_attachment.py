@@ -165,6 +165,7 @@ class EndpointAttachment(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["service_attachment"] = service_attachment
             __props__.__dict__["host"] = None
+            __props__.__dict__["state"] = None
         super(EndpointAttachment, __self__).__init__(
             'google-native:apigee/v1:EndpointAttachment',
             resource_name,
@@ -191,6 +192,7 @@ class EndpointAttachment(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["service_attachment"] = None
+        __props__.__dict__["state"] = None
         return EndpointAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -224,4 +226,12 @@ class EndpointAttachment(pulumi.CustomResource):
         Format: projects/*/regions/*/serviceAttachments/*
         """
         return pulumi.get(self, "service_attachment")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+        """
+        return pulumi.get(self, "state")
 

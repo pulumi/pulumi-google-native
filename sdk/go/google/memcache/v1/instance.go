@@ -27,6 +27,10 @@ type Instance struct {
 	InstanceMessages InstanceMessageResponseArrayOutput `pulumi:"instanceMessages"`
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+	MaintenancePolicy GoogleCloudMemcacheV1MaintenancePolicyResponseOutput `pulumi:"maintenancePolicy"`
+	// Published maintenance schedule.
+	MaintenanceSchedule MaintenanceScheduleResponseOutput `pulumi:"maintenanceSchedule"`
 	// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
 	MemcacheFullVersion pulumi.StringOutput `pulumi:"memcacheFullVersion"`
 	// List of Memcached nodes. Refer to Node message for more details.
@@ -108,6 +112,8 @@ type instanceArgs struct {
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+	MaintenancePolicy *GoogleCloudMemcacheV1MaintenancePolicy `pulumi:"maintenancePolicy"`
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion *InstanceMemcacheVersion `pulumi:"memcacheVersion"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
@@ -136,6 +142,8 @@ type InstanceArgs struct {
 	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+	MaintenancePolicy GoogleCloudMemcacheV1MaintenancePolicyPtrInput
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion InstanceMemcacheVersionPtrInput
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.

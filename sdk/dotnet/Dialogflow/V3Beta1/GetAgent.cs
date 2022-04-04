@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly bool EnableStackdriverLogging;
         /// <summary>
+        /// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+        /// </summary>
+        public readonly bool Locked;
+        /// <summary>
         /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
         /// </summary>
         public readonly string Name;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
             bool enableStackdriverLogging,
 
+            bool locked,
+
             string name,
 
             string securitySettings,
@@ -149,6 +155,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             DisplayName = displayName;
             EnableSpellCorrection = enableSpellCorrection;
             EnableStackdriverLogging = enableStackdriverLogging;
+            Locked = locked;
             Name = name;
             SecuritySettings = securitySettings;
             SpeechToTextSettings = speechToTextSettings;

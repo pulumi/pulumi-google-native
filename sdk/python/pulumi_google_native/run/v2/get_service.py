@@ -114,7 +114,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="binaryAuthorization")
-    def binary_authorization(self) -> 'outputs.GoogleCloudRunOpV2BinaryAuthorizationResponse':
+    def binary_authorization(self) -> 'outputs.GoogleCloudRunV2BinaryAuthorizationResponse':
         """
         Settings for the Binary Authorization feature.
         """
@@ -138,7 +138,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
-    def conditions(self) -> Sequence['outputs.GoogleCloudRunOpV2ConditionResponse']:
+    def conditions(self) -> Sequence['outputs.GoogleCloudRunV2ConditionResponse']:
         """
         The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """
@@ -274,7 +274,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
-    def template(self) -> 'outputs.GoogleCloudRunOpV2RevisionTemplateResponse':
+    def template(self) -> 'outputs.GoogleCloudRunV2RevisionTemplateResponse':
         """
         The template used to create revisions for this Service.
         """
@@ -282,7 +282,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="terminalCondition")
-    def terminal_condition(self) -> 'outputs.GoogleCloudRunOpV2ConditionResponse':
+    def terminal_condition(self) -> 'outputs.GoogleCloudRunV2ConditionResponse':
         """
         The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """
@@ -290,7 +290,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter
-    def traffic(self) -> Sequence['outputs.GoogleCloudRunOpV2TrafficTargetResponse']:
+    def traffic(self) -> Sequence['outputs.GoogleCloudRunV2TrafficTargetResponse']:
         """
         Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         """
@@ -298,7 +298,7 @@ class GetServiceResult:
 
     @property
     @pulumi.getter(name="trafficStatuses")
-    def traffic_statuses(self) -> Sequence['outputs.GoogleCloudRunOpV2TrafficTargetStatusResponse']:
+    def traffic_statuses(self) -> Sequence['outputs.GoogleCloudRunV2TrafficTargetStatusResponse']:
         """
         Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
         """

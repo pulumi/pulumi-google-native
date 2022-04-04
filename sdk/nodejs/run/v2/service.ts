@@ -42,7 +42,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Settings for the Binary Authorization feature.
      */
-    public readonly binaryAuthorization!: pulumi.Output<outputs.run.v2.GoogleCloudRunOpV2BinaryAuthorizationResponse>;
+    public readonly binaryAuthorization!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2BinaryAuthorizationResponse>;
     /**
      * Arbitrary identifier for the API client.
      */
@@ -54,7 +54,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
-    public /*out*/ readonly conditions!: pulumi.Output<outputs.run.v2.GoogleCloudRunOpV2ConditionResponse[]>;
+    public /*out*/ readonly conditions!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2ConditionResponse[]>;
     /**
      * The creation time.
      */
@@ -122,19 +122,19 @@ export class Service extends pulumi.CustomResource {
     /**
      * The template used to create revisions for this Service.
      */
-    public readonly template!: pulumi.Output<outputs.run.v2.GoogleCloudRunOpV2RevisionTemplateResponse>;
+    public readonly template!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2RevisionTemplateResponse>;
     /**
      * The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
-    public /*out*/ readonly terminalCondition!: pulumi.Output<outputs.run.v2.GoogleCloudRunOpV2ConditionResponse>;
+    public /*out*/ readonly terminalCondition!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2ConditionResponse>;
     /**
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
      */
-    public readonly traffic!: pulumi.Output<outputs.run.v2.GoogleCloudRunOpV2TrafficTargetResponse[]>;
+    public readonly traffic!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2TrafficTargetResponse[]>;
     /**
      * Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
      */
-    public /*out*/ readonly trafficStatuses!: pulumi.Output<outputs.run.v2.GoogleCloudRunOpV2TrafficTargetStatusResponse[]>;
+    public /*out*/ readonly trafficStatuses!: pulumi.Output<outputs.run.v2.GoogleCloudRunV2TrafficTargetStatusResponse[]>;
     /**
      * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
@@ -243,7 +243,7 @@ export interface ServiceArgs {
     /**
      * Settings for the Binary Authorization feature.
      */
-    binaryAuthorization?: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2BinaryAuthorizationArgs>;
+    binaryAuthorization?: pulumi.Input<inputs.run.v2.GoogleCloudRunV2BinaryAuthorizationArgs>;
     /**
      * Arbitrary identifier for the API client.
      */
@@ -281,11 +281,11 @@ export interface ServiceArgs {
     /**
      * The template used to create revisions for this Service.
      */
-    template: pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2RevisionTemplateArgs>;
+    template: pulumi.Input<inputs.run.v2.GoogleCloudRunV2RevisionTemplateArgs>;
     /**
      * Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
      */
-    traffic?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunOpV2TrafficTargetArgs>[]>;
+    traffic?: pulumi.Input<pulumi.Input<inputs.run.v2.GoogleCloudRunV2TrafficTargetArgs>[]>;
     /**
      * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
      */

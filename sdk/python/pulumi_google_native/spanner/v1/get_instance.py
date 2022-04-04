@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, config=None, display_name=None, endpoint_uris=None, labels=None, name=None, node_count=None, processing_units=None, state=None):
+    def __init__(__self__, config=None, create_time=None, display_name=None, endpoint_uris=None, labels=None, name=None, node_count=None, processing_units=None, state=None, update_time=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -46,6 +49,9 @@ class GetInstanceResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -54,6 +60,14 @@ class GetInstanceResult:
         The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time at which the instance was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="displayName")
@@ -111,6 +125,14 @@ class GetInstanceResult:
         """
         return pulumi.get(self, "state")
 
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time at which the instance was most recently updated.
+        """
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
@@ -119,13 +141,15 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             config=self.config,
+            create_time=self.create_time,
             display_name=self.display_name,
             endpoint_uris=self.endpoint_uris,
             labels=self.labels,
             name=self.name,
             node_count=self.node_count,
             processing_units=self.processing_units,
-            state=self.state)
+            state=self.state,
+            update_time=self.update_time)
 
 
 def get_instance(field_mask: Optional[str] = None,
@@ -147,13 +171,15 @@ def get_instance(field_mask: Optional[str] = None,
 
     return AwaitableGetInstanceResult(
         config=__ret__.config,
+        create_time=__ret__.create_time,
         display_name=__ret__.display_name,
         endpoint_uris=__ret__.endpoint_uris,
         labels=__ret__.labels,
         name=__ret__.name,
         node_count=__ret__.node_count,
         processing_units=__ret__.processing_units,
-        state=__ret__.state)
+        state=__ret__.state,
+        update_time=__ret__.update_time)
 
 
 @_utilities.lift_output_func(get_instance)

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
     public sealed class NodeConfigResponse
     {
         /// <summary>
-        /// Optional. The disk size in GB used for node VMs. Minimum size is 20GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        /// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         /// </summary>
         public readonly int DiskSizeGb;
         /// <summary>

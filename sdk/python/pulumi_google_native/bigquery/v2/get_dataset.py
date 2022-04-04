@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatasetResult:
-    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, satisfies_pzs=None, self_link=None, tags=None):
+    def __init__(__self__, access=None, creation_time=None, dataset_reference=None, default_collation=None, default_encryption_configuration=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, description=None, etag=None, friendly_name=None, is_case_insensitive=None, kind=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, satisfies_pzs=None, self_link=None, tags=None):
         if access and not isinstance(access, list):
             raise TypeError("Expected argument 'access' to be a list")
         pulumi.set(__self__, "access", access)
@@ -64,6 +64,9 @@ class GetDatasetResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if max_time_travel_hours and not isinstance(max_time_travel_hours, str):
+            raise TypeError("Expected argument 'max_time_travel_hours' to be a str")
+        pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -192,6 +195,14 @@ class GetDatasetResult:
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="maxTimeTravelHours")
+    def max_time_travel_hours(self) -> str:
+        """
+        [Optional] Number of hours for the max time travel for all tables in the dataset.
+        """
+        return pulumi.get(self, "max_time_travel_hours")
+
+    @property
     @pulumi.getter(name="satisfiesPZS")
     def satisfies_pzs(self) -> bool:
         """
@@ -237,6 +248,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             labels=self.labels,
             last_modified_time=self.last_modified_time,
             location=self.location,
+            max_time_travel_hours=self.max_time_travel_hours,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             tags=self.tags)
@@ -273,6 +285,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         labels=__ret__.labels,
         last_modified_time=__ret__.last_modified_time,
         location=__ret__.location,
+        max_time_travel_hours=__ret__.max_time_travel_hours,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         tags=__ret__.tags)

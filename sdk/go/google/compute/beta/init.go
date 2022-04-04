@@ -91,6 +91,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MachineImageIamPolicy{}
 	case "google-native:compute/beta:Network":
 		r = &Network{}
+	case "google-native:compute/beta:NetworkEdgeSecurityService":
+		r = &NetworkEdgeSecurityService{}
 	case "google-native:compute/beta:NetworkEndpointGroup":
 		r = &NetworkEndpointGroup{}
 	case "google-native:compute/beta:NetworkFirewallPolicy":
@@ -139,6 +141,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNetworkFirewallPolicyIamPolicy{}
 	case "google-native:compute/beta:RegionNotificationEndpoint":
 		r = &RegionNotificationEndpoint{}
+	case "google-native:compute/beta:RegionSecurityPolicy":
+		r = &RegionSecurityPolicy{}
 	case "google-native:compute/beta:RegionSslCertificate":
 		r = &RegionSslCertificate{}
 	case "google-native:compute/beta:RegionTargetHttpProxy":

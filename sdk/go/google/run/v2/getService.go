@@ -30,13 +30,13 @@ type LookupServiceResult struct {
 	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
-	BinaryAuthorization GoogleCloudRunOpV2BinaryAuthorizationResponse `pulumi:"binaryAuthorization"`
+	BinaryAuthorization GoogleCloudRunV2BinaryAuthorizationResponse `pulumi:"binaryAuthorization"`
 	// Arbitrary identifier for the API client.
 	Client string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
 	ClientVersion string `pulumi:"clientVersion"`
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-	Conditions []GoogleCloudRunOpV2ConditionResponse `pulumi:"conditions"`
+	Conditions []GoogleCloudRunV2ConditionResponse `pulumi:"conditions"`
 	// The creation time.
 	CreateTime string `pulumi:"createTime"`
 	// Email address of the authenticated creator.
@@ -70,13 +70,13 @@ type LookupServiceResult struct {
 	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling bool `pulumi:"reconciling"`
 	// The template used to create revisions for this Service.
-	Template GoogleCloudRunOpV2RevisionTemplateResponse `pulumi:"template"`
+	Template GoogleCloudRunV2RevisionTemplateResponse `pulumi:"template"`
 	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-	TerminalCondition GoogleCloudRunOpV2ConditionResponse `pulumi:"terminalCondition"`
+	TerminalCondition GoogleCloudRunV2ConditionResponse `pulumi:"terminalCondition"`
 	// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-	Traffic []GoogleCloudRunOpV2TrafficTargetResponse `pulumi:"traffic"`
+	Traffic []GoogleCloudRunV2TrafficTargetResponse `pulumi:"traffic"`
 	// Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-	TrafficStatuses []GoogleCloudRunOpV2TrafficTargetStatusResponse `pulumi:"trafficStatuses"`
+	TrafficStatuses []GoogleCloudRunV2TrafficTargetStatusResponse `pulumi:"trafficStatuses"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid string `pulumi:"uid"`
 	// The last-modified time.
@@ -124,10 +124,8 @@ func (o LookupServiceResultOutput) Annotations() pulumi.StringMapOutput {
 }
 
 // Settings for the Binary Authorization feature.
-func (o LookupServiceResultOutput) BinaryAuthorization() GoogleCloudRunOpV2BinaryAuthorizationResponseOutput {
-	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunOpV2BinaryAuthorizationResponse {
-		return v.BinaryAuthorization
-	}).(GoogleCloudRunOpV2BinaryAuthorizationResponseOutput)
+func (o LookupServiceResultOutput) BinaryAuthorization() GoogleCloudRunV2BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunV2BinaryAuthorizationResponse { return v.BinaryAuthorization }).(GoogleCloudRunV2BinaryAuthorizationResponseOutput)
 }
 
 // Arbitrary identifier for the API client.
@@ -141,8 +139,8 @@ func (o LookupServiceResultOutput) ClientVersion() pulumi.StringOutput {
 }
 
 // The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-func (o LookupServiceResultOutput) Conditions() GoogleCloudRunOpV2ConditionResponseArrayOutput {
-	return o.ApplyT(func(v LookupServiceResult) []GoogleCloudRunOpV2ConditionResponse { return v.Conditions }).(GoogleCloudRunOpV2ConditionResponseArrayOutput)
+func (o LookupServiceResultOutput) Conditions() GoogleCloudRunV2ConditionResponseArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GoogleCloudRunV2ConditionResponse { return v.Conditions }).(GoogleCloudRunV2ConditionResponseArrayOutput)
 }
 
 // The creation time.
@@ -226,23 +224,23 @@ func (o LookupServiceResultOutput) Reconciling() pulumi.BoolOutput {
 }
 
 // The template used to create revisions for this Service.
-func (o LookupServiceResultOutput) Template() GoogleCloudRunOpV2RevisionTemplateResponseOutput {
-	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunOpV2RevisionTemplateResponse { return v.Template }).(GoogleCloudRunOpV2RevisionTemplateResponseOutput)
+func (o LookupServiceResultOutput) Template() GoogleCloudRunV2RevisionTemplateResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunV2RevisionTemplateResponse { return v.Template }).(GoogleCloudRunV2RevisionTemplateResponseOutput)
 }
 
 // The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-func (o LookupServiceResultOutput) TerminalCondition() GoogleCloudRunOpV2ConditionResponseOutput {
-	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunOpV2ConditionResponse { return v.TerminalCondition }).(GoogleCloudRunOpV2ConditionResponseOutput)
+func (o LookupServiceResultOutput) TerminalCondition() GoogleCloudRunV2ConditionResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GoogleCloudRunV2ConditionResponse { return v.TerminalCondition }).(GoogleCloudRunV2ConditionResponseOutput)
 }
 
 // Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-func (o LookupServiceResultOutput) Traffic() GoogleCloudRunOpV2TrafficTargetResponseArrayOutput {
-	return o.ApplyT(func(v LookupServiceResult) []GoogleCloudRunOpV2TrafficTargetResponse { return v.Traffic }).(GoogleCloudRunOpV2TrafficTargetResponseArrayOutput)
+func (o LookupServiceResultOutput) Traffic() GoogleCloudRunV2TrafficTargetResponseArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GoogleCloudRunV2TrafficTargetResponse { return v.Traffic }).(GoogleCloudRunV2TrafficTargetResponseArrayOutput)
 }
 
 // Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-func (o LookupServiceResultOutput) TrafficStatuses() GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput {
-	return o.ApplyT(func(v LookupServiceResult) []GoogleCloudRunOpV2TrafficTargetStatusResponse { return v.TrafficStatuses }).(GoogleCloudRunOpV2TrafficTargetStatusResponseArrayOutput)
+func (o LookupServiceResultOutput) TrafficStatuses() GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GoogleCloudRunV2TrafficTargetStatusResponse { return v.TrafficStatuses }).(GoogleCloudRunV2TrafficTargetStatusResponseArrayOutput)
 }
 
 // Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.

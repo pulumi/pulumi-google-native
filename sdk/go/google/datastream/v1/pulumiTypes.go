@@ -2850,7 +2850,7 @@ func (o MysqlSslConfigResponseOutput) ClientKeySet() pulumi.BoolOutput {
 
 // MySQL table.
 type MysqlTable struct {
-	// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+	// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
 	MysqlColumns []MysqlColumn `pulumi:"mysqlColumns"`
 	// Table name.
 	Table *string `pulumi:"table"`
@@ -2869,7 +2869,7 @@ type MysqlTableInput interface {
 
 // MySQL table.
 type MysqlTableArgs struct {
-	// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+	// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
 	MysqlColumns MysqlColumnArrayInput `pulumi:"mysqlColumns"`
 	// Table name.
 	Table pulumi.StringPtrInput `pulumi:"table"`
@@ -2927,7 +2927,7 @@ func (o MysqlTableOutput) ToMysqlTableOutputWithContext(ctx context.Context) Mys
 	return o
 }
 
-// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o MysqlTableOutput) MysqlColumns() MysqlColumnArrayOutput {
 	return o.ApplyT(func(v MysqlTable) []MysqlColumn { return v.MysqlColumns }).(MysqlColumnArrayOutput)
 }
@@ -2959,7 +2959,7 @@ func (o MysqlTableArrayOutput) Index(i pulumi.IntInput) MysqlTableOutput {
 
 // MySQL table.
 type MysqlTableResponse struct {
-	// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+	// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
 	MysqlColumns []MysqlColumnResponse `pulumi:"mysqlColumns"`
 	// Table name.
 	Table string `pulumi:"table"`
@@ -2980,7 +2980,7 @@ func (o MysqlTableResponseOutput) ToMysqlTableResponseOutputWithContext(ctx cont
 	return o
 }
 
-// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o MysqlTableResponseOutput) MysqlColumns() MysqlColumnResponseArrayOutput {
 	return o.ApplyT(func(v MysqlTableResponse) []MysqlColumnResponse { return v.MysqlColumns }).(MysqlColumnResponseArrayOutput)
 }
@@ -3282,6 +3282,146 @@ func (o OracleColumnResponseArrayOutput) Index(i pulumi.IntInput) OracleColumnRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OracleColumnResponse {
 		return vs[0].([]OracleColumnResponse)[vs[1].(int)]
 	}).(OracleColumnResponseOutput)
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjects struct {
+}
+
+// OracleDropLargeObjectsInput is an input type that accepts OracleDropLargeObjectsArgs and OracleDropLargeObjectsOutput values.
+// You can construct a concrete instance of `OracleDropLargeObjectsInput` via:
+//
+//          OracleDropLargeObjectsArgs{...}
+type OracleDropLargeObjectsInput interface {
+	pulumi.Input
+
+	ToOracleDropLargeObjectsOutput() OracleDropLargeObjectsOutput
+	ToOracleDropLargeObjectsOutputWithContext(context.Context) OracleDropLargeObjectsOutput
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsArgs struct {
+}
+
+func (OracleDropLargeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsOutput() OracleDropLargeObjectsOutput {
+	return i.ToOracleDropLargeObjectsOutputWithContext(context.Background())
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsOutputWithContext(ctx context.Context) OracleDropLargeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleDropLargeObjectsOutput)
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return i.ToOracleDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i OracleDropLargeObjectsArgs) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleDropLargeObjectsOutput).ToOracleDropLargeObjectsPtrOutputWithContext(ctx)
+}
+
+// OracleDropLargeObjectsPtrInput is an input type that accepts OracleDropLargeObjectsArgs, OracleDropLargeObjectsPtr and OracleDropLargeObjectsPtrOutput values.
+// You can construct a concrete instance of `OracleDropLargeObjectsPtrInput` via:
+//
+//          OracleDropLargeObjectsArgs{...}
+//
+//  or:
+//
+//          nil
+type OracleDropLargeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput
+	ToOracleDropLargeObjectsPtrOutputWithContext(context.Context) OracleDropLargeObjectsPtrOutput
+}
+
+type oracleDropLargeObjectsPtrType OracleDropLargeObjectsArgs
+
+func OracleDropLargeObjectsPtr(v *OracleDropLargeObjectsArgs) OracleDropLargeObjectsPtrInput {
+	return (*oracleDropLargeObjectsPtrType)(v)
+}
+
+func (*oracleDropLargeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (i *oracleDropLargeObjectsPtrType) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return i.ToOracleDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *oracleDropLargeObjectsPtrType) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleDropLargeObjectsPtrOutput)
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsOutput struct{ *pulumi.OutputState }
+
+func (OracleDropLargeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsOutput() OracleDropLargeObjectsOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsOutputWithContext(ctx context.Context) OracleDropLargeObjectsOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return o.ToOracleDropLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o OracleDropLargeObjectsOutput) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleDropLargeObjects) *OracleDropLargeObjects {
+		return &v
+	}).(OracleDropLargeObjectsPtrOutput)
+}
+
+type OracleDropLargeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (OracleDropLargeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleDropLargeObjects)(nil)).Elem()
+}
+
+func (o OracleDropLargeObjectsPtrOutput) ToOracleDropLargeObjectsPtrOutput() OracleDropLargeObjectsPtrOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsPtrOutput) ToOracleDropLargeObjectsPtrOutputWithContext(ctx context.Context) OracleDropLargeObjectsPtrOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsPtrOutput) Elem() OracleDropLargeObjectsOutput {
+	return o.ApplyT(func(v *OracleDropLargeObjects) OracleDropLargeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret OracleDropLargeObjects
+		return ret
+	}).(OracleDropLargeObjectsOutput)
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsResponse struct {
+}
+
+// Configuration to drop large object values.
+type OracleDropLargeObjectsResponseOutput struct{ *pulumi.OutputState }
+
+func (OracleDropLargeObjectsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleDropLargeObjectsResponse)(nil)).Elem()
+}
+
+func (o OracleDropLargeObjectsResponseOutput) ToOracleDropLargeObjectsResponseOutput() OracleDropLargeObjectsResponseOutput {
+	return o
+}
+
+func (o OracleDropLargeObjectsResponseOutput) ToOracleDropLargeObjectsResponseOutputWithContext(ctx context.Context) OracleDropLargeObjectsResponseOutput {
+	return o
 }
 
 // Oracle database profile.
@@ -3910,6 +4050,8 @@ func (o OracleSchemaResponseArrayOutput) Index(i pulumi.IntInput) OracleSchemaRe
 
 // Oracle data source configuration
 type OracleSourceConfig struct {
+	// Drop large object values.
+	DropLargeObjects *OracleDropLargeObjects `pulumi:"dropLargeObjects"`
 	// Oracle objects to exclude from the stream.
 	ExcludeObjects *OracleRdbms `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
@@ -3929,6 +4071,8 @@ type OracleSourceConfigInput interface {
 
 // Oracle data source configuration
 type OracleSourceConfigArgs struct {
+	// Drop large object values.
+	DropLargeObjects OracleDropLargeObjectsPtrInput `pulumi:"dropLargeObjects"`
 	// Oracle objects to exclude from the stream.
 	ExcludeObjects OracleRdbmsPtrInput `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
@@ -4013,6 +4157,11 @@ func (o OracleSourceConfigOutput) ToOracleSourceConfigPtrOutputWithContext(ctx c
 	}).(OracleSourceConfigPtrOutput)
 }
 
+// Drop large object values.
+func (o OracleSourceConfigOutput) DropLargeObjects() OracleDropLargeObjectsPtrOutput {
+	return o.ApplyT(func(v OracleSourceConfig) *OracleDropLargeObjects { return v.DropLargeObjects }).(OracleDropLargeObjectsPtrOutput)
+}
+
 // Oracle objects to exclude from the stream.
 func (o OracleSourceConfigOutput) ExcludeObjects() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *OracleRdbms { return v.ExcludeObjects }).(OracleRdbmsPtrOutput)
@@ -4047,6 +4196,16 @@ func (o OracleSourceConfigPtrOutput) Elem() OracleSourceConfigOutput {
 	}).(OracleSourceConfigOutput)
 }
 
+// Drop large object values.
+func (o OracleSourceConfigPtrOutput) DropLargeObjects() OracleDropLargeObjectsPtrOutput {
+	return o.ApplyT(func(v *OracleSourceConfig) *OracleDropLargeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.DropLargeObjects
+	}).(OracleDropLargeObjectsPtrOutput)
+}
+
 // Oracle objects to exclude from the stream.
 func (o OracleSourceConfigPtrOutput) ExcludeObjects() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v *OracleSourceConfig) *OracleRdbms {
@@ -4069,6 +4228,8 @@ func (o OracleSourceConfigPtrOutput) IncludeObjects() OracleRdbmsPtrOutput {
 
 // Oracle data source configuration
 type OracleSourceConfigResponse struct {
+	// Drop large object values.
+	DropLargeObjects OracleDropLargeObjectsResponse `pulumi:"dropLargeObjects"`
 	// Oracle objects to exclude from the stream.
 	ExcludeObjects OracleRdbmsResponse `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
@@ -4090,6 +4251,11 @@ func (o OracleSourceConfigResponseOutput) ToOracleSourceConfigResponseOutputWith
 	return o
 }
 
+// Drop large object values.
+func (o OracleSourceConfigResponseOutput) DropLargeObjects() OracleDropLargeObjectsResponseOutput {
+	return o.ApplyT(func(v OracleSourceConfigResponse) OracleDropLargeObjectsResponse { return v.DropLargeObjects }).(OracleDropLargeObjectsResponseOutput)
+}
+
 // Oracle objects to exclude from the stream.
 func (o OracleSourceConfigResponseOutput) ExcludeObjects() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) OracleRdbmsResponse { return v.ExcludeObjects }).(OracleRdbmsResponseOutput)
@@ -4102,7 +4268,7 @@ func (o OracleSourceConfigResponseOutput) IncludeObjects() OracleRdbmsResponseOu
 
 // Oracle table.
 type OracleTable struct {
-	// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	OracleColumns []OracleColumn `pulumi:"oracleColumns"`
 	// Table name.
 	Table *string `pulumi:"table"`
@@ -4121,7 +4287,7 @@ type OracleTableInput interface {
 
 // Oracle table.
 type OracleTableArgs struct {
-	// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	OracleColumns OracleColumnArrayInput `pulumi:"oracleColumns"`
 	// Table name.
 	Table pulumi.StringPtrInput `pulumi:"table"`
@@ -4179,7 +4345,7 @@ func (o OracleTableOutput) ToOracleTableOutputWithContext(ctx context.Context) O
 	return o
 }
 
-// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o OracleTableOutput) OracleColumns() OracleColumnArrayOutput {
 	return o.ApplyT(func(v OracleTable) []OracleColumn { return v.OracleColumns }).(OracleColumnArrayOutput)
 }
@@ -4211,7 +4377,7 @@ func (o OracleTableArrayOutput) Index(i pulumi.IntInput) OracleTableOutput {
 
 // Oracle table.
 type OracleTableResponse struct {
-	// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+	// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 	OracleColumns []OracleColumnResponse `pulumi:"oracleColumns"`
 	// Table name.
 	Table string `pulumi:"table"`
@@ -4232,7 +4398,7 @@ func (o OracleTableResponseOutput) ToOracleTableResponseOutputWithContext(ctx co
 	return o
 }
 
-// Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
+// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
 func (o OracleTableResponseOutput) OracleColumns() OracleColumnResponseArrayOutput {
 	return o.ApplyT(func(v OracleTableResponse) []OracleColumnResponse { return v.OracleColumns }).(OracleColumnResponseArrayOutput)
 }
@@ -4430,9 +4596,9 @@ func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutp
 
 // The configuration of the stream source.
 type SourceConfig struct {
-	// MySQL data source configuration
+	// MySQL data source configuration.
 	MysqlSourceConfig *MysqlSourceConfig `pulumi:"mysqlSourceConfig"`
-	// Oracle data source configuration
+	// Oracle data source configuration.
 	OracleSourceConfig *OracleSourceConfig `pulumi:"oracleSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
@@ -4451,9 +4617,9 @@ type SourceConfigInput interface {
 
 // The configuration of the stream source.
 type SourceConfigArgs struct {
-	// MySQL data source configuration
+	// MySQL data source configuration.
 	MysqlSourceConfig MysqlSourceConfigPtrInput `pulumi:"mysqlSourceConfig"`
-	// Oracle data source configuration
+	// Oracle data source configuration.
 	OracleSourceConfig OracleSourceConfigPtrInput `pulumi:"oracleSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
@@ -4486,12 +4652,12 @@ func (o SourceConfigOutput) ToSourceConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// MySQL data source configuration
+// MySQL data source configuration.
 func (o SourceConfigOutput) MysqlSourceConfig() MysqlSourceConfigPtrOutput {
 	return o.ApplyT(func(v SourceConfig) *MysqlSourceConfig { return v.MysqlSourceConfig }).(MysqlSourceConfigPtrOutput)
 }
 
-// Oracle data source configuration
+// Oracle data source configuration.
 func (o SourceConfigOutput) OracleSourceConfig() OracleSourceConfigPtrOutput {
 	return o.ApplyT(func(v SourceConfig) *OracleSourceConfig { return v.OracleSourceConfig }).(OracleSourceConfigPtrOutput)
 }
@@ -4503,9 +4669,9 @@ func (o SourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput {
 
 // The configuration of the stream source.
 type SourceConfigResponse struct {
-	// MySQL data source configuration
+	// MySQL data source configuration.
 	MysqlSourceConfig MysqlSourceConfigResponse `pulumi:"mysqlSourceConfig"`
-	// Oracle data source configuration
+	// Oracle data source configuration.
 	OracleSourceConfig OracleSourceConfigResponse `pulumi:"oracleSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
@@ -4526,12 +4692,12 @@ func (o SourceConfigResponseOutput) ToSourceConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// MySQL data source configuration
+// MySQL data source configuration.
 func (o SourceConfigResponseOutput) MysqlSourceConfig() MysqlSourceConfigResponseOutput {
 	return o.ApplyT(func(v SourceConfigResponse) MysqlSourceConfigResponse { return v.MysqlSourceConfig }).(MysqlSourceConfigResponseOutput)
 }
 
-// Oracle data source configuration
+// Oracle data source configuration.
 func (o SourceConfigResponseOutput) OracleSourceConfig() OracleSourceConfigResponseOutput {
 	return o.ApplyT(func(v SourceConfigResponse) OracleSourceConfigResponse { return v.OracleSourceConfig }).(OracleSourceConfigResponseOutput)
 }
@@ -4905,6 +5071,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MysqlTableArrayInput)(nil)).Elem(), MysqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnInput)(nil)).Elem(), OracleColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleColumnArrayInput)(nil)).Elem(), OracleColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleDropLargeObjectsInput)(nil)).Elem(), OracleDropLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleDropLargeObjectsPtrInput)(nil)).Elem(), OracleDropLargeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfileInput)(nil)).Elem(), OracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleProfilePtrInput)(nil)).Elem(), OracleProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleRdbmsInput)(nil)).Elem(), OracleRdbmsArgs{})
@@ -4975,6 +5143,9 @@ func init() {
 	pulumi.RegisterOutputType(OracleColumnArrayOutput{})
 	pulumi.RegisterOutputType(OracleColumnResponseOutput{})
 	pulumi.RegisterOutputType(OracleColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(OracleDropLargeObjectsOutput{})
+	pulumi.RegisterOutputType(OracleDropLargeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(OracleDropLargeObjectsResponseOutput{})
 	pulumi.RegisterOutputType(OracleProfileOutput{})
 	pulumi.RegisterOutputType(OracleProfilePtrOutput{})
 	pulumi.RegisterOutputType(OracleProfileResponseOutput{})

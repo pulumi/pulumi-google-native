@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         private InputList<Inputs.MysqlColumnArgs>? _mysqlColumns;
 
         /// <summary>
-        /// MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
+        /// MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
         /// </summary>
         public InputList<Inputs.MysqlColumnArgs> MysqlColumns
         {

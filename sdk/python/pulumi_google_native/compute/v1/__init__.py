@@ -50,6 +50,7 @@ from .get_license_iam_policy import *
 from .get_machine_image import *
 from .get_machine_image_iam_policy import *
 from .get_network import *
+from .get_network_edge_security_service import *
 from .get_network_endpoint_group import *
 from .get_network_firewall_policy import *
 from .get_network_firewall_policy_iam_policy import *
@@ -72,6 +73,7 @@ from .get_region_network_endpoint_group import *
 from .get_region_network_firewall_policy import *
 from .get_region_network_firewall_policy_iam_policy import *
 from .get_region_notification_endpoint import *
+from .get_region_security_policy import *
 from .get_region_ssl_certificate import *
 from .get_region_target_http_proxy import *
 from .get_region_target_https_proxy import *
@@ -124,6 +126,7 @@ from .license_iam_policy import *
 from .machine_image import *
 from .machine_image_iam_policy import *
 from .network import *
+from .network_edge_security_service import *
 from .network_endpoint_group import *
 from .network_firewall_policy import *
 from .network_firewall_policy_iam_policy import *
@@ -146,6 +149,7 @@ from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_iam_policy import *
 from .region_notification_endpoint import *
+from .region_security_policy import *
 from .region_ssl_certificate import *
 from .region_target_http_proxy import *
 from .region_target_https_proxy import *

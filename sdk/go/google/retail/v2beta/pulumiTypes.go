@@ -1080,7 +1080,7 @@ func (o GoogleCloudRetailV2betaFulfillmentInfoResponseArrayOutput) Index(i pulum
 	}).(GoogleCloudRetailV2betaFulfillmentInfoResponseOutput)
 }
 
-// Product thumbnail/detail image.
+// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
 type GoogleCloudRetailV2betaImage struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height *int `pulumi:"height"`
@@ -1101,7 +1101,7 @@ type GoogleCloudRetailV2betaImageInput interface {
 	ToGoogleCloudRetailV2betaImageOutputWithContext(context.Context) GoogleCloudRetailV2betaImageOutput
 }
 
-// Product thumbnail/detail image.
+// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
 type GoogleCloudRetailV2betaImageArgs struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height pulumi.IntPtrInput `pulumi:"height"`
@@ -1148,7 +1148,7 @@ func (i GoogleCloudRetailV2betaImageArray) ToGoogleCloudRetailV2betaImageArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaImageArrayOutput)
 }
 
-// Product thumbnail/detail image.
+// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
 type GoogleCloudRetailV2betaImageOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaImageOutput) ElementType() reflect.Type {
@@ -1198,7 +1198,7 @@ func (o GoogleCloudRetailV2betaImageArrayOutput) Index(i pulumi.IntInput) Google
 	}).(GoogleCloudRetailV2betaImageOutput)
 }
 
-// Product thumbnail/detail image.
+// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
 type GoogleCloudRetailV2betaImageResponse struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height int `pulumi:"height"`
@@ -1208,7 +1208,7 @@ type GoogleCloudRetailV2betaImageResponse struct {
 	Width int `pulumi:"width"`
 }
 
-// Product thumbnail/detail image.
+// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
 type GoogleCloudRetailV2betaImageResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaImageResponseOutput) ElementType() reflect.Type {
@@ -1824,7 +1824,7 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	FulfillmentInfo []GoogleCloudRetailV2betaFulfillmentInfoResponse `pulumi:"fulfillmentInfo"`
 	// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
 	Gtin string `pulumi:"gtin"`
-	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 	Images []GoogleCloudRetailV2betaImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
@@ -1953,7 +1953,7 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) Gtin() pulumi.StringOutput
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) string { return v.Gtin }).(pulumi.StringOutput)
 }
 
-// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 func (o GoogleCloudRetailV2betaProductResponseOutput) Images() GoogleCloudRetailV2betaImageResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []GoogleCloudRetailV2betaImageResponse { return v.Images }).(GoogleCloudRetailV2betaImageResponseArrayOutput)
 }

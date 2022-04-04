@@ -41,6 +41,9 @@ __all__ = [
     'BackendServiceFailoverPolicyArgs',
     'BackendServiceIAPOAuth2ClientInfoArgs',
     'BackendServiceIAPArgs',
+    'BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs',
+    'BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs',
+    'BackendServiceLocalityLoadBalancingPolicyConfigArgs',
     'BackendServiceLogConfigArgs',
     'BackendArgs',
     'BindingArgs',
@@ -2730,6 +2733,102 @@ class BackendServiceIAPArgs:
 
 
 @pulumi.input_type
+class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs:
+    def __init__(__self__, *,
+                 data: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration for a custom policy implemented by the user and deployed with the client.
+        :param pulumi.Input[str] data: An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        :param pulumi.Input[str] name: Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']] = None):
+        """
+        The configuration for a built-in load balancing policy.
+        :param pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName'] name: The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']]:
+        """
+        The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class BackendServiceLocalityLoadBalancingPolicyConfigArgs:
+    def __init__(__self__, *,
+                 custom_policy: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs']] = None,
+                 policy: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs']] = None):
+        """
+        Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+        """
+        if custom_policy is not None:
+            pulumi.set(__self__, "custom_policy", custom_policy)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="customPolicy")
+    def custom_policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs']]:
+        return pulumi.get(self, "custom_policy")
+
+    @custom_policy.setter
+    def custom_policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs']]):
+        pulumi.set(self, "custom_policy", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs']]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs']]):
+        pulumi.set(self, "policy", value)
+
+
+@pulumi.input_type
 class BackendServiceLogConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -5266,7 +5365,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -5275,7 +5374,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -7480,7 +7579,7 @@ class InstancePropertiesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: An array of disks that are associated with the instances that are created from these properties.
         :param pulumi.Input['DisplayDeviceArgs'] display_device: Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
-        :param pulumi.Input['InstancePropertiesKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance.
+        :param pulumi.Input['InstancePropertiesKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to instances that are created from these properties.
         :param pulumi.Input[str] machine_type: The machine type to use for instances that are created from these properties.
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -7638,7 +7737,7 @@ class InstancePropertiesArgs:
     @pulumi.getter(name="keyRevocationActionType")
     def key_revocation_action_type(self) -> Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']]:
         """
-        KeyRevocationActionType of the instance.
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         """
         return pulumi.get(self, "key_revocation_action_type")
 
@@ -8993,7 +9092,7 @@ class NetworkEndpointGroupServerlessDeploymentArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
-        :param pulumi.Input[str] platform: The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        :param pulumi.Input[str] platform: The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         :param pulumi.Input[str] resource: The user-defined name of the workload/instance. This value must be provided explicitly or in the urlMask. The resource identified by this value is platform-specific and is as follows: 1. API Gateway: The gateway ID 2. App Engine: The service name 3. Cloud Functions: The function name 4. Cloud Run: The service name 
         :param pulumi.Input[str] url_mask: A template to parse platform-specific fields from a request URL. URL mask allows for routing to multiple resources on the same serverless platform without having to create multiple Network Endpoint Groups and backend resources. The fields parsed by this template are platform-specific and are as follows: 1. API Gateway: The gateway ID 2. App Engine: The service and version 3. Cloud Functions: The function name 4. Cloud Run: The service and tag 
         :param pulumi.Input[str] version: The optional resource version. The version identified by this value is platform-specific and is follows: 1. API Gateway: Unused 2. App Engine: The service version 3. Cloud Functions: Unused 4. Cloud Run: The service tag 
@@ -9011,7 +9110,7 @@ class NetworkEndpointGroupServerlessDeploymentArgs:
     @pulumi.getter
     def platform(self) -> Optional[pulumi.Input[str]]:
         """
-        The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         """
         return pulumi.get(self, "platform")
 

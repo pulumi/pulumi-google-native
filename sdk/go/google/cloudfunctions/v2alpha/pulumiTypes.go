@@ -826,6 +826,8 @@ func (o BuildConfigResponseOutput) WorkerPool() pulumi.StringOutput {
 type EventFilter struct {
 	// The name of a CloudEvents attribute.
 	Attribute string `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	Operator *string `pulumi:"operator"`
 	// The value for the attribute.
 	Value string `pulumi:"value"`
 }
@@ -845,6 +847,8 @@ type EventFilterInput interface {
 type EventFilterArgs struct {
 	// The name of a CloudEvents attribute.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The value for the attribute.
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -906,6 +910,11 @@ func (o EventFilterOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilter) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+func (o EventFilterOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventFilter) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
 // The value for the attribute.
 func (o EventFilterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilter) string { return v.Value }).(pulumi.StringOutput)
@@ -935,6 +944,8 @@ func (o EventFilterArrayOutput) Index(i pulumi.IntInput) EventFilterOutput {
 type EventFilterResponse struct {
 	// The name of a CloudEvents attribute.
 	Attribute string `pulumi:"attribute"`
+	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+	Operator string `pulumi:"operator"`
 	// The value for the attribute.
 	Value string `pulumi:"value"`
 }
@@ -957,6 +968,11 @@ func (o EventFilterResponseOutput) ToEventFilterResponseOutputWithContext(ctx co
 // The name of a CloudEvents attribute.
 func (o EventFilterResponseOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilterResponse) string { return v.Attribute }).(pulumi.StringOutput)
+}
+
+// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
+func (o EventFilterResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v EventFilterResponse) string { return v.Operator }).(pulumi.StringOutput)
 }
 
 // The value for the attribute.
@@ -2238,6 +2254,8 @@ type ServiceConfigResponse struct {
 	MaxInstanceCount int `pulumi:"maxInstanceCount"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
+	// The name of service revision.
+	Revision string `pulumi:"revision"`
 	// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
 	Service string `pulumi:"service"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
@@ -2295,6 +2313,11 @@ func (o ServiceConfigResponseOutput) MaxInstanceCount() pulumi.IntOutput {
 // The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 func (o ServiceConfigResponseOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
+}
+
+// The name of service revision.
+func (o ServiceConfigResponseOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceConfigResponse) string { return v.Revision }).(pulumi.StringOutput)
 }
 
 // Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`

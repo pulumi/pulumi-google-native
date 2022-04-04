@@ -1427,6 +1427,8 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 5
 type AllocationSpecificSKUReservationResponse struct {
+	// Indicates how many instances are actually usable currently.
+	AssuredCount string `pulumi:"assuredCount"`
 	// Specifies the number of resources that are allocated.
 	Count string `pulumi:"count"`
 	// Indicates how many instances are in use.
@@ -1448,6 +1450,11 @@ func (o AllocationSpecificSKUReservationResponseOutput) ToAllocationSpecificSKUR
 
 func (o AllocationSpecificSKUReservationResponseOutput) ToAllocationSpecificSKUReservationResponseOutputWithContext(ctx context.Context) AllocationSpecificSKUReservationResponseOutput {
 	return o
+}
+
+// Indicates how many instances are actually usable currently.
+func (o AllocationSpecificSKUReservationResponseOutput) AssuredCount() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.AssuredCount }).(pulumi.StringOutput)
 }
 
 // Specifies the number of resources that are allocated.
@@ -13221,7 +13228,7 @@ func (o GRPCHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -13238,7 +13245,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -13294,7 +13301,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -13321,7 +13328,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -13340,7 +13347,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - SECURE_BOOT - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -23396,7 +23403,7 @@ type NetworkInterfaceResponse struct {
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind string `pulumi:"kind"`
-	// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+	// The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
 	Name string `pulumi:"name"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network string `pulumi:"network"`
@@ -23467,7 +23474,7 @@ func (o NetworkInterfaceResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of the network interface, which is generated by the server. For network devices, these are eth0, eth1, etc.
+// The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
 func (o NetworkInterfaceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -34738,6 +34745,163 @@ func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) LogLevel() pulumi.Str
 	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) string { return v.LogLevel }).(pulumi.StringOutput)
 }
 
+type SecurityPolicyDdosProtectionConfig struct {
+	DdosProtection *SecurityPolicyDdosProtectionConfigDdosProtection `pulumi:"ddosProtection"`
+}
+
+// SecurityPolicyDdosProtectionConfigInput is an input type that accepts SecurityPolicyDdosProtectionConfigArgs and SecurityPolicyDdosProtectionConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyDdosProtectionConfigInput` via:
+//
+//          SecurityPolicyDdosProtectionConfigArgs{...}
+type SecurityPolicyDdosProtectionConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyDdosProtectionConfigOutput() SecurityPolicyDdosProtectionConfigOutput
+	ToSecurityPolicyDdosProtectionConfigOutputWithContext(context.Context) SecurityPolicyDdosProtectionConfigOutput
+}
+
+type SecurityPolicyDdosProtectionConfigArgs struct {
+	DdosProtection SecurityPolicyDdosProtectionConfigDdosProtectionPtrInput `pulumi:"ddosProtection"`
+}
+
+func (SecurityPolicyDdosProtectionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigOutput() SecurityPolicyDdosProtectionConfigOutput {
+	return i.ToSecurityPolicyDdosProtectionConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyDdosProtectionConfigOutput)
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyDdosProtectionConfigArgs) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyDdosProtectionConfigOutput).ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyDdosProtectionConfigPtrInput is an input type that accepts SecurityPolicyDdosProtectionConfigArgs, SecurityPolicyDdosProtectionConfigPtr and SecurityPolicyDdosProtectionConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyDdosProtectionConfigPtrInput` via:
+//
+//          SecurityPolicyDdosProtectionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyDdosProtectionConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput
+	ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Context) SecurityPolicyDdosProtectionConfigPtrOutput
+}
+
+type securityPolicyDdosProtectionConfigPtrType SecurityPolicyDdosProtectionConfigArgs
+
+func SecurityPolicyDdosProtectionConfigPtr(v *SecurityPolicyDdosProtectionConfigArgs) SecurityPolicyDdosProtectionConfigPtrInput {
+	return (*securityPolicyDdosProtectionConfigPtrType)(v)
+}
+
+func (*securityPolicyDdosProtectionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyDdosProtectionConfigPtrType) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return i.ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyDdosProtectionConfigPtrType) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyDdosProtectionConfigPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigOutput() SecurityPolicyDdosProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o.ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyDdosProtectionConfig) *SecurityPolicyDdosProtectionConfig {
+		return &v
+	}).(SecurityPolicyDdosProtectionConfigPtrOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigOutput) DdosProtection() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyDdosProtectionConfig) *SecurityPolicyDdosProtectionConfigDdosProtection {
+		return v.DdosProtection
+	}).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyDdosProtectionConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) ToSecurityPolicyDdosProtectionConfigPtrOutput() SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) ToSecurityPolicyDdosProtectionConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) Elem() SecurityPolicyDdosProtectionConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyDdosProtectionConfig) SecurityPolicyDdosProtectionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyDdosProtectionConfig
+		return ret
+	}).(SecurityPolicyDdosProtectionConfigOutput)
+}
+
+func (o SecurityPolicyDdosProtectionConfigPtrOutput) DdosProtection() SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyDdosProtectionConfig) *SecurityPolicyDdosProtectionConfigDdosProtection {
+		if v == nil {
+			return nil
+		}
+		return v.DdosProtection
+	}).(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput)
+}
+
+type SecurityPolicyDdosProtectionConfigResponse struct {
+	DdosProtection string `pulumi:"ddosProtection"`
+}
+
+type SecurityPolicyDdosProtectionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyDdosProtectionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyDdosProtectionConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyDdosProtectionConfigResponseOutput) ToSecurityPolicyDdosProtectionConfigResponseOutput() SecurityPolicyDdosProtectionConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigResponseOutput) ToSecurityPolicyDdosProtectionConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyDdosProtectionConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyDdosProtectionConfigResponseOutput) DdosProtection() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyDdosProtectionConfigResponse) string { return v.DdosProtection }).(pulumi.StringOutput)
+}
+
 type SecurityPolicyRecaptchaOptionsConfig struct {
 	// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
 	RedirectSiteKey *string `pulumi:"redirectSiteKey"`
@@ -41477,6 +41641,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleInput)(nil)).Elem(), SecurityPolicyRuleArgs{})
@@ -42084,6 +42250,9 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigResponseOutput{})

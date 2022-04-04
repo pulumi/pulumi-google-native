@@ -194,6 +194,38 @@ export const ChartOptionsMode = {
  */
 export type ChartOptionsMode = (typeof ChartOptionsMode)[keyof typeof ChartOptionsMode];
 
+export const DashboardFilterFilterType = {
+    /**
+     * Filter type is unspecified. This is not valid in a well-formed request.
+     */
+    FilterTypeUnspecified: "FILTER_TYPE_UNSPECIFIED",
+    /**
+     * Filter on a resource label value
+     */
+    ResourceLabel: "RESOURCE_LABEL",
+    /**
+     * Filter on a metrics label value
+     */
+    MetricLabel: "METRIC_LABEL",
+    /**
+     * Filter on a user metadata label value
+     */
+    UserMetadataLabel: "USER_METADATA_LABEL",
+    /**
+     * Filter on a system metadata label value
+     */
+    SystemMetadataLabel: "SYSTEM_METADATA_LABEL",
+    /**
+     * Filter on a group id
+     */
+    Group: "GROUP",
+} as const;
+
+/**
+ * The specified filter type
+ */
+export type DashboardFilterFilterType = (typeof DashboardFilterFilterType)[keyof typeof DashboardFilterFilterType];
+
 export const DataSetPlotType = {
     /**
      * Plot type is unspecified. The view will default to LINE.

@@ -66,6 +66,10 @@ type Snapshot struct {
 	SourceInstantSnapshot pulumi.StringOutput `pulumi:"sourceInstantSnapshot"`
 	// The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.
 	SourceInstantSnapshotId pulumi.StringOutput `pulumi:"sourceInstantSnapshotId"`
+	// URL of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicy pulumi.StringOutput `pulumi:"sourceSnapshotSchedulePolicy"`
+	// ID of the resource policy which created this scheduled snapshot.
+	SourceSnapshotSchedulePolicyId pulumi.StringOutput `pulumi:"sourceSnapshotSchedulePolicyId"`
 	// The status of the snapshot. This can be CREATING, DELETING, FAILED, READY, or UPLOADING.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot creation/deletion.

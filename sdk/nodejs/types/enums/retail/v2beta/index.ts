@@ -2,6 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const ControlSearchSolutionUseCaseItem = {
+    /**
+     * The value when it's unspecified. Defaults to SEARCH.
+     */
+    SearchSolutionUseCaseUnspecified: "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED",
+    /**
+     * Search use case. Expects the traffic has a non-empty query.
+     */
+    SearchSolutionUseCaseSearch: "SEARCH_SOLUTION_USE_CASE_SEARCH",
+    /**
+     * Browse use case. Expects the traffic has an empty query.
+     */
+    SearchSolutionUseCaseBrowse: "SEARCH_SOLUTION_USE_CASE_BROWSE",
+} as const;
+
+export type ControlSearchSolutionUseCaseItem = (typeof ControlSearchSolutionUseCaseItem)[keyof typeof ControlSearchSolutionUseCaseItem];
+
 export const ControlSolutionTypesItem = {
     /**
      * Default value.

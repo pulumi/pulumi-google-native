@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 {
 
     /// <summary>
-    /// Parameters that describe the nodes in a cluster.
+    /// Parameters that describe the nodes in a cluster. *Note: *GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     /// </summary>
     [OutputType]
     public sealed class NodeConfigResponse

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class NetworkEndpointGroupServerlessDeploymentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The platform of the backend target(s) of this NEG. Possible values include: 1. API Gateway: apigateway.googleapis.com 2. App Engine: appengine.googleapis.com 3. Cloud Functions: cloudfunctions.googleapis.com 4. Cloud Run: run.googleapis.com 
+        /// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

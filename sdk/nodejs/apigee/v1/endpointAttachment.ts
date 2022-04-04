@@ -51,6 +51,10 @@ export class EndpointAttachment extends pulumi.CustomResource {
      * Format: projects/*&#47;regions/*&#47;serviceAttachments/*
      */
     public readonly serviceAttachment!: pulumi.Output<string>;
+    /**
+     * State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a EndpointAttachment resource with the given unique name, arguments, and options.
@@ -72,11 +76,13 @@ export class EndpointAttachment extends pulumi.CustomResource {
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["serviceAttachment"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EndpointAttachment.__pulumiType, name, resourceInputs, opts);

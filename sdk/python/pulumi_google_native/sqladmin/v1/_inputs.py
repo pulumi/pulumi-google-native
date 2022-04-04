@@ -1347,6 +1347,7 @@ class PasswordValidationPolicyArgs:
     def __init__(__self__, *,
                  complexity: Optional[pulumi.Input['PasswordValidationPolicyComplexity']] = None,
                  disallow_username_substring: Optional[pulumi.Input[bool]] = None,
+                 enable_password_policy: Optional[pulumi.Input[bool]] = None,
                  min_length: Optional[pulumi.Input[int]] = None,
                  password_change_interval: Optional[pulumi.Input[str]] = None,
                  reuse_interval: Optional[pulumi.Input[int]] = None):
@@ -1354,6 +1355,7 @@ class PasswordValidationPolicyArgs:
         Database instance local user password validation policy
         :param pulumi.Input['PasswordValidationPolicyComplexity'] complexity: The complexity of the password.
         :param pulumi.Input[bool] disallow_username_substring: Disallow username as a part of the password.
+        :param pulumi.Input[bool] enable_password_policy: Whether the password policy is enabled or not.
         :param pulumi.Input[int] min_length: Minimum number of characters allowed.
         :param pulumi.Input[str] password_change_interval: Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
         :param pulumi.Input[int] reuse_interval: Number of previous passwords that cannot be reused.
@@ -1362,6 +1364,8 @@ class PasswordValidationPolicyArgs:
             pulumi.set(__self__, "complexity", complexity)
         if disallow_username_substring is not None:
             pulumi.set(__self__, "disallow_username_substring", disallow_username_substring)
+        if enable_password_policy is not None:
+            pulumi.set(__self__, "enable_password_policy", enable_password_policy)
         if min_length is not None:
             pulumi.set(__self__, "min_length", min_length)
         if password_change_interval is not None:
@@ -1392,6 +1396,18 @@ class PasswordValidationPolicyArgs:
     @disallow_username_substring.setter
     def disallow_username_substring(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disallow_username_substring", value)
+
+    @property
+    @pulumi.getter(name="enablePasswordPolicy")
+    def enable_password_policy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the password policy is enabled or not.
+        """
+        return pulumi.get(self, "enable_password_policy")
+
+    @enable_password_policy.setter
+    def enable_password_policy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_password_policy", value)
 
     @property
     @pulumi.getter(name="minLength")

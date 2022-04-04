@@ -57,6 +57,10 @@ export interface GetRepositoryResult {
      */
     readonly name: string;
     /**
+     * The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+     */
+    readonly sizeBytes: string;
+    /**
      * The time when the repository was last updated.
      */
     readonly updateTime: string;

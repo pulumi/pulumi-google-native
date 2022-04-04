@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     public sealed class CommonFeatureSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Anthos Observability spec
+        /// </summary>
+        [Input("anthosobservability")]
+        public Input<Inputs.AnthosObservabilityFeatureSpecArgs>? Anthosobservability { get; set; }
+
+        /// <summary>
         /// Appdevexperience specific spec.
         /// </summary>
         [Input("appdevexperience")]
