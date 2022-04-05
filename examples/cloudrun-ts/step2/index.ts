@@ -30,7 +30,6 @@ const service = new google.run.v1.Service("service", {
 
 export const exportedUrl = service.status.url;
 const scheduler = new google.cloudscheduler.v1.Job('schedule_job', {
-    location: 'us-east4',
     schedule: "0 6 * * *",
     attemptDeadline: "1800s",
     httpTarget: {

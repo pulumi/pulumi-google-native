@@ -1,4 +1,4 @@
-// Copyright 2016-2021, Pulumi Corporation.
+// Copyright 2016-2022, Pulumi Corporation.
 
 import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
@@ -29,7 +29,6 @@ const service = new google.run.v1.Service("service", {
 
 export const exportedUrl = service.status.url;
 const scheduler = new google.cloudscheduler.v1.Job('schedule_job', {
-    location: 'us-east4',
     schedule: "0 6 * * *",
     attemptDeadline: "1800s",
     httpTarget: {

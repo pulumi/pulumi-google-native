@@ -17,9 +17,9 @@ package provider
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 )
 
 // knativeStatusCheck checks if the knative resource is ready. If so it returns true as the first return type.
@@ -51,7 +51,7 @@ func knativeStatusCheck(res map[string]interface{}) (bool, error) {
 	// 4. Check conditions to ensure resource is ready.
 	for _, condition := range s.Status.Conditions {
 		if condition.Type == readyStatusType {
-			log.Printf("[DEBUG] checking KnativeStatus Ready condition %s: %s", condition.Status, condition.Message)
+			logging.V(9).Infof("[DEBUG] checking KnativeStatus Ready condition %s: %s", condition.Status, condition.Message)
 			switch condition.Status {
 			case "True":
 				// 4. a. Resource is ready if condition type is `Ready` status is `True`
