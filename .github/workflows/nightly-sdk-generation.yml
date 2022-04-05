@@ -74,6 +74,7 @@ jobs:
           branch: "generate-sdk/${{ github.run_id }}-${{ github.run_number }}"
           base: "master"
           title: "Automated SDK generation"
+          labels: impact/no-changelog-required
           committer: pulumi-bot <bot@pulumi.com>
           token: ${{ secrets.PULUMI_BOT_TOKEN }}
       - name: Set Automerge
