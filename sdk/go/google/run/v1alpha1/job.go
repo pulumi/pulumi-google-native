@@ -79,8 +79,6 @@ type jobArgs struct {
 	NamespaceId string      `pulumi:"namespaceId"`
 	// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
 	Spec *JobSpec `pulumi:"spec"`
-	// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-	Status *JobStatus `pulumi:"status"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -94,8 +92,6 @@ type JobArgs struct {
 	NamespaceId pulumi.StringInput
 	// Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
 	Spec JobSpecPtrInput
-	// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-	Status JobStatusPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

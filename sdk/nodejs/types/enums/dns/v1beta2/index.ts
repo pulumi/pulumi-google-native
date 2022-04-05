@@ -2,16 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
-export const ChangeStatus = {
-    Pending: "pending",
-    Done: "done",
-} as const;
-
-/**
- * Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
- */
-export type ChangeStatus = (typeof ChangeStatus)[keyof typeof ChangeStatus];
-
 export const DnsKeySpecAlgorithm = {
     Rsasha1: "rsasha1",
     Rsasha256: "rsasha256",

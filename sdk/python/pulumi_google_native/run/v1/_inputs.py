@@ -10,7 +10,6 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
-    'AddressableArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
@@ -20,13 +19,11 @@ __all__ = [
     'ContainerPortArgs',
     'ContainerArgs',
     'DomainMappingSpecArgs',
-    'DomainMappingStatusArgs',
     'EnvFromSourceArgs',
     'EnvVarSourceArgs',
     'EnvVarArgs',
     'ExecActionArgs',
     'ExprArgs',
-    'GoogleCloudRunV1ConditionArgs',
     'HTTPGetActionArgs',
     'HTTPHeaderArgs',
     'KeyToPathArgs',
@@ -34,7 +31,6 @@ __all__ = [
     'ObjectMetaArgs',
     'OwnerReferenceArgs',
     'ProbeArgs',
-    'ResourceRecordArgs',
     'ResourceRequirementsArgs',
     'RevisionSpecArgs',
     'RevisionTemplateArgs',
@@ -43,32 +39,11 @@ __all__ = [
     'SecretVolumeSourceArgs',
     'SecurityContextArgs',
     'ServiceSpecArgs',
-    'ServiceStatusArgs',
     'TCPSocketActionArgs',
     'TrafficTargetArgs',
     'VolumeMountArgs',
     'VolumeArgs',
 ]
-
-@pulumi.input_type
-class AddressableArgs:
-    def __init__(__self__, *,
-                 url: Optional[pulumi.Input[str]] = None):
-        """
-        Information for connecting over HTTP(s).
-        """
-        if url is not None:
-            pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
-
 
 @pulumi.input_type
 class AuditConfigArgs:
@@ -795,94 +770,6 @@ class DomainMappingSpecArgs:
 
 
 @pulumi.input_type
-class DomainMappingStatusArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]]] = None,
-                 mapped_route_name: Optional[pulumi.Input[str]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
-        """
-        The current state of the Domain Mapping.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]] conditions: Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-        :param pulumi.Input[str] mapped_route_name: The name of the route that the mapping currently points to.
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-        :param pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-        :param pulumi.Input[str] url: Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if mapped_route_name is not None:
-            pulumi.set(__self__, "mapped_route_name", mapped_route_name)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if resource_records is not None:
-            pulumi.set(__self__, "resource_records", resource_records)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]]]:
-        """
-        Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="mappedRouteName")
-    def mapped_route_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the route that the mapping currently points to.
-        """
-        return pulumi.get(self, "mapped_route_name")
-
-    @mapped_route_name.setter
-    def mapped_route_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mapped_route_name", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter(name="resourceRecords")
-    def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]]:
-        """
-        The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-        """
-        return pulumi.get(self, "resource_records")
-
-    @resource_records.setter
-    def resource_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]]):
-        pulumi.set(self, "resource_records", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
-
-
-@pulumi.input_type
 class EnvFromSourceArgs:
     def __init__(__self__, *,
                  config_map_ref: Optional[pulumi.Input['ConfigMapEnvSourceArgs']] = None,
@@ -1128,110 +1015,6 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudRunV1ConditionArgs:
-    def __init__(__self__, *,
-                 last_transition_time: Optional[pulumi.Input[str]] = None,
-                 message: Optional[pulumi.Input[str]] = None,
-                 reason: Optional[pulumi.Input[str]] = None,
-                 severity: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        Condition defines a generic condition for a Resource.
-        :param pulumi.Input[str] last_transition_time: Optional. Last time the condition transitioned from one status to another.
-        :param pulumi.Input[str] message: Optional. Human readable message indicating details about the current status.
-        :param pulumi.Input[str] reason: Optional. One-word CamelCase reason for the condition's last transition.
-        :param pulumi.Input[str] severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        :param pulumi.Input[str] status: Status of the condition, one of True, False, Unknown.
-        :param pulumi.Input[str] type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-        """
-        if last_transition_time is not None:
-            pulumi.set(__self__, "last_transition_time", last_transition_time)
-        if message is not None:
-            pulumi.set(__self__, "message", message)
-        if reason is not None:
-            pulumi.set(__self__, "reason", reason)
-        if severity is not None:
-            pulumi.set(__self__, "severity", severity)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="lastTransitionTime")
-    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Last time the condition transitioned from one status to another.
-        """
-        return pulumi.get(self, "last_transition_time")
-
-    @last_transition_time.setter
-    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "last_transition_time", value)
-
-    @property
-    @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Human readable message indicating details about the current status.
-        """
-        return pulumi.get(self, "message")
-
-    @message.setter
-    def message(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "message", value)
-
-    @property
-    @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. One-word CamelCase reason for the condition's last transition.
-        """
-        return pulumi.get(self, "reason")
-
-    @reason.setter
-    def reason(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "reason", value)
-
-    @property
-    @pulumi.getter
-    def severity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. How to interpret failures of this condition, one of Error, Warning, Info
-        """
-        return pulumi.get(self, "severity")
-
-    @severity.setter
-    def severity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "severity", value)
-
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[str]]:
-        """
-        Status of the condition, one of True, False, Unknown.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -1915,62 +1698,6 @@ class ProbeArgs:
 
 
 @pulumi.input_type
-class ResourceRecordArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 rrdata: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['ResourceRecordType']] = None):
-        """
-        A DNS resource record.
-        :param pulumi.Input[str] name: Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
-        :param pulumi.Input[str] rrdata: Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        :param pulumi.Input['ResourceRecordType'] type: Resource record type. Example: `AAAA`.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if rrdata is not None:
-            pulumi.set(__self__, "rrdata", rrdata)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def rrdata(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-        """
-        return pulumi.get(self, "rrdata")
-
-    @rrdata.setter
-    def rrdata(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "rrdata", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['ResourceRecordType']]:
-        """
-        Resource record type. Example: `AAAA`.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['ResourceRecordType']]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class ResourceRequirementsArgs:
     def __init__(__self__, *,
                  limits: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2428,126 +2155,6 @@ class ServiceSpecArgs:
     @traffic.setter
     def traffic(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficTargetArgs']]]]):
         pulumi.set(self, "traffic", value)
-
-
-@pulumi.input_type
-class ServiceStatusArgs:
-    def __init__(__self__, *,
-                 address: Optional[pulumi.Input['AddressableArgs']] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]]] = None,
-                 latest_created_revision_name: Optional[pulumi.Input[str]] = None,
-                 latest_ready_revision_name: Optional[pulumi.Input[str]] = None,
-                 observed_generation: Optional[pulumi.Input[int]] = None,
-                 traffic: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficTargetArgs']]]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
-        """
-        The current state of the Service. Output only.
-        :param pulumi.Input['AddressableArgs'] address: From RouteStatus. Similar to url, information on where the service is available on HTTP.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]] conditions: Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
-        :param pulumi.Input[str] latest_created_revision_name: From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-        :param pulumi.Input[str] latest_ready_revision_name: From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-        :param pulumi.Input[int] observed_generation: ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-        :param pulumi.Input[Sequence[pulumi.Input['TrafficTargetArgs']]] traffic: From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-        :param pulumi.Input[str] url: From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-        """
-        if address is not None:
-            pulumi.set(__self__, "address", address)
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-        if latest_created_revision_name is not None:
-            pulumi.set(__self__, "latest_created_revision_name", latest_created_revision_name)
-        if latest_ready_revision_name is not None:
-            pulumi.set(__self__, "latest_ready_revision_name", latest_ready_revision_name)
-        if observed_generation is not None:
-            pulumi.set(__self__, "observed_generation", observed_generation)
-        if traffic is not None:
-            pulumi.set(__self__, "traffic", traffic)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
-
-    @property
-    @pulumi.getter
-    def address(self) -> Optional[pulumi.Input['AddressableArgs']]:
-        """
-        From RouteStatus. Similar to url, information on where the service is available on HTTP.
-        """
-        return pulumi.get(self, "address")
-
-    @address.setter
-    def address(self, value: Optional[pulumi.Input['AddressableArgs']]):
-        pulumi.set(self, "address", value)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]]]:
-        """
-        Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV1ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
-
-    @property
-    @pulumi.getter(name="latestCreatedRevisionName")
-    def latest_created_revision_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-        """
-        return pulumi.get(self, "latest_created_revision_name")
-
-    @latest_created_revision_name.setter
-    def latest_created_revision_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "latest_created_revision_name", value)
-
-    @property
-    @pulumi.getter(name="latestReadyRevisionName")
-    def latest_ready_revision_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-        """
-        return pulumi.get(self, "latest_ready_revision_name")
-
-    @latest_ready_revision_name.setter
-    def latest_ready_revision_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "latest_ready_revision_name", value)
-
-    @property
-    @pulumi.getter(name="observedGeneration")
-    def observed_generation(self) -> Optional[pulumi.Input[int]]:
-        """
-        ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-        """
-        return pulumi.get(self, "observed_generation")
-
-    @observed_generation.setter
-    def observed_generation(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "observed_generation", value)
-
-    @property
-    @pulumi.getter
-    def traffic(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TrafficTargetArgs']]]]:
-        """
-        From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-        """
-        return pulumi.get(self, "traffic")
-
-    @traffic.setter
-    def traffic(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficTargetArgs']]]]):
-        pulumi.set(self, "traffic", value)
-
-    @property
-    @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
-        """
-        From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "url", value)
 
 
 @pulumi.input_type

@@ -86,8 +86,6 @@ type rolloutArgs struct {
 	RolloutId *string `pulumi:"rolloutId"`
 	// The name of the service associated with this Rollout.
 	ServiceName string `pulumi:"serviceName"`
-	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-	Status *RolloutStatus `pulumi:"status"`
 	// Google Service Control selects service configurations based on traffic percentage.
 	TrafficPercentStrategy *TrafficPercentStrategy `pulumi:"trafficPercentStrategy"`
 }
@@ -104,8 +102,6 @@ type RolloutArgs struct {
 	RolloutId pulumi.StringPtrInput
 	// The name of the service associated with this Rollout.
 	ServiceName pulumi.StringInput
-	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-	Status RolloutStatusPtrInput
 	// Google Service Control selects service configurations based on traffic percentage.
 	TrafficPercentStrategy TrafficPercentStrategyPtrInput
 }

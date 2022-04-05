@@ -127,12 +127,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         }
 
         /// <summary>
-        /// Unique identifier for the resource; defined by the server (output only).
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
         /// If the DNS queries for the zone will be served.
         /// </summary>
         [Input("isServing")]
@@ -146,18 +140,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
-
-        /// <summary>
-        /// The time that this operation was started by the server (output only). This is in RFC3339 text format.
-        /// </summary>
-        [Input("startTime")]
-        public Input<string>? StartTime { get; set; }
-
-        /// <summary>
-        /// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
-        /// </summary>
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.DNS.V1Beta2.ChangeStatus>? Status { get; set; }
 
         public ChangeArgs()
         {

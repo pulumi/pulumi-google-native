@@ -19,15 +19,13 @@ class JobArgs:
                  api_version: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['ObjectMetaArgs']] = None,
-                 spec: Optional[pulumi.Input['JobSpecArgs']] = None,
-                 status: Optional[pulumi.Input['JobStatusArgs']] = None):
+                 spec: Optional[pulumi.Input['JobSpecArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] api_version: Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
         :param pulumi.Input[str] kind: Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
         :param pulumi.Input['ObjectMetaArgs'] metadata: Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
         :param pulumi.Input['JobSpecArgs'] spec: Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-        :param pulumi.Input['JobStatusArgs'] status: Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         """
         pulumi.set(__self__, "namespace_id", namespace_id)
         if api_version is not None:
@@ -38,8 +36,6 @@ class JobArgs:
             pulumi.set(__self__, "metadata", metadata)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="namespaceId")
@@ -98,18 +94,6 @@ class JobArgs:
     def spec(self, value: Optional[pulumi.Input['JobSpecArgs']]):
         pulumi.set(self, "spec", value)
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['JobStatusArgs']]:
-        """
-        Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['JobStatusArgs']]):
-        pulumi.set(self, "status", value)
-
 
 class Job(pulumi.CustomResource):
     @overload
@@ -121,7 +105,6 @@ class Job(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['JobSpecArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None,
                  __props__=None):
         """
         Create a job.
@@ -133,7 +116,6 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] kind: Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
         :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
         :param pulumi.Input[pulumi.InputType['JobSpecArgs']] spec: Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-        :param pulumi.Input[pulumi.InputType['JobStatusArgs']] status: Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         """
         ...
     @overload
@@ -165,7 +147,6 @@ class Job(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['JobSpecArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -185,7 +166,7 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'namespace_id'")
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["spec"] = spec
-            __props__.__dict__["status"] = status
+            __props__.__dict__["status"] = None
         super(Job, __self__).__init__(
             'google-native:run/v1alpha1:Job',
             resource_name,

@@ -190,163 +190,6 @@ const (
 	CompositeTypeStatusSupported     = CompositeTypeStatus("SUPPORTED")
 )
 
-func (CompositeTypeStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeStatus)(nil)).Elem()
-}
-
-func (e CompositeTypeStatus) ToCompositeTypeStatusOutput() CompositeTypeStatusOutput {
-	return pulumi.ToOutput(e).(CompositeTypeStatusOutput)
-}
-
-func (e CompositeTypeStatus) ToCompositeTypeStatusOutputWithContext(ctx context.Context) CompositeTypeStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(CompositeTypeStatusOutput)
-}
-
-func (e CompositeTypeStatus) ToCompositeTypeStatusPtrOutput() CompositeTypeStatusPtrOutput {
-	return e.ToCompositeTypeStatusPtrOutputWithContext(context.Background())
-}
-
-func (e CompositeTypeStatus) ToCompositeTypeStatusPtrOutputWithContext(ctx context.Context) CompositeTypeStatusPtrOutput {
-	return CompositeTypeStatus(e).ToCompositeTypeStatusOutputWithContext(ctx).ToCompositeTypeStatusPtrOutputWithContext(ctx)
-}
-
-func (e CompositeTypeStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CompositeTypeStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e CompositeTypeStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e CompositeTypeStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type CompositeTypeStatusOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CompositeTypeStatus)(nil)).Elem()
-}
-
-func (o CompositeTypeStatusOutput) ToCompositeTypeStatusOutput() CompositeTypeStatusOutput {
-	return o
-}
-
-func (o CompositeTypeStatusOutput) ToCompositeTypeStatusOutputWithContext(ctx context.Context) CompositeTypeStatusOutput {
-	return o
-}
-
-func (o CompositeTypeStatusOutput) ToCompositeTypeStatusPtrOutput() CompositeTypeStatusPtrOutput {
-	return o.ToCompositeTypeStatusPtrOutputWithContext(context.Background())
-}
-
-func (o CompositeTypeStatusOutput) ToCompositeTypeStatusPtrOutputWithContext(ctx context.Context) CompositeTypeStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompositeTypeStatus) *CompositeTypeStatus {
-		return &v
-	}).(CompositeTypeStatusPtrOutput)
-}
-
-func (o CompositeTypeStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o CompositeTypeStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompositeTypeStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o CompositeTypeStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CompositeTypeStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompositeTypeStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type CompositeTypeStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (CompositeTypeStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CompositeTypeStatus)(nil)).Elem()
-}
-
-func (o CompositeTypeStatusPtrOutput) ToCompositeTypeStatusPtrOutput() CompositeTypeStatusPtrOutput {
-	return o
-}
-
-func (o CompositeTypeStatusPtrOutput) ToCompositeTypeStatusPtrOutputWithContext(ctx context.Context) CompositeTypeStatusPtrOutput {
-	return o
-}
-
-func (o CompositeTypeStatusPtrOutput) Elem() CompositeTypeStatusOutput {
-	return o.ApplyT(func(v *CompositeTypeStatus) CompositeTypeStatus {
-		if v != nil {
-			return *v
-		}
-		var ret CompositeTypeStatus
-		return ret
-	}).(CompositeTypeStatusOutput)
-}
-
-func (o CompositeTypeStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o CompositeTypeStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CompositeTypeStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// CompositeTypeStatusInput is an input type that accepts CompositeTypeStatusArgs and CompositeTypeStatusOutput values.
-// You can construct a concrete instance of `CompositeTypeStatusInput` via:
-//
-//          CompositeTypeStatusArgs{...}
-type CompositeTypeStatusInput interface {
-	pulumi.Input
-
-	ToCompositeTypeStatusOutput() CompositeTypeStatusOutput
-	ToCompositeTypeStatusOutputWithContext(context.Context) CompositeTypeStatusOutput
-}
-
-var compositeTypeStatusPtrType = reflect.TypeOf((**CompositeTypeStatus)(nil)).Elem()
-
-type CompositeTypeStatusPtrInput interface {
-	pulumi.Input
-
-	ToCompositeTypeStatusPtrOutput() CompositeTypeStatusPtrOutput
-	ToCompositeTypeStatusPtrOutputWithContext(context.Context) CompositeTypeStatusPtrOutput
-}
-
-type compositeTypeStatusPtr string
-
-func CompositeTypeStatusPtr(v string) CompositeTypeStatusPtrInput {
-	return (*compositeTypeStatusPtr)(&v)
-}
-
-func (*compositeTypeStatusPtr) ElementType() reflect.Type {
-	return compositeTypeStatusPtrType
-}
-
-func (in *compositeTypeStatusPtr) ToCompositeTypeStatusPtrOutput() CompositeTypeStatusPtrOutput {
-	return pulumi.ToOutput(in).(CompositeTypeStatusPtrOutput)
-}
-
-func (in *compositeTypeStatusPtr) ToCompositeTypeStatusPtrOutputWithContext(ctx context.Context) CompositeTypeStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(CompositeTypeStatusPtrOutput)
-}
-
 // Level to record this diagnostic.
 type DiagnosticLevel string
 
@@ -1198,8 +1041,6 @@ func (in *validationOptionsUndeclaredPropertiesPtr) ToValidationOptionsUndeclare
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CompositeTypeStatusInput)(nil)).Elem(), CompositeTypeStatus("UNKNOWN_STATUS"))
-	pulumi.RegisterInputType(reflect.TypeOf((*CompositeTypeStatusPtrInput)(nil)).Elem(), CompositeTypeStatus("UNKNOWN_STATUS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiagnosticLevelInput)(nil)).Elem(), DiagnosticLevel("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiagnosticLevelPtrInput)(nil)).Elem(), DiagnosticLevel("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InputMappingLocationInput)(nil)).Elem(), InputMappingLocation("UNKNOWN"))
@@ -1212,8 +1053,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationOptionsUndeclaredPropertiesPtrInput)(nil)).Elem(), ValidationOptionsUndeclaredProperties("UNKNOWN"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
-	pulumi.RegisterOutputType(CompositeTypeStatusOutput{})
-	pulumi.RegisterOutputType(CompositeTypeStatusPtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticLevelOutput{})
 	pulumi.RegisterOutputType(DiagnosticLevelPtrOutput{})
 	pulumi.RegisterOutputType(InputMappingLocationOutput{})

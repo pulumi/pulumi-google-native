@@ -78,8 +78,6 @@ type domainMappingArgs struct {
 	Project  *string     `pulumi:"project"`
 	// The spec for this DomainMapping.
 	Spec *DomainMappingSpec `pulumi:"spec"`
-	// The current status of the DomainMapping.
-	Status *DomainMappingStatus `pulumi:"status"`
 }
 
 // The set of arguments for constructing a DomainMapping resource.
@@ -96,8 +94,6 @@ type DomainMappingArgs struct {
 	Project  pulumi.StringPtrInput
 	// The spec for this DomainMapping.
 	Spec DomainMappingSpecPtrInput
-	// The current status of the DomainMapping.
-	Status DomainMappingStatusPtrInput
 }
 
 func (DomainMappingArgs) ElementType() reflect.Type {

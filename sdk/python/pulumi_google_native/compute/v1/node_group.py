@@ -26,7 +26,6 @@ class NodeGroupArgs:
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodeGroupStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
@@ -58,8 +57,6 @@ class NodeGroupArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -179,15 +176,6 @@ class NodeGroupArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['NodeGroupStatus']]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['NodeGroupStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "zone")
 
@@ -211,7 +199,6 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodeGroupStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -262,7 +249,6 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['NodeGroupStatus']] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -288,13 +274,13 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["node_template"] = node_template
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            __props__.__dict__["status"] = status
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["size"] = None
+            __props__.__dict__["status"] = None
         super(NodeGroup, __self__).__init__(
             'google-native:compute/v1:NodeGroup',
             resource_name,

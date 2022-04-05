@@ -54,7 +54,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
     /**
      * Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
      */
-    public readonly status!: pulumi.Output<outputs.accesscontextmanager.v1.ServicePerimeterConfigResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.accesscontextmanager.v1.ServicePerimeterConfigResponse>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
@@ -83,9 +83,9 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["perimeterType"] = args ? args.perimeterType : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -121,10 +121,6 @@ export interface ServicePerimeterArgs {
      * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
      */
     spec?: pulumi.Input<inputs.accesscontextmanager.v1.ServicePerimeterConfigArgs>;
-    /**
-     * Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
-     */
-    status?: pulumi.Input<inputs.accesscontextmanager.v1.ServicePerimeterConfigArgs>;
     /**
      * Human readable title. Must be unique within the Policy.
      */

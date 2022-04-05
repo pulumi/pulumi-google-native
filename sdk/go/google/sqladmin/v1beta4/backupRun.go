@@ -117,8 +117,6 @@ type backupRunArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	StartTime *string `pulumi:"startTime"`
-	// The status of this run.
-	Status *BackupRunStatus `pulumi:"status"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type *BackupRunType `pulumi:"type"`
 	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -154,8 +152,6 @@ type BackupRunArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	StartTime pulumi.StringPtrInput
-	// The status of this run.
-	Status BackupRunStatusPtrInput
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type BackupRunTypePtrInput
 	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.

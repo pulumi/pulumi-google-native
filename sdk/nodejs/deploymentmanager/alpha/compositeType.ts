@@ -59,7 +59,7 @@ export class CompositeType extends pulumi.CustomResource {
      * Server defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Files for the template type.
      */
@@ -81,11 +81,11 @@ export class CompositeType extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["templateContents"] = args ? args.templateContents : undefined;
             resourceInputs["insertTime"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["insertTime"] = undefined /*out*/;
@@ -119,7 +119,6 @@ export interface CompositeTypeArgs {
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    status?: pulumi.Input<enums.deploymentmanager.alpha.CompositeTypeStatus>;
     /**
      * Files for the template type.
      */

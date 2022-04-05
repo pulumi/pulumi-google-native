@@ -189,12 +189,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("forwardingConfig")]
         public Input<Inputs.ManagedZoneForwardingConfigArgs>? ForwardingConfig { get; set; }
 
-        /// <summary>
-        /// Unique identifier for the resource; defined by the server (output only)
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
@@ -221,18 +215,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         [Input("nameServerSet")]
         public Input<string>? NameServerSet { get; set; }
-
-        [Input("nameServers")]
-        private InputList<string>? _nameServers;
-
-        /// <summary>
-        /// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
-        /// </summary>
-        public InputList<string> NameServers
-        {
-            get => _nameServers ?? (_nameServers = new InputList<string>());
-            set => _nameServers = value;
-        }
 
         /// <summary>
         /// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.

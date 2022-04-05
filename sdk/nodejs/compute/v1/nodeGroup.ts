@@ -77,7 +77,7 @@ export class NodeGroup extends pulumi.CustomResource {
      * The total number of nodes in the node group.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The name of the zone where the node group resides, such as us-central1-a.
      */
@@ -107,13 +107,13 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["autoscalingPolicy"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -173,6 +173,5 @@ export interface NodeGroupArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
-    status?: pulumi.Input<enums.compute.v1.NodeGroupStatus>;
     zone?: pulumi.Input<string>;
 }

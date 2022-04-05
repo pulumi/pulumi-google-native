@@ -372,163 +372,6 @@ const (
 	BackupRunStatusDeleted = BackupRunStatus("DELETED")
 )
 
-func (BackupRunStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupRunStatus)(nil)).Elem()
-}
-
-func (e BackupRunStatus) ToBackupRunStatusOutput() BackupRunStatusOutput {
-	return pulumi.ToOutput(e).(BackupRunStatusOutput)
-}
-
-func (e BackupRunStatus) ToBackupRunStatusOutputWithContext(ctx context.Context) BackupRunStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(BackupRunStatusOutput)
-}
-
-func (e BackupRunStatus) ToBackupRunStatusPtrOutput() BackupRunStatusPtrOutput {
-	return e.ToBackupRunStatusPtrOutputWithContext(context.Background())
-}
-
-func (e BackupRunStatus) ToBackupRunStatusPtrOutputWithContext(ctx context.Context) BackupRunStatusPtrOutput {
-	return BackupRunStatus(e).ToBackupRunStatusOutputWithContext(ctx).ToBackupRunStatusPtrOutputWithContext(ctx)
-}
-
-func (e BackupRunStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e BackupRunStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e BackupRunStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e BackupRunStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type BackupRunStatusOutput struct{ *pulumi.OutputState }
-
-func (BackupRunStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BackupRunStatus)(nil)).Elem()
-}
-
-func (o BackupRunStatusOutput) ToBackupRunStatusOutput() BackupRunStatusOutput {
-	return o
-}
-
-func (o BackupRunStatusOutput) ToBackupRunStatusOutputWithContext(ctx context.Context) BackupRunStatusOutput {
-	return o
-}
-
-func (o BackupRunStatusOutput) ToBackupRunStatusPtrOutput() BackupRunStatusPtrOutput {
-	return o.ToBackupRunStatusPtrOutputWithContext(context.Background())
-}
-
-func (o BackupRunStatusOutput) ToBackupRunStatusPtrOutputWithContext(ctx context.Context) BackupRunStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupRunStatus) *BackupRunStatus {
-		return &v
-	}).(BackupRunStatusPtrOutput)
-}
-
-func (o BackupRunStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o BackupRunStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackupRunStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o BackupRunStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o BackupRunStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackupRunStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type BackupRunStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (BackupRunStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BackupRunStatus)(nil)).Elem()
-}
-
-func (o BackupRunStatusPtrOutput) ToBackupRunStatusPtrOutput() BackupRunStatusPtrOutput {
-	return o
-}
-
-func (o BackupRunStatusPtrOutput) ToBackupRunStatusPtrOutputWithContext(ctx context.Context) BackupRunStatusPtrOutput {
-	return o
-}
-
-func (o BackupRunStatusPtrOutput) Elem() BackupRunStatusOutput {
-	return o.ApplyT(func(v *BackupRunStatus) BackupRunStatus {
-		if v != nil {
-			return *v
-		}
-		var ret BackupRunStatus
-		return ret
-	}).(BackupRunStatusOutput)
-}
-
-func (o BackupRunStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o BackupRunStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackupRunStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// BackupRunStatusInput is an input type that accepts BackupRunStatusArgs and BackupRunStatusOutput values.
-// You can construct a concrete instance of `BackupRunStatusInput` via:
-//
-//          BackupRunStatusArgs{...}
-type BackupRunStatusInput interface {
-	pulumi.Input
-
-	ToBackupRunStatusOutput() BackupRunStatusOutput
-	ToBackupRunStatusOutputWithContext(context.Context) BackupRunStatusOutput
-}
-
-var backupRunStatusPtrType = reflect.TypeOf((**BackupRunStatus)(nil)).Elem()
-
-type BackupRunStatusPtrInput interface {
-	pulumi.Input
-
-	ToBackupRunStatusPtrOutput() BackupRunStatusPtrOutput
-	ToBackupRunStatusPtrOutputWithContext(context.Context) BackupRunStatusPtrOutput
-}
-
-type backupRunStatusPtr string
-
-func BackupRunStatusPtr(v string) BackupRunStatusPtrInput {
-	return (*backupRunStatusPtr)(&v)
-}
-
-func (*backupRunStatusPtr) ElementType() reflect.Type {
-	return backupRunStatusPtrType
-}
-
-func (in *backupRunStatusPtr) ToBackupRunStatusPtrOutput() BackupRunStatusPtrOutput {
-	return pulumi.ToOutput(in).(BackupRunStatusPtrOutput)
-}
-
-func (in *backupRunStatusPtr) ToBackupRunStatusPtrOutputWithContext(ctx context.Context) BackupRunStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(BackupRunStatusPtrOutput)
-}
-
 // The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 type BackupRunType string
 
@@ -3179,8 +3022,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRetentionSettingsRetentionUnitPtrInput)(nil)).Elem(), BackupRetentionSettingsRetentionUnit("RETENTION_UNIT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunBackupKindInput)(nil)).Elem(), BackupRunBackupKind("SQL_BACKUP_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunBackupKindPtrInput)(nil)).Elem(), BackupRunBackupKind("SQL_BACKUP_KIND_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunStatusInput)(nil)).Elem(), BackupRunStatus("SQL_BACKUP_RUN_STATUS_UNSPECIFIED"))
-	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunStatusPtrInput)(nil)).Elem(), BackupRunStatus("SQL_BACKUP_RUN_STATUS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunTypeInput)(nil)).Elem(), BackupRunType("SQL_BACKUP_RUN_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunTypePtrInput)(nil)).Elem(), BackupRunType("SQL_BACKUP_RUN_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceBackendTypeInput)(nil)).Elem(), InstanceBackendType("SQL_BACKEND_TYPE_UNSPECIFIED"))
@@ -3216,8 +3057,6 @@ func init() {
 	pulumi.RegisterOutputType(BackupRetentionSettingsRetentionUnitPtrOutput{})
 	pulumi.RegisterOutputType(BackupRunBackupKindOutput{})
 	pulumi.RegisterOutputType(BackupRunBackupKindPtrOutput{})
-	pulumi.RegisterOutputType(BackupRunStatusOutput{})
-	pulumi.RegisterOutputType(BackupRunStatusPtrOutput{})
 	pulumi.RegisterOutputType(BackupRunTypeOutput{})
 	pulumi.RegisterOutputType(BackupRunTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceBackendTypeOutput{})

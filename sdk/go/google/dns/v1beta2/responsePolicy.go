@@ -71,9 +71,7 @@ type responsePolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
 	GkeClusters []ResponsePolicyGKECluster `pulumi:"gkeClusters"`
-	// Unique identifier for the resource; defined by the server (output only).
-	Id   *string `pulumi:"id"`
-	Kind *string `pulumi:"kind"`
+	Kind        *string                    `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetwork `pulumi:"networks"`
 	Project  *string                 `pulumi:"project"`
@@ -89,9 +87,7 @@ type ResponsePolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
 	GkeClusters ResponsePolicyGKEClusterArrayInput
-	// Unique identifier for the resource; defined by the server (output only).
-	Id   pulumi.StringPtrInput
-	Kind pulumi.StringPtrInput
+	Kind        pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkArrayInput
 	Project  pulumi.StringPtrInput

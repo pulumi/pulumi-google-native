@@ -21,7 +21,6 @@ class CompositeTypeArgs:
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input['CompositeTypeLabelEntryArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input['TemplateContentsArgs']] = None):
         """
         The set of arguments for constructing a CompositeType resource.
@@ -40,8 +39,6 @@ class CompositeTypeArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if template_contents is not None:
             pulumi.set(__self__, "template_contents", template_contents)
 
@@ -100,15 +97,6 @@ class CompositeTypeArgs:
         pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['CompositeTypeStatus']]:
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['CompositeTypeStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
     @pulumi.getter(name="templateContents")
     def template_contents(self) -> Optional[pulumi.Input['TemplateContentsArgs']]:
         """
@@ -131,7 +119,6 @@ class CompositeType(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
                  __props__=None):
         """
@@ -173,7 +160,6 @@ class CompositeType(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CompositeTypeLabelEntryArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['CompositeTypeStatus']] = None,
                  template_contents: Optional[pulumi.Input[pulumi.InputType['TemplateContentsArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -192,11 +178,11 @@ class CompositeType(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
-            __props__.__dict__["status"] = status
             __props__.__dict__["template_contents"] = template_contents
             __props__.__dict__["insert_time"] = None
             __props__.__dict__["operation"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["status"] = None
         super(CompositeType, __self__).__init__(
             'google-native:deploymentmanager/v2beta:CompositeType',
             resource_name,

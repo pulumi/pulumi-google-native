@@ -30,7 +30,6 @@ class BackupRunArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['BackupRunStatus']] = None,
                  type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None):
         """
@@ -48,7 +47,6 @@ class BackupRunArgs:
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-        :param pulumi.Input['BackupRunStatus'] status: The status of this run.
         :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
@@ -79,8 +77,6 @@ class BackupRunArgs:
             pulumi.set(__self__, "self_link", self_link)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if window_start_time is not None:
@@ -253,18 +249,6 @@ class BackupRunArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['BackupRunStatus']]:
-        """
-        The status of this run.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['BackupRunStatus']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> Optional[pulumi.Input['BackupRunType']]:
         """
         The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
@@ -307,7 +291,6 @@ class BackupRun(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['BackupRunStatus']] = None,
                  type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -330,7 +313,6 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-        :param pulumi.Input['BackupRunStatus'] status: The status of this run.
         :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
@@ -373,7 +355,6 @@ class BackupRun(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input['BackupRunStatus']] = None,
                  type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -404,9 +385,9 @@ class BackupRun(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["start_time"] = start_time
-            __props__.__dict__["status"] = status
             __props__.__dict__["type"] = type
             __props__.__dict__["window_start_time"] = window_start_time
+            __props__.__dict__["status"] = None
         super(BackupRun, __self__).__init__(
             'google-native:sqladmin/v1beta4:BackupRun',
             resource_name,

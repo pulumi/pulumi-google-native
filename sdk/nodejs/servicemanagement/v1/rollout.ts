@@ -61,7 +61,7 @@ export class Rollout extends pulumi.CustomResource {
     /**
      * The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
      */
-    public readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Google Service Control selects service configurations based on traffic percentage.
      */
@@ -86,8 +86,8 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["deleteServiceStrategy"] = args ? args.deleteServiceStrategy : undefined;
             resourceInputs["rolloutId"] = args ? args.rolloutId : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["trafficPercentStrategy"] = args ? args.trafficPercentStrategy : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -126,10 +126,6 @@ export interface RolloutArgs {
      * The name of the service associated with this Rollout.
      */
     serviceName: pulumi.Input<string>;
-    /**
-     * The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-     */
-    status?: pulumi.Input<enums.servicemanagement.v1.RolloutStatus>;
     /**
      * Google Service Control selects service configurations based on traffic percentage.
      */

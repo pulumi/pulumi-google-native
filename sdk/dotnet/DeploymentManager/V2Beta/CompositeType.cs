@@ -135,9 +135,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.DeploymentManager.V2Beta.CompositeTypeStatus>? Status { get; set; }
-
         /// <summary>
         /// Files for the template type.
         /// </summary>

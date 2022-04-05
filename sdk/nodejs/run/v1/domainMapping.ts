@@ -55,7 +55,7 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * The current status of the DomainMapping.
      */
-    public readonly status!: pulumi.Output<outputs.run.v1.DomainMappingStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.run.v1.DomainMappingStatusResponse>;
 
     /**
      * Create a DomainMapping resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class DomainMapping extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -114,8 +114,4 @@ export interface DomainMappingArgs {
      * The spec for this DomainMapping.
      */
     spec?: pulumi.Input<inputs.run.v1.DomainMappingSpecArgs>;
-    /**
-     * The current status of the DomainMapping.
-     */
-    status?: pulumi.Input<inputs.run.v1.DomainMappingStatusArgs>;
 }

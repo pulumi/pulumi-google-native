@@ -76,8 +76,6 @@ type servicePerimeterArgs struct {
 	Name *string `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
 	PerimeterType *ServicePerimeterPerimeterType `pulumi:"perimeterType"`
-	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
-	Status *ServicePerimeterConfig `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
 	Title *string `pulumi:"title"`
 }
@@ -91,8 +89,6 @@ type ServicePerimeterArgs struct {
 	Name pulumi.StringPtrInput
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
 	PerimeterType ServicePerimeterPerimeterTypePtrInput
-	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
-	Status ServicePerimeterConfigPtrInput
 	// Human readable title. Must be unique within the Policy.
 	Title pulumi.StringPtrInput
 }

@@ -189,9 +189,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.V1.NodeGroupStatus>? Status { get; set; }
-
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

@@ -15,137 +15,6 @@ type Addressable struct {
 	Url *string `pulumi:"url"`
 }
 
-// AddressableInput is an input type that accepts AddressableArgs and AddressableOutput values.
-// You can construct a concrete instance of `AddressableInput` via:
-//
-//          AddressableArgs{...}
-type AddressableInput interface {
-	pulumi.Input
-
-	ToAddressableOutput() AddressableOutput
-	ToAddressableOutputWithContext(context.Context) AddressableOutput
-}
-
-// Information for connecting over HTTP(s).
-type AddressableArgs struct {
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (AddressableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Addressable)(nil)).Elem()
-}
-
-func (i AddressableArgs) ToAddressableOutput() AddressableOutput {
-	return i.ToAddressableOutputWithContext(context.Background())
-}
-
-func (i AddressableArgs) ToAddressableOutputWithContext(ctx context.Context) AddressableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddressableOutput)
-}
-
-func (i AddressableArgs) ToAddressablePtrOutput() AddressablePtrOutput {
-	return i.ToAddressablePtrOutputWithContext(context.Background())
-}
-
-func (i AddressableArgs) ToAddressablePtrOutputWithContext(ctx context.Context) AddressablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddressableOutput).ToAddressablePtrOutputWithContext(ctx)
-}
-
-// AddressablePtrInput is an input type that accepts AddressableArgs, AddressablePtr and AddressablePtrOutput values.
-// You can construct a concrete instance of `AddressablePtrInput` via:
-//
-//          AddressableArgs{...}
-//
-//  or:
-//
-//          nil
-type AddressablePtrInput interface {
-	pulumi.Input
-
-	ToAddressablePtrOutput() AddressablePtrOutput
-	ToAddressablePtrOutputWithContext(context.Context) AddressablePtrOutput
-}
-
-type addressablePtrType AddressableArgs
-
-func AddressablePtr(v *AddressableArgs) AddressablePtrInput {
-	return (*addressablePtrType)(v)
-}
-
-func (*addressablePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Addressable)(nil)).Elem()
-}
-
-func (i *addressablePtrType) ToAddressablePtrOutput() AddressablePtrOutput {
-	return i.ToAddressablePtrOutputWithContext(context.Background())
-}
-
-func (i *addressablePtrType) ToAddressablePtrOutputWithContext(ctx context.Context) AddressablePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AddressablePtrOutput)
-}
-
-// Information for connecting over HTTP(s).
-type AddressableOutput struct{ *pulumi.OutputState }
-
-func (AddressableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Addressable)(nil)).Elem()
-}
-
-func (o AddressableOutput) ToAddressableOutput() AddressableOutput {
-	return o
-}
-
-func (o AddressableOutput) ToAddressableOutputWithContext(ctx context.Context) AddressableOutput {
-	return o
-}
-
-func (o AddressableOutput) ToAddressablePtrOutput() AddressablePtrOutput {
-	return o.ToAddressablePtrOutputWithContext(context.Background())
-}
-
-func (o AddressableOutput) ToAddressablePtrOutputWithContext(ctx context.Context) AddressablePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Addressable) *Addressable {
-		return &v
-	}).(AddressablePtrOutput)
-}
-
-func (o AddressableOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Addressable) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type AddressablePtrOutput struct{ *pulumi.OutputState }
-
-func (AddressablePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Addressable)(nil)).Elem()
-}
-
-func (o AddressablePtrOutput) ToAddressablePtrOutput() AddressablePtrOutput {
-	return o
-}
-
-func (o AddressablePtrOutput) ToAddressablePtrOutputWithContext(ctx context.Context) AddressablePtrOutput {
-	return o
-}
-
-func (o AddressablePtrOutput) Elem() AddressableOutput {
-	return o.ApplyT(func(v *Addressable) Addressable {
-		if v != nil {
-			return *v
-		}
-		var ret Addressable
-		return ret
-	}).(AddressableOutput)
-}
-
-func (o AddressablePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Addressable) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 // Information for connecting over HTTP(s).
 type AddressableResponse struct {
 	Url string `pulumi:"url"`
@@ -2185,208 +2054,6 @@ type DomainMappingStatus struct {
 	Url *string `pulumi:"url"`
 }
 
-// DomainMappingStatusInput is an input type that accepts DomainMappingStatusArgs and DomainMappingStatusOutput values.
-// You can construct a concrete instance of `DomainMappingStatusInput` via:
-//
-//          DomainMappingStatusArgs{...}
-type DomainMappingStatusInput interface {
-	pulumi.Input
-
-	ToDomainMappingStatusOutput() DomainMappingStatusOutput
-	ToDomainMappingStatusOutputWithContext(context.Context) DomainMappingStatusOutput
-}
-
-// The current state of the Domain Mapping.
-type DomainMappingStatusArgs struct {
-	// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-	Conditions GoogleCloudRunV1ConditionArrayInput `pulumi:"conditions"`
-	// The name of the route that the mapping currently points to.
-	MappedRouteName pulumi.StringPtrInput `pulumi:"mappedRouteName"`
-	// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-	ResourceRecords ResourceRecordArrayInput `pulumi:"resourceRecords"`
-	// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (DomainMappingStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainMappingStatus)(nil)).Elem()
-}
-
-func (i DomainMappingStatusArgs) ToDomainMappingStatusOutput() DomainMappingStatusOutput {
-	return i.ToDomainMappingStatusOutputWithContext(context.Background())
-}
-
-func (i DomainMappingStatusArgs) ToDomainMappingStatusOutputWithContext(ctx context.Context) DomainMappingStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusOutput)
-}
-
-func (i DomainMappingStatusArgs) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return i.ToDomainMappingStatusPtrOutputWithContext(context.Background())
-}
-
-func (i DomainMappingStatusArgs) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusOutput).ToDomainMappingStatusPtrOutputWithContext(ctx)
-}
-
-// DomainMappingStatusPtrInput is an input type that accepts DomainMappingStatusArgs, DomainMappingStatusPtr and DomainMappingStatusPtrOutput values.
-// You can construct a concrete instance of `DomainMappingStatusPtrInput` via:
-//
-//          DomainMappingStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type DomainMappingStatusPtrInput interface {
-	pulumi.Input
-
-	ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput
-	ToDomainMappingStatusPtrOutputWithContext(context.Context) DomainMappingStatusPtrOutput
-}
-
-type domainMappingStatusPtrType DomainMappingStatusArgs
-
-func DomainMappingStatusPtr(v *DomainMappingStatusArgs) DomainMappingStatusPtrInput {
-	return (*domainMappingStatusPtrType)(v)
-}
-
-func (*domainMappingStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingStatus)(nil)).Elem()
-}
-
-func (i *domainMappingStatusPtrType) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return i.ToDomainMappingStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *domainMappingStatusPtrType) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingStatusPtrOutput)
-}
-
-// The current state of the Domain Mapping.
-type DomainMappingStatusOutput struct{ *pulumi.OutputState }
-
-func (DomainMappingStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainMappingStatus)(nil)).Elem()
-}
-
-func (o DomainMappingStatusOutput) ToDomainMappingStatusOutput() DomainMappingStatusOutput {
-	return o
-}
-
-func (o DomainMappingStatusOutput) ToDomainMappingStatusOutputWithContext(ctx context.Context) DomainMappingStatusOutput {
-	return o
-}
-
-func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return o.ToDomainMappingStatusPtrOutputWithContext(context.Background())
-}
-
-func (o DomainMappingStatusOutput) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainMappingStatus) *DomainMappingStatus {
-		return &v
-	}).(DomainMappingStatusPtrOutput)
-}
-
-// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-func (o DomainMappingStatusOutput) Conditions() GoogleCloudRunV1ConditionArrayOutput {
-	return o.ApplyT(func(v DomainMappingStatus) []GoogleCloudRunV1Condition { return v.Conditions }).(GoogleCloudRunV1ConditionArrayOutput)
-}
-
-// The name of the route that the mapping currently points to.
-func (o DomainMappingStatusOutput) MappedRouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainMappingStatus) *string { return v.MappedRouteName }).(pulumi.StringPtrOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-func (o DomainMappingStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v DomainMappingStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-func (o DomainMappingStatusOutput) ResourceRecords() ResourceRecordArrayOutput {
-	return o.ApplyT(func(v DomainMappingStatus) []ResourceRecord { return v.ResourceRecords }).(ResourceRecordArrayOutput)
-}
-
-// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
-func (o DomainMappingStatusOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainMappingStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type DomainMappingStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainMappingStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainMappingStatus)(nil)).Elem()
-}
-
-func (o DomainMappingStatusPtrOutput) ToDomainMappingStatusPtrOutput() DomainMappingStatusPtrOutput {
-	return o
-}
-
-func (o DomainMappingStatusPtrOutput) ToDomainMappingStatusPtrOutputWithContext(ctx context.Context) DomainMappingStatusPtrOutput {
-	return o
-}
-
-func (o DomainMappingStatusPtrOutput) Elem() DomainMappingStatusOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) DomainMappingStatus {
-		if v != nil {
-			return *v
-		}
-		var ret DomainMappingStatus
-		return ret
-	}).(DomainMappingStatusOutput)
-}
-
-// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-func (o DomainMappingStatusPtrOutput) Conditions() GoogleCloudRunV1ConditionArrayOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) []GoogleCloudRunV1Condition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(GoogleCloudRunV1ConditionArrayOutput)
-}
-
-// The name of the route that the mapping currently points to.
-func (o DomainMappingStatusPtrOutput) MappedRouteName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MappedRouteName
-	}).(pulumi.StringPtrOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-func (o DomainMappingStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-func (o DomainMappingStatusPtrOutput) ResourceRecords() ResourceRecordArrayOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) []ResourceRecord {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceRecords
-	}).(ResourceRecordArrayOutput)
-}
-
-// Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
-func (o DomainMappingStatusPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 // The current state of the Domain Mapping.
 type DomainMappingStatusResponse struct {
 	// Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
@@ -3413,135 +3080,6 @@ type GoogleCloudRunV1Condition struct {
 	Status *string `pulumi:"status"`
 	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
 	Type *string `pulumi:"type"`
-}
-
-// GoogleCloudRunV1ConditionInput is an input type that accepts GoogleCloudRunV1ConditionArgs and GoogleCloudRunV1ConditionOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV1ConditionInput` via:
-//
-//          GoogleCloudRunV1ConditionArgs{...}
-type GoogleCloudRunV1ConditionInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunV1ConditionOutput() GoogleCloudRunV1ConditionOutput
-	ToGoogleCloudRunV1ConditionOutputWithContext(context.Context) GoogleCloudRunV1ConditionOutput
-}
-
-// Condition defines a generic condition for a Resource.
-type GoogleCloudRunV1ConditionArgs struct {
-	// Optional. Last time the condition transitioned from one status to another.
-	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
-	// Optional. Human readable message indicating details about the current status.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-	// Optional. One-word CamelCase reason for the condition's last transition.
-	Reason pulumi.StringPtrInput `pulumi:"reason"`
-	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-	Severity pulumi.StringPtrInput `pulumi:"severity"`
-	// Status of the condition, one of True, False, Unknown.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-}
-
-func (GoogleCloudRunV1ConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunV1Condition)(nil)).Elem()
-}
-
-func (i GoogleCloudRunV1ConditionArgs) ToGoogleCloudRunV1ConditionOutput() GoogleCloudRunV1ConditionOutput {
-	return i.ToGoogleCloudRunV1ConditionOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunV1ConditionArgs) ToGoogleCloudRunV1ConditionOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV1ConditionOutput)
-}
-
-// GoogleCloudRunV1ConditionArrayInput is an input type that accepts GoogleCloudRunV1ConditionArray and GoogleCloudRunV1ConditionArrayOutput values.
-// You can construct a concrete instance of `GoogleCloudRunV1ConditionArrayInput` via:
-//
-//          GoogleCloudRunV1ConditionArray{ GoogleCloudRunV1ConditionArgs{...} }
-type GoogleCloudRunV1ConditionArrayInput interface {
-	pulumi.Input
-
-	ToGoogleCloudRunV1ConditionArrayOutput() GoogleCloudRunV1ConditionArrayOutput
-	ToGoogleCloudRunV1ConditionArrayOutputWithContext(context.Context) GoogleCloudRunV1ConditionArrayOutput
-}
-
-type GoogleCloudRunV1ConditionArray []GoogleCloudRunV1ConditionInput
-
-func (GoogleCloudRunV1ConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunV1Condition)(nil)).Elem()
-}
-
-func (i GoogleCloudRunV1ConditionArray) ToGoogleCloudRunV1ConditionArrayOutput() GoogleCloudRunV1ConditionArrayOutput {
-	return i.ToGoogleCloudRunV1ConditionArrayOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudRunV1ConditionArray) ToGoogleCloudRunV1ConditionArrayOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV1ConditionArrayOutput)
-}
-
-// Condition defines a generic condition for a Resource.
-type GoogleCloudRunV1ConditionOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunV1ConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudRunV1Condition)(nil)).Elem()
-}
-
-func (o GoogleCloudRunV1ConditionOutput) ToGoogleCloudRunV1ConditionOutput() GoogleCloudRunV1ConditionOutput {
-	return o
-}
-
-func (o GoogleCloudRunV1ConditionOutput) ToGoogleCloudRunV1ConditionOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionOutput {
-	return o
-}
-
-// Optional. Last time the condition transitioned from one status to another.
-func (o GoogleCloudRunV1ConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV1Condition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Human readable message indicating details about the current status.
-func (o GoogleCloudRunV1ConditionOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV1Condition) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// Optional. One-word CamelCase reason for the condition's last transition.
-func (o GoogleCloudRunV1ConditionOutput) Reason() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV1Condition) *string { return v.Reason }).(pulumi.StringPtrOutput)
-}
-
-// Optional. How to interpret failures of this condition, one of Error, Warning, Info
-func (o GoogleCloudRunV1ConditionOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV1Condition) *string { return v.Severity }).(pulumi.StringPtrOutput)
-}
-
-// Status of the condition, one of True, False, Unknown.
-func (o GoogleCloudRunV1ConditionOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV1Condition) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
-func (o GoogleCloudRunV1ConditionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV1Condition) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudRunV1ConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudRunV1ConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GoogleCloudRunV1Condition)(nil)).Elem()
-}
-
-func (o GoogleCloudRunV1ConditionArrayOutput) ToGoogleCloudRunV1ConditionArrayOutput() GoogleCloudRunV1ConditionArrayOutput {
-	return o
-}
-
-func (o GoogleCloudRunV1ConditionArrayOutput) ToGoogleCloudRunV1ConditionArrayOutputWithContext(ctx context.Context) GoogleCloudRunV1ConditionArrayOutput {
-	return o
-}
-
-func (o GoogleCloudRunV1ConditionArrayOutput) Index(i pulumi.IntInput) GoogleCloudRunV1ConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRunV1Condition {
-		return vs[0].([]GoogleCloudRunV1Condition)[vs[1].(int)]
-	}).(GoogleCloudRunV1ConditionOutput)
 }
 
 // Condition defines a generic condition for a Resource.
@@ -5554,114 +5092,6 @@ type ResourceRecord struct {
 	Type *ResourceRecordType `pulumi:"type"`
 }
 
-// ResourceRecordInput is an input type that accepts ResourceRecordArgs and ResourceRecordOutput values.
-// You can construct a concrete instance of `ResourceRecordInput` via:
-//
-//          ResourceRecordArgs{...}
-type ResourceRecordInput interface {
-	pulumi.Input
-
-	ToResourceRecordOutput() ResourceRecordOutput
-	ToResourceRecordOutputWithContext(context.Context) ResourceRecordOutput
-}
-
-// A DNS resource record.
-type ResourceRecordArgs struct {
-	// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
-	// Resource record type. Example: `AAAA`.
-	Type ResourceRecordTypePtrInput `pulumi:"type"`
-}
-
-func (ResourceRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecord)(nil)).Elem()
-}
-
-func (i ResourceRecordArgs) ToResourceRecordOutput() ResourceRecordOutput {
-	return i.ToResourceRecordOutputWithContext(context.Background())
-}
-
-func (i ResourceRecordArgs) ToResourceRecordOutputWithContext(ctx context.Context) ResourceRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordOutput)
-}
-
-// ResourceRecordArrayInput is an input type that accepts ResourceRecordArray and ResourceRecordArrayOutput values.
-// You can construct a concrete instance of `ResourceRecordArrayInput` via:
-//
-//          ResourceRecordArray{ ResourceRecordArgs{...} }
-type ResourceRecordArrayInput interface {
-	pulumi.Input
-
-	ToResourceRecordArrayOutput() ResourceRecordArrayOutput
-	ToResourceRecordArrayOutputWithContext(context.Context) ResourceRecordArrayOutput
-}
-
-type ResourceRecordArray []ResourceRecordInput
-
-func (ResourceRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecord)(nil)).Elem()
-}
-
-func (i ResourceRecordArray) ToResourceRecordArrayOutput() ResourceRecordArrayOutput {
-	return i.ToResourceRecordArrayOutputWithContext(context.Background())
-}
-
-func (i ResourceRecordArray) ToResourceRecordArrayOutputWithContext(ctx context.Context) ResourceRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ResourceRecordArrayOutput)
-}
-
-// A DNS resource record.
-type ResourceRecordOutput struct{ *pulumi.OutputState }
-
-func (ResourceRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceRecord)(nil)).Elem()
-}
-
-func (o ResourceRecordOutput) ToResourceRecordOutput() ResourceRecordOutput {
-	return o
-}
-
-func (o ResourceRecordOutput) ToResourceRecordOutputWithContext(ctx context.Context) ResourceRecordOutput {
-	return o
-}
-
-// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
-func (o ResourceRecordOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-func (o ResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *string { return v.Rrdata }).(pulumi.StringPtrOutput)
-}
-
-// Resource record type. Example: `AAAA`.
-func (o ResourceRecordOutput) Type() ResourceRecordTypePtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *ResourceRecordType { return v.Type }).(ResourceRecordTypePtrOutput)
-}
-
-type ResourceRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (ResourceRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ResourceRecord)(nil)).Elem()
-}
-
-func (o ResourceRecordArrayOutput) ToResourceRecordArrayOutput() ResourceRecordArrayOutput {
-	return o
-}
-
-func (o ResourceRecordArrayOutput) ToResourceRecordArrayOutputWithContext(ctx context.Context) ResourceRecordArrayOutput {
-	return o
-}
-
-func (o ResourceRecordArrayOutput) Index(i pulumi.IntInput) ResourceRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceRecord {
-		return vs[0].([]ResourceRecord)[vs[1].(int)]
-	}).(ResourceRecordOutput)
-}
-
 // A DNS resource record.
 type ResourceRecordResponse struct {
 	// Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
@@ -7504,242 +6934,6 @@ type ServiceStatus struct {
 	Url *string `pulumi:"url"`
 }
 
-// ServiceStatusInput is an input type that accepts ServiceStatusArgs and ServiceStatusOutput values.
-// You can construct a concrete instance of `ServiceStatusInput` via:
-//
-//          ServiceStatusArgs{...}
-type ServiceStatusInput interface {
-	pulumi.Input
-
-	ToServiceStatusOutput() ServiceStatusOutput
-	ToServiceStatusOutputWithContext(context.Context) ServiceStatusOutput
-}
-
-// The current state of the Service. Output only.
-type ServiceStatusArgs struct {
-	// From RouteStatus. Similar to url, information on where the service is available on HTTP.
-	Address AddressablePtrInput `pulumi:"address"`
-	// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
-	Conditions GoogleCloudRunV1ConditionArrayInput `pulumi:"conditions"`
-	// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-	LatestCreatedRevisionName pulumi.StringPtrInput `pulumi:"latestCreatedRevisionName"`
-	// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-	LatestReadyRevisionName pulumi.StringPtrInput `pulumi:"latestReadyRevisionName"`
-	// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
-	// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-	Traffic TrafficTargetArrayInput `pulumi:"traffic"`
-	// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-	Url pulumi.StringPtrInput `pulumi:"url"`
-}
-
-func (ServiceStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceStatus)(nil)).Elem()
-}
-
-func (i ServiceStatusArgs) ToServiceStatusOutput() ServiceStatusOutput {
-	return i.ToServiceStatusOutputWithContext(context.Background())
-}
-
-func (i ServiceStatusArgs) ToServiceStatusOutputWithContext(ctx context.Context) ServiceStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusOutput)
-}
-
-func (i ServiceStatusArgs) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return i.ToServiceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i ServiceStatusArgs) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusOutput).ToServiceStatusPtrOutputWithContext(ctx)
-}
-
-// ServiceStatusPtrInput is an input type that accepts ServiceStatusArgs, ServiceStatusPtr and ServiceStatusPtrOutput values.
-// You can construct a concrete instance of `ServiceStatusPtrInput` via:
-//
-//          ServiceStatusArgs{...}
-//
-//  or:
-//
-//          nil
-type ServiceStatusPtrInput interface {
-	pulumi.Input
-
-	ToServiceStatusPtrOutput() ServiceStatusPtrOutput
-	ToServiceStatusPtrOutputWithContext(context.Context) ServiceStatusPtrOutput
-}
-
-type serviceStatusPtrType ServiceStatusArgs
-
-func ServiceStatusPtr(v *ServiceStatusArgs) ServiceStatusPtrInput {
-	return (*serviceStatusPtrType)(v)
-}
-
-func (*serviceStatusPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceStatus)(nil)).Elem()
-}
-
-func (i *serviceStatusPtrType) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return i.ToServiceStatusPtrOutputWithContext(context.Background())
-}
-
-func (i *serviceStatusPtrType) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusPtrOutput)
-}
-
-// The current state of the Service. Output only.
-type ServiceStatusOutput struct{ *pulumi.OutputState }
-
-func (ServiceStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceStatus)(nil)).Elem()
-}
-
-func (o ServiceStatusOutput) ToServiceStatusOutput() ServiceStatusOutput {
-	return o
-}
-
-func (o ServiceStatusOutput) ToServiceStatusOutputWithContext(ctx context.Context) ServiceStatusOutput {
-	return o
-}
-
-func (o ServiceStatusOutput) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return o.ToServiceStatusPtrOutputWithContext(context.Background())
-}
-
-func (o ServiceStatusOutput) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceStatus) *ServiceStatus {
-		return &v
-	}).(ServiceStatusPtrOutput)
-}
-
-// From RouteStatus. Similar to url, information on where the service is available on HTTP.
-func (o ServiceStatusOutput) Address() AddressablePtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *Addressable { return v.Address }).(AddressablePtrOutput)
-}
-
-// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
-func (o ServiceStatusOutput) Conditions() GoogleCloudRunV1ConditionArrayOutput {
-	return o.ApplyT(func(v ServiceStatus) []GoogleCloudRunV1Condition { return v.Conditions }).(GoogleCloudRunV1ConditionArrayOutput)
-}
-
-// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-func (o ServiceStatusOutput) LatestCreatedRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *string { return v.LatestCreatedRevisionName }).(pulumi.StringPtrOutput)
-}
-
-// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-func (o ServiceStatusOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *string { return v.LatestReadyRevisionName }).(pulumi.StringPtrOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-func (o ServiceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
-}
-
-// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-func (o ServiceStatusOutput) Traffic() TrafficTargetArrayOutput {
-	return o.ApplyT(func(v ServiceStatus) []TrafficTarget { return v.Traffic }).(TrafficTargetArrayOutput)
-}
-
-// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-func (o ServiceStatusOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServiceStatus) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type ServiceStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (ServiceStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServiceStatus)(nil)).Elem()
-}
-
-func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutput() ServiceStatusPtrOutput {
-	return o
-}
-
-func (o ServiceStatusPtrOutput) ToServiceStatusPtrOutputWithContext(ctx context.Context) ServiceStatusPtrOutput {
-	return o
-}
-
-func (o ServiceStatusPtrOutput) Elem() ServiceStatusOutput {
-	return o.ApplyT(func(v *ServiceStatus) ServiceStatus {
-		if v != nil {
-			return *v
-		}
-		var ret ServiceStatus
-		return ret
-	}).(ServiceStatusOutput)
-}
-
-// From RouteStatus. Similar to url, information on where the service is available on HTTP.
-func (o ServiceStatusPtrOutput) Address() AddressablePtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *Addressable {
-		if v == nil {
-			return nil
-		}
-		return v.Address
-	}).(AddressablePtrOutput)
-}
-
-// Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
-func (o ServiceStatusPtrOutput) Conditions() GoogleCloudRunV1ConditionArrayOutput {
-	return o.ApplyT(func(v *ServiceStatus) []GoogleCloudRunV1Condition {
-		if v == nil {
-			return nil
-		}
-		return v.Conditions
-	}).(GoogleCloudRunV1ConditionArrayOutput)
-}
-
-// From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-func (o ServiceStatusPtrOutput) LatestCreatedRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LatestCreatedRevisionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-func (o ServiceStatusPtrOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LatestReadyRevisionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-func (o ServiceStatusPtrOutput) ObservedGeneration() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ObservedGeneration
-	}).(pulumi.IntPtrOutput)
-}
-
-// From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-func (o ServiceStatusPtrOutput) Traffic() TrafficTargetArrayOutput {
-	return o.ApplyT(func(v *ServiceStatus) []TrafficTarget {
-		if v == nil {
-			return nil
-		}
-		return v.Traffic
-	}).(TrafficTargetArrayOutput)
-}
-
-// From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-func (o ServiceStatusPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServiceStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
 // The current state of the Service. Output only.
 type ServiceStatusResponse struct {
 	// From RouteStatus. Similar to url, information on where the service is available on HTTP.
@@ -8580,8 +7774,6 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressableInput)(nil)).Elem(), AddressableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AddressablePtrInput)(nil)).Elem(), AddressableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -8600,8 +7792,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerPortArrayInput)(nil)).Elem(), ContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecInput)(nil)).Elem(), DomainMappingSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingSpecPtrInput)(nil)).Elem(), DomainMappingSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusInput)(nil)).Elem(), DomainMappingStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingStatusPtrInput)(nil)).Elem(), DomainMappingStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceInput)(nil)).Elem(), EnvFromSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvFromSourceArrayInput)(nil)).Elem(), EnvFromSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarInput)(nil)).Elem(), EnvVarArgs{})
@@ -8612,8 +7802,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionPtrInput)(nil)).Elem(), ExecActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV1ConditionInput)(nil)).Elem(), GoogleCloudRunV1ConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV1ConditionArrayInput)(nil)).Elem(), GoogleCloudRunV1ConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionInput)(nil)).Elem(), HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionPtrInput)(nil)).Elem(), HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderInput)(nil)).Elem(), HTTPHeaderArgs{})
@@ -8629,8 +7817,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OwnerReferenceArrayInput)(nil)).Elem(), OwnerReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbeInput)(nil)).Elem(), ProbeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProbePtrInput)(nil)).Elem(), ProbeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordInput)(nil)).Elem(), ResourceRecordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordArrayInput)(nil)).Elem(), ResourceRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsInput)(nil)).Elem(), ResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRequirementsPtrInput)(nil)).Elem(), ResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RevisionSpecInput)(nil)).Elem(), RevisionSpecArgs{})
@@ -8647,8 +7833,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityContextPtrInput)(nil)).Elem(), SecurityContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSpecInput)(nil)).Elem(), ServiceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceSpecPtrInput)(nil)).Elem(), ServiceSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusInput)(nil)).Elem(), ServiceStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusPtrInput)(nil)).Elem(), ServiceStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionInput)(nil)).Elem(), TCPSocketActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TCPSocketActionPtrInput)(nil)).Elem(), TCPSocketActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TrafficTargetInput)(nil)).Elem(), TrafficTargetArgs{})
@@ -8657,8 +7841,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountInput)(nil)).Elem(), VolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeMountArrayInput)(nil)).Elem(), VolumeMountArray{})
-	pulumi.RegisterOutputType(AddressableOutput{})
-	pulumi.RegisterOutputType(AddressablePtrOutput{})
 	pulumi.RegisterOutputType(AddressableResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
@@ -8692,8 +7874,6 @@ func init() {
 	pulumi.RegisterOutputType(DomainMappingSpecOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingSpecResponseOutput{})
-	pulumi.RegisterOutputType(DomainMappingStatusOutput{})
-	pulumi.RegisterOutputType(DomainMappingStatusPtrOutput{})
 	pulumi.RegisterOutputType(DomainMappingStatusResponseOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceOutput{})
 	pulumi.RegisterOutputType(EnvFromSourceArrayOutput{})
@@ -8712,8 +7892,6 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionOutput{})
-	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV1ConditionResponseArrayOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionOutput{})
@@ -8742,8 +7920,6 @@ func init() {
 	pulumi.RegisterOutputType(ProbeOutput{})
 	pulumi.RegisterOutputType(ProbePtrOutput{})
 	pulumi.RegisterOutputType(ProbeResponseOutput{})
-	pulumi.RegisterOutputType(ResourceRecordOutput{})
-	pulumi.RegisterOutputType(ResourceRecordArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRecordResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRequirementsOutput{})
@@ -8770,8 +7946,6 @@ func init() {
 	pulumi.RegisterOutputType(ServiceSpecOutput{})
 	pulumi.RegisterOutputType(ServiceSpecPtrOutput{})
 	pulumi.RegisterOutputType(ServiceSpecResponseOutput{})
-	pulumi.RegisterOutputType(ServiceStatusOutput{})
-	pulumi.RegisterOutputType(ServiceStatusPtrOutput{})
 	pulumi.RegisterOutputType(ServiceStatusResponseOutput{})
 	pulumi.RegisterOutputType(TCPSocketActionOutput{})
 	pulumi.RegisterOutputType(TCPSocketActionPtrOutput{})

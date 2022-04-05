@@ -132,10 +132,8 @@ func (c *GoogleClient) RequestWithTimeout(
 		return nil, err
 	}
 
-	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
-	// propagates to our current Go version. This fix will be in Go 1.18.
-	debugResp, _ := httputil.DumpResponse(res, false)
-	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJSONLines(debugResp))
+	debugResp, _ := httputil.DumpResponse(res, true)
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, res.ContentLength, debugResp)
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		googleapi.CloseBody(res)
@@ -222,10 +220,9 @@ func (c *GoogleClient) UploadWithTimeout(
 		return nil, err
 	}
 
-	// TODO: Re-enable response dump when https://github.com/golang/go/issues/49366 fix
-	// propagates to our current Go version.
-	debugResp, _ := httputil.DumpResponse(res, false)
-	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, prettyPrintJSONLines(debugResp))
+	debugResp, _ := httputil.DumpResponse(res, true)
+	logging.V(9).Infof(responseFormat, res.Request.Method, res.Request.URL, res.ContentLength,
+		debugResp)
 
 	if err := googleapi.CheckResponse(res); err != nil {
 		googleapi.CloseBody(res)
@@ -382,8 +379,8 @@ const (
 %[3]s
 ===================================================== HTTP Request End %[1]s %[2]s
 `
-	responseFormat = `HTTP Response Begin %[1]s [%[2]s ===================================================
-%[3]s
+	responseFormat = `HTTP Response Begin %[1]s [%[2]s] [Length: %[3]d] ===================================================
+%[4]s
 ===================================================== HTTP Response End %[1]s %[2]s
 `
 )
