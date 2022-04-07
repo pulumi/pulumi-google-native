@@ -36,9 +36,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("object", required: true)]
         public string Object { get; set; } = null!;
 
-        [Input("provisionalUserProject")]
-        public string? ProvisionalUserProject { get; set; }
-
         [Input("userProject")]
         public string? UserProject { get; set; }
 
@@ -57,9 +54,6 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;
-
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
 
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }

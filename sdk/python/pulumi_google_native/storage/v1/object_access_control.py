@@ -26,7 +26,6 @@ class ObjectAccessControlInitArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input['ObjectAccessControlProjectTeamArgs']] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None):
@@ -54,7 +53,6 @@ class ObjectAccessControlInitArgs:
         :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input['ObjectAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -79,8 +77,6 @@ class ObjectAccessControlInitArgs:
             pulumi.set(__self__, "kind", kind)
         if project_team is not None:
             pulumi.set(__self__, "project_team", project_team)
-        if provisional_user_project is not None:
-            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if self_link is not None:
@@ -232,18 +228,6 @@ class ObjectAccessControlInitArgs:
         pulumi.set(self, "project_team", value)
 
     @property
-    @pulumi.getter(name="provisionalUserProject")
-    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project to be billed for this request if the target bucket is requester-pays bucket.
-        """
-        return pulumi.get(self, "provisional_user_project")
-
-    @provisional_user_project.setter
-    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisional_user_project", value)
-
-    @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
@@ -296,7 +280,6 @@ class ObjectAccessControl(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -329,7 +312,6 @@ class ObjectAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
         :param pulumi.Input[str] object: The name of the object, if applied to an object.
         :param pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']] project_team: The project team associated with the entity, if any.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -370,7 +352,6 @@ class ObjectAccessControl(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  project_team: Optional[pulumi.Input[pulumi.InputType['ObjectAccessControlProjectTeamArgs']]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -401,7 +382,6 @@ class ObjectAccessControl(pulumi.CustomResource):
                 raise TypeError("Missing required property 'object'")
             __props__.__dict__["object"] = object
             __props__.__dict__["project_team"] = project_team
-            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["role"] = role
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["user_project"] = user_project

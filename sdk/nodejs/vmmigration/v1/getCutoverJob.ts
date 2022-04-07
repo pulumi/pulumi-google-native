@@ -41,6 +41,10 @@ export interface GetCutoverJobResult {
      */
     readonly createTime: string;
     /**
+     * The time the cutover job had finished.
+     */
+    readonly endTime: string;
+    /**
      * Provides details for the errors that led to the Cutover Job's state.
      */
     readonly error: outputs.vmmigration.v1.StatusResponse;

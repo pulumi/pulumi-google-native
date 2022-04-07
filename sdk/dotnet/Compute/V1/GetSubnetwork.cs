@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool EnableFlowLogs;
         /// <summary>
-        /// The range of external IPv6 addresses that are owned by this subnetwork.
+        /// The external IPv6 address range that is assigned to this subnetwork.
         /// </summary>
         public readonly string ExternalIpv6Prefix;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string GatewayAddress;
         /// <summary>
-        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        /// The internal IPv6 address range that is assigned to this subnetwork.
         /// </summary>
         public readonly string InternalIpv6Prefix;
         /// <summary>
@@ -94,11 +94,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>
-        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+        /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
         /// </summary>
         public readonly string Ipv6AccessType;
         /// <summary>
-        /// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
+        /// This field is for internal use.
         /// </summary>
         public readonly string Ipv6CidrRange;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly bool PrivateIpGoogleAccess;
         /// <summary>
-        /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+        /// This field is for internal use. This field can be both set at resource creation time and updated using patch.
         /// </summary>
         public readonly string PrivateIpv6GoogleAccess;
         /// <summary>

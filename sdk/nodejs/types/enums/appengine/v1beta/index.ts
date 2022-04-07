@@ -189,15 +189,15 @@ export type IngressRuleAction = (typeof IngressRuleAction)[keyof typeof IngressR
 
 export const NetworkInstanceIpMode = {
     /**
-     * Unspecified should be treated as EXTERNAL
+     * Unspecified is treated as EXTERNAL.
      */
     InstanceIpModeUnspecified: "INSTANCE_IP_MODE_UNSPECIFIED",
     /**
-     * VMs should be created with external and internal IPs
+     * Instances are created with both internal and external IP addresses.
      */
     External: "EXTERNAL",
     /**
-     * VMs should be created with internal IPs only
+     * Instances are created with internal IP addresses only.
      */
     Internal: "INTERNAL",
 } as const;

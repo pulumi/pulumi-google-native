@@ -22,8 +22,6 @@ type Bucket struct {
 	Billing BucketBillingResponseOutput `pulumi:"billing"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemResponseArrayOutput `pulumi:"cors"`
-	// The bucket's custom placement configuration for Custom Dual Regions.
-	CustomPlacementConfig BucketCustomPlacementConfigResponseOutput `pulumi:"customPlacementConfig"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
 	DefaultEventBasedHold pulumi.BoolOutput `pulumi:"defaultEventBasedHold"`
 	// Default access controls to apply to new objects when no ACL is provided.
@@ -121,8 +119,6 @@ type bucketArgs struct {
 	Billing *BucketBilling `pulumi:"billing"`
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors []BucketCorsItem `pulumi:"cors"`
-	// The bucket's custom placement configuration for Custom Dual Regions.
-	CustomPlacementConfig *BucketCustomPlacementConfig `pulumi:"customPlacementConfig"`
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
 	DefaultEventBasedHold *bool `pulumi:"defaultEventBasedHold"`
 	// Default access controls to apply to new objects when no ACL is provided.
@@ -163,8 +159,6 @@ type bucketArgs struct {
 	ProjectNumber *string `pulumi:"projectNumber"`
 	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
 	Projection *string `pulumi:"projection"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
@@ -197,8 +191,6 @@ type BucketArgs struct {
 	Billing BucketBillingPtrInput
 	// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
 	Cors BucketCorsItemArrayInput
-	// The bucket's custom placement configuration for Custom Dual Regions.
-	CustomPlacementConfig BucketCustomPlacementConfigPtrInput
 	// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
 	DefaultEventBasedHold pulumi.BoolPtrInput
 	// Default access controls to apply to new objects when no ACL is provided.
@@ -239,8 +231,6 @@ type BucketArgs struct {
 	ProjectNumber pulumi.StringPtrInput
 	// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
 	Projection pulumi.StringPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.

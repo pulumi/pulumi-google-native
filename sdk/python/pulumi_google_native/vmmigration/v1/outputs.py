@@ -218,6 +218,8 @@ class CloneJobResponse(dict):
             suggest = "compute_engine_target_details"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "endTime":
+            suggest = "end_time"
         elif key == "stateTime":
             suggest = "state_time"
 
@@ -235,6 +237,7 @@ class CloneJobResponse(dict):
     def __init__(__self__, *,
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
                  create_time: str,
+                 end_time: str,
                  error: 'outputs.StatusResponse',
                  name: str,
                  state: str,
@@ -243,6 +246,7 @@ class CloneJobResponse(dict):
         CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
         :param str create_time: The time the clone job was created (as an API call, not when it was actually created in the target).
+        :param str end_time: The time the clone job was ended.
         :param 'StatusResponse' error: Provides details for the errors that led to the Clone Job's state.
         :param str name: The name of the clone.
         :param str state: State of the clone job.
@@ -250,6 +254,7 @@ class CloneJobResponse(dict):
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
@@ -270,6 +275,14 @@ class CloneJobResponse(dict):
         The time the clone job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the clone job was ended.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -874,6 +887,8 @@ class CutoverJobResponse(dict):
             suggest = "compute_engine_target_details"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "endTime":
+            suggest = "end_time"
         elif key == "progressPercent":
             suggest = "progress_percent"
         elif key == "stateMessage":
@@ -895,6 +910,7 @@ class CutoverJobResponse(dict):
     def __init__(__self__, *,
                  compute_engine_target_details: 'outputs.ComputeEngineTargetDetailsResponse',
                  create_time: str,
+                 end_time: str,
                  error: 'outputs.StatusResponse',
                  name: str,
                  progress_percent: int,
@@ -905,6 +921,7 @@ class CutoverJobResponse(dict):
         CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
         :param str create_time: The time the cutover job was created (as an API call, not when it was actually created in the target).
+        :param str end_time: The time the cutover job had finished.
         :param 'StatusResponse' error: Provides details for the errors that led to the Cutover Job's state.
         :param str name: The name of the cutover job.
         :param int progress_percent: The current progress in percentage of the cutover job.
@@ -914,6 +931,7 @@ class CutoverJobResponse(dict):
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "error", error)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "progress_percent", progress_percent)
@@ -936,6 +954,14 @@ class CutoverJobResponse(dict):
         The time the cutover job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the cutover job had finished.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter

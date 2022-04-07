@@ -131,8 +131,6 @@ type objectAccessControlArgs struct {
 	Object string `pulumi:"object"`
 	// The project team associated with the entity, if any.
 	ProjectTeam *ObjectAccessControlProjectTeam `pulumi:"projectTeam"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
@@ -176,8 +174,6 @@ type ObjectAccessControlArgs struct {
 	Object pulumi.StringInput
 	// The project team associated with the entity, if any.
 	ProjectTeam ObjectAccessControlProjectTeamPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.

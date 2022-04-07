@@ -33,9 +33,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("entity", required: true)]
         public string Entity { get; set; } = null!;
 
-        [Input("provisionalUserProject")]
-        public string? ProvisionalUserProject { get; set; }
-
         [Input("userProject")]
         public string? UserProject { get; set; }
 
@@ -51,9 +48,6 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
-
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
 
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }

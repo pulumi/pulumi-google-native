@@ -19,7 +19,6 @@ class BucketArgs:
                  autoclass: Optional[pulumi.Input['BucketAutoclassArgs']] = None,
                  billing: Optional[pulumi.Input['BucketBillingArgs']] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]] = None,
-                 custom_placement_config: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
@@ -40,7 +39,6 @@ class BucketArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -57,7 +55,6 @@ class BucketArgs:
         :param pulumi.Input['BucketAutoclassArgs'] autoclass: The bucket's Autoclass configuration.
         :param pulumi.Input['BucketBillingArgs'] billing: The bucket's billing configuration.
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-        :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectAccessControlArgs']]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: Encryption configuration for a bucket.
@@ -78,7 +75,6 @@ class BucketArgs:
         :param pulumi.Input[str] project: A valid API project identifier.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input['BucketRetentionPolicyArgs'] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
@@ -98,8 +94,6 @@ class BucketArgs:
             pulumi.set(__self__, "billing", billing)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
-        if custom_placement_config is not None:
-            pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
         if default_object_acl is not None:
@@ -140,8 +134,6 @@ class BucketArgs:
             pulumi.set(__self__, "project_number", project_number)
         if projection is not None:
             pulumi.set(__self__, "projection", projection)
-        if provisional_user_project is not None:
-            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if retention_policy is not None:
             pulumi.set(__self__, "retention_policy", retention_policy)
         if rpo is not None:
@@ -210,18 +202,6 @@ class BucketArgs:
     @cors.setter
     def cors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsItemArgs']]]]):
         pulumi.set(self, "cors", value)
-
-    @property
-    @pulumi.getter(name="customPlacementConfig")
-    def custom_placement_config(self) -> Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]:
-        """
-        The bucket's custom placement configuration for Custom Dual Regions.
-        """
-        return pulumi.get(self, "custom_placement_config")
-
-    @custom_placement_config.setter
-    def custom_placement_config(self, value: Optional[pulumi.Input['BucketCustomPlacementConfigArgs']]):
-        pulumi.set(self, "custom_placement_config", value)
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -464,18 +444,6 @@ class BucketArgs:
         pulumi.set(self, "projection", value)
 
     @property
-    @pulumi.getter(name="provisionalUserProject")
-    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project to be billed for this request if the target bucket is requester-pays bucket.
-        """
-        return pulumi.get(self, "provisional_user_project")
-
-    @provisional_user_project.setter
-    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisional_user_project", value)
-
-    @property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> Optional[pulumi.Input['BucketRetentionPolicyArgs']]:
         """
@@ -605,7 +573,6 @@ class Bucket(pulumi.CustomResource):
                  autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
-                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
@@ -626,7 +593,6 @@ class Bucket(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -647,7 +613,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketAutoclassArgs']] autoclass: The bucket's Autoclass configuration.
         :param pulumi.Input[pulumi.InputType['BucketBillingArgs']] billing: The bucket's billing configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-        :param pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']] custom_placement_config: The bucket's custom placement configuration for Custom Dual Regions.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input[pulumi.InputType['BucketEncryptionArgs']] encryption: Encryption configuration for a bucket.
@@ -668,7 +633,6 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] project: A valid API project identifier.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         :param pulumi.Input[str] rpo: The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
@@ -708,7 +672,6 @@ class Bucket(pulumi.CustomResource):
                  autoclass: Optional[pulumi.Input[pulumi.InputType['BucketAutoclassArgs']]] = None,
                  billing: Optional[pulumi.Input[pulumi.InputType['BucketBillingArgs']]] = None,
                  cors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketCorsItemArgs']]]]] = None,
-                 custom_placement_config: Optional[pulumi.Input[pulumi.InputType['BucketCustomPlacementConfigArgs']]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[pulumi.InputType['BucketEncryptionArgs']]] = None,
@@ -729,7 +692,6 @@ class Bucket(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  rpo: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -756,7 +718,6 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["autoclass"] = autoclass
             __props__.__dict__["billing"] = billing
             __props__.__dict__["cors"] = cors
-            __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
             __props__.__dict__["default_object_acl"] = default_object_acl
             __props__.__dict__["encryption"] = encryption
@@ -777,7 +738,6 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["project_number"] = project_number
             __props__.__dict__["projection"] = projection
-            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["rpo"] = rpo
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
@@ -814,7 +774,6 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["autoclass"] = None
         __props__.__dict__["billing"] = None
         __props__.__dict__["cors"] = None
-        __props__.__dict__["custom_placement_config"] = None
         __props__.__dict__["default_event_based_hold"] = None
         __props__.__dict__["default_object_acl"] = None
         __props__.__dict__["encryption"] = None
@@ -872,14 +831,6 @@ class Bucket(pulumi.CustomResource):
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         """
         return pulumi.get(self, "cors")
-
-    @property
-    @pulumi.getter(name="customPlacementConfig")
-    def custom_placement_config(self) -> pulumi.Output['outputs.BucketCustomPlacementConfigResponse']:
-        """
-        The bucket's custom placement configuration for Custom Dual Regions.
-        """
-        return pulumi.get(self, "custom_placement_config")
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")

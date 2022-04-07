@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, api_config=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
+    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
         if api_config and not isinstance(api_config, dict):
             raise TypeError("Expected argument 'api_config' to be a dict")
         pulumi.set(__self__, "api_config", api_config)
+        if app_engine_apis and not isinstance(app_engine_apis, bool):
+            raise TypeError("Expected argument 'app_engine_apis' to be a bool")
+        pulumi.set(__self__, "app_engine_apis", app_engine_apis)
         if automatic_scaling and not isinstance(automatic_scaling, dict):
             raise TypeError("Expected argument 'automatic_scaling' to be a dict")
         pulumi.set(__self__, "automatic_scaling", automatic_scaling)
@@ -145,6 +148,14 @@ class GetVersionResult:
         Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "api_config")
+
+    @property
+    @pulumi.getter(name="appEngineApis")
+    def app_engine_apis(self) -> bool:
+        """
+        app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        """
+        return pulumi.get(self, "app_engine_apis")
 
     @property
     @pulumi.getter(name="automaticScaling")
@@ -450,6 +461,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             yield self
         return GetVersionResult(
             api_config=self.api_config,
+            app_engine_apis=self.app_engine_apis,
             automatic_scaling=self.automatic_scaling,
             basic_scaling=self.basic_scaling,
             beta_settings=self.beta_settings,
@@ -510,6 +522,7 @@ def get_version(app_id: Optional[str] = None,
 
     return AwaitableGetVersionResult(
         api_config=__ret__.api_config,
+        app_engine_apis=__ret__.app_engine_apis,
         automatic_scaling=__ret__.automatic_scaling,
         basic_scaling=__ret__.basic_scaling,
         beta_settings=__ret__.beta_settings,

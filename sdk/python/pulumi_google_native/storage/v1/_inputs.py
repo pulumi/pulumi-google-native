@@ -14,7 +14,6 @@ __all__ = [
     'BucketAutoclassArgs',
     'BucketBillingArgs',
     'BucketCorsItemArgs',
-    'BucketCustomPlacementConfigArgs',
     'BucketEncryptionArgs',
     'BucketIamConfigurationBucketPolicyOnlyArgs',
     'BucketIamConfigurationUniformBucketLevelAccessArgs',
@@ -417,30 +416,6 @@ class BucketCorsItemArgs:
     @response_header.setter
     def response_header(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "response_header", value)
-
-
-@pulumi.input_type
-class BucketCustomPlacementConfigArgs:
-    def __init__(__self__, *,
-                 data_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        The bucket's custom placement configuration for Custom Dual Regions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_locations: The list of regional locations in which data is placed.
-        """
-        if data_locations is not None:
-            pulumi.set(__self__, "data_locations", data_locations)
-
-    @property
-    @pulumi.getter(name="dataLocations")
-    def data_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The list of regional locations in which data is placed.
-        """
-        return pulumi.get(self, "data_locations")
-
-    @data_locations.setter
-    def data_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "data_locations", value)
 
 
 @pulumi.input_type

@@ -57,6 +57,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        /// <summary>
+        /// An optional name for the rule. This field is not a unique identifier and can be updated.
+        /// </summary>
+        [Input("ruleName")]
+        public Input<string>? RuleName { get; set; }
+
         [Input("targetResources")]
         private InputList<string>? _targetResources;
 

@@ -21,7 +21,6 @@ class NotificationArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None):
@@ -34,7 +33,6 @@ class NotificationArgs:
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -54,8 +52,6 @@ class NotificationArgs:
             pulumi.set(__self__, "object_name_prefix", object_name_prefix)
         if payload_format is not None:
             pulumi.set(__self__, "payload_format", payload_format)
-        if provisional_user_project is not None:
-            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if topic is not None:
@@ -157,18 +153,6 @@ class NotificationArgs:
         pulumi.set(self, "payload_format", value)
 
     @property
-    @pulumi.getter(name="provisionalUserProject")
-    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project to be billed for this request if the target bucket is requester-pays bucket.
-        """
-        return pulumi.get(self, "provisional_user_project")
-
-    @provisional_user_project.setter
-    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisional_user_project", value)
-
-    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -218,7 +202,6 @@ class Notification(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -236,7 +219,6 @@ class Notification(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of item this is. For notifications, this is always storage#notification.
         :param pulumi.Input[str] object_name_prefix: If present, only apply this notification configuration to object names that begin with this prefix.
         :param pulumi.Input[str] payload_format: The desired content of the Payload.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] self_link: The canonical URL of this notification.
         :param pulumi.Input[str] topic: The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
@@ -274,7 +256,6 @@ class Notification(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
@@ -300,7 +281,6 @@ class Notification(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["object_name_prefix"] = object_name_prefix
             __props__.__dict__["payload_format"] = payload_format
-            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["topic"] = topic
             __props__.__dict__["user_project"] = user_project

@@ -16,7 +16,6 @@ export function getNotification(args: GetNotificationArgs, opts?: pulumi.InvokeO
     return pulumi.runtime.invoke("google-native:storage/v1:getNotification", {
         "bucket": args.bucket,
         "notification": args.notification,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -24,7 +23,6 @@ export function getNotification(args: GetNotificationArgs, opts?: pulumi.InvokeO
 export interface GetNotificationArgs {
     bucket: string;
     notification: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -70,6 +68,5 @@ export function getNotificationOutput(args: GetNotificationOutputArgs, opts?: pu
 export interface GetNotificationOutputArgs {
     bucket: pulumi.Input<string>;
     notification: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

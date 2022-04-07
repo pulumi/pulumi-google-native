@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBucketResult:
-    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, custom_placement_config=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
+    def __init__(__self__, acl=None, autoclass=None, billing=None, cors=None, default_event_based_hold=None, default_object_acl=None, encryption=None, etag=None, iam_configuration=None, kind=None, labels=None, lifecycle=None, location=None, location_type=None, logging=None, metageneration=None, name=None, owner=None, project_number=None, retention_policy=None, rpo=None, satisfies_pzs=None, self_link=None, storage_class=None, time_created=None, updated=None, versioning=None, website=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
         pulumi.set(__self__, "acl", acl)
@@ -31,9 +31,6 @@ class GetBucketResult:
         if cors and not isinstance(cors, list):
             raise TypeError("Expected argument 'cors' to be a list")
         pulumi.set(__self__, "cors", cors)
-        if custom_placement_config and not isinstance(custom_placement_config, dict):
-            raise TypeError("Expected argument 'custom_placement_config' to be a dict")
-        pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold and not isinstance(default_event_based_hold, bool):
             raise TypeError("Expected argument 'default_event_based_hold' to be a bool")
         pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
@@ -138,14 +135,6 @@ class GetBucketResult:
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         """
         return pulumi.get(self, "cors")
-
-    @property
-    @pulumi.getter(name="customPlacementConfig")
-    def custom_placement_config(self) -> 'outputs.BucketCustomPlacementConfigResponse':
-        """
-        The bucket's custom placement configuration for Custom Dual Regions.
-        """
-        return pulumi.get(self, "custom_placement_config")
 
     @property
     @pulumi.getter(name="defaultEventBasedHold")
@@ -350,7 +339,6 @@ class AwaitableGetBucketResult(GetBucketResult):
             autoclass=self.autoclass,
             billing=self.billing,
             cors=self.cors,
-            custom_placement_config=self.custom_placement_config,
             default_event_based_hold=self.default_event_based_hold,
             default_object_acl=self.default_object_acl,
             encryption=self.encryption,
@@ -381,7 +369,6 @@ def get_bucket(bucket: Optional[str] = None,
                if_metageneration_match: Optional[str] = None,
                if_metageneration_not_match: Optional[str] = None,
                projection: Optional[str] = None,
-               provisional_user_project: Optional[str] = None,
                user_project: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketResult:
     """
@@ -392,7 +379,6 @@ def get_bucket(bucket: Optional[str] = None,
     __args__['ifMetagenerationMatch'] = if_metageneration_match
     __args__['ifMetagenerationNotMatch'] = if_metageneration_not_match
     __args__['projection'] = projection
-    __args__['provisionalUserProject'] = provisional_user_project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -405,7 +391,6 @@ def get_bucket(bucket: Optional[str] = None,
         autoclass=__ret__.autoclass,
         billing=__ret__.billing,
         cors=__ret__.cors,
-        custom_placement_config=__ret__.custom_placement_config,
         default_event_based_hold=__ret__.default_event_based_hold,
         default_object_acl=__ret__.default_object_acl,
         encryption=__ret__.encryption,
@@ -437,7 +422,6 @@ def get_bucket_output(bucket: Optional[pulumi.Input[str]] = None,
                       if_metageneration_match: Optional[pulumi.Input[Optional[str]]] = None,
                       if_metageneration_not_match: Optional[pulumi.Input[Optional[str]]] = None,
                       projection: Optional[pulumi.Input[Optional[str]]] = None,
-                      provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
                       user_project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketResult]:
     """

@@ -445,6 +445,8 @@ type AdvancedMachineFeatures struct {
 	EnableUefiNetworking *bool `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore *int `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+	VisibleCoreCount *int `pulumi:"visibleCoreCount"`
 }
 
 // AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
@@ -466,6 +468,8 @@ type AdvancedMachineFeaturesArgs struct {
 	EnableUefiNetworking pulumi.BoolPtrInput `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+	VisibleCoreCount pulumi.IntPtrInput `pulumi:"visibleCoreCount"`
 }
 
 func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
@@ -561,6 +565,11 @@ func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
 }
 
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+func (o AdvancedMachineFeaturesOutput) VisibleCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.VisibleCoreCount }).(pulumi.IntPtrOutput)
+}
+
 type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
 
 func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
@@ -615,6 +624,16 @@ func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+func (o AdvancedMachineFeaturesPtrOutput) VisibleCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VisibleCoreCount
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
 type AdvancedMachineFeaturesResponse struct {
 	// Whether to enable nested virtualization or not (default is false).
@@ -623,6 +642,8 @@ type AdvancedMachineFeaturesResponse struct {
 	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
 
 // Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
@@ -653,6 +674,11 @@ func (o AdvancedMachineFeaturesResponseOutput) EnableUefiNetworking() pulumi.Boo
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+func (o AdvancedMachineFeaturesResponseOutput) VisibleCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.VisibleCoreCount }).(pulumi.IntOutput)
 }
 
 // An alias IP range attached to an instance's network interface.
@@ -7054,6 +7080,526 @@ func (o BackendServiceIAPResponseOutput) Oauth2ClientSecretSha256() pulumi.Strin
 	return o.ApplyT(func(v BackendServiceIAPResponse) string { return v.Oauth2ClientSecretSha256 }).(pulumi.StringOutput)
 }
 
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfig struct {
+	CustomPolicy *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy `pulumi:"customPolicy"`
+	Policy       *BackendServiceLocalityLoadBalancingPolicyConfigPolicy       `pulumi:"policy"`
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigArgs and BackendServiceLocalityLoadBalancingPolicyConfigOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigOutput() BackendServiceLocalityLoadBalancingPolicyConfigOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigOutput
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigArgs struct {
+	CustomPolicy BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput `pulumi:"customPolicy"`
+	Policy       BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput       `pulumi:"policy"`
+}
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigOutput() BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigOutput)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigArrayInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigArray and BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigArrayInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigArray{ BackendServiceLocalityLoadBalancingPolicyConfigArgs{...} }
+type BackendServiceLocalityLoadBalancingPolicyConfigArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigArray []BackendServiceLocalityLoadBalancingPolicyConfigInput
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArray) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigArray) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput)
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigOutput() BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) CustomPolicy() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfig) *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
+		return v.CustomPolicy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigOutput) Policy() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfig) *BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
+		return v.Policy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLocalityLoadBalancingPolicyConfig)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigArrayOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) Index(i pulumi.IntInput) BackendServiceLocalityLoadBalancingPolicyConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceLocalityLoadBalancingPolicyConfig {
+		return vs[0].([]BackendServiceLocalityLoadBalancingPolicyConfig)[vs[1].(int)]
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigOutput)
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy struct {
+	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+	Data *string `pulumi:"data"`
+	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	Name *string `pulumi:"name"`
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs and BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs struct {
+	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+	Data pulumi.StringPtrInput `pulumi:"data"`
+	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput)
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput).ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs, BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtr and BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput
+}
+
+type backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs
+
+func BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtr(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput {
+	return (*backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType)(v)
+}
+
+func (*backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput)
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o.ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
+		return &v
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput)
+}
+
+// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string { return v.Data }).(pulumi.StringPtrOutput)
+}
+
+// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Elem() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy
+		return ret
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput)
+}
+
+// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse struct {
+	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+	Data string `pulumi:"data"`
+	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	Name string `pulumi:"name"`
+}
+
+// The configuration for a custom policy implemented by the user and deployed with the client.
+type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput {
+	return o
+}
+
+// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicy struct {
+	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	Name *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName `pulumi:"name"`
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs and BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs struct {
+	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	Name BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput `pulumi:"name"`
+}
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput)
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput).ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs, BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtr and BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput
+}
+
+type backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs
+
+func BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtr(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput {
+	return (*backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType)(v)
+}
+
+func (*backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return i.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *backendServiceLocalityLoadBalancingPolicyConfigPolicyPtrType) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
+		return &v
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
+}
+
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) Name() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
+		return v.Name
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Elem() BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicy) BackendServiceLocalityLoadBalancingPolicyConfigPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLocalityLoadBalancingPolicyConfigPolicy
+		return ret
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput)
+}
+
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Name() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse struct {
+	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	Name string `pulumi:"name"`
+}
+
+// The configuration for a built-in load balancing policy.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput {
+	return o
+}
+
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigResponse struct {
+	CustomPolicy BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse `pulumi:"customPolicy"`
+	Policy       BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse       `pulumi:"policy"`
+}
+
+// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+type BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseOutput() BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) CustomPolicy() BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigResponse) BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse {
+		return v.CustomPolicy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput) Policy() BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput {
+	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigResponse) BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse {
+		return v.Policy
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceLocalityLoadBalancingPolicyConfigResponse)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput() BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) Index(i pulumi.IntInput) BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceLocalityLoadBalancingPolicyConfigResponse {
+		return vs[0].([]BackendServiceLocalityLoadBalancingPolicyConfigResponse)[vs[1].(int)]
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput)
+}
+
 // The available logging options for the load balancer traffic served by this backend service.
 type BackendServiceLogConfig struct {
 	// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
@@ -12161,6 +12707,8 @@ type FirewallPolicyRule struct {
 	Match *FirewallPolicyRuleMatcher `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
+	// An optional name for the rule. This field is not a unique identifier and can be updated.
+	RuleName *string `pulumi:"ruleName"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -12196,6 +12744,8 @@ type FirewallPolicyRuleArgs struct {
 	Match FirewallPolicyRuleMatcherPtrInput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// An optional name for the rule. This field is not a unique identifier and can be updated.
+	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
 	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -12291,6 +12841,11 @@ func (o FirewallPolicyRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
+// An optional name for the rule. This field is not a unique identifier and can be updated.
+func (o FirewallPolicyRuleOutput) RuleName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
+}
+
 // A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 func (o FirewallPolicyRuleOutput) TargetResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
@@ -12330,12 +12885,20 @@ func (o FirewallPolicyRuleArrayOutput) Index(i pulumi.IntInput) FirewallPolicyRu
 type FirewallPolicyRuleMatcher struct {
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+	DestRegionCodes []string `pulumi:"destRegionCodes"`
+	// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+	DestThreatIntelligences []string `pulumi:"destThreatIntelligences"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4Config `pulumi:"layer4Configs"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
 	// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
 	SrcSecureTags []FirewallPolicyRuleSecureTag `pulumi:"srcSecureTags"`
+	// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+	SrcThreatIntelligences []string `pulumi:"srcThreatIntelligences"`
 }
 
 // FirewallPolicyRuleMatcherInput is an input type that accepts FirewallPolicyRuleMatcherArgs and FirewallPolicyRuleMatcherOutput values.
@@ -12353,12 +12916,20 @@ type FirewallPolicyRuleMatcherInput interface {
 type FirewallPolicyRuleMatcherArgs struct {
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges pulumi.StringArrayInput `pulumi:"destIpRanges"`
+	// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+	DestRegionCodes pulumi.StringArrayInput `pulumi:"destRegionCodes"`
+	// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+	DestThreatIntelligences pulumi.StringArrayInput `pulumi:"destThreatIntelligences"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs FirewallPolicyRuleMatcherLayer4ConfigArrayInput `pulumi:"layer4Configs"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges pulumi.StringArrayInput `pulumi:"srcIpRanges"`
+	// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+	SrcRegionCodes pulumi.StringArrayInput `pulumi:"srcRegionCodes"`
 	// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
 	SrcSecureTags FirewallPolicyRuleSecureTagArrayInput `pulumi:"srcSecureTags"`
+	// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+	SrcThreatIntelligences pulumi.StringArrayInput `pulumi:"srcThreatIntelligences"`
 }
 
 func (FirewallPolicyRuleMatcherArgs) ElementType() reflect.Type {
@@ -12444,6 +13015,16 @@ func (o FirewallPolicyRuleMatcherOutput) DestIpRanges() pulumi.StringArrayOutput
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+func (o FirewallPolicyRuleMatcherOutput) DestRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+func (o FirewallPolicyRuleMatcherOutput) DestThreatIntelligences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.DestThreatIntelligences }).(pulumi.StringArrayOutput)
+}
+
 // Pairs of IP protocols and ports that the rule should match.
 func (o FirewallPolicyRuleMatcherOutput) Layer4Configs() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config { return v.Layer4Configs }).(FirewallPolicyRuleMatcherLayer4ConfigArrayOutput)
@@ -12454,9 +13035,19 @@ func (o FirewallPolicyRuleMatcherOutput) SrcIpRanges() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+func (o FirewallPolicyRuleMatcherOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
 // List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
 func (o FirewallPolicyRuleMatcherOutput) SrcSecureTags() FirewallPolicyRuleSecureTagArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []FirewallPolicyRuleSecureTag { return v.SrcSecureTags }).(FirewallPolicyRuleSecureTagArrayOutput)
+}
+
+// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+func (o FirewallPolicyRuleMatcherOutput) SrcThreatIntelligences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcher) []string { return v.SrcThreatIntelligences }).(pulumi.StringArrayOutput)
 }
 
 type FirewallPolicyRuleMatcherPtrOutput struct{ *pulumi.OutputState }
@@ -12493,6 +13084,26 @@ func (o FirewallPolicyRuleMatcherPtrOutput) DestIpRanges() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+func (o FirewallPolicyRuleMatcherPtrOutput) DestRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestRegionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+func (o FirewallPolicyRuleMatcherPtrOutput) DestThreatIntelligences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestThreatIntelligences
+	}).(pulumi.StringArrayOutput)
+}
+
 // Pairs of IP protocols and ports that the rule should match.
 func (o FirewallPolicyRuleMatcherPtrOutput) Layer4Configs() FirewallPolicyRuleMatcherLayer4ConfigArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []FirewallPolicyRuleMatcherLayer4Config {
@@ -12513,6 +13124,16 @@ func (o FirewallPolicyRuleMatcherPtrOutput) SrcIpRanges() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+func (o FirewallPolicyRuleMatcherPtrOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcRegionCodes
+	}).(pulumi.StringArrayOutput)
+}
+
 // List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
 func (o FirewallPolicyRuleMatcherPtrOutput) SrcSecureTags() FirewallPolicyRuleSecureTagArrayOutput {
 	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []FirewallPolicyRuleSecureTag {
@@ -12521,6 +13142,16 @@ func (o FirewallPolicyRuleMatcherPtrOutput) SrcSecureTags() FirewallPolicyRuleSe
 		}
 		return v.SrcSecureTags
 	}).(FirewallPolicyRuleSecureTagArrayOutput)
+}
+
+// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+func (o FirewallPolicyRuleMatcherPtrOutput) SrcThreatIntelligences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallPolicyRuleMatcher) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SrcThreatIntelligences
+	}).(pulumi.StringArrayOutput)
 }
 
 type FirewallPolicyRuleMatcherLayer4Config struct {
@@ -12684,12 +13315,20 @@ func (o FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput) Index(i pulumi
 type FirewallPolicyRuleMatcherResponse struct {
 	// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
 	DestIpRanges []string `pulumi:"destIpRanges"`
+	// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+	DestRegionCodes []string `pulumi:"destRegionCodes"`
+	// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+	DestThreatIntelligences []string `pulumi:"destThreatIntelligences"`
 	// Pairs of IP protocols and ports that the rule should match.
 	Layer4Configs []FirewallPolicyRuleMatcherLayer4ConfigResponse `pulumi:"layer4Configs"`
 	// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
 	SrcIpRanges []string `pulumi:"srcIpRanges"`
+	// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+	SrcRegionCodes []string `pulumi:"srcRegionCodes"`
 	// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
 	SrcSecureTags []FirewallPolicyRuleSecureTagResponse `pulumi:"srcSecureTags"`
+	// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+	SrcThreatIntelligences []string `pulumi:"srcThreatIntelligences"`
 }
 
 // Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
@@ -12712,6 +13351,16 @@ func (o FirewallPolicyRuleMatcherResponseOutput) DestIpRanges() pulumi.StringArr
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestIpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+func (o FirewallPolicyRuleMatcherResponseOutput) DestRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestRegionCodes }).(pulumi.StringArrayOutput)
+}
+
+// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+func (o FirewallPolicyRuleMatcherResponseOutput) DestThreatIntelligences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.DestThreatIntelligences }).(pulumi.StringArrayOutput)
+}
+
 // Pairs of IP protocols and ports that the rule should match.
 func (o FirewallPolicyRuleMatcherResponseOutput) Layer4Configs() FirewallPolicyRuleMatcherLayer4ConfigResponseArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []FirewallPolicyRuleMatcherLayer4ConfigResponse {
@@ -12724,11 +13373,21 @@ func (o FirewallPolicyRuleMatcherResponseOutput) SrcIpRanges() pulumi.StringArra
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcIpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+func (o FirewallPolicyRuleMatcherResponseOutput) SrcRegionCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcRegionCodes }).(pulumi.StringArrayOutput)
+}
+
 // List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
 func (o FirewallPolicyRuleMatcherResponseOutput) SrcSecureTags() FirewallPolicyRuleSecureTagResponseArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []FirewallPolicyRuleSecureTagResponse {
 		return v.SrcSecureTags
 	}).(FirewallPolicyRuleSecureTagResponseArrayOutput)
+}
+
+// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+func (o FirewallPolicyRuleMatcherResponseOutput) SrcThreatIntelligences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleMatcherResponse) []string { return v.SrcThreatIntelligences }).(pulumi.StringArrayOutput)
 }
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
@@ -12749,6 +13408,8 @@ type FirewallPolicyRuleResponse struct {
 	Match FirewallPolicyRuleMatcherResponse `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
+	// An optional name for the rule. This field is not a unique identifier and can be updated.
+	RuleName string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -12812,6 +13473,11 @@ func (o FirewallPolicyRuleResponseOutput) Match() FirewallPolicyRuleMatcherRespo
 // An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 func (o FirewallPolicyRuleResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// An optional name for the rule. This field is not a unique identifier and can be updated.
+func (o FirewallPolicyRuleResponseOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleResponse) string { return v.RuleName }).(pulumi.StringOutput)
 }
 
 // Calculation of the complexity of a single firewall policy rule.
@@ -43896,6 +44562,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceFailoverPolicyPtrInput)(nil)).Elem(), BackendServiceFailoverPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPInput)(nil)).Elem(), BackendServiceIAPArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceIAPPtrInput)(nil)).Elem(), BackendServiceIAPArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigArrayInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigPtrInput)(nil)).Elem(), BackendServiceLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
@@ -44329,6 +45001,16 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceIAPOutput{})
 	pulumi.RegisterOutputType(BackendServiceIAPPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceIAPResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigResponseOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLogConfigResponseOutput{})

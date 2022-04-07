@@ -35,19 +35,19 @@ type LookupSubnetworkResult struct {
 	Description string `pulumi:"description"`
 	// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	EnableFlowLogs bool `pulumi:"enableFlowLogs"`
-	// The range of external IPv6 addresses that are owned by this subnetwork.
+	// The external IPv6 address range that is assigned to this subnetwork.
 	ExternalIpv6Prefix string `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint string `pulumi:"fingerprint"`
 	// The gateway address for default routes to reach destination addresses outside this subnetwork.
 	GatewayAddress string `pulumi:"gatewayAddress"`
-	// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+	// The internal IPv6 address range that is assigned to this subnetwork.
 	InternalIpv6Prefix string `pulumi:"internalIpv6Prefix"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
 	IpCidrRange string `pulumi:"ipCidrRange"`
-	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+	// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
 	Ipv6AccessType string `pulumi:"ipv6AccessType"`
-	// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
+	// This field is for internal use.
 	Ipv6CidrRange string `pulumi:"ipv6CidrRange"`
 	// Type of the resource. Always compute#subnetwork for Subnetwork resources.
 	Kind string `pulumi:"kind"`
@@ -59,7 +59,7 @@ type LookupSubnetworkResult struct {
 	Network string `pulumi:"network"`
 	// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
 	PrivateIpGoogleAccess bool `pulumi:"privateIpGoogleAccess"`
-	// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+	// This field is for internal use. This field can be both set at resource creation time and updated using patch.
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
 	// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
 	Purpose string `pulumi:"purpose"`
@@ -130,7 +130,7 @@ func (o LookupSubnetworkResultOutput) EnableFlowLogs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) bool { return v.EnableFlowLogs }).(pulumi.BoolOutput)
 }
 
-// The range of external IPv6 addresses that are owned by this subnetwork.
+// The external IPv6 address range that is assigned to this subnetwork.
 func (o LookupSubnetworkResultOutput) ExternalIpv6Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
 }
@@ -145,7 +145,7 @@ func (o LookupSubnetworkResultOutput) GatewayAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.GatewayAddress }).(pulumi.StringOutput)
 }
 
-// The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+// The internal IPv6 address range that is assigned to this subnetwork.
 func (o LookupSubnetworkResultOutput) InternalIpv6Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.InternalIpv6Prefix }).(pulumi.StringOutput)
 }
@@ -155,12 +155,12 @@ func (o LookupSubnetworkResultOutput) IpCidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.IpCidrRange }).(pulumi.StringOutput)
 }
 
-// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
 func (o LookupSubnetworkResultOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
-// The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
+// This field is for internal use.
 func (o LookupSubnetworkResultOutput) Ipv6CidrRange() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.Ipv6CidrRange }).(pulumi.StringOutput)
 }
@@ -190,7 +190,7 @@ func (o LookupSubnetworkResultOutput) PrivateIpGoogleAccess() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupSubnetworkResult) bool { return v.PrivateIpGoogleAccess }).(pulumi.BoolOutput)
 }
 
-// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+// This field is for internal use. This field can be both set at resource creation time and updated using patch.
 func (o LookupSubnetworkResultOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
 }

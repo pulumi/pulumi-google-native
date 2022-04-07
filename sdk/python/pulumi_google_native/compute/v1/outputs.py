@@ -40,6 +40,9 @@ __all__ = [
     'BackendServiceConnectionTrackingPolicyResponse',
     'BackendServiceFailoverPolicyResponse',
     'BackendServiceIAPResponse',
+    'BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse',
+    'BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse',
+    'BackendServiceLocalityLoadBalancingPolicyConfigResponse',
     'BackendServiceLogConfigResponse',
     'BindingResponse',
     'CacheKeyPolicyResponse',
@@ -2652,6 +2655,103 @@ class BackendServiceIAPResponse(dict):
 
 
 @pulumi.output_type
+class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse(dict):
+    """
+    The configuration for a custom policy implemented by the user and deployed with the client.
+    """
+    def __init__(__self__, *,
+                 data: str,
+                 name: str):
+        """
+        The configuration for a custom policy implemented by the user and deployed with the client.
+        :param str data: An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        :param str name: Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def data(self) -> str:
+        """
+        An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse(dict):
+    """
+    The configuration for a built-in load balancing policy.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        The configuration for a built-in load balancing policy.
+        :param str name: The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class BackendServiceLocalityLoadBalancingPolicyConfigResponse(dict):
+    """
+    Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customPolicy":
+            suggest = "custom_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceLocalityLoadBalancingPolicyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceLocalityLoadBalancingPolicyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceLocalityLoadBalancingPolicyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_policy: 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse',
+                 policy: 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse'):
+        """
+        Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+        """
+        pulumi.set(__self__, "custom_policy", custom_policy)
+        pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="customPolicy")
+    def custom_policy(self) -> 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse':
+        return pulumi.get(self, "custom_policy")
+
+    @property
+    @pulumi.getter
+    def policy(self) -> 'outputs.BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse':
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
 class BackendServiceLogConfigResponse(dict):
     """
     The available logging options for the load balancer traffic served by this backend service.
@@ -4211,6 +4311,8 @@ class FirewallPolicyRuleResponse(dict):
         suggest = None
         if key == "enableLogging":
             suggest = "enable_logging"
+        elif key == "ruleName":
+            suggest = "rule_name"
         elif key == "ruleTupleCount":
             suggest = "rule_tuple_count"
         elif key == "targetResources":
@@ -4240,6 +4342,7 @@ class FirewallPolicyRuleResponse(dict):
                  kind: str,
                  match: 'outputs.FirewallPolicyRuleMatcherResponse',
                  priority: int,
+                 rule_name: str,
                  rule_tuple_count: int,
                  target_resources: Sequence[str],
                  target_secure_tags: Sequence['outputs.FirewallPolicyRuleSecureTagResponse'],
@@ -4254,6 +4357,7 @@ class FirewallPolicyRuleResponse(dict):
         :param str kind: [Output only] Type of the resource. Always compute#firewallPolicyRule for firewall policy rules
         :param 'FirewallPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        :param str rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -4267,6 +4371,7 @@ class FirewallPolicyRuleResponse(dict):
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "match", match)
         pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "rule_name", rule_name)
         pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         pulumi.set(__self__, "target_resources", target_resources)
         pulumi.set(__self__, "target_secure_tags", target_secure_tags)
@@ -4335,6 +4440,14 @@ class FirewallPolicyRuleResponse(dict):
         An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         """
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> str:
+        """
+        An optional name for the rule. This field is not a unique identifier and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
 
     @property
     @pulumi.getter(name="ruleTupleCount")

@@ -30,6 +30,8 @@ type LookupVersionArgs struct {
 type LookupVersionResult struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponse `pulumi:"apiConfig"`
+	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	AppEngineApis bool `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingResponse `pulumi:"automaticScaling"`
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -145,6 +147,11 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx co
 // Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 func (o LookupVersionResultOutput) ApiConfig() ApiConfigHandlerResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) ApiConfigHandlerResponse { return v.ApiConfig }).(ApiConfigHandlerResponseOutput)
+}
+
+// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+func (o LookupVersionResultOutput) AppEngineApis() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVersionResult) bool { return v.AppEngineApis }).(pulumi.BoolOutput)
 }
 
 // Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.

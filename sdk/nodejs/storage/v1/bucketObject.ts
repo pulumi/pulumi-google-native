@@ -203,7 +203,6 @@ export class BucketObject extends pulumi.CustomResource {
             resourceInputs["owner"] = args ? args.owner : undefined;
             resourceInputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
             resourceInputs["projection"] = args ? args.projection : undefined;
-            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             resourceInputs["retentionExpirationTime"] = args ? args.retentionExpirationTime : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
@@ -373,10 +372,6 @@ export interface BucketObjectArgs {
      * Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
      */
     projection?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    provisionalUserProject?: pulumi.Input<string>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */

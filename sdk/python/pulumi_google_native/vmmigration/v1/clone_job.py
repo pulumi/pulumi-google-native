@@ -178,6 +178,7 @@ class CloneJob(pulumi.CustomResource):
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["compute_engine_target_details"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
@@ -206,6 +207,7 @@ class CloneJob(pulumi.CustomResource):
 
         __props__.__dict__["compute_engine_target_details"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["state"] = None
@@ -227,6 +229,14 @@ class CloneJob(pulumi.CustomResource):
         The time the clone job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Output[str]:
+        """
+        The time the clone job was ended.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter

@@ -27,6 +27,30 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _destIpRanges = value;
         }
 
+        [Input("destRegionCodes")]
+        private InputList<string>? _destRegionCodes;
+
+        /// <summary>
+        /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        /// </summary>
+        public InputList<string> DestRegionCodes
+        {
+            get => _destRegionCodes ?? (_destRegionCodes = new InputList<string>());
+            set => _destRegionCodes = value;
+        }
+
+        [Input("destThreatIntelligences")]
+        private InputList<string>? _destThreatIntelligences;
+
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        /// </summary>
+        public InputList<string> DestThreatIntelligences
+        {
+            get => _destThreatIntelligences ?? (_destThreatIntelligences = new InputList<string>());
+            set => _destThreatIntelligences = value;
+        }
+
         [Input("layer4Configs")]
         private InputList<Inputs.FirewallPolicyRuleMatcherLayer4ConfigArgs>? _layer4Configs;
 
@@ -51,6 +75,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _srcIpRanges = value;
         }
 
+        [Input("srcRegionCodes")]
+        private InputList<string>? _srcRegionCodes;
+
+        /// <summary>
+        /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        /// </summary>
+        public InputList<string> SrcRegionCodes
+        {
+            get => _srcRegionCodes ?? (_srcRegionCodes = new InputList<string>());
+            set => _srcRegionCodes = value;
+        }
+
         [Input("srcSecureTags")]
         private InputList<Inputs.FirewallPolicyRuleSecureTagArgs>? _srcSecureTags;
 
@@ -61,6 +97,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         {
             get => _srcSecureTags ?? (_srcSecureTags = new InputList<Inputs.FirewallPolicyRuleSecureTagArgs>());
             set => _srcSecureTags = value;
+        }
+
+        [Input("srcThreatIntelligences")]
+        private InputList<string>? _srcThreatIntelligences;
+
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        /// </summary>
+        public InputList<string> SrcThreatIntelligences
+        {
+            get => _srcThreatIntelligences ?? (_srcThreatIntelligences = new InputList<string>());
+            set => _srcThreatIntelligences = value;
         }
 
         public FirewallPolicyRuleMatcherArgs()

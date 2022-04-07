@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The time the clone job was ended.
+        /// </summary>
+        public readonly string EndTime;
+        /// <summary>
         /// Provides details for the errors that led to the Clone Job's state.
         /// </summary>
         public readonly Outputs.StatusResponse Error;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
 
             string createTime,
 
+            string endTime,
+
             Outputs.StatusResponse error,
 
             string name,
@@ -57,6 +63,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
         {
             ComputeEngineTargetDetails = computeEngineTargetDetails;
             CreateTime = createTime;
+            EndTime = endTime;
             Error = error;
             Name = name;
             State = state;

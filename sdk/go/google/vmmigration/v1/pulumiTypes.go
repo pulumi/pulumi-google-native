@@ -129,6 +129,8 @@ type CloneJobResponse struct {
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the clone job was ended.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Clone Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the clone.
@@ -162,6 +164,11 @@ func (o CloneJobResponseOutput) ComputeEngineTargetDetails() ComputeEngineTarget
 // The time the clone job was created (as an API call, not when it was actually created in the target).
 func (o CloneJobResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CloneJobResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the clone job was ended.
+func (o CloneJobResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneJobResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // Provides details for the errors that led to the Clone Job's state.
@@ -1136,6 +1143,8 @@ type CutoverJobResponse struct {
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the cutover job had finished.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the cutover job.
@@ -1173,6 +1182,11 @@ func (o CutoverJobResponseOutput) ComputeEngineTargetDetails() ComputeEngineTarg
 // The time the cutover job was created (as an API call, not when it was actually created in the target).
 func (o CutoverJobResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CutoverJobResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the cutover job had finished.
+func (o CutoverJobResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverJobResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // Provides details for the errors that led to the Cutover Job's state.

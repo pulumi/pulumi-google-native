@@ -21,7 +21,6 @@ class ObjectIamPolicyArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -31,7 +30,6 @@ class ObjectIamPolicyArgs:
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] generation: If present, selects a specific revision of this object (as opposed to the latest version, the default).
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         :param pulumi.Input[int] version: The IAM policy format version.
@@ -46,8 +44,6 @@ class ObjectIamPolicyArgs:
             pulumi.set(__self__, "generation", generation)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
-        if provisional_user_project is not None:
-            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
         if user_project is not None:
@@ -122,18 +118,6 @@ class ObjectIamPolicyArgs:
         pulumi.set(self, "kind", value)
 
     @property
-    @pulumi.getter(name="provisionalUserProject")
-    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project to be billed for this request if the target bucket is requester-pays bucket.
-        """
-        return pulumi.get(self, "provisional_user_project")
-
-    @provisional_user_project.setter
-    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisional_user_project", value)
-
-    @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -181,7 +165,6 @@ class ObjectIamPolicy(pulumi.CustomResource):
                  generation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
@@ -197,7 +180,6 @@ class ObjectIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] generation: If present, selects a specific revision of this object (as opposed to the latest version, the default).
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         :param pulumi.Input[str] user_project: The project to be billed for this request. Required for Requester Pays buckets.
         :param pulumi.Input[int] version: The IAM policy format version.
@@ -234,7 +216,6 @@ class ObjectIamPolicy(pulumi.CustomResource):
                  generation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
@@ -260,7 +241,6 @@ class ObjectIamPolicy(pulumi.CustomResource):
             if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
             __props__.__dict__["object"] = object
-            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["resource_id"] = resource_id
             __props__.__dict__["user_project"] = user_project
             __props__.__dict__["version"] = version

@@ -1379,11 +1379,11 @@ func (in *ingressRuleActionPtr) ToIngressRuleActionPtrOutputWithContext(ctx cont
 type NetworkInstanceIpMode string
 
 const (
-	// Unspecified should be treated as EXTERNAL
+	// Unspecified is treated as EXTERNAL.
 	NetworkInstanceIpModeInstanceIpModeUnspecified = NetworkInstanceIpMode("INSTANCE_IP_MODE_UNSPECIFIED")
-	// VMs should be created with external and internal IPs
+	// Instances are created with both internal and external IP addresses.
 	NetworkInstanceIpModeExternal = NetworkInstanceIpMode("EXTERNAL")
-	// VMs should be created with internal IPs only
+	// Instances are created with internal IP addresses only.
 	NetworkInstanceIpModeInternal = NetworkInstanceIpMode("INTERNAL")
 )
 

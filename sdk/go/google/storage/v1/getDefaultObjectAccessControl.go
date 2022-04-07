@@ -21,10 +21,9 @@ func LookupDefaultObjectAccessControl(ctx *pulumi.Context, args *LookupDefaultOb
 }
 
 type LookupDefaultObjectAccessControlArgs struct {
-	Bucket                 string  `pulumi:"bucket"`
-	Entity                 string  `pulumi:"entity"`
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
-	UserProject            *string `pulumi:"userProject"`
+	Bucket      string  `pulumi:"bucket"`
+	Entity      string  `pulumi:"entity"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 type LookupDefaultObjectAccessControlResult struct {
@@ -75,10 +74,9 @@ func LookupDefaultObjectAccessControlOutput(ctx *pulumi.Context, args LookupDefa
 }
 
 type LookupDefaultObjectAccessControlOutputArgs struct {
-	Bucket                 pulumi.StringInput    `pulumi:"bucket"`
-	Entity                 pulumi.StringInput    `pulumi:"entity"`
-	ProvisionalUserProject pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
-	UserProject            pulumi.StringPtrInput `pulumi:"userProject"`
+	Bucket      pulumi.StringInput    `pulumi:"bucket"`
+	Entity      pulumi.StringInput    `pulumi:"entity"`
+	UserProject pulumi.StringPtrInput `pulumi:"userProject"`
 }
 
 func (LookupDefaultObjectAccessControlOutputArgs) ElementType() reflect.Type {

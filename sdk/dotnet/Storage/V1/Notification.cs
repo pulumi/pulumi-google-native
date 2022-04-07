@@ -167,12 +167,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? PayloadFormat { get; set; }
 
         /// <summary>
-        /// The project to be billed for this request if the target bucket is requester-pays bucket.
-        /// </summary>
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
-
-        /// <summary>
         /// The canonical URL of this notification.
         /// </summary>
         [Input("selfLink")]

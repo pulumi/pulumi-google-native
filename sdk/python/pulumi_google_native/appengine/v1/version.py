@@ -19,6 +19,7 @@ class VersionArgs:
                  app_id: pulumi.Input[str],
                  service_id: pulumi.Input[str],
                  api_config: Optional[pulumi.Input['ApiConfigHandlerArgs']] = None,
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  automatic_scaling: Optional[pulumi.Input['AutomaticScalingArgs']] = None,
                  basic_scaling: Optional[pulumi.Input['BasicScalingArgs']] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -55,6 +56,7 @@ class VersionArgs:
         """
         The set of arguments for constructing a Version resource.
         :param pulumi.Input['ApiConfigHandlerArgs'] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[bool] app_engine_apis: app_engine_apis allows second generation runtimes to access the App Engine APIs.
         :param pulumi.Input['AutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         :param pulumi.Input['BasicScalingArgs'] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
@@ -93,6 +95,8 @@ class VersionArgs:
         pulumi.set(__self__, "service_id", service_id)
         if api_config is not None:
             pulumi.set(__self__, "api_config", api_config)
+        if app_engine_apis is not None:
+            pulumi.set(__self__, "app_engine_apis", app_engine_apis)
         if automatic_scaling is not None:
             pulumi.set(__self__, "automatic_scaling", automatic_scaling)
         if basic_scaling is not None:
@@ -192,6 +196,18 @@ class VersionArgs:
     @api_config.setter
     def api_config(self, value: Optional[pulumi.Input['ApiConfigHandlerArgs']]):
         pulumi.set(self, "api_config", value)
+
+    @property
+    @pulumi.getter(name="appEngineApis")
+    def app_engine_apis(self) -> Optional[pulumi.Input[bool]]:
+        """
+        app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        """
+        return pulumi.get(self, "app_engine_apis")
+
+    @app_engine_apis.setter
+    def app_engine_apis(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "app_engine_apis", value)
 
     @property
     @pulumi.getter(name="automaticScaling")
@@ -596,6 +612,7 @@ class Version(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']]] = None,
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
@@ -639,6 +656,7 @@ class Version(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[bool] app_engine_apis: app_engine_apis allows second generation runtimes to access the App Engine APIs.
         :param pulumi.Input[pulumi.InputType['AutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         :param pulumi.Input[pulumi.InputType['BasicScalingArgs']] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] beta_settings: Metadata settings that are supplied to this version to enable beta runtime features.
@@ -699,6 +717,7 @@ class Version(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']]] = None,
+                 app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
@@ -747,6 +766,7 @@ class Version(pulumi.CustomResource):
             __props__ = VersionArgs.__new__(VersionArgs)
 
             __props__.__dict__["api_config"] = api_config
+            __props__.__dict__["app_engine_apis"] = app_engine_apis
             if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__.__dict__["app_id"] = app_id
@@ -817,6 +837,7 @@ class Version(pulumi.CustomResource):
         __props__ = VersionArgs.__new__(VersionArgs)
 
         __props__.__dict__["api_config"] = None
+        __props__.__dict__["app_engine_apis"] = None
         __props__.__dict__["automatic_scaling"] = None
         __props__.__dict__["basic_scaling"] = None
         __props__.__dict__["beta_settings"] = None
@@ -863,6 +884,14 @@ class Version(pulumi.CustomResource):
         Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "api_config")
+
+    @property
+    @pulumi.getter(name="appEngineApis")
+    def app_engine_apis(self) -> pulumi.Output[bool]:
+        """
+        app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        """
+        return pulumi.get(self, "app_engine_apis")
 
     @property
     @pulumi.getter(name="automaticScaling")

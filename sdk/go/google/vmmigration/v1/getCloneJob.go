@@ -33,6 +33,8 @@ type LookupCloneJobResult struct {
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the clone job was ended.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Clone Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the clone.
@@ -86,6 +88,11 @@ func (o LookupCloneJobResultOutput) ComputeEngineTargetDetails() ComputeEngineTa
 // The time the clone job was created (as an API call, not when it was actually created in the target).
 func (o LookupCloneJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the clone job was ended.
+func (o LookupCloneJobResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // Provides details for the errors that led to the Clone Job's state.

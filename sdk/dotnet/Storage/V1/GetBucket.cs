@@ -39,9 +39,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("projection")]
         public string? Projection { get; set; }
 
-        [Input("provisionalUserProject")]
-        public string? ProvisionalUserProject { get; set; }
-
         [Input("userProject")]
         public string? UserProject { get; set; }
 
@@ -63,9 +60,6 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [Input("projection")]
         public Input<string>? Projection { get; set; }
-
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
 
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }
@@ -95,10 +89,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.BucketCorsItemResponse> Cors;
-        /// <summary>
-        /// The bucket's custom placement configuration for Custom Dual Regions.
-        /// </summary>
-        public readonly Outputs.BucketCustomPlacementConfigResponse CustomPlacementConfig;
         /// <summary>
         /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         /// </summary>
@@ -206,8 +196,6 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             ImmutableArray<Outputs.BucketCorsItemResponse> cors,
 
-            Outputs.BucketCustomPlacementConfigResponse customPlacementConfig,
-
             bool defaultEventBasedHold,
 
             ImmutableArray<Outputs.ObjectAccessControlResponse> defaultObjectAcl,
@@ -260,7 +248,6 @@ namespace Pulumi.GoogleNative.Storage.V1
             Autoclass = autoclass;
             Billing = billing;
             Cors = cors;
-            CustomPlacementConfig = customPlacementConfig;
             DefaultEventBasedHold = defaultEventBasedHold;
             DefaultObjectAcl = defaultObjectAcl;
             Encryption = encryption;

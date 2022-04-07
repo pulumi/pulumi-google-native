@@ -32,6 +32,7 @@ class RegionBackendServiceArgs:
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIAPArgs']] = None,
                  load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  max_stream_duration: Optional[pulumi.Input['DurationArgs']] = None,
@@ -62,6 +63,7 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input['BackendServiceIAPArgs'] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
         :param pulumi.Input['RegionBackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
         :param pulumi.Input['RegionBackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
         :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
@@ -107,6 +109,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "iap", iap)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+        if locality_lb_policies is not None:
+            pulumi.set(__self__, "locality_lb_policies", locality_lb_policies)
         if locality_lb_policy is not None:
             pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
         if log_config is not None:
@@ -325,6 +329,18 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "load_balancing_scheme", value)
 
     @property
+    @pulumi.getter(name="localityLbPolicies")
+    def locality_lb_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]]]:
+        """
+        A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "locality_lb_policies")
+
+    @locality_lb_policies.setter
+    def locality_lb_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]]]):
+        pulumi.set(self, "locality_lb_policies", value)
+
+    @property
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']]:
         """
@@ -519,6 +535,7 @@ class RegionBackendService(pulumi.CustomResource):
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
@@ -554,6 +571,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
         :param pulumi.Input['RegionBackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
         :param pulumi.Input['RegionBackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
         :param pulumi.Input[pulumi.InputType['DurationArgs']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
@@ -607,6 +625,7 @@ class RegionBackendService(pulumi.CustomResource):
                  health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  iap: Optional[pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']]] = None,
                  load_balancing_scheme: Optional[pulumi.Input['RegionBackendServiceLoadBalancingScheme']] = None,
+                 locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLoadBalancingPolicyConfigArgs']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input['RegionBackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
@@ -650,6 +669,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
+            __props__.__dict__["locality_lb_policies"] = locality_lb_policies
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_stream_duration"] = max_stream_duration
@@ -718,6 +738,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["iap"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["load_balancing_scheme"] = None
+        __props__.__dict__["locality_lb_policies"] = None
         __props__.__dict__["locality_lb_policy"] = None
         __props__.__dict__["log_config"] = None
         __props__.__dict__["max_stream_duration"] = None
@@ -881,6 +902,14 @@ class RegionBackendService(pulumi.CustomResource):
         Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         """
         return pulumi.get(self, "load_balancing_scheme")
+
+    @property
+    @pulumi.getter(name="localityLbPolicies")
+    def locality_lb_policies(self) -> pulumi.Output[Sequence['outputs.BackendServiceLocalityLoadBalancingPolicyConfigResponse']]:
+        """
+        A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "locality_lb_policies")
 
     @property
     @pulumi.getter(name="localityLbPolicy")

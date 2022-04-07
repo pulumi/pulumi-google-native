@@ -91,8 +91,6 @@ type notificationArgs struct {
 	ObjectNamePrefix *string `pulumi:"objectNamePrefix"`
 	// The desired content of the Payload.
 	PayloadFormat *string `pulumi:"payloadFormat"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The canonical URL of this notification.
 	SelfLink *string `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
@@ -118,8 +116,6 @@ type NotificationArgs struct {
 	ObjectNamePrefix pulumi.StringPtrInput
 	// The desired content of the Payload.
 	PayloadFormat pulumi.StringPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The canonical URL of this notification.
 	SelfLink pulumi.StringPtrInput
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'

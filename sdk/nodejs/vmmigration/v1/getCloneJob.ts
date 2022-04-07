@@ -41,6 +41,10 @@ export interface GetCloneJobResult {
      */
     readonly createTime: string;
     /**
+     * The time the clone job was ended.
+     */
+    readonly endTime: string;
+    /**
      * Provides details for the errors that led to the Clone Job's state.
      */
     readonly error: outputs.vmmigration.v1.StatusResponse;

@@ -179,8 +179,6 @@ type bucketObjectArgs struct {
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
 	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
 	Projection *string `pulumi:"projection"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime *string `pulumi:"retentionExpirationTime"`
 	// The link to this object.
@@ -264,8 +262,6 @@ type BucketObjectArgs struct {
 	PredefinedAcl pulumi.StringPtrInput
 	// Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
 	Projection pulumi.StringPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime pulumi.StringPtrInput
 	// The link to this object.

@@ -38,6 +38,9 @@ __all__ = [
     'BackendServiceConnectionTrackingPolicyArgs',
     'BackendServiceFailoverPolicyArgs',
     'BackendServiceIAPArgs',
+    'BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs',
+    'BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs',
+    'BackendServiceLocalityLoadBalancingPolicyConfigArgs',
     'BackendServiceLogConfigArgs',
     'BackendArgs',
     'BindingArgs',
@@ -387,12 +390,14 @@ class AdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
-                 threads_per_core: Optional[pulumi.Input[int]] = None):
+                 threads_per_core: Optional[pulumi.Input[int]] = None,
+                 visible_core_count: Optional[pulumi.Input[int]] = None):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
         :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
@@ -400,6 +405,8 @@ class AdvancedMachineFeaturesArgs:
             pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if visible_core_count is not None:
+            pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -436,6 +443,18 @@ class AdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "threads_per_core", value)
+
+    @property
+    @pulumi.getter(name="visibleCoreCount")
+    def visible_core_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
+        """
+        return pulumi.get(self, "visible_core_count")
+
+    @visible_core_count.setter
+    def visible_core_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "visible_core_count", value)
 
 
 @pulumi.input_type
@@ -2358,6 +2377,102 @@ class BackendServiceIAPArgs:
 
 
 @pulumi.input_type
+class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs:
+    def __init__(__self__, *,
+                 data: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration for a custom policy implemented by the user and deployed with the client.
+        :param pulumi.Input[str] data: An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        :param pulumi.Input[str] name: Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']] = None):
+        """
+        The configuration for a built-in load balancing policy.
+        :param pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName'] name: The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']]:
+        """
+        The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class BackendServiceLocalityLoadBalancingPolicyConfigArgs:
+    def __init__(__self__, *,
+                 custom_policy: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs']] = None,
+                 policy: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs']] = None):
+        """
+        Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
+        """
+        if custom_policy is not None:
+            pulumi.set(__self__, "custom_policy", custom_policy)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="customPolicy")
+    def custom_policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs']]:
+        return pulumi.get(self, "custom_policy")
+
+    @custom_policy.setter
+    def custom_policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs']]):
+        pulumi.set(self, "custom_policy", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs']]:
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs']]):
+        pulumi.set(self, "policy", value)
+
+
+@pulumi.input_type
 class BackendServiceLogConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
@@ -4001,24 +4116,40 @@ class FirewallPolicyRuleMatcherLayer4ConfigArgs:
 class FirewallPolicyRuleMatcherArgs:
     def __init__(__self__, *,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None):
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         """
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
         if layer4_configs is not None:
             pulumi.set(__self__, "layer4_configs", layer4_configs)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
             pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
 
     @property
     @pulumi.getter(name="destIpRanges")
@@ -4031,6 +4162,30 @@ class FirewallPolicyRuleMatcherArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
 
     @property
     @pulumi.getter(name="layer4Configs")
@@ -4057,6 +4212,18 @@ class FirewallPolicyRuleMatcherArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
     @pulumi.getter(name="srcSecureTags")
     def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]:
         """
@@ -4067,6 +4234,18 @@ class FirewallPolicyRuleMatcherArgs:
     @src_secure_tags.setter
     def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]):
         pulumi.set(self, "src_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
 
 
 @pulumi.input_type
@@ -4102,6 +4281,7 @@ class FirewallPolicyRuleArgs:
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input['FirewallPolicyRuleMatcherArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
                  target_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None,
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -4114,6 +4294,7 @@ class FirewallPolicyRuleArgs:
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input['FirewallPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -4132,6 +4313,8 @@ class FirewallPolicyRuleArgs:
             pulumi.set(__self__, "match", match)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
         if target_resources is not None:
             pulumi.set(__self__, "target_resources", target_resources)
         if target_secure_tags is not None:
@@ -4222,6 +4405,18 @@ class FirewallPolicyRuleArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional name for the rule. This field is not a unique identifier and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
 
     @property
     @pulumi.getter(name="targetResources")

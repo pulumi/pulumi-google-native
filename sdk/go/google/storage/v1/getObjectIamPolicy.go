@@ -21,11 +21,10 @@ func LookupObjectIamPolicy(ctx *pulumi.Context, args *LookupObjectIamPolicyArgs,
 }
 
 type LookupObjectIamPolicyArgs struct {
-	Bucket                 string  `pulumi:"bucket"`
-	Generation             *string `pulumi:"generation"`
-	Object                 string  `pulumi:"object"`
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
-	UserProject            *string `pulumi:"userProject"`
+	Bucket      string  `pulumi:"bucket"`
+	Generation  *string `pulumi:"generation"`
+	Object      string  `pulumi:"object"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 type LookupObjectIamPolicyResult struct {
@@ -51,11 +50,10 @@ func LookupObjectIamPolicyOutput(ctx *pulumi.Context, args LookupObjectIamPolicy
 }
 
 type LookupObjectIamPolicyOutputArgs struct {
-	Bucket                 pulumi.StringInput    `pulumi:"bucket"`
-	Generation             pulumi.StringPtrInput `pulumi:"generation"`
-	Object                 pulumi.StringInput    `pulumi:"object"`
-	ProvisionalUserProject pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
-	UserProject            pulumi.StringPtrInput `pulumi:"userProject"`
+	Bucket      pulumi.StringInput    `pulumi:"bucket"`
+	Generation  pulumi.StringPtrInput `pulumi:"generation"`
+	Object      pulumi.StringInput    `pulumi:"object"`
+	UserProject pulumi.StringPtrInput `pulumi:"userProject"`
 }
 
 func (LookupObjectIamPolicyOutputArgs) ElementType() reflect.Type {

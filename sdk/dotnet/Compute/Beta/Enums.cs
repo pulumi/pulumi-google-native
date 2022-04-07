@@ -1049,6 +1049,64 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceLocalityLoadBalancingPolicyConfigPolicyName : IEquatable<BackendServiceLocalityLoadBalancingPolicyConfigPolicyName>
+    {
+        private readonly string _value;
+
+        private BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName InvalidLbPolicy { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY");
+        /// <summary>
+        /// An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName LeastRequest { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("LEAST_REQUEST");
+        /// <summary>
+        /// This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName Maglev { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("MAGLEV");
+        /// <summary>
+        /// Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName OriginalDestination { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("ORIGINAL_DESTINATION");
+        /// <summary>
+        /// The load balancer selects a random healthy host.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName Random { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("RANDOM");
+        /// <summary>
+        /// The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName RingHash { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("RING_HASH");
+        /// <summary>
+        /// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName RoundRobin { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("ROUND_ROBIN");
+        /// <summary>
+        /// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+        /// </summary>
+        public static BackendServiceLocalityLoadBalancingPolicyConfigPolicyName WeightedMaglev { get; } = new BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("WEIGHTED_MAGLEV");
+
+        public static bool operator ==(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName left, BackendServiceLocalityLoadBalancingPolicyConfigPolicyName right) => left.Equals(right);
+        public static bool operator !=(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName left, BackendServiceLocalityLoadBalancingPolicyConfigPolicyName right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceLocalityLoadBalancingPolicyConfigPolicyName other && Equals(other);
+        public bool Equals(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
     /// </summary>
     [EnumType]
@@ -6179,7 +6237,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+    /// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkIpv6AccessType : IEquatable<SubnetworkIpv6AccessType>
@@ -6192,7 +6250,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
 
         /// <summary>
-        /// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
+        /// VMs on this subnet will be assigned IPv6 addresses that are accessible via the Internet, as well as the VPC network.
         /// </summary>
         public static SubnetworkIpv6AccessType External { get; } = new SubnetworkIpv6AccessType("EXTERNAL");
         /// <summary>
@@ -6283,7 +6341,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+    /// This field is for internal use. This field can be both set at resource creation time and updated using patch.
     /// </summary>
     [EnumType]
     public readonly struct SubnetworkPrivateIpv6GoogleAccess : IEquatable<SubnetworkPrivateIpv6GoogleAccess>

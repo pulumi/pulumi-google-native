@@ -31,6 +31,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The time the cutover job had finished.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
+
+        /// <summary>
         /// Provides details for the errors that led to the Cutover Job's state.
         /// </summary>
         [Output("error")]

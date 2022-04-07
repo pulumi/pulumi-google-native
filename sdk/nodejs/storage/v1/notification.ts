@@ -90,7 +90,6 @@ export class Notification extends pulumi.CustomResource {
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["objectNamePrefix"] = args ? args.objectNamePrefix : undefined;
             resourceInputs["payloadFormat"] = args ? args.payloadFormat : undefined;
-            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["topic"] = args ? args.topic : undefined;
             resourceInputs["userProject"] = args ? args.userProject : undefined;
@@ -142,10 +141,6 @@ export interface NotificationArgs {
      * The desired content of the Payload.
      */
     payloadFormat?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The canonical URL of this notification.
      */

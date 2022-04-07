@@ -188,7 +188,6 @@ def get_object_access_control(bucket: Optional[str] = None,
                               entity: Optional[str] = None,
                               generation: Optional[str] = None,
                               object: Optional[str] = None,
-                              provisional_user_project: Optional[str] = None,
                               user_project: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectAccessControlResult:
     """
@@ -199,7 +198,6 @@ def get_object_access_control(bucket: Optional[str] = None,
     __args__['entity'] = entity
     __args__['generation'] = generation
     __args__['object'] = object
-    __args__['provisionalUserProject'] = provisional_user_project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -227,7 +225,6 @@ def get_object_access_control_output(bucket: Optional[pulumi.Input[str]] = None,
                                      entity: Optional[pulumi.Input[str]] = None,
                                      generation: Optional[pulumi.Input[Optional[str]]] = None,
                                      object: Optional[pulumi.Input[str]] = None,
-                                     provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                      user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetObjectAccessControlResult]:
     """

@@ -41,6 +41,10 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly apiConfig!: pulumi.Output<outputs.appengine.v1.ApiConfigHandlerResponse>;
     /**
+     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     */
+    public readonly appEngineApis!: pulumi.Output<boolean>;
+    /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
      */
     public readonly automaticScaling!: pulumi.Output<outputs.appengine.v1.AutomaticScalingResponse>;
@@ -209,6 +213,7 @@ export class Version extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceId'");
             }
             resourceInputs["apiConfig"] = args ? args.apiConfig : undefined;
+            resourceInputs["appEngineApis"] = args ? args.appEngineApis : undefined;
             resourceInputs["appId"] = args ? args.appId : undefined;
             resourceInputs["automaticScaling"] = args ? args.automaticScaling : undefined;
             resourceInputs["basicScaling"] = args ? args.basicScaling : undefined;
@@ -251,6 +256,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["versionUrl"] = undefined /*out*/;
         } else {
             resourceInputs["apiConfig"] = undefined /*out*/;
+            resourceInputs["appEngineApis"] = undefined /*out*/;
             resourceInputs["automaticScaling"] = undefined /*out*/;
             resourceInputs["basicScaling"] = undefined /*out*/;
             resourceInputs["betaSettings"] = undefined /*out*/;
@@ -302,6 +308,10 @@ export interface VersionArgs {
      * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
      */
     apiConfig?: pulumi.Input<inputs.appengine.v1.ApiConfigHandlerArgs>;
+    /**
+     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     */
+    appEngineApis?: pulumi.Input<boolean>;
     appId: pulumi.Input<string>;
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.

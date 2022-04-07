@@ -409,7 +409,6 @@ def get_bucket_object(bucket: Optional[str] = None,
                       if_metageneration_not_match: Optional[str] = None,
                       object: Optional[str] = None,
                       projection: Optional[str] = None,
-                      provisional_user_project: Optional[str] = None,
                       user_project: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketObjectResult:
     """
@@ -424,7 +423,6 @@ def get_bucket_object(bucket: Optional[str] = None,
     __args__['ifMetagenerationNotMatch'] = if_metageneration_not_match
     __args__['object'] = object
     __args__['projection'] = projection
-    __args__['provisionalUserProject'] = provisional_user_project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -475,7 +473,6 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[str]] = None,
                              if_metageneration_not_match: Optional[pulumi.Input[Optional[str]]] = None,
                              object: Optional[pulumi.Input[str]] = None,
                              projection: Optional[pulumi.Input[Optional[str]]] = None,
-                             provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
                              user_project: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectResult]:
     """

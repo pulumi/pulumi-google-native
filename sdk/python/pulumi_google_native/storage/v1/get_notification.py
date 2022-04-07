@@ -126,7 +126,6 @@ class AwaitableGetNotificationResult(GetNotificationResult):
 
 def get_notification(bucket: Optional[str] = None,
                      notification: Optional[str] = None,
-                     provisional_user_project: Optional[str] = None,
                      user_project: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNotificationResult:
     """
@@ -135,7 +134,6 @@ def get_notification(bucket: Optional[str] = None,
     __args__ = dict()
     __args__['bucket'] = bucket
     __args__['notification'] = notification
-    __args__['provisionalUserProject'] = provisional_user_project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -157,7 +155,6 @@ def get_notification(bucket: Optional[str] = None,
 @_utilities.lift_output_func(get_notification)
 def get_notification_output(bucket: Optional[pulumi.Input[str]] = None,
                             notification: Optional[pulumi.Input[str]] = None,
-                            provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
                             user_project: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationResult]:
     """

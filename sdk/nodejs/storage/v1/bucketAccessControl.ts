@@ -111,7 +111,6 @@ export class BucketAccessControl extends pulumi.CustomResource {
             resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["projectTeam"] = args ? args.projectTeam : undefined;
-            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["userProject"] = args ? args.userProject : undefined;
@@ -183,10 +182,6 @@ export interface BucketAccessControlArgs {
      * The project team associated with the entity, if any.
      */
     projectTeam?: pulumi.Input<inputs.storage.v1.BucketAccessControlProjectTeamArgs>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The access permission for the entity.
      */

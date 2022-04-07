@@ -21,10 +21,9 @@ func LookupBucketAccessControl(ctx *pulumi.Context, args *LookupBucketAccessCont
 }
 
 type LookupBucketAccessControlArgs struct {
-	Bucket                 string  `pulumi:"bucket"`
-	Entity                 string  `pulumi:"entity"`
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
-	UserProject            *string `pulumi:"userProject"`
+	Bucket      string  `pulumi:"bucket"`
+	Entity      string  `pulumi:"entity"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 type LookupBucketAccessControlResult struct {
@@ -71,10 +70,9 @@ func LookupBucketAccessControlOutput(ctx *pulumi.Context, args LookupBucketAcces
 }
 
 type LookupBucketAccessControlOutputArgs struct {
-	Bucket                 pulumi.StringInput    `pulumi:"bucket"`
-	Entity                 pulumi.StringInput    `pulumi:"entity"`
-	ProvisionalUserProject pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
-	UserProject            pulumi.StringPtrInput `pulumi:"userProject"`
+	Bucket      pulumi.StringInput    `pulumi:"bucket"`
+	Entity      pulumi.StringInput    `pulumi:"entity"`
+	UserProject pulumi.StringPtrInput `pulumi:"userProject"`
 }
 
 func (LookupBucketAccessControlOutputArgs) ElementType() reflect.Type {

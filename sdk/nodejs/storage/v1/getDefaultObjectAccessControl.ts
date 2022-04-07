@@ -17,7 +17,6 @@ export function getDefaultObjectAccessControl(args: GetDefaultObjectAccessContro
     return pulumi.runtime.invoke("google-native:storage/v1:getDefaultObjectAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -25,7 +24,6 @@ export function getDefaultObjectAccessControl(args: GetDefaultObjectAccessContro
 export interface GetDefaultObjectAccessControlArgs {
     bucket: string;
     entity: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -98,6 +96,5 @@ export function getDefaultObjectAccessControlOutput(args: GetDefaultObjectAccess
 export interface GetDefaultObjectAccessControlOutputArgs {
     bucket: pulumi.Input<string>;
     entity: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

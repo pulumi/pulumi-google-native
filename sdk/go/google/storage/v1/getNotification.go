@@ -21,10 +21,9 @@ func LookupNotification(ctx *pulumi.Context, args *LookupNotificationArgs, opts 
 }
 
 type LookupNotificationArgs struct {
-	Bucket                 string  `pulumi:"bucket"`
-	Notification           string  `pulumi:"notification"`
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
-	UserProject            *string `pulumi:"userProject"`
+	Bucket       string  `pulumi:"bucket"`
+	Notification string  `pulumi:"notification"`
+	UserProject  *string `pulumi:"userProject"`
 }
 
 type LookupNotificationResult struct {
@@ -56,10 +55,9 @@ func LookupNotificationOutput(ctx *pulumi.Context, args LookupNotificationOutput
 }
 
 type LookupNotificationOutputArgs struct {
-	Bucket                 pulumi.StringInput    `pulumi:"bucket"`
-	Notification           pulumi.StringInput    `pulumi:"notification"`
-	ProvisionalUserProject pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
-	UserProject            pulumi.StringPtrInput `pulumi:"userProject"`
+	Bucket       pulumi.StringInput    `pulumi:"bucket"`
+	Notification pulumi.StringInput    `pulumi:"notification"`
+	UserProject  pulumi.StringPtrInput `pulumi:"userProject"`
 }
 
 func (LookupNotificationOutputArgs) ElementType() reflect.Type {
