@@ -65,13 +65,13 @@ jobs:
           git commit -m "Discovery documents"
           git add .
           git commit -m "Regenerating SDKs based on updated modules"
-          git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}
+          git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}
       - name: Create PR
         id: create-pr
         if: steps.discovery.outputs.changes != 0
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: "generate-sdk/${{ github.run_id }}-${{ github.run_number }}-${{ github.run_attempt }}"
+          branch: "generate-sdk/${{ github.run_id }}-${{ github.run_number }}"
           base: "master"
           title: "Automated SDK generation"
           labels: impact/no-changelog-required
