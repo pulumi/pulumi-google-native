@@ -76,6 +76,7 @@ jobs:
           title: "Automated SDK generation"
           labels: impact/no-changelog-required
           committer: pulumi-bot <bot@pulumi.com>
+          author: pulumi-bot <bot@pulumi.com>
           token: ${{ secrets.PULUMI_BOT_TOKEN }}
       - name: Set Automerge
         if: steps.create-pr.outputs.pull-request-operation == 'created'
