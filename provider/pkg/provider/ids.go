@@ -118,6 +118,7 @@ var autonameFieldRegex = regexp.MustCompile(`^\w+$`) // Only word characters all
 // and other properties.
 func getDefaultName(
 	urn resource.URN,
+	sequenceNumber int,
 	pattern string,
 	olds, news resource.PropertyMap,
 ) resource.PropertyValue {
@@ -131,7 +132,7 @@ func getDefaultName(
 	name := urn.Name().String()
 
 	// Resource name is URN name + "-" + random suffix.
-	random, err := resource.NewUniqueHex(name+"-", 7, 0)
+	random, err := resource.NewUniqueHexV2(urn, sequenceNumber, name+"-", 7, 0)
 	contract.AssertNoError(err)
 
 	// Simple field replacement, so just return the autoname.
