@@ -524,13 +524,13 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 			logging.V(9).Info("Getting self link URL")
 			sl, err := getKNativeSelfLinkURL(resp)
 			if err != nil {
-				return nil, err
+				return resp, err
 			}
 			logging.V(9).Infof("selfLink: %q from response: %+v", sl, resp)
 			pollURI = sl
 			completed, err := knativeStatusCheck(resp)
 			if err != nil {
-				return nil, err
+				return resp, err
 			}
 			if completed {
 				return resp, nil
