@@ -22,8 +22,7 @@ class DomainMappingArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['ObjectMetaArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None,
-                 status: Optional[pulumi.Input['DomainMappingStatusArgs']] = None):
+                 spec: Optional[pulumi.Input['DomainMappingSpecArgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] api_version: The API version for this call such as "domains.cloudrun.com/v1".
@@ -31,7 +30,6 @@ class DomainMappingArgs:
         :param pulumi.Input[str] kind: The kind of resource, in this case "DomainMapping".
         :param pulumi.Input['ObjectMetaArgs'] metadata: Metadata associated with this BuildTemplate.
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
-        :param pulumi.Input['DomainMappingStatusArgs'] status: The current status of the DomainMapping.
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
@@ -47,8 +45,6 @@ class DomainMappingArgs:
             pulumi.set(__self__, "project", project)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -128,18 +124,6 @@ class DomainMappingArgs:
     def spec(self, value: Optional[pulumi.Input['DomainMappingSpecArgs']]):
         pulumi.set(self, "spec", value)
 
-    @property
-    @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['DomainMappingStatusArgs']]:
-        """
-        The current status of the DomainMapping.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['DomainMappingStatusArgs']]):
-        pulumi.set(self, "status", value)
-
 
 class DomainMapping(pulumi.CustomResource):
     @overload
@@ -153,7 +137,6 @@ class DomainMapping(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None,
                  __props__=None):
         """
         Create a new domain mapping.
@@ -166,7 +149,6 @@ class DomainMapping(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of resource, in this case "DomainMapping".
         :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this BuildTemplate.
         :param pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']] spec: The spec for this DomainMapping.
-        :param pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']] status: The current status of the DomainMapping.
         """
         ...
     @overload
@@ -200,7 +182,6 @@ class DomainMapping(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -220,7 +201,7 @@ class DomainMapping(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["project"] = project
             __props__.__dict__["spec"] = spec
-            __props__.__dict__["status"] = status
+            __props__.__dict__["status"] = None
         super(DomainMapping, __self__).__init__(
             'google-native:run/v1:DomainMapping',
             resource_name,

@@ -201,9 +201,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("shareSettings")]
         public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
 
-        [Input("status")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.NodeGroupStatus>? Status { get; set; }
-
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 

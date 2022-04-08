@@ -127,12 +127,6 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("spec")]
         public Input<Inputs.ServiceSpecArgs>? Spec { get; set; }
 
-        /// <summary>
-        /// Status communicates the observed state of the Service (from the controller).
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.ServiceStatusArgs>? Status { get; set; }
-
         public ServiceArgs()
         {
         }

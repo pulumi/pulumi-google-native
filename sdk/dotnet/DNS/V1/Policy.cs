@@ -129,12 +129,6 @@ namespace Pulumi.GoogleNative.DNS.V1
         [Input("enableLogging")]
         public Input<bool>? EnableLogging { get; set; }
 
-        /// <summary>
-        /// Unique identifier for the resource; defined by the server (output only).
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

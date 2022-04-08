@@ -98,9 +98,7 @@ type managedZoneArgs struct {
 	DnssecConfig *ManagedZoneDnsSecConfig `pulumi:"dnssecConfig"`
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
 	ForwardingConfig *ManagedZoneForwardingConfig `pulumi:"forwardingConfig"`
-	// Unique identifier for the resource; defined by the server (output only)
-	Id   *string `pulumi:"id"`
-	Kind *string `pulumi:"kind"`
+	Kind             *string                      `pulumi:"kind"`
 	// User labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -108,8 +106,6 @@ type managedZoneArgs struct {
 	Name *string `pulumi:"name"`
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
 	NameServerSet *string `pulumi:"nameServerSet"`
-	// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
-	NameServers []string `pulumi:"nameServers"`
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
@@ -138,9 +134,7 @@ type ManagedZoneArgs struct {
 	DnssecConfig ManagedZoneDnsSecConfigPtrInput
 	// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
 	ForwardingConfig ManagedZoneForwardingConfigPtrInput
-	// Unique identifier for the resource; defined by the server (output only)
-	Id   pulumi.StringPtrInput
-	Kind pulumi.StringPtrInput
+	Kind             pulumi.StringPtrInput
 	// User labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -148,8 +142,6 @@ type ManagedZoneArgs struct {
 	Name pulumi.StringPtrInput
 	// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
 	NameServerSet pulumi.StringPtrInput
-	// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
-	NameServers pulumi.StringArrayInput
 	// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.

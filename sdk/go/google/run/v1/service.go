@@ -78,8 +78,6 @@ type serviceArgs struct {
 	Project  *string     `pulumi:"project"`
 	// Spec holds the desired state of the Service (from the client).
 	Spec *ServiceSpec `pulumi:"spec"`
-	// Status communicates the observed state of the Service (from the controller).
-	Status *ServiceStatus `pulumi:"status"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -96,8 +94,6 @@ type ServiceArgs struct {
 	Project  pulumi.StringPtrInput
 	// Spec holds the desired state of the Service (from the client).
 	Spec ServiceSpecPtrInput
-	// Status communicates the observed state of the Service (from the controller).
-	Status ServiceStatusPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

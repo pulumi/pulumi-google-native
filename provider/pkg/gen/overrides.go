@@ -148,6 +148,39 @@ var autonameExcludes = codegen.NewStringSet(
 	"google-native:monitoring/v3:AlertPolicy",
 	"google-native:monitoring/v3:UptimeCheckConfig")
 
+var bigtableOps = resources.CloudAPIOperation{
+	OperationsBaseURL: "https://bigtableadmin.googleapis.com/v2/",
+}
+
+// metadataOverrides is a map of values static overlays to merge into the metadata for
+// individual resource tokens. In case of conflict, the values in this mapping are preferred.
+var metadataOverrides = map[string]resources.CloudAPIResource{
+	"google-native:run/v1:Service": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+	},
+	"google-native:run/v1:DomainMapping": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+	},
+	"google-native:bigtableadmin/v2:Instance": {
+		Create: resources.CreateAPIOperation{CloudAPIOperation: bigtableOps},
+		Update: resources.UpdateAPIOperation{CloudAPIOperation: bigtableOps},
+		Delete: bigtableOps,
+	},
+}
+
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
 // that aren't successfully inferred from the discovery document.
 var csharpNamespaceOverrides = map[string]string{
@@ -164,12 +197,4 @@ var csharpNamespaceOverrides = map[string]string{
 	"pubsublite":           "PubSubLite",
 	"recommendationengine": "RecommendationEngine",
 	"securitycenter":       "SecurityCenter",
-}
-
-// resourceMetadataOverlays contains manually curated overlays for metadata. The values here can override/overwrite
-// the values in the schema generation process. Consider this a hammer and use it judiciously.
-var resourceMetadataOverlays = map[string]*resources.CloudAPIResource{
-	"google-native:bigtableadmin/v2:Instance": {
-		OperationsBaseURL: "https://bigtableadmin.googleapis.com/v2/",
-	},
 }

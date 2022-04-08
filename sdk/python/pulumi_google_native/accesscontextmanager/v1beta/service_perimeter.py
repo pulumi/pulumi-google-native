@@ -9,7 +9,6 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
 from ._enums import *
-from ._inputs import *
 
 __all__ = ['ServicePerimeterArgs', 'ServicePerimeter']
 
@@ -20,14 +19,12 @@ class ServicePerimeterArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
-                 status: Optional[pulumi.Input['ServicePerimeterConfigArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePerimeter resource.
         :param pulumi.Input[str] description: Description of the `ServicePerimeter` and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
         :param pulumi.Input['ServicePerimeterPerimeterType'] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-        :param pulumi.Input['ServicePerimeterConfigArgs'] status: Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         pulumi.set(__self__, "access_policy_id", access_policy_id)
@@ -37,8 +34,6 @@ class ServicePerimeterArgs:
             pulumi.set(__self__, "name", name)
         if perimeter_type is not None:
             pulumi.set(__self__, "perimeter_type", perimeter_type)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -89,18 +84,6 @@ class ServicePerimeterArgs:
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input['ServicePerimeterConfigArgs']]:
-        """
-        Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
-        """
-        return pulumi.get(self, "status")
-
-    @status.setter
-    def status(self, value: Optional[pulumi.Input['ServicePerimeterConfigArgs']]):
-        pulumi.set(self, "status", value)
-
-    @property
-    @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
         Human readable title. Must be unique within the Policy.
@@ -121,7 +104,6 @@ class ServicePerimeter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -132,7 +114,6 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the `ServicePerimeter` and its use. Does not affect behavior.
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
         :param pulumi.Input['ServicePerimeterPerimeterType'] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-        :param pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']] status: Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         ...
@@ -163,7 +144,6 @@ class ServicePerimeter(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
-                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -183,8 +163,8 @@ class ServicePerimeter(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["perimeter_type"] = perimeter_type
-            __props__.__dict__["status"] = status
             __props__.__dict__["title"] = title
+            __props__.__dict__["status"] = None
         super(ServicePerimeter, __self__).__init__(
             'google-native:accesscontextmanager/v1beta:ServicePerimeter',
             resource_name,

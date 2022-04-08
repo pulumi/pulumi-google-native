@@ -118,12 +118,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         [Input("spec")]
         public Input<Inputs.JobSpecArgs>? Spec { get; set; }
 
-        /// <summary>
-        /// Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.JobStatusArgs>? Status { get; set; }
-
         public JobArgs()
         {
         }

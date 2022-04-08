@@ -50,7 +50,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
     /**
      * Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
      */
-    public readonly status!: pulumi.Output<outputs.accesscontextmanager.v1beta.ServicePerimeterConfigResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.accesscontextmanager.v1beta.ServicePerimeterConfigResponse>;
     /**
      * Human readable title. Must be unique within the Policy.
      */
@@ -74,8 +74,8 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["perimeterType"] = args ? args.perimeterType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -105,10 +105,6 @@ export interface ServicePerimeterArgs {
      * Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
      */
     perimeterType?: pulumi.Input<enums.accesscontextmanager.v1beta.ServicePerimeterPerimeterType>;
-    /**
-     * Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
-     */
-    status?: pulumi.Input<inputs.accesscontextmanager.v1beta.ServicePerimeterConfigArgs>;
     /**
      * Human readable title. Must be unique within the Policy.
      */

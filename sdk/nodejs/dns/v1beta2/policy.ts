@@ -77,7 +77,6 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
             resourceInputs["enableLogging"] = args ? args.enableLogging : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
@@ -120,10 +119,6 @@ export interface PolicyArgs {
      * Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
      */
     enableLogging?: pulumi.Input<boolean>;
-    /**
-     * Unique identifier for the resource; defined by the server (output only).
-     */
-    id?: pulumi.Input<string>;
     kind?: pulumi.Input<string>;
     /**
      * User-assigned name for this policy.

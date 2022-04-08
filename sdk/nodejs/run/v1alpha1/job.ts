@@ -55,7 +55,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
      */
-    public readonly status!: pulumi.Output<outputs.run.v1alpha1.JobStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.run.v1alpha1.JobStatusResponse>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -76,7 +76,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -110,8 +110,4 @@ export interface JobArgs {
      * Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
      */
     spec?: pulumi.Input<inputs.run.v1alpha1.JobSpecArgs>;
-    /**
-     * Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
-     */
-    status?: pulumi.Input<inputs.run.v1alpha1.JobStatusArgs>;
 }

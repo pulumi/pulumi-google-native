@@ -130,12 +130,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public Input<Inputs.ServicePerimeterConfigArgs>? Spec { get; set; }
 
         /// <summary>
-        /// Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.ServicePerimeterConfigArgs>? Status { get; set; }
-
-        /// <summary>
         /// Human readable title. Must be unique within the Policy.
         /// </summary>
         [Input("title")]

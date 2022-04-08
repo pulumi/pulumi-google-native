@@ -127,12 +127,6 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("spec")]
         public Input<Inputs.DomainMappingSpecArgs>? Spec { get; set; }
 
-        /// <summary>
-        /// The current status of the DomainMapping.
-        /// </summary>
-        [Input("status")]
-        public Input<Inputs.DomainMappingStatusArgs>? Status { get; set; }
-
         public DomainMappingArgs()
         {
         }

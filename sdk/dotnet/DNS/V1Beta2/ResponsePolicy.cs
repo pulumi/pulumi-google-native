@@ -112,12 +112,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
             set => _gkeClusters = value;
         }
 
-        /// <summary>
-        /// Unique identifier for the resource; defined by the server (output only).
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

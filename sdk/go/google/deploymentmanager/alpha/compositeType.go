@@ -76,9 +76,8 @@ type compositeTypeArgs struct {
 	// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
 	Labels []CompositeTypeLabelEntry `pulumi:"labels"`
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
-	Name    *string              `pulumi:"name"`
-	Project *string              `pulumi:"project"`
-	Status  *CompositeTypeStatus `pulumi:"status"`
+	Name    *string `pulumi:"name"`
+	Project *string `pulumi:"project"`
 	// Files for the template type.
 	TemplateContents *TemplateContents `pulumi:"templateContents"`
 }
@@ -93,7 +92,6 @@ type CompositeTypeArgs struct {
 	// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	Status  CompositeTypeStatusPtrInput
 	// Files for the template type.
 	TemplateContents TemplateContentsPtrInput
 }

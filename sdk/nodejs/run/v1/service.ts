@@ -55,7 +55,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Status communicates the observed state of the Service (from the controller).
      */
-    public readonly status!: pulumi.Output<outputs.run.v1.ServiceStatusResponse>;
+    public /*out*/ readonly status!: pulumi.Output<outputs.run.v1.ServiceStatusResponse>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         } else {
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -114,8 +114,4 @@ export interface ServiceArgs {
      * Spec holds the desired state of the Service (from the client).
      */
     spec?: pulumi.Input<inputs.run.v1.ServiceSpecArgs>;
-    /**
-     * Status communicates the observed state of the Service (from the controller).
-     */
-    status?: pulumi.Input<inputs.run.v1.ServiceStatusArgs>;
 }

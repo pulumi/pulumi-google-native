@@ -68,7 +68,6 @@ export class ResponsePolicy extends pulumi.CustomResource {
             resourceInputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["gkeClusters"] = args ? args.gkeClusters : undefined;
-            resourceInputs["id"] = args ? args.id : undefined;
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -101,10 +100,6 @@ export interface ResponsePolicyArgs {
      * The list of Google Kubernetes Engine clusters to which this response policy is applied.
      */
     gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyGKEClusterArgs>[]>;
-    /**
-     * Unique identifier for the resource; defined by the server (output only).
-     */
-    id?: pulumi.Input<string>;
     kind?: pulumi.Input<string>;
     /**
      * List of network names specifying networks to which this policy is applied.

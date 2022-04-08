@@ -23,13 +23,11 @@ class ManagedZoneArgs:
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input['ManagedZoneDnsSecConfigArgs']] = None,
                  forwarding_config: Optional[pulumi.Input['ManagedZoneForwardingConfigArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peering_config: Optional[pulumi.Input['ManagedZonePeeringConfigArgs']] = None,
                  private_visibility_config: Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -44,11 +42,9 @@ class ManagedZoneArgs:
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnsSecConfigArgs'] dnssec_config: DNSSEC configuration.
         :param pulumi.Input['ManagedZoneForwardingConfigArgs'] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
-        :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
         :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
         :param pulumi.Input[str] name_server_set: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server (output only)
         :param pulumi.Input['ManagedZonePeeringConfigArgs'] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
         :param pulumi.Input['ManagedZonePrivateVisibilityConfigArgs'] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input['ManagedZoneReverseLookupConfigArgs'] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
@@ -69,8 +65,6 @@ class ManagedZoneArgs:
             pulumi.set(__self__, "dnssec_config", dnssec_config)
         if forwarding_config is not None:
             pulumi.set(__self__, "forwarding_config", forwarding_config)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if labels is not None:
@@ -81,8 +75,6 @@ class ManagedZoneArgs:
             pulumi.set(__self__, "name", name)
         if name_server_set is not None:
             pulumi.set(__self__, "name_server_set", name_server_set)
-        if name_servers is not None:
-            pulumi.set(__self__, "name_servers", name_servers)
         if peering_config is not None:
             pulumi.set(__self__, "peering_config", peering_config)
         if private_visibility_config is not None:
@@ -179,18 +171,6 @@ class ManagedZoneArgs:
 
     @property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Unique identifier for the resource; defined by the server (output only)
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kind")
 
@@ -242,18 +222,6 @@ class ManagedZoneArgs:
     @name_server_set.setter
     def name_server_set(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name_server_set", value)
-
-    @property
-    @pulumi.getter(name="nameServers")
-    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Delegate your managed_zone to these virtual name servers; defined by the server (output only)
-        """
-        return pulumi.get(self, "name_servers")
-
-    @name_servers.setter
-    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "name_servers", value)
 
     @property
     @pulumi.getter(name="peeringConfig")
@@ -337,13 +305,11 @@ class ManagedZone(pulumi.CustomResource):
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnsSecConfigArgs']]] = None,
                  forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
                  private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -362,11 +328,9 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.Input[str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[pulumi.InputType['ManagedZoneDnsSecConfigArgs']] dnssec_config: DNSSEC configuration.
         :param pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']] forwarding_config: The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
-        :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only)
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User labels.
         :param pulumi.Input[str] name: User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
         :param pulumi.Input[str] name_server_set: Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Delegate your managed_zone to these virtual name servers; defined by the server (output only)
         :param pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']] peering_config: The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
         :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
         :param pulumi.Input[pulumi.InputType['ManagedZoneReverseLookupConfigArgs']] reverse_lookup_config: The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
@@ -404,13 +368,11 @@ class ManagedZone(pulumi.CustomResource):
                  dns_name: Optional[pulumi.Input[str]] = None,
                  dnssec_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneDnsSecConfigArgs']]] = None,
                  forwarding_config: Optional[pulumi.Input[pulumi.InputType['ManagedZoneForwardingConfigArgs']]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_server_set: Optional[pulumi.Input[str]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  peering_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePeeringConfigArgs']]] = None,
                  private_visibility_config: Optional[pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -436,19 +398,18 @@ class ManagedZone(pulumi.CustomResource):
             __props__.__dict__["dns_name"] = dns_name
             __props__.__dict__["dnssec_config"] = dnssec_config
             __props__.__dict__["forwarding_config"] = forwarding_config
-            __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["name_server_set"] = name_server_set
-            __props__.__dict__["name_servers"] = name_servers
             __props__.__dict__["peering_config"] = peering_config
             __props__.__dict__["private_visibility_config"] = private_visibility_config
             __props__.__dict__["project"] = project
             __props__.__dict__["reverse_lookup_config"] = reverse_lookup_config
             __props__.__dict__["service_directory_config"] = service_directory_config
             __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["name_servers"] = None
         super(ManagedZone, __self__).__init__(
             'google-native:dns/v2:ManagedZone',
             resource_name,

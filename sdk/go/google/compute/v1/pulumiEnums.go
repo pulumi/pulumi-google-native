@@ -14929,163 +14929,6 @@ const (
 	NodeGroupStatusReady    = NodeGroupStatus("READY")
 )
 
-func (NodeGroupStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeGroupStatus)(nil)).Elem()
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusOutput() NodeGroupStatusOutput {
-	return pulumi.ToOutput(e).(NodeGroupStatusOutput)
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusOutputWithContext(ctx context.Context) NodeGroupStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(NodeGroupStatusOutput)
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return e.ToNodeGroupStatusPtrOutputWithContext(context.Background())
-}
-
-func (e NodeGroupStatus) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return NodeGroupStatus(e).ToNodeGroupStatusOutputWithContext(ctx).ToNodeGroupStatusPtrOutputWithContext(ctx)
-}
-
-func (e NodeGroupStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodeGroupStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e NodeGroupStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e NodeGroupStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type NodeGroupStatusOutput struct{ *pulumi.OutputState }
-
-func (NodeGroupStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NodeGroupStatus)(nil)).Elem()
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusOutput() NodeGroupStatusOutput {
-	return o
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusOutputWithContext(ctx context.Context) NodeGroupStatusOutput {
-	return o
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return o.ToNodeGroupStatusPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusOutput) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroupStatus) *NodeGroupStatus {
-		return &v
-	}).(NodeGroupStatusPtrOutput)
-}
-
-func (o NodeGroupStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeGroupStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o NodeGroupStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeGroupStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type NodeGroupStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (NodeGroupStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NodeGroupStatus)(nil)).Elem()
-}
-
-func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return o
-}
-
-func (o NodeGroupStatusPtrOutput) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return o
-}
-
-func (o NodeGroupStatusPtrOutput) Elem() NodeGroupStatusOutput {
-	return o.ApplyT(func(v *NodeGroupStatus) NodeGroupStatus {
-		if v != nil {
-			return *v
-		}
-		var ret NodeGroupStatus
-		return ret
-	}).(NodeGroupStatusOutput)
-}
-
-func (o NodeGroupStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o NodeGroupStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodeGroupStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// NodeGroupStatusInput is an input type that accepts NodeGroupStatusArgs and NodeGroupStatusOutput values.
-// You can construct a concrete instance of `NodeGroupStatusInput` via:
-//
-//          NodeGroupStatusArgs{...}
-type NodeGroupStatusInput interface {
-	pulumi.Input
-
-	ToNodeGroupStatusOutput() NodeGroupStatusOutput
-	ToNodeGroupStatusOutputWithContext(context.Context) NodeGroupStatusOutput
-}
-
-var nodeGroupStatusPtrType = reflect.TypeOf((**NodeGroupStatus)(nil)).Elem()
-
-type NodeGroupStatusPtrInput interface {
-	pulumi.Input
-
-	ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput
-	ToNodeGroupStatusPtrOutputWithContext(context.Context) NodeGroupStatusPtrOutput
-}
-
-type nodeGroupStatusPtr string
-
-func NodeGroupStatusPtr(v string) NodeGroupStatusPtrInput {
-	return (*nodeGroupStatusPtr)(&v)
-}
-
-func (*nodeGroupStatusPtr) ElementType() reflect.Type {
-	return nodeGroupStatusPtrType
-}
-
-func (in *nodeGroupStatusPtr) ToNodeGroupStatusPtrOutput() NodeGroupStatusPtrOutput {
-	return pulumi.ToOutput(in).(NodeGroupStatusPtrOutput)
-}
-
-func (in *nodeGroupStatusPtr) ToNodeGroupStatusPtrOutputWithContext(ctx context.Context) NodeGroupStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupStatusPtrOutput)
-}
-
 // CPU overcommit.
 type NodeTemplateCpuOvercommitType string
 
@@ -27004,8 +26847,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAutoscalingPolicyModePtrInput)(nil)).Elem(), NodeGroupAutoscalingPolicyMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenancePolicyInput)(nil)).Elem(), NodeGroupMaintenancePolicy("DEFAULT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupMaintenancePolicyPtrInput)(nil)).Elem(), NodeGroupMaintenancePolicy("DEFAULT"))
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupStatusInput)(nil)).Elem(), NodeGroupStatus("CREATING"))
-	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupStatusPtrInput)(nil)).Elem(), NodeGroupStatus("CREATING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateCpuOvercommitTypeInput)(nil)).Elem(), NodeTemplateCpuOvercommitType("CPU_OVERCOMMIT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateCpuOvercommitTypePtrInput)(nil)).Elem(), NodeTemplateCpuOvercommitType("CPU_OVERCOMMIT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringEnableInput)(nil)).Elem(), PacketMirroringEnable("FALSE"))
@@ -27323,8 +27164,6 @@ func init() {
 	pulumi.RegisterOutputType(NodeGroupAutoscalingPolicyModePtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(NodeGroupMaintenancePolicyPtrOutput{})
-	pulumi.RegisterOutputType(NodeGroupStatusOutput{})
-	pulumi.RegisterOutputType(NodeGroupStatusPtrOutput{})
 	pulumi.RegisterOutputType(NodeTemplateCpuOvercommitTypeOutput{})
 	pulumi.RegisterOutputType(NodeTemplateCpuOvercommitTypePtrOutput{})
 	pulumi.RegisterOutputType(PacketMirroringEnableOutput{})

@@ -26,7 +26,6 @@ import (
 	"strings"
 
 	"github.com/imdario/mergo"
-
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
@@ -385,6 +384,8 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	}
 	createPath := resourcePath(dd.createMethod)
 
+	// Not entirely sure this is accurate but we have defaulted to use the base URL
+	operationsBaseURL := resources.AssembleURL(g.rest.BaseUrl, "v1")
 	resourceMeta := resources.CloudAPIResource{
 		RootURL: g.rest.BaseUrl,
 		Create: resources.CreateAPIOperation{
@@ -392,15 +393,23 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				Endpoint: resources.CloudAPIEndpoint{
 					Template: fullPath(dd.createMethod),
 				},
-				Verb: dd.createMethod.HttpMethod,
+				Verb:              dd.createMethod.HttpMethod,
+				OperationsBaseURL: operationsBaseURL,
 			},
 		},
-		Delete: resources.CloudAPIOperation{},
+		Delete: resources.CloudAPIOperation{
+			OperationsBaseURL: operationsBaseURL,
+		},
 		Read: resources.CloudAPIOperation{
 			Verb: dd.getMethod.HttpMethod,
 		},
-		Update: resources.UpdateAPIOperation{},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				OperationsBaseURL: operationsBaseURL,
+			},
+		},
 	}
+
 	patternParams := codegen.NewStringSet()
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
@@ -472,7 +481,18 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			return err
 		}
 
+		isOutput := func(desc string) bool {
+			lowerDesc := strings.ToLower(desc)
+			return isReadOnly(lowerDesc) ||
+				!(strings.Contains(lowerDesc, "values include") ||
+					strings.Contains(lowerDesc, "value must be specified"))
+		}
 		for name, prop := range bodyBag.specs {
+			// If the create request has a status field, lets skip it from being marked as a required input.
+			if dd.createMethod.Request.Ref == dd.getMethod.Response.Ref && name == "status" && isOutput(prop.
+				Description) {
+				continue
+			}
 			inputProperties[name] = prop
 		}
 		for name := range bodyBag.requiredSpecs {
@@ -671,12 +691,14 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		InputProperties: inputProperties,
 		RequiredInputs:  requiredInputProperties.SortedValues(),
 	}
-	g.pkg.Resources[resourceTok] = resourceSpec
-	if metaOverlay, has := resourceMetadataOverlays[resourceTok]; has {
-		if err := mergo.Merge(&resourceMeta, metaOverlay, mergo.WithOverride); err != nil {
-			return err
+
+	if md, ok := metadataOverrides[resourceTok]; ok {
+		if err := mergo.Merge(&resourceMeta, md, mergo.WithOverride); err != nil {
+			return fmt.Errorf("failed to merge metadata for resource: %q", resourceTok)
 		}
 	}
+
+	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
 }
@@ -1190,6 +1212,7 @@ func isReadOnly(description string) bool {
 	return strings.HasPrefix(lowerDesc, "[output only]") ||
 		strings.HasPrefix(lowerDesc, "[output-only]") ||
 		strings.HasPrefix(lowerDesc, "output only.") ||
+		strings.Contains(lowerDesc, "(output only)") ||
 		strings.HasSuffix(lowerDesc, "@outputonly")
 }
 
