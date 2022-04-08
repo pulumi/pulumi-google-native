@@ -1,11 +1,14 @@
-// Copyright 2016-2020, Pulumi Corporation.  All rights reserved.
+// Copyright 2016-2022, Pulumi Corporation.  All rights reserved.
 // +build python all
 
 package examples
 
 import (
+	"os"
 	"path/filepath"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
@@ -19,4 +22,16 @@ func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	})
 
 	return basePy
+}
+
+func TestBigTableInstance(t *testing.T) {
+	cwd, err := os.Getwd()
+	if !assert.NoError(t, err) {
+		t.FailNow()
+	}
+	options := getPythonBaseOptions(t).With(integration.ProgramTestOptions{
+		Dir:         filepath.Join(cwd, "bigtable-py"),
+		SkipRefresh: true,
+	})
+	integration.ProgramTest(t, &options)
 }
