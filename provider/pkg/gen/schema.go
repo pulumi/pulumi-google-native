@@ -25,6 +25,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/imdario/mergo"
+
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
@@ -635,7 +637,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	description := dd.createMethod.Description
 
 	// Apply auto-naming.
-	autoNameable := !strings.HasSuffix(typeName, "IamPolicy")
+	autoNameable := !strings.HasSuffix(typeName, "IamPolicy") && !autonameExcludes.Has(resourceTok)
 	if autoNameable {
 		namePattern, err := namePropertyPattern(inputProperties)
 		if err == nil {
@@ -670,6 +672,11 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		RequiredInputs:  requiredInputProperties.SortedValues(),
 	}
 	g.pkg.Resources[resourceTok] = resourceSpec
+	if metaOverlay, has := resourceMetadataOverlays[resourceTok]; has {
+		if err := mergo.Merge(&resourceMeta, metaOverlay, mergo.WithOverride); err != nil {
+			return err
+		}
+	}
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
 }

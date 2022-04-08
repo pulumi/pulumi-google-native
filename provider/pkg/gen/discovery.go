@@ -68,7 +68,8 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				}
 			case "patch":
 				updateMethod = &restMethod
-			case "update", "replaceService" /*special case for Cloud Run*/ :
+			case "update", "replaceService", /*special case for Cloud Run*/
+				"partialUpdateInstance" /*special case for bigtable*/ :
 				if updateMethod == nil {
 					updateMethod = &restMethod
 				}

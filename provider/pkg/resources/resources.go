@@ -150,8 +150,12 @@ type CloudAPIResource struct {
 
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
-	RootURL     string `json:"rootUrl"`
-	AssetUpload bool   `json:"assetUpload,omitempty"`
+	RootURL string `json:"rootUrl"`
+	// OperationsBaseURL is the base URL for the operations kicked off for the resource.
+	// If not specified, RootURL + "v1/" + operation URL/name are used instead.
+	OperationsBaseURL string `json:"OperationsBaseURL,omitempty"`
+
+	AssetUpload bool `json:"assetUpload,omitempty"`
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`

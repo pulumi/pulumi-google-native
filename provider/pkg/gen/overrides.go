@@ -14,6 +14,11 @@
 
 package gen
 
+import (
+	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+)
+
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
 // that is present in the discovery document.
 var resourceNameByTypeOverrides = map[string]string{
@@ -132,6 +137,17 @@ var autonameOverrides = map[string]string{
 	"google-native:cloudkms/v1:KeyRing":          "keyRingId",
 }
 
+// autonameExcludes is a set of resource tokens which should be explicitly excluded from autonaming.
+var autonameExcludes = codegen.NewStringSet(
+	"google-native:bigtableadmin/v1:Cluster",
+	"google-native:bigtableadmin/v2:Cluster",
+	"google-native:bigtableadmin/v2:Instance",
+	"google-native:dialogflow/v3:Agent",
+	"google-native:dialogflow/v3beta1:Agent",
+	"google-native:monitoring/v3:NotificationChannel",
+	"google-native:monitoring/v3:AlertPolicy",
+	"google-native:monitoring/v3:UptimeCheckConfig")
+
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones
 // that aren't successfully inferred from the discovery document.
 var csharpNamespaceOverrides = map[string]string{
@@ -148,4 +164,12 @@ var csharpNamespaceOverrides = map[string]string{
 	"pubsublite":           "PubSubLite",
 	"recommendationengine": "RecommendationEngine",
 	"securitycenter":       "SecurityCenter",
+}
+
+// resourceMetadataOverlays contains manually curated overlays for metadata. The values here can override/overwrite
+// the values in the schema generation process. Consider this a hammer and use it judiciously.
+var resourceMetadataOverlays = map[string]*resources.CloudAPIResource{
+	"google-native:bigtableadmin/v2:Instance": {
+		OperationsBaseURL: "https://bigtableadmin.googleapis.com/v2/",
+	},
 }
