@@ -279,7 +279,8 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 		nameKey = "name"
 	}
 	if res.Create.Autoname.FieldName != "" && !news.HasValue(nameKey) {
-		news[nameKey] = getDefaultName(urn, res.Create.Autoname.FieldName, olds, news)
+		sequenceNumber := int(req.GetSequenceNumber())
+		news[nameKey] = getDefaultName(urn, sequenceNumber, res.Create.Autoname.FieldName, olds, news)
 	}
 
 	// Apply property patterns.
