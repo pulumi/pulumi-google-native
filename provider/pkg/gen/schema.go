@@ -213,14 +213,14 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
-		res, err := findResources(fileName, document.Resources)
+		res, ops, err := findResources(fileName, document.Resources, document.Schemas)
 		if err != nil {
 			return nil, nil, err
 		}
 
 		for _, typeName := range codegen.SortedKeys(res) {
 			// Generate the resource itself.
-			err := gen.genResource(typeName, res[typeName])
+			err := gen.genResource(typeName, res[typeName], ops)
 			if err != nil {
 				return nil, nil, err
 			}
@@ -325,7 +325,8 @@ func (g *packageGenerator) genToken(typeName string) string {
 	return fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 }
 
-func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource) error {
+func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource,
+	ops map[string]*Operation) error {
 	resourceTok := g.genToken(typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
@@ -384,8 +385,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	}
 	createPath := resourcePath(dd.createMethod)
 
-	// Not entirely sure this is accurate but we have defaulted to use the base URL
-	operationsBaseURL := resources.AssembleURL(g.rest.BaseUrl, "v1")
 	resourceMeta := resources.CloudAPIResource{
 		RootURL: g.rest.BaseUrl,
 		Create: resources.CreateAPIOperation{
@@ -393,20 +392,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				Endpoint: resources.CloudAPIEndpoint{
 					Template: fullPath(dd.createMethod),
 				},
-				Verb:              dd.createMethod.HttpMethod,
-				OperationsBaseURL: operationsBaseURL,
+				Verb: dd.createMethod.HttpMethod,
 			},
 		},
-		Delete: resources.CloudAPIOperation{
-			OperationsBaseURL: operationsBaseURL,
-		},
+		Delete: resources.CloudAPIOperation{},
 		Read: resources.CloudAPIOperation{
 			Verb: dd.getMethod.HttpMethod,
 		},
 		Update: resources.UpdateAPIOperation{
-			CloudAPIOperation: resources.CloudAPIOperation{
-				OperationsBaseURL: operationsBaseURL,
-			},
+			CloudAPIOperation: resources.CloudAPIOperation{},
 		},
 	}
 
@@ -500,6 +494,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 		resourceMeta.Create.SDKProperties = bodyBag.properties
 
+		if op, ok := ops[dd.createMethod.Response.Ref]; ok {
+			setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, op)
+		}
+
 		if dd.updateMethod != nil {
 			resourceMeta.Update.Verb = dd.updateMethod.HttpMethod
 			var updateFlatten string
@@ -512,6 +510,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 					}
 				}
 			}
+
 			resourceMeta.Update.SDKProperties = map[string]resources.CloudAPIProperty{}
 			updateBag, err := g.genProperties(typeName, &updateRequest, updateFlatten, false, nil)
 			if err != nil {
@@ -631,6 +630,12 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 					})
 			}
 		}
+
+		if dd.updateMethod.Response != nil && dd.updateMethod.Response.Ref != "" {
+			if op, ok := ops[dd.updateMethod.Response.Ref]; ok {
+				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Update.CloudAPIOperation, op)
+			}
+		}
 	}
 
 	if d := dd.deleteMethod; d != nil {
@@ -638,6 +643,12 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			resourceMeta.Delete.Verb = v
 		} else {
 			resourceMeta.Delete.Verb = "DELETE"
+		}
+
+		if dd.deleteMethod.Response != nil && dd.deleteMethod.Response.Ref != "" {
+			if op, ok := ops[dd.deleteMethod.Response.Ref]; ok {
+				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Delete, op)
+			}
 		}
 	}
 
@@ -701,6 +712,18 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
+}
+
+func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation,
+	op *Operation) {
+	if cloudOp.Operations == nil {
+		cloudOp.Operations = &resources.Operations{}
+	}
+	if _, has := op.schema.Properties["selfLink"]; has {
+		cloudOp.Operations.HasSelfLink = true
+	} else {
+		cloudOp.Operations.OperationsBaseURL = resources.AssembleURL(baseURL, op.restMethod.Path)
+	}
 }
 
 func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {

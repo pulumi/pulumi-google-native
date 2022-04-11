@@ -104,9 +104,8 @@ type CloudAPIOperation struct {
 	// Verb is the REST verb to use for API calls.
 	Verb    string   `json:"verb,omitempty"`
 	Polling *Polling `json:"polling,omitempty"`
-	// OperationsBaseURL is the base URL for the operations kicked off for the resource.
-	// If not specified, RootURL + "v1/" + operation URL/name are used instead.
-	OperationsBaseURL string `json:"OperationsBaseURL,omitempty"`
+	// Operations
+	Operations *Operations `json:"operations,omitempty"`
 }
 
 func (o CloudAPIOperation) Undefined() bool {
@@ -135,6 +134,13 @@ type Polling struct {
 	// Strategy defines the polling strategy to use for this resource. If empty,
 	// the default polling behavior around operations is in effect.
 	Strategy PollingStrategy `json:"strategy,omitempty"`
+}
+
+// Operations provides details about operations resources referenced by Google APIs for long running operations.
+// Some operations have fully qualified self-links while others require substituting a name in a provided URL template.
+type Operations struct {
+	HasSelfLink       bool   `json:"hasSelfLink,omitempty"`
+	OperationsBaseURL string `json:"operationsBaseURL,omitempty"`
 }
 
 // CreateAPIOperation is a Create resource operation in the Google Cloud REST API.

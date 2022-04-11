@@ -27,6 +27,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/jtacoma/uritemplates"
+
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
@@ -580,15 +582,20 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 
 			if selfLink, has := resp["selfLink"].(string); has && hasStatus {
 				pollURI = selfLink
-			} else {
-				if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
-					pollURI = resources.AssembleURL(operation.OperationsBaseURL, name)
+			} else if operation.Operations != nil && operation.Operations.OperationsBaseURL != "" {
+				tmpl, err := uritemplates.Parse(operation.Operations.OperationsBaseURL)
+				if err != nil {
+					return resp, err
+				}
+				pollURI, err = tmpl.Expand(resp)
+				if err != nil {
+					return resp, err
 				}
 			}
 		}
 
 		if pollURI == "" {
-			logging.V(3).Infof("No pollURI found for rootURL: %q", operation.OperationsBaseURL)
+			logging.V(3).Infof("No pollURI found for rootURL: %q", operation.Operations.OperationsBaseURL)
 			return resp, nil
 		}
 

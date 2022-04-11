@@ -63,6 +63,8 @@ var resourceNameByPathOverrides = map[string]string{
 	"v2/organizations/{organizationsId}/inspectTemplates":                            "",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
+	"v2/organizations/{organizationsId}/storedInfoTypes":                             "OrganizationStoredInfoTypes",
+	"v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "OrganizationLocationStoredInfoTypes",
 
 	// Essential Contracts.
 	"v1/folders/{foldersId}/contacts":             "FolderContact",
@@ -148,10 +150,6 @@ var autonameExcludes = codegen.NewStringSet(
 	"google-native:monitoring/v3:AlertPolicy",
 	"google-native:monitoring/v3:UptimeCheckConfig")
 
-var bigtableOps = resources.CloudAPIOperation{
-	OperationsBaseURL: "https://bigtableadmin.googleapis.com/v2/",
-}
-
 // metadataOverrides is a map of values static overlays to merge into the metadata for
 // individual resource tokens. In case of conflict, the values in this mapping are preferred.
 var metadataOverrides = map[string]resources.CloudAPIResource{
@@ -173,11 +171,6 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
 			},
 		},
-	},
-	"google-native:bigtableadmin/v2:Instance": {
-		Create: resources.CreateAPIOperation{CloudAPIOperation: bigtableOps},
-		Update: resources.UpdateAPIOperation{CloudAPIOperation: bigtableOps},
-		Delete: bigtableOps,
 	},
 }
 
