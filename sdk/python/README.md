@@ -13,7 +13,7 @@ This provider uses the Google Cloud REST API directly and therefore provides ful
 
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes will be introduced in minor version releases.
 
-To use this package, please [install the Pulumi CLI first](https://pulumi.io/).
+To use this package, [install the Pulumi CLI](https://www.pulumi.com/docs/get-started/install/).
 
 ## Installing
 
@@ -64,13 +64,12 @@ and interact closely with Google Cloud resources.  Resources are exposed for the
 including (but not limited to) 'compute', 'container', 'run', 'storage', and more.
 
 The native Google Cloud provider works directly with the Google Cloud API instead of depending on a
-handwritten layer as with the [classic provider](https://github.com/pulumi/pulumi-gcp). This approach ensures higher
+handwritten layer as with the [Google Cloud Classic Provider](https://github.com/pulumi/pulumi-gcp). This approach ensures higher
 quality and higher fidelity with Google Cloud.
 
 ## Configuring credentials
 
-Please refer to the [quickstart guide](
-https://www.pulumi.com/docs/intro/cloud-providers/google-native/setup/) for configuration options.
+To learn how to configure credentials refer to the [Google Cloud configuration options](https://www.pulumi.com/registry/packages/google-native/installation-configuration/#configuration-options).
 
 When developing locally, we recommend that you install the Google Cloud SDK and then authorize access with a user
 account. Other configuration settings should be set either via `pulumi config set google-native:<KEY> <VALUE>` or
