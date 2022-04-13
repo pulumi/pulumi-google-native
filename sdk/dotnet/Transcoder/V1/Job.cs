@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public Output<Outputs.StatusResponse> Error { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+        /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Output("inputUri")]
         public Output<string> InputUri { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+        /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Output("outputUri")]
         public Output<string> OutputUri { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public Input<Inputs.JobConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
+        /// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Input("inputUri")]
         public Input<string>? InputUri { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`.
+        /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Input("outputUri")]
         public Input<string>? OutputUri { get; set; }

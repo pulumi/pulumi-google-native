@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -79,6 +79,9 @@ class GetRegionBackendServiceResult:
         if load_balancing_scheme and not isinstance(load_balancing_scheme, str):
             raise TypeError("Expected argument 'load_balancing_scheme' to be a str")
         pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
+        if locality_lb_policies and not isinstance(locality_lb_policies, list):
+            raise TypeError("Expected argument 'locality_lb_policies' to be a list")
+        pulumi.set(__self__, "locality_lb_policies", locality_lb_policies)
         if locality_lb_policy and not isinstance(locality_lb_policy, str):
             raise TypeError("Expected argument 'locality_lb_policy' to be a str")
         pulumi.set(__self__, "locality_lb_policy", locality_lb_policy)
@@ -290,6 +293,14 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "load_balancing_scheme")
 
     @property
+    @pulumi.getter(name="localityLbPolicies")
+    def locality_lb_policies(self) -> Sequence['outputs.BackendServiceLocalityLoadBalancingPolicyConfigResponse']:
+        """
+        A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
+        """
+        return pulumi.get(self, "locality_lb_policies")
+
+    @property
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> str:
         """
@@ -449,6 +460,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             iap=self.iap,
             kind=self.kind,
             load_balancing_scheme=self.load_balancing_scheme,
+            locality_lb_policies=self.locality_lb_policies,
             locality_lb_policy=self.locality_lb_policy,
             log_config=self.log_config,
             max_stream_duration=self.max_stream_duration,
@@ -506,6 +518,7 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         iap=__ret__.iap,
         kind=__ret__.kind,
         load_balancing_scheme=__ret__.load_balancing_scheme,
+        locality_lb_policies=__ret__.locality_lb_policies,
         locality_lb_policy=__ret__.locality_lb_policy,
         log_config=__ret__.log_config,
         max_stream_duration=__ret__.max_stream_duration,

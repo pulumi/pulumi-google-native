@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
     public sealed class OutputResponse
     {
         /// <summary>
-        /// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+        /// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         public readonly string Uri;
 

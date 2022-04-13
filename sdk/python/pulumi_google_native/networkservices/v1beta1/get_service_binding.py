@@ -17,16 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceBindingResult:
-    def __init__(__self__, create_time=None, description=None, endpoint_filter=None, labels=None, name=None, service=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, labels=None, name=None, service=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
-        if endpoint_filter and not isinstance(endpoint_filter, str):
-            raise TypeError("Expected argument 'endpoint_filter' to be a str")
-        pulumi.set(__self__, "endpoint_filter", endpoint_filter)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -55,14 +52,6 @@ class GetServiceBindingResult:
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="endpointFilter")
-    def endpoint_filter(self) -> str:
-        """
-        Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        """
-        return pulumi.get(self, "endpoint_filter")
 
     @property
     @pulumi.getter
@@ -105,7 +94,6 @@ class AwaitableGetServiceBindingResult(GetServiceBindingResult):
         return GetServiceBindingResult(
             create_time=self.create_time,
             description=self.description,
-            endpoint_filter=self.endpoint_filter,
             labels=self.labels,
             name=self.name,
             service=self.service,
@@ -132,7 +120,6 @@ def get_service_binding(location: Optional[str] = None,
     return AwaitableGetServiceBindingResult(
         create_time=__ret__.create_time,
         description=__ret__.description,
-        endpoint_filter=__ret__.endpoint_filter,
         labels=__ret__.labels,
         name=__ret__.name,
         service=__ret__.service,

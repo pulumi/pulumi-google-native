@@ -20,6 +20,7 @@ __all__ = [
     'ExprResponse',
     'GoogleCloudFunctionsV2alphaStateMessageResponse',
     'RepoSourceResponse',
+    'SecretEnvVarResponse',
     'ServiceConfigResponse',
     'SourceProvenanceResponse',
     'SourceResponse',
@@ -668,6 +669,61 @@ class RepoSourceResponse(dict):
 
 
 @pulumi.output_type
+class SecretEnvVarResponse(dict):
+    """
+    Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 project: str,
+                 secret: str,
+                 version: str):
+        """
+        Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+        :param str key: Name of the environment variable.
+        :param str project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str secret: Name of the secret in secret manager (not the full resource name).
+        :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> str:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class ServiceConfigResponse(dict):
     """
     Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
@@ -687,6 +743,8 @@ class ServiceConfigResponse(dict):
             suggest = "max_instance_count"
         elif key == "minInstanceCount":
             suggest = "min_instance_count"
+        elif key == "secretEnvironmentVariables":
+            suggest = "secret_environment_variables"
         elif key == "serviceAccountEmail":
             suggest = "service_account_email"
         elif key == "timeoutSeconds":
@@ -715,6 +773,7 @@ class ServiceConfigResponse(dict):
                  max_instance_count: int,
                  min_instance_count: int,
                  revision: str,
+                 secret_environment_variables: Sequence['outputs.SecretEnvVarResponse'],
                  service: str,
                  service_account_email: str,
                  timeout_seconds: int,
@@ -730,6 +789,7 @@ class ServiceConfigResponse(dict):
         :param int max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param str revision: The name of service revision.
+        :param Sequence['SecretEnvVarResponse'] secret_environment_variables: Secret environment variables configuration.
         :param str service: Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         :param str service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -744,6 +804,7 @@ class ServiceConfigResponse(dict):
         pulumi.set(__self__, "max_instance_count", max_instance_count)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
         pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
@@ -806,6 +867,14 @@ class ServiceConfigResponse(dict):
         The name of service revision.
         """
         return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Sequence['outputs.SecretEnvVarResponse']:
+        """
+        Secret environment variables configuration.
+        """
+        return pulumi.get(self, "secret_environment_variables")
 
     @property
     @pulumi.getter

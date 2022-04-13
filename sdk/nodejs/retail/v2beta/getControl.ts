@@ -51,10 +51,6 @@ export interface GetControlResult {
      */
     readonly rule: outputs.retail.v2beta.GoogleCloudRetailV2betaRuleResponse;
     /**
-     * Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-     */
-    readonly searchSolutionUseCase: string[];
-    /**
      * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
      */
     readonly solutionTypes: string[];

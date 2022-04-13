@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         private InputList<Inputs.TlsRouteRouteMatchArgs>? _matches;
 
         /// <summary>
-        /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are “OR”ed for evaluation.
+        /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
         /// </summary>
         public InputList<Inputs.TlsRouteRouteMatchArgs> Matches
         {

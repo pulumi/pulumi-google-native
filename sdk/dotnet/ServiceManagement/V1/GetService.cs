@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public readonly string ProducerProjectId;
         /// <summary>
-        /// The name of the service. See the [overview](/service-management/overview) for naming requirements.
+        /// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
         /// </summary>
         public readonly string ServiceName;
 

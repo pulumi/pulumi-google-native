@@ -40,7 +40,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly producerProjectId!: pulumi.Output<string>;
     /**
-     * The name of the service. See the [overview](/service-management/overview) for naming requirements.
+     * The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -75,7 +75,7 @@ export interface ServiceArgs {
      */
     producerProjectId?: pulumi.Input<string>;
     /**
-     * The name of the service. See the [overview](/service-management/overview) for naming requirements.
+     * The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
      */
     serviceName?: pulumi.Input<string>;
 }

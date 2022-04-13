@@ -28,12 +28,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        /// </summary>
-        [Output("endpointFilter")]
-        public Output<string> EndpointFilter { get; private set; } = null!;
-
-        /// <summary>
         /// Optional. Set of label tags associated with the ServiceBinding resource.
         /// </summary>
         [Output("labels")]
@@ -107,12 +101,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        /// </summary>
-        [Input("endpointFilter")]
-        public Input<string>? EndpointFilter { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

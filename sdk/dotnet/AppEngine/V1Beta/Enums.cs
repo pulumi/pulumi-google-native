@@ -374,15 +374,15 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         }
 
         /// <summary>
-        /// Unspecified should be treated as EXTERNAL
+        /// Unspecified is treated as EXTERNAL.
         /// </summary>
         public static NetworkInstanceIpMode InstanceIpModeUnspecified { get; } = new NetworkInstanceIpMode("INSTANCE_IP_MODE_UNSPECIFIED");
         /// <summary>
-        /// VMs should be created with external and internal IPs
+        /// Instances are created with both internal and external IP addresses.
         /// </summary>
         public static NetworkInstanceIpMode External { get; } = new NetworkInstanceIpMode("EXTERNAL");
         /// <summary>
-        /// VMs should be created with internal IPs only
+        /// Instances are created with internal IP addresses only.
         /// </summary>
         public static NetworkInstanceIpMode Internal { get; } = new NetworkInstanceIpMode("INTERNAL");
 

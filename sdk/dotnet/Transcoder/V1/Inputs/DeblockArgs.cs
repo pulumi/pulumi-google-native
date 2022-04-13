@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// Deblock preprocessing configuration.
+    /// Deblock preprocessing configuration. **Note:** This configuration is not supported.
     /// </summary>
     public sealed class DeblockArgs : Pulumi.ResourceArgs
     {

@@ -35,6 +35,10 @@ export interface GetVersionResult {
      */
     readonly apiConfig: outputs.appengine.v1.ApiConfigHandlerResponse;
     /**
+     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     */
+    readonly appEngineApis: boolean;
+    /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
      */
     readonly automaticScaling: outputs.appengine.v1.AutomaticScalingResponse;

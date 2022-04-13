@@ -88,10 +88,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly Outputs.GoogleCloudRetailV2betaRuleResponse Rule;
         /// <summary>
-        /// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-        /// </summary>
-        public readonly ImmutableArray<string> SearchSolutionUseCase;
-        /// <summary>
         /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         public readonly ImmutableArray<string> SolutionTypes;
@@ -108,8 +104,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
 
             Outputs.GoogleCloudRetailV2betaRuleResponse rule,
 
-            ImmutableArray<string> searchSolutionUseCase,
-
             ImmutableArray<string> solutionTypes)
         {
             AssociatedServingConfigIds = associatedServingConfigIds;
@@ -117,7 +111,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
             FacetSpec = facetSpec;
             Name = name;
             Rule = rule;
-            SearchSolutionUseCase = searchSolutionUseCase;
             SolutionTypes = solutionTypes;
         }
     }

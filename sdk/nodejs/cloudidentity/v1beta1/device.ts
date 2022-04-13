@@ -69,6 +69,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Unique identifier for the device.
+     */
+    public readonly deviceId!: pulumi.Output<string>;
+    /**
      * Type of device.
      */
     public /*out*/ readonly deviceType!: pulumi.Output<string>;
@@ -165,6 +169,7 @@ export class Device extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["assetTag"] = args ? args.assetTag : undefined;
+            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
             resourceInputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
             resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
             resourceInputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
@@ -202,6 +207,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["buildNumber"] = undefined /*out*/;
             resourceInputs["compromisedState"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deviceId"] = undefined /*out*/;
             resourceInputs["deviceType"] = undefined /*out*/;
             resourceInputs["enabledDeveloperOptions"] = undefined /*out*/;
             resourceInputs["enabledUsbDebugging"] = undefined /*out*/;
@@ -237,6 +243,10 @@ export interface DeviceArgs {
      * Asset tag of the device.
      */
     assetTag?: pulumi.Input<string>;
+    /**
+     * Unique identifier for the device.
+     */
+    deviceId?: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.
      */

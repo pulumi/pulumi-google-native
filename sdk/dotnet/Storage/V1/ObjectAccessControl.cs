@@ -222,12 +222,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<Inputs.ObjectAccessControlProjectTeamArgs>? ProjectTeam { get; set; }
 
         /// <summary>
-        /// The project to be billed for this request if the target bucket is requester-pays bucket.
-        /// </summary>
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
-
-        /// <summary>
         /// The access permission for the entity.
         /// </summary>
         [Input("role")]

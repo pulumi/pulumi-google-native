@@ -38,8 +38,6 @@ type LookupControlResult struct {
 	Name string `pulumi:"name"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRuleResponse `pulumi:"rule"`
-	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-	SearchSolutionUseCase []string `pulumi:"searchSolutionUseCase"`
 	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes []string `pulumi:"solutionTypes"`
 }
@@ -101,11 +99,6 @@ func (o LookupControlResultOutput) Name() pulumi.StringOutput {
 // A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 func (o LookupControlResultOutput) Rule() GoogleCloudRetailV2alphaRuleResponseOutput {
 	return o.ApplyT(func(v LookupControlResult) GoogleCloudRetailV2alphaRuleResponse { return v.Rule }).(GoogleCloudRetailV2alphaRuleResponseOutput)
-}
-
-// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-func (o LookupControlResultOutput) SearchSolutionUseCase() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupControlResult) []string { return v.SearchSolutionUseCase }).(pulumi.StringArrayOutput)
 }
 
 // Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.

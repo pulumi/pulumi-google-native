@@ -31,7 +31,7 @@ type LookupClusterResult struct {
 	ClusterName string `pulumi:"clusterName"`
 	// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
 	ClusterUuid string `pulumi:"clusterUuid"`
-	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+	// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
 	Config ClusterConfigResponse `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
@@ -43,6 +43,8 @@ type LookupClusterResult struct {
 	Status ClusterStatusResponse `pulumi:"status"`
 	// The previous cluster status.
 	StatusHistory []ClusterStatusResponse `pulumi:"statusHistory"`
+	// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+	VirtualClusterConfig VirtualClusterConfigResponse `pulumi:"virtualClusterConfig"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -88,7 +90,7 @@ func (o LookupClusterResultOutput) ClusterUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.ClusterUuid }).(pulumi.StringOutput)
 }
 
-// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
 func (o LookupClusterResultOutput) Config() ClusterConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) ClusterConfigResponse { return v.Config }).(ClusterConfigResponseOutput)
 }
@@ -116,6 +118,11 @@ func (o LookupClusterResultOutput) Status() ClusterStatusResponseOutput {
 // The previous cluster status.
 func (o LookupClusterResultOutput) StatusHistory() ClusterStatusResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []ClusterStatusResponse { return v.StatusHistory }).(ClusterStatusResponseArrayOutput)
+}
+
+// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+func (o LookupClusterResultOutput) VirtualClusterConfig() VirtualClusterConfigResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) VirtualClusterConfigResponse { return v.VirtualClusterConfig }).(VirtualClusterConfigResponseOutput)
 }
 
 func init() {

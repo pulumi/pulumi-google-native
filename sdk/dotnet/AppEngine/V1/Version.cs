@@ -23,6 +23,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public Output<Outputs.ApiConfigHandlerResponse> ApiConfig { get; private set; } = null!;
 
         /// <summary>
+        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        /// </summary>
+        [Output("appEngineApis")]
+        public Output<bool> AppEngineApis { get; private set; } = null!;
+
+        /// <summary>
         /// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         /// </summary>
         [Output("automaticScaling")]
@@ -294,6 +300,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         /// </summary>
         [Input("apiConfig")]
         public Input<Inputs.ApiConfigHandlerArgs>? ApiConfig { get; set; }
+
+        /// <summary>
+        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        /// </summary>
+        [Input("appEngineApis")]
+        public Input<bool>? AppEngineApis { get; set; }
 
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;

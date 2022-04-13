@@ -938,9 +938,9 @@ func (o AnimationStaticResponseOutput) Xy() NormalizedCoordinateResponseOutput {
 
 // Audio preprocessing configuration.
 type Audio struct {
-	// Enable boosting high frequency components. The default is `false`.
+	// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
 	HighBoost *bool `pulumi:"highBoost"`
-	// Enable boosting low frequency components. The default is `false`.
+	// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
 	LowBoost *bool `pulumi:"lowBoost"`
 	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 	Lufs *float64 `pulumi:"lufs"`
@@ -959,9 +959,9 @@ type AudioInput interface {
 
 // Audio preprocessing configuration.
 type AudioArgs struct {
-	// Enable boosting high frequency components. The default is `false`.
+	// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
 	HighBoost pulumi.BoolPtrInput `pulumi:"highBoost"`
-	// Enable boosting low frequency components. The default is `false`.
+	// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
 	LowBoost pulumi.BoolPtrInput `pulumi:"lowBoost"`
 	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 	Lufs pulumi.Float64PtrInput `pulumi:"lufs"`
@@ -1045,12 +1045,12 @@ func (o AudioOutput) ToAudioPtrOutputWithContext(ctx context.Context) AudioPtrOu
 	}).(AudioPtrOutput)
 }
 
-// Enable boosting high frequency components. The default is `false`.
+// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
 func (o AudioOutput) HighBoost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Audio) *bool { return v.HighBoost }).(pulumi.BoolPtrOutput)
 }
 
-// Enable boosting low frequency components. The default is `false`.
+// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
 func (o AudioOutput) LowBoost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Audio) *bool { return v.LowBoost }).(pulumi.BoolPtrOutput)
 }
@@ -1084,7 +1084,7 @@ func (o AudioPtrOutput) Elem() AudioOutput {
 	}).(AudioOutput)
 }
 
-// Enable boosting high frequency components. The default is `false`.
+// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
 func (o AudioPtrOutput) HighBoost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Audio) *bool {
 		if v == nil {
@@ -1094,7 +1094,7 @@ func (o AudioPtrOutput) HighBoost() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enable boosting low frequency components. The default is `false`.
+// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
 func (o AudioPtrOutput) LowBoost() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Audio) *bool {
 		if v == nil {
@@ -1342,9 +1342,9 @@ func (o AudioMappingResponseArrayOutput) Index(i pulumi.IntInput) AudioMappingRe
 
 // Audio preprocessing configuration.
 type AudioResponse struct {
-	// Enable boosting high frequency components. The default is `false`.
+	// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
 	HighBoost bool `pulumi:"highBoost"`
-	// Enable boosting low frequency components. The default is `false`.
+	// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
 	LowBoost bool `pulumi:"lowBoost"`
 	// Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
 	Lufs float64 `pulumi:"lufs"`
@@ -1365,12 +1365,12 @@ func (o AudioResponseOutput) ToAudioResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Enable boosting high frequency components. The default is `false`.
+// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
 func (o AudioResponseOutput) HighBoost() pulumi.BoolOutput {
 	return o.ApplyT(func(v AudioResponse) bool { return v.HighBoost }).(pulumi.BoolOutput)
 }
 
-// Enable boosting low frequency components. The default is `false`.
+// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
 func (o AudioResponseOutput) LowBoost() pulumi.BoolOutput {
 	return o.ApplyT(func(v AudioResponse) bool { return v.LowBoost }).(pulumi.BoolOutput)
 }
@@ -1676,7 +1676,7 @@ func (o AudioStreamResponseOutput) SampleRateHertz() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioStreamResponse) int { return v.SampleRateHertz }).(pulumi.IntOutput)
 }
 
-// Color preprocessing configuration.
+// Color preprocessing configuration. **Note:** This configuration is not supported.
 type Color struct {
 	// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
 	Brightness *float64 `pulumi:"brightness"`
@@ -1697,7 +1697,7 @@ type ColorInput interface {
 	ToColorOutputWithContext(context.Context) ColorOutput
 }
 
-// Color preprocessing configuration.
+// Color preprocessing configuration. **Note:** This configuration is not supported.
 type ColorArgs struct {
 	// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
 	Brightness pulumi.Float64PtrInput `pulumi:"brightness"`
@@ -1760,7 +1760,7 @@ func (i *colorPtrType) ToColorPtrOutputWithContext(ctx context.Context) ColorPtr
 	return pulumi.ToOutputWithContext(ctx, i).(ColorPtrOutput)
 }
 
-// Color preprocessing configuration.
+// Color preprocessing configuration. **Note:** This configuration is not supported.
 type ColorOutput struct{ *pulumi.OutputState }
 
 func (ColorOutput) ElementType() reflect.Type {
@@ -1854,7 +1854,7 @@ func (o ColorPtrOutput) Saturation() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Color preprocessing configuration.
+// Color preprocessing configuration. **Note:** This configuration is not supported.
 type ColorResponse struct {
 	// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
 	Brightness float64 `pulumi:"brightness"`
@@ -1864,7 +1864,7 @@ type ColorResponse struct {
 	Saturation float64 `pulumi:"saturation"`
 }
 
-// Color preprocessing configuration.
+// Color preprocessing configuration. **Note:** This configuration is not supported.
 type ColorResponseOutput struct{ *pulumi.OutputState }
 
 func (ColorResponseOutput) ElementType() reflect.Type {
@@ -2138,7 +2138,7 @@ func (o CropResponseOutput) TopPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v CropResponse) int { return v.TopPixels }).(pulumi.IntOutput)
 }
 
-// Deblock preprocessing configuration.
+// Deblock preprocessing configuration. **Note:** This configuration is not supported.
 type Deblock struct {
 	// Enable deblocker. The default is `false`.
 	Enabled *bool `pulumi:"enabled"`
@@ -2157,7 +2157,7 @@ type DeblockInput interface {
 	ToDeblockOutputWithContext(context.Context) DeblockOutput
 }
 
-// Deblock preprocessing configuration.
+// Deblock preprocessing configuration. **Note:** This configuration is not supported.
 type DeblockArgs struct {
 	// Enable deblocker. The default is `false`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -2218,7 +2218,7 @@ func (i *deblockPtrType) ToDeblockPtrOutputWithContext(ctx context.Context) Debl
 	return pulumi.ToOutputWithContext(ctx, i).(DeblockPtrOutput)
 }
 
-// Deblock preprocessing configuration.
+// Deblock preprocessing configuration. **Note:** This configuration is not supported.
 type DeblockOutput struct{ *pulumi.OutputState }
 
 func (DeblockOutput) ElementType() reflect.Type {
@@ -2297,7 +2297,7 @@ func (o DeblockPtrOutput) Strength() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Deblock preprocessing configuration.
+// Deblock preprocessing configuration. **Note:** This configuration is not supported.
 type DeblockResponse struct {
 	// Enable deblocker. The default is `false`.
 	Enabled bool `pulumi:"enabled"`
@@ -2305,7 +2305,7 @@ type DeblockResponse struct {
 	Strength float64 `pulumi:"strength"`
 }
 
-// Deblock preprocessing configuration.
+// Deblock preprocessing configuration. **Note:** This configuration is not supported.
 type DeblockResponseOutput struct{ *pulumi.OutputState }
 
 func (DeblockResponseOutput) ElementType() reflect.Type {
@@ -2330,7 +2330,7 @@ func (o DeblockResponseOutput) Strength() pulumi.Float64Output {
 	return o.ApplyT(func(v DeblockResponse) float64 { return v.Strength }).(pulumi.Float64Output)
 }
 
-// Denoise preprocessing configuration.
+// Denoise preprocessing configuration. **Note:** This configuration is not supported.
 type Denoise struct {
 	// Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
 	Strength *float64 `pulumi:"strength"`
@@ -2349,7 +2349,7 @@ type DenoiseInput interface {
 	ToDenoiseOutputWithContext(context.Context) DenoiseOutput
 }
 
-// Denoise preprocessing configuration.
+// Denoise preprocessing configuration. **Note:** This configuration is not supported.
 type DenoiseArgs struct {
 	// Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
 	Strength pulumi.Float64PtrInput `pulumi:"strength"`
@@ -2410,7 +2410,7 @@ func (i *denoisePtrType) ToDenoisePtrOutputWithContext(ctx context.Context) Deno
 	return pulumi.ToOutputWithContext(ctx, i).(DenoisePtrOutput)
 }
 
-// Denoise preprocessing configuration.
+// Denoise preprocessing configuration. **Note:** This configuration is not supported.
 type DenoiseOutput struct{ *pulumi.OutputState }
 
 func (DenoiseOutput) ElementType() reflect.Type {
@@ -2489,7 +2489,7 @@ func (o DenoisePtrOutput) Tune() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Denoise preprocessing configuration.
+// Denoise preprocessing configuration. **Note:** This configuration is not supported.
 type DenoiseResponse struct {
 	// Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
 	Strength float64 `pulumi:"strength"`
@@ -2497,7 +2497,7 @@ type DenoiseResponse struct {
 	Tune string `pulumi:"tune"`
 }
 
-// Denoise preprocessing configuration.
+// Denoise preprocessing configuration. **Note:** This configuration is not supported.
 type DenoiseResponseOutput struct{ *pulumi.OutputState }
 
 func (DenoiseResponseOutput) ElementType() reflect.Type {
@@ -4428,7 +4428,7 @@ type Input struct {
 	Key *string `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig *PreprocessingConfig `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri *string `pulumi:"uri"`
 }
 
@@ -4449,7 +4449,7 @@ type InputArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig PreprocessingConfigPtrInput `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -4515,7 +4515,7 @@ func (o InputOutput) PreprocessingConfig() PreprocessingConfigPtrOutput {
 	return o.ApplyT(func(v Input) *PreprocessingConfig { return v.PreprocessingConfig }).(PreprocessingConfigPtrOutput)
 }
 
-// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o InputOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Input) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -4546,7 +4546,7 @@ type InputResponse struct {
 	Key string `pulumi:"key"`
 	// Preprocessing configurations.
 	PreprocessingConfig PreprocessingConfigResponse `pulumi:"preprocessingConfig"`
-	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+	// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri string `pulumi:"uri"`
 }
 
@@ -4575,7 +4575,7 @@ func (o InputResponseOutput) PreprocessingConfig() PreprocessingConfigResponseOu
 	return o.ApplyT(func(v InputResponse) PreprocessingConfigResponse { return v.PreprocessingConfig }).(PreprocessingConfigResponseOutput)
 }
 
-// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o InputResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v InputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5180,7 +5180,7 @@ func (o ManifestResponseArrayOutput) Index(i pulumi.IntInput) ManifestResponseOu
 
 // Multiplexing settings for output stream.
 type MuxStream struct {
-	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 	Container *string `pulumi:"container"`
 	// List of `ElementaryStream.key`s multiplexed in this stream.
 	ElementaryStreams []string `pulumi:"elementaryStreams"`
@@ -5205,7 +5205,7 @@ type MuxStreamInput interface {
 
 // Multiplexing settings for output stream.
 type MuxStreamArgs struct {
-	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 	Container pulumi.StringPtrInput `pulumi:"container"`
 	// List of `ElementaryStream.key`s multiplexed in this stream.
 	ElementaryStreams pulumi.StringArrayInput `pulumi:"elementaryStreams"`
@@ -5269,7 +5269,7 @@ func (o MuxStreamOutput) ToMuxStreamOutputWithContext(ctx context.Context) MuxSt
 	return o
 }
 
-// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 func (o MuxStreamOutput) Container() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MuxStream) *string { return v.Container }).(pulumi.StringPtrOutput)
 }
@@ -5316,7 +5316,7 @@ func (o MuxStreamArrayOutput) Index(i pulumi.IntInput) MuxStreamOutput {
 
 // Multiplexing settings for output stream.
 type MuxStreamResponse struct {
-	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+	// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 	Container string `pulumi:"container"`
 	// List of `ElementaryStream.key`s multiplexed in this stream.
 	ElementaryStreams []string `pulumi:"elementaryStreams"`
@@ -5343,7 +5343,7 @@ func (o MuxStreamResponseOutput) ToMuxStreamResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
 func (o MuxStreamResponseOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v MuxStreamResponse) string { return v.Container }).(pulumi.StringOutput)
 }
@@ -5582,7 +5582,7 @@ func (o NormalizedCoordinateResponseOutput) Y() pulumi.Float64Output {
 
 // Location of output file(s) in a Cloud Storage bucket.
 type Output struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri *string `pulumi:"uri"`
 }
 
@@ -5599,7 +5599,7 @@ type OutputInput interface {
 
 // Location of output file(s) in a Cloud Storage bucket.
 type OutputArgs struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 }
 
@@ -5681,7 +5681,7 @@ func (o OutputOutput) ToOutputPtrOutputWithContext(ctx context.Context) OutputPt
 	}).(OutputPtrOutput)
 }
 
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Output) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -5710,7 +5710,7 @@ func (o OutputPtrOutput) Elem() OutputOutput {
 	}).(OutputOutput)
 }
 
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Output) *string {
 		if v == nil {
@@ -5722,7 +5722,7 @@ func (o OutputPtrOutput) Uri() pulumi.StringPtrOutput {
 
 // Location of output file(s) in a Cloud Storage bucket.
 type OutputResponse struct {
-	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+	// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 	Uri string `pulumi:"uri"`
 }
 
@@ -5741,7 +5741,7 @@ func (o OutputResponseOutput) ToOutputResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
 func (o OutputResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OutputResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -7744,7 +7744,7 @@ func (o VideoStreamResponseOutput) Vp9() Vp9CodecSettingsResponseOutput {
 type Vp9CodecSettings struct {
 	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
+	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 	CrfLevel *int `pulumi:"crfLevel"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
@@ -7779,7 +7779,7 @@ type Vp9CodecSettingsInput interface {
 type Vp9CodecSettingsArgs struct {
 	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
+	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 	CrfLevel pulumi.IntPtrInput `pulumi:"crfLevel"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
@@ -7882,7 +7882,7 @@ func (o Vp9CodecSettingsOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
 
-// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
+// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 func (o Vp9CodecSettingsOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.CrfLevel }).(pulumi.IntPtrOutput)
 }
@@ -7961,7 +7961,7 @@ func (o Vp9CodecSettingsPtrOutput) BitrateBps() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
+// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 func (o Vp9CodecSettingsPtrOutput) CrfLevel() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *int {
 		if v == nil {
@@ -8055,7 +8055,7 @@ func (o Vp9CodecSettingsPtrOutput) WidthPixels() pulumi.IntPtrOutput {
 type Vp9CodecSettingsResponse struct {
 	// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
-	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
+	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 	CrfLevel int `pulumi:"crfLevel"`
 	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
@@ -8095,7 +8095,7 @@ func (o Vp9CodecSettingsResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
 
-// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported.
+// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
 func (o Vp9CodecSettingsResponseOutput) CrfLevel() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.CrfLevel }).(pulumi.IntOutput)
 }

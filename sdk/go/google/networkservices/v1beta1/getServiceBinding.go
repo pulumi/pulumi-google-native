@@ -31,8 +31,6 @@ type LookupServiceBindingResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description string `pulumi:"description"`
-	// Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-	EndpointFilter string `pulumi:"endpointFilter"`
 	// Optional. Set of label tags associated with the ServiceBinding resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
@@ -84,11 +82,6 @@ func (o LookupServiceBindingResultOutput) CreateTime() pulumi.StringOutput {
 // Optional. A free-text description of the resource. Max length 1024 characters.
 func (o LookupServiceBindingResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceBindingResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-func (o LookupServiceBindingResultOutput) EndpointFilter() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceBindingResult) string { return v.EndpointFilter }).(pulumi.StringOutput)
 }
 
 // Optional. Set of label tags associated with the ServiceBinding resource.

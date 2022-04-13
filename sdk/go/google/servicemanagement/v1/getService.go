@@ -27,7 +27,7 @@ type LookupServiceArgs struct {
 type LookupServiceResult struct {
 	// ID of the project that produces and owns this service.
 	ProducerProjectId string `pulumi:"producerProjectId"`
-	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
+	// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -67,7 +67,7 @@ func (o LookupServiceResultOutput) ProducerProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ProducerProjectId }).(pulumi.StringOutput)
 }
 
-// The name of the service. See the [overview](/service-management/overview) for naming requirements.
+// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
 func (o LookupServiceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

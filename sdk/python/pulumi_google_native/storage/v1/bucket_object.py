@@ -44,7 +44,6 @@ class BucketObjectArgs:
                  owner: Optional[pulumi.Input['BucketObjectOwnerArgs']] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -87,7 +86,6 @@ class BucketObjectArgs:
         :param pulumi.Input['BucketObjectOwnerArgs'] owner: The owner of the object. This will always be the uploader of the object.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this object.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
@@ -156,8 +154,6 @@ class BucketObjectArgs:
             pulumi.set(__self__, "predefined_acl", predefined_acl)
         if projection is not None:
             pulumi.set(__self__, "projection", projection)
-        if provisional_user_project is not None:
-            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if retention_expiration_time is not None:
             pulumi.set(__self__, "retention_expiration_time", retention_expiration_time)
         if self_link is not None:
@@ -530,18 +526,6 @@ class BucketObjectArgs:
         pulumi.set(self, "projection", value)
 
     @property
-    @pulumi.getter(name="provisionalUserProject")
-    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project to be billed for this request if the target bucket is requester-pays bucket.
-        """
-        return pulumi.get(self, "provisional_user_project")
-
-    @provisional_user_project.setter
-    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "provisional_user_project", value)
-
-    @property
     @pulumi.getter(name="retentionExpirationTime")
     def retention_expiration_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -705,7 +689,6 @@ class BucketObject(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -752,7 +735,6 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']] owner: The owner of the object. This will always be the uploader of the object.
         :param pulumi.Input[str] predefined_acl: Apply a predefined set of access controls to this object.
         :param pulumi.Input[str] projection: Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full.
-        :param pulumi.Input[str] provisional_user_project: The project to be billed for this request if the target bucket is requester-pays bucket.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
@@ -817,7 +799,6 @@ class BucketObject(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketObjectOwnerArgs']]] = None,
                  predefined_acl: Optional[pulumi.Input[str]] = None,
                  projection: Optional[pulumi.Input[str]] = None,
-                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -872,7 +853,6 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["owner"] = owner
             __props__.__dict__["predefined_acl"] = predefined_acl
             __props__.__dict__["projection"] = projection
-            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["retention_expiration_time"] = retention_expiration_time
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["size"] = size

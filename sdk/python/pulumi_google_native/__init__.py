@@ -141,6 +141,8 @@ if typing.TYPE_CHECKING:
     gameservices = __gameservices
     import pulumi_google_native.genomics as __genomics
     genomics = __genomics
+    import pulumi_google_native.gkebackup as __gkebackup
+    gkebackup = __gkebackup
     import pulumi_google_native.gkehub as __gkehub
     gkehub = __gkehub
     import pulumi_google_native.healthcare as __healthcare
@@ -312,6 +314,7 @@ else:
     firestore = _utilities.lazy_import('pulumi_google_native.firestore')
     gameservices = _utilities.lazy_import('pulumi_google_native.gameservices')
     genomics = _utilities.lazy_import('pulumi_google_native.genomics')
+    gkebackup = _utilities.lazy_import('pulumi_google_native.gkebackup')
     gkehub = _utilities.lazy_import('pulumi_google_native.gkehub')
     healthcare = _utilities.lazy_import('pulumi_google_native.healthcare')
     iam = _utilities.lazy_import('pulumi_google_native.iam')
@@ -1873,6 +1876,23 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "gkebackup/v1",
+  "fqn": "pulumi_google_native.gkebackup.v1",
+  "classes": {
+   "google-native:gkebackup/v1:Backup": "Backup",
+   "google-native:gkebackup/v1:BackupPlan": "BackupPlan",
+   "google-native:gkebackup/v1:BackupPlanBackupIamPolicy": "BackupPlanBackupIamPolicy",
+   "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamPolicy": "BackupPlanBackupVolumeBackupIamPolicy",
+   "google-native:gkebackup/v1:BackupPlanIamPolicy": "BackupPlanIamPolicy",
+   "google-native:gkebackup/v1:Restore": "Restore",
+   "google-native:gkebackup/v1:RestorePlan": "RestorePlan",
+   "google-native:gkebackup/v1:RestorePlanIamPolicy": "RestorePlanIamPolicy",
+   "google-native:gkebackup/v1:RestorePlanRestoreIamPolicy": "RestorePlanRestoreIamPolicy",
+   "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamPolicy": "RestorePlanRestoreVolumeRestoreIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "gkehub/v1",
   "fqn": "pulumi_google_native.gkehub.v1",
   "classes": {
@@ -2178,6 +2198,8 @@ _utilities.register(
    "google-native:networkconnectivity/v1alpha1:Hub": "Hub",
    "google-native:networkconnectivity/v1alpha1:HubIamPolicy": "HubIamPolicy",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy": "InternalRangeIamPolicy",
+   "google-native:networkconnectivity/v1alpha1:ServiceConnectPolicyIamPolicy": "ServiceConnectPolicyIamPolicy",
+   "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy": "ServiceInstanceIamPolicy",
    "google-native:networkconnectivity/v1alpha1:Spoke": "Spoke",
    "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy": "SpokeIamPolicy"
   }

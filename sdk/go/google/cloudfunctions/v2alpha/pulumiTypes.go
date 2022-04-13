@@ -1929,6 +1929,200 @@ func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoSourceResponse) string { return v.TagName }).(pulumi.StringOutput)
 }
 
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+type SecretEnvVar struct {
+	// Name of the environment variable.
+	Key *string `pulumi:"key"`
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project *string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret *string `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+	Version *string `pulumi:"version"`
+}
+
+// SecretEnvVarInput is an input type that accepts SecretEnvVarArgs and SecretEnvVarOutput values.
+// You can construct a concrete instance of `SecretEnvVarInput` via:
+//
+//          SecretEnvVarArgs{...}
+type SecretEnvVarInput interface {
+	pulumi.Input
+
+	ToSecretEnvVarOutput() SecretEnvVarOutput
+	ToSecretEnvVarOutputWithContext(context.Context) SecretEnvVarOutput
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+type SecretEnvVarArgs struct {
+	// Name of the environment variable.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret pulumi.StringPtrInput `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (SecretEnvVarArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVar)(nil)).Elem()
+}
+
+func (i SecretEnvVarArgs) ToSecretEnvVarOutput() SecretEnvVarOutput {
+	return i.ToSecretEnvVarOutputWithContext(context.Background())
+}
+
+func (i SecretEnvVarArgs) ToSecretEnvVarOutputWithContext(ctx context.Context) SecretEnvVarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarOutput)
+}
+
+// SecretEnvVarArrayInput is an input type that accepts SecretEnvVarArray and SecretEnvVarArrayOutput values.
+// You can construct a concrete instance of `SecretEnvVarArrayInput` via:
+//
+//          SecretEnvVarArray{ SecretEnvVarArgs{...} }
+type SecretEnvVarArrayInput interface {
+	pulumi.Input
+
+	ToSecretEnvVarArrayOutput() SecretEnvVarArrayOutput
+	ToSecretEnvVarArrayOutputWithContext(context.Context) SecretEnvVarArrayOutput
+}
+
+type SecretEnvVarArray []SecretEnvVarInput
+
+func (SecretEnvVarArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVar)(nil)).Elem()
+}
+
+func (i SecretEnvVarArray) ToSecretEnvVarArrayOutput() SecretEnvVarArrayOutput {
+	return i.ToSecretEnvVarArrayOutputWithContext(context.Background())
+}
+
+func (i SecretEnvVarArray) ToSecretEnvVarArrayOutputWithContext(ctx context.Context) SecretEnvVarArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretEnvVarArrayOutput)
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+type SecretEnvVarOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVar)(nil)).Elem()
+}
+
+func (o SecretEnvVarOutput) ToSecretEnvVarOutput() SecretEnvVarOutput {
+	return o
+}
+
+func (o SecretEnvVarOutput) ToSecretEnvVarOutputWithContext(ctx context.Context) SecretEnvVarOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o SecretEnvVarOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o SecretEnvVarOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretEnvVarOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+func (o SecretEnvVarOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretEnvVar) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type SecretEnvVarArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVar)(nil)).Elem()
+}
+
+func (o SecretEnvVarArrayOutput) ToSecretEnvVarArrayOutput() SecretEnvVarArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarArrayOutput) ToSecretEnvVarArrayOutputWithContext(ctx context.Context) SecretEnvVarArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarArrayOutput) Index(i pulumi.IntInput) SecretEnvVarOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretEnvVar {
+		return vs[0].([]SecretEnvVar)[vs[1].(int)]
+	}).(SecretEnvVarOutput)
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+type SecretEnvVarResponse struct {
+	// Name of the environment variable.
+	Key string `pulumi:"key"`
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	Project string `pulumi:"project"`
+	// Name of the secret in secret manager (not the full resource name).
+	Secret string `pulumi:"secret"`
+	// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+	Version string `pulumi:"version"`
+}
+
+// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+type SecretEnvVarResponseOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretEnvVarResponse)(nil)).Elem()
+}
+
+func (o SecretEnvVarResponseOutput) ToSecretEnvVarResponseOutput() SecretEnvVarResponseOutput {
+	return o
+}
+
+func (o SecretEnvVarResponseOutput) ToSecretEnvVarResponseOutputWithContext(ctx context.Context) SecretEnvVarResponseOutput {
+	return o
+}
+
+// Name of the environment variable.
+func (o SecretEnvVarResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+func (o SecretEnvVarResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Name of the secret in secret manager (not the full resource name).
+func (o SecretEnvVarResponseOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+func (o SecretEnvVarResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretEnvVarResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type SecretEnvVarResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretEnvVarResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretEnvVarResponse)(nil)).Elem()
+}
+
+func (o SecretEnvVarResponseArrayOutput) ToSecretEnvVarResponseArrayOutput() SecretEnvVarResponseArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarResponseArrayOutput) ToSecretEnvVarResponseArrayOutputWithContext(ctx context.Context) SecretEnvVarResponseArrayOutput {
+	return o
+}
+
+func (o SecretEnvVarResponseArrayOutput) Index(i pulumi.IntInput) SecretEnvVarResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretEnvVarResponse {
+		return vs[0].([]SecretEnvVarResponse)[vs[1].(int)]
+	}).(SecretEnvVarResponseOutput)
+}
+
 // Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
 type ServiceConfig struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
@@ -1943,6 +2137,8 @@ type ServiceConfig struct {
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables []SecretEnvVar `pulumi:"secretEnvironmentVariables"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -1978,6 +2174,8 @@ type ServiceConfigArgs struct {
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables SecretEnvVarArrayInput `pulumi:"secretEnvironmentVariables"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -2096,6 +2294,11 @@ func (o ServiceConfigOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
 }
 
+// Secret environment variables configuration.
+func (o ServiceConfigOutput) SecretEnvironmentVariables() SecretEnvVarArrayOutput {
+	return o.ApplyT(func(v ServiceConfig) []SecretEnvVar { return v.SecretEnvironmentVariables }).(SecretEnvVarArrayOutput)
+}
+
 // The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 func (o ServiceConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
@@ -2200,6 +2403,16 @@ func (o ServiceConfigPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Secret environment variables configuration.
+func (o ServiceConfigPtrOutput) SecretEnvironmentVariables() SecretEnvVarArrayOutput {
+	return o.ApplyT(func(v *ServiceConfig) []SecretEnvVar {
+		if v == nil {
+			return nil
+		}
+		return v.SecretEnvironmentVariables
+	}).(SecretEnvVarArrayOutput)
+}
+
 // The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 func (o ServiceConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *string {
@@ -2256,6 +2469,8 @@ type ServiceConfigResponse struct {
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 	// The name of service revision.
 	Revision string `pulumi:"revision"`
+	// Secret environment variables configuration.
+	SecretEnvironmentVariables []SecretEnvVarResponse `pulumi:"secretEnvironmentVariables"`
 	// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
 	Service string `pulumi:"service"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
@@ -2318,6 +2533,11 @@ func (o ServiceConfigResponseOutput) MinInstanceCount() pulumi.IntOutput {
 // The name of service revision.
 func (o ServiceConfigResponseOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// Secret environment variables configuration.
+func (o ServiceConfigResponseOutput) SecretEnvironmentVariables() SecretEnvVarResponseArrayOutput {
+	return o.ApplyT(func(v ServiceConfigResponse) []SecretEnvVarResponse { return v.SecretEnvironmentVariables }).(SecretEnvVarResponseArrayOutput)
 }
 
 // Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
@@ -2810,6 +3030,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarInput)(nil)).Elem(), SecretEnvVarArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretEnvVarArrayInput)(nil)).Elem(), SecretEnvVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigInput)(nil)).Elem(), ServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConfigPtrInput)(nil)).Elem(), ServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), SourceArgs{})
@@ -2846,6 +3068,10 @@ func init() {
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarArrayOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarResponseOutput{})
+	pulumi.RegisterOutputType(SecretEnvVarResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceConfigOutput{})
 	pulumi.RegisterOutputType(ServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConfigResponseOutput{})

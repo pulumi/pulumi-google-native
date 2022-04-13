@@ -121,7 +121,6 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["object"] = args ? args.object : undefined;
             resourceInputs["projectTeam"] = args ? args.projectTeam : undefined;
-            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["userProject"] = args ? args.userProject : undefined;
@@ -203,10 +202,6 @@ export interface DefaultObjectAccessControlArgs {
      * The project team associated with the entity, if any.
      */
     projectTeam?: pulumi.Input<inputs.storage.v1.DefaultObjectAccessControlProjectTeamArgs>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The access permission for the entity.
      */

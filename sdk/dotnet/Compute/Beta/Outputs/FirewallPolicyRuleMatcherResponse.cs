@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
+        /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        /// </summary>
+        public readonly ImmutableArray<string> DestRegionCodes;
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        /// </summary>
+        public readonly ImmutableArray<string> DestThreatIntelligences;
+        /// <summary>
         /// Pairs of IP protocols and ports that the rule should match.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> Layer4Configs;
@@ -29,24 +37,44 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
+        /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcRegionCodes;
+        /// <summary>
         /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> SrcSecureTags;
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcThreatIntelligences;
 
         [OutputConstructor]
         private FirewallPolicyRuleMatcherResponse(
             ImmutableArray<string> destIpRanges,
 
+            ImmutableArray<string> destRegionCodes,
+
+            ImmutableArray<string> destThreatIntelligences,
+
             ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> layer4Configs,
 
             ImmutableArray<string> srcIpRanges,
 
-            ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags)
+            ImmutableArray<string> srcRegionCodes,
+
+            ImmutableArray<Outputs.FirewallPolicyRuleSecureTagResponse> srcSecureTags,
+
+            ImmutableArray<string> srcThreatIntelligences)
         {
             DestIpRanges = destIpRanges;
+            DestRegionCodes = destRegionCodes;
+            DestThreatIntelligences = destThreatIntelligences;
             Layer4Configs = layer4Configs;
             SrcIpRanges = srcIpRanges;
+            SrcRegionCodes = srcRegionCodes;
             SrcSecureTags = srcSecureTags;
+            SrcThreatIntelligences = srcThreatIntelligences;
         }
     }
 }

@@ -41,6 +41,8 @@ type LookupDeviceResult struct {
 	CompromisedState string `pulumi:"compromisedState"`
 	// When the Company-Owned device was imported. This field is empty for BYOD devices.
 	CreateTime string `pulumi:"createTime"`
+	// Unique identifier for the device.
+	DeviceId string `pulumi:"deviceId"`
 	// Type of device.
 	DeviceType string `pulumi:"deviceType"`
 	// Whether developer options is enabled on device.
@@ -154,6 +156,11 @@ func (o LookupDeviceResultOutput) CompromisedState() pulumi.StringOutput {
 // When the Company-Owned device was imported. This field is empty for BYOD devices.
 func (o LookupDeviceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the device.
+func (o LookupDeviceResultOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.DeviceId }).(pulumi.StringOutput)
 }
 
 // Type of device.

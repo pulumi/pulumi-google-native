@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        /// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

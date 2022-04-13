@@ -120,8 +120,6 @@ type bucketAccessControlArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
 	ProjectTeam *BucketAccessControlProjectTeam `pulumi:"projectTeam"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
@@ -161,8 +159,6 @@ type BucketAccessControlArgs struct {
 	Kind pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
 	ProjectTeam BucketAccessControlProjectTeamPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.

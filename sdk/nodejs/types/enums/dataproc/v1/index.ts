@@ -26,6 +26,31 @@ export const GceClusterConfigPrivateIpv6GoogleAccess = {
  */
 export type GceClusterConfigPrivateIpv6GoogleAccess = (typeof GceClusterConfigPrivateIpv6GoogleAccess)[keyof typeof GceClusterConfigPrivateIpv6GoogleAccess];
 
+export const GkeNodePoolTargetRolesItem = {
+    /**
+     * Role is unspecified.
+     */
+    RoleUnspecified: "ROLE_UNSPECIFIED",
+    /**
+     * Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+     */
+    Default: "DEFAULT",
+    /**
+     * Run controllers and webhooks.
+     */
+    Controller: "CONTROLLER",
+    /**
+     * Run spark driver.
+     */
+    SparkDriver: "SPARK_DRIVER",
+    /**
+     * Run spark executors.
+     */
+    SparkExecutor: "SPARK_EXECUTOR",
+} as const;
+
+export type GkeNodePoolTargetRolesItem = (typeof GkeNodePoolTargetRolesItem)[keyof typeof GkeNodePoolTargetRolesItem];
+
 export const InstanceGroupConfigPreemptibility = {
     /**
      * Preemptibility is unspecified, the system will choose the appropriate setting for each instance group.

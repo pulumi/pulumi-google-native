@@ -37,7 +37,7 @@ class GetServiceResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        The name of the service. See the [overview](/service-management/overview) for naming requirements.
+        The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
         """
         return pulumi.get(self, "service_name")
 

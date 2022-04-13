@@ -18,6 +18,8 @@ type Version struct {
 
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponseOutput `pulumi:"apiConfig"`
+	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	AppEngineApis pulumi.BoolOutput `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingResponseOutput `pulumi:"automaticScaling"`
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -143,7 +145,9 @@ func (VersionState) ElementType() reflect.Type {
 type versionArgs struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig *ApiConfigHandler `pulumi:"apiConfig"`
-	AppId     string            `pulumi:"appId"`
+	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	AppEngineApis *bool  `pulumi:"appEngineApis"`
+	AppId         string `pulumi:"appId"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling *AutomaticScaling `pulumi:"automaticScaling"`
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -219,7 +223,9 @@ type versionArgs struct {
 type VersionArgs struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerPtrInput
-	AppId     pulumi.StringInput
+	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	AppEngineApis pulumi.BoolPtrInput
+	AppId         pulumi.StringInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingPtrInput
 	// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.

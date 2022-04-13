@@ -25,9 +25,9 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         public static GoogleCloudRunV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentUnspecified { get; } = new GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED");
         /// <summary>
-        /// Uses the Google-default environment.
+        /// Uses the First Generation environment.
         /// </summary>
-        public static GoogleCloudRunV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentDefault { get; } = new GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_DEFAULT");
+        public static GoogleCloudRunV2RevisionTemplateExecutionEnvironment ExecutionEnvironmentGen1 { get; } = new GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN1");
         /// <summary>
         /// Uses Second Generation environment.
         /// </summary>

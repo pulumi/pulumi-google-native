@@ -45,7 +45,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterUuid!: pulumi.Output<string>;
     /**
-     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
      */
     public readonly config!: pulumi.Output<outputs.dataproc.v1.ClusterConfigResponse>;
     /**
@@ -68,6 +68,10 @@ export class Cluster extends pulumi.CustomResource {
      * The previous cluster status.
      */
     public /*out*/ readonly statusHistory!: pulumi.Output<outputs.dataproc.v1.ClusterStatusResponse[]>;
+    /**
+     * Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+     */
+    public readonly virtualClusterConfig!: pulumi.Output<outputs.dataproc.v1.VirtualClusterConfigResponse>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -93,6 +97,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["virtualClusterConfig"] = args ? args.virtualClusterConfig : undefined;
             resourceInputs["clusterUuid"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -106,6 +111,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusHistory"] = undefined /*out*/;
+            resourceInputs["virtualClusterConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
@@ -125,7 +131,7 @@ export interface ClusterArgs {
      */
     clusterName: pulumi.Input<string>;
     /**
-     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
      */
     config?: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
     /**
@@ -141,4 +147,8 @@ export interface ClusterArgs {
      * Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+     */
+    virtualClusterConfig?: pulumi.Input<inputs.dataproc.v1.VirtualClusterConfigArgs>;
 }

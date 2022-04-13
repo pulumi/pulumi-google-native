@@ -74,6 +74,7 @@ import * as firebaserules from "./firebaserules";
 import * as firestore from "./firestore";
 import * as gameservices from "./gameservices";
 import * as genomics from "./genomics";
+import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
@@ -195,6 +196,7 @@ export {
     firestore,
     gameservices,
     genomics,
+    gkebackup,
     gkehub,
     healthcare,
     iam,

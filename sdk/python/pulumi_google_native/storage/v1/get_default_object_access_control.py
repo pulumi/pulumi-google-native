@@ -186,7 +186,6 @@ class AwaitableGetDefaultObjectAccessControlResult(GetDefaultObjectAccessControl
 
 def get_default_object_access_control(bucket: Optional[str] = None,
                                       entity: Optional[str] = None,
-                                      provisional_user_project: Optional[str] = None,
                                       user_project: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDefaultObjectAccessControlResult:
     """
@@ -195,7 +194,6 @@ def get_default_object_access_control(bucket: Optional[str] = None,
     __args__ = dict()
     __args__['bucket'] = bucket
     __args__['entity'] = entity
-    __args__['provisionalUserProject'] = provisional_user_project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -221,7 +219,6 @@ def get_default_object_access_control(bucket: Optional[str] = None,
 @_utilities.lift_output_func(get_default_object_access_control)
 def get_default_object_access_control_output(bucket: Optional[pulumi.Input[str]] = None,
                                              entity: Optional[pulumi.Input[str]] = None,
-                                             provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                              user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultObjectAccessControlResult]:
     """

@@ -36,14 +36,18 @@ __all__ = [
 class GoogleCloudRunV2BinaryAuthorizationArgs:
     def __init__(__self__, *,
                  breakglass_justification: Optional[pulumi.Input[str]] = None,
+                 policy: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
         """
         Settings for Binary Authorization feature.
         :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
+        :param pulumi.Input[str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param pulumi.Input[bool] use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         if breakglass_justification is not None:
             pulumi.set(__self__, "breakglass_justification", breakglass_justification)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
         if use_default is not None:
             pulumi.set(__self__, "use_default", use_default)
 
@@ -58,6 +62,18 @@ class GoogleCloudRunV2BinaryAuthorizationArgs:
     @breakglass_justification.setter
     def breakglass_justification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "breakglass_justification", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter(name="useDefault")

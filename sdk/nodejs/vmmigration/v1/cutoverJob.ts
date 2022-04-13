@@ -47,6 +47,10 @@ export class CutoverJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The time the cutover job had finished.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
      * Provides details for the errors that led to the Cutover Job's state.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.vmmigration.v1.StatusResponse>;
@@ -99,6 +103,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["progressPercent"] = undefined /*out*/;
@@ -108,6 +113,7 @@ export class CutoverJob extends pulumi.CustomResource {
         } else {
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["progressPercent"] = undefined /*out*/;

@@ -33,6 +33,8 @@ type LookupCutoverJobResult struct {
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponse `pulumi:"computeEngineTargetDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime string `pulumi:"createTime"`
+	// The time the cutover job had finished.
+	EndTime string `pulumi:"endTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
 	Error StatusResponse `pulumi:"error"`
 	// The name of the cutover job.
@@ -90,6 +92,11 @@ func (o LookupCutoverJobResultOutput) ComputeEngineTargetDetails() ComputeEngine
 // The time the cutover job was created (as an API call, not when it was actually created in the target).
 func (o LookupCutoverJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the cutover job had finished.
+func (o LookupCutoverJobResultOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
 // Provides details for the errors that led to the Cutover Job's state.

@@ -181,6 +181,223 @@ func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToGceClusterConfigPrivateI
 	return pulumi.ToOutputWithContext(ctx, in).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
+type GkeNodePoolTargetRolesItem string
+
+const (
+	// Role is unspecified.
+	GkeNodePoolTargetRolesItemRoleUnspecified = GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED")
+	// Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+	GkeNodePoolTargetRolesItemDefault = GkeNodePoolTargetRolesItem("DEFAULT")
+	// Run controllers and webhooks.
+	GkeNodePoolTargetRolesItemController = GkeNodePoolTargetRolesItem("CONTROLLER")
+	// Run spark driver.
+	GkeNodePoolTargetRolesItemSparkDriver = GkeNodePoolTargetRolesItem("SPARK_DRIVER")
+	// Run spark executors.
+	GkeNodePoolTargetRolesItemSparkExecutor = GkeNodePoolTargetRolesItem("SPARK_EXECUTOR")
+)
+
+func (GkeNodePoolTargetRolesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolTargetRolesItem)(nil)).Elem()
+}
+
+func (e GkeNodePoolTargetRolesItem) ToGkeNodePoolTargetRolesItemOutput() GkeNodePoolTargetRolesItemOutput {
+	return pulumi.ToOutput(e).(GkeNodePoolTargetRolesItemOutput)
+}
+
+func (e GkeNodePoolTargetRolesItem) ToGkeNodePoolTargetRolesItemOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GkeNodePoolTargetRolesItemOutput)
+}
+
+func (e GkeNodePoolTargetRolesItem) ToGkeNodePoolTargetRolesItemPtrOutput() GkeNodePoolTargetRolesItemPtrOutput {
+	return e.ToGkeNodePoolTargetRolesItemPtrOutputWithContext(context.Background())
+}
+
+func (e GkeNodePoolTargetRolesItem) ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemPtrOutput {
+	return GkeNodePoolTargetRolesItem(e).ToGkeNodePoolTargetRolesItemOutputWithContext(ctx).ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx)
+}
+
+func (e GkeNodePoolTargetRolesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GkeNodePoolTargetRolesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GkeNodePoolTargetRolesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GkeNodePoolTargetRolesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GkeNodePoolTargetRolesItemOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetRolesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolTargetRolesItem)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToGkeNodePoolTargetRolesItemOutput() GkeNodePoolTargetRolesItemOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToGkeNodePoolTargetRolesItemOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToGkeNodePoolTargetRolesItemPtrOutput() GkeNodePoolTargetRolesItemPtrOutput {
+	return o.ToGkeNodePoolTargetRolesItemPtrOutputWithContext(context.Background())
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeNodePoolTargetRolesItem) *GkeNodePoolTargetRolesItem {
+		return &v
+	}).(GkeNodePoolTargetRolesItemPtrOutput)
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GkeNodePoolTargetRolesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GkeNodePoolTargetRolesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GkeNodePoolTargetRolesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GkeNodePoolTargetRolesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetRolesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodePoolTargetRolesItem)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetRolesItemPtrOutput) ToGkeNodePoolTargetRolesItemPtrOutput() GkeNodePoolTargetRolesItemPtrOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetRolesItemPtrOutput) ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemPtrOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetRolesItemPtrOutput) Elem() GkeNodePoolTargetRolesItemOutput {
+	return o.ApplyT(func(v *GkeNodePoolTargetRolesItem) GkeNodePoolTargetRolesItem {
+		if v != nil {
+			return *v
+		}
+		var ret GkeNodePoolTargetRolesItem
+		return ret
+	}).(GkeNodePoolTargetRolesItemOutput)
+}
+
+func (o GkeNodePoolTargetRolesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GkeNodePoolTargetRolesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GkeNodePoolTargetRolesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GkeNodePoolTargetRolesItemInput is an input type that accepts GkeNodePoolTargetRolesItemArgs and GkeNodePoolTargetRolesItemOutput values.
+// You can construct a concrete instance of `GkeNodePoolTargetRolesItemInput` via:
+//
+//          GkeNodePoolTargetRolesItemArgs{...}
+type GkeNodePoolTargetRolesItemInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolTargetRolesItemOutput() GkeNodePoolTargetRolesItemOutput
+	ToGkeNodePoolTargetRolesItemOutputWithContext(context.Context) GkeNodePoolTargetRolesItemOutput
+}
+
+var gkeNodePoolTargetRolesItemPtrType = reflect.TypeOf((**GkeNodePoolTargetRolesItem)(nil)).Elem()
+
+type GkeNodePoolTargetRolesItemPtrInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolTargetRolesItemPtrOutput() GkeNodePoolTargetRolesItemPtrOutput
+	ToGkeNodePoolTargetRolesItemPtrOutputWithContext(context.Context) GkeNodePoolTargetRolesItemPtrOutput
+}
+
+type gkeNodePoolTargetRolesItemPtr string
+
+func GkeNodePoolTargetRolesItemPtr(v string) GkeNodePoolTargetRolesItemPtrInput {
+	return (*gkeNodePoolTargetRolesItemPtr)(&v)
+}
+
+func (*gkeNodePoolTargetRolesItemPtr) ElementType() reflect.Type {
+	return gkeNodePoolTargetRolesItemPtrType
+}
+
+func (in *gkeNodePoolTargetRolesItemPtr) ToGkeNodePoolTargetRolesItemPtrOutput() GkeNodePoolTargetRolesItemPtrOutput {
+	return pulumi.ToOutput(in).(GkeNodePoolTargetRolesItemPtrOutput)
+}
+
+func (in *gkeNodePoolTargetRolesItemPtr) ToGkeNodePoolTargetRolesItemPtrOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GkeNodePoolTargetRolesItemPtrOutput)
+}
+
+// GkeNodePoolTargetRolesItemArrayInput is an input type that accepts GkeNodePoolTargetRolesItemArray and GkeNodePoolTargetRolesItemArrayOutput values.
+// You can construct a concrete instance of `GkeNodePoolTargetRolesItemArrayInput` via:
+//
+//          GkeNodePoolTargetRolesItemArray{ GkeNodePoolTargetRolesItemArgs{...} }
+type GkeNodePoolTargetRolesItemArrayInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolTargetRolesItemArrayOutput() GkeNodePoolTargetRolesItemArrayOutput
+	ToGkeNodePoolTargetRolesItemArrayOutputWithContext(context.Context) GkeNodePoolTargetRolesItemArrayOutput
+}
+
+type GkeNodePoolTargetRolesItemArray []GkeNodePoolTargetRolesItem
+
+func (GkeNodePoolTargetRolesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolTargetRolesItem)(nil)).Elem()
+}
+
+func (i GkeNodePoolTargetRolesItemArray) ToGkeNodePoolTargetRolesItemArrayOutput() GkeNodePoolTargetRolesItemArrayOutput {
+	return i.ToGkeNodePoolTargetRolesItemArrayOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolTargetRolesItemArray) ToGkeNodePoolTargetRolesItemArrayOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolTargetRolesItemArrayOutput)
+}
+
+type GkeNodePoolTargetRolesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetRolesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolTargetRolesItem)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetRolesItemArrayOutput) ToGkeNodePoolTargetRolesItemArrayOutput() GkeNodePoolTargetRolesItemArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetRolesItemArrayOutput) ToGkeNodePoolTargetRolesItemArrayOutputWithContext(ctx context.Context) GkeNodePoolTargetRolesItemArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetRolesItemArrayOutput) Index(i pulumi.IntInput) GkeNodePoolTargetRolesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GkeNodePoolTargetRolesItem {
+		return vs[0].([]GkeNodePoolTargetRolesItem)[vs[1].(int)]
+	}).(GkeNodePoolTargetRolesItemOutput)
+}
+
 // Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
 type InstanceGroupConfigPreemptibility string
 
@@ -933,6 +1150,9 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetRolesItemInput)(nil)).Elem(), GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetRolesItemPtrInput)(nil)).Elem(), GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetRolesItemArrayInput)(nil)).Elem(), GkeNodePoolTargetRolesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityPtrInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourceInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
@@ -944,6 +1164,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemArrayInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItemArray{})
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetRolesItemOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetRolesItemPtrOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetRolesItemArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityOutput{})
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityPtrOutput{})
 	pulumi.RegisterOutputType(MetricMetricSourceOutput{})

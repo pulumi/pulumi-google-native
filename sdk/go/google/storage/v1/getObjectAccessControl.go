@@ -21,12 +21,11 @@ func LookupObjectAccessControl(ctx *pulumi.Context, args *LookupObjectAccessCont
 }
 
 type LookupObjectAccessControlArgs struct {
-	Bucket                 string  `pulumi:"bucket"`
-	Entity                 string  `pulumi:"entity"`
-	Generation             *string `pulumi:"generation"`
-	Object                 string  `pulumi:"object"`
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
-	UserProject            *string `pulumi:"userProject"`
+	Bucket      string  `pulumi:"bucket"`
+	Entity      string  `pulumi:"entity"`
+	Generation  *string `pulumi:"generation"`
+	Object      string  `pulumi:"object"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 type LookupObjectAccessControlResult struct {
@@ -77,12 +76,11 @@ func LookupObjectAccessControlOutput(ctx *pulumi.Context, args LookupObjectAcces
 }
 
 type LookupObjectAccessControlOutputArgs struct {
-	Bucket                 pulumi.StringInput    `pulumi:"bucket"`
-	Entity                 pulumi.StringInput    `pulumi:"entity"`
-	Generation             pulumi.StringPtrInput `pulumi:"generation"`
-	Object                 pulumi.StringInput    `pulumi:"object"`
-	ProvisionalUserProject pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
-	UserProject            pulumi.StringPtrInput `pulumi:"userProject"`
+	Bucket      pulumi.StringInput    `pulumi:"bucket"`
+	Entity      pulumi.StringInput    `pulumi:"entity"`
+	Generation  pulumi.StringPtrInput `pulumi:"generation"`
+	Object      pulumi.StringInput    `pulumi:"object"`
+	UserProject pulumi.StringPtrInput `pulumi:"userProject"`
 }
 
 func (LookupObjectAccessControlOutputArgs) ElementType() reflect.Type {

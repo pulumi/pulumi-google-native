@@ -18,6 +18,7 @@ __all__ = [
     'EventTriggerArgs',
     'ExprArgs',
     'RepoSourceArgs',
+    'SecretEnvVarArgs',
     'ServiceConfigArgs',
     'SourceArgs',
     'StorageSourceArgs',
@@ -613,6 +614,78 @@ class RepoSourceArgs:
 
 
 @pulumi.input_type
+class SecretEnvVarArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
+        :param pulumi.Input[str] key: Name of the environment variable.
+        :param pulumi.Input[str] project: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param pulumi.Input[str] secret: Name of the secret in secret manager (not the full resource name).
+        :param pulumi.Input[str] version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secret in secret manager (not the full resource name).
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
 class ServiceConfigArgs:
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: Optional[pulumi.Input[bool]] = None,
@@ -621,6 +694,7 @@ class ServiceConfigArgs:
                  ingress_settings: Optional[pulumi.Input['ServiceConfigIngressSettings']] = None,
                  max_instance_count: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
+                 secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -633,6 +707,7 @@ class ServiceConfigArgs:
         :param pulumi.Input['ServiceConfigIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param pulumi.Input[int] max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[str] service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param pulumi.Input[int] timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
         :param pulumi.Input[str] vpc_connector: The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -650,6 +725,8 @@ class ServiceConfigArgs:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
+        if secret_environment_variables is not None:
+            pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if timeout_seconds is not None:
@@ -730,6 +807,18 @@ class ServiceConfigArgs:
     @min_instance_count.setter
     def min_instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_instance_count", value)
+
+    @property
+    @pulumi.getter(name="secretEnvironmentVariables")
+    def secret_environment_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]]:
+        """
+        Secret environment variables configuration.
+        """
+        return pulumi.get(self, "secret_environment_variables")
+
+    @secret_environment_variables.setter
+    def secret_environment_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]]):
+        pulumi.set(self, "secret_environment_variables", value)
 
     @property
     @pulumi.getter(name="serviceAccountEmail")

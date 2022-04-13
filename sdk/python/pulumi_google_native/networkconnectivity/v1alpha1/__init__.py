@@ -9,11 +9,15 @@ from ._enums import *
 from .get_hub import *
 from .get_hub_iam_policy import *
 from .get_internal_range_iam_policy import *
+from .get_service_connect_policy_iam_policy import *
+from .get_service_instance_iam_policy import *
 from .get_spoke import *
 from .get_spoke_iam_policy import *
 from .hub import *
 from .hub_iam_policy import *
 from .internal_range_iam_policy import *
+from .service_connect_policy_iam_policy import *
+from .service_instance_iam_policy import *
 from .spoke import *
 from .spoke_iam_policy import *
 from ._inputs import *

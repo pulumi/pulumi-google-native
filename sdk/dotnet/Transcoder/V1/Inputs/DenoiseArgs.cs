@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// Denoise preprocessing configuration.
+    /// Denoise preprocessing configuration. **Note:** This configuration is not supported.
     /// </summary>
     public sealed class DenoiseArgs : Pulumi.ResourceArgs
     {

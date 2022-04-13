@@ -22,9 +22,9 @@ class GoogleCloudRunV2RevisionTemplateExecutionEnvironment(str, Enum):
     """
     Unspecified
     """
-    EXECUTION_ENVIRONMENT_DEFAULT = "EXECUTION_ENVIRONMENT_DEFAULT"
+    EXECUTION_ENVIRONMENT_GEN1 = "EXECUTION_ENVIRONMENT_GEN1"
     """
-    Uses the Google-default environment.
+    Uses the First Generation environment.
     """
     EXECUTION_ENVIRONMENT_GEN2 = "EXECUTION_ENVIRONMENT_GEN2"
     """

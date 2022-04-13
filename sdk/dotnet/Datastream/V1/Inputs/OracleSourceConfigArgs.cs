@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         /// Drop large object values.
         /// </summary>
         [Input("dropLargeObjects")]
-        public Input<Inputs.OracleDropLargeObjectsArgs>? DropLargeObjects { get; set; }
+        public Input<Inputs.DropLargeObjectsArgs>? DropLargeObjects { get; set; }
 
         /// <summary>
         /// Oracle objects to exclude from the stream.

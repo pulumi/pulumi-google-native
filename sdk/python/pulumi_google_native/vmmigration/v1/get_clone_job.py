@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetCloneJobResult:
-    def __init__(__self__, compute_engine_target_details=None, create_time=None, error=None, name=None, state=None, state_time=None):
+    def __init__(__self__, compute_engine_target_details=None, create_time=None, end_time=None, error=None, name=None, state=None, state_time=None):
         if compute_engine_target_details and not isinstance(compute_engine_target_details, dict):
             raise TypeError("Expected argument 'compute_engine_target_details' to be a dict")
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if end_time and not isinstance(end_time, str):
+            raise TypeError("Expected argument 'end_time' to be a str")
+        pulumi.set(__self__, "end_time", end_time)
         if error and not isinstance(error, dict):
             raise TypeError("Expected argument 'error' to be a dict")
         pulumi.set(__self__, "error", error)
@@ -53,6 +56,14 @@ class GetCloneJobResult:
         The time the clone job was created (as an API call, not when it was actually created in the target).
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the clone job was ended.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -95,6 +106,7 @@ class AwaitableGetCloneJobResult(GetCloneJobResult):
         return GetCloneJobResult(
             compute_engine_target_details=self.compute_engine_target_details,
             create_time=self.create_time,
+            end_time=self.end_time,
             error=self.error,
             name=self.name,
             state=self.state,
@@ -125,6 +137,7 @@ def get_clone_job(clone_job_id: Optional[str] = None,
     return AwaitableGetCloneJobResult(
         compute_engine_target_details=__ret__.compute_engine_target_details,
         create_time=__ret__.create_time,
+        end_time=__ret__.end_time,
         error=__ret__.error,
         name=__ret__.name,
         state=__ret__.state,

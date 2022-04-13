@@ -95,6 +95,14 @@ export interface GetTableResult {
      */
     readonly model: outputs.bigquery.v2.ModelDefinitionResponse;
     /**
+     * Number of logical bytes that are less than 90 days old.
+     */
+    readonly numActiveLogicalBytes: string;
+    /**
+     * Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    readonly numActivePhysicalBytes: string;
+    /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
     readonly numBytes: string;
@@ -103,6 +111,18 @@ export interface GetTableResult {
      */
     readonly numLongTermBytes: string;
     /**
+     * Number of logical bytes that are more than 90 days old.
+     */
+    readonly numLongTermLogicalBytes: string;
+    /**
+     * Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    readonly numLongTermPhysicalBytes: string;
+    /**
+     * The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    readonly numPartitions: string;
+    /**
      * [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
      */
     readonly numPhysicalBytes: string;
@@ -110,6 +130,18 @@ export interface GetTableResult {
      * The number of rows of data in this table, excluding any data in the streaming buffer.
      */
     readonly numRows: string;
+    /**
+     * Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    readonly numTimeTravelPhysicalBytes: string;
+    /**
+     * Total number of logical bytes in the table or materialized view.
+     */
+    readonly numTotalLogicalBytes: string;
+    /**
+     * The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    readonly numTotalPhysicalBytes: string;
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */

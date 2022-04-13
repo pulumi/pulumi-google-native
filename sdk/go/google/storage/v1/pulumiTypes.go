@@ -1103,172 +1103,6 @@ func (o BucketCorsItemResponseArrayOutput) Index(i pulumi.IntInput) BucketCorsIt
 	}).(BucketCorsItemResponseOutput)
 }
 
-// The bucket's custom placement configuration for Custom Dual Regions.
-type BucketCustomPlacementConfig struct {
-	// The list of regional locations in which data is placed.
-	DataLocations []string `pulumi:"dataLocations"`
-}
-
-// BucketCustomPlacementConfigInput is an input type that accepts BucketCustomPlacementConfigArgs and BucketCustomPlacementConfigOutput values.
-// You can construct a concrete instance of `BucketCustomPlacementConfigInput` via:
-//
-//          BucketCustomPlacementConfigArgs{...}
-type BucketCustomPlacementConfigInput interface {
-	pulumi.Input
-
-	ToBucketCustomPlacementConfigOutput() BucketCustomPlacementConfigOutput
-	ToBucketCustomPlacementConfigOutputWithContext(context.Context) BucketCustomPlacementConfigOutput
-}
-
-// The bucket's custom placement configuration for Custom Dual Regions.
-type BucketCustomPlacementConfigArgs struct {
-	// The list of regional locations in which data is placed.
-	DataLocations pulumi.StringArrayInput `pulumi:"dataLocations"`
-}
-
-func (BucketCustomPlacementConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCustomPlacementConfig)(nil)).Elem()
-}
-
-func (i BucketCustomPlacementConfigArgs) ToBucketCustomPlacementConfigOutput() BucketCustomPlacementConfigOutput {
-	return i.ToBucketCustomPlacementConfigOutputWithContext(context.Background())
-}
-
-func (i BucketCustomPlacementConfigArgs) ToBucketCustomPlacementConfigOutputWithContext(ctx context.Context) BucketCustomPlacementConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCustomPlacementConfigOutput)
-}
-
-func (i BucketCustomPlacementConfigArgs) ToBucketCustomPlacementConfigPtrOutput() BucketCustomPlacementConfigPtrOutput {
-	return i.ToBucketCustomPlacementConfigPtrOutputWithContext(context.Background())
-}
-
-func (i BucketCustomPlacementConfigArgs) ToBucketCustomPlacementConfigPtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCustomPlacementConfigOutput).ToBucketCustomPlacementConfigPtrOutputWithContext(ctx)
-}
-
-// BucketCustomPlacementConfigPtrInput is an input type that accepts BucketCustomPlacementConfigArgs, BucketCustomPlacementConfigPtr and BucketCustomPlacementConfigPtrOutput values.
-// You can construct a concrete instance of `BucketCustomPlacementConfigPtrInput` via:
-//
-//          BucketCustomPlacementConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type BucketCustomPlacementConfigPtrInput interface {
-	pulumi.Input
-
-	ToBucketCustomPlacementConfigPtrOutput() BucketCustomPlacementConfigPtrOutput
-	ToBucketCustomPlacementConfigPtrOutputWithContext(context.Context) BucketCustomPlacementConfigPtrOutput
-}
-
-type bucketCustomPlacementConfigPtrType BucketCustomPlacementConfigArgs
-
-func BucketCustomPlacementConfigPtr(v *BucketCustomPlacementConfigArgs) BucketCustomPlacementConfigPtrInput {
-	return (*bucketCustomPlacementConfigPtrType)(v)
-}
-
-func (*bucketCustomPlacementConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketCustomPlacementConfig)(nil)).Elem()
-}
-
-func (i *bucketCustomPlacementConfigPtrType) ToBucketCustomPlacementConfigPtrOutput() BucketCustomPlacementConfigPtrOutput {
-	return i.ToBucketCustomPlacementConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *bucketCustomPlacementConfigPtrType) ToBucketCustomPlacementConfigPtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketCustomPlacementConfigPtrOutput)
-}
-
-// The bucket's custom placement configuration for Custom Dual Regions.
-type BucketCustomPlacementConfigOutput struct{ *pulumi.OutputState }
-
-func (BucketCustomPlacementConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCustomPlacementConfig)(nil)).Elem()
-}
-
-func (o BucketCustomPlacementConfigOutput) ToBucketCustomPlacementConfigOutput() BucketCustomPlacementConfigOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigOutput) ToBucketCustomPlacementConfigOutputWithContext(ctx context.Context) BucketCustomPlacementConfigOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigOutput) ToBucketCustomPlacementConfigPtrOutput() BucketCustomPlacementConfigPtrOutput {
-	return o.ToBucketCustomPlacementConfigPtrOutputWithContext(context.Background())
-}
-
-func (o BucketCustomPlacementConfigOutput) ToBucketCustomPlacementConfigPtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketCustomPlacementConfig) *BucketCustomPlacementConfig {
-		return &v
-	}).(BucketCustomPlacementConfigPtrOutput)
-}
-
-// The list of regional locations in which data is placed.
-func (o BucketCustomPlacementConfigOutput) DataLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BucketCustomPlacementConfig) []string { return v.DataLocations }).(pulumi.StringArrayOutput)
-}
-
-type BucketCustomPlacementConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (BucketCustomPlacementConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketCustomPlacementConfig)(nil)).Elem()
-}
-
-func (o BucketCustomPlacementConfigPtrOutput) ToBucketCustomPlacementConfigPtrOutput() BucketCustomPlacementConfigPtrOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigPtrOutput) ToBucketCustomPlacementConfigPtrOutputWithContext(ctx context.Context) BucketCustomPlacementConfigPtrOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigPtrOutput) Elem() BucketCustomPlacementConfigOutput {
-	return o.ApplyT(func(v *BucketCustomPlacementConfig) BucketCustomPlacementConfig {
-		if v != nil {
-			return *v
-		}
-		var ret BucketCustomPlacementConfig
-		return ret
-	}).(BucketCustomPlacementConfigOutput)
-}
-
-// The list of regional locations in which data is placed.
-func (o BucketCustomPlacementConfigPtrOutput) DataLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BucketCustomPlacementConfig) []string {
-		if v == nil {
-			return nil
-		}
-		return v.DataLocations
-	}).(pulumi.StringArrayOutput)
-}
-
-// The bucket's custom placement configuration for Custom Dual Regions.
-type BucketCustomPlacementConfigResponse struct {
-	// The list of regional locations in which data is placed.
-	DataLocations []string `pulumi:"dataLocations"`
-}
-
-// The bucket's custom placement configuration for Custom Dual Regions.
-type BucketCustomPlacementConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (BucketCustomPlacementConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketCustomPlacementConfigResponse)(nil)).Elem()
-}
-
-func (o BucketCustomPlacementConfigResponseOutput) ToBucketCustomPlacementConfigResponseOutput() BucketCustomPlacementConfigResponseOutput {
-	return o
-}
-
-func (o BucketCustomPlacementConfigResponseOutput) ToBucketCustomPlacementConfigResponseOutputWithContext(ctx context.Context) BucketCustomPlacementConfigResponseOutput {
-	return o
-}
-
-// The list of regional locations in which data is placed.
-func (o BucketCustomPlacementConfigResponseOutput) DataLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BucketCustomPlacementConfigResponse) []string { return v.DataLocations }).(pulumi.StringArrayOutput)
-}
-
 // Encryption configuration for a bucket.
 type BucketEncryption struct {
 	// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -5863,8 +5697,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketBillingPtrInput)(nil)).Elem(), BucketBillingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsItemInput)(nil)).Elem(), BucketCorsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsItemArrayInput)(nil)).Elem(), BucketCorsItemArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigPtrInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionPtrInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamConfigurationInput)(nil)).Elem(), BucketIamConfigurationArgs{})
@@ -5924,9 +5756,6 @@ func init() {
 	pulumi.RegisterOutputType(BucketCorsItemArrayOutput{})
 	pulumi.RegisterOutputType(BucketCorsItemResponseOutput{})
 	pulumi.RegisterOutputType(BucketCorsItemResponseArrayOutput{})
-	pulumi.RegisterOutputType(BucketCustomPlacementConfigOutput{})
-	pulumi.RegisterOutputType(BucketCustomPlacementConfigPtrOutput{})
-	pulumi.RegisterOutputType(BucketCustomPlacementConfigResponseOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionResponseOutput{})

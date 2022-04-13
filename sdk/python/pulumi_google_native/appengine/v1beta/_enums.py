@@ -200,15 +200,15 @@ class NetworkInstanceIpMode(str, Enum):
     """
     INSTANCE_IP_MODE_UNSPECIFIED = "INSTANCE_IP_MODE_UNSPECIFIED"
     """
-    Unspecified should be treated as EXTERNAL
+    Unspecified is treated as EXTERNAL.
     """
     EXTERNAL = "EXTERNAL"
     """
-    VMs should be created with external and internal IPs
+    Instances are created with both internal and external IP addresses.
     """
     INTERNAL = "INTERNAL"
     """
-    VMs should be created with internal IPs only
+    Instances are created with internal IP addresses only.
     """
 
 

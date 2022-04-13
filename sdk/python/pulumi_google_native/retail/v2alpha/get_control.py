@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetControlResult:
-    def __init__(__self__, associated_serving_config_ids=None, display_name=None, facet_spec=None, name=None, rule=None, search_solution_use_case=None, solution_types=None):
+    def __init__(__self__, associated_serving_config_ids=None, display_name=None, facet_spec=None, name=None, rule=None, solution_types=None):
         if associated_serving_config_ids and not isinstance(associated_serving_config_ids, list):
             raise TypeError("Expected argument 'associated_serving_config_ids' to be a list")
         pulumi.set(__self__, "associated_serving_config_ids", associated_serving_config_ids)
@@ -34,9 +34,6 @@ class GetControlResult:
         if rule and not isinstance(rule, dict):
             raise TypeError("Expected argument 'rule' to be a dict")
         pulumi.set(__self__, "rule", rule)
-        if search_solution_use_case and not isinstance(search_solution_use_case, list):
-            raise TypeError("Expected argument 'search_solution_use_case' to be a list")
-        pulumi.set(__self__, "search_solution_use_case", search_solution_use_case)
         if solution_types and not isinstance(solution_types, list):
             raise TypeError("Expected argument 'solution_types' to be a list")
         pulumi.set(__self__, "solution_types", solution_types)
@@ -82,14 +79,6 @@ class GetControlResult:
         return pulumi.get(self, "rule")
 
     @property
-    @pulumi.getter(name="searchSolutionUseCase")
-    def search_solution_use_case(self) -> Sequence[str]:
-        """
-        Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-        """
-        return pulumi.get(self, "search_solution_use_case")
-
-    @property
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> Sequence[str]:
         """
@@ -109,7 +98,6 @@ class AwaitableGetControlResult(GetControlResult):
             facet_spec=self.facet_spec,
             name=self.name,
             rule=self.rule,
-            search_solution_use_case=self.search_solution_use_case,
             solution_types=self.solution_types)
 
 
@@ -138,7 +126,6 @@ def get_control(catalog_id: Optional[str] = None,
         facet_spec=__ret__.facet_spec,
         name=__ret__.name,
         rule=__ret__.rule,
-        search_solution_use_case=__ret__.search_solution_use_case,
         solution_types=__ret__.solution_types)
 
 

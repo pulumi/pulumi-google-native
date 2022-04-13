@@ -70,10 +70,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        /// </summary>
-        public readonly string EndpointFilter;
-        /// <summary>
         /// Optional. Set of label tags associated with the ServiceBinding resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -96,8 +92,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 
             string description,
 
-            string endpointFilter,
-
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -108,7 +102,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         {
             CreateTime = createTime;
             Description = description;
-            EndpointFilter = endpointFilter;
             Labels = labels;
             Name = name;
             Service = service;

@@ -43,10 +43,6 @@ export class ServiceBinding extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-     */
-    public readonly endpointFilter!: pulumi.Output<string>;
-    /**
      * Optional. Set of label tags associated with the ServiceBinding resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -81,7 +77,6 @@ export class ServiceBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceBindingId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["endpointFilter"] = args ? args.endpointFilter : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -93,7 +88,6 @@ export class ServiceBinding extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
-            resourceInputs["endpointFilter"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["service"] = undefined /*out*/;
@@ -112,10 +106,6 @@ export interface ServiceBindingArgs {
      * Optional. A free-text description of the resource. Max length 1024 characters.
      */
     description?: pulumi.Input<string>;
-    /**
-     * Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-     */
-    endpointFilter?: pulumi.Input<string>;
     /**
      * Optional. Set of label tags associated with the ServiceBinding resource.
      */

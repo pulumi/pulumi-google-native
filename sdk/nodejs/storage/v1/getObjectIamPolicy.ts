@@ -18,7 +18,6 @@ export function getObjectIamPolicy(args: GetObjectIamPolicyArgs, opts?: pulumi.I
         "bucket": args.bucket,
         "generation": args.generation,
         "object": args.object,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -27,7 +26,6 @@ export interface GetObjectIamPolicyArgs {
     bucket: string;
     generation?: string;
     object: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -62,6 +60,5 @@ export interface GetObjectIamPolicyOutputArgs {
     bucket: pulumi.Input<string>;
     generation?: pulumi.Input<string>;
     object: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

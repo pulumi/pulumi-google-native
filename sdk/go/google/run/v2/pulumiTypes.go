@@ -14,6 +14,8 @@ import (
 type GoogleCloudRunV2BinaryAuthorization struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification *string `pulumi:"breakglassJustification"`
+	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+	Policy *string `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault *bool `pulumi:"useDefault"`
 }
@@ -33,6 +35,8 @@ type GoogleCloudRunV2BinaryAuthorizationInput interface {
 type GoogleCloudRunV2BinaryAuthorizationArgs struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification pulumi.StringPtrInput `pulumi:"breakglassJustification"`
+	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
 }
@@ -120,6 +124,11 @@ func (o GoogleCloudRunV2BinaryAuthorizationOutput) BreakglassJustification() pul
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
 }
 
+// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+func (o GoogleCloudRunV2BinaryAuthorizationOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunV2BinaryAuthorizationOutput) UseDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *bool { return v.UseDefault }).(pulumi.BoolPtrOutput)
@@ -159,6 +168,16 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) BreakglassJustification() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2BinaryAuthorization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2BinaryAuthorization) *bool {
@@ -173,6 +192,8 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPt
 type GoogleCloudRunV2BinaryAuthorizationResponse struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification string `pulumi:"breakglassJustification"`
+	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+	Policy string `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault bool `pulumi:"useDefault"`
 }
@@ -195,6 +216,11 @@ func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunV2Bin
 // If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.BreakglassJustification }).(pulumi.StringOutput)
+}
+
+// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.

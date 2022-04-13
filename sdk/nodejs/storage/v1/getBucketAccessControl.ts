@@ -17,7 +17,6 @@ export function getBucketAccessControl(args: GetBucketAccessControlArgs, opts?: 
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketAccessControl", {
         "bucket": args.bucket,
         "entity": args.entity,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -25,7 +24,6 @@ export function getBucketAccessControl(args: GetBucketAccessControlArgs, opts?: 
 export interface GetBucketAccessControlArgs {
     bucket: string;
     entity: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -90,6 +88,5 @@ export function getBucketAccessControlOutput(args: GetBucketAccessControlOutputA
 export interface GetBucketAccessControlOutputArgs {
     bucket: pulumi.Input<string>;
     entity: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

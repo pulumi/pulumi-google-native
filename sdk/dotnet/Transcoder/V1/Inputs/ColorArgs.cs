@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
 {
 
     /// <summary>
-    /// Color preprocessing configuration.
+    /// Color preprocessing configuration. **Note:** This configuration is not supported.
     /// </summary>
     public sealed class ColorArgs : Pulumi.ResourceArgs
     {

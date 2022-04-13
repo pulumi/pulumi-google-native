@@ -60,14 +60,30 @@ type LookupTableResult struct {
 	MaterializedView MaterializedViewDefinitionResponse `pulumi:"materializedView"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model ModelDefinitionResponse `pulumi:"model"`
+	// Number of logical bytes that are less than 90 days old.
+	NumActiveLogicalBytes string `pulumi:"numActiveLogicalBytes"`
+	// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumActivePhysicalBytes string `pulumi:"numActivePhysicalBytes"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes string `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
 	NumLongTermBytes string `pulumi:"numLongTermBytes"`
+	// Number of logical bytes that are more than 90 days old.
+	NumLongTermLogicalBytes string `pulumi:"numLongTermLogicalBytes"`
+	// Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumLongTermPhysicalBytes string `pulumi:"numLongTermPhysicalBytes"`
+	// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumPartitions string `pulumi:"numPartitions"`
 	// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes string `pulumi:"numPhysicalBytes"`
 	// The number of rows of data in this table, excluding any data in the streaming buffer.
 	NumRows string `pulumi:"numRows"`
+	// Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumTimeTravelPhysicalBytes string `pulumi:"numTimeTravelPhysicalBytes"`
+	// Total number of logical bytes in the table or materialized view.
+	NumTotalLogicalBytes string `pulumi:"numTotalLogicalBytes"`
+	// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumTotalPhysicalBytes string `pulumi:"numTotalPhysicalBytes"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningResponse `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -204,6 +220,16 @@ func (o LookupTableResultOutput) Model() ModelDefinitionResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) ModelDefinitionResponse { return v.Model }).(ModelDefinitionResponseOutput)
 }
 
+// Number of logical bytes that are less than 90 days old.
+func (o LookupTableResultOutput) NumActiveLogicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumActiveLogicalBytes }).(pulumi.StringOutput)
+}
+
+// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+func (o LookupTableResultOutput) NumActivePhysicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumActivePhysicalBytes }).(pulumi.StringOutput)
+}
+
 // The size of this table in bytes, excluding any data in the streaming buffer.
 func (o LookupTableResultOutput) NumBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumBytes }).(pulumi.StringOutput)
@@ -214,6 +240,21 @@ func (o LookupTableResultOutput) NumLongTermBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumLongTermBytes }).(pulumi.StringOutput)
 }
 
+// Number of logical bytes that are more than 90 days old.
+func (o LookupTableResultOutput) NumLongTermLogicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumLongTermLogicalBytes }).(pulumi.StringOutput)
+}
+
+// Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+func (o LookupTableResultOutput) NumLongTermPhysicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumLongTermPhysicalBytes }).(pulumi.StringOutput)
+}
+
+// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+func (o LookupTableResultOutput) NumPartitions() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumPartitions }).(pulumi.StringOutput)
+}
+
 // [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 func (o LookupTableResultOutput) NumPhysicalBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumPhysicalBytes }).(pulumi.StringOutput)
@@ -222,6 +263,21 @@ func (o LookupTableResultOutput) NumPhysicalBytes() pulumi.StringOutput {
 // The number of rows of data in this table, excluding any data in the streaming buffer.
 func (o LookupTableResultOutput) NumRows() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.NumRows }).(pulumi.StringOutput)
+}
+
+// Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+func (o LookupTableResultOutput) NumTimeTravelPhysicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumTimeTravelPhysicalBytes }).(pulumi.StringOutput)
+}
+
+// Total number of logical bytes in the table or materialized view.
+func (o LookupTableResultOutput) NumTotalLogicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumTotalLogicalBytes }).(pulumi.StringOutput)
+}
+
+// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+func (o LookupTableResultOutput) NumTotalPhysicalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.NumTotalPhysicalBytes }).(pulumi.StringOutput)
 }
 
 // [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

@@ -17,7 +17,6 @@ export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.I
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketIamPolicy", {
         "bucket": args.bucket,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -25,7 +24,6 @@ export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.I
 export interface GetBucketIamPolicyArgs {
     bucket: string;
     optionsRequestedPolicyVersion?: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -59,6 +57,5 @@ export function getBucketIamPolicyOutput(args: GetBucketIamPolicyOutputArgs, opt
 export interface GetBucketIamPolicyOutputArgs {
     bucket: pulumi.Input<string>;
     optionsRequestedPolicyVersion?: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

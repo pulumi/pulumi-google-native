@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_bytes=None, num_long_term_bytes=None, num_physical_bytes=None, num_rows=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
         if clone_definition and not isinstance(clone_definition, dict):
             raise TypeError("Expected argument 'clone_definition' to be a dict")
         pulumi.set(__self__, "clone_definition", clone_definition)
@@ -67,18 +67,42 @@ class GetTableResult:
         if model and not isinstance(model, dict):
             raise TypeError("Expected argument 'model' to be a dict")
         pulumi.set(__self__, "model", model)
+        if num_active_logical_bytes and not isinstance(num_active_logical_bytes, str):
+            raise TypeError("Expected argument 'num_active_logical_bytes' to be a str")
+        pulumi.set(__self__, "num_active_logical_bytes", num_active_logical_bytes)
+        if num_active_physical_bytes and not isinstance(num_active_physical_bytes, str):
+            raise TypeError("Expected argument 'num_active_physical_bytes' to be a str")
+        pulumi.set(__self__, "num_active_physical_bytes", num_active_physical_bytes)
         if num_bytes and not isinstance(num_bytes, str):
             raise TypeError("Expected argument 'num_bytes' to be a str")
         pulumi.set(__self__, "num_bytes", num_bytes)
         if num_long_term_bytes and not isinstance(num_long_term_bytes, str):
             raise TypeError("Expected argument 'num_long_term_bytes' to be a str")
         pulumi.set(__self__, "num_long_term_bytes", num_long_term_bytes)
+        if num_long_term_logical_bytes and not isinstance(num_long_term_logical_bytes, str):
+            raise TypeError("Expected argument 'num_long_term_logical_bytes' to be a str")
+        pulumi.set(__self__, "num_long_term_logical_bytes", num_long_term_logical_bytes)
+        if num_long_term_physical_bytes and not isinstance(num_long_term_physical_bytes, str):
+            raise TypeError("Expected argument 'num_long_term_physical_bytes' to be a str")
+        pulumi.set(__self__, "num_long_term_physical_bytes", num_long_term_physical_bytes)
+        if num_partitions and not isinstance(num_partitions, str):
+            raise TypeError("Expected argument 'num_partitions' to be a str")
+        pulumi.set(__self__, "num_partitions", num_partitions)
         if num_physical_bytes and not isinstance(num_physical_bytes, str):
             raise TypeError("Expected argument 'num_physical_bytes' to be a str")
         pulumi.set(__self__, "num_physical_bytes", num_physical_bytes)
         if num_rows and not isinstance(num_rows, str):
             raise TypeError("Expected argument 'num_rows' to be a str")
         pulumi.set(__self__, "num_rows", num_rows)
+        if num_time_travel_physical_bytes and not isinstance(num_time_travel_physical_bytes, str):
+            raise TypeError("Expected argument 'num_time_travel_physical_bytes' to be a str")
+        pulumi.set(__self__, "num_time_travel_physical_bytes", num_time_travel_physical_bytes)
+        if num_total_logical_bytes and not isinstance(num_total_logical_bytes, str):
+            raise TypeError("Expected argument 'num_total_logical_bytes' to be a str")
+        pulumi.set(__self__, "num_total_logical_bytes", num_total_logical_bytes)
+        if num_total_physical_bytes and not isinstance(num_total_physical_bytes, str):
+            raise TypeError("Expected argument 'num_total_physical_bytes' to be a str")
+        pulumi.set(__self__, "num_total_physical_bytes", num_total_physical_bytes)
         if range_partitioning and not isinstance(range_partitioning, dict):
             raise TypeError("Expected argument 'range_partitioning' to be a dict")
         pulumi.set(__self__, "range_partitioning", range_partitioning)
@@ -239,6 +263,22 @@ class GetTableResult:
         return pulumi.get(self, "model")
 
     @property
+    @pulumi.getter(name="numActiveLogicalBytes")
+    def num_active_logical_bytes(self) -> str:
+        """
+        Number of logical bytes that are less than 90 days old.
+        """
+        return pulumi.get(self, "num_active_logical_bytes")
+
+    @property
+    @pulumi.getter(name="numActivePhysicalBytes")
+    def num_active_physical_bytes(self) -> str:
+        """
+        Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_active_physical_bytes")
+
+    @property
     @pulumi.getter(name="numBytes")
     def num_bytes(self) -> str:
         """
@@ -255,6 +295,30 @@ class GetTableResult:
         return pulumi.get(self, "num_long_term_bytes")
 
     @property
+    @pulumi.getter(name="numLongTermLogicalBytes")
+    def num_long_term_logical_bytes(self) -> str:
+        """
+        Number of logical bytes that are more than 90 days old.
+        """
+        return pulumi.get(self, "num_long_term_logical_bytes")
+
+    @property
+    @pulumi.getter(name="numLongTermPhysicalBytes")
+    def num_long_term_physical_bytes(self) -> str:
+        """
+        Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_long_term_physical_bytes")
+
+    @property
+    @pulumi.getter(name="numPartitions")
+    def num_partitions(self) -> str:
+        """
+        The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_partitions")
+
+    @property
     @pulumi.getter(name="numPhysicalBytes")
     def num_physical_bytes(self) -> str:
         """
@@ -269,6 +333,30 @@ class GetTableResult:
         The number of rows of data in this table, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_rows")
+
+    @property
+    @pulumi.getter(name="numTimeTravelPhysicalBytes")
+    def num_time_travel_physical_bytes(self) -> str:
+        """
+        Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_time_travel_physical_bytes")
+
+    @property
+    @pulumi.getter(name="numTotalLogicalBytes")
+    def num_total_logical_bytes(self) -> str:
+        """
+        Total number of logical bytes in the table or materialized view.
+        """
+        return pulumi.get(self, "num_total_logical_bytes")
+
+    @property
+    @pulumi.getter(name="numTotalPhysicalBytes")
+    def num_total_physical_bytes(self) -> str:
+        """
+        The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_total_physical_bytes")
 
     @property
     @pulumi.getter(name="rangePartitioning")
@@ -373,10 +461,18 @@ class AwaitableGetTableResult(GetTableResult):
             location=self.location,
             materialized_view=self.materialized_view,
             model=self.model,
+            num_active_logical_bytes=self.num_active_logical_bytes,
+            num_active_physical_bytes=self.num_active_physical_bytes,
             num_bytes=self.num_bytes,
             num_long_term_bytes=self.num_long_term_bytes,
+            num_long_term_logical_bytes=self.num_long_term_logical_bytes,
+            num_long_term_physical_bytes=self.num_long_term_physical_bytes,
+            num_partitions=self.num_partitions,
             num_physical_bytes=self.num_physical_bytes,
             num_rows=self.num_rows,
+            num_time_travel_physical_bytes=self.num_time_travel_physical_bytes,
+            num_total_logical_bytes=self.num_total_logical_bytes,
+            num_total_physical_bytes=self.num_total_physical_bytes,
             range_partitioning=self.range_partitioning,
             require_partition_filter=self.require_partition_filter,
             schema=self.schema,
@@ -425,10 +521,18 @@ def get_table(dataset_id: Optional[str] = None,
         location=__ret__.location,
         materialized_view=__ret__.materialized_view,
         model=__ret__.model,
+        num_active_logical_bytes=__ret__.num_active_logical_bytes,
+        num_active_physical_bytes=__ret__.num_active_physical_bytes,
         num_bytes=__ret__.num_bytes,
         num_long_term_bytes=__ret__.num_long_term_bytes,
+        num_long_term_logical_bytes=__ret__.num_long_term_logical_bytes,
+        num_long_term_physical_bytes=__ret__.num_long_term_physical_bytes,
+        num_partitions=__ret__.num_partitions,
         num_physical_bytes=__ret__.num_physical_bytes,
         num_rows=__ret__.num_rows,
+        num_time_travel_physical_bytes=__ret__.num_time_travel_physical_bytes,
+        num_total_logical_bytes=__ret__.num_total_logical_bytes,
+        num_total_physical_bytes=__ret__.num_total_physical_bytes,
         range_partitioning=__ret__.range_partitioning,
         require_partition_filter=__ret__.require_partition_filter,
         schema=__ret__.schema,

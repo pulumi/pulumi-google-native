@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     public sealed class AudioArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable boosting high frequency components. The default is `false`.
+        /// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
         /// </summary>
         [Input("highBoost")]
         public Input<bool>? HighBoost { get; set; }
 
         /// <summary>
-        /// Enable boosting low frequency components. The default is `false`.
+        /// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
         /// </summary>
         [Input("lowBoost")]
         public Input<bool>? LowBoost { get; set; }

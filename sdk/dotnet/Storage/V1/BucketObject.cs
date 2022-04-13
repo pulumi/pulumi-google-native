@@ -433,12 +433,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string>? Projection { get; set; }
 
         /// <summary>
-        /// The project to be billed for this request if the target bucket is requester-pays bucket.
-        /// </summary>
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
-
-        /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
         [Input("retentionExpirationTime")]

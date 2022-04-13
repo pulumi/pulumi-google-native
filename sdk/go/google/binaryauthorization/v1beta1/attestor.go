@@ -17,7 +17,7 @@ type Attestor struct {
 
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+	// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -73,7 +73,7 @@ type attestorArgs struct {
 	AttestorId string `pulumi:"attestorId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
-	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+	// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
 	Etag *string `pulumi:"etag"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name    *string `pulumi:"name"`
@@ -88,7 +88,7 @@ type AttestorArgs struct {
 	AttestorId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
-	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+	// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
 	Etag pulumi.StringPtrInput
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name    pulumi.StringPtrInput

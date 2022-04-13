@@ -128,7 +128,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> str:
         """
-        The range of external IPv6 addresses that are owned by this subnetwork.
+        The external IPv6 address range that is assigned to this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 
@@ -152,7 +152,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="internalIpv6Prefix")
     def internal_ipv6_prefix(self) -> str:
         """
-        The range of internal IPv6 addresses that are owned by this subnetwork. Note this is for general VM to VM communication, not to be confused with the ipv6_cidr_range field.
+        The internal IPv6 address range that is assigned to this subnetwork.
         """
         return pulumi.get(self, "internal_ipv6_prefix")
 
@@ -168,7 +168,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="ipv6AccessType")
     def ipv6_access_type(self) -> str:
         """
-        The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+        The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
         """
         return pulumi.get(self, "ipv6_access_type")
 
@@ -176,7 +176,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="ipv6CidrRange")
     def ipv6_cidr_range(self) -> str:
         """
-        The range of internal IPv6 addresses that are owned by this subnetwork. Note this will be for private google access only eventually.
+        This field is for internal use.
         """
         return pulumi.get(self, "ipv6_cidr_range")
 
@@ -224,7 +224,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> str:
         """
-        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+        This field is for internal use. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 

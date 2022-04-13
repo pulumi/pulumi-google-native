@@ -26,7 +26,7 @@ class AttestorArgs:
         The set of arguments for constructing a Attestor resource.
         :param pulumi.Input[str] attestor_id: Required. The attestors ID.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-        :param pulumi.Input[str] etag: Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        :param pulumi.Input[str] etag: Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         :param pulumi.Input['UserOwnedDrydockNoteArgs'] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
         """
@@ -70,7 +70,7 @@ class AttestorArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         """
         return pulumi.get(self, "etag")
 
@@ -131,7 +131,7 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attestor_id: Required. The attestors ID.
         :param pulumi.Input[str] description: Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-        :param pulumi.Input[str] etag: Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        :param pulumi.Input[str] etag: Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         :param pulumi.Input[str] name: The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         :param pulumi.Input[pulumi.InputType['UserOwnedDrydockNoteArgs']] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
         """
@@ -227,7 +227,7 @@ class Attestor(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+        Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
         """
         return pulumi.get(self, "etag")
 

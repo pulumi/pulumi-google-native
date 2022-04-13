@@ -65,6 +65,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Unique identifier for the device.
+        /// </summary>
+        [Output("deviceId")]
+        public Output<string> DeviceId { get; private set; } = null!;
+
+        /// <summary>
         /// Type of device.
         /// </summary>
         [Output("deviceType")]
@@ -240,6 +246,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         [Input("assetTag")]
         public Input<string>? AssetTag { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the device.
+        /// </summary>
+        [Input("deviceId")]
+        public Input<string>? DeviceId { get; set; }
 
         /// <summary>
         /// Most recent time when device synced with this service.

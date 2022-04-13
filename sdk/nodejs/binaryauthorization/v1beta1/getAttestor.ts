@@ -31,7 +31,7 @@ export interface GetAttestorResult {
      */
     readonly description: string;
     /**
-     * Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
+     * Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
      */
     readonly etag: string;
     /**

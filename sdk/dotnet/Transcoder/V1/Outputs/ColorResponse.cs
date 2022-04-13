@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 {
 
     /// <summary>
-    /// Color preprocessing configuration.
+    /// Color preprocessing configuration. **Note:** This configuration is not supported.
     /// </summary>
     [OutputType]
     public sealed class ColorResponse

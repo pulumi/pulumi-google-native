@@ -57,10 +57,6 @@ export class Control extends pulumi.CustomResource {
      */
     public readonly rule!: pulumi.Output<outputs.retail.v2beta.GoogleCloudRetailV2betaRuleResponse>;
     /**
-     * Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-     */
-    public readonly searchSolutionUseCase!: pulumi.Output<string[]>;
-    /**
      * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
      */
     public readonly solutionTypes!: pulumi.Output<string[]>;
@@ -85,9 +81,6 @@ export class Control extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.searchSolutionUseCase === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'searchSolutionUseCase'");
-            }
             if ((!args || args.solutionTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'solutionTypes'");
             }
@@ -99,7 +92,6 @@ export class Control extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rule"] = args ? args.rule : undefined;
-            resourceInputs["searchSolutionUseCase"] = args ? args.searchSolutionUseCase : undefined;
             resourceInputs["solutionTypes"] = args ? args.solutionTypes : undefined;
             resourceInputs["associatedServingConfigIds"] = undefined /*out*/;
         } else {
@@ -108,7 +100,6 @@ export class Control extends pulumi.CustomResource {
             resourceInputs["facetSpec"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["rule"] = undefined /*out*/;
-            resourceInputs["searchSolutionUseCase"] = undefined /*out*/;
             resourceInputs["solutionTypes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -143,10 +134,6 @@ export interface ControlArgs {
      * A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
      */
     rule?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaRuleArgs>;
-    /**
-     * Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
-     */
-    searchSolutionUseCase: pulumi.Input<pulumi.Input<enums.retail.v2beta.ControlSearchSolutionUseCaseItem>[]>;
     /**
      * Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
      */

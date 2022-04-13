@@ -47,6 +47,10 @@ export class CloneJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The time the clone job was ended.
+     */
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    /**
      * Provides details for the errors that led to the Clone Job's state.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.vmmigration.v1.StatusResponse>;
@@ -91,6 +95,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -98,6 +103,7 @@ export class CloneJob extends pulumi.CustomResource {
         } else {
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

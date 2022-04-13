@@ -22,6 +22,8 @@ type CutoverJob struct {
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseOutput `pulumi:"computeEngineTargetDetails"`
 	// The time the cutover job was created (as an API call, not when it was actually created in the target).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time the cutover job had finished.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Provides details for the errors that led to the Cutover Job's state.
 	Error StatusResponseOutput `pulumi:"error"`
 	// The name of the cutover job.

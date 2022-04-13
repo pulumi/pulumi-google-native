@@ -16,7 +16,6 @@ class ServiceBindingArgs:
                  service: pulumi.Input[str],
                  service_binding_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -26,7 +25,6 @@ class ServiceBindingArgs:
         :param pulumi.Input[str] service: The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
         :param pulumi.Input[str] service_binding_id: Required. Short name of the ServiceBinding resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[str] endpoint_filter: Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
         """
@@ -34,8 +32,6 @@ class ServiceBindingArgs:
         pulumi.set(__self__, "service_binding_id", service_binding_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if endpoint_filter is not None:
-            pulumi.set(__self__, "endpoint_filter", endpoint_filter)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -80,18 +76,6 @@ class ServiceBindingArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="endpointFilter")
-    def endpoint_filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        """
-        return pulumi.get(self, "endpoint_filter")
-
-    @endpoint_filter.setter
-    def endpoint_filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "endpoint_filter", value)
 
     @property
     @pulumi.getter
@@ -142,7 +126,6 @@ class ServiceBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -156,7 +139,6 @@ class ServiceBinding(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
-        :param pulumi.Input[str] endpoint_filter: Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
         :param pulumi.Input[str] service: The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
@@ -187,7 +169,6 @@ class ServiceBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 endpoint_filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -207,7 +188,6 @@ class ServiceBinding(pulumi.CustomResource):
             __props__ = ServiceBindingArgs.__new__(ServiceBindingArgs)
 
             __props__.__dict__["description"] = description
-            __props__.__dict__["endpoint_filter"] = endpoint_filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -244,7 +224,6 @@ class ServiceBinding(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
-        __props__.__dict__["endpoint_filter"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["service"] = None
@@ -266,14 +245,6 @@ class ServiceBinding(pulumi.CustomResource):
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter(name="endpointFilter")
-    def endpoint_filter(self) -> pulumi.Output[str]:
-        """
-        Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-        """
-        return pulumi.get(self, "endpoint_filter")
 
     @property
     @pulumi.getter

@@ -101,6 +101,14 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly model!: pulumi.Output<outputs.bigquery.v2.ModelDefinitionResponse>;
     /**
+     * Number of logical bytes that are less than 90 days old.
+     */
+    public /*out*/ readonly numActiveLogicalBytes!: pulumi.Output<string>;
+    /**
+     * Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    public /*out*/ readonly numActivePhysicalBytes!: pulumi.Output<string>;
+    /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
     public /*out*/ readonly numBytes!: pulumi.Output<string>;
@@ -109,6 +117,18 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly numLongTermBytes!: pulumi.Output<string>;
     /**
+     * Number of logical bytes that are more than 90 days old.
+     */
+    public /*out*/ readonly numLongTermLogicalBytes!: pulumi.Output<string>;
+    /**
+     * Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    public /*out*/ readonly numLongTermPhysicalBytes!: pulumi.Output<string>;
+    /**
+     * The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    public /*out*/ readonly numPartitions!: pulumi.Output<string>;
+    /**
      * [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
      */
     public /*out*/ readonly numPhysicalBytes!: pulumi.Output<string>;
@@ -116,6 +136,18 @@ export class Table extends pulumi.CustomResource {
      * The number of rows of data in this table, excluding any data in the streaming buffer.
      */
     public /*out*/ readonly numRows!: pulumi.Output<string>;
+    /**
+     * Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    public /*out*/ readonly numTimeTravelPhysicalBytes!: pulumi.Output<string>;
+    /**
+     * Total number of logical bytes in the table or materialized view.
+     */
+    public /*out*/ readonly numTotalLogicalBytes!: pulumi.Output<string>;
+    /**
+     * The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+     */
+    public /*out*/ readonly numTotalPhysicalBytes!: pulumi.Output<string>;
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */
@@ -195,10 +227,18 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["numActiveLogicalBytes"] = undefined /*out*/;
+            resourceInputs["numActivePhysicalBytes"] = undefined /*out*/;
             resourceInputs["numBytes"] = undefined /*out*/;
             resourceInputs["numLongTermBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermLogicalBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["numPartitions"] = undefined /*out*/;
             resourceInputs["numPhysicalBytes"] = undefined /*out*/;
             resourceInputs["numRows"] = undefined /*out*/;
+            resourceInputs["numTimeTravelPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["numTotalLogicalBytes"] = undefined /*out*/;
+            resourceInputs["numTotalPhysicalBytes"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotDefinition"] = undefined /*out*/;
             resourceInputs["streamingBuffer"] = undefined /*out*/;
@@ -220,10 +260,18 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["materializedView"] = undefined /*out*/;
             resourceInputs["model"] = undefined /*out*/;
+            resourceInputs["numActiveLogicalBytes"] = undefined /*out*/;
+            resourceInputs["numActivePhysicalBytes"] = undefined /*out*/;
             resourceInputs["numBytes"] = undefined /*out*/;
             resourceInputs["numLongTermBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermLogicalBytes"] = undefined /*out*/;
+            resourceInputs["numLongTermPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["numPartitions"] = undefined /*out*/;
             resourceInputs["numPhysicalBytes"] = undefined /*out*/;
             resourceInputs["numRows"] = undefined /*out*/;
+            resourceInputs["numTimeTravelPhysicalBytes"] = undefined /*out*/;
+            resourceInputs["numTotalLogicalBytes"] = undefined /*out*/;
+            resourceInputs["numTotalPhysicalBytes"] = undefined /*out*/;
             resourceInputs["rangePartitioning"] = undefined /*out*/;
             resourceInputs["requirePartitionFilter"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;

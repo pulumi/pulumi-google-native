@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HubIamPolicy{}
 	case "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
 		r = &InternalRangeIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceConnectPolicyIamPolicy":
+		r = &ServiceConnectPolicyIamPolicy{}
+	case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy":
+		r = &ServiceInstanceIamPolicy{}
 	case "google-native:networkconnectivity/v1alpha1:Spoke":
 		r = &Spoke{}
 	case "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy":

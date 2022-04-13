@@ -132,6 +132,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.ModelDefinitionResponse Model;
         /// <summary>
+        /// Number of logical bytes that are less than 90 days old.
+        /// </summary>
+        public readonly string NumActiveLogicalBytes;
+        /// <summary>
+        /// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        public readonly string NumActivePhysicalBytes;
+        /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
         public readonly string NumBytes;
@@ -140,6 +148,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly string NumLongTermBytes;
         /// <summary>
+        /// Number of logical bytes that are more than 90 days old.
+        /// </summary>
+        public readonly string NumLongTermLogicalBytes;
+        /// <summary>
+        /// Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        public readonly string NumLongTermPhysicalBytes;
+        /// <summary>
+        /// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        public readonly string NumPartitions;
+        /// <summary>
         /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
         /// </summary>
         public readonly string NumPhysicalBytes;
@@ -147,6 +167,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// The number of rows of data in this table, excluding any data in the streaming buffer.
         /// </summary>
         public readonly string NumRows;
+        /// <summary>
+        /// Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        public readonly string NumTimeTravelPhysicalBytes;
+        /// <summary>
+        /// Total number of logical bytes in the table or materialized view.
+        /// </summary>
+        public readonly string NumTotalLogicalBytes;
+        /// <summary>
+        /// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        public readonly string NumTotalPhysicalBytes;
         /// <summary>
         /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
         /// </summary>
@@ -222,13 +254,29 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             Outputs.ModelDefinitionResponse model,
 
+            string numActiveLogicalBytes,
+
+            string numActivePhysicalBytes,
+
             string numBytes,
 
             string numLongTermBytes,
 
+            string numLongTermLogicalBytes,
+
+            string numLongTermPhysicalBytes,
+
+            string numPartitions,
+
             string numPhysicalBytes,
 
             string numRows,
+
+            string numTimeTravelPhysicalBytes,
+
+            string numTotalLogicalBytes,
+
+            string numTotalPhysicalBytes,
 
             Outputs.RangePartitioningResponse rangePartitioning,
 
@@ -266,10 +314,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             Location = location;
             MaterializedView = materializedView;
             Model = model;
+            NumActiveLogicalBytes = numActiveLogicalBytes;
+            NumActivePhysicalBytes = numActivePhysicalBytes;
             NumBytes = numBytes;
             NumLongTermBytes = numLongTermBytes;
+            NumLongTermLogicalBytes = numLongTermLogicalBytes;
+            NumLongTermPhysicalBytes = numLongTermPhysicalBytes;
+            NumPartitions = numPartitions;
             NumPhysicalBytes = numPhysicalBytes;
             NumRows = numRows;
+            NumTimeTravelPhysicalBytes = numTimeTravelPhysicalBytes;
+            NumTotalLogicalBytes = numTotalLogicalBytes;
+            NumTotalPhysicalBytes = numTotalPhysicalBytes;
             RangePartitioning = rangePartitioning;
             RequirePartitionFilter = requirePartitionFilter;
             Schema = schema;

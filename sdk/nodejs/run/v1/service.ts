@@ -97,7 +97,7 @@ export interface ServiceArgs {
      */
     apiVersion?: pulumi.Input<string>;
     /**
-     * Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
+     * Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
      */
     dryRun?: pulumi.Input<string>;
     /**

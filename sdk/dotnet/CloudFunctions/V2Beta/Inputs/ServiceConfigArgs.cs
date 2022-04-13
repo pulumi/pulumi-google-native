@@ -57,6 +57,18 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
         [Input("minInstanceCount")]
         public Input<int>? MinInstanceCount { get; set; }
 
+        [Input("secretEnvironmentVariables")]
+        private InputList<Inputs.SecretEnvVarArgs>? _secretEnvironmentVariables;
+
+        /// <summary>
+        /// Secret environment variables configuration.
+        /// </summary>
+        public InputList<Inputs.SecretEnvVarArgs> SecretEnvironmentVariables
+        {
+            get => _secretEnvironmentVariables ?? (_secretEnvironmentVariables = new InputList<Inputs.SecretEnvVarArgs>());
+            set => _secretEnvironmentVariables = value;
+        }
+
         /// <summary>
         /// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         /// </summary>

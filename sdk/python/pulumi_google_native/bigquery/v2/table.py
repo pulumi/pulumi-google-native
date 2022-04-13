@@ -408,10 +408,18 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["kind"] = None
             __props__.__dict__["last_modified_time"] = None
             __props__.__dict__["location"] = None
+            __props__.__dict__["num_active_logical_bytes"] = None
+            __props__.__dict__["num_active_physical_bytes"] = None
             __props__.__dict__["num_bytes"] = None
             __props__.__dict__["num_long_term_bytes"] = None
+            __props__.__dict__["num_long_term_logical_bytes"] = None
+            __props__.__dict__["num_long_term_physical_bytes"] = None
+            __props__.__dict__["num_partitions"] = None
             __props__.__dict__["num_physical_bytes"] = None
             __props__.__dict__["num_rows"] = None
+            __props__.__dict__["num_time_travel_physical_bytes"] = None
+            __props__.__dict__["num_total_logical_bytes"] = None
+            __props__.__dict__["num_total_physical_bytes"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["snapshot_definition"] = None
             __props__.__dict__["streaming_buffer"] = None
@@ -454,10 +462,18 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["materialized_view"] = None
         __props__.__dict__["model"] = None
+        __props__.__dict__["num_active_logical_bytes"] = None
+        __props__.__dict__["num_active_physical_bytes"] = None
         __props__.__dict__["num_bytes"] = None
         __props__.__dict__["num_long_term_bytes"] = None
+        __props__.__dict__["num_long_term_logical_bytes"] = None
+        __props__.__dict__["num_long_term_physical_bytes"] = None
+        __props__.__dict__["num_partitions"] = None
         __props__.__dict__["num_physical_bytes"] = None
         __props__.__dict__["num_rows"] = None
+        __props__.__dict__["num_time_travel_physical_bytes"] = None
+        __props__.__dict__["num_total_logical_bytes"] = None
+        __props__.__dict__["num_total_physical_bytes"] = None
         __props__.__dict__["range_partitioning"] = None
         __props__.__dict__["require_partition_filter"] = None
         __props__.__dict__["schema"] = None
@@ -599,6 +615,22 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "model")
 
     @property
+    @pulumi.getter(name="numActiveLogicalBytes")
+    def num_active_logical_bytes(self) -> pulumi.Output[str]:
+        """
+        Number of logical bytes that are less than 90 days old.
+        """
+        return pulumi.get(self, "num_active_logical_bytes")
+
+    @property
+    @pulumi.getter(name="numActivePhysicalBytes")
+    def num_active_physical_bytes(self) -> pulumi.Output[str]:
+        """
+        Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_active_physical_bytes")
+
+    @property
     @pulumi.getter(name="numBytes")
     def num_bytes(self) -> pulumi.Output[str]:
         """
@@ -615,6 +647,30 @@ class Table(pulumi.CustomResource):
         return pulumi.get(self, "num_long_term_bytes")
 
     @property
+    @pulumi.getter(name="numLongTermLogicalBytes")
+    def num_long_term_logical_bytes(self) -> pulumi.Output[str]:
+        """
+        Number of logical bytes that are more than 90 days old.
+        """
+        return pulumi.get(self, "num_long_term_logical_bytes")
+
+    @property
+    @pulumi.getter(name="numLongTermPhysicalBytes")
+    def num_long_term_physical_bytes(self) -> pulumi.Output[str]:
+        """
+        Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_long_term_physical_bytes")
+
+    @property
+    @pulumi.getter(name="numPartitions")
+    def num_partitions(self) -> pulumi.Output[str]:
+        """
+        The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_partitions")
+
+    @property
     @pulumi.getter(name="numPhysicalBytes")
     def num_physical_bytes(self) -> pulumi.Output[str]:
         """
@@ -629,6 +685,30 @@ class Table(pulumi.CustomResource):
         The number of rows of data in this table, excluding any data in the streaming buffer.
         """
         return pulumi.get(self, "num_rows")
+
+    @property
+    @pulumi.getter(name="numTimeTravelPhysicalBytes")
+    def num_time_travel_physical_bytes(self) -> pulumi.Output[str]:
+        """
+        Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_time_travel_physical_bytes")
+
+    @property
+    @pulumi.getter(name="numTotalLogicalBytes")
+    def num_total_logical_bytes(self) -> pulumi.Output[str]:
+        """
+        Total number of logical bytes in the table or materialized view.
+        """
+        return pulumi.get(self, "num_total_logical_bytes")
+
+    @property
+    @pulumi.getter(name="numTotalPhysicalBytes")
+    def num_total_physical_bytes(self) -> pulumi.Output[str]:
+        """
+        The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        """
+        return pulumi.get(self, "num_total_physical_bytes")
 
     @property
     @pulumi.getter(name="rangePartitioning")

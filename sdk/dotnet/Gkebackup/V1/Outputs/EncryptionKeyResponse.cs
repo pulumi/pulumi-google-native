@@ -7,24 +7,24 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Storage.V1.Outputs
+namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
 {
 
     /// <summary>
-    /// The bucket's custom placement configuration for Custom Dual Regions.
+    /// Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
     /// </summary>
     [OutputType]
-    public sealed class BucketCustomPlacementConfigResponse
+    public sealed class EncryptionKeyResponse
     {
         /// <summary>
-        /// The list of regional locations in which data is placed.
+        /// Google Cloud KMS encryption key. Format: projects//locations//keyRings//cryptoKeys/
         /// </summary>
-        public readonly ImmutableArray<string> DataLocations;
+        public readonly string GcpKmsEncryptionKey;
 
         [OutputConstructor]
-        private BucketCustomPlacementConfigResponse(ImmutableArray<string> dataLocations)
+        private EncryptionKeyResponse(string gcpKmsEncryptionKey)
         {
-            DataLocations = dataLocations;
+            GcpKmsEncryptionKey = gcpKmsEncryptionKey;
         }
     }
 }

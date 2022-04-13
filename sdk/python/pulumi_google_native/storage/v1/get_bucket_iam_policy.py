@@ -91,7 +91,6 @@ class AwaitableGetBucketIamPolicyResult(GetBucketIamPolicyResult):
 
 def get_bucket_iam_policy(bucket: Optional[str] = None,
                           options_requested_policy_version: Optional[str] = None,
-                          provisional_user_project: Optional[str] = None,
                           user_project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketIamPolicyResult:
     """
@@ -100,7 +99,6 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     __args__ = dict()
     __args__['bucket'] = bucket
     __args__['optionsRequestedPolicyVersion'] = options_requested_policy_version
-    __args__['provisionalUserProject'] = provisional_user_project
     __args__['userProject'] = user_project
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -119,7 +117,6 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
 @_utilities.lift_output_func(get_bucket_iam_policy)
 def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
-                                 provisional_user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                  user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketIamPolicyResult]:
     """

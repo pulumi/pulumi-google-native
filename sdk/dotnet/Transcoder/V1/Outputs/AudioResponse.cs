@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
     public sealed class AudioResponse
     {
         /// <summary>
-        /// Enable boosting high frequency components. The default is `false`.
+        /// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
         /// </summary>
         public readonly bool HighBoost;
         /// <summary>
-        /// Enable boosting low frequency components. The default is `false`.
+        /// Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
         /// </summary>
         public readonly bool LowBoost;
         /// <summary>

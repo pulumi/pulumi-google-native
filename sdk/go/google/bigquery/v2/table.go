@@ -48,14 +48,30 @@ type Table struct {
 	MaterializedView MaterializedViewDefinitionResponseOutput `pulumi:"materializedView"`
 	// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
 	Model ModelDefinitionResponseOutput `pulumi:"model"`
+	// Number of logical bytes that are less than 90 days old.
+	NumActiveLogicalBytes pulumi.StringOutput `pulumi:"numActiveLogicalBytes"`
+	// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumActivePhysicalBytes pulumi.StringOutput `pulumi:"numActivePhysicalBytes"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.StringOutput `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
 	NumLongTermBytes pulumi.StringOutput `pulumi:"numLongTermBytes"`
+	// Number of logical bytes that are more than 90 days old.
+	NumLongTermLogicalBytes pulumi.StringOutput `pulumi:"numLongTermLogicalBytes"`
+	// Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumLongTermPhysicalBytes pulumi.StringOutput `pulumi:"numLongTermPhysicalBytes"`
+	// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumPartitions pulumi.StringOutput `pulumi:"numPartitions"`
 	// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes pulumi.StringOutput `pulumi:"numPhysicalBytes"`
 	// The number of rows of data in this table, excluding any data in the streaming buffer.
 	NumRows pulumi.StringOutput `pulumi:"numRows"`
+	// Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumTimeTravelPhysicalBytes pulumi.StringOutput `pulumi:"numTimeTravelPhysicalBytes"`
+	// Total number of logical bytes in the table or materialized view.
+	NumTotalLogicalBytes pulumi.StringOutput `pulumi:"numTotalLogicalBytes"`
+	// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+	NumTotalPhysicalBytes pulumi.StringOutput `pulumi:"numTotalPhysicalBytes"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningResponseOutput `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.

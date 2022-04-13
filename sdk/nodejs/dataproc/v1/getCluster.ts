@@ -37,7 +37,7 @@ export interface GetClusterResult {
      */
     readonly clusterUuid: string;
     /**
-     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+     * Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
      */
     readonly config: outputs.dataproc.v1.ClusterConfigResponse;
     /**
@@ -60,6 +60,10 @@ export interface GetClusterResult {
      * The previous cluster status.
      */
     readonly statusHistory: outputs.dataproc.v1.ClusterStatusResponse[];
+    /**
+     * Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+     */
+    readonly virtualClusterConfig: outputs.dataproc.v1.VirtualClusterConfigResponse;
 }
 
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {

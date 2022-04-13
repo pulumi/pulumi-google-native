@@ -19,7 +19,6 @@ export function getObjectAccessControl(args: GetObjectAccessControlArgs, opts?: 
         "entity": args.entity,
         "generation": args.generation,
         "object": args.object,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -29,7 +28,6 @@ export interface GetObjectAccessControlArgs {
     entity: string;
     generation?: string;
     object: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -104,6 +102,5 @@ export interface GetObjectAccessControlOutputArgs {
     entity: pulumi.Input<string>;
     generation?: pulumi.Input<string>;
     object: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

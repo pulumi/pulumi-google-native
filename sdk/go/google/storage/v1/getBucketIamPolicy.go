@@ -23,7 +23,6 @@ func LookupBucketIamPolicy(ctx *pulumi.Context, args *LookupBucketIamPolicyArgs,
 type LookupBucketIamPolicyArgs struct {
 	Bucket                        string  `pulumi:"bucket"`
 	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	ProvisionalUserProject        *string `pulumi:"provisionalUserProject"`
 	UserProject                   *string `pulumi:"userProject"`
 }
 
@@ -52,7 +51,6 @@ func LookupBucketIamPolicyOutput(ctx *pulumi.Context, args LookupBucketIamPolicy
 type LookupBucketIamPolicyOutputArgs struct {
 	Bucket                        pulumi.StringInput    `pulumi:"bucket"`
 	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
-	ProvisionalUserProject        pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
 	UserProject                   pulumi.StringPtrInput `pulumi:"userProject"`
 }
 

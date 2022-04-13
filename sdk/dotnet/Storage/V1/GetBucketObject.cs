@@ -51,9 +51,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("projection")]
         public string? Projection { get; set; }
 
-        [Input("provisionalUserProject")]
-        public string? ProvisionalUserProject { get; set; }
-
         [Input("userProject")]
         public string? UserProject { get; set; }
 
@@ -87,9 +84,6 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [Input("projection")]
         public Input<string>? Projection { get; set; }
-
-        [Input("provisionalUserProject")]
-        public Input<string>? ProvisionalUserProject { get; set; }
 
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }

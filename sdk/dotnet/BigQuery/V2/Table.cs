@@ -113,6 +113,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.ModelDefinitionResponse> Model { get; private set; } = null!;
 
         /// <summary>
+        /// Number of logical bytes that are less than 90 days old.
+        /// </summary>
+        [Output("numActiveLogicalBytes")]
+        public Output<string> NumActiveLogicalBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Output("numActivePhysicalBytes")]
+        public Output<string> NumActivePhysicalBytes { get; private set; } = null!;
+
+        /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
         [Output("numBytes")]
@@ -125,6 +137,24 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> NumLongTermBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Number of logical bytes that are more than 90 days old.
+        /// </summary>
+        [Output("numLongTermLogicalBytes")]
+        public Output<string> NumLongTermLogicalBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Output("numLongTermPhysicalBytes")]
+        public Output<string> NumLongTermPhysicalBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Output("numPartitions")]
+        public Output<string> NumPartitions { get; private set; } = null!;
+
+        /// <summary>
         /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
         /// </summary>
         [Output("numPhysicalBytes")]
@@ -135,6 +165,24 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Output("numRows")]
         public Output<string> NumRows { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Output("numTimeTravelPhysicalBytes")]
+        public Output<string> NumTimeTravelPhysicalBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// Total number of logical bytes in the table or materialized view.
+        /// </summary>
+        [Output("numTotalLogicalBytes")]
+        public Output<string> NumTotalLogicalBytes { get; private set; } = null!;
+
+        /// <summary>
+        /// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Output("numTotalPhysicalBytes")]
+        public Output<string> NumTotalPhysicalBytes { get; private set; } = null!;
 
         /// <summary>
         /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.

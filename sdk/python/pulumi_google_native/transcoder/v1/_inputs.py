@@ -470,8 +470,8 @@ class AudioArgs:
                  lufs: Optional[pulumi.Input[float]] = None):
         """
         Audio preprocessing configuration.
-        :param pulumi.Input[bool] high_boost: Enable boosting high frequency components. The default is `false`.
-        :param pulumi.Input[bool] low_boost: Enable boosting low frequency components. The default is `false`.
+        :param pulumi.Input[bool] high_boost: Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
+        :param pulumi.Input[bool] low_boost: Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
         :param pulumi.Input[float] lufs: Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
         """
         if high_boost is not None:
@@ -485,7 +485,7 @@ class AudioArgs:
     @pulumi.getter(name="highBoost")
     def high_boost(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable boosting high frequency components. The default is `false`.
+        Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
         """
         return pulumi.get(self, "high_boost")
 
@@ -497,7 +497,7 @@ class AudioArgs:
     @pulumi.getter(name="lowBoost")
     def low_boost(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable boosting low frequency components. The default is `false`.
+        Enable boosting low frequency components. The default is `false`. **Note:** This field is not supported.
         """
         return pulumi.get(self, "low_boost")
 
@@ -525,7 +525,7 @@ class ColorArgs:
                  contrast: Optional[pulumi.Input[float]] = None,
                  saturation: Optional[pulumi.Input[float]] = None):
         """
-        Color preprocessing configuration.
+        Color preprocessing configuration. **Note:** This configuration is not supported.
         :param pulumi.Input[float] brightness: Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
         :param pulumi.Input[float] contrast: Control black and white contrast of the video. Enter a value between -1 and 1, where -1 is minimum contrast and 1 is maximum contrast. 0 is no change. The default is 0.
         :param pulumi.Input[float] saturation: Control color saturation of the video. Enter a value between -1 and 1, where -1 is fully desaturated and 1 is maximum saturation. 0 is no change. The default is 0.
@@ -652,7 +652,7 @@ class DeblockArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  strength: Optional[pulumi.Input[float]] = None):
         """
-        Deblock preprocessing configuration.
+        Deblock preprocessing configuration. **Note:** This configuration is not supported.
         :param pulumi.Input[bool] enabled: Enable deblocker. The default is `false`.
         :param pulumi.Input[float] strength: Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
         """
@@ -692,7 +692,7 @@ class DenoiseArgs:
                  strength: Optional[pulumi.Input[float]] = None,
                  tune: Optional[pulumi.Input[str]] = None):
         """
-        Denoise preprocessing configuration.
+        Denoise preprocessing configuration. **Note:** This configuration is not supported.
         :param pulumi.Input[float] strength: Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
         :param pulumi.Input[str] tune: Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`
         """
@@ -1571,7 +1571,7 @@ class InputArgs:
         Input asset.
         :param pulumi.Input[str] key: A unique key for this input. Must be specified when using advanced mapping and edit lists.
         :param pulumi.Input['PreprocessingConfigArgs'] preprocessing_config: Preprocessing configurations.
-        :param pulumi.Input[str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+        :param pulumi.Input[str] uri: URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1608,7 +1608,7 @@ class InputArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value will be populated from `Job.input_uri`.
+        URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         return pulumi.get(self, "uri")
 
@@ -1849,7 +1849,7 @@ class MuxStreamArgs:
                  segment_settings: Optional[pulumi.Input['SegmentSettingsArgs']] = None):
         """
         Multiplexing settings for output stream.
-        :param pulumi.Input[str] container: The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+        :param pulumi.Input[str] container: The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] elementary_streams: List of `ElementaryStream.key`s multiplexed in this stream.
         :param pulumi.Input[str] file_name: The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `mux_stream0000000123.ts`.
         :param pulumi.Input[str] key: A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8` extension suffix.
@@ -1870,7 +1870,7 @@ class MuxStreamArgs:
     @pulumi.getter
     def container(self) -> Optional[pulumi.Input[str]]:
         """
-        The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt`
+        The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
         """
         return pulumi.get(self, "container")
 
@@ -1973,7 +1973,7 @@ class OutputArgs:
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Location of output file(s) in a Cloud Storage bucket.
-        :param pulumi.Input[str] uri: URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+        :param pulumi.Input[str] uri: URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
@@ -1982,7 +1982,7 @@ class OutputArgs:
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
-        URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty the value is populated from `Job.output_uri`.
+        URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         """
         return pulumi.get(self, "uri")
 
@@ -2617,7 +2617,7 @@ class Vp9CodecSettingsArgs:
         VP9 codec settings.
         :param pulumi.Input[int] bitrate_bps: The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
         :param pulumi.Input[float] frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-        :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported. 
+        :param pulumi.Input[int] crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
         :param pulumi.Input[str] gop_duration: Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param pulumi.Input[int] gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param pulumi.Input[int] height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
@@ -2673,7 +2673,7 @@ class Vp9CodecSettingsArgs:
     @pulumi.getter(name="crfLevel")
     def crf_level(self) -> Optional[pulumi.Input[int]]:
         """
-        Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. *Note*: This field is not supported. 
+        Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21. **Note:** This field is not supported.
         """
         return pulumi.get(self, "crf_level")
 

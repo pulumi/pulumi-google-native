@@ -52,10 +52,6 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly cors!: pulumi.Output<outputs.storage.v1.BucketCorsItemResponse[]>;
     /**
-     * The bucket's custom placement configuration for Custom Dual Regions.
-     */
-    public readonly customPlacementConfig!: pulumi.Output<outputs.storage.v1.BucketCustomPlacementConfigResponse>;
-    /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
     public readonly defaultEventBasedHold!: pulumi.Output<boolean>;
@@ -167,7 +163,6 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["autoclass"] = args ? args.autoclass : undefined;
             resourceInputs["billing"] = args ? args.billing : undefined;
             resourceInputs["cors"] = args ? args.cors : undefined;
-            resourceInputs["customPlacementConfig"] = args ? args.customPlacementConfig : undefined;
             resourceInputs["defaultEventBasedHold"] = args ? args.defaultEventBasedHold : undefined;
             resourceInputs["defaultObjectAcl"] = args ? args.defaultObjectAcl : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
@@ -188,7 +183,6 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectNumber"] = args ? args.projectNumber : undefined;
             resourceInputs["projection"] = args ? args.projection : undefined;
-            resourceInputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             resourceInputs["rpo"] = args ? args.rpo : undefined;
             resourceInputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
@@ -204,7 +198,6 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["autoclass"] = undefined /*out*/;
             resourceInputs["billing"] = undefined /*out*/;
             resourceInputs["cors"] = undefined /*out*/;
-            resourceInputs["customPlacementConfig"] = undefined /*out*/;
             resourceInputs["defaultEventBasedHold"] = undefined /*out*/;
             resourceInputs["defaultObjectAcl"] = undefined /*out*/;
             resourceInputs["encryption"] = undefined /*out*/;
@@ -255,10 +248,6 @@ export interface BucketArgs {
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
     cors?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketCorsItemArgs>[]>;
-    /**
-     * The bucket's custom placement configuration for Custom Dual Regions.
-     */
-    customPlacementConfig?: pulumi.Input<inputs.storage.v1.BucketCustomPlacementConfigArgs>;
     /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
@@ -339,10 +328,6 @@ export interface BucketArgs {
      * Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
      */
     projection?: pulumi.Input<string>;
-    /**
-     * The project to be billed for this request if the target bucket is requester-pays bucket.
-     */
-    provisionalUserProject?: pulumi.Input<string>;
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */

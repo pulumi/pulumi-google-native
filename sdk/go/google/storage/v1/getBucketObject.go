@@ -29,7 +29,6 @@ type LookupBucketObjectArgs struct {
 	IfMetagenerationNotMatch *string `pulumi:"ifMetagenerationNotMatch"`
 	Object                   string  `pulumi:"object"`
 	Projection               *string `pulumi:"projection"`
-	ProvisionalUserProject   *string `pulumi:"provisionalUserProject"`
 	UserProject              *string `pulumi:"userProject"`
 }
 
@@ -116,7 +115,6 @@ type LookupBucketObjectOutputArgs struct {
 	IfMetagenerationNotMatch pulumi.StringPtrInput `pulumi:"ifMetagenerationNotMatch"`
 	Object                   pulumi.StringInput    `pulumi:"object"`
 	Projection               pulumi.StringPtrInput `pulumi:"projection"`
-	ProvisionalUserProject   pulumi.StringPtrInput `pulumi:"provisionalUserProject"`
 	UserProject              pulumi.StringPtrInput `pulumi:"userProject"`
 }
 

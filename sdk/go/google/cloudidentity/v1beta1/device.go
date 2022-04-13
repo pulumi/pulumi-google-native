@@ -31,6 +31,8 @@ type Device struct {
 	CompromisedState pulumi.StringOutput `pulumi:"compromisedState"`
 	// When the Company-Owned device was imported. This field is empty for BYOD devices.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Unique identifier for the device.
+	DeviceId pulumi.StringOutput `pulumi:"deviceId"`
 	// Type of device.
 	DeviceType pulumi.StringOutput `pulumi:"deviceType"`
 	// Whether developer options is enabled on device.
@@ -116,6 +118,8 @@ func (DeviceState) ElementType() reflect.Type {
 type deviceArgs struct {
 	// Asset tag of the device.
 	AssetTag *string `pulumi:"assetTag"`
+	// Unique identifier for the device.
+	DeviceId *string `pulumi:"deviceId"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
 	// Serial Number of device. Example: HT82V1A01076.
@@ -128,6 +132,8 @@ type deviceArgs struct {
 type DeviceArgs struct {
 	// Asset tag of the device.
 	AssetTag pulumi.StringPtrInput
+	// Unique identifier for the device.
+	DeviceId pulumi.StringPtrInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput
 	// Serial Number of device. Example: HT82V1A01076.

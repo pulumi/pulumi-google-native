@@ -8,9 +8,9 @@ export const GoogleCloudRunV2RevisionTemplateExecutionEnvironment = {
      */
     ExecutionEnvironmentUnspecified: "EXECUTION_ENVIRONMENT_UNSPECIFIED",
     /**
-     * Uses the Google-default environment.
+     * Uses the First Generation environment.
      */
-    ExecutionEnvironmentDefault: "EXECUTION_ENVIRONMENT_DEFAULT",
+    ExecutionEnvironmentGen1: "EXECUTION_ENVIRONMENT_GEN1",
     /**
      * Uses Second Generation environment.
      */

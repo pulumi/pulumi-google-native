@@ -16,8 +16,8 @@ type GoogleCloudRunV2RevisionTemplateExecutionEnvironment string
 const (
 	// Unspecified
 	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentUnspecified = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED")
-	// Uses the Google-default environment.
-	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentDefault = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_DEFAULT")
+	// Uses the First Generation environment.
+	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentGen1 = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN1")
 	// Uses Second Generation environment.
 	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentExecutionEnvironmentGen2 = GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
 )

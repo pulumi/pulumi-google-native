@@ -52,6 +52,52 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct GkeNodePoolTargetRolesItem : IEquatable<GkeNodePoolTargetRolesItem>
+    {
+        private readonly string _value;
+
+        private GkeNodePoolTargetRolesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Role is unspecified.
+        /// </summary>
+        public static GkeNodePoolTargetRolesItem RoleUnspecified { get; } = new GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED");
+        /// <summary>
+        /// Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+        /// </summary>
+        public static GkeNodePoolTargetRolesItem Default { get; } = new GkeNodePoolTargetRolesItem("DEFAULT");
+        /// <summary>
+        /// Run controllers and webhooks.
+        /// </summary>
+        public static GkeNodePoolTargetRolesItem Controller { get; } = new GkeNodePoolTargetRolesItem("CONTROLLER");
+        /// <summary>
+        /// Run spark driver.
+        /// </summary>
+        public static GkeNodePoolTargetRolesItem SparkDriver { get; } = new GkeNodePoolTargetRolesItem("SPARK_DRIVER");
+        /// <summary>
+        /// Run spark executors.
+        /// </summary>
+        public static GkeNodePoolTargetRolesItem SparkExecutor { get; } = new GkeNodePoolTargetRolesItem("SPARK_EXECUTOR");
+
+        public static bool operator ==(GkeNodePoolTargetRolesItem left, GkeNodePoolTargetRolesItem right) => left.Equals(right);
+        public static bool operator !=(GkeNodePoolTargetRolesItem left, GkeNodePoolTargetRolesItem right) => !left.Equals(right);
+
+        public static explicit operator string(GkeNodePoolTargetRolesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GkeNodePoolTargetRolesItem other && Equals(other);
+        public bool Equals(GkeNodePoolTargetRolesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
     /// </summary>

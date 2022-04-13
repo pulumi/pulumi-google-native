@@ -3901,6 +3901,182 @@ func (in *backendServiceLocalityLbPolicyPtr) ToBackendServiceLocalityLbPolicyPtr
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLbPolicyPtrOutput)
 }
 
+// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyName string
+
+const (
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInvalidLbPolicy = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY")
+	// An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests.
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameLeastRequest = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("LEAST_REQUEST")
+	// This algorithm implements consistent hashing to backends. Maglev can be used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameMaglev = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("MAGLEV")
+	// Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer.
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOriginalDestination = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("ORIGINAL_DESTINATION")
+	// The load balancer selects a random healthy host.
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameRandom = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("RANDOM")
+	// The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests.
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameRingHash = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("RING_HASH")
+	// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameRoundRobin = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("ROUND_ROBIN")
+)
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)(nil)).Elem()
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput {
+	return pulumi.ToOutput(e).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput)
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput)
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return e.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(e).ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutputWithContext(ctx).ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx)
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o.ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
+		return &v
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)(nil)).Elem()
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return o
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) Elem() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput {
+	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLocalityLoadBalancingPolicyConfigPolicyName
+		return ret
+	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput)
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameArgs and BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput values.
+// You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput` via:
+//
+//          BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameArgs{...}
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput
+}
+
+var backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrType = reflect.TypeOf((**BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)(nil)).Elem()
+
+type BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput
+	ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput
+}
+
+type backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr string
+
+func BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr(v string) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput {
+	return (*backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr)(&v)
+}
+
+func (*backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ElementType() reflect.Type {
+	return backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrType
+}
+
+func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return pulumi.ToOutput(in).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 type BackendServiceProtocol string
 
@@ -23982,11 +24158,11 @@ func (in *sslPolicyProfilePtr) ToSslPolicyProfilePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SslPolicyProfilePtrOutput)
 }
 
-// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
 type SubnetworkIpv6AccessType string
 
 const (
-	// VMs on this subnet will be assigned IPv6 addresses that are accesible via the Internet, as well as the VPC network.
+	// VMs on this subnet will be assigned IPv6 addresses that are accessible via the Internet, as well as the VPC network.
 	SubnetworkIpv6AccessTypeExternal = SubnetworkIpv6AccessType("EXTERNAL")
 	// VMs on this subnet will be assigned IPv6 addresses that are only accessible over the VPC network.
 	SubnetworkIpv6AccessTypeInternal = SubnetworkIpv6AccessType("INTERNAL")
@@ -24484,7 +24660,7 @@ func (in *subnetworkLogConfigMetadataPtr) ToSubnetworkLogConfigMetadataPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(SubnetworkLogConfigMetadataPtrOutput)
 }
 
-// The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
+// This field is for internal use. This field can be both set at resource creation time and updated using patch.
 type SubnetworkPrivateIpv6GoogleAccess string
 
 const (
@@ -26717,6 +26893,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLoadBalancingSchemePtrInput)(nil)).Elem(), BackendServiceLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLbPolicyInput)(nil)).Elem(), BackendServiceLocalityLbPolicy("INVALID_LB_POLICY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLbPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLbPolicy("INVALID_LB_POLICY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolInput)(nil)).Elem(), BackendServiceProtocol("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolPtrInput)(nil)).Elem(), BackendServiceProtocol("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSessionAffinityInput)(nil)).Elem(), BackendServiceSessionAffinity("CLIENT_IP"))
@@ -27034,6 +27212,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceLoadBalancingSchemePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLocalityLbPolicyOutput{})
 	pulumi.RegisterOutputType(BackendServiceLocalityLbPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput{})
+	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceProtocolOutput{})
 	pulumi.RegisterOutputType(BackendServiceProtocolPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceSessionAffinityOutput{})

@@ -78,8 +78,6 @@ type bucketIamPolicyArgs struct {
 	Etag *string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
 	Kind *string `pulumi:"kind"`
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 	ResourceId *string `pulumi:"resourceId"`
 	// The project to be billed for this request. Required for Requester Pays buckets.
@@ -97,8 +95,6 @@ type BucketIamPolicyArgs struct {
 	Etag pulumi.StringPtrInput
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
 	Kind pulumi.StringPtrInput
-	// The project to be billed for this request if the target bucket is requester-pays bucket.
-	ProvisionalUserProject pulumi.StringPtrInput
 	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
 	ResourceId pulumi.StringPtrInput
 	// The project to be billed for this request. Required for Requester Pays buckets.

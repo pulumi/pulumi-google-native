@@ -22,6 +22,8 @@ type CloneJob struct {
 	ComputeEngineTargetDetails ComputeEngineTargetDetailsResponseOutput `pulumi:"computeEngineTargetDetails"`
 	// The time the clone job was created (as an API call, not when it was actually created in the target).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The time the clone job was ended.
+	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// Provides details for the errors that led to the Clone Job's state.
 	Error StatusResponseOutput `pulumi:"error"`
 	// The name of the clone.

@@ -36,10 +36,6 @@ export interface GetServiceBindingResult {
      */
     readonly description: string;
     /**
-     * Optional. The endpoint filter associated with the Service Binding. The syntax is described in http://cloud/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#google.cloud.servicedirectory.v1.ResolveServiceRequest
-     */
-    readonly endpointFilter: string;
-    /**
      * Optional. Set of label tags associated with the ServiceBinding resource.
      */
     readonly labels: {[key: string]: string};

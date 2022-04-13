@@ -23,7 +23,6 @@ export function getBucketObject(args: GetBucketObjectArgs, opts?: pulumi.InvokeO
         "ifMetagenerationNotMatch": args.ifMetagenerationNotMatch,
         "object": args.object,
         "projection": args.projection,
-        "provisionalUserProject": args.provisionalUserProject,
         "userProject": args.userProject,
     }, opts);
 }
@@ -37,7 +36,6 @@ export interface GetBucketObjectArgs {
     ifMetagenerationNotMatch?: string;
     object: string;
     projection?: string;
-    provisionalUserProject?: string;
     userProject?: string;
 }
 
@@ -181,6 +179,5 @@ export interface GetBucketObjectOutputArgs {
     ifMetagenerationNotMatch?: pulumi.Input<string>;
     object: pulumi.Input<string>;
     projection?: pulumi.Input<string>;
-    provisionalUserProject?: pulumi.Input<string>;
     userProject?: pulumi.Input<string>;
 }

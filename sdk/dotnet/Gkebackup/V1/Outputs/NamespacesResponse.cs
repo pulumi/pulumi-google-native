@@ -7,18 +7,24 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Datastream.V1.Outputs
+namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
 {
 
     /// <summary>
-    /// Configuration to drop large object values.
+    /// A list of Kubernetes Namespaces
     /// </summary>
     [OutputType]
-    public sealed class OracleDropLargeObjectsResponse
+    public sealed class NamespacesResponse
     {
+        /// <summary>
+        /// A list of Kubernetes Namespaces
+        /// </summary>
+        public readonly ImmutableArray<string> Namespaces;
+
         [OutputConstructor]
-        private OracleDropLargeObjectsResponse()
+        private NamespacesResponse(ImmutableArray<string> namespaces)
         {
+            Namespaces = namespaces;
         }
     }
 }
