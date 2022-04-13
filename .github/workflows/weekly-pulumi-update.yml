@@ -77,7 +77,6 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: "update-pulumi/${{ github.run_id }}-${{ github.run_number }}"
-          base: "master"
           title: "Automated pulumi/pulumi upgrade"
           labels: impact/no-changelog-required
           committer: pulumi-bot <bot@pulumi.com>

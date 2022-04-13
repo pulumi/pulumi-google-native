@@ -72,8 +72,8 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           branch: "generate-sdk/${{ github.run_id }}-${{ github.run_number }}"
-          base: "master"
           title: "Automated SDK generation"
+          body: ""
           labels: impact/no-changelog-required
           committer: pulumi-bot <bot@pulumi.com>
           author: pulumi-bot <bot@pulumi.com>
