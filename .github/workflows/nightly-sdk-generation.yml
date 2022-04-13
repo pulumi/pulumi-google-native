@@ -66,6 +66,7 @@ jobs:
           git add .
           git commit -m "Regenerating SDKs based on updated modules"
           git push origin generate-sdk/${{ github.run_id }}-${{ github.run_number }}
+          git checkout master
       - name: Create PR
         id: create-pr
         if: steps.discovery.outputs.changes != 0
