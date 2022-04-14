@@ -48,7 +48,11 @@ func LookupGlossaryOutput(ctx *pulumi.Context, args LookupGlossaryOutputArgs, op
 		ApplyT(func(v interface{}) (LookupGlossaryResult, error) {
 			args := v.(LookupGlossaryArgs)
 			r, err := LookupGlossary(ctx, &args, opts...)
-			return *r, err
+			var s LookupGlossaryResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGlossaryResultOutput)
 }
 

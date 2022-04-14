@@ -43,7 +43,11 @@ func LookupDicomStoreOutput(ctx *pulumi.Context, args LookupDicomStoreOutputArgs
 		ApplyT(func(v interface{}) (LookupDicomStoreResult, error) {
 			args := v.(LookupDicomStoreArgs)
 			r, err := LookupDicomStore(ctx, &args, opts...)
-			return *r, err
+			var s LookupDicomStoreResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDicomStoreResultOutput)
 }
 

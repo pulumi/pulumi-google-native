@@ -59,7 +59,11 @@ func LookupPublicAdvertisedPrefixOutput(ctx *pulumi.Context, args LookupPublicAd
 		ApplyT(func(v interface{}) (LookupPublicAdvertisedPrefixResult, error) {
 			args := v.(LookupPublicAdvertisedPrefixArgs)
 			r, err := LookupPublicAdvertisedPrefix(ctx, &args, opts...)
-			return *r, err
+			var s LookupPublicAdvertisedPrefixResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPublicAdvertisedPrefixResultOutput)
 }
 

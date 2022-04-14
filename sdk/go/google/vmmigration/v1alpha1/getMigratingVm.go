@@ -78,7 +78,11 @@ func LookupMigratingVmOutput(ctx *pulumi.Context, args LookupMigratingVmOutputAr
 		ApplyT(func(v interface{}) (LookupMigratingVmResult, error) {
 			args := v.(LookupMigratingVmArgs)
 			r, err := LookupMigratingVm(ctx, &args, opts...)
-			return *r, err
+			var s LookupMigratingVmResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMigratingVmResultOutput)
 }
 

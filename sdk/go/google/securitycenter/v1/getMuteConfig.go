@@ -47,7 +47,11 @@ func LookupMuteConfigOutput(ctx *pulumi.Context, args LookupMuteConfigOutputArgs
 		ApplyT(func(v interface{}) (LookupMuteConfigResult, error) {
 			args := v.(LookupMuteConfigArgs)
 			r, err := LookupMuteConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupMuteConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMuteConfigResultOutput)
 }
 

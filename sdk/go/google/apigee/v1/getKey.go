@@ -53,7 +53,11 @@ func GetKeyOutput(ctx *pulumi.Context, args GetKeyOutputArgs, opts ...pulumi.Inv
 		ApplyT(func(v interface{}) (GetKeyResult, error) {
 			args := v.(GetKeyArgs)
 			r, err := GetKey(ctx, &args, opts...)
-			return *r, err
+			var s GetKeyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetKeyResultOutput)
 }
 

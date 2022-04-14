@@ -43,7 +43,11 @@ func LookupConsentStoreOutput(ctx *pulumi.Context, args LookupConsentStoreOutput
 		ApplyT(func(v interface{}) (LookupConsentStoreResult, error) {
 			args := v.(LookupConsentStoreArgs)
 			r, err := LookupConsentStore(ctx, &args, opts...)
-			return *r, err
+			var s LookupConsentStoreResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupConsentStoreResultOutput)
 }
 

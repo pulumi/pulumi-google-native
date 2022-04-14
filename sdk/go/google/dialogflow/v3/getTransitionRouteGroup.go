@@ -43,7 +43,11 @@ func LookupTransitionRouteGroupOutput(ctx *pulumi.Context, args LookupTransition
 		ApplyT(func(v interface{}) (LookupTransitionRouteGroupResult, error) {
 			args := v.(LookupTransitionRouteGroupArgs)
 			r, err := LookupTransitionRouteGroup(ctx, &args, opts...)
-			return *r, err
+			var s LookupTransitionRouteGroupResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTransitionRouteGroupResultOutput)
 }
 

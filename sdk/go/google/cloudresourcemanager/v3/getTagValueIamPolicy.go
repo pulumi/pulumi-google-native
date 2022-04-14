@@ -40,7 +40,11 @@ func LookupTagValueIamPolicyOutput(ctx *pulumi.Context, args LookupTagValueIamPo
 		ApplyT(func(v interface{}) (LookupTagValueIamPolicyResult, error) {
 			args := v.(LookupTagValueIamPolicyArgs)
 			r, err := LookupTagValueIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupTagValueIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTagValueIamPolicyResultOutput)
 }
 

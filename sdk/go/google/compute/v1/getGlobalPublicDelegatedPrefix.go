@@ -57,7 +57,11 @@ func LookupGlobalPublicDelegatedPrefixOutput(ctx *pulumi.Context, args LookupGlo
 		ApplyT(func(v interface{}) (LookupGlobalPublicDelegatedPrefixResult, error) {
 			args := v.(LookupGlobalPublicDelegatedPrefixArgs)
 			r, err := LookupGlobalPublicDelegatedPrefix(ctx, &args, opts...)
-			return *r, err
+			var s LookupGlobalPublicDelegatedPrefixResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGlobalPublicDelegatedPrefixResultOutput)
 }
 

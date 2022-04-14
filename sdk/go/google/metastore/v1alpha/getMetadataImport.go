@@ -49,7 +49,11 @@ func LookupMetadataImportOutput(ctx *pulumi.Context, args LookupMetadataImportOu
 		ApplyT(func(v interface{}) (LookupMetadataImportResult, error) {
 			args := v.(LookupMetadataImportArgs)
 			r, err := LookupMetadataImport(ctx, &args, opts...)
-			return *r, err
+			var s LookupMetadataImportResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMetadataImportResultOutput)
 }
 

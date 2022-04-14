@@ -37,7 +37,11 @@ func LookupTenantOutput(ctx *pulumi.Context, args LookupTenantOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupTenantResult, error) {
 			args := v.(LookupTenantArgs)
 			r, err := LookupTenant(ctx, &args, opts...)
-			return *r, err
+			var s LookupTenantResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTenantResultOutput)
 }
 

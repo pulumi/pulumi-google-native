@@ -51,7 +51,11 @@ func LookupExternalVpnGatewayOutput(ctx *pulumi.Context, args LookupExternalVpnG
 		ApplyT(func(v interface{}) (LookupExternalVpnGatewayResult, error) {
 			args := v.(LookupExternalVpnGatewayArgs)
 			r, err := LookupExternalVpnGateway(ctx, &args, opts...)
-			return *r, err
+			var s LookupExternalVpnGatewayResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupExternalVpnGatewayResultOutput)
 }
 

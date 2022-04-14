@@ -44,7 +44,11 @@ func LookupLakeContentIamPolicyOutput(ctx *pulumi.Context, args LookupLakeConten
 		ApplyT(func(v interface{}) (LookupLakeContentIamPolicyResult, error) {
 			args := v.(LookupLakeContentIamPolicyArgs)
 			r, err := LookupLakeContentIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupLakeContentIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupLakeContentIamPolicyResultOutput)
 }
 

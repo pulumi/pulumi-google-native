@@ -63,7 +63,11 @@ func LookupDatacenterConnectorOutput(ctx *pulumi.Context, args LookupDatacenterC
 		ApplyT(func(v interface{}) (LookupDatacenterConnectorResult, error) {
 			args := v.(LookupDatacenterConnectorArgs)
 			r, err := LookupDatacenterConnector(ctx, &args, opts...)
-			return *r, err
+			var s LookupDatacenterConnectorResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDatacenterConnectorResultOutput)
 }
 

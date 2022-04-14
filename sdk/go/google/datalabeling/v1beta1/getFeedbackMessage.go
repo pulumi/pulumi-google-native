@@ -46,7 +46,11 @@ func LookupFeedbackMessageOutput(ctx *pulumi.Context, args LookupFeedbackMessage
 		ApplyT(func(v interface{}) (LookupFeedbackMessageResult, error) {
 			args := v.(LookupFeedbackMessageArgs)
 			r, err := LookupFeedbackMessage(ctx, &args, opts...)
-			return *r, err
+			var s LookupFeedbackMessageResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFeedbackMessageResultOutput)
 }
 

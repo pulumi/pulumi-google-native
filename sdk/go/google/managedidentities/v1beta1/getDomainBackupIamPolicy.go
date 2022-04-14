@@ -41,7 +41,11 @@ func LookupDomainBackupIamPolicyOutput(ctx *pulumi.Context, args LookupDomainBac
 		ApplyT(func(v interface{}) (LookupDomainBackupIamPolicyResult, error) {
 			args := v.(LookupDomainBackupIamPolicyArgs)
 			r, err := LookupDomainBackupIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupDomainBackupIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDomainBackupIamPolicyResultOutput)
 }
 

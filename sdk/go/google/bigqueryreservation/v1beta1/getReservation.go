@@ -48,7 +48,11 @@ func LookupReservationOutput(ctx *pulumi.Context, args LookupReservationOutputAr
 		ApplyT(func(v interface{}) (LookupReservationResult, error) {
 			args := v.(LookupReservationArgs)
 			r, err := LookupReservation(ctx, &args, opts...)
-			return *r, err
+			var s LookupReservationResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupReservationResultOutput)
 }
 

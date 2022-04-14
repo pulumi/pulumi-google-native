@@ -51,7 +51,11 @@ func LookupTargetGrpcProxyOutput(ctx *pulumi.Context, args LookupTargetGrpcProxy
 		ApplyT(func(v interface{}) (LookupTargetGrpcProxyResult, error) {
 			args := v.(LookupTargetGrpcProxyArgs)
 			r, err := LookupTargetGrpcProxy(ctx, &args, opts...)
-			return *r, err
+			var s LookupTargetGrpcProxyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTargetGrpcProxyResultOutput)
 }
 

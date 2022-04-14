@@ -74,7 +74,11 @@ func LookupRegionTargetHttpsProxyOutput(ctx *pulumi.Context, args LookupRegionTa
 		ApplyT(func(v interface{}) (LookupRegionTargetHttpsProxyResult, error) {
 			args := v.(LookupRegionTargetHttpsProxyArgs)
 			r, err := LookupRegionTargetHttpsProxy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionTargetHttpsProxyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionTargetHttpsProxyResultOutput)
 }
 

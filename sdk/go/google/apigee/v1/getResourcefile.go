@@ -41,7 +41,11 @@ func LookupResourcefileOutput(ctx *pulumi.Context, args LookupResourcefileOutput
 		ApplyT(func(v interface{}) (LookupResourcefileResult, error) {
 			args := v.(LookupResourcefileArgs)
 			r, err := LookupResourcefile(ctx, &args, opts...)
-			return *r, err
+			var s LookupResourcefileResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupResourcefileResultOutput)
 }
 

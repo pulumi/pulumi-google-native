@@ -41,7 +41,11 @@ func LookupBillingAccountIamPolicyOutput(ctx *pulumi.Context, args LookupBilling
 		ApplyT(func(v interface{}) (LookupBillingAccountIamPolicyResult, error) {
 			args := v.(LookupBillingAccountIamPolicyArgs)
 			r, err := LookupBillingAccountIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupBillingAccountIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBillingAccountIamPolicyResultOutput)
 }
 

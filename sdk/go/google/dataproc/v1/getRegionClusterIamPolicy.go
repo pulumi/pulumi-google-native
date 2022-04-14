@@ -40,7 +40,11 @@ func LookupRegionClusterIamPolicyOutput(ctx *pulumi.Context, args LookupRegionCl
 		ApplyT(func(v interface{}) (LookupRegionClusterIamPolicyResult, error) {
 			args := v.(LookupRegionClusterIamPolicyArgs)
 			r, err := LookupRegionClusterIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionClusterIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionClusterIamPolicyResultOutput)
 }
 

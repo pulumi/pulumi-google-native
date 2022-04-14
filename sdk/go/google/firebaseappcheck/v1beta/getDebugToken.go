@@ -40,7 +40,11 @@ func LookupDebugTokenOutput(ctx *pulumi.Context, args LookupDebugTokenOutputArgs
 		ApplyT(func(v interface{}) (LookupDebugTokenResult, error) {
 			args := v.(LookupDebugTokenArgs)
 			r, err := LookupDebugToken(ctx, &args, opts...)
-			return *r, err
+			var s LookupDebugTokenResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDebugTokenResultOutput)
 }
 

@@ -45,7 +45,11 @@ func LookupInstantSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupInstan
 		ApplyT(func(v interface{}) (LookupInstantSnapshotIamPolicyResult, error) {
 			args := v.(LookupInstantSnapshotIamPolicyArgs)
 			r, err := LookupInstantSnapshotIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupInstantSnapshotIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInstantSnapshotIamPolicyResultOutput)
 }
 

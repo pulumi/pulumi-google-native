@@ -46,7 +46,11 @@ func LookupDeidentifyTemplateOutput(ctx *pulumi.Context, args LookupDeidentifyTe
 		ApplyT(func(v interface{}) (LookupDeidentifyTemplateResult, error) {
 			args := v.(LookupDeidentifyTemplateArgs)
 			r, err := LookupDeidentifyTemplate(ctx, &args, opts...)
-			return *r, err
+			var s LookupDeidentifyTemplateResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDeidentifyTemplateResultOutput)
 }
 

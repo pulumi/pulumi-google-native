@@ -48,7 +48,11 @@ func LookupUserDataMappingOutput(ctx *pulumi.Context, args LookupUserDataMapping
 		ApplyT(func(v interface{}) (LookupUserDataMappingResult, error) {
 			args := v.(LookupUserDataMappingArgs)
 			r, err := LookupUserDataMapping(ctx, &args, opts...)
-			return *r, err
+			var s LookupUserDataMappingResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupUserDataMappingResultOutput)
 }
 

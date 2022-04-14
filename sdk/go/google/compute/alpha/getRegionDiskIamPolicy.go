@@ -45,7 +45,11 @@ func LookupRegionDiskIamPolicyOutput(ctx *pulumi.Context, args LookupRegionDiskI
 		ApplyT(func(v interface{}) (LookupRegionDiskIamPolicyResult, error) {
 			args := v.(LookupRegionDiskIamPolicyArgs)
 			r, err := LookupRegionDiskIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionDiskIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionDiskIamPolicyResultOutput)
 }
 

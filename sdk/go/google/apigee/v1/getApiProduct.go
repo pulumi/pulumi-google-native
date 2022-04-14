@@ -64,7 +64,11 @@ func LookupApiProductOutput(ctx *pulumi.Context, args LookupApiProductOutputArgs
 		ApplyT(func(v interface{}) (LookupApiProductResult, error) {
 			args := v.(LookupApiProductArgs)
 			r, err := LookupApiProduct(ctx, &args, opts...)
-			return *r, err
+			var s LookupApiProductResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupApiProductResultOutput)
 }
 

@@ -53,7 +53,11 @@ func LookupInstructionOutput(ctx *pulumi.Context, args LookupInstructionOutputAr
 		ApplyT(func(v interface{}) (LookupInstructionResult, error) {
 			args := v.(LookupInstructionArgs)
 			r, err := LookupInstruction(ctx, &args, opts...)
-			return *r, err
+			var s LookupInstructionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInstructionResultOutput)
 }
 

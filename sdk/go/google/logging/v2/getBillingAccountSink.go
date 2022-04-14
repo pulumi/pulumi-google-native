@@ -59,7 +59,11 @@ func LookupBillingAccountSinkOutput(ctx *pulumi.Context, args LookupBillingAccou
 		ApplyT(func(v interface{}) (LookupBillingAccountSinkResult, error) {
 			args := v.(LookupBillingAccountSinkArgs)
 			r, err := LookupBillingAccountSink(ctx, &args, opts...)
-			return *r, err
+			var s LookupBillingAccountSinkResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBillingAccountSinkResultOutput)
 }
 

@@ -58,7 +58,11 @@ func LookupCustomerOutput(ctx *pulumi.Context, args LookupCustomerOutputArgs, op
 		ApplyT(func(v interface{}) (LookupCustomerResult, error) {
 			args := v.(LookupCustomerArgs)
 			r, err := LookupCustomer(ctx, &args, opts...)
-			return *r, err
+			var s LookupCustomerResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCustomerResultOutput)
 }
 

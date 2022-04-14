@@ -40,7 +40,11 @@ func LookupPhraseSetOutput(ctx *pulumi.Context, args LookupPhraseSetOutputArgs, 
 		ApplyT(func(v interface{}) (LookupPhraseSetResult, error) {
 			args := v.(LookupPhraseSetArgs)
 			r, err := LookupPhraseSet(ctx, &args, opts...)
-			return *r, err
+			var s LookupPhraseSetResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPhraseSetResultOutput)
 }
 

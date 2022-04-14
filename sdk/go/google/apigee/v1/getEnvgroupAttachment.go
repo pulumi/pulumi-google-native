@@ -42,7 +42,11 @@ func LookupEnvgroupAttachmentOutput(ctx *pulumi.Context, args LookupEnvgroupAtta
 		ApplyT(func(v interface{}) (LookupEnvgroupAttachmentResult, error) {
 			args := v.(LookupEnvgroupAttachmentArgs)
 			r, err := LookupEnvgroupAttachment(ctx, &args, opts...)
-			return *r, err
+			var s LookupEnvgroupAttachmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupEnvgroupAttachmentResultOutput)
 }
 

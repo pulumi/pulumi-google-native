@@ -60,7 +60,11 @@ func LookupOsPolicyAssignmentOutput(ctx *pulumi.Context, args LookupOsPolicyAssi
 		ApplyT(func(v interface{}) (LookupOsPolicyAssignmentResult, error) {
 			args := v.(LookupOsPolicyAssignmentArgs)
 			r, err := LookupOsPolicyAssignment(ctx, &args, opts...)
-			return *r, err
+			var s LookupOsPolicyAssignmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupOsPolicyAssignmentResultOutput)
 }
 

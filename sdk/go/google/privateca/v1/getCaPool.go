@@ -44,7 +44,11 @@ func LookupCaPoolOutput(ctx *pulumi.Context, args LookupCaPoolOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupCaPoolResult, error) {
 			args := v.(LookupCaPoolArgs)
 			r, err := LookupCaPool(ctx, &args, opts...)
-			return *r, err
+			var s LookupCaPoolResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCaPoolResultOutput)
 }
 

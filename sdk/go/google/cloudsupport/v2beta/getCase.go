@@ -64,7 +64,11 @@ func LookupCaseOutput(ctx *pulumi.Context, args LookupCaseOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupCaseResult, error) {
 			args := v.(LookupCaseArgs)
 			r, err := LookupCase(ctx, &args, opts...)
-			return *r, err
+			var s LookupCaseResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCaseResultOutput)
 }
 

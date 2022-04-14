@@ -48,7 +48,11 @@ func LookupDnsAuthorizationOutput(ctx *pulumi.Context, args LookupDnsAuthorizati
 		ApplyT(func(v interface{}) (LookupDnsAuthorizationResult, error) {
 			args := v.(LookupDnsAuthorizationArgs)
 			r, err := LookupDnsAuthorization(ctx, &args, opts...)
-			return *r, err
+			var s LookupDnsAuthorizationResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDnsAuthorizationResultOutput)
 }
 

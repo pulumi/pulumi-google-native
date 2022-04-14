@@ -48,7 +48,11 @@ func LookupWaiterOutput(ctx *pulumi.Context, args LookupWaiterOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupWaiterResult, error) {
 			args := v.(LookupWaiterArgs)
 			r, err := LookupWaiter(ctx, &args, opts...)
-			return *r, err
+			var s LookupWaiterResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupWaiterResultOutput)
 }
 

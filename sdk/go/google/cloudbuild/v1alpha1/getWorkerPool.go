@@ -53,7 +53,11 @@ func LookupWorkerPoolOutput(ctx *pulumi.Context, args LookupWorkerPoolOutputArgs
 		ApplyT(func(v interface{}) (LookupWorkerPoolResult, error) {
 			args := v.(LookupWorkerPoolArgs)
 			r, err := LookupWorkerPool(ctx, &args, opts...)
-			return *r, err
+			var s LookupWorkerPoolResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupWorkerPoolResultOutput)
 }
 

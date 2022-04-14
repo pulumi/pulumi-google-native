@@ -70,7 +70,11 @@ func LookupInstantSnapshotOutput(ctx *pulumi.Context, args LookupInstantSnapshot
 		ApplyT(func(v interface{}) (LookupInstantSnapshotResult, error) {
 			args := v.(LookupInstantSnapshotArgs)
 			r, err := LookupInstantSnapshot(ctx, &args, opts...)
-			return *r, err
+			var s LookupInstantSnapshotResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInstantSnapshotResultOutput)
 }
 

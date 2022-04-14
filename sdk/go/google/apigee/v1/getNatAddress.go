@@ -40,7 +40,11 @@ func LookupNatAddressOutput(ctx *pulumi.Context, args LookupNatAddressOutputArgs
 		ApplyT(func(v interface{}) (LookupNatAddressResult, error) {
 			args := v.(LookupNatAddressArgs)
 			r, err := LookupNatAddress(ctx, &args, opts...)
-			return *r, err
+			var s LookupNatAddressResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNatAddressResultOutput)
 }
 

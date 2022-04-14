@@ -45,7 +45,11 @@ func LookupBillingAccountExclusionOutput(ctx *pulumi.Context, args LookupBilling
 		ApplyT(func(v interface{}) (LookupBillingAccountExclusionResult, error) {
 			args := v.(LookupBillingAccountExclusionArgs)
 			r, err := LookupBillingAccountExclusion(ctx, &args, opts...)
-			return *r, err
+			var s LookupBillingAccountExclusionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBillingAccountExclusionResultOutput)
 }
 

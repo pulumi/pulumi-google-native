@@ -48,7 +48,11 @@ func LookupCompositeTypeOutput(ctx *pulumi.Context, args LookupCompositeTypeOutp
 		ApplyT(func(v interface{}) (LookupCompositeTypeResult, error) {
 			args := v.(LookupCompositeTypeArgs)
 			r, err := LookupCompositeType(ctx, &args, opts...)
-			return *r, err
+			var s LookupCompositeTypeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCompositeTypeResultOutput)
 }
 

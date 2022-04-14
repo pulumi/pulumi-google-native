@@ -62,7 +62,11 @@ func LookupRegionHealthCheckServiceOutput(ctx *pulumi.Context, args LookupRegion
 		ApplyT(func(v interface{}) (LookupRegionHealthCheckServiceResult, error) {
 			args := v.(LookupRegionHealthCheckServiceArgs)
 			r, err := LookupRegionHealthCheckService(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionHealthCheckServiceResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionHealthCheckServiceResultOutput)
 }
 

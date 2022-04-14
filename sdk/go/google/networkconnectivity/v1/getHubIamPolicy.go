@@ -42,7 +42,11 @@ func LookupHubIamPolicyOutput(ctx *pulumi.Context, args LookupHubIamPolicyOutput
 		ApplyT(func(v interface{}) (LookupHubIamPolicyResult, error) {
 			args := v.(LookupHubIamPolicyArgs)
 			r, err := LookupHubIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupHubIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupHubIamPolicyResultOutput)
 }
 

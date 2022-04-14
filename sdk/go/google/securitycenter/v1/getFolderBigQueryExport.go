@@ -49,7 +49,11 @@ func LookupFolderBigQueryExportOutput(ctx *pulumi.Context, args LookupFolderBigQ
 		ApplyT(func(v interface{}) (LookupFolderBigQueryExportResult, error) {
 			args := v.(LookupFolderBigQueryExportArgs)
 			r, err := LookupFolderBigQueryExport(ctx, &args, opts...)
-			return *r, err
+			var s LookupFolderBigQueryExportResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFolderBigQueryExportResultOutput)
 }
 

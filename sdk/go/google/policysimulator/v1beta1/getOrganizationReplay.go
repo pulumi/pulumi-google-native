@@ -42,7 +42,11 @@ func LookupOrganizationReplayOutput(ctx *pulumi.Context, args LookupOrganization
 		ApplyT(func(v interface{}) (LookupOrganizationReplayResult, error) {
 			args := v.(LookupOrganizationReplayArgs)
 			r, err := LookupOrganizationReplay(ctx, &args, opts...)
-			return *r, err
+			var s LookupOrganizationReplayResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupOrganizationReplayResultOutput)
 }
 

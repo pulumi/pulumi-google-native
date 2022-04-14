@@ -65,7 +65,11 @@ func LookupGlobalAddressOutput(ctx *pulumi.Context, args LookupGlobalAddressOutp
 		ApplyT(func(v interface{}) (LookupGlobalAddressResult, error) {
 			args := v.(LookupGlobalAddressArgs)
 			r, err := LookupGlobalAddress(ctx, &args, opts...)
-			return *r, err
+			var s LookupGlobalAddressResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGlobalAddressResultOutput)
 }
 

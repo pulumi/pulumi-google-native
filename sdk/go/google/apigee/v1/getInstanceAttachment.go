@@ -40,7 +40,11 @@ func LookupInstanceAttachmentOutput(ctx *pulumi.Context, args LookupInstanceAtta
 		ApplyT(func(v interface{}) (LookupInstanceAttachmentResult, error) {
 			args := v.(LookupInstanceAttachmentArgs)
 			r, err := LookupInstanceAttachment(ctx, &args, opts...)
-			return *r, err
+			var s LookupInstanceAttachmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInstanceAttachmentResultOutput)
 }
 

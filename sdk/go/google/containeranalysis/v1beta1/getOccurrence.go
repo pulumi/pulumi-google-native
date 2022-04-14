@@ -71,7 +71,11 @@ func LookupOccurrenceOutput(ctx *pulumi.Context, args LookupOccurrenceOutputArgs
 		ApplyT(func(v interface{}) (LookupOccurrenceResult, error) {
 			args := v.(LookupOccurrenceArgs)
 			r, err := LookupOccurrence(ctx, &args, opts...)
-			return *r, err
+			var s LookupOccurrenceResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupOccurrenceResultOutput)
 }
 

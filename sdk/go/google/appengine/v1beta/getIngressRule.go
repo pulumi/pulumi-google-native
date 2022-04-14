@@ -41,7 +41,11 @@ func LookupIngressRuleOutput(ctx *pulumi.Context, args LookupIngressRuleOutputAr
 		ApplyT(func(v interface{}) (LookupIngressRuleResult, error) {
 			args := v.(LookupIngressRuleArgs)
 			r, err := LookupIngressRule(ctx, &args, opts...)
-			return *r, err
+			var s LookupIngressRuleResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupIngressRuleResultOutput)
 }
 

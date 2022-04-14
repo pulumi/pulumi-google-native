@@ -56,7 +56,11 @@ func LookupPhraseMatcherOutput(ctx *pulumi.Context, args LookupPhraseMatcherOutp
 		ApplyT(func(v interface{}) (LookupPhraseMatcherResult, error) {
 			args := v.(LookupPhraseMatcherArgs)
 			r, err := LookupPhraseMatcher(ctx, &args, opts...)
-			return *r, err
+			var s LookupPhraseMatcherResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPhraseMatcherResultOutput)
 }
 

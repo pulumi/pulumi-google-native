@@ -120,7 +120,11 @@ func LookupRegionDiskOutput(ctx *pulumi.Context, args LookupRegionDiskOutputArgs
 		ApplyT(func(v interface{}) (LookupRegionDiskResult, error) {
 			args := v.(LookupRegionDiskArgs)
 			r, err := LookupRegionDisk(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionDiskResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionDiskResultOutput)
 }
 

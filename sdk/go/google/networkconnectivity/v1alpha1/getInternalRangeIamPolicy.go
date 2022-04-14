@@ -43,7 +43,11 @@ func LookupInternalRangeIamPolicyOutput(ctx *pulumi.Context, args LookupInternal
 		ApplyT(func(v interface{}) (LookupInternalRangeIamPolicyResult, error) {
 			args := v.(LookupInternalRangeIamPolicyArgs)
 			r, err := LookupInternalRangeIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupInternalRangeIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInternalRangeIamPolicyResultOutput)
 }
 

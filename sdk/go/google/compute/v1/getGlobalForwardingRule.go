@@ -89,7 +89,11 @@ func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForw
 		ApplyT(func(v interface{}) (LookupGlobalForwardingRuleResult, error) {
 			args := v.(LookupGlobalForwardingRuleArgs)
 			r, err := LookupGlobalForwardingRule(ctx, &args, opts...)
-			return *r, err
+			var s LookupGlobalForwardingRuleResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGlobalForwardingRuleResultOutput)
 }
 

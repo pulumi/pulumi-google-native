@@ -48,7 +48,11 @@ func LookupMeshOutput(ctx *pulumi.Context, args LookupMeshOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupMeshResult, error) {
 			args := v.(LookupMeshArgs)
 			r, err := LookupMesh(ctx, &args, opts...)
-			return *r, err
+			var s LookupMeshResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMeshResultOutput)
 }
 

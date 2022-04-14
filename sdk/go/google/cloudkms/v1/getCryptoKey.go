@@ -57,7 +57,11 @@ func LookupCryptoKeyOutput(ctx *pulumi.Context, args LookupCryptoKeyOutputArgs, 
 		ApplyT(func(v interface{}) (LookupCryptoKeyResult, error) {
 			args := v.(LookupCryptoKeyArgs)
 			r, err := LookupCryptoKey(ctx, &args, opts...)
-			return *r, err
+			var s LookupCryptoKeyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCryptoKeyResultOutput)
 }
 

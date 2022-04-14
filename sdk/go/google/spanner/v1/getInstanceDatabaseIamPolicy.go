@@ -40,7 +40,11 @@ func LookupInstanceDatabaseIamPolicyOutput(ctx *pulumi.Context, args LookupInsta
 		ApplyT(func(v interface{}) (LookupInstanceDatabaseIamPolicyResult, error) {
 			args := v.(LookupInstanceDatabaseIamPolicyArgs)
 			r, err := LookupInstanceDatabaseIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupInstanceDatabaseIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInstanceDatabaseIamPolicyResultOutput)
 }
 

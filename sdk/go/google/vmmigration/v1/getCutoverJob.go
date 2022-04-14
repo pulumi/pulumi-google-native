@@ -54,7 +54,11 @@ func LookupCutoverJobOutput(ctx *pulumi.Context, args LookupCutoverJobOutputArgs
 		ApplyT(func(v interface{}) (LookupCutoverJobResult, error) {
 			args := v.(LookupCutoverJobArgs)
 			r, err := LookupCutoverJob(ctx, &args, opts...)
-			return *r, err
+			var s LookupCutoverJobResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCutoverJobResultOutput)
 }
 

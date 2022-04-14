@@ -44,7 +44,11 @@ func LookupKeyRingImportJobIamPolicyOutput(ctx *pulumi.Context, args LookupKeyRi
 		ApplyT(func(v interface{}) (LookupKeyRingImportJobIamPolicyResult, error) {
 			args := v.(LookupKeyRingImportJobIamPolicyArgs)
 			r, err := LookupKeyRingImportJobIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupKeyRingImportJobIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupKeyRingImportJobIamPolicyResultOutput)
 }
 

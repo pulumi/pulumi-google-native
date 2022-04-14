@@ -62,7 +62,11 @@ func LookupConversationProfileOutput(ctx *pulumi.Context, args LookupConversatio
 		ApplyT(func(v interface{}) (LookupConversationProfileResult, error) {
 			args := v.(LookupConversationProfileArgs)
 			r, err := LookupConversationProfile(ctx, &args, opts...)
-			return *r, err
+			var s LookupConversationProfileResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupConversationProfileResultOutput)
 }
 

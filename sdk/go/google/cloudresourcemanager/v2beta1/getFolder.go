@@ -42,7 +42,11 @@ func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupFolderResult, error) {
 			args := v.(LookupFolderArgs)
 			r, err := LookupFolder(ctx, &args, opts...)
-			return *r, err
+			var s LookupFolderResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFolderResultOutput)
 }
 

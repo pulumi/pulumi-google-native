@@ -102,7 +102,11 @@ func LookupBucketObjectOutput(ctx *pulumi.Context, args LookupBucketObjectOutput
 		ApplyT(func(v interface{}) (LookupBucketObjectResult, error) {
 			args := v.(LookupBucketObjectArgs)
 			r, err := LookupBucketObject(ctx, &args, opts...)
-			return *r, err
+			var s LookupBucketObjectResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBucketObjectResultOutput)
 }
 

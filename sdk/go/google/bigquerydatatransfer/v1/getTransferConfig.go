@@ -70,7 +70,11 @@ func LookupTransferConfigOutput(ctx *pulumi.Context, args LookupTransferConfigOu
 		ApplyT(func(v interface{}) (LookupTransferConfigResult, error) {
 			args := v.(LookupTransferConfigArgs)
 			r, err := LookupTransferConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupTransferConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTransferConfigResultOutput)
 }
 

@@ -52,7 +52,11 @@ func LookupCapacityCommitmentOutput(ctx *pulumi.Context, args LookupCapacityComm
 		ApplyT(func(v interface{}) (LookupCapacityCommitmentResult, error) {
 			args := v.(LookupCapacityCommitmentArgs)
 			r, err := LookupCapacityCommitment(ctx, &args, opts...)
-			return *r, err
+			var s LookupCapacityCommitmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCapacityCommitmentResultOutput)
 }
 

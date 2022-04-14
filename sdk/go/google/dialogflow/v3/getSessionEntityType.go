@@ -43,7 +43,11 @@ func LookupSessionEntityTypeOutput(ctx *pulumi.Context, args LookupSessionEntity
 		ApplyT(func(v interface{}) (LookupSessionEntityTypeResult, error) {
 			args := v.(LookupSessionEntityTypeArgs)
 			r, err := LookupSessionEntityType(ctx, &args, opts...)
-			return *r, err
+			var s LookupSessionEntityTypeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupSessionEntityTypeResultOutput)
 }
 

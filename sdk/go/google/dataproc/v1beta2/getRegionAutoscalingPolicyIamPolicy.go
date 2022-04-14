@@ -41,7 +41,11 @@ func LookupRegionAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args Look
 		ApplyT(func(v interface{}) (LookupRegionAutoscalingPolicyIamPolicyResult, error) {
 			args := v.(LookupRegionAutoscalingPolicyIamPolicyArgs)
 			r, err := LookupRegionAutoscalingPolicyIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionAutoscalingPolicyIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionAutoscalingPolicyIamPolicyResultOutput)
 }
 

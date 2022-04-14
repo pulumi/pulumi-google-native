@@ -59,7 +59,11 @@ func LookupTestMatrixOutput(ctx *pulumi.Context, args LookupTestMatrixOutputArgs
 		ApplyT(func(v interface{}) (LookupTestMatrixResult, error) {
 			args := v.(LookupTestMatrixArgs)
 			r, err := LookupTestMatrix(ctx, &args, opts...)
-			return *r, err
+			var s LookupTestMatrixResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTestMatrixResultOutput)
 }
 

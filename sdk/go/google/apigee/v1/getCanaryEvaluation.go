@@ -52,7 +52,11 @@ func LookupCanaryEvaluationOutput(ctx *pulumi.Context, args LookupCanaryEvaluati
 		ApplyT(func(v interface{}) (LookupCanaryEvaluationResult, error) {
 			args := v.(LookupCanaryEvaluationArgs)
 			r, err := LookupCanaryEvaluation(ctx, &args, opts...)
-			return *r, err
+			var s LookupCanaryEvaluationResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCanaryEvaluationResultOutput)
 }
 

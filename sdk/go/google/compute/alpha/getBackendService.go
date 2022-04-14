@@ -112,7 +112,11 @@ func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOu
 		ApplyT(func(v interface{}) (LookupBackendServiceResult, error) {
 			args := v.(LookupBackendServiceArgs)
 			r, err := LookupBackendService(ctx, &args, opts...)
-			return *r, err
+			var s LookupBackendServiceResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBackendServiceResultOutput)
 }
 

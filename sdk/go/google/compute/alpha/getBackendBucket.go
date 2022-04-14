@@ -57,7 +57,11 @@ func LookupBackendBucketOutput(ctx *pulumi.Context, args LookupBackendBucketOutp
 		ApplyT(func(v interface{}) (LookupBackendBucketResult, error) {
 			args := v.(LookupBackendBucketArgs)
 			r, err := LookupBackendBucket(ctx, &args, opts...)
-			return *r, err
+			var s LookupBackendBucketResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBackendBucketResultOutput)
 }
 

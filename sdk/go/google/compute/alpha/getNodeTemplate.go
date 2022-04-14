@@ -64,7 +64,11 @@ func LookupNodeTemplateOutput(ctx *pulumi.Context, args LookupNodeTemplateOutput
 		ApplyT(func(v interface{}) (LookupNodeTemplateResult, error) {
 			args := v.(LookupNodeTemplateArgs)
 			r, err := LookupNodeTemplate(ctx, &args, opts...)
-			return *r, err
+			var s LookupNodeTemplateResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNodeTemplateResultOutput)
 }
 

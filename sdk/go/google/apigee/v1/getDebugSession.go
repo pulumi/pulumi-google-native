@@ -50,7 +50,11 @@ func LookupDebugSessionOutput(ctx *pulumi.Context, args LookupDebugSessionOutput
 		ApplyT(func(v interface{}) (LookupDebugSessionResult, error) {
 			args := v.(LookupDebugSessionArgs)
 			r, err := LookupDebugSession(ctx, &args, opts...)
-			return *r, err
+			var s LookupDebugSessionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDebugSessionResultOutput)
 }
 

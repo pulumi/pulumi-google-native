@@ -45,7 +45,11 @@ func LookupSubnetworkIamPolicyOutput(ctx *pulumi.Context, args LookupSubnetworkI
 		ApplyT(func(v interface{}) (LookupSubnetworkIamPolicyResult, error) {
 			args := v.(LookupSubnetworkIamPolicyArgs)
 			r, err := LookupSubnetworkIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupSubnetworkIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupSubnetworkIamPolicyResultOutput)
 }
 

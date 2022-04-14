@@ -44,7 +44,11 @@ func LookupLienOutput(ctx *pulumi.Context, args LookupLienOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupLienResult, error) {
 			args := v.(LookupLienArgs)
 			r, err := LookupLien(ctx, &args, opts...)
-			return *r, err
+			var s LookupLienResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupLienResultOutput)
 }
 

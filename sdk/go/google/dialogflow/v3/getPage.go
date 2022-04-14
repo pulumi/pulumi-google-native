@@ -51,7 +51,11 @@ func LookupPageOutput(ctx *pulumi.Context, args LookupPageOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupPageResult, error) {
 			args := v.(LookupPageArgs)
 			r, err := LookupPage(ctx, &args, opts...)
-			return *r, err
+			var s LookupPageResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPageResultOutput)
 }
 

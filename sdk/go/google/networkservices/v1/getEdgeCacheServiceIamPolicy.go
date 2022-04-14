@@ -43,7 +43,11 @@ func LookupEdgeCacheServiceIamPolicyOutput(ctx *pulumi.Context, args LookupEdgeC
 		ApplyT(func(v interface{}) (LookupEdgeCacheServiceIamPolicyResult, error) {
 			args := v.(LookupEdgeCacheServiceIamPolicyArgs)
 			r, err := LookupEdgeCacheServiceIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupEdgeCacheServiceIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupEdgeCacheServiceIamPolicyResultOutput)
 }
 

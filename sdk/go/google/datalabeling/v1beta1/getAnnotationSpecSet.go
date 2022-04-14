@@ -43,7 +43,11 @@ func LookupAnnotationSpecSetOutput(ctx *pulumi.Context, args LookupAnnotationSpe
 		ApplyT(func(v interface{}) (LookupAnnotationSpecSetResult, error) {
 			args := v.(LookupAnnotationSpecSetArgs)
 			r, err := LookupAnnotationSpecSet(ctx, &args, opts...)
-			return *r, err
+			var s LookupAnnotationSpecSetResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAnnotationSpecSetResultOutput)
 }
 

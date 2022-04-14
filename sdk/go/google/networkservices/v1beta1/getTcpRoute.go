@@ -52,7 +52,11 @@ func LookupTcpRouteOutput(ctx *pulumi.Context, args LookupTcpRouteOutputArgs, op
 		ApplyT(func(v interface{}) (LookupTcpRouteResult, error) {
 			args := v.(LookupTcpRouteArgs)
 			r, err := LookupTcpRoute(ctx, &args, opts...)
-			return *r, err
+			var s LookupTcpRouteResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTcpRouteResultOutput)
 }
 

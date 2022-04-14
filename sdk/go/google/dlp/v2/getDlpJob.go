@@ -54,7 +54,11 @@ func LookupDlpJobOutput(ctx *pulumi.Context, args LookupDlpJobOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupDlpJobResult, error) {
 			args := v.(LookupDlpJobArgs)
 			r, err := LookupDlpJob(ctx, &args, opts...)
-			return *r, err
+			var s LookupDlpJobResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDlpJobResultOutput)
 }
 

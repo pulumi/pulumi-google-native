@@ -54,7 +54,11 @@ func LookupBitbucketServerConfigOutput(ctx *pulumi.Context, args LookupBitbucket
 		ApplyT(func(v interface{}) (LookupBitbucketServerConfigResult, error) {
 			args := v.(LookupBitbucketServerConfigArgs)
 			r, err := LookupBitbucketServerConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupBitbucketServerConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBitbucketServerConfigResultOutput)
 }
 

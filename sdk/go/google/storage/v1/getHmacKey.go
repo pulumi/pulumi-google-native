@@ -52,7 +52,11 @@ func LookupHmacKeyOutput(ctx *pulumi.Context, args LookupHmacKeyOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupHmacKeyResult, error) {
 			args := v.(LookupHmacKeyArgs)
 			r, err := LookupHmacKey(ctx, &args, opts...)
-			return *r, err
+			var s LookupHmacKeyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupHmacKeyResultOutput)
 }
 

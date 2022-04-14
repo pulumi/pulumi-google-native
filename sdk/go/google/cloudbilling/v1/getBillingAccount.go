@@ -40,7 +40,11 @@ func LookupBillingAccountOutput(ctx *pulumi.Context, args LookupBillingAccountOu
 		ApplyT(func(v interface{}) (LookupBillingAccountResult, error) {
 			args := v.(LookupBillingAccountArgs)
 			r, err := LookupBillingAccount(ctx, &args, opts...)
-			return *r, err
+			var s LookupBillingAccountResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBillingAccountResultOutput)
 }
 

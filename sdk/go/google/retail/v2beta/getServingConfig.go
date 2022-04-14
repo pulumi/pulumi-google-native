@@ -69,7 +69,11 @@ func LookupServingConfigOutput(ctx *pulumi.Context, args LookupServingConfigOutp
 		ApplyT(func(v interface{}) (LookupServingConfigResult, error) {
 			args := v.(LookupServingConfigArgs)
 			r, err := LookupServingConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupServingConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupServingConfigResultOutput)
 }
 

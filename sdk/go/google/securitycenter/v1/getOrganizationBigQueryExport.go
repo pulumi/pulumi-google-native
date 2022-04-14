@@ -49,7 +49,11 @@ func LookupOrganizationBigQueryExportOutput(ctx *pulumi.Context, args LookupOrga
 		ApplyT(func(v interface{}) (LookupOrganizationBigQueryExportResult, error) {
 			args := v.(LookupOrganizationBigQueryExportArgs)
 			r, err := LookupOrganizationBigQueryExport(ctx, &args, opts...)
-			return *r, err
+			var s LookupOrganizationBigQueryExportResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupOrganizationBigQueryExportResultOutput)
 }
 

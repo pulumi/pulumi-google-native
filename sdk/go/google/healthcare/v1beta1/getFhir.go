@@ -43,7 +43,11 @@ func GetFhirOutput(ctx *pulumi.Context, args GetFhirOutputArgs, opts ...pulumi.I
 		ApplyT(func(v interface{}) (GetFhirResult, error) {
 			args := v.(GetFhirArgs)
 			r, err := GetFhir(ctx, &args, opts...)
-			return *r, err
+			var s GetFhirResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetFhirResultOutput)
 }
 

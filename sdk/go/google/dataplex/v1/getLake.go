@@ -58,7 +58,11 @@ func LookupLakeOutput(ctx *pulumi.Context, args LookupLakeOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupLakeResult, error) {
 			args := v.(LookupLakeArgs)
 			r, err := LookupLake(ctx, &args, opts...)
-			return *r, err
+			var s LookupLakeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupLakeResultOutput)
 }
 

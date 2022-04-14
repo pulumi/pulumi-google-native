@@ -43,7 +43,11 @@ func LookupContextOutput(ctx *pulumi.Context, args LookupContextOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupContextResult, error) {
 			args := v.(LookupContextArgs)
 			r, err := LookupContext(ctx, &args, opts...)
-			return *r, err
+			var s LookupContextResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupContextResultOutput)
 }
 

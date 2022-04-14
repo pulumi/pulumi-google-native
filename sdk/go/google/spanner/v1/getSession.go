@@ -43,7 +43,11 @@ func LookupSessionOutput(ctx *pulumi.Context, args LookupSessionOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupSessionResult, error) {
 			args := v.(LookupSessionArgs)
 			r, err := LookupSession(ctx, &args, opts...)
-			return *r, err
+			var s LookupSessionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupSessionResultOutput)
 }
 

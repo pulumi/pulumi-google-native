@@ -51,7 +51,11 @@ func LookupTargetHttpProxyOutput(ctx *pulumi.Context, args LookupTargetHttpProxy
 		ApplyT(func(v interface{}) (LookupTargetHttpProxyResult, error) {
 			args := v.(LookupTargetHttpProxyArgs)
 			r, err := LookupTargetHttpProxy(ctx, &args, opts...)
-			return *r, err
+			var s LookupTargetHttpProxyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTargetHttpProxyResultOutput)
 }
 

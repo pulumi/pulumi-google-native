@@ -48,7 +48,11 @@ func LookupAttributeDefinitionOutput(ctx *pulumi.Context, args LookupAttributeDe
 		ApplyT(func(v interface{}) (LookupAttributeDefinitionResult, error) {
 			args := v.(LookupAttributeDefinitionArgs)
 			r, err := LookupAttributeDefinition(ctx, &args, opts...)
-			return *r, err
+			var s LookupAttributeDefinitionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAttributeDefinitionResultOutput)
 }
 

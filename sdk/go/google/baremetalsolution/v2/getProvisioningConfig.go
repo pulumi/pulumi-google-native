@@ -58,7 +58,11 @@ func LookupProvisioningConfigOutput(ctx *pulumi.Context, args LookupProvisioning
 		ApplyT(func(v interface{}) (LookupProvisioningConfigResult, error) {
 			args := v.(LookupProvisioningConfigArgs)
 			r, err := LookupProvisioningConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupProvisioningConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupProvisioningConfigResultOutput)
 }
 

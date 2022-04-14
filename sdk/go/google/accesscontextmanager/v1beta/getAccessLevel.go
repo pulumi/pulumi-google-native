@@ -44,7 +44,11 @@ func LookupAccessLevelOutput(ctx *pulumi.Context, args LookupAccessLevelOutputAr
 		ApplyT(func(v interface{}) (LookupAccessLevelResult, error) {
 			args := v.(LookupAccessLevelArgs)
 			r, err := LookupAccessLevel(ctx, &args, opts...)
-			return *r, err
+			var s LookupAccessLevelResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAccessLevelResultOutput)
 }
 

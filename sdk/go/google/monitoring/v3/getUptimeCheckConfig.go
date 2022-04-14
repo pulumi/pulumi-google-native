@@ -59,7 +59,11 @@ func LookupUptimeCheckConfigOutput(ctx *pulumi.Context, args LookupUptimeCheckCo
 		ApplyT(func(v interface{}) (LookupUptimeCheckConfigResult, error) {
 			args := v.(LookupUptimeCheckConfigArgs)
 			r, err := LookupUptimeCheckConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupUptimeCheckConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupUptimeCheckConfigResultOutput)
 }
 

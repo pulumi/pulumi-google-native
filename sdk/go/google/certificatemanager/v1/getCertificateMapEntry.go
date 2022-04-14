@@ -53,7 +53,11 @@ func LookupCertificateMapEntryOutput(ctx *pulumi.Context, args LookupCertificate
 		ApplyT(func(v interface{}) (LookupCertificateMapEntryResult, error) {
 			args := v.(LookupCertificateMapEntryArgs)
 			r, err := LookupCertificateMapEntry(ctx, &args, opts...)
-			return *r, err
+			var s LookupCertificateMapEntryResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCertificateMapEntryResultOutput)
 }
 

@@ -40,7 +40,11 @@ func LookupPeeringIamPolicyOutput(ctx *pulumi.Context, args LookupPeeringIamPoli
 		ApplyT(func(v interface{}) (LookupPeeringIamPolicyResult, error) {
 			args := v.(LookupPeeringIamPolicyArgs)
 			r, err := LookupPeeringIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupPeeringIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPeeringIamPolicyResultOutput)
 }
 

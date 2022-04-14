@@ -81,7 +81,11 @@ func LookupInterconnectOutput(ctx *pulumi.Context, args LookupInterconnectOutput
 		ApplyT(func(v interface{}) (LookupInterconnectResult, error) {
 			args := v.(LookupInterconnectArgs)
 			r, err := LookupInterconnect(ctx, &args, opts...)
-			return *r, err
+			var s LookupInterconnectResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInterconnectResultOutput)
 }
 

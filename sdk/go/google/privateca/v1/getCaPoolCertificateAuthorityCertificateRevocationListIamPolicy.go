@@ -45,7 +45,11 @@ func LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput(ct
 		ApplyT(func(v interface{}) (LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult, error) {
 			args := v.(LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs)
 			r, err := LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResultOutput)
 }
 

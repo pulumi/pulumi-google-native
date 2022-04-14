@@ -55,7 +55,11 @@ func LookupImportJobOutput(ctx *pulumi.Context, args LookupImportJobOutputArgs, 
 		ApplyT(func(v interface{}) (LookupImportJobResult, error) {
 			args := v.(LookupImportJobArgs)
 			r, err := LookupImportJob(ctx, &args, opts...)
-			return *r, err
+			var s LookupImportJobResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupImportJobResultOutput)
 }
 

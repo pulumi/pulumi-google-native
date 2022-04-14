@@ -48,7 +48,11 @@ func LookupTagValueOutput(ctx *pulumi.Context, args LookupTagValueOutputArgs, op
 		ApplyT(func(v interface{}) (LookupTagValueResult, error) {
 			args := v.(LookupTagValueArgs)
 			r, err := LookupTagValue(ctx, &args, opts...)
-			return *r, err
+			var s LookupTagValueResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTagValueResultOutput)
 }
 
