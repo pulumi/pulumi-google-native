@@ -180,7 +180,7 @@
               ],
               "parameters": {
                 "filter": {
-                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like `\"displayName=tokyo\"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
+                  "description": "A filter to narrow down results to a preferred subset. The filtering language accepts strings like \"displayName=tokyo\", and is documented in more detail in [AIP-160](https://google.aip.dev/160).",
                   "location": "query",
                   "type": "string"
                 },
@@ -1217,7 +1217,7 @@
       }
     }
   },
-  "revision": "20220405",
+  "revision": "20220330",
   "rootUrl": "https://datastream.googleapis.com/",
   "schemas": {
     "AvroFileFormat": {
@@ -1437,12 +1437,6 @@
           "description": "Enriched Oracle RDBMS object."
         }
       },
-      "type": "object"
-    },
-    "DropLargeObjects": {
-      "description": "Configuration to drop large object values.",
-      "id": "DropLargeObjects",
-      "properties": {},
       "type": "object"
     },
     "Empty": {
@@ -2116,6 +2110,12 @@
       },
       "type": "object"
     },
+    "OracleDropLargeObjects": {
+      "description": "Configuration to drop large object values.",
+      "id": "OracleDropLargeObjects",
+      "properties": {},
+      "type": "object"
+    },
     "OracleObjectIdentifier": {
       "description": "Oracle data source object identifier.",
       "id": "OracleObjectIdentifier",
@@ -2203,7 +2203,7 @@
       "id": "OracleSourceConfig",
       "properties": {
         "dropLargeObjects": {
-          "$ref": "DropLargeObjects",
+          "$ref": "OracleDropLargeObjects",
           "description": "Drop large object values."
         },
         "excludeObjects": {
