@@ -48,7 +48,11 @@ func LookupPerfSampleSeriesOutput(ctx *pulumi.Context, args LookupPerfSampleSeri
 		ApplyT(func(v interface{}) (LookupPerfSampleSeriesResult, error) {
 			args := v.(LookupPerfSampleSeriesArgs)
 			r, err := LookupPerfSampleSeries(ctx, &args, opts...)
-			return *r, err
+			var s LookupPerfSampleSeriesResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPerfSampleSeriesResultOutput)
 }
 

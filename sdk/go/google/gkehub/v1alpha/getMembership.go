@@ -58,7 +58,11 @@ func LookupMembershipOutput(ctx *pulumi.Context, args LookupMembershipOutputArgs
 		ApplyT(func(v interface{}) (LookupMembershipResult, error) {
 			args := v.(LookupMembershipArgs)
 			r, err := LookupMembership(ctx, &args, opts...)
-			return *r, err
+			var s LookupMembershipResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMembershipResultOutput)
 }
 

@@ -67,7 +67,11 @@ func LookupMachineImageOutput(ctx *pulumi.Context, args LookupMachineImageOutput
 		ApplyT(func(v interface{}) (LookupMachineImageResult, error) {
 			args := v.(LookupMachineImageArgs)
 			r, err := LookupMachineImage(ctx, &args, opts...)
-			return *r, err
+			var s LookupMachineImageResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMachineImageResultOutput)
 }
 

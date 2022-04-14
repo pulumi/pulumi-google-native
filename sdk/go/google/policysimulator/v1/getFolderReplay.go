@@ -42,7 +42,11 @@ func LookupFolderReplayOutput(ctx *pulumi.Context, args LookupFolderReplayOutput
 		ApplyT(func(v interface{}) (LookupFolderReplayResult, error) {
 			args := v.(LookupFolderReplayArgs)
 			r, err := LookupFolderReplay(ctx, &args, opts...)
-			return *r, err
+			var s LookupFolderReplayResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFolderReplayResultOutput)
 }
 

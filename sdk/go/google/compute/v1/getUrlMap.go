@@ -61,7 +61,11 @@ func LookupUrlMapOutput(ctx *pulumi.Context, args LookupUrlMapOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupUrlMapResult, error) {
 			args := v.(LookupUrlMapArgs)
 			r, err := LookupUrlMap(ctx, &args, opts...)
-			return *r, err
+			var s LookupUrlMapResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupUrlMapResultOutput)
 }
 

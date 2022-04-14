@@ -40,7 +40,11 @@ func LookupStoredInfoTypeOutput(ctx *pulumi.Context, args LookupStoredInfoTypeOu
 		ApplyT(func(v interface{}) (LookupStoredInfoTypeResult, error) {
 			args := v.(LookupStoredInfoTypeArgs)
 			r, err := LookupStoredInfoType(ctx, &args, opts...)
-			return *r, err
+			var s LookupStoredInfoTypeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupStoredInfoTypeResultOutput)
 }
 

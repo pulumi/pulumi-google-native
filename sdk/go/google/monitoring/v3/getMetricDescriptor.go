@@ -55,7 +55,11 @@ func LookupMetricDescriptorOutput(ctx *pulumi.Context, args LookupMetricDescript
 		ApplyT(func(v interface{}) (LookupMetricDescriptorResult, error) {
 			args := v.(LookupMetricDescriptorArgs)
 			r, err := LookupMetricDescriptor(ctx, &args, opts...)
-			return *r, err
+			var s LookupMetricDescriptorResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMetricDescriptorResultOutput)
 }
 

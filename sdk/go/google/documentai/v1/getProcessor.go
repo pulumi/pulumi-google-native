@@ -50,7 +50,11 @@ func LookupProcessorOutput(ctx *pulumi.Context, args LookupProcessorOutputArgs, 
 		ApplyT(func(v interface{}) (LookupProcessorResult, error) {
 			args := v.(LookupProcessorArgs)
 			r, err := LookupProcessor(ctx, &args, opts...)
-			return *r, err
+			var s LookupProcessorResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupProcessorResultOutput)
 }
 

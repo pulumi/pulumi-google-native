@@ -43,7 +43,11 @@ func LookupEnvgroupOutput(ctx *pulumi.Context, args LookupEnvgroupOutputArgs, op
 		ApplyT(func(v interface{}) (LookupEnvgroupResult, error) {
 			args := v.(LookupEnvgroupArgs)
 			r, err := LookupEnvgroup(ctx, &args, opts...)
-			return *r, err
+			var s LookupEnvgroupResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupEnvgroupResultOutput)
 }
 

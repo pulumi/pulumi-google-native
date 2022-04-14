@@ -71,7 +71,11 @@ func LookupObjectAccessControlOutput(ctx *pulumi.Context, args LookupObjectAcces
 		ApplyT(func(v interface{}) (LookupObjectAccessControlResult, error) {
 			args := v.(LookupObjectAccessControlArgs)
 			r, err := LookupObjectAccessControl(ctx, &args, opts...)
-			return *r, err
+			var s LookupObjectAccessControlResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupObjectAccessControlResultOutput)
 }
 

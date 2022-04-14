@@ -52,7 +52,11 @@ func LookupSecuritySettingOutput(ctx *pulumi.Context, args LookupSecuritySetting
 		ApplyT(func(v interface{}) (LookupSecuritySettingResult, error) {
 			args := v.(LookupSecuritySettingArgs)
 			r, err := LookupSecuritySetting(ctx, &args, opts...)
-			return *r, err
+			var s LookupSecuritySettingResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupSecuritySettingResultOutput)
 }
 

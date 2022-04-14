@@ -52,7 +52,11 @@ func LookupRegionTargetTcpProxyOutput(ctx *pulumi.Context, args LookupRegionTarg
 		ApplyT(func(v interface{}) (LookupRegionTargetTcpProxyResult, error) {
 			args := v.(LookupRegionTargetTcpProxyArgs)
 			r, err := LookupRegionTargetTcpProxy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionTargetTcpProxyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionTargetTcpProxyResultOutput)
 }
 

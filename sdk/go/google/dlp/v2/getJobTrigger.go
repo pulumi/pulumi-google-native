@@ -54,7 +54,11 @@ func LookupJobTriggerOutput(ctx *pulumi.Context, args LookupJobTriggerOutputArgs
 		ApplyT(func(v interface{}) (LookupJobTriggerResult, error) {
 			args := v.(LookupJobTriggerArgs)
 			r, err := LookupJobTrigger(ctx, &args, opts...)
-			return *r, err
+			var s LookupJobTriggerResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupJobTriggerResultOutput)
 }
 

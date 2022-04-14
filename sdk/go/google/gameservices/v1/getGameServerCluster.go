@@ -52,7 +52,11 @@ func LookupGameServerClusterOutput(ctx *pulumi.Context, args LookupGameServerClu
 		ApplyT(func(v interface{}) (LookupGameServerClusterResult, error) {
 			args := v.(LookupGameServerClusterArgs)
 			r, err := LookupGameServerCluster(ctx, &args, opts...)
-			return *r, err
+			var s LookupGameServerClusterResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGameServerClusterResultOutput)
 }
 

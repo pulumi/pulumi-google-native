@@ -45,7 +45,11 @@ func LookupNodeTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupNodeTempl
 		ApplyT(func(v interface{}) (LookupNodeTemplateIamPolicyResult, error) {
 			args := v.(LookupNodeTemplateIamPolicyArgs)
 			r, err := LookupNodeTemplateIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupNodeTemplateIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNodeTemplateIamPolicyResultOutput)
 }
 

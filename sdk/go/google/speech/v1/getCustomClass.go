@@ -40,7 +40,11 @@ func LookupCustomClassOutput(ctx *pulumi.Context, args LookupCustomClassOutputAr
 		ApplyT(func(v interface{}) (LookupCustomClassResult, error) {
 			args := v.(LookupCustomClassArgs)
 			r, err := LookupCustomClass(ctx, &args, opts...)
-			return *r, err
+			var s LookupCustomClassResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCustomClassResultOutput)
 }
 

@@ -44,7 +44,11 @@ func LookupKeyRingCryptoKeyIamPolicyOutput(ctx *pulumi.Context, args LookupKeyRi
 		ApplyT(func(v interface{}) (LookupKeyRingCryptoKeyIamPolicyResult, error) {
 			args := v.(LookupKeyRingCryptoKeyIamPolicyArgs)
 			r, err := LookupKeyRingCryptoKeyIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupKeyRingCryptoKeyIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupKeyRingCryptoKeyIamPolicyResultOutput)
 }
 

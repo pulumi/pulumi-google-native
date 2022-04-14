@@ -48,7 +48,11 @@ func LookupRealmOutput(ctx *pulumi.Context, args LookupRealmOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupRealmResult, error) {
 			args := v.(LookupRealmArgs)
 			r, err := LookupRealm(ctx, &args, opts...)
-			return *r, err
+			var s LookupRealmResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRealmResultOutput)
 }
 

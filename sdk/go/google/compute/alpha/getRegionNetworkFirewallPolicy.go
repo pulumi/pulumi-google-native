@@ -66,7 +66,11 @@ func LookupRegionNetworkFirewallPolicyOutput(ctx *pulumi.Context, args LookupReg
 		ApplyT(func(v interface{}) (LookupRegionNetworkFirewallPolicyResult, error) {
 			args := v.(LookupRegionNetworkFirewallPolicyArgs)
 			r, err := LookupRegionNetworkFirewallPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionNetworkFirewallPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionNetworkFirewallPolicyResultOutput)
 }
 

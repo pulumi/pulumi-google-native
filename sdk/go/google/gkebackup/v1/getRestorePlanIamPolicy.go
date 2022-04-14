@@ -43,7 +43,11 @@ func LookupRestorePlanIamPolicyOutput(ctx *pulumi.Context, args LookupRestorePla
 		ApplyT(func(v interface{}) (LookupRestorePlanIamPolicyResult, error) {
 			args := v.(LookupRestorePlanIamPolicyArgs)
 			r, err := LookupRestorePlanIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRestorePlanIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRestorePlanIamPolicyResultOutput)
 }
 

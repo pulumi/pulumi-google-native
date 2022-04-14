@@ -51,7 +51,11 @@ func LookupTestCaseOutput(ctx *pulumi.Context, args LookupTestCaseOutputArgs, op
 		ApplyT(func(v interface{}) (LookupTestCaseResult, error) {
 			args := v.(LookupTestCaseArgs)
 			r, err := LookupTestCase(ctx, &args, opts...)
-			return *r, err
+			var s LookupTestCaseResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTestCaseResultOutput)
 }
 

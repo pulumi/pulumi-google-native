@@ -45,7 +45,11 @@ func LookupServiceAttachmentIamPolicyOutput(ctx *pulumi.Context, args LookupServ
 		ApplyT(func(v interface{}) (LookupServiceAttachmentIamPolicyResult, error) {
 			args := v.(LookupServiceAttachmentIamPolicyArgs)
 			r, err := LookupServiceAttachmentIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupServiceAttachmentIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupServiceAttachmentIamPolicyResultOutput)
 }
 

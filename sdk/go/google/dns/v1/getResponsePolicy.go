@@ -41,7 +41,11 @@ func GetResponsePolicyOutput(ctx *pulumi.Context, args GetResponsePolicyOutputAr
 		ApplyT(func(v interface{}) (GetResponsePolicyResult, error) {
 			args := v.(GetResponsePolicyArgs)
 			r, err := GetResponsePolicy(ctx, &args, opts...)
-			return *r, err
+			var s GetResponsePolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetResponsePolicyResultOutput)
 }
 

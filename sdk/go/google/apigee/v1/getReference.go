@@ -42,7 +42,11 @@ func LookupReferenceOutput(ctx *pulumi.Context, args LookupReferenceOutputArgs, 
 		ApplyT(func(v interface{}) (LookupReferenceResult, error) {
 			args := v.(LookupReferenceArgs)
 			r, err := LookupReference(ctx, &args, opts...)
-			return *r, err
+			var s LookupReferenceResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupReferenceResultOutput)
 }
 

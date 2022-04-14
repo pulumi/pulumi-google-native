@@ -47,7 +47,11 @@ func GetChangeOutput(ctx *pulumi.Context, args GetChangeOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetChangeResult, error) {
 			args := v.(GetChangeArgs)
 			r, err := GetChange(ctx, &args, opts...)
-			return *r, err
+			var s GetChangeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetChangeResultOutput)
 }
 

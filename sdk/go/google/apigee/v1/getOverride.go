@@ -40,7 +40,11 @@ func LookupOverrideOutput(ctx *pulumi.Context, args LookupOverrideOutputArgs, op
 		ApplyT(func(v interface{}) (LookupOverrideResult, error) {
 			args := v.(LookupOverrideArgs)
 			r, err := LookupOverride(ctx, &args, opts...)
-			return *r, err
+			var s LookupOverrideResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupOverrideResultOutput)
 }
 

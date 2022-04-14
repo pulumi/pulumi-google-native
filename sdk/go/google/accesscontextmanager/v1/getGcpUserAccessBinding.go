@@ -39,7 +39,11 @@ func LookupGcpUserAccessBindingOutput(ctx *pulumi.Context, args LookupGcpUserAcc
 		ApplyT(func(v interface{}) (LookupGcpUserAccessBindingResult, error) {
 			args := v.(LookupGcpUserAccessBindingArgs)
 			r, err := LookupGcpUserAccessBinding(ctx, &args, opts...)
-			return *r, err
+			var s LookupGcpUserAccessBindingResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGcpUserAccessBindingResultOutput)
 }
 

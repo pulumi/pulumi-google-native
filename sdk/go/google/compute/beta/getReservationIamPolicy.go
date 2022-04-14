@@ -45,7 +45,11 @@ func LookupReservationIamPolicyOutput(ctx *pulumi.Context, args LookupReservatio
 		ApplyT(func(v interface{}) (LookupReservationIamPolicyResult, error) {
 			args := v.(LookupReservationIamPolicyArgs)
 			r, err := LookupReservationIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupReservationIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupReservationIamPolicyResultOutput)
 }
 

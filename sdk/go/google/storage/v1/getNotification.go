@@ -50,7 +50,11 @@ func LookupNotificationOutput(ctx *pulumi.Context, args LookupNotificationOutput
 		ApplyT(func(v interface{}) (LookupNotificationResult, error) {
 			args := v.(LookupNotificationArgs)
 			r, err := LookupNotification(ctx, &args, opts...)
-			return *r, err
+			var s LookupNotificationResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNotificationResultOutput)
 }
 

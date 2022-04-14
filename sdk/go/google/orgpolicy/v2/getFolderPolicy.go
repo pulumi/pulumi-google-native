@@ -41,7 +41,11 @@ func LookupFolderPolicyOutput(ctx *pulumi.Context, args LookupFolderPolicyOutput
 		ApplyT(func(v interface{}) (LookupFolderPolicyResult, error) {
 			args := v.(LookupFolderPolicyArgs)
 			r, err := LookupFolderPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupFolderPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFolderPolicyResultOutput)
 }
 

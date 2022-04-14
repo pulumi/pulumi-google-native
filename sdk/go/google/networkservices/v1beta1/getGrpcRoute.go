@@ -54,7 +54,11 @@ func LookupGrpcRouteOutput(ctx *pulumi.Context, args LookupGrpcRouteOutputArgs, 
 		ApplyT(func(v interface{}) (LookupGrpcRouteResult, error) {
 			args := v.(LookupGrpcRouteArgs)
 			r, err := LookupGrpcRoute(ctx, &args, opts...)
-			return *r, err
+			var s LookupGrpcRouteResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGrpcRouteResultOutput)
 }
 

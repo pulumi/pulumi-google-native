@@ -44,7 +44,11 @@ func LookupDatasetFhirStoreIamPolicyOutput(ctx *pulumi.Context, args LookupDatas
 		ApplyT(func(v interface{}) (LookupDatasetFhirStoreIamPolicyResult, error) {
 			args := v.(LookupDatasetFhirStoreIamPolicyArgs)
 			r, err := LookupDatasetFhirStoreIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupDatasetFhirStoreIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDatasetFhirStoreIamPolicyResultOutput)
 }
 

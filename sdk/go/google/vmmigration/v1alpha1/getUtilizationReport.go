@@ -58,7 +58,11 @@ func LookupUtilizationReportOutput(ctx *pulumi.Context, args LookupUtilizationRe
 		ApplyT(func(v interface{}) (LookupUtilizationReportResult, error) {
 			args := v.(LookupUtilizationReportArgs)
 			r, err := LookupUtilizationReport(ctx, &args, opts...)
-			return *r, err
+			var s LookupUtilizationReportResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupUtilizationReportResultOutput)
 }
 

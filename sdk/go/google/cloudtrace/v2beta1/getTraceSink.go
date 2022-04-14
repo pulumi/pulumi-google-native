@@ -39,7 +39,11 @@ func LookupTraceSinkOutput(ctx *pulumi.Context, args LookupTraceSinkOutputArgs, 
 		ApplyT(func(v interface{}) (LookupTraceSinkResult, error) {
 			args := v.(LookupTraceSinkArgs)
 			r, err := LookupTraceSink(ctx, &args, opts...)
-			return *r, err
+			var s LookupTraceSinkResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTraceSinkResultOutput)
 }
 

@@ -50,7 +50,11 @@ func LookupChannelPartnerLinkOutput(ctx *pulumi.Context, args LookupChannelPartn
 		ApplyT(func(v interface{}) (LookupChannelPartnerLinkResult, error) {
 			args := v.(LookupChannelPartnerLinkArgs)
 			r, err := LookupChannelPartnerLink(ctx, &args, opts...)
-			return *r, err
+			var s LookupChannelPartnerLinkResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupChannelPartnerLinkResultOutput)
 }
 

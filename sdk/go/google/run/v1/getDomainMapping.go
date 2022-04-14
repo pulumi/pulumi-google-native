@@ -44,7 +44,11 @@ func LookupDomainMappingOutput(ctx *pulumi.Context, args LookupDomainMappingOutp
 		ApplyT(func(v interface{}) (LookupDomainMappingResult, error) {
 			args := v.(LookupDomainMappingArgs)
 			r, err := LookupDomainMapping(ctx, &args, opts...)
-			return *r, err
+			var s LookupDomainMappingResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDomainMappingResultOutput)
 }
 

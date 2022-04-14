@@ -110,7 +110,11 @@ func LookupInterconnectAttachmentOutput(ctx *pulumi.Context, args LookupIntercon
 		ApplyT(func(v interface{}) (LookupInterconnectAttachmentResult, error) {
 			args := v.(LookupInterconnectAttachmentArgs)
 			r, err := LookupInterconnectAttachment(ctx, &args, opts...)
-			return *r, err
+			var s LookupInterconnectAttachmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInterconnectAttachmentResultOutput)
 }
 

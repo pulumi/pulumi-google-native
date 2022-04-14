@@ -41,7 +41,11 @@ func LookupSharedflowOutput(ctx *pulumi.Context, args LookupSharedflowOutputArgs
 		ApplyT(func(v interface{}) (LookupSharedflowResult, error) {
 			args := v.(LookupSharedflowArgs)
 			r, err := LookupSharedflow(ctx, &args, opts...)
-			return *r, err
+			var s LookupSharedflowResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupSharedflowResultOutput)
 }
 

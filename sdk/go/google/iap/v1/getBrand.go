@@ -41,7 +41,11 @@ func LookupBrandOutput(ctx *pulumi.Context, args LookupBrandOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupBrandResult, error) {
 			args := v.(LookupBrandArgs)
 			r, err := LookupBrand(ctx, &args, opts...)
-			return *r, err
+			var s LookupBrandResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupBrandResultOutput)
 }
 

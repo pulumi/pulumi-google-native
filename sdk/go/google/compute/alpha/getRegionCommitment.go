@@ -74,7 +74,11 @@ func LookupRegionCommitmentOutput(ctx *pulumi.Context, args LookupRegionCommitme
 		ApplyT(func(v interface{}) (LookupRegionCommitmentResult, error) {
 			args := v.(LookupRegionCommitmentArgs)
 			r, err := LookupRegionCommitment(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionCommitmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionCommitmentResultOutput)
 }
 

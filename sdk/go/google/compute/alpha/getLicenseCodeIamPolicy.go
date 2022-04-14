@@ -44,7 +44,11 @@ func LookupLicenseCodeIamPolicyOutput(ctx *pulumi.Context, args LookupLicenseCod
 		ApplyT(func(v interface{}) (LookupLicenseCodeIamPolicyResult, error) {
 			args := v.(LookupLicenseCodeIamPolicyArgs)
 			r, err := LookupLicenseCodeIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupLicenseCodeIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupLicenseCodeIamPolicyResultOutput)
 }
 

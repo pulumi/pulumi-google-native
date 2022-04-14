@@ -41,7 +41,11 @@ func LookupTaxonomyPolicyTagIamPolicyOutput(ctx *pulumi.Context, args LookupTaxo
 		ApplyT(func(v interface{}) (LookupTaxonomyPolicyTagIamPolicyResult, error) {
 			args := v.(LookupTaxonomyPolicyTagIamPolicyArgs)
 			r, err := LookupTaxonomyPolicyTagIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupTaxonomyPolicyTagIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTaxonomyPolicyTagIamPolicyResultOutput)
 }
 

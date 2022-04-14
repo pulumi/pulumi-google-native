@@ -78,7 +78,11 @@ func LookupRegionNetworkEndpointGroupOutput(ctx *pulumi.Context, args LookupRegi
 		ApplyT(func(v interface{}) (LookupRegionNetworkEndpointGroupResult, error) {
 			args := v.(LookupRegionNetworkEndpointGroupArgs)
 			r, err := LookupRegionNetworkEndpointGroup(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionNetworkEndpointGroupResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionNetworkEndpointGroupResultOutput)
 }
 

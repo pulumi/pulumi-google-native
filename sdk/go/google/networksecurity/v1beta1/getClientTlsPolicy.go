@@ -50,7 +50,11 @@ func LookupClientTlsPolicyOutput(ctx *pulumi.Context, args LookupClientTlsPolicy
 		ApplyT(func(v interface{}) (LookupClientTlsPolicyResult, error) {
 			args := v.(LookupClientTlsPolicyArgs)
 			r, err := LookupClientTlsPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupClientTlsPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupClientTlsPolicyResultOutput)
 }
 

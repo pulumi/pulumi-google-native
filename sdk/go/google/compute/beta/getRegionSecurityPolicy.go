@@ -70,7 +70,11 @@ func LookupRegionSecurityPolicyOutput(ctx *pulumi.Context, args LookupRegionSecu
 		ApplyT(func(v interface{}) (LookupRegionSecurityPolicyResult, error) {
 			args := v.(LookupRegionSecurityPolicyArgs)
 			r, err := LookupRegionSecurityPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionSecurityPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionSecurityPolicyResultOutput)
 }
 

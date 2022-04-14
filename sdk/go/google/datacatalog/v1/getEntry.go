@@ -81,7 +81,11 @@ func LookupEntryOutput(ctx *pulumi.Context, args LookupEntryOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupEntryResult, error) {
 			args := v.(LookupEntryArgs)
 			r, err := LookupEntry(ctx, &args, opts...)
-			return *r, err
+			var s LookupEntryResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupEntryResultOutput)
 }
 

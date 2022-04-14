@@ -45,7 +45,11 @@ func LookupGameServerDeploymentIamPolicyOutput(ctx *pulumi.Context, args LookupG
 		ApplyT(func(v interface{}) (LookupGameServerDeploymentIamPolicyResult, error) {
 			args := v.(LookupGameServerDeploymentIamPolicyArgs)
 			r, err := LookupGameServerDeploymentIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupGameServerDeploymentIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGameServerDeploymentIamPolicyResultOutput)
 }
 

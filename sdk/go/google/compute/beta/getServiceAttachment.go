@@ -68,7 +68,11 @@ func LookupServiceAttachmentOutput(ctx *pulumi.Context, args LookupServiceAttach
 		ApplyT(func(v interface{}) (LookupServiceAttachmentResult, error) {
 			args := v.(LookupServiceAttachmentArgs)
 			r, err := LookupServiceAttachment(ctx, &args, opts...)
-			return *r, err
+			var s LookupServiceAttachmentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupServiceAttachmentResultOutput)
 }
 

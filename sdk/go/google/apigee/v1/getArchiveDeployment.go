@@ -46,7 +46,11 @@ func LookupArchiveDeploymentOutput(ctx *pulumi.Context, args LookupArchiveDeploy
 		ApplyT(func(v interface{}) (LookupArchiveDeploymentResult, error) {
 			args := v.(LookupArchiveDeploymentArgs)
 			r, err := LookupArchiveDeployment(ctx, &args, opts...)
-			return *r, err
+			var s LookupArchiveDeploymentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupArchiveDeploymentResultOutput)
 }
 

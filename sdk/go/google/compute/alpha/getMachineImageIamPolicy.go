@@ -44,7 +44,11 @@ func LookupMachineImageIamPolicyOutput(ctx *pulumi.Context, args LookupMachineIm
 		ApplyT(func(v interface{}) (LookupMachineImageIamPolicyResult, error) {
 			args := v.(LookupMachineImageIamPolicyArgs)
 			r, err := LookupMachineImageIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupMachineImageIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMachineImageIamPolicyResultOutput)
 }
 

@@ -47,7 +47,11 @@ func LookupHl7V2StoreOutput(ctx *pulumi.Context, args LookupHl7V2StoreOutputArgs
 		ApplyT(func(v interface{}) (LookupHl7V2StoreResult, error) {
 			args := v.(LookupHl7V2StoreArgs)
 			r, err := LookupHl7V2Store(ctx, &args, opts...)
-			return *r, err
+			var s LookupHl7V2StoreResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupHl7V2StoreResultOutput)
 }
 

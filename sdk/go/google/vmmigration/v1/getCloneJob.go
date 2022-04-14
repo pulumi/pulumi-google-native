@@ -50,7 +50,11 @@ func LookupCloneJobOutput(ctx *pulumi.Context, args LookupCloneJobOutputArgs, op
 		ApplyT(func(v interface{}) (LookupCloneJobResult, error) {
 			args := v.(LookupCloneJobArgs)
 			r, err := LookupCloneJob(ctx, &args, opts...)
-			return *r, err
+			var s LookupCloneJobResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCloneJobResultOutput)
 }
 

@@ -80,7 +80,11 @@ func LookupInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupInstanceGr
 		ApplyT(func(v interface{}) (LookupInstanceGroupManagerResult, error) {
 			args := v.(LookupInstanceGroupManagerArgs)
 			r, err := LookupInstanceGroupManager(ctx, &args, opts...)
-			return *r, err
+			var s LookupInstanceGroupManagerResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInstanceGroupManagerResultOutput)
 }
 

@@ -45,7 +45,11 @@ func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs
 		ApplyT(func(v interface{}) (LookupAndroidAppResult, error) {
 			args := v.(LookupAndroidAppArgs)
 			r, err := LookupAndroidApp(ctx, &args, opts...)
-			return *r, err
+			var s LookupAndroidAppResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAndroidAppResultOutput)
 }
 

@@ -48,7 +48,11 @@ func LookupRegionNotificationEndpointOutput(ctx *pulumi.Context, args LookupRegi
 		ApplyT(func(v interface{}) (LookupRegionNotificationEndpointResult, error) {
 			args := v.(LookupRegionNotificationEndpointArgs)
 			r, err := LookupRegionNotificationEndpoint(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionNotificationEndpointResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionNotificationEndpointResultOutput)
 }
 

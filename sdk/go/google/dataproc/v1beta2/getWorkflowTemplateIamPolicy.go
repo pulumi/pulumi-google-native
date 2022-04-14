@@ -41,7 +41,11 @@ func LookupWorkflowTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupWorkf
 		ApplyT(func(v interface{}) (LookupWorkflowTemplateIamPolicyResult, error) {
 			args := v.(LookupWorkflowTemplateIamPolicyArgs)
 			r, err := LookupWorkflowTemplateIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupWorkflowTemplateIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupWorkflowTemplateIamPolicyResultOutput)
 }
 

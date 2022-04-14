@@ -64,7 +64,11 @@ func LookupWorkloadOutput(ctx *pulumi.Context, args LookupWorkloadOutputArgs, op
 		ApplyT(func(v interface{}) (LookupWorkloadResult, error) {
 			args := v.(LookupWorkloadArgs)
 			r, err := LookupWorkload(ctx, &args, opts...)
-			return *r, err
+			var s LookupWorkloadResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupWorkloadResultOutput)
 }
 

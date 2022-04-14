@@ -44,7 +44,11 @@ func LookupTargetProjectOutput(ctx *pulumi.Context, args LookupTargetProjectOutp
 		ApplyT(func(v interface{}) (LookupTargetProjectResult, error) {
 			args := v.(LookupTargetProjectArgs)
 			r, err := LookupTargetProject(ctx, &args, opts...)
-			return *r, err
+			var s LookupTargetProjectResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTargetProjectResultOutput)
 }
 

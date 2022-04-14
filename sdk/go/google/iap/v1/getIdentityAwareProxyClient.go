@@ -40,7 +40,11 @@ func LookupIdentityAwareProxyClientOutput(ctx *pulumi.Context, args LookupIdenti
 		ApplyT(func(v interface{}) (LookupIdentityAwareProxyClientResult, error) {
 			args := v.(LookupIdentityAwareProxyClientArgs)
 			r, err := LookupIdentityAwareProxyClient(ctx, &args, opts...)
-			return *r, err
+			var s LookupIdentityAwareProxyClientResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupIdentityAwareProxyClientResultOutput)
 }
 

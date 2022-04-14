@@ -54,7 +54,11 @@ func LookupHttpRouteOutput(ctx *pulumi.Context, args LookupHttpRouteOutputArgs, 
 		ApplyT(func(v interface{}) (LookupHttpRouteResult, error) {
 			args := v.(LookupHttpRouteArgs)
 			r, err := LookupHttpRoute(ctx, &args, opts...)
-			return *r, err
+			var s LookupHttpRouteResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupHttpRouteResultOutput)
 }
 

@@ -56,7 +56,11 @@ func LookupSpokeOutput(ctx *pulumi.Context, args LookupSpokeOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupSpokeResult, error) {
 			args := v.(LookupSpokeArgs)
 			r, err := LookupSpoke(ctx, &args, opts...)
-			return *r, err
+			var s LookupSpokeResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupSpokeResultOutput)
 }
 

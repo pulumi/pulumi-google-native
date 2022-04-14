@@ -49,7 +49,11 @@ func LookupIosAppOutput(ctx *pulumi.Context, args LookupIosAppOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupIosAppResult, error) {
 			args := v.(LookupIosAppArgs)
 			r, err := LookupIosApp(ctx, &args, opts...)
-			return *r, err
+			var s LookupIosAppResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupIosAppResultOutput)
 }
 

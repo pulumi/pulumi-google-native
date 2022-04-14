@@ -74,7 +74,11 @@ func LookupRatePlanOutput(ctx *pulumi.Context, args LookupRatePlanOutputArgs, op
 		ApplyT(func(v interface{}) (LookupRatePlanResult, error) {
 			args := v.(LookupRatePlanArgs)
 			r, err := LookupRatePlan(ctx, &args, opts...)
-			return *r, err
+			var s LookupRatePlanResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRatePlanResultOutput)
 }
 

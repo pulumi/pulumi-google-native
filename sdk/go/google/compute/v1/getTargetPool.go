@@ -56,7 +56,11 @@ func LookupTargetPoolOutput(ctx *pulumi.Context, args LookupTargetPoolOutputArgs
 		ApplyT(func(v interface{}) (LookupTargetPoolResult, error) {
 			args := v.(LookupTargetPoolArgs)
 			r, err := LookupTargetPool(ctx, &args, opts...)
-			return *r, err
+			var s LookupTargetPoolResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTargetPoolResultOutput)
 }
 

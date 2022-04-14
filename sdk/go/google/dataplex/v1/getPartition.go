@@ -45,7 +45,11 @@ func LookupPartitionOutput(ctx *pulumi.Context, args LookupPartitionOutputArgs, 
 		ApplyT(func(v interface{}) (LookupPartitionResult, error) {
 			args := v.(LookupPartitionArgs)
 			r, err := LookupPartition(ctx, &args, opts...)
-			return *r, err
+			var s LookupPartitionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPartitionResultOutput)
 }
 

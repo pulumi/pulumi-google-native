@@ -57,7 +57,11 @@ func LookupMessageOutput(ctx *pulumi.Context, args LookupMessageOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupMessageResult, error) {
 			args := v.(LookupMessageArgs)
 			r, err := LookupMessage(ctx, &args, opts...)
-			return *r, err
+			var s LookupMessageResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupMessageResultOutput)
 }
 

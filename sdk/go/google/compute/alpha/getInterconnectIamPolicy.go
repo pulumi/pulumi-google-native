@@ -44,7 +44,11 @@ func LookupInterconnectIamPolicyOutput(ctx *pulumi.Context, args LookupInterconn
 		ApplyT(func(v interface{}) (LookupInterconnectIamPolicyResult, error) {
 			args := v.(LookupInterconnectIamPolicyArgs)
 			r, err := LookupInterconnectIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupInterconnectIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInterconnectIamPolicyResultOutput)
 }
 

@@ -50,7 +50,11 @@ func LookupCertificateTemplateOutput(ctx *pulumi.Context, args LookupCertificate
 		ApplyT(func(v interface{}) (LookupCertificateTemplateResult, error) {
 			args := v.(LookupCertificateTemplateArgs)
 			r, err := LookupCertificateTemplate(ctx, &args, opts...)
-			return *r, err
+			var s LookupCertificateTemplateResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCertificateTemplateResultOutput)
 }
 

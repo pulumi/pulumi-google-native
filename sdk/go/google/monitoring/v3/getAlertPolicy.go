@@ -57,7 +57,11 @@ func LookupAlertPolicyOutput(ctx *pulumi.Context, args LookupAlertPolicyOutputAr
 		ApplyT(func(v interface{}) (LookupAlertPolicyResult, error) {
 			args := v.(LookupAlertPolicyArgs)
 			r, err := LookupAlertPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupAlertPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAlertPolicyResultOutput)
 }
 

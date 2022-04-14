@@ -80,7 +80,11 @@ func LookupIntentOutput(ctx *pulumi.Context, args LookupIntentOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupIntentResult, error) {
 			args := v.(LookupIntentArgs)
 			r, err := LookupIntent(ctx, &args, opts...)
-			return *r, err
+			var s LookupIntentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupIntentResultOutput)
 }
 

@@ -50,7 +50,11 @@ func LookupTlsRouteOutput(ctx *pulumi.Context, args LookupTlsRouteOutputArgs, op
 		ApplyT(func(v interface{}) (LookupTlsRouteResult, error) {
 			args := v.(LookupTlsRouteArgs)
 			r, err := LookupTlsRoute(ctx, &args, opts...)
-			return *r, err
+			var s LookupTlsRouteResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTlsRouteResultOutput)
 }
 

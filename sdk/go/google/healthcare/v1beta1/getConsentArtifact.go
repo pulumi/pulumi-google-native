@@ -52,7 +52,11 @@ func LookupConsentArtifactOutput(ctx *pulumi.Context, args LookupConsentArtifact
 		ApplyT(func(v interface{}) (LookupConsentArtifactResult, error) {
 			args := v.(LookupConsentArtifactArgs)
 			r, err := LookupConsentArtifact(ctx, &args, opts...)
-			return *r, err
+			var s LookupConsentArtifactResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupConsentArtifactResultOutput)
 }
 

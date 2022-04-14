@@ -71,7 +71,11 @@ func LookupReleaseOutput(ctx *pulumi.Context, args LookupReleaseOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupReleaseResult, error) {
 			args := v.(LookupReleaseArgs)
 			r, err := LookupRelease(ctx, &args, opts...)
-			return *r, err
+			var s LookupReleaseResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupReleaseResultOutput)
 }
 

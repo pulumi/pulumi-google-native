@@ -40,7 +40,11 @@ func LookupDestGroupOutput(ctx *pulumi.Context, args LookupDestGroupOutputArgs, 
 		ApplyT(func(v interface{}) (LookupDestGroupResult, error) {
 			args := v.(LookupDestGroupArgs)
 			r, err := LookupDestGroup(ctx, &args, opts...)
-			return *r, err
+			var s LookupDestGroupResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupDestGroupResultOutput)
 }
 

@@ -64,7 +64,11 @@ func LookupCryptoKeyVersionOutput(ctx *pulumi.Context, args LookupCryptoKeyVersi
 		ApplyT(func(v interface{}) (LookupCryptoKeyVersionResult, error) {
 			args := v.(LookupCryptoKeyVersionArgs)
 			r, err := LookupCryptoKeyVersion(ctx, &args, opts...)
-			return *r, err
+			var s LookupCryptoKeyVersionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCryptoKeyVersionResultOutput)
 }
 

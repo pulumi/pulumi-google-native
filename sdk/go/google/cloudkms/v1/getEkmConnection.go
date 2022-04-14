@@ -42,7 +42,11 @@ func LookupEkmConnectionOutput(ctx *pulumi.Context, args LookupEkmConnectionOutp
 		ApplyT(func(v interface{}) (LookupEkmConnectionResult, error) {
 			args := v.(LookupEkmConnectionArgs)
 			r, err := LookupEkmConnection(ctx, &args, opts...)
-			return *r, err
+			var s LookupEkmConnectionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupEkmConnectionResultOutput)
 }
 

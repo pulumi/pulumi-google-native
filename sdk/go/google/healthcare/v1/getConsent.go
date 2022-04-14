@@ -56,7 +56,11 @@ func LookupConsentOutput(ctx *pulumi.Context, args LookupConsentOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupConsentResult, error) {
 			args := v.(LookupConsentArgs)
 			r, err := LookupConsent(ctx, &args, opts...)
-			return *r, err
+			var s LookupConsentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupConsentResultOutput)
 }
 

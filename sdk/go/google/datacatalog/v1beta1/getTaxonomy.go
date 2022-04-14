@@ -46,7 +46,11 @@ func LookupTaxonomyOutput(ctx *pulumi.Context, args LookupTaxonomyOutputArgs, op
 		ApplyT(func(v interface{}) (LookupTaxonomyResult, error) {
 			args := v.(LookupTaxonomyArgs)
 			r, err := LookupTaxonomy(ctx, &args, opts...)
-			return *r, err
+			var s LookupTaxonomyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTaxonomyResultOutput)
 }
 

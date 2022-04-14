@@ -41,7 +41,11 @@ func LookupReferenceImageOutput(ctx *pulumi.Context, args LookupReferenceImageOu
 		ApplyT(func(v interface{}) (LookupReferenceImageResult, error) {
 			args := v.(LookupReferenceImageArgs)
 			r, err := LookupReferenceImage(ctx, &args, opts...)
-			return *r, err
+			var s LookupReferenceImageResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupReferenceImageResultOutput)
 }
 

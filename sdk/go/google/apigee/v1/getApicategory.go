@@ -44,7 +44,11 @@ func GetApicategoryOutput(ctx *pulumi.Context, args GetApicategoryOutputArgs, op
 		ApplyT(func(v interface{}) (GetApicategoryResult, error) {
 			args := v.(GetApicategoryArgs)
 			r, err := GetApicategory(ctx, &args, opts...)
-			return *r, err
+			var s GetApicategoryResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(GetApicategoryResultOutput)
 }
 

@@ -43,7 +43,11 @@ func LookupAttestorOutput(ctx *pulumi.Context, args LookupAttestorOutputArgs, op
 		ApplyT(func(v interface{}) (LookupAttestorResult, error) {
 			args := v.(LookupAttestorArgs)
 			r, err := LookupAttestor(ctx, &args, opts...)
-			return *r, err
+			var s LookupAttestorResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAttestorResultOutput)
 }
 

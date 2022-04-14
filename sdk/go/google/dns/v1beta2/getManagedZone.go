@@ -64,7 +64,11 @@ func LookupManagedZoneOutput(ctx *pulumi.Context, args LookupManagedZoneOutputAr
 		ApplyT(func(v interface{}) (LookupManagedZoneResult, error) {
 			args := v.(LookupManagedZoneArgs)
 			r, err := LookupManagedZone(ctx, &args, opts...)
-			return *r, err
+			var s LookupManagedZoneResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupManagedZoneResultOutput)
 }
 

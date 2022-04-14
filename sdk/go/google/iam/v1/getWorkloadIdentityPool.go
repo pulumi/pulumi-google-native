@@ -44,7 +44,11 @@ func LookupWorkloadIdentityPoolOutput(ctx *pulumi.Context, args LookupWorkloadId
 		ApplyT(func(v interface{}) (LookupWorkloadIdentityPoolResult, error) {
 			args := v.(LookupWorkloadIdentityPoolArgs)
 			r, err := LookupWorkloadIdentityPool(ctx, &args, opts...)
-			return *r, err
+			var s LookupWorkloadIdentityPoolResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupWorkloadIdentityPoolResultOutput)
 }
 

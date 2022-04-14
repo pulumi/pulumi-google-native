@@ -50,7 +50,11 @@ func LookupServiceLevelObjectiveOutput(ctx *pulumi.Context, args LookupServiceLe
 		ApplyT(func(v interface{}) (LookupServiceLevelObjectiveResult, error) {
 			args := v.(LookupServiceLevelObjectiveArgs)
 			r, err := LookupServiceLevelObjective(ctx, &args, opts...)
-			return *r, err
+			var s LookupServiceLevelObjectiveResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupServiceLevelObjectiveResultOutput)
 }
 

@@ -54,7 +54,11 @@ func LookupExecutionOutput(ctx *pulumi.Context, args LookupExecutionOutputArgs, 
 		ApplyT(func(v interface{}) (LookupExecutionResult, error) {
 			args := v.(LookupExecutionArgs)
 			r, err := LookupExecution(ctx, &args, opts...)
-			return *r, err
+			var s LookupExecutionResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupExecutionResultOutput)
 }
 

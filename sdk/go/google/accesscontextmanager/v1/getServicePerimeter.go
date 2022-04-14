@@ -47,7 +47,11 @@ func LookupServicePerimeterOutput(ctx *pulumi.Context, args LookupServicePerimet
 		ApplyT(func(v interface{}) (LookupServicePerimeterResult, error) {
 			args := v.(LookupServicePerimeterArgs)
 			r, err := LookupServicePerimeter(ctx, &args, opts...)
-			return *r, err
+			var s LookupServicePerimeterResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupServicePerimeterResultOutput)
 }
 

@@ -43,7 +43,11 @@ func LookupEdgeCacheKeysetIamPolicyOutput(ctx *pulumi.Context, args LookupEdgeCa
 		ApplyT(func(v interface{}) (LookupEdgeCacheKeysetIamPolicyResult, error) {
 			args := v.(LookupEdgeCacheKeysetIamPolicyArgs)
 			r, err := LookupEdgeCacheKeysetIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupEdgeCacheKeysetIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupEdgeCacheKeysetIamPolicyResultOutput)
 }
 

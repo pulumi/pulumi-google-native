@@ -48,7 +48,11 @@ func LookupFeedOutput(ctx *pulumi.Context, args LookupFeedOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupFeedResult, error) {
 			args := v.(LookupFeedArgs)
 			r, err := LookupFeed(ctx, &args, opts...)
-			return *r, err
+			var s LookupFeedResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFeedResultOutput)
 }
 

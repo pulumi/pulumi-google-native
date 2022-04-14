@@ -48,7 +48,11 @@ func LookupConversationDatasetOutput(ctx *pulumi.Context, args LookupConversatio
 		ApplyT(func(v interface{}) (LookupConversationDatasetResult, error) {
 			args := v.(LookupConversationDatasetArgs)
 			r, err := LookupConversationDataset(ctx, &args, opts...)
-			return *r, err
+			var s LookupConversationDatasetResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupConversationDatasetResultOutput)
 }
 

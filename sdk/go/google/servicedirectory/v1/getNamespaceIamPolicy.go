@@ -40,7 +40,11 @@ func LookupNamespaceIamPolicyOutput(ctx *pulumi.Context, args LookupNamespaceIam
 		ApplyT(func(v interface{}) (LookupNamespaceIamPolicyResult, error) {
 			args := v.(LookupNamespaceIamPolicyArgs)
 			r, err := LookupNamespaceIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupNamespaceIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNamespaceIamPolicyResultOutput)
 }
 

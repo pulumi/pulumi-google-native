@@ -57,7 +57,11 @@ func LookupTransferJobOutput(ctx *pulumi.Context, args LookupTransferJobOutputAr
 		ApplyT(func(v interface{}) (LookupTransferJobResult, error) {
 			args := v.(LookupTransferJobArgs)
 			r, err := LookupTransferJob(ctx, &args, opts...)
-			return *r, err
+			var s LookupTransferJobResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTransferJobResultOutput)
 }
 

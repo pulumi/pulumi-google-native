@@ -39,7 +39,11 @@ func LookupAnnotationStoreOutput(ctx *pulumi.Context, args LookupAnnotationStore
 		ApplyT(func(v interface{}) (LookupAnnotationStoreResult, error) {
 			args := v.(LookupAnnotationStoreArgs)
 			r, err := LookupAnnotationStore(ctx, &args, opts...)
-			return *r, err
+			var s LookupAnnotationStoreResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAnnotationStoreResultOutput)
 }
 

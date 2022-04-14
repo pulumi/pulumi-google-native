@@ -46,7 +46,11 @@ func LookupGameServerDeploymentOutput(ctx *pulumi.Context, args LookupGameServer
 		ApplyT(func(v interface{}) (LookupGameServerDeploymentResult, error) {
 			args := v.(LookupGameServerDeploymentArgs)
 			r, err := LookupGameServerDeployment(ctx, &args, opts...)
-			return *r, err
+			var s LookupGameServerDeploymentResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGameServerDeploymentResultOutput)
 }
 

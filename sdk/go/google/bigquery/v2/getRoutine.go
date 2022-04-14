@@ -63,7 +63,11 @@ func LookupRoutineOutput(ctx *pulumi.Context, args LookupRoutineOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupRoutineResult, error) {
 			args := v.(LookupRoutineArgs)
 			r, err := LookupRoutine(ctx, &args, opts...)
-			return *r, err
+			var s LookupRoutineResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRoutineResultOutput)
 }
 

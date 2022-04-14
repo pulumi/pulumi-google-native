@@ -43,7 +43,11 @@ func LookupIndexOutput(ctx *pulumi.Context, args LookupIndexOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupIndexResult, error) {
 			args := v.(LookupIndexArgs)
 			r, err := LookupIndex(ctx, &args, opts...)
-			return *r, err
+			var s LookupIndexResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupIndexResultOutput)
 }
 

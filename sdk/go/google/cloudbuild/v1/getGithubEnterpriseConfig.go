@@ -54,7 +54,11 @@ func LookupGithubEnterpriseConfigOutput(ctx *pulumi.Context, args LookupGithubEn
 		ApplyT(func(v interface{}) (LookupGithubEnterpriseConfigResult, error) {
 			args := v.(LookupGithubEnterpriseConfigArgs)
 			r, err := LookupGithubEnterpriseConfig(ctx, &args, opts...)
-			return *r, err
+			var s LookupGithubEnterpriseConfigResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupGithubEnterpriseConfigResultOutput)
 }
 

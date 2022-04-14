@@ -60,7 +60,11 @@ func LookupCompanyOutput(ctx *pulumi.Context, args LookupCompanyOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupCompanyResult, error) {
 			args := v.(LookupCompanyArgs)
 			r, err := LookupCompany(ctx, &args, opts...)
-			return *r, err
+			var s LookupCompanyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCompanyResultOutput)
 }
 

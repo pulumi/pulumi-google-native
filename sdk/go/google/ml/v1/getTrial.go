@@ -55,7 +55,11 @@ func LookupTrialOutput(ctx *pulumi.Context, args LookupTrialOutputArgs, opts ...
 		ApplyT(func(v interface{}) (LookupTrialResult, error) {
 			args := v.(LookupTrialArgs)
 			r, err := LookupTrial(ctx, &args, opts...)
-			return *r, err
+			var s LookupTrialResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupTrialResultOutput)
 }
 

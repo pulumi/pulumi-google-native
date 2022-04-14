@@ -41,7 +41,11 @@ func LookupHistoryOutput(ctx *pulumi.Context, args LookupHistoryOutputArgs, opts
 		ApplyT(func(v interface{}) (LookupHistoryResult, error) {
 			args := v.(LookupHistoryArgs)
 			r, err := LookupHistory(ctx, &args, opts...)
-			return *r, err
+			var s LookupHistoryResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupHistoryResultOutput)
 }
 

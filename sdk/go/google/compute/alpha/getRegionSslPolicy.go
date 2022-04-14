@@ -62,7 +62,11 @@ func LookupRegionSslPolicyOutput(ctx *pulumi.Context, args LookupRegionSslPolicy
 		ApplyT(func(v interface{}) (LookupRegionSslPolicyResult, error) {
 			args := v.(LookupRegionSslPolicyArgs)
 			r, err := LookupRegionSslPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionSslPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionSslPolicyResultOutput)
 }
 

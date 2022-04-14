@@ -45,7 +45,11 @@ func LookupFolderContactOutput(ctx *pulumi.Context, args LookupFolderContactOutp
 		ApplyT(func(v interface{}) (LookupFolderContactResult, error) {
 			args := v.(LookupFolderContactArgs)
 			r, err := LookupFolderContact(ctx, &args, opts...)
-			return *r, err
+			var s LookupFolderContactResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFolderContactResultOutput)
 }
 

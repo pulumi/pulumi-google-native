@@ -80,7 +80,11 @@ func LookupVpnTunnelOutput(ctx *pulumi.Context, args LookupVpnTunnelOutputArgs, 
 		ApplyT(func(v interface{}) (LookupVpnTunnelResult, error) {
 			args := v.(LookupVpnTunnelArgs)
 			r, err := LookupVpnTunnel(ctx, &args, opts...)
-			return *r, err
+			var s LookupVpnTunnelResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupVpnTunnelResultOutput)
 }
 

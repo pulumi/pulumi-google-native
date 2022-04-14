@@ -43,7 +43,11 @@ func LookupCertificateAuthorityIamPolicyOutput(ctx *pulumi.Context, args LookupC
 		ApplyT(func(v interface{}) (LookupCertificateAuthorityIamPolicyResult, error) {
 			args := v.(LookupCertificateAuthorityIamPolicyArgs)
 			r, err := LookupCertificateAuthorityIamPolicy(ctx, &args, opts...)
-			return *r, err
+			var s LookupCertificateAuthorityIamPolicyResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupCertificateAuthorityIamPolicyResultOutput)
 }
 

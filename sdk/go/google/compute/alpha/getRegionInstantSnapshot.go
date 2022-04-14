@@ -70,7 +70,11 @@ func LookupRegionInstantSnapshotOutput(ctx *pulumi.Context, args LookupRegionIns
 		ApplyT(func(v interface{}) (LookupRegionInstantSnapshotResult, error) {
 			args := v.(LookupRegionInstantSnapshotArgs)
 			r, err := LookupRegionInstantSnapshot(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionInstantSnapshotResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionInstantSnapshotResultOutput)
 }
 

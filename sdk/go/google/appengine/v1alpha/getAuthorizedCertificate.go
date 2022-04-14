@@ -50,7 +50,11 @@ func LookupAuthorizedCertificateOutput(ctx *pulumi.Context, args LookupAuthorize
 		ApplyT(func(v interface{}) (LookupAuthorizedCertificateResult, error) {
 			args := v.(LookupAuthorizedCertificateArgs)
 			r, err := LookupAuthorizedCertificate(ctx, &args, opts...)
-			return *r, err
+			var s LookupAuthorizedCertificateResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupAuthorizedCertificateResultOutput)
 }
 

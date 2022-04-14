@@ -46,7 +46,11 @@ func LookupInspectTemplateOutput(ctx *pulumi.Context, args LookupInspectTemplate
 		ApplyT(func(v interface{}) (LookupInspectTemplateResult, error) {
 			args := v.(LookupInspectTemplateArgs)
 			r, err := LookupInspectTemplate(ctx, &args, opts...)
-			return *r, err
+			var s LookupInspectTemplateResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupInspectTemplateResultOutput)
 }
 

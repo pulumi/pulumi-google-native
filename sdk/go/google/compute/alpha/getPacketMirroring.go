@@ -60,7 +60,11 @@ func LookupPacketMirroringOutput(ctx *pulumi.Context, args LookupPacketMirroring
 		ApplyT(func(v interface{}) (LookupPacketMirroringResult, error) {
 			args := v.(LookupPacketMirroringArgs)
 			r, err := LookupPacketMirroring(ctx, &args, opts...)
-			return *r, err
+			var s LookupPacketMirroringResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupPacketMirroringResultOutput)
 }
 

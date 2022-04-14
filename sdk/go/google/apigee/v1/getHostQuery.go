@@ -59,7 +59,11 @@ func LookupHostQueryOutput(ctx *pulumi.Context, args LookupHostQueryOutputArgs, 
 		ApplyT(func(v interface{}) (LookupHostQueryResult, error) {
 			args := v.(LookupHostQueryArgs)
 			r, err := LookupHostQuery(ctx, &args, opts...)
-			return *r, err
+			var s LookupHostQueryResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupHostQueryResultOutput)
 }
 

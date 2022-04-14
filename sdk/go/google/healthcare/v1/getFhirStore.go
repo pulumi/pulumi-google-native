@@ -55,7 +55,11 @@ func LookupFhirStoreOutput(ctx *pulumi.Context, args LookupFhirStoreOutputArgs, 
 		ApplyT(func(v interface{}) (LookupFhirStoreResult, error) {
 			args := v.(LookupFhirStoreArgs)
 			r, err := LookupFhirStore(ctx, &args, opts...)
-			return *r, err
+			var s LookupFhirStoreResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupFhirStoreResultOutput)
 }
 

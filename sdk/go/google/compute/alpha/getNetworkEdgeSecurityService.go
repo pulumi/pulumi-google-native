@@ -52,7 +52,11 @@ func LookupNetworkEdgeSecurityServiceOutput(ctx *pulumi.Context, args LookupNetw
 		ApplyT(func(v interface{}) (LookupNetworkEdgeSecurityServiceResult, error) {
 			args := v.(LookupNetworkEdgeSecurityServiceArgs)
 			r, err := LookupNetworkEdgeSecurityService(ctx, &args, opts...)
-			return *r, err
+			var s LookupNetworkEdgeSecurityServiceResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNetworkEdgeSecurityServiceResultOutput)
 }
 

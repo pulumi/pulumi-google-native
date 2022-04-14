@@ -71,7 +71,11 @@ func LookupNodePoolOutput(ctx *pulumi.Context, args LookupNodePoolOutputArgs, op
 		ApplyT(func(v interface{}) (LookupNodePoolResult, error) {
 			args := v.(LookupNodePoolArgs)
 			r, err := LookupNodePool(ctx, &args, opts...)
-			return *r, err
+			var s LookupNodePoolResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupNodePoolResultOutput)
 }
 

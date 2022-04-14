@@ -62,7 +62,11 @@ func LookupRegionAutoscalerOutput(ctx *pulumi.Context, args LookupRegionAutoscal
 		ApplyT(func(v interface{}) (LookupRegionAutoscalerResult, error) {
 			args := v.(LookupRegionAutoscalerArgs)
 			r, err := LookupRegionAutoscaler(ctx, &args, opts...)
-			return *r, err
+			var s LookupRegionAutoscalerResult
+			if r != nil {
+				s = *r
+			}
+			return s, err
 		}).(LookupRegionAutoscalerResultOutput)
 }
 
