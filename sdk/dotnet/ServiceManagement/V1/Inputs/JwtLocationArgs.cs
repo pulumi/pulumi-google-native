@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     public sealed class JwtLocationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies cookie name to extract JWT token.
+        /// </summary>
+        [Input("cookie")]
+        public Input<string>? Cookie { get; set; }
+
+        /// <summary>
         /// Specifies HTTP header name to extract JWT token.
         /// </summary>
         [Input("header")]

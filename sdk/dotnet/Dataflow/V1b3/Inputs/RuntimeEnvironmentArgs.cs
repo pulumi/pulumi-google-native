@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The initial number of Google Compute Engine instances for the job.
+        /// The initial number of Google Compute Engine instnaces for the job.
         /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }

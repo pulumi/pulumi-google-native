@@ -36,7 +36,7 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+     * The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -92,7 +92,7 @@ export class TransitionRouteGroup extends pulumi.CustomResource {
 export interface TransitionRouteGroupArgs {
     agentId: pulumi.Input<string>;
     /**
-     * The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+     * The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
      */
     displayName: pulumi.Input<string>;
     flowId: pulumi.Input<string>;

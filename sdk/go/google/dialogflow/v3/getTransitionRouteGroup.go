@@ -30,7 +30,7 @@ type LookupTransitionRouteGroupArgs struct {
 }
 
 type LookupTransitionRouteGroupResult struct {
-	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+	// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
 	DisplayName string `pulumi:"displayName"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name string `pulumi:"name"`
@@ -78,7 +78,7 @@ func (o LookupTransitionRouteGroupResultOutput) ToLookupTransitionRouteGroupResu
 	return o
 }
 
-// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
 func (o LookupTransitionRouteGroupResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransitionRouteGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

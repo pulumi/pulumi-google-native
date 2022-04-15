@@ -4034,7 +4034,7 @@ type RuntimeEnvironment struct {
 	MaxWorkers *int `pulumi:"maxWorkers"`
 	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
 	Network *string `pulumi:"network"`
-	// The initial number of Google Compute Engine instances for the job.
+	// The initial number of Google Compute Engine instnaces for the job.
 	NumWorkers *int `pulumi:"numWorkers"`
 	// The email address of the service account to run the job as.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -4081,7 +4081,7 @@ type RuntimeEnvironmentArgs struct {
 	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
 	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The initial number of Google Compute Engine instances for the job.
+	// The initial number of Google Compute Engine instnaces for the job.
 	NumWorkers pulumi.IntPtrInput `pulumi:"numWorkers"`
 	// The email address of the service account to run the job as.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
@@ -4220,7 +4220,7 @@ func (o RuntimeEnvironmentOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The initial number of Google Compute Engine instances for the job.
+// The initial number of Google Compute Engine instnaces for the job.
 func (o RuntimeEnvironmentOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
 }
@@ -4369,7 +4369,7 @@ func (o RuntimeEnvironmentPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The initial number of Google Compute Engine instances for the job.
+// The initial number of Google Compute Engine instnaces for the job.
 func (o RuntimeEnvironmentPtrOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *int {
 		if v == nil {

@@ -40,7 +40,7 @@ export class Attestor extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
+     * Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
      */
     public readonly etag!: pulumi.Output<string>;
     /**
@@ -102,7 +102,7 @@ export interface AttestorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
+     * Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
      */
     etag?: pulumi.Input<string>;
     /**

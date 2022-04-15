@@ -35,7 +35,7 @@ export interface GetPageArgs {
 
 export interface GetPageResult {
     /**
-     * The human-readable name of the page, unique within the agent.
+     * The human-readable name of the page, unique within the flow.
      */
     readonly displayName: string;
     /**

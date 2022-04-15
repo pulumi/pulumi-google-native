@@ -29,7 +29,7 @@ class PageArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a Page resource.
-        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
+        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1FormArgs'] form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -73,7 +73,7 @@ class PageArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The human-readable name of the page, unique within the agent.
+        The human-readable name of the page, unique within the flow.
         """
         return pulumi.get(self, "display_name")
 
@@ -216,7 +216,7 @@ class Page(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
+        :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the flow.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FormArgs']] form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -326,7 +326,7 @@ class Page(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The human-readable name of the page, unique within the agent.
+        The human-readable name of the page, unique within the flow.
         """
         return pulumi.get(self, "display_name")
 

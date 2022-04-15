@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public partial class Page : Pulumi.CustomResource
     {
         /// <summary>
-        /// The human-readable name of the page, unique within the agent.
+        /// The human-readable name of the page, unique within the flow.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// The human-readable name of the page, unique within the agent.
+        /// The human-readable name of the page, unique within the flow.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;

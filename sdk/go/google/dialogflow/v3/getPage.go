@@ -30,7 +30,7 @@ type LookupPageArgs struct {
 }
 
 type LookupPageResult struct {
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3FulfillmentResponse `pulumi:"entryFulfillment"`
@@ -86,7 +86,7 @@ func (o LookupPageResultOutput) ToLookupPageResultOutputWithContext(ctx context.
 	return o
 }
 
-// The human-readable name of the page, unique within the agent.
+// The human-readable name of the page, unique within the flow.
 func (o LookupPageResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPageResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

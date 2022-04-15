@@ -15,7 +15,7 @@ import (
 type Page struct {
 	pulumi.CustomResourceState
 
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponseOutput `pulumi:"entryFulfillment"`
@@ -80,7 +80,7 @@ func (PageState) ElementType() reflect.Type {
 
 type pageArgs struct {
 	AgentId string `pulumi:"agentId"`
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *GoogleCloudDialogflowCxV3beta1Fulfillment `pulumi:"entryFulfillment"`
@@ -104,7 +104,7 @@ type pageArgs struct {
 // The set of arguments for constructing a Page resource.
 type PageArgs struct {
 	AgentId pulumi.StringInput
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentPtrInput

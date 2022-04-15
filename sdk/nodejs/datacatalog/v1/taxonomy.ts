@@ -45,7 +45,7 @@ export class Taxonomy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8.
+     * User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -109,7 +109,7 @@ export interface TaxonomyArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8.
+     * User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
      */
     displayName: pulumi.Input<string>;
     location?: pulumi.Input<string>;

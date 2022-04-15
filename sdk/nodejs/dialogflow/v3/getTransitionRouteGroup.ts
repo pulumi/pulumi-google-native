@@ -35,7 +35,7 @@ export interface GetTransitionRouteGroupArgs {
 
 export interface GetTransitionRouteGroupResult {
     /**
-     * The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+     * The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
      */
     readonly displayName: string;
     /**

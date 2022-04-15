@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<ImmutableArray<string>> TransitionRouteGroups { get; private set; } = null!;
 
         /// <summary>
-        /// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
+        /// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
         /// </summary>
         [Output("transitionRoutes")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1TransitionRouteResponse>> TransitionRoutes { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1TransitionRouteArgs>? _transitionRoutes;
 
         /// <summary>
-        /// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified.. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
+        /// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowCxV3beta1TransitionRouteArgs> TransitionRoutes
         {

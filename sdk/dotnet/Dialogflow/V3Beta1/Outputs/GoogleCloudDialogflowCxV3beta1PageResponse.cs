@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1PageResponse
     {
         /// <summary>
-        /// The human-readable name of the page, unique within the agent.
+        /// The human-readable name of the page, unique within the flow.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

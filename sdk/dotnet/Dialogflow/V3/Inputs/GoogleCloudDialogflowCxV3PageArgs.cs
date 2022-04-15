@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3PageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The human-readable name of the page, unique within the agent.
+        /// The human-readable name of the page, unique within the flow.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;

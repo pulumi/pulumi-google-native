@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public sealed class GetPageResult
     {
         /// <summary>
-        /// The human-readable name of the page, unique within the agent.
+        /// The human-readable name of the page, unique within the flow.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

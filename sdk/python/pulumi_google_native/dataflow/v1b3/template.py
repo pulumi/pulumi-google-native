@@ -124,7 +124,7 @@ class Template(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply string values using the API.
+        Creates a Cloud Dataflow job from a template.
         Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
@@ -144,7 +144,7 @@ class Template(pulumi.CustomResource):
                  args: TemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply string values using the API.
+        Creates a Cloud Dataflow job from a template.
         Auto-naming is currently not supported for this resource.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.

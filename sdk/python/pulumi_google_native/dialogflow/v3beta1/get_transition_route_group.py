@@ -33,7 +33,7 @@ class GetTransitionRouteGroupResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
         """
         return pulumi.get(self, "display_name")
 

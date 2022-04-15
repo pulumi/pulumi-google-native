@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public sealed class GetTransitionRouteGroupResult
     {
         /// <summary>
-        /// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        /// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

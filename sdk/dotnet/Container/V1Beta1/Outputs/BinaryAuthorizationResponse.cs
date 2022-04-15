@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class BinaryAuthorizationResponse
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Google Binauthz.
+        /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
         /// </summary>
         public readonly bool Enabled;
 

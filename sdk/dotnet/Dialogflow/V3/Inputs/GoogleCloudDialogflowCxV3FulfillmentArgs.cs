@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         }
 
         /// <summary>
-        /// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+        /// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

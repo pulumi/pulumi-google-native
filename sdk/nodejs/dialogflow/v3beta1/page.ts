@@ -36,7 +36,7 @@ export class Page extends pulumi.CustomResource {
     }
 
     /**
-     * The human-readable name of the page, unique within the agent.
+     * The human-readable name of the page, unique within the flow.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -116,7 +116,7 @@ export class Page extends pulumi.CustomResource {
 export interface PageArgs {
     agentId: pulumi.Input<string>;
     /**
-     * The human-readable name of the page, unique within the agent.
+     * The human-readable name of the page, unique within the flow.
      */
     displayName: pulumi.Input<string>;
     /**

@@ -31,7 +31,7 @@ type LookupTaxonomyResult struct {
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
 	// Optional. Description of this taxonomy. If not set, defaults to empty. The description must contain only Unicode characters, tabs, newlines, carriage returns, and page breaks, and be at most 2000 bytes long when encoded in UTF-8.
 	Description string `pulumi:"description"`
-	// User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8.
+	// User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
 	DisplayName string `pulumi:"displayName"`
 	// Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs.
 	Name string `pulumi:"name"`
@@ -88,7 +88,7 @@ func (o LookupTaxonomyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTaxonomyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8.
+// User-defined name of this taxonomy. The name can't start or end with spaces, must contain only Unicode letters, numbers, underscores, dashes, and spaces, and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
 func (o LookupTaxonomyResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTaxonomyResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

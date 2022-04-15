@@ -25,7 +25,7 @@ class TransitionRouteGroupArgs:
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a TransitionRouteGroup resource.
-        :param pulumi.Input[str] display_name: The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
         :param pulumi.Input[str] language_code: The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: Transition routes associated with the TransitionRouteGroup.
@@ -57,7 +57,7 @@ class TransitionRouteGroupArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -148,7 +148,7 @@ class TransitionRouteGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
         :param pulumi.Input[str] language_code: The language of the following fields in `TransitionRouteGroup`: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` * `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]] transition_routes: Transition routes associated with the TransitionRouteGroup.
@@ -242,7 +242,7 @@ class TransitionRouteGroup(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
         """
         return pulumi.get(self, "display_name")
 

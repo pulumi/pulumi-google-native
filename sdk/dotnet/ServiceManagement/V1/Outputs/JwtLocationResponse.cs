@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
     public sealed class JwtLocationResponse
     {
         /// <summary>
+        /// Specifies cookie name to extract JWT token.
+        /// </summary>
+        public readonly string Cookie;
+        /// <summary>
         /// Specifies HTTP header name to extract JWT token.
         /// </summary>
         public readonly string Header;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
         [OutputConstructor]
         private JwtLocationResponse(
+            string cookie,
+
             string header,
 
             string query,
 
             string valuePrefix)
         {
+            Cookie = cookie;
             Header = header;
             Query = query;
             ValuePrefix = valuePrefix;

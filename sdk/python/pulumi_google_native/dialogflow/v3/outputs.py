@@ -1412,7 +1412,7 @@ class GoogleCloudDialogflowCxV3FulfillmentResponse(dict):
         :param Sequence['GoogleCloudDialogflowCxV3ResponseMessageResponse'] messages: The list of rich message responses to present to the user.
         :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
         :param Sequence['GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse'] set_parameter_actions: Set parameter values before executing the webhook.
-        :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+        :param str tag: The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
         :param str webhook: The webhook to call. Format: `projects//locations//agents//webhooks/`.
         """
         pulumi.set(__self__, "conditional_cases", conditional_cases)
@@ -1458,7 +1458,7 @@ class GoogleCloudDialogflowCxV3FulfillmentResponse(dict):
     @pulumi.getter
     def tag(self) -> str:
         """
-        The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+        The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
         """
         return pulumi.get(self, "tag")
 
@@ -2029,7 +2029,7 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
                  transition_routes: Sequence['outputs.GoogleCloudDialogflowCxV3TransitionRouteResponse']):
         """
         A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
-        :param str display_name: The human-readable name of the page, unique within the agent.
+        :param str display_name: The human-readable name of the page, unique within the flow.
         :param 'GoogleCloudDialogflowCxV3FulfillmentResponse' entry_fulfillment: The fulfillment to call when the session is entering the page.
         :param Sequence['GoogleCloudDialogflowCxV3EventHandlerResponse'] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
         :param 'GoogleCloudDialogflowCxV3FormResponse' form: The form associated with the page, used for collecting parameters relevant to the page.
@@ -2049,7 +2049,7 @@ class GoogleCloudDialogflowCxV3PageResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The human-readable name of the page, unique within the agent.
+        The human-readable name of the page, unique within the flow.
         """
         return pulumi.get(self, "display_name")
 

@@ -58,7 +58,7 @@ class GetTaxonomyResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+        User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
         """
         return pulumi.get(self, "display_name")
 

@@ -4133,7 +4133,7 @@ type GoogleCloudDialogflowCxV3Fulfillment struct {
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions []GoogleCloudDialogflowCxV3FulfillmentSetParameterAction `pulumi:"setParameterActions"`
-	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+	// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: `projects//locations//agents//webhooks/`.
 	Webhook *string `pulumi:"webhook"`
@@ -4160,7 +4160,7 @@ type GoogleCloudDialogflowCxV3FulfillmentArgs struct {
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
-	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+	// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: `projects//locations//agents//webhooks/`.
 	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
@@ -4270,7 +4270,7 @@ func (o GoogleCloudDialogflowCxV3FulfillmentOutput) SetParameterActions() Google
 	}).(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayOutput)
 }
 
-// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
 func (o GoogleCloudDialogflowCxV3FulfillmentOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Fulfillment) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -4344,7 +4344,7 @@ func (o GoogleCloudDialogflowCxV3FulfillmentPtrOutput) SetParameterActions() Goo
 	}).(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayOutput)
 }
 
-// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
 func (o GoogleCloudDialogflowCxV3FulfillmentPtrOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3Fulfillment) *string {
 		if v == nil {
@@ -4945,7 +4945,7 @@ type GoogleCloudDialogflowCxV3FulfillmentResponse struct {
 	ReturnPartialResponses bool `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions []GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponse `pulumi:"setParameterActions"`
-	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+	// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
 	Tag string `pulumi:"tag"`
 	// The webhook to call. Format: `projects//locations//agents//webhooks/`.
 	Webhook string `pulumi:"webhook"`
@@ -4992,7 +4992,7 @@ func (o GoogleCloudDialogflowCxV3FulfillmentResponseOutput) SetParameterActions(
 	}).(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArrayOutput)
 }
 
-// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
+// The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
 func (o GoogleCloudDialogflowCxV3FulfillmentResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3FulfillmentResponse) string { return v.Tag }).(pulumi.StringOutput)
 }
@@ -6751,7 +6751,7 @@ func (o GoogleCloudDialogflowCxV3NluSettingsResponseOutput) ModelType() pulumi.S
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3Page struct {
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *GoogleCloudDialogflowCxV3Fulfillment `pulumi:"entryFulfillment"`
@@ -6780,7 +6780,7 @@ type GoogleCloudDialogflowCxV3PageInput interface {
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3PageArgs struct {
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3FulfillmentPtrInput `pulumi:"entryFulfillment"`
@@ -6874,7 +6874,7 @@ func (o GoogleCloudDialogflowCxV3PageOutput) ToGoogleCloudDialogflowCxV3PagePtrO
 	}).(GoogleCloudDialogflowCxV3PagePtrOutput)
 }
 
-// The human-readable name of the page, unique within the agent.
+// The human-readable name of the page, unique within the flow.
 func (o GoogleCloudDialogflowCxV3PageOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3Page) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -6935,7 +6935,7 @@ func (o GoogleCloudDialogflowCxV3PagePtrOutput) Elem() GoogleCloudDialogflowCxV3
 	}).(GoogleCloudDialogflowCxV3PageOutput)
 }
 
-// The human-readable name of the page, unique within the agent.
+// The human-readable name of the page, unique within the flow.
 func (o GoogleCloudDialogflowCxV3PagePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3Page) *string {
 		if v == nil {
@@ -7007,7 +7007,7 @@ func (o GoogleCloudDialogflowCxV3PagePtrOutput) TransitionRoutes() GoogleCloudDi
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3PageResponse struct {
-	// The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the flow.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3FulfillmentResponse `pulumi:"entryFulfillment"`
@@ -7038,7 +7038,7 @@ func (o GoogleCloudDialogflowCxV3PageResponseOutput) ToGoogleCloudDialogflowCxV3
 	return o
 }
 
-// The human-readable name of the page, unique within the agent.
+// The human-readable name of the page, unique within the flow.
 func (o GoogleCloudDialogflowCxV3PageResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3PageResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -28,7 +28,7 @@ type LookupAttestorArgs struct {
 type LookupAttestorResult struct {
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description string `pulumi:"description"`
-	// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
+	// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
 	Etag string `pulumi:"etag"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name string `pulumi:"name"`
@@ -79,7 +79,7 @@ func (o LookupAttestorResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttestorResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
+// Optional. Used to prevent updating the attestor when another request has updated it since it was retrieved.
 func (o LookupAttestorResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttestorResult) string { return v.Etag }).(pulumi.StringOutput)
 }
