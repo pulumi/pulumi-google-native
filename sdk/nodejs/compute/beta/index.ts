@@ -82,6 +82,7 @@ export * from "./getRegionSecurityPolicy";
 export * from "./getRegionSslCertificate";
 export * from "./getRegionTargetHttpProxy";
 export * from "./getRegionTargetHttpsProxy";
+export * from "./getRegionTargetTcpProxy";
 export * from "./getRegionUrlMap";
 export * from "./getReservation";
 export * from "./getReservationIamPolicy";
@@ -160,6 +161,7 @@ export * from "./regionSecurityPolicy";
 export * from "./regionSslCertificate";
 export * from "./regionTargetHttpProxy";
 export * from "./regionTargetHttpsProxy";
+export * from "./regionTargetTcpProxy";
 export * from "./regionUrlMap";
 export * from "./reservation";
 export * from "./reservationIamPolicy";
@@ -256,6 +258,7 @@ import { RegionSecurityPolicy } from "./regionSecurityPolicy";
 import { RegionSslCertificate } from "./regionSslCertificate";
 import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
 import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
+import { RegionTargetTcpProxy } from "./regionTargetTcpProxy";
 import { RegionUrlMap } from "./regionUrlMap";
 import { Reservation } from "./reservation";
 import { ReservationIamPolicy } from "./reservationIamPolicy";
@@ -416,6 +419,8 @@ const _module = {
                 return new RegionTargetHttpProxy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionTargetHttpsProxy":
                 return new RegionTargetHttpsProxy(name, <any>undefined, { urn })
+            case "google-native:compute/beta:RegionTargetTcpProxy":
+                return new RegionTargetTcpProxy(name, <any>undefined, { urn })
             case "google-native:compute/beta:RegionUrlMap":
                 return new RegionUrlMap(name, <any>undefined, { urn })
             case "google-native:compute/beta:Reservation":

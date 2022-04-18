@@ -14,7 +14,7 @@ import (
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
-	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	// Specifies configuration that overrides the instance template configuration for the group.
 	AllInstancesConfig InstanceGroupManagerAllInstancesConfigResponseOutput `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyResponseArrayOutput `pulumi:"autoHealingPolicies"`
@@ -115,7 +115,7 @@ func (InstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerArgs struct {
-	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	// Specifies configuration that overrides the instance template configuration for the group.
 	AllInstancesConfig *InstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
@@ -163,7 +163,7 @@ type instanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a InstanceGroupManager resource.
 type InstanceGroupManagerArgs struct {
-	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	// Specifies configuration that overrides the instance template configuration for the group.
 	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput

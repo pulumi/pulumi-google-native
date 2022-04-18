@@ -114,7 +114,7 @@ class GetRegionInstanceGroupManagerResult:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> 'outputs.InstanceGroupManagerAllInstancesConfigResponse':
         """
-        Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        Specifies configuration that overrides the instance template configuration for the group.
         """
         return pulumi.get(self, "all_instances_config")
 

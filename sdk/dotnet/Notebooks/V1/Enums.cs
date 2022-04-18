@@ -211,6 +211,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Balanced persistent disk type.
         /// </summary>
         public static InstanceBootDiskType PdBalanced { get; } = new InstanceBootDiskType("PD_BALANCED");
+        /// <summary>
+        /// Extreme persistent disk type.
+        /// </summary>
+        public static InstanceBootDiskType PdExtreme { get; } = new InstanceBootDiskType("PD_EXTREME");
 
         public static bool operator ==(InstanceBootDiskType left, InstanceBootDiskType right) => left.Equals(right);
         public static bool operator !=(InstanceBootDiskType left, InstanceBootDiskType right) => !left.Equals(right);
@@ -256,6 +260,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Balanced persistent disk type.
         /// </summary>
         public static InstanceDataDiskType PdBalanced { get; } = new InstanceDataDiskType("PD_BALANCED");
+        /// <summary>
+        /// Extreme persistent disk type.
+        /// </summary>
+        public static InstanceDataDiskType PdExtreme { get; } = new InstanceDataDiskType("PD_EXTREME");
 
         public static bool operator ==(InstanceDataDiskType left, InstanceDataDiskType right) => left.Equals(right);
         public static bool operator !=(InstanceDataDiskType left, InstanceDataDiskType right) => !left.Equals(right);
@@ -383,6 +391,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// Balanced persistent disk type.
         /// </summary>
         public static LocalDiskInitializeParamsDiskType PdBalanced { get; } = new LocalDiskInitializeParamsDiskType("PD_BALANCED");
+        /// <summary>
+        /// Extreme persistent disk type.
+        /// </summary>
+        public static LocalDiskInitializeParamsDiskType PdExtreme { get; } = new LocalDiskInitializeParamsDiskType("PD_EXTREME");
 
         public static bool operator ==(LocalDiskInitializeParamsDiskType left, LocalDiskInitializeParamsDiskType right) => left.Equals(right);
         public static bool operator !=(LocalDiskInitializeParamsDiskType left, LocalDiskInitializeParamsDiskType right) => !left.Equals(right);

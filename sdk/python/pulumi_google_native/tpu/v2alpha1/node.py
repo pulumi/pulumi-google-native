@@ -16,8 +16,8 @@ __all__ = ['NodeArgs', 'Node']
 @pulumi.input_type
 class NodeArgs:
     def __init__(__self__, *,
-                 accelerator_type: pulumi.Input[str],
                  runtime_version: pulumi.Input[str],
+                 accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -34,8 +34,8 @@ class NodeArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Node resource.
-        :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
+        :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] data_disks: The additional data disks for the Node.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
@@ -49,8 +49,9 @@ class NodeArgs:
         :param pulumi.Input['ServiceAccountArgs'] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
-        pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "runtime_version", runtime_version)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if data_disks is not None:
@@ -81,18 +82,6 @@ class NodeArgs:
             pulumi.set(__self__, "tags", tags)
 
     @property
-    @pulumi.getter(name="acceleratorType")
-    def accelerator_type(self) -> pulumi.Input[str]:
-        """
-        The type of hardware accelerators associated with this node.
-        """
-        return pulumi.get(self, "accelerator_type")
-
-    @accelerator_type.setter
-    def accelerator_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "accelerator_type", value)
-
-    @property
     @pulumi.getter(name="runtimeVersion")
     def runtime_version(self) -> pulumi.Input[str]:
         """
@@ -103,6 +92,18 @@ class NodeArgs:
     @runtime_version.setter
     def runtime_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "runtime_version", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of hardware accelerators associated with this node.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -363,8 +364,6 @@ class Node(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeArgs.__new__(NodeArgs)
 
-            if accelerator_type is None and not opts.urn:
-                raise TypeError("Missing required property 'accelerator_type'")
             __props__.__dict__["accelerator_type"] = accelerator_type
             __props__.__dict__["cidr_block"] = cidr_block
             __props__.__dict__["data_disks"] = data_disks

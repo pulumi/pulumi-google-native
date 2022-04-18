@@ -63,9 +63,6 @@ func NewNode(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AcceleratorType == nil {
-		return nil, errors.New("invalid value for required argument 'AcceleratorType'")
-	}
 	if args.RuntimeVersion == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeVersion'")
 	}
@@ -102,7 +99,7 @@ func (NodeState) ElementType() reflect.Type {
 
 type nodeArgs struct {
 	// The type of hardware accelerators associated with this node.
-	AcceleratorType string `pulumi:"acceleratorType"`
+	AcceleratorType *string `pulumi:"acceleratorType"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The additional data disks for the Node.
@@ -136,7 +133,7 @@ type nodeArgs struct {
 // The set of arguments for constructing a Node resource.
 type NodeArgs struct {
 	// The type of hardware accelerators associated with this node.
-	AcceleratorType pulumi.StringInput
+	AcceleratorType pulumi.StringPtrInput
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
 	CidrBlock pulumi.StringPtrInput
 	// The additional data disks for the Node.

@@ -33,6 +33,10 @@ export interface GetMigratingVmArgs {
 
 export interface GetMigratingVmResult {
     /**
+     * Details of the VM from an AWS source.
+     */
+    readonly awsSourceVmDetails: outputs.vmmigration.v1alpha1.AwsSourceVmDetailsResponse;
+    /**
      * Details of the target VM in Compute Engine.
      */
     readonly computeEngineTargetDefaults: outputs.vmmigration.v1alpha1.ComputeEngineTargetDefaultsResponse;

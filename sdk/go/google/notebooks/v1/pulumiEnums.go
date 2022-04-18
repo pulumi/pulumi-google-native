@@ -555,6 +555,8 @@ const (
 	InstanceBootDiskTypePdSsd = InstanceBootDiskType("PD_SSD")
 	// Balanced persistent disk type.
 	InstanceBootDiskTypePdBalanced = InstanceBootDiskType("PD_BALANCED")
+	// Extreme persistent disk type.
+	InstanceBootDiskTypePdExtreme = InstanceBootDiskType("PD_EXTREME")
 )
 
 func (InstanceBootDiskType) ElementType() reflect.Type {
@@ -726,6 +728,8 @@ const (
 	InstanceDataDiskTypePdSsd = InstanceDataDiskType("PD_SSD")
 	// Balanced persistent disk type.
 	InstanceDataDiskTypePdBalanced = InstanceDataDiskType("PD_BALANCED")
+	// Extreme persistent disk type.
+	InstanceDataDiskTypePdExtreme = InstanceDataDiskType("PD_EXTREME")
 )
 
 func (InstanceDataDiskType) ElementType() reflect.Type {
@@ -1235,6 +1239,8 @@ const (
 	LocalDiskInitializeParamsDiskTypePdSsd = LocalDiskInitializeParamsDiskType("PD_SSD")
 	// Balanced persistent disk type.
 	LocalDiskInitializeParamsDiskTypePdBalanced = LocalDiskInitializeParamsDiskType("PD_BALANCED")
+	// Extreme persistent disk type.
+	LocalDiskInitializeParamsDiskTypePdExtreme = LocalDiskInitializeParamsDiskType("PD_EXTREME")
 )
 
 func (LocalDiskInitializeParamsDiskType) ElementType() reflect.Type {

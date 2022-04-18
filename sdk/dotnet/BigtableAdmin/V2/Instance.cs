@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         private InputMap<string>? _clusters;
 
         /// <summary>
-        /// The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        /// The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
         /// </summary>
         public InputMap<string> Clusters
         {

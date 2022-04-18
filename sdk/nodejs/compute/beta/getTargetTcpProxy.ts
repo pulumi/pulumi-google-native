@@ -50,6 +50,10 @@ export interface GetTargetTcpProxyResult {
      */
     readonly proxyHeader: string;
     /**
+     * URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
+     */
+    readonly region: string;
+    /**
      * Server-defined URL for the resource.
      */
     readonly selfLink: string;

@@ -15,16 +15,16 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// </summary>
     public sealed class GoogleCloudRunV2CloudSqlInstanceArgs : Pulumi.ResourceArgs
     {
-        [Input("connections")]
-        private InputList<string>? _connections;
+        [Input("instances")]
+        private InputList<string>? _instances;
 
         /// <summary>
         /// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         /// </summary>
-        public InputList<string> Connections
+        public InputList<string> Instances
         {
-            get => _connections ?? (_connections = new InputList<string>());
-            set => _connections = value;
+            get => _instances ?? (_instances = new InputList<string>());
+            set => _instances = value;
         }
 
         public GoogleCloudRunV2CloudSqlInstanceArgs()

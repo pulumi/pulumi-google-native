@@ -123,6 +123,32 @@ func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersio
 	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.NewDeployableAppliance }).(ApplianceVersionResponseOutput)
 }
 
+// Represent the source AWS VM details.
+type AwsSourceVmDetailsResponse struct {
+	// The firmware type of the source VM.
+	Firmware string `pulumi:"firmware"`
+}
+
+// Represent the source AWS VM details.
+type AwsSourceVmDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsSourceVmDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSourceVmDetailsResponse)(nil)).Elem()
+}
+
+func (o AwsSourceVmDetailsResponseOutput) ToAwsSourceVmDetailsResponseOutput() AwsSourceVmDetailsResponseOutput {
+	return o
+}
+
+func (o AwsSourceVmDetailsResponseOutput) ToAwsSourceVmDetailsResponseOutputWithContext(ctx context.Context) AwsSourceVmDetailsResponseOutput {
+	return o
+}
+
+// The firmware type of the source VM.
+func (o AwsSourceVmDetailsResponseOutput) Firmware() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceVmDetailsResponse) string { return v.Firmware }).(pulumi.StringOutput)
+}
+
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
 type CloneJobResponse struct {
 	// Details of the target VM in Compute Engine.
@@ -4283,6 +4309,7 @@ func init() {
 	pulumi.RegisterOutputType(ApplianceVersionResponseOutput{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
 	pulumi.RegisterOutputType(AvailableUpdatesResponseOutput{})
+	pulumi.RegisterOutputType(AwsSourceVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})

@@ -1538,8 +1538,8 @@ class ProbeArgs:
         :param pulumi.Input['ExecActionArgs'] exec_: (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
         :param pulumi.Input[int] failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         :param pulumi.Input['HTTPGetActionArgs'] http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
-        :param pulumi.Input[int] initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param pulumi.Input[int] period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+        :param pulumi.Input[int] initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param pulumi.Input[int] period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
         :param pulumi.Input[int] success_threshold: (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
         :param pulumi.Input['TCPSocketActionArgs'] tcp_socket: (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
         :param pulumi.Input[int] timeout_seconds: (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -1601,7 +1601,7 @@ class ProbeArgs:
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -1613,7 +1613,7 @@ class ProbeArgs:
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+        (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
         """
         return pulumi.get(self, "period_seconds")
 

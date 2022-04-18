@@ -15,6 +15,7 @@ __all__ = [
     'BackfillAllStrategyResponse',
     'BackfillNoneStrategyResponse',
     'DestinationConfigResponse',
+    'DropLargeObjectsResponse',
     'ErrorResponse',
     'ForwardSshTunnelConnectivityResponse',
     'GcsDestinationConfigResponse',
@@ -29,7 +30,6 @@ __all__ = [
     'MysqlTableResponse',
     'NoConnectivitySettingsResponse',
     'OracleColumnResponse',
-    'OracleDropLargeObjectsResponse',
     'OracleProfileResponse',
     'OracleRdbmsResponse',
     'OracleSchemaResponse',
@@ -167,6 +167,18 @@ class DestinationConfigResponse(dict):
         GCS destination configuration.
         """
         return pulumi.get(self, "gcs_destination_config")
+
+
+@pulumi.output_type
+class DropLargeObjectsResponse(dict):
+    """
+    Configuration to drop large object values.
+    """
+    def __init__(__self__):
+        """
+        Configuration to drop large object values.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1161,18 +1173,6 @@ class OracleColumnResponse(dict):
 
 
 @pulumi.output_type
-class OracleDropLargeObjectsResponse(dict):
-    """
-    Configuration to drop large object values.
-    """
-    def __init__(__self__):
-        """
-        Configuration to drop large object values.
-        """
-        pass
-
-
-@pulumi.output_type
 class OracleProfileResponse(dict):
     """
     Oracle database profile.
@@ -1383,12 +1383,12 @@ class OracleSourceConfigResponse(dict):
 
     def __init__(__self__, *,
                  allowlist: 'outputs.OracleRdbmsResponse',
-                 drop_large_objects: 'outputs.OracleDropLargeObjectsResponse',
+                 drop_large_objects: 'outputs.DropLargeObjectsResponse',
                  rejectlist: 'outputs.OracleRdbmsResponse'):
         """
         Oracle data source configuration
         :param 'OracleRdbmsResponse' allowlist: Oracle objects to include in the stream.
-        :param 'OracleDropLargeObjectsResponse' drop_large_objects: Drop large object values.
+        :param 'DropLargeObjectsResponse' drop_large_objects: Drop large object values.
         :param 'OracleRdbmsResponse' rejectlist: Oracle objects to exclude from the stream.
         """
         pulumi.set(__self__, "allowlist", allowlist)
@@ -1405,7 +1405,7 @@ class OracleSourceConfigResponse(dict):
 
     @property
     @pulumi.getter(name="dropLargeObjects")
-    def drop_large_objects(self) -> 'outputs.OracleDropLargeObjectsResponse':
+    def drop_large_objects(self) -> 'outputs.DropLargeObjectsResponse':
         """
         Drop large object values.
         """

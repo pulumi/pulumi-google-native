@@ -117,7 +117,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceArgs {
     /**
-     * The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+     * The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank.
      */
     clusters: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

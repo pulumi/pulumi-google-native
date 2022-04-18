@@ -150,6 +150,10 @@ class InstanceBootDiskType(str, Enum):
     """
     Balanced persistent disk type.
     """
+    PD_EXTREME = "PD_EXTREME"
+    """
+    Extreme persistent disk type.
+    """
 
 
 class InstanceDataDiskType(str, Enum):
@@ -171,6 +175,10 @@ class InstanceDataDiskType(str, Enum):
     PD_BALANCED = "PD_BALANCED"
     """
     Balanced persistent disk type.
+    """
+    PD_EXTREME = "PD_EXTREME"
+    """
+    Extreme persistent disk type.
     """
 
 
@@ -229,6 +237,10 @@ class LocalDiskInitializeParamsDiskType(str, Enum):
     PD_BALANCED = "PD_BALANCED"
     """
     Balanced persistent disk type.
+    """
+    PD_EXTREME = "PD_EXTREME"
+    """
+    Extreme persistent disk type.
     """
 
 

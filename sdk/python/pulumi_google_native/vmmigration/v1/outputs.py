@@ -14,6 +14,7 @@ __all__ = [
     'ApplianceVersionResponse',
     'AppliedLicenseResponse',
     'AvailableUpdatesResponse',
+    'AwsSourceVmDetailsResponse',
     'CloneJobResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
@@ -204,6 +205,28 @@ class AvailableUpdatesResponse(dict):
         The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
         """
         return pulumi.get(self, "new_deployable_appliance")
+
+
+@pulumi.output_type
+class AwsSourceVmDetailsResponse(dict):
+    """
+    Represent the source AWS VM details.
+    """
+    def __init__(__self__, *,
+                 firmware: str):
+        """
+        Represent the source AWS VM details.
+        :param str firmware: The firmware type of the source VM.
+        """
+        pulumi.set(__self__, "firmware", firmware)
+
+    @property
+    @pulumi.getter
+    def firmware(self) -> str:
+        """
+        The firmware type of the source VM.
+        """
+        return pulumi.get(self, "firmware")
 
 
 @pulumi.output_type

@@ -3352,7 +3352,7 @@ class BindingResponse(dict):
         Associates `members`, or principals, with a `role`.
         :param str binding_id: This is deprecated and has no effect. Do not use.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "binding_id", binding_id)
@@ -3380,7 +3380,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -3864,7 +3864,9 @@ class ConfidentialInstanceConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableConfidentialCompute":
+        if key == "confidentialInstanceType":
+            suggest = "confidential_instance_type"
+        elif key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
 
         if suggest:
@@ -3879,12 +3881,23 @@ class ConfidentialInstanceConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 confidential_instance_type: str,
                  enable_confidential_compute: bool):
         """
         A set of Confidential Instance options.
+        :param str confidential_instance_type: Defines the type of technology used by the confidential instance.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
         """
+        pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceType")
+    def confidential_instance_type(self) -> str:
+        """
+        Defines the type of technology used by the confidential instance.
+        """
+        return pulumi.get(self, "confidential_instance_type")
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
@@ -7718,7 +7731,7 @@ class InstanceGroupManagerAllInstancesConfigResponse(dict):
     def __init__(__self__, *,
                  properties: 'outputs.InstancePropertiesPatchResponse'):
         """
-        :param 'InstancePropertiesPatchResponse' properties: Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+        :param 'InstancePropertiesPatchResponse' properties: Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
         """
         pulumi.set(__self__, "properties", properties)
 
@@ -7726,7 +7739,7 @@ class InstanceGroupManagerAllInstancesConfigResponse(dict):
     @pulumi.getter
     def properties(self) -> 'outputs.InstancePropertiesPatchResponse':
         """
-        Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+        Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
         """
         return pulumi.get(self, "properties")
 
@@ -7971,8 +7984,8 @@ class InstanceGroupManagerStatusAllInstancesConfigResponse(dict):
                  current_revision: str,
                  effective: bool):
         """
-        :param str current_revision: Current instances' config revision. This value is in RFC3339 text format.
-        :param bool effective: A bit indicating whether instances' config has been applied to all managed instances in managed instance group.
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
+        :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
         pulumi.set(__self__, "current_revision", current_revision)
         pulumi.set(__self__, "effective", effective)
@@ -7981,7 +7994,7 @@ class InstanceGroupManagerStatusAllInstancesConfigResponse(dict):
     @pulumi.getter(name="currentRevision")
     def current_revision(self) -> str:
         """
-        Current instances' config revision. This value is in RFC3339 text format.
+        Current all-instances configuration revision. This value is in RFC3339 text format.
         """
         return pulumi.get(self, "current_revision")
 
@@ -7989,7 +8002,7 @@ class InstanceGroupManagerStatusAllInstancesConfigResponse(dict):
     @pulumi.getter
     def effective(self) -> bool:
         """
-        A bit indicating whether instances' config has been applied to all managed instances in managed instance group.
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
         """
         return pulumi.get(self, "effective")
 
@@ -8024,7 +8037,7 @@ class InstanceGroupManagerStatusResponse(dict):
                  stateful: 'outputs.InstanceGroupManagerStatusStatefulResponse',
                  version_target: 'outputs.InstanceGroupManagerStatusVersionTargetResponse'):
         """
-        :param 'InstanceGroupManagerStatusAllInstancesConfigResponse' all_instances_config: A status of consistency of Instances' config applied to instances with Instances' config defined in managed instance group.
+        :param 'InstanceGroupManagerStatusAllInstancesConfigResponse' all_instances_config: [Output only] Status of all-instances configuration on the group.
         :param str autoscaler: The URL of the Autoscaler that targets this instance group manager.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param 'InstanceGroupManagerStatusStatefulResponse' stateful: Stateful status of the given Instance Group Manager.
@@ -8040,7 +8053,7 @@ class InstanceGroupManagerStatusResponse(dict):
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> 'outputs.InstanceGroupManagerStatusAllInstancesConfigResponse':
         """
-        A status of consistency of Instances' config applied to instances with Instances' config defined in managed instance group.
+        [Output only] Status of all-instances configuration on the group.
         """
         return pulumi.get(self, "all_instances_config")
 
@@ -8099,7 +8112,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(dict):
     def __init__(__self__, *,
                  all_effective: bool):
         """
-        :param bool all_effective: A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        :param bool all_effective: A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
         """
         pulumi.set(__self__, "all_effective", all_effective)
 
@@ -8107,7 +8120,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(dict):
     @pulumi.getter(name="allEffective")
     def all_effective(self) -> bool:
         """
-        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
         """
         return pulumi.get(self, "all_effective")
 
@@ -8140,9 +8153,9 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
                  is_stateful: bool,
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
         """
-        :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param bool is_stateful: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configs on the instance.
+        :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param bool is_stateful: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configurations on the instance.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
         pulumi.set(__self__, "is_stateful", is_stateful)
@@ -8152,7 +8165,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="hasStatefulConfig")
     def has_stateful_config(self) -> bool:
         """
-        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
         """
         return pulumi.get(self, "has_stateful_config")
 
@@ -8160,7 +8173,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="isStateful")
     def is_stateful(self) -> bool:
         """
-        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         """
         return pulumi.get(self, "is_stateful")
 
@@ -8168,7 +8181,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse':
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configurations on the instance.
         """
         return pulumi.get(self, "per_instance_configs")
 

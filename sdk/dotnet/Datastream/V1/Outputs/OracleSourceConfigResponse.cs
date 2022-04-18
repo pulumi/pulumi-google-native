@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// <summary>
         /// Drop large object values.
         /// </summary>
-        public readonly Outputs.OracleDropLargeObjectsResponse DropLargeObjects;
+        public readonly Outputs.DropLargeObjectsResponse DropLargeObjects;
         /// <summary>
         /// Oracle objects to exclude from the stream.
         /// </summary>
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
         [OutputConstructor]
         private OracleSourceConfigResponse(
-            Outputs.OracleDropLargeObjectsResponse dropLargeObjects,
+            Outputs.DropLargeObjectsResponse dropLargeObjects,
 
             Outputs.OracleRdbmsResponse excludeObjects,
 

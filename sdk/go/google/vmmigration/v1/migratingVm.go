@@ -16,6 +16,8 @@ import (
 type MigratingVm struct {
 	pulumi.CustomResourceState
 
+	// Details of the VM from an AWS source.
+	AwsSourceVmDetails AwsSourceVmDetailsResponseOutput `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponseOutput `pulumi:"computeEngineTargetDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).

@@ -7,18 +7,24 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Outputs
+namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
 {
 
     /// <summary>
-    /// Configuration to drop large object values.
+    /// Represent the source AWS VM details.
     /// </summary>
     [OutputType]
-    public sealed class OracleDropLargeObjectsResponse
+    public sealed class AwsSourceVmDetailsResponse
     {
+        /// <summary>
+        /// The firmware type of the source VM.
+        /// </summary>
+        public readonly string Firmware;
+
         [OutputConstructor]
-        private OracleDropLargeObjectsResponse()
+        private AwsSourceVmDetailsResponse(string firmware)
         {
+            Firmware = firmware;
         }
     }
 }

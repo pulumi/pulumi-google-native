@@ -14,6 +14,7 @@ __all__ = [
     'BackfillAllStrategyArgs',
     'BackfillNoneStrategyArgs',
     'DestinationConfigArgs',
+    'DropLargeObjectsArgs',
     'ForwardSshTunnelConnectivityArgs',
     'GcsDestinationConfigArgs',
     'GcsProfileArgs',
@@ -27,7 +28,6 @@ __all__ = [
     'MysqlTableArgs',
     'NoConnectivitySettingsArgs',
     'OracleColumnArgs',
-    'OracleDropLargeObjectsArgs',
     'OracleProfileArgs',
     'OracleRdbmsArgs',
     'OracleSchemaArgs',
@@ -134,6 +134,15 @@ class DestinationConfigArgs:
     @gcs_destination_config.setter
     def gcs_destination_config(self, value: Optional[pulumi.Input['GcsDestinationConfigArgs']]):
         pulumi.set(self, "gcs_destination_config", value)
+
+
+@pulumi.input_type
+class DropLargeObjectsArgs:
+    def __init__(__self__):
+        """
+        Configuration to drop large object values.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -975,15 +984,6 @@ class OracleColumnArgs:
 
 
 @pulumi.input_type
-class OracleDropLargeObjectsArgs:
-    def __init__(__self__):
-        """
-        Configuration to drop large object values.
-        """
-        pass
-
-
-@pulumi.input_type
 class OracleProfileArgs:
     def __init__(__self__, *,
                  database_service: pulumi.Input[str],
@@ -1151,12 +1151,12 @@ class OracleSchemaArgs:
 class OracleSourceConfigArgs:
     def __init__(__self__, *,
                  allowlist: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
-                 drop_large_objects: Optional[pulumi.Input['OracleDropLargeObjectsArgs']] = None,
+                 drop_large_objects: Optional[pulumi.Input['DropLargeObjectsArgs']] = None,
                  rejectlist: Optional[pulumi.Input['OracleRdbmsArgs']] = None):
         """
         Oracle data source configuration
         :param pulumi.Input['OracleRdbmsArgs'] allowlist: Oracle objects to include in the stream.
-        :param pulumi.Input['OracleDropLargeObjectsArgs'] drop_large_objects: Drop large object values.
+        :param pulumi.Input['DropLargeObjectsArgs'] drop_large_objects: Drop large object values.
         :param pulumi.Input['OracleRdbmsArgs'] rejectlist: Oracle objects to exclude from the stream.
         """
         if allowlist is not None:
@@ -1180,14 +1180,14 @@ class OracleSourceConfigArgs:
 
     @property
     @pulumi.getter(name="dropLargeObjects")
-    def drop_large_objects(self) -> Optional[pulumi.Input['OracleDropLargeObjectsArgs']]:
+    def drop_large_objects(self) -> Optional[pulumi.Input['DropLargeObjectsArgs']]:
         """
         Drop large object values.
         """
         return pulumi.get(self, "drop_large_objects")
 
     @drop_large_objects.setter
-    def drop_large_objects(self, value: Optional[pulumi.Input['OracleDropLargeObjectsArgs']]):
+    def drop_large_objects(self, value: Optional[pulumi.Input['DropLargeObjectsArgs']]):
         pulumi.set(self, "drop_large_objects", value)
 
     @property

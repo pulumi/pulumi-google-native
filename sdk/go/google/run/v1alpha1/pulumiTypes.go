@@ -4684,9 +4684,9 @@ type Probe struct {
 	FailureThreshold *int `pulumi:"failureThreshold"`
 	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet *HTTPGetAction `pulumi:"httpGet"`
-	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
 	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 	SuccessThreshold *int `pulumi:"successThreshold"`
@@ -4715,9 +4715,9 @@ type ProbeArgs struct {
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
 	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
-	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
 	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 	SuccessThreshold pulumi.IntPtrInput `pulumi:"successThreshold"`
@@ -4820,12 +4820,12 @@ func (o ProbeOutput) HttpGet() HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v Probe) *HTTPGetAction { return v.HttpGet }).(HTTPGetActionPtrOutput)
 }
 
-// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.InitialDelaySeconds }).(pulumi.IntPtrOutput)
 }
 
-// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
 func (o ProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
@@ -4899,7 +4899,7 @@ func (o ProbePtrOutput) HttpGet() HTTPGetActionPtrOutput {
 	}).(HTTPGetActionPtrOutput)
 }
 
-// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -4909,7 +4909,7 @@ func (o ProbePtrOutput) InitialDelaySeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
 func (o ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Probe) *int {
 		if v == nil {
@@ -4957,9 +4957,9 @@ type ProbeResponse struct {
 	FailureThreshold int `pulumi:"failureThreshold"`
 	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
-	// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+	// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
-	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+	// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds int `pulumi:"periodSeconds"`
 	// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup Probes.
 	SuccessThreshold int `pulumi:"successThreshold"`
@@ -4999,12 +4999,12 @@ func (o ProbeResponseOutput) HttpGet() HTTPGetActionResponseOutput {
 	return o.ApplyT(func(v ProbeResponse) HTTPGetActionResponse { return v.HttpGet }).(HTTPGetActionResponseOutput)
 }
 
-// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ProbeResponseOutput) InitialDelaySeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.InitialDelaySeconds }).(pulumi.IntOutput)
 }
 
-// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
 func (o ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }

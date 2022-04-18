@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies configuration that overrides the instance template configuration for the group.
+        /// </summary>
+        [Output("allInstancesConfig")]
+        public Output<Outputs.InstanceGroupManagerAllInstancesConfigResponse> AllInstancesConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The autohealing policy for this managed instance group. You can specify only one value.
         /// </summary>
         [Output("autoHealingPolicies")]
@@ -198,6 +204,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class RegionInstanceGroupManagerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies configuration that overrides the instance template configuration for the group.
+        /// </summary>
+        [Input("allInstancesConfig")]
+        public Input<Inputs.InstanceGroupManagerAllInstancesConfigArgs>? AllInstancesConfig { get; set; }
+
         [Input("autoHealingPolicies")]
         private InputList<Inputs.InstanceGroupManagerAutoHealingPolicyArgs>? _autoHealingPolicies;
 

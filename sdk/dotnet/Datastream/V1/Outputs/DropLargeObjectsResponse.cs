@@ -7,15 +7,17 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Datastream.V1.Inputs
+namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 {
 
     /// <summary>
     /// Configuration to drop large object values.
     /// </summary>
-    public sealed class OracleDropLargeObjectsArgs : Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class DropLargeObjectsResponse
     {
-        public OracleDropLargeObjectsArgs()
+        [OutputConstructor]
+        private DropLargeObjectsResponse()
         {
         }
     }

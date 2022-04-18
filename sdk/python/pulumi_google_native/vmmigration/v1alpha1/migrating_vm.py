@@ -330,6 +330,7 @@ class MigratingVm(pulumi.CustomResource):
                 warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
                 pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
             __props__.__dict__["target_defaults"] = target_defaults
+            __props__.__dict__["aws_source_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
             __props__.__dict__["error"] = None
@@ -363,6 +364,7 @@ class MigratingVm(pulumi.CustomResource):
 
         __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
+        __props__.__dict__["aws_source_vm_details"] = None
         __props__.__dict__["compute_engine_target_defaults"] = None
         __props__.__dict__["compute_engine_vm_defaults"] = None
         __props__.__dict__["create_time"] = None
@@ -383,6 +385,14 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["target_defaults"] = None
         __props__.__dict__["update_time"] = None
         return MigratingVm(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="awsSourceVmDetails")
+    def aws_source_vm_details(self) -> pulumi.Output['outputs.AwsSourceVmDetailsResponse']:
+        """
+        Details of the VM from an AWS source.
+        """
+        return pulumi.get(self, "aws_source_vm_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDefaults")

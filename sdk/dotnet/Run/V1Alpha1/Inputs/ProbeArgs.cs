@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<Inputs.HTTPGetActionArgs>? HttpGet { get; set; }
 
         /// <summary>
-        /// (Optional) Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
 
         /// <summary>
-        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 3600. Must be greater or equal than timeout_seconds.
+        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
         /// </summary>
         [Input("periodSeconds")]
         public Input<int>? PeriodSeconds { get; set; }

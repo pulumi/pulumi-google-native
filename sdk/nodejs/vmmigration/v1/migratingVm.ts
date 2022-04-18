@@ -37,6 +37,10 @@ export class MigratingVm extends pulumi.CustomResource {
     }
 
     /**
+     * Details of the VM from an AWS source.
+     */
+    public /*out*/ readonly awsSourceVmDetails!: pulumi.Output<outputs.vmmigration.v1.AwsSourceVmDetailsResponse>;
+    /**
      * Details of the target VM in Compute Engine.
      */
     public readonly computeEngineTargetDefaults!: pulumi.Output<outputs.vmmigration.v1.ComputeEngineTargetDefaultsResponse>;
@@ -133,6 +137,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["sourceVmId"] = args ? args.sourceVmId : undefined;
+            resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -145,6 +150,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDefaults"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;

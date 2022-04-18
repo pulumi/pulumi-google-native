@@ -19,12 +19,12 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// <summary>
         /// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         /// </summary>
-        public readonly ImmutableArray<string> Connections;
+        public readonly ImmutableArray<string> Instances;
 
         [OutputConstructor]
-        private GoogleCloudRunV2CloudSqlInstanceResponse(ImmutableArray<string> connections)
+        private GoogleCloudRunV2CloudSqlInstanceResponse(ImmutableArray<string> instances)
         {
-            Connections = connections;
+            Instances = instances;
         }
     }
 }

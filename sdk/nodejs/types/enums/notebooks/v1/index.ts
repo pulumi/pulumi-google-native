@@ -131,6 +131,10 @@ export const InstanceBootDiskType = {
      * Balanced persistent disk type.
      */
     PdBalanced: "PD_BALANCED",
+    /**
+     * Extreme persistent disk type.
+     */
+    PdExtreme: "PD_EXTREME",
 } as const;
 
 /**
@@ -155,6 +159,10 @@ export const InstanceDataDiskType = {
      * Balanced persistent disk type.
      */
     PdBalanced: "PD_BALANCED",
+    /**
+     * Extreme persistent disk type.
+     */
+    PdExtreme: "PD_EXTREME",
 } as const;
 
 /**
@@ -219,6 +227,10 @@ export const LocalDiskInitializeParamsDiskType = {
      * Balanced persistent disk type.
      */
     PdBalanced: "PD_BALANCED",
+    /**
+     * Extreme persistent disk type.
+     */
+    PdExtreme: "PD_EXTREME",
 } as const;
 
 /**
