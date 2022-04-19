@@ -36,10 +36,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies configuration that overrides the instance template configuration for the group.
-     */
-    public readonly allInstancesConfig!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerAllInstancesConfigResponse>;
-    /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
     public readonly autoHealingPolicies!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerAutoHealingPolicyResponse[]>;
@@ -146,7 +142,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["allInstancesConfig"] = args ? args.allInstancesConfig : undefined;
             resourceInputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -173,7 +168,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
         } else {
-            resourceInputs["allInstancesConfig"] = undefined /*out*/;
             resourceInputs["autoHealingPolicies"] = undefined /*out*/;
             resourceInputs["baseInstanceName"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -207,10 +201,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
  * The set of arguments for constructing a RegionInstanceGroupManager resource.
  */
 export interface RegionInstanceGroupManagerArgs {
-    /**
-     * Specifies configuration that overrides the instance template configuration for the group.
-     */
-    allInstancesConfig?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerAllInstancesConfigArgs>;
     /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */

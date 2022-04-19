@@ -86,10 +86,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The max number of shares allowed.
-        /// </summary>
-        public readonly string MaxShareCount;
-        /// <summary>
         /// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
         /// </summary>
         public readonly string Name;
@@ -132,8 +128,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             ImmutableDictionary<string, string> labels,
 
-            string maxShareCount,
-
             string name,
 
             ImmutableArray<Outputs.NetworkConfigResponse> networks,
@@ -154,7 +148,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             FileShares = fileShares;
             KmsKeyName = kmsKeyName;
             Labels = labels;
-            MaxShareCount = maxShareCount;
             Name = name;
             Networks = networks;
             SatisfiesPzs = satisfiesPzs;

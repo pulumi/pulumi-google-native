@@ -263,7 +263,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["tier"] = tier
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["max_share_count"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
@@ -297,7 +296,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["file_shares"] = None
         __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
-        __props__.__dict__["max_share_count"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["satisfies_pzs"] = None
@@ -354,14 +352,6 @@ class Instance(pulumi.CustomResource):
         Resource labels to represent user provided metadata.
         """
         return pulumi.get(self, "labels")
-
-    @property
-    @pulumi.getter(name="maxShareCount")
-    def max_share_count(self) -> pulumi.Output[str]:
-        """
-        The max number of shares allowed.
-        """
-        return pulumi.get(self, "max_share_count")
 
     @property
     @pulumi.getter

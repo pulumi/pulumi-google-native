@@ -39,8 +39,6 @@ type LookupInstanceResult struct {
 	KmsKeyName string `pulumi:"kmsKeyName"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// The max number of shares allowed.
-	MaxShareCount string `pulumi:"maxShareCount"`
 	// The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
 	Name string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
@@ -122,11 +120,6 @@ func (o LookupInstanceResultOutput) KmsKeyName() pulumi.StringOutput {
 // Resource labels to represent user provided metadata.
 func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// The max number of shares allowed.
-func (o LookupInstanceResultOutput) MaxShareCount() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInstanceResult) string { return v.MaxShareCount }).(pulumi.StringOutput)
 }
 
 // The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.

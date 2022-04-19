@@ -111,10 +111,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-        /// </summary>
-        public readonly string KeyRevocationActionType;
-        /// <summary>
         /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         public readonly string Kind;
@@ -262,8 +258,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string hostname,
 
-            string keyRevocationActionType,
-
             string kind,
 
             string labelFingerprint,
@@ -341,7 +335,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Fingerprint = fingerprint;
             GuestAccelerators = guestAccelerators;
             Hostname = hostname;
-            KeyRevocationActionType = keyRevocationActionType;
             Kind = kind;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

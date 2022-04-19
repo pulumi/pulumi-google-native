@@ -80,10 +80,8 @@ __all__ = [
     'InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedAction',
     'InstanceGroupManagerUpdatePolicyReplacementMethod',
     'InstanceGroupManagerUpdatePolicyType',
-    'InstanceKeyRevocationActionType',
     'InstancePostKeyRevocationActionType',
     'InstancePrivateIpv6GoogleAccess',
-    'InstancePropertiesKeyRevocationActionType',
     'InstancePropertiesPostKeyRevocationActionType',
     'InstancePropertiesPrivateIpv6GoogleAccess',
     'InterconnectAttachmentBandwidth',
@@ -128,7 +126,6 @@ __all__ = [
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
     'RegionTargetHttpsProxyQuicOverride',
-    'RegionTargetTcpProxyProxyHeader',
     'ReservationAffinityConsumeReservationType',
     'ResourceCommitmentType',
     'ResourcePolicyGroupPlacementPolicyCollocation',
@@ -1487,24 +1484,6 @@ class InstanceGroupManagerUpdatePolicyType(str, Enum):
     """
 
 
-class InstanceKeyRevocationActionType(str, Enum):
-    """
-    KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-    """
-    KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-    """
-    Default value. This value is unused.
-    """
-    NONE = "NONE"
-    """
-    Indicates user chose no operation.
-    """
-    STOP = "STOP"
-    """
-    Indicates user chose to opt for VM shutdown on key revocation.
-    """
-
-
 class InstancePostKeyRevocationActionType(str, Enum):
     """
     PostKeyRevocationActionType of the instance.
@@ -1538,24 +1517,6 @@ class InstancePrivateIpv6GoogleAccess(str, Enum):
     INHERIT_FROM_SUBNETWORK = "INHERIT_FROM_SUBNETWORK"
     """
     Each network interface inherits PrivateIpv6GoogleAccess from its subnetwork.
-    """
-
-
-class InstancePropertiesKeyRevocationActionType(str, Enum):
-    """
-    KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-    """
-    KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED = "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"
-    """
-    Default value. This value is unused.
-    """
-    NONE = "NONE"
-    """
-    Indicates user chose no operation.
-    """
-    STOP = "STOP"
-    """
-    Indicates user chose to opt for VM shutdown on key revocation.
     """
 
 
@@ -2318,14 +2279,6 @@ class RegionTargetHttpsProxyQuicOverride(str, Enum):
     """
     No overrides to the default QUIC policy. This option is implicit if no QUIC override has been specified in the request.
     """
-
-
-class RegionTargetTcpProxyProxyHeader(str, Enum):
-    """
-    Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-    """
-    NONE = "NONE"
-    PROXY_V1 = "PROXY_V1"
 
 
 class ReservationAffinityConsumeReservationType(str, Enum):

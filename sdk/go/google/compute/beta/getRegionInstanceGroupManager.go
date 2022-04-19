@@ -27,8 +27,6 @@ type LookupRegionInstanceGroupManagerArgs struct {
 }
 
 type LookupRegionInstanceGroupManagerResult struct {
-	// Specifies configuration that overrides the instance template configuration for the group.
-	AllInstancesConfig InstanceGroupManagerAllInstancesConfigResponse `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicyResponse `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -112,13 +110,6 @@ func (o LookupRegionInstanceGroupManagerResultOutput) ToLookupRegionInstanceGrou
 
 func (o LookupRegionInstanceGroupManagerResultOutput) ToLookupRegionInstanceGroupManagerResultOutputWithContext(ctx context.Context) LookupRegionInstanceGroupManagerResultOutput {
 	return o
-}
-
-// Specifies configuration that overrides the instance template configuration for the group.
-func (o LookupRegionInstanceGroupManagerResultOutput) AllInstancesConfig() InstanceGroupManagerAllInstancesConfigResponseOutput {
-	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) InstanceGroupManagerAllInstancesConfigResponse {
-		return v.AllInstancesConfig
-	}).(InstanceGroupManagerAllInstancesConfigResponseOutput)
 }
 
 // The autohealing policy for this managed instance group. You can specify only one value.

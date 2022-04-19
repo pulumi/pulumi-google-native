@@ -6289,7 +6289,7 @@ func (o LegacyAbacResponseOutput) Enabled() pulumi.BoolOutput {
 
 // Parameters that can be configured on Linux nodes.
 type LinuxNodeConfig struct {
-	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
 
@@ -6306,7 +6306,7 @@ type LinuxNodeConfigInput interface {
 
 // Parameters that can be configured on Linux nodes.
 type LinuxNodeConfigArgs struct {
-	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
 
@@ -6388,7 +6388,7 @@ func (o LinuxNodeConfigOutput) ToLinuxNodeConfigPtrOutputWithContext(ctx context
 	}).(LinuxNodeConfigPtrOutput)
 }
 
-// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 func (o LinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
 }
@@ -6417,7 +6417,7 @@ func (o LinuxNodeConfigPtrOutput) Elem() LinuxNodeConfigOutput {
 	}).(LinuxNodeConfigOutput)
 }
 
-// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 func (o LinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LinuxNodeConfig) map[string]string {
 		if v == nil {
@@ -6429,7 +6429,7 @@ func (o LinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 
 // Parameters that can be configured on Linux nodes.
 type LinuxNodeConfigResponse struct {
-	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
 
@@ -6448,7 +6448,7 @@ func (o LinuxNodeConfigResponseOutput) ToLinuxNodeConfigResponseOutputWithContex
 	return o
 }
 
-// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
 func (o LinuxNodeConfigResponseOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LinuxNodeConfigResponse) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
 }
@@ -10308,6 +10308,8 @@ type NodeKubeletConfig struct {
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+	PodPidsLimit *string `pulumi:"podPidsLimit"`
 }
 
 // NodeKubeletConfigInput is an input type that accepts NodeKubeletConfigArgs and NodeKubeletConfigOutput values.
@@ -10329,6 +10331,8 @@ type NodeKubeletConfigArgs struct {
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+	PodPidsLimit pulumi.StringPtrInput `pulumi:"podPidsLimit"`
 }
 
 func (NodeKubeletConfigArgs) ElementType() reflect.Type {
@@ -10424,6 +10428,11 @@ func (o NodeKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+func (o NodeKubeletConfigOutput) PodPidsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeKubeletConfig) *string { return v.PodPidsLimit }).(pulumi.StringPtrOutput)
+}
+
 type NodeKubeletConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeKubeletConfigPtrOutput) ElementType() reflect.Type {
@@ -10478,6 +10487,16 @@ func (o NodeKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+func (o NodeKubeletConfigPtrOutput) PodPidsLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodeKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodPidsLimit
+	}).(pulumi.StringPtrOutput)
+}
+
 // Node kubelet configs.
 type NodeKubeletConfigResponse struct {
 	// Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
@@ -10486,6 +10505,8 @@ type NodeKubeletConfigResponse struct {
 	CpuCfsQuotaPeriod string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+	PodPidsLimit string `pulumi:"podPidsLimit"`
 }
 
 // Node kubelet configs.
@@ -10516,6 +10537,17 @@ func (o NodeKubeletConfigResponseOutput) CpuCfsQuotaPeriod() pulumi.StringOutput
 // Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
 func (o NodeKubeletConfigResponseOutput) CpuManagerPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeKubeletConfigResponse) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+}
+
+// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+func (o NodeKubeletConfigResponseOutput) PodPidsLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeKubeletConfigResponse) string { return v.PodPidsLimit }).(pulumi.StringOutput)
+}
+
+// Collection of node-level [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels).
+type NodeLabels struct {
+	// Map of node label keys and node label values.
+	Labels map[string]string `pulumi:"labels"`
 }
 
 // NodeManagement defines the set of node management services turned on for the node pool.
@@ -12051,6 +12083,12 @@ func (o NodeTaintResponseArrayOutput) Index(i pulumi.IntInput) NodeTaintResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeTaintResponse {
 		return vs[0].([]NodeTaintResponse)[vs[1].(int)]
 	}).(NodeTaintResponseOutput)
+}
+
+// Collection of Kubernetes [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
+type NodeTaints struct {
+	// List of node taints.
+	Taints []NodeTaint `pulumi:"taints"`
 }
 
 // NotificationConfig is the configuration of notifications.

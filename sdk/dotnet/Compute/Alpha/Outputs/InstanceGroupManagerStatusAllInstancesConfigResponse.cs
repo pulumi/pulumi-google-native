@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerStatusAllInstancesConfigResponse
     {
         /// <summary>
-        /// Current all-instances configuration revision. This value is in RFC3339 text format.
+        /// Current instances' config revision. This value is in RFC3339 text format.
         /// </summary>
         public readonly string CurrentRevision;
         /// <summary>
-        /// A bit indicating whether this configuration has been applied to all managed instances in the group.
+        /// A bit indicating whether instances' config has been applied to all managed instances in managed instance group.
         /// </summary>
         public readonly bool Effective;
 

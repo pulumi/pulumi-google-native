@@ -94,12 +94,10 @@ __all__ = [
     'HttpRouteRuleArgs',
     'ImageRawDiskArgs',
     'InitialStateConfigArgs',
-    'InstanceGroupManagerAllInstancesConfigArgs',
     'InstanceGroupManagerAutoHealingPolicyArgs',
     'InstanceGroupManagerUpdatePolicyArgs',
     'InstanceGroupManagerVersionArgs',
     'InstanceParamsArgs',
-    'InstancePropertiesPatchArgs',
     'InstancePropertiesArgs',
     'Int64RangeMatchArgs',
     'InterconnectAttachmentPartnerMetadataArgs',
@@ -159,7 +157,6 @@ __all__ = [
     'RouterBgpPeerArgs',
     'RouterBgpArgs',
     'RouterInterfaceArgs',
-    'RouterMd5AuthenticationKeyArgs',
     'RouterNatLogConfigArgs',
     'RouterNatRuleActionArgs',
     'RouterNatRuleArgs',
@@ -2726,7 +2723,7 @@ class BindingArgs:
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input[str] binding_id: This is deprecated and has no effect. Do not use.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if binding_id is not None:
@@ -2766,7 +2763,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -6297,29 +6294,6 @@ class InitialStateConfigArgs:
 
 
 @pulumi.input_type
-class InstanceGroupManagerAllInstancesConfigArgs:
-    def __init__(__self__, *,
-                 properties: Optional[pulumi.Input['InstancePropertiesPatchArgs']] = None):
-        """
-        :param pulumi.Input['InstancePropertiesPatchArgs'] properties: Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-        """
-        if properties is not None:
-            pulumi.set(__self__, "properties", properties)
-
-    @property
-    @pulumi.getter
-    def properties(self) -> Optional[pulumi.Input['InstancePropertiesPatchArgs']]:
-        """
-        Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-        """
-        return pulumi.get(self, "properties")
-
-    @properties.setter
-    def properties(self, value: Optional[pulumi.Input['InstancePropertiesPatchArgs']]):
-        pulumi.set(self, "properties", value)
-
-
-@pulumi.input_type
 class InstanceGroupManagerAutoHealingPolicyArgs:
     def __init__(__self__, *,
                  health_check: Optional[pulumi.Input[str]] = None,
@@ -6573,46 +6547,6 @@ class InstanceParamsArgs:
 
 
 @pulumi.input_type
-class InstancePropertiesPatchArgs:
-    def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        Represents the change that you want to make to the instance properties.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The label key-value pairs that you want to patch onto the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-        """
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if metadata is not None:
-            pulumi.set(__self__, "metadata", metadata)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The label key-value pairs that you want to patch onto the instance.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-        """
-        return pulumi.get(self, "metadata")
-
-    @metadata.setter
-    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "metadata", value)
-
-
-@pulumi.input_type
 class InstancePropertiesArgs:
     def __init__(__self__, *,
                  advanced_machine_features: Optional[pulumi.Input['AdvancedMachineFeaturesArgs']] = None,
@@ -6622,7 +6556,6 @@ class InstancePropertiesArgs:
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  display_device: Optional[pulumi.Input['DisplayDeviceArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]] = None,
-                 key_revocation_action_type: Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input['MetadataArgs']] = None,
@@ -6647,7 +6580,6 @@ class InstancePropertiesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: An array of disks that are associated with the instances that are created from these properties.
         :param pulumi.Input['DisplayDeviceArgs'] display_device: Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
-        :param pulumi.Input['InstancePropertiesKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to instances that are created from these properties.
         :param pulumi.Input[str] machine_type: The machine type to use for instances that are created from these properties.
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -6679,8 +6611,6 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "display_device", display_device)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
-        if key_revocation_action_type is not None:
-            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if machine_type is not None:
@@ -6797,18 +6727,6 @@ class InstancePropertiesArgs:
     @guest_accelerators.setter
     def guest_accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]]]):
         pulumi.set(self, "guest_accelerators", value)
-
-    @property
-    @pulumi.getter(name="keyRevocationActionType")
-    def key_revocation_action_type(self) -> Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']]:
-        """
-        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-        """
-        return pulumi.get(self, "key_revocation_action_type")
-
-    @key_revocation_action_type.setter
-    def key_revocation_action_type(self, value: Optional[pulumi.Input['InstancePropertiesKeyRevocationActionType']]):
-        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter
@@ -9980,7 +9898,6 @@ class RouterBgpPeerArgs:
                  interface_name: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
-                 md5_authentication_key_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -9997,7 +9914,6 @@ class RouterBgpPeerArgs:
         :param pulumi.Input[str] interface_name: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[str] ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         :param pulumi.Input[str] ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
-        :param pulumi.Input[str] md5_authentication_key_name: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
@@ -10024,8 +9940,6 @@ class RouterBgpPeerArgs:
             pulumi.set(__self__, "ip_address", ip_address)
         if ipv6_nexthop_address is not None:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
-        if md5_authentication_key_name is not None:
-            pulumi.set(__self__, "md5_authentication_key_name", md5_authentication_key_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if peer_asn is not None:
@@ -10156,18 +10070,6 @@ class RouterBgpPeerArgs:
     @ipv6_nexthop_address.setter
     def ipv6_nexthop_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipv6_nexthop_address", value)
-
-    @property
-    @pulumi.getter(name="md5AuthenticationKeyName")
-    def md5_authentication_key_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-        """
-        return pulumi.get(self, "md5_authentication_key_name")
-
-    @md5_authentication_key_name.setter
-    def md5_authentication_key_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "md5_authentication_key_name", value)
 
     @property
     @pulumi.getter
@@ -10434,45 +10336,6 @@ class RouterInterfaceArgs:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
-
-
-@pulumi.input_type
-class RouterMd5AuthenticationKeyArgs:
-    def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] key: [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-        :param pulumi.Input[str] name: Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-        """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

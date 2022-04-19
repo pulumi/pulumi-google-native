@@ -62,10 +62,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class GetRegionInstanceGroupManagerResult
     {
         /// <summary>
-        /// Specifies configuration that overrides the instance template configuration for the group.
-        /// </summary>
-        public readonly Outputs.InstanceGroupManagerAllInstancesConfigResponse AllInstancesConfig;
-        /// <summary>
         /// The autohealing policy for this managed instance group. You can specify only one value.
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceGroupManagerAutoHealingPolicyResponse> AutoHealingPolicies;
@@ -160,8 +156,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [OutputConstructor]
         private GetRegionInstanceGroupManagerResult(
-            Outputs.InstanceGroupManagerAllInstancesConfigResponse allInstancesConfig,
-
             ImmutableArray<Outputs.InstanceGroupManagerAutoHealingPolicyResponse> autoHealingPolicies,
 
             string baseInstanceName,
@@ -208,7 +202,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string zone)
         {
-            AllInstancesConfig = allInstancesConfig;
             AutoHealingPolicies = autoHealingPolicies;
             BaseInstanceName = baseInstanceName;
             CreationTimestamp = creationTimestamp;

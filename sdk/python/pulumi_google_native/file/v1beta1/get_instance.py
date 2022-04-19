@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_share_count=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
+    def __init__(__self__, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,9 +37,6 @@ class GetInstanceResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if max_share_count and not isinstance(max_share_count, str):
-            raise TypeError("Expected argument 'max_share_count' to be a str")
-        pulumi.set(__self__, "max_share_count", max_share_count)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -111,14 +108,6 @@ class GetInstanceResult:
         return pulumi.get(self, "labels")
 
     @property
-    @pulumi.getter(name="maxShareCount")
-    def max_share_count(self) -> str:
-        """
-        The max number of shares allowed.
-        """
-        return pulumi.get(self, "max_share_count")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -187,7 +176,6 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             file_shares=self.file_shares,
             kms_key_name=self.kms_key_name,
             labels=self.labels,
-            max_share_count=self.max_share_count,
             name=self.name,
             networks=self.networks,
             satisfies_pzs=self.satisfies_pzs,
@@ -221,7 +209,6 @@ def get_instance(instance_id: Optional[str] = None,
         file_shares=__ret__.file_shares,
         kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
-        max_share_count=__ret__.max_share_count,
         name=__ret__.name,
         networks=__ret__.networks,
         satisfies_pzs=__ret__.satisfies_pzs,

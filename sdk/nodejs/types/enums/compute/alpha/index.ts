@@ -861,26 +861,6 @@ export const ConditionSys = {
  */
 export type ConditionSys = (typeof ConditionSys)[keyof typeof ConditionSys];
 
-export const ConfidentialInstanceConfigConfidentialInstanceType = {
-    /**
-     * No type specified. Do not use this value.
-     */
-    ConfidentialInstanceTypeUnspecified: "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED",
-    /**
-     * AMD Secure Encrypted Virtualization.
-     */
-    Sev: "SEV",
-    /**
-     * AMD Secure Encrypted Virtualization - Secure Nested Paging.
-     */
-    SevSnp: "SEV_SNP",
-} as const;
-
-/**
- * Defines the type of technology used by the confidential instance.
- */
-export type ConfidentialInstanceConfigConfidentialInstanceType = (typeof ConfidentialInstanceConfigConfidentialInstanceType)[keyof typeof ConfidentialInstanceConfigConfidentialInstanceType];
-
 export const DeprecationStatusState = {
     Active: "ACTIVE",
     Deleted: "DELETED",
@@ -1442,7 +1422,6 @@ export const GuestOsFeatureType = {
     MultiIpSubnet: "MULTI_IP_SUBNET",
     SecureBoot: "SECURE_BOOT",
     SevCapable: "SEV_CAPABLE",
-    SevSnpCapable: "SEV_SNP_CAPABLE",
     UefiCompatible: "UEFI_COMPATIBLE",
     VirtioScsiMultiqueue: "VIRTIO_SCSI_MULTIQUEUE",
     Windows: "WINDOWS",

@@ -16,7 +16,6 @@ __all__ = ['InstanceGroupManagerArgs', 'InstanceGroupManager']
 @pulumi.input_type
 class InstanceGroupManagerArgs:
     def __init__(__self__, *,
-                 all_instances_config: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -36,7 +35,6 @@ class InstanceGroupManagerArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a InstanceGroupManager resource.
-        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Specifies configuration that overrides the instance template configuration for the group.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -53,8 +51,6 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
-        if all_instances_config is not None:
-            pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
         if base_instance_name is not None:
@@ -89,18 +85,6 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "versions", versions)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
-
-    @property
-    @pulumi.getter(name="allInstancesConfig")
-    def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
-        """
-        Specifies configuration that overrides the instance template configuration for the group.
-        """
-        return pulumi.get(self, "all_instances_config")
-
-    @all_instances_config.setter
-    def all_instances_config(self, value: Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]):
-        pulumi.set(self, "all_instances_config", value)
 
     @property
     @pulumi.getter(name="autoHealingPolicies")
@@ -306,7 +290,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -330,7 +313,6 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Specifies configuration that overrides the instance template configuration for the group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -371,7 +353,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all_instances_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']]] = None,
                  auto_healing_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -401,7 +382,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceGroupManagerArgs.__new__(InstanceGroupManagerArgs)
 
-            __props__.__dict__["all_instances_config"] = all_instances_config
             __props__.__dict__["auto_healing_policies"] = auto_healing_policies
             __props__.__dict__["base_instance_name"] = base_instance_name
             __props__.__dict__["description"] = description
@@ -449,7 +429,6 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         __props__ = InstanceGroupManagerArgs.__new__(InstanceGroupManagerArgs)
 
-        __props__.__dict__["all_instances_config"] = None
         __props__.__dict__["auto_healing_policies"] = None
         __props__.__dict__["base_instance_name"] = None
         __props__.__dict__["creation_timestamp"] = None
@@ -474,14 +453,6 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["versions"] = None
         __props__.__dict__["zone"] = None
         return InstanceGroupManager(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="allInstancesConfig")
-    def all_instances_config(self) -> pulumi.Output['outputs.InstanceGroupManagerAllInstancesConfigResponse']:
-        """
-        Specifies configuration that overrides the instance template configuration for the group.
-        """
-        return pulumi.get(self, "all_instances_config")
 
     @property
     @pulumi.getter(name="autoHealingPolicies")

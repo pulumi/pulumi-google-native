@@ -149,8 +149,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionTargetHttpProxy{}
 	case "google-native:compute/beta:RegionTargetHttpsProxy":
 		r = &RegionTargetHttpsProxy{}
-	case "google-native:compute/beta:RegionTargetTcpProxy":
-		r = &RegionTargetTcpProxy{}
 	case "google-native:compute/beta:RegionUrlMap":
 		r = &RegionUrlMap{}
 	case "google-native:compute/beta:Reservation":

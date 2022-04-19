@@ -17,21 +17,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class ConfidentialInstanceConfigResponse
     {
         /// <summary>
-        /// Defines the type of technology used by the confidential instance.
-        /// </summary>
-        public readonly string ConfidentialInstanceType;
-        /// <summary>
         /// Defines whether the instance should have confidential compute enabled.
         /// </summary>
         public readonly bool EnableConfidentialCompute;
 
         [OutputConstructor]
-        private ConfidentialInstanceConfigResponse(
-            string confidentialInstanceType,
-
-            bool enableConfidentialCompute)
+        private ConfidentialInstanceConfigResponse(bool enableConfidentialCompute)
         {
-            ConfidentialInstanceType = confidentialInstanceType;
             EnableConfidentialCompute = enableConfidentialCompute;
         }
     }

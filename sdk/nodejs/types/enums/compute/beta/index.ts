@@ -1453,26 +1453,6 @@ export const InstanceGroupManagerUpdatePolicyType = {
  */
 export type InstanceGroupManagerUpdatePolicyType = (typeof InstanceGroupManagerUpdatePolicyType)[keyof typeof InstanceGroupManagerUpdatePolicyType];
 
-export const InstanceKeyRevocationActionType = {
-    /**
-     * Default value. This value is unused.
-     */
-    KeyRevocationActionTypeUnspecified: "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED",
-    /**
-     * Indicates user chose no operation.
-     */
-    None: "NONE",
-    /**
-     * Indicates user chose to opt for VM shutdown on key revocation.
-     */
-    Stop: "STOP",
-} as const;
-
-/**
- * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
- */
-export type InstanceKeyRevocationActionType = (typeof InstanceKeyRevocationActionType)[keyof typeof InstanceKeyRevocationActionType];
-
 export const InstancePostKeyRevocationActionType = {
     /**
      * Indicates user chose no operation.
@@ -1512,26 +1492,6 @@ export const InstancePrivateIpv6GoogleAccess = {
  * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
  */
 export type InstancePrivateIpv6GoogleAccess = (typeof InstancePrivateIpv6GoogleAccess)[keyof typeof InstancePrivateIpv6GoogleAccess];
-
-export const InstancePropertiesKeyRevocationActionType = {
-    /**
-     * Default value. This value is unused.
-     */
-    KeyRevocationActionTypeUnspecified: "KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED",
-    /**
-     * Indicates user chose no operation.
-     */
-    None: "NONE",
-    /**
-     * Indicates user chose to opt for VM shutdown on key revocation.
-     */
-    Stop: "STOP",
-} as const;
-
-/**
- * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
- */
-export type InstancePropertiesKeyRevocationActionType = (typeof InstancePropertiesKeyRevocationActionType)[keyof typeof InstancePropertiesKeyRevocationActionType];
 
 export const InstancePropertiesPostKeyRevocationActionType = {
     /**
@@ -2381,16 +2341,6 @@ export const RegionTargetHttpsProxyQuicOverride = {
  * Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
  */
 export type RegionTargetHttpsProxyQuicOverride = (typeof RegionTargetHttpsProxyQuicOverride)[keyof typeof RegionTargetHttpsProxyQuicOverride];
-
-export const RegionTargetTcpProxyProxyHeader = {
-    None: "NONE",
-    ProxyV1: "PROXY_V1",
-} as const;
-
-/**
- * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
- */
-export type RegionTargetTcpProxyProxyHeader = (typeof RegionTargetTcpProxyProxyHeader)[keyof typeof RegionTargetTcpProxyProxyHeader];
 
 export const ReservationAffinityConsumeReservationType = {
     /**

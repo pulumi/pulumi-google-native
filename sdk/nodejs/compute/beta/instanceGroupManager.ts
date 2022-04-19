@@ -36,10 +36,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies configuration that overrides the instance template configuration for the group.
-     */
-    public readonly allInstancesConfig!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerAllInstancesConfigResponse>;
-    /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
     public readonly autoHealingPolicies!: pulumi.Output<outputs.compute.beta.InstanceGroupManagerAutoHealingPolicyResponse[]>;
@@ -143,7 +139,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            resourceInputs["allInstancesConfig"] = args ? args.allInstancesConfig : undefined;
             resourceInputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             resourceInputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -170,7 +165,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
-            resourceInputs["allInstancesConfig"] = undefined /*out*/;
             resourceInputs["autoHealingPolicies"] = undefined /*out*/;
             resourceInputs["baseInstanceName"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -204,10 +198,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceGroupManager resource.
  */
 export interface InstanceGroupManagerArgs {
-    /**
-     * Specifies configuration that overrides the instance template configuration for the group.
-     */
-    allInstancesConfig?: pulumi.Input<inputs.compute.beta.InstanceGroupManagerAllInstancesConfigArgs>;
     /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */

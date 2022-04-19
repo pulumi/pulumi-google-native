@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse
     {
         /// <summary>
-        /// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        /// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
         /// </summary>
         public readonly bool AllEffective;
 

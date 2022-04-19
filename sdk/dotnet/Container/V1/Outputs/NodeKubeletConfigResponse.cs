@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         /// </summary>
         public readonly string CpuManagerPolicy;
+        /// <summary>
+        /// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        /// </summary>
+        public readonly string PodPidsLimit;
 
         [OutputConstructor]
         private NodeKubeletConfigResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string cpuCfsQuotaPeriod,
 
-            string cpuManagerPolicy)
+            string cpuManagerPolicy,
+
+            string podPidsLimit)
         {
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            PodPidsLimit = podPidsLimit;
         }
     }
 }

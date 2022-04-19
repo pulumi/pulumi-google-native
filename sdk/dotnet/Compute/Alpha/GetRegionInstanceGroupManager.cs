@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetRegionInstanceGroupManagerResult
     {
         /// <summary>
-        /// Specifies configuration that overrides the instance template configuration for the group.
+        /// Specifies the instances configs overrides that should be applied for all instances in the MIG.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerAllInstancesConfigResponse AllInstancesConfig;
         /// <summary>

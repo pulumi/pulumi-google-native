@@ -1129,7 +1129,6 @@ _utilities.register(
    "google-native:compute/beta:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/beta:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/beta:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
-   "google-native:compute/beta:RegionTargetTcpProxy": "RegionTargetTcpProxy",
    "google-native:compute/beta:RegionUrlMap": "RegionUrlMap",
    "google-native:compute/beta:Reservation": "Reservation",
    "google-native:compute/beta:ReservationIamPolicy": "ReservationIamPolicy",

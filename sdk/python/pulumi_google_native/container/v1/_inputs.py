@@ -1492,7 +1492,7 @@ class LinuxNodeConfigArgs:
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Parameters that can be configured on Linux nodes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
@@ -1501,7 +1501,7 @@ class LinuxNodeConfigArgs:
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
         return pulumi.get(self, "sysctls")
 
@@ -2531,12 +2531,14 @@ class NodeKubeletConfigArgs:
     def __init__(__self__, *,
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
-                 cpu_manager_policy: Optional[pulumi.Input[str]] = None):
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+                 pod_pids_limit: Optional[pulumi.Input[str]] = None):
         """
         Node kubelet configs.
         :param pulumi.Input[bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
         :param pulumi.Input[str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
         :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        :param pulumi.Input[str] pod_pids_limit: Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
@@ -2544,6 +2546,8 @@ class NodeKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         if cpu_manager_policy is not None:
             pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if pod_pids_limit is not None:
+            pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -2580,6 +2584,18 @@ class NodeKubeletConfigArgs:
     @cpu_manager_policy.setter
     def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        """
+        return pulumi.get(self, "pod_pids_limit")
+
+    @pod_pids_limit.setter
+    def pod_pids_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pod_pids_limit", value)
 
 
 @pulumi.input_type

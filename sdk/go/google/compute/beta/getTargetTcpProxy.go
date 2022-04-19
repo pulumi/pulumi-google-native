@@ -38,8 +38,6 @@ type LookupTargetTcpProxyResult struct {
 	ProxyBind bool `pulumi:"proxyBind"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 	ProxyHeader string `pulumi:"proxyHeader"`
-	// URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
-	Region string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// URL to the BackendService resource.
@@ -110,11 +108,6 @@ func (o LookupTargetTcpProxyResultOutput) ProxyBind() pulumi.BoolOutput {
 // Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
 func (o LookupTargetTcpProxyResultOutput) ProxyHeader() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTargetTcpProxyResult) string { return v.ProxyHeader }).(pulumi.StringOutput)
-}
-
-// URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
-func (o LookupTargetTcpProxyResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupTargetTcpProxyResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

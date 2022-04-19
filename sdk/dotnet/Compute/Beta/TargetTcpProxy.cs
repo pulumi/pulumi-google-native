@@ -52,12 +52,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ProxyHeader { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
-        /// </summary>
-        [Output("region")]
-        public Output<string> Region { get; private set; } = null!;
-
-        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         [Output("selfLink")]

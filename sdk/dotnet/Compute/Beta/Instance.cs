@@ -91,12 +91,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-        /// </summary>
-        [Output("keyRevocationActionType")]
-        public Output<string> KeyRevocationActionType { get; private set; } = null!;
-
-        /// <summary>
         /// Type of the resource. Always compute#instance for instances.
         /// </summary>
         [Output("kind")]
@@ -392,12 +386,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
-
-        /// <summary>
-        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-        /// </summary>
-        [Input("keyRevocationActionType")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.InstanceKeyRevocationActionType>? KeyRevocationActionType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

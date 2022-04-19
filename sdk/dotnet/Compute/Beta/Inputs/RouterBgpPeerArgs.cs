@@ -85,12 +85,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
-        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-        /// </summary>
-        [Input("md5AuthenticationKeyName")]
-        public Input<string>? Md5AuthenticationKeyName { get; set; }
-
-        /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]

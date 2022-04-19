@@ -7798,7 +7798,7 @@ type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -7821,7 +7821,7 @@ type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -7889,7 +7889,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -7925,7 +7925,7 @@ type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -7956,7 +7956,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -19308,169 +19308,6 @@ func (o InstanceGroupManagerActionsSummaryResponseOutput) Verifying() pulumi.Int
 	return o.ApplyT(func(v InstanceGroupManagerActionsSummaryResponse) int { return v.Verifying }).(pulumi.IntOutput)
 }
 
-type InstanceGroupManagerAllInstancesConfig struct {
-	// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-	Properties *InstancePropertiesPatch `pulumi:"properties"`
-}
-
-// InstanceGroupManagerAllInstancesConfigInput is an input type that accepts InstanceGroupManagerAllInstancesConfigArgs and InstanceGroupManagerAllInstancesConfigOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerAllInstancesConfigInput` via:
-//
-//          InstanceGroupManagerAllInstancesConfigArgs{...}
-type InstanceGroupManagerAllInstancesConfigInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerAllInstancesConfigOutput() InstanceGroupManagerAllInstancesConfigOutput
-	ToInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Context) InstanceGroupManagerAllInstancesConfigOutput
-}
-
-type InstanceGroupManagerAllInstancesConfigArgs struct {
-	// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-	Properties InstancePropertiesPatchPtrInput `pulumi:"properties"`
-}
-
-func (InstanceGroupManagerAllInstancesConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerAllInstancesConfig)(nil)).Elem()
-}
-
-func (i InstanceGroupManagerAllInstancesConfigArgs) ToInstanceGroupManagerAllInstancesConfigOutput() InstanceGroupManagerAllInstancesConfigOutput {
-	return i.ToInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerAllInstancesConfigArgs) ToInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerAllInstancesConfigOutput)
-}
-
-func (i InstanceGroupManagerAllInstancesConfigArgs) ToInstanceGroupManagerAllInstancesConfigPtrOutput() InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return i.ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(context.Background())
-}
-
-func (i InstanceGroupManagerAllInstancesConfigArgs) ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerAllInstancesConfigOutput).ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(ctx)
-}
-
-// InstanceGroupManagerAllInstancesConfigPtrInput is an input type that accepts InstanceGroupManagerAllInstancesConfigArgs, InstanceGroupManagerAllInstancesConfigPtr and InstanceGroupManagerAllInstancesConfigPtrOutput values.
-// You can construct a concrete instance of `InstanceGroupManagerAllInstancesConfigPtrInput` via:
-//
-//          InstanceGroupManagerAllInstancesConfigArgs{...}
-//
-//  or:
-//
-//          nil
-type InstanceGroupManagerAllInstancesConfigPtrInput interface {
-	pulumi.Input
-
-	ToInstanceGroupManagerAllInstancesConfigPtrOutput() InstanceGroupManagerAllInstancesConfigPtrOutput
-	ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(context.Context) InstanceGroupManagerAllInstancesConfigPtrOutput
-}
-
-type instanceGroupManagerAllInstancesConfigPtrType InstanceGroupManagerAllInstancesConfigArgs
-
-func InstanceGroupManagerAllInstancesConfigPtr(v *InstanceGroupManagerAllInstancesConfigArgs) InstanceGroupManagerAllInstancesConfigPtrInput {
-	return (*instanceGroupManagerAllInstancesConfigPtrType)(v)
-}
-
-func (*instanceGroupManagerAllInstancesConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerAllInstancesConfig)(nil)).Elem()
-}
-
-func (i *instanceGroupManagerAllInstancesConfigPtrType) ToInstanceGroupManagerAllInstancesConfigPtrOutput() InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return i.ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *instanceGroupManagerAllInstancesConfigPtrType) ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerAllInstancesConfigPtrOutput)
-}
-
-type InstanceGroupManagerAllInstancesConfigOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerAllInstancesConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerAllInstancesConfig)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerAllInstancesConfigOutput) ToInstanceGroupManagerAllInstancesConfigOutput() InstanceGroupManagerAllInstancesConfigOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAllInstancesConfigOutput) ToInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAllInstancesConfigOutput) ToInstanceGroupManagerAllInstancesConfigPtrOutput() InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return o.ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(context.Background())
-}
-
-func (o InstanceGroupManagerAllInstancesConfigOutput) ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupManagerAllInstancesConfig) *InstanceGroupManagerAllInstancesConfig {
-		return &v
-	}).(InstanceGroupManagerAllInstancesConfigPtrOutput)
-}
-
-// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-func (o InstanceGroupManagerAllInstancesConfigOutput) Properties() InstancePropertiesPatchPtrOutput {
-	return o.ApplyT(func(v InstanceGroupManagerAllInstancesConfig) *InstancePropertiesPatch { return v.Properties }).(InstancePropertiesPatchPtrOutput)
-}
-
-type InstanceGroupManagerAllInstancesConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerAllInstancesConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceGroupManagerAllInstancesConfig)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerAllInstancesConfigPtrOutput) ToInstanceGroupManagerAllInstancesConfigPtrOutput() InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAllInstancesConfigPtrOutput) ToInstanceGroupManagerAllInstancesConfigPtrOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigPtrOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAllInstancesConfigPtrOutput) Elem() InstanceGroupManagerAllInstancesConfigOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerAllInstancesConfig) InstanceGroupManagerAllInstancesConfig {
-		if v != nil {
-			return *v
-		}
-		var ret InstanceGroupManagerAllInstancesConfig
-		return ret
-	}).(InstanceGroupManagerAllInstancesConfigOutput)
-}
-
-// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-func (o InstanceGroupManagerAllInstancesConfigPtrOutput) Properties() InstancePropertiesPatchPtrOutput {
-	return o.ApplyT(func(v *InstanceGroupManagerAllInstancesConfig) *InstancePropertiesPatch {
-		if v == nil {
-			return nil
-		}
-		return v.Properties
-	}).(InstancePropertiesPatchPtrOutput)
-}
-
-type InstanceGroupManagerAllInstancesConfigResponse struct {
-	// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-	Properties InstancePropertiesPatchResponse `pulumi:"properties"`
-}
-
-type InstanceGroupManagerAllInstancesConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerAllInstancesConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigResponse)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerAllInstancesConfigResponseOutput) ToInstanceGroupManagerAllInstancesConfigResponseOutput() InstanceGroupManagerAllInstancesConfigResponseOutput {
-	return o
-}
-
-func (o InstanceGroupManagerAllInstancesConfigResponseOutput) ToInstanceGroupManagerAllInstancesConfigResponseOutputWithContext(ctx context.Context) InstanceGroupManagerAllInstancesConfigResponseOutput {
-	return o
-}
-
-// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
-func (o InstanceGroupManagerAllInstancesConfigResponseOutput) Properties() InstancePropertiesPatchResponseOutput {
-	return o.ApplyT(func(v InstanceGroupManagerAllInstancesConfigResponse) InstancePropertiesPatchResponse {
-		return v.Properties
-	}).(InstancePropertiesPatchResponseOutput)
-}
-
 type InstanceGroupManagerAutoHealingPolicy struct {
 	// The URL for the health check that signals autohealing.
 	HealthCheck *string `pulumi:"healthCheck"`
@@ -19628,40 +19465,7 @@ func (o InstanceGroupManagerAutoHealingPolicyResponseArrayOutput) Index(i pulumi
 	}).(InstanceGroupManagerAutoHealingPolicyResponseOutput)
 }
 
-type InstanceGroupManagerStatusAllInstancesConfigResponse struct {
-	// Current all-instances configuration revision. This value is in RFC3339 text format.
-	CurrentRevision string `pulumi:"currentRevision"`
-	// A bit indicating whether this configuration has been applied to all managed instances in the group.
-	Effective bool `pulumi:"effective"`
-}
-
-type InstanceGroupManagerStatusAllInstancesConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (InstanceGroupManagerStatusAllInstancesConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerStatusAllInstancesConfigResponse)(nil)).Elem()
-}
-
-func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) ToInstanceGroupManagerStatusAllInstancesConfigResponseOutput() InstanceGroupManagerStatusAllInstancesConfigResponseOutput {
-	return o
-}
-
-func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) ToInstanceGroupManagerStatusAllInstancesConfigResponseOutputWithContext(ctx context.Context) InstanceGroupManagerStatusAllInstancesConfigResponseOutput {
-	return o
-}
-
-// Current all-instances configuration revision. This value is in RFC3339 text format.
-func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) CurrentRevision() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusAllInstancesConfigResponse) string { return v.CurrentRevision }).(pulumi.StringOutput)
-}
-
-// A bit indicating whether this configuration has been applied to all managed instances in the group.
-func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) Effective() pulumi.BoolOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusAllInstancesConfigResponse) bool { return v.Effective }).(pulumi.BoolOutput)
-}
-
 type InstanceGroupManagerStatusResponse struct {
-	// [Output only] Status of all-instances configuration on the group.
-	AllInstancesConfig InstanceGroupManagerStatusAllInstancesConfigResponse `pulumi:"allInstancesConfig"`
 	// The URL of the Autoscaler that targets this instance group manager.
 	Autoscaler string `pulumi:"autoscaler"`
 	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
@@ -19684,13 +19488,6 @@ func (o InstanceGroupManagerStatusResponseOutput) ToInstanceGroupManagerStatusRe
 
 func (o InstanceGroupManagerStatusResponseOutput) ToInstanceGroupManagerStatusResponseOutputWithContext(ctx context.Context) InstanceGroupManagerStatusResponseOutput {
 	return o
-}
-
-// [Output only] Status of all-instances configuration on the group.
-func (o InstanceGroupManagerStatusResponseOutput) AllInstancesConfig() InstanceGroupManagerStatusAllInstancesConfigResponseOutput {
-	return o.ApplyT(func(v InstanceGroupManagerStatusResponse) InstanceGroupManagerStatusAllInstancesConfigResponse {
-		return v.AllInstancesConfig
-	}).(InstanceGroupManagerStatusAllInstancesConfigResponseOutput)
 }
 
 // The URL of the Autoscaler that targets this instance group manager.
@@ -19718,7 +19515,7 @@ func (o InstanceGroupManagerStatusResponseOutput) VersionTarget() InstanceGroupM
 }
 
 type InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse struct {
-	// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 	AllEffective bool `pulumi:"allEffective"`
 }
 
@@ -19736,19 +19533,19 @@ func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput) ToIn
 	return o
 }
 
-// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput) AllEffective() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse) bool { return v.AllEffective }).(pulumi.BoolOutput)
 }
 
 type InstanceGroupManagerStatusStatefulResponse struct {
-	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
-	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 	//
-	// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+	// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 	IsStateful bool `pulumi:"isStateful"`
-	// Status of per-instance configurations on the instance.
+	// Status of per-instance configs on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse `pulumi:"perInstanceConfigs"`
 }
 
@@ -19766,19 +19563,19 @@ func (o InstanceGroupManagerStatusStatefulResponseOutput) ToInstanceGroupManager
 	return o
 }
 
-// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) HasStatefulConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
 }
 
-// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 //
-// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) IsStateful() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.IsStateful }).(pulumi.BoolOutput)
 }
 
-// Status of per-instance configurations on the instance.
+// Status of per-instance configs on the instance.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 		return v.PerInstanceConfigs
@@ -20514,8 +20311,6 @@ type InstanceProperties struct {
 	DisplayDevice *DisplayDevice `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType *InstancePropertiesKeyRevocationActionType `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for instances that are created from these properties.
@@ -20576,8 +20371,6 @@ type InstancePropertiesArgs struct {
 	DisplayDevice DisplayDevicePtrInput `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators AcceleratorConfigArrayInput `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType InstancePropertiesKeyRevocationActionTypePtrInput `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The machine type to use for instances that are created from these properties.
@@ -20722,13 +20515,6 @@ func (o InstancePropertiesOutput) DisplayDevice() DisplayDevicePtrOutput {
 // A list of guest accelerator cards' type and count to use for instances created from these properties.
 func (o InstancePropertiesOutput) GuestAccelerators() AcceleratorConfigArrayOutput {
 	return o.ApplyT(func(v InstanceProperties) []AcceleratorConfig { return v.GuestAccelerators }).(AcceleratorConfigArrayOutput)
-}
-
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o InstancePropertiesOutput) KeyRevocationActionType() InstancePropertiesKeyRevocationActionTypePtrOutput {
-	return o.ApplyT(func(v InstanceProperties) *InstancePropertiesKeyRevocationActionType {
-		return v.KeyRevocationActionType
-	}).(InstancePropertiesKeyRevocationActionTypePtrOutput)
 }
 
 // Labels to apply to instances that are created from these properties.
@@ -20909,16 +20695,6 @@ func (o InstancePropertiesPtrOutput) GuestAccelerators() AcceleratorConfigArrayO
 	}).(AcceleratorConfigArrayOutput)
 }
 
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o InstancePropertiesPtrOutput) KeyRevocationActionType() InstancePropertiesKeyRevocationActionTypePtrOutput {
-	return o.ApplyT(func(v *InstanceProperties) *InstancePropertiesKeyRevocationActionType {
-		if v == nil {
-			return nil
-		}
-		return v.KeyRevocationActionType
-	}).(InstancePropertiesKeyRevocationActionTypePtrOutput)
-}
-
 // Labels to apply to instances that are created from these properties.
 func (o InstancePropertiesPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceProperties) map[string]string {
@@ -21079,198 +20855,6 @@ func (o InstancePropertiesPtrOutput) Tags() TagsPtrOutput {
 	}).(TagsPtrOutput)
 }
 
-// Represents the change that you want to make to the instance properties.
-type InstancePropertiesPatch struct {
-	// The label key-value pairs that you want to patch onto the instance.
-	Labels map[string]string `pulumi:"labels"`
-	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-	Metadata map[string]string `pulumi:"metadata"`
-}
-
-// InstancePropertiesPatchInput is an input type that accepts InstancePropertiesPatchArgs and InstancePropertiesPatchOutput values.
-// You can construct a concrete instance of `InstancePropertiesPatchInput` via:
-//
-//          InstancePropertiesPatchArgs{...}
-type InstancePropertiesPatchInput interface {
-	pulumi.Input
-
-	ToInstancePropertiesPatchOutput() InstancePropertiesPatchOutput
-	ToInstancePropertiesPatchOutputWithContext(context.Context) InstancePropertiesPatchOutput
-}
-
-// Represents the change that you want to make to the instance properties.
-type InstancePropertiesPatchArgs struct {
-	// The label key-value pairs that you want to patch onto the instance.
-	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-}
-
-func (InstancePropertiesPatchArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePropertiesPatch)(nil)).Elem()
-}
-
-func (i InstancePropertiesPatchArgs) ToInstancePropertiesPatchOutput() InstancePropertiesPatchOutput {
-	return i.ToInstancePropertiesPatchOutputWithContext(context.Background())
-}
-
-func (i InstancePropertiesPatchArgs) ToInstancePropertiesPatchOutputWithContext(ctx context.Context) InstancePropertiesPatchOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstancePropertiesPatchOutput)
-}
-
-func (i InstancePropertiesPatchArgs) ToInstancePropertiesPatchPtrOutput() InstancePropertiesPatchPtrOutput {
-	return i.ToInstancePropertiesPatchPtrOutputWithContext(context.Background())
-}
-
-func (i InstancePropertiesPatchArgs) ToInstancePropertiesPatchPtrOutputWithContext(ctx context.Context) InstancePropertiesPatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstancePropertiesPatchOutput).ToInstancePropertiesPatchPtrOutputWithContext(ctx)
-}
-
-// InstancePropertiesPatchPtrInput is an input type that accepts InstancePropertiesPatchArgs, InstancePropertiesPatchPtr and InstancePropertiesPatchPtrOutput values.
-// You can construct a concrete instance of `InstancePropertiesPatchPtrInput` via:
-//
-//          InstancePropertiesPatchArgs{...}
-//
-//  or:
-//
-//          nil
-type InstancePropertiesPatchPtrInput interface {
-	pulumi.Input
-
-	ToInstancePropertiesPatchPtrOutput() InstancePropertiesPatchPtrOutput
-	ToInstancePropertiesPatchPtrOutputWithContext(context.Context) InstancePropertiesPatchPtrOutput
-}
-
-type instancePropertiesPatchPtrType InstancePropertiesPatchArgs
-
-func InstancePropertiesPatchPtr(v *InstancePropertiesPatchArgs) InstancePropertiesPatchPtrInput {
-	return (*instancePropertiesPatchPtrType)(v)
-}
-
-func (*instancePropertiesPatchPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstancePropertiesPatch)(nil)).Elem()
-}
-
-func (i *instancePropertiesPatchPtrType) ToInstancePropertiesPatchPtrOutput() InstancePropertiesPatchPtrOutput {
-	return i.ToInstancePropertiesPatchPtrOutputWithContext(context.Background())
-}
-
-func (i *instancePropertiesPatchPtrType) ToInstancePropertiesPatchPtrOutputWithContext(ctx context.Context) InstancePropertiesPatchPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstancePropertiesPatchPtrOutput)
-}
-
-// Represents the change that you want to make to the instance properties.
-type InstancePropertiesPatchOutput struct{ *pulumi.OutputState }
-
-func (InstancePropertiesPatchOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePropertiesPatch)(nil)).Elem()
-}
-
-func (o InstancePropertiesPatchOutput) ToInstancePropertiesPatchOutput() InstancePropertiesPatchOutput {
-	return o
-}
-
-func (o InstancePropertiesPatchOutput) ToInstancePropertiesPatchOutputWithContext(ctx context.Context) InstancePropertiesPatchOutput {
-	return o
-}
-
-func (o InstancePropertiesPatchOutput) ToInstancePropertiesPatchPtrOutput() InstancePropertiesPatchPtrOutput {
-	return o.ToInstancePropertiesPatchPtrOutputWithContext(context.Background())
-}
-
-func (o InstancePropertiesPatchOutput) ToInstancePropertiesPatchPtrOutputWithContext(ctx context.Context) InstancePropertiesPatchPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePropertiesPatch) *InstancePropertiesPatch {
-		return &v
-	}).(InstancePropertiesPatchPtrOutput)
-}
-
-// The label key-value pairs that you want to patch onto the instance.
-func (o InstancePropertiesPatchOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancePropertiesPatch) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-func (o InstancePropertiesPatchOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancePropertiesPatch) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
-type InstancePropertiesPatchPtrOutput struct{ *pulumi.OutputState }
-
-func (InstancePropertiesPatchPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstancePropertiesPatch)(nil)).Elem()
-}
-
-func (o InstancePropertiesPatchPtrOutput) ToInstancePropertiesPatchPtrOutput() InstancePropertiesPatchPtrOutput {
-	return o
-}
-
-func (o InstancePropertiesPatchPtrOutput) ToInstancePropertiesPatchPtrOutputWithContext(ctx context.Context) InstancePropertiesPatchPtrOutput {
-	return o
-}
-
-func (o InstancePropertiesPatchPtrOutput) Elem() InstancePropertiesPatchOutput {
-	return o.ApplyT(func(v *InstancePropertiesPatch) InstancePropertiesPatch {
-		if v != nil {
-			return *v
-		}
-		var ret InstancePropertiesPatch
-		return ret
-	}).(InstancePropertiesPatchOutput)
-}
-
-// The label key-value pairs that you want to patch onto the instance.
-func (o InstancePropertiesPatchPtrOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstancePropertiesPatch) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Labels
-	}).(pulumi.StringMapOutput)
-}
-
-// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-func (o InstancePropertiesPatchPtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *InstancePropertiesPatch) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Metadata
-	}).(pulumi.StringMapOutput)
-}
-
-// Represents the change that you want to make to the instance properties.
-type InstancePropertiesPatchResponse struct {
-	// The label key-value pairs that you want to patch onto the instance.
-	Labels map[string]string `pulumi:"labels"`
-	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-	Metadata map[string]string `pulumi:"metadata"`
-}
-
-// Represents the change that you want to make to the instance properties.
-type InstancePropertiesPatchResponseOutput struct{ *pulumi.OutputState }
-
-func (InstancePropertiesPatchResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstancePropertiesPatchResponse)(nil)).Elem()
-}
-
-func (o InstancePropertiesPatchResponseOutput) ToInstancePropertiesPatchResponseOutput() InstancePropertiesPatchResponseOutput {
-	return o
-}
-
-func (o InstancePropertiesPatchResponseOutput) ToInstancePropertiesPatchResponseOutputWithContext(ctx context.Context) InstancePropertiesPatchResponseOutput {
-	return o
-}
-
-// The label key-value pairs that you want to patch onto the instance.
-func (o InstancePropertiesPatchResponseOutput) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancePropertiesPatchResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-func (o InstancePropertiesPatchResponseOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v InstancePropertiesPatchResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
-}
-
 type InstancePropertiesResponse struct {
 	// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
 	AdvancedMachineFeatures AdvancedMachineFeaturesResponse `pulumi:"advancedMachineFeatures"`
@@ -21286,8 +20870,6 @@ type InstancePropertiesResponse struct {
 	DisplayDevice DisplayDeviceResponse `pulumi:"displayDevice"`
 	// A list of guest accelerator cards' type and count to use for instances created from these properties.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from these properties.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for instances that are created from these properties.
@@ -21371,11 +20953,6 @@ func (o InstancePropertiesResponseOutput) DisplayDevice() DisplayDeviceResponseO
 // A list of guest accelerator cards' type and count to use for instances created from these properties.
 func (o InstancePropertiesResponseOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput {
 	return o.ApplyT(func(v InstancePropertiesResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
-}
-
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o InstancePropertiesResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // Labels to apply to instances that are created from these properties.
@@ -33299,8 +32876,6 @@ type RouterBgpPeer struct {
 	IpAddress *string `pulumi:"ipAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-	Md5AuthenticationKeyName *string `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -33345,8 +32920,6 @@ type RouterBgpPeerArgs struct {
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// IPv6 address of the interface inside Google Cloud Platform.
 	Ipv6NexthopAddress pulumi.StringPtrInput `pulumi:"ipv6NexthopAddress"`
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-	Md5AuthenticationKeyName pulumi.StringPtrInput `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -33458,11 +33031,6 @@ func (o RouterBgpPeerOutput) IpAddress() pulumi.StringPtrOutput {
 // IPv6 address of the interface inside Google Cloud Platform.
 func (o RouterBgpPeerOutput) Ipv6NexthopAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Ipv6NexthopAddress }).(pulumi.StringPtrOutput)
-}
-
-// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-func (o RouterBgpPeerOutput) Md5AuthenticationKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouterBgpPeer) *string { return v.Md5AuthenticationKeyName }).(pulumi.StringPtrOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -33774,8 +33342,6 @@ type RouterBgpPeerResponse struct {
 	Ipv6NexthopAddress string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 	ManagementType string `pulumi:"managementType"`
-	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-	Md5AuthenticationKeyName string `pulumi:"md5AuthenticationKeyName"`
 	// Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
 	// Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
@@ -33855,11 +33421,6 @@ func (o RouterBgpPeerResponseOutput) Ipv6NexthopAddress() pulumi.StringOutput {
 // The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
 func (o RouterBgpPeerResponseOutput) ManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.ManagementType }).(pulumi.StringOutput)
-}
-
-// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
-func (o RouterBgpPeerResponseOutput) Md5AuthenticationKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.Md5AuthenticationKeyName }).(pulumi.StringOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -34201,163 +33762,6 @@ func (o RouterInterfaceResponseArrayOutput) Index(i pulumi.IntInput) RouterInter
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterInterfaceResponse {
 		return vs[0].([]RouterInterfaceResponse)[vs[1].(int)]
 	}).(RouterInterfaceResponseOutput)
-}
-
-type RouterMd5AuthenticationKey struct {
-	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-	Key *string `pulumi:"key"`
-	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-	Name *string `pulumi:"name"`
-}
-
-// RouterMd5AuthenticationKeyInput is an input type that accepts RouterMd5AuthenticationKeyArgs and RouterMd5AuthenticationKeyOutput values.
-// You can construct a concrete instance of `RouterMd5AuthenticationKeyInput` via:
-//
-//          RouterMd5AuthenticationKeyArgs{...}
-type RouterMd5AuthenticationKeyInput interface {
-	pulumi.Input
-
-	ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput
-	ToRouterMd5AuthenticationKeyOutputWithContext(context.Context) RouterMd5AuthenticationKeyOutput
-}
-
-type RouterMd5AuthenticationKeyArgs struct {
-	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-}
-
-func (RouterMd5AuthenticationKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterMd5AuthenticationKey)(nil)).Elem()
-}
-
-func (i RouterMd5AuthenticationKeyArgs) ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput {
-	return i.ToRouterMd5AuthenticationKeyOutputWithContext(context.Background())
-}
-
-func (i RouterMd5AuthenticationKeyArgs) ToRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterMd5AuthenticationKeyOutput)
-}
-
-// RouterMd5AuthenticationKeyArrayInput is an input type that accepts RouterMd5AuthenticationKeyArray and RouterMd5AuthenticationKeyArrayOutput values.
-// You can construct a concrete instance of `RouterMd5AuthenticationKeyArrayInput` via:
-//
-//          RouterMd5AuthenticationKeyArray{ RouterMd5AuthenticationKeyArgs{...} }
-type RouterMd5AuthenticationKeyArrayInput interface {
-	pulumi.Input
-
-	ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput
-	ToRouterMd5AuthenticationKeyArrayOutputWithContext(context.Context) RouterMd5AuthenticationKeyArrayOutput
-}
-
-type RouterMd5AuthenticationKeyArray []RouterMd5AuthenticationKeyInput
-
-func (RouterMd5AuthenticationKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterMd5AuthenticationKey)(nil)).Elem()
-}
-
-func (i RouterMd5AuthenticationKeyArray) ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput {
-	return i.ToRouterMd5AuthenticationKeyArrayOutputWithContext(context.Background())
-}
-
-func (i RouterMd5AuthenticationKeyArray) ToRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RouterMd5AuthenticationKeyArrayOutput)
-}
-
-type RouterMd5AuthenticationKeyOutput struct{ *pulumi.OutputState }
-
-func (RouterMd5AuthenticationKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterMd5AuthenticationKey)(nil)).Elem()
-}
-
-func (o RouterMd5AuthenticationKeyOutput) ToRouterMd5AuthenticationKeyOutput() RouterMd5AuthenticationKeyOutput {
-	return o
-}
-
-func (o RouterMd5AuthenticationKeyOutput) ToRouterMd5AuthenticationKeyOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyOutput {
-	return o
-}
-
-// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-func (o RouterMd5AuthenticationKeyOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-func (o RouterMd5AuthenticationKeyOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RouterMd5AuthenticationKey) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type RouterMd5AuthenticationKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (RouterMd5AuthenticationKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterMd5AuthenticationKey)(nil)).Elem()
-}
-
-func (o RouterMd5AuthenticationKeyArrayOutput) ToRouterMd5AuthenticationKeyArrayOutput() RouterMd5AuthenticationKeyArrayOutput {
-	return o
-}
-
-func (o RouterMd5AuthenticationKeyArrayOutput) ToRouterMd5AuthenticationKeyArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyArrayOutput {
-	return o
-}
-
-func (o RouterMd5AuthenticationKeyArrayOutput) Index(i pulumi.IntInput) RouterMd5AuthenticationKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterMd5AuthenticationKey {
-		return vs[0].([]RouterMd5AuthenticationKey)[vs[1].(int)]
-	}).(RouterMd5AuthenticationKeyOutput)
-}
-
-type RouterMd5AuthenticationKeyResponse struct {
-	// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-	Key string `pulumi:"key"`
-	// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-	Name string `pulumi:"name"`
-}
-
-type RouterMd5AuthenticationKeyResponseOutput struct{ *pulumi.OutputState }
-
-func (RouterMd5AuthenticationKeyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterMd5AuthenticationKeyResponse)(nil)).Elem()
-}
-
-func (o RouterMd5AuthenticationKeyResponseOutput) ToRouterMd5AuthenticationKeyResponseOutput() RouterMd5AuthenticationKeyResponseOutput {
-	return o
-}
-
-func (o RouterMd5AuthenticationKeyResponseOutput) ToRouterMd5AuthenticationKeyResponseOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyResponseOutput {
-	return o
-}
-
-// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
-func (o RouterMd5AuthenticationKeyResponseOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
-func (o RouterMd5AuthenticationKeyResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RouterMd5AuthenticationKeyResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type RouterMd5AuthenticationKeyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RouterMd5AuthenticationKeyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RouterMd5AuthenticationKeyResponse)(nil)).Elem()
-}
-
-func (o RouterMd5AuthenticationKeyResponseArrayOutput) ToRouterMd5AuthenticationKeyResponseArrayOutput() RouterMd5AuthenticationKeyResponseArrayOutput {
-	return o
-}
-
-func (o RouterMd5AuthenticationKeyResponseArrayOutput) ToRouterMd5AuthenticationKeyResponseArrayOutputWithContext(ctx context.Context) RouterMd5AuthenticationKeyResponseArrayOutput {
-	return o
-}
-
-func (o RouterMd5AuthenticationKeyResponseArrayOutput) Index(i pulumi.IntInput) RouterMd5AuthenticationKeyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterMd5AuthenticationKeyResponse {
-		return vs[0].([]RouterMd5AuthenticationKeyResponse)[vs[1].(int)]
-	}).(RouterMd5AuthenticationKeyResponseOutput)
 }
 
 // Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
@@ -42078,8 +41482,6 @@ type SourceInstancePropertiesResponse struct {
 	Disks []SavedAttachedDiskResponse `pulumi:"disks"`
 	// A list of guest accelerator cards' type and count to use for instances created from this machine image.
 	GuestAccelerators []AcceleratorConfigResponse `pulumi:"guestAccelerators"`
-	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// Labels to apply to instances that are created from this machine image.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to use for instances that are created from this machine image.
@@ -42138,11 +41540,6 @@ func (o SourceInstancePropertiesResponseOutput) Disks() SavedAttachedDiskRespons
 // A list of guest accelerator cards' type and count to use for instances created from this machine image.
 func (o SourceInstancePropertiesResponseOutput) GuestAccelerators() AcceleratorConfigResponseArrayOutput {
 	return o.ApplyT(func(v SourceInstancePropertiesResponse) []AcceleratorConfigResponse { return v.GuestAccelerators }).(AcceleratorConfigResponseArrayOutput)
-}
-
-// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-func (o SourceInstancePropertiesResponseOutput) KeyRevocationActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v SourceInstancePropertiesResponse) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // Labels to apply to instances that are created from this machine image.
@@ -45276,8 +44673,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageRawDiskPtrInput)(nil)).Elem(), ImageRawDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigInput)(nil)).Elem(), InitialStateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InitialStateConfigPtrInput)(nil)).Elem(), InitialStateConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), InstanceGroupManagerAllInstancesConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAllInstancesConfigPtrInput)(nil)).Elem(), InstanceGroupManagerAllInstancesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), InstanceGroupManagerAutoHealingPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), InstanceGroupManagerUpdatePolicyArgs{})
@@ -45288,8 +44683,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParamsPtrInput)(nil)).Elem(), InstanceParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesInput)(nil)).Elem(), InstancePropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPtrInput)(nil)).Elem(), InstancePropertiesArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPatchInput)(nil)).Elem(), InstancePropertiesPatchArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstancePropertiesPatchPtrInput)(nil)).Elem(), InstancePropertiesPatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Int64RangeMatchInput)(nil)).Elem(), Int64RangeMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Int64RangeMatchPtrInput)(nil)).Elem(), Int64RangeMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterconnectAttachmentPartnerMetadataInput)(nil)).Elem(), InterconnectAttachmentPartnerMetadataArgs{})
@@ -45406,8 +44799,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdPtrInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), RouterInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyInput)(nil)).Elem(), RouterMd5AuthenticationKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyArrayInput)(nil)).Elem(), RouterMd5AuthenticationKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatInput)(nil)).Elem(), RouterNatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatArrayInput)(nil)).Elem(), RouterNatArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterNatLogConfigInput)(nil)).Elem(), RouterNatLogConfigArgs{})
@@ -45799,14 +45190,10 @@ func init() {
 	pulumi.RegisterOutputType(InitialStateConfigPtrOutput{})
 	pulumi.RegisterOutputType(InitialStateConfigResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerActionsSummaryResponseOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigPtrOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerAllInstancesConfigResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerAutoHealingPolicyResponseArrayOutput{})
-	pulumi.RegisterOutputType(InstanceGroupManagerStatusAllInstancesConfigResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput{})
 	pulumi.RegisterOutputType(InstanceGroupManagerStatusStatefulResponseOutput{})
@@ -45823,9 +45210,6 @@ func init() {
 	pulumi.RegisterOutputType(InstanceParamsResponseOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPtrOutput{})
-	pulumi.RegisterOutputType(InstancePropertiesPatchOutput{})
-	pulumi.RegisterOutputType(InstancePropertiesPatchPtrOutput{})
-	pulumi.RegisterOutputType(InstancePropertiesPatchResponseOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchOutput{})
 	pulumi.RegisterOutputType(Int64RangeMatchPtrOutput{})
@@ -46037,10 +45421,6 @@ func init() {
 	pulumi.RegisterOutputType(RouterInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(RouterInterfaceResponseArrayOutput{})
-	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyOutput{})
-	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyArrayOutput{})
-	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyResponseOutput{})
-	pulumi.RegisterOutputType(RouterMd5AuthenticationKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatOutput{})
 	pulumi.RegisterOutputType(RouterNatArrayOutput{})
 	pulumi.RegisterOutputType(RouterNatLogConfigOutput{})

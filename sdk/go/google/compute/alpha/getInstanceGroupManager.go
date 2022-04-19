@@ -27,7 +27,7 @@ type LookupInstanceGroupManagerArgs struct {
 }
 
 type LookupInstanceGroupManagerResult struct {
-	// Specifies configuration that overrides the instance template configuration for the group.
+	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
 	AllInstancesConfig InstanceGroupManagerAllInstancesConfigResponse `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicyResponse `pulumi:"autoHealingPolicies"`
@@ -126,7 +126,7 @@ func (o LookupInstanceGroupManagerResultOutput) ToLookupInstanceGroupManagerResu
 	return o
 }
 
-// Specifies configuration that overrides the instance template configuration for the group.
+// Specifies the instances configs overrides that should be applied for all instances in the MIG.
 func (o LookupInstanceGroupManagerResultOutput) AllInstancesConfig() InstanceGroupManagerAllInstancesConfigResponseOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) InstanceGroupManagerAllInstancesConfigResponse {
 		return v.AllInstancesConfig

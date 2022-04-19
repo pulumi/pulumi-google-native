@@ -1600,7 +1600,7 @@ class LinuxNodeConfigResponse(dict):
                  sysctls: Mapping[str, str]):
         """
         Parameters that can be configured on Linux nodes.
-        :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
         pulumi.set(__self__, "sysctls", sysctls)
 
@@ -1608,7 +1608,7 @@ class LinuxNodeConfigResponse(dict):
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         """
-        The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
+        The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
         return pulumi.get(self, "sysctls")
 
@@ -2751,6 +2751,8 @@ class NodeKubeletConfigResponse(dict):
             suggest = "cpu_cfs_quota_period"
         elif key == "cpuManagerPolicy":
             suggest = "cpu_manager_policy"
+        elif key == "podPidsLimit":
+            suggest = "pod_pids_limit"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodeKubeletConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2766,16 +2768,19 @@ class NodeKubeletConfigResponse(dict):
     def __init__(__self__, *,
                  cpu_cfs_quota: bool,
                  cpu_cfs_quota_period: str,
-                 cpu_manager_policy: str):
+                 cpu_manager_policy: str,
+                 pod_pids_limit: str):
         """
         Node kubelet configs.
         :param bool cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits. This option is enabled by default which makes kubelet use CFS quota (https://www.kernel.org/doc/Documentation/scheduler/sched-bwc.txt) to enforce container CPU limits. Otherwise, CPU limits will not be enforced at all. Disable this option to mitigate CPU throttling problems while still having your pods to be in Guaranteed QoS class by specifying the CPU limits. The default value is 'true' if unspecified.
         :param str cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration.
         :param str cpu_manager_policy: Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
+        :param str pod_pids_limit: Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -2800,6 +2805,14 @@ class NodeKubeletConfigResponse(dict):
         Control the CPU management policy on the node. See https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/ The following values are allowed. * "none": the default, which represents the existing scheduling behavior. * "static": allows pods with certain resource characteristics to be granted increased CPU affinity and exclusivity on the node. The default value is 'none' if unspecified.
         """
         return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> str:
+        """
+        Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
+        """
+        return pulumi.get(self, "pod_pids_limit")
 
 
 @pulumi.output_type
