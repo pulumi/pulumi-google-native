@@ -53,6 +53,7 @@ type Config struct {
 // The client checks if its credentials are valid and automatically refreshes if they have expired.
 type GoogleClient struct {
 	config        Config
+	token         *oauth2.Token
 	http          *http.Client
 	credRetriever credentialRetriever
 	credValidator credentialValidator
@@ -84,6 +85,9 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 
 // HTTPClient returns an initialized HTTP client for Google Cloud.
 func (c *GoogleClient) HTTPClient() *http.Client { return c.http }
+
+// OAuth2Token returns the active OAuth2 token used by the provider to communicate with Google Cloud.
+func (c *GoogleClient) OAuth2Token() *oauth2.Token { return c.token }
 
 // RequestWithTimeout performs the specified request using the specified HTTP method and with the specified timeout.
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
@@ -312,6 +316,7 @@ func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
 		iapClient409Operation,
 		isCloudRunCreationConflict)
 	c.http = client
+	c.token, _ = ts.Token() // Already checked error above.
 	return nil
 }
 

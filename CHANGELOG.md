@@ -2,6 +2,10 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+Improvements:
+
+- Add getClientConfig and getClientToken functions [#451](https://github.com/pulumi/pulumi-google-native/pull/451)
+
 Bug fixes:
 
 - Add custom retry logic for cloud run [#411](https://github.com/pulumi/pulumi-google-native/pull/411)

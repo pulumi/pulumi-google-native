@@ -172,6 +172,11 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Functions: map[string]resources.CloudAPIFunction{},
 	}
 
+	err := genMixins(&pkg)
+	if err != nil {
+		return nil, nil, err
+	}
+
 	csharpNamespaces := map[string]string{
 		"google-native": "GoogleNative",
 	}
@@ -180,7 +185,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 
 	var fileNames []string
 	root := path.Join(".", "discovery")
-	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+	err = filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if !info.IsDir() {
 			fileNames = append(fileNames, path)
 		}
@@ -266,6 +271,70 @@ will be introduced in minor version releases.`,
 	})
 
 	return &pkg, &metadata, nil
+}
+
+func genMixins(pkg *schema.PackageSpec) error {
+	// Mixin 'getClientConfig' to read current configuration values.
+	if _, has := pkg.Functions["google-native:authorization:getClientConfig"]; has {
+		return errors.New("Invoke 'google-native:authorization:getClientConfig' is already defined")
+	}
+	pkg.Functions["google-native:authorization:getClientConfig"] = schema.FunctionSpec{
+		Description: "Use this function to access the current configuration of the native Google provider.",
+		Outputs: &schema.ObjectTypeSpec{
+			Description: "Configuration values returned by getClientConfig.",
+			Properties: map[string]schema.PropertySpec{
+				"project": {
+					Description: "Project of the current user.",
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+				},
+				"region": {
+					Description: "Google Cloud region",
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+				},
+				"zone": {
+					Description: "Google Cloud zone",
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+				},
+			},
+			Type:     "object",
+			Required: []string{"project", "region"},
+		},
+	}
+
+	// Mixin 'getClientToken' to obtain an Google auth token.
+	if _, has := pkg.Functions["google-native:authorization:getClientToken"]; has {
+		return errors.New("Invoke 'google-native:authorization:getClientToken' is already defined")
+	}
+	pkg.Functions["google-native:authorization:getClientToken"] = schema.FunctionSpec{
+		Description: "Use this function to get an Google authentication token for the current login context.",
+		Outputs: &schema.ObjectTypeSpec{
+			Description: "Configuration values returned by getClientToken.",
+			Properties: map[string]schema.PropertySpec{
+				"accessToken": {
+					Description: "The OAuth2 access token used by the client to authenticate against the Google Cloud API.",
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+					Secret:      true,
+				},
+				"expiry": {
+					Description: "Expiry is the optional expiration time of the access token. If zero, TokenSource implementations will reuse the same token forever and RefreshToken or equivalent mechanisms for that TokenSource will not be used.",
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+				},
+				"refreshToken": {
+					Description: "RefreshToken is a token that's used by the application (as opposed to the user) to refresh the access token if it expires.",
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+					Secret:      true,
+				},
+				"tokenType": {
+					Description: `The type of auth token. Possible types are "Bearer", "MAC", "Basic".`,
+					TypeSpec:    schema.TypeSpec{Type: "string"},
+				},
+			},
+			Type:     "object",
+			Required: []string{"accessToken", "tokenType"},
+		},
+	}
+
+	return nil
 }
 
 var titleReplacer = strings.NewReplacer(" ", "", "-", "")

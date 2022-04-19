@@ -155,10 +155,6 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 // Invoke dynamically executes a built-in function in the provider.
 func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
 	label := fmt.Sprintf("%s.Invoke(%s)", p.name, req.Tok)
-	inv, ok := p.resourceMap.Functions[req.Tok]
-	if !ok {
-		return nil, errors.Errorf("invoke %q not found", req.Tok)
-	}
 
 	args, err := plugin.UnmarshalProperties(req.GetArgs(), plugin.MarshalOptions{
 		Label: fmt.Sprintf("%s.args", label), SkipNulls: true,
@@ -167,29 +163,52 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		return nil, err
 	}
 
-	// Apply default config values.
-	for _, param := range inv.URL.Values {
-		sdkName := param.Name
-		if param.SdkName != "" {
-			sdkName = param.SdkName
+	var resp map[string]interface{}
+	switch req.Tok {
+	case "google-native:authorization:getClientConfig":
+		resp = map[string]interface{}{
+			"project": p.config["project"],
+			"region":  p.config["region"],
+			"zone":    p.config["zone"],
 		}
-		switch sdkName {
-		case "project":
-			key := resource.PropertyKey(sdkName)
-			if value, ok := p.getDefaultValue(key, sdkName, args); ok {
-				args[key] = *value
+	case "google-native:authorization:getClientToken":
+		t := p.client.OAuth2Token()
+		resp = map[string]interface{}{
+			"accessToken":  t.AccessToken,
+			"expiry":       t.Expiry,
+			"refreshToken": t.RefreshToken,
+			"tokenType":    t.TokenType,
+		}
+	default:
+		inv, ok := p.resourceMap.Functions[req.Tok]
+		if !ok {
+			return nil, errors.Errorf("invoke %q not found", req.Tok)
+		}
+
+		// Apply default config values.
+		for _, param := range inv.URL.Values {
+			sdkName := param.Name
+			if param.SdkName != "" {
+				sdkName = param.SdkName
+			}
+			switch sdkName {
+			case "project":
+				key := resource.PropertyKey(sdkName)
+				if value, ok := p.getDefaultValue(key, sdkName, args); ok {
+					args[key] = *value
+				}
 			}
 		}
-	}
 
-	uri, err := buildFunctionURL(inv, args)
-	if err != nil {
-		return nil, err
-	}
+		uri, err := buildFunctionURL(inv, args)
+		if err != nil {
+			return nil, err
+		}
 
-	resp, err := p.client.RequestWithTimeout(inv.Verb, uri, nil, 0)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %s", err)
+		resp, err = p.client.RequestWithTimeout(inv.Verb, uri, nil, 0)
+		if err != nil {
+			return nil, fmt.Errorf("error sending request: %s", err)
+		}
 	}
 
 	// Serialize and return outputs.
