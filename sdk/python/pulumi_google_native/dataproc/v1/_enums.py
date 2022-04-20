@@ -6,7 +6,6 @@ from enum import Enum
 
 __all__ = [
     'GceClusterConfigPrivateIpv6GoogleAccess',
-    'GkeNodePoolTargetRolesItem',
     'InstanceGroupConfigPreemptibility',
     'MetricMetricSource',
     'ReservationAffinityConsumeReservationType',
@@ -33,29 +32,6 @@ class GceClusterConfigPrivateIpv6GoogleAccess(str, Enum):
     BIDIRECTIONAL = "BIDIRECTIONAL"
     """
     Enables bidirectional private IPv6 access between Google Services and the Dataproc cluster.
-    """
-
-
-class GkeNodePoolTargetRolesItem(str, Enum):
-    ROLE_UNSPECIFIED = "ROLE_UNSPECIFIED"
-    """
-    Role is unspecified.
-    """
-    DEFAULT = "DEFAULT"
-    """
-    Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
-    """
-    CONTROLLER = "CONTROLLER"
-    """
-    Run controllers and webhooks.
-    """
-    SPARK_DRIVER = "SPARK_DRIVER"
-    """
-    Run spark driver.
-    """
-    SPARK_EXECUTOR = "SPARK_EXECUTOR"
-    """
-    Run spark executors.
     """
 
 

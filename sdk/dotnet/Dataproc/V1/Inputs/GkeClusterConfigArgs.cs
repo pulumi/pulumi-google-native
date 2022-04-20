@@ -16,28 +16,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     public sealed class GkeClusterConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-        /// </summary>
-        [Input("gkeClusterTarget")]
-        public Input<string>? GkeClusterTarget { get; set; }
-
-        /// <summary>
-        /// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+        /// Optional. A target for the deployment.
         /// </summary>
         [Input("namespacedGkeDeploymentTarget")]
         public Input<Inputs.NamespacedGkeDeploymentTargetArgs>? NamespacedGkeDeploymentTarget { get; set; }
-
-        [Input("nodePoolTarget")]
-        private InputList<Inputs.GkeNodePoolTargetArgs>? _nodePoolTarget;
-
-        /// <summary>
-        /// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
-        /// </summary>
-        public InputList<Inputs.GkeNodePoolTargetArgs> NodePoolTarget
-        {
-            get => _nodePoolTarget ?? (_nodePoolTarget = new InputList<Inputs.GkeNodePoolTargetArgs>());
-            set => _nodePoolTarget = value;
-        }
 
         public GkeClusterConfigArgs()
         {

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
+    /// A full, namespace-isolated deployment target for an existing GKE cluster.
     /// </summary>
     public sealed class NamespacedGkeDeploymentTargetArgs : Pulumi.ResourceArgs
     {

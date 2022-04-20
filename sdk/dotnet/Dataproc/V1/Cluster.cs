@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> ClusterUuid { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         [Output("config")]
         public Output<Outputs.ClusterConfigResponse> Config { get; private set; } = null!;
@@ -63,12 +63,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Output("statusHistory")]
         public Output<ImmutableArray<Outputs.ClusterStatusResponse>> StatusHistory { get; private set; } = null!;
-
-        /// <summary>
-        /// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
-        /// </summary>
-        [Output("virtualClusterConfig")]
-        public Output<Outputs.VirtualClusterConfigResponse> VirtualClusterConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -128,7 +122,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<string> ClusterName { get; set; } = null!;
 
         /// <summary>
-        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         /// </summary>
         [Input("config")]
         public Input<Inputs.ClusterConfigArgs>? Config { get; set; }
@@ -159,12 +153,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
-
-        /// <summary>
-        /// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
-        /// </summary>
-        [Input("virtualClusterConfig")]
-        public Input<Inputs.VirtualClusterConfigArgs>? VirtualClusterConfig { get; set; }
 
         public ClusterArgs()
         {

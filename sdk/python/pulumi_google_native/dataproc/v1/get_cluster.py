@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetClusterResult:
-    def __init__(__self__, cluster_name=None, cluster_uuid=None, config=None, labels=None, metrics=None, project=None, status=None, status_history=None, virtual_cluster_config=None):
+    def __init__(__self__, cluster_name=None, cluster_uuid=None, config=None, labels=None, metrics=None, project=None, status=None, status_history=None):
         if cluster_name and not isinstance(cluster_name, str):
             raise TypeError("Expected argument 'cluster_name' to be a str")
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -43,9 +43,6 @@ class GetClusterResult:
         if status_history and not isinstance(status_history, list):
             raise TypeError("Expected argument 'status_history' to be a list")
         pulumi.set(__self__, "status_history", status_history)
-        if virtual_cluster_config and not isinstance(virtual_cluster_config, dict):
-            raise TypeError("Expected argument 'virtual_cluster_config' to be a dict")
-        pulumi.set(__self__, "virtual_cluster_config", virtual_cluster_config)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -67,7 +64,7 @@ class GetClusterResult:
     @pulumi.getter
     def config(self) -> 'outputs.ClusterConfigResponse':
         """
-        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
+        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
         """
         return pulumi.get(self, "config")
 
@@ -111,14 +108,6 @@ class GetClusterResult:
         """
         return pulumi.get(self, "status_history")
 
-    @property
-    @pulumi.getter(name="virtualClusterConfig")
-    def virtual_cluster_config(self) -> 'outputs.VirtualClusterConfigResponse':
-        """
-        Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
-        """
-        return pulumi.get(self, "virtual_cluster_config")
-
 
 class AwaitableGetClusterResult(GetClusterResult):
     # pylint: disable=using-constant-test
@@ -133,8 +122,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             metrics=self.metrics,
             project=self.project,
             status=self.status,
-            status_history=self.status_history,
-            virtual_cluster_config=self.virtual_cluster_config)
+            status_history=self.status_history)
 
 
 def get_cluster(cluster_name: Optional[str] = None,
@@ -162,8 +150,7 @@ def get_cluster(cluster_name: Optional[str] = None,
         metrics=__ret__.metrics,
         project=__ret__.project,
         status=__ret__.status,
-        status_history=__ret__.status_history,
-        virtual_cluster_config=__ret__.virtual_cluster_config)
+        status_history=__ret__.status_history)
 
 
 @_utilities.lift_output_func(get_cluster)
