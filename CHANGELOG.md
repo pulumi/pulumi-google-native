@@ -2,6 +2,9 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+
+## 0.18.1 (2022-04-20)
+
 Improvements:
 
 - Add getClientConfig and getClientToken functions [#451](https://github.com/pulumi/pulumi-google-native/pull/451)
