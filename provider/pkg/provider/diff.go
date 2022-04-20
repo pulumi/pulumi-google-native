@@ -55,34 +55,41 @@ func calculateDetailedDiff(resource *resources.CloudAPIResource, types map[strin
 	diff *resource.ObjectDiff) map[string]*rpc.PropertyDiff {
 	replaceKeys := codegen.NewStringSet()
 
-	for _, p := range resource.Create.Endpoint.Values {
-		// All the parameters that are part of the resource path cause a replacement.
-		if p.Kind == "path" {
-			name := p.Name
-			if p.SdkName != "" {
-				name = p.SdkName
+	populateReplaceKeys := func(params []resources.CloudAPIResourceParam,
+		properties map[string]resources.CloudAPIProperty) {
+		for _, p := range params {
+			// All the parameters that are part of the resource path cause a replacement.
+			if p.Kind == "path" {
+				name := p.Name
+				if p.SdkName != "" {
+					name = p.SdkName
+				}
+				replaceKeys.Add(name)
 			}
-			replaceKeys.Add(name)
 		}
 
+		// Search for forceNew on top-level resource properties
+		findForceNew("", properties, replaceKeys)
+		for propName, prop := range properties {
+			// Object types.
+			if prop.Ref != "" {
+				typName := strings.TrimPrefix(prop.Ref, "#/types/")
+				if typ, has := types[typName]; has {
+					findForceNew(propName+".", typ.Properties, replaceKeys)
+				}
+			}
+			// Arrays of objects.
+			if prop.Items != nil && prop.Items.Ref != "" {
+				typName := strings.TrimPrefix(prop.Items.Ref, "#/types/")
+				if typ, has := types[typName]; has {
+					findForceNew(propName+"[].", typ.Properties, replaceKeys)
+				}
+			}
+		}
 	}
 
-	for propName, prop := range resource.Create.SDKProperties {
-		// Object types.
-		if prop.Ref != "" {
-			typName := strings.TrimPrefix(prop.Ref, "#/types/")
-			if typ, has := types[typName]; has {
-				findForceNew(propName+".", typ.Properties, replaceKeys)
-			}
-		}
-		// Arrays of objects.
-		if prop.Items != nil && prop.Items.Ref != "" {
-			typName := strings.TrimPrefix(prop.Items.Ref, "#/types/")
-			if typ, has := types[typName]; has {
-				findForceNew(propName+"[].", typ.Properties, replaceKeys)
-			}
-		}
-	}
+	populateReplaceKeys(resource.Create.Endpoint.Values, resource.Create.SDKProperties)
+	populateReplaceKeys(resource.Update.Endpoint.Values, resource.Update.SDKProperties)
 
 	d := differ{replaceKeys: replaceKeys}
 	return d.calculateObjectDiff(diff, "", "")
@@ -108,7 +115,8 @@ func (d *differ) calculateObjectDiff(diff *resource.ObjectDiff, diffBase, replac
 	detailedDiff := map[string]*rpc.PropertyDiff{}
 	for k, v := range diff.Updates {
 		key := diffBase + string(k)
-		subDiff := d.calculateValueDiff(&v, key, replaceBase+string(k))
+		replaceKey := replaceBase + string(k)
+		subDiff := d.calculateValueDiff(&v, key, replaceKey)
 		for sk, sv := range subDiff {
 			detailedDiff[sk] = sv
 		}
