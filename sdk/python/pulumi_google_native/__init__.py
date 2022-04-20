@@ -23,6 +23,8 @@ if typing.TYPE_CHECKING:
     artifactregistry = __artifactregistry
     import pulumi_google_native.assuredworkloads as __assuredworkloads
     assuredworkloads = __assuredworkloads
+    import pulumi_google_native.authorization as __authorization
+    authorization = __authorization
     import pulumi_google_native.baremetalsolution as __baremetalsolution
     baremetalsolution = __baremetalsolution
     import pulumi_google_native.bigquery as __bigquery
@@ -255,6 +257,7 @@ else:
     appengine = _utilities.lazy_import('pulumi_google_native.appengine')
     artifactregistry = _utilities.lazy_import('pulumi_google_native.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_google_native.assuredworkloads')
+    authorization = _utilities.lazy_import('pulumi_google_native.authorization')
     baremetalsolution = _utilities.lazy_import('pulumi_google_native.baremetalsolution')
     bigquery = _utilities.lazy_import('pulumi_google_native.bigquery')
     bigqueryconnection = _utilities.lazy_import('pulumi_google_native.bigqueryconnection')

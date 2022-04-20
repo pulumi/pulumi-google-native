@@ -15,6 +15,7 @@ import * as apikeys from "./apikeys";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
+import * as authorization from "./authorization";
 import * as baremetalsolution from "./baremetalsolution";
 import * as bigquery from "./bigquery";
 import * as bigqueryconnection from "./bigqueryconnection";
@@ -137,6 +138,7 @@ export {
     appengine,
     artifactregistry,
     assuredworkloads,
+    authorization,
     baremetalsolution,
     bigquery,
     bigqueryconnection,
