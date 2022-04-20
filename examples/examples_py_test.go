@@ -30,8 +30,22 @@ func TestBigTableInstance(t *testing.T) {
 		t.FailNow()
 	}
 	options := getPythonBaseOptions(t).With(integration.ProgramTestOptions{
-		Dir:         filepath.Join(cwd, "bigtable-py"),
+		Dir:         filepath.Join(cwd, "bigtable-py", "step1"),
 		SkipRefresh: true,
+		Config: map[string]string{
+			"google-native:project":  os.Getenv("GOOGLE_PROJECT"),
+			"google-native:location": os.Getenv("GOOGLE_ZONE"),
+		},
+		EditDirs: []integration.EditDir{
+			{
+				Dir:      filepath.Join(cwd, "bigtable-py", "step2"),
+				Additive: true,
+			},
+			{
+				Dir:      filepath.Join(cwd, "bigtable-py", "step3"),
+				Additive: true,
+			},
+		},
 	})
 	integration.ProgramTest(t, &options)
 }

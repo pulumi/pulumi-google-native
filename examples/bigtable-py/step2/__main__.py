@@ -1,15 +1,15 @@
 import pulumi
 from pulumi_google_native.bigtableadmin import v2 as bigtable
 
-config = pulumi.Config()
-PROJECT_ID=config.require("google-native:project")
-LOCATION=config.require("google-native:location")
+config = pulumi.Config("google-native")
+PROJECT_ID=config.require("project")
+LOCATION=config.require("location")
 
 instance = bigtable.Instance(
     "myinstance",
     args=bigtable.InstanceArgs(
         clusters={"mycluster": {
-            "serve_nodes": 2,
+            "serve_nodes": 3, # Bump serve_nodes. This should result in replacement
             "default_storage_type": "SSD",
             "location": f"projects/{PROJECT_ID}/locations/{LOCATION}",
         }},
