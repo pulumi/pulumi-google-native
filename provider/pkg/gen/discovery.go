@@ -16,6 +16,8 @@ package gen
 
 import (
 	"fmt"
+	"log"
+	"sort"
 	"strings"
 
 	"github.com/gedex/inflector"
@@ -24,10 +26,20 @@ import (
 	"google.golang.org/api/discovery/v1"
 )
 
+type discoveryCRUDMethods struct {
+	createMethod, getMethod, updateMethod, deleteMethod, listMethod *discovery.RestMethod
+}
+
 // discoveryDocumentResource is a combination of REST methods that should be treated as
 // a fully capable Pulumi resource for the generation purpose.
 type discoveryDocumentResource struct {
-	createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod
+	discoveryCRUDMethods
+	resourceName string
+}
+
+type Operation struct {
+	restMethod *discovery.RestMethod
+	schema     *discovery.JsonSchema
 }
 
 // findResources builds a map of resources for a given Discovery Document resource. Map keys are resource names and
@@ -35,27 +47,49 @@ type discoveryDocumentResource struct {
 func findResources(
 	docName string,
 	rest map[string]discovery.RestResource,
-) (map[string]discoveryDocumentResource, error) {
-	result := map[string]discoveryDocumentResource{}
-	add := func(typeName string, dd discoveryDocumentResource) error {
-		return addFoundResource(result, typeName, dd)
+	schemas map[string]discovery.JsonSchema,
+) (map[string]discoveryDocumentResource, map[string]*Operation, error) {
+	resources := map[string]discoveryDocumentResource{}
+	operations := map[string]*Operation{}
+	addResource := func(typeName string, dd discoveryDocumentResource) error {
+		if err := addFoundResource(resources, typeName, dd); err != nil {
+			return fmt.Errorf("failed to add resource for %q: %w", docName, err)
+		}
+		return nil
 	}
-	err := findResourcesImpl(docName, "", rest, add)
+	addOperation := func(typeName string, dd discoveryDocumentResource) error {
+		return addFoundOperation(operations, typeName, dd, schemas)
+	}
+	err := findResourcesImpl(docName, "", rest, addResource, addOperation)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return result, nil
+	return resources, operations, nil
 }
 
 func findResourcesImpl(docName, parentName string, rest map[string]discovery.RestResource,
-	add func(string, discoveryDocumentResource) error) error {
+	addResource func(string, discoveryDocumentResource) error,
+	addOperation func(string, discoveryDocumentResource) error) error {
 	var postMethods []discovery.RestMethod
+
+	candidateResources := map[string]discoveryDocumentResource{}
+
+	type pair struct {
+		typeName     string
+		resourceName string
+	}
+	type pairs []pair
+
+	var sortedKeys pairs
+
 	for _, resourceName := range codegen.SortedKeys(rest) {
 		res := rest[resourceName]
 		name := ToUpperCamel(inflector.Singularize(resourceName))
-		var createMethod, getMethod, listMethod, updateMethod, deleteMethod *discovery.RestMethod
-		for methodName, value := range res.Methods {
-			restMethod := value
+
+		var createMethod, getMethod, updateMethod, deleteMethod, listMethod *discovery.RestMethod
+		sortedMethods := codegen.SortedKeys(res.Methods)
+		for _, methodName := range sortedMethods {
+			restMethod := res.Methods[methodName]
 			if restMethod.HttpMethod == "POST" {
 				postMethods = append(postMethods, restMethod)
 			}
@@ -68,7 +102,8 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				}
 			case "patch":
 				updateMethod = &restMethod
-			case "update", "replaceService" /*special case for Cloud Run*/ :
+			case "update", "replaceService", /*special case for Cloud Run*/
+				"partialUpdateInstance" /*special case for bigtable*/ :
 				if updateMethod == nil {
 					updateMethod = &restMethod
 				}
@@ -84,11 +119,15 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				typeName := fmt.Sprintf("%s%sIamPolicy", parentName, name)
 				if getIamPolicy, has := res.Methods["getIamPolicy"]; has {
 					dd := discoveryDocumentResource{
-						createMethod: &restMethod,
-						getMethod:    &getIamPolicy,
-						updateMethod: &restMethod,
+						discoveryCRUDMethods: discoveryCRUDMethods{
+							createMethod: &restMethod,
+							getMethod:    &getIamPolicy,
+							updateMethod: &restMethod,
+							listMethod:   listMethod,
+						},
+						resourceName: resourceName,
 					}
-					err := add(typeName, dd)
+					err := addResource(typeName, dd)
 					if err != nil {
 						return err
 					}
@@ -98,16 +137,51 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			}
 		}
 
-		typeName := name
-		switch {
-		case createMethod != nil && getMethod != nil:
-			if getMethod.HttpMethod != "GET" {
-				return errors.Errorf(
-					"get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, docName)
+		if strings.Contains(strings.ToLower(name), "operation") {
+			if err := addOperation(name, discoveryDocumentResource{
+				discoveryCRUDMethods: discoveryCRUDMethods{
+					createMethod: createMethod,
+					deleteMethod: deleteMethod,
+					updateMethod: updateMethod,
+					getMethod:    getMethod,
+					listMethod:   listMethod,
+				},
+				resourceName: resourceName,
+			}); err != nil {
+				log.Printf("Failed to add operation %q in file %q: %s", name, docName, err)
+				continue
 			}
-			path := createMethod.FlatPath
+		} else {
+			sortedKeys = append(sortedKeys, pair{typeName: name, resourceName: resourceName})
+			candidateResources[name] = discoveryDocumentResource{
+				discoveryCRUDMethods: discoveryCRUDMethods{
+					createMethod: createMethod,
+					deleteMethod: deleteMethod,
+					updateMethod: updateMethod,
+					getMethod:    getMethod,
+					listMethod:   listMethod,
+				},
+				resourceName: resourceName,
+			}
+		}
+	}
+
+	sort.SliceStable(sortedKeys, func(i, j int) bool {
+		return sortedKeys[i].resourceName < sortedKeys[j].resourceName
+	})
+
+	for _, pair := range sortedKeys {
+		typeName := pair.typeName
+		methods := candidateResources[typeName]
+		switch {
+		case methods.createMethod != nil && methods.getMethod != nil:
+			if methods.getMethod.HttpMethod != "GET" {
+				return errors.Errorf(
+					"get method %q is not supported: %s (%s)", methods.getMethod.HttpMethod, typeName, docName)
+			}
+			path := methods.createMethod.FlatPath
 			if path == "" {
-				path = createMethod.Path
+				path = methods.createMethod.Path
 			}
 			if override, has := resourceNameByPathOverrides[path]; has {
 				if override == "" {
@@ -115,9 +189,9 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				}
 				typeName = override
 			}
-			ref := createMethod.Response.Ref
-			if createMethod.Request != nil {
-				ref = createMethod.Request.Ref
+			ref := methods.createMethod.Response.Ref
+			if methods.createMethod.Request != nil {
+				ref = methods.createMethod.Request.Ref
 			}
 			if override, has := resourceNameByTypeOverrides[ref]; has {
 				if override == "" {
@@ -127,40 +201,64 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 			}
 
 			dd := discoveryDocumentResource{
-				createMethod: createMethod,
-				getMethod:    getMethod,
-				updateMethod: updateMethod,
-				deleteMethod: deleteMethod,
+				discoveryCRUDMethods: discoveryCRUDMethods{
+					createMethod: methods.createMethod,
+					getMethod:    methods.getMethod,
+					updateMethod: methods.updateMethod,
+					deleteMethod: methods.deleteMethod,
+				},
+				resourceName: methods.resourceName,
 			}
-			err := add(typeName, dd)
+			err := addResource(typeName, dd)
 			if err != nil {
 				return err
 			}
-		case strings.Contains(typeName, "Operation"):
-			// Operation variants don't need to be made rest.
-			continue
-		case createMethod != nil && getMethod == nil && listMethod != nil:
+		case methods.createMethod != nil && methods.getMethod == nil && methods.listMethod != nil:
 			// List methods return collections, so the shape of response wouldn't match the SDK map.
 			// Skip them for now but emit a note.
 			fmt.Printf("List methods are not supported: %s (%s), skipping.\n", typeName, docName)
-		case (deleteMethod != nil || updateMethod != nil) && len(postMethods) > 0:
+		case (methods.deleteMethod != nil || methods.updateMethod != nil) && len(postMethods) > 0:
 			// No create method. We should simply skip these resources
 			// as discussed in https://github.com/pulumi/pulumi-google-native/issues/84
 		}
 
 		var newParent string
-		switch name {
+		switch typeName {
 		case "Project", "Location", "Zone", "Global":
 			newParent = parentName
 		default:
-			newParent = parentName + name
+			newParent = parentName + typeName
 		}
-		err := findResourcesImpl(docName, newParent, res.Resources, add)
+		res := rest[methods.resourceName]
+		err := findResourcesImpl(docName, newParent, res.Resources, addResource, addOperation)
 		if err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+func addFoundOperation(operationsMap map[string]*Operation, typeName string,
+	dd discoveryDocumentResource, jsonSchema map[string]discovery.JsonSchema) error {
+
+	for _, method := range []*discovery.RestMethod{
+		dd.getMethod, dd.deleteMethod,
+	} {
+		if method == nil || method.Response == nil || method.Response.Ref == "" {
+			continue
+		}
+		ref := method.Response.Ref
+		schema, ok := jsonSchema[ref]
+		if !ok {
+			return fmt.Errorf("no schema found for %q", ref)
+		}
+		operationsMap[ref] = &Operation{
+			restMethod: method,
+			schema:     &schema,
+		}
+		return nil
+	}
+	return fmt.Errorf("no methods found for Operations type: %q", typeName)
 }
 
 func addFoundResource(
@@ -170,6 +268,7 @@ func addFoundResource(
 ) error {
 	for _, param := range dd.createMethod.Parameters {
 		if param.Location == "path" && isDeprecated(param.Description) {
+			// TODO: Should this be disabled?
 			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
 			return nil
 		}

@@ -15,11 +15,12 @@
 package provider
 
 import (
+	"strings"
+	"testing"
+
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/stretchr/testify/assert"
-	"strings"
-	"testing"
 )
 
 func TestCalculateResourceId_IdProperty(t *testing.T) {

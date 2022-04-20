@@ -32,6 +32,7 @@ import (
 	structpb "github.com/golang/protobuf/ptypes/struct"
 	"github.com/iancoleman/strcase"
 	"github.com/jpillora/backoff"
+	"github.com/jtacoma/uritemplates"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/gen"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/googleclient"
@@ -47,6 +48,10 @@ import (
 	"google.golang.org/api/googleapi"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+)
+
+const (
+	createBeforeDeleteFlag = "__createBeforeDelete"
 )
 
 type googleCloudProvider struct {
@@ -385,7 +390,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	logging.V(9).Infof("%s executing", label)
 
 	resourceKey := string(urn.Type())
-	_, ok := p.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
@@ -416,7 +421,44 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_NONE}, nil
 	}
 
-	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, DeleteBeforeReplace: true}, nil
+	// Calculate the detailed diff object containing information about replacements.
+	detailedDiff := calculateDetailedDiff(&res, p.resourceMap.Types, diff)
+
+	// Based on the detailed diff above, calculate the list of changes and replacements.
+	var changes, replaces []string
+	for k, v := range detailedDiff {
+		parts := strings.Split(k, ".")
+		changes = append(changes, parts[0])
+		v.InputDiff = true
+
+		switch v.Kind {
+		case rpc.PropertyDiff_ADD_REPLACE:
+			replaces = append(replaces, k)
+		case rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
+			replaces = append(replaces, k)
+		}
+	}
+
+	deleteBeforeReplace := len(replaces) > 0
+	if v, ok := oldInputs[createBeforeDeleteFlag]; ok && v.IsBool() {
+		deleteBeforeReplace = !v.BoolValue()
+	}
+	changeType := rpc.DiffResponse_DIFF_NONE
+	if len(detailedDiff) > 0 {
+		changeType = rpc.DiffResponse_DIFF_SOME
+	}
+
+	response := rpc.DiffResponse{
+		Changes:             changeType,
+		Replaces:            replaces,
+		Stables:             []string{},
+		DeleteBeforeReplace: deleteBeforeReplace,
+		Diffs:               changes,
+		DetailedDiff:        detailedDiff,
+		HasDetailedDiff:     true,
+	}
+
+	return &response, nil
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
@@ -471,7 +513,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Create.Polling, op)
+	resp, err := p.waitForResourceOpCompletion(res.Create.CloudAPIOperation, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -482,7 +524,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
-		readResp, getErr := p.client.RequestWithTimeout("GET", id, nil, 0)
+		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), nil, 0)
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
@@ -528,8 +570,7 @@ func (p *googleCloudProvider) prepareAPIInputs(
 // Note that both a response and an error can be returned in case of a partially-failed deployment
 // (e.g., resource is created but failed to initialize to completion).
 func (p *googleCloudProvider) waitForResourceOpCompletion(
-	rootURL string,
-	polling *resources.Polling,
+	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
@@ -539,8 +580,8 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		Jitter: true,
 	}
 	var pollingStrategy = resources.DefaultPoll
-	if polling != nil {
-		pollingStrategy = polling.Strategy
+	if operation.Polling != nil {
+		pollingStrategy = operation.Polling.Strategy
 	}
 	for {
 		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
@@ -553,13 +594,13 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 			logging.V(9).Info("Getting self link URL")
 			sl, err := getKNativeSelfLinkURL(resp)
 			if err != nil {
-				return nil, err
+				return resp, err
 			}
 			logging.V(9).Infof("selfLink: %q from response: %+v", sl, resp)
 			pollURI = sl
 			completed, err := knativeStatusCheck(resp)
 			if err != nil {
-				return nil, err
+				return resp, err
 			}
 			if completed {
 				return resp, nil
@@ -593,31 +634,36 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 					if getErr != nil {
 						if err != nil {
 							// Return the original creation error if resource read failed.
-							return nil, err
+							return resp, err
 						}
-						return nil, getErr
+						return resp, getErr
 					}
 					// A partial error could happen, so both response and error could be available.
 					return state, err
 				}
 				// At this point, we assume either a complete failure or a clean response.
 				if err != nil {
-					return nil, err
+					return resp, err
 				}
 				return resp, nil
 			}
 
 			if selfLink, has := resp["selfLink"].(string); has && hasStatus {
 				pollURI = selfLink
-			} else {
-				if name, has := resp["name"].(string); has && strings.HasPrefix(name, "operations/") {
-					pollURI = fmt.Sprintf("%s/v1/%s", rootURL, name)
+			} else if operation.Operations != nil && operation.Operations.OperationsBaseURL != "" {
+				tmpl, err := uritemplates.Parse(operation.Operations.OperationsBaseURL)
+				if err != nil {
+					return resp, err
+				}
+				pollURI, err = tmpl.Expand(resp)
+				if err != nil {
+					return resp, err
 				}
 			}
 		}
 
 		if pollURI == "" {
-			logging.V(3).Infof("No pollURI found for rootURL: %q", rootURL)
+			// No poll URI - assume the existing response is sufficient.
 			return resp, nil
 		}
 
@@ -626,7 +672,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		logging.V(9).Infof("Polling URL: %q", pollURI)
 		op, err := p.client.RequestWithTimeout("GET", pollURI, nil, 0)
 		if err != nil {
-			return nil, errors.Wrapf(err, "polling operation status")
+			return resp, errors.Wrapf(err, "polling operation status")
 		}
 
 		resp = op
@@ -795,7 +841,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.RootURL, res.Update.Polling, op)
+	resp, err := p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -878,7 +924,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.RootURL, res.Delete.Polling, resp)
+	_, err = p.waitForResourceOpCompletion(res.Delete, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}

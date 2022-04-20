@@ -218,14 +218,14 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		pythonModuleNames[module] = module
 		golangImportAliases[filepath.Join(goBasePath, module)] = document.Name
 
-		res, err := findResources(fileName, document.Resources)
+		res, ops, err := findResources(fileName, document.Resources, document.Schemas)
 		if err != nil {
 			return nil, nil, err
 		}
 
 		for _, typeName := range codegen.SortedKeys(res) {
 			// Generate the resource itself.
-			err := gen.genResource(typeName, res[typeName])
+			err := gen.genResource(typeName, res[typeName], ops)
 			if err != nil {
 				return nil, nil, err
 			}
@@ -394,7 +394,8 @@ func (g *packageGenerator) genToken(typeName string) string {
 	return fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
 }
 
-func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource) error {
+func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource,
+	ops map[string]*Operation) error {
 	resourceTok := g.genToken(typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
@@ -467,8 +468,11 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		Read: resources.CloudAPIOperation{
 			Verb: dd.getMethod.HttpMethod,
 		},
-		Update: resources.UpdateAPIOperation{},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{},
+		},
 	}
+
 	patternParams := codegen.NewStringSet()
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
@@ -559,6 +563,10 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 		resourceMeta.Create.SDKProperties = bodyBag.properties
 
+		if op, ok := ops[dd.createMethod.Response.Ref]; ok {
+			setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, op)
+		}
+
 		if dd.updateMethod != nil {
 			resourceMeta.Update.Verb = dd.updateMethod.HttpMethod
 			var updateFlatten string
@@ -571,6 +579,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 					}
 				}
 			}
+
 			resourceMeta.Update.SDKProperties = map[string]resources.CloudAPIProperty{}
 			updateBag, err := g.genProperties(typeName, &updateRequest, updateFlatten, false, nil)
 			if err != nil {
@@ -690,6 +699,12 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 					})
 			}
 		}
+
+		if dd.updateMethod.Response != nil && dd.updateMethod.Response.Ref != "" {
+			if op, ok := ops[dd.updateMethod.Response.Ref]; ok {
+				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Update.CloudAPIOperation, op)
+			}
+		}
 	}
 
 	if d := dd.deleteMethod; d != nil {
@@ -697,6 +712,12 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			resourceMeta.Delete.Verb = v
 		} else {
 			resourceMeta.Delete.Verb = "DELETE"
+		}
+
+		if dd.deleteMethod.Response != nil && dd.deleteMethod.Response.Ref != "" {
+			if op, ok := ops[dd.deleteMethod.Response.Ref]; ok {
+				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Delete, op)
+			}
 		}
 	}
 
@@ -752,7 +773,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	}
 
 	if md, ok := metadataOverrides[resourceTok]; ok {
-		if err := mergo.Merge(&resourceMeta, md); err != nil {
+		if err := mergo.Merge(&resourceMeta, md, mergo.WithOverride); err != nil {
 			return fmt.Errorf("failed to merge metadata for resource: %q", resourceTok)
 		}
 	}
@@ -760,6 +781,18 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
 	return nil
+}
+
+func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation,
+	op *Operation) {
+	if cloudOp.Operations == nil {
+		cloudOp.Operations = &resources.Operations{}
+	}
+	if _, has := op.schema.Properties["selfLink"]; has {
+		cloudOp.Operations.HasSelfLink = true
+	} else {
+		cloudOp.Operations.OperationsBaseURL = resources.AssembleURL(baseURL, op.restMethod.Path)
+	}
 }
 
 func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {
@@ -1042,6 +1075,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			Ref:      typeSpec.Ref,
 			Format:   prop.Format,
 			Required: isRequired(prop),
+			ForceNew: !isOutput && isImmutable(prop.Description),
 
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
@@ -1262,6 +1296,11 @@ func isRequired(parameter discovery.JsonSchema) bool {
 		return true
 	}
 	return strings.HasPrefix(parameter.Description, "Required.")
+}
+
+// isImmutable returns true if the property or a parameter indicates that it is immutable.
+func isImmutable(description string) bool {
+	return strings.Contains(description, "Immutable.")
 }
 
 // isReadOnly returns true if the description of a property or a parameter signals that it is

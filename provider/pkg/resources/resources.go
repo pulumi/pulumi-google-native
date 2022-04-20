@@ -104,6 +104,9 @@ type CloudAPIOperation struct {
 	// Verb is the REST verb to use for API calls.
 	Verb    string   `json:"verb,omitempty"`
 	Polling *Polling `json:"polling,omitempty"`
+	// Operations is a generic API construct used by Google for representing long running operations.
+	// See https://cloud.google.com/service-usage/docs/reference/rest#rest-resource:-v1.operations
+	Operations *Operations `json:"operations,omitempty"`
 }
 
 func (o CloudAPIOperation) Undefined() bool {
@@ -134,6 +137,13 @@ type Polling struct {
 	Strategy PollingStrategy `json:"strategy,omitempty"`
 }
 
+// Operations provides details about operations resources referenced by Google APIs for long running operations.
+// Some operations have fully qualified self-links while others require substituting a name in a provided URL template.
+type Operations struct {
+	HasSelfLink       bool   `json:"hasSelfLink,omitempty"`
+	OperationsBaseURL string `json:"operationsBaseURL,omitempty"`
+}
+
 // CreateAPIOperation is a Create resource operation in the Google Cloud REST API.
 type CreateAPIOperation struct {
 	CloudAPIOperation
@@ -142,7 +152,6 @@ type CreateAPIOperation struct {
 
 type UpdateAPIOperation struct {
 	CloudAPIOperation
-
 	UpdateMask UpdateMask `json:"updateMask,omitempty"`
 }
 
@@ -164,8 +173,9 @@ type CloudAPIResource struct {
 
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
-	RootURL     string `json:"rootUrl"`
-	AssetUpload bool   `json:"assetUpload,omitempty"`
+	RootURL string `json:"rootUrl"`
+
+	AssetUpload bool `json:"assetUpload,omitempty"`
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`
@@ -231,6 +241,10 @@ type CloudAPIProperty struct {
 	// If a user specifies a plain value (with no '/' characters in it),
 	// the provider automatically applies the pattern.
 	Pattern string `json:"pattern,omitempty"`
+
+	// ForceNew specifies whether a change in the value of the property requires a replacement of the whole resource
+	// (i.e., no in-place updates allowed).
+	ForceNew bool `json:"forceNew,omitempty"`
 }
 
 // CloudAPIType represents the shape of an auxiliary type in the API.
