@@ -51,6 +51,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+const (
+	createBeforeDeleteFlag = "__createBeforeDelete"
+)
+
 type googleCloudProvider struct {
 	host        *provider.HostClient
 	name        string
@@ -359,7 +363,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	logging.V(9).Infof("%s executing", label)
 
 	resourceKey := string(urn.Type())
-	_, ok := p.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
@@ -390,7 +394,45 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_NONE}, nil
 	}
 
-	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, DeleteBeforeReplace: true}, nil
+	// Calculate the detailed diff object containing information about replacements.
+	detailedDiff := calculateDetailedDiff(&res, p.resourceMap.Types, diff)
+
+	// Based on the detailed diff above, calculate the list of changes and replacements.
+	var changes, replaces []string
+	for k, v := range detailedDiff {
+		parts := strings.Split(k, ".")
+		changes = append(changes, parts[0])
+		v.InputDiff = true
+
+		switch v.Kind {
+		case rpc.PropertyDiff_ADD_REPLACE:
+			replaces = append(replaces, k)
+		case rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
+			replaces = append(replaces, k)
+		}
+	}
+
+	// TODO: Record createBeforeDeleteFlag for autonamed resources.
+	deleteBeforeReplace := len(replaces) > 0
+	if v, ok := oldInputs[createBeforeDeleteFlag]; ok && v.IsBool() {
+		deleteBeforeReplace = !v.BoolValue()
+	}
+	changeType := rpc.DiffResponse_DIFF_NONE
+	if len(detailedDiff) > 0 {
+		changeType = rpc.DiffResponse_DIFF_SOME
+	}
+
+	response := rpc.DiffResponse{
+		Changes:             changeType,
+		Replaces:            replaces,
+		Stables:             []string{},
+		DeleteBeforeReplace: deleteBeforeReplace,
+		Diffs:               changes,
+		DetailedDiff:        detailedDiff,
+		HasDetailedDiff:     true,
+	}
+
+	return &response, nil
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
@@ -595,7 +637,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		}
 
 		if pollURI == "" {
-			logging.V(3).Infof("No pollURI found for rootURL: %q", operation.Operations.OperationsBaseURL)
+			// No poll URI - assume the existing response is sufficient.
 			return resp, nil
 		}
 

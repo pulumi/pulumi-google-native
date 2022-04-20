@@ -63,8 +63,6 @@ var resourceNameByPathOverrides = map[string]string{
 	"v2/organizations/{organizationsId}/inspectTemplates":                            "",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/inspectTemplates":    "OrganizationInspectTemplate",
 	"v2/organizations/{organizationsId}/locations/{locationsId}/jobTriggers":         "OrganizationJobTrigger",
-	"v2/organizations/{organizationsId}/storedInfoTypes":                             "OrganizationStoredInfoTypes",
-	"v2/organizations/{organizationsId}/locations/{locationsId}/storedInfoTypes":     "OrganizationLocationStoredInfoTypes",
 
 	// Essential Contracts.
 	"v1/folders/{foldersId}/contacts":             "FolderContact",
@@ -169,6 +167,18 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 		Create: resources.CreateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
 				Polling: &resources.Polling{Strategy: resources.KNativeStatusPoll},
+			},
+		},
+	},
+	"google-native:bigtableadmin/v2:Instance": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				SDKProperties: map[string]resources.CloudAPIProperty{
+					"clusters": {
+						Required: true,
+						ForceNew: true,
+					},
+				},
 			},
 		},
 	},

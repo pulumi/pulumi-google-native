@@ -17,6 +17,7 @@ package gen
 import (
 	"fmt"
 	"log"
+	"sort"
 	"strings"
 
 	"github.com/gedex/inflector"
@@ -72,6 +73,15 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 	var postMethods []discovery.RestMethod
 
 	candidateResources := map[string]discoveryDocumentResource{}
+
+	type pair struct {
+		typeName     string
+		resourceName string
+	}
+	type pairs []pair
+
+	var sortedKeys pairs
+
 	for _, resourceName := range codegen.SortedKeys(rest) {
 		res := rest[resourceName]
 		name := ToUpperCamel(inflector.Singularize(resourceName))
@@ -141,6 +151,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 				continue
 			}
 		} else {
+			sortedKeys = append(sortedKeys, pair{typeName: name, resourceName: resourceName})
 			candidateResources[name] = discoveryDocumentResource{
 				discoveryCRUDMethods: discoveryCRUDMethods{
 					createMethod: createMethod,
@@ -154,8 +165,13 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 		}
 	}
 
-	for name, methods := range candidateResources {
-		typeName := name
+	sort.SliceStable(sortedKeys, func(i, j int) bool {
+		return sortedKeys[i].resourceName < sortedKeys[j].resourceName
+	})
+
+	for _, pair := range sortedKeys {
+		typeName := pair.typeName
+		methods := candidateResources[typeName]
 		switch {
 		case methods.createMethod != nil && methods.getMethod != nil:
 			if methods.getMethod.HttpMethod != "GET" {
@@ -206,11 +222,11 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 		}
 
 		var newParent string
-		switch name {
+		switch typeName {
 		case "Project", "Location", "Zone", "Global":
 			newParent = parentName
 		default:
-			newParent = parentName + name
+			newParent = parentName + typeName
 		}
 		res := rest[methods.resourceName]
 		err := findResourcesImpl(docName, newParent, res.Resources, addResource, addOperation)

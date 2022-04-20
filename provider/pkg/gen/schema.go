@@ -1006,6 +1006,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			Ref:      typeSpec.Ref,
 			Format:   prop.Format,
 			Required: isRequired(prop),
+			ForceNew: !isOutput && isImmutable(prop.Description),
 
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
@@ -1226,6 +1227,11 @@ func isRequired(parameter discovery.JsonSchema) bool {
 		return true
 	}
 	return strings.HasPrefix(parameter.Description, "Required.")
+}
+
+// isImmutable returns true if the property or a parameter indicates that it is immutable.
+func isImmutable(description string) bool {
+	return strings.Contains(description, "Immutable.")
 }
 
 // isReadOnly returns true if the description of a property or a parameter signals that it is

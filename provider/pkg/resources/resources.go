@@ -104,7 +104,8 @@ type CloudAPIOperation struct {
 	// Verb is the REST verb to use for API calls.
 	Verb    string   `json:"verb,omitempty"`
 	Polling *Polling `json:"polling,omitempty"`
-	// Operations
+	// Operations is a generic API construct used by Google for representing long running operations.
+	// See https://cloud.google.com/service-usage/docs/reference/rest#rest-resource:-v1.operations
 	Operations *Operations `json:"operations,omitempty"`
 }
 
@@ -151,7 +152,6 @@ type CreateAPIOperation struct {
 
 type UpdateAPIOperation struct {
 	CloudAPIOperation
-
 	UpdateMask UpdateMask `json:"updateMask,omitempty"`
 }
 
@@ -241,6 +241,10 @@ type CloudAPIProperty struct {
 	// If a user specifies a plain value (with no '/' characters in it),
 	// the provider automatically applies the pattern.
 	Pattern string `json:"pattern,omitempty"`
+
+	// ForceNew specifies whether a change in the value of the property requires a replacement of the whole resource
+	// (i.e., no in-place updates allowed).
+	ForceNew bool `json:"forceNew,omitempty"`
 }
 
 // CloudAPIType represents the shape of an auxiliary type in the API.
