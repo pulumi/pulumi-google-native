@@ -57,6 +57,13 @@ Bug fixes:
 
 - Convert token expiry to string on assignment [#470](https://github.com/pulumi/pulumi-google-native/pull/470)
 
+Improvements:
+- Initial support for handling immutable resources [453](https://github.com/pulumi/pulumi-google-native/pull/453)
+
+Bug fixes:
+- https://github.com/pulumi/pulumi-google-native/issues/426
+- https://github.com/pulumi/pulumi-google-native/issues/291
+
 ## 0.18.1 (2022-04-20)
 
 Improvements:
