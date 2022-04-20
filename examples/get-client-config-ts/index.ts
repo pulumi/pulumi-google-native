@@ -20,4 +20,4 @@ import * as google from "@pulumi/google-native";
 const config = new pulumi.Config("google-native");
 
 export const clientConfig = google.authorization.getClientConfig();
-export const token = pulumi.secret(google.authorization.getClientConfig());
+export const token = pulumi.secret(google.authorization.getClientToken());
