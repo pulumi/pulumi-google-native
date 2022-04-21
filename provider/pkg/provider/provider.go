@@ -229,6 +229,11 @@ func (p *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceP
 	return status.Error(codes.Unimplemented, "StreamInvoke is not yet implemented")
 }
 
+// Attach sends the engine address to an already running plugin.
+func (p *googleCloudProvider) Attach(_ context.Context, _ *rpc.PluginAttach) (*empty.Empty, error) {
+	return nil, status.Error(codes.Unimplemented, "Attach is not yet implemented")
+}
+
 // Check validates that the given property bag is valid for a resource of the given type and returns
 // the inputs that should be passed to successive calls to Diff, Create, or Update for this
 // resource. As a rule, the provider inputs returned by a call to Check should preserve the original
