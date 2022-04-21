@@ -35,31 +35,31 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> CompleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// cluster config backup size in bytes.
+        /// The size of the config backup in bytes.
         /// </summary>
         [Output("configBackupSizeBytes")]
         public Output<string> ConfigBackupSizeBytes { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not the Backup contains Kubernetes Secrets. Inherited from the parent BackupPlan's backup_config.include_secrets.
+        /// Whether or not the Backup contains Kubernetes Secrets. Controlled by the parent BackupPlan's include_secrets value.
         /// </summary>
         [Output("containsSecrets")]
         public Output<bool> ContainsSecrets { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not the Backup contains volume data. Inherited from the parent BackupPlan's backup_config.include_volume_data.
+        /// Whether or not the Backup contains volume data. Controlled by the parent BackupPlan's include_volume_data value.
         /// </summary>
         [Output("containsVolumeData")]
         public Output<bool> ContainsVolumeData { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this Backup resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// The timestamp when this Backup resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). This value is inherited from the parent BackupPlan's retention_policy.backup_delete_lock_days value and may only be increased (either at creation time or in a subsequent update). This field MUST be an integer value between 0-90 (inclusive). Default: inherited from BackupPlan.
+        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         /// </summary>
         [Output("deleteLockDays")]
         public Output<int> DeleteLockDays { get; private set; } = null!;
@@ -77,13 +77,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's backup_config.encryption_key.
+        /// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's encryption_key value.
         /// </summary>
         [Output("encryptionKey")]
         public Output<Outputs.EncryptionKeyResponse> EncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` to ensure that their change will be applied to the same version.
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<int> ResourceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. If not specified at Backup creation time, this value is inherited from the parent BackupPlan's retention_policy.backup_retain_days value. Once a Backup is created, this value may only be increased. This must be an integer value &gt;= 0. If 0, no automatic deletion will occur for this Backup. If not 0, this must be &gt;= delete_lock_days. Default: inherited from BackupPlan.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Output("retainDays")]
         public Output<int> RetainDays { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this Backup resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// The timestamp when this Backup resource was last updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The client-provided short name for the Backup resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Backups in this BackupPlan
+        /// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
         /// </summary>
         [Input("backupId")]
         public Input<string>? BackupId { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string> BackupPlanId { get; set; } = null!;
 
         /// <summary>
-        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). This value is inherited from the parent BackupPlan's retention_policy.backup_delete_lock_days value and may only be increased (either at creation time or in a subsequent update). This field MUST be an integer value between 0-90 (inclusive). Default: inherited from BackupPlan.
+        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
         /// </summary>
         [Input("deleteLockDays")]
         public Input<int>? DeleteLockDays { get; set; }
@@ -263,7 +263,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. If not specified at Backup creation time, this value is inherited from the parent BackupPlan's retention_policy.backup_retain_days value. Once a Backup is created, this value may only be increased. This must be an integer value &gt;= 0. If 0, no automatic deletion will occur for this Backup. If not 0, this must be &gt;= delete_lock_days. Default: inherited from BackupPlan.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Input("retainDays")]
         public Input<int>? RetainDays { get; set; }

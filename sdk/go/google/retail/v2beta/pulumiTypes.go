@@ -1458,7 +1458,7 @@ type GoogleCloudRetailV2betaPriceInfo struct {
 	Cost *float64 `pulumi:"cost"`
 	// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
 	CurrencyCode *string `pulumi:"currencyCode"`
-	// Price of the product without any discount. If zero, by default set to be the price.
+	// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
 	OriginalPrice *float64 `pulumi:"originalPrice"`
 	// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
 	Price *float64 `pulumi:"price"`
@@ -1485,7 +1485,7 @@ type GoogleCloudRetailV2betaPriceInfoArgs struct {
 	Cost pulumi.Float64PtrInput `pulumi:"cost"`
 	// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
 	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
-	// Price of the product without any discount. If zero, by default set to be the price.
+	// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
 	OriginalPrice pulumi.Float64PtrInput `pulumi:"originalPrice"`
 	// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
 	Price pulumi.Float64PtrInput `pulumi:"price"`
@@ -1583,7 +1583,7 @@ func (o GoogleCloudRetailV2betaPriceInfoOutput) CurrencyCode() pulumi.StringPtrO
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfo) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
 }
 
-// Price of the product without any discount. If zero, by default set to be the price.
+// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
 func (o GoogleCloudRetailV2betaPriceInfoOutput) OriginalPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfo) *float64 { return v.OriginalPrice }).(pulumi.Float64PtrOutput)
 }
@@ -1647,7 +1647,7 @@ func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) CurrencyCode() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Price of the product without any discount. If zero, by default set to be the price.
+// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
 func (o GoogleCloudRetailV2betaPriceInfoPtrOutput) OriginalPrice() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2betaPriceInfo) *float64 {
 		if v == nil {
@@ -1730,7 +1730,7 @@ type GoogleCloudRetailV2betaPriceInfoResponse struct {
 	Cost float64 `pulumi:"cost"`
 	// The 3-letter currency code defined in [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html). If this field is an unrecognizable currency code, an INVALID_ARGUMENT error is returned. The Product.Type.VARIANT Products with the same Product.primary_product_id must share the same currency_code. Otherwise, a FAILED_PRECONDITION error is returned.
 	CurrencyCode string `pulumi:"currencyCode"`
-	// Price of the product without any discount. If zero, by default set to be the price.
+	// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
 	OriginalPrice float64 `pulumi:"originalPrice"`
 	// Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
 	Price float64 `pulumi:"price"`
@@ -1767,7 +1767,7 @@ func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) CurrencyCode() pulumi.St
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) string { return v.CurrencyCode }).(pulumi.StringOutput)
 }
 
-// Price of the product without any discount. If zero, by default set to be the price.
+// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
 func (o GoogleCloudRetailV2betaPriceInfoResponseOutput) OriginalPrice() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaPriceInfoResponse) float64 { return v.OriginalPrice }).(pulumi.Float64Output)
 }

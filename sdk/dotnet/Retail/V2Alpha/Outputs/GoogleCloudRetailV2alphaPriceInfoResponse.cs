@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Outputs
         /// </summary>
         public readonly string CurrencyCode;
         /// <summary>
-        /// Price of the product without any discount. If zero, by default set to be the price.
+        /// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
         /// </summary>
         public readonly double OriginalPrice;
         /// <summary>

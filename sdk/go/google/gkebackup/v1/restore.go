@@ -16,27 +16,27 @@ import (
 type Restore struct {
 	pulumi.CustomResourceState
 
-	// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
 	Backup pulumi.StringOutput `pulumi:"backup"`
-	// The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
+	// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
-	// When the restore operation either successfully completed or failed.
+	// Timestamp of when the restore operation completed.
 	CompleteTime pulumi.StringOutput `pulumi:"completeTime"`
-	// The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+	// The timestamp when this Restore resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User specified descriptive string for this Restore.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// GCP Labels.
+	// A set of custom labels supplied by user.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of resources excluded in this restore action.
+	// Number of resources excluded during the restore execution.
 	ResourcesExcludedCount pulumi.IntOutput `pulumi:"resourcesExcludedCount"`
-	// Number of resources failed to be restored in this restore action.
+	// Number of resources that failed to be restored during the restore execution.
 	ResourcesFailedCount pulumi.IntOutput `pulumi:"resourcesFailedCount"`
-	// Number of resources restored in this restore action.
+	// Number of resources restored during the restore execution.
 	ResourcesRestoredCount pulumi.IntOutput `pulumi:"resourcesRestoredCount"`
 	// Configuration of the Restore. Inherited from parent RestorePlan's restore_config.
 	RestoreConfig RestoreConfigResponseOutput `pulumi:"restoreConfig"`
@@ -46,9 +46,9 @@ type Restore struct {
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+	// The timestamp when this Restore resource was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Number of volumes restored in this restore action.
+	// Number of volumes restored during the restore execution.
 	VolumesRestoredCount pulumi.IntOutput `pulumi:"volumesRestoredCount"`
 }
 
@@ -100,30 +100,30 @@ func (RestoreState) ElementType() reflect.Type {
 }
 
 type restoreArgs struct {
-	// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
 	Backup string `pulumi:"backup"`
 	// User specified descriptive string for this Restore.
 	Description *string `pulumi:"description"`
-	// GCP Labels.
+	// A set of custom labels supplied by user.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
-	// Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
+	// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
 	RestoreId     string `pulumi:"restoreId"`
 	RestorePlanId string `pulumi:"restorePlanId"`
 }
 
 // The set of arguments for constructing a Restore resource.
 type RestoreArgs struct {
-	// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
 	Backup pulumi.StringInput
 	// User specified descriptive string for this Restore.
 	Description pulumi.StringPtrInput
-	// GCP Labels.
+	// A set of custom labels supplied by user.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
-	// Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
+	// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
 	RestoreId     pulumi.StringInput
 	RestorePlanId pulumi.StringInput
 }

@@ -1486,7 +1486,7 @@ class TimeSeriesQueryResponse(dict):
         TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
         :param 'TimeSeriesFilterResponse' time_series_filter: Filter parameters to fetch time series.
         :param 'TimeSeriesFilterRatioResponse' time_series_filter_ratio: Parameters to fetch a ratio between two time series filters.
-        :param str time_series_query_language: A query used to fetch time series with MQL.
+        :param str time_series_query_language: A query used to fetch time series.
         :param str unit_override: The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
         """
         pulumi.set(__self__, "time_series_filter", time_series_filter)
@@ -1514,7 +1514,7 @@ class TimeSeriesQueryResponse(dict):
     @pulumi.getter(name="timeSeriesQueryLanguage")
     def time_series_query_language(self) -> str:
         """
-        A query used to fetch time series with MQL.
+        A query used to fetch time series.
         """
         return pulumi.get(self, "time_series_query_language")
 

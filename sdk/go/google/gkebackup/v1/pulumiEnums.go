@@ -350,11 +350,11 @@ func (in *restoreConfigClusterResourceConflictPolicyPtr) ToRestoreConfigClusterR
 	return pulumi.ToOutputWithContext(ctx, in).(RestoreConfigClusterResourceConflictPolicyPtrOutput)
 }
 
-// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
+// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
 type RestoreConfigNamespacedResourceRestoreMode string
 
 const (
-	// Unspecified. Only allowed if no namespaced resources will be restored.
+	// Unspecified (invalid).
 	RestoreConfigNamespacedResourceRestoreModeNamespacedResourceRestoreModeUnspecified = RestoreConfigNamespacedResourceRestoreMode("NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED")
 	// When conflicting top-level resources (either Namespaces or ProtectedApplications, depending upon the scope) are encountered, this will first trigger a delete of the conflicting resource AND ALL OF ITS REFERENCED RESOURCES (e.g., all resources in the Namespace or all resources referenced by the ProtectedApplication) before restoring the resources from the Backup. This mode should only be used when you are intending to revert some portion of a cluster to an earlier state.
 	RestoreConfigNamespacedResourceRestoreModeDeleteAndRestore = RestoreConfigNamespacedResourceRestoreMode("DELETE_AND_RESTORE")
@@ -523,7 +523,7 @@ func (in *restoreConfigNamespacedResourceRestoreModePtr) ToRestoreConfigNamespac
 type RestoreConfigVolumeDataRestorePolicy string
 
 const (
-	// unspecified, default value
+	// Unspecified (illegal).
 	RestoreConfigVolumeDataRestorePolicyVolumeDataRestorePolicyUnspecified = RestoreConfigVolumeDataRestorePolicy("VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED")
 	// For each PVC to be restored, will create a new underlying volume (and PV) from the corresponding VolumeBackup contained within the Backup.
 	RestoreConfigVolumeDataRestorePolicyRestoreVolumeDataFromBackup = RestoreConfigVolumeDataRestorePolicy("RESTORE_VOLUME_DATA_FROM_BACKUP")

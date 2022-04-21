@@ -27,25 +27,25 @@ type LookupRestorePlanArgs struct {
 }
 
 type LookupRestorePlanResult struct {
-	// Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
 	BackupPlan string `pulumi:"backupPlan"`
-	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 	Cluster string `pulumi:"cluster"`
-	// The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+	// The timestamp when this RestorePlan resource was created.
 	CreateTime string `pulumi:"createTime"`
 	// User specified descriptive string for this RestorePlan.
 	Description string `pulumi:"description"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
 	Etag string `pulumi:"etag"`
 	// A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
-	// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*
+	// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
 	Name string `pulumi:"name"`
 	// Configuration of Restores created via this RestorePlan.
 	RestoreConfig RestoreConfigResponse `pulumi:"restoreConfig"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid string `pulumi:"uid"`
-	// The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+	// The timestamp when this RestorePlan resource was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -86,17 +86,17 @@ func (o LookupRestorePlanResultOutput) ToLookupRestorePlanResultOutputWithContex
 	return o
 }
 
-// Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
 func (o LookupRestorePlanResultOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.BackupPlan }).(pulumi.StringOutput)
 }
 
-// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 func (o LookupRestorePlanResultOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+// The timestamp when this RestorePlan resource was created.
 func (o LookupRestorePlanResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -106,7 +106,7 @@ func (o LookupRestorePlanResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
 func (o LookupRestorePlanResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -116,7 +116,7 @@ func (o LookupRestorePlanResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*
+// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
 func (o LookupRestorePlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -131,7 +131,7 @@ func (o LookupRestorePlanResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+// The timestamp when this RestorePlan resource was last updated.
 func (o LookupRestorePlanResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

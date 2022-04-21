@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.TimeSeriesFilterRatioArgs>? TimeSeriesFilterRatio { get; set; }
 
         /// <summary>
-        /// A query used to fetch time series with MQL.
+        /// A query used to fetch time series.
         /// </summary>
         [Input("timeSeriesQueryLanguage")]
         public Input<string>? TimeSeriesQueryLanguage { get; set; }

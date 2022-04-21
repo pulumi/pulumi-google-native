@@ -22,15 +22,17 @@ class ClusterArgs:
                  config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None):
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input['VirtualClusterConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         :param pulumi.Input[str] action_on_failed_primary_workers: Optional. Failure action when primary worker creation fails.
-        :param pulumi.Input['ClusterConfigArgs'] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+        :param pulumi.Input['ClusterConfigArgs'] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input['VirtualClusterConfigArgs'] virtual_cluster_config: Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "region", region)
@@ -44,6 +46,8 @@ class ClusterArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if virtual_cluster_config is not None:
+            pulumi.set(__self__, "virtual_cluster_config", virtual_cluster_config)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -82,7 +86,7 @@ class ClusterArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['ClusterConfigArgs']]:
         """
-        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         """
         return pulumi.get(self, "config")
 
@@ -126,6 +130,18 @@ class ClusterArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
+    @property
+    @pulumi.getter(name="virtualClusterConfig")
+    def virtual_cluster_config(self) -> Optional[pulumi.Input['VirtualClusterConfigArgs']]:
+        """
+        Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+        """
+        return pulumi.get(self, "virtual_cluster_config")
+
+    @virtual_cluster_config.setter
+    def virtual_cluster_config(self, value: Optional[pulumi.Input['VirtualClusterConfigArgs']]):
+        pulumi.set(self, "virtual_cluster_config", value)
+
 
 class Cluster(pulumi.CustomResource):
     @overload
@@ -139,6 +155,7 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['VirtualClusterConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
@@ -148,10 +165,11 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_on_failed_primary_workers: Optional. Failure action when primary worker creation fails.
         :param pulumi.Input[str] cluster_name: The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-        :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+        :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] project: The Google Cloud Platform project ID that the cluster belongs to.
         :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[pulumi.InputType['VirtualClusterConfigArgs']] virtual_cluster_config: Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
         """
         ...
     @overload
@@ -185,6 +203,7 @@ class Cluster(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 virtual_cluster_config: Optional[pulumi.Input[pulumi.InputType['VirtualClusterConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -208,6 +227,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["virtual_cluster_config"] = virtual_cluster_config
             __props__.__dict__["cluster_uuid"] = None
             __props__.__dict__["metrics"] = None
             __props__.__dict__["status"] = None
@@ -242,6 +262,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_history"] = None
+        __props__.__dict__["virtual_cluster_config"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -264,7 +285,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output['outputs.ClusterConfigResponse']:
         """
-        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+        Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         """
         return pulumi.get(self, "config")
 
@@ -307,4 +328,12 @@ class Cluster(pulumi.CustomResource):
         The previous cluster status.
         """
         return pulumi.get(self, "status_history")
+
+    @property
+    @pulumi.getter(name="virtualClusterConfig")
+    def virtual_cluster_config(self) -> pulumi.Output['outputs.VirtualClusterConfigResponse']:
+        """
+        Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+        """
+        return pulumi.get(self, "virtual_cluster_config")
 

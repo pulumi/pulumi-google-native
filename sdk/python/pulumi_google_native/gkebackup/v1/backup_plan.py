@@ -27,11 +27,11 @@ class BackupPlanArgs:
                  retention_policy: Optional[pulumi.Input['RetentionPolicyArgs']] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
-        :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of BackupPlans in this location
-        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
+        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         :param pulumi.Input['BackupConfigArgs'] backup_config: Defines the configuration of Backups created via this BackupPlan.
         :param pulumi.Input['ScheduleArgs'] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
-        :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
         :param pulumi.Input['RetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
@@ -59,7 +59,7 @@ class BackupPlanArgs:
     @pulumi.getter(name="backupPlanId")
     def backup_plan_id(self) -> pulumi.Input[str]:
         """
-        Required. The client-provided short name for the BackupPlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of BackupPlans in this location
+        Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
         """
         return pulumi.get(self, "backup_plan_id")
 
@@ -71,7 +71,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -107,7 +107,7 @@ class BackupPlanArgs:
     @pulumi.getter
     def deactivated(self) -> Optional[pulumi.Input[bool]]:
         """
-        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         """
         return pulumi.get(self, "deactivated")
 
@@ -193,10 +193,10 @@ class BackupPlan(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BackupConfigArgs']] backup_config: Defines the configuration of Backups created via this BackupPlan.
-        :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of BackupPlans in this location
+        :param pulumi.Input[str] backup_plan_id: Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
         :param pulumi.Input[pulumi.InputType['ScheduleArgs']] backup_schedule: Defines a schedule for automatic Backup creation via this BackupPlan.
-        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
-        :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        :param pulumi.Input[str] cluster: Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        :param pulumi.Input[bool] deactivated: This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         :param pulumi.Input[str] description: User specified descriptive string for this BackupPlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
         :param pulumi.Input[pulumi.InputType['RetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
@@ -325,7 +325,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -333,7 +333,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        The timestamp when this BackupPlan resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -341,7 +341,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def deactivated(self) -> pulumi.Output[bool]:
         """
-        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         """
         return pulumi.get(self, "deactivated")
 
@@ -357,7 +357,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
         """
         return pulumi.get(self, "etag")
 
@@ -381,7 +381,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="protectedPodCount")
     def protected_pod_count(self) -> pulumi.Output[int]:
         """
-        Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+        The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         """
         return pulumi.get(self, "protected_pod_count")
 
@@ -405,7 +405,7 @@ class BackupPlan(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        The timestamp when this BackupPlan resource was last updated.
         """
         return pulumi.get(self, "update_time")
 

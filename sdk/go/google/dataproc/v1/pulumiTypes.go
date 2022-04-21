@@ -338,6 +338,200 @@ func (o AutoscalingConfigResponseOutput) PolicyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalingConfigResponse) string { return v.PolicyUri }).(pulumi.StringOutput)
 }
 
+// Auxiliary services configuration for a Cluster.
+type AuxiliaryServicesConfig struct {
+	// Optional. The Hive Metastore configuration for this workload.
+	MetastoreConfig *MetastoreConfig `pulumi:"metastoreConfig"`
+	// Optional. The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig *SparkHistoryServerConfig `pulumi:"sparkHistoryServerConfig"`
+}
+
+// AuxiliaryServicesConfigInput is an input type that accepts AuxiliaryServicesConfigArgs and AuxiliaryServicesConfigOutput values.
+// You can construct a concrete instance of `AuxiliaryServicesConfigInput` via:
+//
+//          AuxiliaryServicesConfigArgs{...}
+type AuxiliaryServicesConfigInput interface {
+	pulumi.Input
+
+	ToAuxiliaryServicesConfigOutput() AuxiliaryServicesConfigOutput
+	ToAuxiliaryServicesConfigOutputWithContext(context.Context) AuxiliaryServicesConfigOutput
+}
+
+// Auxiliary services configuration for a Cluster.
+type AuxiliaryServicesConfigArgs struct {
+	// Optional. The Hive Metastore configuration for this workload.
+	MetastoreConfig MetastoreConfigPtrInput `pulumi:"metastoreConfig"`
+	// Optional. The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig SparkHistoryServerConfigPtrInput `pulumi:"sparkHistoryServerConfig"`
+}
+
+func (AuxiliaryServicesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (i AuxiliaryServicesConfigArgs) ToAuxiliaryServicesConfigOutput() AuxiliaryServicesConfigOutput {
+	return i.ToAuxiliaryServicesConfigOutputWithContext(context.Background())
+}
+
+func (i AuxiliaryServicesConfigArgs) ToAuxiliaryServicesConfigOutputWithContext(ctx context.Context) AuxiliaryServicesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryServicesConfigOutput)
+}
+
+func (i AuxiliaryServicesConfigArgs) ToAuxiliaryServicesConfigPtrOutput() AuxiliaryServicesConfigPtrOutput {
+	return i.ToAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AuxiliaryServicesConfigArgs) ToAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) AuxiliaryServicesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryServicesConfigOutput).ToAuxiliaryServicesConfigPtrOutputWithContext(ctx)
+}
+
+// AuxiliaryServicesConfigPtrInput is an input type that accepts AuxiliaryServicesConfigArgs, AuxiliaryServicesConfigPtr and AuxiliaryServicesConfigPtrOutput values.
+// You can construct a concrete instance of `AuxiliaryServicesConfigPtrInput` via:
+//
+//          AuxiliaryServicesConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type AuxiliaryServicesConfigPtrInput interface {
+	pulumi.Input
+
+	ToAuxiliaryServicesConfigPtrOutput() AuxiliaryServicesConfigPtrOutput
+	ToAuxiliaryServicesConfigPtrOutputWithContext(context.Context) AuxiliaryServicesConfigPtrOutput
+}
+
+type auxiliaryServicesConfigPtrType AuxiliaryServicesConfigArgs
+
+func AuxiliaryServicesConfigPtr(v *AuxiliaryServicesConfigArgs) AuxiliaryServicesConfigPtrInput {
+	return (*auxiliaryServicesConfigPtrType)(v)
+}
+
+func (*auxiliaryServicesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (i *auxiliaryServicesConfigPtrType) ToAuxiliaryServicesConfigPtrOutput() AuxiliaryServicesConfigPtrOutput {
+	return i.ToAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *auxiliaryServicesConfigPtrType) ToAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) AuxiliaryServicesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryServicesConfigPtrOutput)
+}
+
+// Auxiliary services configuration for a Cluster.
+type AuxiliaryServicesConfigOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryServicesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (o AuxiliaryServicesConfigOutput) ToAuxiliaryServicesConfigOutput() AuxiliaryServicesConfigOutput {
+	return o
+}
+
+func (o AuxiliaryServicesConfigOutput) ToAuxiliaryServicesConfigOutputWithContext(ctx context.Context) AuxiliaryServicesConfigOutput {
+	return o
+}
+
+func (o AuxiliaryServicesConfigOutput) ToAuxiliaryServicesConfigPtrOutput() AuxiliaryServicesConfigPtrOutput {
+	return o.ToAuxiliaryServicesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AuxiliaryServicesConfigOutput) ToAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) AuxiliaryServicesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuxiliaryServicesConfig) *AuxiliaryServicesConfig {
+		return &v
+	}).(AuxiliaryServicesConfigPtrOutput)
+}
+
+// Optional. The Hive Metastore configuration for this workload.
+func (o AuxiliaryServicesConfigOutput) MetastoreConfig() MetastoreConfigPtrOutput {
+	return o.ApplyT(func(v AuxiliaryServicesConfig) *MetastoreConfig { return v.MetastoreConfig }).(MetastoreConfigPtrOutput)
+}
+
+// Optional. The Spark History Server configuration for the workload.
+func (o AuxiliaryServicesConfigOutput) SparkHistoryServerConfig() SparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v AuxiliaryServicesConfig) *SparkHistoryServerConfig { return v.SparkHistoryServerConfig }).(SparkHistoryServerConfigPtrOutput)
+}
+
+type AuxiliaryServicesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryServicesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuxiliaryServicesConfig)(nil)).Elem()
+}
+
+func (o AuxiliaryServicesConfigPtrOutput) ToAuxiliaryServicesConfigPtrOutput() AuxiliaryServicesConfigPtrOutput {
+	return o
+}
+
+func (o AuxiliaryServicesConfigPtrOutput) ToAuxiliaryServicesConfigPtrOutputWithContext(ctx context.Context) AuxiliaryServicesConfigPtrOutput {
+	return o
+}
+
+func (o AuxiliaryServicesConfigPtrOutput) Elem() AuxiliaryServicesConfigOutput {
+	return o.ApplyT(func(v *AuxiliaryServicesConfig) AuxiliaryServicesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AuxiliaryServicesConfig
+		return ret
+	}).(AuxiliaryServicesConfigOutput)
+}
+
+// Optional. The Hive Metastore configuration for this workload.
+func (o AuxiliaryServicesConfigPtrOutput) MetastoreConfig() MetastoreConfigPtrOutput {
+	return o.ApplyT(func(v *AuxiliaryServicesConfig) *MetastoreConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetastoreConfig
+	}).(MetastoreConfigPtrOutput)
+}
+
+// Optional. The Spark History Server configuration for the workload.
+func (o AuxiliaryServicesConfigPtrOutput) SparkHistoryServerConfig() SparkHistoryServerConfigPtrOutput {
+	return o.ApplyT(func(v *AuxiliaryServicesConfig) *SparkHistoryServerConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SparkHistoryServerConfig
+	}).(SparkHistoryServerConfigPtrOutput)
+}
+
+// Auxiliary services configuration for a Cluster.
+type AuxiliaryServicesConfigResponse struct {
+	// Optional. The Hive Metastore configuration for this workload.
+	MetastoreConfig MetastoreConfigResponse `pulumi:"metastoreConfig"`
+	// Optional. The Spark History Server configuration for the workload.
+	SparkHistoryServerConfig SparkHistoryServerConfigResponse `pulumi:"sparkHistoryServerConfig"`
+}
+
+// Auxiliary services configuration for a Cluster.
+type AuxiliaryServicesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryServicesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuxiliaryServicesConfigResponse)(nil)).Elem()
+}
+
+func (o AuxiliaryServicesConfigResponseOutput) ToAuxiliaryServicesConfigResponseOutput() AuxiliaryServicesConfigResponseOutput {
+	return o
+}
+
+func (o AuxiliaryServicesConfigResponseOutput) ToAuxiliaryServicesConfigResponseOutputWithContext(ctx context.Context) AuxiliaryServicesConfigResponseOutput {
+	return o
+}
+
+// Optional. The Hive Metastore configuration for this workload.
+func (o AuxiliaryServicesConfigResponseOutput) MetastoreConfig() MetastoreConfigResponseOutput {
+	return o.ApplyT(func(v AuxiliaryServicesConfigResponse) MetastoreConfigResponse { return v.MetastoreConfig }).(MetastoreConfigResponseOutput)
+}
+
+// Optional. The Spark History Server configuration for the workload.
+func (o AuxiliaryServicesConfigResponseOutput) SparkHistoryServerConfig() SparkHistoryServerConfigResponseOutput {
+	return o.ApplyT(func(v AuxiliaryServicesConfigResponse) SparkHistoryServerConfigResponse {
+		return v.SparkHistoryServerConfig
+	}).(SparkHistoryServerConfigResponseOutput)
+}
+
 // Basic algorithm for autoscaling.
 type BasicAutoscalingAlgorithm struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
@@ -1020,7 +1214,9 @@ type ClusterConfig struct {
 	EndpointConfig *EndpointConfig `pulumi:"endpointConfig"`
 	// Optional. The shared Compute Engine config settings for all instances in a cluster.
 	GceClusterConfig *GceClusterConfig `pulumi:"gceClusterConfig"`
-	// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	//
+	// Deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
 	GkeClusterConfig *GkeClusterConfig `pulumi:"gkeClusterConfig"`
 	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 	InitializationActions []NodeInitializationAction `pulumi:"initializationActions"`
@@ -1067,7 +1263,9 @@ type ClusterConfigArgs struct {
 	EndpointConfig EndpointConfigPtrInput `pulumi:"endpointConfig"`
 	// Optional. The shared Compute Engine config settings for all instances in a cluster.
 	GceClusterConfig GceClusterConfigPtrInput `pulumi:"gceClusterConfig"`
-	// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	//
+	// Deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
 	GkeClusterConfig GkeClusterConfigPtrInput `pulumi:"gkeClusterConfig"`
 	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 	InitializationActions NodeInitializationActionArrayInput `pulumi:"initializationActions"`
@@ -1197,7 +1395,9 @@ func (o ClusterConfigOutput) GceClusterConfig() GceClusterConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *GceClusterConfig { return v.GceClusterConfig }).(GceClusterConfigPtrOutput)
 }
 
-// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+//
+// Deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
 func (o ClusterConfigOutput) GkeClusterConfig() GkeClusterConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *GkeClusterConfig { return v.GkeClusterConfig }).(GkeClusterConfigPtrOutput)
 }
@@ -1331,7 +1531,9 @@ func (o ClusterConfigPtrOutput) GceClusterConfig() GceClusterConfigPtrOutput {
 	}).(GceClusterConfigPtrOutput)
 }
 
-// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+//
+// Deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
 func (o ClusterConfigPtrOutput) GkeClusterConfig() GkeClusterConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterConfig) *GkeClusterConfig {
 		if v == nil {
@@ -1445,7 +1647,9 @@ type ClusterConfigResponse struct {
 	EndpointConfig EndpointConfigResponse `pulumi:"endpointConfig"`
 	// Optional. The shared Compute Engine config settings for all instances in a cluster.
 	GceClusterConfig GceClusterConfigResponse `pulumi:"gceClusterConfig"`
-	// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+	//
+	// Deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
 	GkeClusterConfig GkeClusterConfigResponse `pulumi:"gkeClusterConfig"`
 	// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
 	InitializationActions []NodeInitializationActionResponse `pulumi:"initializationActions"`
@@ -1512,7 +1716,9 @@ func (o ClusterConfigResponseOutput) GceClusterConfig() GceClusterConfigResponse
 	return o.ApplyT(func(v ClusterConfigResponse) GceClusterConfigResponse { return v.GceClusterConfig }).(GceClusterConfigResponseOutput)
 }
 
-// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+//
+// Deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
 func (o ClusterConfigResponseOutput) GkeClusterConfig() GkeClusterConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) GkeClusterConfigResponse { return v.GkeClusterConfig }).(GkeClusterConfigResponseOutput)
 }
@@ -3957,8 +4163,14 @@ func (o GceClusterConfigResponseOutput) ZoneUri() pulumi.StringOutput {
 
 // The cluster's GKE config.
 type GkeClusterConfig struct {
-	// Optional. A target for the deployment.
+	// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	GkeClusterTarget *string `pulumi:"gkeClusterTarget"`
+	// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+	//
+	// Deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
 	NamespacedGkeDeploymentTarget *NamespacedGkeDeploymentTarget `pulumi:"namespacedGkeDeploymentTarget"`
+	// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+	NodePoolTarget []GkeNodePoolTarget `pulumi:"nodePoolTarget"`
 }
 
 // GkeClusterConfigInput is an input type that accepts GkeClusterConfigArgs and GkeClusterConfigOutput values.
@@ -3974,8 +4186,14 @@ type GkeClusterConfigInput interface {
 
 // The cluster's GKE config.
 type GkeClusterConfigArgs struct {
-	// Optional. A target for the deployment.
+	// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	GkeClusterTarget pulumi.StringPtrInput `pulumi:"gkeClusterTarget"`
+	// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+	//
+	// Deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
 	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetPtrInput `pulumi:"namespacedGkeDeploymentTarget"`
+	// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+	NodePoolTarget GkeNodePoolTargetArrayInput `pulumi:"nodePoolTarget"`
 }
 
 func (GkeClusterConfigArgs) ElementType() reflect.Type {
@@ -4056,9 +4274,21 @@ func (o GkeClusterConfigOutput) ToGkeClusterConfigPtrOutputWithContext(ctx conte
 	}).(GkeClusterConfigPtrOutput)
 }
 
-// Optional. A target for the deployment.
+// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o GkeClusterConfigOutput) GkeClusterTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeClusterConfig) *string { return v.GkeClusterTarget }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+//
+// Deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
 func (o GkeClusterConfigOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetPtrOutput {
 	return o.ApplyT(func(v GkeClusterConfig) *NamespacedGkeDeploymentTarget { return v.NamespacedGkeDeploymentTarget }).(NamespacedGkeDeploymentTargetPtrOutput)
+}
+
+// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+func (o GkeClusterConfigOutput) NodePoolTarget() GkeNodePoolTargetArrayOutput {
+	return o.ApplyT(func(v GkeClusterConfig) []GkeNodePoolTarget { return v.NodePoolTarget }).(GkeNodePoolTargetArrayOutput)
 }
 
 type GkeClusterConfigPtrOutput struct{ *pulumi.OutputState }
@@ -4085,7 +4315,19 @@ func (o GkeClusterConfigPtrOutput) Elem() GkeClusterConfigOutput {
 	}).(GkeClusterConfigOutput)
 }
 
-// Optional. A target for the deployment.
+// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o GkeClusterConfigPtrOutput) GkeClusterTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusterTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+//
+// Deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
 func (o GkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetPtrOutput {
 	return o.ApplyT(func(v *GkeClusterConfig) *NamespacedGkeDeploymentTarget {
 		if v == nil {
@@ -4095,10 +4337,26 @@ func (o GkeClusterConfigPtrOutput) NamespacedGkeDeploymentTarget() NamespacedGke
 	}).(NamespacedGkeDeploymentTargetPtrOutput)
 }
 
+// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+func (o GkeClusterConfigPtrOutput) NodePoolTarget() GkeNodePoolTargetArrayOutput {
+	return o.ApplyT(func(v *GkeClusterConfig) []GkeNodePoolTarget {
+		if v == nil {
+			return nil
+		}
+		return v.NodePoolTarget
+	}).(GkeNodePoolTargetArrayOutput)
+}
+
 // The cluster's GKE config.
 type GkeClusterConfigResponse struct {
-	// Optional. A target for the deployment.
+	// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+	GkeClusterTarget string `pulumi:"gkeClusterTarget"`
+	// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+	//
+	// Deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
 	NamespacedGkeDeploymentTarget NamespacedGkeDeploymentTargetResponse `pulumi:"namespacedGkeDeploymentTarget"`
+	// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+	NodePoolTarget []GkeNodePoolTargetResponse `pulumi:"nodePoolTarget"`
 }
 
 // The cluster's GKE config.
@@ -4116,11 +4374,1085 @@ func (o GkeClusterConfigResponseOutput) ToGkeClusterConfigResponseOutputWithCont
 	return o
 }
 
-// Optional. A target for the deployment.
+// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+func (o GkeClusterConfigResponseOutput) GkeClusterTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeClusterConfigResponse) string { return v.GkeClusterTarget }).(pulumi.StringOutput)
+}
+
+// Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
+//
+// Deprecated: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
 func (o GkeClusterConfigResponseOutput) NamespacedGkeDeploymentTarget() NamespacedGkeDeploymentTargetResponseOutput {
 	return o.ApplyT(func(v GkeClusterConfigResponse) NamespacedGkeDeploymentTargetResponse {
 		return v.NamespacedGkeDeploymentTarget
 	}).(NamespacedGkeDeploymentTargetResponseOutput)
+}
+
+// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+func (o GkeClusterConfigResponseOutput) NodePoolTarget() GkeNodePoolTargetResponseArrayOutput {
+	return o.ApplyT(func(v GkeClusterConfigResponse) []GkeNodePoolTargetResponse { return v.NodePoolTarget }).(GkeNodePoolTargetResponseArrayOutput)
+}
+
+// Parameters that describe cluster nodes.
+type GkeNodeConfig struct {
+	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+	Accelerators []GkeNodePoolAcceleratorConfig `pulumi:"accelerators"`
+	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+	MachineType *string `pulumi:"machineType"`
+	// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible *bool `pulumi:"preemptible"`
+	// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot *bool `pulumi:"spot"`
+}
+
+// GkeNodeConfigInput is an input type that accepts GkeNodeConfigArgs and GkeNodeConfigOutput values.
+// You can construct a concrete instance of `GkeNodeConfigInput` via:
+//
+//          GkeNodeConfigArgs{...}
+type GkeNodeConfigInput interface {
+	pulumi.Input
+
+	ToGkeNodeConfigOutput() GkeNodeConfigOutput
+	ToGkeNodeConfigOutputWithContext(context.Context) GkeNodeConfigOutput
+}
+
+// Parameters that describe cluster nodes.
+type GkeNodeConfigArgs struct {
+	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+	Accelerators GkeNodePoolAcceleratorConfigArrayInput `pulumi:"accelerators"`
+	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
+	// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot pulumi.BoolPtrInput `pulumi:"spot"`
+}
+
+func (GkeNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodeConfig)(nil)).Elem()
+}
+
+func (i GkeNodeConfigArgs) ToGkeNodeConfigOutput() GkeNodeConfigOutput {
+	return i.ToGkeNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GkeNodeConfigArgs) ToGkeNodeConfigOutputWithContext(ctx context.Context) GkeNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodeConfigOutput)
+}
+
+func (i GkeNodeConfigArgs) ToGkeNodeConfigPtrOutput() GkeNodeConfigPtrOutput {
+	return i.ToGkeNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GkeNodeConfigArgs) ToGkeNodeConfigPtrOutputWithContext(ctx context.Context) GkeNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodeConfigOutput).ToGkeNodeConfigPtrOutputWithContext(ctx)
+}
+
+// GkeNodeConfigPtrInput is an input type that accepts GkeNodeConfigArgs, GkeNodeConfigPtr and GkeNodeConfigPtrOutput values.
+// You can construct a concrete instance of `GkeNodeConfigPtrInput` via:
+//
+//          GkeNodeConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToGkeNodeConfigPtrOutput() GkeNodeConfigPtrOutput
+	ToGkeNodeConfigPtrOutputWithContext(context.Context) GkeNodeConfigPtrOutput
+}
+
+type gkeNodeConfigPtrType GkeNodeConfigArgs
+
+func GkeNodeConfigPtr(v *GkeNodeConfigArgs) GkeNodeConfigPtrInput {
+	return (*gkeNodeConfigPtrType)(v)
+}
+
+func (*gkeNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodeConfig)(nil)).Elem()
+}
+
+func (i *gkeNodeConfigPtrType) ToGkeNodeConfigPtrOutput() GkeNodeConfigPtrOutput {
+	return i.ToGkeNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeNodeConfigPtrType) ToGkeNodeConfigPtrOutputWithContext(ctx context.Context) GkeNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodeConfigPtrOutput)
+}
+
+// Parameters that describe cluster nodes.
+type GkeNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodeConfig)(nil)).Elem()
+}
+
+func (o GkeNodeConfigOutput) ToGkeNodeConfigOutput() GkeNodeConfigOutput {
+	return o
+}
+
+func (o GkeNodeConfigOutput) ToGkeNodeConfigOutputWithContext(ctx context.Context) GkeNodeConfigOutput {
+	return o
+}
+
+func (o GkeNodeConfigOutput) ToGkeNodeConfigPtrOutput() GkeNodeConfigPtrOutput {
+	return o.ToGkeNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GkeNodeConfigOutput) ToGkeNodeConfigPtrOutputWithContext(ctx context.Context) GkeNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeNodeConfig) *GkeNodeConfig {
+		return &v
+	}).(GkeNodeConfigPtrOutput)
+}
+
+// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+func (o GkeNodeConfigOutput) Accelerators() GkeNodePoolAcceleratorConfigArrayOutput {
+	return o.ApplyT(func(v GkeNodeConfig) []GkeNodePoolAcceleratorConfig { return v.Accelerators }).(GkeNodePoolAcceleratorConfigArrayOutput)
+}
+
+// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+func (o GkeNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GkeNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+func (o GkeNodeConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNodeConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+func (o GkeNodeConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNodeConfig) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+func (o GkeNodeConfigOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GkeNodeConfig) *bool { return v.Preemptible }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o GkeNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GkeNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
+type GkeNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodeConfig)(nil)).Elem()
+}
+
+func (o GkeNodeConfigPtrOutput) ToGkeNodeConfigPtrOutput() GkeNodeConfigPtrOutput {
+	return o
+}
+
+func (o GkeNodeConfigPtrOutput) ToGkeNodeConfigPtrOutputWithContext(ctx context.Context) GkeNodeConfigPtrOutput {
+	return o
+}
+
+func (o GkeNodeConfigPtrOutput) Elem() GkeNodeConfigOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) GkeNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GkeNodeConfig
+		return ret
+	}).(GkeNodeConfigOutput)
+}
+
+// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+func (o GkeNodeConfigPtrOutput) Accelerators() GkeNodePoolAcceleratorConfigArrayOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) []GkeNodePoolAcceleratorConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(GkeNodePoolAcceleratorConfigArrayOutput)
+}
+
+// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+func (o GkeNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+func (o GkeNodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+func (o GkeNodeConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+func (o GkeNodeConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preemptible
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o GkeNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GkeNodeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Spot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Parameters that describe cluster nodes.
+type GkeNodeConfigResponse struct {
+	// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+	Accelerators []GkeNodePoolAcceleratorConfigResponse `pulumi:"accelerators"`
+	// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+	LocalSsdCount int `pulumi:"localSsdCount"`
+	// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+	MachineType string `pulumi:"machineType"`
+	// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+	MinCpuPlatform string `pulumi:"minCpuPlatform"`
+	// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible bool `pulumi:"preemptible"`
+	// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+	Spot bool `pulumi:"spot"`
+}
+
+// Parameters that describe cluster nodes.
+type GkeNodeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeNodeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodeConfigResponse)(nil)).Elem()
+}
+
+func (o GkeNodeConfigResponseOutput) ToGkeNodeConfigResponseOutput() GkeNodeConfigResponseOutput {
+	return o
+}
+
+func (o GkeNodeConfigResponseOutput) ToGkeNodeConfigResponseOutputWithContext(ctx context.Context) GkeNodeConfigResponseOutput {
+	return o
+}
+
+// Optional. A list of hardware accelerators (https://cloud.google.com/compute/docs/gpus) to attach to each node.
+func (o GkeNodeConfigResponseOutput) Accelerators() GkeNodePoolAcceleratorConfigResponseArrayOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) []GkeNodePoolAcceleratorConfigResponse { return v.Accelerators }).(GkeNodePoolAcceleratorConfigResponseArrayOutput)
+}
+
+// Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
+func (o GkeNodeConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+// Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
+func (o GkeNodeConfigResponseOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
+func (o GkeNodeConfigResponseOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+func (o GkeNodeConfigResponseOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+// Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
+func (o GkeNodeConfigResponseOutput) Spot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GkeNodeConfigResponse) bool { return v.Spot }).(pulumi.BoolOutput)
+}
+
+// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+type GkeNodePoolAcceleratorConfig struct {
+	// The number of accelerator cards exposed to an instance.
+	AcceleratorCount *string `pulumi:"acceleratorCount"`
+	// The accelerator type resource namename (see GPUs on Compute Engine).
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
+}
+
+// GkeNodePoolAcceleratorConfigInput is an input type that accepts GkeNodePoolAcceleratorConfigArgs and GkeNodePoolAcceleratorConfigOutput values.
+// You can construct a concrete instance of `GkeNodePoolAcceleratorConfigInput` via:
+//
+//          GkeNodePoolAcceleratorConfigArgs{...}
+type GkeNodePoolAcceleratorConfigInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolAcceleratorConfigOutput() GkeNodePoolAcceleratorConfigOutput
+	ToGkeNodePoolAcceleratorConfigOutputWithContext(context.Context) GkeNodePoolAcceleratorConfigOutput
+}
+
+// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+type GkeNodePoolAcceleratorConfigArgs struct {
+	// The number of accelerator cards exposed to an instance.
+	AcceleratorCount pulumi.StringPtrInput `pulumi:"acceleratorCount"`
+	// The accelerator type resource namename (see GPUs on Compute Engine).
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
+}
+
+func (GkeNodePoolAcceleratorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolAcceleratorConfig)(nil)).Elem()
+}
+
+func (i GkeNodePoolAcceleratorConfigArgs) ToGkeNodePoolAcceleratorConfigOutput() GkeNodePoolAcceleratorConfigOutput {
+	return i.ToGkeNodePoolAcceleratorConfigOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolAcceleratorConfigArgs) ToGkeNodePoolAcceleratorConfigOutputWithContext(ctx context.Context) GkeNodePoolAcceleratorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolAcceleratorConfigOutput)
+}
+
+// GkeNodePoolAcceleratorConfigArrayInput is an input type that accepts GkeNodePoolAcceleratorConfigArray and GkeNodePoolAcceleratorConfigArrayOutput values.
+// You can construct a concrete instance of `GkeNodePoolAcceleratorConfigArrayInput` via:
+//
+//          GkeNodePoolAcceleratorConfigArray{ GkeNodePoolAcceleratorConfigArgs{...} }
+type GkeNodePoolAcceleratorConfigArrayInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolAcceleratorConfigArrayOutput() GkeNodePoolAcceleratorConfigArrayOutput
+	ToGkeNodePoolAcceleratorConfigArrayOutputWithContext(context.Context) GkeNodePoolAcceleratorConfigArrayOutput
+}
+
+type GkeNodePoolAcceleratorConfigArray []GkeNodePoolAcceleratorConfigInput
+
+func (GkeNodePoolAcceleratorConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolAcceleratorConfig)(nil)).Elem()
+}
+
+func (i GkeNodePoolAcceleratorConfigArray) ToGkeNodePoolAcceleratorConfigArrayOutput() GkeNodePoolAcceleratorConfigArrayOutput {
+	return i.ToGkeNodePoolAcceleratorConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolAcceleratorConfigArray) ToGkeNodePoolAcceleratorConfigArrayOutputWithContext(ctx context.Context) GkeNodePoolAcceleratorConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolAcceleratorConfigArrayOutput)
+}
+
+// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+type GkeNodePoolAcceleratorConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAcceleratorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolAcceleratorConfig)(nil)).Elem()
+}
+
+func (o GkeNodePoolAcceleratorConfigOutput) ToGkeNodePoolAcceleratorConfigOutput() GkeNodePoolAcceleratorConfigOutput {
+	return o
+}
+
+func (o GkeNodePoolAcceleratorConfigOutput) ToGkeNodePoolAcceleratorConfigOutputWithContext(ctx context.Context) GkeNodePoolAcceleratorConfigOutput {
+	return o
+}
+
+// The number of accelerator cards exposed to an instance.
+func (o GkeNodePoolAcceleratorConfigOutput) AcceleratorCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolAcceleratorConfig) *string { return v.AcceleratorCount }).(pulumi.StringPtrOutput)
+}
+
+// The accelerator type resource namename (see GPUs on Compute Engine).
+func (o GkeNodePoolAcceleratorConfigOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolAcceleratorConfig) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+func (o GkeNodePoolAcceleratorConfigOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolAcceleratorConfig) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
+}
+
+type GkeNodePoolAcceleratorConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAcceleratorConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolAcceleratorConfig)(nil)).Elem()
+}
+
+func (o GkeNodePoolAcceleratorConfigArrayOutput) ToGkeNodePoolAcceleratorConfigArrayOutput() GkeNodePoolAcceleratorConfigArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolAcceleratorConfigArrayOutput) ToGkeNodePoolAcceleratorConfigArrayOutputWithContext(ctx context.Context) GkeNodePoolAcceleratorConfigArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolAcceleratorConfigArrayOutput) Index(i pulumi.IntInput) GkeNodePoolAcceleratorConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GkeNodePoolAcceleratorConfig {
+		return vs[0].([]GkeNodePoolAcceleratorConfig)[vs[1].(int)]
+	}).(GkeNodePoolAcceleratorConfigOutput)
+}
+
+// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+type GkeNodePoolAcceleratorConfigResponse struct {
+	// The number of accelerator cards exposed to an instance.
+	AcceleratorCount string `pulumi:"acceleratorCount"`
+	// The accelerator type resource namename (see GPUs on Compute Engine).
+	AcceleratorType string `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
+}
+
+// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+type GkeNodePoolAcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAcceleratorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolAcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o GkeNodePoolAcceleratorConfigResponseOutput) ToGkeNodePoolAcceleratorConfigResponseOutput() GkeNodePoolAcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o GkeNodePoolAcceleratorConfigResponseOutput) ToGkeNodePoolAcceleratorConfigResponseOutputWithContext(ctx context.Context) GkeNodePoolAcceleratorConfigResponseOutput {
+	return o
+}
+
+// The number of accelerator cards exposed to an instance.
+func (o GkeNodePoolAcceleratorConfigResponseOutput) AcceleratorCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodePoolAcceleratorConfigResponse) string { return v.AcceleratorCount }).(pulumi.StringOutput)
+}
+
+// The accelerator type resource namename (see GPUs on Compute Engine).
+func (o GkeNodePoolAcceleratorConfigResponseOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodePoolAcceleratorConfigResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+func (o GkeNodePoolAcceleratorConfigResponseOutput) GpuPartitionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodePoolAcceleratorConfigResponse) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
+}
+
+type GkeNodePoolAcceleratorConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAcceleratorConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolAcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o GkeNodePoolAcceleratorConfigResponseArrayOutput) ToGkeNodePoolAcceleratorConfigResponseArrayOutput() GkeNodePoolAcceleratorConfigResponseArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolAcceleratorConfigResponseArrayOutput) ToGkeNodePoolAcceleratorConfigResponseArrayOutputWithContext(ctx context.Context) GkeNodePoolAcceleratorConfigResponseArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolAcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) GkeNodePoolAcceleratorConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GkeNodePoolAcceleratorConfigResponse {
+		return vs[0].([]GkeNodePoolAcceleratorConfigResponse)[vs[1].(int)]
+	}).(GkeNodePoolAcceleratorConfigResponseOutput)
+}
+
+// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
+type GkeNodePoolAutoscalingConfig struct {
+	// The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+	MinNodeCount *int `pulumi:"minNodeCount"`
+}
+
+// GkeNodePoolAutoscalingConfigInput is an input type that accepts GkeNodePoolAutoscalingConfigArgs and GkeNodePoolAutoscalingConfigOutput values.
+// You can construct a concrete instance of `GkeNodePoolAutoscalingConfigInput` via:
+//
+//          GkeNodePoolAutoscalingConfigArgs{...}
+type GkeNodePoolAutoscalingConfigInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolAutoscalingConfigOutput() GkeNodePoolAutoscalingConfigOutput
+	ToGkeNodePoolAutoscalingConfigOutputWithContext(context.Context) GkeNodePoolAutoscalingConfigOutput
+}
+
+// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
+type GkeNodePoolAutoscalingConfigArgs struct {
+	// The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+}
+
+func (GkeNodePoolAutoscalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolAutoscalingConfig)(nil)).Elem()
+}
+
+func (i GkeNodePoolAutoscalingConfigArgs) ToGkeNodePoolAutoscalingConfigOutput() GkeNodePoolAutoscalingConfigOutput {
+	return i.ToGkeNodePoolAutoscalingConfigOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolAutoscalingConfigArgs) ToGkeNodePoolAutoscalingConfigOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolAutoscalingConfigOutput)
+}
+
+func (i GkeNodePoolAutoscalingConfigArgs) ToGkeNodePoolAutoscalingConfigPtrOutput() GkeNodePoolAutoscalingConfigPtrOutput {
+	return i.ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolAutoscalingConfigArgs) ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolAutoscalingConfigOutput).ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(ctx)
+}
+
+// GkeNodePoolAutoscalingConfigPtrInput is an input type that accepts GkeNodePoolAutoscalingConfigArgs, GkeNodePoolAutoscalingConfigPtr and GkeNodePoolAutoscalingConfigPtrOutput values.
+// You can construct a concrete instance of `GkeNodePoolAutoscalingConfigPtrInput` via:
+//
+//          GkeNodePoolAutoscalingConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeNodePoolAutoscalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolAutoscalingConfigPtrOutput() GkeNodePoolAutoscalingConfigPtrOutput
+	ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(context.Context) GkeNodePoolAutoscalingConfigPtrOutput
+}
+
+type gkeNodePoolAutoscalingConfigPtrType GkeNodePoolAutoscalingConfigArgs
+
+func GkeNodePoolAutoscalingConfigPtr(v *GkeNodePoolAutoscalingConfigArgs) GkeNodePoolAutoscalingConfigPtrInput {
+	return (*gkeNodePoolAutoscalingConfigPtrType)(v)
+}
+
+func (*gkeNodePoolAutoscalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodePoolAutoscalingConfig)(nil)).Elem()
+}
+
+func (i *gkeNodePoolAutoscalingConfigPtrType) ToGkeNodePoolAutoscalingConfigPtrOutput() GkeNodePoolAutoscalingConfigPtrOutput {
+	return i.ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeNodePoolAutoscalingConfigPtrType) ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolAutoscalingConfigPtrOutput)
+}
+
+// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
+type GkeNodePoolAutoscalingConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAutoscalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GkeNodePoolAutoscalingConfigOutput) ToGkeNodePoolAutoscalingConfigOutput() GkeNodePoolAutoscalingConfigOutput {
+	return o
+}
+
+func (o GkeNodePoolAutoscalingConfigOutput) ToGkeNodePoolAutoscalingConfigOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigOutput {
+	return o
+}
+
+func (o GkeNodePoolAutoscalingConfigOutput) ToGkeNodePoolAutoscalingConfigPtrOutput() GkeNodePoolAutoscalingConfigPtrOutput {
+	return o.ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GkeNodePoolAutoscalingConfigOutput) ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeNodePoolAutoscalingConfig) *GkeNodePoolAutoscalingConfig {
+		return &v
+	}).(GkeNodePoolAutoscalingConfigPtrOutput)
+}
+
+// The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+func (o GkeNodePoolAutoscalingConfigOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolAutoscalingConfig) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+func (o GkeNodePoolAutoscalingConfigOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolAutoscalingConfig) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+type GkeNodePoolAutoscalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAutoscalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodePoolAutoscalingConfig)(nil)).Elem()
+}
+
+func (o GkeNodePoolAutoscalingConfigPtrOutput) ToGkeNodePoolAutoscalingConfigPtrOutput() GkeNodePoolAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o GkeNodePoolAutoscalingConfigPtrOutput) ToGkeNodePoolAutoscalingConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigPtrOutput {
+	return o
+}
+
+func (o GkeNodePoolAutoscalingConfigPtrOutput) Elem() GkeNodePoolAutoscalingConfigOutput {
+	return o.ApplyT(func(v *GkeNodePoolAutoscalingConfig) GkeNodePoolAutoscalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GkeNodePoolAutoscalingConfig
+		return ret
+	}).(GkeNodePoolAutoscalingConfigOutput)
+}
+
+// The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+func (o GkeNodePoolAutoscalingConfigPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GkeNodePoolAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+func (o GkeNodePoolAutoscalingConfigPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GkeNodePoolAutoscalingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
+type GkeNodePoolAutoscalingConfigResponse struct {
+	// The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+	MinNodeCount int `pulumi:"minNodeCount"`
+}
+
+// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
+type GkeNodePoolAutoscalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolAutoscalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolAutoscalingConfigResponse)(nil)).Elem()
+}
+
+func (o GkeNodePoolAutoscalingConfigResponseOutput) ToGkeNodePoolAutoscalingConfigResponseOutput() GkeNodePoolAutoscalingConfigResponseOutput {
+	return o
+}
+
+func (o GkeNodePoolAutoscalingConfigResponseOutput) ToGkeNodePoolAutoscalingConfigResponseOutputWithContext(ctx context.Context) GkeNodePoolAutoscalingConfigResponseOutput {
+	return o
+}
+
+// The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+func (o GkeNodePoolAutoscalingConfigResponseOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GkeNodePoolAutoscalingConfigResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+func (o GkeNodePoolAutoscalingConfigResponseOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GkeNodePoolAutoscalingConfigResponse) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type GkeNodePoolConfig struct {
+	// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+	Autoscaling *GkeNodePoolAutoscalingConfig `pulumi:"autoscaling"`
+	// Optional. The node pool configuration.
+	Config *GkeNodeConfig `pulumi:"config"`
+	// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+	Locations []string `pulumi:"locations"`
+}
+
+// GkeNodePoolConfigInput is an input type that accepts GkeNodePoolConfigArgs and GkeNodePoolConfigOutput values.
+// You can construct a concrete instance of `GkeNodePoolConfigInput` via:
+//
+//          GkeNodePoolConfigArgs{...}
+type GkeNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolConfigOutput() GkeNodePoolConfigOutput
+	ToGkeNodePoolConfigOutputWithContext(context.Context) GkeNodePoolConfigOutput
+}
+
+// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type GkeNodePoolConfigArgs struct {
+	// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+	Autoscaling GkeNodePoolAutoscalingConfigPtrInput `pulumi:"autoscaling"`
+	// Optional. The node pool configuration.
+	Config GkeNodeConfigPtrInput `pulumi:"config"`
+	// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+	Locations pulumi.StringArrayInput `pulumi:"locations"`
+}
+
+func (GkeNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolConfig)(nil)).Elem()
+}
+
+func (i GkeNodePoolConfigArgs) ToGkeNodePoolConfigOutput() GkeNodePoolConfigOutput {
+	return i.ToGkeNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolConfigArgs) ToGkeNodePoolConfigOutputWithContext(ctx context.Context) GkeNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolConfigOutput)
+}
+
+func (i GkeNodePoolConfigArgs) ToGkeNodePoolConfigPtrOutput() GkeNodePoolConfigPtrOutput {
+	return i.ToGkeNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolConfigArgs) ToGkeNodePoolConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolConfigOutput).ToGkeNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// GkeNodePoolConfigPtrInput is an input type that accepts GkeNodePoolConfigArgs, GkeNodePoolConfigPtr and GkeNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `GkeNodePoolConfigPtrInput` via:
+//
+//          GkeNodePoolConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolConfigPtrOutput() GkeNodePoolConfigPtrOutput
+	ToGkeNodePoolConfigPtrOutputWithContext(context.Context) GkeNodePoolConfigPtrOutput
+}
+
+type gkeNodePoolConfigPtrType GkeNodePoolConfigArgs
+
+func GkeNodePoolConfigPtr(v *GkeNodePoolConfigArgs) GkeNodePoolConfigPtrInput {
+	return (*gkeNodePoolConfigPtrType)(v)
+}
+
+func (*gkeNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodePoolConfig)(nil)).Elem()
+}
+
+func (i *gkeNodePoolConfigPtrType) ToGkeNodePoolConfigPtrOutput() GkeNodePoolConfigPtrOutput {
+	return i.ToGkeNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeNodePoolConfigPtrType) ToGkeNodePoolConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolConfigPtrOutput)
+}
+
+// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type GkeNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolConfig)(nil)).Elem()
+}
+
+func (o GkeNodePoolConfigOutput) ToGkeNodePoolConfigOutput() GkeNodePoolConfigOutput {
+	return o
+}
+
+func (o GkeNodePoolConfigOutput) ToGkeNodePoolConfigOutputWithContext(ctx context.Context) GkeNodePoolConfigOutput {
+	return o
+}
+
+func (o GkeNodePoolConfigOutput) ToGkeNodePoolConfigPtrOutput() GkeNodePoolConfigPtrOutput {
+	return o.ToGkeNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GkeNodePoolConfigOutput) ToGkeNodePoolConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeNodePoolConfig) *GkeNodePoolConfig {
+		return &v
+	}).(GkeNodePoolConfigPtrOutput)
+}
+
+// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+func (o GkeNodePoolConfigOutput) Autoscaling() GkeNodePoolAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolConfig) *GkeNodePoolAutoscalingConfig { return v.Autoscaling }).(GkeNodePoolAutoscalingConfigPtrOutput)
+}
+
+// Optional. The node pool configuration.
+func (o GkeNodePoolConfigOutput) Config() GkeNodeConfigPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolConfig) *GkeNodeConfig { return v.Config }).(GkeNodeConfigPtrOutput)
+}
+
+// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+func (o GkeNodePoolConfigOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GkeNodePoolConfig) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+type GkeNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNodePoolConfig)(nil)).Elem()
+}
+
+func (o GkeNodePoolConfigPtrOutput) ToGkeNodePoolConfigPtrOutput() GkeNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o GkeNodePoolConfigPtrOutput) ToGkeNodePoolConfigPtrOutputWithContext(ctx context.Context) GkeNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o GkeNodePoolConfigPtrOutput) Elem() GkeNodePoolConfigOutput {
+	return o.ApplyT(func(v *GkeNodePoolConfig) GkeNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GkeNodePoolConfig
+		return ret
+	}).(GkeNodePoolConfigOutput)
+}
+
+// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+func (o GkeNodePoolConfigPtrOutput) Autoscaling() GkeNodePoolAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v *GkeNodePoolConfig) *GkeNodePoolAutoscalingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Autoscaling
+	}).(GkeNodePoolAutoscalingConfigPtrOutput)
+}
+
+// Optional. The node pool configuration.
+func (o GkeNodePoolConfigPtrOutput) Config() GkeNodeConfigPtrOutput {
+	return o.ApplyT(func(v *GkeNodePoolConfig) *GkeNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(GkeNodeConfigPtrOutput)
+}
+
+// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+func (o GkeNodePoolConfigPtrOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GkeNodePoolConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(pulumi.StringArrayOutput)
+}
+
+// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type GkeNodePoolConfigResponse struct {
+	// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+	Autoscaling GkeNodePoolAutoscalingConfigResponse `pulumi:"autoscaling"`
+	// Optional. The node pool configuration.
+	Config GkeNodeConfigResponse `pulumi:"config"`
+	// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+	Locations []string `pulumi:"locations"`
+}
+
+// The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type GkeNodePoolConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolConfigResponse)(nil)).Elem()
+}
+
+func (o GkeNodePoolConfigResponseOutput) ToGkeNodePoolConfigResponseOutput() GkeNodePoolConfigResponseOutput {
+	return o
+}
+
+func (o GkeNodePoolConfigResponseOutput) ToGkeNodePoolConfigResponseOutputWithContext(ctx context.Context) GkeNodePoolConfigResponseOutput {
+	return o
+}
+
+// Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+func (o GkeNodePoolConfigResponseOutput) Autoscaling() GkeNodePoolAutoscalingConfigResponseOutput {
+	return o.ApplyT(func(v GkeNodePoolConfigResponse) GkeNodePoolAutoscalingConfigResponse { return v.Autoscaling }).(GkeNodePoolAutoscalingConfigResponseOutput)
+}
+
+// Optional. The node pool configuration.
+func (o GkeNodePoolConfigResponseOutput) Config() GkeNodeConfigResponseOutput {
+	return o.ApplyT(func(v GkeNodePoolConfigResponse) GkeNodeConfigResponse { return v.Config }).(GkeNodeConfigResponseOutput)
+}
+
+// Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+func (o GkeNodePoolConfigResponseOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GkeNodePoolConfigResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// GKE NodePools that Dataproc workloads run on.
+type GkeNodePoolTarget struct {
+	// The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+	NodePool string `pulumi:"nodePool"`
+	// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+	NodePoolConfig *GkeNodePoolConfig `pulumi:"nodePoolConfig"`
+	// The types of role for a GKE NodePool
+	Roles []GkeNodePoolTargetRolesItem `pulumi:"roles"`
+}
+
+// GkeNodePoolTargetInput is an input type that accepts GkeNodePoolTargetArgs and GkeNodePoolTargetOutput values.
+// You can construct a concrete instance of `GkeNodePoolTargetInput` via:
+//
+//          GkeNodePoolTargetArgs{...}
+type GkeNodePoolTargetInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolTargetOutput() GkeNodePoolTargetOutput
+	ToGkeNodePoolTargetOutputWithContext(context.Context) GkeNodePoolTargetOutput
+}
+
+// GKE NodePools that Dataproc workloads run on.
+type GkeNodePoolTargetArgs struct {
+	// The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+	NodePool pulumi.StringInput `pulumi:"nodePool"`
+	// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+	NodePoolConfig GkeNodePoolConfigPtrInput `pulumi:"nodePoolConfig"`
+	// The types of role for a GKE NodePool
+	Roles GkeNodePoolTargetRolesItemArrayInput `pulumi:"roles"`
+}
+
+func (GkeNodePoolTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolTarget)(nil)).Elem()
+}
+
+func (i GkeNodePoolTargetArgs) ToGkeNodePoolTargetOutput() GkeNodePoolTargetOutput {
+	return i.ToGkeNodePoolTargetOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolTargetArgs) ToGkeNodePoolTargetOutputWithContext(ctx context.Context) GkeNodePoolTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolTargetOutput)
+}
+
+// GkeNodePoolTargetArrayInput is an input type that accepts GkeNodePoolTargetArray and GkeNodePoolTargetArrayOutput values.
+// You can construct a concrete instance of `GkeNodePoolTargetArrayInput` via:
+//
+//          GkeNodePoolTargetArray{ GkeNodePoolTargetArgs{...} }
+type GkeNodePoolTargetArrayInput interface {
+	pulumi.Input
+
+	ToGkeNodePoolTargetArrayOutput() GkeNodePoolTargetArrayOutput
+	ToGkeNodePoolTargetArrayOutputWithContext(context.Context) GkeNodePoolTargetArrayOutput
+}
+
+type GkeNodePoolTargetArray []GkeNodePoolTargetInput
+
+func (GkeNodePoolTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolTarget)(nil)).Elem()
+}
+
+func (i GkeNodePoolTargetArray) ToGkeNodePoolTargetArrayOutput() GkeNodePoolTargetArrayOutput {
+	return i.ToGkeNodePoolTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GkeNodePoolTargetArray) ToGkeNodePoolTargetArrayOutputWithContext(ctx context.Context) GkeNodePoolTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNodePoolTargetArrayOutput)
+}
+
+// GKE NodePools that Dataproc workloads run on.
+type GkeNodePoolTargetOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolTarget)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetOutput) ToGkeNodePoolTargetOutput() GkeNodePoolTargetOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetOutput) ToGkeNodePoolTargetOutputWithContext(ctx context.Context) GkeNodePoolTargetOutput {
+	return o
+}
+
+// The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+func (o GkeNodePoolTargetOutput) NodePool() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodePoolTarget) string { return v.NodePool }).(pulumi.StringOutput)
+}
+
+// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+func (o GkeNodePoolTargetOutput) NodePoolConfig() GkeNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v GkeNodePoolTarget) *GkeNodePoolConfig { return v.NodePoolConfig }).(GkeNodePoolConfigPtrOutput)
+}
+
+// The types of role for a GKE NodePool
+func (o GkeNodePoolTargetOutput) Roles() GkeNodePoolTargetRolesItemArrayOutput {
+	return o.ApplyT(func(v GkeNodePoolTarget) []GkeNodePoolTargetRolesItem { return v.Roles }).(GkeNodePoolTargetRolesItemArrayOutput)
+}
+
+type GkeNodePoolTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolTarget)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetArrayOutput) ToGkeNodePoolTargetArrayOutput() GkeNodePoolTargetArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetArrayOutput) ToGkeNodePoolTargetArrayOutputWithContext(ctx context.Context) GkeNodePoolTargetArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetArrayOutput) Index(i pulumi.IntInput) GkeNodePoolTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GkeNodePoolTarget {
+		return vs[0].([]GkeNodePoolTarget)[vs[1].(int)]
+	}).(GkeNodePoolTargetOutput)
+}
+
+// GKE NodePools that Dataproc workloads run on.
+type GkeNodePoolTargetResponse struct {
+	// The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+	NodePool string `pulumi:"nodePool"`
+	// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+	NodePoolConfig GkeNodePoolConfigResponse `pulumi:"nodePoolConfig"`
+	// The types of role for a GKE NodePool
+	Roles []string `pulumi:"roles"`
+}
+
+// GKE NodePools that Dataproc workloads run on.
+type GkeNodePoolTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNodePoolTargetResponse)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetResponseOutput) ToGkeNodePoolTargetResponseOutput() GkeNodePoolTargetResponseOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetResponseOutput) ToGkeNodePoolTargetResponseOutputWithContext(ctx context.Context) GkeNodePoolTargetResponseOutput {
+	return o
+}
+
+// The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+func (o GkeNodePoolTargetResponseOutput) NodePool() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNodePoolTargetResponse) string { return v.NodePool }).(pulumi.StringOutput)
+}
+
+// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+func (o GkeNodePoolTargetResponseOutput) NodePoolConfig() GkeNodePoolConfigResponseOutput {
+	return o.ApplyT(func(v GkeNodePoolTargetResponse) GkeNodePoolConfigResponse { return v.NodePoolConfig }).(GkeNodePoolConfigResponseOutput)
+}
+
+// The types of role for a GKE NodePool
+func (o GkeNodePoolTargetResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GkeNodePoolTargetResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+type GkeNodePoolTargetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GkeNodePoolTargetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GkeNodePoolTargetResponse)(nil)).Elem()
+}
+
+func (o GkeNodePoolTargetResponseArrayOutput) ToGkeNodePoolTargetResponseArrayOutput() GkeNodePoolTargetResponseArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetResponseArrayOutput) ToGkeNodePoolTargetResponseArrayOutputWithContext(ctx context.Context) GkeNodePoolTargetResponseArrayOutput {
+	return o
+}
+
+func (o GkeNodePoolTargetResponseArrayOutput) Index(i pulumi.IntInput) GkeNodePoolTargetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GkeNodePoolTargetResponse {
+		return vs[0].([]GkeNodePoolTargetResponse)[vs[1].(int)]
+	}).(GkeNodePoolTargetResponseOutput)
 }
 
 // A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
@@ -6653,6 +7985,418 @@ func (o KerberosConfigResponseOutput) TruststoreUri() pulumi.StringOutput {
 	return o.ApplyT(func(v KerberosConfigResponse) string { return v.TruststoreUri }).(pulumi.StringOutput)
 }
 
+// The configuration for running the Dataproc cluster on Kubernetes.
+type KubernetesClusterConfig struct {
+	// The configuration for running the Dataproc cluster on GKE.
+	GkeClusterConfig GkeClusterConfig `pulumi:"gkeClusterConfig"`
+	// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
+	KubernetesNamespace *string `pulumi:"kubernetesNamespace"`
+	// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
+	KubernetesSoftwareConfig *KubernetesSoftwareConfig `pulumi:"kubernetesSoftwareConfig"`
+}
+
+// KubernetesClusterConfigInput is an input type that accepts KubernetesClusterConfigArgs and KubernetesClusterConfigOutput values.
+// You can construct a concrete instance of `KubernetesClusterConfigInput` via:
+//
+//          KubernetesClusterConfigArgs{...}
+type KubernetesClusterConfigInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterConfigOutput() KubernetesClusterConfigOutput
+	ToKubernetesClusterConfigOutputWithContext(context.Context) KubernetesClusterConfigOutput
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+type KubernetesClusterConfigArgs struct {
+	// The configuration for running the Dataproc cluster on GKE.
+	GkeClusterConfig GkeClusterConfigInput `pulumi:"gkeClusterConfig"`
+	// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
+	KubernetesNamespace pulumi.StringPtrInput `pulumi:"kubernetesNamespace"`
+	// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
+	KubernetesSoftwareConfig KubernetesSoftwareConfigPtrInput `pulumi:"kubernetesSoftwareConfig"`
+}
+
+func (KubernetesClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterConfig)(nil)).Elem()
+}
+
+func (i KubernetesClusterConfigArgs) ToKubernetesClusterConfigOutput() KubernetesClusterConfigOutput {
+	return i.ToKubernetesClusterConfigOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterConfigArgs) ToKubernetesClusterConfigOutputWithContext(ctx context.Context) KubernetesClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterConfigOutput)
+}
+
+func (i KubernetesClusterConfigArgs) ToKubernetesClusterConfigPtrOutput() KubernetesClusterConfigPtrOutput {
+	return i.ToKubernetesClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterConfigArgs) ToKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) KubernetesClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterConfigOutput).ToKubernetesClusterConfigPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterConfigPtrInput is an input type that accepts KubernetesClusterConfigArgs, KubernetesClusterConfigPtr and KubernetesClusterConfigPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterConfigPtrInput` via:
+//
+//          KubernetesClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterConfigPtrOutput() KubernetesClusterConfigPtrOutput
+	ToKubernetesClusterConfigPtrOutputWithContext(context.Context) KubernetesClusterConfigPtrOutput
+}
+
+type kubernetesClusterConfigPtrType KubernetesClusterConfigArgs
+
+func KubernetesClusterConfigPtr(v *KubernetesClusterConfigArgs) KubernetesClusterConfigPtrInput {
+	return (*kubernetesClusterConfigPtrType)(v)
+}
+
+func (*kubernetesClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterConfig)(nil)).Elem()
+}
+
+func (i *kubernetesClusterConfigPtrType) ToKubernetesClusterConfigPtrOutput() KubernetesClusterConfigPtrOutput {
+	return i.ToKubernetesClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterConfigPtrType) ToKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) KubernetesClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+type KubernetesClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterConfig)(nil)).Elem()
+}
+
+func (o KubernetesClusterConfigOutput) ToKubernetesClusterConfigOutput() KubernetesClusterConfigOutput {
+	return o
+}
+
+func (o KubernetesClusterConfigOutput) ToKubernetesClusterConfigOutputWithContext(ctx context.Context) KubernetesClusterConfigOutput {
+	return o
+}
+
+func (o KubernetesClusterConfigOutput) ToKubernetesClusterConfigPtrOutput() KubernetesClusterConfigPtrOutput {
+	return o.ToKubernetesClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterConfigOutput) ToKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) KubernetesClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterConfig) *KubernetesClusterConfig {
+		return &v
+	}).(KubernetesClusterConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on GKE.
+func (o KubernetesClusterConfigOutput) GkeClusterConfig() GkeClusterConfigOutput {
+	return o.ApplyT(func(v KubernetesClusterConfig) GkeClusterConfig { return v.GkeClusterConfig }).(GkeClusterConfigOutput)
+}
+
+// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
+func (o KubernetesClusterConfigOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterConfig) *string { return v.KubernetesNamespace }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
+func (o KubernetesClusterConfigOutput) KubernetesSoftwareConfig() KubernetesSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterConfig) *KubernetesSoftwareConfig { return v.KubernetesSoftwareConfig }).(KubernetesSoftwareConfigPtrOutput)
+}
+
+type KubernetesClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterConfig)(nil)).Elem()
+}
+
+func (o KubernetesClusterConfigPtrOutput) ToKubernetesClusterConfigPtrOutput() KubernetesClusterConfigPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterConfigPtrOutput) ToKubernetesClusterConfigPtrOutputWithContext(ctx context.Context) KubernetesClusterConfigPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterConfigPtrOutput) Elem() KubernetesClusterConfigOutput {
+	return o.ApplyT(func(v *KubernetesClusterConfig) KubernetesClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterConfig
+		return ret
+	}).(KubernetesClusterConfigOutput)
+}
+
+// The configuration for running the Dataproc cluster on GKE.
+func (o KubernetesClusterConfigPtrOutput) GkeClusterConfig() GkeClusterConfigPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterConfig) *GkeClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.GkeClusterConfig
+	}).(GkeClusterConfigPtrOutput)
+}
+
+// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
+func (o KubernetesClusterConfigPtrOutput) KubernetesNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesNamespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
+func (o KubernetesClusterConfigPtrOutput) KubernetesSoftwareConfig() KubernetesSoftwareConfigPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterConfig) *KubernetesSoftwareConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KubernetesSoftwareConfig
+	}).(KubernetesSoftwareConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+type KubernetesClusterConfigResponse struct {
+	// The configuration for running the Dataproc cluster on GKE.
+	GkeClusterConfig GkeClusterConfigResponse `pulumi:"gkeClusterConfig"`
+	// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
+	KubernetesNamespace string `pulumi:"kubernetesNamespace"`
+	// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
+	KubernetesSoftwareConfig KubernetesSoftwareConfigResponse `pulumi:"kubernetesSoftwareConfig"`
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+type KubernetesClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterConfigResponse)(nil)).Elem()
+}
+
+func (o KubernetesClusterConfigResponseOutput) ToKubernetesClusterConfigResponseOutput() KubernetesClusterConfigResponseOutput {
+	return o
+}
+
+func (o KubernetesClusterConfigResponseOutput) ToKubernetesClusterConfigResponseOutputWithContext(ctx context.Context) KubernetesClusterConfigResponseOutput {
+	return o
+}
+
+// The configuration for running the Dataproc cluster on GKE.
+func (o KubernetesClusterConfigResponseOutput) GkeClusterConfig() GkeClusterConfigResponseOutput {
+	return o.ApplyT(func(v KubernetesClusterConfigResponse) GkeClusterConfigResponse { return v.GkeClusterConfig }).(GkeClusterConfigResponseOutput)
+}
+
+// Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used.
+func (o KubernetesClusterConfigResponseOutput) KubernetesNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v KubernetesClusterConfigResponse) string { return v.KubernetesNamespace }).(pulumi.StringOutput)
+}
+
+// Optional. The software configuration for this Dataproc cluster running on Kubernetes.
+func (o KubernetesClusterConfigResponseOutput) KubernetesSoftwareConfig() KubernetesSoftwareConfigResponseOutput {
+	return o.ApplyT(func(v KubernetesClusterConfigResponse) KubernetesSoftwareConfigResponse {
+		return v.KubernetesSoftwareConfig
+	}).(KubernetesSoftwareConfigResponseOutput)
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+type KubernetesSoftwareConfig struct {
+	// The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+	ComponentVersion map[string]string `pulumi:"componentVersion"`
+	// The properties to set on daemon config files.Property keys are specified in prefix:property format, for example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings: spark: spark-defaults.confFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// KubernetesSoftwareConfigInput is an input type that accepts KubernetesSoftwareConfigArgs and KubernetesSoftwareConfigOutput values.
+// You can construct a concrete instance of `KubernetesSoftwareConfigInput` via:
+//
+//          KubernetesSoftwareConfigArgs{...}
+type KubernetesSoftwareConfigInput interface {
+	pulumi.Input
+
+	ToKubernetesSoftwareConfigOutput() KubernetesSoftwareConfigOutput
+	ToKubernetesSoftwareConfigOutputWithContext(context.Context) KubernetesSoftwareConfigOutput
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+type KubernetesSoftwareConfigArgs struct {
+	// The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+	ComponentVersion pulumi.StringMapInput `pulumi:"componentVersion"`
+	// The properties to set on daemon config files.Property keys are specified in prefix:property format, for example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings: spark: spark-defaults.confFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+}
+
+func (KubernetesSoftwareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (i KubernetesSoftwareConfigArgs) ToKubernetesSoftwareConfigOutput() KubernetesSoftwareConfigOutput {
+	return i.ToKubernetesSoftwareConfigOutputWithContext(context.Background())
+}
+
+func (i KubernetesSoftwareConfigArgs) ToKubernetesSoftwareConfigOutputWithContext(ctx context.Context) KubernetesSoftwareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesSoftwareConfigOutput)
+}
+
+func (i KubernetesSoftwareConfigArgs) ToKubernetesSoftwareConfigPtrOutput() KubernetesSoftwareConfigPtrOutput {
+	return i.ToKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesSoftwareConfigArgs) ToKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) KubernetesSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesSoftwareConfigOutput).ToKubernetesSoftwareConfigPtrOutputWithContext(ctx)
+}
+
+// KubernetesSoftwareConfigPtrInput is an input type that accepts KubernetesSoftwareConfigArgs, KubernetesSoftwareConfigPtr and KubernetesSoftwareConfigPtrOutput values.
+// You can construct a concrete instance of `KubernetesSoftwareConfigPtrInput` via:
+//
+//          KubernetesSoftwareConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type KubernetesSoftwareConfigPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesSoftwareConfigPtrOutput() KubernetesSoftwareConfigPtrOutput
+	ToKubernetesSoftwareConfigPtrOutputWithContext(context.Context) KubernetesSoftwareConfigPtrOutput
+}
+
+type kubernetesSoftwareConfigPtrType KubernetesSoftwareConfigArgs
+
+func KubernetesSoftwareConfigPtr(v *KubernetesSoftwareConfigArgs) KubernetesSoftwareConfigPtrInput {
+	return (*kubernetesSoftwareConfigPtrType)(v)
+}
+
+func (*kubernetesSoftwareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (i *kubernetesSoftwareConfigPtrType) ToKubernetesSoftwareConfigPtrOutput() KubernetesSoftwareConfigPtrOutput {
+	return i.ToKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesSoftwareConfigPtrType) ToKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) KubernetesSoftwareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesSoftwareConfigPtrOutput)
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+type KubernetesSoftwareConfigOutput struct{ *pulumi.OutputState }
+
+func (KubernetesSoftwareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (o KubernetesSoftwareConfigOutput) ToKubernetesSoftwareConfigOutput() KubernetesSoftwareConfigOutput {
+	return o
+}
+
+func (o KubernetesSoftwareConfigOutput) ToKubernetesSoftwareConfigOutputWithContext(ctx context.Context) KubernetesSoftwareConfigOutput {
+	return o
+}
+
+func (o KubernetesSoftwareConfigOutput) ToKubernetesSoftwareConfigPtrOutput() KubernetesSoftwareConfigPtrOutput {
+	return o.ToKubernetesSoftwareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesSoftwareConfigOutput) ToKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) KubernetesSoftwareConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesSoftwareConfig) *KubernetesSoftwareConfig {
+		return &v
+	}).(KubernetesSoftwareConfigPtrOutput)
+}
+
+// The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+func (o KubernetesSoftwareConfigOutput) ComponentVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v KubernetesSoftwareConfig) map[string]string { return v.ComponentVersion }).(pulumi.StringMapOutput)
+}
+
+// The properties to set on daemon config files.Property keys are specified in prefix:property format, for example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings: spark: spark-defaults.confFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o KubernetesSoftwareConfigOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v KubernetesSoftwareConfig) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type KubernetesSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesSoftwareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesSoftwareConfig)(nil)).Elem()
+}
+
+func (o KubernetesSoftwareConfigPtrOutput) ToKubernetesSoftwareConfigPtrOutput() KubernetesSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o KubernetesSoftwareConfigPtrOutput) ToKubernetesSoftwareConfigPtrOutputWithContext(ctx context.Context) KubernetesSoftwareConfigPtrOutput {
+	return o
+}
+
+func (o KubernetesSoftwareConfigPtrOutput) Elem() KubernetesSoftwareConfigOutput {
+	return o.ApplyT(func(v *KubernetesSoftwareConfig) KubernetesSoftwareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesSoftwareConfig
+		return ret
+	}).(KubernetesSoftwareConfigOutput)
+}
+
+// The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+func (o KubernetesSoftwareConfigPtrOutput) ComponentVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KubernetesSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ComponentVersion
+	}).(pulumi.StringMapOutput)
+}
+
+// The properties to set on daemon config files.Property keys are specified in prefix:property format, for example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings: spark: spark-defaults.confFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o KubernetesSoftwareConfigPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *KubernetesSoftwareConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+type KubernetesSoftwareConfigResponse struct {
+	// The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+	ComponentVersion map[string]string `pulumi:"componentVersion"`
+	// The properties to set on daemon config files.Property keys are specified in prefix:property format, for example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings: spark: spark-defaults.confFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+	Properties map[string]string `pulumi:"properties"`
+}
+
+// The software configuration for this Dataproc cluster running on Kubernetes.
+type KubernetesSoftwareConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesSoftwareConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesSoftwareConfigResponse)(nil)).Elem()
+}
+
+func (o KubernetesSoftwareConfigResponseOutput) ToKubernetesSoftwareConfigResponseOutput() KubernetesSoftwareConfigResponseOutput {
+	return o
+}
+
+func (o KubernetesSoftwareConfigResponseOutput) ToKubernetesSoftwareConfigResponseOutputWithContext(ctx context.Context) KubernetesSoftwareConfigResponseOutput {
+	return o
+}
+
+// The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified.
+func (o KubernetesSoftwareConfigResponseOutput) ComponentVersion() pulumi.StringMapOutput {
+	return o.ApplyT(func(v KubernetesSoftwareConfigResponse) map[string]string { return v.ComponentVersion }).(pulumi.StringMapOutput)
+}
+
+// The properties to set on daemon config files.Property keys are specified in prefix:property format, for example spark:spark.kubernetes.container.image. The following are supported prefixes and their mappings: spark: spark-defaults.confFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+func (o KubernetesSoftwareConfigResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v KubernetesSoftwareConfigResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
 // Specifies the cluster auto-delete schedule configuration.
 type LifecycleConfig struct {
 	// Optional. The time when cluster will be auto-deleted (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -7623,7 +9367,7 @@ func (o MetricResponseArrayOutput) Index(i pulumi.IntInput) MetricResponseOutput
 	}).(MetricResponseOutput)
 }
 
-// A full, namespace-isolated deployment target for an existing GKE cluster.
+// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
 type NamespacedGkeDeploymentTarget struct {
 	// Optional. A namespace within the GKE cluster to deploy into.
 	ClusterNamespace *string `pulumi:"clusterNamespace"`
@@ -7642,7 +9386,7 @@ type NamespacedGkeDeploymentTargetInput interface {
 	ToNamespacedGkeDeploymentTargetOutputWithContext(context.Context) NamespacedGkeDeploymentTargetOutput
 }
 
-// A full, namespace-isolated deployment target for an existing GKE cluster.
+// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
 type NamespacedGkeDeploymentTargetArgs struct {
 	// Optional. A namespace within the GKE cluster to deploy into.
 	ClusterNamespace pulumi.StringPtrInput `pulumi:"clusterNamespace"`
@@ -7703,7 +9447,7 @@ func (i *namespacedGkeDeploymentTargetPtrType) ToNamespacedGkeDeploymentTargetPt
 	return pulumi.ToOutputWithContext(ctx, i).(NamespacedGkeDeploymentTargetPtrOutput)
 }
 
-// A full, namespace-isolated deployment target for an existing GKE cluster.
+// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
 type NamespacedGkeDeploymentTargetOutput struct{ *pulumi.OutputState }
 
 func (NamespacedGkeDeploymentTargetOutput) ElementType() reflect.Type {
@@ -7782,7 +9526,7 @@ func (o NamespacedGkeDeploymentTargetPtrOutput) TargetGkeCluster() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// A full, namespace-isolated deployment target for an existing GKE cluster.
+// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
 type NamespacedGkeDeploymentTargetResponse struct {
 	// Optional. A namespace within the GKE cluster to deploy into.
 	ClusterNamespace string `pulumi:"clusterNamespace"`
@@ -7790,7 +9534,7 @@ type NamespacedGkeDeploymentTargetResponse struct {
 	TargetGkeCluster string `pulumi:"targetGkeCluster"`
 }
 
-// A full, namespace-isolated deployment target for an existing GKE cluster.
+// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
 type NamespacedGkeDeploymentTargetResponseOutput struct{ *pulumi.OutputState }
 
 func (NamespacedGkeDeploymentTargetResponseOutput) ElementType() reflect.Type {
@@ -14129,6 +15873,224 @@ func (o ValueValidationResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ValueValidationResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
+// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type VirtualClusterConfig struct {
+	// Optional. Configuration of auxiliary services used by this cluster.
+	AuxiliaryServicesConfig *AuxiliaryServicesConfig `pulumi:"auxiliaryServicesConfig"`
+	// The configuration for running the Dataproc cluster on Kubernetes.
+	KubernetesClusterConfig KubernetesClusterConfig `pulumi:"kubernetesClusterConfig"`
+	// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+	StagingBucket *string `pulumi:"stagingBucket"`
+}
+
+// VirtualClusterConfigInput is an input type that accepts VirtualClusterConfigArgs and VirtualClusterConfigOutput values.
+// You can construct a concrete instance of `VirtualClusterConfigInput` via:
+//
+//          VirtualClusterConfigArgs{...}
+type VirtualClusterConfigInput interface {
+	pulumi.Input
+
+	ToVirtualClusterConfigOutput() VirtualClusterConfigOutput
+	ToVirtualClusterConfigOutputWithContext(context.Context) VirtualClusterConfigOutput
+}
+
+// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type VirtualClusterConfigArgs struct {
+	// Optional. Configuration of auxiliary services used by this cluster.
+	AuxiliaryServicesConfig AuxiliaryServicesConfigPtrInput `pulumi:"auxiliaryServicesConfig"`
+	// The configuration for running the Dataproc cluster on Kubernetes.
+	KubernetesClusterConfig KubernetesClusterConfigInput `pulumi:"kubernetesClusterConfig"`
+	// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
+}
+
+func (VirtualClusterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualClusterConfig)(nil)).Elem()
+}
+
+func (i VirtualClusterConfigArgs) ToVirtualClusterConfigOutput() VirtualClusterConfigOutput {
+	return i.ToVirtualClusterConfigOutputWithContext(context.Background())
+}
+
+func (i VirtualClusterConfigArgs) ToVirtualClusterConfigOutputWithContext(ctx context.Context) VirtualClusterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualClusterConfigOutput)
+}
+
+func (i VirtualClusterConfigArgs) ToVirtualClusterConfigPtrOutput() VirtualClusterConfigPtrOutput {
+	return i.ToVirtualClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualClusterConfigArgs) ToVirtualClusterConfigPtrOutputWithContext(ctx context.Context) VirtualClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualClusterConfigOutput).ToVirtualClusterConfigPtrOutputWithContext(ctx)
+}
+
+// VirtualClusterConfigPtrInput is an input type that accepts VirtualClusterConfigArgs, VirtualClusterConfigPtr and VirtualClusterConfigPtrOutput values.
+// You can construct a concrete instance of `VirtualClusterConfigPtrInput` via:
+//
+//          VirtualClusterConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type VirtualClusterConfigPtrInput interface {
+	pulumi.Input
+
+	ToVirtualClusterConfigPtrOutput() VirtualClusterConfigPtrOutput
+	ToVirtualClusterConfigPtrOutputWithContext(context.Context) VirtualClusterConfigPtrOutput
+}
+
+type virtualClusterConfigPtrType VirtualClusterConfigArgs
+
+func VirtualClusterConfigPtr(v *VirtualClusterConfigArgs) VirtualClusterConfigPtrInput {
+	return (*virtualClusterConfigPtrType)(v)
+}
+
+func (*virtualClusterConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualClusterConfig)(nil)).Elem()
+}
+
+func (i *virtualClusterConfigPtrType) ToVirtualClusterConfigPtrOutput() VirtualClusterConfigPtrOutput {
+	return i.ToVirtualClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualClusterConfigPtrType) ToVirtualClusterConfigPtrOutputWithContext(ctx context.Context) VirtualClusterConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualClusterConfigPtrOutput)
+}
+
+// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type VirtualClusterConfigOutput struct{ *pulumi.OutputState }
+
+func (VirtualClusterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualClusterConfig)(nil)).Elem()
+}
+
+func (o VirtualClusterConfigOutput) ToVirtualClusterConfigOutput() VirtualClusterConfigOutput {
+	return o
+}
+
+func (o VirtualClusterConfigOutput) ToVirtualClusterConfigOutputWithContext(ctx context.Context) VirtualClusterConfigOutput {
+	return o
+}
+
+func (o VirtualClusterConfigOutput) ToVirtualClusterConfigPtrOutput() VirtualClusterConfigPtrOutput {
+	return o.ToVirtualClusterConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualClusterConfigOutput) ToVirtualClusterConfigPtrOutputWithContext(ctx context.Context) VirtualClusterConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualClusterConfig) *VirtualClusterConfig {
+		return &v
+	}).(VirtualClusterConfigPtrOutput)
+}
+
+// Optional. Configuration of auxiliary services used by this cluster.
+func (o VirtualClusterConfigOutput) AuxiliaryServicesConfig() AuxiliaryServicesConfigPtrOutput {
+	return o.ApplyT(func(v VirtualClusterConfig) *AuxiliaryServicesConfig { return v.AuxiliaryServicesConfig }).(AuxiliaryServicesConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+func (o VirtualClusterConfigOutput) KubernetesClusterConfig() KubernetesClusterConfigOutput {
+	return o.ApplyT(func(v VirtualClusterConfig) KubernetesClusterConfig { return v.KubernetesClusterConfig }).(KubernetesClusterConfigOutput)
+}
+
+// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+func (o VirtualClusterConfigOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualClusterConfig) *string { return v.StagingBucket }).(pulumi.StringPtrOutput)
+}
+
+type VirtualClusterConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualClusterConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualClusterConfig)(nil)).Elem()
+}
+
+func (o VirtualClusterConfigPtrOutput) ToVirtualClusterConfigPtrOutput() VirtualClusterConfigPtrOutput {
+	return o
+}
+
+func (o VirtualClusterConfigPtrOutput) ToVirtualClusterConfigPtrOutputWithContext(ctx context.Context) VirtualClusterConfigPtrOutput {
+	return o
+}
+
+func (o VirtualClusterConfigPtrOutput) Elem() VirtualClusterConfigOutput {
+	return o.ApplyT(func(v *VirtualClusterConfig) VirtualClusterConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualClusterConfig
+		return ret
+	}).(VirtualClusterConfigOutput)
+}
+
+// Optional. Configuration of auxiliary services used by this cluster.
+func (o VirtualClusterConfigPtrOutput) AuxiliaryServicesConfig() AuxiliaryServicesConfigPtrOutput {
+	return o.ApplyT(func(v *VirtualClusterConfig) *AuxiliaryServicesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryServicesConfig
+	}).(AuxiliaryServicesConfigPtrOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+func (o VirtualClusterConfigPtrOutput) KubernetesClusterConfig() KubernetesClusterConfigPtrOutput {
+	return o.ApplyT(func(v *VirtualClusterConfig) *KubernetesClusterConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.KubernetesClusterConfig
+	}).(KubernetesClusterConfigPtrOutput)
+}
+
+// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+func (o VirtualClusterConfigPtrOutput) StagingBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StagingBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type VirtualClusterConfigResponse struct {
+	// Optional. Configuration of auxiliary services used by this cluster.
+	AuxiliaryServicesConfig AuxiliaryServicesConfigResponse `pulumi:"auxiliaryServicesConfig"`
+	// The configuration for running the Dataproc cluster on Kubernetes.
+	KubernetesClusterConfig KubernetesClusterConfigResponse `pulumi:"kubernetesClusterConfig"`
+	// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+	StagingBucket string `pulumi:"stagingBucket"`
+}
+
+// Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+type VirtualClusterConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualClusterConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualClusterConfigResponse)(nil)).Elem()
+}
+
+func (o VirtualClusterConfigResponseOutput) ToVirtualClusterConfigResponseOutput() VirtualClusterConfigResponseOutput {
+	return o
+}
+
+func (o VirtualClusterConfigResponseOutput) ToVirtualClusterConfigResponseOutputWithContext(ctx context.Context) VirtualClusterConfigResponseOutput {
+	return o
+}
+
+// Optional. Configuration of auxiliary services used by this cluster.
+func (o VirtualClusterConfigResponseOutput) AuxiliaryServicesConfig() AuxiliaryServicesConfigResponseOutput {
+	return o.ApplyT(func(v VirtualClusterConfigResponse) AuxiliaryServicesConfigResponse { return v.AuxiliaryServicesConfig }).(AuxiliaryServicesConfigResponseOutput)
+}
+
+// The configuration for running the Dataproc cluster on Kubernetes.
+func (o VirtualClusterConfigResponseOutput) KubernetesClusterConfig() KubernetesClusterConfigResponseOutput {
+	return o.ApplyT(func(v VirtualClusterConfigResponse) KubernetesClusterConfigResponse { return v.KubernetesClusterConfig }).(KubernetesClusterConfigResponseOutput)
+}
+
+// Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+func (o VirtualClusterConfigResponseOutput) StagingBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualClusterConfigResponse) string { return v.StagingBucket }).(pulumi.StringOutput)
+}
+
 // Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
 type WorkflowTemplatePlacement struct {
 	// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
@@ -14298,6 +16260,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigArrayInput)(nil)).Elem(), AcceleratorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigInput)(nil)).Elem(), AutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigPtrInput)(nil)).Elem(), AutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryServicesConfigInput)(nil)).Elem(), AuxiliaryServicesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryServicesConfigPtrInput)(nil)).Elem(), AuxiliaryServicesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicAutoscalingAlgorithmInput)(nil)).Elem(), BasicAutoscalingAlgorithmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicAutoscalingAlgorithmPtrInput)(nil)).Elem(), BasicAutoscalingAlgorithmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicYarnAutoscalingConfigInput)(nil)).Elem(), BasicYarnAutoscalingConfigArgs{})
@@ -14328,6 +16292,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPtrInput)(nil)).Elem(), GceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterConfigInput)(nil)).Elem(), GkeClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterConfigPtrInput)(nil)).Elem(), GkeClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodeConfigInput)(nil)).Elem(), GkeNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodeConfigPtrInput)(nil)).Elem(), GkeNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolAcceleratorConfigInput)(nil)).Elem(), GkeNodePoolAcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolAcceleratorConfigArrayInput)(nil)).Elem(), GkeNodePoolAcceleratorConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolAutoscalingConfigInput)(nil)).Elem(), GkeNodePoolAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolAutoscalingConfigPtrInput)(nil)).Elem(), GkeNodePoolAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolConfigInput)(nil)).Elem(), GkeNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolConfigPtrInput)(nil)).Elem(), GkeNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetInput)(nil)).Elem(), GkeNodePoolTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetArrayInput)(nil)).Elem(), GkeNodePoolTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HadoopJobInput)(nil)).Elem(), HadoopJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HadoopJobPtrInput)(nil)).Elem(), HadoopJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HiveJobInput)(nil)).Elem(), HiveJobArgs{})
@@ -14345,6 +16319,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobSchedulingPtrInput)(nil)).Elem(), JobSchedulingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigInput)(nil)).Elem(), KerberosConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KerberosConfigPtrInput)(nil)).Elem(), KerberosConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterConfigInput)(nil)).Elem(), KubernetesClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterConfigPtrInput)(nil)).Elem(), KubernetesClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesSoftwareConfigInput)(nil)).Elem(), KubernetesSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesSoftwareConfigPtrInput)(nil)).Elem(), KubernetesSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LifecycleConfigInput)(nil)).Elem(), LifecycleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LifecycleConfigPtrInput)(nil)).Elem(), LifecycleConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigInput)(nil)).Elem(), LoggingConfigArgs{})
@@ -14409,6 +16387,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterArrayInput)(nil)).Elem(), TemplateParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueValidationInput)(nil)).Elem(), ValueValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueValidationPtrInput)(nil)).Elem(), ValueValidationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualClusterConfigInput)(nil)).Elem(), VirtualClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualClusterConfigPtrInput)(nil)).Elem(), VirtualClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplatePlacementInput)(nil)).Elem(), WorkflowTemplatePlacementArgs{})
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
@@ -14417,6 +16397,9 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuxiliaryServicesConfigOutput{})
+	pulumi.RegisterOutputType(AuxiliaryServicesConfigPtrOutput{})
+	pulumi.RegisterOutputType(AuxiliaryServicesConfigResponseOutput{})
 	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmOutput{})
 	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(BasicAutoscalingAlgorithmResponseOutput{})
@@ -14466,6 +16449,23 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterConfigOutput{})
 	pulumi.RegisterOutputType(GkeClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeNodeConfigOutput{})
+	pulumi.RegisterOutputType(GkeNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeNodeConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAcceleratorConfigOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAcceleratorConfigArrayOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAcceleratorConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAcceleratorConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAutoscalingConfigOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolAutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolConfigResponseOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetArrayOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetResponseOutput{})
+	pulumi.RegisterOutputType(GkeNodePoolTargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(HadoopJobOutput{})
 	pulumi.RegisterOutputType(HadoopJobPtrOutput{})
 	pulumi.RegisterOutputType(HadoopJobResponseOutput{})
@@ -14496,6 +16496,12 @@ func init() {
 	pulumi.RegisterOutputType(KerberosConfigOutput{})
 	pulumi.RegisterOutputType(KerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(KerberosConfigResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterConfigOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterConfigResponseOutput{})
+	pulumi.RegisterOutputType(KubernetesSoftwareConfigOutput{})
+	pulumi.RegisterOutputType(KubernetesSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesSoftwareConfigResponseOutput{})
 	pulumi.RegisterOutputType(LifecycleConfigOutput{})
 	pulumi.RegisterOutputType(LifecycleConfigPtrOutput{})
 	pulumi.RegisterOutputType(LifecycleConfigResponseOutput{})
@@ -14600,6 +16606,9 @@ func init() {
 	pulumi.RegisterOutputType(ValueValidationOutput{})
 	pulumi.RegisterOutputType(ValueValidationPtrOutput{})
 	pulumi.RegisterOutputType(ValueValidationResponseOutput{})
+	pulumi.RegisterOutputType(VirtualClusterConfigOutput{})
+	pulumi.RegisterOutputType(VirtualClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(VirtualClusterConfigResponseOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementResponseOutput{})
 	pulumi.RegisterOutputType(YarnApplicationResponseOutput{})

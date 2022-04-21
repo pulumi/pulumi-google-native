@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     public sealed class EncryptionKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Google Cloud KMS encryption key. Format: projects//locations//keyRings//cryptoKeys/
+        /// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
         /// </summary>
         [Input("gcpKmsEncryptionKey")]
         public Input<string>? GcpKmsEncryptionKey { get; set; }

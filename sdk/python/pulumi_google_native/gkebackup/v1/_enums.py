@@ -54,11 +54,11 @@ class RestoreConfigClusterResourceConflictPolicy(str, Enum):
 
 class RestoreConfigNamespacedResourceRestoreMode(str, Enum):
     """
-    Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
+    Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
     """
     NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED = "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"
     """
-    Unspecified. Only allowed if no namespaced resources will be restored.
+    Unspecified (invalid).
     """
     DELETE_AND_RESTORE = "DELETE_AND_RESTORE"
     """
@@ -76,7 +76,7 @@ class RestoreConfigVolumeDataRestorePolicy(str, Enum):
     """
     VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED = "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED"
     """
-    unspecified, default value
+    Unspecified (illegal).
     """
     RESTORE_VOLUME_DATA_FROM_BACKUP = "RESTORE_VOLUME_DATA_FROM_BACKUP"
     """

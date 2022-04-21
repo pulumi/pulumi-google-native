@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public Input<string>? CurrencyCode { get; set; }
 
         /// <summary>
-        /// Price of the product without any discount. If zero, by default set to be the price.
+        /// Price of the product without any discount. If zero, by default set to be the price. If set, original_price should be greater than or equal to price, otherwise an INVALID_ARGUMENT error is thrown.
         /// </summary>
         [Input("originalPrice")]
         public Input<double>? OriginalPrice { get; set; }

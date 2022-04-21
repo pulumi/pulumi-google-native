@@ -5496,7 +5496,7 @@ type TimeSeriesQuery struct {
 	TimeSeriesFilter *TimeSeriesFilter `pulumi:"timeSeriesFilter"`
 	// Parameters to fetch a ratio between two time series filters.
 	TimeSeriesFilterRatio *TimeSeriesFilterRatio `pulumi:"timeSeriesFilterRatio"`
-	// A query used to fetch time series with MQL.
+	// A query used to fetch time series.
 	TimeSeriesQueryLanguage *string `pulumi:"timeSeriesQueryLanguage"`
 	// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
 	UnitOverride *string `pulumi:"unitOverride"`
@@ -5519,7 +5519,7 @@ type TimeSeriesQueryArgs struct {
 	TimeSeriesFilter TimeSeriesFilterPtrInput `pulumi:"timeSeriesFilter"`
 	// Parameters to fetch a ratio between two time series filters.
 	TimeSeriesFilterRatio TimeSeriesFilterRatioPtrInput `pulumi:"timeSeriesFilterRatio"`
-	// A query used to fetch time series with MQL.
+	// A query used to fetch time series.
 	TimeSeriesQueryLanguage pulumi.StringPtrInput `pulumi:"timeSeriesQueryLanguage"`
 	// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
 	UnitOverride pulumi.StringPtrInput `pulumi:"unitOverride"`
@@ -5613,7 +5613,7 @@ func (o TimeSeriesQueryOutput) TimeSeriesFilterRatio() TimeSeriesFilterRatioPtrO
 	return o.ApplyT(func(v TimeSeriesQuery) *TimeSeriesFilterRatio { return v.TimeSeriesFilterRatio }).(TimeSeriesFilterRatioPtrOutput)
 }
 
-// A query used to fetch time series with MQL.
+// A query used to fetch time series.
 func (o TimeSeriesQueryOutput) TimeSeriesQueryLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TimeSeriesQuery) *string { return v.TimeSeriesQueryLanguage }).(pulumi.StringPtrOutput)
 }
@@ -5667,7 +5667,7 @@ func (o TimeSeriesQueryPtrOutput) TimeSeriesFilterRatio() TimeSeriesFilterRatioP
 	}).(TimeSeriesFilterRatioPtrOutput)
 }
 
-// A query used to fetch time series with MQL.
+// A query used to fetch time series.
 func (o TimeSeriesQueryPtrOutput) TimeSeriesQueryLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeSeriesQuery) *string {
 		if v == nil {
@@ -5693,7 +5693,7 @@ type TimeSeriesQueryResponse struct {
 	TimeSeriesFilter TimeSeriesFilterResponse `pulumi:"timeSeriesFilter"`
 	// Parameters to fetch a ratio between two time series filters.
 	TimeSeriesFilterRatio TimeSeriesFilterRatioResponse `pulumi:"timeSeriesFilterRatio"`
-	// A query used to fetch time series with MQL.
+	// A query used to fetch time series.
 	TimeSeriesQueryLanguage string `pulumi:"timeSeriesQueryLanguage"`
 	// The unit of data contained in fetched time series. If non-empty, this unit will override any unit that accompanies fetched data. The format is the same as the unit (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors) field in MetricDescriptor.
 	UnitOverride string `pulumi:"unitOverride"`
@@ -5724,7 +5724,7 @@ func (o TimeSeriesQueryResponseOutput) TimeSeriesFilterRatio() TimeSeriesFilterR
 	return o.ApplyT(func(v TimeSeriesQueryResponse) TimeSeriesFilterRatioResponse { return v.TimeSeriesFilterRatio }).(TimeSeriesFilterRatioResponseOutput)
 }
 
-// A query used to fetch time series with MQL.
+// A query used to fetch time series.
 func (o TimeSeriesQueryResponseOutput) TimeSeriesQueryLanguage() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSeriesQueryResponse) string { return v.TimeSeriesQueryLanguage }).(pulumi.StringOutput)
 }

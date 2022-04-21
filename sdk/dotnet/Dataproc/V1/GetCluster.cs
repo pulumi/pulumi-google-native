@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly string ClusterUuid;
         /// <summary>
-        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.
+        /// Optional. The cluster config for a cluster of Compute Engine Instances. Note that Dataproc may set default values, and values may change when clusters are updated.Exactly one of ClusterConfig or VirtualClusterConfig must be specified.
         /// </summary>
         public readonly Outputs.ClusterConfigResponse Config;
         /// <summary>
@@ -93,6 +93,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// The previous cluster status.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterStatusResponse> StatusHistory;
+        /// <summary>
+        /// Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+        /// </summary>
+        public readonly Outputs.VirtualClusterConfigResponse VirtualClusterConfig;
 
         [OutputConstructor]
         private GetClusterResult(
@@ -110,7 +114,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
             Outputs.ClusterStatusResponse status,
 
-            ImmutableArray<Outputs.ClusterStatusResponse> statusHistory)
+            ImmutableArray<Outputs.ClusterStatusResponse> statusHistory,
+
+            Outputs.VirtualClusterConfigResponse virtualClusterConfig)
         {
             ClusterName = clusterName;
             ClusterUuid = clusterUuid;
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
             Project = project;
             Status = status;
             StatusHistory = statusHistory;
+            VirtualClusterConfig = virtualClusterConfig;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.TimeSeriesFilterRatioResponse TimeSeriesFilterRatio;
         /// <summary>
-        /// A query used to fetch time series with MQL.
+        /// A query used to fetch time series.
         /// </summary>
         public readonly string TimeSeriesQueryLanguage;
         /// <summary>

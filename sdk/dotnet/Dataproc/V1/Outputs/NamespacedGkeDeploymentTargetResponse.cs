@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
     /// <summary>
-    /// A full, namespace-isolated deployment target for an existing GKE cluster.
+    /// Deprecated. Used only for the deprecated beta. A full, namespace-isolated deployment target for an existing GKE cluster.
     /// </summary>
     [OutputType]
     public sealed class NamespacedGkeDeploymentTargetResponse
