@@ -233,13 +233,10 @@ jobs:
           set -euo pipefail
           cd examples && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language
           }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
-#  automerge:
-#    runs-on: ubuntu-latest
-#    name: automerge
-#    needs: test
-#    steps:
-#      - name: Automerge event
-#        uses: peter-evans/repository-dispatch@v1
-#        with:
-#          token: ${{ secrets.PULUMI_BOT_TOKEN }}
-#          event-type: automerge
+      - name: Adjust label for breaking changes
+        if: contains(env.SCHEMA_CHANGES, 'Looking good! No breaking changes found.')
+        uses: actions-ecosystem/action-add-labels@v1.1.0
+        with:
+          labels: impact/no-changelog-required
+          number: ${{ github.event.issue.number }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
