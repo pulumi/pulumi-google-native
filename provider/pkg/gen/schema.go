@@ -395,7 +395,7 @@ func (g *packageGenerator) genToken(typeName string) string {
 }
 
 func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentResource,
-	ops map[string]*Operation) error {
+	ops map[string]*operation) error {
 	resourceTok := g.genToken(typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
@@ -784,7 +784,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 }
 
 func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation,
-	op *Operation) {
+	op *operation) {
 	if cloudOp.Operations == nil {
 		cloudOp.Operations = &resources.Operations{}
 	}

@@ -3,4 +3,4 @@ runtime:
   name: python
   options:
     virtualenv: venv
-description: A minimal Google Cloud Python Pulumi program
+description: Test bigtable instance support

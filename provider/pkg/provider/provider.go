@@ -51,7 +51,7 @@ import (
 )
 
 const (
-	createBeforeDeleteFlag = "__createBeforeDelete"
+	autonamed = "__autonamed"
 )
 
 type googleCloudProvider struct {
@@ -313,7 +313,11 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 		nameKey = "name"
 	}
 	if res.Create.Autoname.FieldName != "" && !news.HasValue(nameKey) {
-		news[nameKey] = getDefaultName(urn, res.Create.Autoname.FieldName, olds, news)
+		var randomlyNamed bool
+		news[nameKey], randomlyNamed = getDefaultName(urn, res.Create.Autoname.FieldName, olds, news)
+		if randomlyNamed {
+			news[autonamed] = resource.NewBoolProperty(true)
+		}
 	}
 
 	// Apply property patterns.
@@ -378,7 +382,6 @@ func (p *googleCloudProvider) DiffConfig(context.Context, *rpc.DiffRequest) (*rp
 	return &rpc.DiffResponse{
 		Changes:             0,
 		Replaces:            []string{},
-		Stables:             []string{},
 		DeleteBeforeReplace: false,
 	}, nil
 }
@@ -432,15 +435,14 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		v.InputDiff = true
 
 		switch v.Kind {
-		case rpc.PropertyDiff_ADD_REPLACE:
-			replaces = append(replaces, k)
-		case rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
+		case rpc.PropertyDiff_ADD_REPLACE, rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
 			replaces = append(replaces, k)
 		}
 	}
 
+	// If replacement needs to be triggered, prefer deletion first, unless the resource is autonamed.
 	deleteBeforeReplace := len(replaces) > 0
-	if v, ok := oldInputs[createBeforeDeleteFlag]; ok && v.IsBool() {
+	if v, ok := oldInputs[autonamed]; ok && v.IsBool() {
 		deleteBeforeReplace = !v.BoolValue()
 	}
 	changeType := rpc.DiffResponse_DIFF_NONE
@@ -451,7 +453,6 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	response := rpc.DiffResponse{
 		Changes:             changeType,
 		Replaces:            replaces,
-		Stables:             []string{},
 		DeleteBeforeReplace: deleteBeforeReplace,
 		Diffs:               changes,
 		DetailedDiff:        detailedDiff,
@@ -569,6 +570,9 @@ func (p *googleCloudProvider) prepareAPIInputs(
 // a success or a failure of provisioning.
 // Note that both a response and an error can be returned in case of a partially-failed deployment
 // (e.g., resource is created but failed to initialize to completion).
+//
+// N.B if a resource is partially created it is important to return the partial state in addition
+// to the error. Otherwise, the partially created resource will be leaked.
 func (p *googleCloudProvider) waitForResourceOpCompletion(
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},

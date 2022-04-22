@@ -37,7 +37,9 @@ type discoveryDocumentResource struct {
 	resourceName string
 }
 
-type Operation struct {
+// operation encapsulates information to check for delayed operations' status
+// in response to resource CRUD operations.
+type operation struct {
 	restMethod *discovery.RestMethod
 	schema     *discovery.JsonSchema
 }
@@ -48,9 +50,9 @@ func findResources(
 	docName string,
 	rest map[string]discovery.RestResource,
 	schemas map[string]discovery.JsonSchema,
-) (map[string]discoveryDocumentResource, map[string]*Operation, error) {
+) (map[string]discoveryDocumentResource, map[string]*operation, error) {
 	resources := map[string]discoveryDocumentResource{}
-	operations := map[string]*Operation{}
+	operations := map[string]*operation{}
 	addResource := func(typeName string, dd discoveryDocumentResource) error {
 		if err := addFoundResource(resources, typeName, dd); err != nil {
 			return fmt.Errorf("failed to add resource for %q: %w", docName, err)
@@ -238,7 +240,7 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 	return nil
 }
 
-func addFoundOperation(operationsMap map[string]*Operation, typeName string,
+func addFoundOperation(operationsMap map[string]*operation, typeName string,
 	dd discoveryDocumentResource, jsonSchema map[string]discovery.JsonSchema) error {
 
 	for _, method := range []*discovery.RestMethod{
@@ -252,7 +254,7 @@ func addFoundOperation(operationsMap map[string]*Operation, typeName string,
 		if !ok {
 			return fmt.Errorf("no schema found for %q", ref)
 		}
-		operationsMap[ref] = &Operation{
+		operationsMap[ref] = &operation{
 			restMethod: method,
 			schema:     &schema,
 		}
