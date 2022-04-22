@@ -600,7 +600,7 @@
       }
     }
   },
-  "revision": "20220415",
+  "revision": "20220414",
   "rootUrl": "https://storagetransfer.googleapis.com/",
   "schemas": {
     "AgentPool": {
