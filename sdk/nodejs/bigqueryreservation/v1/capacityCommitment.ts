@@ -53,7 +53,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public readonly multiRegionAuxiliary!: pulumi.Output<boolean>;
     /**
-     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+     * The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

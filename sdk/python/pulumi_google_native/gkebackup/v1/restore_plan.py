@@ -26,10 +26,10 @@ class RestorePlanArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RestorePlan resource.
-        :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
-        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        :param pulumi.Input[str] backup_plan: Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
         :param pulumi.Input['RestoreConfigArgs'] restore_config: Configuration of Restores created via this RestorePlan.
-        :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+        :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of RestorePlans in this location
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
         """
@@ -50,7 +50,7 @@ class RestorePlanArgs:
     @pulumi.getter(name="backupPlan")
     def backup_plan(self) -> pulumi.Input[str]:
         """
-        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -62,7 +62,7 @@ class RestorePlanArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -86,7 +86,7 @@ class RestorePlanArgs:
     @pulumi.getter(name="restorePlanId")
     def restore_plan_id(self) -> pulumi.Input[str]:
         """
-        Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+        Required. The client-provided short name for the RestorePlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of RestorePlans in this location
         """
         return pulumi.get(self, "restore_plan_id")
 
@@ -157,12 +157,12 @@ class RestorePlan(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup_plan: Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
-        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        :param pulumi.Input[str] backup_plan: Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        :param pulumi.Input[str] cluster: Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
         :param pulumi.Input[str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
         :param pulumi.Input[pulumi.InputType['RestoreConfigArgs']] restore_config: Configuration of Restores created via this RestorePlan.
-        :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+        :param pulumi.Input[str] restore_plan_id: Required. The client-provided short name for the RestorePlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of RestorePlans in this location
         """
         ...
     @overload
@@ -268,7 +268,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter(name="backupPlan")
     def backup_plan(self) -> pulumi.Output[str]:
         """
-        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -276,7 +276,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -284,7 +284,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when this RestorePlan resource was created.
+        The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         """
         return pulumi.get(self, "create_time")
 
@@ -300,7 +300,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
         """
         return pulumi.get(self, "etag")
 
@@ -316,7 +316,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+        The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*
         """
         return pulumi.get(self, "name")
 
@@ -340,7 +340,7 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when this RestorePlan resource was last updated.
+        The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         """
         return pulumi.get(self, "update_time")
 

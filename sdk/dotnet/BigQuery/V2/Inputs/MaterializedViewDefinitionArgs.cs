@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<bool>? EnableRefresh { get; set; }
 
         /// <summary>
+        /// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+        /// </summary>
+        [Input("maxStaleness")]
+        public Input<string>? MaxStaleness { get; set; }
+
+        /// <summary>
         /// [Required] A query whose result is persisted.
         /// </summary>
         [Input("query")]

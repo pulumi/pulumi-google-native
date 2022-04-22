@@ -71,6 +71,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Remote function specific options.
+        /// </summary>
+        [Output("remoteFunctionOptions")]
+        public Output<Outputs.RemoteFunctionOptionsResponse> RemoteFunctionOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         /// </summary>
         [Output("returnTableType")]
@@ -198,6 +204,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Optional. Remote function specific options.
+        /// </summary>
+        [Input("remoteFunctionOptions")]
+        public Input<Inputs.RemoteFunctionOptionsArgs>? RemoteFunctionOptions { get; set; }
 
         /// <summary>
         /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.

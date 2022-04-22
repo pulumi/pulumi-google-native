@@ -37,15 +37,15 @@ export class RestorePlan extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
+     * Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
      */
     public readonly backupPlan!: pulumi.Output<string>;
     /**
-     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/*
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * The timestamp when this RestorePlan resource was created.
+     * The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -53,7 +53,7 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
+     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -61,7 +61,7 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*.
+     * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -73,7 +73,7 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The timestamp when this RestorePlan resource was last updated.
+     * The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -135,11 +135,11 @@ export class RestorePlan extends pulumi.CustomResource {
  */
 export interface RestorePlanArgs {
     /**
-     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
+     * Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
      */
     backupPlan: pulumi.Input<string>;
     /**
-     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/*
      */
     cluster: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface RestorePlanArgs {
      */
     restoreConfig: pulumi.Input<inputs.gkebackup.v1.RestoreConfigArgs>;
     /**
-     * Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
+     * Required. The client-provided short name for the RestorePlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of RestorePlans in this location
      */
     restorePlanId: pulumi.Input<string>;
 }

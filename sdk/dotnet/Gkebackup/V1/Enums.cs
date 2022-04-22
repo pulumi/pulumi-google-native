@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
     /// <summary>
-    /// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+    /// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
     /// </summary>
     [EnumType]
     public readonly struct RestoreConfigNamespacedResourceRestoreMode : IEquatable<RestoreConfigNamespacedResourceRestoreMode>
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
 
         /// <summary>
-        /// Unspecified (invalid).
+        /// Unspecified. Only allowed if no namespaced resources will be restored.
         /// </summary>
         public static RestoreConfigNamespacedResourceRestoreMode NamespacedResourceRestoreModeUnspecified { get; } = new RestoreConfigNamespacedResourceRestoreMode("NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED");
         /// <summary>
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
 
         /// <summary>
-        /// Unspecified (illegal).
+        /// unspecified, default value
         /// </summary>
         public static RestoreConfigVolumeDataRestorePolicy VolumeDataRestorePolicyUnspecified { get; } = new RestoreConfigVolumeDataRestorePolicy("VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED");
         /// <summary>

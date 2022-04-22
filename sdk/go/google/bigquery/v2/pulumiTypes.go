@@ -1440,7 +1440,7 @@ func (o BigtableOptionsResponseOutput) ReadRowkeyAsString() pulumi.BoolOutput {
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -1461,7 +1461,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -1524,7 +1524,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -1558,7 +1558,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -1584,7 +1584,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -9468,6 +9468,8 @@ func (o JobStatusResponseOutput) State() pulumi.StringOutput {
 type MaterializedViewDefinition struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh *bool `pulumi:"enableRefresh"`
+	// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness *string `pulumi:"maxStaleness"`
 	// [Required] A query whose result is persisted.
 	Query *string `pulumi:"query"`
 	// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
@@ -9488,6 +9490,8 @@ type MaterializedViewDefinitionInput interface {
 type MaterializedViewDefinitionArgs struct {
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh pulumi.BoolPtrInput `pulumi:"enableRefresh"`
+	// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness pulumi.StringPtrInput `pulumi:"maxStaleness"`
 	// [Required] A query whose result is persisted.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
@@ -9576,6 +9580,11 @@ func (o MaterializedViewDefinitionOutput) EnableRefresh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MaterializedViewDefinition) *bool { return v.EnableRefresh }).(pulumi.BoolPtrOutput)
 }
 
+// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+func (o MaterializedViewDefinitionOutput) MaxStaleness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaterializedViewDefinition) *string { return v.MaxStaleness }).(pulumi.StringPtrOutput)
+}
+
 // [Required] A query whose result is persisted.
 func (o MaterializedViewDefinitionOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MaterializedViewDefinition) *string { return v.Query }).(pulumi.StringPtrOutput)
@@ -9620,6 +9629,16 @@ func (o MaterializedViewDefinitionPtrOutput) EnableRefresh() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+func (o MaterializedViewDefinitionPtrOutput) MaxStaleness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaterializedViewDefinition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxStaleness
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Required] A query whose result is persisted.
 func (o MaterializedViewDefinitionPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaterializedViewDefinition) *string {
@@ -9645,6 +9664,8 @@ type MaterializedViewDefinitionResponse struct {
 	EnableRefresh bool `pulumi:"enableRefresh"`
 	// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
 	LastRefreshTime string `pulumi:"lastRefreshTime"`
+	// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+	MaxStaleness string `pulumi:"maxStaleness"`
 	// [Required] A query whose result is persisted.
 	Query string `pulumi:"query"`
 	// [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
@@ -9673,6 +9694,11 @@ func (o MaterializedViewDefinitionResponseOutput) EnableRefresh() pulumi.BoolOut
 // [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
 func (o MaterializedViewDefinitionResponseOutput) LastRefreshTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaterializedViewDefinitionResponse) string { return v.LastRefreshTime }).(pulumi.StringOutput)
+}
+
+// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+func (o MaterializedViewDefinitionResponseOutput) MaxStaleness() pulumi.StringOutput {
+	return o.ApplyT(func(v MaterializedViewDefinitionResponse) string { return v.MaxStaleness }).(pulumi.StringOutput)
 }
 
 // [Required] A query whose result is persisted.
@@ -11869,6 +11895,250 @@ func (o RangePartitioningResponseOutput) Field() pulumi.StringOutput {
 // [TrustedTester] [Required] Defines the ranges for range partitioning.
 func (o RangePartitioningResponseOutput) Range() RangePartitioningRangeResponseOutput {
 	return o.ApplyT(func(v RangePartitioningResponse) RangePartitioningRangeResponse { return v.Range }).(RangePartitioningRangeResponseOutput)
+}
+
+// Options for a remote user-defined function.
+type RemoteFunctionOptions struct {
+	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	Connection *string `pulumi:"connection"`
+	// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+	Endpoint *string `pulumi:"endpoint"`
+	// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+	MaxBatchingRows *string `pulumi:"maxBatchingRows"`
+	// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+	UserDefinedContext map[string]string `pulumi:"userDefinedContext"`
+}
+
+// RemoteFunctionOptionsInput is an input type that accepts RemoteFunctionOptionsArgs and RemoteFunctionOptionsOutput values.
+// You can construct a concrete instance of `RemoteFunctionOptionsInput` via:
+//
+//          RemoteFunctionOptionsArgs{...}
+type RemoteFunctionOptionsInput interface {
+	pulumi.Input
+
+	ToRemoteFunctionOptionsOutput() RemoteFunctionOptionsOutput
+	ToRemoteFunctionOptionsOutputWithContext(context.Context) RemoteFunctionOptionsOutput
+}
+
+// Options for a remote user-defined function.
+type RemoteFunctionOptionsArgs struct {
+	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+	MaxBatchingRows pulumi.StringPtrInput `pulumi:"maxBatchingRows"`
+	// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+	UserDefinedContext pulumi.StringMapInput `pulumi:"userDefinedContext"`
+}
+
+func (RemoteFunctionOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteFunctionOptions)(nil)).Elem()
+}
+
+func (i RemoteFunctionOptionsArgs) ToRemoteFunctionOptionsOutput() RemoteFunctionOptionsOutput {
+	return i.ToRemoteFunctionOptionsOutputWithContext(context.Background())
+}
+
+func (i RemoteFunctionOptionsArgs) ToRemoteFunctionOptionsOutputWithContext(ctx context.Context) RemoteFunctionOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteFunctionOptionsOutput)
+}
+
+func (i RemoteFunctionOptionsArgs) ToRemoteFunctionOptionsPtrOutput() RemoteFunctionOptionsPtrOutput {
+	return i.ToRemoteFunctionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i RemoteFunctionOptionsArgs) ToRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RemoteFunctionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteFunctionOptionsOutput).ToRemoteFunctionOptionsPtrOutputWithContext(ctx)
+}
+
+// RemoteFunctionOptionsPtrInput is an input type that accepts RemoteFunctionOptionsArgs, RemoteFunctionOptionsPtr and RemoteFunctionOptionsPtrOutput values.
+// You can construct a concrete instance of `RemoteFunctionOptionsPtrInput` via:
+//
+//          RemoteFunctionOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type RemoteFunctionOptionsPtrInput interface {
+	pulumi.Input
+
+	ToRemoteFunctionOptionsPtrOutput() RemoteFunctionOptionsPtrOutput
+	ToRemoteFunctionOptionsPtrOutputWithContext(context.Context) RemoteFunctionOptionsPtrOutput
+}
+
+type remoteFunctionOptionsPtrType RemoteFunctionOptionsArgs
+
+func RemoteFunctionOptionsPtr(v *RemoteFunctionOptionsArgs) RemoteFunctionOptionsPtrInput {
+	return (*remoteFunctionOptionsPtrType)(v)
+}
+
+func (*remoteFunctionOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteFunctionOptions)(nil)).Elem()
+}
+
+func (i *remoteFunctionOptionsPtrType) ToRemoteFunctionOptionsPtrOutput() RemoteFunctionOptionsPtrOutput {
+	return i.ToRemoteFunctionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *remoteFunctionOptionsPtrType) ToRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RemoteFunctionOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteFunctionOptionsPtrOutput)
+}
+
+// Options for a remote user-defined function.
+type RemoteFunctionOptionsOutput struct{ *pulumi.OutputState }
+
+func (RemoteFunctionOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteFunctionOptions)(nil)).Elem()
+}
+
+func (o RemoteFunctionOptionsOutput) ToRemoteFunctionOptionsOutput() RemoteFunctionOptionsOutput {
+	return o
+}
+
+func (o RemoteFunctionOptionsOutput) ToRemoteFunctionOptionsOutputWithContext(ctx context.Context) RemoteFunctionOptionsOutput {
+	return o
+}
+
+func (o RemoteFunctionOptionsOutput) ToRemoteFunctionOptionsPtrOutput() RemoteFunctionOptionsPtrOutput {
+	return o.ToRemoteFunctionOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteFunctionOptionsOutput) ToRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RemoteFunctionOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteFunctionOptions) *RemoteFunctionOptions {
+		return &v
+	}).(RemoteFunctionOptionsPtrOutput)
+}
+
+// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+func (o RemoteFunctionOptionsOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteFunctionOptions) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+func (o RemoteFunctionOptionsOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteFunctionOptions) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+func (o RemoteFunctionOptionsOutput) MaxBatchingRows() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteFunctionOptions) *string { return v.MaxBatchingRows }).(pulumi.StringPtrOutput)
+}
+
+// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+func (o RemoteFunctionOptionsOutput) UserDefinedContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RemoteFunctionOptions) map[string]string { return v.UserDefinedContext }).(pulumi.StringMapOutput)
+}
+
+type RemoteFunctionOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RemoteFunctionOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteFunctionOptions)(nil)).Elem()
+}
+
+func (o RemoteFunctionOptionsPtrOutput) ToRemoteFunctionOptionsPtrOutput() RemoteFunctionOptionsPtrOutput {
+	return o
+}
+
+func (o RemoteFunctionOptionsPtrOutput) ToRemoteFunctionOptionsPtrOutputWithContext(ctx context.Context) RemoteFunctionOptionsPtrOutput {
+	return o
+}
+
+func (o RemoteFunctionOptionsPtrOutput) Elem() RemoteFunctionOptionsOutput {
+	return o.ApplyT(func(v *RemoteFunctionOptions) RemoteFunctionOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RemoteFunctionOptions
+		return ret
+	}).(RemoteFunctionOptionsOutput)
+}
+
+// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+func (o RemoteFunctionOptionsPtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemoteFunctionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+func (o RemoteFunctionOptionsPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemoteFunctionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+func (o RemoteFunctionOptionsPtrOutput) MaxBatchingRows() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemoteFunctionOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchingRows
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+func (o RemoteFunctionOptionsPtrOutput) UserDefinedContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RemoteFunctionOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UserDefinedContext
+	}).(pulumi.StringMapOutput)
+}
+
+// Options for a remote user-defined function.
+type RemoteFunctionOptionsResponse struct {
+	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	Connection string `pulumi:"connection"`
+	// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+	Endpoint string `pulumi:"endpoint"`
+	// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+	MaxBatchingRows string `pulumi:"maxBatchingRows"`
+	// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+	UserDefinedContext map[string]string `pulumi:"userDefinedContext"`
+}
+
+// Options for a remote user-defined function.
+type RemoteFunctionOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoteFunctionOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteFunctionOptionsResponse)(nil)).Elem()
+}
+
+func (o RemoteFunctionOptionsResponseOutput) ToRemoteFunctionOptionsResponseOutput() RemoteFunctionOptionsResponseOutput {
+	return o
+}
+
+func (o RemoteFunctionOptionsResponseOutput) ToRemoteFunctionOptionsResponseOutputWithContext(ctx context.Context) RemoteFunctionOptionsResponseOutput {
+	return o
+}
+
+// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+func (o RemoteFunctionOptionsResponseOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteFunctionOptionsResponse) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+func (o RemoteFunctionOptionsResponseOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteFunctionOptionsResponse) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+func (o RemoteFunctionOptionsResponseOutput) MaxBatchingRows() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteFunctionOptionsResponse) string { return v.MaxBatchingRows }).(pulumi.StringOutput)
+}
+
+// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+func (o RemoteFunctionOptionsResponseOutput) UserDefinedContext() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RemoteFunctionOptionsResponse) map[string]string { return v.UserDefinedContext }).(pulumi.StringMapOutput)
 }
 
 type RoutineReference struct {
@@ -14970,6 +15240,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningPtrInput)(nil)).Elem(), RangePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangeInput)(nil)).Elem(), RangePartitioningRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RangePartitioningRangePtrInput)(nil)).Elem(), RangePartitioningRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteFunctionOptionsInput)(nil)).Elem(), RemoteFunctionOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteFunctionOptionsPtrInput)(nil)).Elem(), RemoteFunctionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceInput)(nil)).Elem(), RoutineReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferencePtrInput)(nil)).Elem(), RoutineReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
@@ -15163,6 +15435,9 @@ func init() {
 	pulumi.RegisterOutputType(RangePartitioningRangePtrOutput{})
 	pulumi.RegisterOutputType(RangePartitioningRangeResponseOutput{})
 	pulumi.RegisterOutputType(RangePartitioningResponseOutput{})
+	pulumi.RegisterOutputType(RemoteFunctionOptionsOutput{})
+	pulumi.RegisterOutputType(RemoteFunctionOptionsPtrOutput{})
+	pulumi.RegisterOutputType(RemoteFunctionOptionsResponseOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceOutput{})
 	pulumi.RegisterOutputType(RoutineReferencePtrOutput{})
 	pulumi.RegisterOutputType(RoutineReferenceResponseOutput{})

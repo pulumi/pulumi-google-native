@@ -28,27 +28,27 @@ type LookupRestoreArgs struct {
 }
 
 type LookupRestoreResult struct {
-	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
 	Backup string `pulumi:"backup"`
-	// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+	// The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
 	Cluster string `pulumi:"cluster"`
-	// Timestamp of when the restore operation completed.
+	// When the restore operation either successfully completed or failed.
 	CompleteTime string `pulumi:"completeTime"`
-	// The timestamp when this Restore resource was created.
+	// The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 	CreateTime string `pulumi:"createTime"`
 	// User specified descriptive string for this Restore.
 	Description string `pulumi:"description"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
 	Etag string `pulumi:"etag"`
-	// A set of custom labels supplied by user.
+	// GCP Labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
 	Name string `pulumi:"name"`
-	// Number of resources excluded during the restore execution.
+	// Number of resources excluded in this restore action.
 	ResourcesExcludedCount int `pulumi:"resourcesExcludedCount"`
-	// Number of resources that failed to be restored during the restore execution.
+	// Number of resources failed to be restored in this restore action.
 	ResourcesFailedCount int `pulumi:"resourcesFailedCount"`
-	// Number of resources restored during the restore execution.
+	// Number of resources restored in this restore action.
 	ResourcesRestoredCount int `pulumi:"resourcesRestoredCount"`
 	// Configuration of the Restore. Inherited from parent RestorePlan's restore_config.
 	RestoreConfig RestoreConfigResponse `pulumi:"restoreConfig"`
@@ -58,9 +58,9 @@ type LookupRestoreResult struct {
 	StateReason string `pulumi:"stateReason"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid string `pulumi:"uid"`
-	// The timestamp when this Restore resource was last updated.
+	// The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 	UpdateTime string `pulumi:"updateTime"`
-	// Number of volumes restored during the restore execution.
+	// Number of volumes restored in this restore action.
 	VolumesRestoredCount int `pulumi:"volumesRestoredCount"`
 }
 
@@ -102,22 +102,22 @@ func (o LookupRestoreResultOutput) ToLookupRestoreResultOutputWithContext(ctx co
 	return o
 }
 
-// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
 func (o LookupRestoreResultOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.Backup }).(pulumi.StringOutput)
 }
 
-// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+// The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
 func (o LookupRestoreResultOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// Timestamp of when the restore operation completed.
+// When the restore operation either successfully completed or failed.
 func (o LookupRestoreResultOutput) CompleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.CompleteTime }).(pulumi.StringOutput)
 }
 
-// The timestamp when this Restore resource was created.
+// The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 func (o LookupRestoreResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -127,12 +127,12 @@ func (o LookupRestoreResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
 func (o LookupRestoreResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A set of custom labels supplied by user.
+// GCP Labels.
 func (o LookupRestoreResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRestoreResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -142,17 +142,17 @@ func (o LookupRestoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of resources excluded during the restore execution.
+// Number of resources excluded in this restore action.
 func (o LookupRestoreResultOutput) ResourcesExcludedCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRestoreResult) int { return v.ResourcesExcludedCount }).(pulumi.IntOutput)
 }
 
-// Number of resources that failed to be restored during the restore execution.
+// Number of resources failed to be restored in this restore action.
 func (o LookupRestoreResultOutput) ResourcesFailedCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRestoreResult) int { return v.ResourcesFailedCount }).(pulumi.IntOutput)
 }
 
-// Number of resources restored during the restore execution.
+// Number of resources restored in this restore action.
 func (o LookupRestoreResultOutput) ResourcesRestoredCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRestoreResult) int { return v.ResourcesRestoredCount }).(pulumi.IntOutput)
 }
@@ -177,12 +177,12 @@ func (o LookupRestoreResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The timestamp when this Restore resource was last updated.
+// The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 func (o LookupRestoreResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestoreResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Number of volumes restored during the restore execution.
+// Number of volumes restored in this restore action.
 func (o LookupRestoreResultOutput) VolumesRestoredCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupRestoreResult) int { return v.VolumesRestoredCount }).(pulumi.IntOutput)
 }

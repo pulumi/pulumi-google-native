@@ -23,7 +23,7 @@ type CapacityCommitment struct {
 	FailureStatus StatusResponseOutput `pulumi:"failureStatus"`
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolOutput `pulumi:"multiRegionAuxiliary"`
-	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+	// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Capacity commitment commitment plan.
 	Plan pulumi.StringOutput `pulumi:"plan"`

@@ -71,6 +71,7 @@ __all__ = [
     'QueryTimelineSampleResponse',
     'RangePartitioningRangeResponse',
     'RangePartitioningResponse',
+    'RemoteFunctionOptionsResponse',
     'RoutineReferenceResponse',
     'RowAccessPolicyReferenceResponse',
     'RowLevelSecurityStatisticsResponse',
@@ -676,7 +677,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -695,7 +696,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -4742,6 +4743,8 @@ class MaterializedViewDefinitionResponse(dict):
             suggest = "enable_refresh"
         elif key == "lastRefreshTime":
             suggest = "last_refresh_time"
+        elif key == "maxStaleness":
+            suggest = "max_staleness"
         elif key == "refreshIntervalMs":
             suggest = "refresh_interval_ms"
 
@@ -4759,16 +4762,19 @@ class MaterializedViewDefinitionResponse(dict):
     def __init__(__self__, *,
                  enable_refresh: bool,
                  last_refresh_time: str,
+                 max_staleness: str,
                  query: str,
                  refresh_interval_ms: str):
         """
         :param bool enable_refresh: [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         :param str last_refresh_time: [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
+        :param str max_staleness: [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
         :param str query: [Required] A query whose result is persisted.
         :param str refresh_interval_ms: [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
         pulumi.set(__self__, "enable_refresh", enable_refresh)
         pulumi.set(__self__, "last_refresh_time", last_refresh_time)
+        pulumi.set(__self__, "max_staleness", max_staleness)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
 
@@ -4787,6 +4793,14 @@ class MaterializedViewDefinitionResponse(dict):
         [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_refresh_time")
+
+    @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> str:
+        """
+        [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+        """
+        return pulumi.get(self, "max_staleness")
 
     @property
     @pulumi.getter
@@ -5434,6 +5448,80 @@ class RangePartitioningResponse(dict):
         [TrustedTester] [Required] Defines the ranges for range partitioning.
         """
         return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class RemoteFunctionOptionsResponse(dict):
+    """
+    Options for a remote user-defined function.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBatchingRows":
+            suggest = "max_batching_rows"
+        elif key == "userDefinedContext":
+            suggest = "user_defined_context"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteFunctionOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteFunctionOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteFunctionOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: str,
+                 endpoint: str,
+                 max_batching_rows: str,
+                 user_defined_context: Mapping[str, str]):
+        """
+        Options for a remote user-defined function.
+        :param str connection: Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        :param str endpoint: Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        :param str max_batching_rows: Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        :param Mapping[str, str] user_defined_context: User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "max_batching_rows", max_batching_rows)
+        pulumi.set(__self__, "user_defined_context", user_defined_context)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> str:
+        """
+        Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="maxBatchingRows")
+    def max_batching_rows(self) -> str:
+        """
+        Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        """
+        return pulumi.get(self, "max_batching_rows")
+
+    @property
+    @pulumi.getter(name="userDefinedContext")
+    def user_defined_context(self) -> Mapping[str, str]:
+        """
+        User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
+        """
+        return pulumi.get(self, "user_defined_context")
 
 
 @pulumi.output_type

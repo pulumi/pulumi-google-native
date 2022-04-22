@@ -119,11 +119,11 @@ class BackupConfigArgs:
         """
         BackupConfig defines the configuration of Backups created via this BackupPlan.
         :param pulumi.Input[bool] all_namespaces: If True, include all namespaced resources
-        :param pulumi.Input['EncryptionKeyArgs'] encryption_key: This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+        :param pulumi.Input['EncryptionKeyArgs'] encryption_key: This defines a customer managed encryption key that will be used to encrypt the Backup artifacts for Backups created via this BackupPlan.
         :param pulumi.Input[bool] include_secrets: This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of Backups. Default: False
         :param pulumi.Input[bool] include_volume_data: This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
         :param pulumi.Input['NamespacedNamesArgs'] selected_applications: If set, include just the resources referenced by the listed ProtectedApplications.
-        :param pulumi.Input['NamespacesArgs'] selected_namespaces: If set, include just the resources in the listed namespaces.
+        :param pulumi.Input['NamespacesArgs'] selected_namespaces: If set, include just the resources in the listed namespaces
         """
         if all_namespaces is not None:
             pulumi.set(__self__, "all_namespaces", all_namespaces)
@@ -154,7 +154,7 @@ class BackupConfigArgs:
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input['EncryptionKeyArgs']]:
         """
-        This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+        This defines a customer managed encryption key that will be used to encrypt the Backup artifacts for Backups created via this BackupPlan.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -202,7 +202,7 @@ class BackupConfigArgs:
     @pulumi.getter(name="selectedNamespaces")
     def selected_namespaces(self) -> Optional[pulumi.Input['NamespacesArgs']]:
         """
-        If set, include just the resources in the listed namespaces.
+        If set, include just the resources in the listed namespaces
         """
         return pulumi.get(self, "selected_namespaces")
 
@@ -297,7 +297,7 @@ class EncryptionKeyArgs:
                  gcp_kms_encryption_key: Optional[pulumi.Input[str]] = None):
         """
         Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
-        :param pulumi.Input[str] gcp_kms_encryption_key: Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+        :param pulumi.Input[str] gcp_kms_encryption_key: Google Cloud KMS encryption key. Format: projects//locations//keyRings//cryptoKeys/
         """
         if gcp_kms_encryption_key is not None:
             pulumi.set(__self__, "gcp_kms_encryption_key", gcp_kms_encryption_key)
@@ -306,7 +306,7 @@ class EncryptionKeyArgs:
     @pulumi.getter(name="gcpKmsEncryptionKey")
     def gcp_kms_encryption_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+        Google Cloud KMS encryption key. Format: projects//locations//keyRings//cryptoKeys/
         """
         return pulumi.get(self, "gcp_kms_encryption_key")
 
@@ -531,7 +531,7 @@ class RestoreConfigArgs:
         :param pulumi.Input[bool] all_namespaces: Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
         :param pulumi.Input['RestoreConfigClusterResourceConflictPolicy'] cluster_resource_conflict_policy: Defines the behavior for handling the situation where cluster-scoped resources being restored already exist in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
         :param pulumi.Input['ClusterResourceRestoreScopeArgs'] cluster_resource_restore_scope: Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster resource will be restored.
-        :param pulumi.Input['RestoreConfigNamespacedResourceRestoreMode'] namespaced_resource_restore_mode: Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        :param pulumi.Input['RestoreConfigNamespacedResourceRestoreMode'] namespaced_resource_restore_mode: Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
         :param pulumi.Input['NamespacedNamesArgs'] selected_applications: A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources to which they refer will be restored.
         :param pulumi.Input['NamespacesArgs'] selected_namespaces: A list of selected Namespaces to restore from the Backup. The listed Namespaces and all resources contained in them will be restored.
         :param pulumi.Input[Sequence[pulumi.Input['SubstitutionRuleArgs']]] substitution_rules: A list of transformation rules to be applied against Kubernetes resources as they are selected for restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
@@ -594,7 +594,7 @@ class RestoreConfigArgs:
     @pulumi.getter(name="namespacedResourceRestoreMode")
     def namespaced_resource_restore_mode(self) -> Optional[pulumi.Input['RestoreConfigNamespacedResourceRestoreMode']]:
         """
-        Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
+        Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
         """
         return pulumi.get(self, "namespaced_resource_restore_mode")
 
@@ -658,9 +658,9 @@ class RetentionPolicyArgs:
                  backup_retain_days: Optional[pulumi.Input[int]] = None,
                  locked: Optional[pulumi.Input[bool]] = None):
         """
-        RetentionPolicy defines a Backup retention policy for a BackupPlan.
-        :param pulumi.Input[int] backup_delete_lock_days: Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
-        :param pulumi.Input[int] backup_retain_days: The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+        RentionPolicy is an inner message type to define: 1. Minimum age for Backups created via this BackupPlan - deletion (either manual or automatic) of Backups younger than this age will be blocked 2. Default maximum age of Backups created via this BackupPlan, after which automatic deletion will occur 3. Lock to disallow any changes to any RetentionPolicy settings
+        :param pulumi.Input[int] backup_delete_lock_days: Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90(inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's create_time + backup_delete_lock_days. Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+        :param pulumi.Input[int] backup_retain_days: The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches create_time + backup_retain_days. If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: Specifying a backup_retain_days smaller than backup_delete_lock_days at creation/updating time will be considered as invalid, and the request will be rejected immediately. Default: 0 (no automatic deletion)
         :param pulumi.Input[bool] locked: This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further update is allowed on this policy, including the `locked` field itself. Default: False
         """
         if backup_delete_lock_days is not None:
@@ -674,7 +674,7 @@ class RetentionPolicyArgs:
     @pulumi.getter(name="backupDeleteLockDays")
     def backup_delete_lock_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
+        Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90(inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's create_time + backup_delete_lock_days. Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
         """
         return pulumi.get(self, "backup_delete_lock_days")
 
@@ -686,7 +686,7 @@ class RetentionPolicyArgs:
     @pulumi.getter(name="backupRetainDays")
     def backup_retain_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: backup_retain_days must be >= backup_delete_lock_days. Default: 0 (no automatic deletion)
+        The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value >= 0. If specified, a Backup created under this BackupPlan will be automatically deleted after its age reaches create_time + backup_retain_days. If not specified, Backups created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE: Specifying a backup_retain_days smaller than backup_delete_lock_days at creation/updating time will be considered as invalid, and the request will be rejected immediately. Default: 0 (no automatic deletion)
         """
         return pulumi.get(self, "backup_retain_days")
 
@@ -714,7 +714,7 @@ class ScheduleArgs:
                  paused: Optional[pulumi.Input[bool]] = None):
         """
         Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
-        :param pulumi.Input[str] cron_schedule: A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+        :param pulumi.Input[str] cron_schedule: A standard cron-style string that defines a repeating schedule for creating Backups via this BackupPlan.
         :param pulumi.Input[bool] paused: This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         """
         if cron_schedule is not None:
@@ -726,7 +726,7 @@ class ScheduleArgs:
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+        A standard cron-style string that defines a repeating schedule for creating Backups via this BackupPlan.
         """
         return pulumi.get(self, "cron_schedule")
 

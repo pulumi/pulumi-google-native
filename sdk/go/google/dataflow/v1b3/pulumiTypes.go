@@ -4505,9 +4505,9 @@ func (o SDKInfoResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v SDKInfoResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// Defines an SDK harness container for executing Dataflow pipelines.
+// Defines a SDK harness container for executing Dataflow pipelines.
 type SdkHarnessContainerImage struct {
-	// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+	// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
 	Capabilities []string `pulumi:"capabilities"`
 	// A docker container image that resides in Google Container Registry.
 	ContainerImage *string `pulumi:"containerImage"`
@@ -4528,9 +4528,9 @@ type SdkHarnessContainerImageInput interface {
 	ToSdkHarnessContainerImageOutputWithContext(context.Context) SdkHarnessContainerImageOutput
 }
 
-// Defines an SDK harness container for executing Dataflow pipelines.
+// Defines a SDK harness container for executing Dataflow pipelines.
 type SdkHarnessContainerImageArgs struct {
-	// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+	// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
 	Capabilities pulumi.StringArrayInput `pulumi:"capabilities"`
 	// A docker container image that resides in Google Container Registry.
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
@@ -4577,7 +4577,7 @@ func (i SdkHarnessContainerImageArray) ToSdkHarnessContainerImageArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(SdkHarnessContainerImageArrayOutput)
 }
 
-// Defines an SDK harness container for executing Dataflow pipelines.
+// Defines a SDK harness container for executing Dataflow pipelines.
 type SdkHarnessContainerImageOutput struct{ *pulumi.OutputState }
 
 func (SdkHarnessContainerImageOutput) ElementType() reflect.Type {
@@ -4592,7 +4592,7 @@ func (o SdkHarnessContainerImageOutput) ToSdkHarnessContainerImageOutputWithCont
 	return o
 }
 
-// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
 func (o SdkHarnessContainerImageOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SdkHarnessContainerImage) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }
@@ -4632,9 +4632,9 @@ func (o SdkHarnessContainerImageArrayOutput) Index(i pulumi.IntInput) SdkHarness
 	}).(SdkHarnessContainerImageOutput)
 }
 
-// Defines an SDK harness container for executing Dataflow pipelines.
+// Defines a SDK harness container for executing Dataflow pipelines.
 type SdkHarnessContainerImageResponse struct {
-	// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+	// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
 	Capabilities []string `pulumi:"capabilities"`
 	// A docker container image that resides in Google Container Registry.
 	ContainerImage string `pulumi:"containerImage"`
@@ -4644,7 +4644,7 @@ type SdkHarnessContainerImageResponse struct {
 	UseSingleCorePerContainer bool `pulumi:"useSingleCorePerContainer"`
 }
 
-// Defines an SDK harness container for executing Dataflow pipelines.
+// Defines a SDK harness container for executing Dataflow pipelines.
 type SdkHarnessContainerImageResponseOutput struct{ *pulumi.OutputState }
 
 func (SdkHarnessContainerImageResponseOutput) ElementType() reflect.Type {
@@ -4659,7 +4659,7 @@ func (o SdkHarnessContainerImageResponseOutput) ToSdkHarnessContainerImageRespon
 	return o
 }
 
-// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
 func (o SdkHarnessContainerImageResponseOutput) Capabilities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SdkHarnessContainerImageResponse) []string { return v.Capabilities }).(pulumi.StringArrayOutput)
 }

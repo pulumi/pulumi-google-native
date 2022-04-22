@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRoutineResult:
-    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, strict_mode=None):
+    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, remote_function_options=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, strict_mode=None):
         if arguments and not isinstance(arguments, list):
             raise TypeError("Expected argument 'arguments' to be a list")
         pulumi.set(__self__, "arguments", arguments)
@@ -46,6 +46,9 @@ class GetRoutineResult:
         if last_modified_time and not isinstance(last_modified_time, str):
             raise TypeError("Expected argument 'last_modified_time' to be a str")
         pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if remote_function_options and not isinstance(remote_function_options, dict):
+            raise TypeError("Expected argument 'remote_function_options' to be a dict")
+        pulumi.set(__self__, "remote_function_options", remote_function_options)
         if return_table_type and not isinstance(return_table_type, dict):
             raise TypeError("Expected argument 'return_table_type' to be a dict")
         pulumi.set(__self__, "return_table_type", return_table_type)
@@ -135,6 +138,14 @@ class GetRoutineResult:
         return pulumi.get(self, "last_modified_time")
 
     @property
+    @pulumi.getter(name="remoteFunctionOptions")
+    def remote_function_options(self) -> 'outputs.RemoteFunctionOptionsResponse':
+        """
+        Optional. Remote function specific options.
+        """
+        return pulumi.get(self, "remote_function_options")
+
+    @property
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> 'outputs.StandardSqlTableTypeResponse':
         """
@@ -190,6 +201,7 @@ class AwaitableGetRoutineResult(GetRoutineResult):
             imported_libraries=self.imported_libraries,
             language=self.language,
             last_modified_time=self.last_modified_time,
+            remote_function_options=self.remote_function_options,
             return_table_type=self.return_table_type,
             return_type=self.return_type,
             routine_reference=self.routine_reference,
@@ -226,6 +238,7 @@ def get_routine(dataset_id: Optional[str] = None,
         imported_libraries=__ret__.imported_libraries,
         language=__ret__.language,
         last_modified_time=__ret__.last_modified_time,
+        remote_function_options=__ret__.remote_function_options,
         return_table_type=__ret__.return_table_type,
         return_type=__ret__.return_type,
         routine_reference=__ret__.routine_reference,

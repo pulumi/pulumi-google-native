@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string LastRefreshTime;
         /// <summary>
+        /// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
+        /// </summary>
+        public readonly string MaxStaleness;
+        /// <summary>
         /// [Required] A query whose result is persisted.
         /// </summary>
         public readonly string Query;
@@ -36,12 +40,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string lastRefreshTime,
 
+            string maxStaleness,
+
             string query,
 
             string refreshIntervalMs)
         {
             EnableRefresh = enableRefresh;
             LastRefreshTime = lastRefreshTime;
+            MaxStaleness = maxStaleness;
             Query = query;
             RefreshIntervalMs = refreshIntervalMs;
         }

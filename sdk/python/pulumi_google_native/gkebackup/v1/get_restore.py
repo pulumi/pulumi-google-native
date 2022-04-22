@@ -75,7 +75,7 @@ class GetRestoreResult:
     @pulumi.getter
     def backup(self) -> str:
         """
-        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         """
         return pulumi.get(self, "backup")
 
@@ -83,7 +83,7 @@ class GetRestoreResult:
     @pulumi.getter
     def cluster(self) -> str:
         """
-        The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+        The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
         """
         return pulumi.get(self, "cluster")
 
@@ -91,7 +91,7 @@ class GetRestoreResult:
     @pulumi.getter(name="completeTime")
     def complete_time(self) -> str:
         """
-        Timestamp of when the restore operation completed.
+        When the restore operation either successfully completed or failed.
         """
         return pulumi.get(self, "complete_time")
 
@@ -99,7 +99,7 @@ class GetRestoreResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp when this Restore resource was created.
+        The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         """
         return pulumi.get(self, "create_time")
 
@@ -115,7 +115,7 @@ class GetRestoreResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
         """
         return pulumi.get(self, "etag")
 
@@ -123,7 +123,7 @@ class GetRestoreResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        A set of custom labels supplied by user.
+        GCP Labels.
         """
         return pulumi.get(self, "labels")
 
@@ -139,7 +139,7 @@ class GetRestoreResult:
     @pulumi.getter(name="resourcesExcludedCount")
     def resources_excluded_count(self) -> int:
         """
-        Number of resources excluded during the restore execution.
+        Number of resources excluded in this restore action.
         """
         return pulumi.get(self, "resources_excluded_count")
 
@@ -147,7 +147,7 @@ class GetRestoreResult:
     @pulumi.getter(name="resourcesFailedCount")
     def resources_failed_count(self) -> int:
         """
-        Number of resources that failed to be restored during the restore execution.
+        Number of resources failed to be restored in this restore action.
         """
         return pulumi.get(self, "resources_failed_count")
 
@@ -155,7 +155,7 @@ class GetRestoreResult:
     @pulumi.getter(name="resourcesRestoredCount")
     def resources_restored_count(self) -> int:
         """
-        Number of resources restored during the restore execution.
+        Number of resources restored in this restore action.
         """
         return pulumi.get(self, "resources_restored_count")
 
@@ -195,7 +195,7 @@ class GetRestoreResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The timestamp when this Restore resource was last updated.
+        The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         """
         return pulumi.get(self, "update_time")
 
@@ -203,7 +203,7 @@ class GetRestoreResult:
     @pulumi.getter(name="volumesRestoredCount")
     def volumes_restored_count(self) -> int:
         """
-        Number of volumes restored during the restore execution.
+        Number of volumes restored in this restore action.
         """
         return pulumi.get(self, "volumes_restored_count")
 

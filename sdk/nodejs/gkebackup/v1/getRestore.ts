@@ -31,19 +31,19 @@ export interface GetRestoreArgs {
 
 export interface GetRestoreResult {
     /**
-     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
+     * Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
      */
     readonly backup: string;
     /**
-     * The target cluster into which this Restore will restore data. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/* Inherited from parent RestorePlan's cluster value.
+     * The target cluster into which this Restore will restore data. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/* Inherited from parent RestorePlan's cluster field.
      */
     readonly cluster: string;
     /**
-     * Timestamp of when the restore operation completed.
+     * When the restore operation either successfully completed or failed.
      */
     readonly completeTime: string;
     /**
-     * The timestamp when this Restore resource was created.
+     * The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     readonly createTime: string;
     /**
@@ -51,11 +51,11 @@ export interface GetRestoreResult {
      */
     readonly description: string;
     /**
-     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
+     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
      */
     readonly etag: string;
     /**
-     * A set of custom labels supplied by user.
+     * GCP Labels.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -63,15 +63,15 @@ export interface GetRestoreResult {
      */
     readonly name: string;
     /**
-     * Number of resources excluded during the restore execution.
+     * Number of resources excluded in this restore action.
      */
     readonly resourcesExcludedCount: number;
     /**
-     * Number of resources that failed to be restored during the restore execution.
+     * Number of resources failed to be restored in this restore action.
      */
     readonly resourcesFailedCount: number;
     /**
-     * Number of resources restored during the restore execution.
+     * Number of resources restored in this restore action.
      */
     readonly resourcesRestoredCount: number;
     /**
@@ -91,11 +91,11 @@ export interface GetRestoreResult {
      */
     readonly uid: string;
     /**
-     * The timestamp when this Restore resource was last updated.
+     * The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     readonly updateTime: string;
     /**
-     * Number of volumes restored during the restore execution.
+     * Number of volumes restored in this restore action.
      */
     readonly volumesRestoredCount: number;
 }

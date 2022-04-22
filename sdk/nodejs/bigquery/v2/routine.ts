@@ -73,6 +73,10 @@ export class Routine extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
+     * Optional. Remote function specific options.
+     */
+    public readonly remoteFunctionOptions!: pulumi.Output<outputs.bigquery.v2.RemoteFunctionOptionsResponse>;
+    /**
      * Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
      */
     public readonly returnTableType!: pulumi.Output<outputs.bigquery.v2.StandardSqlTableTypeResponse>;
@@ -124,6 +128,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["importedLibraries"] = args ? args.importedLibraries : undefined;
             resourceInputs["language"] = args ? args.language : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["remoteFunctionOptions"] = args ? args.remoteFunctionOptions : undefined;
             resourceInputs["returnTableType"] = args ? args.returnTableType : undefined;
             resourceInputs["returnType"] = args ? args.returnType : undefined;
             resourceInputs["routineReference"] = args ? args.routineReference : undefined;
@@ -142,6 +147,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["importedLibraries"] = undefined /*out*/;
             resourceInputs["language"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["remoteFunctionOptions"] = undefined /*out*/;
             resourceInputs["returnTableType"] = undefined /*out*/;
             resourceInputs["returnType"] = undefined /*out*/;
             resourceInputs["routineReference"] = undefined /*out*/;
@@ -183,6 +189,10 @@ export interface RoutineArgs {
      */
     language?: pulumi.Input<enums.bigquery.v2.RoutineLanguage>;
     project?: pulumi.Input<string>;
+    /**
+     * Optional. Remote function specific options.
+     */
+    remoteFunctionOptions?: pulumi.Input<inputs.bigquery.v2.RemoteFunctionOptionsArgs>;
     /**
      * Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
      */

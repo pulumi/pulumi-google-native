@@ -70,15 +70,15 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly Outputs.ScheduleResponse BackupSchedule;
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
         /// </summary>
         public readonly string Cluster;
         /// <summary>
-        /// The timestamp when this BackupPlan resource was created.
+        /// The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         /// </summary>
         public readonly bool Deactivated;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
         /// </summary>
         public readonly string Etag;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
+        /// Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
         /// </summary>
         public readonly int ProtectedPodCount;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly string Uid;
         /// <summary>
-        /// The timestamp when this BackupPlan resource was last updated.
+        /// The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         /// </summary>
         public readonly string UpdateTime;
 

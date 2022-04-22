@@ -34,23 +34,23 @@ type LookupBackupResult struct {
 	ClusterMetadata ClusterMetadataResponse `pulumi:"clusterMetadata"`
 	// Completion time of the Backup
 	CompleteTime string `pulumi:"completeTime"`
-	// The size of the config backup in bytes.
+	// cluster config backup size in bytes.
 	ConfigBackupSizeBytes string `pulumi:"configBackupSizeBytes"`
-	// Whether or not the Backup contains Kubernetes Secrets. Controlled by the parent BackupPlan's include_secrets value.
+	// Whether or not the Backup contains Kubernetes Secrets. Inherited from the parent BackupPlan's backup_config.include_secrets.
 	ContainsSecrets bool `pulumi:"containsSecrets"`
-	// Whether or not the Backup contains volume data. Controlled by the parent BackupPlan's include_volume_data value.
+	// Whether or not the Backup contains volume data. Inherited from the parent BackupPlan's backup_config.include_volume_data.
 	ContainsVolumeData bool `pulumi:"containsVolumeData"`
-	// The timestamp when this Backup resource was created.
+	// The timestamp when this Backup resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 	CreateTime string `pulumi:"createTime"`
-	// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+	// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). This value is inherited from the parent BackupPlan's retention_policy.backup_delete_lock_days value and may only be increased (either at creation time or in a subsequent update). This field MUST be an integer value between 0-90 (inclusive). Default: inherited from BackupPlan.
 	DeleteLockDays int `pulumi:"deleteLockDays"`
 	// The time at which an existing delete lock will expire for this backup (calculated from create_time + delete_lock_days).
 	DeleteLockExpireTime string `pulumi:"deleteLockExpireTime"`
 	// User specified descriptive string for this Backup.
 	Description string `pulumi:"description"`
-	// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's encryption_key value.
+	// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's backup_config.encryption_key.
 	EncryptionKey EncryptionKeyResponse `pulumi:"encryptionKey"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` to ensure that their change will be applied to the same version.
 	Etag string `pulumi:"etag"`
 	// A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
@@ -62,7 +62,7 @@ type LookupBackupResult struct {
 	PodCount int `pulumi:"podCount"`
 	// The total number of Kubernetes resources included in the Backup.
 	ResourceCount int `pulumi:"resourceCount"`
-	// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+	// The age (in days) after which this Backup will be automatically deleted. If not specified at Backup creation time, this value is inherited from the parent BackupPlan's retention_policy.backup_retain_days value. Once a Backup is created, this value may only be increased. This must be an integer value >= 0. If 0, no automatic deletion will occur for this Backup. If not 0, this must be >= delete_lock_days. Default: inherited from BackupPlan.
 	RetainDays int `pulumi:"retainDays"`
 	// The time at which this Backup will be automatically deleted (calculated from create_time + retain_days).
 	RetainExpireTime string `pulumi:"retainExpireTime"`
@@ -78,7 +78,7 @@ type LookupBackupResult struct {
 	StateReason string `pulumi:"stateReason"`
 	// Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 	Uid string `pulumi:"uid"`
-	// The timestamp when this Backup resource was last updated.
+	// The timestamp when this Backup resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 	UpdateTime string `pulumi:"updateTime"`
 	// The total number of volume backups contained in the Backup.
 	VolumeCount int `pulumi:"volumeCount"`
@@ -137,27 +137,27 @@ func (o LookupBackupResultOutput) CompleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.CompleteTime }).(pulumi.StringOutput)
 }
 
-// The size of the config backup in bytes.
+// cluster config backup size in bytes.
 func (o LookupBackupResultOutput) ConfigBackupSizeBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.ConfigBackupSizeBytes }).(pulumi.StringOutput)
 }
 
-// Whether or not the Backup contains Kubernetes Secrets. Controlled by the parent BackupPlan's include_secrets value.
+// Whether or not the Backup contains Kubernetes Secrets. Inherited from the parent BackupPlan's backup_config.include_secrets.
 func (o LookupBackupResultOutput) ContainsSecrets() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupResult) bool { return v.ContainsSecrets }).(pulumi.BoolOutput)
 }
 
-// Whether or not the Backup contains volume data. Controlled by the parent BackupPlan's include_volume_data value.
+// Whether or not the Backup contains volume data. Inherited from the parent BackupPlan's backup_config.include_volume_data.
 func (o LookupBackupResultOutput) ContainsVolumeData() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupResult) bool { return v.ContainsVolumeData }).(pulumi.BoolOutput)
 }
 
-// The timestamp when this Backup resource was created.
+// The timestamp when this Backup resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 func (o LookupBackupResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a subsequent update).
+// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). This value is inherited from the parent BackupPlan's retention_policy.backup_delete_lock_days value and may only be increased (either at creation time or in a subsequent update). This field MUST be an integer value between 0-90 (inclusive). Default: inherited from BackupPlan.
 func (o LookupBackupResultOutput) DeleteLockDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupResult) int { return v.DeleteLockDays }).(pulumi.IntOutput)
 }
@@ -172,12 +172,12 @@ func (o LookupBackupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's encryption_key value.
+// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's backup_config.encryption_key.
 func (o LookupBackupResultOutput) EncryptionKey() EncryptionKeyResponseOutput {
 	return o.ApplyT(func(v LookupBackupResult) EncryptionKeyResponse { return v.EncryptionKey }).(EncryptionKeyResponseOutput)
 }
 
-// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` or `DeleteBackup` to ensure that their change will be applied to the same version of the resource.
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` to ensure that their change will be applied to the same version.
 func (o LookupBackupResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -207,7 +207,7 @@ func (o LookupBackupResultOutput) ResourceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupResult) int { return v.ResourceCount }).(pulumi.IntOutput)
 }
 
-// The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+// The age (in days) after which this Backup will be automatically deleted. If not specified at Backup creation time, this value is inherited from the parent BackupPlan's retention_policy.backup_retain_days value. Once a Backup is created, this value may only be increased. This must be an integer value >= 0. If 0, no automatic deletion will occur for this Backup. If not 0, this must be >= delete_lock_days. Default: inherited from BackupPlan.
 func (o LookupBackupResultOutput) RetainDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupResult) int { return v.RetainDays }).(pulumi.IntOutput)
 }
@@ -247,7 +247,7 @@ func (o LookupBackupResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The timestamp when this Backup resource was last updated.
+// The timestamp when this Backup resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
 func (o LookupBackupResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

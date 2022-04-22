@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         public Output<bool> MultiRegionAuxiliary { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` For the commitment id, it must only contain lower case alphanumeric characters or dashes.It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+        /// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

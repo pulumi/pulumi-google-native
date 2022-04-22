@@ -26,6 +26,7 @@ class RoutineArgs:
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input['RemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
                  return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None):
@@ -39,6 +40,7 @@ class RoutineArgs:
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
+        :param pulumi.Input['RemoteFunctionOptionsArgs'] remote_function_options: Optional. Remote function specific options.
         :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
@@ -59,6 +61,8 @@ class RoutineArgs:
             pulumi.set(__self__, "language", language)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remote_function_options is not None:
+            pulumi.set(__self__, "remote_function_options", remote_function_options)
         if return_table_type is not None:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
@@ -181,6 +185,18 @@ class RoutineArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="remoteFunctionOptions")
+    def remote_function_options(self) -> Optional[pulumi.Input['RemoteFunctionOptionsArgs']]:
+        """
+        Optional. Remote function specific options.
+        """
+        return pulumi.get(self, "remote_function_options")
+
+    @remote_function_options.setter
+    def remote_function_options(self, value: Optional[pulumi.Input['RemoteFunctionOptionsArgs']]):
+        pulumi.set(self, "remote_function_options", value)
+
+    @property
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> Optional[pulumi.Input['StandardSqlTableTypeArgs']]:
         """
@@ -230,6 +246,7 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input[pulumi.InputType['RemoteFunctionOptionsArgs']]] = None,
                  return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
@@ -248,6 +265,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
         :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
+        :param pulumi.Input[pulumi.InputType['RemoteFunctionOptionsArgs']] remote_function_options: Optional. Remote function specific options.
         :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
@@ -287,6 +305,7 @@ class Routine(pulumi.CustomResource):
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  language: Optional[pulumi.Input['RoutineLanguage']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remote_function_options: Optional[pulumi.Input[pulumi.InputType['RemoteFunctionOptionsArgs']]] = None,
                  return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
@@ -316,6 +335,7 @@ class Routine(pulumi.CustomResource):
             __props__.__dict__["imported_libraries"] = imported_libraries
             __props__.__dict__["language"] = language
             __props__.__dict__["project"] = project
+            __props__.__dict__["remote_function_options"] = remote_function_options
             __props__.__dict__["return_table_type"] = return_table_type
             __props__.__dict__["return_type"] = return_type
             if routine_reference is None and not opts.urn:
@@ -359,6 +379,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["imported_libraries"] = None
         __props__.__dict__["language"] = None
         __props__.__dict__["last_modified_time"] = None
+        __props__.__dict__["remote_function_options"] = None
         __props__.__dict__["return_table_type"] = None
         __props__.__dict__["return_type"] = None
         __props__.__dict__["routine_reference"] = None
@@ -437,6 +458,14 @@ class Routine(pulumi.CustomResource):
         The time when this routine was last modified, in milliseconds since the epoch.
         """
         return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter(name="remoteFunctionOptions")
+    def remote_function_options(self) -> pulumi.Output['outputs.RemoteFunctionOptionsResponse']:
+        """
+        Optional. Remote function specific options.
+        """
+        return pulumi.get(self, "remote_function_options")
 
     @property
     @pulumi.getter(name="returnTableType")

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
         /// </summary>
         public readonly bool AllNamespaces;
         /// <summary>
-        /// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be encrypted.
+        /// This defines a customer managed encryption key that will be used to encrypt the Backup artifacts for Backups created via this BackupPlan.
         /// </summary>
         public readonly Outputs.EncryptionKeyResponse EncryptionKey;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
         /// </summary>
         public readonly Outputs.NamespacedNamesResponse SelectedApplications;
         /// <summary>
-        /// If set, include just the resources in the listed namespaces.
+        /// If set, include just the resources in the listed namespaces
         /// </summary>
         public readonly Outputs.NamespacesResponse SelectedNamespaces;
 

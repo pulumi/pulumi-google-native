@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     public sealed class ScheduleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating Backups via this BackupPlan. Default (empty): no automatic backup creation will occur.
+        /// A standard cron-style string that defines a repeating schedule for creating Backups via this BackupPlan.
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }

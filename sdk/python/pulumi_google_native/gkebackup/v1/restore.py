@@ -23,10 +23,10 @@ class RestoreArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Restore resource.
-        :param pulumi.Input[str] backup: Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
-        :param pulumi.Input[str] restore_id: Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+        :param pulumi.Input[str] backup: Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        :param pulumi.Input[str] restore_id: Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
         :param pulumi.Input[str] description: User specified descriptive string for this Restore.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP Labels.
         """
         pulumi.set(__self__, "backup", backup)
         pulumi.set(__self__, "restore_id", restore_id)
@@ -44,7 +44,7 @@ class RestoreArgs:
     @pulumi.getter
     def backup(self) -> pulumi.Input[str]:
         """
-        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         """
         return pulumi.get(self, "backup")
 
@@ -56,7 +56,7 @@ class RestoreArgs:
     @pulumi.getter(name="restoreId")
     def restore_id(self) -> pulumi.Input[str]:
         """
-        Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+        Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
         """
         return pulumi.get(self, "restore_id")
 
@@ -89,7 +89,7 @@ class RestoreArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A set of custom labels supplied by user.
+        GCP Labels.
         """
         return pulumi.get(self, "labels")
 
@@ -135,10 +135,10 @@ class Restore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] backup: Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        :param pulumi.Input[str] backup: Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         :param pulumi.Input[str] description: User specified descriptive string for this Restore.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of custom labels supplied by user.
-        :param pulumi.Input[str] restore_id: Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP Labels.
+        :param pulumi.Input[str] restore_id: Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
         """
         ...
     @overload
@@ -256,7 +256,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def backup(self) -> pulumi.Output[str]:
         """
-        Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         """
         return pulumi.get(self, "backup")
 
@@ -264,7 +264,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[str]:
         """
-        The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+        The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
         """
         return pulumi.get(self, "cluster")
 
@@ -272,7 +272,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="completeTime")
     def complete_time(self) -> pulumi.Output[str]:
         """
-        Timestamp of when the restore operation completed.
+        When the restore operation either successfully completed or failed.
         """
         return pulumi.get(self, "complete_time")
 
@@ -280,7 +280,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when this Restore resource was created.
+        The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         """
         return pulumi.get(self, "create_time")
 
@@ -296,7 +296,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
         """
         return pulumi.get(self, "etag")
 
@@ -304,7 +304,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        A set of custom labels supplied by user.
+        GCP Labels.
         """
         return pulumi.get(self, "labels")
 
@@ -320,7 +320,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="resourcesExcludedCount")
     def resources_excluded_count(self) -> pulumi.Output[int]:
         """
-        Number of resources excluded during the restore execution.
+        Number of resources excluded in this restore action.
         """
         return pulumi.get(self, "resources_excluded_count")
 
@@ -328,7 +328,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="resourcesFailedCount")
     def resources_failed_count(self) -> pulumi.Output[int]:
         """
-        Number of resources that failed to be restored during the restore execution.
+        Number of resources failed to be restored in this restore action.
         """
         return pulumi.get(self, "resources_failed_count")
 
@@ -336,7 +336,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="resourcesRestoredCount")
     def resources_restored_count(self) -> pulumi.Output[int]:
         """
-        Number of resources restored during the restore execution.
+        Number of resources restored in this restore action.
         """
         return pulumi.get(self, "resources_restored_count")
 
@@ -376,7 +376,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The timestamp when this Restore resource was last updated.
+        The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
         """
         return pulumi.get(self, "update_time")
 
@@ -384,7 +384,7 @@ class Restore(pulumi.CustomResource):
     @pulumi.getter(name="volumesRestoredCount")
     def volumes_restored_count(self) -> pulumi.Output[int]:
         """
-        Number of volumes restored during the restore execution.
+        Number of volumes restored in this restore action.
         """
         return pulumi.get(self, "volumes_restored_count")
 

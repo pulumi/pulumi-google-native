@@ -1575,7 +1575,7 @@ class SDKInfoResponse(dict):
 @pulumi.output_type
 class SdkHarnessContainerImageResponse(dict):
     """
-    Defines an SDK harness container for executing Dataflow pipelines.
+    Defines a SDK harness container for executing Dataflow pipelines.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1604,8 +1604,8 @@ class SdkHarnessContainerImageResponse(dict):
                  environment_id: str,
                  use_single_core_per_container: bool):
         """
-        Defines an SDK harness container for executing Dataflow pipelines.
-        :param Sequence[str] capabilities: The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+        Defines a SDK harness container for executing Dataflow pipelines.
+        :param Sequence[str] capabilities: The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
         :param str container_image: A docker container image that resides in Google Container Registry.
         :param str environment_id: Environment ID for the Beam runner API proto Environment that corresponds to the current SDK Harness.
         :param bool use_single_core_per_container: If true, recommends the Dataflow service to use only one core per SDK container instance with this image. If false (or unset) recommends using more than one core per SDK container instance with this image for efficiency. Note that Dataflow service may choose to override this property if needed.
@@ -1619,7 +1619,7 @@ class SdkHarnessContainerImageResponse(dict):
     @pulumi.getter
     def capabilities(self) -> Sequence[str]:
         """
-        The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
+        The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
         """
         return pulumi.get(self, "capabilities")
 

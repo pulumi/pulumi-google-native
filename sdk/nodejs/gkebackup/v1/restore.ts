@@ -37,19 +37,19 @@ export class Restore extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
+     * Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
      */
     public readonly backup!: pulumi.Output<string>;
     /**
-     * The target cluster into which this Restore will restore data. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/* Inherited from parent RestorePlan's cluster value.
+     * The target cluster into which this Restore will restore data. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/* Inherited from parent RestorePlan's cluster field.
      */
     public /*out*/ readonly cluster!: pulumi.Output<string>;
     /**
-     * Timestamp of when the restore operation completed.
+     * When the restore operation either successfully completed or failed.
      */
     public /*out*/ readonly completeTime!: pulumi.Output<string>;
     /**
-     * The timestamp when this Restore resource was created.
+     * The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -57,11 +57,11 @@ export class Restore extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
+     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * A set of custom labels supplied by user.
+     * GCP Labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -69,15 +69,15 @@ export class Restore extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Number of resources excluded during the restore execution.
+     * Number of resources excluded in this restore action.
      */
     public /*out*/ readonly resourcesExcludedCount!: pulumi.Output<number>;
     /**
-     * Number of resources that failed to be restored during the restore execution.
+     * Number of resources failed to be restored in this restore action.
      */
     public /*out*/ readonly resourcesFailedCount!: pulumi.Output<number>;
     /**
-     * Number of resources restored during the restore execution.
+     * Number of resources restored in this restore action.
      */
     public /*out*/ readonly resourcesRestoredCount!: pulumi.Output<number>;
     /**
@@ -97,11 +97,11 @@ export class Restore extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The timestamp when this Restore resource was last updated.
+     * The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Number of volumes restored during the restore execution.
+     * Number of volumes restored in this restore action.
      */
     public /*out*/ readonly volumesRestoredCount!: pulumi.Output<number>;
 
@@ -175,7 +175,7 @@ export class Restore extends pulumi.CustomResource {
  */
 export interface RestoreArgs {
     /**
-     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
+     * Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
      */
     backup: pulumi.Input<string>;
     /**
@@ -183,13 +183,13 @@ export interface RestoreArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A set of custom labels supplied by user.
+     * GCP Labels.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
+     * Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
      */
     restoreId: pulumi.Input<string>;
     restorePlanId: pulumi.Input<string>;

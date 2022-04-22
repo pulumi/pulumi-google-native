@@ -29,15 +29,15 @@ export interface GetRestorePlanArgs {
 
 export interface GetRestorePlanResult {
     /**
-     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
+     * Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
      */
     readonly backupPlan: string;
     /**
-     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/*
      */
     readonly cluster: string;
     /**
-     * The timestamp when this RestorePlan resource was created.
+     * The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     readonly createTime: string;
     /**
@@ -45,7 +45,7 @@ export interface GetRestorePlanResult {
      */
     readonly description: string;
     /**
-     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
+     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
      */
     readonly etag: string;
     /**
@@ -53,7 +53,7 @@ export interface GetRestorePlanResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*.
+     * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*
      */
     readonly name: string;
     /**
@@ -65,7 +65,7 @@ export interface GetRestorePlanResult {
      */
     readonly uid: string;
     /**
-     * The timestamp when this RestorePlan resource was last updated.
+     * The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
      */
     readonly updateTime: string;
 }
