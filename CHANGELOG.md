@@ -3,6 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+- Support attach
+  [#460](https://github.com/pulumi/pulumi-google-native/pull/460)
+
 ## 0.18.1 (2022-04-20)
 
 Improvements:

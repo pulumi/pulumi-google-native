@@ -230,8 +230,13 @@ func (p *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceP
 }
 
 // Attach sends the engine address to an already running plugin.
-func (p *googleCloudProvider) Attach(_ context.Context, _ *rpc.PluginAttach) (*empty.Empty, error) {
-	return nil, status.Error(codes.Unimplemented, "Attach is not yet implemented")
+func (p *googleCloudProvider) Attach(_ context.Context, req *rpc.PluginAttach) (*empty.Empty, error) {
+	host, err := provider.NewHostClient(req.GetAddress())
+	if err != nil {
+		return nil, err
+	}
+	p.host = host
+	return &empty.Empty{}, nil
 }
 
 // Check validates that the given property bag is valid for a resource of the given type and returns
