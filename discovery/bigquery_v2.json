@@ -1693,7 +1693,7 @@
       }
     }
   },
-  "revision": "20220416",
+  "revision": "20220422",
   "rootUrl": "https://bigquery.googleapis.com/",
   "schemas": {
     "AggregateClassificationMetrics": {
@@ -2816,7 +2816,7 @@
           "format": "int64",
           "type": "string"
         },
-        "satisfiesPZS": {
+        "satisfiesPzs": {
           "description": "[Output-only] Reserved for future use.",
           "type": "boolean"
         },
@@ -6390,8 +6390,12 @@
           },
           "type": "object"
         },
-        "collationSpec": {
+        "collation": {
           "description": "Optional. Collation specification of the field. It only can be set on string type field.",
+          "type": "string"
+        },
+        "defaultValueExpression": {
+          "description": "Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']",
           "type": "string"
         },
         "description": {
