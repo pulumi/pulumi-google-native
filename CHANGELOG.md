@@ -3,8 +3,14 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+Improvements:
+
 - Support attach
   [#460](https://github.com/pulumi/pulumi-google-native/pull/460)
+
+Bug fixes:
+
+- Convert token expiry to string on assignment [#470](https://github.com/pulumi/pulumi-google-native/pull/470)
 
 ## 0.18.1 (2022-04-20)
 

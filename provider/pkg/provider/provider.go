@@ -175,7 +175,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 		t := p.client.OAuth2Token()
 		resp = map[string]interface{}{
 			"accessToken":  t.AccessToken,
-			"expiry":       t.Expiry,
+			"expiry":       t.Expiry.String(),
 			"refreshToken": t.RefreshToken,
 			"tokenType":    t.TokenType,
 		}
