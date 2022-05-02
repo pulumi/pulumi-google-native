@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+## 0.18.2 (2022-05-02)
+
 Improvements:
 
 - Support attach
