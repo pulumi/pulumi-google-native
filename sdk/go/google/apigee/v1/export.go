@@ -159,6 +159,51 @@ func (o ExportOutput) ToExportOutputWithContext(ctx context.Context) ExportOutpu
 	return o
 }
 
+// Time the export job was created.
+func (o ExportOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// Name of the datastore that is the destination of the export job [datastore]
+func (o ExportOutput) DatastoreName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.DatastoreName }).(pulumi.StringOutput)
+}
+
+// Description of the export job.
+func (o ExportOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Error is set when export fails
+func (o ExportOutput) Error() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Error }).(pulumi.StringOutput)
+}
+
+// Execution time for this export job. If the job is still in progress, it will be set to the amount of time that has elapsed since`created`, in seconds. Else, it will set to (`updated` - `created`), in seconds.
+func (o ExportOutput) ExecutionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.ExecutionTime }).(pulumi.StringOutput)
+}
+
+// Display name of the export job.
+func (o ExportOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Self link of the export job. A URI that can be used to retrieve the status of an export job. Example: `/organizations/myorg/environments/myenv/analytics/exports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+func (o ExportOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Self }).(pulumi.StringOutput)
+}
+
+// Status of the export job. Valid values include `enqueued`, `running`, `completed`, and `failed`.
+func (o ExportOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Time the export job was last updated.
+func (o ExportOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Export) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExportInput)(nil)).Elem(), &Export{})
 	pulumi.RegisterOutputType(ExportOutput{})

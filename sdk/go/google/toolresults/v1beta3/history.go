@@ -130,6 +130,26 @@ func (o HistoryOutput) ToHistoryOutputWithContext(ctx context.Context) HistoryOu
 	return o
 }
 
+// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
+func (o HistoryOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *History) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
+func (o HistoryOutput) HistoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *History) pulumi.StringOutput { return v.HistoryId }).(pulumi.StringOutput)
+}
+
+// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
+func (o HistoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *History) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
+func (o HistoryOutput) TestPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v *History) pulumi.StringOutput { return v.TestPlatform }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HistoryInput)(nil)).Elem(), &History{})
 	pulumi.RegisterOutputType(HistoryOutput{})

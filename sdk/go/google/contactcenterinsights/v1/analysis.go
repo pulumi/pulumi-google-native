@@ -120,6 +120,28 @@ func (o AnalysisOutput) ToAnalysisOutputWithContext(ctx context.Context) Analysi
 	return o
 }
 
+// The result of the analysis, which is populated when the analysis finishes.
+func (o AnalysisOutput) AnalysisResult() GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput {
+	return o.ApplyT(func(v *Analysis) GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput {
+		return v.AnalysisResult
+	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput)
+}
+
+// The time at which the analysis was created, which occurs when the long-running operation completes.
+func (o AnalysisOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
+func (o AnalysisOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The time at which the analysis was requested.
+func (o AnalysisOutput) RequestTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Analysis) pulumi.StringOutput { return v.RequestTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisInput)(nil)).Elem(), &Analysis{})
 	pulumi.RegisterOutputType(AnalysisOutput{})

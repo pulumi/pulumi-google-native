@@ -119,6 +119,21 @@ func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) Nat
 	return o
 }
 
+// The static IPV4 address.
+func (o NatAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Resource ID of the NAT address.
+func (o NatAddressOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the nat address.
+func (o NatAddressOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NatAddressInput)(nil)).Elem(), &NatAddress{})
 	pulumi.RegisterOutputType(NatAddressOutput{})

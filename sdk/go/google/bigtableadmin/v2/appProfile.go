@@ -147,6 +147,31 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 	return o
 }
 
+// Long form description of the use case for this AppProfile.
+func (o AppProfileOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
+func (o AppProfileOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Use a multi-cluster routing policy.
+func (o AppProfileOutput) MultiClusterRoutingUseAny() MultiClusterRoutingUseAnyResponseOutput {
+	return o.ApplyT(func(v *AppProfile) MultiClusterRoutingUseAnyResponseOutput { return v.MultiClusterRoutingUseAny }).(MultiClusterRoutingUseAnyResponseOutput)
+}
+
+// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
+func (o AppProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Use a single-cluster routing policy.
+func (o AppProfileOutput) SingleClusterRouting() SingleClusterRoutingResponseOutput {
+	return o.ApplyT(func(v *AppProfile) SingleClusterRoutingResponseOutput { return v.SingleClusterRouting }).(SingleClusterRoutingResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileInput)(nil)).Elem(), &AppProfile{})
 	pulumi.RegisterOutputType(AppProfileOutput{})

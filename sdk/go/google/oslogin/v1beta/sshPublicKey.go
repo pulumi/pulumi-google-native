@@ -121,6 +121,26 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// An expiration time in microseconds since epoch.
+func (o SshPublicKeyOutput) ExpirationTimeUsec() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.ExpirationTimeUsec }).(pulumi.StringOutput)
+}
+
+// The SHA-256 fingerprint of the SSH public key.
+func (o SshPublicKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Public key text in SSH format, defined by RFC4253 section 6.6.
+func (o SshPublicKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The canonical resource name.
+func (o SshPublicKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SshPublicKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SshPublicKeyInput)(nil)).Elem(), &SshPublicKey{})
 	pulumi.RegisterOutputType(SshPublicKeyOutput{})

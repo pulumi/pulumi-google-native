@@ -141,6 +141,41 @@ func (o CloneJobOutput) ToCloneJobOutputWithContext(ctx context.Context) CloneJo
 	return o
 }
 
+// Details of the target VM in Compute Engine.
+func (o CloneJobOutput) ComputeEngineTargetDetails() ComputeEngineTargetDetailsResponseOutput {
+	return o.ApplyT(func(v *CloneJob) ComputeEngineTargetDetailsResponseOutput { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
+}
+
+// The time the clone job was created (as an API call, not when it was actually created in the target).
+func (o CloneJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the clone job was ended.
+func (o CloneJobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Provides details for the errors that led to the Clone Job's state.
+func (o CloneJobOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *CloneJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The name of the clone.
+func (o CloneJobOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the clone job.
+func (o CloneJobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The time the state was last updated.
+func (o CloneJobOutput) StateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloneJobInput)(nil)).Elem(), &CloneJob{})
 	pulumi.RegisterOutputType(CloneJobOutput{})

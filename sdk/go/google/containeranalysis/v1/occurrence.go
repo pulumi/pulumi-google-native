@@ -200,6 +200,96 @@ func (o OccurrenceOutput) ToOccurrenceOutputWithContext(ctx context.Context) Occ
 	return o
 }
 
+// Describes an attestation of an artifact.
+func (o OccurrenceOutput) Attestation() AttestationOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) AttestationOccurrenceResponseOutput { return v.Attestation }).(AttestationOccurrenceResponseOutput)
+}
+
+// Describes a verifiable build.
+func (o OccurrenceOutput) Build() BuildOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) BuildOccurrenceResponseOutput { return v.Build }).(BuildOccurrenceResponseOutput)
+}
+
+// Describes a compliance violation on a linked resource.
+func (o OccurrenceOutput) Compliance() ComplianceOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) ComplianceOccurrenceResponseOutput { return v.Compliance }).(ComplianceOccurrenceResponseOutput)
+}
+
+// The time this occurrence was created.
+func (o OccurrenceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Describes the deployment of an artifact on a runtime.
+func (o OccurrenceOutput) Deployment() DeploymentOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DeploymentOccurrenceResponseOutput { return v.Deployment }).(DeploymentOccurrenceResponseOutput)
+}
+
+// Describes when a resource was discovered.
+func (o OccurrenceOutput) Discovery() DiscoveryOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DiscoveryOccurrenceResponseOutput { return v.Discovery }).(DiscoveryOccurrenceResponseOutput)
+}
+
+// Describes an attestation of an artifact using dsse.
+func (o OccurrenceOutput) DsseAttestation() DSSEAttestationOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DSSEAttestationOccurrenceResponseOutput { return v.DsseAttestation }).(DSSEAttestationOccurrenceResponseOutput)
+}
+
+// https://github.com/secure-systems-lab/dsse
+func (o OccurrenceOutput) Envelope() EnvelopeResponseOutput {
+	return o.ApplyT(func(v *Occurrence) EnvelopeResponseOutput { return v.Envelope }).(EnvelopeResponseOutput)
+}
+
+// Describes how this resource derives from the basis in the associated note.
+func (o OccurrenceOutput) Image() ImageOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) ImageOccurrenceResponseOutput { return v.Image }).(ImageOccurrenceResponseOutput)
+}
+
+// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+func (o OccurrenceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+func (o OccurrenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+func (o OccurrenceOutput) NoteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.NoteName }).(pulumi.StringOutput)
+}
+
+// Describes the installation of a package on the linked resource.
+func (o OccurrenceOutput) Package() PackageOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) PackageOccurrenceResponseOutput { return v.Package }).(PackageOccurrenceResponseOutput)
+}
+
+// A description of actions that can be taken to remedy the note.
+func (o OccurrenceOutput) Remediation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Remediation }).(pulumi.StringOutput)
+}
+
+// Immutable. A URI that represents the resource for which the occurrence applies. For example, `https://gcr.io/project/image@sha256:123abc` for a Docker image.
+func (o OccurrenceOutput) ResourceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.ResourceUri }).(pulumi.StringOutput)
+}
+
+// The time this occurrence was last updated.
+func (o OccurrenceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Describes an available package upgrade on the linked resource.
+func (o OccurrenceOutput) Upgrade() UpgradeOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) UpgradeOccurrenceResponseOutput { return v.Upgrade }).(UpgradeOccurrenceResponseOutput)
+}
+
+// Describes a security vulnerability.
+func (o OccurrenceOutput) Vulnerability() VulnerabilityOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) VulnerabilityOccurrenceResponseOutput { return v.Vulnerability }).(VulnerabilityOccurrenceResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurrenceInput)(nil)).Elem(), &Occurrence{})
 	pulumi.RegisterOutputType(OccurrenceOutput{})

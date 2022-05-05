@@ -146,6 +146,41 @@ func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutpu
 	return o
 }
 
+// Budgeted amount.
+func (o BudgetOutput) Amount() GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput {
+	return o.ApplyT(func(v *Budget) GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput { return v.Amount }).(GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput)
+}
+
+// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
+func (o BudgetOutput) BudgetFilter() GoogleCloudBillingBudgetsV1FilterResponseOutput {
+	return o.ApplyT(func(v *Budget) GoogleCloudBillingBudgetsV1FilterResponseOutput { return v.BudgetFilter }).(GoogleCloudBillingBudgetsV1FilterResponseOutput)
+}
+
+// User data for display name in UI. The name must be less than or equal to 60 characters.
+func (o BudgetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag causes an update to overwrite other changes.
+func (o BudgetOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
+func (o BudgetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+func (o BudgetOutput) NotificationsRule() GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput {
+	return o.ApplyT(func(v *Budget) GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput { return v.NotificationsRule }).(GoogleCloudBillingBudgetsV1NotificationsRuleResponseOutput)
+}
+
+// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
+func (o BudgetOutput) ThresholdRules() GoogleCloudBillingBudgetsV1ThresholdRuleResponseArrayOutput {
+	return o.ApplyT(func(v *Budget) GoogleCloudBillingBudgetsV1ThresholdRuleResponseArrayOutput { return v.ThresholdRules }).(GoogleCloudBillingBudgetsV1ThresholdRuleResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BudgetInput)(nil)).Elem(), &Budget{})
 	pulumi.RegisterOutputType(BudgetOutput{})

@@ -149,6 +149,36 @@ func (o AnnotationOutput) ToAnnotationOutputWithContext(ctx context.Context) Ann
 	return o
 }
 
+// Details of the source.
+func (o AnnotationOutput) AnnotationSource() AnnotationSourceResponseOutput {
+	return o.ApplyT(func(v *Annotation) AnnotationSourceResponseOutput { return v.AnnotationSource }).(AnnotationSourceResponseOutput)
+}
+
+// Additional information for this annotation record, such as annotator and verifier information or study campaign.
+func (o AnnotationOutput) CustomData() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Annotation) pulumi.StringMapOutput { return v.CustomData }).(pulumi.StringMapOutput)
+}
+
+// Annotations for images. For example, bounding polygons.
+func (o AnnotationOutput) ImageAnnotation() ImageAnnotationResponseOutput {
+	return o.ApplyT(func(v *Annotation) ImageAnnotationResponseOutput { return v.ImageAnnotation }).(ImageAnnotationResponseOutput)
+}
+
+// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+func (o AnnotationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Annotation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Annotations for resource. For example, classification tags.
+func (o AnnotationOutput) ResourceAnnotation() ResourceAnnotationResponseOutput {
+	return o.ApplyT(func(v *Annotation) ResourceAnnotationResponseOutput { return v.ResourceAnnotation }).(ResourceAnnotationResponseOutput)
+}
+
+// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+func (o AnnotationOutput) TextAnnotation() SensitiveTextAnnotationResponseOutput {
+	return o.ApplyT(func(v *Annotation) SensitiveTextAnnotationResponseOutput { return v.TextAnnotation }).(SensitiveTextAnnotationResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationInput)(nil)).Elem(), &Annotation{})
 	pulumi.RegisterOutputType(AnnotationOutput{})

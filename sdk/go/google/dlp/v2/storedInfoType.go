@@ -127,6 +127,23 @@ func (o StoredInfoTypeOutput) ToStoredInfoTypeOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Current version of the stored info type.
+func (o StoredInfoTypeOutput) CurrentVersion() GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput {
+	return o.ApplyT(func(v *StoredInfoType) GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput { return v.CurrentVersion }).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput)
+}
+
+// Resource name.
+func (o StoredInfoTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoredInfoType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Pending versions of the stored info type. Empty if no versions are pending.
+func (o StoredInfoTypeOutput) PendingVersions() GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput {
+	return o.ApplyT(func(v *StoredInfoType) GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput {
+		return v.PendingVersions
+	}).(GooglePrivacyDlpV2StoredInfoTypeVersionResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StoredInfoTypeInput)(nil)).Elem(), &StoredInfoType{})
 	pulumi.RegisterOutputType(StoredInfoTypeOutput{})

@@ -173,6 +173,71 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+// List of API products associated with the developer app.
+func (o AppOutput) ApiProducts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.ApiProducts }).(pulumi.StringArrayOutput)
+}
+
+// Developer app family.
+func (o AppOutput) AppFamily() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AppFamily }).(pulumi.StringOutput)
+}
+
+// ID of the developer app.
+func (o AppOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// List of attributes for the developer app.
+func (o AppOutput) Attributes() GoogleCloudApigeeV1AttributeResponseArrayOutput {
+	return o.ApplyT(func(v *App) GoogleCloudApigeeV1AttributeResponseArrayOutput { return v.Attributes }).(GoogleCloudApigeeV1AttributeResponseArrayOutput)
+}
+
+// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
+func (o AppOutput) CallbackUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CallbackUrl }).(pulumi.StringOutput)
+}
+
+// Time the developer app was created in milliseconds since epoch.
+func (o AppOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Set of credentials for the developer app consisting of the consumer key/secret pairs associated with the API products.
+func (o AppOutput) Credentials() GoogleCloudApigeeV1CredentialResponseArrayOutput {
+	return o.ApplyT(func(v *App) GoogleCloudApigeeV1CredentialResponseArrayOutput { return v.Credentials }).(GoogleCloudApigeeV1CredentialResponseArrayOutput)
+}
+
+// ID of the developer.
+func (o AppOutput) DeveloperId() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DeveloperId }).(pulumi.StringOutput)
+}
+
+// Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
+func (o AppOutput) KeyExpiresIn() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.KeyExpiresIn }).(pulumi.StringOutput)
+}
+
+// Time the developer app was modified in milliseconds since epoch.
+func (o AppOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the developer app.
+func (o AppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
+func (o AppOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *App) pulumi.StringArrayOutput { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// Status of the credential. Valid values include `approved` or `revoked`.
+func (o AppOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppInput)(nil)).Elem(), &App{})
 	pulumi.RegisterOutputType(AppOutput{})

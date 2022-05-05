@@ -160,6 +160,61 @@ func (o SearchApplicationOutput) ToSearchApplicationOutputWithContext(ctx contex
 	return o
 }
 
+// Retrictions applied to the configurations. The maximum number of elements is 10.
+func (o SearchApplicationOutput) DataSourceRestrictions() DataSourceRestrictionResponseArrayOutput {
+	return o.ApplyT(func(v *SearchApplication) DataSourceRestrictionResponseArrayOutput { return v.DataSourceRestrictions }).(DataSourceRestrictionResponseArrayOutput)
+}
+
+// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
+func (o SearchApplicationOutput) DefaultFacetOptions() FacetOptionsResponseArrayOutput {
+	return o.ApplyT(func(v *SearchApplication) FacetOptionsResponseArrayOutput { return v.DefaultFacetOptions }).(FacetOptionsResponseArrayOutput)
+}
+
+// The default options for sorting the search results
+func (o SearchApplicationOutput) DefaultSortOptions() SortOptionsResponseOutput {
+	return o.ApplyT(func(v *SearchApplication) SortOptionsResponseOutput { return v.DefaultSortOptions }).(SortOptionsResponseOutput)
+}
+
+// Display name of the Search Application. The maximum length is 300 characters.
+func (o SearchApplicationOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SearchApplication) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+func (o SearchApplicationOutput) EnableAuditLog() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SearchApplication) pulumi.BoolOutput { return v.EnableAuditLog }).(pulumi.BoolOutput)
+}
+
+// Name of the Search Application. Format: searchapplications/{application_id}.
+func (o SearchApplicationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SearchApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
+func (o SearchApplicationOutput) OperationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SearchApplication) pulumi.StringArrayOutput { return v.OperationIds }).(pulumi.StringArrayOutput)
+}
+
+// The default options for query interpretation
+func (o SearchApplicationOutput) QueryInterpretationConfig() QueryInterpretationConfigResponseOutput {
+	return o.ApplyT(func(v *SearchApplication) QueryInterpretationConfigResponseOutput { return v.QueryInterpretationConfig }).(QueryInterpretationConfigResponseOutput)
+}
+
+// With each result we should return the URI for its thumbnail (when applicable)
+func (o SearchApplicationOutput) ReturnResultThumbnailUrls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *SearchApplication) pulumi.BoolOutput { return v.ReturnResultThumbnailUrls }).(pulumi.BoolOutput)
+}
+
+// Configuration for ranking results.
+func (o SearchApplicationOutput) ScoringConfig() ScoringConfigResponseOutput {
+	return o.ApplyT(func(v *SearchApplication) ScoringConfigResponseOutput { return v.ScoringConfig }).(ScoringConfigResponseOutput)
+}
+
+// Configuration for a sources specified in data_source_restrictions.
+func (o SearchApplicationOutput) SourceConfig() SourceConfigResponseArrayOutput {
+	return o.ApplyT(func(v *SearchApplication) SourceConfigResponseArrayOutput { return v.SourceConfig }).(SourceConfigResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchApplicationInput)(nil)).Elem(), &SearchApplication{})
 	pulumi.RegisterOutputType(SearchApplicationOutput{})

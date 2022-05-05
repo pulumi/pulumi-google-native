@@ -206,6 +206,101 @@ func (o OccurrenceOutput) ToOccurrenceOutputWithContext(ctx context.Context) Occ
 	return o
 }
 
+// Describes an attestation of an artifact.
+func (o OccurrenceOutput) Attestation() DetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DetailsResponseOutput { return v.Attestation }).(DetailsResponseOutput)
+}
+
+// Describes a verifiable build.
+func (o OccurrenceOutput) Build() GrafeasV1beta1BuildDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1BuildDetailsResponseOutput { return v.Build }).(GrafeasV1beta1BuildDetailsResponseOutput)
+}
+
+// The time this occurrence was created.
+func (o OccurrenceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Describes the deployment of an artifact on a runtime.
+func (o OccurrenceOutput) Deployment() GrafeasV1beta1DeploymentDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1DeploymentDetailsResponseOutput { return v.Deployment }).(GrafeasV1beta1DeploymentDetailsResponseOutput)
+}
+
+// Describes how this resource derives from the basis in the associated note.
+func (o OccurrenceOutput) DerivedImage() GrafeasV1beta1ImageDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1ImageDetailsResponseOutput { return v.DerivedImage }).(GrafeasV1beta1ImageDetailsResponseOutput)
+}
+
+// Describes when a resource was discovered.
+func (o OccurrenceOutput) Discovered() GrafeasV1beta1DiscoveryDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1DiscoveryDetailsResponseOutput { return v.Discovered }).(GrafeasV1beta1DiscoveryDetailsResponseOutput)
+}
+
+// Describes the installation of a package on the linked resource.
+func (o OccurrenceOutput) Installation() GrafeasV1beta1PackageDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1PackageDetailsResponseOutput { return v.Installation }).(GrafeasV1beta1PackageDetailsResponseOutput)
+}
+
+// Describes a specific in-toto link.
+func (o OccurrenceOutput) Intoto() GrafeasV1beta1IntotoDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1IntotoDetailsResponseOutput { return v.Intoto }).(GrafeasV1beta1IntotoDetailsResponseOutput)
+}
+
+// This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
+func (o OccurrenceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
+func (o OccurrenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+func (o OccurrenceOutput) NoteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.NoteName }).(pulumi.StringOutput)
+}
+
+// A description of actions that can be taken to remedy the note.
+func (o OccurrenceOutput) Remediation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Remediation }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource for which the occurrence applies.
+func (o OccurrenceOutput) Resource() ResourceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) ResourceResponseOutput { return v.Resource }).(ResourceResponseOutput)
+}
+
+// Describes a specific software bill of materials document.
+func (o OccurrenceOutput) Sbom() DocumentOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DocumentOccurrenceResponseOutput { return v.Sbom }).(DocumentOccurrenceResponseOutput)
+}
+
+// Describes a specific SPDX File.
+func (o OccurrenceOutput) SpdxFile() FileOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) FileOccurrenceResponseOutput { return v.SpdxFile }).(FileOccurrenceResponseOutput)
+}
+
+// Describes a specific SPDX Package.
+func (o OccurrenceOutput) SpdxPackage() PackageInfoOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) PackageInfoOccurrenceResponseOutput { return v.SpdxPackage }).(PackageInfoOccurrenceResponseOutput)
+}
+
+// Describes a specific SPDX Relationship.
+func (o OccurrenceOutput) SpdxRelationship() RelationshipOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) RelationshipOccurrenceResponseOutput { return v.SpdxRelationship }).(RelationshipOccurrenceResponseOutput)
+}
+
+// The time this occurrence was last updated.
+func (o OccurrenceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Describes a security vulnerability.
+func (o OccurrenceOutput) Vulnerability() GrafeasV1beta1VulnerabilityDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) GrafeasV1beta1VulnerabilityDetailsResponseOutput { return v.Vulnerability }).(GrafeasV1beta1VulnerabilityDetailsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurrenceInput)(nil)).Elem(), &Occurrence{})
 	pulumi.RegisterOutputType(OccurrenceOutput{})

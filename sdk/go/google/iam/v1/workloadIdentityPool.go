@@ -133,6 +133,31 @@ func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx 
 	return o
 }
 
+// A description of the pool. Cannot exceed 256 characters.
+func (o WorkloadIdentityPoolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+func (o WorkloadIdentityPoolOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// A display name for the pool. Cannot exceed 32 characters.
+func (o WorkloadIdentityPoolOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The resource name of the pool.
+func (o WorkloadIdentityPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the pool.
+func (o WorkloadIdentityPoolOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolInput)(nil)).Elem(), &WorkloadIdentityPool{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolOutput{})

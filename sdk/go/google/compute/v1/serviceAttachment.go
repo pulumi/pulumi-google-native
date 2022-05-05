@@ -184,6 +184,95 @@ func (o ServiceAttachmentOutput) ToServiceAttachmentOutputWithContext(ctx contex
 	return o
 }
 
+// An array of connections for all the consumers connected to this service attachment.
+func (o ServiceAttachmentOutput) ConnectedEndpoints() ServiceAttachmentConnectedEndpointResponseArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachmentConnectedEndpointResponseArrayOutput {
+		return v.ConnectedEndpoints
+	}).(ServiceAttachmentConnectedEndpointResponseArrayOutput)
+}
+
+// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
+func (o ServiceAttachmentOutput) ConnectionPreference() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.ConnectionPreference }).(pulumi.StringOutput)
+}
+
+// Projects that are allowed to connect to this service attachment.
+func (o ServiceAttachmentOutput) ConsumerAcceptLists() ServiceAttachmentConsumerProjectLimitResponseArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) ServiceAttachmentConsumerProjectLimitResponseArrayOutput {
+		return v.ConsumerAcceptLists
+	}).(ServiceAttachmentConsumerProjectLimitResponseArrayOutput)
+}
+
+// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+func (o ServiceAttachmentOutput) ConsumerRejectLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringArrayOutput { return v.ConsumerRejectLists }).(pulumi.StringArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o ServiceAttachmentOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o ServiceAttachmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// If specified, the domain name will be used during the integration between the PSC connected endpoints and the Cloud DNS. For example, this is a valid domain name: "p.mycompany.com.". Current max number of domain names supported is 1.
+func (o ServiceAttachmentOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
+}
+
+// If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
+func (o ServiceAttachmentOutput) EnableProxyProtocol() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.BoolOutput { return v.EnableProxyProtocol }).(pulumi.BoolOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+func (o ServiceAttachmentOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#serviceAttachment for service attachments.
+func (o ServiceAttachmentOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o ServiceAttachmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of URLs where each entry is the URL of a subnet provided by the service producer to use for NAT in this service attachment.
+func (o ServiceAttachmentOutput) NatSubnets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringArrayOutput { return v.NatSubnets }).(pulumi.StringArrayOutput)
+}
+
+// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
+func (o ServiceAttachmentOutput) ProducerForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.ProducerForwardingRule }).(pulumi.StringOutput)
+}
+
+// An 128-bit global unique ID of the PSC service attachment.
+func (o ServiceAttachmentOutput) PscServiceAttachmentId() Uint128ResponseOutput {
+	return o.ApplyT(func(v *ServiceAttachment) Uint128ResponseOutput { return v.PscServiceAttachmentId }).(Uint128ResponseOutput)
+}
+
+// URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o ServiceAttachmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o ServiceAttachmentOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The URL of a service serving the endpoint identified by this service attachment.
+func (o ServiceAttachmentOutput) TargetService() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAttachment) pulumi.StringOutput { return v.TargetService }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentInput)(nil)).Elem(), &ServiceAttachment{})
 	pulumi.RegisterOutputType(ServiceAttachmentOutput{})

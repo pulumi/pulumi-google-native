@@ -125,6 +125,31 @@ func (o EnvgroupOutput) ToEnvgroupOutputWithContext(ctx context.Context) Envgrou
 	return o
 }
 
+// The time at which the environment group was created as milliseconds since epoch.
+func (o EnvgroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Envgroup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Host names for this environment group.
+func (o EnvgroupOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Envgroup) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// The time at which the environment group was last updated as milliseconds since epoch.
+func (o EnvgroupOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Envgroup) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// ID of the environment group.
+func (o EnvgroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Envgroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
+func (o EnvgroupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Envgroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvgroupInput)(nil)).Elem(), &Envgroup{})
 	pulumi.RegisterOutputType(EnvgroupOutput{})

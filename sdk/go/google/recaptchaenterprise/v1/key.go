@@ -154,6 +154,53 @@ func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
 }
 
+// Settings for keys that can be used by Android apps.
+func (o KeyOutput) AndroidSettings() GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput {
+	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput {
+		return v.AndroidSettings
+	}).(GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponseOutput)
+}
+
+// The timestamp corresponding to the creation of this Key.
+func (o KeyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human-readable display name of this key. Modifiable by user.
+func (o KeyOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Settings for keys that can be used by iOS apps.
+func (o KeyOutput) IosSettings() GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput {
+	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput { return v.IosSettings }).(GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponseOutput)
+}
+
+// See Creating and managing labels.
+func (o KeyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name for the Key in the format "projects/{project}/keys/{key}".
+func (o KeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Options for user acceptance testing.
+func (o KeyOutput) TestingOptions() GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput {
+	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput { return v.TestingOptions }).(GoogleCloudRecaptchaenterpriseV1TestingOptionsResponseOutput)
+}
+
+// Settings for WAF
+func (o KeyOutput) WafSettings() GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput {
+	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput { return v.WafSettings }).(GoogleCloudRecaptchaenterpriseV1WafSettingsResponseOutput)
+}
+
+// Settings for keys that can be used by websites.
+func (o KeyOutput) WebSettings() GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput {
+	return o.ApplyT(func(v *Key) GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput { return v.WebSettings }).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyInput)(nil)).Elem(), &Key{})
 	pulumi.RegisterOutputType(KeyOutput{})

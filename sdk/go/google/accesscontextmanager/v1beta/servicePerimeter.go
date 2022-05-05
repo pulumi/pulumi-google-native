@@ -130,6 +130,31 @@ func (o ServicePerimeterOutput) ToServicePerimeterOutputWithContext(ctx context.
 	return o
 }
 
+// Description of the `ServicePerimeter` and its use. Does not affect behavior.
+func (o ServicePerimeterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+func (o ServicePerimeterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
+func (o ServicePerimeterOutput) PerimeterType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.PerimeterType }).(pulumi.StringOutput)
+}
+
+// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
+func (o ServicePerimeterOutput) Status() ServicePerimeterConfigResponseOutput {
+	return o.ApplyT(func(v *ServicePerimeter) ServicePerimeterConfigResponseOutput { return v.Status }).(ServicePerimeterConfigResponseOutput)
+}
+
+// Human readable title. Must be unique within the Policy.
+func (o ServicePerimeterOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterInput)(nil)).Elem(), &ServicePerimeter{})
 	pulumi.RegisterOutputType(ServicePerimeterOutput{})

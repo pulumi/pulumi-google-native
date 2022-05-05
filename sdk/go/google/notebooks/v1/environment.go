@@ -145,6 +145,41 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Use a container image to start the notebook instance.
+func (o EnvironmentOutput) ContainerImage() ContainerImageResponseOutput {
+	return o.ApplyT(func(v *Environment) ContainerImageResponseOutput { return v.ContainerImage }).(ContainerImageResponseOutput)
+}
+
+// The time at which this environment was created.
+func (o EnvironmentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A brief description of this environment.
+func (o EnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of this environment for the UI.
+func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
+func (o EnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
+func (o EnvironmentOutput) PostStartupScript() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.PostStartupScript }).(pulumi.StringOutput)
+}
+
+// Use a Compute Engine VM image to start the notebook instance.
+func (o EnvironmentOutput) VmImage() VmImageResponseOutput {
+	return o.ApplyT(func(v *Environment) VmImageResponseOutput { return v.VmImage }).(VmImageResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), &Environment{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})

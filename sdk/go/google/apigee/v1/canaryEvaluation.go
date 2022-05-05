@@ -165,6 +165,53 @@ func (o CanaryEvaluationOutput) ToCanaryEvaluationOutputWithContext(ctx context.
 	return o
 }
 
+// The stable version that is serving requests.
+func (o CanaryEvaluationOutput) Control() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.Control }).(pulumi.StringOutput)
+}
+
+// Create time of the canary evaluation.
+func (o CanaryEvaluationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// End time for the evaluation's analysis.
+func (o CanaryEvaluationOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Labels used to filter the metrics used for a canary evaluation.
+func (o CanaryEvaluationOutput) MetricLabels() GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput {
+		return v.MetricLabels
+	}).(GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput)
+}
+
+// Name of the canary evalution.
+func (o CanaryEvaluationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Start time for the canary evaluation's analysis.
+func (o CanaryEvaluationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the canary evaluation.
+func (o CanaryEvaluationOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The newer version that is serving requests.
+func (o CanaryEvaluationOutput) Treatment() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.Treatment }).(pulumi.StringOutput)
+}
+
+// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
+func (o CanaryEvaluationOutput) Verdict() pulumi.StringOutput {
+	return o.ApplyT(func(v *CanaryEvaluation) pulumi.StringOutput { return v.Verdict }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CanaryEvaluationInput)(nil)).Elem(), &CanaryEvaluation{})
 	pulumi.RegisterOutputType(CanaryEvaluationOutput{})

@@ -131,6 +131,27 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx contex
 	return o
 }
 
+func (o AutoscalingPolicyOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) BasicAutoscalingAlgorithmResponseOutput { return v.BasicAlgorithm }).(BasicAutoscalingAlgorithmResponseOutput)
+}
+
+// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+func (o AutoscalingPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Describes how the autoscaler will operate for secondary workers.
+func (o AutoscalingPolicyOutput) SecondaryWorkerConfig() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) InstanceGroupAutoscalingPolicyConfigResponseOutput {
+		return v.SecondaryWorkerConfig
+	}).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
+}
+
+// Describes how the autoscaler will operate for primary workers.
+func (o AutoscalingPolicyOutput) WorkerConfig() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) InstanceGroupAutoscalingPolicyConfigResponseOutput { return v.WorkerConfig }).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyInput)(nil)).Elem(), &AutoscalingPolicy{})
 	pulumi.RegisterOutputType(AutoscalingPolicyOutput{})

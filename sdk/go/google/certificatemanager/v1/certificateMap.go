@@ -134,6 +134,36 @@ func (o CertificateMapOutput) ToCertificateMapOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The creation timestamp of a Certificate Map.
+func (o CertificateMapOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// One or more paragraphs of text description of a certificate map.
+func (o CertificateMapOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of GCLB targets which use this Certificate Map.
+func (o CertificateMapOutput) GclbTargets() GclbTargetResponseArrayOutput {
+	return o.ApplyT(func(v *CertificateMap) GclbTargetResponseArrayOutput { return v.GclbTargets }).(GclbTargetResponseArrayOutput)
+}
+
+// Set of labels associated with a Certificate Map.
+func (o CertificateMapOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMap) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
+func (o CertificateMapOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The update timestamp of a Certificate Map.
+func (o CertificateMapOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMap) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapInput)(nil)).Elem(), &CertificateMap{})
 	pulumi.RegisterOutputType(CertificateMapOutput{})

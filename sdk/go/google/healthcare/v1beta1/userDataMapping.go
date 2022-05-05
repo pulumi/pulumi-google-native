@@ -147,6 +147,36 @@ func (o UserDataMappingOutput) ToUserDataMappingOutputWithContext(ctx context.Co
 	return o
 }
 
+// Indicates the time when this mapping was archived.
+func (o UserDataMappingOutput) ArchiveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.ArchiveTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether this mapping is archived.
+func (o UserDataMappingOutput) Archived() pulumi.BoolOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.BoolOutput { return v.Archived }).(pulumi.BoolOutput)
+}
+
+// A unique identifier for the mapped resource.
+func (o UserDataMappingOutput) DataId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.DataId }).(pulumi.StringOutput)
+}
+
+// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
+func (o UserDataMappingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
+func (o UserDataMappingOutput) ResourceAttributes() AttributeResponseArrayOutput {
+	return o.ApplyT(func(v *UserDataMapping) AttributeResponseArrayOutput { return v.ResourceAttributes }).(AttributeResponseArrayOutput)
+}
+
+// User's UUID provided by the client.
+func (o UserDataMappingOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserDataMapping) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserDataMappingInput)(nil)).Elem(), &UserDataMapping{})
 	pulumi.RegisterOutputType(UserDataMappingOutput{})

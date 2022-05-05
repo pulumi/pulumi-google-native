@@ -132,6 +132,31 @@ func (o EvaluationOutput) ToEvaluationOutputWithContext(ctx context.Context) Eva
 	return o
 }
 
+// Creation time of this model.
+func (o EvaluationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The display name of the model evaluation. At most 64 bytes long.
+func (o EvaluationOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. The configuration of the evaluation task.
+func (o EvaluationOutput) EvaluationConfig() GoogleCloudDialogflowV2EvaluationConfigResponseOutput {
+	return o.ApplyT(func(v *Evaluation) GoogleCloudDialogflowV2EvaluationConfigResponseOutput { return v.EvaluationConfig }).(GoogleCloudDialogflowV2EvaluationConfigResponseOutput)
+}
+
+// The resource name of the evaluation. Format: `projects//conversationModels//evaluations/`
+func (o EvaluationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Only available when model is for smart reply.
+func (o EvaluationOutput) SmartReplyMetrics() GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput {
+	return o.ApplyT(func(v *Evaluation) GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput { return v.SmartReplyMetrics }).(GoogleCloudDialogflowV2SmartReplyMetricsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EvaluationInput)(nil)).Elem(), &Evaluation{})
 	pulumi.RegisterOutputType(EvaluationOutput{})

@@ -146,6 +146,23 @@ func (o SessionEntityTypeOutput) ToSessionEntityTypeOutputWithContext(ctx contex
 	return o
 }
 
+// The collection of entities associated with this session entity type.
+func (o SessionEntityTypeOutput) Entities() GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput {
+	return o.ApplyT(func(v *SessionEntityType) GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput {
+		return v.Entities
+	}).(GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput)
+}
+
+// Indicates whether the additional data should override or supplement the custom entity type definition.
+func (o SessionEntityTypeOutput) EntityOverrideMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.EntityOverrideMode }).(pulumi.StringOutput)
+}
+
+// The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+func (o SessionEntityTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionEntityTypeInput)(nil)).Elem(), &SessionEntityType{})
 	pulumi.RegisterOutputType(SessionEntityTypeOutput{})

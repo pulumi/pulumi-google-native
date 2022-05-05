@@ -119,6 +119,26 @@ func (o BrandOutput) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return o
 }
 
+// Application name displayed on OAuth consent screen.
+func (o BrandOutput) ApplicationTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.ApplicationTitle }).(pulumi.StringOutput)
+}
+
+// Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
+func (o BrandOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the brand is only intended for usage inside the G Suite organization only.
+func (o BrandOutput) OrgInternalOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Brand) pulumi.BoolOutput { return v.OrgInternalOnly }).(pulumi.BoolOutput)
+}
+
+// Support email displayed on the OAuth consent screen.
+func (o BrandOutput) SupportEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Brand) pulumi.StringOutput { return v.SupportEmail }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BrandInput)(nil)).Elem(), &Brand{})
 	pulumi.RegisterOutputType(BrandOutput{})

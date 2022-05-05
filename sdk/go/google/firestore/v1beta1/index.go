@@ -130,6 +130,26 @@ func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
 }
 
+// The collection ID to which this index applies. Required.
+func (o IndexOutput) CollectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.CollectionId }).(pulumi.StringOutput)
+}
+
+// The fields to index.
+func (o IndexOutput) Fields() GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput {
+	return o.ApplyT(func(v *Index) GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput { return v.Fields }).(GoogleFirestoreAdminV1beta1IndexFieldResponseArrayOutput)
+}
+
+// The resource name of the index. Output only.
+func (o IndexOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the index. Output only.
+func (o IndexOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexInput)(nil)).Elem(), &Index{})
 	pulumi.RegisterOutputType(IndexOutput{})

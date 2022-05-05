@@ -204,6 +204,67 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx co
 	return o
 }
 
+// The name of the bucket.
+func (o BucketAccessControlOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The domain associated with the entity, if any.
+func (o BucketAccessControlOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The email address associated with the entity, if any.
+func (o BucketAccessControlOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The entity holding the permission, in one of the following forms:
+// - user-userId
+// - user-email
+// - group-groupId
+// - group-email
+// - domain-domain
+// - project-team-projectId
+// - allUsers
+// - allAuthenticatedUsers Examples:
+// - The user liz@example.com would be user-liz@example.com.
+// - The group example@googlegroups.com would be group-example@googlegroups.com.
+// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+func (o BucketAccessControlOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity, if any.
+func (o BucketAccessControlOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// HTTP 1.1 Entity tag for the access-control entry.
+func (o BucketAccessControlOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
+func (o BucketAccessControlOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+func (o BucketAccessControlOutput) ProjectTeam() BucketAccessControlProjectTeamResponseOutput {
+	return o.ApplyT(func(v *BucketAccessControl) BucketAccessControlProjectTeamResponseOutput { return v.ProjectTeam }).(BucketAccessControlProjectTeamResponseOutput)
+}
+
+// The access permission for the entity.
+func (o BucketAccessControlOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// The link to this access-control entry.
+func (o BucketAccessControlOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessControlInput)(nil)).Elem(), &BucketAccessControl{})
 	pulumi.RegisterOutputType(BucketAccessControlOutput{})

@@ -151,6 +151,51 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
+// The time at which the channel was created.
+func (o ChannelOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+func (o ChannelOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Text labels used for extra metadata and/or filtering.
+func (o ChannelOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+func (o ChannelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current release for the channel, if any.
+func (o ChannelOutput) Release() ReleaseResponseOutput {
+	return o.ApplyT(func(v *Channel) ReleaseResponseOutput { return v.Release }).(ReleaseResponseOutput)
+}
+
+// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+func (o ChannelOutput) RetainedReleaseCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Channel) pulumi.IntOutput { return v.RetainedReleaseCount }).(pulumi.IntOutput)
+}
+
+// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+func (o ChannelOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Ttl }).(pulumi.StringOutput)
+}
+
+// The time at which the channel was last updated.
+func (o ChannelOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
+func (o ChannelOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelInput)(nil)).Elem(), &Channel{})
 	pulumi.RegisterOutputType(ChannelOutput{})

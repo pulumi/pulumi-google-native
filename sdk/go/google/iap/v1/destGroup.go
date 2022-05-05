@@ -128,6 +128,21 @@ func (o DestGroupOutput) ToDestGroupOutputWithContext(ctx context.Context) DestG
 	return o
 }
 
+// null List of CIDRs that this group applies to.
+func (o DestGroupOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DestGroup) pulumi.StringArrayOutput { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// null List of FQDNs that this group applies to.
+func (o DestGroupOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DestGroup) pulumi.StringArrayOutput { return v.Fqdns }).(pulumi.StringArrayOutput)
+}
+
+// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
+func (o DestGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DestGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DestGroupInput)(nil)).Elem(), &DestGroup{})
 	pulumi.RegisterOutputType(DestGroupOutput{})

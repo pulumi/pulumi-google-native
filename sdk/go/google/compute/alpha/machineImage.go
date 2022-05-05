@@ -174,6 +174,91 @@ func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The creation timestamp for this machine image in RFC3339 text format.
+func (o MachineImageOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o MachineImageOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
+func (o MachineImageOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.BoolOutput { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+// Properties of source instance
+func (o MachineImageOutput) InstanceProperties() InstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *MachineImage) InstancePropertiesResponseOutput { return v.InstanceProperties }).(InstancePropertiesResponseOutput)
+}
+
+// The resource type, which is always compute#machineImage for machine image.
+func (o MachineImageOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Encrypts the machine image using a customer-supplied encryption key. After you encrypt a machine image using a customer-supplied key, you must provide the same key if you use the machine image later. For example, you must provide the encryption key when you create an instance from the encrypted machine image in a future request. Customer-supplied encryption keys do not protect access to metadata of the machine image. If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
+func (o MachineImageOutput) MachineImageEncryptionKey() CustomerEncryptionKeyResponseOutput {
+	return o.ApplyT(func(v *MachineImage) CustomerEncryptionKeyResponseOutput { return v.MachineImageEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o MachineImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o MachineImageOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// An array of Machine Image specific properties for disks attached to the source instance
+func (o MachineImageOutput) SavedDisks() SavedDiskResponseArrayOutput {
+	return o.ApplyT(func(v *MachineImage) SavedDiskResponseArrayOutput { return v.SavedDisks }).(SavedDiskResponseArrayOutput)
+}
+
+// The URL for this machine image. The server defines this URL.
+func (o MachineImageOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o MachineImageOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
+func (o MachineImageOutput) SourceDiskEncryptionKeys() SourceDiskEncryptionKeyResponseArrayOutput {
+	return o.ApplyT(func(v *MachineImage) SourceDiskEncryptionKeyResponseArrayOutput { return v.SourceDiskEncryptionKeys }).(SourceDiskEncryptionKeyResponseArrayOutput)
+}
+
+// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
+func (o MachineImageOutput) SourceInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.SourceInstance }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: Please use instance_properties instead for source instance related properties. New properties will not be added to this field.
+func (o MachineImageOutput) SourceInstanceProperties() SourceInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *MachineImage) SourceInstancePropertiesResponseOutput { return v.SourceInstanceProperties }).(SourceInstancePropertiesResponseOutput)
+}
+
+// The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
+func (o MachineImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
+func (o MachineImageOutput) StorageLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringArrayOutput { return v.StorageLocations }).(pulumi.StringArrayOutput)
+}
+
+// Total size of the storage used by the machine image.
+func (o MachineImageOutput) TotalStorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.TotalStorageBytes }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineImageInput)(nil)).Elem(), &MachineImage{})
 	pulumi.RegisterOutputType(MachineImageOutput{})

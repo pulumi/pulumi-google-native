@@ -163,6 +163,66 @@ func (o EntitlementOutput) ToEntitlementOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Association information to other entitlements.
+func (o EntitlementOutput) AssociationInfo() GoogleCloudChannelV1AssociationInfoResponseOutput {
+	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1AssociationInfoResponseOutput { return v.AssociationInfo }).(GoogleCloudChannelV1AssociationInfoResponseOutput)
+}
+
+// Commitment settings for a commitment-based Offer. Required for commitment based offers.
+func (o EntitlementOutput) CommitmentSettings() GoogleCloudChannelV1CommitmentSettingsResponseOutput {
+	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1CommitmentSettingsResponseOutput { return v.CommitmentSettings }).(GoogleCloudChannelV1CommitmentSettingsResponseOutput)
+}
+
+// The time at which the entitlement is created.
+func (o EntitlementOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
+func (o EntitlementOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+func (o EntitlementOutput) Offer() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.Offer }).(pulumi.StringOutput)
+}
+
+// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. The response may include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. - max_units: The maximum assignable units for a flexible offer. - num_units: The total commitment for commitment-based offers.
+func (o EntitlementOutput) Parameters() GoogleCloudChannelV1ParameterResponseArrayOutput {
+	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1ParameterResponseArrayOutput { return v.Parameters }).(GoogleCloudChannelV1ParameterResponseArrayOutput)
+}
+
+// Service provisioning details for the entitlement.
+func (o EntitlementOutput) ProvisionedService() GoogleCloudChannelV1ProvisionedServiceResponseOutput {
+	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1ProvisionedServiceResponseOutput { return v.ProvisionedService }).(GoogleCloudChannelV1ProvisionedServiceResponseOutput)
+}
+
+// Current provisioning state of the entitlement.
+func (o EntitlementOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements.
+func (o EntitlementOutput) PurchaseOrderId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.PurchaseOrderId }).(pulumi.StringOutput)
+}
+
+// Enumerable of all current suspension reasons for an entitlement.
+func (o EntitlementOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringArrayOutput { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
+}
+
+// Settings for trial offers.
+func (o EntitlementOutput) TrialSettings() GoogleCloudChannelV1TrialSettingsResponseOutput {
+	return o.ApplyT(func(v *Entitlement) GoogleCloudChannelV1TrialSettingsResponseOutput { return v.TrialSettings }).(GoogleCloudChannelV1TrialSettingsResponseOutput)
+}
+
+// The time at which the entitlement is updated.
+func (o EntitlementOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementInput)(nil)).Elem(), &Entitlement{})
 	pulumi.RegisterOutputType(EntitlementOutput{})

@@ -171,6 +171,66 @@ func (o CustomerOutput) ToCustomerOutputWithContext(ctx context.Context) Custome
 	return o
 }
 
+// Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
+func (o CustomerOutput) AlternateEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.AlternateEmail }).(pulumi.StringOutput)
+}
+
+// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
+func (o CustomerOutput) ChannelPartnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.ChannelPartnerId }).(pulumi.StringOutput)
+}
+
+// The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
+func (o CustomerOutput) CloudIdentityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.CloudIdentityId }).(pulumi.StringOutput)
+}
+
+// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
+func (o CustomerOutput) CloudIdentityInfo() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
+	return o.ApplyT(func(v *Customer) GoogleCloudChannelV1CloudIdentityInfoResponseOutput { return v.CloudIdentityInfo }).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
+}
+
+// Time when the customer was created.
+func (o CustomerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The customer's primary domain. Must match the primary contact email's domain.
+func (o CustomerOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+func (o CustomerOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
+func (o CustomerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the organization that the customer entity represents.
+func (o CustomerOutput) OrgDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.OrgDisplayName }).(pulumi.StringOutput)
+}
+
+// The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+func (o CustomerOutput) OrgPostalAddress() GoogleTypePostalAddressResponseOutput {
+	return o.ApplyT(func(v *Customer) GoogleTypePostalAddressResponseOutput { return v.OrgPostalAddress }).(GoogleTypePostalAddressResponseOutput)
+}
+
+// Primary contact info.
+func (o CustomerOutput) PrimaryContactInfo() GoogleCloudChannelV1ContactInfoResponseOutput {
+	return o.ApplyT(func(v *Customer) GoogleCloudChannelV1ContactInfoResponseOutput { return v.PrimaryContactInfo }).(GoogleCloudChannelV1ContactInfoResponseOutput)
+}
+
+// Time when the customer was updated.
+func (o CustomerOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerInput)(nil)).Elem(), &Customer{})
 	pulumi.RegisterOutputType(CustomerOutput{})

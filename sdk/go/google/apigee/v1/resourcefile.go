@@ -142,6 +142,21 @@ func (o ResourcefileOutput) ToResourcefileOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The HTTP Content-Type header value specifying the content type of the body.
+func (o ResourcefileOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The HTTP request/response body as raw binary.
+func (o ResourcefileOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
+}
+
+// Application specific response metadata. Must be set in the first response for streaming APIs.
+func (o ResourcefileOutput) Extensions() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *Resourcefile) pulumi.StringMapArrayOutput { return v.Extensions }).(pulumi.StringMapArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcefileInput)(nil)).Elem(), &Resourcefile{})
 	pulumi.RegisterOutputType(ResourcefileOutput{})

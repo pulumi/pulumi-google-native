@@ -151,6 +151,46 @@ func (o GameServerClusterOutput) ToGameServerClusterOutputWithContext(ctx contex
 	return o
 }
 
+// The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
+func (o GameServerClusterOutput) ClusterState() KubernetesClusterStateResponseOutput {
+	return o.ApplyT(func(v *GameServerCluster) KubernetesClusterStateResponseOutput { return v.ClusterState }).(KubernetesClusterStateResponseOutput)
+}
+
+// The game server cluster connection information. This information is used to manage game server clusters.
+func (o GameServerClusterOutput) ConnectionInfo() GameServerClusterConnectionInfoResponseOutput {
+	return o.ApplyT(func(v *GameServerCluster) GameServerClusterConnectionInfoResponseOutput { return v.ConnectionInfo }).(GameServerClusterConnectionInfoResponseOutput)
+}
+
+// The creation time.
+func (o GameServerClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable description of the cluster.
+func (o GameServerClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+func (o GameServerClusterOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The labels associated with this game server cluster. Each label is a key-value pair.
+func (o GameServerClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}/gameServerClusters/{gameServerClusterId}`. For example, `projects/my-project/locations/global/realms/zanzibar/gameServerClusters/my-gke-cluster`.
+func (o GameServerClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o GameServerClusterOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerCluster) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerClusterInput)(nil)).Elem(), &GameServerCluster{})
 	pulumi.RegisterOutputType(GameServerClusterOutput{})

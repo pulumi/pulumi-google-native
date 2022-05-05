@@ -138,6 +138,51 @@ func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutputWithContext(ctx context.Co
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o TargetGrpcProxyOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o TargetGrpcProxyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a TargetGrpcProxy. An up-to-date fingerprint must be provided in order to patch/update the TargetGrpcProxy; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the TargetGrpcProxy.
+func (o TargetGrpcProxyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#targetGrpcProxy for target grpc proxies.
+func (o TargetGrpcProxyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o TargetGrpcProxyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o TargetGrpcProxyOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL with id for the resource.
+func (o TargetGrpcProxyOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// URL to the UrlMap resource that defines the mapping from URL to the BackendService. The protocol field in the BackendService must be set to GRPC.
+func (o TargetGrpcProxyOutput) UrlMap() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.UrlMap }).(pulumi.StringOutput)
+}
+
+// If true, indicates that the BackendServices referenced by the urlMap may be accessed by gRPC applications without using a sidecar proxy. This will enable configuration checks on urlMap and its referenced BackendServices to not allow unsupported features. A gRPC application must use "xds:///" scheme in the target URI of the service it is connecting to. If false, indicates that the BackendServices referenced by the urlMap will be accessed by gRPC applications via a sidecar proxy. In this case, a gRPC application must not use "xds:///" scheme in the target URI of the service it is connecting to
+func (o TargetGrpcProxyOutput) ValidateForProxyless() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.BoolOutput { return v.ValidateForProxyless }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetGrpcProxyInput)(nil)).Elem(), &TargetGrpcProxy{})
 	pulumi.RegisterOutputType(TargetGrpcProxyOutput{})

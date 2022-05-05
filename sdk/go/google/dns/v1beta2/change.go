@@ -138,6 +138,35 @@ func (o ChangeOutput) ToChangeOutputWithContext(ctx context.Context) ChangeOutpu
 	return o
 }
 
+// Which ResourceRecordSets to add?
+func (o ChangeOutput) Additions() ResourceRecordSetResponseArrayOutput {
+	return o.ApplyT(func(v *Change) ResourceRecordSetResponseArrayOutput { return v.Additions }).(ResourceRecordSetResponseArrayOutput)
+}
+
+// Which ResourceRecordSets to remove? Must match existing data exactly.
+func (o ChangeOutput) Deletions() ResourceRecordSetResponseArrayOutput {
+	return o.ApplyT(func(v *Change) ResourceRecordSetResponseArrayOutput { return v.Deletions }).(ResourceRecordSetResponseArrayOutput)
+}
+
+// If the DNS queries for the zone will be served.
+func (o ChangeOutput) IsServing() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Change) pulumi.BoolOutput { return v.IsServing }).(pulumi.BoolOutput)
+}
+
+func (o ChangeOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The time that this operation was started by the server (output only). This is in RFC3339 text format.
+func (o ChangeOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Status of the operation (output only). A status of "done" means that the request to update the authoritative servers has been sent, but the servers might not be updated yet.
+func (o ChangeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Change) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChangeInput)(nil)).Elem(), &Change{})
 	pulumi.RegisterOutputType(ChangeOutput{})

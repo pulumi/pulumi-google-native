@@ -133,6 +133,21 @@ func (o ReferenceImageOutput) ToReferenceImageOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
+func (o ReferenceImageOutput) BoundingPolys() BoundingPolyResponseArrayOutput {
+	return o.ApplyT(func(v *ReferenceImage) BoundingPolyResponseArrayOutput { return v.BoundingPolys }).(BoundingPolyResponseArrayOutput)
+}
+
+// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
+func (o ReferenceImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReferenceImage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+func (o ReferenceImageOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReferenceImage) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceImageInput)(nil)).Elem(), &ReferenceImage{})
 	pulumi.RegisterOutputType(ReferenceImageOutput{})

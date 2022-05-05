@@ -133,6 +133,45 @@ func (o CompositeTypeOutput) ToCompositeTypeOutputWithContext(ctx context.Contex
 	return o
 }
 
+// An optional textual description of the resource; provided by the client when the resource is created.
+func (o CompositeTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o CompositeTypeOutput) InsertTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.InsertTime }).(pulumi.StringOutput)
+}
+
+// Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+func (o CompositeTypeOutput) Labels() CompositeTypeLabelEntryResponseArrayOutput {
+	return o.ApplyT(func(v *CompositeType) CompositeTypeLabelEntryResponseArrayOutput { return v.Labels }).(CompositeTypeLabelEntryResponseArrayOutput)
+}
+
+// Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
+func (o CompositeTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Operation that most recently ran, or is currently running, on this composite type.
+func (o CompositeTypeOutput) Operation() OperationResponseOutput {
+	return o.ApplyT(func(v *CompositeType) OperationResponseOutput { return v.Operation }).(OperationResponseOutput)
+}
+
+// Server defined URL for the resource.
+func (o CompositeTypeOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o CompositeTypeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CompositeType) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Files for the template type.
+func (o CompositeTypeOutput) TemplateContents() TemplateContentsResponseOutput {
+	return o.ApplyT(func(v *CompositeType) TemplateContentsResponseOutput { return v.TemplateContents }).(TemplateContentsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CompositeTypeInput)(nil)).Elem(), &CompositeType{})
 	pulumi.RegisterOutputType(CompositeTypeOutput{})

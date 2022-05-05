@@ -207,6 +207,101 @@ func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return o
 }
 
+// A note describing an attestation role.
+func (o NoteOutput) Attestation() AttestationNoteResponseOutput {
+	return o.ApplyT(func(v *Note) AttestationNoteResponseOutput { return v.Attestation }).(AttestationNoteResponseOutput)
+}
+
+// A note describing build provenance for a verifiable build.
+func (o NoteOutput) Build() BuildNoteResponseOutput {
+	return o.ApplyT(func(v *Note) BuildNoteResponseOutput { return v.Build }).(BuildNoteResponseOutput)
+}
+
+// A note describing a compliance check.
+func (o NoteOutput) Compliance() ComplianceNoteResponseOutput {
+	return o.ApplyT(func(v *Note) ComplianceNoteResponseOutput { return v.Compliance }).(ComplianceNoteResponseOutput)
+}
+
+// The time this note was created. This field can be used as a filter in list requests.
+func (o NoteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A note describing something that can be deployed.
+func (o NoteOutput) Deployment() DeploymentNoteResponseOutput {
+	return o.ApplyT(func(v *Note) DeploymentNoteResponseOutput { return v.Deployment }).(DeploymentNoteResponseOutput)
+}
+
+// A note describing the initial analysis of a resource.
+func (o NoteOutput) Discovery() DiscoveryNoteResponseOutput {
+	return o.ApplyT(func(v *Note) DiscoveryNoteResponseOutput { return v.Discovery }).(DiscoveryNoteResponseOutput)
+}
+
+// A note describing a dsse attestation note.
+func (o NoteOutput) DsseAttestation() DSSEAttestationNoteResponseOutput {
+	return o.ApplyT(func(v *Note) DSSEAttestationNoteResponseOutput { return v.DsseAttestation }).(DSSEAttestationNoteResponseOutput)
+}
+
+// Time of expiration for this note. Empty if note does not expire.
+func (o NoteOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// A note describing a base image.
+func (o NoteOutput) Image() ImageNoteResponseOutput {
+	return o.ApplyT(func(v *Note) ImageNoteResponseOutput { return v.Image }).(ImageNoteResponseOutput)
+}
+
+// The type of analysis. This field can be used as a filter in list requests.
+func (o NoteOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// A detailed description of this note.
+func (o NoteOutput) LongDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.LongDescription }).(pulumi.StringOutput)
+}
+
+// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+func (o NoteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A note describing a package hosted by various package managers.
+func (o NoteOutput) Package() PackageNoteResponseOutput {
+	return o.ApplyT(func(v *Note) PackageNoteResponseOutput { return v.Package }).(PackageNoteResponseOutput)
+}
+
+// Other notes related to this note.
+func (o NoteOutput) RelatedNoteNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringArrayOutput { return v.RelatedNoteNames }).(pulumi.StringArrayOutput)
+}
+
+// URLs associated with this note.
+func (o NoteOutput) RelatedUrl() RelatedUrlResponseArrayOutput {
+	return o.ApplyT(func(v *Note) RelatedUrlResponseArrayOutput { return v.RelatedUrl }).(RelatedUrlResponseArrayOutput)
+}
+
+// A one sentence description of this note.
+func (o NoteOutput) ShortDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.ShortDescription }).(pulumi.StringOutput)
+}
+
+// The time this note was last updated. This field can be used as a filter in list requests.
+func (o NoteOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A note describing available package upgrades.
+func (o NoteOutput) Upgrade() UpgradeNoteResponseOutput {
+	return o.ApplyT(func(v *Note) UpgradeNoteResponseOutput { return v.Upgrade }).(UpgradeNoteResponseOutput)
+}
+
+// A note describing a package vulnerability.
+func (o NoteOutput) Vulnerability() VulnerabilityNoteResponseOutput {
+	return o.ApplyT(func(v *Note) VulnerabilityNoteResponseOutput { return v.Vulnerability }).(VulnerabilityNoteResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteInput)(nil)).Elem(), &Note{})
 	pulumi.RegisterOutputType(NoteOutput{})

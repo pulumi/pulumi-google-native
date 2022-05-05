@@ -164,6 +164,56 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// The timestamp when the resource was created.
+func (o GatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A free-text description of the resource. Max length 1024 characters.
+func (o GatewayOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Set of label tags associated with the Gateway resource.
+func (o GatewayOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the Gateway resource. It matches pattern `projects/*/locations/global/gateways/`.
+func (o GatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+func (o GatewayOutput) Ports() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.IntArrayOutput { return v.Ports }).(pulumi.IntArrayOutput)
+}
+
+// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+func (o GatewayOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Server-defined URL of this resource
+func (o GatewayOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
+func (o GatewayOutput) ServerTlsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ServerTlsPolicy }).(pulumi.StringOutput)
+}
+
+// Immutable. The type of the customer managed gateway.
+func (o GatewayOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was updated.
+func (o GatewayOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInput)(nil)).Elem(), &Gateway{})
 	pulumi.RegisterOutputType(GatewayOutput{})

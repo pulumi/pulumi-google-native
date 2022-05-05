@@ -234,6 +234,125 @@ func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return o
 }
 
+// Specification for a group of BigQuery tables with the `[prefix]YYYYMMDD` name pattern. For more information, see [Introduction to partitioned tables] (https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding).
+func (o EntryOutput) BigqueryDateShardedSpec() GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput {
+		return v.BigqueryDateShardedSpec
+	}).(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput)
+}
+
+// Specification that applies to a BigQuery table. Valid only for entries with the `TABLE` type.
+func (o EntryOutput) BigqueryTableSpec() GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput { return v.BigqueryTableSpec }).(GoogleCloudDatacatalogV1BigQueryTableSpecResponseOutput)
+}
+
+// Business Context of the entry. Not supported for BigQuery datasets
+func (o EntryOutput) BusinessContext() GoogleCloudDatacatalogV1BusinessContextResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1BusinessContextResponseOutput { return v.BusinessContext }).(GoogleCloudDatacatalogV1BusinessContextResponseOutput)
+}
+
+// Physical location of the entry.
+func (o EntryOutput) DataSource() GoogleCloudDatacatalogV1DataSourceResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1DataSourceResponseOutput { return v.DataSource }).(GoogleCloudDatacatalogV1DataSourceResponseOutput)
+}
+
+// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+func (o EntryOutput) DataSourceConnectionSpec() GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput {
+		return v.DataSourceConnectionSpec
+	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput)
+}
+
+// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+func (o EntryOutput) DatabaseTableSpec() GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput { return v.DatabaseTableSpec }).(GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput)
+}
+
+// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
+func (o EntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+func (o EntryOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
+func (o EntryOutput) FilesetSpec() GoogleCloudDatacatalogV1FilesetSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1FilesetSpecResponseOutput { return v.FilesetSpec }).(GoogleCloudDatacatalogV1FilesetSpecResponseOutput)
+}
+
+// Fully qualified name (FQN) of the resource. Set automatically for entries representing resources from synced systems. Settable only during creation and read-only afterwards. Can be used for search and lookup of the entries. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}`
+func (o EntryOutput) FullyQualifiedName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.FullyQualifiedName }).(pulumi.StringOutput)
+}
+
+// Specification that applies to a Cloud Storage fileset. Valid only for entries with the `FILESET` type.
+func (o EntryOutput) GcsFilesetSpec() GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput { return v.GcsFilesetSpec }).(GoogleCloudDatacatalogV1GcsFilesetSpecResponseOutput)
+}
+
+// Indicates the entry's source system that Data Catalog integrates with, such as BigQuery, Pub/Sub, or Dataproc Metastore.
+func (o EntryOutput) IntegratedSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.IntegratedSystem }).(pulumi.StringOutput)
+}
+
+// Cloud labels attached to the entry. In Data Catalog, you can create and modify labels attached only to custom entries. Synced entries have unmodifiable labels that come from the source system.
+func (o EntryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
+func (o EntryOutput) LinkedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.LinkedResource }).(pulumi.StringOutput)
+}
+
+// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
+func (o EntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Additional information related to the entry. Private to the current user.
+func (o EntryOutput) PersonalDetails() GoogleCloudDatacatalogV1PersonalDetailsResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1PersonalDetailsResponseOutput { return v.PersonalDetails }).(GoogleCloudDatacatalogV1PersonalDetailsResponseOutput)
+}
+
+// Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
+func (o EntryOutput) RoutineSpec() GoogleCloudDatacatalogV1RoutineSpecResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1RoutineSpecResponseOutput { return v.RoutineSpec }).(GoogleCloudDatacatalogV1RoutineSpecResponseOutput)
+}
+
+// Schema of the entry. An entry might not have any schema attached to it.
+func (o EntryOutput) Schema() GoogleCloudDatacatalogV1SchemaResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1SchemaResponseOutput { return v.Schema }).(GoogleCloudDatacatalogV1SchemaResponseOutput)
+}
+
+// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
+func (o EntryOutput) SourceSystemTimestamps() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1SystemTimestampsResponseOutput { return v.SourceSystemTimestamps }).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput)
+}
+
+// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+func (o EntryOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Resource usage statistics.
+func (o EntryOutput) UsageSignal() GoogleCloudDatacatalogV1UsageSignalResponseOutput {
+	return o.ApplyT(func(v *Entry) GoogleCloudDatacatalogV1UsageSignalResponseOutput { return v.UsageSignal }).(GoogleCloudDatacatalogV1UsageSignalResponseOutput)
+}
+
+// Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
+func (o EntryOutput) UserSpecifiedSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.UserSpecifiedSystem }).(pulumi.StringOutput)
+}
+
+// Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
+func (o EntryOutput) UserSpecifiedType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.UserSpecifiedType }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryInput)(nil)).Elem(), &Entry{})
 	pulumi.RegisterOutputType(EntryOutput{})

@@ -144,6 +144,56 @@ func (o ModelOutput) ToModelOutputWithContext(ctx context.Context) ModelOutput {
 	return o
 }
 
+// Lists operation ids associated with this model whose status is NOT done.
+func (o ModelOutput) ActiveOperations() OperationResponseArrayOutput {
+	return o.ApplyT(func(v *Model) OperationResponseArrayOutput { return v.ActiveOperations }).(OperationResponseArrayOutput)
+}
+
+// Timestamp when this model was created in Firebase ML.
+func (o ModelOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+func (o ModelOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
+func (o ModelOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The model_hash will change if a new file is available for download.
+func (o ModelOutput) ModelHash() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.ModelHash }).(pulumi.StringOutput)
+}
+
+// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+func (o ModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State common to all model types. Includes publishing and validation information.
+func (o ModelOutput) State() ModelStateResponseOutput {
+	return o.ApplyT(func(v *Model) ModelStateResponseOutput { return v.State }).(ModelStateResponseOutput)
+}
+
+// User defined tags which can be used to group/filter models during listing
+func (o ModelOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// A TFLite Model
+func (o ModelOutput) TfliteModel() TfLiteModelResponseOutput {
+	return o.ApplyT(func(v *Model) TfLiteModelResponseOutput { return v.TfliteModel }).(TfLiteModelResponseOutput)
+}
+
+// Timestamp when this model was updated in Firebase ML.
+func (o ModelOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Model) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ModelInput)(nil)).Elem(), &Model{})
 	pulumi.RegisterOutputType(ModelOutput{})

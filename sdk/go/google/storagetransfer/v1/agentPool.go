@@ -128,6 +128,26 @@ func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) Agent
 	return o
 }
 
+// Specifies the bandwidth limit details. If this field is unspecified, the default value is set as 'No Limit'.
+func (o AgentPoolOutput) BandwidthLimit() BandwidthLimitResponseOutput {
+	return o.ApplyT(func(v *AgentPool) BandwidthLimitResponseOutput { return v.BandwidthLimit }).(BandwidthLimitResponseOutput)
+}
+
+// Specifies the client-specified AgentPool description.
+func (o AgentPoolOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
+func (o AgentPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the state of the AgentPool.
+func (o AgentPoolOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentPoolInput)(nil)).Elem(), &AgentPool{})
 	pulumi.RegisterOutputType(AgentPoolOutput{})

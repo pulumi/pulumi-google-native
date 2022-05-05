@@ -148,6 +148,71 @@ func (o AutoscalerOutput) ToAutoscalerOutputWithContext(ctx context.Context) Aut
 	return o
 }
 
+// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+func (o AutoscalerOutput) AutoscalingPolicy() AutoscalingPolicyResponseOutput {
+	return o.ApplyT(func(v *Autoscaler) AutoscalingPolicyResponseOutput { return v.AutoscalingPolicy }).(AutoscalingPolicyResponseOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o AutoscalerOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o AutoscalerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#autoscaler for autoscalers.
+func (o AutoscalerOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o AutoscalerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
+func (o AutoscalerOutput) RecommendedSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.IntOutput { return v.RecommendedSize }).(pulumi.IntOutput)
+}
+
+// URL of the region where the instance group resides (for autoscalers living in regional scope).
+func (o AutoscalerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Status information of existing scaling schedules.
+func (o AutoscalerOutput) ScalingScheduleStatus() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringMapOutput { return v.ScalingScheduleStatus }).(pulumi.StringMapOutput)
+}
+
+// Server-defined URL for the resource.
+func (o AutoscalerOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
+func (o AutoscalerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
+func (o AutoscalerOutput) StatusDetails() AutoscalerStatusDetailsResponseArrayOutput {
+	return o.ApplyT(func(v *Autoscaler) AutoscalerStatusDetailsResponseArrayOutput { return v.StatusDetails }).(AutoscalerStatusDetailsResponseArrayOutput)
+}
+
+// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
+func (o AutoscalerOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
+}
+
+// URL of the zone where the instance group resides (for autoscalers living in zonal scope).
+func (o AutoscalerOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Autoscaler) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalerInput)(nil)).Elem(), &Autoscaler{})
 	pulumi.RegisterOutputType(AutoscalerOutput{})

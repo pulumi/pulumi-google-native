@@ -165,6 +165,71 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 	return o
 }
 
+// Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+func (o MembershipOutput) Authority() AuthorityResponseOutput {
+	return o.ApplyT(func(v *Membership) AuthorityResponseOutput { return v.Authority }).(AuthorityResponseOutput)
+}
+
+// When the Membership was created.
+func (o MembershipOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// When the Membership was deleted.
+func (o MembershipOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
+func (o MembershipOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Endpoint information to reach this member.
+func (o MembershipOutput) Endpoint() MembershipEndpointResponseOutput {
+	return o.ApplyT(func(v *Membership) MembershipEndpointResponseOutput { return v.Endpoint }).(MembershipEndpointResponseOutput)
+}
+
+// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. For GKE clusters, external_id is managed by the Hub API and updates will be ignored. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
+func (o MembershipOutput) ExternalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.ExternalId }).(pulumi.StringOutput)
+}
+
+// Optional. The infrastructure type this Membership is running on.
+func (o MembershipOutput) InfrastructureType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.InfrastructureType }).(pulumi.StringOutput)
+}
+
+// Optional. GCP labels for this membership.
+func (o MembershipOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// For clusters using Connect, the timestamp of the most recent connection established with Google Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE Connect, or that have never connected successfully, this field will be unset.
+func (o MembershipOutput) LastConnectionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.LastConnectionTime }).(pulumi.StringOutput)
+}
+
+// The full, unique name of this Membership resource in the format `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+func (o MembershipOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the Membership resource.
+func (o MembershipOutput) State() MembershipStateResponseOutput {
+	return o.ApplyT(func(v *Membership) MembershipStateResponseOutput { return v.State }).(MembershipStateResponseOutput)
+}
+
+// Google-generated UUID for this resource. This is unique across all Membership resources. If a Membership resource is deleted and another resource with the same name is created, it gets a different unique_id.
+func (o MembershipOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// When the Membership was last updated.
+func (o MembershipOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipInput)(nil)).Elem(), &Membership{})
 	pulumi.RegisterOutputType(MembershipOutput{})

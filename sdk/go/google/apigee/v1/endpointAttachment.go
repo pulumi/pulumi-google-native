@@ -131,6 +131,31 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
+func (o EndpointAttachmentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// Location of the endpoint attachment.
+func (o EndpointAttachmentOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
+func (o EndpointAttachmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Format: projects/*/regions/*/serviceAttachments/*
+func (o EndpointAttachmentOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+// State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
+func (o EndpointAttachmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointAttachmentInput)(nil)).Elem(), &EndpointAttachment{})
 	pulumi.RegisterOutputType(EndpointAttachmentOutput{})

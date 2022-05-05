@@ -130,6 +130,28 @@ func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) Ent
 	return o
 }
 
+// Timestamps of the entry group. Default value is empty.
+func (o EntryGroupOutput) DataCatalogTimestamps() GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
+	return o.ApplyT(func(v *EntryGroup) GoogleCloudDatacatalogV1SystemTimestampsResponseOutput {
+		return v.DataCatalogTimestamps
+	}).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput)
+}
+
+// Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string.
+func (o EntryGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
+func (o EntryGroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
+func (o EntryGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryGroupInput)(nil)).Elem(), &EntryGroup{})
 	pulumi.RegisterOutputType(EntryGroupOutput{})

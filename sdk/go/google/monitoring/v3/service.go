@@ -174,6 +174,56 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// Type used for App Engine services.
+func (o ServiceOutput) AppEngine() AppEngineResponseOutput {
+	return o.ApplyT(func(v *Service) AppEngineResponseOutput { return v.AppEngine }).(AppEngineResponseOutput)
+}
+
+// Type used for Cloud Endpoints services.
+func (o ServiceOutput) CloudEndpoints() CloudEndpointsResponseOutput {
+	return o.ApplyT(func(v *Service) CloudEndpointsResponseOutput { return v.CloudEndpoints }).(CloudEndpointsResponseOutput)
+}
+
+// Type used for Istio services that live in a Kubernetes cluster.
+func (o ServiceOutput) ClusterIstio() ClusterIstioResponseOutput {
+	return o.ApplyT(func(v *Service) ClusterIstioResponseOutput { return v.ClusterIstio }).(ClusterIstioResponseOutput)
+}
+
+// Custom service type.
+func (o ServiceOutput) Custom() CustomResponseOutput {
+	return o.ApplyT(func(v *Service) CustomResponseOutput { return v.Custom }).(CustomResponseOutput)
+}
+
+// Name used for UI elements listing this Service.
+func (o ServiceOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
+func (o ServiceOutput) IstioCanonicalService() IstioCanonicalServiceResponseOutput {
+	return o.ApplyT(func(v *Service) IstioCanonicalServiceResponseOutput { return v.IstioCanonicalService }).(IstioCanonicalServiceResponseOutput)
+}
+
+// Type used for Istio services scoped to an Istio mesh.
+func (o ServiceOutput) MeshIstio() MeshIstioResponseOutput {
+	return o.ApplyT(func(v *Service) MeshIstioResponseOutput { return v.MeshIstio }).(MeshIstioResponseOutput)
+}
+
+// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+func (o ServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for how to query telemetry on a Service.
+func (o ServiceOutput) Telemetry() TelemetryResponseOutput {
+	return o.ApplyT(func(v *Service) TelemetryResponseOutput { return v.Telemetry }).(TelemetryResponseOutput)
+}
+
+// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+func (o ServiceOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceInput)(nil)).Elem(), &Service{})
 	pulumi.RegisterOutputType(ServiceOutput{})

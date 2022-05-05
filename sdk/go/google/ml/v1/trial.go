@@ -145,6 +145,56 @@ func (o TrialOutput) ToTrialOutputWithContext(ctx context.Context) TrialOutput {
 	return o
 }
 
+// The identifier of the client that originally requested this trial.
+func (o TrialOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Time at which the trial's status changed to COMPLETED.
+func (o TrialOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The final measurement containing the objective value.
+func (o TrialOutput) FinalMeasurement() GoogleCloudMlV1__MeasurementResponseOutput {
+	return o.ApplyT(func(v *Trial) GoogleCloudMlV1__MeasurementResponseOutput { return v.FinalMeasurement }).(GoogleCloudMlV1__MeasurementResponseOutput)
+}
+
+// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
+func (o TrialOutput) InfeasibleReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.InfeasibleReason }).(pulumi.StringOutput)
+}
+
+// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+func (o TrialOutput) Measurements() GoogleCloudMlV1__MeasurementResponseArrayOutput {
+	return o.ApplyT(func(v *Trial) GoogleCloudMlV1__MeasurementResponseArrayOutput { return v.Measurements }).(GoogleCloudMlV1__MeasurementResponseArrayOutput)
+}
+
+// Name of the trial assigned by the service.
+func (o TrialOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parameters of the trial.
+func (o TrialOutput) Parameters() GoogleCloudMlV1_Trial_ParameterResponseArrayOutput {
+	return o.ApplyT(func(v *Trial) GoogleCloudMlV1_Trial_ParameterResponseArrayOutput { return v.Parameters }).(GoogleCloudMlV1_Trial_ParameterResponseArrayOutput)
+}
+
+// Time at which the trial was started.
+func (o TrialOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The detailed state of a trial.
+func (o TrialOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trial) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// If true, the parameters in this trial are not attempted again.
+func (o TrialOutput) TrialInfeasible() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Trial) pulumi.BoolOutput { return v.TrialInfeasible }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TrialInput)(nil)).Elem(), &Trial{})
 	pulumi.RegisterOutputType(TrialOutput{})

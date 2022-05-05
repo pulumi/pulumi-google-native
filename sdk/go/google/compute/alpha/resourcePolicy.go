@@ -156,6 +156,75 @@ func (o ResourcePolicyOutput) ToResourcePolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o ResourcePolicyOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o ResourcePolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource policy for instances for placement configuration.
+func (o ResourcePolicyOutput) GroupPlacementPolicy() ResourcePolicyGroupPlacementPolicyResponseOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyGroupPlacementPolicyResponseOutput {
+		return v.GroupPlacementPolicy
+	}).(ResourcePolicyGroupPlacementPolicyResponseOutput)
+}
+
+// Resource policy for scheduling instance operations.
+func (o ResourcePolicyOutput) InstanceSchedulePolicy() ResourcePolicyInstanceSchedulePolicyResponseOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyInstanceSchedulePolicyResponseOutput {
+		return v.InstanceSchedulePolicy
+	}).(ResourcePolicyInstanceSchedulePolicyResponseOutput)
+}
+
+// Type of the resource. Always compute#resource_policies for resource policies.
+func (o ResourcePolicyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o ResourcePolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o ResourcePolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The system status of the resource policy.
+func (o ResourcePolicyOutput) ResourceStatus() ResourcePolicyResourceStatusResponseOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyResourceStatusResponseOutput { return v.ResourceStatus }).(ResourcePolicyResourceStatusResponseOutput)
+}
+
+// Server-defined fully-qualified URL for this resource.
+func (o ResourcePolicyOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o ResourcePolicyOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// Resource policy for persistent disks for creating snapshots.
+func (o ResourcePolicyOutput) SnapshotSchedulePolicy() ResourcePolicySnapshotSchedulePolicyResponseOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicySnapshotSchedulePolicyResponseOutput {
+		return v.SnapshotSchedulePolicy
+	}).(ResourcePolicySnapshotSchedulePolicyResponseOutput)
+}
+
+// The status of resource policy creation.
+func (o ResourcePolicyOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourcePolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Resource policy applicable to VMs for infrastructure maintenance.
+func (o ResourcePolicyOutput) VmMaintenancePolicy() ResourcePolicyVmMaintenancePolicyResponseOutput {
+	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyVmMaintenancePolicyResponseOutput { return v.VmMaintenancePolicy }).(ResourcePolicyVmMaintenancePolicyResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyInput)(nil)).Elem(), &ResourcePolicy{})
 	pulumi.RegisterOutputType(ResourcePolicyOutput{})

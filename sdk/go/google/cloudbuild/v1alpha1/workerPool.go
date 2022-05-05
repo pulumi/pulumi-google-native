@@ -138,6 +138,56 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
+// Time at which the request to create the `WorkerPool` was received.
+func (o WorkerPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which the request to delete the `WorkerPool` was received.
+func (o WorkerPoolOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// User-defined name of the `WorkerPool`.
+func (o WorkerPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project ID of the GCP project for which the `WorkerPool` is created.
+func (o WorkerPoolOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+func (o WorkerPoolOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+func (o WorkerPoolOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// WorkerPool Status.
+func (o WorkerPoolOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Time at which the request to update the `WorkerPool` was received.
+func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration to be used for a creating workers in the `WorkerPool`.
+func (o WorkerPoolOutput) WorkerConfig() WorkerConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) WorkerConfigResponseOutput { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
+// Total number of workers to be created across all requested regions.
+func (o WorkerPoolOutput) WorkerCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.WorkerCount }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})

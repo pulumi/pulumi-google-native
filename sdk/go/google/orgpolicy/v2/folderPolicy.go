@@ -129,6 +129,23 @@ func (o FolderPolicyOutput) ToFolderPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o FolderPolicyOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o.ApplyT(func(v *FolderPolicy) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput { return v.Alternate }).(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput)
+}
+
+// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+func (o FolderPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Basic information about the Organization Policy.
+func (o FolderPolicyOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v *FolderPolicy) GoogleCloudOrgpolicyV2PolicySpecResponseOutput { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderPolicyInput)(nil)).Elem(), &FolderPolicy{})
 	pulumi.RegisterOutputType(FolderPolicyOutput{})

@@ -244,6 +244,121 @@ func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOu
 	return o
 }
 
+// Configuration for manual approval to start a build invocation of this BuildTrigger.
+func (o TriggerOutput) ApprovalConfig() ApprovalConfigResponseOutput {
+	return o.ApplyT(func(v *Trigger) ApprovalConfigResponseOutput { return v.ApprovalConfig }).(ApprovalConfigResponseOutput)
+}
+
+// Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers.
+func (o TriggerOutput) Autodetect() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.BoolOutput { return v.Autodetect }).(pulumi.BoolOutput)
+}
+
+// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
+func (o TriggerOutput) BitbucketServerTriggerConfig() BitbucketServerTriggerConfigResponseOutput {
+	return o.ApplyT(func(v *Trigger) BitbucketServerTriggerConfigResponseOutput { return v.BitbucketServerTriggerConfig }).(BitbucketServerTriggerConfigResponseOutput)
+}
+
+// Contents of the build template.
+func (o TriggerOutput) Build() BuildResponseOutput {
+	return o.ApplyT(func(v *Trigger) BuildResponseOutput { return v.Build }).(BuildResponseOutput)
+}
+
+// Time when the trigger was created.
+func (o TriggerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human-readable description of this trigger.
+func (o TriggerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// If true, the trigger will never automatically execute a build.
+func (o TriggerOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// EventType allows the user to explicitly set the type of event to which this BuildTrigger should respond. This field will be validated against the rest of the configuration if it is set.
+func (o TriggerOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.EventType }).(pulumi.StringOutput)
+}
+
+// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
+func (o TriggerOutput) Filename() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Filename }).(pulumi.StringOutput)
+}
+
+// A Common Expression Language string.
+func (o TriggerOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
+}
+
+// The file source describing the local or remote Build template.
+func (o TriggerOutput) GitFileSource() GitFileSourceResponseOutput {
+	return o.ApplyT(func(v *Trigger) GitFileSourceResponseOutput { return v.GitFileSource }).(GitFileSourceResponseOutput)
+}
+
+// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
+func (o TriggerOutput) Github() GitHubEventsConfigResponseOutput {
+	return o.ApplyT(func(v *Trigger) GitHubEventsConfigResponseOutput { return v.Github }).(GitHubEventsConfigResponseOutput)
+}
+
+// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
+func (o TriggerOutput) IgnoredFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.IgnoredFiles }).(pulumi.StringArrayOutput)
+}
+
+// If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
+func (o TriggerOutput) IncludedFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.IncludedFiles }).(pulumi.StringArrayOutput)
+}
+
+// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+func (o TriggerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+func (o TriggerOutput) PubsubConfig() PubsubConfigResponseOutput {
+	return o.ApplyT(func(v *Trigger) PubsubConfigResponseOutput { return v.PubsubConfig }).(PubsubConfigResponseOutput)
+}
+
+// The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where {trigger} is a unique identifier generated by the service.
+func (o TriggerOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+// The service account used for all user-controlled operations including UpdateBuildTrigger, RunBuildTrigger, CreateBuild, and CancelBuild. If no service account is set, then the standard Cloud Build service account ([PROJECT_NUM]@system.gserviceaccount.com) will be used instead. Format: `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_ID_OR_EMAIL}`
+func (o TriggerOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The repo and ref of the repository from which to build. This field is used only for those triggers that do not respond to SCM events. Triggers that respond to such events build source at whatever commit caused the event. This field is currently only used by Webhook, Pub/Sub, Manual, and Cron triggers.
+func (o TriggerOutput) SourceToBuild() GitRepoSourceResponseOutput {
+	return o.ApplyT(func(v *Trigger) GitRepoSourceResponseOutput { return v.SourceToBuild }).(GitRepoSourceResponseOutput)
+}
+
+// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
+func (o TriggerOutput) Substitutions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Substitutions }).(pulumi.StringMapOutput)
+}
+
+// Tags for annotation of a `BuildTrigger`
+func (o TriggerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
+func (o TriggerOutput) TriggerTemplate() RepoSourceResponseOutput {
+	return o.ApplyT(func(v *Trigger) RepoSourceResponseOutput { return v.TriggerTemplate }).(RepoSourceResponseOutput)
+}
+
+// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+func (o TriggerOutput) WebhookConfig() WebhookConfigResponseOutput {
+	return o.ApplyT(func(v *Trigger) WebhookConfigResponseOutput { return v.WebhookConfig }).(WebhookConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerInput)(nil)).Elem(), &Trigger{})
 	pulumi.RegisterOutputType(TriggerOutput{})

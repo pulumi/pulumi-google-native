@@ -145,6 +145,46 @@ func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return o
 }
 
+// The time the hub was created.
+func (o HubOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// An optional description of the hub.
+func (o HubOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+func (o HubOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Immutable. The name of the hub. Hub names must be unique. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}`
+func (o HubOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
+func (o HubOutput) RoutingVpcs() RoutingVPCResponseArrayOutput {
+	return o.ApplyT(func(v *Hub) RoutingVPCResponseArrayOutput { return v.RoutingVpcs }).(RoutingVPCResponseArrayOutput)
+}
+
+// The current lifecycle state of this hub.
+func (o HubOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
+func (o HubOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// The time the hub was last updated.
+func (o HubOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubInput)(nil)).Elem(), &Hub{})
 	pulumi.RegisterOutputType(HubOutput{})

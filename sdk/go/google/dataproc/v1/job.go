@@ -200,6 +200,101 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// Indicates whether the job is completed. If the value is false, the job is still in progress. If true, the job is completed, and status.state field will indicate if it was successful, failed, or cancelled.
+func (o JobOutput) Done() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Done }).(pulumi.BoolOutput)
+}
+
+// If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.
+func (o JobOutput) DriverControlFilesUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DriverControlFilesUri }).(pulumi.StringOutput)
+}
+
+// A URI pointing to the location of the stdout of the job's driver program.
+func (o JobOutput) DriverOutputResourceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DriverOutputResourceUri }).(pulumi.StringOutput)
+}
+
+// Optional. Job is a Hadoop job.
+func (o JobOutput) HadoopJob() HadoopJobResponseOutput {
+	return o.ApplyT(func(v *Job) HadoopJobResponseOutput { return v.HadoopJob }).(HadoopJobResponseOutput)
+}
+
+// Optional. Job is a Hive job.
+func (o JobOutput) HiveJob() HiveJobResponseOutput {
+	return o.ApplyT(func(v *Job) HiveJobResponseOutput { return v.HiveJob }).(HiveJobResponseOutput)
+}
+
+// A UUID that uniquely identifies a job within the project over time. This is in contrast to a user-settable reference.job_id that may be reused over time.
+func (o JobOutput) JobUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobUuid }).(pulumi.StringOutput)
+}
+
+// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+func (o JobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Job is a Pig job.
+func (o JobOutput) PigJob() PigJobResponseOutput {
+	return o.ApplyT(func(v *Job) PigJobResponseOutput { return v.PigJob }).(PigJobResponseOutput)
+}
+
+// Job information, including how, when, and where to run the job.
+func (o JobOutput) Placement() JobPlacementResponseOutput {
+	return o.ApplyT(func(v *Job) JobPlacementResponseOutput { return v.Placement }).(JobPlacementResponseOutput)
+}
+
+// Optional. Job is a Presto job.
+func (o JobOutput) PrestoJob() PrestoJobResponseOutput {
+	return o.ApplyT(func(v *Job) PrestoJobResponseOutput { return v.PrestoJob }).(PrestoJobResponseOutput)
+}
+
+// Optional. Job is a PySpark job.
+func (o JobOutput) PysparkJob() PySparkJobResponseOutput {
+	return o.ApplyT(func(v *Job) PySparkJobResponseOutput { return v.PysparkJob }).(PySparkJobResponseOutput)
+}
+
+// Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
+func (o JobOutput) Reference() JobReferenceResponseOutput {
+	return o.ApplyT(func(v *Job) JobReferenceResponseOutput { return v.Reference }).(JobReferenceResponseOutput)
+}
+
+// Optional. Job scheduling configuration.
+func (o JobOutput) Scheduling() JobSchedulingResponseOutput {
+	return o.ApplyT(func(v *Job) JobSchedulingResponseOutput { return v.Scheduling }).(JobSchedulingResponseOutput)
+}
+
+// Optional. Job is a Spark job.
+func (o JobOutput) SparkJob() SparkJobResponseOutput {
+	return o.ApplyT(func(v *Job) SparkJobResponseOutput { return v.SparkJob }).(SparkJobResponseOutput)
+}
+
+// Optional. Job is a SparkR job.
+func (o JobOutput) SparkRJob() SparkRJobResponseOutput {
+	return o.ApplyT(func(v *Job) SparkRJobResponseOutput { return v.SparkRJob }).(SparkRJobResponseOutput)
+}
+
+// Optional. Job is a SparkSql job.
+func (o JobOutput) SparkSqlJob() SparkSqlJobResponseOutput {
+	return o.ApplyT(func(v *Job) SparkSqlJobResponseOutput { return v.SparkSqlJob }).(SparkSqlJobResponseOutput)
+}
+
+// The job status. Additional application-specific status information may be contained in the type_job and yarn_applications fields.
+func (o JobOutput) Status() JobStatusResponseOutput {
+	return o.ApplyT(func(v *Job) JobStatusResponseOutput { return v.Status }).(JobStatusResponseOutput)
+}
+
+// The previous job status.
+func (o JobOutput) StatusHistory() JobStatusResponseArrayOutput {
+	return o.ApplyT(func(v *Job) JobStatusResponseArrayOutput { return v.StatusHistory }).(JobStatusResponseArrayOutput)
+}
+
+// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+func (o JobOutput) YarnApplications() YarnApplicationResponseArrayOutput {
+	return o.ApplyT(func(v *Job) YarnApplicationResponseArrayOutput { return v.YarnApplications }).(YarnApplicationResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobInput)(nil)).Elem(), &Job{})
 	pulumi.RegisterOutputType(JobOutput{})

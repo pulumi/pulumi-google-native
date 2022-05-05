@@ -169,6 +169,71 @@ func (o OsPolicyAssignmentOutput) ToOsPolicyAssignmentOutputWithContext(ctx cont
 	return o
 }
 
+// Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+func (o OsPolicyAssignmentOutput) Baseline() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Baseline }).(pulumi.BoolOutput)
+}
+
+// Indicates that this revision deletes the OS policy assignment.
+func (o OsPolicyAssignmentOutput) Deleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// OS policy assignment description. Length of the description is limited to 1024 characters.
+func (o OsPolicyAssignmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+func (o OsPolicyAssignmentOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Filter to select VMs.
+func (o OsPolicyAssignmentOutput) InstanceFilter() OSPolicyAssignmentInstanceFilterResponseOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) OSPolicyAssignmentInstanceFilterResponseOutput { return v.InstanceFilter }).(OSPolicyAssignmentInstanceFilterResponseOutput)
+}
+
+// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
+func (o OsPolicyAssignmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of OS policies to be applied to the VMs.
+func (o OsPolicyAssignmentOutput) OsPolicies() OSPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) OSPolicyResponseArrayOutput { return v.OsPolicies }).(OSPolicyResponseArrayOutput)
+}
+
+// Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+func (o OsPolicyAssignmentOutput) Reconciling() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// The timestamp that the revision was created.
+func (o OsPolicyAssignmentOutput) RevisionCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
+}
+
+// The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+func (o OsPolicyAssignmentOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+func (o OsPolicyAssignmentOutput) Rollout() OSPolicyAssignmentRolloutResponseOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) OSPolicyAssignmentRolloutResponseOutput { return v.Rollout }).(OSPolicyAssignmentRolloutResponseOutput)
+}
+
+// OS policy assignment rollout state
+func (o OsPolicyAssignmentOutput) RolloutState() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.RolloutState }).(pulumi.StringOutput)
+}
+
+// Server generated unique id for the OS policy assignment resource.
+func (o OsPolicyAssignmentOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *OsPolicyAssignment) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OsPolicyAssignmentInput)(nil)).Elem(), &OsPolicyAssignment{})
 	pulumi.RegisterOutputType(OsPolicyAssignmentOutput{})

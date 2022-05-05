@@ -174,6 +174,66 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
+// Aggregated status of the underlying assets of the zone.
+func (o ZoneOutput) AssetStatus() GoogleCloudDataplexV1AssetStatusResponseOutput {
+	return o.ApplyT(func(v *Zone) GoogleCloudDataplexV1AssetStatusResponseOutput { return v.AssetStatus }).(GoogleCloudDataplexV1AssetStatusResponseOutput)
+}
+
+// The time when the zone was created.
+func (o ZoneOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the zone.
+func (o ZoneOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Specification of the discovery feature applied to data in this zone.
+func (o ZoneOutput) DiscoverySpec() GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput {
+	return o.ApplyT(func(v *Zone) GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput { return v.DiscoverySpec }).(GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput)
+}
+
+// Optional. User friendly display name.
+func (o ZoneOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. User defined labels for the zone.
+func (o ZoneOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The relative resource name of the zone, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}.
+func (o ZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specification of the resources that are referenced by the assets within this zone.
+func (o ZoneOutput) ResourceSpec() GoogleCloudDataplexV1ZoneResourceSpecResponseOutput {
+	return o.ApplyT(func(v *Zone) GoogleCloudDataplexV1ZoneResourceSpecResponseOutput { return v.ResourceSpec }).(GoogleCloudDataplexV1ZoneResourceSpecResponseOutput)
+}
+
+// Current state of the zone.
+func (o ZoneOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Immutable. The type of the zone.
+func (o ZoneOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
+func (o ZoneOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the zone was last updated.
+func (o ZoneOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneInput)(nil)).Elem(), &Zone{})
 	pulumi.RegisterOutputType(ZoneOutput{})

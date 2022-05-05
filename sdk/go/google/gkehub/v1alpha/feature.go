@@ -143,6 +143,56 @@ func (o FeatureOutput) ToFeatureOutputWithContext(ctx context.Context) FeatureOu
 	return o
 }
 
+// When the Feature resource was created.
+func (o FeatureOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// When the Feature resource was deleted.
+func (o FeatureOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// GCP labels for this Feature.
+func (o FeatureOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
+func (o FeatureOutput) MembershipSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.MembershipSpecs }).(pulumi.StringMapOutput)
+}
+
+// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
+func (o FeatureOutput) MembershipStates() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringMapOutput { return v.MembershipStates }).(pulumi.StringMapOutput)
+}
+
+// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
+func (o FeatureOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the Feature resource itself.
+func (o FeatureOutput) ResourceState() FeatureResourceStateResponseOutput {
+	return o.ApplyT(func(v *Feature) FeatureResourceStateResponseOutput { return v.ResourceState }).(FeatureResourceStateResponseOutput)
+}
+
+// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+func (o FeatureOutput) Spec() CommonFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *Feature) CommonFeatureSpecResponseOutput { return v.Spec }).(CommonFeatureSpecResponseOutput)
+}
+
+// The Hub-wide Feature state.
+func (o FeatureOutput) State() CommonFeatureStateResponseOutput {
+	return o.ApplyT(func(v *Feature) CommonFeatureStateResponseOutput { return v.State }).(CommonFeatureStateResponseOutput)
+}
+
+// When the Feature resource was last updated.
+func (o FeatureOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureInput)(nil)).Elem(), &Feature{})
 	pulumi.RegisterOutputType(FeatureOutput{})

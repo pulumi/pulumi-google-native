@@ -145,6 +145,51 @@ func (o CutoverJobOutput) ToCutoverJobOutputWithContext(ctx context.Context) Cut
 	return o
 }
 
+// Details of the target VM in Compute Engine.
+func (o CutoverJobOutput) ComputeEngineTargetDetails() ComputeEngineTargetDetailsResponseOutput {
+	return o.ApplyT(func(v *CutoverJob) ComputeEngineTargetDetailsResponseOutput { return v.ComputeEngineTargetDetails }).(ComputeEngineTargetDetailsResponseOutput)
+}
+
+// The time the cutover job was created (as an API call, not when it was actually created in the target).
+func (o CutoverJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the cutover job had finished.
+func (o CutoverJobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Provides details for the errors that led to the Cutover Job's state.
+func (o CutoverJobOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *CutoverJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The name of the cutover job.
+func (o CutoverJobOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current progress in percentage of the cutover job.
+func (o CutoverJobOutput) ProgressPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.IntOutput { return v.ProgressPercent }).(pulumi.IntOutput)
+}
+
+// State of the cutover job.
+func (o CutoverJobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// A message providing possible extra details about the current state.
+func (o CutoverJobOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The time the state was last updated.
+func (o CutoverJobOutput) StateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CutoverJobInput)(nil)).Elem(), &CutoverJob{})
 	pulumi.RegisterOutputType(CutoverJobOutput{})

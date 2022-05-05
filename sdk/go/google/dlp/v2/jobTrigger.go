@@ -160,6 +160,56 @@ func (o JobTriggerOutput) ToJobTriggerOutputWithContext(ctx context.Context) Job
 	return o
 }
 
+// The creation timestamp of a triggeredJob.
+func (o JobTriggerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User provided description (max 256 chars)
+func (o JobTriggerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name (max 100 chars)
+func (o JobTriggerOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
+func (o JobTriggerOutput) Errors() GooglePrivacyDlpV2ErrorResponseArrayOutput {
+	return o.ApplyT(func(v *JobTrigger) GooglePrivacyDlpV2ErrorResponseArrayOutput { return v.Errors }).(GooglePrivacyDlpV2ErrorResponseArrayOutput)
+}
+
+// For inspect jobs, a snapshot of the configuration.
+func (o JobTriggerOutput) InspectJob() GooglePrivacyDlpV2InspectJobConfigResponseOutput {
+	return o.ApplyT(func(v *JobTrigger) GooglePrivacyDlpV2InspectJobConfigResponseOutput { return v.InspectJob }).(GooglePrivacyDlpV2InspectJobConfigResponseOutput)
+}
+
+// The timestamp of the last time this trigger executed.
+func (o JobTriggerOutput) LastRunTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.LastRunTime }).(pulumi.StringOutput)
+}
+
+// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+func (o JobTriggerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A status for this trigger.
+func (o JobTriggerOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+func (o JobTriggerOutput) Triggers() GooglePrivacyDlpV2TriggerResponseArrayOutput {
+	return o.ApplyT(func(v *JobTrigger) GooglePrivacyDlpV2TriggerResponseArrayOutput { return v.Triggers }).(GooglePrivacyDlpV2TriggerResponseArrayOutput)
+}
+
+// The last update timestamp of a triggeredJob.
+func (o JobTriggerOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTrigger) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTriggerInput)(nil)).Elem(), &JobTrigger{})
 	pulumi.RegisterOutputType(JobTriggerOutput{})

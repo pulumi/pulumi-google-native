@@ -151,6 +151,40 @@ func (o ResourceRecordSetOutput) ToResourceRecordSetOutputWithContext(ctx contex
 	return o
 }
 
+func (o ResourceRecordSetOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// For example, www.example.com.
+func (o ResourceRecordSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configures dynamic query responses based on geo location of querying user or a weighted round robin based routing policy. A ResourceRecordSet should only have either rrdata (static) or routing_policy (dynamic). An error is returned otherwise.
+func (o ResourceRecordSetOutput) RoutingPolicy() RRSetRoutingPolicyResponseOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) RRSetRoutingPolicyResponseOutput { return v.RoutingPolicy }).(RRSetRoutingPolicyResponseOutput)
+}
+
+// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+func (o ResourceRecordSetOutput) Rrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringArrayOutput { return v.Rrdatas }).(pulumi.StringArrayOutput)
+}
+
+// As defined in RFC 4034 (section 3.2).
+func (o ResourceRecordSetOutput) SignatureRrdatas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringArrayOutput { return v.SignatureRrdatas }).(pulumi.StringArrayOutput)
+}
+
+// Number of seconds that this ResourceRecordSet can be cached by resolvers.
+func (o ResourceRecordSetOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The identifier of a supported record type. See the list of Supported DNS record types.
+func (o ResourceRecordSetOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceRecordSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceRecordSetInput)(nil)).Elem(), &ResourceRecordSet{})
 	pulumi.RegisterOutputType(ResourceRecordSetOutput{})

@@ -147,6 +147,46 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+func (o ClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
+func (o ClusterOutput) ClusterUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterUuid }).(pulumi.StringOutput)
+}
+
+// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+func (o ClusterOutput) Config() ClusterConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterConfigResponseOutput { return v.Config }).(ClusterConfigResponseOutput)
+}
+
+// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+func (o ClusterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+func (o ClusterOutput) Metrics() ClusterMetricsResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMetricsResponseOutput { return v.Metrics }).(ClusterMetricsResponseOutput)
+}
+
+// The Google Cloud Platform project ID that the cluster belongs to.
+func (o ClusterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Cluster status.
+func (o ClusterOutput) Status() ClusterStatusResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterStatusResponseOutput { return v.Status }).(ClusterStatusResponseOutput)
+}
+
+// The previous cluster status.
+func (o ClusterOutput) StatusHistory() ClusterStatusResponseArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterStatusResponseArrayOutput { return v.StatusHistory }).(ClusterStatusResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInput)(nil)).Elem(), &Cluster{})
 	pulumi.RegisterOutputType(ClusterOutput{})

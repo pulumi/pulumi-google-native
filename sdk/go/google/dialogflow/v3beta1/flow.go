@@ -157,6 +157,43 @@ func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
 }
 
+// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
+func (o FlowOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the flow.
+func (o FlowOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
+func (o FlowOutput) EventHandlers() GoogleCloudDialogflowCxV3beta1EventHandlerResponseArrayOutput {
+	return o.ApplyT(func(v *Flow) GoogleCloudDialogflowCxV3beta1EventHandlerResponseArrayOutput { return v.EventHandlers }).(GoogleCloudDialogflowCxV3beta1EventHandlerResponseArrayOutput)
+}
+
+// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
+func (o FlowOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// NLU related settings of the flow.
+func (o FlowOutput) NluSettings() GoogleCloudDialogflowCxV3beta1NluSettingsResponseOutput {
+	return o.ApplyT(func(v *Flow) GoogleCloudDialogflowCxV3beta1NluSettingsResponseOutput { return v.NluSettings }).(GoogleCloudDialogflowCxV3beta1NluSettingsResponseOutput)
+}
+
+// A flow's transition route group serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition route groups. Transition route groups defined in the page have higher priority than those defined in the flow. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+func (o FlowOutput) TransitionRouteGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringArrayOutput { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
+}
+
+// A flow's transition routes serve two purposes: * They are responsible for matching the user's first utterances in the flow. * They are inherited by every page's transition routes and can support use cases such as the user saying "help" or "can I talk to a human?", which can be handled in a common way regardless of the current page. Transition routes defined in the page have higher priority than those defined in the flow. TransitionRoutes are evalauted in the following order: * TransitionRoutes with intent specified. * TransitionRoutes with only condition specified. TransitionRoutes with intent specified are inherited by pages in the flow.
+func (o FlowOutput) TransitionRoutes() GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput {
+	return o.ApplyT(func(v *Flow) GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput {
+		return v.TransitionRoutes
+	}).(GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlowInput)(nil)).Elem(), &Flow{})
 	pulumi.RegisterOutputType(FlowOutput{})

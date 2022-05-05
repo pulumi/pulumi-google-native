@@ -157,6 +157,51 @@ func (o CertificateMapEntryOutput) ToCertificateMapEntryOutputWithContext(ctx co
 	return o
 }
 
+// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+func (o CertificateMapEntryOutput) Certificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringArrayOutput { return v.Certificates }).(pulumi.StringArrayOutput)
+}
+
+// The creation timestamp of a Certificate Map Entry.
+func (o CertificateMapEntryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// One or more paragraphs of text description of a certificate map entry.
+func (o CertificateMapEntryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate.
+func (o CertificateMapEntryOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Set of labels associated with a Certificate Map Entry.
+func (o CertificateMapEntryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A predefined matcher for particular cases, other than SNI selection.
+func (o CertificateMapEntryOutput) Matcher() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Matcher }).(pulumi.StringOutput)
+}
+
+// A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`.
+func (o CertificateMapEntryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A serving state of this Certificate Map Entry.
+func (o CertificateMapEntryOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The update timestamp of a Certificate Map Entry.
+func (o CertificateMapEntryOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateMapEntryInput)(nil)).Elem(), &CertificateMapEntry{})
 	pulumi.RegisterOutputType(CertificateMapEntryOutput{})

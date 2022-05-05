@@ -198,6 +198,96 @@ func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOu
 	return o
 }
 
+// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+func (o ReleaseOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// List of artifacts to pass through to Skaffold command.
+func (o ReleaseOutput) BuildArtifacts() BuildArtifactResponseArrayOutput {
+	return o.ApplyT(func(v *Release) BuildArtifactResponseArrayOutput { return v.BuildArtifacts }).(BuildArtifactResponseArrayOutput)
+}
+
+// Time at which the `Release` was created.
+func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Snapshot of the parent pipeline taken at release creation time.
+func (o ReleaseOutput) DeliveryPipelineSnapshot() DeliveryPipelineResponseOutput {
+	return o.ApplyT(func(v *Release) DeliveryPipelineResponseOutput { return v.DeliveryPipelineSnapshot }).(DeliveryPipelineResponseOutput)
+}
+
+// Description of the `Release`. Max length is 255 characters.
+func (o ReleaseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o ReleaseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+func (o ReleaseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Name of the `Release`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/a-z{0,62}.
+func (o ReleaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time at which the render completed.
+func (o ReleaseOutput) RenderEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RenderEndTime }).(pulumi.StringOutput)
+}
+
+// Time at which the render began.
+func (o ReleaseOutput) RenderStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RenderStartTime }).(pulumi.StringOutput)
+}
+
+// Current state of the render operation.
+func (o ReleaseOutput) RenderState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RenderState }).(pulumi.StringOutput)
+}
+
+// Filepath of the Skaffold config inside of the config URI.
+func (o ReleaseOutput) SkaffoldConfigPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.SkaffoldConfigPath }).(pulumi.StringOutput)
+}
+
+// Cloud Storage URI of tar.gz archive containing Skaffold configuration.
+func (o ReleaseOutput) SkaffoldConfigUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.SkaffoldConfigUri }).(pulumi.StringOutput)
+}
+
+// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
+func (o ReleaseOutput) SkaffoldVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.SkaffoldVersion }).(pulumi.StringOutput)
+}
+
+// Map from target ID to the target artifacts created during the render operation.
+func (o ReleaseOutput) TargetArtifacts() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.TargetArtifacts }).(pulumi.StringMapOutput)
+}
+
+// Map from target ID to details of the render operation for that target.
+func (o ReleaseOutput) TargetRenders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringMapOutput { return v.TargetRenders }).(pulumi.StringMapOutput)
+}
+
+// Snapshot of the targets taken at release creation time.
+func (o ReleaseOutput) TargetSnapshots() TargetResponseArrayOutput {
+	return o.ApplyT(func(v *Release) TargetResponseArrayOutput { return v.TargetSnapshots }).(TargetResponseArrayOutput)
+}
+
+// Unique identifier of the `Release`.
+func (o ReleaseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInput)(nil)).Elem(), &Release{})
 	pulumi.RegisterOutputType(ReleaseOutput{})

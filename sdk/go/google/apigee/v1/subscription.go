@@ -136,6 +136,36 @@ func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Name of the API product for which the developer is purchasing a subscription.
+func (o SubscriptionOutput) Apiproduct() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Apiproduct }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription was created in milliseconds since epoch.
+func (o SubscriptionOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription ends in milliseconds since epoch.
+func (o SubscriptionOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription was last modified in milliseconds since epoch.
+func (o SubscriptionOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API product subscription.
+func (o SubscriptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time when the API product subscription starts in milliseconds since epoch.
+func (o SubscriptionOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionInput)(nil)).Elem(), &Subscription{})
 	pulumi.RegisterOutputType(SubscriptionOutput{})

@@ -159,6 +159,41 @@ func (o DebugSessionOutput) ToDebugSessionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
+func (o DebugSessionOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.IntOutput { return v.Count }).(pulumi.IntOutput)
+}
+
+// The first transaction creation timestamp, recorded by UAP.
+func (o DebugSessionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
+func (o DebugSessionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
+}
+
+// A unique ID for this DebugSession.
+func (o DebugSessionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
+func (o DebugSessionOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
+func (o DebugSessionOutput) Tracesize() pulumi.IntOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.IntOutput { return v.Tracesize }).(pulumi.IntOutput)
+}
+
+// Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
+func (o DebugSessionOutput) Validity() pulumi.IntOutput {
+	return o.ApplyT(func(v *DebugSession) pulumi.IntOutput { return v.Validity }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DebugSessionInput)(nil)).Elem(), &DebugSession{})
 	pulumi.RegisterOutputType(DebugSessionOutput{})

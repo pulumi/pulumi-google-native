@@ -159,6 +159,52 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// The Cloud SQL charset value.
+func (o DatabaseOutput) Charset() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Charset }).(pulumi.StringOutput)
+}
+
+// The Cloud SQL collation value.
+func (o DatabaseOutput) Collation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Collation }).(pulumi.StringOutput)
+}
+
+// This field is deprecated and will be removed from a future version of the API.
+//
+// Deprecated: This field is deprecated and will be removed from a future version of the API.
+func (o DatabaseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud SQL instance. This does not include the project ID.
+func (o DatabaseOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+}
+
+// This is always `sql#database`.
+func (o DatabaseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the database in the Cloud SQL instance. This does not include the project ID or instance name.
+func (o DatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
+func (o DatabaseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The URI of this resource.
+func (o DatabaseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+func (o DatabaseOutput) SqlserverDatabaseDetails() SqlServerDatabaseDetailsResponseOutput {
+	return o.ApplyT(func(v *Database) SqlServerDatabaseDetailsResponseOutput { return v.SqlserverDatabaseDetails }).(SqlServerDatabaseDetailsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInput)(nil)).Elem(), &Database{})
 	pulumi.RegisterOutputType(DatabaseOutput{})

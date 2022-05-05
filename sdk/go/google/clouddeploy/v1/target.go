@@ -180,6 +180,71 @@ func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutpu
 	return o
 }
 
+// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+func (o TargetOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Information specifying an Anthos Cluster.
+func (o TargetOutput) AnthosCluster() AnthosClusterResponseOutput {
+	return o.ApplyT(func(v *Target) AnthosClusterResponseOutput { return v.AnthosCluster }).(AnthosClusterResponseOutput)
+}
+
+// Time at which the `Target` was created.
+func (o TargetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the `Target`. Max length is 255 characters.
+func (o TargetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o TargetOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
+func (o TargetOutput) ExecutionConfigs() ExecutionConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Target) ExecutionConfigResponseArrayOutput { return v.ExecutionConfigs }).(ExecutionConfigResponseArrayOutput)
+}
+
+// Information specifying a GKE Cluster.
+func (o TargetOutput) Gke() GkeClusterResponseOutput {
+	return o.ApplyT(func(v *Target) GkeClusterResponseOutput { return v.Gke }).(GkeClusterResponseOutput)
+}
+
+// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+func (o TargetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
+func (o TargetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Whether or not the `Target` requires approval.
+func (o TargetOutput) RequireApproval() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Target) pulumi.BoolOutput { return v.RequireApproval }).(pulumi.BoolOutput)
+}
+
+// Resource id of the `Target`.
+func (o TargetOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the `Target`.
+func (o TargetOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Most recent time at which the `Target` was updated.
+func (o TargetOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInput)(nil)).Elem(), &Target{})
 	pulumi.RegisterOutputType(TargetOutput{})

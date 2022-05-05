@@ -163,6 +163,56 @@ func (o DeliveryPipelineOutput) ToDeliveryPipelineOutputWithContext(ctx context.
 	return o
 }
 
+// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+func (o DeliveryPipelineOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Information around the state of the Delivery Pipeline.
+func (o DeliveryPipelineOutput) Condition() PipelineConditionResponseOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) PipelineConditionResponseOutput { return v.Condition }).(PipelineConditionResponseOutput)
+}
+
+// Time at which the pipeline was created.
+func (o DeliveryPipelineOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the `DeliveryPipeline`. Max length is 255 characters.
+func (o DeliveryPipelineOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o DeliveryPipelineOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+func (o DeliveryPipelineOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/ locations/{location}/deliveryPipelines/a-z{0,62}.
+func (o DeliveryPipelineOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
+func (o DeliveryPipelineOutput) SerialPipeline() SerialPipelineResponseOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) SerialPipelineResponseOutput { return v.SerialPipeline }).(SerialPipelineResponseOutput)
+}
+
+// Unique identifier of the `DeliveryPipeline`.
+func (o DeliveryPipelineOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Most recent time at which the pipeline was updated.
+func (o DeliveryPipelineOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineInput)(nil)).Elem(), &DeliveryPipeline{})
 	pulumi.RegisterOutputType(DeliveryPipelineOutput{})

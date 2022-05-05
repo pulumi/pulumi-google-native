@@ -162,6 +162,51 @@ func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) Dashb
 	return o
 }
 
+// The content is divided into equally spaced columns and the widgets are arranged vertically.
+func (o DashboardOutput) ColumnLayout() ColumnLayoutResponseOutput {
+	return o.ApplyT(func(v *Dashboard) ColumnLayoutResponseOutput { return v.ColumnLayout }).(ColumnLayoutResponseOutput)
+}
+
+// Filters to reduce the amount of data charted based on the filter criteria.
+func (o DashboardOutput) DashboardFilters() DashboardFilterResponseArrayOutput {
+	return o.ApplyT(func(v *Dashboard) DashboardFilterResponseArrayOutput { return v.DashboardFilters }).(DashboardFilterResponseArrayOutput)
+}
+
+// The mutable, human-readable name.
+func (o DashboardOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
+func (o DashboardOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
+func (o DashboardOutput) GridLayout() GridLayoutResponseOutput {
+	return o.ApplyT(func(v *Dashboard) GridLayoutResponseOutput { return v.GridLayout }).(GridLayoutResponseOutput)
+}
+
+// Labels applied to the dashboard
+func (o DashboardOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
+func (o DashboardOutput) MosaicLayout() MosaicLayoutResponseOutput {
+	return o.ApplyT(func(v *Dashboard) MosaicLayoutResponseOutput { return v.MosaicLayout }).(MosaicLayoutResponseOutput)
+}
+
+// Immutable. The resource name of the dashboard.
+func (o DashboardOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The content is divided into equally spaced rows and the widgets are arranged horizontally.
+func (o DashboardOutput) RowLayout() RowLayoutResponseOutput {
+	return o.ApplyT(func(v *Dashboard) RowLayoutResponseOutput { return v.RowLayout }).(RowLayoutResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardInput)(nil)).Elem(), &Dashboard{})
 	pulumi.RegisterOutputType(DashboardOutput{})

@@ -196,6 +196,106 @@ func (o RegionCommitmentOutput) ToRegionCommitmentOutputWithContext(ctx context.
 	return o
 }
 
+// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+func (o RegionCommitmentOutput) AutoRenew() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
+}
+
+// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
+func (o RegionCommitmentOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RegionCommitmentOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o RegionCommitmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Commitment end time in RFC3339 text format.
+func (o RegionCommitmentOutput) EndTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.EndTimestamp }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#commitment for commitments.
+func (o RegionCommitmentOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The license specification required as part of a license commitment.
+func (o RegionCommitmentOutput) LicenseResource() LicenseResourceCommitmentResponseOutput {
+	return o.ApplyT(func(v *RegionCommitment) LicenseResourceCommitmentResponseOutput { return v.LicenseResource }).(LicenseResourceCommitmentResponseOutput)
+}
+
+// List of source commitments to be merged into a new commitment.
+func (o RegionCommitmentOutput) MergeSourceCommitments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringArrayOutput { return v.MergeSourceCommitments }).(pulumi.StringArrayOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o RegionCommitmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
+func (o RegionCommitmentOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
+}
+
+// URL of the region where this commitment may be used.
+func (o RegionCommitmentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// List of reservations in this commitment.
+func (o RegionCommitmentOutput) Reservations() ReservationResponseArrayOutput {
+	return o.ApplyT(func(v *RegionCommitment) ReservationResponseArrayOutput { return v.Reservations }).(ReservationResponseArrayOutput)
+}
+
+// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
+func (o RegionCommitmentOutput) Resources() ResourceCommitmentResponseArrayOutput {
+	return o.ApplyT(func(v *RegionCommitment) ResourceCommitmentResponseArrayOutput { return v.Resources }).(ResourceCommitmentResponseArrayOutput)
+}
+
+// Server-defined URL for the resource.
+func (o RegionCommitmentOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o RegionCommitmentOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// Source commitment to be splitted into a new commitment.
+func (o RegionCommitmentOutput) SplitSourceCommitment() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.SplitSourceCommitment }).(pulumi.StringOutput)
+}
+
+// Commitment start time in RFC3339 text format.
+func (o RegionCommitmentOutput) StartTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.StartTimestamp }).(pulumi.StringOutput)
+}
+
+// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
+func (o RegionCommitmentOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// An optional, human-readable explanation of the status.
+func (o RegionCommitmentOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
+func (o RegionCommitmentOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionCommitmentInput)(nil)).Elem(), &RegionCommitment{})
 	pulumi.RegisterOutputType(RegionCommitmentOutput{})

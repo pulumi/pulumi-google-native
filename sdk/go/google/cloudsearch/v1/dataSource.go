@@ -156,6 +156,51 @@ func (o DataSourceOutput) ToDataSourceOutputWithContext(ctx context.Context) Dat
 	return o
 }
 
+// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
+func (o DataSourceOutput) DisableModifications() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.BoolOutput { return v.DisableModifications }).(pulumi.BoolOutput)
+}
+
+// Disable serving any search or assist results.
+func (o DataSourceOutput) DisableServing() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.BoolOutput { return v.DisableServing }).(pulumi.BoolOutput)
+}
+
+// Display name of the datasource The maximum length is 300 characters.
+func (o DataSourceOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// List of service accounts that have indexing access.
+func (o DataSourceOutput) IndexingServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.StringArrayOutput { return v.IndexingServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
+func (o DataSourceOutput) ItemsVisibility() GSuitePrincipalResponseArrayOutput {
+	return o.ApplyT(func(v *DataSource) GSuitePrincipalResponseArrayOutput { return v.ItemsVisibility }).(GSuitePrincipalResponseArrayOutput)
+}
+
+// Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
+func (o DataSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// IDs of the Long Running Operations (LROs) currently running for this schema.
+func (o DataSourceOutput) OperationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.StringArrayOutput { return v.OperationIds }).(pulumi.StringArrayOutput)
+}
+
+// Can a user request to get thumbnail URI for Items indexed in this data source.
+func (o DataSourceOutput) ReturnThumbnailUrls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.BoolOutput { return v.ReturnThumbnailUrls }).(pulumi.BoolOutput)
+}
+
+// A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
+func (o DataSourceOutput) ShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataSource) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSourceInput)(nil)).Elem(), &DataSource{})
 	pulumi.RegisterOutputType(DataSourceOutput{})

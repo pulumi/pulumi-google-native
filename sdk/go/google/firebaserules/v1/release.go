@@ -120,6 +120,26 @@ func (o ReleaseOutput) ToReleaseOutputWithContext(ctx context.Context) ReleaseOu
 	return o
 }
 
+// Time the release was created.
+func (o ReleaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Format: `projects/{project_id}/releases/{release_id}`
+func (o ReleaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
+func (o ReleaseOutput) RulesetName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.RulesetName }).(pulumi.StringOutput)
+}
+
+// Time the release was updated.
+func (o ReleaseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Release) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseInput)(nil)).Elem(), &Release{})
 	pulumi.RegisterOutputType(ReleaseOutput{})

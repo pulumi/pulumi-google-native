@@ -142,6 +142,23 @@ func (o SessionEntityTypeOutput) ToSessionEntityTypeOutputWithContext(ctx contex
 	return o
 }
 
+// The collection of entities to override or supplement the custom entity type.
+func (o SessionEntityTypeOutput) Entities() GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput {
+	return o.ApplyT(func(v *SessionEntityType) GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput {
+		return v.Entities
+	}).(GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput)
+}
+
+// Indicates whether the additional data should override or supplement the custom entity type definition.
+func (o SessionEntityTypeOutput) EntityOverrideMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.EntityOverrideMode }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+func (o SessionEntityTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SessionEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionEntityTypeInput)(nil)).Elem(), &SessionEntityType{})
 	pulumi.RegisterOutputType(SessionEntityTypeOutput{})

@@ -133,6 +133,36 @@ func (o ArchiveDeploymentOutput) ToArchiveDeploymentOutputWithContext(ctx contex
 	return o
 }
 
+// The time at which the Archive Deployment was created in milliseconds since the epoch.
+func (o ArchiveDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArchiveDeployment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Input only. The Google Cloud Storage signed URL returned from GenerateUploadUrl and used to upload the Archive zip file.
+func (o ArchiveDeploymentOutput) GcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArchiveDeployment) pulumi.StringOutput { return v.GcsUri }).(pulumi.StringOutput)
+}
+
+// User-supplied key-value pairs used to organize ArchiveDeployments. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+func (o ArchiveDeploymentOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ArchiveDeployment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`.
+func (o ArchiveDeploymentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArchiveDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A reference to the LRO that created this Archive Deployment in the following format: `organizations/{org}/operations/{id}`
+func (o ArchiveDeploymentOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArchiveDeployment) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
+}
+
+// The time at which the Archive Deployment was updated in milliseconds since the epoch.
+func (o ArchiveDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArchiveDeployment) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArchiveDeploymentInput)(nil)).Elem(), &ArchiveDeployment{})
 	pulumi.RegisterOutputType(ArchiveDeploymentOutput{})

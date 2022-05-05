@@ -136,6 +136,36 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// The time when the snapshot was created.
+func (o SnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
+func (o SnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The amount of bytes needed to allocate a full copy of the snapshot content
+func (o SnapshotOutput) FilesystemUsedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.FilesystemUsedBytes }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user provided metadata.
+func (o SnapshotOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
+func (o SnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The snapshot state.
+func (o SnapshotOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotInput)(nil)).Elem(), &Snapshot{})
 	pulumi.RegisterOutputType(SnapshotOutput{})

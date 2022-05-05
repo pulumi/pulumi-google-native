@@ -160,6 +160,76 @@ func (o DatacenterConnectorOutput) ToDatacenterConnectorOutputWithContext(ctx co
 	return o
 }
 
+// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
+func (o DatacenterConnectorOutput) ApplianceInfrastructureVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.ApplianceInfrastructureVersion }).(pulumi.StringOutput)
+}
+
+// Appliance last installed update bundle version. This is the version of the automatically updatable components on the appliance.
+func (o DatacenterConnectorOutput) ApplianceSoftwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.ApplianceSoftwareVersion }).(pulumi.StringOutput)
+}
+
+// The available versions for updating this appliance.
+func (o DatacenterConnectorOutput) AvailableVersions() AvailableUpdatesResponseOutput {
+	return o.ApplyT(func(v *DatacenterConnector) AvailableUpdatesResponseOutput { return v.AvailableVersions }).(AvailableUpdatesResponseOutput)
+}
+
+// The communication channel between the datacenter connector and GCP.
+func (o DatacenterConnectorOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The time the connector was created (as an API call, not when it was actually installed).
+func (o DatacenterConnectorOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Provides details on the state of the Datacenter Connector in case of an error.
+func (o DatacenterConnectorOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *DatacenterConnector) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The connector's name.
+func (o DatacenterConnectorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. A unique key for this connector. This key is internal to the OVA connector and is supplied with its creation during the registration process and can not be modified.
+func (o DatacenterConnectorOutput) RegistrationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.RegistrationId }).(pulumi.StringOutput)
+}
+
+// The service account to use in the connector when communicating with the cloud.
+func (o DatacenterConnectorOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// State of the DatacenterConnector, as determined by the health checks.
+func (o DatacenterConnectorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The time the state was last set.
+func (o DatacenterConnectorOutput) StateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The last time the connector was updated with an API call.
+func (o DatacenterConnectorOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The status of the current / last upgradeAppliance operation.
+func (o DatacenterConnectorOutput) UpgradeStatus() UpgradeStatusResponseOutput {
+	return o.ApplyT(func(v *DatacenterConnector) UpgradeStatusResponseOutput { return v.UpgradeStatus }).(UpgradeStatusResponseOutput)
+}
+
+// The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
+func (o DatacenterConnectorOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatacenterConnector) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatacenterConnectorInput)(nil)).Elem(), &DatacenterConnector{})
 	pulumi.RegisterOutputType(DatacenterConnectorOutput{})

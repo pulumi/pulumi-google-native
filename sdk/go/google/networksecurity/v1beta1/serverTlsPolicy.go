@@ -150,6 +150,48 @@ func (o ServerTlsPolicyOutput) ToServerTlsPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+//  Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
+func (o ServerTlsPolicyOutput) AllowOpen() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.BoolOutput { return v.AllowOpen }).(pulumi.BoolOutput)
+}
+
+// The timestamp when the resource was created.
+func (o ServerTlsPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Free-text description of the resource.
+func (o ServerTlsPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Set of label tags associated with the resource.
+func (o ServerTlsPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+//  Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
+func (o ServerTlsPolicyOutput) MtlsPolicy() MTLSPolicyResponseOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) MTLSPolicyResponseOutput { return v.MtlsPolicy }).(MTLSPolicyResponseOutput)
+}
+
+// Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
+func (o ServerTlsPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+//  Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
+func (o ServerTlsPolicyOutput) ServerCertificate() GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput {
+		return v.ServerCertificate
+	}).(GoogleCloudNetworksecurityV1beta1CertificateProviderResponseOutput)
+}
+
+// The timestamp when the resource was updated.
+func (o ServerTlsPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerTlsPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyInput)(nil)).Elem(), &ServerTlsPolicy{})
 	pulumi.RegisterOutputType(ServerTlsPolicyOutput{})

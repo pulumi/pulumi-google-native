@@ -148,6 +148,78 @@ func (o CryptoKeyVersionOutput) ToCryptoKeyVersionOutputWithContext(ctx context.
 	return o
 }
 
+// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+func (o CryptoKeyVersionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Statement that was generated and signed by the HSM at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only provided for key versions with protection_level HSM.
+func (o CryptoKeyVersionOutput) Attestation() KeyOperationAttestationResponseOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) KeyOperationAttestationResponseOutput { return v.Attestation }).(KeyOperationAttestationResponseOutput)
+}
+
+// The time at which this CryptoKeyVersion was created.
+func (o CryptoKeyVersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
+func (o CryptoKeyVersionOutput) DestroyEventTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.DestroyEventTime }).(pulumi.StringOutput)
+}
+
+// The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+func (o CryptoKeyVersionOutput) DestroyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.DestroyTime }).(pulumi.StringOutput)
+}
+
+// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
+func (o CryptoKeyVersionOutput) ExternalProtectionLevelOptions() ExternalProtectionLevelOptionsResponseOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) ExternalProtectionLevelOptionsResponseOutput {
+		return v.ExternalProtectionLevelOptions
+	}).(ExternalProtectionLevelOptionsResponseOutput)
+}
+
+// The time this CryptoKeyVersion's key material was generated.
+func (o CryptoKeyVersionOutput) GenerateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.GenerateTime }).(pulumi.StringOutput)
+}
+
+// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
+func (o CryptoKeyVersionOutput) ImportFailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.ImportFailureReason }).(pulumi.StringOutput)
+}
+
+// The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
+func (o CryptoKeyVersionOutput) ImportJob() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.ImportJob }).(pulumi.StringOutput)
+}
+
+// The time at which this CryptoKeyVersion's key material was most recently imported.
+func (o CryptoKeyVersionOutput) ImportTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.ImportTime }).(pulumi.StringOutput)
+}
+
+// The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
+func (o CryptoKeyVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
+func (o CryptoKeyVersionOutput) ProtectionLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.ProtectionLevel }).(pulumi.StringOutput)
+}
+
+// Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
+func (o CryptoKeyVersionOutput) ReimportEligible() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.BoolOutput { return v.ReimportEligible }).(pulumi.BoolOutput)
+}
+
+// The current state of the CryptoKeyVersion.
+func (o CryptoKeyVersionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionInput)(nil)).Elem(), &CryptoKeyVersion{})
 	pulumi.RegisterOutputType(CryptoKeyVersionOutput{})

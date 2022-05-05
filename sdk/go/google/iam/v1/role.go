@@ -146,6 +146,41 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
+// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+func (o RoleOutput) Deleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Role) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// Optional. A human-readable description for the role.
+func (o RoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Used to perform a consistent read-modify-write.
+func (o RoleOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The names of the permissions this role grants when bound in an IAM policy.
+func (o RoleOutput) IncludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringArrayOutput { return v.IncludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+func (o RoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+func (o RoleOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Stage }).(pulumi.StringOutput)
+}
+
+// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+func (o RoleOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleInput)(nil)).Elem(), &Role{})
 	pulumi.RegisterOutputType(RoleOutput{})

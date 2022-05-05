@@ -135,6 +135,26 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 	return o
 }
 
+// The id of the most recently created revision for this shared flow.
+func (o SharedflowOutput) LatestRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.LatestRevisionId }).(pulumi.StringOutput)
+}
+
+// Metadata describing the shared flow.
+func (o SharedflowOutput) MetaData() GoogleCloudApigeeV1EntityMetadataResponseOutput {
+	return o.ApplyT(func(v *Sharedflow) GoogleCloudApigeeV1EntityMetadataResponseOutput { return v.MetaData }).(GoogleCloudApigeeV1EntityMetadataResponseOutput)
+}
+
+// The ID of the shared flow.
+func (o SharedflowOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of revisions of this shared flow.
+func (o SharedflowOutput) Revision() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Sharedflow) pulumi.StringArrayOutput { return v.Revision }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SharedflowInput)(nil)).Elem(), &Sharedflow{})
 	pulumi.RegisterOutputType(SharedflowOutput{})

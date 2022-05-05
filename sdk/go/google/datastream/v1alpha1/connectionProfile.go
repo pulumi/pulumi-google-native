@@ -178,6 +178,68 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx contex
 	return o
 }
 
+// The create time of the resource.
+func (o ConnectionProfileOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Display name.
+func (o ConnectionProfileOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o ConnectionProfileOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) ForwardSshTunnelConnectivityResponseOutput { return v.ForwardSshConnectivity }).(ForwardSshTunnelConnectivityResponseOutput)
+}
+
+// Cloud Storage ConnectionProfile configuration.
+func (o ConnectionProfileOutput) GcsProfile() GcsProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) GcsProfileResponseOutput { return v.GcsProfile }).(GcsProfileResponseOutput)
+}
+
+// Labels.
+func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// MySQL ConnectionProfile configuration.
+func (o ConnectionProfileOutput) MysqlProfile() MysqlProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) MysqlProfileResponseOutput { return v.MysqlProfile }).(MysqlProfileResponseOutput)
+}
+
+// The resource's name.
+func (o ConnectionProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// No connectivity option chosen.
+func (o ConnectionProfileOutput) NoConnectivity() NoConnectivitySettingsResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) NoConnectivitySettingsResponseOutput { return v.NoConnectivity }).(NoConnectivitySettingsResponseOutput)
+}
+
+// Oracle ConnectionProfile configuration.
+func (o ConnectionProfileOutput) OracleProfile() OracleProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) OracleProfileResponseOutput { return v.OracleProfile }).(OracleProfileResponseOutput)
+}
+
+// Private connectivity.
+func (o ConnectionProfileOutput) PrivateConnectivity() PrivateConnectivityResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) PrivateConnectivityResponseOutput { return v.PrivateConnectivity }).(PrivateConnectivityResponseOutput)
+}
+
+// Static Service IP connectivity.
+func (o ConnectionProfileOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) StaticServiceIpConnectivityResponseOutput {
+		return v.StaticServiceIpConnectivity
+	}).(StaticServiceIpConnectivityResponseOutput)
+}
+
+// The update time of the resource.
+func (o ConnectionProfileOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileInput)(nil)).Elem(), &ConnectionProfile{})
 	pulumi.RegisterOutputType(ConnectionProfileOutput{})

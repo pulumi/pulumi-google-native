@@ -151,6 +151,50 @@ func (o CertificateTemplateOutput) ToCertificateTemplateOutputWithContext(ctx co
 	return o
 }
 
+// The time at which this CertificateTemplate was created.
+func (o CertificateTemplateOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A human-readable description of scenarios this template is intended for.
+func (o CertificateTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Describes constraints on identities that may be appear in Certificates issued using this template. If this is omitted, then this template will not add restrictions on a certificate's identity.
+func (o CertificateTemplateOutput) IdentityConstraints() CertificateIdentityConstraintsResponseOutput {
+	return o.ApplyT(func(v *CertificateTemplate) CertificateIdentityConstraintsResponseOutput {
+		return v.IdentityConstraints
+	}).(CertificateIdentityConstraintsResponseOutput)
+}
+
+// Optional. Labels with user-defined metadata.
+func (o CertificateTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name for this CertificateTemplate in the format `projects/*/locations/*/certificateTemplates/*`.
+func (o CertificateTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Describes the set of X.509 extensions that may appear in a Certificate issued using this CertificateTemplate. If a certificate request sets extensions that don't appear in the passthrough_extensions, those extensions will be dropped. If the issuing CaPool's IssuancePolicy defines baseline_values that don't appear here, the certificate issuance request will fail. If this is omitted, then this template will not add restrictions on a certificate's X.509 extensions. These constraints do not apply to X.509 extensions set in this CertificateTemplate's predefined_values.
+func (o CertificateTemplateOutput) PassthroughExtensions() CertificateExtensionConstraintsResponseOutput {
+	return o.ApplyT(func(v *CertificateTemplate) CertificateExtensionConstraintsResponseOutput {
+		return v.PassthroughExtensions
+	}).(CertificateExtensionConstraintsResponseOutput)
+}
+
+// Optional. A set of X.509 values that will be applied to all issued certificates that use this template. If the certificate request includes conflicting values for the same properties, they will be overwritten by the values defined here. If the issuing CaPool's IssuancePolicy defines conflicting baseline_values for the same properties, the certificate issuance request will fail.
+func (o CertificateTemplateOutput) PredefinedValues() X509ParametersResponseOutput {
+	return o.ApplyT(func(v *CertificateTemplate) X509ParametersResponseOutput { return v.PredefinedValues }).(X509ParametersResponseOutput)
+}
+
+// The time at which this CertificateTemplate was updated.
+func (o CertificateTemplateOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateTemplate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateTemplateInput)(nil)).Elem(), &CertificateTemplate{})
 	pulumi.RegisterOutputType(CertificateTemplateOutput{})

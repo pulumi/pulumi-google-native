@@ -146,6 +146,46 @@ func (o PrivateConnectionOutput) ToPrivateConnectionOutputWithContext(ctx contex
 	return o
 }
 
+// The create time of the resource.
+func (o PrivateConnectionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Display name.
+func (o PrivateConnectionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// In case of error, the details of the error in a user-friendly format.
+func (o PrivateConnectionOutput) Error() ErrorResponseOutput {
+	return o.ApplyT(func(v *PrivateConnection) ErrorResponseOutput { return v.Error }).(ErrorResponseOutput)
+}
+
+// Labels.
+func (o PrivateConnectionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource's name.
+func (o PrivateConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of the Private Connection.
+func (o PrivateConnectionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The update time of the resource.
+func (o PrivateConnectionOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// VPC Peering Config
+func (o PrivateConnectionOutput) VpcPeeringConfig() VpcPeeringConfigResponseOutput {
+	return o.ApplyT(func(v *PrivateConnection) VpcPeeringConfigResponseOutput { return v.VpcPeeringConfig }).(VpcPeeringConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionInput)(nil)).Elem(), &PrivateConnection{})
 	pulumi.RegisterOutputType(PrivateConnectionOutput{})

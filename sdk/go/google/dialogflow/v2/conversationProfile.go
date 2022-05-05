@@ -182,6 +182,90 @@ func (o ConversationProfileOutput) ToConversationProfileOutputWithContext(ctx co
 	return o
 }
 
+// Configuration for an automated agent to use with this profile.
+func (o ConversationProfileOutput) AutomatedAgentConfig() GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput {
+		return v.AutomatedAgentConfig
+	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput)
+}
+
+// Create time of the conversation profile.
+func (o ConversationProfileOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable name for this profile. Max length 1024 bytes.
+func (o ConversationProfileOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for agent assistance to use with this profile.
+func (o ConversationProfileOutput) HumanAgentAssistantConfig() GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput {
+		return v.HumanAgentAssistantConfig
+	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput)
+}
+
+// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
+func (o ConversationProfileOutput) HumanAgentHandoffConfig() GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput {
+		return v.HumanAgentHandoffConfig
+	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigResponseOutput)
+}
+
+// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-US languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
+func (o ConversationProfileOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Configuration for logging conversation lifecycle events.
+func (o ConversationProfileOutput) LoggingConfig() GoogleCloudDialogflowV2LoggingConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2LoggingConfigResponseOutput {
+		return v.LoggingConfig
+	}).(GoogleCloudDialogflowV2LoggingConfigResponseOutput)
+}
+
+// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
+func (o ConversationProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for publishing new message events. Event will be sent in format of ConversationEvent
+func (o ConversationProfileOutput) NewMessageEventNotificationConfig() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2NotificationConfigResponseOutput {
+		return v.NewMessageEventNotificationConfig
+	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
+}
+
+// Configuration for publishing conversation lifecycle events.
+func (o ConversationProfileOutput) NotificationConfig() GoogleCloudDialogflowV2NotificationConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2NotificationConfigResponseOutput {
+		return v.NotificationConfig
+	}).(GoogleCloudDialogflowV2NotificationConfigResponseOutput)
+}
+
+// Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+func (o ConversationProfileOutput) SecuritySettings() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.SecuritySettings }).(pulumi.StringOutput)
+}
+
+// Settings for speech transcription.
+func (o ConversationProfileOutput) SttConfig() GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationProfile) GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput {
+		return v.SttConfig
+	}).(GoogleCloudDialogflowV2SpeechToTextConfigResponseOutput)
+}
+
+// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+func (o ConversationProfileOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Update time of the conversation profile.
+func (o ConversationProfileOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationProfileInput)(nil)).Elem(), &ConversationProfile{})
 	pulumi.RegisterOutputType(ConversationProfileOutput{})

@@ -138,6 +138,30 @@ func (o ResponsePolicyRuleOutput) ToResponsePolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
+// Answer this query with a behavior rather than DNS data.
+func (o ResponsePolicyRuleOutput) Behavior() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.Behavior }).(pulumi.StringOutput)
+}
+
+// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+func (o ResponsePolicyRuleOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
+}
+
+func (o ResponsePolicyRuleOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+func (o ResponsePolicyRuleOutput) LocalData() ResponsePolicyRuleLocalDataResponseOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) ResponsePolicyRuleLocalDataResponseOutput { return v.LocalData }).(ResponsePolicyRuleLocalDataResponseOutput)
+}
+
+// An identifier for this rule. Must be unique with the ResponsePolicy.
+func (o ResponsePolicyRuleOutput) RuleName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicyRule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyRuleInput)(nil)).Elem(), &ResponsePolicyRule{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleOutput{})

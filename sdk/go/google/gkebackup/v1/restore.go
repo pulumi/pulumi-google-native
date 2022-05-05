@@ -165,6 +165,91 @@ func (o RestoreOutput) ToRestoreOutputWithContext(ctx context.Context) RestoreOu
 	return o
 }
 
+// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+func (o RestoreOutput) Backup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Backup }).(pulumi.StringOutput)
+}
+
+// The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
+func (o RestoreOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// When the restore operation either successfully completed or failed.
+func (o RestoreOutput) CompleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.CompleteTime }).(pulumi.StringOutput)
+}
+
+// The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o RestoreOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User specified descriptive string for this Restore.
+func (o RestoreOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
+func (o RestoreOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// GCP Labels.
+func (o RestoreOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+func (o RestoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Number of resources excluded in this restore action.
+func (o RestoreOutput) ResourcesExcludedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Restore) pulumi.IntOutput { return v.ResourcesExcludedCount }).(pulumi.IntOutput)
+}
+
+// Number of resources failed to be restored in this restore action.
+func (o RestoreOutput) ResourcesFailedCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Restore) pulumi.IntOutput { return v.ResourcesFailedCount }).(pulumi.IntOutput)
+}
+
+// Number of resources restored in this restore action.
+func (o RestoreOutput) ResourcesRestoredCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Restore) pulumi.IntOutput { return v.ResourcesRestoredCount }).(pulumi.IntOutput)
+}
+
+// Configuration of the Restore. Inherited from parent RestorePlan's restore_config.
+func (o RestoreOutput) RestoreConfig() RestoreConfigResponseOutput {
+	return o.ApplyT(func(v *Restore) RestoreConfigResponseOutput { return v.RestoreConfig }).(RestoreConfigResponseOutput)
+}
+
+// The current state of the Restore.
+func (o RestoreOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Human-readable description of why the Restore is in its current state.
+func (o RestoreOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
+}
+
+// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+func (o RestoreOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o RestoreOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Number of volumes restored in this restore action.
+func (o RestoreOutput) VolumesRestoredCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Restore) pulumi.IntOutput { return v.VolumesRestoredCount }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreInput)(nil)).Elem(), &Restore{})
 	pulumi.RegisterOutputType(RestoreOutput{})

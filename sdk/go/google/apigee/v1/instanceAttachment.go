@@ -120,6 +120,21 @@ func (o InstanceAttachmentOutput) ToInstanceAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// Time the attachment was created in milliseconds since epoch.
+func (o InstanceAttachmentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the attached environment.
+func (o InstanceAttachmentOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
+}
+
+// ID of the attachment.
+func (o InstanceAttachmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAttachmentInput)(nil)).Elem(), &InstanceAttachment{})
 	pulumi.RegisterOutputType(InstanceAttachmentOutput{})

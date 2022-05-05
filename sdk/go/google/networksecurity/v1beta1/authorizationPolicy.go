@@ -147,6 +147,41 @@ func (o AuthorizationPolicyOutput) ToAuthorizationPolicyOutputWithContext(ctx co
 	return o
 }
 
+// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
+func (o AuthorizationPolicyOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was created.
+func (o AuthorizationPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Free-text description of the resource.
+func (o AuthorizationPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Set of label tags associated with the AuthorizationPolicy resource.
+func (o AuthorizationPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
+func (o AuthorizationPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
+func (o AuthorizationPolicyOutput) Rules() RuleResponseArrayOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) RuleResponseArrayOutput { return v.Rules }).(RuleResponseArrayOutput)
+}
+
+// The timestamp when the resource was updated.
+func (o AuthorizationPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyInput)(nil)).Elem(), &AuthorizationPolicy{})
 	pulumi.RegisterOutputType(AuthorizationPolicyOutput{})

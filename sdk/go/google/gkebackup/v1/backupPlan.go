@@ -168,6 +168,71 @@ func (o BackupPlanOutput) ToBackupPlanOutputWithContext(ctx context.Context) Bac
 	return o
 }
 
+// Defines the configuration of Backups created via this BackupPlan.
+func (o BackupPlanOutput) BackupConfig() BackupConfigResponseOutput {
+	return o.ApplyT(func(v *BackupPlan) BackupConfigResponseOutput { return v.BackupConfig }).(BackupConfigResponseOutput)
+}
+
+// Defines a schedule for automatic Backup creation via this BackupPlan.
+func (o BackupPlanOutput) BackupSchedule() ScheduleResponseOutput {
+	return o.ApplyT(func(v *BackupPlan) ScheduleResponseOutput { return v.BackupSchedule }).(ScheduleResponseOutput)
+}
+
+// Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+func (o BackupPlanOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o BackupPlanOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+func (o BackupPlanOutput) Deactivated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.BoolOutput { return v.Deactivated }).(pulumi.BoolOutput)
+}
+
+// User specified descriptive string for this BackupPlan.
+func (o BackupPlanOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+func (o BackupPlanOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// A set of custom labels supplied by user.
+func (o BackupPlanOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
+func (o BackupPlanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+func (o BackupPlanOutput) ProtectedPodCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.IntOutput { return v.ProtectedPodCount }).(pulumi.IntOutput)
+}
+
+// RetentionPolicy governs lifecycle of Backups created under this plan.
+func (o BackupPlanOutput) RetentionPolicy() RetentionPolicyResponseOutput {
+	return o.ApplyT(func(v *BackupPlan) RetentionPolicyResponseOutput { return v.RetentionPolicy }).(RetentionPolicyResponseOutput)
+}
+
+// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+func (o BackupPlanOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o BackupPlanOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanInput)(nil)).Elem(), &BackupPlan{})
 	pulumi.RegisterOutputType(BackupPlanOutput{})

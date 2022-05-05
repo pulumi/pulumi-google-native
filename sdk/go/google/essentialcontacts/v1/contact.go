@@ -141,6 +141,36 @@ func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOu
 	return o
 }
 
+// The email address to send notifications to. This does not need to be a Google account.
+func (o ContactOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
+func (o ContactOutput) LanguageTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.LanguageTag }).(pulumi.StringOutput)
+}
+
+// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
+func (o ContactOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The categories of notifications that the contact will receive communications for.
+func (o ContactOutput) NotificationCategorySubscriptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringArrayOutput { return v.NotificationCategorySubscriptions }).(pulumi.StringArrayOutput)
+}
+
+// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
+func (o ContactOutput) ValidateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.ValidateTime }).(pulumi.StringOutput)
+}
+
+// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
+func (o ContactOutput) ValidationState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.ValidationState }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContactInput)(nil)).Elem(), &Contact{})
 	pulumi.RegisterOutputType(ContactOutput{})

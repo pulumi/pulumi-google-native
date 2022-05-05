@@ -169,6 +169,58 @@ func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) Documen
 	return o
 }
 
+// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
+func (o DocumentOutput) ContentUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.ContentUri }).(pulumi.StringOutput)
+}
+
+// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+func (o DocumentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
+func (o DocumentOutput) EnableAutoReload() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Document) pulumi.BoolOutput { return v.EnableAutoReload }).(pulumi.BoolOutput)
+}
+
+// The knowledge type of document content.
+func (o DocumentOutput) KnowledgeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringArrayOutput { return v.KnowledgeTypes }).(pulumi.StringArrayOutput)
+}
+
+// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
+func (o DocumentOutput) LatestReloadStatus() GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput {
+	return o.ApplyT(func(v *Document) GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput {
+		return v.LatestReloadStatus
+	}).(GoogleCloudDialogflowV2DocumentReloadStatusResponseOutput)
+}
+
+// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
+func (o DocumentOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The MIME type of this document.
+func (o DocumentOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
+func (o DocumentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
+func (o DocumentOutput) RawContent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.RawContent }).(pulumi.StringOutput)
+}
+
+// The current state of the document.
+func (o DocumentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentInput)(nil)).Elem(), &Document{})
 	pulumi.RegisterOutputType(DocumentOutput{})

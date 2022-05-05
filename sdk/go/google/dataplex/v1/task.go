@@ -172,6 +172,61 @@ func (o TaskOutput) ToTaskOutputWithContext(ctx context.Context) TaskOutput {
 	return o
 }
 
+// The time when the task was created.
+func (o TaskOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the task.
+func (o TaskOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. User friendly display name.
+func (o TaskOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Spec related to how a task is executed.
+func (o TaskOutput) ExecutionSpec() GoogleCloudDataplexV1TaskExecutionSpecResponseOutput {
+	return o.ApplyT(func(v *Task) GoogleCloudDataplexV1TaskExecutionSpecResponseOutput { return v.ExecutionSpec }).(GoogleCloudDataplexV1TaskExecutionSpecResponseOutput)
+}
+
+// Optional. User-defined labels for the task.
+func (o TaskOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
+func (o TaskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Config related to running custom Spark tasks.
+func (o TaskOutput) Spark() GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput {
+	return o.ApplyT(func(v *Task) GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput { return v.Spark }).(GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput)
+}
+
+// Current state of the task.
+func (o TaskOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Spec related to how often and when a task should be triggered.
+func (o TaskOutput) TriggerSpec() GoogleCloudDataplexV1TaskTriggerSpecResponseOutput {
+	return o.ApplyT(func(v *Task) GoogleCloudDataplexV1TaskTriggerSpecResponseOutput { return v.TriggerSpec }).(GoogleCloudDataplexV1TaskTriggerSpecResponseOutput)
+}
+
+// System generated globally unique ID for the task. This ID will be different if the task is deleted and re-created with the same name.
+func (o TaskOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the task was last updated.
+func (o TaskOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Task) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TaskInput)(nil)).Elem(), &Task{})
 	pulumi.RegisterOutputType(TaskOutput{})

@@ -156,6 +156,63 @@ func (o PhraseMatcherOutput) ToPhraseMatcherOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The most recent time at which the activation status was updated.
+func (o PhraseMatcherOutput) ActivationUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.ActivationUpdateTime }).(pulumi.StringOutput)
+}
+
+// Applies the phrase matcher only when it is active.
+func (o PhraseMatcherOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.BoolOutput { return v.Active }).(pulumi.BoolOutput)
+}
+
+// The human-readable name of the phrase matcher.
+func (o PhraseMatcherOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+func (o PhraseMatcherOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of phase match rule groups that are included in this matcher.
+func (o PhraseMatcherOutput) PhraseMatchRuleGroups() GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput {
+	return o.ApplyT(func(v *PhraseMatcher) GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput {
+		return v.PhraseMatchRuleGroups
+	}).(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponseArrayOutput)
+}
+
+// The timestamp of when the revision was created. It is also the create time when a new matcher is added.
+func (o PhraseMatcherOutput) RevisionCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The revision ID of the phrase matcher. A new revision is committed whenever the matcher is changed, except when it is activated or deactivated. A server generated random ID will be used. Example: locations/global/phraseMatchers/my-first-matcher@1234567
+func (o PhraseMatcherOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript.
+func (o PhraseMatcherOutput) RoleMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.RoleMatch }).(pulumi.StringOutput)
+}
+
+// The type of this phrase matcher.
+func (o PhraseMatcherOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The most recent time at which the phrase matcher was updated.
+func (o PhraseMatcherOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The customized version tag to use for the phrase matcher. If not specified, it will default to `revision_id`.
+func (o PhraseMatcherOutput) VersionTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *PhraseMatcher) pulumi.StringOutput { return v.VersionTag }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PhraseMatcherInput)(nil)).Elem(), &PhraseMatcher{})
 	pulumi.RegisterOutputType(PhraseMatcherOutput{})

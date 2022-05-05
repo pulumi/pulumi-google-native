@@ -140,6 +140,46 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
+// Time at which the request to create the `WorkerPool` was received.
+func (o WorkerPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which the request to delete the `WorkerPool` was received.
+func (o WorkerPoolOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the `WorkerPool`. Format of the name is `projects/{project_id}/workerPools/{worker_pool_id}`, where the value of {worker_pool_id} is provided in the CreateWorkerPool request.
+func (o WorkerPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network configuration for the `WorkerPool`.
+func (o WorkerPoolOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+func (o WorkerPoolOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// WorkerPool state.
+func (o WorkerPoolOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Time at which the request to update the `WorkerPool` was received.
+func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Worker configuration for the `WorkerPool`.
+func (o WorkerPoolOutput) WorkerConfig() WorkerConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) WorkerConfigResponseOutput { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})

@@ -164,6 +164,46 @@ func (o ConsentArtifactOutput) ToConsentArtifactOutputWithContext(ctx context.Co
 	return o
 }
 
+// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
+func (o ConsentArtifactOutput) ConsentContentScreenshots() ImageResponseArrayOutput {
+	return o.ApplyT(func(v *ConsentArtifact) ImageResponseArrayOutput { return v.ConsentContentScreenshots }).(ImageResponseArrayOutput)
+}
+
+// Optional. An string indicating the version of the consent information shown to the user.
+func (o ConsentArtifactOutput) ConsentContentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.ConsentContentVersion }).(pulumi.StringOutput)
+}
+
+// Optional. A signature from a guardian.
+func (o ConsentArtifactOutput) GuardianSignature() SignatureResponseOutput {
+	return o.ApplyT(func(v *ConsentArtifact) SignatureResponseOutput { return v.GuardianSignature }).(SignatureResponseOutput)
+}
+
+// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
+func (o ConsentArtifactOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
+func (o ConsentArtifactOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// User's UUID provided by the client.
+func (o ConsentArtifactOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConsentArtifact) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Optional. User's signature.
+func (o ConsentArtifactOutput) UserSignature() SignatureResponseOutput {
+	return o.ApplyT(func(v *ConsentArtifact) SignatureResponseOutput { return v.UserSignature }).(SignatureResponseOutput)
+}
+
+// Optional. A signature from a witness.
+func (o ConsentArtifactOutput) WitnessSignature() SignatureResponseOutput {
+	return o.ApplyT(func(v *ConsentArtifact) SignatureResponseOutput { return v.WitnessSignature }).(SignatureResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentArtifactInput)(nil)).Elem(), &ConsentArtifact{})
 	pulumi.RegisterOutputType(ConsentArtifactOutput{})

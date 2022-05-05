@@ -152,6 +152,57 @@ func (o InstructionOutput) ToInstructionOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The names of any related resources that are blocking changes to the instruction.
+func (o InstructionOutput) BlockingResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringArrayOutput { return v.BlockingResources }).(pulumi.StringArrayOutput)
+}
+
+// Creation time of instruction.
+func (o InstructionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+//
+// Deprecated: Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
+func (o InstructionOutput) CsvInstruction() GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput {
+	return o.ApplyT(func(v *Instruction) GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput {
+		return v.CsvInstruction
+	}).(GoogleCloudDatalabelingV1beta1CsvInstructionResponseOutput)
+}
+
+// The data type of this instruction.
+func (o InstructionOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.DataType }).(pulumi.StringOutput)
+}
+
+// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
+func (o InstructionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the instruction. Maximum of 64 characters.
+func (o InstructionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
+func (o InstructionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
+func (o InstructionOutput) PdfInstruction() GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
+	return o.ApplyT(func(v *Instruction) GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput {
+		return v.PdfInstruction
+	}).(GoogleCloudDatalabelingV1beta1PdfInstructionResponseOutput)
+}
+
+// Last update time of instruction.
+func (o InstructionOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instruction) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstructionInput)(nil)).Elem(), &Instruction{})
 	pulumi.RegisterOutputType(InstructionOutput{})

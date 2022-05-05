@@ -198,6 +198,103 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AuthorizedNetwork }).(pulumi.StringOutput)
+}
+
+// The time the instance was created.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Endpoint for the Discovery API.
+func (o InstanceOutput) DiscoveryEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiscoveryEndpoint }).(pulumi.StringOutput)
+}
+
+// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+func (o InstanceOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// List of messages that describe the current state of the Memcached instance.
+func (o InstanceOutput) InstanceMessages() InstanceMessageResponseArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceMessageResponseArrayOutput { return v.InstanceMessages }).(InstanceMessageResponseArrayOutput)
+}
+
+// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+func (o InstanceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The maintenance policy for the instance. If not provided, the maintenance event will be performed based on Memorystore internal rollout schedule.
+func (o InstanceOutput) MaintenancePolicy() GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput {
+	return o.ApplyT(func(v *Instance) GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput {
+		return v.MaintenancePolicy
+	}).(GoogleCloudMemcacheV1beta2MaintenancePolicyResponseOutput)
+}
+
+// Published maintenance schedule.
+func (o InstanceOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
+	return o.ApplyT(func(v *Instance) MaintenanceScheduleResponseOutput { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
+}
+
+// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
+func (o InstanceOutput) MemcacheFullVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MemcacheFullVersion }).(pulumi.StringOutput)
+}
+
+// List of Memcached nodes. Refer to Node message for more details.
+func (o InstanceOutput) MemcacheNodes() NodeResponseArrayOutput {
+	return o.ApplyT(func(v *Instance) NodeResponseArrayOutput { return v.MemcacheNodes }).(NodeResponseArrayOutput)
+}
+
+// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+func (o InstanceOutput) MemcacheVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MemcacheVersion }).(pulumi.StringOutput)
+}
+
+// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for Memcached nodes.
+func (o InstanceOutput) NodeConfig() NodeConfigResponseOutput {
+	return o.ApplyT(func(v *Instance) NodeConfigResponseOutput { return v.NodeConfig }).(NodeConfigResponseOutput)
+}
+
+// Number of nodes in the Memcached instance.
+func (o InstanceOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// User defined parameters to apply to the memcached process on each node.
+func (o InstanceOutput) Parameters() MemcacheParametersResponseOutput {
+	return o.ApplyT(func(v *Instance) MemcacheParametersResponseOutput { return v.Parameters }).(MemcacheParametersResponseOutput)
+}
+
+// The state of this Memcached instance.
+func (o InstanceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Returns true if there is an update waiting to be applied
+func (o InstanceOutput) UpdateAvailable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.UpdateAvailable }).(pulumi.BoolOutput)
+}
+
+// The time the instance was updated.
+func (o InstanceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+func (o InstanceOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInput)(nil)).Elem(), &Instance{})
 	pulumi.RegisterOutputType(InstanceOutput{})

@@ -137,6 +137,36 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// The domain name of the association.
+func (o DomainOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// If set, the domain should redirect with the provided parameters.
+func (o DomainOutput) DomainRedirect() DomainRedirectResponseOutput {
+	return o.ApplyT(func(v *Domain) DomainRedirectResponseOutput { return v.DomainRedirect }).(DomainRedirectResponseOutput)
+}
+
+// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+func (o DomainOutput) Provisioning() DomainProvisioningResponseOutput {
+	return o.ApplyT(func(v *Domain) DomainProvisioningResponseOutput { return v.Provisioning }).(DomainProvisioningResponseOutput)
+}
+
+// The site name of the association.
+func (o DomainOutput) Site() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Site }).(pulumi.StringOutput)
+}
+
+// Additional status of the domain association.
+func (o DomainOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The time at which the domain was last updated.
+func (o DomainOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainInput)(nil)).Elem(), &Domain{})
 	pulumi.RegisterOutputType(DomainOutput{})

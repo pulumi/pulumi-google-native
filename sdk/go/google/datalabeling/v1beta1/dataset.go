@@ -133,6 +133,46 @@ func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOu
 	return o
 }
 
+// The names of any related resources that are blocking changes to the dataset.
+func (o DatasetOutput) BlockingResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringArrayOutput { return v.BlockingResources }).(pulumi.StringArrayOutput)
+}
+
+// Time the dataset is created.
+func (o DatasetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The number of data items in the dataset.
+func (o DatasetOutput) DataItemCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DataItemCount }).(pulumi.StringOutput)
+}
+
+// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
+func (o DatasetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the dataset. Maximum of 64 characters.
+func (o DatasetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
+func (o DatasetOutput) InputConfigs() GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Dataset) GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput { return v.InputConfigs }).(GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput)
+}
+
+// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
+func (o DatasetOutput) LastMigrateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.LastMigrateTime }).(pulumi.StringOutput)
+}
+
+// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
+func (o DatasetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetInput)(nil)).Elem(), &Dataset{})
 	pulumi.RegisterOutputType(DatasetOutput{})

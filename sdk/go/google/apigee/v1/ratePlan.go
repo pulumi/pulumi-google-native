@@ -218,6 +218,103 @@ func (o RatePlanOutput) ToRatePlanOutputWithContext(ctx context.Context) RatePla
 	return o
 }
 
+// Name of the API product that the rate plan is associated with.
+func (o RatePlanOutput) Apiproduct() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.Apiproduct }).(pulumi.StringOutput)
+}
+
+// Frequency at which the customer will be billed.
+func (o RatePlanOutput) BillingPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.BillingPeriod }).(pulumi.StringOutput)
+}
+
+// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
+func (o RatePlanOutput) ConsumptionPricingRates() GoogleCloudApigeeV1RateRangeResponseArrayOutput {
+	return o.ApplyT(func(v *RatePlan) GoogleCloudApigeeV1RateRangeResponseArrayOutput { return v.ConsumptionPricingRates }).(GoogleCloudApigeeV1RateRangeResponseArrayOutput)
+}
+
+// Pricing model used for consumption-based charges.
+func (o RatePlanOutput) ConsumptionPricingType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.ConsumptionPricingType }).(pulumi.StringOutput)
+}
+
+// Time that the rate plan was created in milliseconds since epoch.
+func (o RatePlanOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
+func (o RatePlanOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.CurrencyCode }).(pulumi.StringOutput)
+}
+
+// Description of the rate plan.
+func (o RatePlanOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name of the rate plan.
+func (o RatePlanOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
+func (o RatePlanOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Frequency at which the fixed fee is charged.
+func (o RatePlanOutput) FixedFeeFrequency() pulumi.IntOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.IntOutput { return v.FixedFeeFrequency }).(pulumi.IntOutput)
+}
+
+// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
+func (o RatePlanOutput) FixedRecurringFee() GoogleTypeMoneyResponseOutput {
+	return o.ApplyT(func(v *RatePlan) GoogleTypeMoneyResponseOutput { return v.FixedRecurringFee }).(GoogleTypeMoneyResponseOutput)
+}
+
+// Time the rate plan was last modified in milliseconds since epoch.
+func (o RatePlanOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the rate plan.
+func (o RatePlanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+//
+// Deprecated: DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
+func (o RatePlanOutput) PaymentFundingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.PaymentFundingModel }).(pulumi.StringOutput)
+}
+
+// Details of the revenue sharing model.
+func (o RatePlanOutput) RevenueShareRates() GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
+	return o.ApplyT(func(v *RatePlan) GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput { return v.RevenueShareRates }).(GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput)
+}
+
+// Method used to calculate the revenue that is shared with developers.
+func (o RatePlanOutput) RevenueShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.RevenueShareType }).(pulumi.StringOutput)
+}
+
+// Initial, one-time fee paid when purchasing the API product.
+func (o RatePlanOutput) SetupFee() GoogleTypeMoneyResponseOutput {
+	return o.ApplyT(func(v *RatePlan) GoogleTypeMoneyResponseOutput { return v.SetupFee }).(GoogleTypeMoneyResponseOutput)
+}
+
+// Time when the rate plan becomes active in milliseconds since epoch.
+func (o RatePlanOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Current state of the rate plan (draft or published).
+func (o RatePlanOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *RatePlan) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanInput)(nil)).Elem(), &RatePlan{})
 	pulumi.RegisterOutputType(RatePlanOutput{})

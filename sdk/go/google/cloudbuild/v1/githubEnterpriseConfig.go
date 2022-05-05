@@ -164,6 +164,51 @@ func (o GithubEnterpriseConfigOutput) ToGithubEnterpriseConfigOutputWithContext(
 	return o
 }
 
+// The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
+func (o GithubEnterpriseConfigOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Time when the installation was associated with the project.
+func (o GithubEnterpriseConfigOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Name to display for this config.
+func (o GithubEnterpriseConfigOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The URL of the github enterprise host the configuration is for.
+func (o GithubEnterpriseConfigOutput) HostUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.HostUrl }).(pulumi.StringOutput)
+}
+
+// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+func (o GithubEnterpriseConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+func (o GithubEnterpriseConfigOutput) PeeredNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+// Names of secrets in Secret Manager.
+func (o GithubEnterpriseConfigOutput) Secrets() GitHubEnterpriseSecretsResponseOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) GitHubEnterpriseSecretsResponseOutput { return v.Secrets }).(GitHubEnterpriseSecretsResponseOutput)
+}
+
+// Optional. SSL certificate to use for requests to GitHub Enterprise.
+func (o GithubEnterpriseConfigOutput) SslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.SslCa }).(pulumi.StringOutput)
+}
+
+// The key that should be attached to webhook calls to the ReceiveWebhook endpoint.
+func (o GithubEnterpriseConfigOutput) WebhookKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *GithubEnterpriseConfig) pulumi.StringOutput { return v.WebhookKey }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GithubEnterpriseConfigInput)(nil)).Elem(), &GithubEnterpriseConfig{})
 	pulumi.RegisterOutputType(GithubEnterpriseConfigOutput{})

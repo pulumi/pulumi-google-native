@@ -129,6 +129,46 @@ func (o AuthorizedCertificateOutput) ToAuthorizedCertificateOutputWithContext(ct
 	return o
 }
 
+// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
+func (o AuthorizedCertificateOutput) CertificateRawData() CertificateRawDataResponseOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) CertificateRawDataResponseOutput { return v.CertificateRawData }).(CertificateRawDataResponseOutput)
+}
+
+// The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
+func (o AuthorizedCertificateOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Aggregate count of the domain mappings with this certificate mapped. This count includes domain mappings on applications for which the user does not have VIEWER permissions.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.
+func (o AuthorizedCertificateOutput) DomainMappingsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.IntOutput { return v.DomainMappingsCount }).(pulumi.IntOutput)
+}
+
+// Topmost applicable domains of this certificate. This certificate applies to these domains and their subdomains. Example: example.com.
+func (o AuthorizedCertificateOutput) DomainNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.StringArrayOutput { return v.DomainNames }).(pulumi.StringArrayOutput)
+}
+
+// The time when this certificate expires. To update the renewal time on this certificate, upload an SSL certificate with a different expiration time using AuthorizedCertificates.UpdateAuthorizedCertificate.
+func (o AuthorizedCertificateOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.
+func (o AuthorizedCertificateOutput) ManagedCertificate() ManagedCertificateResponseOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) ManagedCertificateResponseOutput { return v.ManagedCertificate }).(ManagedCertificateResponseOutput)
+}
+
+// Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.
+func (o AuthorizedCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.
+func (o AuthorizedCertificateOutput) VisibleDomainMappings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AuthorizedCertificate) pulumi.StringArrayOutput { return v.VisibleDomainMappings }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedCertificateInput)(nil)).Elem(), &AuthorizedCertificate{})
 	pulumi.RegisterOutputType(AuthorizedCertificateOutput{})

@@ -141,6 +141,43 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+func (o EnvironmentOutput) AgentVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.AgentVersion }).(pulumi.StringOutput)
+}
+
+// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+func (o EnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. The fulfillment settings to use for this environment.
+func (o EnvironmentOutput) Fulfillment() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowV2beta1FulfillmentResponseOutput { return v.Fulfillment }).(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput)
+}
+
+// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+func (o EnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
+func (o EnvironmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. Text to speech settings for this environment.
+func (o EnvironmentOutput) TextToSpeechSettings() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+		return v.TextToSpeechSettings
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput)
+}
+
+// The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
+func (o EnvironmentOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), &Environment{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})

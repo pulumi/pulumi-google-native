@@ -165,6 +165,56 @@ func (o MessageOutput) ToMessageOutputWithContext(ctx context.Context) MessageOu
 	return o
 }
 
+// The datetime when the message was created. Set by the server.
+func (o MessageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Raw message bytes.
+func (o MessageOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Data }).(pulumi.StringOutput)
+}
+
+// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
+func (o MessageOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The message type for this message. MSH-9.1.
+func (o MessageOutput) MessageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.MessageType }).(pulumi.StringOutput)
+}
+
+// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
+func (o MessageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parsed version of the raw message data.
+func (o MessageOutput) ParsedData() ParsedDataResponseOutput {
+	return o.ApplyT(func(v *Message) ParsedDataResponseOutput { return v.ParsedData }).(ParsedDataResponseOutput)
+}
+
+// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
+func (o MessageOutput) PatientIds() PatientIdResponseArrayOutput {
+	return o.ApplyT(func(v *Message) PatientIdResponseArrayOutput { return v.PatientIds }).(PatientIdResponseArrayOutput)
+}
+
+// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
+func (o MessageOutput) SchematizedData() SchematizedDataResponseOutput {
+	return o.ApplyT(func(v *Message) SchematizedDataResponseOutput { return v.SchematizedData }).(SchematizedDataResponseOutput)
+}
+
+// The hospital that this message came from. MSH-4.
+func (o MessageOutput) SendFacility() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.SendFacility }).(pulumi.StringOutput)
+}
+
+// The datetime the sending application sent this message. MSH-7.
+func (o MessageOutput) SendTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Message) pulumi.StringOutput { return v.SendTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MessageInput)(nil)).Elem(), &Message{})
 	pulumi.RegisterOutputType(MessageOutput{})

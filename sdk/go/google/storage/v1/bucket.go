@@ -290,6 +290,146 @@ func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutpu
 	return o
 }
 
+// Access controls on the bucket.
+func (o BucketOutput) Acl() BucketAccessControlResponseArrayOutput {
+	return o.ApplyT(func(v *Bucket) BucketAccessControlResponseArrayOutput { return v.Acl }).(BucketAccessControlResponseArrayOutput)
+}
+
+// The bucket's Autoclass configuration.
+func (o BucketOutput) Autoclass() BucketAutoclassResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketAutoclassResponseOutput { return v.Autoclass }).(BucketAutoclassResponseOutput)
+}
+
+// The bucket's billing configuration.
+func (o BucketOutput) Billing() BucketBillingResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketBillingResponseOutput { return v.Billing }).(BucketBillingResponseOutput)
+}
+
+// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
+func (o BucketOutput) Cors() BucketCorsItemResponseArrayOutput {
+	return o.ApplyT(func(v *Bucket) BucketCorsItemResponseArrayOutput { return v.Cors }).(BucketCorsItemResponseArrayOutput)
+}
+
+// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
+func (o BucketOutput) DefaultEventBasedHold() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.BoolOutput { return v.DefaultEventBasedHold }).(pulumi.BoolOutput)
+}
+
+// Default access controls to apply to new objects when no ACL is provided.
+func (o BucketOutput) DefaultObjectAcl() ObjectAccessControlResponseArrayOutput {
+	return o.ApplyT(func(v *Bucket) ObjectAccessControlResponseArrayOutput { return v.DefaultObjectAcl }).(ObjectAccessControlResponseArrayOutput)
+}
+
+// Encryption configuration for a bucket.
+func (o BucketOutput) Encryption() BucketEncryptionResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketEncryptionResponseOutput { return v.Encryption }).(BucketEncryptionResponseOutput)
+}
+
+// HTTP 1.1 Entity tag for the bucket.
+func (o BucketOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The bucket's IAM configuration.
+func (o BucketOutput) IamConfiguration() BucketIamConfigurationResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketIamConfigurationResponseOutput { return v.IamConfiguration }).(BucketIamConfigurationResponseOutput)
+}
+
+// The kind of item this is. For buckets, this is always storage#bucket.
+func (o BucketOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User-provided labels, in key/value pairs.
+func (o BucketOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The bucket's lifecycle configuration. See lifecycle management for more information.
+func (o BucketOutput) Lifecycle() BucketLifecycleResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketLifecycleResponseOutput { return v.Lifecycle }).(BucketLifecycleResponseOutput)
+}
+
+// The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
+func (o BucketOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The type of the bucket location.
+func (o BucketOutput) LocationType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.LocationType }).(pulumi.StringOutput)
+}
+
+// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+func (o BucketOutput) Logging() BucketLoggingResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketLoggingResponseOutput { return v.Logging }).(BucketLoggingResponseOutput)
+}
+
+// The metadata generation of this bucket.
+func (o BucketOutput) Metageneration() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Metageneration }).(pulumi.StringOutput)
+}
+
+// The name of the bucket.
+func (o BucketOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The owner of the bucket. This is always the project team's owner group.
+func (o BucketOutput) Owner() BucketOwnerResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketOwnerResponseOutput { return v.Owner }).(BucketOwnerResponseOutput)
+}
+
+// The project number of the project the bucket belongs to.
+func (o BucketOutput) ProjectNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.ProjectNumber }).(pulumi.StringOutput)
+}
+
+// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+func (o BucketOutput) RetentionPolicy() BucketRetentionPolicyResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketRetentionPolicyResponseOutput { return v.RetentionPolicy }).(BucketRetentionPolicyResponseOutput)
+}
+
+// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
+func (o BucketOutput) Rpo() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Rpo }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o BucketOutput) SatisfiesPZS() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.BoolOutput { return v.SatisfiesPZS }).(pulumi.BoolOutput)
+}
+
+// The URI of this bucket.
+func (o BucketOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
+func (o BucketOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// The creation time of the bucket in RFC 3339 format.
+func (o BucketOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// The modification time of the bucket in RFC 3339 format.
+func (o BucketOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bucket) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The bucket's versioning configuration.
+func (o BucketOutput) Versioning() BucketVersioningResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketVersioningResponseOutput { return v.Versioning }).(BucketVersioningResponseOutput)
+}
+
+// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+func (o BucketOutput) Website() BucketWebsiteResponseOutput {
+	return o.ApplyT(func(v *Bucket) BucketWebsiteResponseOutput { return v.Website }).(BucketWebsiteResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketInput)(nil)).Elem(), &Bucket{})
 	pulumi.RegisterOutputType(BucketOutput{})

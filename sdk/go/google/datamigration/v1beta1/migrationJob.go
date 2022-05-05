@@ -213,6 +213,101 @@ func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+func (o MigrationJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The resource name (URI) of the destination connection profile.
+func (o MigrationJobOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
+}
+
+// The database engine type and provider of the destination.
+func (o MigrationJobOutput) DestinationDatabase() DatabaseTypeResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) DatabaseTypeResponseOutput { return v.DestinationDatabase }).(DatabaseTypeResponseOutput)
+}
+
+// The migration job display name.
+func (o MigrationJobOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
+func (o MigrationJobOutput) DumpPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.DumpPath }).(pulumi.StringOutput)
+}
+
+// The duration of the migration job (in seconds). A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o MigrationJobOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
+}
+
+// If the migration job is completed, the time when it was completed.
+func (o MigrationJobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The error details in case of state FAILED.
+func (o MigrationJobOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+func (o MigrationJobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
+func (o MigrationJobOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current migration job phase.
+func (o MigrationJobOutput) Phase() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
+}
+
+// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
+func (o MigrationJobOutput) ReverseSshConnectivity() ReverseSshConnectivityResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) ReverseSshConnectivityResponseOutput { return v.ReverseSshConnectivity }).(ReverseSshConnectivityResponseOutput)
+}
+
+// The resource name (URI) of the source connection profile.
+func (o MigrationJobOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
+}
+
+// The database engine type and provider of the source.
+func (o MigrationJobOutput) SourceDatabase() DatabaseTypeResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) DatabaseTypeResponseOutput { return v.SourceDatabase }).(DatabaseTypeResponseOutput)
+}
+
+// The current migration job state.
+func (o MigrationJobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// static ip connectivity data (default, no additional details needed).
+func (o MigrationJobOutput) StaticIpConnectivity() StaticIpConnectivityResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) StaticIpConnectivityResponseOutput { return v.StaticIpConnectivity }).(StaticIpConnectivityResponseOutput)
+}
+
+// The migration job type.
+func (o MigrationJobOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+func (o MigrationJobOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The details of the VPC network that the source database is located in.
+func (o MigrationJobOutput) VpcPeeringConnectivity() VpcPeeringConnectivityResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) VpcPeeringConnectivityResponseOutput { return v.VpcPeeringConnectivity }).(VpcPeeringConnectivityResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobInput)(nil)).Elem(), &MigrationJob{})
 	pulumi.RegisterOutputType(MigrationJobOutput{})

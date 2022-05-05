@@ -137,6 +137,31 @@ func (o NotificationConfigOutput) ToNotificationConfigOutputWithContext(ctx cont
 	return o
 }
 
+// The description of the notification config (max of 1024 characters).
+func (o NotificationConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+func (o NotificationConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+func (o NotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.PubsubTopic }).(pulumi.StringOutput)
+}
+
+// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
+func (o NotificationConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationConfig) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The config for triggering streaming-based notifications.
+func (o NotificationConfigOutput) StreamingConfig() StreamingConfigResponseOutput {
+	return o.ApplyT(func(v *NotificationConfig) StreamingConfigResponseOutput { return v.StreamingConfig }).(StreamingConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), &NotificationConfig{})
 	pulumi.RegisterOutputType(NotificationConfigOutput{})

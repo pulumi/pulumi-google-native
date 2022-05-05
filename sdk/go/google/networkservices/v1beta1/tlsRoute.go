@@ -149,6 +149,46 @@ func (o TlsRouteOutput) ToTlsRouteOutputWithContext(ctx context.Context) TlsRout
 	return o
 }
 
+// The timestamp when the resource was created.
+func (o TlsRouteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A free-text description of the resource. Max length 1024 characters.
+func (o TlsRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+func (o TlsRouteOutput) Gateways() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+func (o TlsRouteOutput) Meshes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
+}
+
+// Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`.
+func (o TlsRouteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
+func (o TlsRouteOutput) Rules() TlsRouteRouteRuleResponseArrayOutput {
+	return o.ApplyT(func(v *TlsRoute) TlsRouteRouteRuleResponseArrayOutput { return v.Rules }).(TlsRouteRouteRuleResponseArrayOutput)
+}
+
+// Server-defined URL of this resource
+func (o TlsRouteOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was updated.
+func (o TlsRouteOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TlsRoute) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TlsRouteInput)(nil)).Elem(), &TlsRoute{})
 	pulumi.RegisterOutputType(TlsRouteOutput{})

@@ -136,6 +136,41 @@ func (o GlossaryOutput) ToGlossaryOutputWithContext(ctx context.Context) Glossar
 	return o
 }
 
+// When the glossary creation was finished.
+func (o GlossaryOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The number of entries defined in the glossary.
+func (o GlossaryOutput) EntryCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.IntOutput { return v.EntryCount }).(pulumi.IntOutput)
+}
+
+// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+func (o GlossaryOutput) InputConfig() GlossaryInputConfigResponseOutput {
+	return o.ApplyT(func(v *Glossary) GlossaryInputConfigResponseOutput { return v.InputConfig }).(GlossaryInputConfigResponseOutput)
+}
+
+// Used with equivalent term set glossaries.
+func (o GlossaryOutput) LanguageCodesSet() LanguageCodesSetResponseOutput {
+	return o.ApplyT(func(v *Glossary) LanguageCodesSetResponseOutput { return v.LanguageCodesSet }).(LanguageCodesSetResponseOutput)
+}
+
+// Used with unidirectional glossaries.
+func (o GlossaryOutput) LanguagePair() LanguageCodePairResponseOutput {
+	return o.ApplyT(func(v *Glossary) LanguageCodePairResponseOutput { return v.LanguagePair }).(LanguageCodePairResponseOutput)
+}
+
+// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+func (o GlossaryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// When CreateGlossary was called.
+func (o GlossaryOutput) SubmitTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.SubmitTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInput)(nil)).Elem(), &Glossary{})
 	pulumi.RegisterOutputType(GlossaryOutput{})

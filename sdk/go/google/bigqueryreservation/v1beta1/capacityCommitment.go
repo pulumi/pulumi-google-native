@@ -145,6 +145,51 @@ func (o CapacityCommitmentOutput) ToCapacityCommitmentOutputWithContext(ctx cont
 	return o
 }
 
+// The end of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+func (o CapacityCommitmentOutput) CommitmentEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.CommitmentEndTime }).(pulumi.StringOutput)
+}
+
+// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
+func (o CapacityCommitmentOutput) CommitmentStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.CommitmentStartTime }).(pulumi.StringOutput)
+}
+
+// For FAILED commitment plan, provides the reason of failure.
+func (o CapacityCommitmentOutput) FailureStatus() StatusResponseOutput {
+	return o.ApplyT(func(v *CapacityCommitment) StatusResponseOutput { return v.FailureStatus }).(StatusResponseOutput)
+}
+
+// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+func (o CapacityCommitmentOutput) MultiRegionAuxiliary() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.BoolOutput { return v.MultiRegionAuxiliary }).(pulumi.BoolOutput)
+}
+
+// The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters.
+func (o CapacityCommitmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Capacity commitment commitment plan.
+func (o CapacityCommitmentOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
+}
+
+// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
+func (o CapacityCommitmentOutput) RenewalPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.RenewalPlan }).(pulumi.StringOutput)
+}
+
+// Number of slots in this commitment.
+func (o CapacityCommitmentOutput) SlotCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.SlotCount }).(pulumi.StringOutput)
+}
+
+// State of the commitment.
+func (o CapacityCommitmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentInput)(nil)).Elem(), &CapacityCommitment{})
 	pulumi.RegisterOutputType(CapacityCommitmentOutput{})

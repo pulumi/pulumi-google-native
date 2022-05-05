@@ -134,6 +134,31 @@ func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// A `BasicLevel` composed of `Conditions`.
+func (o AccessLevelOutput) Basic() BasicLevelResponseOutput {
+	return o.ApplyT(func(v *AccessLevel) BasicLevelResponseOutput { return v.Basic }).(BasicLevelResponseOutput)
+}
+
+// A `CustomLevel` written in the Common Expression Language.
+func (o AccessLevelOutput) Custom() CustomLevelResponseOutput {
+	return o.ApplyT(func(v *AccessLevel) CustomLevelResponseOutput { return v.Custom }).(CustomLevelResponseOutput)
+}
+
+// Description of the `AccessLevel` and its use. Does not affect behavior.
+func (o AccessLevelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+func (o AccessLevelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Human readable title. Must be unique within the Policy.
+func (o AccessLevelOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessLevelInput)(nil)).Elem(), &AccessLevel{})
 	pulumi.RegisterOutputType(AccessLevelOutput{})

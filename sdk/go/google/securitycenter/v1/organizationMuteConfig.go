@@ -144,6 +144,41 @@ func (o OrganizationMuteConfigOutput) ToOrganizationMuteConfigOutputWithContext(
 	return o
 }
 
+// The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.
+func (o OrganizationMuteConfigOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A description of the mute config.
+func (o OrganizationMuteConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human readable name to be displayed for the mute config.
+func (o OrganizationMuteConfigOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// An expression that defines the filter to apply across create/update events of findings. While creating a filter string, be mindful of the scope in which the mute configuration is being created. E.g., If a filter contains project = X but is created under the project = Y scope, it might not match any findings. The following field and operator combinations are supported: * severity: `=`, `:` * category: `=`, `:` * resource.name: `=`, `:` * resource.project_name: `=`, `:` * resource.project_display_name: `=`, `:` * resource.folders.resource_folder: `=`, `:` * resource.parent_name: `=`, `:` * resource.parent_display_name: `=`, `:` * resource.type: `=`, `:` * finding_class: `=`, `:` * indicator.ip_addresses: `=`, `:` * indicator.domains: `=`, `:`
+func (o OrganizationMuteConfigOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Email address of the user who last edited the mute config. This field is set by the server and will be ignored if provided on config creation or update.
+func (o OrganizationMuteConfigOutput) MostRecentEditor() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.MostRecentEditor }).(pulumi.StringOutput)
+}
+
+// This field will be ignored if provided on config creation. Format "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
+func (o OrganizationMuteConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The most recent time at which the mute config was updated. This field is set by the server and will be ignored if provided on config creation or update.
+func (o OrganizationMuteConfigOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationMuteConfig) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationMuteConfigInput)(nil)).Elem(), &OrganizationMuteConfig{})
 	pulumi.RegisterOutputType(OrganizationMuteConfigOutput{})

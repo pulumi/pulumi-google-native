@@ -130,6 +130,33 @@ func (o AnnotationSpecSetOutput) ToAnnotationSpecSetOutputWithContext(ctx contex
 	return o
 }
 
+// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+func (o AnnotationSpecSetOutput) AnnotationSpecs() GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput {
+	return o.ApplyT(func(v *AnnotationSpecSet) GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput {
+		return v.AnnotationSpecs
+	}).(GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArrayOutput)
+}
+
+// The names of any related resources that are blocking changes to the annotation spec set.
+func (o AnnotationSpecSetOutput) BlockingResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AnnotationSpecSet) pulumi.StringArrayOutput { return v.BlockingResources }).(pulumi.StringArrayOutput)
+}
+
+// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
+func (o AnnotationSpecSetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnnotationSpecSet) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+func (o AnnotationSpecSetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnnotationSpecSet) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+func (o AnnotationSpecSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnnotationSpecSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnnotationSpecSetInput)(nil)).Elem(), &AnnotationSpecSet{})
 	pulumi.RegisterOutputType(AnnotationSpecSetOutput{})

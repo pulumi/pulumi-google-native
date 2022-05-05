@@ -127,6 +127,46 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+// Timestamp when the folder was created.
+func (o FolderOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Timestamp when the folder was requested to be deleted.
+func (o FolderOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+func (o FolderOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A checksum computed by the server based on the current value of the folder resource. This may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o FolderOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
+func (o FolderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+func (o FolderOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
+func (o FolderOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Timestamp when the folder was last modified.
+func (o FolderOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FolderInput)(nil)).Elem(), &Folder{})
 	pulumi.RegisterOutputType(FolderOutput{})

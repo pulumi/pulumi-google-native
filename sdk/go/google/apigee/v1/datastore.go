@@ -134,6 +134,41 @@ func (o DatastoreOutput) ToDatastoreOutputWithContext(ctx context.Context) Datas
 	return o
 }
 
+// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+func (o DatastoreOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Datastore Configurations.
+func (o DatastoreOutput) DatastoreConfig() GoogleCloudApigeeV1DatastoreConfigResponseOutput {
+	return o.ApplyT(func(v *Datastore) GoogleCloudApigeeV1DatastoreConfigResponseOutput { return v.DatastoreConfig }).(GoogleCloudApigeeV1DatastoreConfigResponseOutput)
+}
+
+// Display name in UI
+func (o DatastoreOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
+func (o DatastoreOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// Organization that the datastore belongs to
+func (o DatastoreOutput) Org() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Org }).(pulumi.StringOutput)
+}
+
+// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
+func (o DatastoreOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.Self }).(pulumi.StringOutput)
+}
+
+// Destination storage type. Supported types `gcs` or `bigquery`.
+func (o DatastoreOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datastore) pulumi.StringOutput { return v.TargetType }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatastoreInput)(nil)).Elem(), &Datastore{})
 	pulumi.RegisterOutputType(DatastoreOutput{})

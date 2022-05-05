@@ -151,6 +151,66 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// Capacity of the source file share when the backup was created.
+func (o BackupOutput) CapacityGb() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CapacityGb }).(pulumi.StringOutput)
+}
+
+// The time when the backup was created.
+func (o BackupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+func (o BackupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
+func (o BackupOutput) DownloadBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user provided metadata.
+func (o BackupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
+func (o BackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o BackupOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+func (o BackupOutput) SourceFileShare() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceFileShare }).(pulumi.StringOutput)
+}
+
+// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+func (o BackupOutput) SourceInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceInstance }).(pulumi.StringOutput)
+}
+
+// The service tier of the source Cloud Filestore instance that this backup is created from.
+func (o BackupOutput) SourceInstanceTier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceInstanceTier }).(pulumi.StringOutput)
+}
+
+// The backup state.
+func (o BackupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+func (o BackupOutput) StorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.StorageBytes }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInput)(nil)).Elem(), &Backup{})
 	pulumi.RegisterOutputType(BackupOutput{})

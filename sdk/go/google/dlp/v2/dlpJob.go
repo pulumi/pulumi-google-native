@@ -141,6 +141,56 @@ func (o DlpJobOutput) ToDlpJobOutputWithContext(ctx context.Context) DlpJobOutpu
 	return o
 }
 
+// Time when the job was created.
+func (o DlpJobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time when the job finished.
+func (o DlpJobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// A stream of errors encountered running the job.
+func (o DlpJobOutput) Errors() GooglePrivacyDlpV2ErrorResponseArrayOutput {
+	return o.ApplyT(func(v *DlpJob) GooglePrivacyDlpV2ErrorResponseArrayOutput { return v.Errors }).(GooglePrivacyDlpV2ErrorResponseArrayOutput)
+}
+
+// Results from inspecting a data source.
+func (o DlpJobOutput) InspectDetails() GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput {
+	return o.ApplyT(func(v *DlpJob) GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput { return v.InspectDetails }).(GooglePrivacyDlpV2InspectDataSourceDetailsResponseOutput)
+}
+
+// If created by a job trigger, the resource name of the trigger that instantiated the job.
+func (o DlpJobOutput) JobTriggerName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.JobTriggerName }).(pulumi.StringOutput)
+}
+
+// The server-assigned name.
+func (o DlpJobOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Results from analyzing risk of a data source.
+func (o DlpJobOutput) RiskDetails() GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput {
+	return o.ApplyT(func(v *DlpJob) GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput { return v.RiskDetails }).(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput)
+}
+
+// Time when the job started.
+func (o DlpJobOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// State of a job.
+func (o DlpJobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The type of job.
+func (o DlpJobOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DlpJob) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpJobInput)(nil)).Elem(), &DlpJob{})
 	pulumi.RegisterOutputType(DlpJobOutput{})

@@ -138,6 +138,36 @@ func (o GameServerDeploymentOutput) ToGameServerDeploymentOutputWithContext(ctx 
 	return o
 }
 
+// The creation time.
+func (o GameServerDeploymentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable description of the game server deployment.
+func (o GameServerDeploymentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+func (o GameServerDeploymentOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The labels associated with this game server deployment. Each label is a key-value pair.
+func (o GameServerDeploymentOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
+func (o GameServerDeploymentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o GameServerDeploymentOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GameServerDeploymentInput)(nil)).Elem(), &GameServerDeployment{})
 	pulumi.RegisterOutputType(GameServerDeploymentOutput{})

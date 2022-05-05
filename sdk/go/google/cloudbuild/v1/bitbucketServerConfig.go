@@ -168,6 +168,58 @@ func (o BitbucketServerConfigOutput) ToBitbucketServerConfigOutputWithContext(ct
 	return o
 }
 
+// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerConfigOutput) ApiKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.ApiKey }).(pulumi.StringOutput)
+}
+
+// Connected Bitbucket Server repositories for this config.
+func (o BitbucketServerConfigOutput) ConnectedRepositories() BitbucketServerRepositoryIdResponseArrayOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) BitbucketServerRepositoryIdResponseArrayOutput {
+		return v.ConnectedRepositories
+	}).(BitbucketServerRepositoryIdResponseArrayOutput)
+}
+
+// Time when the config was created.
+func (o BitbucketServerConfigOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
+func (o BitbucketServerConfigOutput) HostUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.HostUri }).(pulumi.StringOutput)
+}
+
+// The resource name for the config.
+func (o BitbucketServerConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The network to be used when reaching out to the Bitbucket Server instance. The VPC network must be enabled for private service connection. This should be set if the Bitbucket Server instance is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the Bitbucket Server instance will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
+func (o BitbucketServerConfigOutput) PeeredNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+// Secret Manager secrets needed by the config.
+func (o BitbucketServerConfigOutput) Secrets() BitbucketServerSecretsResponseOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) BitbucketServerSecretsResponseOutput { return v.Secrets }).(BitbucketServerSecretsResponseOutput)
+}
+
+// Optional. SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
+func (o BitbucketServerConfigOutput) SslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.SslCa }).(pulumi.StringOutput)
+}
+
+// Username of the account Cloud Build will use on Bitbucket Server.
+func (o BitbucketServerConfigOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+}
+
+// UUID included in webhook requests. The UUID is used to look up the corresponding config.
+func (o BitbucketServerConfigOutput) WebhookKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *BitbucketServerConfig) pulumi.StringOutput { return v.WebhookKey }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BitbucketServerConfigInput)(nil)).Elem(), &BitbucketServerConfig{})
 	pulumi.RegisterOutputType(BitbucketServerConfigOutput{})

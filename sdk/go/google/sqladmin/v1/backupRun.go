@@ -195,6 +195,81 @@ func (o BackupRunOutput) ToBackupRunOutputWithContext(ctx context.Context) Backu
 	return o
 }
 
+// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
+func (o BackupRunOutput) BackupKind() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.BackupKind }).(pulumi.StringOutput)
+}
+
+// The description of this run, only applicable to on-demand backups.
+func (o BackupRunOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Encryption configuration specific to a backup.
+func (o BackupRunOutput) DiskEncryptionConfiguration() DiskEncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *BackupRun) DiskEncryptionConfigurationResponseOutput { return v.DiskEncryptionConfiguration }).(DiskEncryptionConfigurationResponseOutput)
+}
+
+// Encryption status specific to a backup.
+func (o BackupRunOutput) DiskEncryptionStatus() DiskEncryptionStatusResponseOutput {
+	return o.ApplyT(func(v *BackupRun) DiskEncryptionStatusResponseOutput { return v.DiskEncryptionStatus }).(DiskEncryptionStatusResponseOutput)
+}
+
+// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o BackupRunOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o BackupRunOutput) EnqueuedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.EnqueuedTime }).(pulumi.StringOutput)
+}
+
+// Information about why the backup operation failed. This is only present if the run has the FAILED status.
+func (o BackupRunOutput) Error() OperationErrorResponseOutput {
+	return o.ApplyT(func(v *BackupRun) OperationErrorResponseOutput { return v.Error }).(OperationErrorResponseOutput)
+}
+
+// Name of the database instance.
+func (o BackupRunOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+}
+
+// This is always `sql#backupRun`.
+func (o BackupRunOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Location of the backups.
+func (o BackupRunOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The URI of this resource.
+func (o BackupRunOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o BackupRunOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The status of this run.
+func (o BackupRunOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+func (o BackupRunOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o BackupRunOutput) WindowStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.WindowStartTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupRunInput)(nil)).Elem(), &BackupRun{})
 	pulumi.RegisterOutputType(BackupRunOutput{})

@@ -117,6 +117,21 @@ func (o IdentityAwareProxyClientOutput) ToIdentityAwareProxyClientOutputWithCont
 	return o
 }
 
+// Human-friendly name given to the OAuth client.
+func (o IdentityAwareProxyClientOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the OAuth client.
+func (o IdentityAwareProxyClientOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Client secret of the OAuth client.
+func (o IdentityAwareProxyClientOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *IdentityAwareProxyClient) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityAwareProxyClientInput)(nil)).Elem(), &IdentityAwareProxyClient{})
 	pulumi.RegisterOutputType(IdentityAwareProxyClientOutput{})

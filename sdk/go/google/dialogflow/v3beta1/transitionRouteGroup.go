@@ -138,6 +138,23 @@ func (o TransitionRouteGroupOutput) ToTransitionRouteGroupOutputWithContext(ctx 
 	return o
 }
 
+// The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
+func (o TransitionRouteGroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+func (o TransitionRouteGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Transition routes associated with the TransitionRouteGroup.
+func (o TransitionRouteGroupOutput) TransitionRoutes() GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput {
+	return o.ApplyT(func(v *TransitionRouteGroup) GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput {
+		return v.TransitionRoutes
+	}).(GoogleCloudDialogflowCxV3beta1TransitionRouteResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransitionRouteGroupInput)(nil)).Elem(), &TransitionRouteGroup{})
 	pulumi.RegisterOutputType(TransitionRouteGroupOutput{})

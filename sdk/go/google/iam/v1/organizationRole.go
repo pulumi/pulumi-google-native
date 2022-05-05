@@ -150,6 +150,41 @@ func (o OrganizationRoleOutput) ToOrganizationRoleOutputWithContext(ctx context.
 	return o
 }
 
+// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+func (o OrganizationRoleOutput) Deleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// Optional. A human-readable description for the role.
+func (o OrganizationRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Used to perform a consistent read-modify-write.
+func (o OrganizationRoleOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The names of the permissions this role grants when bound in an IAM policy.
+func (o OrganizationRoleOutput) IncludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.StringArrayOutput { return v.IncludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+func (o OrganizationRoleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+func (o OrganizationRoleOutput) Stage() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.StringOutput { return v.Stage }).(pulumi.StringOutput)
+}
+
+// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+func (o OrganizationRoleOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationRole) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationRoleInput)(nil)).Elem(), &OrganizationRole{})
 	pulumi.RegisterOutputType(OrganizationRoleOutput{})

@@ -141,6 +141,41 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// The time when the backup was started.
+func (o BackupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the backup.
+func (o BackupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the backup finished creating.
+func (o BackupOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
+func (o BackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Services that are restoring from the backup.
+func (o BackupOutput) RestoringServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringArrayOutput { return v.RestoringServices }).(pulumi.StringArrayOutput)
+}
+
+// The revision of the service at the time of backup.
+func (o BackupOutput) ServiceRevision() ServiceResponseOutput {
+	return o.ApplyT(func(v *Backup) ServiceResponseOutput { return v.ServiceRevision }).(ServiceResponseOutput)
+}
+
+// The current state of the backup.
+func (o BackupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInput)(nil)).Elem(), &Backup{})
 	pulumi.RegisterOutputType(BackupOutput{})

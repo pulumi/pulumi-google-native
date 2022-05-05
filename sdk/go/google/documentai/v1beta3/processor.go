@@ -139,6 +139,46 @@ func (o ProcessorOutput) ToProcessorOutputWithContext(ctx context.Context) Proce
 	return o
 }
 
+// The time the processor was created.
+func (o ProcessorOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The default processor version.
+func (o ProcessorOutput) DefaultProcessorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.DefaultProcessorVersion }).(pulumi.StringOutput)
+}
+
+// The display name of the processor.
+func (o ProcessorOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
+func (o ProcessorOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the processor. Format: `projects/{project}/locations/{location}/processors/{processor}`
+func (o ProcessorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The http endpoint that can be called to invoke processing.
+func (o ProcessorOutput) ProcessEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.ProcessEndpoint }).(pulumi.StringOutput)
+}
+
+// The state of the processor.
+func (o ProcessorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+func (o ProcessorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Processor) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProcessorInput)(nil)).Elem(), &Processor{})
 	pulumi.RegisterOutputType(ProcessorOutput{})

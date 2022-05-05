@@ -146,6 +146,51 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
+func (o EnvironmentOutput) ApiProxyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.ApiProxyType }).(pulumi.StringOutput)
+}
+
+// Creation time of this environment as milliseconds since epoch.
+func (o EnvironmentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Optional. Deployment type supported by the environment. The deployment type can be set when creating the environment and cannot be changed. When you enable archive deployment, you will be **prevented from performing** a [subset of actions](/apigee/docs/api-platform/local-development/overview#prevented-actions) within the environment, including: * Managing the deployment of API proxy or shared flow revisions * Creating, updating, or deleting resource files * Creating, updating, or deleting target servers
+func (o EnvironmentOutput) DeploymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DeploymentType }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the environment.
+func (o EnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Display name for this environment.
+func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Last modification time of this environment as milliseconds since epoch.
+func (o EnvironmentOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+func (o EnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Key-value pairs that may be used for customizing the environment.
+func (o EnvironmentOutput) Properties() GoogleCloudApigeeV1PropertiesResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudApigeeV1PropertiesResponseOutput { return v.Properties }).(GoogleCloudApigeeV1PropertiesResponseOutput)
+}
+
+// State of the environment. Values other than ACTIVE means the resource is not ready to use.
+func (o EnvironmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), &Environment{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})

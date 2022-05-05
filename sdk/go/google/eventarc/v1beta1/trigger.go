@@ -161,6 +161,51 @@ func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOu
 	return o
 }
 
+// The creation time.
+func (o TriggerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Destination specifies where the events should be sent to.
+func (o TriggerOutput) Destination() DestinationResponseOutput {
+	return o.ApplyT(func(v *Trigger) DestinationResponseOutput { return v.Destination }).(DestinationResponseOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+func (o TriggerOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. User labels attached to the triggers that can be used to group resources.
+func (o TriggerOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+func (o TriggerOutput) MatchingCriteria() MatchingCriteriaResponseArrayOutput {
+	return o.ApplyT(func(v *Trigger) MatchingCriteriaResponseArrayOutput { return v.MatchingCriteria }).(MatchingCriteriaResponseArrayOutput)
+}
+
+// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+func (o TriggerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
+func (o TriggerOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+func (o TriggerOutput) Transport() TransportResponseOutput {
+	return o.ApplyT(func(v *Trigger) TransportResponseOutput { return v.Transport }).(TransportResponseOutput)
+}
+
+// The last-modified time.
+func (o TriggerOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerInput)(nil)).Elem(), &Trigger{})
 	pulumi.RegisterOutputType(TriggerOutput{})

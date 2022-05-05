@@ -168,6 +168,61 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 	return o
 }
 
+// List of projects using the connector.
+func (o ConnectorOutput) ConnectedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringArrayOutput { return v.ConnectedProjects }).(pulumi.StringArrayOutput)
+}
+
+// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+func (o ConnectorOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// Machine type of VM Instance underlying connector. Default is e2-micro
+func (o ConnectorOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
+}
+
+// Maximum value of instances in autoscaling group underlying the connector.
+func (o ConnectorOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
+func (o ConnectorOutput) MaxThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.MaxThroughput }).(pulumi.IntOutput)
+}
+
+// Minimum value of instances in autoscaling group underlying the connector.
+func (o ConnectorOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.MinInstances }).(pulumi.IntOutput)
+}
+
+// Minimum throughput of the connector in Mbps. Default and min is 200.
+func (o ConnectorOutput) MinThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *Connector) pulumi.IntOutput { return v.MinThroughput }).(pulumi.IntOutput)
+}
+
+// The resource name in the format `projects/*/locations/*/connectors/*`.
+func (o ConnectorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of a VPC network.
+func (o ConnectorOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// State of the VPC access connector.
+func (o ConnectorOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The subnet in which to house the VPC Access Connector.
+func (o ConnectorOutput) Subnet() SubnetResponseOutput {
+	return o.ApplyT(func(v *Connector) SubnetResponseOutput { return v.Subnet }).(SubnetResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectorInput)(nil)).Elem(), &Connector{})
 	pulumi.RegisterOutputType(ConnectorOutput{})

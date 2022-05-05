@@ -127,6 +127,21 @@ func (o OverrideOutput) ToOverrideOutputWithContext(ctx context.Context) Overrid
 	return o
 }
 
+// ID of the API proxy that will have its trace configuration overridden.
+func (o OverrideOutput) ApiProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Override) pulumi.StringOutput { return v.ApiProxy }).(pulumi.StringOutput)
+}
+
+// ID of the trace configuration override specified as a system-generated UUID.
+func (o OverrideOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Override) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Trace configuration to override.
+func (o OverrideOutput) SamplingConfig() GoogleCloudApigeeV1TraceSamplingConfigResponseOutput {
+	return o.ApplyT(func(v *Override) GoogleCloudApigeeV1TraceSamplingConfigResponseOutput { return v.SamplingConfig }).(GoogleCloudApigeeV1TraceSamplingConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OverrideInput)(nil)).Elem(), &Override{})
 	pulumi.RegisterOutputType(OverrideOutput{})

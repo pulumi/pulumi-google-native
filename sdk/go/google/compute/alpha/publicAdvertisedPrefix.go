@@ -154,6 +154,73 @@ func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutputWithContext(
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o PublicAdvertisedPrefixOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o PublicAdvertisedPrefixOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The IPv4 address to be used for reverse DNS verification.
+func (o PublicAdvertisedPrefixOutput) DnsVerificationIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.DnsVerificationIp }).(pulumi.StringOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a new PublicAdvertisedPrefix. An up-to-date fingerprint must be provided in order to update the PublicAdvertisedPrefix, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a PublicAdvertisedPrefix.
+func (o PublicAdvertisedPrefixOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The IPv4 address range, in CIDR format, represented by this public advertised prefix.
+func (o PublicAdvertisedPrefixOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#publicAdvertisedPrefix for public advertised prefixes.
+func (o PublicAdvertisedPrefixOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o PublicAdvertisedPrefixOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies how child public delegated prefix will be scoped. It could be one of following values: - `REGIONAL`: The public delegated prefix is regional only. The provisioning will take a few minutes. - `GLOBAL`: The public delegated prefix is global only. The provisioning will take ~4 weeks. - `GLOBAL_AND_REGIONAL` [output only]: The public delegated prefixes is BYOIP V1 legacy prefix. This is output only value and no longer supported in BYOIP V2.
+func (o PublicAdvertisedPrefixOutput) PdpScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.PdpScope }).(pulumi.StringOutput)
+}
+
+// The list of public delegated prefixes that exist for this public advertised prefix.
+func (o PublicAdvertisedPrefixOutput) PublicDelegatedPrefixs() PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput {
+		return v.PublicDelegatedPrefixs
+	}).(PublicAdvertisedPrefixPublicDelegatedPrefixResponseArrayOutput)
+}
+
+// Server-defined URL for the resource.
+func (o PublicAdvertisedPrefixOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL with id for the resource.
+func (o PublicAdvertisedPrefixOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The shared secret to be used for reverse DNS verification.
+func (o PublicAdvertisedPrefixOutput) SharedSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.SharedSecret }).(pulumi.StringOutput)
+}
+
+// The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
+func (o PublicAdvertisedPrefixOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixInput)(nil)).Elem(), &PublicAdvertisedPrefix{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixOutput{})

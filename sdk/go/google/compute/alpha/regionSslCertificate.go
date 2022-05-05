@@ -166,6 +166,78 @@ func (o RegionSslCertificateOutput) ToRegionSslCertificateOutputWithContext(ctx 
 	return o
 }
 
+// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
+func (o RegionSslCertificateOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RegionSslCertificateOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o RegionSslCertificateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Expire time of the certificate. RFC3339
+func (o RegionSslCertificateOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#sslCertificate for SSL certificates.
+func (o RegionSslCertificateOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Configuration and status of a managed SSL certificate.
+func (o RegionSslCertificateOutput) Managed() SslCertificateManagedSslCertificateResponseOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) SslCertificateManagedSslCertificateResponseOutput { return v.Managed }).(SslCertificateManagedSslCertificateResponseOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o RegionSslCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A value read into memory from a write-only private key file. The private key file must be in PEM format. For security, only insert requests include this field.
+func (o RegionSslCertificateOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
+func (o RegionSslCertificateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// [Output only] Server-defined URL for the resource.
+func (o RegionSslCertificateOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o RegionSslCertificateOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// Configuration and status of a self-managed SSL certificate.
+func (o RegionSslCertificateOutput) SelfManaged() SslCertificateSelfManagedSslCertificateResponseOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) SslCertificateSelfManagedSslCertificateResponseOutput {
+		return v.SelfManaged
+	}).(SslCertificateSelfManagedSslCertificateResponseOutput)
+}
+
+// Domains associated with the certificate via Subject Alternative Name.
+func (o RegionSslCertificateOutput) SubjectAlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringArrayOutput { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+// (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
+func (o RegionSslCertificateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSslCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateInput)(nil)).Elem(), &RegionSslCertificate{})
 	pulumi.RegisterOutputType(RegionSslCertificateOutput{})

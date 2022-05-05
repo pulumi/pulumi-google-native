@@ -178,6 +178,88 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
+// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+func (o NetworkOutput) AutoCreateSubnetworks() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.AutoCreateSubnetworks }).(pulumi.BoolOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o NetworkOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this field when you create the resource.
+func (o NetworkOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Enable ULA internal ipv6 on this network. Enabling this feature will assign a /48 from google defined ULA prefix fd20::/20. .
+func (o NetworkOutput) EnableUlaInternalIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.EnableUlaInternalIpv6 }).(pulumi.BoolOutput)
+}
+
+// The gateway address for default routing out of the network, selected by GCP.
+func (o NetworkOutput) GatewayIPv4() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.GatewayIPv4 }).(pulumi.StringOutput)
+}
+
+// When enabling ula internal ipv6, caller optionally can specify the /48 range they want from the google defined ULA prefix fd20::/20. The input must be a valid /48 ULA IPv6 address and must be within the fd20::/20. Operation will fail if the speficied /48 is already in used by another resource. If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field. .
+func (o NetworkOutput) InternalIpv6Range() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.InternalIpv6Range }).(pulumi.StringOutput)
+}
+
+// Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+//
+// Deprecated: Deprecated in favor of subnet mode networks. The range of internal addresses that are legal on this network. This range is a CIDR specification, for example: 192.168.0.0/16. Provided by the client when the network is created.
+func (o NetworkOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#network for networks.
+func (o NetworkOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
+func (o NetworkOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Network) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
+func (o NetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
+func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringOutput)
+}
+
+// A list of network peerings for the resource.
+func (o NetworkOutput) Peerings() NetworkPeeringResponseArrayOutput {
+	return o.ApplyT(func(v *Network) NetworkPeeringResponseArrayOutput { return v.Peerings }).(NetworkPeeringResponseArrayOutput)
+}
+
+// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
+func (o NetworkOutput) RoutingConfig() NetworkRoutingConfigResponseOutput {
+	return o.ApplyT(func(v *Network) NetworkRoutingConfigResponseOutput { return v.RoutingConfig }).(NetworkRoutingConfigResponseOutput)
+}
+
+// Server-defined URL for the resource.
+func (o NetworkOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o NetworkOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// Server-defined fully-qualified URLs for all subnetworks in this VPC network.
+func (o NetworkOutput) Subnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Subnetworks }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInput)(nil)).Elem(), &Network{})
 	pulumi.RegisterOutputType(NetworkOutput{})

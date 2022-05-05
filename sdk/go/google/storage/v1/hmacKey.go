@@ -131,6 +131,51 @@ func (o HmacKeyOutput) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOu
 	return o
 }
 
+// The ID of the HMAC Key.
+func (o HmacKeyOutput) AccessId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.AccessId }).(pulumi.StringOutput)
+}
+
+// HTTP 1.1 Entity tag for the HMAC key.
+func (o HmacKeyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
+func (o HmacKeyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Project ID owning the service account to which the key authenticates.
+func (o HmacKeyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The link to this resource.
+func (o HmacKeyOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The email address of the key's associated service account.
+func (o HmacKeyOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The state of the key. Can be one of ACTIVE, INACTIVE, or DELETED.
+func (o HmacKeyOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The creation time of the HMAC key in RFC 3339 format.
+func (o HmacKeyOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// The last modification time of the HMAC key metadata in RFC 3339 format.
+func (o HmacKeyOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *HmacKey) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HmacKeyInput)(nil)).Elem(), &HmacKey{})
 	pulumi.RegisterOutputType(HmacKeyOutput{})

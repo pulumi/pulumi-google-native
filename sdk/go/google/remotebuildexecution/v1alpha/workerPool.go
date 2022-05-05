@@ -146,6 +146,40 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
+// The autoscale policy to apply on a pool.
+func (o WorkerPoolOutput) Autoscale() GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput {
+		return v.Autoscale
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponseOutput)
+}
+
+// Channel specifies the release channel of the pool.
+func (o WorkerPoolOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Channel }).(pulumi.StringOutput)
+}
+
+// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
+func (o WorkerPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the worker pool.
+func (o WorkerPoolOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
+func (o WorkerPoolOutput) WorkerConfig() GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput {
+		return v.WorkerConfig
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput)
+}
+
+// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
+func (o WorkerPoolOutput) WorkerCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.WorkerCount }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})

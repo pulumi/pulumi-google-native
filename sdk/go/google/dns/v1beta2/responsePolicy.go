@@ -132,6 +132,30 @@ func (o ResponsePolicyOutput) ToResponsePolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// User-provided description for this Response Policy.
+func (o ResponsePolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+func (o ResponsePolicyOutput) GkeClusters() ResponsePolicyGKEClusterResponseArrayOutput {
+	return o.ApplyT(func(v *ResponsePolicy) ResponsePolicyGKEClusterResponseArrayOutput { return v.GkeClusters }).(ResponsePolicyGKEClusterResponseArrayOutput)
+}
+
+func (o ResponsePolicyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// List of network names specifying networks to which this policy is applied.
+func (o ResponsePolicyOutput) Networks() ResponsePolicyNetworkResponseArrayOutput {
+	return o.ApplyT(func(v *ResponsePolicy) ResponsePolicyNetworkResponseArrayOutput { return v.Networks }).(ResponsePolicyNetworkResponseArrayOutput)
+}
+
+// User assigned name for this Response Policy.
+func (o ResponsePolicyOutput) ResponsePolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResponsePolicy) pulumi.StringOutput { return v.ResponsePolicyName }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResponsePolicyInput)(nil)).Elem(), &ResponsePolicy{})
 	pulumi.RegisterOutputType(ResponsePolicyOutput{})

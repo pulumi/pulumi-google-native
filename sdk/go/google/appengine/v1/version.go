@@ -334,6 +334,203 @@ func (o VersionOutput) ToVersionOutputWithContext(ctx context.Context) VersionOu
 	return o
 }
 
+// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) ApiConfig() ApiConfigHandlerResponseOutput {
+	return o.ApplyT(func(v *Version) ApiConfigHandlerResponseOutput { return v.ApiConfig }).(ApiConfigHandlerResponseOutput)
+}
+
+// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+func (o VersionOutput) AppEngineApis() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.AppEngineApis }).(pulumi.BoolOutput)
+}
+
+// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
+func (o VersionOutput) AutomaticScaling() AutomaticScalingResponseOutput {
+	return o.ApplyT(func(v *Version) AutomaticScalingResponseOutput { return v.AutomaticScaling }).(AutomaticScalingResponseOutput)
+}
+
+// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
+func (o VersionOutput) BasicScaling() BasicScalingResponseOutput {
+	return o.ApplyT(func(v *Version) BasicScalingResponseOutput { return v.BasicScaling }).(BasicScalingResponseOutput)
+}
+
+// Metadata settings that are supplied to this version to enable beta runtime features.
+func (o VersionOutput) BetaSettings() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringMapOutput { return v.BetaSettings }).(pulumi.StringMapOutput)
+}
+
+// Environment variables available to the build environment.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) BuildEnvVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringMapOutput { return v.BuildEnvVariables }).(pulumi.StringMapOutput)
+}
+
+// Time that this version was created.
+func (o VersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Email address of the user who created this version.
+func (o VersionOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Duration that static files should be cached by web proxies and browsers. Only applicable if the corresponding StaticFilesHandler (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StaticFilesHandler) does not specify its own expiration time.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) DefaultExpiration() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.DefaultExpiration }).(pulumi.StringOutput)
+}
+
+// Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) Deployment() DeploymentResponseOutput {
+	return o.ApplyT(func(v *Version) DeploymentResponseOutput { return v.Deployment }).(DeploymentResponseOutput)
+}
+
+// Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.
+func (o VersionOutput) DiskUsageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.DiskUsageBytes }).(pulumi.StringOutput)
+}
+
+// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
+func (o VersionOutput) EndpointsApiService() EndpointsApiServiceResponseOutput {
+	return o.ApplyT(func(v *Version) EndpointsApiServiceResponseOutput { return v.EndpointsApiService }).(EndpointsApiServiceResponseOutput)
+}
+
+// The entrypoint for the application.
+func (o VersionOutput) Entrypoint() EntrypointResponseOutput {
+	return o.ApplyT(func(v *Version) EntrypointResponseOutput { return v.Entrypoint }).(EntrypointResponseOutput)
+}
+
+// App Engine execution environment for this version.Defaults to standard.
+func (o VersionOutput) Env() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Env }).(pulumi.StringOutput)
+}
+
+// Environment variables available to the application.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) EnvVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringMapOutput { return v.EnvVariables }).(pulumi.StringMapOutput)
+}
+
+// Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) ErrorHandlers() ErrorHandlerResponseArrayOutput {
+	return o.ApplyT(func(v *Version) ErrorHandlerResponseArrayOutput { return v.ErrorHandlers }).(ErrorHandlerResponseArrayOutput)
+}
+
+// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) Handlers() UrlMapResponseArrayOutput {
+	return o.ApplyT(func(v *Version) UrlMapResponseArrayOutput { return v.Handlers }).(UrlMapResponseArrayOutput)
+}
+
+// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) HealthCheck() HealthCheckResponseOutput {
+	return o.ApplyT(func(v *Version) HealthCheckResponseOutput { return v.HealthCheck }).(HealthCheckResponseOutput)
+}
+
+// Before an application can receive email or XMPP messages, the application must be configured to enable the service.
+func (o VersionOutput) InboundServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringArrayOutput { return v.InboundServices }).(pulumi.StringArrayOutput)
+}
+
+// Instance class that is used to run this version. Valid values are: AutomaticScaling: F1, F2, F4, F4_1G ManualScaling or BasicScaling: B1, B2, B4, B8, B4_1GDefaults to F1 for AutomaticScaling and B1 for ManualScaling or BasicScaling.
+func (o VersionOutput) InstanceClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
+}
+
+// Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) Libraries() LibraryResponseArrayOutput {
+	return o.ApplyT(func(v *Version) LibraryResponseArrayOutput { return v.Libraries }).(LibraryResponseArrayOutput)
+}
+
+// Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
+func (o VersionOutput) LivenessCheck() LivenessCheckResponseOutput {
+	return o.ApplyT(func(v *Version) LivenessCheckResponseOutput { return v.LivenessCheck }).(LivenessCheckResponseOutput)
+}
+
+// A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
+func (o VersionOutput) ManualScaling() ManualScalingResponseOutput {
+	return o.ApplyT(func(v *Version) ManualScalingResponseOutput { return v.ManualScaling }).(ManualScalingResponseOutput)
+}
+
+// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.
+func (o VersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Extra network settings. Only applicable in the App Engine flexible environment.
+func (o VersionOutput) Network() NetworkResponseOutput {
+	return o.ApplyT(func(v *Version) NetworkResponseOutput { return v.Network }).(NetworkResponseOutput)
+}
+
+// Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) NobuildFilesRegex() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.NobuildFilesRegex }).(pulumi.StringOutput)
+}
+
+// Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
+func (o VersionOutput) ReadinessCheck() ReadinessCheckResponseOutput {
+	return o.ApplyT(func(v *Version) ReadinessCheckResponseOutput { return v.ReadinessCheck }).(ReadinessCheckResponseOutput)
+}
+
+// Machine resources for this version. Only applicable in the App Engine flexible environment.
+func (o VersionOutput) Resources() ResourcesResponseOutput {
+	return o.ApplyT(func(v *Version) ResourcesResponseOutput { return v.Resources }).(ResourcesResponseOutput)
+}
+
+// Desired runtime. Example: python27.
+func (o VersionOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// The version of the API in the given runtime environment. Please see the app.yaml reference for valid values at https://cloud.google.com/appengine/docs/standard//config/appref
+func (o VersionOutput) RuntimeApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.RuntimeApiVersion }).(pulumi.StringOutput)
+}
+
+// The channel of the runtime to use. Only available for some runtimes. Defaults to the default channel.
+func (o VersionOutput) RuntimeChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.RuntimeChannel }).(pulumi.StringOutput)
+}
+
+// The path or name of the app's main executable.
+func (o VersionOutput) RuntimeMainExecutablePath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.RuntimeMainExecutablePath }).(pulumi.StringOutput)
+}
+
+// The identity that the deployed version will run as. Admin API will use the App Engine Appspot service account as default if this field is neither provided in app.yaml file nor through CLI flag.
+func (o VersionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Current serving status of this version. Only the versions with a SERVING status create instances and can be billed.SERVING_STATUS_UNSPECIFIED is an invalid value. Defaults to SERVING.
+func (o VersionOutput) ServingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.ServingStatus }).(pulumi.StringOutput)
+}
+
+// Whether multiple requests can be dispatched to this version at once.
+func (o VersionOutput) Threadsafe() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.Threadsafe }).(pulumi.BoolOutput)
+}
+
+// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"
+func (o VersionOutput) VersionUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.VersionUrl }).(pulumi.StringOutput)
+}
+
+// Whether to deploy this version in a container on a virtual machine.
+func (o VersionOutput) Vm() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.Vm }).(pulumi.BoolOutput)
+}
+
+// Enables VPC connectivity for standard apps.
+func (o VersionOutput) VpcAccessConnector() VpcAccessConnectorResponseOutput {
+	return o.ApplyT(func(v *Version) VpcAccessConnectorResponseOutput { return v.VpcAccessConnector }).(VpcAccessConnectorResponseOutput)
+}
+
+// The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+//
+// Deprecated: The Google Compute Engine zones that are supported by this version in the App Engine flexible environment. Deprecated.
+func (o VersionOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionInput)(nil)).Elem(), &Version{})
 	pulumi.RegisterOutputType(VersionOutput{})

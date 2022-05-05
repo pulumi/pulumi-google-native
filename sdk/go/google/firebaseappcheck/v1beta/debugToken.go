@@ -130,6 +130,21 @@ func (o DebugTokenOutput) ToDebugTokenOutputWithContext(ctx context.Context) Deb
 	return o
 }
 
+// A human readable display name used to identify this debug token.
+func (o DebugTokenOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
+func (o DebugTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
+func (o DebugTokenOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *DebugToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DebugTokenInput)(nil)).Elem(), &DebugToken{})
 	pulumi.RegisterOutputType(DebugTokenOutput{})

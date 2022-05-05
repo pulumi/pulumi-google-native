@@ -444,6 +444,318 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Configurations for the various addons available to run in the cluster.
+func (o ClusterOutput) AddonsConfig() AddonsConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) AddonsConfigResponseOutput { return v.AddonsConfig }).(AddonsConfigResponseOutput)
+}
+
+// Configuration controlling RBAC group membership information.
+func (o ClusterOutput) AuthenticatorGroupsConfig() AuthenticatorGroupsConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) AuthenticatorGroupsConfigResponseOutput { return v.AuthenticatorGroupsConfig }).(AuthenticatorGroupsConfigResponseOutput)
+}
+
+// Autopilot configuration for the cluster.
+func (o ClusterOutput) Autopilot() AutopilotResponseOutput {
+	return o.ApplyT(func(v *Cluster) AutopilotResponseOutput { return v.Autopilot }).(AutopilotResponseOutput)
+}
+
+// Cluster-level autoscaling configuration.
+func (o ClusterOutput) Autoscaling() ClusterAutoscalingResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAutoscalingResponseOutput { return v.Autoscaling }).(ClusterAutoscalingResponseOutput)
+}
+
+// Configuration for Binary Authorization.
+func (o ClusterOutput) BinaryAuthorization() BinaryAuthorizationResponseOutput {
+	return o.ApplyT(func(v *Cluster) BinaryAuthorizationResponseOutput { return v.BinaryAuthorization }).(BinaryAuthorizationResponseOutput)
+}
+
+// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
+func (o ClusterOutput) ClusterIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterIpv4Cidr }).(pulumi.StringOutput)
+}
+
+// Which conditions caused the current cluster state.
+func (o ClusterOutput) Conditions() StatusConditionResponseArrayOutput {
+	return o.ApplyT(func(v *Cluster) StatusConditionResponseArrayOutput { return v.Conditions }).(StatusConditionResponseArrayOutput)
+}
+
+// Configuration of Confidential Nodes. All the nodes in the cluster will be Confidential VM once enabled.
+func (o ClusterOutput) ConfidentialNodes() ConfidentialNodesResponseOutput {
+	return o.ApplyT(func(v *Cluster) ConfidentialNodesResponseOutput { return v.ConfidentialNodes }).(ConfidentialNodesResponseOutput)
+}
+
+// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+func (o ClusterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// [Output only] The current software version of the master endpoint.
+func (o ClusterOutput) CurrentMasterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CurrentMasterVersion }).(pulumi.StringOutput)
+}
+
+// [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+//
+// Deprecated: [Output only] The number of nodes currently in the cluster. Deprecated. Call Kubernetes API directly to retrieve node information.
+func (o ClusterOutput) CurrentNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.CurrentNodeCount }).(pulumi.IntOutput)
+}
+
+// [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
+func (o ClusterOutput) CurrentNodeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CurrentNodeVersion }).(pulumi.StringOutput)
+}
+
+// Configuration of etcd encryption.
+func (o ClusterOutput) DatabaseEncryption() DatabaseEncryptionResponseOutput {
+	return o.ApplyT(func(v *Cluster) DatabaseEncryptionResponseOutput { return v.DatabaseEncryption }).(DatabaseEncryptionResponseOutput)
+}
+
+// The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
+func (o ClusterOutput) DefaultMaxPodsConstraint() MaxPodsConstraintResponseOutput {
+	return o.ApplyT(func(v *Cluster) MaxPodsConstraintResponseOutput { return v.DefaultMaxPodsConstraint }).(MaxPodsConstraintResponseOutput)
+}
+
+// An optional description of this cluster.
+func (o ClusterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
+func (o ClusterOutput) EnableKubernetesAlpha() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableKubernetesAlpha }).(pulumi.BoolOutput)
+}
+
+// Enable the ability to use Cloud TPUs in this cluster.
+func (o ClusterOutput) EnableTpu() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableTpu }).(pulumi.BoolOutput)
+}
+
+// [Output only] The IP address of this cluster's master endpoint. The endpoint can be accessed from the internet at `https://username:password@endpoint/`. See the `masterAuth` property of this resource for username and password information.
+func (o ClusterOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+func (o ClusterOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Configuration for Identity Service component.
+func (o ClusterOutput) IdentityServiceConfig() IdentityServiceConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) IdentityServiceConfigResponseOutput { return v.IdentityServiceConfig }).(IdentityServiceConfigResponseOutput)
+}
+
+// The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
+func (o ClusterOutput) InitialClusterVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.InitialClusterVersion }).(pulumi.StringOutput)
+}
+
+// The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+//
+// Deprecated: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
+func (o ClusterOutput) InitialNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
+}
+
+// Deprecated. Use node_pools.instance_group_urls.
+//
+// Deprecated: Deprecated. Use node_pools.instance_group_urls.
+func (o ClusterOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+// Configuration for cluster IP allocation.
+func (o ClusterOutput) IpAllocationPolicy() IPAllocationPolicyResponseOutput {
+	return o.ApplyT(func(v *Cluster) IPAllocationPolicyResponseOutput { return v.IpAllocationPolicy }).(IPAllocationPolicyResponseOutput)
+}
+
+// The fingerprint of the set of labels for this cluster.
+func (o ClusterOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
+}
+
+// Configuration for the legacy ABAC authorization mode.
+func (o ClusterOutput) LegacyAbac() LegacyAbacResponseOutput {
+	return o.ApplyT(func(v *Cluster) LegacyAbacResponseOutput { return v.LegacyAbac }).(LegacyAbacResponseOutput)
+}
+
+// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
+func (o ClusterOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
+func (o ClusterOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// Logging configuration for the cluster.
+func (o ClusterOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) LoggingConfigResponseOutput { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
+func (o ClusterOutput) LoggingService() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LoggingService }).(pulumi.StringOutput)
+}
+
+// Configure the maintenance policy for this cluster.
+func (o ClusterOutput) MaintenancePolicy() MaintenancePolicyResponseOutput {
+	return o.ApplyT(func(v *Cluster) MaintenancePolicyResponseOutput { return v.MaintenancePolicy }).(MaintenancePolicyResponseOutput)
+}
+
+// The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
+func (o ClusterOutput) MasterAuth() MasterAuthResponseOutput {
+	return o.ApplyT(func(v *Cluster) MasterAuthResponseOutput { return v.MasterAuth }).(MasterAuthResponseOutput)
+}
+
+// The configuration options for master authorized networks feature.
+func (o ClusterOutput) MasterAuthorizedNetworksConfig() MasterAuthorizedNetworksConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) MasterAuthorizedNetworksConfigResponseOutput { return v.MasterAuthorizedNetworksConfig }).(MasterAuthorizedNetworksConfigResponseOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+func (o ClusterOutput) MeshCertificates() MeshCertificatesResponseOutput {
+	return o.ApplyT(func(v *Cluster) MeshCertificatesResponseOutput { return v.MeshCertificates }).(MeshCertificatesResponseOutput)
+}
+
+// Monitoring configuration for the cluster.
+func (o ClusterOutput) MonitoringConfig() MonitoringConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) MonitoringConfigResponseOutput { return v.MonitoringConfig }).(MonitoringConfigResponseOutput)
+}
+
+// The monitoring service the cluster should use to write metrics. Currently available options: * "monitoring.googleapis.com/kubernetes" - The Cloud Monitoring service with a Kubernetes-native resource model * `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no longer available as of GKE 1.15). * `none` - No metrics will be exported from the cluster. If left as an empty string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.
+func (o ClusterOutput) MonitoringService() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MonitoringService }).(pulumi.StringOutput)
+}
+
+// The name of this cluster. The name must be unique within this project and location (e.g. zone or region), and can be up to 40 characters with the following restrictions: * Lowercase letters, numbers, and hyphens only. * Must start with a letter. * Must end with a number or a letter.
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used.
+func (o ClusterOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Configuration for cluster networking.
+func (o ClusterOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// Configuration options for the NetworkPolicy feature.
+func (o ClusterOutput) NetworkPolicy() NetworkPolicyResponseOutput {
+	return o.ApplyT(func(v *Cluster) NetworkPolicyResponseOutput { return v.NetworkPolicy }).(NetworkPolicyResponseOutput)
+}
+
+// Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+//
+// Deprecated: Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
+func (o ClusterOutput) NodeConfig() NodeConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) NodeConfigResponseOutput { return v.NodeConfig }).(NodeConfigResponseOutput)
+}
+
+// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
+func (o ClusterOutput) NodeIpv4CidrSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.NodeIpv4CidrSize }).(pulumi.IntOutput)
+}
+
+// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
+func (o ClusterOutput) NodePoolAutoConfig() NodePoolAutoConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) NodePoolAutoConfigResponseOutput { return v.NodePoolAutoConfig }).(NodePoolAutoConfigResponseOutput)
+}
+
+// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+func (o ClusterOutput) NodePoolDefaults() NodePoolDefaultsResponseOutput {
+	return o.ApplyT(func(v *Cluster) NodePoolDefaultsResponseOutput { return v.NodePoolDefaults }).(NodePoolDefaultsResponseOutput)
+}
+
+// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
+func (o ClusterOutput) NodePools() NodePoolResponseArrayOutput {
+	return o.ApplyT(func(v *Cluster) NodePoolResponseArrayOutput { return v.NodePools }).(NodePoolResponseArrayOutput)
+}
+
+// Notification configuration of the cluster.
+func (o ClusterOutput) NotificationConfig() NotificationConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) NotificationConfigResponseOutput { return v.NotificationConfig }).(NotificationConfigResponseOutput)
+}
+
+// Configuration for private cluster.
+func (o ClusterOutput) PrivateClusterConfig() PrivateClusterConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) PrivateClusterConfigResponseOutput { return v.PrivateClusterConfig }).(PrivateClusterConfigResponseOutput)
+}
+
+// Release channel configuration.
+func (o ClusterOutput) ReleaseChannel() ReleaseChannelResponseOutput {
+	return o.ApplyT(func(v *Cluster) ReleaseChannelResponseOutput { return v.ReleaseChannel }).(ReleaseChannelResponseOutput)
+}
+
+// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
+func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
+// Configuration for exporting resource usages. Resource usage export is disabled when this config is unspecified.
+func (o ClusterOutput) ResourceUsageExportConfig() ResourceUsageExportConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) ResourceUsageExportConfigResponseOutput { return v.ResourceUsageExportConfig }).(ResourceUsageExportConfigResponseOutput)
+}
+
+// [Output only] Server-defined URL for the resource.
+func (o ClusterOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Output only] The IP address range of the Kubernetes services in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`). Service addresses are typically put in the last `/16` from the container CIDR.
+func (o ClusterOutput) ServicesIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
+}
+
+// Shielded Nodes configuration.
+func (o ClusterOutput) ShieldedNodes() ShieldedNodesResponseOutput {
+	return o.ApplyT(func(v *Cluster) ShieldedNodesResponseOutput { return v.ShieldedNodes }).(ShieldedNodesResponseOutput)
+}
+
+// [Output only] The current status of this cluster.
+func (o ClusterOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+//
+// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this cluster, if available.
+func (o ClusterOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// The name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which the cluster is connected.
+func (o ClusterOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
+func (o ClusterOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// Cluster-level Vertical Pod Autoscaling configuration.
+func (o ClusterOutput) VerticalPodAutoscaling() VerticalPodAutoscalingResponseOutput {
+	return o.ApplyT(func(v *Cluster) VerticalPodAutoscalingResponseOutput { return v.VerticalPodAutoscaling }).(VerticalPodAutoscalingResponseOutput)
+}
+
+// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+func (o ClusterOutput) WorkloadIdentityConfig() WorkloadIdentityConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) WorkloadIdentityConfigResponseOutput { return v.WorkloadIdentityConfig }).(WorkloadIdentityConfigResponseOutput)
+}
+
+// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+//
+// Deprecated: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+func (o ClusterOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInput)(nil)).Elem(), &Cluster{})
 	pulumi.RegisterOutputType(ClusterOutput{})

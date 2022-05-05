@@ -145,6 +145,51 @@ func (o RuntimeOutput) ToRuntimeOutputWithContext(ctx context.Context) RuntimeOu
 	return o
 }
 
+// The config settings for accessing runtime.
+func (o RuntimeOutput) AccessConfig() RuntimeAccessConfigResponseOutput {
+	return o.ApplyT(func(v *Runtime) RuntimeAccessConfigResponseOutput { return v.AccessConfig }).(RuntimeAccessConfigResponseOutput)
+}
+
+// Runtime creation time.
+func (o RuntimeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Runtime health_state.
+func (o RuntimeOutput) HealthState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
+func (o RuntimeOutput) Metrics() RuntimeMetricsResponseOutput {
+	return o.ApplyT(func(v *Runtime) RuntimeMetricsResponseOutput { return v.Metrics }).(RuntimeMetricsResponseOutput)
+}
+
+// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
+func (o RuntimeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The config settings for software inside the runtime.
+func (o RuntimeOutput) SoftwareConfig() RuntimeSoftwareConfigResponseOutput {
+	return o.ApplyT(func(v *Runtime) RuntimeSoftwareConfigResponseOutput { return v.SoftwareConfig }).(RuntimeSoftwareConfigResponseOutput)
+}
+
+// Runtime state.
+func (o RuntimeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Runtime update time.
+func (o RuntimeOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Use a Compute Engine VM image to start the managed notebook instance.
+func (o RuntimeOutput) VirtualMachine() VirtualMachineResponseOutput {
+	return o.ApplyT(func(v *Runtime) VirtualMachineResponseOutput { return v.VirtualMachine }).(VirtualMachineResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeInput)(nil)).Elem(), &Runtime{})
 	pulumi.RegisterOutputType(RuntimeOutput{})

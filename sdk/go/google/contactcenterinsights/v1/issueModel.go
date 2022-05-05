@@ -128,6 +128,45 @@ func (o IssueModelOutput) ToIssueModelOutputWithContext(ctx context.Context) Iss
 	return o
 }
 
+// The time at which this issue model was created.
+func (o IssueModelOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The representative name for the issue model.
+func (o IssueModelOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configs for the input data that used to create the issue model.
+func (o IssueModelOutput) InputDataConfig() GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput {
+	return o.ApplyT(func(v *IssueModel) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput {
+		return v.InputDataConfig
+	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput)
+}
+
+// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
+func (o IssueModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the model.
+func (o IssueModelOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Immutable. The issue model's label statistics on its training data.
+func (o IssueModelOutput) TrainingStats() GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput {
+	return o.ApplyT(func(v *IssueModel) GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput {
+		return v.TrainingStats
+	}).(GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponseOutput)
+}
+
+// The most recent time at which the issue model was updated.
+func (o IssueModelOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *IssueModel) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IssueModelInput)(nil)).Elem(), &IssueModel{})
 	pulumi.RegisterOutputType(IssueModelOutput{})
