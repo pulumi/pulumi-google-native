@@ -150,6 +150,36 @@ func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) Ent
 	return o
 }
 
+// Optional. Indicates whether the entity type can be automatically expanded.
+func (o EntityTypeOutput) AutoExpansionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.AutoExpansionMode }).(pulumi.StringOutput)
+}
+
+// The name of the entity type.
+func (o EntityTypeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Enables fuzzy entity extraction during classification.
+func (o EntityTypeOutput) EnableFuzzyExtraction() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.BoolOutput { return v.EnableFuzzyExtraction }).(pulumi.BoolOutput)
+}
+
+// Optional. The collection of entity entries associated with the entity type.
+func (o EntityTypeOutput) Entities() GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput {
+	return o.ApplyT(func(v *EntityType) GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput { return v.Entities }).(GoogleCloudDialogflowV2EntityTypeEntityResponseArrayOutput)
+}
+
+// Indicates the kind of entity type.
+func (o EntityTypeOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
+func (o EntityTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeInput)(nil)).Elem(), &EntityType{})
 	pulumi.RegisterOutputType(EntityTypeOutput{})

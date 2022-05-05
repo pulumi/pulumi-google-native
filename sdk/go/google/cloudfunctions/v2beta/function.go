@@ -154,6 +154,56 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
+// Describes the Build step of the function that builds a container from the given source.
+func (o FunctionOutput) BuildConfig() BuildConfigResponseOutput {
+	return o.ApplyT(func(v *Function) BuildConfigResponseOutput { return v.BuildConfig }).(BuildConfigResponseOutput)
+}
+
+// User-provided description of a function.
+func (o FunctionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Describe whether the function is gen1 or gen2.
+func (o FunctionOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
+}
+
+// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
+func (o FunctionOutput) EventTrigger() EventTriggerResponseOutput {
+	return o.ApplyT(func(v *Function) EventTriggerResponseOutput { return v.EventTrigger }).(EventTriggerResponseOutput)
+}
+
+// Labels associated with this Cloud Function.
+func (o FunctionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
+func (o FunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
+func (o FunctionOutput) ServiceConfig() ServiceConfigResponseOutput {
+	return o.ApplyT(func(v *Function) ServiceConfigResponseOutput { return v.ServiceConfig }).(ServiceConfigResponseOutput)
+}
+
+// State of the function.
+func (o FunctionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// State Messages for this Cloud Function.
+func (o FunctionOutput) StateMessages() GoogleCloudFunctionsV2betaStateMessageResponseArrayOutput {
+	return o.ApplyT(func(v *Function) GoogleCloudFunctionsV2betaStateMessageResponseArrayOutput { return v.StateMessages }).(GoogleCloudFunctionsV2betaStateMessageResponseArrayOutput)
+}
+
+// The last update timestamp of a Cloud Function.
+func (o FunctionOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionInput)(nil)).Elem(), &Function{})
 	pulumi.RegisterOutputType(FunctionOutput{})

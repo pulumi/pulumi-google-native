@@ -137,6 +137,36 @@ func (o InspectTemplateOutput) ToInspectTemplateOutputWithContext(ctx context.Co
 	return o
 }
 
+// The creation timestamp of an inspectTemplate.
+func (o InspectTemplateOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Short description (max 256 chars).
+func (o InspectTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name (max 256 chars).
+func (o InspectTemplateOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The core content of the template. Configuration of the scanning process.
+func (o InspectTemplateOutput) InspectConfig() GooglePrivacyDlpV2InspectConfigResponseOutput {
+	return o.ApplyT(func(v *InspectTemplate) GooglePrivacyDlpV2InspectConfigResponseOutput { return v.InspectConfig }).(GooglePrivacyDlpV2InspectConfigResponseOutput)
+}
+
+// The template name. The template will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`;
+func (o InspectTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of an inspectTemplate.
+func (o InspectTemplateOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *InspectTemplate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InspectTemplateInput)(nil)).Elem(), &InspectTemplate{})
 	pulumi.RegisterOutputType(InspectTemplateOutput{})

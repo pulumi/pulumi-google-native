@@ -157,6 +157,51 @@ func (o GuestPolicyOutput) ToGuestPolicyOutputWithContext(ctx context.Context) G
 	return o
 }
 
+// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+func (o GuestPolicyOutput) Assignment() AssignmentResponseOutput {
+	return o.ApplyT(func(v *GuestPolicy) AssignmentResponseOutput { return v.Assignment }).(AssignmentResponseOutput)
+}
+
+// Time this guest policy was created.
+func (o GuestPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the guest policy. Length of the description is limited to 1024 characters.
+func (o GuestPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The etag for this guest policy. If this is provided on update, it must match the server's etag.
+func (o GuestPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+func (o GuestPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
+func (o GuestPolicyOutput) PackageRepositories() PackageRepositoryResponseArrayOutput {
+	return o.ApplyT(func(v *GuestPolicy) PackageRepositoryResponseArrayOutput { return v.PackageRepositories }).(PackageRepositoryResponseArrayOutput)
+}
+
+// The software packages to be managed by this policy.
+func (o GuestPolicyOutput) Packages() PackageResponseArrayOutput {
+	return o.ApplyT(func(v *GuestPolicy) PackageResponseArrayOutput { return v.Packages }).(PackageResponseArrayOutput)
+}
+
+// A list of Recipes to install on the VM instance.
+func (o GuestPolicyOutput) Recipes() SoftwareRecipeResponseArrayOutput {
+	return o.ApplyT(func(v *GuestPolicy) SoftwareRecipeResponseArrayOutput { return v.Recipes }).(SoftwareRecipeResponseArrayOutput)
+}
+
+// Last time this guest policy was updated.
+func (o GuestPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GuestPolicyInput)(nil)).Elem(), &GuestPolicy{})
 	pulumi.RegisterOutputType(GuestPolicyOutput{})

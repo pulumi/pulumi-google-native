@@ -136,6 +136,36 @@ func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) And
 	return o
 }
 
+// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+func (o AndroidAppOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.ApiKeyId }).(pulumi.StringOutput)
+}
+
+// Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+func (o AndroidAppOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The user-assigned display name for the `AndroidApp`.
+func (o AndroidAppOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
+func (o AndroidAppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
+func (o AndroidAppOutput) PackageName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.PackageName }).(pulumi.StringOutput)
+}
+
+// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
+func (o AndroidAppOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AndroidAppInput)(nil)).Elem(), &AndroidApp{})
 	pulumi.RegisterOutputType(AndroidAppOutput{})

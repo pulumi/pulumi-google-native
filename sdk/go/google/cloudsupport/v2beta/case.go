@@ -189,6 +189,78 @@ func (o CaseOutput) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 	return o
 }
 
+// The issue classification applicable to this case.
+func (o CaseOutput) Classification() CaseClassificationResponseOutput {
+	return o.ApplyT(func(v *Case) CaseClassificationResponseOutput { return v.Classification }).(CaseClassificationResponseOutput)
+}
+
+// The time this case was created.
+func (o CaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
+func (o CaseOutput) Creator() ActorResponseOutput {
+	return o.ApplyT(func(v *Case) ActorResponseOutput { return v.Creator }).(ActorResponseOutput)
+}
+
+// A broad description of the issue.
+func (o CaseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The short summary of the issue reported in this case.
+func (o CaseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether the case is currently escalated.
+func (o CaseOutput) Escalated() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Case) pulumi.BoolOutput { return v.Escalated }).(pulumi.BoolOutput)
+}
+
+// The resource name for the case.
+func (o CaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of this case. If this is set, do not set severity.
+func (o CaseOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The severity of this case. Deprecated. Use priority instead.
+//
+// Deprecated: The severity of this case. Deprecated. Use priority instead.
+func (o CaseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
+}
+
+// The current status of the support case.
+func (o CaseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The email addresses to receive updates on this case.
+func (o CaseOutput) SubscriberEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringArrayOutput { return v.SubscriberEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Whether this case was created for internal API testing and should not be acted on by the support team.
+func (o CaseOutput) TestCase() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Case) pulumi.BoolOutput { return v.TestCase }).(pulumi.BoolOutput)
+}
+
+// The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
+func (o CaseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// The time this case was last updated.
+func (o CaseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaseInput)(nil)).Elem(), &Case{})
 	pulumi.RegisterOutputType(CaseOutput{})

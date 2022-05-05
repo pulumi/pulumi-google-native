@@ -168,6 +168,61 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx contex
 	return o
 }
 
+// A CloudSQL database connection profile.
+func (o ConnectionProfileOutput) Cloudsql() CloudSqlConnectionProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) CloudSqlConnectionProfileResponseOutput { return v.Cloudsql }).(CloudSqlConnectionProfileResponseOutput)
+}
+
+// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+func (o ConnectionProfileOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The connection profile display name.
+func (o ConnectionProfileOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The error details in case of state FAILED.
+func (o ConnectionProfileOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A MySQL database connection profile.
+func (o ConnectionProfileOutput) Mysql() MySqlConnectionProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) MySqlConnectionProfileResponseOutput { return v.Mysql }).(MySqlConnectionProfileResponseOutput)
+}
+
+// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
+func (o ConnectionProfileOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A PostgreSQL database connection profile.
+func (o ConnectionProfileOutput) Postgresql() PostgreSqlConnectionProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) PostgreSqlConnectionProfileResponseOutput { return v.Postgresql }).(PostgreSqlConnectionProfileResponseOutput)
+}
+
+// The database provider.
+func (o ConnectionProfileOutput) Provider() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Provider }).(pulumi.StringOutput)
+}
+
+// The current connection profile state (e.g. DRAFT, READY, or FAILED).
+func (o ConnectionProfileOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
+func (o ConnectionProfileOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileInput)(nil)).Elem(), &ConnectionProfile{})
 	pulumi.RegisterOutputType(ConnectionProfileOutput{})

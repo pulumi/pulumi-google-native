@@ -192,6 +192,105 @@ func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return o
 }
 
+// The type of hardware accelerators associated with this node.
+func (o NodeOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// The API version that created this Node.
+func (o NodeOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+func (o NodeOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The time when the node was created.
+func (o NodeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user-supplied description of the TPU. Maximum of 512 characters.
+func (o NodeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The health status of the TPU node.
+func (o NodeOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Health }).(pulumi.StringOutput)
+}
+
+// If this field is populated, it contains a description of why the TPU Node is unhealthy.
+func (o NodeOutput) HealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.HealthDescription }).(pulumi.StringOutput)
+}
+
+// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+//
+// Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
+func (o NodeOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user-provided metadata.
+func (o NodeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Immutable. The name of the TPU
+func (o NodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
+func (o NodeOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The network endpoints where TPU workers can be accessed and sent work. It is recommended that Tensorflow clients of the node reach out to the 0th entry in this map first.
+func (o NodeOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
+	return o.ApplyT(func(v *Node) NetworkEndpointResponseArrayOutput { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+//
+// Deprecated: Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
+func (o NodeOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// The scheduling options for this node.
+func (o NodeOutput) SchedulingConfig() SchedulingConfigResponseOutput {
+	return o.ApplyT(func(v *Node) SchedulingConfigResponseOutput { return v.SchedulingConfig }).(SchedulingConfigResponseOutput)
+}
+
+// The service account used to run the tensor flow services within the node. To share resources, including Google Cloud Storage data, with the Tensorflow job running in the Node, this account must have permissions to that data.
+func (o NodeOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The current state for the TPU Node.
+func (o NodeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The Symptoms that have occurred to the TPU Node.
+func (o NodeOutput) Symptoms() SymptomResponseArrayOutput {
+	return o.ApplyT(func(v *Node) SymptomResponseArrayOutput { return v.Symptoms }).(SymptomResponseArrayOutput)
+}
+
+// The version of Tensorflow running in the Node.
+func (o NodeOutput) TensorflowVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.TensorflowVersion }).(pulumi.StringOutput)
+}
+
+// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
+func (o NodeOutput) UseServiceNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Node) pulumi.BoolOutput { return v.UseServiceNetworking }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeInput)(nil)).Elem(), &Node{})
 	pulumi.RegisterOutputType(NodeOutput{})

@@ -137,6 +137,52 @@ func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOu
 	return o
 }
 
+// Deprecated. This field no longer reflects whether a license charges a usage fee.
+//
+// Deprecated: [Output Only] Deprecated. This field no longer reflects whether a license charges a usage fee.
+func (o LicenseOutput) ChargesUseFee() pulumi.BoolOutput {
+	return o.ApplyT(func(v *License) pulumi.BoolOutput { return v.ChargesUseFee }).(pulumi.BoolOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o LicenseOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional textual description of the resource; provided by the client when the resource is created.
+func (o LicenseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Type of resource. Always compute#license for licenses.
+func (o LicenseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The unique code used to attach this license to images, snapshots, and disks.
+func (o LicenseOutput) LicenseCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.LicenseCode }).(pulumi.StringOutput)
+}
+
+// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+func (o LicenseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LicenseOutput) ResourceRequirements() LicenseResourceRequirementsResponseOutput {
+	return o.ApplyT(func(v *License) LicenseResourceRequirementsResponseOutput { return v.ResourceRequirements }).(LicenseResourceRequirementsResponseOutput)
+}
+
+// Server-defined URL for the resource.
+func (o LicenseOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+func (o LicenseOutput) Transferable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *License) pulumi.BoolOutput { return v.Transferable }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LicenseInput)(nil)).Elem(), &License{})
 	pulumi.RegisterOutputType(LicenseOutput{})

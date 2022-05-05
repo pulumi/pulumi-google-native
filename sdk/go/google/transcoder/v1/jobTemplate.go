@@ -122,6 +122,16 @@ func (o JobTemplateOutput) ToJobTemplateOutputWithContext(ctx context.Context) J
 	return o
 }
 
+// The configuration for this template.
+func (o JobTemplateOutput) Config() JobConfigResponseOutput {
+	return o.ApplyT(func(v *JobTemplate) JobConfigResponseOutput { return v.Config }).(JobConfigResponseOutput)
+}
+
+// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
+func (o JobTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTemplateInput)(nil)).Elem(), &JobTemplate{})
 	pulumi.RegisterOutputType(JobTemplateOutput{})

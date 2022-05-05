@@ -147,6 +147,40 @@ func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOu
 	return o
 }
 
+// Indicates whether the webhook is disabled.
+func (o WebhookOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The human-readable name of the webhook, unique within the agent.
+func (o WebhookOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for a generic web service.
+func (o WebhookOutput) GenericWebService() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput {
+	return o.ApplyT(func(v *Webhook) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput)
+}
+
+// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+func (o WebhookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+func (o WebhookOutput) ServiceDirectory() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v *Webhook) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+		return v.ServiceDirectory
+	}).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput)
+}
+
+// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
+func (o WebhookOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebhookInput)(nil)).Elem(), &Webhook{})
 	pulumi.RegisterOutputType(WebhookOutput{})

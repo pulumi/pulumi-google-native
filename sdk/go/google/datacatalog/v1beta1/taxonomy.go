@@ -131,6 +131,38 @@ func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) Taxonom
 	return o
 }
 
+// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
+func (o TaxonomyOutput) ActivatedPolicyTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringArrayOutput { return v.ActivatedPolicyTypes }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
+func (o TaxonomyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
+func (o TaxonomyOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
+func (o TaxonomyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Number of policy tags contained in this taxonomy.
+func (o TaxonomyOutput) PolicyTagCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Taxonomy) pulumi.IntOutput { return v.PolicyTagCount }).(pulumi.IntOutput)
+}
+
+// Timestamps about this taxonomy. Only create_time and update_time are used.
+func (o TaxonomyOutput) TaxonomyTimestamps() GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput {
+	return o.ApplyT(func(v *Taxonomy) GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput {
+		return v.TaxonomyTimestamps
+	}).(GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyInput)(nil)).Elem(), &Taxonomy{})
 	pulumi.RegisterOutputType(TaxonomyOutput{})

@@ -184,6 +184,71 @@ func (o QueryOutput) ToQueryOutputWithContext(ctx context.Context) QueryOutput {
 	return o
 }
 
+// Creation time of the query.
+func (o QueryOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// Hostname is available only when query is executed at host level.
+func (o QueryOutput) EnvgroupHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.EnvgroupHostname }).(pulumi.StringOutput)
+}
+
+// Error is set when query fails.
+func (o QueryOutput) Error() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Error }).(pulumi.StringOutput)
+}
+
+// ExecutionTime is available only after the query is completed.
+func (o QueryOutput) ExecutionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.ExecutionTime }).(pulumi.StringOutput)
+}
+
+// Asynchronous Query Name.
+func (o QueryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Contains information like metrics, dimenstions etc of the AsyncQuery.
+func (o QueryOutput) QueryParams() GoogleCloudApigeeV1QueryMetadataResponseOutput {
+	return o.ApplyT(func(v *Query) GoogleCloudApigeeV1QueryMetadataResponseOutput { return v.QueryParams }).(GoogleCloudApigeeV1QueryMetadataResponseOutput)
+}
+
+// Asynchronous Report ID.
+func (o QueryOutput) ReportDefinitionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.ReportDefinitionId }).(pulumi.StringOutput)
+}
+
+// Result is available only after the query is completed.
+func (o QueryOutput) Result() GoogleCloudApigeeV1AsyncQueryResultResponseOutput {
+	return o.ApplyT(func(v *Query) GoogleCloudApigeeV1AsyncQueryResultResponseOutput { return v.Result }).(GoogleCloudApigeeV1AsyncQueryResultResponseOutput)
+}
+
+// ResultFileSize is available only after the query is completed.
+func (o QueryOutput) ResultFileSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.ResultFileSize }).(pulumi.StringOutput)
+}
+
+// ResultRows is available only after the query is completed.
+func (o QueryOutput) ResultRows() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.ResultRows }).(pulumi.StringOutput)
+}
+
+// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
+func (o QueryOutput) Self() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Self }).(pulumi.StringOutput)
+}
+
+// Query state could be "enqueued", "running", "completed", "failed".
+func (o QueryOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Last updated timestamp for the query.
+func (o QueryOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *Query) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryInput)(nil)).Elem(), &Query{})
 	pulumi.RegisterOutputType(QueryOutput{})

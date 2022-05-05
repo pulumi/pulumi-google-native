@@ -132,6 +132,21 @@ func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The settings for this subscription's message delivery.
+func (o SubscriptionOutput) DeliveryConfig() DeliveryConfigResponseOutput {
+	return o.ApplyT(func(v *Subscription) DeliveryConfigResponseOutput { return v.DeliveryConfig }).(DeliveryConfigResponseOutput)
+}
+
+// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
+func (o SubscriptionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+func (o SubscriptionOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionInput)(nil)).Elem(), &Subscription{})
 	pulumi.RegisterOutputType(SubscriptionOutput{})

@@ -143,6 +143,46 @@ func (o PeeringOutput) ToPeeringOutputWithContext(ctx context.Context) PeeringOu
 	return o
 }
 
+// The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
+func (o PeeringOutput) AuthorizedNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.AuthorizedNetwork }).(pulumi.StringOutput)
+}
+
+// The time the instance was created.
+func (o PeeringOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
+func (o PeeringOutput) DomainResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.DomainResource }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user-provided metadata.
+func (o PeeringOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
+func (o PeeringOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of this Peering.
+func (o PeeringOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current status of this peering, if available.
+func (o PeeringOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Last update time.
+func (o PeeringOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PeeringInput)(nil)).Elem(), &Peering{})
 	pulumi.RegisterOutputType(PeeringOutput{})

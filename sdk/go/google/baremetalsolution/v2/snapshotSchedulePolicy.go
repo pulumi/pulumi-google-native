@@ -141,6 +141,31 @@ func (o SnapshotSchedulePolicyOutput) ToSnapshotSchedulePolicyOutputWithContext(
 	return o
 }
 
+// The description of the snapshot schedule policy.
+func (o SnapshotSchedulePolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotSchedulePolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Labels as key value pairs.
+func (o SnapshotSchedulePolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SnapshotSchedulePolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the snapshot schedule policy.
+func (o SnapshotSchedulePolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotSchedulePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The snapshot schedules contained in this policy. You can specify a maximum of 5 schedules.
+func (o SnapshotSchedulePolicyOutput) Schedules() ScheduleResponseArrayOutput {
+	return o.ApplyT(func(v *SnapshotSchedulePolicy) ScheduleResponseArrayOutput { return v.Schedules }).(ScheduleResponseArrayOutput)
+}
+
+// The state of the snapshot schedule policy.
+func (o SnapshotSchedulePolicyOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotSchedulePolicy) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSchedulePolicyInput)(nil)).Elem(), &SnapshotSchedulePolicy{})
 	pulumi.RegisterOutputType(SnapshotSchedulePolicyOutput{})

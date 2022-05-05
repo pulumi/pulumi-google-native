@@ -128,6 +128,31 @@ func (o StudyOutput) ToStudyOutputWithContext(ctx context.Context) StudyOutput {
 	return o
 }
 
+// Time at which the study was created.
+func (o StudyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A human readable reason why the Study is inactive. This should be empty if a study is ACTIVE or COMPLETED.
+func (o StudyOutput) InactiveReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.InactiveReason }).(pulumi.StringOutput)
+}
+
+// The name of a study.
+func (o StudyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The detailed state of a study.
+func (o StudyOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Study) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Configuration of the study.
+func (o StudyOutput) StudyConfig() GoogleCloudMlV1__StudyConfigResponseOutput {
+	return o.ApplyT(func(v *Study) GoogleCloudMlV1__StudyConfigResponseOutput { return v.StudyConfig }).(GoogleCloudMlV1__StudyConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StudyInput)(nil)).Elem(), &Study{})
 	pulumi.RegisterOutputType(StudyOutput{})

@@ -130,6 +130,31 @@ func (o RepoOutput) ToRepoOutputWithContext(ctx context.Context) RepoOutput {
 	return o
 }
 
+// How this repository mirrors a repository managed by another service. Read-only field.
+func (o RepoOutput) MirrorConfig() MirrorConfigResponseOutput {
+	return o.ApplyT(func(v *Repo) MirrorConfigResponseOutput { return v.MirrorConfig }).(MirrorConfigResponseOutput)
+}
+
+// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
+func (o RepoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
+func (o RepoOutput) PubsubConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringMapOutput { return v.PubsubConfigs }).(pulumi.StringMapOutput)
+}
+
+// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
+func (o RepoOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
+}
+
+// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
+func (o RepoOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repo) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoInput)(nil)).Elem(), &Repo{})
 	pulumi.RegisterOutputType(RepoOutput{})

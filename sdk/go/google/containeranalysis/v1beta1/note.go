@@ -219,6 +219,111 @@ func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return o
 }
 
+// A note describing an attestation role.
+func (o NoteOutput) AttestationAuthority() AuthorityResponseOutput {
+	return o.ApplyT(func(v *Note) AuthorityResponseOutput { return v.AttestationAuthority }).(AuthorityResponseOutput)
+}
+
+// A note describing a base image.
+func (o NoteOutput) BaseImage() BasisResponseOutput {
+	return o.ApplyT(func(v *Note) BasisResponseOutput { return v.BaseImage }).(BasisResponseOutput)
+}
+
+// A note describing build provenance for a verifiable build.
+func (o NoteOutput) Build() BuildResponseOutput {
+	return o.ApplyT(func(v *Note) BuildResponseOutput { return v.Build }).(BuildResponseOutput)
+}
+
+// The time this note was created. This field can be used as a filter in list requests.
+func (o NoteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A note describing something that can be deployed.
+func (o NoteOutput) Deployable() DeployableResponseOutput {
+	return o.ApplyT(func(v *Note) DeployableResponseOutput { return v.Deployable }).(DeployableResponseOutput)
+}
+
+// A note describing the initial analysis of a resource.
+func (o NoteOutput) Discovery() DiscoveryResponseOutput {
+	return o.ApplyT(func(v *Note) DiscoveryResponseOutput { return v.Discovery }).(DiscoveryResponseOutput)
+}
+
+// Time of expiration for this note. Empty if note does not expire.
+func (o NoteOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// A note describing an in-toto link.
+func (o NoteOutput) Intoto() InTotoResponseOutput {
+	return o.ApplyT(func(v *Note) InTotoResponseOutput { return v.Intoto }).(InTotoResponseOutput)
+}
+
+// The type of analysis. This field can be used as a filter in list requests.
+func (o NoteOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// A detailed description of this note.
+func (o NoteOutput) LongDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.LongDescription }).(pulumi.StringOutput)
+}
+
+// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
+func (o NoteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A note describing a package hosted by various package managers.
+func (o NoteOutput) Package() PackageResponseOutput {
+	return o.ApplyT(func(v *Note) PackageResponseOutput { return v.Package }).(PackageResponseOutput)
+}
+
+// Other notes related to this note.
+func (o NoteOutput) RelatedNoteNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringArrayOutput { return v.RelatedNoteNames }).(pulumi.StringArrayOutput)
+}
+
+// URLs associated with this note.
+func (o NoteOutput) RelatedUrl() RelatedUrlResponseArrayOutput {
+	return o.ApplyT(func(v *Note) RelatedUrlResponseArrayOutput { return v.RelatedUrl }).(RelatedUrlResponseArrayOutput)
+}
+
+// A note describing a software bill of materials.
+func (o NoteOutput) Sbom() DocumentNoteResponseOutput {
+	return o.ApplyT(func(v *Note) DocumentNoteResponseOutput { return v.Sbom }).(DocumentNoteResponseOutput)
+}
+
+// A one sentence description of this note.
+func (o NoteOutput) ShortDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.ShortDescription }).(pulumi.StringOutput)
+}
+
+// A note describing an SPDX File.
+func (o NoteOutput) SpdxFile() FileNoteResponseOutput {
+	return o.ApplyT(func(v *Note) FileNoteResponseOutput { return v.SpdxFile }).(FileNoteResponseOutput)
+}
+
+// A note describing an SPDX Package.
+func (o NoteOutput) SpdxPackage() PackageInfoNoteResponseOutput {
+	return o.ApplyT(func(v *Note) PackageInfoNoteResponseOutput { return v.SpdxPackage }).(PackageInfoNoteResponseOutput)
+}
+
+// A note describing an SPDX File.
+func (o NoteOutput) SpdxRelationship() RelationshipNoteResponseOutput {
+	return o.ApplyT(func(v *Note) RelationshipNoteResponseOutput { return v.SpdxRelationship }).(RelationshipNoteResponseOutput)
+}
+
+// The time this note was last updated. This field can be used as a filter in list requests.
+func (o NoteOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A note describing a package vulnerability.
+func (o NoteOutput) Vulnerability() VulnerabilityResponseOutput {
+	return o.ApplyT(func(v *Note) VulnerabilityResponseOutput { return v.Vulnerability }).(VulnerabilityResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteInput)(nil)).Elem(), &Note{})
 	pulumi.RegisterOutputType(NoteOutput{})

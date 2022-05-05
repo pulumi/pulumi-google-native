@@ -137,6 +137,38 @@ func (o DeidentifyTemplateOutput) ToDeidentifyTemplateOutputWithContext(ctx cont
 	return o
 }
 
+// The creation timestamp of an inspectTemplate.
+func (o DeidentifyTemplateOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidentifyTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The core content of the template.
+func (o DeidentifyTemplateOutput) DeidentifyConfig() GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
+	return o.ApplyT(func(v *DeidentifyTemplate) GooglePrivacyDlpV2DeidentifyConfigResponseOutput {
+		return v.DeidentifyConfig
+	}).(GooglePrivacyDlpV2DeidentifyConfigResponseOutput)
+}
+
+// Short description (max 256 chars).
+func (o DeidentifyTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidentifyTemplate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name (max 256 chars).
+func (o DeidentifyTemplateOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidentifyTemplate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The template name. The template will have one of the following formats: `projects/PROJECT_ID/deidentifyTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/deidentifyTemplates/TEMPLATE_ID`
+func (o DeidentifyTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidentifyTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of an inspectTemplate.
+func (o DeidentifyTemplateOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidentifyTemplate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeidentifyTemplateInput)(nil)).Elem(), &DeidentifyTemplate{})
 	pulumi.RegisterOutputType(DeidentifyTemplateOutput{})

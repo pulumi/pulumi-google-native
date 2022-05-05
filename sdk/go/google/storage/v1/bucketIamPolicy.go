@@ -140,6 +140,31 @@ func (o BucketIamPolicyOutput) ToBucketIamPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+// An association between a role, which comes with a set of permissions, and members who may assume that role.
+func (o BucketIamPolicyOutput) Bindings() BucketIamPolicyBindingsItemResponseArrayOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) BucketIamPolicyBindingsItemResponseArrayOutput { return v.Bindings }).(BucketIamPolicyBindingsItemResponseArrayOutput)
+}
+
+// HTTP 1.1  Entity tag for the policy.
+func (o BucketIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+func (o BucketIamPolicyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+func (o BucketIamPolicyOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// The IAM policy format version.
+func (o BucketIamPolicyOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyInput)(nil)).Elem(), &BucketIamPolicy{})
 	pulumi.RegisterOutputType(BucketIamPolicyOutput{})

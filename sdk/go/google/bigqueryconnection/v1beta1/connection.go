@@ -136,6 +136,41 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Cloud SQL properties.
+func (o ConnectionOutput) CloudSql() CloudSqlPropertiesResponseOutput {
+	return o.ApplyT(func(v *Connection) CloudSqlPropertiesResponseOutput { return v.CloudSql }).(CloudSqlPropertiesResponseOutput)
+}
+
+// The creation timestamp of the connection.
+func (o ConnectionOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// User provided description.
+func (o ConnectionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// User provided display name for the connection.
+func (o ConnectionOutput) FriendlyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// True, if credential is configured for this connection.
+func (o ConnectionOutput) HasCredential() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.HasCredential }).(pulumi.BoolOutput)
+}
+
+// The last update timestamp of the connection.
+func (o ConnectionOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
+func (o ConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInput)(nil)).Elem(), &Connection{})
 	pulumi.RegisterOutputType(ConnectionOutput{})

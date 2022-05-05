@@ -201,6 +201,101 @@ func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return o
 }
 
+// The type of hardware accelerators associated with this node.
+func (o NodeOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// The API version that created this Node.
+func (o NodeOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+func (o NodeOutput) CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
+}
+
+// The time when the node was created.
+func (o NodeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The additional data disks for the Node.
+func (o NodeOutput) DataDisks() AttachedDiskResponseArrayOutput {
+	return o.ApplyT(func(v *Node) AttachedDiskResponseArrayOutput { return v.DataDisks }).(AttachedDiskResponseArrayOutput)
+}
+
+// The user-supplied description of the TPU. Maximum of 512 characters.
+func (o NodeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The health status of the TPU node.
+func (o NodeOutput) Health() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Health }).(pulumi.StringOutput)
+}
+
+// If this field is populated, it contains a description of why the TPU Node is unhealthy.
+func (o NodeOutput) HealthDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.HealthDescription }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user-provided metadata.
+func (o NodeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+func (o NodeOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// Immutable. The name of the TPU.
+func (o NodeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network configurations for the TPU node.
+func (o NodeOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v *Node) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
+func (o NodeOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
+	return o.ApplyT(func(v *Node) NetworkEndpointResponseArrayOutput { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// The runtime version running in the Node.
+func (o NodeOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// The scheduling options for this node.
+func (o NodeOutput) SchedulingConfig() SchedulingConfigResponseOutput {
+	return o.ApplyT(func(v *Node) SchedulingConfigResponseOutput { return v.SchedulingConfig }).(SchedulingConfigResponseOutput)
+}
+
+// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+func (o NodeOutput) ServiceAccount() ServiceAccountResponseOutput {
+	return o.ApplyT(func(v *Node) ServiceAccountResponseOutput { return v.ServiceAccount }).(ServiceAccountResponseOutput)
+}
+
+// The current state for the TPU Node.
+func (o NodeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The Symptoms that have occurred to the TPU Node.
+func (o NodeOutput) Symptoms() SymptomResponseArrayOutput {
+	return o.ApplyT(func(v *Node) SymptomResponseArrayOutput { return v.Symptoms }).(SymptomResponseArrayOutput)
+}
+
+// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+func (o NodeOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeInput)(nil)).Elem(), &Node{})
 	pulumi.RegisterOutputType(NodeOutput{})

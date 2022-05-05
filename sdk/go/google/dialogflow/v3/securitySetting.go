@@ -160,6 +160,53 @@ func (o SecuritySettingOutput) ToSecuritySettingOutputWithContext(ctx context.Co
 	return o
 }
 
+// [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
+func (o SecuritySettingOutput) DeidentifyTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.DeidentifyTemplate }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the security settings, unique within the location.
+func (o SecuritySettingOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
+func (o SecuritySettingOutput) InsightsExportSettings() GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+	return o.ApplyT(func(v *SecuritySetting) GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput {
+		return v.InsightsExportSettings
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput)
+}
+
+// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. The `DLP Inspect Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
+func (o SecuritySettingOutput) InspectTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.InspectTemplate }).(pulumi.StringOutput)
+}
+
+// Resource name of the settings. Required for the SecuritySettingsService.UpdateSecuritySettings method. SecuritySettingsService.CreateSecuritySettings populates the name automatically. Format: `projects//locations//securitySettings/`.
+func (o SecuritySettingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of types of data to remove when retention settings triggers purge.
+func (o SecuritySettingOutput) PurgeDataTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringArrayOutput { return v.PurgeDataTypes }).(pulumi.StringArrayOutput)
+}
+
+// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
+func (o SecuritySettingOutput) RedactionScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.RedactionScope }).(pulumi.StringOutput)
+}
+
+// Strategy that defines how we do redaction.
+func (o SecuritySettingOutput) RedactionStrategy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.RedactionStrategy }).(pulumi.StringOutput)
+}
+
+// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
+func (o SecuritySettingOutput) RetentionWindowDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *SecuritySetting) pulumi.IntOutput { return v.RetentionWindowDays }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingInput)(nil)).Elem(), &SecuritySetting{})
 	pulumi.RegisterOutputType(SecuritySettingOutput{})

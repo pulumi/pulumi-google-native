@@ -202,6 +202,93 @@ func (o TransferConfigOutput) ToTransferConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
+func (o TransferConfigOutput) DataRefreshWindowDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.IntOutput { return v.DataRefreshWindowDays }).(pulumi.IntOutput)
+}
+
+// Data source id. Cannot be changed once data transfer is created.
+func (o TransferConfigOutput) DataSourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
+}
+
+// Region in which BigQuery dataset is located.
+func (o TransferConfigOutput) DatasetRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.DatasetRegion }).(pulumi.StringOutput)
+}
+
+// The BigQuery target dataset id.
+func (o TransferConfigOutput) DestinationDatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.DestinationDatasetId }).(pulumi.StringOutput)
+}
+
+// Is this config disabled. When set to true, no runs are scheduled for a given transfer.
+func (o TransferConfigOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// User specified display name for the data transfer.
+func (o TransferConfigOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Email notifications will be sent according to these preferences to the email address of the user who owns this transfer config.
+func (o TransferConfigOutput) EmailPreferences() EmailPreferencesResponseOutput {
+	return o.ApplyT(func(v *TransferConfig) EmailPreferencesResponseOutput { return v.EmailPreferences }).(EmailPreferencesResponseOutput)
+}
+
+// The resource name of the transfer config. Transfer config names have the form `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+func (o TransferConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Next time when data transfer will run.
+func (o TransferConfigOutput) NextRunTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.NextRunTime }).(pulumi.StringOutput)
+}
+
+// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+func (o TransferConfigOutput) NotificationPubsubTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.NotificationPubsubTopic }).(pulumi.StringOutput)
+}
+
+// Information about the user whose credentials are used to transfer data. Populated only for `transferConfigs.get` requests. In case the user information is not available, this field will not be populated.
+func (o TransferConfigOutput) OwnerInfo() UserInfoResponseOutput {
+	return o.ApplyT(func(v *TransferConfig) UserInfoResponseOutput { return v.OwnerInfo }).(UserInfoResponseOutput)
+}
+
+// Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section for each data source. For example the parameters for Cloud Storage transfers are listed here: https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+func (o TransferConfigOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringMapOutput { return v.Params }).(pulumi.StringMapOutput)
+}
+
+// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source.
+func (o TransferConfigOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// Options customizing the data transfer schedule.
+func (o TransferConfigOutput) ScheduleOptions() ScheduleOptionsResponseOutput {
+	return o.ApplyT(func(v *TransferConfig) ScheduleOptionsResponseOutput { return v.ScheduleOptions }).(ScheduleOptionsResponseOutput)
+}
+
+// State of the most recently updated transfer run.
+func (o TransferConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Data transfer modification time. Ignored by server on input.
+func (o TransferConfigOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Deprecated. Unique ID of the user on whose behalf transfer is done.
+//
+// Deprecated: Deprecated. Unique ID of the user on whose behalf transfer is done.
+func (o TransferConfigOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransferConfig) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferConfigInput)(nil)).Elem(), &TransferConfig{})
 	pulumi.RegisterOutputType(TransferConfigOutput{})

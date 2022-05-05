@@ -132,6 +132,41 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// The time the backups was created.
+func (o BackupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user provided metadata.
+func (o BackupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}
+func (o BackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of the backup.
+func (o BackupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current status of this backup, if available.
+func (o BackupOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Indicates whether it’s an on-demand backup or scheduled.
+func (o BackupOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Last update time.
+func (o BackupOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInput)(nil)).Elem(), &Backup{})
 	pulumi.RegisterOutputType(BackupOutput{})

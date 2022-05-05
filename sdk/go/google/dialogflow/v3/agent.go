@@ -196,6 +196,78 @@ func (o AgentOutput) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
 	return o
 }
 
+// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
+func (o AgentOutput) AdvancedSettings() GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput {
+	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput { return v.AdvancedSettings }).(GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput)
+}
+
+// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
+func (o AgentOutput) AvatarUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.AvatarUri }).(pulumi.StringOutput)
+}
+
+// Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+func (o AgentOutput) DefaultLanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.DefaultLanguageCode }).(pulumi.StringOutput)
+}
+
+// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
+func (o AgentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the agent, unique within the location.
+func (o AgentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates if automatic spell correction is enabled in detect intent requests.
+func (o AgentOutput) EnableSpellCorrection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Agent) pulumi.BoolOutput { return v.EnableSpellCorrection }).(pulumi.BoolOutput)
+}
+
+// Indicates if stackdriver logging is enabled for the agent. Please use agent.advanced_settings instead.
+func (o AgentOutput) EnableStackdriverLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Agent) pulumi.BoolOutput { return v.EnableStackdriverLogging }).(pulumi.BoolOutput)
+}
+
+// Indiciates whether the agent is locked for changes. If the agent is locked, modifications to the agent will be rejected except for RestoreAgent.
+func (o AgentOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Agent) pulumi.BoolOutput { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
+func (o AgentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
+func (o AgentOutput) SecuritySettings() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.SecuritySettings }).(pulumi.StringOutput)
+}
+
+// Speech recognition related settings.
+func (o AgentOutput) SpeechToTextSettings() GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseOutput {
+	return o.ApplyT(func(v *Agent) GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseOutput {
+		return v.SpeechToTextSettings
+	}).(GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseOutput)
+}
+
+// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+func (o AgentOutput) StartFlow() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.StartFlow }).(pulumi.StringOutput)
+}
+
+// The list of all languages supported by the agent (except for the `default_language_code`).
+func (o AgentOutput) SupportedLanguageCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringArrayOutput { return v.SupportedLanguageCodes }).(pulumi.StringArrayOutput)
+}
+
+// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+func (o AgentOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Agent) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AgentInput)(nil)).Elem(), &Agent{})
 	pulumi.RegisterOutputType(AgentOutput{})

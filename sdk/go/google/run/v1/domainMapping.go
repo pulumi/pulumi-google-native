@@ -133,6 +133,31 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The API version for this call such as "domains.cloudrun.com/v1".
+func (o DomainMappingOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The kind of resource, in this case "DomainMapping".
+func (o DomainMappingOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Metadata associated with this BuildTemplate.
+func (o DomainMappingOutput) Metadata() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v *DomainMapping) ObjectMetaResponseOutput { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+// The spec for this DomainMapping.
+func (o DomainMappingOutput) Spec() DomainMappingSpecResponseOutput {
+	return o.ApplyT(func(v *DomainMapping) DomainMappingSpecResponseOutput { return v.Spec }).(DomainMappingSpecResponseOutput)
+}
+
+// The current status of the DomainMapping.
+func (o DomainMappingOutput) Status() DomainMappingStatusResponseOutput {
+	return o.ApplyT(func(v *DomainMapping) DomainMappingStatusResponseOutput { return v.Status }).(DomainMappingStatusResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingInput)(nil)).Elem(), &DomainMapping{})
 	pulumi.RegisterOutputType(DomainMappingOutput{})

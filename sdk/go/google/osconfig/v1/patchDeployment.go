@@ -173,6 +173,66 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Co
 	return o
 }
 
+// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+func (o PatchDeploymentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
+func (o PatchDeploymentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Duration of the patch. After the duration ends, the patch times out.
+func (o PatchDeploymentOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
+}
+
+// VM instances to patch.
+func (o PatchDeploymentOutput) InstanceFilter() PatchInstanceFilterResponseOutput {
+	return o.ApplyT(func(v *PatchDeployment) PatchInstanceFilterResponseOutput { return v.InstanceFilter }).(PatchInstanceFilterResponseOutput)
+}
+
+// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+func (o PatchDeploymentOutput) LastExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.LastExecuteTime }).(pulumi.StringOutput)
+}
+
+// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+func (o PatchDeploymentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Schedule a one-time execution.
+func (o PatchDeploymentOutput) OneTimeSchedule() OneTimeScheduleResponseOutput {
+	return o.ApplyT(func(v *PatchDeployment) OneTimeScheduleResponseOutput { return v.OneTimeSchedule }).(OneTimeScheduleResponseOutput)
+}
+
+// Optional. Patch configuration that is applied.
+func (o PatchDeploymentOutput) PatchConfig() PatchConfigResponseOutput {
+	return o.ApplyT(func(v *PatchDeployment) PatchConfigResponseOutput { return v.PatchConfig }).(PatchConfigResponseOutput)
+}
+
+// Schedule recurring executions.
+func (o PatchDeploymentOutput) RecurringSchedule() RecurringScheduleResponseOutput {
+	return o.ApplyT(func(v *PatchDeployment) RecurringScheduleResponseOutput { return v.RecurringSchedule }).(RecurringScheduleResponseOutput)
+}
+
+// Optional. Rollout strategy of the patch job.
+func (o PatchDeploymentOutput) Rollout() PatchRolloutResponseOutput {
+	return o.ApplyT(func(v *PatchDeployment) PatchRolloutResponseOutput { return v.Rollout }).(PatchRolloutResponseOutput)
+}
+
+// Current state of the patch deployment.
+func (o PatchDeploymentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Time the patch deployment was last updated. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
+func (o PatchDeploymentOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PatchDeploymentInput)(nil)).Elem(), &PatchDeployment{})
 	pulumi.RegisterOutputType(PatchDeploymentOutput{})

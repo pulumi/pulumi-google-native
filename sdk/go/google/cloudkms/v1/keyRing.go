@@ -112,6 +112,16 @@ func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOu
 	return o
 }
 
+// The time at which this KeyRing was created.
+func (o KeyRingOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
+func (o KeyRingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRing) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingInput)(nil)).Elem(), &KeyRing{})
 	pulumi.RegisterOutputType(KeyRingOutput{})

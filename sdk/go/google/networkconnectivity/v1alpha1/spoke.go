@@ -168,6 +168,61 @@ func (o SpokeOutput) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return o
 }
 
+// The time when the Spoke was created.
+func (o SpokeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Short description of the spoke resource
+func (o SpokeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The resource URL of the hub resource that the spoke is attached to
+func (o SpokeOutput) Hub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
+}
+
+// User-defined labels.
+func (o SpokeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The URIs of linked interconnect attachment resources
+func (o SpokeOutput) LinkedInterconnectAttachments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringArrayOutput { return v.LinkedInterconnectAttachments }).(pulumi.StringArrayOutput)
+}
+
+// The URIs of linked Router appliance resources
+func (o SpokeOutput) LinkedRouterApplianceInstances() RouterApplianceInstanceResponseArrayOutput {
+	return o.ApplyT(func(v *Spoke) RouterApplianceInstanceResponseArrayOutput { return v.LinkedRouterApplianceInstances }).(RouterApplianceInstanceResponseArrayOutput)
+}
+
+// The URIs of linked VPN tunnel resources
+func (o SpokeOutput) LinkedVpnTunnels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringArrayOutput { return v.LinkedVpnTunnels }).(pulumi.StringArrayOutput)
+}
+
+// Immutable. The name of a Spoke resource.
+func (o SpokeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current lifecycle state of this Hub.
+func (o SpokeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Google-generated UUID for this resource. This is unique across all Spoke resources. If a Spoke resource is deleted and another with the same name is created, it gets a different unique_id.
+func (o SpokeOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// The time when the Spoke was updated.
+func (o SpokeOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeInput)(nil)).Elem(), &Spoke{})
 	pulumi.RegisterOutputType(SpokeOutput{})

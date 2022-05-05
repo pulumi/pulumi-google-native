@@ -200,6 +200,109 @@ func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutputWith
 	return o
 }
 
+// Metadata defined as annotations on the network endpoint group.
+func (o GlobalNetworkEndpointGroupOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+func (o GlobalNetworkEndpointGroupOutput) AppEngine() NetworkEndpointGroupAppEngineResponseOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) NetworkEndpointGroupAppEngineResponseOutput { return v.AppEngine }).(NetworkEndpointGroupAppEngineResponseOutput)
+}
+
+// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+func (o GlobalNetworkEndpointGroupOutput) CloudFunction() NetworkEndpointGroupCloudFunctionResponseOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) NetworkEndpointGroupCloudFunctionResponseOutput {
+		return v.CloudFunction
+	}).(NetworkEndpointGroupCloudFunctionResponseOutput)
+}
+
+// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
+func (o GlobalNetworkEndpointGroupOutput) CloudRun() NetworkEndpointGroupCloudRunResponseOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) NetworkEndpointGroupCloudRunResponseOutput { return v.CloudRun }).(NetworkEndpointGroupCloudRunResponseOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o GlobalNetworkEndpointGroupOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// The default port used if the port number is not specified in the network endpoint.
+func (o GlobalNetworkEndpointGroupOutput) DefaultPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.IntOutput { return v.DefaultPort }).(pulumi.IntOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o GlobalNetworkEndpointGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#networkEndpointGroup for network endpoint group.
+func (o GlobalNetworkEndpointGroupOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+//
+// Deprecated: This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
+func (o GlobalNetworkEndpointGroupOutput) LoadBalancer() NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput {
+		return v.LoadBalancer
+	}).(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput)
+}
+
+// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o GlobalNetworkEndpointGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
+func (o GlobalNetworkEndpointGroupOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
+func (o GlobalNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.NetworkEndpointType }).(pulumi.StringOutput)
+}
+
+// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+func (o GlobalNetworkEndpointGroupOutput) PscTargetService() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.PscTargetService }).(pulumi.StringOutput)
+}
+
+// The URL of the region where the network endpoint group is located.
+func (o GlobalNetworkEndpointGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o GlobalNetworkEndpointGroupOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+func (o GlobalNetworkEndpointGroupOutput) ServerlessDeployment() NetworkEndpointGroupServerlessDeploymentResponseOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) NetworkEndpointGroupServerlessDeploymentResponseOutput {
+		return v.ServerlessDeployment
+	}).(NetworkEndpointGroupServerlessDeploymentResponseOutput)
+}
+
+// [Output only] Number of network endpoints in the network endpoint group.
+func (o GlobalNetworkEndpointGroupOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
+func (o GlobalNetworkEndpointGroupOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the zone where the network endpoint group is located.
+func (o GlobalNetworkEndpointGroupOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalNetworkEndpointGroup) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalNetworkEndpointGroupInput)(nil)).Elem(), &GlobalNetworkEndpointGroup{})
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupOutput{})

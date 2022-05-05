@@ -166,6 +166,61 @@ func (o PipelineOutput) ToPipelineOutputWithContext(ctx context.Context) Pipelin
 	return o
 }
 
+// Immutable. The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
+func (o PipelineOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
+func (o PipelineOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Number of jobs.
+func (o PipelineOutput) JobCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.IntOutput { return v.JobCount }).(pulumi.IntOutput)
+}
+
+// Immutable. The timestamp when the pipeline was last modified. Set by the Data Pipelines service.
+func (o PipelineOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location.
+func (o PipelineOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The sources of the pipeline (for example, Dataplex). The keys and values are set by the corresponding sources during pipeline creation.
+func (o PipelineOutput) PipelineSources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringMapOutput { return v.PipelineSources }).(pulumi.StringMapOutput)
+}
+
+// Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally.
+func (o PipelineOutput) ScheduleInfo() GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput {
+	return o.ApplyT(func(v *Pipeline) GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput { return v.ScheduleInfo }).(GoogleCloudDatapipelinesV1ScheduleSpecResponseOutput)
+}
+
+// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
+func (o PipelineOutput) SchedulerServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.SchedulerServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through UpdatePipeline requests.
+func (o PipelineOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The type of the pipeline. This field affects the scheduling of the pipeline and the type of metrics to show for the pipeline.
+func (o PipelineOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// Workload information for creating new jobs.
+func (o PipelineOutput) Workload() GoogleCloudDatapipelinesV1WorkloadResponseOutput {
+	return o.ApplyT(func(v *Pipeline) GoogleCloudDatapipelinesV1WorkloadResponseOutput { return v.Workload }).(GoogleCloudDatapipelinesV1WorkloadResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PipelineInput)(nil)).Elem(), &Pipeline{})
 	pulumi.RegisterOutputType(PipelineOutput{})

@@ -163,6 +163,56 @@ func (o ContentitemOutput) ToContentitemOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// Content creation time.
+func (o ContentitemOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Content data in string format.
+func (o ContentitemOutput) DataText() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.DataText }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the content.
+func (o ContentitemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. User defined labels for the content.
+func (o ContentitemOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id}
+func (o ContentitemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Notebook related configurations.
+func (o ContentitemOutput) Notebook() GoogleCloudDataplexV1ContentNotebookResponseOutput {
+	return o.ApplyT(func(v *Contentitem) GoogleCloudDataplexV1ContentNotebookResponseOutput { return v.Notebook }).(GoogleCloudDataplexV1ContentNotebookResponseOutput)
+}
+
+// The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
+func (o ContentitemOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
+}
+
+// Sql Script related configurations.
+func (o ContentitemOutput) SqlScript() GoogleCloudDataplexV1ContentSqlScriptResponseOutput {
+	return o.ApplyT(func(v *Contentitem) GoogleCloudDataplexV1ContentSqlScriptResponseOutput { return v.SqlScript }).(GoogleCloudDataplexV1ContentSqlScriptResponseOutput)
+}
+
+// System generated globally unique ID for the content. This ID will be different if the content is deleted and re-created with the same name.
+func (o ContentitemOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the content was last updated.
+func (o ContentitemOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contentitem) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentitemInput)(nil)).Elem(), &Contentitem{})
 	pulumi.RegisterOutputType(ContentitemOutput{})

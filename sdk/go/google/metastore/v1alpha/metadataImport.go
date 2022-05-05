@@ -147,6 +147,41 @@ func (o MetadataImportOutput) ToMetadataImportOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The time when the metadata import was started.
+func (o MetadataImportOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. A database dump from a pre-existing metastore's database.
+func (o MetadataImportOutput) DatabaseDump() DatabaseDumpResponseOutput {
+	return o.ApplyT(func(v *MetadataImport) DatabaseDumpResponseOutput { return v.DatabaseDump }).(DatabaseDumpResponseOutput)
+}
+
+// The description of the metadata import.
+func (o MetadataImportOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the metadata import finished.
+func (o MetadataImportOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
+func (o MetadataImportOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of the metadata import.
+func (o MetadataImportOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The time when the metadata import was last updated.
+func (o MetadataImportOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataImport) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataImportInput)(nil)).Elem(), &MetadataImport{})
 	pulumi.RegisterOutputType(MetadataImportOutput{})

@@ -154,6 +154,61 @@ func (o TypeProviderOutput) ToTypeProviderOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Allows resource handling overrides for specific collections
+func (o TypeProviderOutput) CollectionOverrides() CollectionOverrideResponseArrayOutput {
+	return o.ApplyT(func(v *TypeProvider) CollectionOverrideResponseArrayOutput { return v.CollectionOverrides }).(CollectionOverrideResponseArrayOutput)
+}
+
+// Credential used when interacting with this type.
+func (o TypeProviderOutput) Credential() CredentialResponseOutput {
+	return o.ApplyT(func(v *TypeProvider) CredentialResponseOutput { return v.Credential }).(CredentialResponseOutput)
+}
+
+// List of up to 2 custom certificate authority roots to use for TLS authentication when making calls on behalf of this type provider. If set, TLS authentication will exclusively use these roots instead of relying on publicly trusted certificate authorities when validating TLS certificate authenticity. The certificates must be in base64-encoded PEM format. The maximum size of each certificate must not exceed 10KB.
+func (o TypeProviderOutput) CustomCertificateAuthorityRoots() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringArrayOutput { return v.CustomCertificateAuthorityRoots }).(pulumi.StringArrayOutput)
+}
+
+// An optional textual description of the resource; provided by the client when the resource is created.
+func (o TypeProviderOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Descriptor Url for the this type provider.
+func (o TypeProviderOutput) DescriptorUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.DescriptorUrl }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o TypeProviderOutput) InsertTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.InsertTime }).(pulumi.StringOutput)
+}
+
+// Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`
+func (o TypeProviderOutput) Labels() TypeProviderLabelEntryResponseArrayOutput {
+	return o.ApplyT(func(v *TypeProvider) TypeProviderLabelEntryResponseArrayOutput { return v.Labels }).(TypeProviderLabelEntryResponseArrayOutput)
+}
+
+// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o TypeProviderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Operation that most recently ran, or is currently running, on this type provider.
+func (o TypeProviderOutput) Operation() OperationResponseOutput {
+	return o.ApplyT(func(v *TypeProvider) OperationResponseOutput { return v.Operation }).(OperationResponseOutput)
+}
+
+// Options to apply when handling any resources in this service.
+func (o TypeProviderOutput) Options() OptionsResponseOutput {
+	return o.ApplyT(func(v *TypeProvider) OptionsResponseOutput { return v.Options }).(OptionsResponseOutput)
+}
+
+// Self link for the type provider.
+func (o TypeProviderOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *TypeProvider) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeProviderInput)(nil)).Elem(), &TypeProvider{})
 	pulumi.RegisterOutputType(TypeProviderOutput{})

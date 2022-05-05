@@ -117,6 +117,31 @@ func (o VersionOutput) ToVersionOutputWithContext(ctx context.Context) VersionOu
 	return o
 }
 
+// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
+func (o VersionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The developer-provided description of this version.
+func (o VersionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
+func (o VersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The status of this version. This field is read-only and cannot be set by create and update methods.
+func (o VersionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
+func (o VersionOutput) VersionNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *Version) pulumi.IntOutput { return v.VersionNumber }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionInput)(nil)).Elem(), &Version{})
 	pulumi.RegisterOutputType(VersionOutput{})

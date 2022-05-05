@@ -155,6 +155,51 @@ func (o TcpRouteOutput) ToTcpRouteOutputWithContext(ctx context.Context) TcpRout
 	return o
 }
 
+// The timestamp when the resource was created.
+func (o TcpRouteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. A free-text description of the resource. Max length 1024 characters.
+func (o TcpRouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+func (o TcpRouteOutput) Gateways() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Set of label tags associated with the TcpRoute resource.
+func (o TcpRouteOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
+func (o TcpRouteOutput) Meshes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringArrayOutput { return v.Meshes }).(pulumi.StringArrayOutput)
+}
+
+// Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
+func (o TcpRouteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
+func (o TcpRouteOutput) Rules() TcpRouteRouteRuleResponseArrayOutput {
+	return o.ApplyT(func(v *TcpRoute) TcpRouteRouteRuleResponseArrayOutput { return v.Rules }).(TcpRouteRouteRuleResponseArrayOutput)
+}
+
+// Server-defined URL of this resource
+func (o TcpRouteOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was updated.
+func (o TcpRouteOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpRouteInput)(nil)).Elem(), &TcpRoute{})
 	pulumi.RegisterOutputType(TcpRouteOutput{})

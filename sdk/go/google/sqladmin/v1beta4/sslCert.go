@@ -129,6 +129,51 @@ func (o SslCertOutput) ToSslCertOutputWithContext(ctx context.Context) SslCertOu
 	return o
 }
 
+// PEM representation.
+func (o SslCertOutput) Cert() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Cert }).(pulumi.StringOutput)
+}
+
+// Serial number, as extracted from the certificate.
+func (o SslCertOutput) CertSerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.CertSerialNumber }).(pulumi.StringOutput)
+}
+
+// User supplied name. Constrained to [a-zA-Z.-_ ]+.
+func (o SslCertOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o SslCertOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o SslCertOutput) ExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.ExpirationTime }).(pulumi.StringOutput)
+}
+
+// Name of the database instance.
+func (o SslCertOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+}
+
+// This is always `sql#sslCert`.
+func (o SslCertOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The URI of this resource.
+func (o SslCertOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Sha1 Fingerprint.
+func (o SslCertOutput) Sha1Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.Sha1Fingerprint }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslCertInput)(nil)).Elem(), &SslCert{})
 	pulumi.RegisterOutputType(SslCertOutput{})

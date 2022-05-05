@@ -206,6 +206,83 @@ func (o ExperimentOutput) ToExperimentOutputWithContext(ctx context.Context) Exp
 	return o
 }
 
+// Creation time of this experiment.
+func (o ExperimentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The definition of the experiment.
+func (o ExperimentOutput) Definition() GoogleCloudDialogflowCxV3ExperimentDefinitionResponseOutput {
+	return o.ApplyT(func(v *Experiment) GoogleCloudDialogflowCxV3ExperimentDefinitionResponseOutput { return v.Definition }).(GoogleCloudDialogflowCxV3ExperimentDefinitionResponseOutput)
+}
+
+// The human-readable description of the experiment.
+func (o ExperimentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+func (o ExperimentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// End time of this experiment.
+func (o ExperimentOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Maximum number of days to run the experiment/rollout. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+func (o ExperimentOutput) ExperimentLength() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.ExperimentLength }).(pulumi.StringOutput)
+}
+
+// Last update time of this experiment.
+func (o ExperimentOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+func (o ExperimentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Inference result of the experiment.
+func (o ExperimentOutput) Result() GoogleCloudDialogflowCxV3ExperimentResultResponseOutput {
+	return o.ApplyT(func(v *Experiment) GoogleCloudDialogflowCxV3ExperimentResultResponseOutput { return v.Result }).(GoogleCloudDialogflowCxV3ExperimentResultResponseOutput)
+}
+
+// The configuration for auto rollout. If set, there should be exactly two variants in the experiment (control variant being the default version of the flow), the traffic allocation for the non-control variant will gradually increase to 100% when conditions are met, and eventually replace the control variant to become the default version of the flow.
+func (o ExperimentOutput) RolloutConfig() GoogleCloudDialogflowCxV3RolloutConfigResponseOutput {
+	return o.ApplyT(func(v *Experiment) GoogleCloudDialogflowCxV3RolloutConfigResponseOutput { return v.RolloutConfig }).(GoogleCloudDialogflowCxV3RolloutConfigResponseOutput)
+}
+
+// The reason why rollout has failed. Should only be set when state is ROLLOUT_FAILED.
+func (o ExperimentOutput) RolloutFailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.RolloutFailureReason }).(pulumi.StringOutput)
+}
+
+// State of the auto rollout process.
+func (o ExperimentOutput) RolloutState() GoogleCloudDialogflowCxV3RolloutStateResponseOutput {
+	return o.ApplyT(func(v *Experiment) GoogleCloudDialogflowCxV3RolloutStateResponseOutput { return v.RolloutState }).(GoogleCloudDialogflowCxV3RolloutStateResponseOutput)
+}
+
+// Start time of this experiment.
+func (o ExperimentOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
+func (o ExperimentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Experiment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The history of updates to the experiment variants.
+func (o ExperimentOutput) VariantsHistory() GoogleCloudDialogflowCxV3VariantsHistoryResponseArrayOutput {
+	return o.ApplyT(func(v *Experiment) GoogleCloudDialogflowCxV3VariantsHistoryResponseArrayOutput {
+		return v.VariantsHistory
+	}).(GoogleCloudDialogflowCxV3VariantsHistoryResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExperimentInput)(nil)).Elem(), &Experiment{})
 	pulumi.RegisterOutputType(ExperimentOutput{})

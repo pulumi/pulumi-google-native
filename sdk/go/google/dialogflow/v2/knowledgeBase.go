@@ -124,6 +124,21 @@ func (o KnowledgeBaseOutput) ToKnowledgeBaseOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+func (o KnowledgeBaseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+func (o KnowledgeBaseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+func (o KnowledgeBaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *KnowledgeBase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KnowledgeBaseInput)(nil)).Elem(), &KnowledgeBase{})
 	pulumi.RegisterOutputType(KnowledgeBaseOutput{})

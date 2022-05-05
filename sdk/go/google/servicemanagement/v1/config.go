@@ -262,6 +262,136 @@ func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutpu
 	return o
 }
 
+// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
+func (o ConfigOutput) Apis() ApiResponseArrayOutput {
+	return o.ApplyT(func(v *Config) ApiResponseArrayOutput { return v.Apis }).(ApiResponseArrayOutput)
+}
+
+// Auth configuration.
+func (o ConfigOutput) Authentication() AuthenticationResponseOutput {
+	return o.ApplyT(func(v *Config) AuthenticationResponseOutput { return v.Authentication }).(AuthenticationResponseOutput)
+}
+
+// API backend configuration.
+func (o ConfigOutput) Backend() BackendResponseOutput {
+	return o.ApplyT(func(v *Config) BackendResponseOutput { return v.Backend }).(BackendResponseOutput)
+}
+
+// Billing configuration.
+func (o ConfigOutput) Billing() BillingResponseOutput {
+	return o.ApplyT(func(v *Config) BillingResponseOutput { return v.Billing }).(BillingResponseOutput)
+}
+
+// Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
+func (o ConfigOutput) ConfigVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v *Config) pulumi.IntOutput { return v.ConfigVersion }).(pulumi.IntOutput)
+}
+
+// Context configuration.
+func (o ConfigOutput) Context() ContextResponseOutput {
+	return o.ApplyT(func(v *Config) ContextResponseOutput { return v.Context }).(ContextResponseOutput)
+}
+
+// Configuration for the service control plane.
+func (o ConfigOutput) Control() ControlResponseOutput {
+	return o.ApplyT(func(v *Config) ControlResponseOutput { return v.Control }).(ControlResponseOutput)
+}
+
+// Custom error configuration.
+func (o ConfigOutput) CustomError() CustomErrorResponseOutput {
+	return o.ApplyT(func(v *Config) CustomErrorResponseOutput { return v.CustomError }).(CustomErrorResponseOutput)
+}
+
+// Additional API documentation.
+func (o ConfigOutput) Documentation() DocumentationResponseOutput {
+	return o.ApplyT(func(v *Config) DocumentationResponseOutput { return v.Documentation }).(DocumentationResponseOutput)
+}
+
+// Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
+func (o ConfigOutput) Endpoints() EndpointResponseArrayOutput {
+	return o.ApplyT(func(v *Config) EndpointResponseArrayOutput { return v.Endpoints }).(EndpointResponseArrayOutput)
+}
+
+// A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name by the configuration author. Example: enums: - name: google.someapi.v1.SomeEnum
+func (o ConfigOutput) Enums() EnumResponseArrayOutput {
+	return o.ApplyT(func(v *Config) EnumResponseArrayOutput { return v.Enums }).(EnumResponseArrayOutput)
+}
+
+// HTTP configuration.
+func (o ConfigOutput) Http() HttpResponseOutput {
+	return o.ApplyT(func(v *Config) HttpResponseOutput { return v.Http }).(HttpResponseOutput)
+}
+
+// Logging configuration.
+func (o ConfigOutput) Logging() LoggingResponseOutput {
+	return o.ApplyT(func(v *Config) LoggingResponseOutput { return v.Logging }).(LoggingResponseOutput)
+}
+
+// Defines the logs used by this service.
+func (o ConfigOutput) Logs() LogDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v *Config) LogDescriptorResponseArrayOutput { return v.Logs }).(LogDescriptorResponseArrayOutput)
+}
+
+// Defines the metrics used by this service.
+func (o ConfigOutput) Metrics() MetricDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v *Config) MetricDescriptorResponseArrayOutput { return v.Metrics }).(MetricDescriptorResponseArrayOutput)
+}
+
+// Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
+func (o ConfigOutput) MonitoredResources() MonitoredResourceDescriptorResponseArrayOutput {
+	return o.ApplyT(func(v *Config) MonitoredResourceDescriptorResponseArrayOutput { return v.MonitoredResources }).(MonitoredResourceDescriptorResponseArrayOutput)
+}
+
+// Monitoring configuration.
+func (o ConfigOutput) Monitoring() MonitoringResponseOutput {
+	return o.ApplyT(func(v *Config) MonitoringResponseOutput { return v.Monitoring }).(MonitoringResponseOutput)
+}
+
+// The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
+func (o ConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Google project that owns this service.
+func (o ConfigOutput) ProducerProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ProducerProjectId }).(pulumi.StringOutput)
+}
+
+// Quota configuration.
+func (o ConfigOutput) Quota() QuotaResponseOutput {
+	return o.ApplyT(func(v *Config) QuotaResponseOutput { return v.Quota }).(QuotaResponseOutput)
+}
+
+// The source information for this configuration if available.
+func (o ConfigOutput) SourceInfo() SourceInfoResponseOutput {
+	return o.ApplyT(func(v *Config) SourceInfoResponseOutput { return v.SourceInfo }).(SourceInfoResponseOutput)
+}
+
+// System parameter configuration.
+func (o ConfigOutput) SystemParameters() SystemParametersResponseOutput {
+	return o.ApplyT(func(v *Config) SystemParametersResponseOutput { return v.SystemParameters }).(SystemParametersResponseOutput)
+}
+
+// A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
+func (o ConfigOutput) SystemTypes() TypeResponseArrayOutput {
+	return o.ApplyT(func(v *Config) TypeResponseArrayOutput { return v.SystemTypes }).(TypeResponseArrayOutput)
+}
+
+// The product title for this service, it is the name displayed in Google Cloud Console.
+func (o ConfigOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
+// A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name by the configuration author. Example: types: - name: google.protobuf.Int32
+func (o ConfigOutput) Types() TypeResponseArrayOutput {
+	return o.ApplyT(func(v *Config) TypeResponseArrayOutput { return v.Types }).(TypeResponseArrayOutput)
+}
+
+// Configuration controlling usage of this service.
+func (o ConfigOutput) Usage() UsageResponseOutput {
+	return o.ApplyT(func(v *Config) UsageResponseOutput { return v.Usage }).(UsageResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigInput)(nil)).Elem(), &Config{})
 	pulumi.RegisterOutputType(ConfigOutput{})

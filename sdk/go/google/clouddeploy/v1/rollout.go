@@ -192,6 +192,91 @@ func (o RolloutOutput) ToRolloutOutputWithContext(ctx context.Context) RolloutOu
 	return o
 }
 
+// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+func (o RolloutOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Approval state of the `Rollout`.
+func (o RolloutOutput) ApprovalState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ApprovalState }).(pulumi.StringOutput)
+}
+
+// Time at which the `Rollout` was approved.
+func (o RolloutOutput) ApproveTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ApproveTime }).(pulumi.StringOutput)
+}
+
+// Time at which the `Rollout` was created.
+func (o RolloutOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which the `Rollout` finished deploying.
+func (o RolloutOutput) DeployEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.DeployEndTime }).(pulumi.StringOutput)
+}
+
+// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+func (o RolloutOutput) DeployFailureCause() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.DeployFailureCause }).(pulumi.StringOutput)
+}
+
+// Time at which the `Rollout` started deploying.
+func (o RolloutOutput) DeployStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.DeployStartTime }).(pulumi.StringOutput)
+}
+
+// The resource name of the Cloud Build `Build` object that is used to deploy the Rollout. Format is `projects/{project}/locations/{location}/builds/{build}`.
+func (o RolloutOutput) DeployingBuild() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.DeployingBuild }).(pulumi.StringOutput)
+}
+
+// Description of the `Rollout` for user purposes. Max length is 255 characters.
+func (o RolloutOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Time at which the `Rollout` was enqueued.
+func (o RolloutOutput) EnqueueTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.EnqueueTime }).(pulumi.StringOutput)
+}
+
+// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+func (o RolloutOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Reason the build failed. Empty if the build succeeded.
+func (o RolloutOutput) FailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.FailureReason }).(pulumi.StringOutput)
+}
+
+// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+func (o RolloutOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+func (o RolloutOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Current state of the `Rollout`.
+func (o RolloutOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The ID of Target to which this `Rollout` is deploying.
+func (o RolloutOutput) TargetId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.TargetId }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the `Rollout`.
+func (o RolloutOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutInput)(nil)).Elem(), &Rollout{})
 	pulumi.RegisterOutputType(RolloutOutput{})

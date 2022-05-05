@@ -280,6 +280,171 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
+// The amount of memory in MB available for a function. Defaults to 256MB.
+func (o FunctionOutput) AvailableMemoryMb() pulumi.IntOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.AvailableMemoryMb }).(pulumi.IntOutput)
+}
+
+// Build environment variables that shall be available during build time.
+func (o FunctionOutput) BuildEnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.BuildEnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// The Cloud Build ID of the latest successful deployment of the function.
+func (o FunctionOutput) BuildId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildId }).(pulumi.StringOutput)
+}
+
+// The Cloud Build Name of the function deployment. `projects//locations//builds/`.
+func (o FunctionOutput) BuildName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildName }).(pulumi.StringOutput)
+}
+
+// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. If the project id is not the same as the function, then the Cloud Functions Service Agent (`service-@gcf-admin-robot.iam.gserviceaccount.com`) must be granted the role Cloud Build Custom Workers Builder (`roles/cloudbuild.customworkers.builder`) in the project.
+func (o FunctionOutput) BuildWorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.BuildWorkerPool }).(pulumi.StringOutput)
+}
+
+// User-provided description of a function.
+func (o FunctionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`. This field may be overridden by the backend for eligible deployments.
+func (o FunctionOutput) DockerRegistry() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.DockerRegistry }).(pulumi.StringOutput)
+}
+
+// User managed repository created in Artifact Registry optionally with a customer managed encryption key. If specified, deployments will use Artifact Registry. If unspecified and the deployment is eligible to use Artifact Registry, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
+func (o FunctionOutput) DockerRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.DockerRepository }).(pulumi.StringOutput)
+}
+
+// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". For Node.js this is name of a function exported by the module specified in `source_location`.
+func (o FunctionOutput) EntryPoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.EntryPoint }).(pulumi.StringOutput)
+}
+
+// Environment variables that shall be available during function execution.
+func (o FunctionOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// A source that fires events in response to a condition in another service.
+func (o FunctionOutput) EventTrigger() EventTriggerResponseOutput {
+	return o.ApplyT(func(v *Function) EventTriggerResponseOutput { return v.EventTrigger }).(EventTriggerResponseOutput)
+}
+
+// An HTTPS endpoint type of source that can be triggered via URL.
+func (o FunctionOutput) HttpsTrigger() HttpsTriggerResponseOutput {
+	return o.ApplyT(func(v *Function) HttpsTriggerResponseOutput { return v.HttpsTrigger }).(HttpsTriggerResponseOutput)
+}
+
+// The ingress settings for the function, controlling what traffic can reach it.
+func (o FunctionOutput) IngressSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.IngressSettings }).(pulumi.StringOutput)
+}
+
+// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. If specified, you must also provide an artifact registry repository using the `docker_repository` field that was created with the same KMS crypto key. The following service accounts need to be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). 1. Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) - Required to protect the function's image. 2. Google Storage service account (service-{project_number}@gs-project-accounts.iam.gserviceaccount.com) - Required to protect the function's source code. If this service account does not exist, deploying a function without a KMS key or retrieving the service agent name provisions it. For more information, see https://cloud.google.com/storage/docs/projects#service-agents and https://cloud.google.com/storage/docs/getting-service-agent#gsutil. Google Cloud Functions delegates access to service agents to protect function resources in internal projects that are not accessible by the end user.
+func (o FunctionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Labels associated with this Cloud Function.
+func (o FunctionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+func (o FunctionOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.MaxInstances }).(pulumi.IntOutput)
+}
+
+// A lower bound for the number function instances that may coexist at a given time.
+func (o FunctionOutput) MinInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.MinInstances }).(pulumi.IntOutput)
+}
+
+// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
+func (o FunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where `{project}` is a project id where the network is defined, and `{network}` is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+func (o FunctionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](https://cloud.google.com/sdk/gcloud/reference/functions/deploy#--runtime).
+func (o FunctionOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// Secret environment variables configuration.
+func (o FunctionOutput) SecretEnvironmentVariables() SecretEnvVarResponseArrayOutput {
+	return o.ApplyT(func(v *Function) SecretEnvVarResponseArrayOutput { return v.SecretEnvironmentVariables }).(SecretEnvVarResponseArrayOutput)
+}
+
+// Secret volumes configuration.
+func (o FunctionOutput) SecretVolumes() SecretVolumeResponseArrayOutput {
+	return o.ApplyT(func(v *Function) SecretVolumeResponseArrayOutput { return v.SecretVolumes }).(SecretVolumeResponseArrayOutput)
+}
+
+// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
+func (o FunctionOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Storage URL, starting with `gs://`, pointing to the zip archive which contains the function.
+func (o FunctionOutput) SourceArchiveUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.SourceArchiveUrl }).(pulumi.StringOutput)
+}
+
+// **Beta Feature** The source repository where a function is hosted.
+func (o FunctionOutput) SourceRepository() SourceRepositoryResponseOutput {
+	return o.ApplyT(func(v *Function) SourceRepositoryResponseOutput { return v.SourceRepository }).(SourceRepositoryResponseOutput)
+}
+
+// Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
+func (o FunctionOutput) SourceToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.SourceToken }).(pulumi.StringOutput)
+}
+
+// The Google Cloud Storage signed URL used for source uploading, generated by calling [google.cloud.functions.v1.GenerateUploadUrl]. The signature is validated on write methods (Create, Update) The signature is stripped from the Function object on read methods (Get, List)
+func (o FunctionOutput) SourceUploadUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.SourceUploadUrl }).(pulumi.StringOutput)
+}
+
+// Status of the function deployment.
+func (o FunctionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
+func (o FunctionOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of a Cloud Function.
+func (o FunctionOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
+func (o FunctionOutput) VersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
+}
+
+// The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
+func (o FunctionOutput) VpcConnector() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.VpcConnector }).(pulumi.StringOutput)
+}
+
+// The egress settings for the connector, controlling what traffic is diverted through it.
+func (o FunctionOutput) VpcConnectorEgressSettings() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.VpcConnectorEgressSettings }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FunctionInput)(nil)).Elem(), &Function{})
 	pulumi.RegisterOutputType(FunctionOutput{})

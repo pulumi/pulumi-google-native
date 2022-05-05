@@ -135,6 +135,36 @@ func (o PerfSampleSeriesOutput) ToPerfSampleSeriesOutputWithContext(ctx context.
 	return o
 }
 
+// Basic series represented by a line chart
+func (o PerfSampleSeriesOutput) BasicPerfSampleSeries() BasicPerfSampleSeriesResponseOutput {
+	return o.ApplyT(func(v *PerfSampleSeries) BasicPerfSampleSeriesResponseOutput { return v.BasicPerfSampleSeries }).(BasicPerfSampleSeriesResponseOutput)
+}
+
+// A tool results execution ID.
+func (o PerfSampleSeriesOutput) ExecutionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.ExecutionId }).(pulumi.StringOutput)
+}
+
+// A tool results history ID.
+func (o PerfSampleSeriesOutput) HistoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.HistoryId }).(pulumi.StringOutput)
+}
+
+// The cloud project
+func (o PerfSampleSeriesOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// A sample series id
+func (o PerfSampleSeriesOutput) SampleSeriesId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.SampleSeriesId }).(pulumi.StringOutput)
+}
+
+// A tool results step ID.
+func (o PerfSampleSeriesOutput) StepId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerfSampleSeries) pulumi.StringOutput { return v.StepId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PerfSampleSeriesInput)(nil)).Elem(), &PerfSampleSeries{})
 	pulumi.RegisterOutputType(PerfSampleSeriesOutput{})

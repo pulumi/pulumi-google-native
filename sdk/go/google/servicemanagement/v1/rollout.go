@@ -143,6 +143,41 @@ func (o RolloutOutput) ToRolloutOutputWithContext(ctx context.Context) RolloutOu
 	return o
 }
 
+// Creation time of the rollout. Readonly.
+func (o RolloutOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user who created the Rollout. Readonly.
+func (o RolloutOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
+func (o RolloutOutput) DeleteServiceStrategy() DeleteServiceStrategyResponseOutput {
+	return o.ApplyT(func(v *Rollout) DeleteServiceStrategyResponseOutput { return v.DeleteServiceStrategy }).(DeleteServiceStrategyResponseOutput)
+}
+
+// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
+func (o RolloutOutput) RolloutId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.RolloutId }).(pulumi.StringOutput)
+}
+
+// The name of the service associated with this Rollout.
+func (o RolloutOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
+func (o RolloutOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Google Service Control selects service configurations based on traffic percentage.
+func (o RolloutOutput) TrafficPercentStrategy() TrafficPercentStrategyResponseOutput {
+	return o.ApplyT(func(v *Rollout) TrafficPercentStrategyResponseOutput { return v.TrafficPercentStrategy }).(TrafficPercentStrategyResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RolloutInput)(nil)).Elem(), &Rollout{})
 	pulumi.RegisterOutputType(RolloutOutput{})

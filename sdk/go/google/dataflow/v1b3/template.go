@@ -138,6 +138,26 @@ func (o TemplateOutput) ToTemplateOutputWithContext(ctx context.Context) Templat
 	return o
 }
 
+// The template metadata describing the template name, available parameters, etc.
+func (o TemplateOutput) Metadata() TemplateMetadataResponseOutput {
+	return o.ApplyT(func(v *Template) TemplateMetadataResponseOutput { return v.Metadata }).(TemplateMetadataResponseOutput)
+}
+
+// Describes the runtime metadata with SDKInfo and available parameters.
+func (o TemplateOutput) RuntimeMetadata() RuntimeMetadataResponseOutput {
+	return o.ApplyT(func(v *Template) RuntimeMetadataResponseOutput { return v.RuntimeMetadata }).(RuntimeMetadataResponseOutput)
+}
+
+// The status of the get template request. Any problems with the request will be indicated in the error_details.
+func (o TemplateOutput) Status() StatusResponseOutput {
+	return o.ApplyT(func(v *Template) StatusResponseOutput { return v.Status }).(StatusResponseOutput)
+}
+
+// Template Type.
+func (o TemplateOutput) TemplateType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.TemplateType }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateInput)(nil)).Elem(), &Template{})
 	pulumi.RegisterOutputType(TemplateOutput{})

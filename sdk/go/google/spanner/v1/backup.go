@@ -164,6 +164,66 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// The time the CreateBackup request is received. If the request does not specify `version_time`, the `version_time` of the backup will be equivalent to the `create_time`.
+func (o BackupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
+func (o BackupOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// The database dialect information for the backup.
+func (o BackupOutput) DatabaseDialect() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DatabaseDialect }).(pulumi.StringOutput)
+}
+
+// The encryption information for the backup.
+func (o BackupOutput) EncryptionInfo() EncryptionInfoResponseOutput {
+	return o.ApplyT(func(v *Backup) EncryptionInfoResponseOutput { return v.EncryptionInfo }).(EncryptionInfoResponseOutput)
+}
+
+// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
+func (o BackupOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The max allowed expiration time of the backup, with microseconds granularity. A backup's expiration time can be configured in multiple APIs: CreateBackup, UpdateBackup, CopyBackup. When updating or copying an existing backup, the expiration time specified must be less than `Backup.max_expire_time`.
+func (o BackupOutput) MaxExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.MaxExpireTime }).(pulumi.StringOutput)
+}
+
+// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
+func (o BackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The names of the destination backups being created by copying this source backup. The backup names are of the form `projects//instances//backups/`. Referencing backups may exist in different instances. The existence of any referencing backup prevents the backup from being deleted. When the copy operation is done (either successfully completed or cancelled or the destination backup is deleted), the reference to the backup is removed.
+func (o BackupOutput) ReferencingBackups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringArrayOutput { return v.ReferencingBackups }).(pulumi.StringArrayOutput)
+}
+
+// The names of the restored databases that reference the backup. The database names are of the form `projects//instances//databases/`. Referencing databases may exist in different instances. The existence of any referencing database prevents the backup from being deleted. When a restored database from the backup enters the `READY` state, the reference to the backup is removed.
+func (o BackupOutput) ReferencingDatabases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringArrayOutput { return v.ReferencingDatabases }).(pulumi.StringArrayOutput)
+}
+
+// Size of the backup in bytes.
+func (o BackupOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// The current state of the backup.
+func (o BackupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
+func (o BackupOutput) VersionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.VersionTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInput)(nil)).Elem(), &Backup{})
 	pulumi.RegisterOutputType(BackupOutput{})

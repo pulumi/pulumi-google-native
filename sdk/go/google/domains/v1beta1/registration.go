@@ -173,6 +173,66 @@ func (o RegistrationOutput) ToRegistrationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+func (o RegistrationOutput) ContactSettings() ContactSettingsResponseOutput {
+	return o.ApplyT(func(v *Registration) ContactSettingsResponseOutput { return v.ContactSettings }).(ContactSettingsResponseOutput)
+}
+
+// The creation timestamp of the `Registration` resource.
+func (o RegistrationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
+func (o RegistrationOutput) DnsSettings() DnsSettingsResponseOutput {
+	return o.ApplyT(func(v *Registration) DnsSettingsResponseOutput { return v.DnsSettings }).(DnsSettingsResponseOutput)
+}
+
+// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+func (o RegistrationOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// The expiration timestamp of the `Registration`.
+func (o RegistrationOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The set of issues with the `Registration` that require attention.
+func (o RegistrationOutput) Issues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringArrayOutput { return v.Issues }).(pulumi.StringArrayOutput)
+}
+
+// Set of labels associated with the `Registration`.
+func (o RegistrationOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
+func (o RegistrationOutput) ManagementSettings() ManagementSettingsResponseOutput {
+	return o.ApplyT(func(v *Registration) ManagementSettingsResponseOutput { return v.ManagementSettings }).(ManagementSettingsResponseOutput)
+}
+
+// Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`.
+func (o RegistrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Pending contact settings for the `Registration`. Updates to the `contact_settings` field that change its `registrant_contact` or `privacy` fields require email confirmation by the `registrant_contact` before taking effect. This field is set only if there are pending updates to the `contact_settings` that have not been confirmed. To confirm the changes, the `registrant_contact` must follow the instructions in the email they receive.
+func (o RegistrationOutput) PendingContactSettings() ContactSettingsResponseOutput {
+	return o.ApplyT(func(v *Registration) ContactSettingsResponseOutput { return v.PendingContactSettings }).(ContactSettingsResponseOutput)
+}
+
+// The state of the `Registration`
+func (o RegistrationOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Set of options for the `contact_settings.privacy` field that this `Registration` supports.
+func (o RegistrationOutput) SupportedPrivacy() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Registration) pulumi.StringArrayOutput { return v.SupportedPrivacy }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistrationInput)(nil)).Elem(), &Registration{})
 	pulumi.RegisterOutputType(RegistrationOutput{})

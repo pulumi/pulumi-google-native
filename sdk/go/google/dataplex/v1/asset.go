@@ -171,6 +171,71 @@ func (o AssetOutput) ToAssetOutputWithContext(ctx context.Context) AssetOutput {
 	return o
 }
 
+// The time when the asset was created.
+func (o AssetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the asset.
+func (o AssetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
+func (o AssetOutput) DiscoverySpec() GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput {
+	return o.ApplyT(func(v *Asset) GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput { return v.DiscoverySpec }).(GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput)
+}
+
+// Status of the discovery feature applied to data referenced by this asset.
+func (o AssetOutput) DiscoveryStatus() GoogleCloudDataplexV1AssetDiscoveryStatusResponseOutput {
+	return o.ApplyT(func(v *Asset) GoogleCloudDataplexV1AssetDiscoveryStatusResponseOutput { return v.DiscoveryStatus }).(GoogleCloudDataplexV1AssetDiscoveryStatusResponseOutput)
+}
+
+// Optional. User friendly display name.
+func (o AssetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. User defined labels for the asset.
+func (o AssetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The relative resource name of the asset, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}.
+func (o AssetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specification of the resource that is referenced by this asset.
+func (o AssetOutput) ResourceSpec() GoogleCloudDataplexV1AssetResourceSpecResponseOutput {
+	return o.ApplyT(func(v *Asset) GoogleCloudDataplexV1AssetResourceSpecResponseOutput { return v.ResourceSpec }).(GoogleCloudDataplexV1AssetResourceSpecResponseOutput)
+}
+
+// Status of the resource referenced by this asset.
+func (o AssetOutput) ResourceStatus() GoogleCloudDataplexV1AssetResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Asset) GoogleCloudDataplexV1AssetResourceStatusResponseOutput { return v.ResourceStatus }).(GoogleCloudDataplexV1AssetResourceStatusResponseOutput)
+}
+
+// Status of the security policy applied to resource referenced by this asset.
+func (o AssetOutput) SecurityStatus() GoogleCloudDataplexV1AssetSecurityStatusResponseOutput {
+	return o.ApplyT(func(v *Asset) GoogleCloudDataplexV1AssetSecurityStatusResponseOutput { return v.SecurityStatus }).(GoogleCloudDataplexV1AssetSecurityStatusResponseOutput)
+}
+
+// Current state of the asset.
+func (o AssetOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
+func (o AssetOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the asset was last updated.
+func (o AssetOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Asset) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetInput)(nil)).Elem(), &Asset{})
 	pulumi.RegisterOutputType(AssetOutput{})

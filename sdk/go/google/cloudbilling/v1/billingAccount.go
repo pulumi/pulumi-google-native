@@ -117,6 +117,26 @@ func (o BillingAccountOutput) ToBillingAccountOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
+func (o BillingAccountOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingAccount) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+func (o BillingAccountOutput) MasterBillingAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingAccount) pulumi.StringOutput { return v.MasterBillingAccount }).(pulumi.StringOutput)
+}
+
+// The resource name of the billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the resource name for billing account `012345-567890-ABCDEF`.
+func (o BillingAccountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
+func (o BillingAccountOutput) Open() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BillingAccount) pulumi.BoolOutput { return v.Open }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingAccountInput)(nil)).Elem(), &BillingAccount{})
 	pulumi.RegisterOutputType(BillingAccountOutput{})

@@ -111,6 +111,16 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// ID of the project that produces and owns this service.
+func (o ServiceOutput) ProducerProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ProducerProjectId }).(pulumi.StringOutput)
+}
+
+// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+func (o ServiceOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceInput)(nil)).Elem(), &Service{})
 	pulumi.RegisterOutputType(ServiceOutput{})

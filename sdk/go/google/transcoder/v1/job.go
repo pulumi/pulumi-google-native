@@ -148,6 +148,61 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// The configuration for this job.
+func (o JobOutput) Config() JobConfigResponseOutput {
+	return o.ApplyT(func(v *Job) JobConfigResponseOutput { return v.Config }).(JobConfigResponseOutput)
+}
+
+// The time the job was created.
+func (o JobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time the transcoding finished.
+func (o JobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// An error object that describes the reason for the failure. This property is always present when `state` is `FAILED`.
+func (o JobOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *Job) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`). See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+func (o JobOutput) InputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.InputUri }).(pulumi.StringOutput)
+}
+
+// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
+func (o JobOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
+func (o JobOutput) OutputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.OutputUri }).(pulumi.StringOutput)
+}
+
+// The time the transcoding started.
+func (o JobOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the job.
+func (o JobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+func (o JobOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
+func (o JobOutput) TtlAfterCompletionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.TtlAfterCompletionDays }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobInput)(nil)).Elem(), &Job{})
 	pulumi.RegisterOutputType(JobOutput{})

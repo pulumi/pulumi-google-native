@@ -149,6 +149,46 @@ func (o SavedQueryOutput) ToSavedQueryOutputWithContext(ctx context.Context) Sav
 	return o
 }
 
+// The query content.
+func (o SavedQueryOutput) Content() QueryContentResponseOutput {
+	return o.ApplyT(func(v *SavedQuery) QueryContentResponseOutput { return v.Content }).(QueryContentResponseOutput)
+}
+
+// The create time of this saved query.
+func (o SavedQueryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The account's email address who has created this saved query.
+func (o SavedQueryOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+// The description of this saved query. This value should be fewer than 255 characters.
+func (o SavedQueryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters.
+func (o SavedQueryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The last update time of this saved query.
+func (o SavedQueryOutput) LastUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.LastUpdateTime }).(pulumi.StringOutput)
+}
+
+// The account's email address who has updated this saved query most recently.
+func (o SavedQueryOutput) LastUpdater() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.LastUpdater }).(pulumi.StringOutput)
+}
+
+// The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
+func (o SavedQueryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *SavedQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SavedQueryInput)(nil)).Elem(), &SavedQuery{})
 	pulumi.RegisterOutputType(SavedQueryOutput{})

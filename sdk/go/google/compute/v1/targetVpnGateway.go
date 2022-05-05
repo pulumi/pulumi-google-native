@@ -142,6 +142,56 @@ func (o TargetVpnGatewayOutput) ToTargetVpnGatewayOutputWithContext(ctx context.
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o TargetVpnGatewayOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o TargetVpnGatewayOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A list of URLs to the ForwardingRule resources. ForwardingRules are created using compute.forwardingRules.insert and associated with a VPN gateway.
+func (o TargetVpnGatewayOutput) ForwardingRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringArrayOutput { return v.ForwardingRules }).(pulumi.StringArrayOutput)
+}
+
+// Type of resource. Always compute#targetVpnGateway for target VPN gateways.
+func (o TargetVpnGatewayOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o TargetVpnGatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// URL of the network to which this VPN gateway is attached. Provided by the client when the VPN gateway is created.
+func (o TargetVpnGatewayOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o TargetVpnGatewayOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o TargetVpnGatewayOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The status of the VPN gateway, which can be one of the following: CREATING, READY, FAILED, or DELETING.
+func (o TargetVpnGatewayOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A list of URLs to VpnTunnel resources. VpnTunnels are created using the compute.vpntunnels.insert method and associated with a VPN gateway.
+func (o TargetVpnGatewayOutput) Tunnels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TargetVpnGateway) pulumi.StringArrayOutput { return v.Tunnels }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetVpnGatewayInput)(nil)).Elem(), &TargetVpnGateway{})
 	pulumi.RegisterOutputType(TargetVpnGatewayOutput{})

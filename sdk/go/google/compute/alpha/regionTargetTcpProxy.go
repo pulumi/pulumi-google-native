@@ -148,6 +148,51 @@ func (o RegionTargetTcpProxyOutput) ToRegionTargetTcpProxyOutputWithContext(ctx 
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o RegionTargetTcpProxyOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o RegionTargetTcpProxyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#targetTcpProxy for target TCP proxies.
+func (o RegionTargetTcpProxyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o RegionTargetTcpProxyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
+func (o RegionTargetTcpProxyOutput) ProxyBind() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.BoolOutput { return v.ProxyBind }).(pulumi.BoolOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+func (o RegionTargetTcpProxyOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+// URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
+func (o RegionTargetTcpProxyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o RegionTargetTcpProxyOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// URL to the BackendService resource.
+func (o RegionTargetTcpProxyOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxy) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetTcpProxyInput)(nil)).Elem(), &RegionTargetTcpProxy{})
 	pulumi.RegisterOutputType(RegionTargetTcpProxyOutput{})

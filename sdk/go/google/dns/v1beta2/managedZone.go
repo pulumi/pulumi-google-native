@@ -190,6 +190,86 @@ func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) M
 	return o
 }
 
+func (o ManagedZoneOutput) CloudLoggingConfig() ManagedZoneCloudLoggingConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneCloudLoggingConfigResponseOutput { return v.CloudLoggingConfig }).(ManagedZoneCloudLoggingConfigResponseOutput)
+}
+
+// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
+func (o ManagedZoneOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the managed zone's function.
+func (o ManagedZoneOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The DNS name of this managed zone, for instance "example.com.".
+func (o ManagedZoneOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
+}
+
+// DNSSEC configuration.
+func (o ManagedZoneOutput) DnssecConfig() ManagedZoneDnsSecConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneDnsSecConfigResponseOutput { return v.DnssecConfig }).(ManagedZoneDnsSecConfigResponseOutput)
+}
+
+// The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
+func (o ManagedZoneOutput) ForwardingConfig() ManagedZoneForwardingConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneForwardingConfigResponseOutput { return v.ForwardingConfig }).(ManagedZoneForwardingConfigResponseOutput)
+}
+
+func (o ManagedZoneOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User labels.
+func (o ManagedZoneOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// User assigned name for this resource. Must be unique within the project. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes.
+func (o ManagedZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optionally specifies the NameServerSet for this ManagedZone. A NameServerSet is a set of DNS name servers that all host the same ManagedZones. Most users leave this field unset. If you need to use this field, contact your account team.
+func (o ManagedZoneOutput) NameServerSet() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.NameServerSet }).(pulumi.StringOutput)
+}
+
+// Delegate your managed_zone to these virtual name servers; defined by the server (output only)
+func (o ManagedZoneOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringArrayOutput { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+// The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
+func (o ManagedZoneOutput) PeeringConfig() ManagedZonePeeringConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZonePeeringConfigResponseOutput { return v.PeeringConfig }).(ManagedZonePeeringConfigResponseOutput)
+}
+
+// For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
+func (o ManagedZoneOutput) PrivateVisibilityConfig() ManagedZonePrivateVisibilityConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZonePrivateVisibilityConfigResponseOutput {
+		return v.PrivateVisibilityConfig
+	}).(ManagedZonePrivateVisibilityConfigResponseOutput)
+}
+
+// The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
+func (o ManagedZoneOutput) ReverseLookupConfig() ManagedZoneReverseLookupConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneReverseLookupConfigResponseOutput { return v.ReverseLookupConfig }).(ManagedZoneReverseLookupConfigResponseOutput)
+}
+
+// This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
+func (o ManagedZoneOutput) ServiceDirectoryConfig() ManagedZoneServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneServiceDirectoryConfigResponseOutput { return v.ServiceDirectoryConfig }).(ManagedZoneServiceDirectoryConfigResponseOutput)
+}
+
+// The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
+func (o ManagedZoneOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedZone) pulumi.StringOutput { return v.Visibility }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneInput)(nil)).Elem(), &ManagedZone{})
 	pulumi.RegisterOutputType(ManagedZoneOutput{})

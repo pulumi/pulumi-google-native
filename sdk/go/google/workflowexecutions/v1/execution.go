@@ -137,6 +137,51 @@ func (o ExecutionOutput) ToExecutionOutputWithContext(ctx context.Context) Execu
 	return o
 }
 
+// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
+func (o ExecutionOutput) Argument() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Argument }).(pulumi.StringOutput)
+}
+
+// The call logging level associated to this execution.
+func (o ExecutionOutput) CallLogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.CallLogLevel }).(pulumi.StringOutput)
+}
+
+// Marks the end of execution, successful or not.
+func (o ExecutionOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
+func (o ExecutionOutput) Error() ErrorResponseOutput {
+	return o.ApplyT(func(v *Execution) ErrorResponseOutput { return v.Error }).(ErrorResponseOutput)
+}
+
+// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+func (o ExecutionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
+func (o ExecutionOutput) Result() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Result }).(pulumi.StringOutput)
+}
+
+// Marks the beginning of execution.
+func (o ExecutionOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Current state of the execution.
+func (o ExecutionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Revision of the workflow this execution is using.
+func (o ExecutionOutput) WorkflowRevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.WorkflowRevisionId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionInput)(nil)).Elem(), &Execution{})
 	pulumi.RegisterOutputType(ExecutionOutput{})

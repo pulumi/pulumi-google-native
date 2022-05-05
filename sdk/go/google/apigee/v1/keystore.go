@@ -117,6 +117,16 @@ func (o KeystoreOutput) ToKeystoreOutputWithContext(ctx context.Context) Keystor
 	return o
 }
 
+// Aliases in this keystore.
+func (o KeystoreOutput) Aliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Keystore) pulumi.StringArrayOutput { return v.Aliases }).(pulumi.StringArrayOutput)
+}
+
+// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+func (o KeystoreOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Keystore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoreInput)(nil)).Elem(), &Keystore{})
 	pulumi.RegisterOutputType(KeystoreOutput{})

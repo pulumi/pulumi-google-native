@@ -135,6 +135,36 @@ func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
 }
 
+// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+func (o IndexOutput) Ancestor() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Ancestor }).(pulumi.StringOutput)
+}
+
+// The resource ID of the index.
+func (o IndexOutput) IndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.IndexId }).(pulumi.StringOutput)
+}
+
+// The entity kind to which this index applies.
+func (o IndexOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Project ID.
+func (o IndexOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An ordered sequence of property names and their index attributes.
+func (o IndexOutput) Properties() GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput {
+	return o.ApplyT(func(v *Index) GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput { return v.Properties }).(GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput)
+}
+
+// The state of the index.
+func (o IndexOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexInput)(nil)).Elem(), &Index{})
 	pulumi.RegisterOutputType(IndexOutput{})

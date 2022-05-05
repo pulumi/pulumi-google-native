@@ -157,6 +157,41 @@ func (o TargetServerOutput) ToTargetServerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Optional. A human-readable description of this TargetServer.
+func (o TargetServerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+func (o TargetServerOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
+func (o TargetServerOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.BoolOutput { return v.IsEnabled }).(pulumi.BoolOutput)
+}
+
+// The resource id of this target server. Values must match the regular expression
+func (o TargetServerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+func (o TargetServerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Immutable. The protocol used by this TargetServer.
+func (o TargetServerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetServer) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
+func (o TargetServerOutput) SSLInfo() GoogleCloudApigeeV1TlsInfoResponseOutput {
+	return o.ApplyT(func(v *TargetServer) GoogleCloudApigeeV1TlsInfoResponseOutput { return v.SSLInfo }).(GoogleCloudApigeeV1TlsInfoResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerInput)(nil)).Elem(), &TargetServer{})
 	pulumi.RegisterOutputType(TargetServerOutput{})

@@ -160,6 +160,56 @@ func (o RestorePlanOutput) ToRestorePlanOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+func (o RestorePlanOutput) BackupPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.BackupPlan }).(pulumi.StringOutput)
+}
+
+// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+func (o RestorePlanOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o RestorePlanOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User specified descriptive string for this RestorePlan.
+func (o RestorePlanOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
+func (o RestorePlanOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// A set of custom labels supplied by user.
+func (o RestorePlanOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*
+func (o RestorePlanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration of Restores created via this RestorePlan.
+func (o RestorePlanOutput) RestoreConfig() RestoreConfigResponseOutput {
+	return o.ApplyT(func(v *RestorePlan) RestoreConfigResponseOutput { return v.RestoreConfig }).(RestoreConfigResponseOutput)
+}
+
+// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
+func (o RestorePlanOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o RestorePlanOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestorePlanInput)(nil)).Elem(), &RestorePlan{})
 	pulumi.RegisterOutputType(RestorePlanOutput{})

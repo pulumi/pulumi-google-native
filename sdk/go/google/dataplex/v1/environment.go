@@ -167,6 +167,70 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// Environment creation time.
+func (o EnvironmentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the environment.
+func (o EnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. User friendly display name.
+func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// URI Endpoints to access sessions associated with the Environment.
+func (o EnvironmentOutput) Endpoints() GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput { return v.Endpoints }).(GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput)
+}
+
+// Infrastructure specification for the Environment.
+func (o EnvironmentOutput) InfrastructureSpec() GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput {
+		return v.InfrastructureSpec
+	}).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput)
+}
+
+// Optional. User defined labels for the environment.
+func (o EnvironmentOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
+func (o EnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for sessions created for this environment.
+func (o EnvironmentOutput) SessionSpec() GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput { return v.SessionSpec }).(GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput)
+}
+
+// Status of sessions created for this environment.
+func (o EnvironmentOutput) SessionStatus() GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput {
+		return v.SessionStatus
+	}).(GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput)
+}
+
+// Current state of the environment.
+func (o EnvironmentOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// System generated globally unique ID for the environment. This ID will be different if the environment is deleted and re-created with the same name.
+func (o EnvironmentOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the environment was last updated.
+func (o EnvironmentOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), &Environment{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})

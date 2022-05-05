@@ -120,6 +120,21 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+func (o AccessPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+func (o AccessPolicyOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Human readable title. Does not affect behavior.
+func (o AccessPolicyOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyInput)(nil)).Elem(), &AccessPolicy{})
 	pulumi.RegisterOutputType(AccessPolicyOutput{})

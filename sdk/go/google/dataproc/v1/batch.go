@@ -173,6 +173,91 @@ func (o BatchOutput) ToBatchOutputWithContext(ctx context.Context) BatchOutput {
 	return o
 }
 
+// The time when the batch was created.
+func (o BatchOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The email address of the user who created the batch.
+func (o BatchOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+// Optional. Environment configuration for the batch execution.
+func (o BatchOutput) EnvironmentConfig() EnvironmentConfigResponseOutput {
+	return o.ApplyT(func(v *Batch) EnvironmentConfigResponseOutput { return v.EnvironmentConfig }).(EnvironmentConfigResponseOutput)
+}
+
+// Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
+func (o BatchOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the batch.
+func (o BatchOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource name of the operation associated with this batch.
+func (o BatchOutput) Operation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
+}
+
+// Optional. PySpark batch config.
+func (o BatchOutput) PysparkBatch() PySparkBatchResponseOutput {
+	return o.ApplyT(func(v *Batch) PySparkBatchResponseOutput { return v.PysparkBatch }).(PySparkBatchResponseOutput)
+}
+
+// Optional. Runtime configuration for the batch execution.
+func (o BatchOutput) RuntimeConfig() RuntimeConfigResponseOutput {
+	return o.ApplyT(func(v *Batch) RuntimeConfigResponseOutput { return v.RuntimeConfig }).(RuntimeConfigResponseOutput)
+}
+
+// Runtime information about batch execution.
+func (o BatchOutput) RuntimeInfo() RuntimeInfoResponseOutput {
+	return o.ApplyT(func(v *Batch) RuntimeInfoResponseOutput { return v.RuntimeInfo }).(RuntimeInfoResponseOutput)
+}
+
+// Optional. Spark batch config.
+func (o BatchOutput) SparkBatch() SparkBatchResponseOutput {
+	return o.ApplyT(func(v *Batch) SparkBatchResponseOutput { return v.SparkBatch }).(SparkBatchResponseOutput)
+}
+
+// Optional. SparkR batch config.
+func (o BatchOutput) SparkRBatch() SparkRBatchResponseOutput {
+	return o.ApplyT(func(v *Batch) SparkRBatchResponseOutput { return v.SparkRBatch }).(SparkRBatchResponseOutput)
+}
+
+// Optional. SparkSql batch config.
+func (o BatchOutput) SparkSqlBatch() SparkSqlBatchResponseOutput {
+	return o.ApplyT(func(v *Batch) SparkSqlBatchResponseOutput { return v.SparkSqlBatch }).(SparkSqlBatchResponseOutput)
+}
+
+// The state of the batch.
+func (o BatchOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Historical state information for the batch.
+func (o BatchOutput) StateHistory() StateHistoryResponseArrayOutput {
+	return o.ApplyT(func(v *Batch) StateHistoryResponseArrayOutput { return v.StateHistory }).(StateHistoryResponseArrayOutput)
+}
+
+// Batch state details, such as a failure description if the state is FAILED.
+func (o BatchOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The time when the batch entered a current state.
+func (o BatchOutput) StateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
+func (o BatchOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Batch) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchInput)(nil)).Elem(), &Batch{})
 	pulumi.RegisterOutputType(BatchOutput{})

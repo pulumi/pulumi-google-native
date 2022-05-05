@@ -148,6 +148,46 @@ func (o IosAppOutput) ToIosAppOutputWithContext(ctx context.Context) IosAppOutpu
 	return o
 }
 
+// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
+func (o IosAppOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.ApiKeyId }).(pulumi.StringOutput)
+}
+
+// Immutable. The globally unique, Firebase-assigned identifier for the `IosApp`. This identifier should be treated as an opaque token, as the data format is not specified.
+func (o IosAppOutput) AppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
+func (o IosAppOutput) AppStoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.AppStoreId }).(pulumi.StringOutput)
+}
+
+// Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
+func (o IosAppOutput) BundleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.BundleId }).(pulumi.StringOutput)
+}
+
+// The user-assigned display name for the `IosApp`.
+func (o IosAppOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
+func (o IosAppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
+func (o IosAppOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The Apple Developer Team ID associated with the App in the App Store.
+func (o IosAppOutput) TeamId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IosApp) pulumi.StringOutput { return v.TeamId }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IosAppInput)(nil)).Elem(), &IosApp{})
 	pulumi.RegisterOutputType(IosAppOutput{})

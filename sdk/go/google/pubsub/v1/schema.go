@@ -126,6 +126,31 @@ func (o SchemaOutput) ToSchemaOutputWithContext(ctx context.Context) SchemaOutpu
 	return o
 }
 
+// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
+func (o SchemaOutput) Definition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Definition }).(pulumi.StringOutput)
+}
+
+// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+func (o SchemaOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The timestamp that the revision was created.
+func (o SchemaOutput) RevisionCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The revision ID of the schema.
+func (o SchemaOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// The type of the schema definition.
+func (o SchemaOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaInput)(nil)).Elem(), &Schema{})
 	pulumi.RegisterOutputType(SchemaOutput{})

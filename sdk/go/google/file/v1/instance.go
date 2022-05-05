@@ -165,6 +165,71 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The time when the instance was created.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the instance (2048 characters or less).
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
+func (o InstanceOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// File system shares on the instance. For this version, only a single file share is supported.
+func (o InstanceOutput) FileShares() FileShareConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Instance) FileShareConfigResponseArrayOutput { return v.FileShares }).(FileShareConfigResponseArrayOutput)
+}
+
+// KMS key name used for data encryption.
+func (o InstanceOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Resource labels to represent user provided metadata.
+func (o InstanceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// VPC networks to which the instance is connected. For this version, only a single network is supported.
+func (o InstanceOutput) Networks() NetworkConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Instance) NetworkConfigResponseArrayOutput { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// Reserved for future use.
+func (o InstanceOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// The instance state.
+func (o InstanceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the instance state, if available.
+func (o InstanceOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Field indicates all the reasons the instance is in "SUSPENDED" state.
+func (o InstanceOutput) SuspensionReasons() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SuspensionReasons }).(pulumi.StringArrayOutput)
+}
+
+// The service tier of the instance.
+func (o InstanceOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInput)(nil)).Elem(), &Instance{})
 	pulumi.RegisterOutputType(InstanceOutput{})

@@ -161,6 +161,41 @@ func (o ServiceLevelObjectiveOutput) ToServiceLevelObjectiveOutputWithContext(ct
 	return o
 }
 
+// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
+func (o ServiceLevelObjectiveOutput) CalendarPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.CalendarPeriod }).(pulumi.StringOutput)
+}
+
+// Name used for UI elements listing this SLO.
+func (o ServiceLevelObjectiveOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.999.
+func (o ServiceLevelObjectiveOutput) Goal() pulumi.Float64Output {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.Float64Output { return v.Goal }).(pulumi.Float64Output)
+}
+
+// Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+func (o ServiceLevelObjectiveOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
+func (o ServiceLevelObjectiveOutput) RollingPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringOutput { return v.RollingPeriod }).(pulumi.StringOutput)
+}
+
+// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+func (o ServiceLevelObjectiveOutput) ServiceLevelIndicator() ServiceLevelIndicatorResponseOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) ServiceLevelIndicatorResponseOutput { return v.ServiceLevelIndicator }).(ServiceLevelIndicatorResponseOutput)
+}
+
+// Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+func (o ServiceLevelObjectiveOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceLevelObjective) pulumi.StringMapOutput { return v.UserLabels }).(pulumi.StringMapOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLevelObjectiveInput)(nil)).Elem(), &ServiceLevelObjective{})
 	pulumi.RegisterOutputType(ServiceLevelObjectiveOutput{})

@@ -169,6 +169,71 @@ func (o TestMatrixOutput) ToTestMatrixOutputWithContext(ctx context.Context) Tes
 	return o
 }
 
+// Information about the client which invoked the test.
+func (o TestMatrixOutput) ClientInfo() ClientInfoResponseOutput {
+	return o.ApplyT(func(v *TestMatrix) ClientInfoResponseOutput { return v.ClientInfo }).(ClientInfoResponseOutput)
+}
+
+// The devices the tests are being executed on.
+func (o TestMatrixOutput) EnvironmentMatrix() EnvironmentMatrixResponseOutput {
+	return o.ApplyT(func(v *TestMatrix) EnvironmentMatrixResponseOutput { return v.EnvironmentMatrix }).(EnvironmentMatrixResponseOutput)
+}
+
+// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
+func (o TestMatrixOutput) FailFast() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.BoolOutput { return v.FailFast }).(pulumi.BoolOutput)
+}
+
+// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
+func (o TestMatrixOutput) FlakyTestAttempts() pulumi.IntOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.IntOutput { return v.FlakyTestAttempts }).(pulumi.IntOutput)
+}
+
+// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
+func (o TestMatrixOutput) InvalidMatrixDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.InvalidMatrixDetails }).(pulumi.StringOutput)
+}
+
+// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
+func (o TestMatrixOutput) OutcomeSummary() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.OutcomeSummary }).(pulumi.StringOutput)
+}
+
+// The cloud project that owns the test matrix.
+func (o TestMatrixOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Where the results for the matrix are written.
+func (o TestMatrixOutput) ResultStorage() ResultStorageResponseOutput {
+	return o.ApplyT(func(v *TestMatrix) ResultStorageResponseOutput { return v.ResultStorage }).(ResultStorageResponseOutput)
+}
+
+// Indicates the current progress of the test matrix.
+func (o TestMatrixOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The list of test executions that the service creates for this matrix.
+func (o TestMatrixOutput) TestExecutions() TestExecutionResponseArrayOutput {
+	return o.ApplyT(func(v *TestMatrix) TestExecutionResponseArrayOutput { return v.TestExecutions }).(TestExecutionResponseArrayOutput)
+}
+
+// Unique id set by the service.
+func (o TestMatrixOutput) TestMatrixId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.TestMatrixId }).(pulumi.StringOutput)
+}
+
+// How to run the test.
+func (o TestMatrixOutput) TestSpecification() TestSpecificationResponseOutput {
+	return o.ApplyT(func(v *TestMatrix) TestSpecificationResponseOutput { return v.TestSpecification }).(TestSpecificationResponseOutput)
+}
+
+// The time this test matrix was initially created.
+func (o TestMatrixOutput) Timestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *TestMatrix) pulumi.StringOutput { return v.Timestamp }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TestMatrixInput)(nil)).Elem(), &TestMatrix{})
 	pulumi.RegisterOutputType(TestMatrixOutput{})

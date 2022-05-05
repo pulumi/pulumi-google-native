@@ -193,6 +193,99 @@ func (o RegionHealthCheckOutput) ToRegionHealthCheckOutputWithContext(ctx contex
 	return o
 }
 
+// How often (in seconds) to send a health check. The default value is 5 seconds.
+func (o RegionHealthCheckOutput) CheckIntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.IntOutput { return v.CheckIntervalSec }).(pulumi.IntOutput)
+}
+
+// Creation timestamp in 3339 text format.
+func (o RegionHealthCheckOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o RegionHealthCheckOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o RegionHealthCheckOutput) GrpcHealthCheck() GRPCHealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) GRPCHealthCheckResponseOutput { return v.GrpcHealthCheck }).(GRPCHealthCheckResponseOutput)
+}
+
+// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+func (o RegionHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.IntOutput { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+func (o RegionHealthCheckOutput) Http2HealthCheck() HTTP2HealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) HTTP2HealthCheckResponseOutput { return v.Http2HealthCheck }).(HTTP2HealthCheckResponseOutput)
+}
+
+func (o RegionHealthCheckOutput) HttpHealthCheck() HTTPHealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) HTTPHealthCheckResponseOutput { return v.HttpHealthCheck }).(HTTPHealthCheckResponseOutput)
+}
+
+func (o RegionHealthCheckOutput) HttpsHealthCheck() HTTPSHealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) HTTPSHealthCheckResponseOutput { return v.HttpsHealthCheck }).(HTTPSHealthCheckResponseOutput)
+}
+
+// Type of the resource.
+func (o RegionHealthCheckOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Configure logging on this health check.
+func (o RegionHealthCheckOutput) LogConfig() HealthCheckLogConfigResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) HealthCheckLogConfigResponseOutput { return v.LogConfig }).(HealthCheckLogConfigResponseOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
+func (o RegionHealthCheckOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Region where the health check resides. Not applicable to global health checks.
+func (o RegionHealthCheckOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o RegionHealthCheckOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o RegionHealthCheckOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+func (o RegionHealthCheckOutput) SslHealthCheck() SSLHealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) SSLHealthCheckResponseOutput { return v.SslHealthCheck }).(SSLHealthCheckResponseOutput)
+}
+
+func (o RegionHealthCheckOutput) TcpHealthCheck() TCPHealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) TCPHealthCheckResponseOutput { return v.TcpHealthCheck }).(TCPHealthCheckResponseOutput)
+}
+
+// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
+func (o RegionHealthCheckOutput) TimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.IntOutput { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+// Specifies the type of the healthCheck, either TCP, SSL, HTTP, HTTPS or HTTP2. Exactly one of the protocol-specific health check field must be specified, which must match type field.
+func (o RegionHealthCheckOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o RegionHealthCheckOutput) UdpHealthCheck() UDPHealthCheckResponseOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) UDPHealthCheckResponseOutput { return v.UdpHealthCheck }).(UDPHealthCheckResponseOutput)
+}
+
+// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+func (o RegionHealthCheckOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.IntOutput { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionHealthCheckInput)(nil)).Elem(), &RegionHealthCheck{})
 	pulumi.RegisterOutputType(RegionHealthCheckOutput{})

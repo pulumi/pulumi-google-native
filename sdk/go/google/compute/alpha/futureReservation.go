@@ -154,6 +154,68 @@ func (o FutureReservationOutput) ToFutureReservationOutputWithContext(ctx contex
 	return o
 }
 
+// The creation timestamp for this future reservation in RFC3339 text format.
+func (o FutureReservationOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the future reservation.
+func (o FutureReservationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#futureReservation for future reservations.
+func (o FutureReservationOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o FutureReservationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+func (o FutureReservationOutput) NamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+// Server-defined fully-qualified URL for this resource.
+func (o FutureReservationOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o FutureReservationOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// List of Projects/Folders to share with.
+func (o FutureReservationOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v *FutureReservation) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
+}
+
+// Future Reservation configuration to indicate instance properties and total count.
+func (o FutureReservationOutput) SpecificSkuProperties() FutureReservationSpecificSKUPropertiesResponseOutput {
+	return o.ApplyT(func(v *FutureReservation) FutureReservationSpecificSKUPropertiesResponseOutput {
+		return v.SpecificSkuProperties
+	}).(FutureReservationSpecificSKUPropertiesResponseOutput)
+}
+
+// [Output only] Status of the Future Reservation
+func (o FutureReservationOutput) Status() FutureReservationStatusResponseOutput {
+	return o.ApplyT(func(v *FutureReservation) FutureReservationStatusResponseOutput { return v.Status }).(FutureReservationStatusResponseOutput)
+}
+
+// Time window for this Future Reservation.
+func (o FutureReservationOutput) TimeWindow() FutureReservationTimeWindowResponseOutput {
+	return o.ApplyT(func(v *FutureReservation) FutureReservationTimeWindowResponseOutput { return v.TimeWindow }).(FutureReservationTimeWindowResponseOutput)
+}
+
+// URL of the Zone where this future reservation resides.
+func (o FutureReservationOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FutureReservationInput)(nil)).Elem(), &FutureReservation{})
 	pulumi.RegisterOutputType(FutureReservationOutput{})

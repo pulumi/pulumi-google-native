@@ -133,6 +133,31 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// The API version for this call such as "serving.knative.dev/v1".
+func (o ServiceOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The kind of resource, in this case "Service".
+func (o ServiceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+func (o ServiceOutput) Metadata() ObjectMetaResponseOutput {
+	return o.ApplyT(func(v *Service) ObjectMetaResponseOutput { return v.Metadata }).(ObjectMetaResponseOutput)
+}
+
+// Spec holds the desired state of the Service (from the client).
+func (o ServiceOutput) Spec() ServiceSpecResponseOutput {
+	return o.ApplyT(func(v *Service) ServiceSpecResponseOutput { return v.Spec }).(ServiceSpecResponseOutput)
+}
+
+// Status communicates the observed state of the Service (from the controller).
+func (o ServiceOutput) Status() ServiceStatusResponseOutput {
+	return o.ApplyT(func(v *Service) ServiceStatusResponseOutput { return v.Status }).(ServiceStatusResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceInput)(nil)).Elem(), &Service{})
 	pulumi.RegisterOutputType(ServiceOutput{})

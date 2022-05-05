@@ -166,6 +166,81 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
+func (o InstanceOutput) ConsumerAcceptList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ConsumerAcceptList }).(pulumi.StringArrayOutput)
+}
+
+// Time the instance was created in milliseconds since epoch.
+func (o InstanceOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the instance.
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Customer Managed Encryption Key (CMEK) used for disk and volume encryption. Required for Apigee paid subscriptions only. Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
+func (o InstanceOutput) DiskEncryptionKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DiskEncryptionKeyName }).(pulumi.StringOutput)
+}
+
+// Optional. Display name for the instance.
+func (o InstanceOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Internal hostname or IP address of the Apigee endpoint used by clients to connect to the service.
+func (o InstanceOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+func (o InstanceOutput) IpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.IpRange }).(pulumi.StringOutput)
+}
+
+// Time the instance was last modified in milliseconds since epoch.
+func (o InstanceOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Compute Engine location where the instance resides.
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
+func (o InstanceOutput) PeeringCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PeeringCidrRange }).(pulumi.StringOutput)
+}
+
+// Port number of the exposed Apigee endpoint.
+func (o InstanceOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
+}
+
+// Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
+func (o InstanceOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
+// Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
+func (o InstanceOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+// State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
+func (o InstanceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInput)(nil)).Elem(), &Instance{})
 	pulumi.RegisterOutputType(InstanceOutput{})

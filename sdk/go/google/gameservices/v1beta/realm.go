@@ -147,6 +147,41 @@ func (o RealmOutput) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
 	return o
 }
 
+// The creation time.
+func (o RealmOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Human readable description of the realm.
+func (o RealmOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+func (o RealmOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The labels associated with this realm. Each label is a key-value pair.
+func (o RealmOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the realm, in the following form: `projects/{project}/locations/{locationId}/realms/{realmId}`. For example, `projects/my-project/locations/global/realms/my-realm`.
+func (o RealmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the [IANA time zone database](https://www.iana.org/time-zones).
+func (o RealmOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o RealmOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RealmInput)(nil)).Elem(), &Realm{})
 	pulumi.RegisterOutputType(RealmOutput{})

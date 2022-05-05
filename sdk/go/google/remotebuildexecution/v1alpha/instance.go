@@ -127,6 +127,33 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// The policy to define whether or not RBE features can be used or how they can be used.
+func (o InstanceOutput) FeaturePolicy() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
+	return o.ApplyT(func(v *Instance) GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput {
+		return v.FeaturePolicy
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponseOutput)
+}
+
+// The location is a GCP region. Currently only `us-central1` is supported.
+func (o InstanceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Whether stack driver logging is enabled for the instance.
+func (o InstanceOutput) LoggingEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.LoggingEnabled }).(pulumi.BoolOutput)
+}
+
+// Instance resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`. Name should not be populated when creating an instance since it is provided in the `instance_id` field.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the instance.
+func (o InstanceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInput)(nil)).Elem(), &Instance{})
 	pulumi.RegisterOutputType(InstanceOutput{})

@@ -150,6 +150,56 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
+// The timestamp of when the workflow was created.
+func (o WorkflowOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+func (o WorkflowOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+func (o WorkflowOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+func (o WorkflowOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The timestamp that the latest revision of the workflow was created.
+func (o WorkflowOutput) RevisionCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
+}
+
+// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
+func (o WorkflowOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.RevisionId }).(pulumi.StringOutput)
+}
+
+// The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
+func (o WorkflowOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Workflow code to be executed. The size limit is 128KB.
+func (o WorkflowOutput) SourceContents() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.SourceContents }).(pulumi.StringOutput)
+}
+
+// State of the workflow deployment.
+func (o WorkflowOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of the workflow.
+func (o WorkflowOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowInput)(nil)).Elem(), &Workflow{})
 	pulumi.RegisterOutputType(WorkflowOutput{})

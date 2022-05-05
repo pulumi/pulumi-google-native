@@ -156,6 +156,51 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 	return o
 }
 
+// The time when the repository was created.
+func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user-provided description of the repository.
+func (o RepositoryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The format of packages that are stored in the repository.
+func (o RepositoryOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
+}
+
+// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
+func (o RepositoryOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
+func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Maven repository config contains repository level configuration for the repositories of maven type.
+func (o RepositoryOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v *Repository) MavenRepositoryConfigResponseOutput { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
+}
+
+// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
+func (o RepositoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
+func (o RepositoryOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// The time when the repository was last updated.
+func (o RepositoryOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryInput)(nil)).Elem(), &Repository{})
 	pulumi.RegisterOutputType(RepositoryOutput{})

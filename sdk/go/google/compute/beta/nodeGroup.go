@@ -171,6 +171,78 @@ func (o NodeGroupOutput) ToNodeGroupOutputWithContext(ctx context.Context) NodeG
 	return o
 }
 
+// Specifies how autoscaling should behave.
+func (o NodeGroupOutput) AutoscalingPolicy() NodeGroupAutoscalingPolicyResponseOutput {
+	return o.ApplyT(func(v *NodeGroup) NodeGroupAutoscalingPolicyResponseOutput { return v.AutoscalingPolicy }).(NodeGroupAutoscalingPolicyResponseOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o NodeGroupOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o NodeGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o NodeGroupOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The type of the resource. Always compute#nodeGroup for node group.
+func (o NodeGroupOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+func (o NodeGroupOutput) LocationHint() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.LocationHint }).(pulumi.StringOutput)
+}
+
+// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
+func (o NodeGroupOutput) MaintenancePolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.MaintenancePolicy }).(pulumi.StringOutput)
+}
+
+func (o NodeGroupOutput) MaintenanceWindow() NodeGroupMaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v *NodeGroup) NodeGroupMaintenanceWindowResponseOutput { return v.MaintenanceWindow }).(NodeGroupMaintenanceWindowResponseOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o NodeGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// URL of the node template to create the node group from.
+func (o NodeGroupOutput) NodeTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.NodeTemplate }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o NodeGroupOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Share-settings for the node group
+func (o NodeGroupOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v *NodeGroup) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
+}
+
+// The total number of nodes in the node group.
+func (o NodeGroupOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+func (o NodeGroupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The name of the zone where the node group resides, such as us-central1-a.
+func (o NodeGroupOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupInput)(nil)).Elem(), &NodeGroup{})
 	pulumi.RegisterOutputType(NodeGroupOutput{})

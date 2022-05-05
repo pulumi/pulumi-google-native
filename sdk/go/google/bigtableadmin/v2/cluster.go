@@ -151,6 +151,41 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// Configuration for this cluster.
+func (o ClusterOutput) ClusterConfig() ClusterConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) ClusterConfigResponseOutput { return v.ClusterConfig }).(ClusterConfigResponseOutput)
+}
+
+// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
+func (o ClusterOutput) DefaultStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultStorageType }).(pulumi.StringOutput)
+}
+
+// Immutable. The encryption configuration for CMEK-protected clusters.
+func (o ClusterOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v *Cluster) EncryptionConfigResponseOutput { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
+// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
+func (o ClusterOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
+func (o ClusterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+func (o ClusterOutput) ServeNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ServeNodes }).(pulumi.IntOutput)
+}
+
+// The current state of the cluster.
+func (o ClusterOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInput)(nil)).Elem(), &Cluster{})
 	pulumi.RegisterOutputType(ClusterOutput{})

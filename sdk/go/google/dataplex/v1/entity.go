@@ -210,6 +210,81 @@ func (o EntityOutput) ToEntityOutputWithContext(ctx context.Context) EntityOutpu
 	return o
 }
 
+// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
+func (o EntityOutput) Asset() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Asset }).(pulumi.StringOutput)
+}
+
+// The name of the associated Data Catalog entry.
+func (o EntityOutput) CatalogEntry() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.CatalogEntry }).(pulumi.StringOutput)
+}
+
+// Metadata stores that the entity is compatible with.
+func (o EntityOutput) Compatibility() GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput {
+	return o.ApplyT(func(v *Entity) GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput { return v.Compatibility }).(GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput)
+}
+
+// The time when the entity was created.
+func (o EntityOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The storage path of the entity data. For Cloud Storage data, this is the fully-qualified path to the entity, such as gs://bucket/path/to/data. For BigQuery data, this is the name of the table resource, such as projects/project_id/datasets/dataset_id/tables/table_id.
+func (o EntityOutput) DataPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.DataPath }).(pulumi.StringOutput)
+}
+
+// Optional. The set of items within the data path constituting the data in the entity, represented as a glob path. Example: gs://bucket/path/to/data/**/*.csv.
+func (o EntityOutput) DataPathPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.DataPathPattern }).(pulumi.StringOutput)
+}
+
+// Optional. User friendly longer description text. Must be shorter than or equal to 1024 characters.
+func (o EntityOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Display name must be shorter than or equal to 256 characters.
+func (o EntityOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. The etag associated with the entity, which can be retrieved with a GetEntity request. Required for update and delete requests.
+func (o EntityOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Identifies the storage format of the entity data. It does not apply to entities with data stored in BigQuery.
+func (o EntityOutput) Format() GoogleCloudDataplexV1StorageFormatResponseOutput {
+	return o.ApplyT(func(v *Entity) GoogleCloudDataplexV1StorageFormatResponseOutput { return v.Format }).(GoogleCloudDataplexV1StorageFormatResponseOutput)
+}
+
+// The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}.
+func (o EntityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The description of the data structure and layout. The schema is not included in list responses. It is only included in SCHEMA and FULL entity views of a GetEntity response.
+func (o EntityOutput) Schema() GoogleCloudDataplexV1SchemaResponseOutput {
+	return o.ApplyT(func(v *Entity) GoogleCloudDataplexV1SchemaResponseOutput { return v.Schema }).(GoogleCloudDataplexV1SchemaResponseOutput)
+}
+
+// Immutable. Identifies the storage system of the entity data.
+func (o EntityOutput) System() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.System }).(pulumi.StringOutput)
+}
+
+// Immutable. The type of entity.
+func (o EntityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time when the entity was last updated.
+func (o EntityOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityInput)(nil)).Elem(), &Entity{})
 	pulumi.RegisterOutputType(EntityOutput{})

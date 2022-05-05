@@ -152,6 +152,66 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
+func (o ReservationOutput) Commitment() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Commitment }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o ReservationOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o ReservationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#reservations for reservations.
+func (o ReservationOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o ReservationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o ReservationOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// Server-defined fully-qualified URL for this resource.
+func (o ReservationOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Share-settings for shared-reservation
+func (o ReservationOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v *Reservation) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
+}
+
+// Reservation for instances with specific machine shapes.
+func (o ReservationOutput) SpecificReservation() AllocationSpecificSKUReservationResponseOutput {
+	return o.ApplyT(func(v *Reservation) AllocationSpecificSKUReservationResponseOutput { return v.SpecificReservation }).(AllocationSpecificSKUReservationResponseOutput)
+}
+
+// Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
+func (o ReservationOutput) SpecificReservationRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.SpecificReservationRequired }).(pulumi.BoolOutput)
+}
+
+// The status of the reservation.
+func (o ReservationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
+func (o ReservationOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationInput)(nil)).Elem(), &Reservation{})
 	pulumi.RegisterOutputType(ReservationOutput{})

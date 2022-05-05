@@ -154,6 +154,51 @@ func (o WorkflowTemplateOutput) ToWorkflowTemplateOutputWithContext(ctx context.
 	return o
 }
 
+// The time template was created.
+func (o WorkflowTemplateOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
+func (o WorkflowTemplateOutput) DagTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.DagTimeout }).(pulumi.StringOutput)
+}
+
+// The Directed Acyclic Graph of Jobs to submit.
+func (o WorkflowTemplateOutput) Jobs() OrderedJobResponseArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) OrderedJobResponseArrayOutput { return v.Jobs }).(OrderedJobResponseArrayOutput)
+}
+
+// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
+func (o WorkflowTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
+func (o WorkflowTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+func (o WorkflowTemplateOutput) Parameters() TemplateParameterResponseArrayOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) TemplateParameterResponseArrayOutput { return v.Parameters }).(TemplateParameterResponseArrayOutput)
+}
+
+// WorkflowTemplate scheduling information.
+func (o WorkflowTemplateOutput) Placement() WorkflowTemplatePlacementResponseOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) WorkflowTemplatePlacementResponseOutput { return v.Placement }).(WorkflowTemplatePlacementResponseOutput)
+}
+
+// The time template was last updated.
+func (o WorkflowTemplateOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
+func (o WorkflowTemplateOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *WorkflowTemplate) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateInput)(nil)).Elem(), &WorkflowTemplate{})
 	pulumi.RegisterOutputType(WorkflowTemplateOutput{})

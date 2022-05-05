@@ -216,6 +216,79 @@ func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutputWith
 	return o
 }
 
+// The name of the bucket.
+func (o DefaultObjectAccessControlOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The domain associated with the entity, if any.
+func (o DefaultObjectAccessControlOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The email address associated with the entity, if any.
+func (o DefaultObjectAccessControlOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// The entity holding the permission, in one of the following forms:
+// - user-userId
+// - user-email
+// - group-groupId
+// - group-email
+// - domain-domain
+// - project-team-projectId
+// - allUsers
+// - allAuthenticatedUsers Examples:
+// - The user liz@example.com would be user-liz@example.com.
+// - The group example@googlegroups.com would be group-example@googlegroups.com.
+// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
+func (o DefaultObjectAccessControlOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity, if any.
+func (o DefaultObjectAccessControlOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// HTTP 1.1 Entity tag for the access-control entry.
+func (o DefaultObjectAccessControlOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The content generation of the object, if applied to an object.
+func (o DefaultObjectAccessControlOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
+func (o DefaultObjectAccessControlOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the object, if applied to an object.
+func (o DefaultObjectAccessControlOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Object }).(pulumi.StringOutput)
+}
+
+// The project team associated with the entity, if any.
+func (o DefaultObjectAccessControlOutput) ProjectTeam() DefaultObjectAccessControlProjectTeamResponseOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) DefaultObjectAccessControlProjectTeamResponseOutput {
+		return v.ProjectTeam
+	}).(DefaultObjectAccessControlProjectTeamResponseOutput)
+}
+
+// The access permission for the entity.
+func (o DefaultObjectAccessControlOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// The link to this access-control entry.
+func (o DefaultObjectAccessControlOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *DefaultObjectAccessControl) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultObjectAccessControlInput)(nil)).Elem(), &DefaultObjectAccessControl{})
 	pulumi.RegisterOutputType(DefaultObjectAccessControlOutput{})

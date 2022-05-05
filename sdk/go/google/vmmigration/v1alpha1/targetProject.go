@@ -131,6 +131,31 @@ func (o TargetProjectOutput) ToTargetProjectOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The time this target project resource was created (not related to when the Compute Engine project it points to was created).
+func (o TargetProjectOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The target project's description.
+func (o TargetProjectOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the target project.
+func (o TargetProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The target project ID (number) or project name.
+func (o TargetProjectOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The last time the target project resource was updated.
+func (o TargetProjectOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetProject) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetProjectInput)(nil)).Elem(), &TargetProject{})
 	pulumi.RegisterOutputType(TargetProjectOutput{})

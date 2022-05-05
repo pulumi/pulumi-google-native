@@ -135,6 +135,43 @@ func (o ConversationOutput) ToConversationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+func (o ConversationOutput) ConversationProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.ConversationProfile }).(pulumi.StringOutput)
+}
+
+// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
+func (o ConversationOutput) ConversationStage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.ConversationStage }).(pulumi.StringOutput)
+}
+
+// The time the conversation was finished.
+func (o ConversationOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The current state of the Conversation.
+func (o ConversationOutput) LifecycleState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+// The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+func (o ConversationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// It will not be empty if the conversation is to be connected over telephony.
+func (o ConversationOutput) PhoneNumber() GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput {
+		return v.PhoneNumber
+	}).(GoogleCloudDialogflowV2ConversationPhoneNumberResponseOutput)
+}
+
+// The time the conversation was started.
+func (o ConversationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationInput)(nil)).Elem(), &Conversation{})
 	pulumi.RegisterOutputType(ConversationOutput{})

@@ -134,6 +134,26 @@ func (o ParticipantOutput) ToParticipantOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// Optional. Key-value filters on the metadata of documents returned by article suggestion. If specified, article suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple values for a metadata key should be concatenated by comma. For example, filters to match all documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value: "agent" }```
+func (o ParticipantOutput) DocumentsMetadataFilters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringMapOutput { return v.DocumentsMetadataFilters }).(pulumi.StringMapOutput)
+}
+
+// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
+func (o ParticipantOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
+func (o ParticipantOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
+func (o ParticipantOutput) SipRecordingMediaLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Participant) pulumi.StringOutput { return v.SipRecordingMediaLabel }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ParticipantInput)(nil)).Elem(), &Participant{})
 	pulumi.RegisterOutputType(ParticipantOutput{})

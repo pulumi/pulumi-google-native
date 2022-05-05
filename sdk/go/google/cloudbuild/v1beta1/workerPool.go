@@ -149,6 +149,61 @@ func (o WorkerPoolOutput) ToWorkerPoolOutputWithContext(ctx context.Context) Wor
 	return o
 }
 
+// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+func (o WorkerPoolOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Time at which the request to create the `WorkerPool` was received.
+func (o WorkerPoolOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Time at which the request to delete the `WorkerPool` was received.
+func (o WorkerPoolOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
+func (o WorkerPoolOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
+func (o WorkerPoolOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
+func (o WorkerPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network configuration for the `WorkerPool`.
+func (o WorkerPoolOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// `WorkerPool` state.
+func (o WorkerPoolOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// A unique identifier for the `WorkerPool`.
+func (o WorkerPoolOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// Time at which the request to update the `WorkerPool` was received.
+func (o WorkerPoolOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Worker configuration for the `WorkerPool`.
+func (o WorkerPoolOutput) WorkerConfig() WorkerConfigResponseOutput {
+	return o.ApplyT(func(v *WorkerPool) WorkerConfigResponseOutput { return v.WorkerConfig }).(WorkerConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolInput)(nil)).Elem(), &WorkerPool{})
 	pulumi.RegisterOutputType(WorkerPoolOutput{})

@@ -146,6 +146,48 @@ func (o HubOutput) ToHubOutputWithContext(ctx context.Context) HubOutput {
 	return o
 }
 
+// Time when the Hub was created.
+func (o HubOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Short description of the hub resource.
+func (o HubOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// User-defined labels.
+func (o HubOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Immutable. The name of a Hub resource.
+func (o HubOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+//
+// Deprecated: Output only. A list of the URIs of all attached spokes. This field is deprecated and will not be included in future API versions. Call ListSpokes on each region instead.
+func (o HubOutput) Spokes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringArrayOutput { return v.Spokes }).(pulumi.StringArrayOutput)
+}
+
+// The current lifecycle state of this Hub.
+func (o HubOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
+func (o HubOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Time when the Hub was updated.
+func (o HubOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubInput)(nil)).Elem(), &Hub{})
 	pulumi.RegisterOutputType(HubOutput{})

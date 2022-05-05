@@ -219,6 +219,116 @@ func (o ReportOutput) ToReportOutputWithContext(ctx context.Context) ReportOutpu
 	return o
 }
 
+// This field contains the chart type for the report
+func (o ReportOutput) ChartType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.ChartType }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used. This field contains a list of comments associated with custom report
+func (o ReportOutput) Comments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringArrayOutput { return v.Comments }).(pulumi.StringArrayOutput)
+}
+
+// Unix time when the app was created json key: createdAt
+func (o ReportOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// This contains the list of dimensions for the report
+func (o ReportOutput) Dimensions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringArrayOutput { return v.Dimensions }).(pulumi.StringArrayOutput)
+}
+
+// This is the display name for the report
+func (o ReportOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Environment name
+func (o ReportOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
+}
+
+// This field contains the filter expression
+func (o ReportOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used. Contains the from time for the report
+func (o ReportOutput) FromTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.FromTime }).(pulumi.StringOutput)
+}
+
+// Modified time of this entity as milliseconds since epoch. json key: lastModifiedAt
+func (o ReportOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// Last viewed time of this entity as milliseconds since epoch
+func (o ReportOutput) LastViewedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.LastViewedAt }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used This field contains the limit for the result retrieved
+func (o ReportOutput) Limit() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Limit }).(pulumi.StringOutput)
+}
+
+// This contains the list of metrics
+func (o ReportOutput) Metrics() GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput {
+	return o.ApplyT(func(v *Report) GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput { return v.Metrics }).(GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput)
+}
+
+// Unique identifier for the report T his is a legacy field used to encode custom report unique id
+func (o ReportOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used. This field contains the offset for the data
+func (o ReportOutput) Offset() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Offset }).(pulumi.StringOutput)
+}
+
+// Organization name
+func (o ReportOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
+}
+
+// This field contains report properties such as ui metadata etc.
+func (o ReportOutput) Properties() GoogleCloudApigeeV1ReportPropertyResponseArrayOutput {
+	return o.ApplyT(func(v *Report) GoogleCloudApigeeV1ReportPropertyResponseArrayOutput { return v.Properties }).(GoogleCloudApigeeV1ReportPropertyResponseArrayOutput)
+}
+
+// Legacy field: not used much. Contains the list of sort by columns
+func (o ReportOutput) SortByCols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringArrayOutput { return v.SortByCols }).(pulumi.StringArrayOutput)
+}
+
+// Legacy field: not used much. Contains the sort order for the sort columns
+func (o ReportOutput) SortOrder() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.SortOrder }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used. This field contains a list of tags associated with custom report
+func (o ReportOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// This field contains the time unit of aggregation for the report
+func (o ReportOutput) TimeUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.TimeUnit }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used. Contains the end time for the report
+func (o ReportOutput) ToTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.ToTime }).(pulumi.StringOutput)
+}
+
+// Legacy field: not used. This field contains the top k parameter value for restricting the result
+func (o ReportOutput) Topk() pulumi.StringOutput {
+	return o.ApplyT(func(v *Report) pulumi.StringOutput { return v.Topk }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReportInput)(nil)).Elem(), &Report{})
 	pulumi.RegisterOutputType(ReportOutput{})

@@ -208,6 +208,98 @@ func (o CertificateAuthorityOutput) ToCertificateAuthorityOutputWithContext(ctx 
 	return o
 }
 
+// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
+func (o CertificateAuthorityOutput) AccessUrls() AccessUrlsResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthority) AccessUrlsResponseOutput { return v.AccessUrls }).(AccessUrlsResponseOutput)
+}
+
+// A structured description of this CertificateAuthority's CA certificate and its issuers. Ordered as self-to-root.
+func (o CertificateAuthorityOutput) CaCertificateDescriptions() CertificateDescriptionResponseArrayOutput {
+	return o.ApplyT(func(v *CertificateAuthority) CertificateDescriptionResponseArrayOutput {
+		return v.CaCertificateDescriptions
+	}).(CertificateDescriptionResponseArrayOutput)
+}
+
+// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
+func (o CertificateAuthorityOutput) CertificatePolicy() CertificateAuthorityPolicyResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthority) CertificateAuthorityPolicyResponseOutput { return v.CertificatePolicy }).(CertificateAuthorityPolicyResponseOutput)
+}
+
+// Immutable. The config used to create a self-signed X.509 certificate or CSR.
+func (o CertificateAuthorityOutput) Config() CertificateConfigResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthority) CertificateConfigResponseOutput { return v.Config }).(CertificateConfigResponseOutput)
+}
+
+// The time at which this CertificateAuthority was created.
+func (o CertificateAuthorityOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The time at which this CertificateAuthority will be deleted, if scheduled for deletion.
+func (o CertificateAuthorityOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
+func (o CertificateAuthorityOutput) GcsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.GcsBucket }).(pulumi.StringOutput)
+}
+
+// Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
+func (o CertificateAuthorityOutput) IssuingOptions() IssuingOptionsResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthority) IssuingOptionsResponseOutput { return v.IssuingOptions }).(IssuingOptionsResponseOutput)
+}
+
+// Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+func (o CertificateAuthorityOutput) KeySpec() KeyVersionSpecResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthority) KeyVersionSpecResponseOutput { return v.KeySpec }).(KeyVersionSpecResponseOutput)
+}
+
+// Optional. Labels with user-defined metadata.
+func (o CertificateAuthorityOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+func (o CertificateAuthorityOutput) Lifetime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Lifetime }).(pulumi.StringOutput)
+}
+
+// The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
+func (o CertificateAuthorityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// This CertificateAuthority's certificate chain, including the current CertificateAuthority's certificate. Ordered such that the root issuer is the final element (consistent with RFC 5246). For a self-signed CA, this will only list the current CertificateAuthority's certificate.
+func (o CertificateAuthorityOutput) PemCaCertificates() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringArrayOutput { return v.PemCaCertificates }).(pulumi.StringArrayOutput)
+}
+
+// The State for this CertificateAuthority.
+func (o CertificateAuthorityOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
+func (o CertificateAuthorityOutput) SubordinateConfig() SubordinateConfigResponseOutput {
+	return o.ApplyT(func(v *CertificateAuthority) SubordinateConfigResponseOutput { return v.SubordinateConfig }).(SubordinateConfigResponseOutput)
+}
+
+// Immutable. The Tier of this CertificateAuthority.
+func (o CertificateAuthorityOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
+}
+
+// Immutable. The Type of this CertificateAuthority.
+func (o CertificateAuthorityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time at which this CertificateAuthority was updated.
+func (o CertificateAuthorityOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateAuthority) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateAuthorityInput)(nil)).Elem(), &CertificateAuthority{})
 	pulumi.RegisterOutputType(CertificateAuthorityOutput{})

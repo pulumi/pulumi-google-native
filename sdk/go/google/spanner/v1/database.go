@@ -146,6 +146,56 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
+// If exists, the time at which the database creation started.
+func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The dialect of the Cloud Spanner Database.
+func (o DatabaseOutput) DatabaseDialect() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseDialect }).(pulumi.StringOutput)
+}
+
+// The read-write region which contains the database's leader replicas. This is the same as the value of default_leader database option set using DatabaseAdmin.CreateDatabase or DatabaseAdmin.UpdateDatabaseDdl. If not explicitly set, this is empty.
+func (o DatabaseOutput) DefaultLeader() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DefaultLeader }).(pulumi.StringOutput)
+}
+
+// Earliest timestamp at which older versions of the data can be read. This value is continuously updated by Cloud Spanner and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
+func (o DatabaseOutput) EarliestVersionTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.EarliestVersionTime }).(pulumi.StringOutput)
+}
+
+// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
+func (o DatabaseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v *Database) EncryptionConfigResponseOutput { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
+// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
+func (o DatabaseOutput) EncryptionInfo() EncryptionInfoResponseArrayOutput {
+	return o.ApplyT(func(v *Database) EncryptionInfoResponseArrayOutput { return v.EncryptionInfo }).(EncryptionInfoResponseArrayOutput)
+}
+
+// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+func (o DatabaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Applicable only for restored databases. Contains information about the restore source.
+func (o DatabaseOutput) RestoreInfo() RestoreInfoResponseOutput {
+	return o.ApplyT(func(v *Database) RestoreInfoResponseOutput { return v.RestoreInfo }).(RestoreInfoResponseOutput)
+}
+
+// The current database state.
+func (o DatabaseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The period in which Cloud Spanner retains all versions of data for the database. This is the same as the value of version_retention_period database option set using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
+func (o DatabaseOutput) VersionRetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.VersionRetentionPeriod }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInput)(nil)).Elem(), &Database{})
 	pulumi.RegisterOutputType(DatabaseOutput{})

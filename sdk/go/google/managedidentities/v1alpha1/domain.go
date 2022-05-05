@@ -162,6 +162,71 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
+func (o DomainOutput) AuditLogsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.AuditLogsEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Network can be added using UpdateDomain later. Domain is only available on network part of authorized_networks. Caller needs to make sure that CIDR subnets do not overlap between networks, else domain creation will fail.
+func (o DomainOutput) AuthorizedNetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.AuthorizedNetworks }).(pulumi.StringArrayOutput)
+}
+
+// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
+func (o DomainOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
+func (o DomainOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user provided metadata
+func (o DomainOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+func (o DomainOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringArrayOutput { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
+func (o DomainOutput) ManagedIdentitiesAdminName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ManagedIdentitiesAdminName }).(pulumi.StringOutput)
+}
+
+// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+func (o DomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+func (o DomainOutput) ReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+// The current state of this domain.
+func (o DomainOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current status of this domain, if available.
+func (o DomainOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// The current trusts associated with the domain.
+func (o DomainOutput) Trusts() TrustResponseArrayOutput {
+	return o.ApplyT(func(v *Domain) TrustResponseArrayOutput { return v.Trusts }).(TrustResponseArrayOutput)
+}
+
+// Last update time. Synthetic field is populated automatically by CCFE.
+func (o DomainOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainInput)(nil)).Elem(), &Domain{})
 	pulumi.RegisterOutputType(DomainOutput{})

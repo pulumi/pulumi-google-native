@@ -162,6 +162,41 @@ func (o PageOutput) ToPageOutputWithContext(ctx context.Context) PageOutput {
 	return o
 }
 
+// The human-readable name of the page, unique within the flow.
+func (o PageOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The fulfillment to call when the session is entering the page.
+func (o PageOutput) EntryFulfillment() GoogleCloudDialogflowCxV3FulfillmentResponseOutput {
+	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3FulfillmentResponseOutput { return v.EntryFulfillment }).(GoogleCloudDialogflowCxV3FulfillmentResponseOutput)
+}
+
+// Handlers associated with the page to handle events such as webhook errors, no match or no input.
+func (o PageOutput) EventHandlers() GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput {
+	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput { return v.EventHandlers }).(GoogleCloudDialogflowCxV3EventHandlerResponseArrayOutput)
+}
+
+// The form associated with the page, used for collecting parameters relevant to the page.
+func (o PageOutput) Form() GoogleCloudDialogflowCxV3FormResponseOutput {
+	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3FormResponseOutput { return v.Form }).(GoogleCloudDialogflowCxV3FormResponseOutput)
+}
+
+// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
+func (o PageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+func (o PageOutput) TransitionRouteGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Page) pulumi.StringArrayOutput { return v.TransitionRouteGroups }).(pulumi.StringArrayOutput)
+}
+
+// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
+func (o PageOutput) TransitionRoutes() GoogleCloudDialogflowCxV3TransitionRouteResponseArrayOutput {
+	return o.ApplyT(func(v *Page) GoogleCloudDialogflowCxV3TransitionRouteResponseArrayOutput { return v.TransitionRoutes }).(GoogleCloudDialogflowCxV3TransitionRouteResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PageInput)(nil)).Elem(), &Page{})
 	pulumi.RegisterOutputType(PageOutput{})

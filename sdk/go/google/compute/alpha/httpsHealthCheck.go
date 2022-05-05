@@ -170,6 +170,71 @@ func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutputWithContext(ctx context.
 	return o
 }
 
+// How often (in seconds) to send a health check. The default value is 5 seconds.
+func (o HttpsHealthCheckOutput) CheckIntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.IntOutput { return v.CheckIntervalSec }).(pulumi.IntOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o HttpsHealthCheckOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o HttpsHealthCheckOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
+func (o HttpsHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.IntOutput { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// The value of the host header in the HTTPS health check request. If left empty (default value), the public IP on behalf of which this health check is performed will be used.
+func (o HttpsHealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// Type of the resource.
+func (o HttpsHealthCheckOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o HttpsHealthCheckOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The TCP port number for the HTTPS health check request. The default value is 443.
+func (o HttpsHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// The request path of the HTTPS health check request. The default value is "/".
+func (o HttpsHealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o HttpsHealthCheckOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o HttpsHealthCheckOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
+func (o HttpsHealthCheckOutput) TimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.IntOutput { return v.TimeoutSec }).(pulumi.IntOutput)
+}
+
+// A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
+func (o HttpsHealthCheckOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *HttpsHealthCheck) pulumi.IntOutput { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpsHealthCheckInput)(nil)).Elem(), &HttpsHealthCheck{})
 	pulumi.RegisterOutputType(HttpsHealthCheckOutput{})

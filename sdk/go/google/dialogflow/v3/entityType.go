@@ -166,6 +166,48 @@ func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) Ent
 	return o
 }
 
+// Indicates whether the entity type can be automatically expanded.
+func (o EntityTypeOutput) AutoExpansionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.AutoExpansionMode }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the entity type, unique within the agent.
+func (o EntityTypeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Enables fuzzy entity extraction during classification.
+func (o EntityTypeOutput) EnableFuzzyExtraction() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.BoolOutput { return v.EnableFuzzyExtraction }).(pulumi.BoolOutput)
+}
+
+// The collection of entity entries associated with the entity type.
+func (o EntityTypeOutput) Entities() GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput {
+	return o.ApplyT(func(v *EntityType) GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput { return v.Entities }).(GoogleCloudDialogflowCxV3EntityTypeEntityResponseArrayOutput)
+}
+
+// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
+func (o EntityTypeOutput) ExcludedPhrases() GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayOutput {
+	return o.ApplyT(func(v *EntityType) GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayOutput {
+		return v.ExcludedPhrases
+	}).(GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponseArrayOutput)
+}
+
+// Indicates the kind of entity type.
+func (o EntityTypeOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
+func (o EntityTypeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
+func (o EntityTypeOutput) Redact() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.BoolOutput { return v.Redact }).(pulumi.BoolOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeInput)(nil)).Elem(), &EntityType{})
 	pulumi.RegisterOutputType(EntityTypeOutput{})

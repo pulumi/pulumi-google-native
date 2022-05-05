@@ -146,6 +146,40 @@ func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) E
 	return o
 }
 
+// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
+func (o EnvironmentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+func (o EnvironmentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The name of the environment. Format: `projects//locations//agents//environments/`.
+func (o EnvironmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The test cases config for continuous tests of this environment.
+func (o EnvironmentOutput) TestCasesConfig() GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput {
+		return v.TestCasesConfig
+	}).(GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigResponseOutput)
+}
+
+// Update time of this environment.
+func (o EnvironmentOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+func (o EnvironmentOutput) VersionConfigs() GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutput {
+		return v.VersionConfigs
+	}).(GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), &Environment{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})

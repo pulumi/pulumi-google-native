@@ -142,6 +142,46 @@ func (o TagKeyOutput) ToTagKeyOutputWithContext(ctx context.Context) TagKeyOutpu
 	return o
 }
 
+// Creation time.
+func (o TagKeyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
+func (o TagKeyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagKeyRequest for details.
+func (o TagKeyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey.
+func (o TagKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. Namespaced name of the TagKey.
+func (o TagKeyOutput) NamespacedName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.NamespacedName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
+func (o TagKeyOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+func (o TagKeyOutput) ShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
+}
+
+// Update time.
+func (o TagKeyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TagKey) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagKeyInput)(nil)).Elem(), &TagKey{})
 	pulumi.RegisterOutputType(TagKeyOutput{})

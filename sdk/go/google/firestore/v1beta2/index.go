@@ -128,6 +128,26 @@ func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
 }
 
+// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
+func (o IndexOutput) Fields() GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput {
+	return o.ApplyT(func(v *Index) GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput { return v.Fields }).(GoogleFirestoreAdminV1beta2IndexFieldResponseArrayOutput)
+}
+
+// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
+func (o IndexOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
+func (o IndexOutput) QueryScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.QueryScope }).(pulumi.StringOutput)
+}
+
+// The serving state of the index.
+func (o IndexOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexInput)(nil)).Elem(), &Index{})
 	pulumi.RegisterOutputType(IndexOutput{})

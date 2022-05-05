@@ -150,6 +150,48 @@ func (o ClientTlsPolicyOutput) ToClientTlsPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
+func (o ClientTlsPolicyOutput) ClientCertificate() GoogleCloudNetworksecurityV1CertificateProviderResponseOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) GoogleCloudNetworksecurityV1CertificateProviderResponseOutput {
+		return v.ClientCertificate
+	}).(GoogleCloudNetworksecurityV1CertificateProviderResponseOutput)
+}
+
+// The timestamp when the resource was created.
+func (o ClientTlsPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Free-text description of the resource.
+func (o ClientTlsPolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Set of label tags associated with the resource.
+func (o ClientTlsPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
+func (o ClientTlsPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
+func (o ClientTlsPolicyOutput) ServerValidationCa() ValidationCAResponseArrayOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) ValidationCAResponseArrayOutput { return v.ServerValidationCa }).(ValidationCAResponseArrayOutput)
+}
+
+// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
+func (o ClientTlsPolicyOutput) Sni() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.Sni }).(pulumi.StringOutput)
+}
+
+// The timestamp when the resource was updated.
+func (o ClientTlsPolicyOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClientTlsPolicy) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyInput)(nil)).Elem(), &ClientTlsPolicy{})
 	pulumi.RegisterOutputType(ClientTlsPolicyOutput{})

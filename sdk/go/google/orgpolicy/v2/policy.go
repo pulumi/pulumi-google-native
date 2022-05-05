@@ -124,6 +124,23 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
+// Deprecated.
+//
+// Deprecated: Deprecated.
+func (o PolicyOutput) Alternate() GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput {
+	return o.ApplyT(func(v *Policy) GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput { return v.Alternate }).(GoogleCloudOrgpolicyV2AlternatePolicySpecResponseOutput)
+}
+
+// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
+func (o PolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Basic information about the Organization Policy.
+func (o PolicyOutput) Spec() GoogleCloudOrgpolicyV2PolicySpecResponseOutput {
+	return o.ApplyT(func(v *Policy) GoogleCloudOrgpolicyV2PolicySpecResponseOutput { return v.Spec }).(GoogleCloudOrgpolicyV2PolicySpecResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInput)(nil)).Elem(), &Policy{})
 	pulumi.RegisterOutputType(PolicyOutput{})

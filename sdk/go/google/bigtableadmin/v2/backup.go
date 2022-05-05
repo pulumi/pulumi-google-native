@@ -153,6 +153,46 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// The encryption information for the backup.
+func (o BackupOutput) EncryptionInfo() EncryptionInfoResponseOutput {
+	return o.ApplyT(func(v *Backup) EncryptionInfoResponseOutput { return v.EncryptionInfo }).(EncryptionInfoResponseOutput)
+}
+
+// `end_time` is the time that the backup was finished. The row data in the backup will be no newer than this timestamp.
+func (o BackupOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+func (o BackupOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
+func (o BackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Size of the backup in bytes.
+func (o BackupOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+func (o BackupOutput) SourceTable() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceTable }).(pulumi.StringOutput)
+}
+
+// `start_time` is the time that the backup was started (i.e. approximately the time the CreateBackup request is received). The row data in this backup will be no older than this timestamp.
+func (o BackupOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The current state of the backup.
+func (o BackupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInput)(nil)).Elem(), &Backup{})
 	pulumi.RegisterOutputType(BackupOutput{})

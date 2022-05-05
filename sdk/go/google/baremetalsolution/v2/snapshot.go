@@ -135,6 +135,31 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
+// The creation time of the storage volume snapshot.
+func (o SnapshotOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the storage volume snapshot.
+func (o SnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name of the storage volume snapshot.
+func (o SnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The size of the storage volume snapshot, in bytes.
+func (o SnapshotOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// The storage volume this snapshot belongs to.
+func (o SnapshotOutput) StorageVolume() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.StorageVolume }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotInput)(nil)).Elem(), &Snapshot{})
 	pulumi.RegisterOutputType(SnapshotOutput{})

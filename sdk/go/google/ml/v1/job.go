@@ -161,6 +161,71 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// When the job was created.
+func (o JobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// When the job processing was completed.
+func (o JobOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The details of a failure or a cancellation.
+func (o JobOutput) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
+func (o JobOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The user-specified id of the job.
+func (o JobOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
+}
+
+// It's only effect when the job is in QUEUED state. If it's positive, it indicates the job's position in the job scheduler. It's 0 when the job is already scheduled.
+func (o JobOutput) JobPosition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.JobPosition }).(pulumi.StringOutput)
+}
+
+// Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+func (o JobOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Input parameters to create a prediction job.
+func (o JobOutput) PredictionInput() GoogleCloudMlV1__PredictionInputResponseOutput {
+	return o.ApplyT(func(v *Job) GoogleCloudMlV1__PredictionInputResponseOutput { return v.PredictionInput }).(GoogleCloudMlV1__PredictionInputResponseOutput)
+}
+
+// The current prediction job result.
+func (o JobOutput) PredictionOutput() GoogleCloudMlV1__PredictionOutputResponseOutput {
+	return o.ApplyT(func(v *Job) GoogleCloudMlV1__PredictionOutputResponseOutput { return v.PredictionOutput }).(GoogleCloudMlV1__PredictionOutputResponseOutput)
+}
+
+// When the job processing was started.
+func (o JobOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The detailed state of a job.
+func (o JobOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Input parameters to create a training job.
+func (o JobOutput) TrainingInput() GoogleCloudMlV1__TrainingInputResponseOutput {
+	return o.ApplyT(func(v *Job) GoogleCloudMlV1__TrainingInputResponseOutput { return v.TrainingInput }).(GoogleCloudMlV1__TrainingInputResponseOutput)
+}
+
+// The current training job result.
+func (o JobOutput) TrainingOutput() GoogleCloudMlV1__TrainingOutputResponseOutput {
+	return o.ApplyT(func(v *Job) GoogleCloudMlV1__TrainingOutputResponseOutput { return v.TrainingOutput }).(GoogleCloudMlV1__TrainingOutputResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobInput)(nil)).Elem(), &Job{})
 	pulumi.RegisterOutputType(JobOutput{})

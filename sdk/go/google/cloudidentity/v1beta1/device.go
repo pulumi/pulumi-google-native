@@ -179,6 +179,158 @@ func (o DeviceOutput) ToDeviceOutputWithContext(ctx context.Context) DeviceOutpu
 	return o
 }
 
+// Attributes specific to Android devices.
+func (o DeviceOutput) AndroidSpecificAttributes() AndroidAttributesResponseOutput {
+	return o.ApplyT(func(v *Device) AndroidAttributesResponseOutput { return v.AndroidSpecificAttributes }).(AndroidAttributesResponseOutput)
+}
+
+// Asset tag of the device.
+func (o DeviceOutput) AssetTag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.AssetTag }).(pulumi.StringOutput)
+}
+
+// Baseband version of the device.
+func (o DeviceOutput) BasebandVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.BasebandVersion }).(pulumi.StringOutput)
+}
+
+// Device bootloader version. Example: 0.6.7.
+func (o DeviceOutput) BootloaderVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.BootloaderVersion }).(pulumi.StringOutput)
+}
+
+// Device brand. Example: Samsung.
+func (o DeviceOutput) Brand() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Brand }).(pulumi.StringOutput)
+}
+
+// Build number of the device.
+func (o DeviceOutput) BuildNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.BuildNumber }).(pulumi.StringOutput)
+}
+
+// Represents whether the Device is compromised.
+func (o DeviceOutput) CompromisedState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.CompromisedState }).(pulumi.StringOutput)
+}
+
+// When the Company-Owned device was imported. This field is empty for BYOD devices.
+func (o DeviceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Unique identifier for the device.
+func (o DeviceOutput) DeviceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DeviceId }).(pulumi.StringOutput)
+}
+
+// Type of device.
+func (o DeviceOutput) DeviceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.DeviceType }).(pulumi.StringOutput)
+}
+
+// Whether developer options is enabled on device.
+func (o DeviceOutput) EnabledDeveloperOptions() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Device) pulumi.BoolOutput { return v.EnabledDeveloperOptions }).(pulumi.BoolOutput)
+}
+
+// Whether USB debugging is enabled on device.
+func (o DeviceOutput) EnabledUsbDebugging() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Device) pulumi.BoolOutput { return v.EnabledUsbDebugging }).(pulumi.BoolOutput)
+}
+
+// Device encryption state.
+func (o DeviceOutput) EncryptionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.EncryptionState }).(pulumi.StringOutput)
+}
+
+// Attributes specific to Endpoint Verification devices.
+func (o DeviceOutput) EndpointVerificationSpecificAttributes() EndpointVerificationSpecificAttributesResponseOutput {
+	return o.ApplyT(func(v *Device) EndpointVerificationSpecificAttributesResponseOutput {
+		return v.EndpointVerificationSpecificAttributes
+	}).(EndpointVerificationSpecificAttributesResponseOutput)
+}
+
+// IMEI number of device if GSM device; empty otherwise.
+func (o DeviceOutput) Imei() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Imei }).(pulumi.StringOutput)
+}
+
+// Kernel version of the device.
+func (o DeviceOutput) KernelVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.KernelVersion }).(pulumi.StringOutput)
+}
+
+// Most recent time when device synced with this service.
+func (o DeviceOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// Management state of the device
+func (o DeviceOutput) ManagementState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.ManagementState }).(pulumi.StringOutput)
+}
+
+// Device manufacturer. Example: Motorola.
+func (o DeviceOutput) Manufacturer() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Manufacturer }).(pulumi.StringOutput)
+}
+
+// MEID number of device if CDMA device; empty otherwise.
+func (o DeviceOutput) Meid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Meid }).(pulumi.StringOutput)
+}
+
+// Model name of device. Example: Pixel 3.
+func (o DeviceOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Model }).(pulumi.StringOutput)
+}
+
+// [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device_id}`, where device_id is the unique id assigned to the Device.
+func (o DeviceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Mobile or network operator of device, if available.
+func (o DeviceOutput) NetworkOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.NetworkOperator }).(pulumi.StringOutput)
+}
+
+// OS version of the device. Example: Android 8.1.0.
+func (o DeviceOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+// Domain name for Google accounts on device. Type for other accounts on device. On Android, will only be populated if |ownership_privilege| is |PROFILE_OWNER| or |DEVICE_OWNER|. Does not include the account signed in to the device policy app if that account's domain has only one account. Examples: "com.example", "xyz.com".
+func (o DeviceOutput) OtherAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.OtherAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Whether the device is owned by the company or an individual
+func (o DeviceOutput) OwnerType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.OwnerType }).(pulumi.StringOutput)
+}
+
+// OS release version. Example: 6.0.
+func (o DeviceOutput) ReleaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.ReleaseVersion }).(pulumi.StringOutput)
+}
+
+// OS security patch update time on device.
+func (o DeviceOutput) SecurityPatchTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.SecurityPatchTime }).(pulumi.StringOutput)
+}
+
+// Serial Number of device. Example: HT82V1A01076.
+func (o DeviceOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+// WiFi MAC addresses of device.
+func (o DeviceOutput) WifiMacAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.WifiMacAddresses }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeviceInput)(nil)).Elem(), &Device{})
 	pulumi.RegisterOutputType(DeviceOutput{})

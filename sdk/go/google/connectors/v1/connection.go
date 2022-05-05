@@ -178,6 +178,86 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// Optional. Configuration for establishing the connection's authentication with an external system.
+func (o ConnectionOutput) AuthConfig() AuthConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) AuthConfigResponseOutput { return v.AuthConfig }).(AuthConfigResponseOutput)
+}
+
+// Optional. Configuration for configuring the connection with an external system.
+func (o ConnectionOutput) ConfigVariables() ConfigVariableResponseArrayOutput {
+	return o.ApplyT(func(v *Connection) ConfigVariableResponseArrayOutput { return v.ConfigVariables }).(ConfigVariableResponseArrayOutput)
+}
+
+// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+func (o ConnectionOutput) ConnectorVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectorVersion }).(pulumi.StringOutput)
+}
+
+// Created time.
+func (o ConnectionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the resource.
+func (o ConnectionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Outbound domains/hosts needs to be allowlisted.
+func (o ConnectionOutput) EgressBackends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringArrayOutput { return v.EgressBackends }).(pulumi.StringArrayOutput)
+}
+
+// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
+func (o ConnectionOutput) EnvoyImageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.EnvoyImageLocation }).(pulumi.StringOutput)
+}
+
+// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
+func (o ConnectionOutput) ImageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ImageLocation }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+func (o ConnectionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Configuration that indicates whether or not the Connection can be edited.
+func (o ConnectionOutput) LockConfig() LockConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) LockConfigResponseOutput { return v.LockConfig }).(LockConfigResponseOutput)
+}
+
+// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
+func (o ConnectionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Service account needed for runtime plane to access GCP resources.
+func (o ConnectionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
+func (o ConnectionOutput) ServiceDirectory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ServiceDirectory }).(pulumi.StringOutput)
+}
+
+// Current status of the connection.
+func (o ConnectionOutput) Status() ConnectionStatusResponseOutput {
+	return o.ApplyT(func(v *Connection) ConnectionStatusResponseOutput { return v.Status }).(ConnectionStatusResponseOutput)
+}
+
+// Optional. Suspended indicates if a user has suspended a connection or not.
+func (o ConnectionOutput) Suspended() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
+}
+
+// Updated time.
+func (o ConnectionOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInput)(nil)).Elem(), &Connection{})
 	pulumi.RegisterOutputType(ConnectionOutput{})

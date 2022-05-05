@@ -129,6 +129,43 @@ func (o ConversationDatasetOutput) ToConversationDatasetOutputWithContext(ctx co
 	return o
 }
 
+// The number of conversations this conversation dataset contains.
+func (o ConversationDatasetOutput) ConversationCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.ConversationCount }).(pulumi.StringOutput)
+}
+
+// Metadata set during conversation data import.
+func (o ConversationDatasetOutput) ConversationInfo() GoogleCloudDialogflowV2ConversationInfoResponseOutput {
+	return o.ApplyT(func(v *ConversationDataset) GoogleCloudDialogflowV2ConversationInfoResponseOutput {
+		return v.ConversationInfo
+	}).(GoogleCloudDialogflowV2ConversationInfoResponseOutput)
+}
+
+// Creation time of this dataset.
+func (o ConversationDatasetOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The description of the dataset. Maximum of 10000 bytes.
+func (o ConversationDatasetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the dataset. Maximum of 64 bytes.
+func (o ConversationDatasetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Input configurations set during conversation data import.
+func (o ConversationDatasetOutput) InputConfig() GoogleCloudDialogflowV2InputConfigResponseOutput {
+	return o.ApplyT(func(v *ConversationDataset) GoogleCloudDialogflowV2InputConfigResponseOutput { return v.InputConfig }).(GoogleCloudDialogflowV2InputConfigResponseOutput)
+}
+
+// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
+func (o ConversationDatasetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationDataset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationDatasetInput)(nil)).Elem(), &ConversationDataset{})
 	pulumi.RegisterOutputType(ConversationDatasetOutput{})

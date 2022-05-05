@@ -210,6 +210,88 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
+// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
+func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingResponseOutput {
+	return o.ApplyT(func(v *NodePool) NodePoolAutoscalingResponseOutput { return v.Autoscaling }).(NodePoolAutoscalingResponseOutput)
+}
+
+// Which conditions caused the current node pool state.
+func (o NodePoolOutput) Conditions() StatusConditionResponseArrayOutput {
+	return o.ApplyT(func(v *NodePool) StatusConditionResponseArrayOutput { return v.Conditions }).(StatusConditionResponseArrayOutput)
+}
+
+// The node configuration of the pool.
+func (o NodePoolOutput) Config() NodeConfigResponseOutput {
+	return o.ApplyT(func(v *NodePool) NodeConfigResponseOutput { return v.Config }).(NodeConfigResponseOutput)
+}
+
+// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
+func (o NodePoolOutput) InitialNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
+}
+
+// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
+func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.InstanceGroupUrls }).(pulumi.StringArrayOutput)
+}
+
+// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
+func (o NodePoolOutput) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// NodeManagement configuration for this NodePool.
+func (o NodePoolOutput) Management() NodeManagementResponseOutput {
+	return o.ApplyT(func(v *NodePool) NodeManagementResponseOutput { return v.Management }).(NodeManagementResponseOutput)
+}
+
+// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
+func (o NodePoolOutput) MaxPodsConstraint() MaxPodsConstraintResponseOutput {
+	return o.ApplyT(func(v *NodePool) MaxPodsConstraintResponseOutput { return v.MaxPodsConstraint }).(MaxPodsConstraintResponseOutput)
+}
+
+// The name of the node pool.
+func (o NodePoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+func (o NodePoolOutput) NetworkConfig() NodeNetworkConfigResponseOutput {
+	return o.ApplyT(func(v *NodePool) NodeNetworkConfigResponseOutput { return v.NetworkConfig }).(NodeNetworkConfigResponseOutput)
+}
+
+// [Output only] The pod CIDR block size per node in this node pool.
+func (o NodePoolOutput) PodIpv4CidrSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.IntOutput { return v.PodIpv4CidrSize }).(pulumi.IntOutput)
+}
+
+// [Output only] Server-defined URL for the resource.
+func (o NodePoolOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Output only] The status of the nodes in this pool instance.
+func (o NodePoolOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+//
+// Deprecated: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
+func (o NodePoolOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
+// Upgrade settings control disruption and speed of the upgrade.
+func (o NodePoolOutput) UpgradeSettings() UpgradeSettingsResponseOutput {
+	return o.ApplyT(func(v *NodePool) UpgradeSettingsResponseOutput { return v.UpgradeSettings }).(UpgradeSettingsResponseOutput)
+}
+
+// The version of the Kubernetes of this node.
+func (o NodePoolOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolInput)(nil)).Elem(), &NodePool{})
 	pulumi.RegisterOutputType(NodePoolOutput{})

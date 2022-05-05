@@ -163,6 +163,48 @@ func (o IntentOutput) ToIntentOutputWithContext(ctx context.Context) IntentOutpu
 	return o
 }
 
+// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+func (o IntentOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The human-readable name of the intent, unique within the agent.
+func (o IntentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
+func (o IntentOutput) IsFallback() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Intent) pulumi.BoolOutput { return v.IsFallback }).(pulumi.BoolOutput)
+}
+
+// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
+func (o IntentOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
+func (o IntentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The collection of parameters associated with the intent.
+func (o IntentOutput) Parameters() GoogleCloudDialogflowCxV3IntentParameterResponseArrayOutput {
+	return o.ApplyT(func(v *Intent) GoogleCloudDialogflowCxV3IntentParameterResponseArrayOutput { return v.Parameters }).(GoogleCloudDialogflowCxV3IntentParameterResponseArrayOutput)
+}
+
+// The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+func (o IntentOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *Intent) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The collection of training phrases the agent is trained on to identify the intent.
+func (o IntentOutput) TrainingPhrases() GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseArrayOutput {
+	return o.ApplyT(func(v *Intent) GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseArrayOutput {
+		return v.TrainingPhrases
+	}).(GoogleCloudDialogflowCxV3IntentTrainingPhraseResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IntentInput)(nil)).Elem(), &Intent{})
 	pulumi.RegisterOutputType(IntentOutput{})

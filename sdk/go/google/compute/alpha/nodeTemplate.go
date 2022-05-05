@@ -172,6 +172,84 @@ func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o NodeTemplateOutput) Accelerators() AcceleratorConfigResponseArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) AcceleratorConfigResponseArrayOutput { return v.Accelerators }).(AcceleratorConfigResponseArrayOutput)
+}
+
+// CPU overcommit.
+func (o NodeTemplateOutput) CpuOvercommitType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.CpuOvercommitType }).(pulumi.StringOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o NodeTemplateOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o NodeTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o NodeTemplateOutput) Disks() LocalDiskResponseArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) LocalDiskResponseArrayOutput { return v.Disks }).(LocalDiskResponseArrayOutput)
+}
+
+// The type of the resource. Always compute#nodeTemplate for node templates.
+func (o NodeTemplateOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o NodeTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Labels to use for node affinity, which will be used in instance scheduling.
+func (o NodeTemplateOutput) NodeAffinityLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringMapOutput { return v.NodeAffinityLabels }).(pulumi.StringMapOutput)
+}
+
+// The node type to use for nodes group that are created from this template.
+func (o NodeTemplateOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+func (o NodeTemplateOutput) NodeTypeFlexibility() NodeTemplateNodeTypeFlexibilityResponseOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateNodeTypeFlexibilityResponseOutput { return v.NodeTypeFlexibility }).(NodeTemplateNodeTypeFlexibilityResponseOutput)
+}
+
+// The name of the region where the node template resides, such as us-central1.
+func (o NodeTemplateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o NodeTemplateOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o NodeTemplateOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
+func (o NodeTemplateOutput) ServerBinding() ServerBindingResponseOutput {
+	return o.ApplyT(func(v *NodeTemplate) ServerBindingResponseOutput { return v.ServerBinding }).(ServerBindingResponseOutput)
+}
+
+// The status of the node template. One of the following values: CREATING, READY, and DELETING.
+func (o NodeTemplateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// An optional, human-readable explanation of the status.
+func (o NodeTemplateOutput) StatusMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeTemplate) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTemplateInput)(nil)).Elem(), &NodeTemplate{})
 	pulumi.RegisterOutputType(NodeTemplateOutput{})

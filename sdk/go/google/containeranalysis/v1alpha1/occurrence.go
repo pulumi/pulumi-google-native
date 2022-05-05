@@ -226,6 +226,121 @@ func (o OccurrenceOutput) ToOccurrenceOutputWithContext(ctx context.Context) Occ
 	return o
 }
 
+// Describes an attestation of an artifact.
+func (o OccurrenceOutput) Attestation() AttestationResponseOutput {
+	return o.ApplyT(func(v *Occurrence) AttestationResponseOutput { return v.Attestation }).(AttestationResponseOutput)
+}
+
+// Build details for a verifiable build.
+func (o OccurrenceOutput) BuildDetails() BuildDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) BuildDetailsResponseOutput { return v.BuildDetails }).(BuildDetailsResponseOutput)
+}
+
+// Describes whether or not a resource passes compliance checks.
+func (o OccurrenceOutput) Compliance() ComplianceOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) ComplianceOccurrenceResponseOutput { return v.Compliance }).(ComplianceOccurrenceResponseOutput)
+}
+
+// The time this `Occurrence` was created.
+func (o OccurrenceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Describes the deployment of an artifact on a runtime.
+func (o OccurrenceOutput) Deployment() DeploymentResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DeploymentResponseOutput { return v.Deployment }).(DeploymentResponseOutput)
+}
+
+// Describes how this resource derives from the basis in the associated note.
+func (o OccurrenceOutput) DerivedImage() DerivedResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DerivedResponseOutput { return v.DerivedImage }).(DerivedResponseOutput)
+}
+
+// Describes the initial scan status for this resource.
+func (o OccurrenceOutput) Discovered() DiscoveredResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DiscoveredResponseOutput { return v.Discovered }).(DiscoveredResponseOutput)
+}
+
+// This represents a DSSE attestation occurrence
+func (o OccurrenceOutput) DsseAttestation() DSSEAttestationOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DSSEAttestationOccurrenceResponseOutput { return v.DsseAttestation }).(DSSEAttestationOccurrenceResponseOutput)
+}
+
+// https://github.com/secure-systems-lab/dsse
+func (o OccurrenceOutput) Envelope() EnvelopeResponseOutput {
+	return o.ApplyT(func(v *Occurrence) EnvelopeResponseOutput { return v.Envelope }).(EnvelopeResponseOutput)
+}
+
+// Describes the installation of a package on the linked resource.
+func (o OccurrenceOutput) Installation() InstallationResponseOutput {
+	return o.ApplyT(func(v *Occurrence) InstallationResponseOutput { return v.Installation }).(InstallationResponseOutput)
+}
+
+// This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
+func (o OccurrenceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the `Occurrence` in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID}"
+func (o OccurrenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
+func (o OccurrenceOutput) NoteName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.NoteName }).(pulumi.StringOutput)
+}
+
+// A description of actions that can be taken to remedy the `Note`
+func (o OccurrenceOutput) Remediation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.Remediation }).(pulumi.StringOutput)
+}
+
+//  The resource for which the `Occurrence` applies.
+func (o OccurrenceOutput) Resource() ResourceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) ResourceResponseOutput { return v.Resource }).(ResourceResponseOutput)
+}
+
+// The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
+func (o OccurrenceOutput) ResourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.ResourceUrl }).(pulumi.StringOutput)
+}
+
+// Describes a specific software bill of materials document.
+func (o OccurrenceOutput) Sbom() DocumentOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) DocumentOccurrenceResponseOutput { return v.Sbom }).(DocumentOccurrenceResponseOutput)
+}
+
+// Describes a specific SPDX File.
+func (o OccurrenceOutput) SpdxFile() FileOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) FileOccurrenceResponseOutput { return v.SpdxFile }).(FileOccurrenceResponseOutput)
+}
+
+// Describes a specific SPDX Package.
+func (o OccurrenceOutput) SpdxPackage() PackageInfoOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) PackageInfoOccurrenceResponseOutput { return v.SpdxPackage }).(PackageInfoOccurrenceResponseOutput)
+}
+
+// Describes a specific relationship between SPDX elements.
+func (o OccurrenceOutput) SpdxRelationship() RelationshipOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) RelationshipOccurrenceResponseOutput { return v.SpdxRelationship }).(RelationshipOccurrenceResponseOutput)
+}
+
+// The time this `Occurrence` was last updated.
+func (o OccurrenceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Occurrence) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Describes an upgrade.
+func (o OccurrenceOutput) Upgrade() UpgradeOccurrenceResponseOutput {
+	return o.ApplyT(func(v *Occurrence) UpgradeOccurrenceResponseOutput { return v.Upgrade }).(UpgradeOccurrenceResponseOutput)
+}
+
+// Details of a security vulnerability note.
+func (o OccurrenceOutput) VulnerabilityDetails() VulnerabilityDetailsResponseOutput {
+	return o.ApplyT(func(v *Occurrence) VulnerabilityDetailsResponseOutput { return v.VulnerabilityDetails }).(VulnerabilityDetailsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurrenceInput)(nil)).Elem(), &Occurrence{})
 	pulumi.RegisterOutputType(OccurrenceOutput{})

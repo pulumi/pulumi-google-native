@@ -156,6 +156,41 @@ func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return o
 }
 
+// The create time of the resource.
+func (o RouteOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Destination address for connection
+func (o RouteOutput) DestinationAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.DestinationAddress }).(pulumi.StringOutput)
+}
+
+// Destination port for connection
+func (o RouteOutput) DestinationPort() pulumi.IntOutput {
+	return o.ApplyT(func(v *Route) pulumi.IntOutput { return v.DestinationPort }).(pulumi.IntOutput)
+}
+
+// Display name.
+func (o RouteOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Labels.
+func (o RouteOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource's name.
+func (o RouteOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The update time of the resource.
+func (o RouteOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouteInput)(nil)).Elem(), &Route{})
 	pulumi.RegisterOutputType(RouteOutput{})

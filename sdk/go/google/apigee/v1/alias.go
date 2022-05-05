@@ -156,6 +156,21 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
+// Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
+func (o AliasOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.Alias }).(pulumi.StringOutput)
+}
+
+// Chain of certificates under this alias.
+func (o AliasOutput) CertsInfo() GoogleCloudApigeeV1CertificateResponseOutput {
+	return o.ApplyT(func(v *Alias) GoogleCloudApigeeV1CertificateResponseOutput { return v.CertsInfo }).(GoogleCloudApigeeV1CertificateResponseOutput)
+}
+
+// Type of alias.
+func (o AliasOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AliasInput)(nil)).Elem(), &Alias{})
 	pulumi.RegisterOutputType(AliasOutput{})

@@ -139,6 +139,36 @@ func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutpu
 	return o
 }
 
+// The create time timestamp.
+func (o SourceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User-provided description of the source.
+func (o SourceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The labels of the source.
+func (o SourceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Source name.
+func (o SourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The update time timestamp.
+func (o SourceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Source) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Vmware type source details.
+func (o SourceOutput) Vmware() VmwareSourceDetailsResponseOutput {
+	return o.ApplyT(func(v *Source) VmwareSourceDetailsResponseOutput { return v.Vmware }).(VmwareSourceDetailsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceInput)(nil)).Elem(), &Source{})
 	pulumi.RegisterOutputType(SourceOutput{})

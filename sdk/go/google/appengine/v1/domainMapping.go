@@ -123,6 +123,21 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 	return o
 }
 
+// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
+func (o DomainMappingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
+func (o DomainMappingOutput) ResourceRecords() ResourceRecordResponseArrayOutput {
+	return o.ApplyT(func(v *DomainMapping) ResourceRecordResponseArrayOutput { return v.ResourceRecords }).(ResourceRecordResponseArrayOutput)
+}
+
+// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
+func (o DomainMappingOutput) SslSettings() SslSettingsResponseOutput {
+	return o.ApplyT(func(v *DomainMapping) SslSettingsResponseOutput { return v.SslSettings }).(SslSettingsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainMappingInput)(nil)).Elem(), &DomainMapping{})
 	pulumi.RegisterOutputType(DomainMappingOutput{})

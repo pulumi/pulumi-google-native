@@ -163,6 +163,61 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
+// The create time timestamp.
+func (o EndpointOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// User-provided description of the endpoint
+func (o EndpointOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the endpoint's ILB Forwarding Rule.
+func (o EndpointOutput) EndpointForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointForwardingRule }).(pulumi.StringOutput)
+}
+
+// The IP address of the IDS Endpoint's ILB.
+func (o EndpointOutput) EndpointIp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.EndpointIp }).(pulumi.StringOutput)
+}
+
+// The labels of the endpoint.
+func (o EndpointOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the endpoint.
+func (o EndpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The fully qualified URL of the network to which the IDS Endpoint is attached.
+func (o EndpointOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Lowest threat severity that this endpoint will alert on.
+func (o EndpointOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
+}
+
+// Current state of the endpoint.
+func (o EndpointOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint should report traffic logs in addition to threat logs.
+func (o EndpointOutput) TrafficLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.BoolOutput { return v.TrafficLogs }).(pulumi.BoolOutput)
+}
+
+// The update time timestamp.
+func (o EndpointOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInput)(nil)).Elem(), &Endpoint{})
 	pulumi.RegisterOutputType(EndpointOutput{})

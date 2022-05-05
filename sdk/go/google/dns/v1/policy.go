@@ -143,6 +143,40 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 	return o
 }
 
+// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerConfigResponseOutput {
+	return o.ApplyT(func(v *Policy) PolicyAlternativeNameServerConfigResponseOutput { return v.AlternativeNameServerConfig }).(PolicyAlternativeNameServerConfigResponseOutput)
+}
+
+// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
+func (o PolicyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
+func (o PolicyOutput) EnableInboundForwarding() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolOutput { return v.EnableInboundForwarding }).(pulumi.BoolOutput)
+}
+
+// Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.
+func (o PolicyOutput) EnableLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Policy) pulumi.BoolOutput { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+func (o PolicyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// User-assigned name for this policy.
+func (o PolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// List of network names specifying networks to which this policy is applied.
+func (o PolicyOutput) Networks() PolicyNetworkResponseArrayOutput {
+	return o.ApplyT(func(v *Policy) PolicyNetworkResponseArrayOutput { return v.Networks }).(PolicyNetworkResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyInput)(nil)).Elem(), &Policy{})
 	pulumi.RegisterOutputType(PolicyOutput{})

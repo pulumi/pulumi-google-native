@@ -143,6 +143,41 @@ func (o DnsAuthorizationOutput) ToDnsAuthorizationOutputWithContext(ctx context.
 	return o
 }
 
+// The creation timestamp of a DnsAuthorization.
+func (o DnsAuthorizationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// One or more paragraphs of text description of a DnsAuthorization.
+func (o DnsAuthorizationOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// DNS Resource Record that needs to be added to DNS configuration.
+func (o DnsAuthorizationOutput) DnsResourceRecord() DnsResourceRecordResponseOutput {
+	return o.ApplyT(func(v *DnsAuthorization) DnsResourceRecordResponseOutput { return v.DnsResourceRecord }).(DnsResourceRecordResponseOutput)
+}
+
+// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+func (o DnsAuthorizationOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Set of labels associated with a DnsAuthorization.
+func (o DnsAuthorizationOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
+func (o DnsAuthorizationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The last update timestamp of a DnsAuthorization.
+func (o DnsAuthorizationOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationInput)(nil)).Elem(), &DnsAuthorization{})
 	pulumi.RegisterOutputType(DnsAuthorizationOutput{})

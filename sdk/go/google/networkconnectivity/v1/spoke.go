@@ -164,6 +164,61 @@ func (o SpokeOutput) ToSpokeOutputWithContext(ctx context.Context) SpokeOutput {
 	return o
 }
 
+// The time the spoke was created.
+func (o SpokeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// An optional description of the spoke.
+func (o SpokeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Immutable. The name of the hub that this spoke is attached to.
+func (o SpokeOutput) Hub() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Hub }).(pulumi.StringOutput)
+}
+
+// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+func (o SpokeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// VLAN attachments that are associated with the spoke.
+func (o SpokeOutput) LinkedInterconnectAttachments() LinkedInterconnectAttachmentsResponseOutput {
+	return o.ApplyT(func(v *Spoke) LinkedInterconnectAttachmentsResponseOutput { return v.LinkedInterconnectAttachments }).(LinkedInterconnectAttachmentsResponseOutput)
+}
+
+// Router appliance instances that are associated with the spoke.
+func (o SpokeOutput) LinkedRouterApplianceInstances() LinkedRouterApplianceInstancesResponseOutput {
+	return o.ApplyT(func(v *Spoke) LinkedRouterApplianceInstancesResponseOutput { return v.LinkedRouterApplianceInstances }).(LinkedRouterApplianceInstancesResponseOutput)
+}
+
+// VPN tunnels that are associated with the spoke.
+func (o SpokeOutput) LinkedVpnTunnels() LinkedVpnTunnelsResponseOutput {
+	return o.ApplyT(func(v *Spoke) LinkedVpnTunnelsResponseOutput { return v.LinkedVpnTunnels }).(LinkedVpnTunnelsResponseOutput)
+}
+
+// Immutable. The name of the spoke. Spoke names must be unique. They use the following form: `projects/{project_number}/locations/{region}/spokes/{spoke_id}`
+func (o SpokeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current lifecycle state of this spoke.
+func (o SpokeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+func (o SpokeOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// The time the spoke was last updated.
+func (o SpokeOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeInput)(nil)).Elem(), &Spoke{})
 	pulumi.RegisterOutputType(SpokeOutput{})

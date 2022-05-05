@@ -202,6 +202,106 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
+func (o ServiceOutput) ArtifactGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ArtifactGcsUri }).(pulumi.StringOutput)
+}
+
+// The time when the metastore service was created.
+func (o ServiceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. The database type that the Metastore service stores its data.
+func (o ServiceOutput) DatabaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DatabaseType }).(pulumi.StringOutput)
+}
+
+// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+func (o ServiceOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v *Service) EncryptionConfigResponseOutput { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
+// The URI of the endpoint used to access the metastore service.
+func (o ServiceOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.EndpointUri }).(pulumi.StringOutput)
+}
+
+// Configuration information specific to running Hive metastore software as the metastore service.
+func (o ServiceOutput) HiveMetastoreConfig() HiveMetastoreConfigResponseOutput {
+	return o.ApplyT(func(v *Service) HiveMetastoreConfigResponseOutput { return v.HiveMetastoreConfig }).(HiveMetastoreConfigResponseOutput)
+}
+
+// User-defined labels for the metastore service.
+func (o ServiceOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time. Maintenance window is not needed for services with the SPANNER database type.
+func (o ServiceOutput) MaintenanceWindow() MaintenanceWindowResponseOutput {
+	return o.ApplyT(func(v *Service) MaintenanceWindowResponseOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponseOutput)
+}
+
+// The setting that defines how metastore metadata should be integrated with external services and systems.
+func (o ServiceOutput) MetadataIntegration() MetadataIntegrationResponseOutput {
+	return o.ApplyT(func(v *Service) MetadataIntegrationResponseOutput { return v.MetadataIntegration }).(MetadataIntegrationResponseOutput)
+}
+
+// The metadata management activities of the metastore service.
+func (o ServiceOutput) MetadataManagementActivity() MetadataManagementActivityResponseOutput {
+	return o.ApplyT(func(v *Service) MetadataManagementActivityResponseOutput { return v.MetadataManagementActivity }).(MetadataManagementActivityResponseOutput)
+}
+
+// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+func (o ServiceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
+func (o ServiceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Immutable. The configuration specifying the network settings for the Dataproc Metastore service.
+func (o ServiceOutput) NetworkConfig() NetworkConfigResponseOutput {
+	return o.ApplyT(func(v *Service) NetworkConfigResponseOutput { return v.NetworkConfig }).(NetworkConfigResponseOutput)
+}
+
+// The TCP port at which the metastore service is reached. Default: 9083.
+func (o ServiceOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v *Service) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
+}
+
+// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
+func (o ServiceOutput) ReleaseChannel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// The current state of the metastore service.
+func (o ServiceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Additional information about the current state of the metastore service, if available.
+func (o ServiceOutput) StateMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.StateMessage }).(pulumi.StringOutput)
+}
+
+// The tier of the service.
+func (o ServiceOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
+}
+
+// The globally unique resource identifier of the metastore service.
+func (o ServiceOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the metastore service was last updated.
+func (o ServiceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceInput)(nil)).Elem(), &Service{})
 	pulumi.RegisterOutputType(ServiceOutput{})

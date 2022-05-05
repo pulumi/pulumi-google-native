@@ -124,6 +124,28 @@ func (o OrganizationReplayOutput) ToOrganizationReplayOutputWithContext(ctx cont
 	return o
 }
 
+// The configuration used for the `Replay`.
+func (o OrganizationReplayOutput) Config() GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput {
+	return o.ApplyT(func(v *OrganizationReplay) GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput { return v.Config }).(GoogleCloudPolicysimulatorV1ReplayConfigResponseOutput)
+}
+
+// The resource name of the `Replay`, which has the following format: `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`, where `{resource-id}` is the ID of the project, folder, or organization that owns the Replay. Example: `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+func (o OrganizationReplayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationReplay) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Summary statistics about the replayed log entries.
+func (o OrganizationReplayOutput) ResultsSummary() GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput {
+	return o.ApplyT(func(v *OrganizationReplay) GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput {
+		return v.ResultsSummary
+	}).(GoogleCloudPolicysimulatorV1ReplayResultsSummaryResponseOutput)
+}
+
+// The current state of the `Replay`.
+func (o OrganizationReplayOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationReplay) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationReplayInput)(nil)).Elem(), &OrganizationReplay{})
 	pulumi.RegisterOutputType(OrganizationReplayOutput{})

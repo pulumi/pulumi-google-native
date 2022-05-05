@@ -155,6 +155,66 @@ func (o LakeOutput) ToLakeOutputWithContext(ctx context.Context) LakeOutput {
 	return o
 }
 
+// Aggregated status of the underlying assets of the lake.
+func (o LakeOutput) AssetStatus() GoogleCloudDataplexV1AssetStatusResponseOutput {
+	return o.ApplyT(func(v *Lake) GoogleCloudDataplexV1AssetStatusResponseOutput { return v.AssetStatus }).(GoogleCloudDataplexV1AssetStatusResponseOutput)
+}
+
+// The time when the lake was created.
+func (o LakeOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of the lake.
+func (o LakeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. User friendly display name.
+func (o LakeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. User-defined labels for the lake.
+func (o LakeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. Settings to manage lake and Dataproc Metastore service instance association.
+func (o LakeOutput) Metastore() GoogleCloudDataplexV1LakeMetastoreResponseOutput {
+	return o.ApplyT(func(v *Lake) GoogleCloudDataplexV1LakeMetastoreResponseOutput { return v.Metastore }).(GoogleCloudDataplexV1LakeMetastoreResponseOutput)
+}
+
+// Metastore status of the lake.
+func (o LakeOutput) MetastoreStatus() GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput {
+	return o.ApplyT(func(v *Lake) GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput { return v.MetastoreStatus }).(GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput)
+}
+
+// The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
+func (o LakeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
+func (o LakeOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Current state of the lake.
+func (o LakeOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
+func (o LakeOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The time when the lake was last updated.
+func (o LakeOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lake) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeInput)(nil)).Elem(), &Lake{})
 	pulumi.RegisterOutputType(LakeOutput{})

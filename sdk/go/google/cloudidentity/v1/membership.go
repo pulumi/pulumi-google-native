@@ -128,6 +128,36 @@ func (o MembershipOutput) ToMembershipOutputWithContext(ctx context.Context) Mem
 	return o
 }
 
+// The time when the `Membership` was created.
+func (o MembershipOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
+func (o MembershipOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The `EntityKey` of the member.
+func (o MembershipOutput) PreferredMemberKey() EntityKeyResponseOutput {
+	return o.ApplyT(func(v *Membership) EntityKeyResponseOutput { return v.PreferredMemberKey }).(EntityKeyResponseOutput)
+}
+
+// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+func (o MembershipOutput) Roles() MembershipRoleResponseArrayOutput {
+	return o.ApplyT(func(v *Membership) MembershipRoleResponseArrayOutput { return v.Roles }).(MembershipRoleResponseArrayOutput)
+}
+
+// The type of the membership.
+func (o MembershipOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time when the `Membership` was last updated.
+func (o MembershipOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipInput)(nil)).Elem(), &Membership{})
 	pulumi.RegisterOutputType(MembershipOutput{})

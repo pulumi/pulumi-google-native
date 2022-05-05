@@ -188,6 +188,111 @@ func (o ConversationOutput) ToConversationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// An opaque, user-specified string representing the human agent who handled the conversation.
+func (o ConversationOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Call-specific metadata.
+func (o ConversationOutput) CallMetadata() GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput {
+		return v.CallMetadata
+	}).(GoogleCloudContactcenterinsightsV1ConversationCallMetadataResponseOutput)
+}
+
+// The time at which the conversation was created.
+func (o ConversationOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The source of the audio and transcription for the conversation.
+func (o ConversationOutput) DataSource() GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput {
+		return v.DataSource
+	}).(GoogleCloudContactcenterinsightsV1ConversationDataSourceResponseOutput)
+}
+
+// All the matched Dialogflow intents in the call. The key corresponds to a Dialogflow intent, format: projects/{project}/agent/{agent}/intents/{intent}
+func (o ConversationOutput) DialogflowIntents() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringMapOutput { return v.DialogflowIntents }).(pulumi.StringMapOutput)
+}
+
+// The duration of the conversation.
+func (o ConversationOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The time at which this conversation should expire. After this time, the conversation data and any associated analyses will be deleted.
+func (o ConversationOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// A map for the user to specify any custom fields. A maximum of 20 labels per conversation is allowed, with a maximum of 256 characters per entry.
+func (o ConversationOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// A user-specified language code for the conversation.
+func (o ConversationOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// The conversation's latest analysis, if one exists.
+func (o ConversationOutput) LatestAnalysis() GoogleCloudContactcenterinsightsV1AnalysisResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1AnalysisResponseOutput {
+		return v.LatestAnalysis
+	}).(GoogleCloudContactcenterinsightsV1AnalysisResponseOutput)
+}
+
+// Immutable. The conversation medium, if unspecified will default to PHONE_CALL.
+func (o ConversationOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Medium }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
+func (o ConversationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Obfuscated user ID which the customer sent to us.
+func (o ConversationOutput) ObfuscatedUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.ObfuscatedUserId }).(pulumi.StringOutput)
+}
+
+// The annotations that were generated during the customer and agent interaction.
+func (o ConversationOutput) RuntimeAnnotations() GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput {
+		return v.RuntimeAnnotations
+	}).(GoogleCloudContactcenterinsightsV1RuntimeAnnotationResponseArrayOutput)
+}
+
+// The time at which the conversation started.
+func (o ConversationOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// The conversation transcript.
+func (o ConversationOutput) Transcript() GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput {
+	return o.ApplyT(func(v *Conversation) GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput {
+		return v.Transcript
+	}).(GoogleCloudContactcenterinsightsV1ConversationTranscriptResponseOutput)
+}
+
+// Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
+func (o ConversationOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.Ttl }).(pulumi.StringOutput)
+}
+
+// The number of turns in the conversation.
+func (o ConversationOutput) TurnCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.IntOutput { return v.TurnCount }).(pulumi.IntOutput)
+}
+
+// The most recent time at which the conversation was updated.
+func (o ConversationOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Conversation) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationInput)(nil)).Elem(), &Conversation{})
 	pulumi.RegisterOutputType(ConversationOutput{})

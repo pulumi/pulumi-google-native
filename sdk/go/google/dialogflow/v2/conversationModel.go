@@ -149,6 +149,50 @@ func (o ConversationModelOutput) ToConversationModelOutputWithContext(ctx contex
 	return o
 }
 
+// Metadata for article suggestion models.
+func (o ConversationModelOutput) ArticleSuggestionModelMetadata() GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput {
+	return o.ApplyT(func(v *ConversationModel) GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput {
+		return v.ArticleSuggestionModelMetadata
+	}).(GoogleCloudDialogflowV2ArticleSuggestionModelMetadataResponseOutput)
+}
+
+// Creation time of this model.
+func (o ConversationModelOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Datasets used to create model.
+func (o ConversationModelOutput) Datasets() GoogleCloudDialogflowV2InputDatasetResponseArrayOutput {
+	return o.ApplyT(func(v *ConversationModel) GoogleCloudDialogflowV2InputDatasetResponseArrayOutput { return v.Datasets }).(GoogleCloudDialogflowV2InputDatasetResponseArrayOutput)
+}
+
+// The display name of the model. At most 64 bytes long.
+func (o ConversationModelOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Language code for the conversation model. If not specified, the language is en-US. Language at ConversationModel should be set for all non en-us languages. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US".
+func (o ConversationModelOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// ConversationModel resource name. Format: `projects//conversationModels/`
+func (o ConversationModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Metadata for smart reply models.
+func (o ConversationModelOutput) SmartReplyModelMetadata() GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput {
+	return o.ApplyT(func(v *ConversationModel) GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput {
+		return v.SmartReplyModelMetadata
+	}).(GoogleCloudDialogflowV2SmartReplyModelMetadataResponseOutput)
+}
+
+// State of the model. A model can only serve prediction requests after it gets deployed.
+func (o ConversationModelOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationModel) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConversationModelInput)(nil)).Elem(), &ConversationModel{})
 	pulumi.RegisterOutputType(ConversationModelOutput{})

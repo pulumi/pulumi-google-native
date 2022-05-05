@@ -149,6 +149,41 @@ func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutpu
 	return o
 }
 
+// The creation time.
+func (o ConfigOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the game server config.
+func (o ConfigOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
+func (o ConfigOutput) FleetConfigs() FleetConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Config) FleetConfigResponseArrayOutput { return v.FleetConfigs }).(FleetConfigResponseArrayOutput)
+}
+
+// The labels associated with this game server config. Each label is a key-value pair.
+func (o ConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name of the game server config, in the following form: `projects/{project}/locations/{locationId}/gameServerDeployments/{deploymentId}/configs/{configId}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+func (o ConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The autoscaling settings.
+func (o ConfigOutput) ScalingConfigs() ScalingConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Config) ScalingConfigResponseArrayOutput { return v.ScalingConfigs }).(ScalingConfigResponseArrayOutput)
+}
+
+// The last-modified time.
+func (o ConfigOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigInput)(nil)).Elem(), &Config{})
 	pulumi.RegisterOutputType(ConfigOutput{})

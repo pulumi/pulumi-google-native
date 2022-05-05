@@ -144,6 +144,71 @@ func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The creation timestamp for this instance group in RFC3339 text format.
+func (o InstanceGroupOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o InstanceGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The fingerprint of the named ports. The system uses this fingerprint to detect conflicts when multiple users change the named ports concurrently.
+func (o InstanceGroupOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The resource type, which is always compute#instanceGroup for instance groups.
+func (o InstanceGroupOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the instance group. The name must be 1-63 characters long, and comply with RFC1035.
+func (o InstanceGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+//  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "app1", port: 8080}, {name: "app1", port: 8081}, {name: "app2", port: 8082}] Named ports apply to all instances in this instance group.
+func (o InstanceGroupOutput) NamedPorts() NamedPortResponseArrayOutput {
+	return o.ApplyT(func(v *InstanceGroup) NamedPortResponseArrayOutput { return v.NamedPorts }).(NamedPortResponseArrayOutput)
+}
+
+// The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+func (o InstanceGroupOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// The URL of the region where the instance group is located (for regional resources).
+func (o InstanceGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The URL for this instance group. The server generates this URL.
+func (o InstanceGroupOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o InstanceGroupOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The total number of instances in the instance group.
+func (o InstanceGroupOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
+}
+
+// The URL of the subnetwork to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
+func (o InstanceGroupOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The URL of the zone where the instance group is located (for zonal resources).
+func (o InstanceGroupOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupInput)(nil)).Elem(), &InstanceGroup{})
 	pulumi.RegisterOutputType(InstanceGroupOutput{})

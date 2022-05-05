@@ -148,6 +148,41 @@ func (o RegistryOutput) ToRegistryOutputWithContext(ctx context.Context) Registr
 	return o
 }
 
+// The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
+func (o RegistryOutput) Credentials() RegistryCredentialResponseArrayOutput {
+	return o.ApplyT(func(v *Registry) RegistryCredentialResponseArrayOutput { return v.Credentials }).(RegistryCredentialResponseArrayOutput)
+}
+
+// The configuration for notification of telemetry events received from the device. All telemetry events that were successfully published by the device and acknowledged by Cloud IoT Core are guaranteed to be delivered to Cloud Pub/Sub. If multiple configurations match a message, only the first matching configuration is used. If you try to publish a device telemetry event using MQTT without specifying a Cloud Pub/Sub topic for the device's registry, the connection closes automatically. If you try to do so using an HTTP connection, an error is returned. Up to 10 configurations may be provided.
+func (o RegistryOutput) EventNotificationConfigs() EventNotificationConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Registry) EventNotificationConfigResponseArrayOutput { return v.EventNotificationConfigs }).(EventNotificationConfigResponseArrayOutput)
+}
+
+// The DeviceService (HTTP) configuration for this device registry.
+func (o RegistryOutput) HttpConfig() HttpConfigResponseOutput {
+	return o.ApplyT(func(v *Registry) HttpConfigResponseOutput { return v.HttpConfig }).(HttpConfigResponseOutput)
+}
+
+// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
+func (o RegistryOutput) LogLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// The MQTT configuration for this device registry.
+func (o RegistryOutput) MqttConfig() MqttConfigResponseOutput {
+	return o.ApplyT(func(v *Registry) MqttConfigResponseOutput { return v.MqttConfig }).(MqttConfigResponseOutput)
+}
+
+// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
+func (o RegistryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
+func (o RegistryOutput) StateNotificationConfig() StateNotificationConfigResponseOutput {
+	return o.ApplyT(func(v *Registry) StateNotificationConfigResponseOutput { return v.StateNotificationConfig }).(StateNotificationConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegistryInput)(nil)).Elem(), &Registry{})
 	pulumi.RegisterOutputType(RegistryOutput{})

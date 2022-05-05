@@ -190,6 +190,84 @@ func (o WorkloadOutput) ToWorkloadOutputWithContext(ctx context.Context) Workloa
 	return o
 }
 
+// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+func (o WorkloadOutput) BillingAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.BillingAccount }).(pulumi.StringOutput)
+}
+
+// Immutable. Compliance Regime associated with this workload.
+func (o WorkloadOutput) ComplianceRegime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.ComplianceRegime }).(pulumi.StringOutput)
+}
+
+// Immutable. The Workload creation timestamp.
+func (o WorkloadOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+func (o WorkloadOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
+func (o WorkloadOutput) EnableSovereignControls() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.EnableSovereignControls }).(pulumi.BoolOutput)
+}
+
+// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+func (o WorkloadOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Represents the KAJ enrollment state of the given workload.
+func (o WorkloadOutput) KajEnrollmentState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.KajEnrollmentState }).(pulumi.StringOutput)
+}
+
+// Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+//
+// Deprecated: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
+func (o WorkloadOutput) KmsSettings() GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput {
+	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput { return v.KmsSettings }).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput)
+}
+
+// Optional. Labels applied to the workload.
+func (o WorkloadOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+func (o WorkloadOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
+func (o WorkloadOutput) ProvisionedResourcesParent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.ProvisionedResourcesParent }).(pulumi.StringOutput)
+}
+
+// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+func (o WorkloadOutput) ResourceSettings() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput {
+		return v.ResourceSettings
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput)
+}
+
+// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
+func (o WorkloadOutput) Resources() GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput {
+	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput {
+		return v.Resources
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput)
+}
+
+// Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during GetWorkload call. In failure cases, user friendly error message is shown in SAA details page.
+func (o WorkloadOutput) SaaEnrollmentResponse() GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+	return o.ApplyT(func(v *Workload) GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput {
+		return v.SaaEnrollmentResponse
+	}).(GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponseResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadInput)(nil)).Elem(), &Workload{})
 	pulumi.RegisterOutputType(WorkloadOutput{})

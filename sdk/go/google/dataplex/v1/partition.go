@@ -141,6 +141,26 @@ func (o PartitionOutput) ToPartitionOutputWithContext(ctx context.Context) Parti
 	return o
 }
 
+// Optional. The etag for this partition.
+func (o PartitionOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
+func (o PartitionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Partition values used in the HTTP URL must be double encoded. For example, url_encode(url_encode(value)) can be used to encode "US:CA/CA#Sunnyvale so that the request URL ends with "/partitions/US%253ACA/CA%2523Sunnyvale". The name field in the response retains the encoded format.
+func (o PartitionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
+func (o PartitionOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Partition) pulumi.StringArrayOutput { return v.Values }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PartitionInput)(nil)).Elem(), &Partition{})
 	pulumi.RegisterOutputType(PartitionOutput{})

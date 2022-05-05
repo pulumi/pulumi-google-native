@@ -152,6 +152,56 @@ func (o UtilizationReportOutput) ToUtilizationReportOutputWithContext(ctx contex
 	return o
 }
 
+// The time the report was created (this refers to the time of the request, not the time the report creation completed).
+func (o UtilizationReportOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The report display name, as assigned by the user.
+func (o UtilizationReportOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Provides details on the state of the report in case of an error.
+func (o UtilizationReportOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *UtilizationReport) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The point in time when the time frame ends. Notice that the time frame is counted backwards. For instance if the "frame_end_time" value is 2021/01/20 and the time frame is WEEK then the report covers the week between 2021/01/20 and 2021/01/14.
+func (o UtilizationReportOutput) FrameEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.FrameEndTime }).(pulumi.StringOutput)
+}
+
+// The report unique name.
+func (o UtilizationReportOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Current state of the report.
+func (o UtilizationReportOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The time the state was last set.
+func (o UtilizationReportOutput) StateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// Time frame of the report.
+func (o UtilizationReportOutput) TimeFrame() pulumi.StringOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.StringOutput { return v.TimeFrame }).(pulumi.StringOutput)
+}
+
+// Total number of VMs included in the report.
+func (o UtilizationReportOutput) VmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *UtilizationReport) pulumi.IntOutput { return v.VmCount }).(pulumi.IntOutput)
+}
+
+// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
+func (o UtilizationReportOutput) Vms() VmUtilizationInfoResponseArrayOutput {
+	return o.ApplyT(func(v *UtilizationReport) VmUtilizationInfoResponseArrayOutput { return v.Vms }).(VmUtilizationInfoResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UtilizationReportInput)(nil)).Elem(), &UtilizationReport{})
 	pulumi.RegisterOutputType(UtilizationReportOutput{})

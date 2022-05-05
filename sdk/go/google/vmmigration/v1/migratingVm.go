@@ -180,6 +180,96 @@ func (o MigratingVmOutput) ToMigratingVmOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// Details of the VM from an AWS source.
+func (o MigratingVmOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) AwsSourceVmDetailsResponseOutput { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
+// Details of the target VM in Compute Engine.
+func (o MigratingVmOutput) ComputeEngineTargetDefaults() ComputeEngineTargetDefaultsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) ComputeEngineTargetDefaultsResponseOutput { return v.ComputeEngineTargetDefaults }).(ComputeEngineTargetDefaultsResponseOutput)
+}
+
+// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
+func (o MigratingVmOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The percentage progress of the current running replication cycle.
+func (o MigratingVmOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) ReplicationCycleResponseOutput { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
+}
+
+// The description attached to the migrating VM by the user.
+func (o MigratingVmOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name attached to the MigratingVm by the user.
+func (o MigratingVmOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Provides details on the state of the Migrating VM in case of an error in replication.
+func (o MigratingVmOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// The group this migrating vm is included in, if any. The group is represented by the full path of the appropriate Group resource.
+func (o MigratingVmOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
+}
+
+// The labels of the migrating VM.
+func (o MigratingVmOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The most updated snapshot created time in the source that finished replication.
+func (o MigratingVmOutput) LastSync() ReplicationSyncResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) ReplicationSyncResponseOutput { return v.LastSync }).(ReplicationSyncResponseOutput)
+}
+
+// The identifier of the MigratingVm.
+func (o MigratingVmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The replication schedule policy.
+func (o MigratingVmOutput) Policy() SchedulePolicyResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) SchedulePolicyResponseOutput { return v.Policy }).(SchedulePolicyResponseOutput)
+}
+
+// The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
+func (o MigratingVmOutput) RecentCloneJobs() CloneJobResponseArrayOutput {
+	return o.ApplyT(func(v *MigratingVm) CloneJobResponseArrayOutput { return v.RecentCloneJobs }).(CloneJobResponseArrayOutput)
+}
+
+// The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
+func (o MigratingVmOutput) RecentCutoverJobs() CutoverJobResponseArrayOutput {
+	return o.ApplyT(func(v *MigratingVm) CutoverJobResponseArrayOutput { return v.RecentCutoverJobs }).(CutoverJobResponseArrayOutput)
+}
+
+// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
+func (o MigratingVmOutput) SourceVmId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.SourceVmId }).(pulumi.StringOutput)
+}
+
+// State of the MigratingVm.
+func (o MigratingVmOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The last time the migrating VM state was updated.
+func (o MigratingVmOutput) StateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The last time the migrating VM resource was updated.
+func (o MigratingVmOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MigratingVmInput)(nil)).Elem(), &MigratingVm{})
 	pulumi.RegisterOutputType(MigratingVmOutput{})

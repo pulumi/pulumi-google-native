@@ -154,6 +154,36 @@ func (o ControlOutput) ToControlOutputWithContext(ctx context.Context) ControlOu
 	return o
 }
 
+// List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
+func (o ControlOutput) AssociatedServingConfigIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Control) pulumi.StringArrayOutput { return v.AssociatedServingConfigIds }).(pulumi.StringArrayOutput)
+}
+
+// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
+func (o ControlOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Control) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A facet specification to perform faceted search.
+func (o ControlOutput) FacetSpec() GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput {
+	return o.ApplyT(func(v *Control) GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput { return v.FacetSpec }).(GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput)
+}
+
+// Immutable. Fully qualified name projects/*/locations/global/catalogs/*/controls/*
+func (o ControlOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Control) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
+func (o ControlOutput) Rule() GoogleCloudRetailV2betaRuleResponseOutput {
+	return o.ApplyT(func(v *Control) GoogleCloudRetailV2betaRuleResponseOutput { return v.Rule }).(GoogleCloudRetailV2betaRuleResponseOutput)
+}
+
+// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+func (o ControlOutput) SolutionTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Control) pulumi.StringArrayOutput { return v.SolutionTypes }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlInput)(nil)).Elem(), &Control{})
 	pulumi.RegisterOutputType(ControlOutput{})

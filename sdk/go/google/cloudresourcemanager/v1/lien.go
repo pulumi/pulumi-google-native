@@ -134,6 +134,36 @@ func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return o
 }
 
+// The creation time of this Lien.
+func (o LienOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lien) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
+func (o LienOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lien) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'
+func (o LienOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lien) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
+}
+
+// A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234`
+func (o LienOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lien) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'
+func (o LienOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lien) pulumi.StringOutput { return v.Reason }).(pulumi.StringOutput)
+}
+
+// The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']
+func (o LienOutput) Restrictions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Lien) pulumi.StringArrayOutput { return v.Restrictions }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LienInput)(nil)).Elem(), &Lien{})
 	pulumi.RegisterOutputType(LienOutput{})

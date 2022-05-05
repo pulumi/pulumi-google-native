@@ -137,6 +137,48 @@ func (o ChannelPartnerLinkOutput) ToChannelPartnerLinkOutputWithContext(ctx cont
 	return o
 }
 
+// Cloud Identity info of the channel partner (IR).
+func (o ChannelPartnerLinkOutput) ChannelPartnerCloudIdentityInfo() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
+		return v.ChannelPartnerCloudIdentityInfo
+	}).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
+}
+
+// Timestamp of when the channel partner link is created.
+func (o ChannelPartnerLinkOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// URI of the web page where partner accepts the link invitation.
+func (o ChannelPartnerLinkOutput) InviteLinkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.InviteLinkUri }).(pulumi.StringOutput)
+}
+
+// State of the channel partner link.
+func (o ChannelPartnerLinkOutput) LinkState() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.LinkState }).(pulumi.StringOutput)
+}
+
+// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
+func (o ChannelPartnerLinkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
+func (o ChannelPartnerLinkOutput) PublicId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.PublicId }).(pulumi.StringOutput)
+}
+
+// Cloud Identity ID of the linked reseller.
+func (o ChannelPartnerLinkOutput) ResellerCloudIdentityId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.ResellerCloudIdentityId }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the channel partner link is updated.
+func (o ChannelPartnerLinkOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChannelPartnerLink) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkInput)(nil)).Elem(), &ChannelPartnerLink{})
 	pulumi.RegisterOutputType(ChannelPartnerLinkOutput{})

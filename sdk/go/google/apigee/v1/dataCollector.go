@@ -130,6 +130,31 @@ func (o DataCollectorOutput) ToDataCollectorOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The time at which the data collector was created in milliseconds since the epoch.
+func (o DataCollectorOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// A description of the data collector.
+func (o DataCollectorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time at which the Data Collector was last updated in milliseconds since the epoch.
+func (o DataCollectorOutput) LastModifiedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.LastModifiedAt }).(pulumi.StringOutput)
+}
+
+// ID of the data collector. Must begin with `dc_`.
+func (o DataCollectorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The type of data this data collector will collect.
+func (o DataCollectorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataCollector) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCollectorInput)(nil)).Elem(), &DataCollector{})
 	pulumi.RegisterOutputType(DataCollectorOutput{})

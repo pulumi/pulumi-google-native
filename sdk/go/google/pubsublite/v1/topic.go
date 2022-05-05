@@ -134,6 +134,26 @@ func (o TopicOutput) ToTopicOutputWithContext(ctx context.Context) TopicOutput {
 	return o
 }
 
+// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+func (o TopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Topic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The settings for this topic's partitions.
+func (o TopicOutput) PartitionConfig() PartitionConfigResponseOutput {
+	return o.ApplyT(func(v *Topic) PartitionConfigResponseOutput { return v.PartitionConfig }).(PartitionConfigResponseOutput)
+}
+
+// The settings for this topic's Reservation usage.
+func (o TopicOutput) ReservationConfig() ReservationConfigResponseOutput {
+	return o.ApplyT(func(v *Topic) ReservationConfigResponseOutput { return v.ReservationConfig }).(ReservationConfigResponseOutput)
+}
+
+// The settings for this topic's message retention.
+func (o TopicOutput) RetentionConfig() RetentionConfigResponseOutput {
+	return o.ApplyT(func(v *Topic) RetentionConfigResponseOutput { return v.RetentionConfig }).(RetentionConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicInput)(nil)).Elem(), &Topic{})
 	pulumi.RegisterOutputType(TopicOutput{})

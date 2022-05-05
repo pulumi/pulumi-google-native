@@ -161,6 +161,46 @@ func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
+func (o NotificationOutput) CustomAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringMapOutput { return v.CustomAttributes }).(pulumi.StringMapOutput)
+}
+
+// HTTP 1.1 Entity tag for this subscription notification.
+func (o NotificationOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
+func (o NotificationOutput) EventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringArrayOutput { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// The kind of item this is. For notifications, this is always storage#notification.
+func (o NotificationOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// If present, only apply this notification configuration to object names that begin with this prefix.
+func (o NotificationOutput) ObjectNamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.ObjectNamePrefix }).(pulumi.StringOutput)
+}
+
+// The desired content of the Payload.
+func (o NotificationOutput) PayloadFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.PayloadFormat }).(pulumi.StringOutput)
+}
+
+// The canonical URL of this notification.
+func (o NotificationOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
+func (o NotificationOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v *Notification) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationInput)(nil)).Elem(), &Notification{})
 	pulumi.RegisterOutputType(NotificationOutput{})

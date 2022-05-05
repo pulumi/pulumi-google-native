@@ -124,6 +124,26 @@ func (o SessionOutput) ToSessionOutputWithContext(ctx context.Context) SessionOu
 	return o
 }
 
+// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
+func (o SessionOutput) ApproximateLastUseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.ApproximateLastUseTime }).(pulumi.StringOutput)
+}
+
+// The timestamp when the session is created.
+func (o SessionOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
+func (o SessionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the session. This is always system-assigned.
+func (o SessionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Session) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SessionInput)(nil)).Elem(), &Session{})
 	pulumi.RegisterOutputType(SessionOutput{})

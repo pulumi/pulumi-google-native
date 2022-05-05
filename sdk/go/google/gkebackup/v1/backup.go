@@ -183,6 +183,141 @@ func (o BackupOutput) ToBackupOutputWithContext(ctx context.Context) BackupOutpu
 	return o
 }
 
+// If True, all namespaces were included in the Backup.
+func (o BackupOutput) AllNamespaces() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.AllNamespaces }).(pulumi.BoolOutput)
+}
+
+// Information about the GKE cluster from which this Backup was created.
+func (o BackupOutput) ClusterMetadata() ClusterMetadataResponseOutput {
+	return o.ApplyT(func(v *Backup) ClusterMetadataResponseOutput { return v.ClusterMetadata }).(ClusterMetadataResponseOutput)
+}
+
+// Completion time of the Backup
+func (o BackupOutput) CompleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CompleteTime }).(pulumi.StringOutput)
+}
+
+// cluster config backup size in bytes.
+func (o BackupOutput) ConfigBackupSizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.ConfigBackupSizeBytes }).(pulumi.StringOutput)
+}
+
+// Whether or not the Backup contains Kubernetes Secrets. Inherited from the parent BackupPlan's backup_config.include_secrets.
+func (o BackupOutput) ContainsSecrets() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.ContainsSecrets }).(pulumi.BoolOutput)
+}
+
+// Whether or not the Backup contains volume data. Inherited from the parent BackupPlan's backup_config.include_volume_data.
+func (o BackupOutput) ContainsVolumeData() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.ContainsVolumeData }).(pulumi.BoolOutput)
+}
+
+// The timestamp when this Backup resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o BackupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured from the creation time of the Backup). This value is inherited from the parent BackupPlan's retention_policy.backup_delete_lock_days value and may only be increased (either at creation time or in a subsequent update). This field MUST be an integer value between 0-90 (inclusive). Default: inherited from BackupPlan.
+func (o BackupOutput) DeleteLockDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.DeleteLockDays }).(pulumi.IntOutput)
+}
+
+// The time at which an existing delete lock will expire for this backup (calculated from create_time + delete_lock_days).
+func (o BackupOutput) DeleteLockExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DeleteLockExpireTime }).(pulumi.StringOutput)
+}
+
+// User specified descriptive string for this Backup.
+func (o BackupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The customer managed encryption key that was used to encrypt the Backup's artifacts. Inherited from the parent BackupPlan's backup_config.encryption_key.
+func (o BackupOutput) EncryptionKey() EncryptionKeyResponseOutput {
+	return o.ApplyT(func(v *Backup) EncryptionKeyResponseOutput { return v.EncryptionKey }).(EncryptionKeyResponseOutput)
+}
+
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform backup updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackup`, and systems are expected to put that etag in the request to `UpdateBackup` to ensure that their change will be applied to the same version.
+func (o BackupOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// A set of custom labels supplied by user.
+func (o BackupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// This flag indicates whether this Backup resource was created manually by a user or via a schedule in the BackupPlan. A value of True means that the Backup was created manually.
+func (o BackupOutput) Manual() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.Manual }).(pulumi.BoolOutput)
+}
+
+// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
+func (o BackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The total number of Kubernetes Pods contained in the Backup.
+func (o BackupOutput) PodCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.PodCount }).(pulumi.IntOutput)
+}
+
+// The total number of Kubernetes resources included in the Backup.
+func (o BackupOutput) ResourceCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.ResourceCount }).(pulumi.IntOutput)
+}
+
+// The age (in days) after which this Backup will be automatically deleted. If not specified at Backup creation time, this value is inherited from the parent BackupPlan's retention_policy.backup_retain_days value. Once a Backup is created, this value may only be increased. This must be an integer value >= 0. If 0, no automatic deletion will occur for this Backup. If not 0, this must be >= delete_lock_days. Default: inherited from BackupPlan.
+func (o BackupOutput) RetainDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.RetainDays }).(pulumi.IntOutput)
+}
+
+// The time at which this Backup will be automatically deleted (calculated from create_time + retain_days).
+func (o BackupOutput) RetainExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.RetainExpireTime }).(pulumi.StringOutput)
+}
+
+// If set, the list of ProtectedApplications whose resources were included in the Backup.
+func (o BackupOutput) SelectedApplications() NamespacedNamesResponseOutput {
+	return o.ApplyT(func(v *Backup) NamespacedNamesResponseOutput { return v.SelectedApplications }).(NamespacedNamesResponseOutput)
+}
+
+// If set, the list of namespaces that were included in the Backup.
+func (o BackupOutput) SelectedNamespaces() NamespacesResponseOutput {
+	return o.ApplyT(func(v *Backup) NamespacesResponseOutput { return v.SelectedNamespaces }).(NamespacesResponseOutput)
+}
+
+// The total size of the Backup in bytes = config backup size + sum(volume backup sizes)
+func (o BackupOutput) SizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SizeBytes }).(pulumi.StringOutput)
+}
+
+// Current state of the Backup
+func (o BackupOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Human-readable description of why the backup is in the current `state`.
+func (o BackupOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
+}
+
+// Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
+func (o BackupOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The timestamp when this Backup resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+func (o BackupOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// The total number of volume backups contained in the Backup.
+func (o BackupOutput) VolumeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *Backup) pulumi.IntOutput { return v.VolumeCount }).(pulumi.IntOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupInput)(nil)).Elem(), &Backup{})
 	pulumi.RegisterOutputType(BackupOutput{})

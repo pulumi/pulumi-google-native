@@ -128,6 +128,26 @@ func (o EnvgroupAttachmentOutput) ToEnvgroupAttachmentOutputWithContext(ctx cont
 	return o
 }
 
+// The time at which the environment group attachment was created as milliseconds since epoch.
+func (o EnvgroupAttachmentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the attached environment.
+func (o EnvgroupAttachmentOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
+}
+
+// ID of the environment group.
+func (o EnvgroupAttachmentOutput) EnvironmentGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.EnvironmentGroupId }).(pulumi.StringOutput)
+}
+
+// ID of the environment group attachment.
+func (o EnvgroupAttachmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvgroupAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvgroupAttachmentInput)(nil)).Elem(), &EnvgroupAttachment{})
 	pulumi.RegisterOutputType(EnvgroupAttachmentOutput{})

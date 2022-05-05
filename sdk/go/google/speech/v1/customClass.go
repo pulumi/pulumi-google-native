@@ -124,6 +124,21 @@ func (o CustomClassOutput) ToCustomClassOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
+func (o CustomClassOutput) CustomClassId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.CustomClassId }).(pulumi.StringOutput)
+}
+
+// A collection of class items.
+func (o CustomClassOutput) Items() ClassItemResponseArrayOutput {
+	return o.ApplyT(func(v *CustomClass) ClassItemResponseArrayOutput { return v.Items }).(ClassItemResponseArrayOutput)
+}
+
+// The resource name of the custom class.
+func (o CustomClassOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomClass) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomClassInput)(nil)).Elem(), &CustomClass{})
 	pulumi.RegisterOutputType(CustomClassOutput{})

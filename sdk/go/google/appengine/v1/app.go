@@ -170,6 +170,75 @@ func (o AppOutput) ToAppOutputWithContext(ctx context.Context) AppOutput {
 	return o
 }
 
+// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
+func (o AppOutput) AuthDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AuthDomain }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage bucket that can be used for storing files associated with this application. This bucket is associated with the application and can be used by the gcloud deployment commands.
+func (o AppOutput) CodeBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.CodeBucket }).(pulumi.StringOutput)
+}
+
+// The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+func (o AppOutput) DatabaseType() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DatabaseType }).(pulumi.StringOutput)
+}
+
+// Google Cloud Storage bucket that can be used by this application to store content.
+func (o AppOutput) DefaultBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultBucket }).(pulumi.StringOutput)
+}
+
+// Cookie expiration policy for this application.
+func (o AppOutput) DefaultCookieExpiration() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultCookieExpiration }).(pulumi.StringOutput)
+}
+
+// Hostname used to reach this application, as resolved by App Engine.
+func (o AppOutput) DefaultHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultHostname }).(pulumi.StringOutput)
+}
+
+// HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
+func (o AppOutput) DispatchRules() UrlDispatchRuleResponseArrayOutput {
+	return o.ApplyT(func(v *App) UrlDispatchRuleResponseArrayOutput { return v.DispatchRules }).(UrlDispatchRuleResponseArrayOutput)
+}
+
+// The feature specific settings to be used in the application.
+func (o AppOutput) FeatureSettings() FeatureSettingsResponseOutput {
+	return o.ApplyT(func(v *App) FeatureSettingsResponseOutput { return v.FeatureSettings }).(FeatureSettingsResponseOutput)
+}
+
+// The Google Container Registry domain used for storing managed build docker images for this application.
+func (o AppOutput) GcrDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.GcrDomain }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) Iap() IdentityAwareProxyResponseOutput {
+	return o.ApplyT(func(v *App) IdentityAwareProxyResponseOutput { return v.Iap }).(IdentityAwareProxyResponseOutput)
+}
+
+// Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
+func (o AppOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Full path to the Application resource in the API. Example: apps/myapp.
+func (o AppOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The service account associated with the application. This is the app-level default identity. If no identity provided during create version, Admin API will fallback to this one.
+func (o AppOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Serving status of this application.
+func (o AppOutput) ServingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ServingStatus }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppInput)(nil)).Elem(), &App{})
 	pulumi.RegisterOutputType(AppOutput{})

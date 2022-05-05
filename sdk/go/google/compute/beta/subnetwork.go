@@ -216,6 +216,126 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
+// Whether this subnetwork's ranges can conflict with existing static routes. Setting this to true allows this subnetwork's primary and secondary ranges to overlap with (and contain) static routes that have already been configured on the corresponding network. For example if a static route has range 10.1.0.0/16, a subnet range 10.0.0.0/8 could only be created if allow_conflicting_routes=true. Overlapping is only allowed on subnetwork operations; routes whose ranges conflict with this subnetwork's ranges won't be allowed unless route.allow_conflicting_subnetworks is set to true. Typically packets destined to IPs within the subnetwork (which may contain private/sensitive data) are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
+func (o SubnetworkOutput) AllowSubnetCidrRoutesOverlap() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.AllowSubnetCidrRoutesOverlap }).(pulumi.BoolOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o SubnetworkOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
+func (o SubnetworkOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+func (o SubnetworkOutput) EnableFlowLogs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.EnableFlowLogs }).(pulumi.BoolOutput)
+}
+
+// The external IPv6 address range that is assigned to this subnetwork.
+func (o SubnetworkOutput) ExternalIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+func (o SubnetworkOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The gateway address for default routes to reach destination addresses outside this subnetwork.
+func (o SubnetworkOutput) GatewayAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.GatewayAddress }).(pulumi.StringOutput)
+}
+
+// The internal IPv6 address range that is assigned to this subnetwork.
+func (o SubnetworkOutput) InternalIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.InternalIpv6Prefix }).(pulumi.StringOutput)
+}
+
+// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
+func (o SubnetworkOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
+func (o SubnetworkOutput) Ipv6AccessType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Ipv6AccessType }).(pulumi.StringOutput)
+}
+
+// This field is for internal use.
+func (o SubnetworkOutput) Ipv6CidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Ipv6CidrRange }).(pulumi.StringOutput)
+}
+
+// Type of the resource. Always compute#subnetwork for Subnetwork resources.
+func (o SubnetworkOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
+func (o SubnetworkOutput) LogConfig() SubnetworkLogConfigResponseOutput {
+	return o.ApplyT(func(v *Subnetwork) SubnetworkLogConfigResponseOutput { return v.LogConfig }).(SubnetworkLogConfigResponseOutput)
+}
+
+// The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o SubnetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The URL of the network to which this subnetwork belongs, provided by the client when initially creating the subnetwork. This field can be set only at resource creation time.
+func (o SubnetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess.
+func (o SubnetworkOutput) PrivateIpGoogleAccess() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.PrivateIpGoogleAccess }).(pulumi.BoolOutput)
+}
+
+// This field is for internal use. This field can be both set at resource creation time and updated using patch.
+func (o SubnetworkOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
+}
+
+// The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918. The enableFlowLogs field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+func (o SubnetworkOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
+func (o SubnetworkOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
+func (o SubnetworkOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+}
+
+// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
+func (o SubnetworkOutput) SecondaryIpRanges() SubnetworkSecondaryRangeResponseArrayOutput {
+	return o.ApplyT(func(v *Subnetwork) SubnetworkSecondaryRangeResponseArrayOutput { return v.SecondaryIpRanges }).(SubnetworkSecondaryRangeResponseArrayOutput)
+}
+
+// Server-defined URL for the resource.
+func (o SubnetworkOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The stack type for the subnet. If set to IPV4_ONLY, new VMs in the subnet are assigned IPv4 addresses only. If set to IPV4_IPV6, new VMs in the subnet can be assigned both IPv4 and IPv6 addresses. If not specified, IPV4_ONLY is used. This field can be both set at resource creation time and updated using patch.
+func (o SubnetworkOutput) StackType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.StackType }).(pulumi.StringOutput)
+}
+
+// The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
+func (o SubnetworkOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkInput)(nil)).Elem(), &Subnetwork{})
 	pulumi.RegisterOutputType(SubnetworkOutput{})

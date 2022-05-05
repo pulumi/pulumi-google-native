@@ -134,6 +134,31 @@ func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) Attesto
 	return o
 }
 
+// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
+func (o AttestorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154.
+func (o AttestorOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+func (o AttestorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time when the attestor was last updated.
+func (o AttestorOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Attestor) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// This specifies how an attestation will be read, and how it will be used during policy enforcement.
+func (o AttestorOutput) UserOwnedGrafeasNote() UserOwnedGrafeasNoteResponseOutput {
+	return o.ApplyT(func(v *Attestor) UserOwnedGrafeasNoteResponseOutput { return v.UserOwnedGrafeasNote }).(UserOwnedGrafeasNoteResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestorInput)(nil)).Elem(), &Attestor{})
 	pulumi.RegisterOutputType(AttestorOutput{})

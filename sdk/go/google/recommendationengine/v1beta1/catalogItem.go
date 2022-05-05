@@ -176,6 +176,54 @@ func (o CatalogItemOutput) ToCatalogItemOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+func (o CatalogItemOutput) CategoryHierarchies() GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
+	return o.ApplyT(func(v *CatalogItem) GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput {
+		return v.CategoryHierarchies
+	}).(GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArrayOutput)
+}
+
+// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
+func (o CatalogItemOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
+func (o CatalogItemOutput) ItemAttributes() GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput {
+	return o.ApplyT(func(v *CatalogItem) GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput {
+		return v.ItemAttributes
+	}).(GoogleCloudRecommendationengineV1beta1FeatureMapResponseOutput)
+}
+
+// Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
+func (o CatalogItemOutput) ItemGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.ItemGroupId }).(pulumi.StringOutput)
+}
+
+// Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+//
+// Deprecated: Optional. Deprecated. The model automatically detects the text language. Your catalog can include text in different languages, but duplicating catalog items to provide text in multiple languages can result in degraded model performance.
+func (o CatalogItemOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Optional. Metadata specific to retail products.
+func (o CatalogItemOutput) ProductMetadata() GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
+	return o.ApplyT(func(v *CatalogItem) GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput {
+		return v.ProductMetadata
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponseOutput)
+}
+
+// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
+func (o CatalogItemOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+func (o CatalogItemOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *CatalogItem) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CatalogItemInput)(nil)).Elem(), &CatalogItem{})
 	pulumi.RegisterOutputType(CatalogItemOutput{})

@@ -146,6 +146,56 @@ func (o TargetInstanceOutput) ToTargetInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o TargetInstanceOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o TargetInstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
+func (o TargetInstanceOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The type of the resource. Always compute#targetInstance for target instances.
+func (o TargetInstanceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o TargetInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+func (o TargetInstanceOutput) NatPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.NatPolicy }).(pulumi.StringOutput)
+}
+
+// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
+func (o TargetInstanceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o TargetInstanceOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for this resource with the resource id.
+func (o TargetInstanceOutput) SelfLinkWithId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o TargetInstanceOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInstanceInput)(nil)).Elem(), &TargetInstance{})
 	pulumi.RegisterOutputType(TargetInstanceOutput{})

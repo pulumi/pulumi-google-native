@@ -127,6 +127,46 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// [Required] Describes the job configuration.
+func (o JobOutput) Configuration() JobConfigurationResponseOutput {
+	return o.ApplyT(func(v *Job) JobConfigurationResponseOutput { return v.Configuration }).(JobConfigurationResponseOutput)
+}
+
+// A hash of this resource.
+func (o JobOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// [Optional] Reference describing the unique-per-user name of the job.
+func (o JobOutput) JobReference() JobReferenceResponseOutput {
+	return o.ApplyT(func(v *Job) JobReferenceResponseOutput { return v.JobReference }).(JobReferenceResponseOutput)
+}
+
+// The type of the resource.
+func (o JobOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// A URL that can be used to access this resource again.
+func (o JobOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Information about the job, including starting time and ending time of the job.
+func (o JobOutput) Statistics() JobStatisticsResponseOutput {
+	return o.ApplyT(func(v *Job) JobStatisticsResponseOutput { return v.Statistics }).(JobStatisticsResponseOutput)
+}
+
+// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+func (o JobOutput) Status() JobStatusResponseOutput {
+	return o.ApplyT(func(v *Job) JobStatusResponseOutput { return v.Status }).(JobStatusResponseOutput)
+}
+
+// Email address of the user who ran the job.
+func (o JobOutput) UserEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.UserEmail }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobInput)(nil)).Elem(), &Job{})
 	pulumi.RegisterOutputType(JobOutput{})

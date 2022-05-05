@@ -318,6 +318,190 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
+// List all maintenance versions applicable on the instance
+func (o InstanceOutput) AvailableMaintenanceVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.AvailableMaintenanceVersions }).(pulumi.StringArrayOutput)
+}
+
+// The backend type. `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
+func (o InstanceOutput) BackendType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BackendType }).(pulumi.StringOutput)
+}
+
+// Connection name of the Cloud SQL instance used in connection strings.
+func (o InstanceOutput) ConnectionName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionName }).(pulumi.StringOutput)
+}
+
+// The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The current disk usage of the instance in bytes. This property has been deprecated. Use the "cloudsql.googleapis.com/database/disk/bytes_used" metric in Cloud Monitoring API instead. Please see [this announcement](https://groups.google.com/d/msg/google-cloud-sql-announce/I_7-F9EBhT0/BtvFtdFeAgAJ) for details.
+func (o InstanceOutput) CurrentDiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CurrentDiskSize }).(pulumi.StringOutput)
+}
+
+// Stores the current database version running on the instance including minor version such as `MYSQL_8_0_18`.
+func (o InstanceOutput) DatabaseInstalledVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DatabaseInstalledVersion }).(pulumi.StringOutput)
+}
+
+// The database engine type and version. The `databaseVersion` field cannot be changed after instance creation.
+func (o InstanceOutput) DatabaseVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// Disk encryption configuration specific to an instance.
+func (o InstanceOutput) DiskEncryptionConfiguration() DiskEncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *Instance) DiskEncryptionConfigurationResponseOutput { return v.DiskEncryptionConfiguration }).(DiskEncryptionConfigurationResponseOutput)
+}
+
+// Disk encryption status specific to an instance.
+func (o InstanceOutput) DiskEncryptionStatus() DiskEncryptionStatusResponseOutput {
+	return o.ApplyT(func(v *Instance) DiskEncryptionStatusResponseOutput { return v.DiskEncryptionStatus }).(DiskEncryptionStatusResponseOutput)
+}
+
+// This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+//
+// Deprecated: This field is deprecated and will be removed from a future version of the API. Use the `settings.settingsVersion` field instead.
+func (o InstanceOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The name and status of the failover replica.
+func (o InstanceOutput) FailoverReplica() InstanceFailoverReplicaResponseOutput {
+	return o.ApplyT(func(v *Instance) InstanceFailoverReplicaResponseOutput { return v.FailoverReplica }).(InstanceFailoverReplicaResponseOutput)
+}
+
+// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone. WARNING: Changing this might restart the instance.
+func (o InstanceOutput) GceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.GceZone }).(pulumi.StringOutput)
+}
+
+// The instance type.
+func (o InstanceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The assigned IP addresses for the instance.
+func (o InstanceOutput) IpAddresses() IpMappingResponseArrayOutput {
+	return o.ApplyT(func(v *Instance) IpMappingResponseArrayOutput { return v.IpAddresses }).(IpMappingResponseArrayOutput)
+}
+
+// The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+//
+// Deprecated: The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
+func (o InstanceOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Ipv6Address }).(pulumi.StringOutput)
+}
+
+// This is always `sql#instance`.
+func (o InstanceOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The current software version on the instance.
+func (o InstanceOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenanceVersion }).(pulumi.StringOutput)
+}
+
+// The name of the instance which will act as primary in the replication setup.
+func (o InstanceOutput) MasterInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MasterInstanceName }).(pulumi.StringOutput)
+}
+
+// The maximum disk size of the instance in bytes.
+func (o InstanceOutput) MaxDiskSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaxDiskSize }).(pulumi.StringOutput)
+}
+
+// Name of the Cloud SQL instance. This does not include the project ID.
+func (o InstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration specific to on-premises instances.
+func (o InstanceOutput) OnPremisesConfiguration() OnPremisesConfigurationResponseOutput {
+	return o.ApplyT(func(v *Instance) OnPremisesConfigurationResponseOutput { return v.OnPremisesConfiguration }).(OnPremisesConfigurationResponseOutput)
+}
+
+// This field represents the report generated by the proactive database wellness job for OutOfDisk issues. * Writers: * the proactive database wellness job for OOD. * Readers: * the proactive database wellness job
+func (o InstanceOutput) OutOfDiskReport() SqlOutOfDiskReportResponseOutput {
+	return o.ApplyT(func(v *Instance) SqlOutOfDiskReportResponseOutput { return v.OutOfDiskReport }).(SqlOutOfDiskReportResponseOutput)
+}
+
+// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
+func (o InstanceOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
+func (o InstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Configuration specific to failover replicas and read replicas.
+func (o InstanceOutput) ReplicaConfiguration() ReplicaConfigurationResponseOutput {
+	return o.ApplyT(func(v *Instance) ReplicaConfigurationResponseOutput { return v.ReplicaConfiguration }).(ReplicaConfigurationResponseOutput)
+}
+
+// The replicas of the instance.
+func (o InstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ReplicaNames }).(pulumi.StringArrayOutput)
+}
+
+// Initial root password. Use only on creation.
+func (o InstanceOutput) RootPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RootPassword }).(pulumi.StringOutput)
+}
+
+// The status indicating if instance satisfiesPzs. Reserved for future use.
+func (o InstanceOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
+}
+
+// The start time of any upcoming scheduled maintenance for this instance.
+func (o InstanceOutput) ScheduledMaintenance() SqlScheduledMaintenanceResponseOutput {
+	return o.ApplyT(func(v *Instance) SqlScheduledMaintenanceResponseOutput { return v.ScheduledMaintenance }).(SqlScheduledMaintenanceResponseOutput)
+}
+
+// The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
+func (o InstanceOutput) SecondaryGceZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecondaryGceZone }).(pulumi.StringOutput)
+}
+
+// The URI of this resource.
+func (o InstanceOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// SSL configuration.
+func (o InstanceOutput) ServerCaCert() SslCertResponseOutput {
+	return o.ApplyT(func(v *Instance) SslCertResponseOutput { return v.ServerCaCert }).(SslCertResponseOutput)
+}
+
+// The service account email address assigned to the instance.\This property is read-only.
+func (o InstanceOutput) ServiceAccountEmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServiceAccountEmailAddress }).(pulumi.StringOutput)
+}
+
+// The user settings.
+func (o InstanceOutput) Settings() SettingsResponseOutput {
+	return o.ApplyT(func(v *Instance) SettingsResponseOutput { return v.Settings }).(SettingsResponseOutput)
+}
+
+// The current serving state of the Cloud SQL instance.
+func (o InstanceOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// If the instance state is SUSPENDED, the reason for the suspension.
+func (o InstanceOutput) SuspensionReason() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SuspensionReason }).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInput)(nil)).Elem(), &Instance{})
 	pulumi.RegisterOutputType(InstanceOutput{})

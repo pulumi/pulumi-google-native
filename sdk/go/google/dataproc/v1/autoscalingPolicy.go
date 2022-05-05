@@ -137,6 +137,32 @@ func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx contex
 	return o
 }
 
+func (o AutoscalingPolicyOutput) BasicAlgorithm() BasicAutoscalingAlgorithmResponseOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) BasicAutoscalingAlgorithmResponseOutput { return v.BasicAlgorithm }).(BasicAutoscalingAlgorithmResponseOutput)
+}
+
+// Optional. The labels to associate with this autoscaling policy. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with an autoscaling policy.
+func (o AutoscalingPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
+func (o AutoscalingPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Describes how the autoscaler will operate for secondary workers.
+func (o AutoscalingPolicyOutput) SecondaryWorkerConfig() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) InstanceGroupAutoscalingPolicyConfigResponseOutput {
+		return v.SecondaryWorkerConfig
+	}).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
+}
+
+// Describes how the autoscaler will operate for primary workers.
+func (o AutoscalingPolicyOutput) WorkerConfig() InstanceGroupAutoscalingPolicyConfigResponseOutput {
+	return o.ApplyT(func(v *AutoscalingPolicy) InstanceGroupAutoscalingPolicyConfigResponseOutput { return v.WorkerConfig }).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingPolicyInput)(nil)).Elem(), &AutoscalingPolicy{})
 	pulumi.RegisterOutputType(AutoscalingPolicyOutput{})

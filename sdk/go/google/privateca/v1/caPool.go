@@ -144,6 +144,31 @@ func (o CaPoolOutput) ToCaPoolOutputWithContext(ctx context.Context) CaPoolOutpu
 	return o
 }
 
+// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
+func (o CaPoolOutput) IssuancePolicy() IssuancePolicyResponseOutput {
+	return o.ApplyT(func(v *CaPool) IssuancePolicyResponseOutput { return v.IssuancePolicy }).(IssuancePolicyResponseOutput)
+}
+
+// Optional. Labels with user-defined metadata.
+func (o CaPoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
+func (o CaPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
+func (o CaPoolOutput) PublishingOptions() PublishingOptionsResponseOutput {
+	return o.ApplyT(func(v *CaPool) PublishingOptionsResponseOutput { return v.PublishingOptions }).(PublishingOptionsResponseOutput)
+}
+
+// Immutable. The Tier of this CaPool.
+func (o CaPoolOutput) Tier() pulumi.StringOutput {
+	return o.ApplyT(func(v *CaPool) pulumi.StringOutput { return v.Tier }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CaPoolInput)(nil)).Elem(), &CaPool{})
 	pulumi.RegisterOutputType(CaPoolOutput{})

@@ -166,6 +166,66 @@ func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutpu
 	return o
 }
 
+// BGP information specific to this router.
+func (o RouterOutput) Bgp() RouterBgpResponseOutput {
+	return o.ApplyT(func(v *Router) RouterBgpResponseOutput { return v.Bgp }).(RouterBgpResponseOutput)
+}
+
+// BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
+func (o RouterOutput) BgpPeers() RouterBgpPeerResponseArrayOutput {
+	return o.ApplyT(func(v *Router) RouterBgpPeerResponseArrayOutput { return v.BgpPeers }).(RouterBgpPeerResponseArrayOutput)
+}
+
+// Creation timestamp in RFC3339 text format.
+func (o RouterOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o RouterOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+func (o RouterOutput) EncryptedInterconnectRouter() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Router) pulumi.BoolOutput { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
+}
+
+// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
+func (o RouterOutput) Interfaces() RouterInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v *Router) RouterInterfaceResponseArrayOutput { return v.Interfaces }).(RouterInterfaceResponseArrayOutput)
+}
+
+// Type of resource. Always compute#router for routers.
+func (o RouterOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o RouterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of NAT services created in this router.
+func (o RouterOutput) Nats() RouterNatResponseArrayOutput {
+	return o.ApplyT(func(v *Router) RouterNatResponseArrayOutput { return v.Nats }).(RouterNatResponseArrayOutput)
+}
+
+// URI of the network to which this router belongs.
+func (o RouterOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o RouterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o RouterOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInput)(nil)).Elem(), &Router{})
 	pulumi.RegisterOutputType(RouterOutput{})

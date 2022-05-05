@@ -146,6 +146,38 @@ func (o FeedbackMessageOutput) ToFeedbackMessageOutputWithContext(ctx context.Co
 	return o
 }
 
+// String content of the feedback. Maximum of 10000 characters.
+func (o FeedbackMessageOutput) Body() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.Body }).(pulumi.StringOutput)
+}
+
+// Create time.
+func (o FeedbackMessageOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The image storing this feedback if the feedback is an image representing operator's comments.
+func (o FeedbackMessageOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
+}
+
+// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
+func (o FeedbackMessageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeedbackMessage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FeedbackMessageOutput) OperatorFeedbackMetadata() GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
+	return o.ApplyT(func(v *FeedbackMessage) GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput {
+		return v.OperatorFeedbackMetadata
+	}).(GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponseOutput)
+}
+
+func (o FeedbackMessageOutput) RequesterFeedbackMetadata() GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
+	return o.ApplyT(func(v *FeedbackMessage) GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput {
+		return v.RequesterFeedbackMetadata
+	}).(GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedbackMessageInput)(nil)).Elem(), &FeedbackMessage{})
 	pulumi.RegisterOutputType(FeedbackMessageOutput{})

@@ -168,6 +168,76 @@ func (o UrlMapOutput) ToUrlMapOutputWithContext(ctx context.Context) UrlMapOutpu
 	return o
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o UrlMapOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+func (o UrlMapOutput) DefaultRouteAction() HttpRouteActionResponseOutput {
+	return o.ApplyT(func(v *UrlMap) HttpRouteActionResponseOutput { return v.DefaultRouteAction }).(HttpRouteActionResponseOutput)
+}
+
+// The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. defaultService has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
+func (o UrlMapOutput) DefaultService() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.DefaultService }).(pulumi.StringOutput)
+}
+
+// When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
+func (o UrlMapOutput) DefaultUrlRedirect() HttpRedirectActionResponseOutput {
+	return o.ApplyT(func(v *UrlMap) HttpRedirectActionResponseOutput { return v.DefaultUrlRedirect }).(HttpRedirectActionResponseOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o UrlMapOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field is ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a UrlMap.
+func (o UrlMapOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+func (o UrlMapOutput) HeaderAction() HttpHeaderActionResponseOutput {
+	return o.ApplyT(func(v *UrlMap) HttpHeaderActionResponseOutput { return v.HeaderAction }).(HttpHeaderActionResponseOutput)
+}
+
+// The list of host rules to use against the URL.
+func (o UrlMapOutput) HostRules() HostRuleResponseArrayOutput {
+	return o.ApplyT(func(v *UrlMap) HostRuleResponseArrayOutput { return v.HostRules }).(HostRuleResponseArrayOutput)
+}
+
+// Type of the resource. Always compute#urlMaps for url maps.
+func (o UrlMapOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+func (o UrlMapOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The list of named PathMatchers to use against the URL.
+func (o UrlMapOutput) PathMatchers() PathMatcherResponseArrayOutput {
+	return o.ApplyT(func(v *UrlMap) PathMatcherResponseArrayOutput { return v.PathMatchers }).(PathMatcherResponseArrayOutput)
+}
+
+// URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+func (o UrlMapOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Server-defined URL for the resource.
+func (o UrlMapOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *UrlMap) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
+func (o UrlMapOutput) Tests() UrlMapTestResponseArrayOutput {
+	return o.ApplyT(func(v *UrlMap) UrlMapTestResponseArrayOutput { return v.Tests }).(UrlMapTestResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UrlMapInput)(nil)).Elem(), &UrlMap{})
 	pulumi.RegisterOutputType(UrlMapOutput{})

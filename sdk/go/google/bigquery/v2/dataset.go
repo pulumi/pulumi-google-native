@@ -184,6 +184,100 @@ func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOu
 	return o
 }
 
+// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+func (o DatasetOutput) Access() DatasetAccessItemResponseArrayOutput {
+	return o.ApplyT(func(v *Dataset) DatasetAccessItemResponseArrayOutput { return v.Access }).(DatasetAccessItemResponseArrayOutput)
+}
+
+// The time when this dataset was created, in milliseconds since the epoch.
+func (o DatasetOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// [Required] A reference that identifies the dataset.
+func (o DatasetOutput) DatasetReference() DatasetReferenceResponseOutput {
+	return o.ApplyT(func(v *Dataset) DatasetReferenceResponseOutput { return v.DatasetReference }).(DatasetReferenceResponseOutput)
+}
+
+// The default collation of the dataset.
+func (o DatasetOutput) DefaultCollation() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DefaultCollation }).(pulumi.StringOutput)
+}
+
+func (o DatasetOutput) DefaultEncryptionConfiguration() EncryptionConfigurationResponseOutput {
+	return o.ApplyT(func(v *Dataset) EncryptionConfigurationResponseOutput { return v.DefaultEncryptionConfiguration }).(EncryptionConfigurationResponseOutput)
+}
+
+// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+func (o DatasetOutput) DefaultPartitionExpirationMs() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DefaultPartitionExpirationMs }).(pulumi.StringOutput)
+}
+
+// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+func (o DatasetOutput) DefaultTableExpirationMs() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DefaultTableExpirationMs }).(pulumi.StringOutput)
+}
+
+// [Optional] A user-friendly description of the dataset.
+func (o DatasetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// A hash of the resource.
+func (o DatasetOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// [Optional] A descriptive name for the dataset.
+func (o DatasetOutput) FriendlyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.FriendlyName }).(pulumi.StringOutput)
+}
+
+// [Optional] Indicates if table names are case insensitive in the dataset.
+func (o DatasetOutput) IsCaseInsensitive() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.BoolOutput { return v.IsCaseInsensitive }).(pulumi.BoolOutput)
+}
+
+// The resource type.
+func (o DatasetOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
+func (o DatasetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+func (o DatasetOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
+// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+func (o DatasetOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// [Optional] Number of hours for the max time travel for all tables in the dataset.
+func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.MaxTimeTravelHours }).(pulumi.StringOutput)
+}
+
+// Reserved for future use.
+func (o DatasetOutput) SatisfiesPZS() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.BoolOutput { return v.SatisfiesPZS }).(pulumi.BoolOutput)
+}
+
+// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+func (o DatasetOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// [Optional]The tags associated with this dataset. Tag keys are globally unique.
+func (o DatasetOutput) Tags() DatasetTagsItemResponseArrayOutput {
+	return o.ApplyT(func(v *Dataset) DatasetTagsItemResponseArrayOutput { return v.Tags }).(DatasetTagsItemResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetInput)(nil)).Elem(), &Dataset{})
 	pulumi.RegisterOutputType(DatasetOutput{})

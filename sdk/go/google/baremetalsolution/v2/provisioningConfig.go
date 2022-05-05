@@ -159,6 +159,63 @@ func (o ProvisioningConfigOutput) ToProvisioningConfigOutputWithContext(ctx cont
 	return o
 }
 
+// URI to Cloud Console UI view of this provisioning config.
+func (o ProvisioningConfigOutput) CloudConsoleUri() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.CloudConsoleUri }).(pulumi.StringOutput)
+}
+
+// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+//
+// Deprecated: Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
+func (o ProvisioningConfigOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
+}
+
+// A service account to enable customers to access instance credentials upon handover.
+func (o ProvisioningConfigOutput) HandoverServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.HandoverServiceAccount }).(pulumi.StringOutput)
+}
+
+// Instances to be created.
+func (o ProvisioningConfigOutput) Instances() InstanceConfigResponseArrayOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) InstanceConfigResponseArrayOutput { return v.Instances }).(InstanceConfigResponseArrayOutput)
+}
+
+// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
+func (o ProvisioningConfigOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the provisioning config.
+func (o ProvisioningConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Networks to be created.
+func (o ProvisioningConfigOutput) Networks() NetworkConfigResponseArrayOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) NetworkConfigResponseArrayOutput { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// State of ProvisioningConfig.
+func (o ProvisioningConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// A generated buganizer id to track provisioning request.
+func (o ProvisioningConfigOutput) TicketId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.TicketId }).(pulumi.StringOutput)
+}
+
+// Last update timestamp.
+func (o ProvisioningConfigOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Volumes to be created.
+func (o ProvisioningConfigOutput) Volumes() VolumeConfigResponseArrayOutput {
+	return o.ApplyT(func(v *ProvisioningConfig) VolumeConfigResponseArrayOutput { return v.Volumes }).(VolumeConfigResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProvisioningConfigInput)(nil)).Elem(), &ProvisioningConfig{})
 	pulumi.RegisterOutputType(ProvisioningConfigOutput{})

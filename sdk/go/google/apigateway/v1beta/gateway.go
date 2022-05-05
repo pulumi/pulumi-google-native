@@ -142,6 +142,46 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+func (o GatewayOutput) ApiConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ApiConfig }).(pulumi.StringOutput)
+}
+
+// Created time.
+func (o GatewayOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
+func (o GatewayOutput) DefaultHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DefaultHostname }).(pulumi.StringOutput)
+}
+
+// Optional. Display name.
+func (o GatewayOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+func (o GatewayOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
+func (o GatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current state of the Gateway.
+func (o GatewayOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Updated time.
+func (o GatewayOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GatewayInput)(nil)).Elem(), &Gateway{})
 	pulumi.RegisterOutputType(GatewayOutput{})

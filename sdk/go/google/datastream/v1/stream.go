@@ -188,6 +188,66 @@ func (o StreamOutput) ToStreamOutputWithContext(ctx context.Context) StreamOutpu
 	return o
 }
 
+// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
+func (o StreamOutput) BackfillAll() BackfillAllStrategyResponseOutput {
+	return o.ApplyT(func(v *Stream) BackfillAllStrategyResponseOutput { return v.BackfillAll }).(BackfillAllStrategyResponseOutput)
+}
+
+// Do not automatically backfill any objects.
+func (o StreamOutput) BackfillNone() BackfillNoneStrategyResponseOutput {
+	return o.ApplyT(func(v *Stream) BackfillNoneStrategyResponseOutput { return v.BackfillNone }).(BackfillNoneStrategyResponseOutput)
+}
+
+// The creation time of the stream.
+func (o StreamOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+func (o StreamOutput) CustomerManagedEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.CustomerManagedEncryptionKey }).(pulumi.StringOutput)
+}
+
+// Destination connection profile configuration.
+func (o StreamOutput) DestinationConfig() DestinationConfigResponseOutput {
+	return o.ApplyT(func(v *Stream) DestinationConfigResponseOutput { return v.DestinationConfig }).(DestinationConfigResponseOutput)
+}
+
+// Display name.
+func (o StreamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Errors on the Stream.
+func (o StreamOutput) Errors() ErrorResponseArrayOutput {
+	return o.ApplyT(func(v *Stream) ErrorResponseArrayOutput { return v.Errors }).(ErrorResponseArrayOutput)
+}
+
+// Labels.
+func (o StreamOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The stream's name.
+func (o StreamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Source connection profile configuration.
+func (o StreamOutput) SourceConfig() SourceConfigResponseOutput {
+	return o.ApplyT(func(v *Stream) SourceConfigResponseOutput { return v.SourceConfig }).(SourceConfigResponseOutput)
+}
+
+// The state of the stream.
+func (o StreamOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The last update time of the stream.
+func (o StreamOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamInput)(nil)).Elem(), &Stream{})
 	pulumi.RegisterOutputType(StreamOutput{})

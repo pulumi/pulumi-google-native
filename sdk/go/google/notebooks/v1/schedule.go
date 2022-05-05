@@ -148,6 +148,55 @@ func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) Schedul
 	return o
 }
 
+// Time the schedule was created.
+func (o ScheduleOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+func (o ScheduleOutput) CronSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.CronSchedule }).(pulumi.StringOutput)
+}
+
+// A brief description of this environment.
+func (o ScheduleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+func (o ScheduleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Notebook Execution Template corresponding to this schedule.
+func (o ScheduleOutput) ExecutionTemplate() ExecutionTemplateResponseOutput {
+	return o.ApplyT(func(v *Schedule) ExecutionTemplateResponseOutput { return v.ExecutionTemplate }).(ExecutionTemplateResponseOutput)
+}
+
+// The name of this schedule. Format: `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+func (o ScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The most recent execution names triggered from this schedule and their corresponding states.
+func (o ScheduleOutput) RecentExecutions() ExecutionResponseArrayOutput {
+	return o.ApplyT(func(v *Schedule) ExecutionResponseArrayOutput { return v.RecentExecutions }).(ExecutionResponseArrayOutput)
+}
+
+func (o ScheduleOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
+func (o ScheduleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Time the schedule was last updated.
+func (o ScheduleOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), &Schedule{})
 	pulumi.RegisterOutputType(ScheduleOutput{})

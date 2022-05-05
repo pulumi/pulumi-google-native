@@ -170,6 +170,61 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
+// Additional entity key aliases for a Group.
+func (o GroupOutput) AdditionalGroupKeys() EntityKeyResponseArrayOutput {
+	return o.ApplyT(func(v *Group) EntityKeyResponseArrayOutput { return v.AdditionalGroupKeys }).(EntityKeyResponseArrayOutput)
+}
+
+// The time when the `Group` was created.
+func (o GroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
+func (o GroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the `Group`.
+func (o GroupOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Dynamic group metadata like queries and status.
+func (o GroupOutput) DynamicGroupMetadata() DynamicGroupMetadataResponseOutput {
+	return o.ApplyT(func(v *Group) DynamicGroupMetadataResponseOutput { return v.DynamicGroupMetadata }).(DynamicGroupMetadataResponseOutput)
+}
+
+// The `EntityKey` of the `Group`.
+func (o GroupOutput) GroupKey() EntityKeyResponseOutput {
+	return o.ApplyT(func(v *Group) EntityKeyResponseOutput { return v.GroupKey }).(EntityKeyResponseOutput)
+}
+
+// One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
+func (o GroupOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group_id}`.
+func (o GroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
+func (o GroupOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// Optional. The POSIX groups associated with the `Group`.
+func (o GroupOutput) PosixGroups() PosixGroupResponseArrayOutput {
+	return o.ApplyT(func(v *Group) PosixGroupResponseArrayOutput { return v.PosixGroups }).(PosixGroupResponseArrayOutput)
+}
+
+// The time when the `Group` was last updated.
+func (o GroupOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupInput)(nil)).Elem(), &Group{})
 	pulumi.RegisterOutputType(GroupOutput{})

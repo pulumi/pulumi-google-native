@@ -124,6 +124,31 @@ func (o ViewOutput) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return o
 }
 
+// The time at which this view was created.
+func (o ViewOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The human-readable display name of the view.
+func (o ViewOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
+func (o ViewOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The most recent time at which the view was updated.
+func (o ViewOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// String with specific view properties.
+func (o ViewOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ViewInput)(nil)).Elem(), &View{})
 	pulumi.RegisterOutputType(ViewOutput{})

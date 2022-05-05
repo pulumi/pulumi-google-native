@@ -322,6 +322,161 @@ func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Access controls on the object.
+func (o BucketObjectOutput) Acl() ObjectAccessControlResponseArrayOutput {
+	return o.ApplyT(func(v *BucketObject) ObjectAccessControlResponseArrayOutput { return v.Acl }).(ObjectAccessControlResponseArrayOutput)
+}
+
+// The name of the bucket containing this object.
+func (o BucketObjectOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Cache-Control directive for the object data. If omitted, and the object is accessible to all anonymous users, the default will be public, max-age=3600.
+func (o BucketObjectOutput) CacheControl() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.CacheControl }).(pulumi.StringOutput)
+}
+
+// Number of underlying components that make up this object. Components are accumulated by compose operations.
+func (o BucketObjectOutput) ComponentCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.IntOutput { return v.ComponentCount }).(pulumi.IntOutput)
+}
+
+// Content-Disposition of the object data.
+func (o BucketObjectOutput) ContentDisposition() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentDisposition }).(pulumi.StringOutput)
+}
+
+// Content-Encoding of the object data.
+func (o BucketObjectOutput) ContentEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentEncoding }).(pulumi.StringOutput)
+}
+
+// Content-Language of the object data.
+func (o BucketObjectOutput) ContentLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentLanguage }).(pulumi.StringOutput)
+}
+
+// Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream.
+func (o BucketObjectOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
+func (o BucketObjectOutput) Crc32c() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Crc32c }).(pulumi.StringOutput)
+}
+
+// A timestamp in RFC 3339 format specified by the user for an object.
+func (o BucketObjectOutput) CustomTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.CustomTime }).(pulumi.StringOutput)
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+func (o BucketObjectOutput) CustomerEncryption() BucketObjectCustomerEncryptionResponseOutput {
+	return o.ApplyT(func(v *BucketObject) BucketObjectCustomerEncryptionResponseOutput { return v.CustomerEncryption }).(BucketObjectCustomerEncryptionResponseOutput)
+}
+
+// HTTP 1.1 Entity tag for the object.
+func (o BucketObjectOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
+func (o BucketObjectOutput) EventBasedHold() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.BoolOutput { return v.EventBasedHold }).(pulumi.BoolOutput)
+}
+
+// The content generation of this object. Used for object versioning.
+func (o BucketObjectOutput) Generation() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Generation }).(pulumi.StringOutput)
+}
+
+// The kind of item this is. For objects, this is always storage#object.
+func (o BucketObjectOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
+func (o BucketObjectOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see Hashes and ETags: Best Practices.
+func (o BucketObjectOutput) Md5Hash() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Md5Hash }).(pulumi.StringOutput)
+}
+
+// Media download link.
+func (o BucketObjectOutput) MediaLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.MediaLink }).(pulumi.StringOutput)
+}
+
+// User-provided metadata, in key/value pairs.
+func (o BucketObjectOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
+func (o BucketObjectOutput) Metageneration() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Metageneration }).(pulumi.StringOutput)
+}
+
+// The name of the object. Required if not specified by URL parameter.
+func (o BucketObjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+func (o BucketObjectOutput) Owner() BucketObjectOwnerResponseOutput {
+	return o.ApplyT(func(v *BucketObject) BucketObjectOwnerResponseOutput { return v.Owner }).(BucketObjectOwnerResponseOutput)
+}
+
+// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
+func (o BucketObjectOutput) RetentionExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.RetentionExpirationTime }).(pulumi.StringOutput)
+}
+
+// The link to this object.
+func (o BucketObjectOutput) SelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Content-Length of the data in bytes.
+func (o BucketObjectOutput) Size() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
+}
+
+// Storage class of the object.
+func (o BucketObjectOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+// Whether an object is under temporary hold. While this flag is set to true, the object is protected against deletion and overwrites. A common use case of this flag is regulatory investigations where objects need to be retained while the investigation is ongoing. Note that unlike event-based hold, temporary hold does not impact retention expiration time of an object.
+func (o BucketObjectOutput) TemporaryHold() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.BoolOutput { return v.TemporaryHold }).(pulumi.BoolOutput)
+}
+
+// The creation time of the object in RFC 3339 format.
+func (o BucketObjectOutput) TimeCreated() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
+}
+
+// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the object has been deleted.
+func (o BucketObjectOutput) TimeDeleted() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.TimeDeleted }).(pulumi.StringOutput)
+}
+
+// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
+func (o BucketObjectOutput) TimeStorageClassUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.TimeStorageClassUpdated }).(pulumi.StringOutput)
+}
+
+// The modification time of the object metadata in RFC 3339 format.
+func (o BucketObjectOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketObjectInput)(nil)).Elem(), &BucketObject{})
 	pulumi.RegisterOutputType(BucketObjectOutput{})
