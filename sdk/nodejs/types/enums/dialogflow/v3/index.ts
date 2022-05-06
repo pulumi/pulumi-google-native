@@ -230,6 +230,30 @@ export const GoogleCloudDialogflowCxV3NluSettingsModelType = {
  */
 export type GoogleCloudDialogflowCxV3NluSettingsModelType = (typeof GoogleCloudDialogflowCxV3NluSettingsModelType)[keyof typeof GoogleCloudDialogflowCxV3NluSettingsModelType];
 
+export const GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat = {
+    /**
+     * Unspecified. Do not use.
+     */
+    AudioFormatUnspecified: "AUDIO_FORMAT_UNSPECIFIED",
+    /**
+     * G.711 mu-law PCM with 8kHz sample rate.
+     */
+    Mulaw: "MULAW",
+    /**
+     * MP3 file format.
+     */
+    Mp3: "MP3",
+    /**
+     * OGG Vorbis.
+     */
+    Ogg: "OGG",
+} as const;
+
+/**
+ * File format for exported audio file. Currently only in telephony recordings.
+ */
+export type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat = (typeof GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat)[keyof typeof GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat];
+
 export const GoogleCloudDialogflowCxV3TestCaseResultTestResult = {
     /**
      * Not specified. Should never be used.

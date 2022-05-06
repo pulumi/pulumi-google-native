@@ -21,7 +21,7 @@ class DestGroupArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DestGroup resource.
-        :param pulumi.Input[str] tunnel_dest_group_id: Required. The ID to use for the TunnelDestGroup, which will become the final component of the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[str] tunnel_dest_group_id: Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: null List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: null List of FQDNs that this group applies to.
         :param pulumi.Input[str] name: Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
@@ -42,7 +42,7 @@ class DestGroupArgs:
     @pulumi.getter(name="tunnelDestGroupId")
     def tunnel_dest_group_id(self) -> pulumi.Input[str]:
         """
-        Required. The ID to use for the TunnelDestGroup, which will become the final component of the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
         """
         return pulumi.get(self, "tunnel_dest_group_id")
 
@@ -125,7 +125,7 @@ class DestGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: null List of CIDRs that this group applies to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: null List of FQDNs that this group applies to.
         :param pulumi.Input[str] name: Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
-        :param pulumi.Input[str] tunnel_dest_group_id: Required. The ID to use for the TunnelDestGroup, which will become the final component of the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[str] tunnel_dest_group_id: Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
         """
         ...
     @overload

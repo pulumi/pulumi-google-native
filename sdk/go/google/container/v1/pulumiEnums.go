@@ -2027,6 +2027,173 @@ func (in *networkConfigPrivateIpv6GoogleAccessPtr) ToNetworkConfigPrivateIpv6Goo
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
+// Specifies the total network bandwidth tier for the NodePool.
+type NetworkPerformanceConfigTotalEgressBandwidthTier string
+
+const (
+	// Default value
+	NetworkPerformanceConfigTotalEgressBandwidthTierTierUnspecified = NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED")
+	// Higher bandwidth, actual values based on VM size.
+	NetworkPerformanceConfigTotalEgressBandwidthTierTier1 = NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_1")
+)
+
+func (NetworkPerformanceConfigTotalEgressBandwidthTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToNetworkPerformanceConfigTotalEgressBandwidthTierOutput() NetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return pulumi.ToOutput(e).(NetworkPerformanceConfigTotalEgressBandwidthTierOutput)
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkPerformanceConfigTotalEgressBandwidthTierOutput)
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return e.ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return NetworkPerformanceConfigTotalEgressBandwidthTier(e).ToNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(ctx).ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx)
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkPerformanceConfigTotalEgressBandwidthTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkPerformanceConfigTotalEgressBandwidthTierOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierOutput() NetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPerformanceConfigTotalEgressBandwidthTier) *NetworkPerformanceConfigTotalEgressBandwidthTier {
+		return &v
+	}).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkPerformanceConfigTotalEgressBandwidthTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkPerformanceConfigTotalEgressBandwidthTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) Elem() NetworkPerformanceConfigTotalEgressBandwidthTierOutput {
+	return o.ApplyT(func(v *NetworkPerformanceConfigTotalEgressBandwidthTier) NetworkPerformanceConfigTotalEgressBandwidthTier {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPerformanceConfigTotalEgressBandwidthTier
+		return ret
+	}).(NetworkPerformanceConfigTotalEgressBandwidthTierOutput)
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkPerformanceConfigTotalEgressBandwidthTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts NetworkPerformanceConfigTotalEgressBandwidthTierArgs and NetworkPerformanceConfigTotalEgressBandwidthTierOutput values.
+// You can construct a concrete instance of `NetworkPerformanceConfigTotalEgressBandwidthTierInput` via:
+//
+//          NetworkPerformanceConfigTotalEgressBandwidthTierArgs{...}
+type NetworkPerformanceConfigTotalEgressBandwidthTierInput interface {
+	pulumi.Input
+
+	ToNetworkPerformanceConfigTotalEgressBandwidthTierOutput() NetworkPerformanceConfigTotalEgressBandwidthTierOutput
+	ToNetworkPerformanceConfigTotalEgressBandwidthTierOutputWithContext(context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierOutput
+}
+
+var networkPerformanceConfigTotalEgressBandwidthTierPtrType = reflect.TypeOf((**NetworkPerformanceConfigTotalEgressBandwidthTier)(nil)).Elem()
+
+type NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput
+	ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput
+}
+
+type networkPerformanceConfigTotalEgressBandwidthTierPtr string
+
+func NetworkPerformanceConfigTotalEgressBandwidthTierPtr(v string) NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput {
+	return (*networkPerformanceConfigTotalEgressBandwidthTierPtr)(&v)
+}
+
+func (*networkPerformanceConfigTotalEgressBandwidthTierPtr) ElementType() reflect.Type {
+	return networkPerformanceConfigTotalEgressBandwidthTierPtrType
+}
+
+func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return pulumi.ToOutput(in).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+func (in *networkPerformanceConfigTotalEgressBandwidthTierPtr) ToNetworkPerformanceConfigTotalEgressBandwidthTierPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
 // The selected network policy provider.
 type NetworkPolicyProvider string
 
@@ -3443,6 +3610,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigDatapathProviderPtrInput)(nil)).Elem(), NetworkConfigDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPrivateIpv6GoogleAccessInput)(nil)).Elem(), NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput)(nil)).Elem(), NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyProviderPtrInput)(nil)).Elem(), NetworkPolicyProvider("PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
@@ -3484,6 +3653,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigDatapathProviderPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPrivateIpv6GoogleAccessPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyProviderOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyProviderPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectOutput{})

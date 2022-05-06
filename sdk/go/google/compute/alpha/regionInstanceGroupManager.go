@@ -15,7 +15,7 @@ import (
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
-	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	// Specifies configuration that overrides the instance template configuration for the group.
 	AllInstancesConfig InstanceGroupManagerAllInstancesConfigResponseOutput `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyResponseArrayOutput `pulumi:"autoHealingPolicies"`
@@ -119,7 +119,7 @@ func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type regionInstanceGroupManagerArgs struct {
-	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	// Specifies configuration that overrides the instance template configuration for the group.
 	AllInstancesConfig *InstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
@@ -167,7 +167,7 @@ type regionInstanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
-	// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+	// Specifies configuration that overrides the instance template configuration for the group.
 	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput
@@ -250,7 +250,7 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWith
 	return o
 }
 
-// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+// Specifies configuration that overrides the instance template configuration for the group.
 func (o RegionInstanceGroupManagerOutput) AllInstancesConfig() InstanceGroupManagerAllInstancesConfigResponseOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) InstanceGroupManagerAllInstancesConfigResponseOutput {
 		return v.AllInstancesConfig

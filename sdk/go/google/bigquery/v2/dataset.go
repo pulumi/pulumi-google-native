@@ -47,7 +47,7 @@ type Dataset struct {
 	// [Optional] Number of hours for the max time travel for all tables in the dataset.
 	MaxTimeTravelHours pulumi.StringOutput `pulumi:"maxTimeTravelHours"`
 	// Reserved for future use.
-	SatisfiesPZS pulumi.BoolOutput `pulumi:"satisfiesPZS"`
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Optional]The tags associated with this dataset. Tag keys are globally unique.
@@ -264,8 +264,8 @@ func (o DatasetOutput) MaxTimeTravelHours() pulumi.StringOutput {
 }
 
 // Reserved for future use.
-func (o DatasetOutput) SatisfiesPZS() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Dataset) pulumi.BoolOutput { return v.SatisfiesPZS }).(pulumi.BoolOutput)
+func (o DatasetOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.

@@ -18,6 +18,7 @@ __all__ = [
     'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
     'NetworkConfigPrivateIpv6GoogleAccess',
+    'NetworkPerformanceConfigTotalEgressBandwidthTier',
     'NetworkPolicyProvider',
     'NodeTaintEffect',
     'ReleaseChannelChannel',
@@ -255,6 +256,20 @@ class NetworkConfigPrivateIpv6GoogleAccess(str, Enum):
     PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL = "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL"
     """
     Enables priate IPv6 access to and from Google Services
+    """
+
+
+class NetworkPerformanceConfigTotalEgressBandwidthTier(str, Enum):
+    """
+    Specifies the total network bandwidth tier for the NodePool.
+    """
+    TIER_UNSPECIFIED = "TIER_UNSPECIFIED"
+    """
+    Default value
+    """
+    TIER1 = "TIER_1"
+    """
+    Higher bandwidth, actual values based on VM size.
     """
 
 

@@ -47,7 +47,7 @@ class NodePoolInitArgs:
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
-        :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
@@ -81,8 +81,8 @@ class NodePoolInitArgs:
         if placement_policy is not None:
             pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
-            warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-            pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""")
+            warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
         if upgrade_settings is not None:
@@ -252,7 +252,7 @@ class NodePoolInitArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+        Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         """
         return pulumi.get(self, "project")
 
@@ -337,7 +337,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
         :param pulumi.Input[pulumi.InputType['PlacementPolicyArgs']] placement_policy: Specifies the node placement policy.
-        :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+        :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
         :param pulumi.Input[str] version: The version of the Kubernetes of this node.
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
@@ -414,8 +414,8 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["parent"] = parent
             __props__.__dict__["placement_policy"] = placement_policy
             if project is not None and not opts.urn:
-                warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
-                pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.""")
+                warnings.warn("""Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
+                pulumi.log.warn("""project is deprecated: Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
             __props__.__dict__["project"] = project
             __props__.__dict__["upgrade_settings"] = upgrade_settings
             __props__.__dict__["version"] = version

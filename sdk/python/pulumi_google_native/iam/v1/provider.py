@@ -25,7 +25,8 @@ class ProviderArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['OidcArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input['SamlArgs']] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] workload_identity_pool_provider_id: Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
@@ -36,6 +37,7 @@ class ProviderArgs:
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input['OidcArgs'] oidc: An OpenId Connect 1.0 identity provider.
+        :param pulumi.Input['SamlArgs'] saml: An SAML 2.0 identity provider.
         """
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
@@ -57,6 +59,8 @@ class ProviderArgs:
             pulumi.set(__self__, "oidc", oidc)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -181,6 +185,18 @@ class ProviderArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['SamlArgs']]:
+        """
+        An SAML 2.0 identity provider.
+        """
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['SamlArgs']]):
+        pulumi.set(self, "saml", value)
+
 
 class Provider(pulumi.CustomResource):
     @overload
@@ -196,6 +212,7 @@ class Provider(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['OidcArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input[pulumi.InputType['SamlArgs']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -212,6 +229,7 @@ class Provider(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[pulumi.InputType['OidcArgs']] oidc: An OpenId Connect 1.0 identity provider.
+        :param pulumi.Input[pulumi.InputType['SamlArgs']] saml: An SAML 2.0 identity provider.
         :param pulumi.Input[str] workload_identity_pool_provider_id: Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
         """
         ...
@@ -248,6 +266,7 @@ class Provider(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['OidcArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input[pulumi.InputType['SamlArgs']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -271,6 +290,7 @@ class Provider(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["oidc"] = oidc
             __props__.__dict__["project"] = project
+            __props__.__dict__["saml"] = saml
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")
             __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
@@ -309,6 +329,7 @@ class Provider(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["oidc"] = None
+        __props__.__dict__["saml"] = None
         __props__.__dict__["state"] = None
         return Provider(resource_name, opts=opts, __props__=__props__)
 
@@ -375,6 +396,14 @@ class Provider(pulumi.CustomResource):
         An OpenId Connect 1.0 identity provider.
         """
         return pulumi.get(self, "oidc")
+
+    @property
+    @pulumi.getter
+    def saml(self) -> pulumi.Output['outputs.SamlResponse']:
+        """
+        An SAML 2.0 identity provider.
+        """
+        return pulumi.get(self, "saml")
 
     @property
     @pulumi.getter

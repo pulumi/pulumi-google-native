@@ -18,7 +18,7 @@ class OutputConfigArgs:
                  destination: Optional[pulumi.Input[str]] = None):
         """
         OutputConfig contains a destination for writing trace data.
-        :param pulumi.Input[str] destination: The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        :param pulumi.Input[str] destination: The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -27,7 +27,7 @@ class OutputConfigArgs:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         """
         return pulumi.get(self, "destination")
 

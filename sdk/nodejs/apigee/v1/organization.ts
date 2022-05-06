@@ -47,6 +47,10 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly analyticsRegion!: pulumi.Output<string>;
     /**
+     * Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
+     */
+    public /*out*/ readonly apigeeProjectId!: pulumi.Output<string>;
+    /**
      * Not used by Apigee.
      */
     public readonly attributes!: pulumi.Output<string[]>;
@@ -163,6 +167,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
             resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["apigeeProjectId"] = undefined /*out*/;
             resourceInputs["caCertificate"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["environments"] = undefined /*out*/;
@@ -175,6 +180,7 @@ export class Organization extends pulumi.CustomResource {
         } else {
             resourceInputs["addonsConfig"] = undefined /*out*/;
             resourceInputs["analyticsRegion"] = undefined /*out*/;
+            resourceInputs["apigeeProjectId"] = undefined /*out*/;
             resourceInputs["attributes"] = undefined /*out*/;
             resourceInputs["authorizedNetwork"] = undefined /*out*/;
             resourceInputs["billingType"] = undefined /*out*/;

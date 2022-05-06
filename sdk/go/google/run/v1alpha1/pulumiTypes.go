@@ -2005,6 +2005,198 @@ func (o ExecActionResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ExecActionResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
+// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+type GRPCAction struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port *int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// GRPCActionInput is an input type that accepts GRPCActionArgs and GRPCActionOutput values.
+// You can construct a concrete instance of `GRPCActionInput` via:
+//
+//          GRPCActionArgs{...}
+type GRPCActionInput interface {
+	pulumi.Input
+
+	ToGRPCActionOutput() GRPCActionOutput
+	ToGRPCActionOutputWithContext(context.Context) GRPCActionOutput
+}
+
+// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+type GRPCActionArgs struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (GRPCActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GRPCAction)(nil)).Elem()
+}
+
+func (i GRPCActionArgs) ToGRPCActionOutput() GRPCActionOutput {
+	return i.ToGRPCActionOutputWithContext(context.Background())
+}
+
+func (i GRPCActionArgs) ToGRPCActionOutputWithContext(ctx context.Context) GRPCActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GRPCActionOutput)
+}
+
+func (i GRPCActionArgs) ToGRPCActionPtrOutput() GRPCActionPtrOutput {
+	return i.ToGRPCActionPtrOutputWithContext(context.Background())
+}
+
+func (i GRPCActionArgs) ToGRPCActionPtrOutputWithContext(ctx context.Context) GRPCActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GRPCActionOutput).ToGRPCActionPtrOutputWithContext(ctx)
+}
+
+// GRPCActionPtrInput is an input type that accepts GRPCActionArgs, GRPCActionPtr and GRPCActionPtrOutput values.
+// You can construct a concrete instance of `GRPCActionPtrInput` via:
+//
+//          GRPCActionArgs{...}
+//
+//  or:
+//
+//          nil
+type GRPCActionPtrInput interface {
+	pulumi.Input
+
+	ToGRPCActionPtrOutput() GRPCActionPtrOutput
+	ToGRPCActionPtrOutputWithContext(context.Context) GRPCActionPtrOutput
+}
+
+type grpcactionPtrType GRPCActionArgs
+
+func GRPCActionPtr(v *GRPCActionArgs) GRPCActionPtrInput {
+	return (*grpcactionPtrType)(v)
+}
+
+func (*grpcactionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GRPCAction)(nil)).Elem()
+}
+
+func (i *grpcactionPtrType) ToGRPCActionPtrOutput() GRPCActionPtrOutput {
+	return i.ToGRPCActionPtrOutputWithContext(context.Background())
+}
+
+func (i *grpcactionPtrType) ToGRPCActionPtrOutputWithContext(ctx context.Context) GRPCActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GRPCActionPtrOutput)
+}
+
+// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+type GRPCActionOutput struct{ *pulumi.OutputState }
+
+func (GRPCActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GRPCAction)(nil)).Elem()
+}
+
+func (o GRPCActionOutput) ToGRPCActionOutput() GRPCActionOutput {
+	return o
+}
+
+func (o GRPCActionOutput) ToGRPCActionOutputWithContext(ctx context.Context) GRPCActionOutput {
+	return o
+}
+
+func (o GRPCActionOutput) ToGRPCActionPtrOutput() GRPCActionPtrOutput {
+	return o.ToGRPCActionPtrOutputWithContext(context.Background())
+}
+
+func (o GRPCActionOutput) ToGRPCActionPtrOutputWithContext(ctx context.Context) GRPCActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GRPCAction) *GRPCAction {
+		return &v
+	}).(GRPCActionPtrOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o GRPCActionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GRPCActionOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GRPCAction) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type GRPCActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GRPCActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GRPCAction)(nil)).Elem()
+}
+
+func (o GRPCActionPtrOutput) ToGRPCActionPtrOutput() GRPCActionPtrOutput {
+	return o
+}
+
+func (o GRPCActionPtrOutput) ToGRPCActionPtrOutputWithContext(ctx context.Context) GRPCActionPtrOutput {
+	return o
+}
+
+func (o GRPCActionPtrOutput) Elem() GRPCActionOutput {
+	return o.ApplyT(func(v *GRPCAction) GRPCAction {
+		if v != nil {
+			return *v
+		}
+		var ret GRPCAction
+		return ret
+	}).(GRPCActionOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o GRPCActionPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GRPCAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GRPCAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+type GRPCActionResponse struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535.
+	Port int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service string `pulumi:"service"`
+}
+
+// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+type GRPCActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GRPCActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GRPCActionResponse)(nil)).Elem()
+}
+
+func (o GRPCActionResponseOutput) ToGRPCActionResponseOutput() GRPCActionResponseOutput {
+	return o
+}
+
+func (o GRPCActionResponseOutput) ToGRPCActionResponseOutputWithContext(ctx context.Context) GRPCActionResponseOutput {
+	return o
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535.
+func (o GRPCActionResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GRPCActionResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GRPCActionResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatus struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -4682,6 +4874,8 @@ type Probe struct {
 	Exec *ExecAction `pulumi:"exec"`
 	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
+	// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+	Grpc *GRPCAction `pulumi:"grpc"`
 	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet *HTTPGetAction `pulumi:"httpGet"`
 	// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -4713,6 +4907,8 @@ type ProbeArgs struct {
 	Exec ExecActionPtrInput `pulumi:"exec"`
 	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
+	// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+	Grpc GRPCActionPtrInput `pulumi:"grpc"`
 	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionPtrInput `pulumi:"httpGet"`
 	// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -4815,6 +5011,11 @@ func (o ProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
+// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+func (o ProbeOutput) Grpc() GRPCActionPtrOutput {
+	return o.ApplyT(func(v Probe) *GRPCAction { return v.Grpc }).(GRPCActionPtrOutput)
+}
+
 // (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 func (o ProbeOutput) HttpGet() HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v Probe) *HTTPGetAction { return v.HttpGet }).(HTTPGetActionPtrOutput)
@@ -4889,6 +5090,16 @@ func (o ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+func (o ProbePtrOutput) Grpc() GRPCActionPtrOutput {
+	return o.ApplyT(func(v *Probe) *GRPCAction {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(GRPCActionPtrOutput)
+}
+
 // (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 func (o ProbePtrOutput) HttpGet() HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v *Probe) *HTTPGetAction {
@@ -4955,6 +5166,8 @@ type ProbeResponse struct {
 	Exec ExecActionResponse `pulumi:"exec"`
 	// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold int `pulumi:"failureThreshold"`
+	// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+	Grpc GRPCActionResponse `pulumi:"grpc"`
 	// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
 	HttpGet HTTPGetActionResponse `pulumi:"httpGet"`
 	// (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -4992,6 +5205,11 @@ func (o ProbeResponseOutput) Exec() ExecActionResponseOutput {
 // (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 func (o ProbeResponseOutput) FailureThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
+}
+
+// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+func (o ProbeResponseOutput) Grpc() GRPCActionResponseOutput {
+	return o.ApplyT(func(v ProbeResponse) GRPCActionResponse { return v.Grpc }).(GRPCActionResponseOutput)
 }
 
 // (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
@@ -6661,6 +6879,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvVarSourcePtrInput)(nil)).Elem(), EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionInput)(nil)).Elem(), ExecActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecActionPtrInput)(nil)).Elem(), ExecActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GRPCActionInput)(nil)).Elem(), GRPCActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GRPCActionPtrInput)(nil)).Elem(), GRPCActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionInput)(nil)).Elem(), HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPGetActionPtrInput)(nil)).Elem(), HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HTTPHeaderInput)(nil)).Elem(), HTTPHeaderArgs{})
@@ -6728,6 +6948,9 @@ func init() {
 	pulumi.RegisterOutputType(ExecActionOutput{})
 	pulumi.RegisterOutputType(ExecActionPtrOutput{})
 	pulumi.RegisterOutputType(ExecActionResponseOutput{})
+	pulumi.RegisterOutputType(GRPCActionOutput{})
+	pulumi.RegisterOutputType(GRPCActionPtrOutput{})
+	pulumi.RegisterOutputType(GRPCActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionOutput{})
 	pulumi.RegisterOutputType(HTTPGetActionPtrOutput{})

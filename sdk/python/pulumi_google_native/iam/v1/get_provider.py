@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProviderResult:
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, name=None, oidc=None, state=None):
+    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, name=None, oidc=None, saml=None, state=None):
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -43,6 +43,9 @@ class GetProviderResult:
         if oidc and not isinstance(oidc, dict):
             raise TypeError("Expected argument 'oidc' to be a dict")
         pulumi.set(__self__, "oidc", oidc)
+        if saml and not isinstance(saml, dict):
+            raise TypeError("Expected argument 'saml' to be a dict")
+        pulumi.set(__self__, "saml", saml)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -113,6 +116,14 @@ class GetProviderResult:
 
     @property
     @pulumi.getter
+    def saml(self) -> 'outputs.SamlResponse':
+        """
+        An SAML 2.0 identity provider.
+        """
+        return pulumi.get(self, "saml")
+
+    @property
+    @pulumi.getter
     def state(self) -> str:
         """
         The state of the provider.
@@ -134,6 +145,7 @@ class AwaitableGetProviderResult(GetProviderResult):
             display_name=self.display_name,
             name=self.name,
             oidc=self.oidc,
+            saml=self.saml,
             state=self.state)
 
 
@@ -165,6 +177,7 @@ def get_provider(location: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         oidc=__ret__.oidc,
+        saml=__ret__.saml,
         state=__ret__.state)
 
 

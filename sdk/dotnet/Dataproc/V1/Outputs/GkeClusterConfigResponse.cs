@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.NamespacedGkeDeploymentTargetResponse NamespacedGkeDeploymentTarget;
         /// <summary>
-        /// Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+        /// Optional. GKE node pools where workloads will be scheduled. At least one node pool must be assigned the DEFAULT GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         /// </summary>
         public readonly ImmutableArray<Outputs.GkeNodePoolTargetResponse> NodePoolTarget;
 

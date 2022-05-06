@@ -2,6 +2,23 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+- Update discovery docs
+** BREAKING CHANGES **
+- Resource `google-native:bigquery/v2:Dataset` - output `satisfiesPZS` was renamed
+- Function `google-native:bigquery/v2:getDataset` output `satisfiesPZS` was renamed
+- Resource `google-native:networkservices/v1beta1:TcpRoute` missing input `gateways`
+- Resource `google-native:networkservices/v1beta1:TcpRoute` missing output `gateways`
+- Type `google-native:bigquery/v2:TableFieldSchemaResponse`  `collationSpec` renamed to `collation`
+- Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplate` property `confidential` removed
+- Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplate` property `containerConcurrency` renamed to `maxInstanceRequestConcurrency`
+- Type `google-native:run/v2:GoogleCloudRunV2ConditionResponse` property `domainMappingReason` removed
+- Type `google-native:run/v2:GoogleCloudRunV2ConditionResponse` property `internalReason` removed
+- Type `google-native:run/v2:GoogleCloudRunV2BinaryAuthorization` property `policy` removed
+- Type `google-native:run/v2:GoogleCloudRunV2BinaryAuthorizationResponse` property `policy` removed
+- Type `google-native:bigquery/v2:TableFieldSchema` property `collationSpec` renamed to `collation`
+- Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplateResponse` property `confidential` removed
+- Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplateResponse`  property `containerConcurrency` renamed to `maxInstanceRequestConcurrency`
+
 
 ## 0.18.2 (2022-05-02)
 

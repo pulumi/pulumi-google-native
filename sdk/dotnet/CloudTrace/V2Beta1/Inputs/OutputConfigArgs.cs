@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1.Inputs
     public sealed class OutputConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        /// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }

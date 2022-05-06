@@ -9661,6 +9661,264 @@ func (o GoogleCloudDialogflowCxV3RolloutStateResponseOutput) StepIndex() pulumi.
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3RolloutStateResponse) int { return v.StepIndex }).(pulumi.IntOutput)
 }
 
+// Settings for exporting audio.
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings struct {
+	// Filename pattern for exported audio.
+	AudioExportPattern *string `pulumi:"audioExportPattern"`
+	// File format for exported audio file. Currently only in telephony recordings.
+	AudioFormat *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat `pulumi:"audioFormat"`
+	// Enable audio redaction if it is true.
+	EnableAudioRedaction *bool `pulumi:"enableAudioRedaction"`
+	// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+	GcsBucket *string `pulumi:"gcsBucket"`
+}
+
+// GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs and GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput` via:
+//
+//          GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{...}
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput
+	ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput
+}
+
+// Settings for exporting audio.
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs struct {
+	// Filename pattern for exported audio.
+	AudioExportPattern pulumi.StringPtrInput `pulumi:"audioExportPattern"`
+	// File format for exported audio file. Currently only in telephony recordings.
+	AudioFormat GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatPtrInput `pulumi:"audioFormat"`
+	// Enable audio redaction if it is true.
+	EnableAudioRedaction pulumi.BoolPtrInput `pulumi:"enableAudioRedaction"`
+	// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+	GcsBucket pulumi.StringPtrInput `pulumi:"gcsBucket"`
+}
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput).ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs, GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtr and GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput
+	ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput
+}
+
+type googleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrType GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs
+
+func GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtr(v *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput {
+	return (*googleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrType) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrType) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput)
+}
+
+// Settings for exporting audio.
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
+		return &v
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput)
+}
+
+// Filename pattern for exported audio.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) AudioExportPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *string {
+		return v.AudioExportPattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// File format for exported audio file. Currently only in telephony recordings.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) AudioFormat() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat {
+		return v.AudioFormat
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
+}
+
+// Enable audio redaction if it is true.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) EnableAudioRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *bool {
+		return v.EnableAudioRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *string { return v.GcsBucket }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) Elem() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings
+		return ret
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput)
+}
+
+// Filename pattern for exported audio.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) AudioExportPattern() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AudioExportPattern
+	}).(pulumi.StringPtrOutput)
+}
+
+// File format for exported audio file. Currently only in telephony recordings.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) AudioFormat() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormat {
+		if v == nil {
+			return nil
+		}
+		return v.AudioFormat
+	}).(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
+}
+
+// Enable audio redaction if it is true.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) EnableAudioRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAudioRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput) GcsBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcsBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for exporting audio.
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse struct {
+	// Filename pattern for exported audio.
+	AudioExportPattern string `pulumi:"audioExportPattern"`
+	// File format for exported audio file. Currently only in telephony recordings.
+	AudioFormat string `pulumi:"audioFormat"`
+	// Enable audio redaction if it is true.
+	EnableAudioRedaction bool `pulumi:"enableAudioRedaction"`
+	// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+	GcsBucket string `pulumi:"gcsBucket"`
+}
+
+// Settings for exporting audio.
+type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput() GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) ToGoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput {
+	return o
+}
+
+// Filename pattern for exported audio.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) AudioExportPattern() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse) string {
+		return v.AudioExportPattern
+	}).(pulumi.StringOutput)
+}
+
+// File format for exported audio file. Currently only in telephony recordings.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) AudioFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse) string {
+		return v.AudioFormat
+	}).(pulumi.StringOutput)
+}
+
+// Enable audio redaction if it is true.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) EnableAudioRedaction() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse) bool {
+		return v.EnableAudioRedaction
+	}).(pulumi.BoolOutput)
+}
+
+// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+func (o GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput) GcsBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse) string {
+		return v.GcsBucket
+	}).(pulumi.StringOutput)
+}
+
 // Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings struct {
 	// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
@@ -12224,6 +12482,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStateInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3RolloutStatePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3RolloutStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3SpeechToTextSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{})
@@ -12407,6 +12667,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3RolloutStateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponseOutput{})

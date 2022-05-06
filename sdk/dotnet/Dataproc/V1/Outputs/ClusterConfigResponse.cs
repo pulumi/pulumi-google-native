@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string ConfigBucket;
         /// <summary>
-        /// Optional. The configuration(s) for a dataproc metric(s).
+        /// Optional. The config for Dataproc metrics.
         /// </summary>
         public readonly Outputs.DataprocMetricConfigResponse DataprocMetricConfig;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.GceClusterConfigResponse GceClusterConfig;
         /// <summary>
-        /// Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+        /// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. These config settings are mutually exclusive with Compute Engine-based options, such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
         /// </summary>
         public readonly Outputs.GkeClusterConfigResponse GkeClusterConfig;
         /// <summary>

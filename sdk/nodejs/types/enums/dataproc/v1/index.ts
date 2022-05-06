@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AuthenticationConfigAuthenticationType = {
+    /**
+     * If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
+     */
+    AuthenticationTypeUnspecified: "AUTHENTICATION_TYPE_UNSPECIFIED",
+    /**
+     * Defaults to using service account credentials
+     */
+    ServiceAccount: "SERVICE_ACCOUNT",
+    /**
+     * Injectable credentials authentication type
+     */
+    InjectableCredentials: "INJECTABLE_CREDENTIALS",
+} as const;
+
+/**
+ * Authentication type for session execution.
+ */
+export type AuthenticationConfigAuthenticationType = (typeof AuthenticationConfigAuthenticationType)[keyof typeof AuthenticationConfigAuthenticationType];
+
 export const GceClusterConfigPrivateIpv6GoogleAccess = {
     /**
      * If unspecified, Compute Engine default behavior will apply, which is the same as INHERIT_FROM_SUBNETWORK.
@@ -32,19 +52,19 @@ export const GkeNodePoolTargetRolesItem = {
      */
     RoleUnspecified: "ROLE_UNSPECIFIED",
     /**
-     * Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+     * At least one node pool must have the DEFAULT role. Work assigned to a role that is not associated with a node pool is assigned to the node pool with the DEFAULT role. For example, work assigned to the CONTROLLER role will be assigned to the node pool with the DEFAULT role if no node pool has the CONTROLLER role.
      */
     Default: "DEFAULT",
     /**
-     * Run controllers and webhooks.
+     * Run work associated with the Dataproc control plane (for example, controllers and webhooks). Very low resource requirements.
      */
     Controller: "CONTROLLER",
     /**
-     * Run spark driver.
+     * Run work associated with a Spark driver of a job.
      */
     SparkDriver: "SPARK_DRIVER",
     /**
-     * Run spark executors.
+     * Run work associated with a Spark executor of a job.
      */
     SparkExecutor: "SPARK_EXECUTOR",
 } as const;
@@ -73,37 +93,37 @@ export type InstanceGroupConfigPreemptibility = (typeof InstanceGroupConfigPreem
 
 export const MetricMetricSource = {
     /**
-     * Required unspecified metric source
+     * Required unspecified metric source.
      */
     MetricSourceUnspecified: "METRIC_SOURCE_UNSPECIFIED",
     /**
-     * all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+     * Default monitoring agent metrics, which are published with an agent.googleapis.com prefix when Dataproc enables the monitoring agent in Compute Engine.
      */
     MonitoringAgentDefaults: "MONITORING_AGENT_DEFAULTS",
     /**
-     * Hdfs metric source
+     * HDFS metric source.
      */
     Hdfs: "HDFS",
     /**
-     * Spark metric source
+     * Spark metric source.
      */
     Spark: "SPARK",
     /**
-     * Yarn metric source
+     * YARN metric source.
      */
     Yarn: "YARN",
     /**
-     * Spark history server metric source
+     * Spark History Server metric source.
      */
     SparkHistoryServer: "SPARK_HISTORY_SERVER",
     /**
-     * hiveserver2 metric source
+     * Hiveserver2 metric source.
      */
     Hiveserver2: "HIVESERVER2",
 } as const;
 
 /**
- * Required. MetricSource that should be enabled
+ * Required. MetricSource to enable.
  */
 export type MetricMetricSource = (typeof MetricMetricSource)[keyof typeof MetricMetricSource];
 

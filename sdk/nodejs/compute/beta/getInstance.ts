@@ -78,6 +78,10 @@ export interface GetInstanceResult {
      */
     readonly hostname: string;
     /**
+     * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+     */
+    readonly keyRevocationActionType: string;
+    /**
      * Type of the resource. Always compute#instance for instances.
      */
     readonly kind: string;

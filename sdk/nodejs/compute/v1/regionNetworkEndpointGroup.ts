@@ -80,7 +80,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     /**
-     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */
     public readonly pscTargetService!: pulumi.Output<string>;
     /**
@@ -203,7 +203,7 @@ export interface RegionNetworkEndpointGroupArgs {
     networkEndpointType?: pulumi.Input<enums.compute.v1.RegionNetworkEndpointGroupNetworkEndpointType>;
     project?: pulumi.Input<string>;
     /**
-     * The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+     * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */
     pscTargetService?: pulumi.Input<string>;
     region: pulumi.Input<string>;

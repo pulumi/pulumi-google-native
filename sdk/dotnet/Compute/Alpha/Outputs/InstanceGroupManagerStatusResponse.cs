@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerStatusResponse
     {
         /// <summary>
-        /// A status of consistency of Instances' config applied to instances with Instances' config defined in managed instance group.
+        /// [Output only] Status of all-instances configuration on the group.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerStatusAllInstancesConfigResponse AllInstancesConfig;
         /// <summary>

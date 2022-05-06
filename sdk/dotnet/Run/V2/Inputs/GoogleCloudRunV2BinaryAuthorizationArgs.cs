@@ -22,12 +22,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<string>? BreakglassJustification { get; set; }
 
         /// <summary>
-        /// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-        /// </summary>
-        [Input("policy")]
-        public Input<string>? Policy { get; set; }
-
-        /// <summary>
         /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         /// </summary>
         [Input("useDefault")]

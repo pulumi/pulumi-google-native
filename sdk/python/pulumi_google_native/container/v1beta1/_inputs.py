@@ -61,6 +61,7 @@ __all__ = [
     'MonitoringComponentConfigArgs',
     'MonitoringConfigArgs',
     'NetworkConfigArgs',
+    'NetworkPerformanceConfigArgs',
     'NetworkPolicyConfigArgs',
     'NetworkPolicyArgs',
     'NetworkTagsArgs',
@@ -2267,6 +2268,46 @@ class NetworkConfigArgs:
 
 
 @pulumi.input_type
+class NetworkPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 external_ip_egress_bandwidth_tier: Optional[pulumi.Input['NetworkPerformanceConfigExternalIpEgressBandwidthTier']] = None,
+                 total_egress_bandwidth_tier: Optional[pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier']] = None):
+        """
+        Configuration of all network bandwidth tiers
+        :param pulumi.Input['NetworkPerformanceConfigExternalIpEgressBandwidthTier'] external_ip_egress_bandwidth_tier: Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+        :param pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier'] total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        """
+        if external_ip_egress_bandwidth_tier is not None:
+            pulumi.set(__self__, "external_ip_egress_bandwidth_tier", external_ip_egress_bandwidth_tier)
+        if total_egress_bandwidth_tier is not None:
+            pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="externalIpEgressBandwidthTier")
+    def external_ip_egress_bandwidth_tier(self) -> Optional[pulumi.Input['NetworkPerformanceConfigExternalIpEgressBandwidthTier']]:
+        """
+        Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+        """
+        return pulumi.get(self, "external_ip_egress_bandwidth_tier")
+
+    @external_ip_egress_bandwidth_tier.setter
+    def external_ip_egress_bandwidth_tier(self, value: Optional[pulumi.Input['NetworkPerformanceConfigExternalIpEgressBandwidthTier']]):
+        pulumi.set(self, "external_ip_egress_bandwidth_tier", value)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> Optional[pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier']]:
+        """
+        Specifies the total network bandwidth tier for the NodePool.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+    @total_egress_bandwidth_tier.setter
+    def total_egress_bandwidth_tier(self, value: Optional[pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier']]):
+        pulumi.set(self, "total_egress_bandwidth_tier", value)
+
+
+@pulumi.input_type
 class NetworkPolicyConfigArgs:
     def __init__(__self__, *,
                  disabled: Optional[pulumi.Input[bool]] = None):
@@ -2966,16 +3007,20 @@ class NodeManagementArgs:
 class NodeNetworkConfigArgs:
     def __init__(__self__, *,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
+                 network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  pod_range: Optional[pulumi.Input[str]] = None):
         """
         Parameters for node pool-level network config.
         :param pulumi.Input[bool] create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param pulumi.Input['NetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
         :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if pod_ipv4_cidr_block is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
@@ -2992,6 +3037,18 @@ class NodeNetworkConfigArgs:
     @create_pod_range.setter
     def create_pod_range(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_pod_range", value)
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['NetworkPerformanceConfigArgs']]:
+        """
+        Network bandwidth tier configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['NetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
 
     @property
     @pulumi.getter(name="podIpv4CidrBlock")

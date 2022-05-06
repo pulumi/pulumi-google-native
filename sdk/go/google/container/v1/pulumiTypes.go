@@ -7361,6 +7361,172 @@ func (o MaintenanceWindowResponseOutput) RecurringWindow() RecurringTimeWindowRe
 	return o.ApplyT(func(v MaintenanceWindowResponse) RecurringTimeWindowResponse { return v.RecurringWindow }).(RecurringTimeWindowResponseOutput)
 }
 
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfig struct {
+	// Enable Managed Collection.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ManagedPrometheusConfigInput is an input type that accepts ManagedPrometheusConfigArgs and ManagedPrometheusConfigOutput values.
+// You can construct a concrete instance of `ManagedPrometheusConfigInput` via:
+//
+//          ManagedPrometheusConfigArgs{...}
+type ManagedPrometheusConfigInput interface {
+	pulumi.Input
+
+	ToManagedPrometheusConfigOutput() ManagedPrometheusConfigOutput
+	ToManagedPrometheusConfigOutputWithContext(context.Context) ManagedPrometheusConfigOutput
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigArgs struct {
+	// Enable Managed Collection.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ManagedPrometheusConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigOutput() ManagedPrometheusConfigOutput {
+	return i.ToManagedPrometheusConfigOutputWithContext(context.Background())
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigOutputWithContext(ctx context.Context) ManagedPrometheusConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigOutput)
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return i.ToManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedPrometheusConfigArgs) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigOutput).ToManagedPrometheusConfigPtrOutputWithContext(ctx)
+}
+
+// ManagedPrometheusConfigPtrInput is an input type that accepts ManagedPrometheusConfigArgs, ManagedPrometheusConfigPtr and ManagedPrometheusConfigPtrOutput values.
+// You can construct a concrete instance of `ManagedPrometheusConfigPtrInput` via:
+//
+//          ManagedPrometheusConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagedPrometheusConfigPtrInput interface {
+	pulumi.Input
+
+	ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput
+	ToManagedPrometheusConfigPtrOutputWithContext(context.Context) ManagedPrometheusConfigPtrOutput
+}
+
+type managedPrometheusConfigPtrType ManagedPrometheusConfigArgs
+
+func ManagedPrometheusConfigPtr(v *ManagedPrometheusConfigArgs) ManagedPrometheusConfigPtrInput {
+	return (*managedPrometheusConfigPtrType)(v)
+}
+
+func (*managedPrometheusConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (i *managedPrometheusConfigPtrType) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return i.ToManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *managedPrometheusConfigPtrType) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedPrometheusConfigPtrOutput)
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigOutput() ManagedPrometheusConfigOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigOutputWithContext(ctx context.Context) ManagedPrometheusConfigOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return o.ToManagedPrometheusConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedPrometheusConfigOutput) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedPrometheusConfig) *ManagedPrometheusConfig {
+		return &v
+	}).(ManagedPrometheusConfigPtrOutput)
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedPrometheusConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedPrometheusConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedPrometheusConfig)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigPtrOutput) ToManagedPrometheusConfigPtrOutput() ManagedPrometheusConfigPtrOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigPtrOutput) ToManagedPrometheusConfigPtrOutputWithContext(ctx context.Context) ManagedPrometheusConfigPtrOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigPtrOutput) Elem() ManagedPrometheusConfigOutput {
+	return o.ApplyT(func(v *ManagedPrometheusConfig) ManagedPrometheusConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedPrometheusConfig
+		return ret
+	}).(ManagedPrometheusConfigOutput)
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedPrometheusConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigResponse struct {
+	// Enable Managed Collection.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+type ManagedPrometheusConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedPrometheusConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedPrometheusConfigResponse)(nil)).Elem()
+}
+
+func (o ManagedPrometheusConfigResponseOutput) ToManagedPrometheusConfigResponseOutput() ManagedPrometheusConfigResponseOutput {
+	return o
+}
+
+func (o ManagedPrometheusConfigResponseOutput) ToManagedPrometheusConfigResponseOutputWithContext(ctx context.Context) ManagedPrometheusConfigResponseOutput {
+	return o
+}
+
+// Enable Managed Collection.
+func (o ManagedPrometheusConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ManagedPrometheusConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
 type MasterAuth struct {
 	// Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
@@ -8296,6 +8462,8 @@ func (o MonitoringComponentConfigResponseOutput) EnableComponents() pulumi.Strin
 type MonitoringConfig struct {
 	// Monitoring components configuration
 	ComponentConfig *MonitoringComponentConfig `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig *ManagedPrometheusConfig `pulumi:"managedPrometheusConfig"`
 }
 
 // MonitoringConfigInput is an input type that accepts MonitoringConfigArgs and MonitoringConfigOutput values.
@@ -8313,6 +8481,8 @@ type MonitoringConfigInput interface {
 type MonitoringConfigArgs struct {
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigPtrInput `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig ManagedPrometheusConfigPtrInput `pulumi:"managedPrometheusConfig"`
 }
 
 func (MonitoringConfigArgs) ElementType() reflect.Type {
@@ -8398,6 +8568,11 @@ func (o MonitoringConfigOutput) ComponentConfig() MonitoringComponentConfigPtrOu
 	return o.ApplyT(func(v MonitoringConfig) *MonitoringComponentConfig { return v.ComponentConfig }).(MonitoringComponentConfigPtrOutput)
 }
 
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigOutput) ManagedPrometheusConfig() ManagedPrometheusConfigPtrOutput {
+	return o.ApplyT(func(v MonitoringConfig) *ManagedPrometheusConfig { return v.ManagedPrometheusConfig }).(ManagedPrometheusConfigPtrOutput)
+}
+
 type MonitoringConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (MonitoringConfigPtrOutput) ElementType() reflect.Type {
@@ -8432,10 +8607,22 @@ func (o MonitoringConfigPtrOutput) ComponentConfig() MonitoringComponentConfigPt
 	}).(MonitoringComponentConfigPtrOutput)
 }
 
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigPtrOutput) ManagedPrometheusConfig() ManagedPrometheusConfigPtrOutput {
+	return o.ApplyT(func(v *MonitoringConfig) *ManagedPrometheusConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedPrometheusConfig
+	}).(ManagedPrometheusConfigPtrOutput)
+}
+
 // MonitoringConfig is cluster monitoring configuration.
 type MonitoringConfigResponse struct {
 	// Monitoring components configuration
 	ComponentConfig MonitoringComponentConfigResponse `pulumi:"componentConfig"`
+	// Enable Google Cloud Managed Service for Prometheus in the cluster.
+	ManagedPrometheusConfig ManagedPrometheusConfigResponse `pulumi:"managedPrometheusConfig"`
 }
 
 // MonitoringConfig is cluster monitoring configuration.
@@ -8456,6 +8643,11 @@ func (o MonitoringConfigResponseOutput) ToMonitoringConfigResponseOutputWithCont
 // Monitoring components configuration
 func (o MonitoringConfigResponseOutput) ComponentConfig() MonitoringComponentConfigResponseOutput {
 	return o.ApplyT(func(v MonitoringConfigResponse) MonitoringComponentConfigResponse { return v.ComponentConfig }).(MonitoringComponentConfigResponseOutput)
+}
+
+// Enable Google Cloud Managed Service for Prometheus in the cluster.
+func (o MonitoringConfigResponseOutput) ManagedPrometheusConfig() ManagedPrometheusConfigResponseOutput {
+	return o.ApplyT(func(v MonitoringConfigResponse) ManagedPrometheusConfigResponse { return v.ManagedPrometheusConfig }).(ManagedPrometheusConfigResponseOutput)
 }
 
 // NetworkConfig reports the relative names of network & subnetwork.
@@ -8792,6 +8984,174 @@ func (o NetworkConfigResponseOutput) ServiceExternalIpsConfig() ServiceExternalI
 // The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
 func (o NetworkConfigResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfig struct {
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier *NetworkPerformanceConfigTotalEgressBandwidthTier `pulumi:"totalEgressBandwidthTier"`
+}
+
+// NetworkPerformanceConfigInput is an input type that accepts NetworkPerformanceConfigArgs and NetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `NetworkPerformanceConfigInput` via:
+//
+//          NetworkPerformanceConfigArgs{...}
+type NetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToNetworkPerformanceConfigOutput() NetworkPerformanceConfigOutput
+	ToNetworkPerformanceConfigOutputWithContext(context.Context) NetworkPerformanceConfigOutput
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigArgs struct {
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (NetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigOutput() NetworkPerformanceConfigOutput {
+	return i.ToNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigOutputWithContext(ctx context.Context) NetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPerformanceConfigOutput)
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return i.ToNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPerformanceConfigOutput).ToNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// NetworkPerformanceConfigPtrInput is an input type that accepts NetworkPerformanceConfigArgs, NetworkPerformanceConfigPtr and NetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `NetworkPerformanceConfigPtrInput` via:
+//
+//          NetworkPerformanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput
+	ToNetworkPerformanceConfigPtrOutputWithContext(context.Context) NetworkPerformanceConfigPtrOutput
+}
+
+type networkPerformanceConfigPtrType NetworkPerformanceConfigArgs
+
+func NetworkPerformanceConfigPtr(v *NetworkPerformanceConfigArgs) NetworkPerformanceConfigPtrInput {
+	return (*networkPerformanceConfigPtrType)(v)
+}
+
+func (*networkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *networkPerformanceConfigPtrType) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return i.ToNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPerformanceConfigPtrType) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigOutput() NetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigOutputWithContext(ctx context.Context) NetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return o.ToNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPerformanceConfig) *NetworkPerformanceConfig {
+		return &v
+	}).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o NetworkPerformanceConfigOutput) TotalEgressBandwidthTier() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v NetworkPerformanceConfig) *NetworkPerformanceConfigTotalEgressBandwidthTier {
+		return v.TotalEgressBandwidthTier
+	}).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+type NetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigPtrOutput) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigPtrOutput) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigPtrOutput) Elem() NetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *NetworkPerformanceConfig) NetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPerformanceConfig
+		return ret
+	}).(NetworkPerformanceConfigOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o NetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v *NetworkPerformanceConfig) *NetworkPerformanceConfigTotalEgressBandwidthTier {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEgressBandwidthTier
+	}).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigResponse struct {
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfigResponse)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigResponseOutput) ToNetworkPerformanceConfigResponseOutput() NetworkPerformanceConfigResponseOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigResponseOutput) ToNetworkPerformanceConfigResponseOutputWithContext(ctx context.Context) NetworkPerformanceConfigResponseOutput {
+	return o
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o NetworkPerformanceConfigResponseOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPerformanceConfigResponse) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
 }
 
 // Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
@@ -10772,6 +11132,8 @@ func (o NodeManagementResponseOutput) UpgradeOptions() AutoUpgradeOptionsRespons
 type NodeNetworkConfig struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange *bool `pulumi:"createPodRange"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -10793,6 +11155,8 @@ type NodeNetworkConfigInput interface {
 type NodeNetworkConfigArgs struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -10882,6 +11246,11 @@ func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
+// Network bandwidth tier configuration.
+func (o NodeNetworkConfigOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -10926,6 +11295,16 @@ func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Network bandwidth tier configuration.
+func (o NodeNetworkConfigPtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *NetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(NetworkPerformanceConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *string {
@@ -10950,6 +11329,8 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 type NodeNetworkConfigResponse struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange bool `pulumi:"createPodRange"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -10974,6 +11355,11 @@ func (o NodeNetworkConfigResponseOutput) ToNodeNetworkConfigResponseOutputWithCo
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) CreatePodRange() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o NodeNetworkConfigResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
 }
 
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -15913,6 +16299,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyPtrInput)(nil)).Elem(), MaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowInput)(nil)).Elem(), MaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceWindowPtrInput)(nil)).Elem(), MaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedPrometheusConfigInput)(nil)).Elem(), ManagedPrometheusConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedPrometheusConfigPtrInput)(nil)).Elem(), ManagedPrometheusConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthInput)(nil)).Elem(), MasterAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthPtrInput)(nil)).Elem(), MasterAuthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MasterAuthorizedNetworksConfigInput)(nil)).Elem(), MasterAuthorizedNetworksConfigArgs{})
@@ -15927,6 +16315,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigPtrInput)(nil)).Elem(), MonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigInput)(nil)).Elem(), NetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigPtrInput)(nil)).Elem(), NetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPtrInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
@@ -16106,6 +16496,9 @@ func init() {
 	pulumi.RegisterOutputType(MaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedPrometheusConfigResponseOutput{})
 	pulumi.RegisterOutputType(MasterAuthOutput{})
 	pulumi.RegisterOutputType(MasterAuthPtrOutput{})
 	pulumi.RegisterOutputType(MasterAuthResponseOutput{})
@@ -16127,6 +16520,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyConfigOutput{})

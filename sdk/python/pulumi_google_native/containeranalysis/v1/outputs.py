@@ -45,6 +45,7 @@ __all__ = [
     'FingerprintResponse',
     'GerritSourceContextResponse',
     'GitSourceContextResponse',
+    'GrafeasV1FileLocationResponse',
     'HintResponse',
     'IdentityResponse',
     'ImageNoteResponse',
@@ -578,7 +579,7 @@ class BuilderConfigResponse(dict):
 @pulumi.output_type
 class CVSSResponse(dict):
     """
-    Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+    Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -629,7 +630,7 @@ class CVSSResponse(dict):
                  scope: str,
                  user_interaction: str):
         """
-        Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+        Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
         :param str attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
         :param float base_score: The base score is a function of the base metric scores.
         """
@@ -2326,6 +2327,45 @@ class GitSourceContextResponse(dict):
 
 
 @pulumi.output_type
+class GrafeasV1FileLocationResponse(dict):
+    """
+    Indicates the location at which a package was found.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePath":
+            suggest = "file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GrafeasV1FileLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GrafeasV1FileLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GrafeasV1FileLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_path: str):
+        """
+        Indicates the location at which a package was found.
+        :param str file_path: For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+        """
+        pulumi.set(__self__, "file_path", file_path)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> str:
+        """
+        For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+        """
+        return pulumi.get(self, "file_path")
+
+
+@pulumi.output_type
 class HintResponse(dict):
     """
     This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
@@ -3016,6 +3056,8 @@ class PackageIssueResponse(dict):
             suggest = "affected_version"
         elif key == "effectiveSeverity":
             suggest = "effective_severity"
+        elif key == "fileLocation":
+            suggest = "file_location"
         elif key == "fixAvailable":
             suggest = "fix_available"
         elif key == "fixedCpeUri":
@@ -3043,6 +3085,7 @@ class PackageIssueResponse(dict):
                  affected_package: str,
                  affected_version: 'outputs.VersionResponse',
                  effective_severity: str,
+                 file_location: Sequence['outputs.GrafeasV1FileLocationResponse'],
                  fix_available: bool,
                  fixed_cpe_uri: str,
                  fixed_package: str,
@@ -3054,6 +3097,7 @@ class PackageIssueResponse(dict):
         :param str affected_package: The package this vulnerability was found in.
         :param 'VersionResponse' affected_version: The version of the package that is installed on the resource affected by this vulnerability.
         :param str effective_severity: The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
+        :param Sequence['GrafeasV1FileLocationResponse'] file_location: The location at which this package was found.
         :param bool fix_available: Whether a fix is available for this package.
         :param str fixed_cpe_uri: The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
         :param str fixed_package: The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
@@ -3064,6 +3108,7 @@ class PackageIssueResponse(dict):
         pulumi.set(__self__, "affected_package", affected_package)
         pulumi.set(__self__, "affected_version", affected_version)
         pulumi.set(__self__, "effective_severity", effective_severity)
+        pulumi.set(__self__, "file_location", file_location)
         pulumi.set(__self__, "fix_available", fix_available)
         pulumi.set(__self__, "fixed_cpe_uri", fixed_cpe_uri)
         pulumi.set(__self__, "fixed_package", fixed_package)
@@ -3101,6 +3146,14 @@ class PackageIssueResponse(dict):
         The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
         """
         return pulumi.get(self, "effective_severity")
+
+    @property
+    @pulumi.getter(name="fileLocation")
+    def file_location(self) -> Sequence['outputs.GrafeasV1FileLocationResponse']:
+        """
+        The location at which this package was found.
+        """
+        return pulumi.get(self, "file_location")
 
     @property
     @pulumi.getter(name="fixAvailable")

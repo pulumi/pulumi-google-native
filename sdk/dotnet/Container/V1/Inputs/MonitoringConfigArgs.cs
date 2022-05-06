@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("componentConfig")]
         public Input<Inputs.MonitoringComponentConfigArgs>? ComponentConfig { get; set; }
 
+        /// <summary>
+        /// Enable Google Cloud Managed Service for Prometheus in the cluster.
+        /// </summary>
+        [Input("managedPrometheusConfig")]
+        public Input<Inputs.ManagedPrometheusConfigArgs>? ManagedPrometheusConfig { get; set; }
+
         public MonitoringConfigArgs()
         {
         }

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IncludeHttpHeaders;
         /// <summary>
-        /// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&amp;' and '=' will be percent encoded and not treated as delimiters.
+        /// Names of query string parameters to include in cache keys. Default parameters are always included. '&amp;' and '=' will be percent encoded and not treated as delimiters.
         /// </summary>
         public readonly ImmutableArray<string> QueryStringWhitelist;
 

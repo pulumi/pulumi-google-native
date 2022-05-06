@@ -277,6 +277,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static AddressPurpose PrivateServiceConnect { get; } = new AddressPurpose("PRIVATE_SERVICE_CONNECT");
         /// <summary>
+        /// A regional internal IP address range reserved for Serverless.
+        /// </summary>
+        public static AddressPurpose Serverless { get; } = new AddressPurpose("SERVERLESS");
+        /// <summary>
         /// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
         /// </summary>
         public static AddressPurpose SharedLoadbalancerVip { get; } = new AddressPurpose("SHARED_LOADBALANCER_VIP");
@@ -1707,6 +1711,47 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Defines the type of technology used by the confidential instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct ConfidentialInstanceConfigConfidentialInstanceType : IEquatable<ConfidentialInstanceConfigConfidentialInstanceType>
+    {
+        private readonly string _value;
+
+        private ConfidentialInstanceConfigConfidentialInstanceType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No type specified. Do not use this value.
+        /// </summary>
+        public static ConfidentialInstanceConfigConfidentialInstanceType ConfidentialInstanceTypeUnspecified { get; } = new ConfidentialInstanceConfigConfidentialInstanceType("CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// AMD Secure Encrypted Virtualization.
+        /// </summary>
+        public static ConfidentialInstanceConfigConfidentialInstanceType Sev { get; } = new ConfidentialInstanceConfigConfidentialInstanceType("SEV");
+        /// <summary>
+        /// AMD Secure Encrypted Virtualization - Secure Nested Paging.
+        /// </summary>
+        public static ConfidentialInstanceConfigConfidentialInstanceType SevSnp { get; } = new ConfidentialInstanceConfigConfidentialInstanceType("SEV_SNP");
+
+        public static bool operator ==(ConfidentialInstanceConfigConfidentialInstanceType left, ConfidentialInstanceConfigConfidentialInstanceType right) => left.Equals(right);
+        public static bool operator !=(ConfidentialInstanceConfigConfidentialInstanceType left, ConfidentialInstanceConfigConfidentialInstanceType right) => !left.Equals(right);
+
+        public static explicit operator string(ConfidentialInstanceConfigConfidentialInstanceType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ConfidentialInstanceConfigConfidentialInstanceType other && Equals(other);
+        public bool Equals(ConfidentialInstanceConfigConfidentialInstanceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
     /// </summary>
     [EnumType]
@@ -2577,6 +2622,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static GlobalAddressPurpose PrivateServiceConnect { get; } = new GlobalAddressPurpose("PRIVATE_SERVICE_CONNECT");
         /// <summary>
+        /// A regional internal IP address range reserved for Serverless.
+        /// </summary>
+        public static GlobalAddressPurpose Serverless { get; } = new GlobalAddressPurpose("SERVERLESS");
+        /// <summary>
         /// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
         /// </summary>
         public static GlobalAddressPurpose SharedLoadbalancerVip { get; } = new GlobalAddressPurpose("SHARED_LOADBALANCER_VIP");
@@ -2909,6 +2958,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static GuestOsFeatureType MultiIpSubnet { get; } = new GuestOsFeatureType("MULTI_IP_SUBNET");
         public static GuestOsFeatureType SecureBoot { get; } = new GuestOsFeatureType("SECURE_BOOT");
         public static GuestOsFeatureType SevCapable { get; } = new GuestOsFeatureType("SEV_CAPABLE");
+        public static GuestOsFeatureType SevSnpCapable { get; } = new GuestOsFeatureType("SEV_SNP_CAPABLE");
         public static GuestOsFeatureType UefiCompatible { get; } = new GuestOsFeatureType("UEFI_COMPATIBLE");
         public static GuestOsFeatureType VirtioScsiMultiqueue { get; } = new GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE");
         public static GuestOsFeatureType Windows { get; } = new GuestOsFeatureType("WINDOWS");
@@ -5570,6 +5620,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
         public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
+        public static RegionCommitmentType MemoryOptimizedM3 { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED_M3");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
 
         public static bool operator ==(RegionCommitmentType left, RegionCommitmentType right) => left.Equals(right);

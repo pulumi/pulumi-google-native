@@ -179,6 +179,175 @@ func (in *googleCloudRunV2RevisionTemplateExecutionEnvironmentPtr) ToGoogleCloud
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
+// The execution environment being used to host this Task.
+type GoogleCloudRunV2TaskTemplateExecutionEnvironment string
+
+const (
+	// Unspecified
+	GoogleCloudRunV2TaskTemplateExecutionEnvironmentExecutionEnvironmentUnspecified = GoogleCloudRunV2TaskTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED")
+	// Uses the First Generation environment.
+	GoogleCloudRunV2TaskTemplateExecutionEnvironmentExecutionEnvironmentGen1 = GoogleCloudRunV2TaskTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN1")
+	// Uses Second Generation environment.
+	GoogleCloudRunV2TaskTemplateExecutionEnvironmentExecutionEnvironmentGen2 = GoogleCloudRunV2TaskTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_GEN2")
+)
+
+func (GoogleCloudRunV2TaskTemplateExecutionEnvironment) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TaskTemplateExecutionEnvironment)(nil)).Elem()
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput)
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput)
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return e.ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return GoogleCloudRunV2TaskTemplateExecutionEnvironment(e).ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutputWithContext(ctx).ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRunV2TaskTemplateExecutionEnvironment) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TaskTemplateExecutionEnvironment)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return o.ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2TaskTemplateExecutionEnvironment) *GoogleCloudRunV2TaskTemplateExecutionEnvironment {
+		return &v
+	}).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2TaskTemplateExecutionEnvironment) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRunV2TaskTemplateExecutionEnvironment) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2TaskTemplateExecutionEnvironment)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) Elem() GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2TaskTemplateExecutionEnvironment) GoogleCloudRunV2TaskTemplateExecutionEnvironment {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2TaskTemplateExecutionEnvironment
+		return ret
+	}).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput)
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRunV2TaskTemplateExecutionEnvironment) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs and GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput` via:
+//
+//          GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs{...}
+type GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput
+	ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentOutputWithContext(context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput
+}
+
+var googleCloudRunV2TaskTemplateExecutionEnvironmentPtrType = reflect.TypeOf((**GoogleCloudRunV2TaskTemplateExecutionEnvironment)(nil)).Elem()
+
+type GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput
+	ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput
+}
+
+type googleCloudRunV2TaskTemplateExecutionEnvironmentPtr string
+
+func GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtr(v string) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrInput {
+	return (*googleCloudRunV2TaskTemplateExecutionEnvironmentPtr)(&v)
+}
+
+func (*googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ElementType() reflect.Type {
+	return googleCloudRunV2TaskTemplateExecutionEnvironmentPtrType
+}
+
+func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput() GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
+}
+
+func (in *googleCloudRunV2TaskTemplateExecutionEnvironmentPtr) ToGoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
+}
+
 // The allocation type for this traffic target.
 type GoogleCloudRunV2TrafficTargetType string
 
@@ -688,6 +857,185 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+type JobLaunchStage string
+
+const (
+	// Do not use this default value.
+	JobLaunchStageLaunchStageUnspecified = JobLaunchStage("LAUNCH_STAGE_UNSPECIFIED")
+	// The feature is not yet implemented. Users can not use it.
+	JobLaunchStageUnimplemented = JobLaunchStage("UNIMPLEMENTED")
+	// Prelaunch features are hidden from users and are only visible internally.
+	JobLaunchStagePrelaunch = JobLaunchStage("PRELAUNCH")
+	// Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.
+	JobLaunchStageEarlyAccess = JobLaunchStage("EARLY_ACCESS")
+	// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don't have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
+	JobLaunchStageAlpha = JobLaunchStage("ALPHA")
+	// Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.
+	JobLaunchStageBeta = JobLaunchStage("BETA")
+	// GA features are open to all developers and are considered stable and fully qualified for production use.
+	JobLaunchStageGa = JobLaunchStage("GA")
+	// Deprecated features are scheduled to be shut down and removed. For more information, see the "Deprecation Policy" section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation.
+	JobLaunchStageDeprecated = JobLaunchStage("DEPRECATED")
+)
+
+func (JobLaunchStage) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLaunchStage)(nil)).Elem()
+}
+
+func (e JobLaunchStage) ToJobLaunchStageOutput() JobLaunchStageOutput {
+	return pulumi.ToOutput(e).(JobLaunchStageOutput)
+}
+
+func (e JobLaunchStage) ToJobLaunchStageOutputWithContext(ctx context.Context) JobLaunchStageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobLaunchStageOutput)
+}
+
+func (e JobLaunchStage) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOutput {
+	return e.ToJobLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (e JobLaunchStage) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
+	return JobLaunchStage(e).ToJobLaunchStageOutputWithContext(ctx).ToJobLaunchStagePtrOutputWithContext(ctx)
+}
+
+func (e JobLaunchStage) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobLaunchStage) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobLaunchStage) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobLaunchStage) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobLaunchStageOutput struct{ *pulumi.OutputState }
+
+func (JobLaunchStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobLaunchStage)(nil)).Elem()
+}
+
+func (o JobLaunchStageOutput) ToJobLaunchStageOutput() JobLaunchStageOutput {
+	return o
+}
+
+func (o JobLaunchStageOutput) ToJobLaunchStageOutputWithContext(ctx context.Context) JobLaunchStageOutput {
+	return o
+}
+
+func (o JobLaunchStageOutput) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOutput {
+	return o.ToJobLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (o JobLaunchStageOutput) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobLaunchStage) *JobLaunchStage {
+		return &v
+	}).(JobLaunchStagePtrOutput)
+}
+
+func (o JobLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobLaunchStageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobLaunchStage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobLaunchStageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobLaunchStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobLaunchStage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobLaunchStagePtrOutput struct{ *pulumi.OutputState }
+
+func (JobLaunchStagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobLaunchStage)(nil)).Elem()
+}
+
+func (o JobLaunchStagePtrOutput) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOutput {
+	return o
+}
+
+func (o JobLaunchStagePtrOutput) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
+	return o
+}
+
+func (o JobLaunchStagePtrOutput) Elem() JobLaunchStageOutput {
+	return o.ApplyT(func(v *JobLaunchStage) JobLaunchStage {
+		if v != nil {
+			return *v
+		}
+		var ret JobLaunchStage
+		return ret
+	}).(JobLaunchStageOutput)
+}
+
+func (o JobLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobLaunchStage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobLaunchStageInput is an input type that accepts JobLaunchStageArgs and JobLaunchStageOutput values.
+// You can construct a concrete instance of `JobLaunchStageInput` via:
+//
+//          JobLaunchStageArgs{...}
+type JobLaunchStageInput interface {
+	pulumi.Input
+
+	ToJobLaunchStageOutput() JobLaunchStageOutput
+	ToJobLaunchStageOutputWithContext(context.Context) JobLaunchStageOutput
+}
+
+var jobLaunchStagePtrType = reflect.TypeOf((**JobLaunchStage)(nil)).Elem()
+
+type JobLaunchStagePtrInput interface {
+	pulumi.Input
+
+	ToJobLaunchStagePtrOutput() JobLaunchStagePtrOutput
+	ToJobLaunchStagePtrOutputWithContext(context.Context) JobLaunchStagePtrOutput
+}
+
+type jobLaunchStagePtr string
+
+func JobLaunchStagePtr(v string) JobLaunchStagePtrInput {
+	return (*jobLaunchStagePtr)(&v)
+}
+
+func (*jobLaunchStagePtr) ElementType() reflect.Type {
+	return jobLaunchStagePtrType
+}
+
+func (in *jobLaunchStagePtr) ToJobLaunchStagePtrOutput() JobLaunchStagePtrOutput {
+	return pulumi.ToOutput(in).(JobLaunchStagePtrOutput)
+}
+
+func (in *jobLaunchStagePtr) ToJobLaunchStagePtrOutputWithContext(ctx context.Context) JobLaunchStagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobLaunchStagePtrOutput)
+}
+
 // Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 type ServiceIngress string
 
@@ -1041,24 +1389,32 @@ func (in *serviceLaunchStagePtr) ToServiceLaunchStagePtrOutputWithContext(ctx co
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput)(nil)).Elem(), GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput)(nil)).Elem(), GoogleCloudRunV2RevisionTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput)(nil)).Elem(), GoogleCloudRunV2TaskTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrInput)(nil)).Elem(), GoogleCloudRunV2TaskTemplateExecutionEnvironment("EXECUTION_ENVIRONMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TrafficTargetTypeInput)(nil)).Elem(), GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TrafficTargetTypePtrInput)(nil)).Elem(), GoogleCloudRunV2TrafficTargetType("TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2VpcAccessEgressInput)(nil)).Elem(), GoogleCloudRunV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2VpcAccessEgressPtrInput)(nil)).Elem(), GoogleCloudRunV2VpcAccessEgress("VPC_EGRESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobLaunchStageInput)(nil)).Elem(), JobLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobLaunchStagePtrInput)(nil)).Elem(), JobLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIngressInput)(nil)).Elem(), ServiceIngress("INGRESS_TRAFFIC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIngressPtrInput)(nil)).Elem(), ServiceIngress("INGRESS_TRAFFIC_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLaunchStageInput)(nil)).Elem(), ServiceLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceLaunchStagePtrInput)(nil)).Elem(), ServiceLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2VpcAccessEgressOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2VpcAccessEgressPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(JobLaunchStageOutput{})
+	pulumi.RegisterOutputType(JobLaunchStagePtrOutput{})
 	pulumi.RegisterOutputType(ServiceIngressOutput{})
 	pulumi.RegisterOutputType(ServiceIngressPtrOutput{})
 	pulumi.RegisterOutputType(ServiceLaunchStageOutput{})

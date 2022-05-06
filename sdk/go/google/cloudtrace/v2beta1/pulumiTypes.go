@@ -12,7 +12,7 @@ import (
 
 // OutputConfig contains a destination for writing trace data.
 type OutputConfig struct {
-	// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+	// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 	Destination *string `pulumi:"destination"`
 }
 
@@ -29,7 +29,7 @@ type OutputConfigInput interface {
 
 // OutputConfig contains a destination for writing trace data.
 type OutputConfigArgs struct {
-	// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+	// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -60,14 +60,14 @@ func (o OutputConfigOutput) ToOutputConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 func (o OutputConfigOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OutputConfig) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
 // OutputConfig contains a destination for writing trace data.
 type OutputConfigResponse struct {
-	// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+	// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 	Destination string `pulumi:"destination"`
 }
 
@@ -86,7 +86,7 @@ func (o OutputConfigResponseOutput) ToOutputConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
 func (o OutputConfigResponseOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v OutputConfigResponse) string { return v.Destination }).(pulumi.StringOutput)
 }

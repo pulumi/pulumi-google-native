@@ -112,8 +112,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <summary>
         /// Reserved for future use.
         /// </summary>
-        [Output("satisfiesPZS")]
-        public Output<bool> SatisfiesPZS { get; private set; } = null!;
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.

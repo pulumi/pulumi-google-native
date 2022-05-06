@@ -5825,7 +5825,7 @@ type ShardResponse struct {
 	NumShards int `pulumi:"numShards"`
 	// The index of the shard among all the shards.
 	ShardIndex int `pulumi:"shardIndex"`
-	// Test targets for each shard.
+	// Test targets for each shard. Only set for manual sharding.
 	TestTargetsForShard TestTargetsForShardResponse `pulumi:"testTargetsForShard"`
 }
 
@@ -5854,7 +5854,7 @@ func (o ShardResponseOutput) ShardIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v ShardResponse) int { return v.ShardIndex }).(pulumi.IntOutput)
 }
 
-// Test targets for each shard.
+// Test targets for each shard. Only set for manual sharding.
 func (o ShardResponseOutput) TestTargetsForShard() TestTargetsForShardResponseOutput {
 	return o.ApplyT(func(v ShardResponse) TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseOutput)
 }

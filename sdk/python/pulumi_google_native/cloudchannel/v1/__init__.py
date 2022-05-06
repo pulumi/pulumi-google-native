@@ -7,10 +7,14 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .channel_partner_link import *
+from .channel_partner_repricing_config import *
 from .customer import *
+from .customer_repricing_config import *
 from .entitlement import *
 from .get_channel_partner_link import *
+from .get_channel_partner_repricing_config import *
 from .get_customer import *
+from .get_customer_repricing_config import *
 from .get_entitlement import *
 from ._inputs import *
 from . import outputs

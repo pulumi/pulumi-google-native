@@ -596,9 +596,9 @@ export interface ClusterArgs {
      */
     privateClusterConfig?: pulumi.Input<inputs.container.v1.PrivateClusterConfigArgs>;
     /**
-     * Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+     * Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      *
-     * @deprecated Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+     * @deprecated Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      */
     project?: pulumi.Input<string>;
     /**

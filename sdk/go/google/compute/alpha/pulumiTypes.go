@@ -1817,7 +1817,7 @@ func (o AttachedDiskArrayOutput) Index(i pulumi.IntInput) AttachedDiskOutput {
 	}).(AttachedDiskOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParams struct {
 	// The architecture of the attached disk. Valid values are arm64 or x86_64.
 	Architecture *AttachedDiskInitializeParamsArchitecture `pulumi:"architecture"`
@@ -1874,7 +1874,7 @@ type AttachedDiskInitializeParamsInput interface {
 	ToAttachedDiskInitializeParamsOutputWithContext(context.Context) AttachedDiskInitializeParamsOutput
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsArgs struct {
 	// The architecture of the attached disk. Valid values are arm64 or x86_64.
 	Architecture AttachedDiskInitializeParamsArchitecturePtrInput `pulumi:"architecture"`
@@ -1973,7 +1973,7 @@ func (i *attachedDiskInitializeParamsPtrType) ToAttachedDiskInitializeParamsPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskInitializeParamsPtrOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskInitializeParamsOutput) ElementType() reflect.Type {
@@ -2328,7 +2328,7 @@ func (o AttachedDiskInitializeParamsPtrOutput) SourceSnapshotEncryptionKey() Cus
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsResponse struct {
 	// The architecture of the attached disk. Valid values are arm64 or x86_64.
 	Architecture string `pulumi:"architecture"`
@@ -2374,7 +2374,7 @@ type AttachedDiskInitializeParamsResponse struct {
 	SourceSnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceSnapshotEncryptionKey"`
 }
 
-// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 type AttachedDiskInitializeParamsResponseOutput struct{ *pulumi.OutputState }
 
 func (AttachedDiskInitializeParamsResponseOutput) ElementType() reflect.Type {
@@ -5696,7 +5696,7 @@ func (o BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponseArrayOutput) Ind
 type BackendBucketCdnPolicyCacheKeyPolicy struct {
 	// Allows HTTP request headers (by name) to be used in the cache key.
 	IncludeHttpHeaders []string `pulumi:"includeHttpHeaders"`
-	// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+	// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
 	QueryStringWhitelist []string `pulumi:"queryStringWhitelist"`
 }
 
@@ -5715,7 +5715,7 @@ type BackendBucketCdnPolicyCacheKeyPolicyInput interface {
 type BackendBucketCdnPolicyCacheKeyPolicyArgs struct {
 	// Allows HTTP request headers (by name) to be used in the cache key.
 	IncludeHttpHeaders pulumi.StringArrayInput `pulumi:"includeHttpHeaders"`
-	// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+	// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
 	QueryStringWhitelist pulumi.StringArrayInput `pulumi:"queryStringWhitelist"`
 }
 
@@ -5802,7 +5802,7 @@ func (o BackendBucketCdnPolicyCacheKeyPolicyOutput) IncludeHttpHeaders() pulumi.
 	return o.ApplyT(func(v BackendBucketCdnPolicyCacheKeyPolicy) []string { return v.IncludeHttpHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
 func (o BackendBucketCdnPolicyCacheKeyPolicyOutput) QueryStringWhitelist() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyCacheKeyPolicy) []string { return v.QueryStringWhitelist }).(pulumi.StringArrayOutput)
 }
@@ -5841,7 +5841,7 @@ func (o BackendBucketCdnPolicyCacheKeyPolicyPtrOutput) IncludeHttpHeaders() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
 func (o BackendBucketCdnPolicyCacheKeyPolicyPtrOutput) QueryStringWhitelist() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicyCacheKeyPolicy) []string {
 		if v == nil {
@@ -5855,7 +5855,7 @@ func (o BackendBucketCdnPolicyCacheKeyPolicyPtrOutput) QueryStringWhitelist() pu
 type BackendBucketCdnPolicyCacheKeyPolicyResponse struct {
 	// Allows HTTP request headers (by name) to be used in the cache key.
 	IncludeHttpHeaders []string `pulumi:"includeHttpHeaders"`
-	// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+	// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
 	QueryStringWhitelist []string `pulumi:"queryStringWhitelist"`
 }
 
@@ -5879,7 +5879,7 @@ func (o BackendBucketCdnPolicyCacheKeyPolicyResponseOutput) IncludeHttpHeaders()
 	return o.ApplyT(func(v BackendBucketCdnPolicyCacheKeyPolicyResponse) []string { return v.IncludeHttpHeaders }).(pulumi.StringArrayOutput)
 }
 
-// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+// Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
 func (o BackendBucketCdnPolicyCacheKeyPolicyResponseOutput) QueryStringWhitelist() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyCacheKeyPolicyResponse) []string { return v.QueryStringWhitelist }).(pulumi.StringArrayOutput)
 }
@@ -8677,7 +8677,7 @@ type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -8700,7 +8700,7 @@ type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -8768,7 +8768,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -8804,7 +8804,7 @@ type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -8835,7 +8835,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -10323,6 +10323,8 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 
 // A set of Confidential Instance options.
 type ConfidentialInstanceConfig struct {
+	// Defines the type of technology used by the confidential instance.
+	ConfidentialInstanceType *ConfidentialInstanceConfigConfidentialInstanceType `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 }
@@ -10340,6 +10342,8 @@ type ConfidentialInstanceConfigInput interface {
 
 // A set of Confidential Instance options.
 type ConfidentialInstanceConfigArgs struct {
+	// Defines the type of technology used by the confidential instance.
+	ConfidentialInstanceType ConfidentialInstanceConfigConfidentialInstanceTypePtrInput `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
 }
@@ -10422,6 +10426,13 @@ func (o ConfidentialInstanceConfigOutput) ToConfidentialInstanceConfigPtrOutputW
 	}).(ConfidentialInstanceConfigPtrOutput)
 }
 
+// Defines the type of technology used by the confidential instance.
+func (o ConfidentialInstanceConfigOutput) ConfidentialInstanceType() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return o.ApplyT(func(v ConfidentialInstanceConfig) *ConfidentialInstanceConfigConfidentialInstanceType {
+		return v.ConfidentialInstanceType
+	}).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
+}
+
 // Defines whether the instance should have confidential compute enabled.
 func (o ConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfidentialInstanceConfig) *bool { return v.EnableConfidentialCompute }).(pulumi.BoolPtrOutput)
@@ -10451,6 +10462,16 @@ func (o ConfidentialInstanceConfigPtrOutput) Elem() ConfidentialInstanceConfigOu
 	}).(ConfidentialInstanceConfigOutput)
 }
 
+// Defines the type of technology used by the confidential instance.
+func (o ConfidentialInstanceConfigPtrOutput) ConfidentialInstanceType() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return o.ApplyT(func(v *ConfidentialInstanceConfig) *ConfidentialInstanceConfigConfidentialInstanceType {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceType
+	}).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
+}
+
 // Defines whether the instance should have confidential compute enabled.
 func (o ConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfidentialInstanceConfig) *bool {
@@ -10463,6 +10484,8 @@ func (o ConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.
 
 // A set of Confidential Instance options.
 type ConfidentialInstanceConfigResponse struct {
+	// Defines the type of technology used by the confidential instance.
+	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
@@ -10480,6 +10503,11 @@ func (o ConfidentialInstanceConfigResponseOutput) ToConfidentialInstanceConfigRe
 
 func (o ConfidentialInstanceConfigResponseOutput) ToConfidentialInstanceConfigResponseOutputWithContext(ctx context.Context) ConfidentialInstanceConfigResponseOutput {
 	return o
+}
+
+// Defines the type of technology used by the confidential instance.
+func (o ConfidentialInstanceConfigResponseOutput) ConfidentialInstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfidentialInstanceConfigResponse) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
 
 // Defines whether the instance should have confidential compute enabled.
@@ -21876,7 +21904,7 @@ func (o InstanceGroupManagerActionsSummaryResponseOutput) Verifying() pulumi.Int
 }
 
 type InstanceGroupManagerAllInstancesConfig struct {
-	// Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+	// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
 	Properties *InstancePropertiesPatch `pulumi:"properties"`
 }
 
@@ -21892,7 +21920,7 @@ type InstanceGroupManagerAllInstancesConfigInput interface {
 }
 
 type InstanceGroupManagerAllInstancesConfigArgs struct {
-	// Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+	// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
 	Properties InstancePropertiesPatchPtrInput `pulumi:"properties"`
 }
 
@@ -21973,7 +22001,7 @@ func (o InstanceGroupManagerAllInstancesConfigOutput) ToInstanceGroupManagerAllI
 	}).(InstanceGroupManagerAllInstancesConfigPtrOutput)
 }
 
-// Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
 func (o InstanceGroupManagerAllInstancesConfigOutput) Properties() InstancePropertiesPatchPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerAllInstancesConfig) *InstancePropertiesPatch { return v.Properties }).(InstancePropertiesPatchPtrOutput)
 }
@@ -22002,7 +22030,7 @@ func (o InstanceGroupManagerAllInstancesConfigPtrOutput) Elem() InstanceGroupMan
 	}).(InstanceGroupManagerAllInstancesConfigOutput)
 }
 
-// Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
 func (o InstanceGroupManagerAllInstancesConfigPtrOutput) Properties() InstancePropertiesPatchPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerAllInstancesConfig) *InstancePropertiesPatch {
 		if v == nil {
@@ -22013,7 +22041,7 @@ func (o InstanceGroupManagerAllInstancesConfigPtrOutput) Properties() InstancePr
 }
 
 type InstanceGroupManagerAllInstancesConfigResponse struct {
-	// Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+	// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
 	Properties InstancePropertiesPatchResponse `pulumi:"properties"`
 }
 
@@ -22031,7 +22059,7 @@ func (o InstanceGroupManagerAllInstancesConfigResponseOutput) ToInstanceGroupMan
 	return o
 }
 
-// Properties for instances that are created using this instances config. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting instances_config, you must update your instances to use it; for example, you can use the applyUpdatesToInstances method.
+// Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
 func (o InstanceGroupManagerAllInstancesConfigResponseOutput) Properties() InstancePropertiesPatchResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerAllInstancesConfigResponse) InstancePropertiesPatchResponse {
 		return v.Properties
@@ -22895,9 +22923,9 @@ func (o InstanceGroupManagerStandbyPolicyResponseOutput) InitialDelaySec() pulum
 }
 
 type InstanceGroupManagerStatusAllInstancesConfigResponse struct {
-	// Current instances' config revision. This value is in RFC3339 text format.
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
 	CurrentRevision string `pulumi:"currentRevision"`
-	// A bit indicating whether instances' config has been applied to all managed instances in managed instance group.
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
 	Effective bool `pulumi:"effective"`
 }
 
@@ -22915,18 +22943,18 @@ func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) ToInstanceGr
 	return o
 }
 
-// Current instances' config revision. This value is in RFC3339 text format.
+// Current all-instances configuration revision. This value is in RFC3339 text format.
 func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) CurrentRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusAllInstancesConfigResponse) string { return v.CurrentRevision }).(pulumi.StringOutput)
 }
 
-// A bit indicating whether instances' config has been applied to all managed instances in managed instance group.
+// A bit indicating whether this configuration has been applied to all managed instances in the group.
 func (o InstanceGroupManagerStatusAllInstancesConfigResponseOutput) Effective() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusAllInstancesConfigResponse) bool { return v.Effective }).(pulumi.BoolOutput)
 }
 
 type InstanceGroupManagerStatusResponse struct {
-	// A status of consistency of Instances' config applied to instances with Instances' config defined in managed instance group.
+	// [Output only] Status of all-instances configuration on the group.
 	AllInstancesConfig InstanceGroupManagerStatusAllInstancesConfigResponse `pulumi:"allInstancesConfig"`
 	// The URL of the Autoscaler that targets this instance group manager.
 	Autoscaler string `pulumi:"autoscaler"`
@@ -22952,7 +22980,7 @@ func (o InstanceGroupManagerStatusResponseOutput) ToInstanceGroupManagerStatusRe
 	return o
 }
 
-// A status of consistency of Instances' config applied to instances with Instances' config defined in managed instance group.
+// [Output only] Status of all-instances configuration on the group.
 func (o InstanceGroupManagerStatusResponseOutput) AllInstancesConfig() InstanceGroupManagerStatusAllInstancesConfigResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusResponse) InstanceGroupManagerStatusAllInstancesConfigResponse {
 		return v.AllInstancesConfig
@@ -22984,7 +23012,7 @@ func (o InstanceGroupManagerStatusResponseOutput) VersionTarget() InstanceGroupM
 }
 
 type InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse struct {
-	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 	AllEffective bool `pulumi:"allEffective"`
 }
 
@@ -23002,19 +23030,19 @@ func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput) ToIn
 	return o
 }
 
-// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+// A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
 func (o InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput) AllEffective() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse) bool { return v.AllEffective }).(pulumi.BoolOutput)
 }
 
 type InstanceGroupManagerStatusStatefulResponse struct {
-	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
-	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 	//
-	// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+	// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 	IsStateful bool `pulumi:"isStateful"`
-	// Status of per-instance configs on the instance.
+	// Status of per-instance configurations on the instance.
 	PerInstanceConfigs InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse `pulumi:"perInstanceConfigs"`
 }
 
@@ -23032,19 +23060,19 @@ func (o InstanceGroupManagerStatusStatefulResponseOutput) ToInstanceGroupManager
 	return o
 }
 
-// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) HasStatefulConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
 }
 
-// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 //
-// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+// Deprecated: [Output Only] A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) IsStateful() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) bool { return v.IsStateful }).(pulumi.BoolOutput)
 }
 
-// Status of per-instance configs on the instance.
+// Status of per-instance configurations on the instance.
 func (o InstanceGroupManagerStatusStatefulResponseOutput) PerInstanceConfigs() InstanceGroupManagerStatusStatefulPerInstanceConfigsResponseOutput {
 	return o.ApplyT(func(v InstanceGroupManagerStatusStatefulResponse) InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse {
 		return v.PerInstanceConfigs

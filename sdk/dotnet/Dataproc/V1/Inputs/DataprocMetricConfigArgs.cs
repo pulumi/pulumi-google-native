@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// Contains dataproc metric config.
+    /// Dataproc metric config.
     /// </summary>
     public sealed class DataprocMetricConfigArgs : Pulumi.ResourceArgs
     {
@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         private InputList<Inputs.MetricArgs>? _metrics;
 
         /// <summary>
-        /// Metrics to be enabled.
+        /// Metrics to enable.
         /// </summary>
         public InputList<Inputs.MetricArgs> Metrics
         {

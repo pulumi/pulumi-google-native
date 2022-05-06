@@ -17,7 +17,7 @@ type Service struct {
 
 	// ID of the project that produces and owns this service.
 	ProducerProjectId pulumi.StringOutput `pulumi:"producerProjectId"`
-	// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+	// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -62,7 +62,7 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// ID of the project that produces and owns this service.
 	ProducerProjectId *string `pulumi:"producerProjectId"`
-	// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+	// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -70,7 +70,7 @@ type serviceArgs struct {
 type ServiceArgs struct {
 	// ID of the project that produces and owns this service.
 	ProducerProjectId pulumi.StringPtrInput
-	// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+	// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -116,7 +116,7 @@ func (o ServiceOutput) ProducerProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ProducerProjectId }).(pulumi.StringOutput)
 }
 
-// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
 func (o ServiceOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

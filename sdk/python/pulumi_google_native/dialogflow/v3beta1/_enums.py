@@ -14,6 +14,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant',
     'GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode',
     'GoogleCloudDialogflowCxV3beta1NluSettingsModelType',
+    'GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat',
     'GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult',
     'SecuritySettingPurgeDataTypesItem',
     'SecuritySettingRedactionScope',
@@ -229,6 +230,28 @@ class GoogleCloudDialogflowCxV3beta1NluSettingsModelType(str, Enum):
     MODEL_TYPE_ADVANCED = "MODEL_TYPE_ADVANCED"
     """
     Use advanced NLU model.
+    """
+
+
+class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat(str, Enum):
+    """
+    File format for exported audio file. Currently only in telephony recordings.
+    """
+    AUDIO_FORMAT_UNSPECIFIED = "AUDIO_FORMAT_UNSPECIFIED"
+    """
+    Unspecified. Do not use.
+    """
+    MULAW = "MULAW"
+    """
+    G.711 mu-law PCM with 8kHz sample rate.
+    """
+    MP3 = "MP3"
+    """
+    MP3 file format.
+    """
+    OGG = "OGG"
+    """
+    OGG Vorbis.
     """
 
 

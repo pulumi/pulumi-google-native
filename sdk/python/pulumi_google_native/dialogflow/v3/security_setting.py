@@ -17,6 +17,7 @@ __all__ = ['SecuritySettingArgs', 'SecuritySetting']
 class SecuritySettingArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 audio_export_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs']] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
                  insights_export_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']] = None,
                  inspect_template: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,7 @@ class SecuritySettingArgs:
         """
         The set of arguments for constructing a SecuritySetting resource.
         :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs'] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
         :param pulumi.Input[str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
         :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. The `DLP Inspect Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//locations//inspectTemplates/` OR `organizations//locations//inspectTemplates/` Note: `inspect_template` must be located in the same region as the `SecuritySettings`.
@@ -40,6 +42,8 @@ class SecuritySettingArgs:
         :param pulumi.Input[int] retention_window_days: Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if audio_export_settings is not None:
+            pulumi.set(__self__, "audio_export_settings", audio_export_settings)
         if deidentify_template is not None:
             pulumi.set(__self__, "deidentify_template", deidentify_template)
         if insights_export_settings is not None:
@@ -72,6 +76,18 @@ class SecuritySettingArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="audioExportSettings")
+    def audio_export_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs']]:
+        """
+        Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
+        """
+        return pulumi.get(self, "audio_export_settings")
+
+    @audio_export_settings.setter
+    def audio_export_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs']]):
+        pulumi.set(self, "audio_export_settings", value)
 
     @property
     @pulumi.getter(name="deidentifyTemplate")
@@ -193,6 +209,7 @@ class SecuritySetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 audio_export_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs']]] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  insights_export_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']]] = None,
@@ -210,6 +227,7 @@ class SecuritySetting(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs']] audio_export_settings: Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
         :param pulumi.Input[str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
         :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed. If retention_strategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -244,6 +262,7 @@ class SecuritySetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 audio_export_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs']]] = None,
                  deidentify_template: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  insights_export_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs']]] = None,
@@ -267,6 +286,7 @@ class SecuritySetting(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
+            __props__.__dict__["audio_export_settings"] = audio_export_settings
             __props__.__dict__["deidentify_template"] = deidentify_template
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -302,6 +322,7 @@ class SecuritySetting(pulumi.CustomResource):
 
         __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
+        __props__.__dict__["audio_export_settings"] = None
         __props__.__dict__["deidentify_template"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["insights_export_settings"] = None
@@ -312,6 +333,14 @@ class SecuritySetting(pulumi.CustomResource):
         __props__.__dict__["redaction_strategy"] = None
         __props__.__dict__["retention_window_days"] = None
         return SecuritySetting(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="audioExportSettings")
+    def audio_export_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse']:
+        """
+        Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
+        """
+        return pulumi.get(self, "audio_export_settings")
 
     @property
     @pulumi.getter(name="deidentifyTemplate")

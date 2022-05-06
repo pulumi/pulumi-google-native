@@ -24,6 +24,7 @@ __all__ = [
     'EnvVarArgs',
     'ExecActionArgs',
     'ExprArgs',
+    'GRPCActionArgs',
     'HTTPGetActionArgs',
     'HTTPHeaderArgs',
     'KeyToPathArgs',
@@ -51,7 +52,7 @@ class AuditConfigArgs:
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditLogConfigArgs']]]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param pulumi.Input[Sequence[pulumi.Input['AuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.
         :param pulumi.Input[str] service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
@@ -1018,6 +1019,46 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class GRPCActionArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+        :param pulumi.Input[int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
 class HTTPGetActionArgs:
     def __init__(__self__, *,
                  host: Optional[pulumi.Input[str]] = None,
@@ -1566,6 +1607,7 @@ class ProbeArgs:
     def __init__(__self__, *,
                  exec_: Optional[pulumi.Input['ExecActionArgs']] = None,
                  failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpc: Optional[pulumi.Input['GRPCActionArgs']] = None,
                  http_get: Optional[pulumi.Input['HTTPGetActionArgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
@@ -1576,6 +1618,7 @@ class ProbeArgs:
         Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
         :param pulumi.Input['ExecActionArgs'] exec_: (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
         :param pulumi.Input[int] failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['GRPCActionArgs'] grpc: (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
         :param pulumi.Input['HTTPGetActionArgs'] http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
         :param pulumi.Input[int] initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param pulumi.Input[int] period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
@@ -1587,6 +1630,8 @@ class ProbeArgs:
             pulumi.set(__self__, "exec_", exec_)
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
         if http_get is not None:
             pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
@@ -1623,6 +1668,18 @@ class ProbeArgs:
     @failure_threshold.setter
     def failure_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['GRPCActionArgs']]:
+        """
+        (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['GRPCActionArgs']]):
+        pulumi.set(self, "grpc", value)
 
     @property
     @pulumi.getter(name="httpGet")

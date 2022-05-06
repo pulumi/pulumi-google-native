@@ -2,8 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export sub-modules:
+import * as v1 from "./v1";
 import * as v1beta from "./v1beta";
 
 export {
+    v1,
     v1beta,
 };

@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _queryStringWhitelist;
 
         /// <summary>
-        /// Names of query string parameters to include in cache keys. All other parameters will be excluded. '&amp;' and '=' will be percent encoded and not treated as delimiters.
+        /// Names of query string parameters to include in cache keys. Default parameters are always included. '&amp;' and '=' will be percent encoded and not treated as delimiters.
         /// </summary>
         public InputList<string> QueryStringWhitelist
         {

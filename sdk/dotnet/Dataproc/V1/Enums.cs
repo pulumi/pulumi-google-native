@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
+    /// Authentication type for session execution.
+    /// </summary>
+    [EnumType]
+    public readonly struct AuthenticationConfigAuthenticationType : IEquatable<AuthenticationConfigAuthenticationType>
+    {
+        private readonly string _value;
+
+        private AuthenticationConfigAuthenticationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
+        /// </summary>
+        public static AuthenticationConfigAuthenticationType AuthenticationTypeUnspecified { get; } = new AuthenticationConfigAuthenticationType("AUTHENTICATION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Defaults to using service account credentials
+        /// </summary>
+        public static AuthenticationConfigAuthenticationType ServiceAccount { get; } = new AuthenticationConfigAuthenticationType("SERVICE_ACCOUNT");
+        /// <summary>
+        /// Injectable credentials authentication type
+        /// </summary>
+        public static AuthenticationConfigAuthenticationType InjectableCredentials { get; } = new AuthenticationConfigAuthenticationType("INJECTABLE_CREDENTIALS");
+
+        public static bool operator ==(AuthenticationConfigAuthenticationType left, AuthenticationConfigAuthenticationType right) => left.Equals(right);
+        public static bool operator !=(AuthenticationConfigAuthenticationType left, AuthenticationConfigAuthenticationType right) => !left.Equals(right);
+
+        public static explicit operator string(AuthenticationConfigAuthenticationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AuthenticationConfigAuthenticationType other && Equals(other);
+        public bool Equals(AuthenticationConfigAuthenticationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Optional. The type of IPv6 access for a cluster.
     /// </summary>
     [EnumType]
@@ -67,19 +108,19 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public static GkeNodePoolTargetRolesItem RoleUnspecified { get; } = new GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED");
         /// <summary>
-        /// Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+        /// At least one node pool must have the DEFAULT role. Work assigned to a role that is not associated with a node pool is assigned to the node pool with the DEFAULT role. For example, work assigned to the CONTROLLER role will be assigned to the node pool with the DEFAULT role if no node pool has the CONTROLLER role.
         /// </summary>
         public static GkeNodePoolTargetRolesItem Default { get; } = new GkeNodePoolTargetRolesItem("DEFAULT");
         /// <summary>
-        /// Run controllers and webhooks.
+        /// Run work associated with the Dataproc control plane (for example, controllers and webhooks). Very low resource requirements.
         /// </summary>
         public static GkeNodePoolTargetRolesItem Controller { get; } = new GkeNodePoolTargetRolesItem("CONTROLLER");
         /// <summary>
-        /// Run spark driver.
+        /// Run work associated with a Spark driver of a job.
         /// </summary>
         public static GkeNodePoolTargetRolesItem SparkDriver { get; } = new GkeNodePoolTargetRolesItem("SPARK_DRIVER");
         /// <summary>
-        /// Run spark executors.
+        /// Run work associated with a Spark executor of a job.
         /// </summary>
         public static GkeNodePoolTargetRolesItem SparkExecutor { get; } = new GkeNodePoolTargetRolesItem("SPARK_EXECUTOR");
 
@@ -140,7 +181,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
     /// <summary>
-    /// Required. MetricSource that should be enabled
+    /// Required. MetricSource to enable.
     /// </summary>
     [EnumType]
     public readonly struct MetricMetricSource : IEquatable<MetricMetricSource>
@@ -153,31 +194,31 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         }
 
         /// <summary>
-        /// Required unspecified metric source
+        /// Required unspecified metric source.
         /// </summary>
         public static MetricMetricSource MetricSourceUnspecified { get; } = new MetricMetricSource("METRIC_SOURCE_UNSPECIFIED");
         /// <summary>
-        /// all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+        /// Default monitoring agent metrics, which are published with an agent.googleapis.com prefix when Dataproc enables the monitoring agent in Compute Engine.
         /// </summary>
         public static MetricMetricSource MonitoringAgentDefaults { get; } = new MetricMetricSource("MONITORING_AGENT_DEFAULTS");
         /// <summary>
-        /// Hdfs metric source
+        /// HDFS metric source.
         /// </summary>
         public static MetricMetricSource Hdfs { get; } = new MetricMetricSource("HDFS");
         /// <summary>
-        /// Spark metric source
+        /// Spark metric source.
         /// </summary>
         public static MetricMetricSource Spark { get; } = new MetricMetricSource("SPARK");
         /// <summary>
-        /// Yarn metric source
+        /// YARN metric source.
         /// </summary>
         public static MetricMetricSource Yarn { get; } = new MetricMetricSource("YARN");
         /// <summary>
-        /// Spark history server metric source
+        /// Spark History Server metric source.
         /// </summary>
         public static MetricMetricSource SparkHistoryServer { get; } = new MetricMetricSource("SPARK_HISTORY_SERVER");
         /// <summary>
-        /// hiveserver2 metric source
+        /// Hiveserver2 metric source.
         /// </summary>
         public static MetricMetricSource Hiveserver2 { get; } = new MetricMetricSource("HIVESERVER2");
 

@@ -97,7 +97,9 @@ __all__ = [
     'ImageRawDiskResponse',
     'InitialStateConfigResponse',
     'InstanceGroupManagerActionsSummaryResponse',
+    'InstanceGroupManagerAllInstancesConfigResponse',
     'InstanceGroupManagerAutoHealingPolicyResponse',
+    'InstanceGroupManagerStatusAllInstancesConfigResponse',
     'InstanceGroupManagerStatusResponse',
     'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse',
     'InstanceGroupManagerStatusStatefulResponse',
@@ -105,6 +107,7 @@ __all__ = [
     'InstanceGroupManagerUpdatePolicyResponse',
     'InstanceGroupManagerVersionResponse',
     'InstanceParamsResponse',
+    'InstancePropertiesPatchResponse',
     'InstancePropertiesResponse',
     'Int64RangeMatchResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
@@ -174,6 +177,7 @@ __all__ = [
     'RouterBgpPeerResponse',
     'RouterBgpResponse',
     'RouterInterfaceResponse',
+    'RouterMd5AuthenticationKeyResponse',
     'RouterNatLogConfigResponse',
     'RouterNatResponse',
     'RouterNatRuleActionResponse',
@@ -793,7 +797,7 @@ class AllocationSpecificSKUReservationResponse(dict):
 @pulumi.output_type
 class AttachedDiskInitializeParamsResponse(dict):
     """
-    [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+    [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -851,7 +855,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  source_snapshot: str,
                  source_snapshot_encryption_key: 'outputs.CustomerEncryptionKeyResponse'):
         """
-        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str description: An optional description. Provide this property when creating the disk.
         :param str disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
@@ -1927,7 +1931,7 @@ class BackendBucketCdnPolicyCacheKeyPolicyResponse(dict):
         """
         Message containing what to include in the cache key for a request for Cloud CDN.
         :param Sequence[str] include_http_headers: Allows HTTP request headers (by name) to be used in the cache key.
-        :param Sequence[str] query_string_whitelist: Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+        :param Sequence[str] query_string_whitelist: Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
         """
         pulumi.set(__self__, "include_http_headers", include_http_headers)
         pulumi.set(__self__, "query_string_whitelist", query_string_whitelist)
@@ -1944,7 +1948,7 @@ class BackendBucketCdnPolicyCacheKeyPolicyResponse(dict):
     @pulumi.getter(name="queryStringWhitelist")
     def query_string_whitelist(self) -> Sequence[str]:
         """
-        Names of query string parameters to include in cache keys. All other parameters will be excluded. '&' and '=' will be percent encoded and not treated as delimiters.
+        Names of query string parameters to include in cache keys. Default parameters are always included. '&' and '=' will be percent encoded and not treated as delimiters.
         """
         return pulumi.get(self, "query_string_whitelist")
 
@@ -2991,7 +2995,7 @@ class BindingResponse(dict):
         Associates `members`, or principals, with a `role`.
         :param str binding_id: This is deprecated and has no effect. Do not use.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "binding_id", binding_id)
@@ -3019,7 +3023,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -6742,6 +6746,24 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
 
 
 @pulumi.output_type
+class InstanceGroupManagerAllInstancesConfigResponse(dict):
+    def __init__(__self__, *,
+                 properties: 'outputs.InstancePropertiesPatchResponse'):
+        """
+        :param 'InstancePropertiesPatchResponse' properties: Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
+        """
+        pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> 'outputs.InstancePropertiesPatchResponse':
+        """
+        Properties to set on all instances in the group. You can add or modify properties using the instanceGroupManagers.patch or regionInstanceGroupManagers.patch. After setting allInstancesConfig on the group, you must update the group's instances to apply the configuration. To apply the configuration, set the group's updatePolicy.type field to use proactive updates or use the applyUpdatesToInstances method.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
 class InstanceGroupManagerAutoHealingPolicyResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6790,11 +6812,59 @@ class InstanceGroupManagerAutoHealingPolicyResponse(dict):
 
 
 @pulumi.output_type
+class InstanceGroupManagerStatusAllInstancesConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentRevision":
+            suggest = "current_revision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusAllInstancesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusAllInstancesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusAllInstancesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 current_revision: str,
+                 effective: bool):
+        """
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
+        :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+        pulumi.set(__self__, "current_revision", current_revision)
+        pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> str:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
+
+    @property
+    @pulumi.getter
+    def effective(self) -> bool:
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+        return pulumi.get(self, "effective")
+
+
+@pulumi.output_type
 class InstanceGroupManagerStatusResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "isStable":
+        if key == "allInstancesConfig":
+            suggest = "all_instances_config"
+        elif key == "isStable":
             suggest = "is_stable"
         elif key == "versionTarget":
             suggest = "version_target"
@@ -6811,20 +6881,31 @@ class InstanceGroupManagerStatusResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 all_instances_config: 'outputs.InstanceGroupManagerStatusAllInstancesConfigResponse',
                  autoscaler: str,
                  is_stable: bool,
                  stateful: 'outputs.InstanceGroupManagerStatusStatefulResponse',
                  version_target: 'outputs.InstanceGroupManagerStatusVersionTargetResponse'):
         """
+        :param 'InstanceGroupManagerStatusAllInstancesConfigResponse' all_instances_config: [Output only] Status of all-instances configuration on the group.
         :param str autoscaler: The URL of the Autoscaler that targets this instance group manager.
         :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
         :param 'InstanceGroupManagerStatusStatefulResponse' stateful: Stateful status of the given Instance Group Manager.
         :param 'InstanceGroupManagerStatusVersionTargetResponse' version_target: A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
         """
+        pulumi.set(__self__, "all_instances_config", all_instances_config)
         pulumi.set(__self__, "autoscaler", autoscaler)
         pulumi.set(__self__, "is_stable", is_stable)
         pulumi.set(__self__, "stateful", stateful)
         pulumi.set(__self__, "version_target", version_target)
+
+    @property
+    @pulumi.getter(name="allInstancesConfig")
+    def all_instances_config(self) -> 'outputs.InstanceGroupManagerStatusAllInstancesConfigResponse':
+        """
+        [Output only] Status of all-instances configuration on the group.
+        """
+        return pulumi.get(self, "all_instances_config")
 
     @property
     @pulumi.getter
@@ -6881,7 +6962,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(dict):
     def __init__(__self__, *,
                  all_effective: bool):
         """
-        :param bool all_effective: A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        :param bool all_effective: A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
         """
         pulumi.set(__self__, "all_effective", all_effective)
 
@@ -6889,7 +6970,7 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(dict):
     @pulumi.getter(name="allEffective")
     def all_effective(self) -> bool:
         """
-        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        A bit indicating if all of the group's per-instance configurations (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
         """
         return pulumi.get(self, "all_effective")
 
@@ -6922,9 +7003,9 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
                  is_stateful: bool,
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
         """
-        :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
-        :param bool is_stateful: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
-        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configs on the instance.
+        :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param bool is_stateful: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+        :param 'InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse' per_instance_configs: Status of per-instance configurations on the instance.
         """
         pulumi.set(__self__, "has_stateful_config", has_stateful_config)
         pulumi.set(__self__, "is_stateful", is_stateful)
@@ -6934,7 +7015,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="hasStatefulConfig")
     def has_stateful_config(self) -> bool:
         """
-        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
         """
         return pulumi.get(self, "has_stateful_config")
 
@@ -6942,7 +7023,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="isStateful")
     def is_stateful(self) -> bool:
         """
-        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful configuration even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions. This field is deprecated in favor of has_stateful_config.
         """
         return pulumi.get(self, "is_stateful")
 
@@ -6950,7 +7031,7 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
     @pulumi.getter(name="perInstanceConfigs")
     def per_instance_configs(self) -> 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse':
         """
-        Status of per-instance configs on the instance.
+        Status of per-instance configurations on the instance.
         """
         return pulumi.get(self, "per_instance_configs")
 
@@ -7213,6 +7294,39 @@ class InstanceParamsResponse(dict):
 
 
 @pulumi.output_type
+class InstancePropertiesPatchResponse(dict):
+    """
+    Represents the change that you want to make to the instance properties.
+    """
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 metadata: Mapping[str, str]):
+        """
+        Represents the change that you want to make to the instance properties.
+        :param Mapping[str, str] labels: The label key-value pairs that you want to patch onto the instance.
+        :param Mapping[str, str] metadata: The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The label key-value pairs that you want to patch onto the instance.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
 class InstancePropertiesResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7227,6 +7341,8 @@ class InstancePropertiesResponse(dict):
             suggest = "display_device"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "minCpuPlatform":
@@ -7271,6 +7387,7 @@ class InstancePropertiesResponse(dict):
                  disks: Sequence['outputs.AttachedDiskResponse'],
                  display_device: 'outputs.DisplayDeviceResponse',
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 key_revocation_action_type: str,
                  labels: Mapping[str, str],
                  machine_type: str,
                  metadata: 'outputs.MetadataResponse',
@@ -7295,6 +7412,7 @@ class InstancePropertiesResponse(dict):
         :param Sequence['AttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from these properties.
         :param 'DisplayDeviceResponse' display_device: Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from these properties.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from these properties.
         :param str machine_type: The machine type to use for instances that are created from these properties.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -7319,6 +7437,7 @@ class InstancePropertiesResponse(dict):
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "display_device", display_device)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -7391,6 +7510,14 @@ class InstancePropertiesResponse(dict):
         A list of guest accelerator cards' type and count to use for instances created from these properties.
         """
         return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter
@@ -11658,6 +11785,8 @@ class RouterBgpPeerResponse(dict):
             suggest = "ipv6_nexthop_address"
         elif key == "managementType":
             suggest = "management_type"
+        elif key == "md5AuthenticationKeyName":
+            suggest = "md5_authentication_key_name"
         elif key == "peerAsn":
             suggest = "peer_asn"
         elif key == "peerIpAddress":
@@ -11690,6 +11819,7 @@ class RouterBgpPeerResponse(dict):
                  ip_address: str,
                  ipv6_nexthop_address: str,
                  management_type: str,
+                 md5_authentication_key_name: str,
                  name: str,
                  peer_asn: int,
                  peer_ip_address: str,
@@ -11707,6 +11837,7 @@ class RouterBgpPeerResponse(dict):
         :param str ip_address: IP address of the interface inside Google Cloud Platform. Only IPv4 is supported.
         :param str ipv6_nexthop_address: IPv6 address of the interface inside Google Cloud Platform.
         :param str management_type: The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. 
+        :param str md5_authentication_key_name: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
         :param str name: Name of this BGP peer. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param int peer_asn: Peer BGP Autonomous System Number (ASN). Each BGP interface may use a different value.
         :param str peer_ip_address: IP address of the BGP interface outside Google Cloud Platform. Only IPv4 is supported.
@@ -11724,6 +11855,7 @@ class RouterBgpPeerResponse(dict):
         pulumi.set(__self__, "ip_address", ip_address)
         pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
         pulumi.set(__self__, "management_type", management_type)
+        pulumi.set(__self__, "md5_authentication_key_name", md5_authentication_key_name)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "peer_asn", peer_asn)
         pulumi.set(__self__, "peer_ip_address", peer_ip_address)
@@ -11817,6 +11949,14 @@ class RouterBgpPeerResponse(dict):
         The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. 
         """
         return pulumi.get(self, "management_type")
+
+    @property
+    @pulumi.getter(name="md5AuthenticationKeyName")
+    def md5_authentication_key_name(self) -> str:
+        """
+        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the Router.md5_authentication_keys. The field must comply with RFC1035.
+        """
+        return pulumi.get(self, "md5_authentication_key_name")
 
     @property
     @pulumi.getter
@@ -12064,6 +12204,35 @@ class RouterInterfaceResponse(dict):
         The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class RouterMd5AuthenticationKeyResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str key: [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+        :param str name: Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name used to identify the key. Must be unique within a router. Must be referenced by at least one bgpPeer. Must comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -14732,6 +14901,8 @@ class SourceInstancePropertiesResponse(dict):
             suggest = "deletion_protection"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "keyRevocationActionType":
+            suggest = "key_revocation_action_type"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "minCpuPlatform":
@@ -14760,6 +14931,7 @@ class SourceInstancePropertiesResponse(dict):
                  description: str,
                  disks: Sequence['outputs.SavedAttachedDiskResponse'],
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
+                 key_revocation_action_type: str,
                  labels: Mapping[str, str],
                  machine_type: str,
                  metadata: 'outputs.MetadataResponse',
@@ -14776,6 +14948,7 @@ class SourceInstancePropertiesResponse(dict):
         :param str description: An optional text description for the instances that are created from this machine image.
         :param Sequence['SavedAttachedDiskResponse'] disks: An array of disks that are associated with the instances that are created from this machine image.
         :param Sequence['AcceleratorConfigResponse'] guest_accelerators: A list of guest accelerator cards' type and count to use for instances created from this machine image.
+        :param str key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param Mapping[str, str] labels: Labels to apply to instances that are created from this machine image.
         :param str machine_type: The machine type to use for instances that are created from this machine image.
         :param 'MetadataResponse' metadata: The metadata key/value pairs to assign to instances that are created from this machine image. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
@@ -14791,6 +14964,7 @@ class SourceInstancePropertiesResponse(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disks", disks)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -14840,6 +15014,14 @@ class SourceInstancePropertiesResponse(dict):
         A list of guest accelerator cards' type and count to use for instances created from this machine image.
         """
         return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter

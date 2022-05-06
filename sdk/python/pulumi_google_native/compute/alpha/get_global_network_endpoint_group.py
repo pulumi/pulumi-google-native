@@ -187,7 +187,7 @@ class GetGlobalNetworkEndpointGroupResult:
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> str:
         """
-        The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         """
         return pulumi.get(self, "psc_target_service")
 

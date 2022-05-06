@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfig `pulumi:"auditLogConfigs"`
@@ -29,7 +29,7 @@ type AuditConfigInput interface {
 	ToAuditConfigOutputWithContext(context.Context) AuditConfigOutput
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigArgs struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
@@ -74,7 +74,7 @@ func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigOutput struct{ *pulumi.OutputState }
 
 func (AuditConfigOutput) ElementType() reflect.Type {
@@ -119,7 +119,7 @@ func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
 	}).(AuditConfigOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigResponse struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
@@ -127,7 +127,7 @@ type AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (AuditConfigResponseOutput) ElementType() reflect.Type {
@@ -1114,6 +1114,172 @@ func (o OidcResponseOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcResponse) string { return v.IssuerUri }).(pulumi.StringOutput)
 }
 
+// Represents an SAML 2.0 identity provider.
+type Saml struct {
+	// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+	IdpMetadataXml string `pulumi:"idpMetadataXml"`
+}
+
+// SamlInput is an input type that accepts SamlArgs and SamlOutput values.
+// You can construct a concrete instance of `SamlInput` via:
+//
+//          SamlArgs{...}
+type SamlInput interface {
+	pulumi.Input
+
+	ToSamlOutput() SamlOutput
+	ToSamlOutputWithContext(context.Context) SamlOutput
+}
+
+// Represents an SAML 2.0 identity provider.
+type SamlArgs struct {
+	// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+	IdpMetadataXml pulumi.StringInput `pulumi:"idpMetadataXml"`
+}
+
+func (SamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Saml)(nil)).Elem()
+}
+
+func (i SamlArgs) ToSamlOutput() SamlOutput {
+	return i.ToSamlOutputWithContext(context.Background())
+}
+
+func (i SamlArgs) ToSamlOutputWithContext(ctx context.Context) SamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlOutput)
+}
+
+func (i SamlArgs) ToSamlPtrOutput() SamlPtrOutput {
+	return i.ToSamlPtrOutputWithContext(context.Background())
+}
+
+func (i SamlArgs) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlOutput).ToSamlPtrOutputWithContext(ctx)
+}
+
+// SamlPtrInput is an input type that accepts SamlArgs, SamlPtr and SamlPtrOutput values.
+// You can construct a concrete instance of `SamlPtrInput` via:
+//
+//          SamlArgs{...}
+//
+//  or:
+//
+//          nil
+type SamlPtrInput interface {
+	pulumi.Input
+
+	ToSamlPtrOutput() SamlPtrOutput
+	ToSamlPtrOutputWithContext(context.Context) SamlPtrOutput
+}
+
+type samlPtrType SamlArgs
+
+func SamlPtr(v *SamlArgs) SamlPtrInput {
+	return (*samlPtrType)(v)
+}
+
+func (*samlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Saml)(nil)).Elem()
+}
+
+func (i *samlPtrType) ToSamlPtrOutput() SamlPtrOutput {
+	return i.ToSamlPtrOutputWithContext(context.Background())
+}
+
+func (i *samlPtrType) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SamlPtrOutput)
+}
+
+// Represents an SAML 2.0 identity provider.
+type SamlOutput struct{ *pulumi.OutputState }
+
+func (SamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Saml)(nil)).Elem()
+}
+
+func (o SamlOutput) ToSamlOutput() SamlOutput {
+	return o
+}
+
+func (o SamlOutput) ToSamlOutputWithContext(ctx context.Context) SamlOutput {
+	return o
+}
+
+func (o SamlOutput) ToSamlPtrOutput() SamlPtrOutput {
+	return o.ToSamlPtrOutputWithContext(context.Background())
+}
+
+func (o SamlOutput) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Saml) *Saml {
+		return &v
+	}).(SamlPtrOutput)
+}
+
+// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+func (o SamlOutput) IdpMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v Saml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
+}
+
+type SamlPtrOutput struct{ *pulumi.OutputState }
+
+func (SamlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Saml)(nil)).Elem()
+}
+
+func (o SamlPtrOutput) ToSamlPtrOutput() SamlPtrOutput {
+	return o
+}
+
+func (o SamlPtrOutput) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutput {
+	return o
+}
+
+func (o SamlPtrOutput) Elem() SamlOutput {
+	return o.ApplyT(func(v *Saml) Saml {
+		if v != nil {
+			return *v
+		}
+		var ret Saml
+		return ret
+	}).(SamlOutput)
+}
+
+// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+func (o SamlPtrOutput) IdpMetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Saml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpMetadataXml
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an SAML 2.0 identity provider.
+type SamlResponse struct {
+	// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+	IdpMetadataXml string `pulumi:"idpMetadataXml"`
+}
+
+// Represents an SAML 2.0 identity provider.
+type SamlResponseOutput struct{ *pulumi.OutputState }
+
+func (SamlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SamlResponse)(nil)).Elem()
+}
+
+func (o SamlResponseOutput) ToSamlResponseOutput() SamlResponseOutput {
+	return o
+}
+
+func (o SamlResponseOutput) ToSamlResponseOutputWithContext(ctx context.Context) SamlResponseOutput {
+	return o
+}
+
+// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 10 years in the future. 4) Upto 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata
+func (o SamlResponseOutput) IdpMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v SamlResponse) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -1127,6 +1293,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcInput)(nil)).Elem(), OidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcPtrInput)(nil)).Elem(), OidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlInput)(nil)).Elem(), SamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SamlPtrInput)(nil)).Elem(), SamlArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -1148,4 +1316,7 @@ func init() {
 	pulumi.RegisterOutputType(OidcOutput{})
 	pulumi.RegisterOutputType(OidcPtrOutput{})
 	pulumi.RegisterOutputType(OidcResponseOutput{})
+	pulumi.RegisterOutputType(SamlOutput{})
+	pulumi.RegisterOutputType(SamlPtrOutput{})
+	pulumi.RegisterOutputType(SamlResponseOutput{})
 }

@@ -791,7 +791,7 @@
               ],
               "parameters": {
                 "filter": {
-                  "description": "Required. Use `filter` to return subset of rollouts. The following filters are supported: -- To limit the results to only those in status 'SUCCESS', use filter='status=SUCCESS' -- To limit the results to those in status 'CANCELLED' or 'FAILED', use filter='status=CANCELLED OR status=FAILED'",
+                  "description": "Required. Use `filter` to return subset of rollouts. The following filters are supported: -- By status. For example, `filter='status=SUCCESS'` -- By strategy. For example, `filter='strategy=TrafficPercentStrategy'`",
                   "location": "query",
                   "type": "string"
                 },
@@ -829,7 +829,7 @@
       }
     }
   },
-  "revision": "20220408",
+  "revision": "20220422",
   "rootUrl": "https://servicemanagement.googleapis.com/",
   "schemas": {
     "Advice": {
@@ -2050,7 +2050,7 @@
           "type": "string"
         },
         "serviceName": {
-          "description": "The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.",
+          "description": "The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.",
           "type": "string"
         }
       },

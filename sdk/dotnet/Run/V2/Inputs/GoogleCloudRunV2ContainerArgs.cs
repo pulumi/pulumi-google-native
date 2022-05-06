@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         }
 
         /// <summary>
-        /// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;

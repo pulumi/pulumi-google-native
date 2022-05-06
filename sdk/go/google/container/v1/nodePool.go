@@ -118,9 +118,9 @@ type nodePoolArgs struct {
 	NetworkConfig *NodeNetworkConfig `pulumi:"networkConfig"`
 	// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent *string `pulumi:"parent"`
-	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+	// Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	//
-	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project *string `pulumi:"project"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
@@ -159,9 +159,9 @@ type NodePoolArgs struct {
 	NetworkConfig NodeNetworkConfigPtrInput
 	// The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
 	Parent pulumi.StringPtrInput
-	// Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+	// Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	//
-	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+	// Deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
 	Project pulumi.StringPtrInput
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput

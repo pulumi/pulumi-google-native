@@ -54,7 +54,7 @@ class GetRestorePlanResult:
     @pulumi.getter(name="backupPlan")
     def backup_plan(self) -> str:
         """
-        Immutable. The BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
         """
         return pulumi.get(self, "backup_plan")
 
@@ -62,7 +62,7 @@ class GetRestorePlanResult:
     @pulumi.getter
     def cluster(self) -> str:
         """
-        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -70,7 +70,7 @@ class GetRestorePlanResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp when this RestorePlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        The timestamp when this RestorePlan resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -86,7 +86,7 @@ class GetRestorePlanResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` to ensure that their change will be applied to the same version.
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestorePlan`, and systems are expected to put that etag in the request to `UpdateRestorePlan` or `DeleteRestorePlan` to ensure that their change will be applied to the same version of the resource.
         """
         return pulumi.get(self, "etag")
 
@@ -102,7 +102,7 @@ class GetRestorePlanResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*
+        The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
         """
         return pulumi.get(self, "name")
 
@@ -126,7 +126,7 @@ class GetRestorePlanResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The timestamp when this RestorePlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        The timestamp when this RestorePlan resource was last updated.
         """
         return pulumi.get(self, "update_time")
 

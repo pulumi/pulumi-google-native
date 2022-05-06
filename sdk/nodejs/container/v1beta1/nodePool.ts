@@ -222,9 +222,9 @@ export interface NodePoolArgs {
      */
     placementPolicy?: pulumi.Input<inputs.container.v1beta1.PlacementPolicyArgs>;
     /**
-     * Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+     * Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      *
-     * @deprecated Required. Deprecated. The Google Developers Console [project ID or project number](https://developers.google.com/console/help/new/#projectnumber). This field has been deprecated and replaced by the parent field.
+     * @deprecated Required. Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      */
     project?: pulumi.Input<string>;
     /**

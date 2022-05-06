@@ -31,27 +31,27 @@ type LookupBackupPlanResult struct {
 	BackupConfig BackupConfigResponse `pulumi:"backupConfig"`
 	// Defines a schedule for automatic Backup creation via this BackupPlan.
 	BackupSchedule ScheduleResponse `pulumi:"backupSchedule"`
-	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+	// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 	Cluster string `pulumi:"cluster"`
-	// The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+	// The timestamp when this BackupPlan resource was created.
 	CreateTime string `pulumi:"createTime"`
-	// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+	// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
 	Deactivated bool `pulumi:"deactivated"`
 	// User specified descriptive string for this BackupPlan.
 	Description string `pulumi:"description"`
-	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
 	Etag string `pulumi:"etag"`
 	// A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
 	// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
 	Name string `pulumi:"name"`
-	// Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+	// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 	ProtectedPodCount int `pulumi:"protectedPodCount"`
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	RetentionPolicy RetentionPolicyResponse `pulumi:"retentionPolicy"`
 	// Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
 	Uid string `pulumi:"uid"`
-	// The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+	// The timestamp when this BackupPlan resource was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -102,17 +102,17 @@ func (o LookupBackupPlanResultOutput) BackupSchedule() ScheduleResponseOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) ScheduleResponse { return v.BackupSchedule }).(ScheduleResponseOutput)
 }
 
-// Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
 func (o LookupBackupPlanResultOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+// The timestamp when this BackupPlan resource was created.
 func (o LookupBackupPlanResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
 func (o LookupBackupPlanResultOutput) Deactivated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) bool { return v.Deactivated }).(pulumi.BoolOutput)
 }
@@ -122,7 +122,7 @@ func (o LookupBackupPlanResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
 func (o LookupBackupPlanResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -137,7 +137,7 @@ func (o LookupBackupPlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
 func (o LookupBackupPlanResultOutput) ProtectedPodCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) int { return v.ProtectedPodCount }).(pulumi.IntOutput)
 }
@@ -152,7 +152,7 @@ func (o LookupBackupPlanResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
-// The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+// The timestamp when this BackupPlan resource was last updated.
 func (o LookupBackupPlanResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

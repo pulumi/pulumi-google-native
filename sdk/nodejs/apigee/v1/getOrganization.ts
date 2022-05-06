@@ -35,6 +35,10 @@ export interface GetOrganizationResult {
      */
     readonly analyticsRegion: string;
     /**
+     * Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
+     */
+    readonly apigeeProjectId: string;
+    /**
      * Not used by Apigee.
      */
     readonly attributes: string[];

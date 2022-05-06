@@ -29,6 +29,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> AnalyticsRegion { get; private set; } = null!;
 
         /// <summary>
+        /// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
+        /// </summary>
+        [Output("apigeeProjectId")]
+        public Output<string> ApigeeProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         [Output("attributes")]

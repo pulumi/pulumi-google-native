@@ -529,6 +529,175 @@ func (in *googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ToGoogleCloudChanne
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
 }
 
+// Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+type GoogleCloudChannelV1RepricingConfigRebillingBasis string
+
+const (
+	// Not used.
+	GoogleCloudChannelV1RepricingConfigRebillingBasisRebillingBasisUnspecified = GoogleCloudChannelV1RepricingConfigRebillingBasis("REBILLING_BASIS_UNSPECIFIED")
+	// Use the list cost, also known as the MSRP.
+	GoogleCloudChannelV1RepricingConfigRebillingBasisCostAtList = GoogleCloudChannelV1RepricingConfigRebillingBasis("COST_AT_LIST")
+	// Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
+	GoogleCloudChannelV1RepricingConfigRebillingBasisDirectCustomerCost = GoogleCloudChannelV1RepricingConfigRebillingBasis("DIRECT_CUSTOMER_COST")
+)
+
+func (GoogleCloudChannelV1RepricingConfigRebillingBasis) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigRebillingBasis)(nil)).Elem()
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {
+	return pulumi.ToOutput(e).(GoogleCloudChannelV1RepricingConfigRebillingBasisOutput)
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudChannelV1RepricingConfigRebillingBasisOutput)
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return e.ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return GoogleCloudChannelV1RepricingConfigRebillingBasis(e).ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutputWithContext(ctx).ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudChannelV1RepricingConfigRebillingBasis) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudChannelV1RepricingConfigRebillingBasisOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigRebillingBasis)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return o.ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RepricingConfigRebillingBasis) *GoogleCloudChannelV1RepricingConfigRebillingBasis {
+		return &v
+	}).(GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput)
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1RepricingConfigRebillingBasis) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1RepricingConfigRebillingBasis) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1RepricingConfigRebillingBasis)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) Elem() GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RepricingConfigRebillingBasis) GoogleCloudChannelV1RepricingConfigRebillingBasis {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1RepricingConfigRebillingBasis
+		return ret
+	}).(GoogleCloudChannelV1RepricingConfigRebillingBasisOutput)
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudChannelV1RepricingConfigRebillingBasis) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudChannelV1RepricingConfigRebillingBasisInput is an input type that accepts GoogleCloudChannelV1RepricingConfigRebillingBasisArgs and GoogleCloudChannelV1RepricingConfigRebillingBasisOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigRebillingBasisInput` via:
+//
+//          GoogleCloudChannelV1RepricingConfigRebillingBasisArgs{...}
+type GoogleCloudChannelV1RepricingConfigRebillingBasisInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisOutput
+	ToGoogleCloudChannelV1RepricingConfigRebillingBasisOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisOutput
+}
+
+var googleCloudChannelV1RepricingConfigRebillingBasisPtrType = reflect.TypeOf((**GoogleCloudChannelV1RepricingConfigRebillingBasis)(nil)).Elem()
+
+type GoogleCloudChannelV1RepricingConfigRebillingBasisPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput
+	ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput
+}
+
+type googleCloudChannelV1RepricingConfigRebillingBasisPtr string
+
+func GoogleCloudChannelV1RepricingConfigRebillingBasisPtr(v string) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrInput {
+	return (*googleCloudChannelV1RepricingConfigRebillingBasisPtr)(&v)
+}
+
+func (*googleCloudChannelV1RepricingConfigRebillingBasisPtr) ElementType() reflect.Type {
+	return googleCloudChannelV1RepricingConfigRebillingBasisPtrType
+}
+
+func (in *googleCloudChannelV1RepricingConfigRebillingBasisPtr) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput() GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput)
+}
+
+func (in *googleCloudChannelV1RepricingConfigRebillingBasisPtr) ToGoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkLinkStateInput)(nil)).Elem(), ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkLinkStatePtrInput)(nil)).Elem(), ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"))
@@ -536,10 +705,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodTypePtrInput)(nil)).Elem(), GoogleCloudChannelV1PeriodPeriodType("PERIOD_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlanInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsPaymentPlan("PAYMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsPaymentPlan("PAYMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigRebillingBasisInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigRebillingBasis("REBILLING_BASIS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigRebillingBasisPtrInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigRebillingBasis("REBILLING_BASIS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStateOutput{})
 	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStatePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigRebillingBasisOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput{})
 }

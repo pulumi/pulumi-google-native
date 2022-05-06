@@ -28,7 +28,7 @@ export interface GetServiceResult {
      */
     readonly producerProjectId: string;
     /**
-     * The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+     * The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
      */
     readonly serviceName: string;
 }

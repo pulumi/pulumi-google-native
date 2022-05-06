@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// A number that monotonically increases every time the user modifies the desired state.
+        /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
         /// </summary>
         [Output("generation")]
         public Output<string> Generation { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
+        /// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
         /// </summary>
         [Output("observedGeneration")]
         public Output<string> ObservedGeneration { get; private set; } = null!;

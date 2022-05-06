@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// <summary>
         /// Reserved for future use.
         /// </summary>
-        public readonly bool SatisfiesPZS;
+        public readonly bool SatisfiesPzs;
         /// <summary>
         /// A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         /// </summary>
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 
             string maxTimeTravelHours,
 
-            bool satisfiesPZS,
+            bool satisfiesPzs,
 
             string selfLink,
 
@@ -185,7 +185,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
             LastModifiedTime = lastModifiedTime;
             Location = location;
             MaxTimeTravelHours = maxTimeTravelHours;
-            SatisfiesPZS = satisfiesPZS;
+            SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             Tags = tags;
         }

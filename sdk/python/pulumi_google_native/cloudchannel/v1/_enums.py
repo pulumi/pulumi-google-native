@@ -8,6 +8,7 @@ __all__ = [
     'ChannelPartnerLinkLinkState',
     'GoogleCloudChannelV1PeriodPeriodType',
     'GoogleCloudChannelV1RenewalSettingsPaymentPlan',
+    'GoogleCloudChannelV1RepricingConfigRebillingBasis',
 ]
 
 
@@ -86,4 +87,22 @@ class GoogleCloudChannelV1RenewalSettingsPaymentPlan(str, Enum):
     OFFLINE = "OFFLINE"
     """
     Price and ordering not available through API.
+    """
+
+
+class GoogleCloudChannelV1RepricingConfigRebillingBasis(str, Enum):
+    """
+    Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+    """
+    REBILLING_BASIS_UNSPECIFIED = "REBILLING_BASIS_UNSPECIFIED"
+    """
+    Not used.
+    """
+    COST_AT_LIST = "COST_AT_LIST"
+    """
+    Use the list cost, also known as the MSRP.
+    """
+    DIRECT_CUSTOMER_COST = "DIRECT_CUSTOMER_COST"
+    """
+    Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
     """

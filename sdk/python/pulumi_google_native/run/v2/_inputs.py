@@ -16,11 +16,13 @@ __all__ = [
     'GoogleCloudRunV2ContainerArgs',
     'GoogleCloudRunV2EnvVarSourceArgs',
     'GoogleCloudRunV2EnvVarArgs',
+    'GoogleCloudRunV2ExecutionTemplateArgs',
     'GoogleCloudRunV2ResourceRequirementsArgs',
     'GoogleCloudRunV2RevisionScalingArgs',
     'GoogleCloudRunV2RevisionTemplateArgs',
     'GoogleCloudRunV2SecretKeySelectorArgs',
     'GoogleCloudRunV2SecretVolumeSourceArgs',
+    'GoogleCloudRunV2TaskTemplateArgs',
     'GoogleCloudRunV2TrafficTargetArgs',
     'GoogleCloudRunV2VersionToPathArgs',
     'GoogleCloudRunV2VolumeMountArgs',
@@ -36,18 +38,14 @@ __all__ = [
 class GoogleCloudRunV2BinaryAuthorizationArgs:
     def __init__(__self__, *,
                  breakglass_justification: Optional[pulumi.Input[str]] = None,
-                 policy: Optional[pulumi.Input[str]] = None,
                  use_default: Optional[pulumi.Input[bool]] = None):
         """
         Settings for Binary Authorization feature.
         :param pulumi.Input[str] breakglass_justification: If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
-        :param pulumi.Input[str] policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param pulumi.Input[bool] use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         if breakglass_justification is not None:
             pulumi.set(__self__, "breakglass_justification", breakglass_justification)
-        if policy is not None:
-            pulumi.set(__self__, "policy", policy)
         if use_default is not None:
             pulumi.set(__self__, "use_default", use_default)
 
@@ -62,18 +60,6 @@ class GoogleCloudRunV2BinaryAuthorizationArgs:
     @breakglass_justification.setter
     def breakglass_justification(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "breakglass_justification", value)
-
-    @property
-    @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[str]]:
-        """
-        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-        """
-        return pulumi.get(self, "policy")
-
-    @policy.setter
-    def policy(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "policy", value)
 
     @property
     @pulumi.getter(name="useDefault")
@@ -165,7 +151,7 @@ class GoogleCloudRunV2ContainerArgs:
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeMountArgs']]]] = None):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
-        :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+        :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2EnvVarArgs']]] env: List of environment variables to set in the container.
@@ -194,7 +180,7 @@ class GoogleCloudRunV2ContainerArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
         """
-        URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         """
         return pulumi.get(self, "image")
 
@@ -367,6 +353,93 @@ class GoogleCloudRunV2EnvVarArgs:
 
 
 @pulumi.input_type
+class GoogleCloudRunV2ExecutionTemplateArgs:
+    def __init__(__self__, *,
+                 template: pulumi.Input['GoogleCloudRunV2TaskTemplateArgs'],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 parallelism: Optional[pulumi.Input[int]] = None,
+                 task_count: Optional[pulumi.Input[int]] = None):
+        """
+        ExecutionTemplate describes the data an execution should have when created from a template.
+        :param pulumi.Input['GoogleCloudRunV2TaskTemplateArgs'] template: Describes the task(s) that will be created when executing an execution.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
+        :param pulumi.Input[int] parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        :param pulumi.Input[int] task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        """
+        pulumi.set(__self__, "template", template)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if parallelism is not None:
+            pulumi.set(__self__, "parallelism", parallelism)
+        if task_count is not None:
+            pulumi.set(__self__, "task_count", task_count)
+
+    @property
+    @pulumi.getter
+    def template(self) -> pulumi.Input['GoogleCloudRunV2TaskTemplateArgs']:
+        """
+        Describes the task(s) that will be created when executing an execution.
+        """
+        return pulumi.get(self, "template")
+
+    @template.setter
+    def template(self, value: pulumi.Input['GoogleCloudRunV2TaskTemplateArgs']):
+        pulumi.set(self, "template", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        KRM-style annotations for the resource.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        KRM-style labels for the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def parallelism(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        """
+        return pulumi.get(self, "parallelism")
+
+    @parallelism.setter
+    def parallelism(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "parallelism", value)
+
+    @property
+    @pulumi.getter(name="taskCount")
+    def task_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        """
+        return pulumi.get(self, "task_count")
+
+    @task_count.setter
+    def task_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "task_count", value)
+
+
+@pulumi.input_type
 class GoogleCloudRunV2ResourceRequirementsArgs:
     def __init__(__self__, *,
                  cpu_idle: Optional[pulumi.Input[bool]] = None,
@@ -450,12 +523,11 @@ class GoogleCloudRunV2RevisionScalingArgs:
 class GoogleCloudRunV2RevisionTemplateArgs:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 confidential: Optional[pulumi.Input[bool]] = None,
-                 container_concurrency: Optional[pulumi.Input[int]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]] = None,
                  encryption_key: Optional[pulumi.Input[str]] = None,
                  execution_environment: Optional[pulumi.Input['GoogleCloudRunV2RevisionTemplateExecutionEnvironment']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
                  revision: Optional[pulumi.Input[str]] = None,
                  scaling: Optional[pulumi.Input['GoogleCloudRunV2RevisionScalingArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -465,12 +537,11 @@ class GoogleCloudRunV2RevisionTemplateArgs:
         """
         RevisionTemplate describes the data a revision should have when created from a template.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: KRM-style annotations for the resource.
-        :param pulumi.Input[bool] confidential: Enables Confidential Cloud Run in Revisions created using this template.
-        :param pulumi.Input[int] container_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]] containers: Holds the single container that defines the unit of execution for this Revision.
         :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param pulumi.Input['GoogleCloudRunV2RevisionTemplateExecutionEnvironment'] execution_environment: The sandbox environment to host this Revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource.
+        :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param pulumi.Input['GoogleCloudRunV2RevisionScalingArgs'] scaling: Scaling settings for this Revision.
         :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -480,10 +551,6 @@ class GoogleCloudRunV2RevisionTemplateArgs:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
-        if confidential is not None:
-            pulumi.set(__self__, "confidential", confidential)
-        if container_concurrency is not None:
-            pulumi.set(__self__, "container_concurrency", container_concurrency)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
         if encryption_key is not None:
@@ -492,6 +559,8 @@ class GoogleCloudRunV2RevisionTemplateArgs:
             pulumi.set(__self__, "execution_environment", execution_environment)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if max_instance_request_concurrency is not None:
+            pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if scaling is not None:
@@ -516,30 +585,6 @@ class GoogleCloudRunV2RevisionTemplateArgs:
     @annotations.setter
     def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "annotations", value)
-
-    @property
-    @pulumi.getter
-    def confidential(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enables Confidential Cloud Run in Revisions created using this template.
-        """
-        return pulumi.get(self, "confidential")
-
-    @confidential.setter
-    def confidential(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "confidential", value)
-
-    @property
-    @pulumi.getter(name="containerConcurrency")
-    def container_concurrency(self) -> Optional[pulumi.Input[int]]:
-        """
-        Sets the maximum number of requests that each serving instance can receive.
-        """
-        return pulumi.get(self, "container_concurrency")
-
-    @container_concurrency.setter
-    def container_concurrency(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "container_concurrency", value)
 
     @property
     @pulumi.getter
@@ -588,6 +633,18 @@ class GoogleCloudRunV2RevisionTemplateArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Sets the maximum number of requests that each serving instance can receive.
+        """
+        return pulumi.get(self, "max_instance_request_concurrency")
+
+    @max_instance_request_concurrency.setter
+    def max_instance_request_concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_request_concurrency", value)
 
     @property
     @pulumi.getter
@@ -754,6 +811,142 @@ class GoogleCloudRunV2SecretVolumeSourceArgs:
     @items.setter
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VersionToPathArgs']]]]):
         pulumi.set(self, "items", value)
+
+
+@pulumi.input_type
+class GoogleCloudRunV2TaskTemplateArgs:
+    def __init__(__self__, *,
+                 containers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]] = None,
+                 encryption_key: Optional[pulumi.Input[str]] = None,
+                 execution_environment: Optional[pulumi.Input['GoogleCloudRunV2TaskTemplateExecutionEnvironment']] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 timeout: Optional[pulumi.Input[str]] = None,
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]]] = None,
+                 vpc_access: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessArgs']] = None):
+        """
+        TaskTemplate describes the data a task should have when created from a template.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]] containers: Holds the single container that defines the unit of execution for this task.
+        :param pulumi.Input[str] encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        :param pulumi.Input['GoogleCloudRunV2TaskTemplateExecutionEnvironment'] execution_environment: The execution environment being used to host this Task.
+        :param pulumi.Input[int] max_retries: Number of retries allowed per Task, before marking this Task failed.
+        :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        :param pulumi.Input[str] timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]] volumes: A list of Volumes to make available to containers.
+        :param pulumi.Input['GoogleCloudRunV2VpcAccessArgs'] vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if encryption_key is not None:
+            pulumi.set(__self__, "encryption_key", encryption_key)
+        if execution_environment is not None:
+            pulumi.set(__self__, "execution_environment", execution_environment)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+        if vpc_access is not None:
+            pulumi.set(__self__, "vpc_access", vpc_access)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]]:
+        """
+        Holds the single container that defines the unit of execution for this task.
+        """
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2ContainerArgs']]]]):
+        pulumi.set(self, "containers", value)
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @encryption_key.setter
+    def encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_key", value)
+
+    @property
+    @pulumi.getter(name="executionEnvironment")
+    def execution_environment(self) -> Optional[pulumi.Input['GoogleCloudRunV2TaskTemplateExecutionEnvironment']]:
+        """
+        The execution environment being used to host this Task.
+        """
+        return pulumi.get(self, "execution_environment")
+
+    @execution_environment.setter
+    def execution_environment(self, value: Optional[pulumi.Input['GoogleCloudRunV2TaskTemplateExecutionEnvironment']]):
+        pulumi.set(self, "execution_environment", value)
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of retries allowed per Task, before marking this Task failed.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @max_retries.setter
+    def max_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_retries", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]]]:
+        """
+        A list of Volumes to make available to containers.
+        """
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRunV2VolumeArgs']]]]):
+        pulumi.set(self, "volumes", value)
+
+    @property
+    @pulumi.getter(name="vpcAccess")
+    def vpc_access(self) -> Optional[pulumi.Input['GoogleCloudRunV2VpcAccessArgs']]:
+        """
+        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
+        return pulumi.get(self, "vpc_access")
+
+    @vpc_access.setter
+    def vpc_access(self, value: Optional[pulumi.Input['GoogleCloudRunV2VpcAccessArgs']]):
+        pulumi.set(self, "vpc_access", value)
 
 
 @pulumi.input_type
@@ -1022,7 +1215,7 @@ class GoogleIamV1AuditConfigArgs:
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditLogConfigArgs']]]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleIamV1AuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.
         :param pulumi.Input[str] service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """

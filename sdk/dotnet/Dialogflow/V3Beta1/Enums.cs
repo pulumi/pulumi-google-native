@@ -425,6 +425,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     }
 
     /// <summary>
+    /// File format for exported audio file. Currently only in telephony recordings.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat : IEquatable<GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified. Do not use.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat AudioFormatUnspecified { get; } = new GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("AUDIO_FORMAT_UNSPECIFIED");
+        /// <summary>
+        /// G.711 mu-law PCM with 8kHz sample rate.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat Mulaw { get; } = new GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("MULAW");
+        /// <summary>
+        /// MP3 file format.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat Mp3 { get; } = new GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("MP3");
+        /// <summary>
+        /// OGG Vorbis.
+        /// </summary>
+        public static GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat Ogg { get; } = new GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("OGG");
+
+        public static bool operator ==(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat left, GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat left, GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Whether the test case passed in the agent environment.
     /// </summary>
     [EnumType]

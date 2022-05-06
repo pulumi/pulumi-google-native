@@ -21,8 +21,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// <summary>
         /// Optional. Collation specification of the field. It only can be set on string type field.
         /// </summary>
-        [Input("collationSpec")]
-        public Input<string>? CollationSpec { get; set; }
+        [Input("collation")]
+        public Input<string>? Collation { get; set; }
+
+        /// <summary>
+        /// Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
+        /// </summary>
+        [Input("defaultValueExpression")]
+        public Input<string>? DefaultValueExpression { get; set; }
 
         /// <summary>
         /// [Optional] The field description. The maximum length is 1,024 characters.

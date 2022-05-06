@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly int ShardIndex;
         /// <summary>
-        /// Test targets for each shard.
+        /// Test targets for each shard. Only set for manual sharding.
         /// </summary>
         public readonly Outputs.TestTargetsForShardResponse TestTargetsForShard;
 

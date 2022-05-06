@@ -21,7 +21,7 @@ class OutputConfigResponse(dict):
                  destination: str):
         """
         OutputConfig contains a destination for writing trace data.
-        :param str destination: The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        :param str destination: The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         """
         pulumi.set(__self__, "destination", destination)
 
@@ -29,7 +29,7 @@ class OutputConfigResponse(dict):
     @pulumi.getter
     def destination(self) -> str:
         """
-        The destination for writing trace data. Currently only BigQuery is supported. E.g.: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
+        The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         """
         return pulumi.get(self, "destination")
 

@@ -90,7 +90,7 @@ export interface GetDatasetResult {
     /**
      * Reserved for future use.
      */
-    readonly satisfiesPZS: boolean;
+    readonly satisfiesPzs: boolean;
     /**
      * A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
      */

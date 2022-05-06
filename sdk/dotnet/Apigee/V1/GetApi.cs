@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// List of revisons defined for the API proxy.
+        /// List of revisions defined for the API proxy.
         /// </summary>
         public readonly ImmutableArray<string> Revision;
 

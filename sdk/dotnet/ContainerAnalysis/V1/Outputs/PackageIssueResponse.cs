@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
         /// </summary>
         public readonly string EffectiveSeverity;
         /// <summary>
+        /// The location at which this package was found.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GrafeasV1FileLocationResponse> FileLocation;
+        /// <summary>
         /// Whether a fix is available for this package.
         /// </summary>
         public readonly bool FixAvailable;
@@ -63,6 +67,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
 
             string effectiveSeverity,
 
+            ImmutableArray<Outputs.GrafeasV1FileLocationResponse> fileLocation,
+
             bool fixAvailable,
 
             string fixedCpeUri,
@@ -77,6 +83,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Outputs
             AffectedPackage = affectedPackage;
             AffectedVersion = affectedVersion;
             EffectiveSeverity = effectiveSeverity;
+            FileLocation = fileLocation;
             FixAvailable = fixAvailable;
             FixedCpeUri = fixedCpeUri;
             FixedPackage = fixedPackage;

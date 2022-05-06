@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:cloudchannel/v1:ChannelPartnerLink":
 		r = &ChannelPartnerLink{}
+	case "google-native:cloudchannel/v1:ChannelPartnerRepricingConfig":
+		r = &ChannelPartnerRepricingConfig{}
 	case "google-native:cloudchannel/v1:Customer":
 		r = &Customer{}
+	case "google-native:cloudchannel/v1:CustomerRepricingConfig":
+		r = &CustomerRepricingConfig{}
 	case "google-native:cloudchannel/v1:Entitlement":
 		r = &Entitlement{}
 	default:

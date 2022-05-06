@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<string> ProducerProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+        /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Input<string>? ProducerProjectId { get; set; }
 
         /// <summary>
-        /// The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+        /// The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

@@ -6,10 +6,14 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./channelPartnerLink";
+export * from "./channelPartnerRepricingConfig";
 export * from "./customer";
+export * from "./customerRepricingConfig";
 export * from "./entitlement";
 export * from "./getChannelPartnerLink";
+export * from "./getChannelPartnerRepricingConfig";
 export * from "./getCustomer";
+export * from "./getCustomerRepricingConfig";
 export * from "./getEntitlement";
 
 // Export enums:
@@ -17,7 +21,9 @@ export * from "../../types/enums/cloudchannel/v1";
 
 // Import resources to register:
 import { ChannelPartnerLink } from "./channelPartnerLink";
+import { ChannelPartnerRepricingConfig } from "./channelPartnerRepricingConfig";
 import { Customer } from "./customer";
+import { CustomerRepricingConfig } from "./customerRepricingConfig";
 import { Entitlement } from "./entitlement";
 
 const _module = {
@@ -26,8 +32,12 @@ const _module = {
         switch (type) {
             case "google-native:cloudchannel/v1:ChannelPartnerLink":
                 return new ChannelPartnerLink(name, <any>undefined, { urn })
+            case "google-native:cloudchannel/v1:ChannelPartnerRepricingConfig":
+                return new ChannelPartnerRepricingConfig(name, <any>undefined, { urn })
             case "google-native:cloudchannel/v1:Customer":
                 return new Customer(name, <any>undefined, { urn })
+            case "google-native:cloudchannel/v1:CustomerRepricingConfig":
+                return new CustomerRepricingConfig(name, <any>undefined, { urn })
             case "google-native:cloudchannel/v1:Entitlement":
                 return new Entitlement(name, <any>undefined, { urn })
             default:

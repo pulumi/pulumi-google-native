@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// Metric source to enable along with any optional metrics for this source that override the dataproc defaults
+    /// The metric source to enable, with any optional metrics, to override Dataproc default metrics.
     /// </summary>
     public sealed class MetricArgs : Pulumi.ResourceArgs
     {
@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         private InputList<string>? _metricOverrides;
 
         /// <summary>
-        /// Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        /// Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
         /// </summary>
         public InputList<string> MetricOverrides
         {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         }
 
         /// <summary>
-        /// MetricSource that should be enabled
+        /// MetricSource to enable.
         /// </summary>
         [Input("metricSource", required: true)]
         public Input<Pulumi.GoogleNative.Dataproc.V1.MetricMetricSource> MetricSource { get; set; } = null!;

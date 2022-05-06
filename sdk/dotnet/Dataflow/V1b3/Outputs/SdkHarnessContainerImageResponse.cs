@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 {
 
     /// <summary>
-    /// Defines a SDK harness container for executing Dataflow pipelines.
+    /// Defines an SDK harness container for executing Dataflow pipelines.
     /// </summary>
     [OutputType]
     public sealed class SdkHarnessContainerImageResponse
     {
         /// <summary>
-        /// The set of capabilities enumerated in the above Environment proto. See also https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/beam_runner_api.proto
+        /// The set of capabilities enumerated in the above Environment proto. See also [beam_runner_api.proto](https://github.com/apache/beam/blob/master/model/pipeline/src/main/proto/org/apache/beam/model/pipeline/v1/beam_runner_api.proto)
         /// </summary>
         public readonly ImmutableArray<string> Capabilities;
         /// <summary>

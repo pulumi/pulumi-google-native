@@ -14,9 +14,16 @@ __all__ = [
     'GoogleCloudChannelV1CommitmentSettingsArgs',
     'GoogleCloudChannelV1ContactInfoArgs',
     'GoogleCloudChannelV1ParameterArgs',
+    'GoogleCloudChannelV1PercentageAdjustmentArgs',
     'GoogleCloudChannelV1PeriodArgs',
     'GoogleCloudChannelV1RenewalSettingsArgs',
+    'GoogleCloudChannelV1RepricingAdjustmentArgs',
+    'GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs',
+    'GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs',
+    'GoogleCloudChannelV1RepricingConfigArgs',
     'GoogleCloudChannelV1ValueArgs',
+    'GoogleTypeDateArgs',
+    'GoogleTypeDecimalArgs',
     'GoogleTypePostalAddressArgs',
 ]
 
@@ -197,6 +204,30 @@ class GoogleCloudChannelV1ParameterArgs:
 
 
 @pulumi.input_type
+class GoogleCloudChannelV1PercentageAdjustmentArgs:
+    def __init__(__self__, *,
+                 percentage: Optional[pulumi.Input['GoogleTypeDecimalArgs']] = None):
+        """
+        An adjustment that applies a flat markup or markdown to an entire bill.
+        :param pulumi.Input['GoogleTypeDecimalArgs'] percentage: The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+        """
+        if percentage is not None:
+            pulumi.set(__self__, "percentage", percentage)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> Optional[pulumi.Input['GoogleTypeDecimalArgs']]:
+        """
+        The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: Optional[pulumi.Input['GoogleTypeDecimalArgs']]):
+        pulumi.set(self, "percentage", value)
+
+
+@pulumi.input_type
 class GoogleCloudChannelV1PeriodArgs:
     def __init__(__self__, *,
                  duration: Optional[pulumi.Input[int]] = None,
@@ -309,6 +340,148 @@ class GoogleCloudChannelV1RenewalSettingsArgs:
 
 
 @pulumi.input_type
+class GoogleCloudChannelV1RepricingAdjustmentArgs:
+    def __init__(__self__, *,
+                 percentage_adjustment: Optional[pulumi.Input['GoogleCloudChannelV1PercentageAdjustmentArgs']] = None):
+        """
+        A type that represents the various adjustments you can apply to a bill.
+        :param pulumi.Input['GoogleCloudChannelV1PercentageAdjustmentArgs'] percentage_adjustment: Flat markup or markdown on an entire bill.
+        """
+        if percentage_adjustment is not None:
+            pulumi.set(__self__, "percentage_adjustment", percentage_adjustment)
+
+    @property
+    @pulumi.getter(name="percentageAdjustment")
+    def percentage_adjustment(self) -> Optional[pulumi.Input['GoogleCloudChannelV1PercentageAdjustmentArgs']]:
+        """
+        Flat markup or markdown on an entire bill.
+        """
+        return pulumi.get(self, "percentage_adjustment")
+
+    @percentage_adjustment.setter
+    def percentage_adjustment(self, value: Optional[pulumi.Input['GoogleCloudChannelV1PercentageAdjustmentArgs']]):
+        pulumi.set(self, "percentage_adjustment", value)
+
+
+@pulumi.input_type
+class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs:
+    def __init__(__self__):
+        """
+        Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs:
+    def __init__(__self__, *,
+                 entitlement: Optional[pulumi.Input[str]] = None):
+        """
+        Applies the repricing configuration at the entitlement level.
+        :param pulumi.Input[str] entitlement: Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+        """
+        if entitlement is not None:
+            pulumi.set(__self__, "entitlement", entitlement)
+
+    @property
+    @pulumi.getter
+    def entitlement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+        """
+        return pulumi.get(self, "entitlement")
+
+    @entitlement.setter
+    def entitlement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entitlement", value)
+
+
+@pulumi.input_type
+class GoogleCloudChannelV1RepricingConfigArgs:
+    def __init__(__self__, *,
+                 adjustment: pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs'],
+                 effective_invoice_month: pulumi.Input['GoogleTypeDateArgs'],
+                 rebilling_basis: pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis'],
+                 channel_partner_granularity: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs']] = None,
+                 entitlement_granularity: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']] = None):
+        """
+        Configuration for repricing a Google bill over a period of time.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs'] adjustment: Information about the adjustment.
+        :param pulumi.Input['GoogleTypeDateArgs'] effective_invoice_month: The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis'] rebilling_basis: The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs'] channel_partner_granularity: Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs'] entitlement_granularity: Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+        """
+        pulumi.set(__self__, "adjustment", adjustment)
+        pulumi.set(__self__, "effective_invoice_month", effective_invoice_month)
+        pulumi.set(__self__, "rebilling_basis", rebilling_basis)
+        if channel_partner_granularity is not None:
+            pulumi.set(__self__, "channel_partner_granularity", channel_partner_granularity)
+        if entitlement_granularity is not None:
+            pulumi.set(__self__, "entitlement_granularity", entitlement_granularity)
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs']:
+        """
+        Information about the adjustment.
+        """
+        return pulumi.get(self, "adjustment")
+
+    @adjustment.setter
+    def adjustment(self, value: pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs']):
+        pulumi.set(self, "adjustment", value)
+
+    @property
+    @pulumi.getter(name="effectiveInvoiceMonth")
+    def effective_invoice_month(self) -> pulumi.Input['GoogleTypeDateArgs']:
+        """
+        The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+        """
+        return pulumi.get(self, "effective_invoice_month")
+
+    @effective_invoice_month.setter
+    def effective_invoice_month(self, value: pulumi.Input['GoogleTypeDateArgs']):
+        pulumi.set(self, "effective_invoice_month", value)
+
+    @property
+    @pulumi.getter(name="rebillingBasis")
+    def rebilling_basis(self) -> pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis']:
+        """
+        The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+        """
+        return pulumi.get(self, "rebilling_basis")
+
+    @rebilling_basis.setter
+    def rebilling_basis(self, value: pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis']):
+        pulumi.set(self, "rebilling_basis", value)
+
+    @property
+    @pulumi.getter(name="channelPartnerGranularity")
+    def channel_partner_granularity(self) -> Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs']]:
+        """
+        Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        """
+        return pulumi.get(self, "channel_partner_granularity")
+
+    @channel_partner_granularity.setter
+    def channel_partner_granularity(self, value: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs']]):
+        pulumi.set(self, "channel_partner_granularity", value)
+
+    @property
+    @pulumi.getter(name="entitlementGranularity")
+    def entitlement_granularity(self) -> Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']]:
+        """
+        Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+        """
+        return pulumi.get(self, "entitlement_granularity")
+
+    @entitlement_granularity.setter
+    def entitlement_granularity(self, value: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']]):
+        pulumi.set(self, "entitlement_granularity", value)
+
+
+@pulumi.input_type
 class GoogleCloudChannelV1ValueArgs:
     def __init__(__self__, *,
                  bool_value: Optional[pulumi.Input[bool]] = None,
@@ -394,6 +567,86 @@ class GoogleCloudChannelV1ValueArgs:
     @string_value.setter
     def string_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "string_value", value)
+
+
+@pulumi.input_type
+class GoogleTypeDateArgs:
+    def __init__(__self__, *,
+                 day: Optional[pulumi.Input[int]] = None,
+                 month: Optional[pulumi.Input[int]] = None,
+                 year: Optional[pulumi.Input[int]] = None):
+        """
+        Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+        :param pulumi.Input[int] day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        :param pulumi.Input[int] month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        :param pulumi.Input[int] year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        if day is not None:
+            pulumi.set(__self__, "day", day)
+        if month is not None:
+            pulumi.set(__self__, "month", month)
+        if year is not None:
+            pulumi.set(__self__, "year", year)
+
+    @property
+    @pulumi.getter
+    def day(self) -> Optional[pulumi.Input[int]]:
+        """
+        Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+        """
+        return pulumi.get(self, "day")
+
+    @day.setter
+    def day(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "day", value)
+
+    @property
+    @pulumi.getter
+    def month(self) -> Optional[pulumi.Input[int]]:
+        """
+        Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+        """
+        return pulumi.get(self, "month")
+
+    @month.setter
+    def month(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "month", value)
+
+    @property
+    @pulumi.getter
+    def year(self) -> Optional[pulumi.Input[int]]:
+        """
+        Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+        """
+        return pulumi.get(self, "year")
+
+    @year.setter
+    def year(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class GoogleTypeDecimalArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+        :param pulumi.Input[str] value: The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

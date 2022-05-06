@@ -69,6 +69,10 @@ export class Provider extends pulumi.CustomResource {
      */
     public readonly oidc!: pulumi.Output<outputs.iam.v1.OidcResponse>;
     /**
+     * An SAML 2.0 identity provider.
+     */
+    public readonly saml!: pulumi.Output<outputs.iam.v1.SamlResponse>;
+    /**
      * The state of the provider.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class Provider extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["oidc"] = args ? args.oidc : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["saml"] = args ? args.saml : undefined;
             resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
             resourceInputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -112,6 +117,7 @@ export class Provider extends pulumi.CustomResource {
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oidc"] = undefined /*out*/;
+            resourceInputs["saml"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,6 +159,10 @@ export interface ProviderArgs {
      */
     oidc?: pulumi.Input<inputs.iam.v1.OidcArgs>;
     project?: pulumi.Input<string>;
+    /**
+     * An SAML 2.0 identity provider.
+     */
+    saml?: pulumi.Input<inputs.iam.v1.SamlArgs>;
     workloadIdentityPoolId: pulumi.Input<string>;
     /**
      * Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.

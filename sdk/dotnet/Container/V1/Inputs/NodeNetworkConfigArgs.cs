@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<bool>? CreatePodRange { get; set; }
 
         /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.NetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         /// </summary>
         [Input("podIpv4CidrBlock")]

@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
     /// </summary>
     public sealed class EventTriggerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
         [Input("eventFilters")]
         private InputList<Inputs.EventFilterArgs>? _eventFilters;
 

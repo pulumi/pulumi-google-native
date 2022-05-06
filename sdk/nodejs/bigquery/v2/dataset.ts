@@ -100,7 +100,7 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * Reserved for future use.
      */
-    public /*out*/ readonly satisfiesPZS!: pulumi.Output<boolean>;
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
      * A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
      */
@@ -139,7 +139,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
-            resourceInputs["satisfiesPZS"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["access"] = undefined /*out*/;
@@ -158,7 +158,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["maxTimeTravelHours"] = undefined /*out*/;
-            resourceInputs["satisfiesPZS"] = undefined /*out*/;
+            resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
         }

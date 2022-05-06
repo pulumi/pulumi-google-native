@@ -44,6 +44,8 @@ type LookupProviderResult struct {
 	Name string `pulumi:"name"`
 	// An OpenId Connect 1.0 identity provider.
 	Oidc OidcResponse `pulumi:"oidc"`
+	// An SAML 2.0 identity provider.
+	Saml SamlResponse `pulumi:"saml"`
 	// The state of the provider.
 	State string `pulumi:"state"`
 }
@@ -124,6 +126,11 @@ func (o LookupProviderResultOutput) Name() pulumi.StringOutput {
 // An OpenId Connect 1.0 identity provider.
 func (o LookupProviderResultOutput) Oidc() OidcResponseOutput {
 	return o.ApplyT(func(v LookupProviderResult) OidcResponse { return v.Oidc }).(OidcResponseOutput)
+}
+
+// An SAML 2.0 identity provider.
+func (o LookupProviderResultOutput) Saml() SamlResponseOutput {
+	return o.ApplyT(func(v LookupProviderResult) SamlResponse { return v.Saml }).(SamlResponseOutput)
 }
 
 // The state of the provider.

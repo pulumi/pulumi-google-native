@@ -11,6 +11,7 @@ from ._enums import *
 
 __all__ = [
     'AcceleratorConfigArgs',
+    'AuthenticationConfigArgs',
     'AutoscalingConfigArgs',
     'AuxiliaryServicesConfigArgs',
     'BasicAutoscalingAlgorithmArgs',
@@ -36,6 +37,7 @@ __all__ = [
     'HadoopJobArgs',
     'HiveJobArgs',
     'IdentityConfigArgs',
+    'InjectableCredentialsConfigArgs',
     'InstanceGroupAutoscalingPolicyConfigArgs',
     'InstanceGroupConfigArgs',
     'JobPlacementArgs',
@@ -118,6 +120,46 @@ class AcceleratorConfigArgs:
     @accelerator_type_uri.setter
     def accelerator_type_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accelerator_type_uri", value)
+
+
+@pulumi.input_type
+class AuthenticationConfigArgs:
+    def __init__(__self__, *,
+                 authentication_type: Optional[pulumi.Input['AuthenticationConfigAuthenticationType']] = None,
+                 injectable_credentials_config: Optional[pulumi.Input['InjectableCredentialsConfigArgs']] = None):
+        """
+        Configuration for using injectable credentials or service account
+        :param pulumi.Input['AuthenticationConfigAuthenticationType'] authentication_type: Authentication type for session execution.
+        :param pulumi.Input['InjectableCredentialsConfigArgs'] injectable_credentials_config: Configuration for using end user authentication
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if injectable_credentials_config is not None:
+            pulumi.set(__self__, "injectable_credentials_config", injectable_credentials_config)
+
+    @property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[pulumi.Input['AuthenticationConfigAuthenticationType']]:
+        """
+        Authentication type for session execution.
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @authentication_type.setter
+    def authentication_type(self, value: Optional[pulumi.Input['AuthenticationConfigAuthenticationType']]):
+        pulumi.set(self, "authentication_type", value)
+
+    @property
+    @pulumi.getter(name="injectableCredentialsConfig")
+    def injectable_credentials_config(self) -> Optional[pulumi.Input['InjectableCredentialsConfigArgs']]:
+        """
+        Configuration for using end user authentication
+        """
+        return pulumi.get(self, "injectable_credentials_config")
+
+    @injectable_credentials_config.setter
+    def injectable_credentials_config(self, value: Optional[pulumi.Input['InjectableCredentialsConfigArgs']]):
+        pulumi.set(self, "injectable_credentials_config", value)
 
 
 @pulumi.input_type
@@ -334,7 +376,7 @@ class BindingArgs:
         """
         Associates members, or principals, with a role.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
         """
         if condition is not None:
@@ -360,7 +402,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+        Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "members")
 
@@ -404,11 +446,11 @@ class ClusterConfigArgs:
         The cluster config.
         :param pulumi.Input['AutoscalingConfigArgs'] autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         :param pulumi.Input[str] config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
-        :param pulumi.Input['DataprocMetricConfigArgs'] dataproc_metric_config: Optional. The configuration(s) for a dataproc metric(s).
+        :param pulumi.Input['DataprocMetricConfigArgs'] dataproc_metric_config: Optional. The config for Dataproc metrics.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for the cluster.
         :param pulumi.Input['EndpointConfigArgs'] endpoint_config: Optional. Port/endpoint configuration for this cluster
         :param pulumi.Input['GceClusterConfigArgs'] gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
-        :param pulumi.Input['GkeClusterConfigArgs'] gke_cluster_config: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+        :param pulumi.Input['GkeClusterConfigArgs'] gke_cluster_config: Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. These config settings are mutually exclusive with Compute Engine-based options, such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
         :param pulumi.Input[Sequence[pulumi.Input['NodeInitializationActionArgs']]] initialization_actions: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi 
         :param pulumi.Input['LifecycleConfigArgs'] lifecycle_config: Optional. Lifecycle setting for the cluster.
         :param pulumi.Input['InstanceGroupConfigArgs'] master_config: Optional. The Compute Engine config settings for the cluster's master instance.
@@ -431,9 +473,6 @@ class ClusterConfigArgs:
             pulumi.set(__self__, "endpoint_config", endpoint_config)
         if gce_cluster_config is not None:
             pulumi.set(__self__, "gce_cluster_config", gce_cluster_config)
-        if gke_cluster_config is not None:
-            warnings.warn("""Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.""", DeprecationWarning)
-            pulumi.log.warn("""gke_cluster_config is deprecated: Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.""")
         if gke_cluster_config is not None:
             pulumi.set(__self__, "gke_cluster_config", gke_cluster_config)
         if initialization_actions is not None:
@@ -483,7 +522,7 @@ class ClusterConfigArgs:
     @pulumi.getter(name="dataprocMetricConfig")
     def dataproc_metric_config(self) -> Optional[pulumi.Input['DataprocMetricConfigArgs']]:
         """
-        Optional. The configuration(s) for a dataproc metric(s).
+        Optional. The config for Dataproc metrics.
         """
         return pulumi.get(self, "dataproc_metric_config")
 
@@ -531,7 +570,7 @@ class ClusterConfigArgs:
     @pulumi.getter(name="gkeClusterConfig")
     def gke_cluster_config(self) -> Optional[pulumi.Input['GkeClusterConfigArgs']]:
         """
-        Optional. Deprecated. Use VirtualClusterConfig based clusters instead. BETA. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
+        Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. These config settings are mutually exclusive with Compute Engine-based options, such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
         """
         return pulumi.get(self, "gke_cluster_config")
 
@@ -716,8 +755,8 @@ class DataprocMetricConfigArgs:
     def __init__(__self__, *,
                  metrics: pulumi.Input[Sequence[pulumi.Input['MetricArgs']]]):
         """
-        Contains dataproc metric config.
-        :param pulumi.Input[Sequence[pulumi.Input['MetricArgs']]] metrics: Metrics to be enabled.
+        Dataproc metric config.
+        :param pulumi.Input[Sequence[pulumi.Input['MetricArgs']]] metrics: Metrics to enable.
         """
         pulumi.set(__self__, "metrics", metrics)
 
@@ -725,7 +764,7 @@ class DataprocMetricConfigArgs:
     @pulumi.getter
     def metrics(self) -> pulumi.Input[Sequence[pulumi.Input['MetricArgs']]]:
         """
-        Metrics to be enabled.
+        Metrics to enable.
         """
         return pulumi.get(self, "metrics")
 
@@ -1280,7 +1319,7 @@ class GkeClusterConfigArgs:
         The cluster's GKE config.
         :param pulumi.Input[str] gke_cluster_target: Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input['NamespacedGkeDeploymentTargetArgs'] namespaced_gke_deployment_target: Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment.
-        :param pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetArgs']]] node_pool_target: Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+        :param pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetArgs']]] node_pool_target: Optional. GKE node pools where workloads will be scheduled. At least one node pool must be assigned the DEFAULT GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         """
         if gke_cluster_target is not None:
             pulumi.set(__self__, "gke_cluster_target", gke_cluster_target)
@@ -1320,7 +1359,7 @@ class GkeClusterConfigArgs:
     @pulumi.getter(name="nodePoolTarget")
     def node_pool_target(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetArgs']]]]:
         """
-        Optional. GKE NodePools where workloads will be scheduled. At least one node pool must be assigned the 'default' role. Each role can be given to only a single NodePoolTarget. All NodePools must have the same location settings. If a nodePoolTarget is not specified, Dataproc constructs a default nodePoolTarget.
+        Optional. GKE node pools where workloads will be scheduled. At least one node pool must be assigned the DEFAULT GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a DEFAULT GkeNodePoolTarget. Each role can be given to only one GkeNodePoolTarget. All node pools must have the same location settings.
         """
         return pulumi.get(self, "node_pool_target")
 
@@ -1344,7 +1383,7 @@ class GkeNodeConfigArgs:
         :param pulumi.Input[int] local_ssd_count: Optional. The number of local SSD disks to attach to the node, which is limited by the maximum number of disks allowable per zone (see Adding Local SSDs (https://cloud.google.com/compute/docs/disks/local-ssd)).
         :param pulumi.Input[str] machine_type: Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types).
         :param pulumi.Input[str] min_cpu_platform: Optional. Minimum CPU platform (https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) to be used by this instance. The instance may be scheduled on the specified or a newer CPU platform. Specify the friendly names of CPU platforms, such as "Intel Haswell"` or Intel Sandy Bridge".
-        :param pulumi.Input[bool] preemptible: Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+        :param pulumi.Input[bool] preemptible: Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         :param pulumi.Input[bool] spot: Optional. Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         """
         if accelerators is not None:
@@ -1412,7 +1451,7 @@ class GkeNodeConfigArgs:
     @pulumi.getter
     def preemptible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+        Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         """
         return pulumi.get(self, "preemptible")
 
@@ -1440,7 +1479,7 @@ class GkeNodePoolAcceleratorConfigArgs:
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None):
         """
-        A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+        A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool.
         :param pulumi.Input[str] accelerator_count: The number of accelerator cards exposed to an instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource namename (see GPUs on Compute Engine).
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
@@ -1496,8 +1535,8 @@ class GkeNodePoolAutoscalingConfigArgs:
                  min_node_count: Optional[pulumi.Input[int]] = None):
         """
         GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
-        :param pulumi.Input[int] max_node_count: The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
-        :param pulumi.Input[int] min_node_count: The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes in the node pool. Must be >= min_node_count, and must be > 0. Note: Quota must be sufficient to scale up the cluster.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes in the node pool. Must be >= 0 and <= max_node_count.
         """
         if max_node_count is not None:
             pulumi.set(__self__, "max_node_count", max_node_count)
@@ -1508,7 +1547,7 @@ class GkeNodePoolAutoscalingConfigArgs:
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of nodes in the NodePool. Must be >= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+        The maximum number of nodes in the node pool. Must be >= min_node_count, and must be > 0. Note: Quota must be sufficient to scale up the cluster.
         """
         return pulumi.get(self, "max_node_count")
 
@@ -1520,7 +1559,7 @@ class GkeNodePoolAutoscalingConfigArgs:
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The minimum number of nodes in the NodePool. Must be >= 0 and <= max_node_count.
+        The minimum number of nodes in the node pool. Must be >= 0 and <= max_node_count.
         """
         return pulumi.get(self, "min_node_count")
 
@@ -1536,10 +1575,10 @@ class GkeNodePoolConfigArgs:
                  config: Optional[pulumi.Input['GkeNodeConfigArgs']] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        The configuration of a GKE NodePool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
-        :param pulumi.Input['GkeNodePoolAutoscalingConfigArgs'] autoscaling: Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+        The configuration of a GKE node pool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+        :param pulumi.Input['GkeNodePoolAutoscalingConfigArgs'] autoscaling: Optional. The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
         :param pulumi.Input['GkeNodeConfigArgs'] config: Optional. The node pool configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.Note: All node pools associated with a virtual cluster must be located in the same region as the virtual cluster, and they must be located in the same zone within that region.If a location is not specified during node pool creation, Dataproc on GKE will choose the zone.
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -1552,7 +1591,7 @@ class GkeNodePoolConfigArgs:
     @pulumi.getter
     def autoscaling(self) -> Optional[pulumi.Input['GkeNodePoolAutoscalingConfigArgs']]:
         """
-        Optional. The autoscaler configuration for this NodePool. The autoscaler is enabled only when a valid configuration is present.
+        Optional. The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
         """
         return pulumi.get(self, "autoscaling")
 
@@ -1576,7 +1615,7 @@ class GkeNodePoolConfigArgs:
     @pulumi.getter
     def locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where NodePool's nodes will be located.Note: Currently, only one zone may be specified.If a location is not specified during NodePool creation, Dataproc will choose a location.
+        Optional. The list of Compute Engine zones (https://cloud.google.com/compute/docs/zones#available) where node pool nodes associated with a Dataproc on GKE virtual cluster will be located.Note: All node pools associated with a virtual cluster must be located in the same region as the virtual cluster, and they must be located in the same zone within that region.If a location is not specified during node pool creation, Dataproc on GKE will choose the zone.
         """
         return pulumi.get(self, "locations")
 
@@ -1592,10 +1631,10 @@ class GkeNodePoolTargetArgs:
                  roles: pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetRolesItem']]],
                  node_pool_config: Optional[pulumi.Input['GkeNodePoolConfigArgs']] = None):
         """
-        GKE NodePools that Dataproc workloads run on.
-        :param pulumi.Input[str] node_pool: The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
-        :param pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetRolesItem']]] roles: The types of role for a GKE NodePool
-        :param pulumi.Input['GkeNodePoolConfigArgs'] node_pool_config: Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+        GKE node pools that Dataproc workloads run on.
+        :param pulumi.Input[str] node_pool: The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+        :param pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetRolesItem']]] roles: The roles associated with the GKE node pool.
+        :param pulumi.Input['GkeNodePoolConfigArgs'] node_pool_config: Input only. The configuration for the GKE node pool.If specified, Dataproc attempts to create a node pool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any node pool with the specified name is used. If a node pool with the specified name does not exist, Dataproc create a node pool with default values.This is an input only field. It will not be returned by the API.
         """
         pulumi.set(__self__, "node_pool", node_pool)
         pulumi.set(__self__, "roles", roles)
@@ -1606,7 +1645,7 @@ class GkeNodePoolTargetArgs:
     @pulumi.getter(name="nodePool")
     def node_pool(self) -> pulumi.Input[str]:
         """
-        The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+        The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
         """
         return pulumi.get(self, "node_pool")
 
@@ -1618,7 +1657,7 @@ class GkeNodePoolTargetArgs:
     @pulumi.getter
     def roles(self) -> pulumi.Input[Sequence[pulumi.Input['GkeNodePoolTargetRolesItem']]]:
         """
-        The types of role for a GKE NodePool
+        The roles associated with the GKE node pool.
         """
         return pulumi.get(self, "roles")
 
@@ -1630,7 +1669,7 @@ class GkeNodePoolTargetArgs:
     @pulumi.getter(name="nodePoolConfig")
     def node_pool_config(self) -> Optional[pulumi.Input['GkeNodePoolConfigArgs']]:
         """
-        Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+        Input only. The configuration for the GKE node pool.If specified, Dataproc attempts to create a node pool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any node pool with the specified name is used. If a node pool with the specified name does not exist, Dataproc create a node pool with default values.This is an input only field. It will not be returned by the API.
         """
         return pulumi.get(self, "node_pool_config")
 
@@ -1900,6 +1939,15 @@ class IdentityConfigArgs:
     @user_service_account_mapping.setter
     def user_service_account_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "user_service_account_mapping", value)
+
+
+@pulumi.input_type
+class InjectableCredentialsConfigArgs:
+    def __init__(__self__):
+        """
+        Specific injectable credentials authentication parameters
+        """
+        pass
 
 
 @pulumi.input_type
@@ -2702,9 +2750,9 @@ class MetricArgs:
                  metric_source: pulumi.Input['MetricMetricSource'],
                  metric_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        Metric source to enable along with any optional metrics for this source that override the dataproc defaults
-        :param pulumi.Input['MetricMetricSource'] metric_source: MetricSource that should be enabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] metric_overrides: Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        The metric source to enable, with any optional metrics, to override Dataproc default metrics.
+        :param pulumi.Input['MetricMetricSource'] metric_source: MetricSource to enable.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] metric_overrides: Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
         """
         pulumi.set(__self__, "metric_source", metric_source)
         if metric_overrides is not None:
@@ -2714,7 +2762,7 @@ class MetricArgs:
     @pulumi.getter(name="metricSource")
     def metric_source(self) -> pulumi.Input['MetricMetricSource']:
         """
-        MetricSource that should be enabled
+        MetricSource to enable.
         """
         return pulumi.get(self, "metric_source")
 
@@ -2726,7 +2774,7 @@ class MetricArgs:
     @pulumi.getter(name="metricOverrides")
     def metric_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. Optional Metrics to override the dataproc default metrics configured for the metric source
+        Optional. Optional Metrics to override the Dataproc default metrics configured for the metric source.
         """
         return pulumi.get(self, "metric_overrides")
 
@@ -3701,17 +3749,21 @@ class RuntimeConfigArgs:
     def __init__(__self__, *,
                  container_image: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session_authentication_config: Optional[pulumi.Input['AuthenticationConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Runtime configuration for a workload.
         :param pulumi.Input[str] container_image: Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, which are used to configure workload execution.
+        :param pulumi.Input['AuthenticationConfigArgs'] session_authentication_config: Optional. Authentication configuration for the session execution.
         :param pulumi.Input[str] version: Optional. Version of the batch runtime.
         """
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if session_authentication_config is not None:
+            pulumi.set(__self__, "session_authentication_config", session_authentication_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -3738,6 +3790,18 @@ class RuntimeConfigArgs:
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="sessionAuthenticationConfig")
+    def session_authentication_config(self) -> Optional[pulumi.Input['AuthenticationConfigArgs']]:
+        """
+        Optional. Authentication configuration for the session execution.
+        """
+        return pulumi.get(self, "session_authentication_config")
+
+    @session_authentication_config.setter
+    def session_authentication_config(self, value: Optional[pulumi.Input['AuthenticationConfigArgs']]):
+        pulumi.set(self, "session_authentication_config", value)
 
     @property
     @pulumi.getter
@@ -4686,10 +4750,10 @@ class VirtualClusterConfigArgs:
                  auxiliary_services_config: Optional[pulumi.Input['AuxiliaryServicesConfigArgs']] = None,
                  staging_bucket: Optional[pulumi.Input[str]] = None):
         """
-        Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
+        The Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke).
         :param pulumi.Input['KubernetesClusterConfigArgs'] kubernetes_cluster_config: The configuration for running the Dataproc cluster on Kubernetes.
         :param pulumi.Input['AuxiliaryServicesConfigArgs'] auxiliary_services_config: Optional. Configuration of auxiliary services used by this cluster.
-        :param pulumi.Input[str] staging_bucket: Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param pulumi.Input[str] staging_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         """
         pulumi.set(__self__, "kubernetes_cluster_config", kubernetes_cluster_config)
         if auxiliary_services_config is not None:
@@ -4725,7 +4789,7 @@ class VirtualClusterConfigArgs:
     @pulumi.getter(name="stagingBucket")
     def staging_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         """
         return pulumi.get(self, "staging_bucket")
 

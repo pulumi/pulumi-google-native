@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        /// Specifies configuration that overrides the instance template configuration for the group.
         /// </summary>
         [Output("allInstancesConfig")]
         public Output<Outputs.InstanceGroupManagerAllInstancesConfigResponse> AllInstancesConfig { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class RegionInstanceGroupManagerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        /// Specifies configuration that overrides the instance template configuration for the group.
         /// </summary>
         [Input("allInstancesConfig")]
         public Input<Inputs.InstanceGroupManagerAllInstancesConfigArgs>? AllInstancesConfig { get; set; }

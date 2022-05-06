@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string AnalyticsRegion;
         /// <summary>
+        /// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
+        /// </summary>
+        public readonly string ApigeeProjectId;
+        /// <summary>
         /// Not used by Apigee.
         /// </summary>
         public readonly ImmutableArray<string> Attributes;
@@ -144,6 +148,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string analyticsRegion,
 
+            string apigeeProjectId,
+
             ImmutableArray<string> attributes,
 
             string authorizedNetwork,
@@ -186,6 +192,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         {
             AddonsConfig = addonsConfig;
             AnalyticsRegion = analyticsRegion;
+            ApigeeProjectId = apigeeProjectId;
             Attributes = attributes;
             AuthorizedNetwork = authorizedNetwork;
             BillingType = billingType;

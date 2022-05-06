@@ -11,21 +11,21 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
     /// <summary>
-    /// GKE NodePools that Dataproc workloads run on.
+    /// GKE node pools that Dataproc workloads run on.
     /// </summary>
     [OutputType]
     public sealed class GkeNodePoolTargetResponse
     {
         /// <summary>
-        /// The target GKE NodePool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
+        /// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
         /// </summary>
         public readonly string NodePool;
         /// <summary>
-        /// Input only. The configuration for the GKE NodePool.If specified, Dataproc attempts to create a NodePool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any NodePool with the specified name is used. If a NodePool with the specified name does not exist, Dataproc create a NodePool with default values.This is an input only field. It will not be returned by the API.
+        /// Input only. The configuration for the GKE node pool.If specified, Dataproc attempts to create a node pool with the specified shape. If one with the same name already exists, it is verified against all specified fields. If a field differs, the virtual cluster creation will fail.If omitted, any node pool with the specified name is used. If a node pool with the specified name does not exist, Dataproc create a node pool with default values.This is an input only field. It will not be returned by the API.
         /// </summary>
         public readonly Outputs.GkeNodePoolConfigResponse NodePoolConfig;
         /// <summary>
-        /// The types of role for a GKE NodePool
+        /// The roles associated with the GKE node pool.
         /// </summary>
         public readonly ImmutableArray<string> Roles;
 

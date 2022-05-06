@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public Input<Inputs.ClusterResourceRestoreScopeArgs>? ClusterResourceRestoreScope { get; set; }
 
         /// <summary>
-        /// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
+        /// Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         /// </summary>
         [Input("namespacedResourceRestoreMode")]
         public Input<Pulumi.GoogleNative.Gkebackup.V1.RestoreConfigNamespacedResourceRestoreMode>? NamespacedResourceRestoreMode { get; set; }

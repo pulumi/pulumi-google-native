@@ -923,6 +923,174 @@ func (o GoogleCloudChannelV1ParameterResponseArrayOutput) Index(i pulumi.IntInpu
 	}).(GoogleCloudChannelV1ParameterResponseOutput)
 }
 
+// An adjustment that applies a flat markup or markdown to an entire bill.
+type GoogleCloudChannelV1PercentageAdjustment struct {
+	// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+	Percentage *GoogleTypeDecimal `pulumi:"percentage"`
+}
+
+// GoogleCloudChannelV1PercentageAdjustmentInput is an input type that accepts GoogleCloudChannelV1PercentageAdjustmentArgs and GoogleCloudChannelV1PercentageAdjustmentOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1PercentageAdjustmentInput` via:
+//
+//          GoogleCloudChannelV1PercentageAdjustmentArgs{...}
+type GoogleCloudChannelV1PercentageAdjustmentInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1PercentageAdjustmentOutput() GoogleCloudChannelV1PercentageAdjustmentOutput
+	ToGoogleCloudChannelV1PercentageAdjustmentOutputWithContext(context.Context) GoogleCloudChannelV1PercentageAdjustmentOutput
+}
+
+// An adjustment that applies a flat markup or markdown to an entire bill.
+type GoogleCloudChannelV1PercentageAdjustmentArgs struct {
+	// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+	Percentage GoogleTypeDecimalPtrInput `pulumi:"percentage"`
+}
+
+func (GoogleCloudChannelV1PercentageAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1PercentageAdjustment)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1PercentageAdjustmentOutput() GoogleCloudChannelV1PercentageAdjustmentOutput {
+	return i.ToGoogleCloudChannelV1PercentageAdjustmentOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1PercentageAdjustmentOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PercentageAdjustmentOutput)
+}
+
+func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutput() GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return i.ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PercentageAdjustmentOutput).ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudChannelV1PercentageAdjustmentPtrInput is an input type that accepts GoogleCloudChannelV1PercentageAdjustmentArgs, GoogleCloudChannelV1PercentageAdjustmentPtr and GoogleCloudChannelV1PercentageAdjustmentPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1PercentageAdjustmentPtrInput` via:
+//
+//          GoogleCloudChannelV1PercentageAdjustmentArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudChannelV1PercentageAdjustmentPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1PercentageAdjustmentPtrOutput() GoogleCloudChannelV1PercentageAdjustmentPtrOutput
+	ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(context.Context) GoogleCloudChannelV1PercentageAdjustmentPtrOutput
+}
+
+type googleCloudChannelV1PercentageAdjustmentPtrType GoogleCloudChannelV1PercentageAdjustmentArgs
+
+func GoogleCloudChannelV1PercentageAdjustmentPtr(v *GoogleCloudChannelV1PercentageAdjustmentArgs) GoogleCloudChannelV1PercentageAdjustmentPtrInput {
+	return (*googleCloudChannelV1PercentageAdjustmentPtrType)(v)
+}
+
+func (*googleCloudChannelV1PercentageAdjustmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1PercentageAdjustment)(nil)).Elem()
+}
+
+func (i *googleCloudChannelV1PercentageAdjustmentPtrType) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutput() GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return i.ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudChannelV1PercentageAdjustmentPtrType) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1PercentageAdjustmentPtrOutput)
+}
+
+// An adjustment that applies a flat markup or markdown to an entire bill.
+type GoogleCloudChannelV1PercentageAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1PercentageAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1PercentageAdjustment)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentOutput) ToGoogleCloudChannelV1PercentageAdjustmentOutput() GoogleCloudChannelV1PercentageAdjustmentOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentOutput) ToGoogleCloudChannelV1PercentageAdjustmentOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentOutput) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutput() GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return o.ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentOutput) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1PercentageAdjustment) *GoogleCloudChannelV1PercentageAdjustment {
+		return &v
+	}).(GoogleCloudChannelV1PercentageAdjustmentPtrOutput)
+}
+
+// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+func (o GoogleCloudChannelV1PercentageAdjustmentOutput) Percentage() GoogleTypeDecimalPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1PercentageAdjustment) *GoogleTypeDecimal { return v.Percentage }).(GoogleTypeDecimalPtrOutput)
+}
+
+type GoogleCloudChannelV1PercentageAdjustmentPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1PercentageAdjustmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1PercentageAdjustment)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutput() GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) ToGoogleCloudChannelV1PercentageAdjustmentPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) Elem() GoogleCloudChannelV1PercentageAdjustmentOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1PercentageAdjustment) GoogleCloudChannelV1PercentageAdjustment {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1PercentageAdjustment
+		return ret
+	}).(GoogleCloudChannelV1PercentageAdjustmentOutput)
+}
+
+// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+func (o GoogleCloudChannelV1PercentageAdjustmentPtrOutput) Percentage() GoogleTypeDecimalPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1PercentageAdjustment) *GoogleTypeDecimal {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(GoogleTypeDecimalPtrOutput)
+}
+
+// An adjustment that applies a flat markup or markdown to an entire bill.
+type GoogleCloudChannelV1PercentageAdjustmentResponse struct {
+	// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+	Percentage GoogleTypeDecimalResponse `pulumi:"percentage"`
+}
+
+// An adjustment that applies a flat markup or markdown to an entire bill.
+type GoogleCloudChannelV1PercentageAdjustmentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1PercentageAdjustmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1PercentageAdjustmentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentResponseOutput) ToGoogleCloudChannelV1PercentageAdjustmentResponseOutput() GoogleCloudChannelV1PercentageAdjustmentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PercentageAdjustmentResponseOutput) ToGoogleCloudChannelV1PercentageAdjustmentResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1PercentageAdjustmentResponseOutput {
+	return o
+}
+
+// The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00"
+func (o GoogleCloudChannelV1PercentageAdjustmentResponseOutput) Percentage() GoogleTypeDecimalResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1PercentageAdjustmentResponse) GoogleTypeDecimalResponse {
+		return v.Percentage
+	}).(GoogleTypeDecimalResponseOutput)
+}
+
 // Represents period in days/months/years.
 type GoogleCloudChannelV1Period struct {
 	// Total duration of Period Type defined.
@@ -1403,6 +1571,558 @@ func (o GoogleCloudChannelV1RenewalSettingsResponseOutput) ResizeUnitCount() pul
 	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettingsResponse) bool { return v.ResizeUnitCount }).(pulumi.BoolOutput)
 }
 
+// A type that represents the various adjustments you can apply to a bill.
+type GoogleCloudChannelV1RepricingAdjustment struct {
+	// Flat markup or markdown on an entire bill.
+	PercentageAdjustment *GoogleCloudChannelV1PercentageAdjustment `pulumi:"percentageAdjustment"`
+}
+
+// GoogleCloudChannelV1RepricingAdjustmentInput is an input type that accepts GoogleCloudChannelV1RepricingAdjustmentArgs and GoogleCloudChannelV1RepricingAdjustmentOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingAdjustmentInput` via:
+//
+//          GoogleCloudChannelV1RepricingAdjustmentArgs{...}
+type GoogleCloudChannelV1RepricingAdjustmentInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingAdjustmentOutput() GoogleCloudChannelV1RepricingAdjustmentOutput
+	ToGoogleCloudChannelV1RepricingAdjustmentOutputWithContext(context.Context) GoogleCloudChannelV1RepricingAdjustmentOutput
+}
+
+// A type that represents the various adjustments you can apply to a bill.
+type GoogleCloudChannelV1RepricingAdjustmentArgs struct {
+	// Flat markup or markdown on an entire bill.
+	PercentageAdjustment GoogleCloudChannelV1PercentageAdjustmentPtrInput `pulumi:"percentageAdjustment"`
+}
+
+func (GoogleCloudChannelV1RepricingAdjustmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingAdjustment)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1RepricingAdjustmentArgs) ToGoogleCloudChannelV1RepricingAdjustmentOutput() GoogleCloudChannelV1RepricingAdjustmentOutput {
+	return i.ToGoogleCloudChannelV1RepricingAdjustmentOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingAdjustmentArgs) ToGoogleCloudChannelV1RepricingAdjustmentOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingAdjustmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingAdjustmentOutput)
+}
+
+// A type that represents the various adjustments you can apply to a bill.
+type GoogleCloudChannelV1RepricingAdjustmentOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingAdjustmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingAdjustment)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingAdjustmentOutput) ToGoogleCloudChannelV1RepricingAdjustmentOutput() GoogleCloudChannelV1RepricingAdjustmentOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingAdjustmentOutput) ToGoogleCloudChannelV1RepricingAdjustmentOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingAdjustmentOutput {
+	return o
+}
+
+// Flat markup or markdown on an entire bill.
+func (o GoogleCloudChannelV1RepricingAdjustmentOutput) PercentageAdjustment() GoogleCloudChannelV1PercentageAdjustmentPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingAdjustment) *GoogleCloudChannelV1PercentageAdjustment {
+		return v.PercentageAdjustment
+	}).(GoogleCloudChannelV1PercentageAdjustmentPtrOutput)
+}
+
+// A type that represents the various adjustments you can apply to a bill.
+type GoogleCloudChannelV1RepricingAdjustmentResponse struct {
+	// Flat markup or markdown on an entire bill.
+	PercentageAdjustment GoogleCloudChannelV1PercentageAdjustmentResponse `pulumi:"percentageAdjustment"`
+}
+
+// A type that represents the various adjustments you can apply to a bill.
+type GoogleCloudChannelV1RepricingAdjustmentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingAdjustmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingAdjustmentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) ToGoogleCloudChannelV1RepricingAdjustmentResponseOutput() GoogleCloudChannelV1RepricingAdjustmentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) ToGoogleCloudChannelV1RepricingAdjustmentResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingAdjustmentResponseOutput {
+	return o
+}
+
+// Flat markup or markdown on an entire bill.
+func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) PercentageAdjustment() GoogleCloudChannelV1PercentageAdjustmentResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingAdjustmentResponse) GoogleCloudChannelV1PercentageAdjustmentResponse {
+		return v.PercentageAdjustment
+	}).(GoogleCloudChannelV1PercentageAdjustmentResponseOutput)
+}
+
+// Configuration for repricing a Google bill over a period of time.
+type GoogleCloudChannelV1RepricingConfig struct {
+	// Information about the adjustment.
+	Adjustment GoogleCloudChannelV1RepricingAdjustment `pulumi:"adjustment"`
+	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+	ChannelPartnerGranularity *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity `pulumi:"channelPartnerGranularity"`
+	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+	EffectiveInvoiceMonth GoogleTypeDate `pulumi:"effectiveInvoiceMonth"`
+	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+	EntitlementGranularity *GoogleCloudChannelV1RepricingConfigEntitlementGranularity `pulumi:"entitlementGranularity"`
+	// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+	RebillingBasis GoogleCloudChannelV1RepricingConfigRebillingBasis `pulumi:"rebillingBasis"`
+}
+
+// GoogleCloudChannelV1RepricingConfigInput is an input type that accepts GoogleCloudChannelV1RepricingConfigArgs and GoogleCloudChannelV1RepricingConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigInput` via:
+//
+//          GoogleCloudChannelV1RepricingConfigArgs{...}
+type GoogleCloudChannelV1RepricingConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigOutput() GoogleCloudChannelV1RepricingConfigOutput
+	ToGoogleCloudChannelV1RepricingConfigOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigOutput
+}
+
+// Configuration for repricing a Google bill over a period of time.
+type GoogleCloudChannelV1RepricingConfigArgs struct {
+	// Information about the adjustment.
+	Adjustment GoogleCloudChannelV1RepricingAdjustmentInput `pulumi:"adjustment"`
+	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+	ChannelPartnerGranularity GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput `pulumi:"channelPartnerGranularity"`
+	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+	EffectiveInvoiceMonth GoogleTypeDateInput `pulumi:"effectiveInvoiceMonth"`
+	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+	EntitlementGranularity GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput `pulumi:"entitlementGranularity"`
+	// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+	RebillingBasis GoogleCloudChannelV1RepricingConfigRebillingBasisInput `pulumi:"rebillingBasis"`
+}
+
+func (GoogleCloudChannelV1RepricingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1RepricingConfigArgs) ToGoogleCloudChannelV1RepricingConfigOutput() GoogleCloudChannelV1RepricingConfigOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingConfigArgs) ToGoogleCloudChannelV1RepricingConfigOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigOutput)
+}
+
+// Configuration for repricing a Google bill over a period of time.
+type GoogleCloudChannelV1RepricingConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigOutput) ToGoogleCloudChannelV1RepricingConfigOutput() GoogleCloudChannelV1RepricingConfigOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigOutput) ToGoogleCloudChannelV1RepricingConfigOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigOutput {
+	return o
+}
+
+// Information about the adjustment.
+func (o GoogleCloudChannelV1RepricingConfigOutput) Adjustment() GoogleCloudChannelV1RepricingAdjustmentOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) GoogleCloudChannelV1RepricingAdjustment {
+		return v.Adjustment
+	}).(GoogleCloudChannelV1RepricingAdjustmentOutput)
+}
+
+// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+func (o GoogleCloudChannelV1RepricingConfigOutput) ChannelPartnerGranularity() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {
+		return v.ChannelPartnerGranularity
+	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput)
+}
+
+// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+func (o GoogleCloudChannelV1RepricingConfigOutput) EffectiveInvoiceMonth() GoogleTypeDateOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) GoogleTypeDate { return v.EffectiveInvoiceMonth }).(GoogleTypeDateOutput)
+}
+
+// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+func (o GoogleCloudChannelV1RepricingConfigOutput) EntitlementGranularity() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) *GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
+		return v.EntitlementGranularity
+	}).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput)
+}
+
+// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+func (o GoogleCloudChannelV1RepricingConfigOutput) RebillingBasis() GoogleCloudChannelV1RepricingConfigRebillingBasisOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) GoogleCloudChannelV1RepricingConfigRebillingBasis {
+		return v.RebillingBasis
+	}).(GoogleCloudChannelV1RepricingConfigRebillingBasisOutput)
+}
+
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity struct {
+}
+
+// GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput is an input type that accepts GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs and GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput` via:
+//
+//          GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{...}
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput
+	ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput
+}
+
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs struct {
+}
+
+func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput)
+}
+
+func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput).ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput is an input type that accepts GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs, GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtr and GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput` via:
+//
+//          GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput
+	ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput
+}
+
+type googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs
+
+func GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtr(v *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput {
+	return (*googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType)(v)
+}
+
+func (*googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity)(nil)).Elem()
+}
+
+func (i *googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrType) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput)
+}
+
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return o.ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity) *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {
+		return &v
+	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput)
+}
+
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput) Elem() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity
+		return ret
+	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput)
+}
+
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse struct {
+}
+
+// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
+type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput) ToGoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput {
+	return o
+}
+
+// Applies the repricing configuration at the entitlement level.
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularity struct {
+	// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+	Entitlement *string `pulumi:"entitlement"`
+}
+
+// GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput is an input type that accepts GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs and GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput` via:
+//
+//          GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{...}
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput
+	ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput
+}
+
+// Applies the repricing configuration at the entitlement level.
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs struct {
+	// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+	Entitlement pulumi.StringPtrInput `pulumi:"entitlement"`
+}
+
+func (GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularity)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput)
+}
+
+func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput).ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput is an input type that accepts GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs, GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtr and GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput` via:
+//
+//          GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput
+	ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput
+}
+
+type googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs
+
+func GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtr(v *GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput {
+	return (*googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType)(v)
+}
+
+func (*googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1RepricingConfigEntitlementGranularity)(nil)).Elem()
+}
+
+func (i *googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return i.ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudChannelV1RepricingConfigEntitlementGranularityPtrType) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput)
+}
+
+// Applies the repricing configuration at the entitlement level.
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularity)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return o.ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RepricingConfigEntitlementGranularity) *GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
+		return &v
+	}).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput)
+}
+
+// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput) Entitlement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigEntitlementGranularity) *string { return v.Entitlement }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1RepricingConfigEntitlementGranularity)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) Elem() GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RepricingConfigEntitlementGranularity) GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1RepricingConfigEntitlementGranularity
+		return ret
+	}).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput)
+}
+
+// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput) Entitlement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RepricingConfigEntitlementGranularity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Entitlement
+	}).(pulumi.StringPtrOutput)
+}
+
+// Applies the repricing configuration at the entitlement level.
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse struct {
+	// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+	Entitlement string `pulumi:"entitlement"`
+}
+
+// Applies the repricing configuration at the entitlement level.
+type GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput() GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput) ToGoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput {
+	return o
+}
+
+// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
+func (o GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput) Entitlement() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse) string { return v.Entitlement }).(pulumi.StringOutput)
+}
+
+// Configuration for repricing a Google bill over a period of time.
+type GoogleCloudChannelV1RepricingConfigResponse struct {
+	// Information about the adjustment.
+	Adjustment GoogleCloudChannelV1RepricingAdjustmentResponse `pulumi:"adjustment"`
+	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+	ChannelPartnerGranularity GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse `pulumi:"channelPartnerGranularity"`
+	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+	EffectiveInvoiceMonth GoogleTypeDateResponse `pulumi:"effectiveInvoiceMonth"`
+	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+	EntitlementGranularity GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse `pulumi:"entitlementGranularity"`
+	// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+	RebillingBasis string `pulumi:"rebillingBasis"`
+}
+
+// Configuration for repricing a Google bill over a period of time.
+type GoogleCloudChannelV1RepricingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ToGoogleCloudChannelV1RepricingConfigResponseOutput() GoogleCloudChannelV1RepricingConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ToGoogleCloudChannelV1RepricingConfigResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConfigResponseOutput {
+	return o
+}
+
+// Information about the adjustment.
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) Adjustment() GoogleCloudChannelV1RepricingAdjustmentResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleCloudChannelV1RepricingAdjustmentResponse {
+		return v.Adjustment
+	}).(GoogleCloudChannelV1RepricingAdjustmentResponseOutput)
+}
+
+// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ChannelPartnerGranularity() GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse {
+		return v.ChannelPartnerGranularity
+	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput)
+}
+
+// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) EffectiveInvoiceMonth() GoogleTypeDateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleTypeDateResponse {
+		return v.EffectiveInvoiceMonth
+	}).(GoogleTypeDateResponseOutput)
+}
+
+// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) EntitlementGranularity() GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse {
+		return v.EntitlementGranularity
+	}).(GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput)
+}
+
+// The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) RebillingBasis() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) string { return v.RebillingBasis }).(pulumi.StringOutput)
+}
+
 // Settings for trial offers.
 type GoogleCloudChannelV1TrialSettingsResponse struct {
 	// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
@@ -1706,6 +2426,285 @@ func (o GoogleCloudChannelV1ValueResponseOutput) StringValue() pulumi.StringOutp
 	return o.ApplyT(func(v GoogleCloudChannelV1ValueResponse) string { return v.StringValue }).(pulumi.StringOutput)
 }
 
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDate struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day *int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month *int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year *int `pulumi:"year"`
+}
+
+// GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
+// You can construct a concrete instance of `GoogleTypeDateInput` via:
+//
+//          GoogleTypeDateArgs{...}
+type GoogleTypeDateInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDateOutput() GoogleTypeDateOutput
+	ToGoogleTypeDateOutputWithContext(context.Context) GoogleTypeDateOutput
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateArgs struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day pulumi.IntPtrInput `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month pulumi.IntPtrInput `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year pulumi.IntPtrInput `pulumi:"year"`
+}
+
+func (GoogleTypeDateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+	return i.ToGoogleTypeDateOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDateArgs) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDateOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDate)(nil)).Elem()
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDateOutput() GoogleTypeDateOutput {
+	return o
+}
+
+func (o GoogleTypeDateOutput) ToGoogleTypeDateOutputWithContext(ctx context.Context) GoogleTypeDateOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDateOutput) Day() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Day }).(pulumi.IntPtrOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDateOutput) Month() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Month }).(pulumi.IntPtrOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDateOutput) Year() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDate) *int { return v.Year }).(pulumi.IntPtrOutput)
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateResponse struct {
+	// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+	Day int `pulumi:"day"`
+	// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+	Month int `pulumi:"month"`
+	// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+	Year int `pulumi:"year"`
+}
+
+// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp
+type GoogleTypeDateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDateResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutput() GoogleTypeDateResponseOutput {
+	return o
+}
+
+func (o GoogleTypeDateResponseOutput) ToGoogleTypeDateResponseOutputWithContext(ctx context.Context) GoogleTypeDateResponseOutput {
+	return o
+}
+
+// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+func (o GoogleTypeDateResponseOutput) Day() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Day }).(pulumi.IntOutput)
+}
+
+// Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+func (o GoogleTypeDateResponseOutput) Month() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Month }).(pulumi.IntOutput)
+}
+
+// Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+func (o GoogleTypeDateResponseOutput) Year() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeDateResponse) int { return v.Year }).(pulumi.IntOutput)
+}
+
+// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+type GoogleTypeDecimal struct {
+	// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+	Value *string `pulumi:"value"`
+}
+
+// GoogleTypeDecimalInput is an input type that accepts GoogleTypeDecimalArgs and GoogleTypeDecimalOutput values.
+// You can construct a concrete instance of `GoogleTypeDecimalInput` via:
+//
+//          GoogleTypeDecimalArgs{...}
+type GoogleTypeDecimalInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDecimalOutput() GoogleTypeDecimalOutput
+	ToGoogleTypeDecimalOutputWithContext(context.Context) GoogleTypeDecimalOutput
+}
+
+// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+type GoogleTypeDecimalArgs struct {
+	// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (GoogleTypeDecimalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDecimal)(nil)).Elem()
+}
+
+func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalOutput() GoogleTypeDecimalOutput {
+	return i.ToGoogleTypeDecimalOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalOutputWithContext(ctx context.Context) GoogleTypeDecimalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDecimalOutput)
+}
+
+func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalPtrOutput() GoogleTypeDecimalPtrOutput {
+	return i.ToGoogleTypeDecimalPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalPtrOutputWithContext(ctx context.Context) GoogleTypeDecimalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDecimalOutput).ToGoogleTypeDecimalPtrOutputWithContext(ctx)
+}
+
+// GoogleTypeDecimalPtrInput is an input type that accepts GoogleTypeDecimalArgs, GoogleTypeDecimalPtr and GoogleTypeDecimalPtrOutput values.
+// You can construct a concrete instance of `GoogleTypeDecimalPtrInput` via:
+//
+//          GoogleTypeDecimalArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleTypeDecimalPtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeDecimalPtrOutput() GoogleTypeDecimalPtrOutput
+	ToGoogleTypeDecimalPtrOutputWithContext(context.Context) GoogleTypeDecimalPtrOutput
+}
+
+type googleTypeDecimalPtrType GoogleTypeDecimalArgs
+
+func GoogleTypeDecimalPtr(v *GoogleTypeDecimalArgs) GoogleTypeDecimalPtrInput {
+	return (*googleTypeDecimalPtrType)(v)
+}
+
+func (*googleTypeDecimalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDecimal)(nil)).Elem()
+}
+
+func (i *googleTypeDecimalPtrType) ToGoogleTypeDecimalPtrOutput() GoogleTypeDecimalPtrOutput {
+	return i.ToGoogleTypeDecimalPtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeDecimalPtrType) ToGoogleTypeDecimalPtrOutputWithContext(ctx context.Context) GoogleTypeDecimalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeDecimalPtrOutput)
+}
+
+// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+type GoogleTypeDecimalOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDecimalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDecimal)(nil)).Elem()
+}
+
+func (o GoogleTypeDecimalOutput) ToGoogleTypeDecimalOutput() GoogleTypeDecimalOutput {
+	return o
+}
+
+func (o GoogleTypeDecimalOutput) ToGoogleTypeDecimalOutputWithContext(ctx context.Context) GoogleTypeDecimalOutput {
+	return o
+}
+
+func (o GoogleTypeDecimalOutput) ToGoogleTypeDecimalPtrOutput() GoogleTypeDecimalPtrOutput {
+	return o.ToGoogleTypeDecimalPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeDecimalOutput) ToGoogleTypeDecimalPtrOutputWithContext(ctx context.Context) GoogleTypeDecimalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleTypeDecimal) *GoogleTypeDecimal {
+		return &v
+	}).(GoogleTypeDecimalPtrOutput)
+}
+
+// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+func (o GoogleTypeDecimalOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeDecimal) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type GoogleTypeDecimalPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDecimalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeDecimal)(nil)).Elem()
+}
+
+func (o GoogleTypeDecimalPtrOutput) ToGoogleTypeDecimalPtrOutput() GoogleTypeDecimalPtrOutput {
+	return o
+}
+
+func (o GoogleTypeDecimalPtrOutput) ToGoogleTypeDecimalPtrOutputWithContext(ctx context.Context) GoogleTypeDecimalPtrOutput {
+	return o
+}
+
+func (o GoogleTypeDecimalPtrOutput) Elem() GoogleTypeDecimalOutput {
+	return o.ApplyT(func(v *GoogleTypeDecimal) GoogleTypeDecimal {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleTypeDecimal
+		return ret
+	}).(GoogleTypeDecimalOutput)
+}
+
+// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+func (o GoogleTypeDecimalPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeDecimal) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+type GoogleTypeDecimalResponse struct {
+	// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+	Value string `pulumi:"value"`
+}
+
+// A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's BigDecimal or Python's decimal.Decimal. [BigDecimal]: https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html [decimal.Decimal]: https://docs.python.org/3/library/decimal.html
+type GoogleTypeDecimalResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeDecimalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeDecimalResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeDecimalResponseOutput) ToGoogleTypeDecimalResponseOutput() GoogleTypeDecimalResponseOutput {
+	return o
+}
+
+func (o GoogleTypeDecimalResponseOutput) ToGoogleTypeDecimalResponseOutputWithContext(ctx context.Context) GoogleTypeDecimalResponseOutput {
+	return o
+}
+
+// The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to lower-case (`2.5E8` -> `2.5e8`). - Removing an explicitly-provided zero exponent (`2.5e0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5e-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range.
+func (o GoogleTypeDecimalResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeDecimalResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
 // Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
 type GoogleTypePostalAddress struct {
 	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
@@ -1956,12 +2955,23 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoPtrInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterInput)(nil)).Elem(), GoogleCloudChannelV1ParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterArrayInput)(nil)).Elem(), GoogleCloudChannelV1ParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PercentageAdjustmentInput)(nil)).Elem(), GoogleCloudChannelV1PercentageAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PercentageAdjustmentPtrInput)(nil)).Elem(), GoogleCloudChannelV1PercentageAdjustmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodInput)(nil)).Elem(), GoogleCloudChannelV1PeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPtrInput)(nil)).Elem(), GoogleCloudChannelV1PeriodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPtrInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingAdjustmentInput)(nil)).Elem(), GoogleCloudChannelV1RepricingAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValueInput)(nil)).Elem(), GoogleCloudChannelV1ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValuePtrInput)(nil)).Elem(), GoogleCloudChannelV1ValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateInput)(nil)).Elem(), GoogleTypeDateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDecimalInput)(nil)).Elem(), GoogleTypeDecimalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDecimalPtrInput)(nil)).Elem(), GoogleTypeDecimalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypePostalAddressInput)(nil)).Elem(), GoogleTypePostalAddressArgs{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1AssociationInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1AssociationInfoPtrOutput{})
@@ -1978,6 +2988,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ParameterResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1PercentageAdjustmentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1PercentageAdjustmentPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1PercentageAdjustmentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodResponseOutput{})
@@ -1985,10 +2998,25 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingAdjustmentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingAdjustmentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1TrialSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValueOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValuePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValueResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDecimalOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDecimalPtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeDecimalResponseOutput{})
 	pulumi.RegisterOutputType(GoogleTypePostalAddressOutput{})
 	pulumi.RegisterOutputType(GoogleTypePostalAddressResponseOutput{})
 }

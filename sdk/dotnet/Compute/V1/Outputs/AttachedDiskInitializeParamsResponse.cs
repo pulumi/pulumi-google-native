@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 {
 
     /// <summary>
-    /// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+    /// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     /// </summary>
     [OutputType]
     public sealed class AttachedDiskInitializeParamsResponse

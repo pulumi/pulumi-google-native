@@ -60,7 +60,7 @@ export class Api extends pulumi.CustomResource {
      */
     public /*out*/ readonly readOnly!: pulumi.Output<boolean>;
     /**
-     * List of revisons defined for the API proxy.
+     * List of revisions defined for the API proxy.
      */
     public /*out*/ readonly revision!: pulumi.Output<string[]>;
 

@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecuritySettingResult:
-    def __init__(__self__, deidentify_template=None, display_name=None, insights_export_settings=None, inspect_template=None, name=None, purge_data_types=None, redaction_scope=None, redaction_strategy=None, retention_window_days=None):
+    def __init__(__self__, audio_export_settings=None, deidentify_template=None, display_name=None, insights_export_settings=None, inspect_template=None, name=None, purge_data_types=None, redaction_scope=None, redaction_strategy=None, retention_window_days=None):
+        if audio_export_settings and not isinstance(audio_export_settings, dict):
+            raise TypeError("Expected argument 'audio_export_settings' to be a dict")
+        pulumi.set(__self__, "audio_export_settings", audio_export_settings)
         if deidentify_template and not isinstance(deidentify_template, str):
             raise TypeError("Expected argument 'deidentify_template' to be a str")
         pulumi.set(__self__, "deidentify_template", deidentify_template)
@@ -46,6 +49,14 @@ class GetSecuritySettingResult:
         if retention_window_days and not isinstance(retention_window_days, int):
             raise TypeError("Expected argument 'retention_window_days' to be a int")
         pulumi.set(__self__, "retention_window_days", retention_window_days)
+
+    @property
+    @pulumi.getter(name="audioExportSettings")
+    def audio_export_settings(self) -> 'outputs.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse':
+        """
+        Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
+        """
+        return pulumi.get(self, "audio_export_settings")
 
     @property
     @pulumi.getter(name="deidentifyTemplate")
@@ -126,6 +137,7 @@ class AwaitableGetSecuritySettingResult(GetSecuritySettingResult):
         if False:
             yield self
         return GetSecuritySettingResult(
+            audio_export_settings=self.audio_export_settings,
             deidentify_template=self.deidentify_template,
             display_name=self.display_name,
             insights_export_settings=self.insights_export_settings,
@@ -155,6 +167,7 @@ def get_security_setting(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dialogflow/v3:getSecuritySetting', __args__, opts=opts, typ=GetSecuritySettingResult).value
 
     return AwaitableGetSecuritySettingResult(
+        audio_export_settings=__ret__.audio_export_settings,
         deidentify_template=__ret__.deidentify_template,
         display_name=__ret__.display_name,
         insights_export_settings=__ret__.insights_export_settings,
