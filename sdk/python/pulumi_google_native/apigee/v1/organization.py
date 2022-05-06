@@ -360,6 +360,7 @@ class Organization(pulumi.CustomResource):
                 raise TypeError("Missing required property 'runtime_type'")
             __props__.__dict__["runtime_type"] = runtime_type
             __props__.__dict__["type"] = type
+            __props__.__dict__["apigee_project_id"] = None
             __props__.__dict__["ca_certificate"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["environments"] = None
@@ -393,6 +394,7 @@ class Organization(pulumi.CustomResource):
 
         __props__.__dict__["addons_config"] = None
         __props__.__dict__["analytics_region"] = None
+        __props__.__dict__["apigee_project_id"] = None
         __props__.__dict__["attributes"] = None
         __props__.__dict__["authorized_network"] = None
         __props__.__dict__["billing_type"] = None
@@ -430,6 +432,14 @@ class Organization(pulumi.CustomResource):
         DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
+
+    @property
+    @pulumi.getter(name="apigeeProjectId")
+    def apigee_project_id(self) -> pulumi.Output[str]:
+        """
+        Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
+        """
+        return pulumi.get(self, "apigee_project_id")
 
     @property
     @pulumi.getter

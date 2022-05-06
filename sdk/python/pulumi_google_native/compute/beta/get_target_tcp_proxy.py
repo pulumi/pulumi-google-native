@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetTcpProxyResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, proxy_bind=None, proxy_header=None, self_link=None, service=None):
+    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, proxy_bind=None, proxy_header=None, region=None, self_link=None, service=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -36,6 +36,9 @@ class GetTargetTcpProxyResult:
         if proxy_header and not isinstance(proxy_header, str):
             raise TypeError("Expected argument 'proxy_header' to be a str")
         pulumi.set(__self__, "proxy_header", proxy_header)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -92,6 +95,14 @@ class GetTargetTcpProxyResult:
         return pulumi.get(self, "proxy_header")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -120,6 +131,7 @@ class AwaitableGetTargetTcpProxyResult(GetTargetTcpProxyResult):
             name=self.name,
             proxy_bind=self.proxy_bind,
             proxy_header=self.proxy_header,
+            region=self.region,
             self_link=self.self_link,
             service=self.service)
 
@@ -146,6 +158,7 @@ def get_target_tcp_proxy(project: Optional[str] = None,
         name=__ret__.name,
         proxy_bind=__ret__.proxy_bind,
         proxy_header=__ret__.proxy_header,
+        region=__ret__.region,
         self_link=__ret__.self_link,
         service=__ret__.service)
 

@@ -145,7 +145,7 @@ class AuditConfigArgs:
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditLogConfigArgs']]]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param pulumi.Input[Sequence[pulumi.Input['AuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.
         :param pulumi.Input[str] service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
@@ -4005,7 +4005,8 @@ class TableFieldSchemaPolicyTagsArgs:
 class TableFieldSchemaArgs:
     def __init__(__self__, *,
                  categories: Optional[pulumi.Input['TableFieldSchemaCategoriesArgs']] = None,
-                 collation_spec: Optional[pulumi.Input[str]] = None,
+                 collation: Optional[pulumi.Input[str]] = None,
+                 default_value_expression: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None,
                  max_length: Optional[pulumi.Input[str]] = None,
@@ -4017,7 +4018,8 @@ class TableFieldSchemaArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['TableFieldSchemaCategoriesArgs'] categories: [Optional] The categories attached to this field, used for field-level access control.
-        :param pulumi.Input[str] collation_spec: Optional. Collation specification of the field. It only can be set on string type field.
+        :param pulumi.Input[str] collation: Optional. Collation specification of the field. It only can be set on string type field.
+        :param pulumi.Input[str] default_value_expression: Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
         :param pulumi.Input[str] description: [Optional] The field description. The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param pulumi.Input[str] max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -4029,8 +4031,10 @@ class TableFieldSchemaArgs:
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
-        if collation_spec is not None:
-            pulumi.set(__self__, "collation_spec", collation_spec)
+        if collation is not None:
+            pulumi.set(__self__, "collation", collation)
+        if default_value_expression is not None:
+            pulumi.set(__self__, "default_value_expression", default_value_expression)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fields is not None:
@@ -4063,16 +4067,28 @@ class TableFieldSchemaArgs:
         pulumi.set(self, "categories", value)
 
     @property
-    @pulumi.getter(name="collationSpec")
-    def collation_spec(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def collation(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. Collation specification of the field. It only can be set on string type field.
         """
-        return pulumi.get(self, "collation_spec")
+        return pulumi.get(self, "collation")
 
-    @collation_spec.setter
-    def collation_spec(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "collation_spec", value)
+    @collation.setter
+    def collation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter(name="defaultValueExpression")
+    def default_value_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
+        """
+        return pulumi.get(self, "default_value_expression")
+
+    @default_value_expression.setter
+    def default_value_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_value_expression", value)
 
     @property
     @pulumi.getter

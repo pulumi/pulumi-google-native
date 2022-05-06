@@ -79,7 +79,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def cluster(self) -> str:
         """
-        Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         """
         return pulumi.get(self, "cluster")
 
@@ -87,7 +87,7 @@ class GetBackupPlanResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        The timestamp when this BackupPlan resource was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -95,7 +95,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def deactivated(self) -> bool:
         """
-        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         """
         return pulumi.get(self, "deactivated")
 
@@ -111,7 +111,7 @@ class GetBackupPlanResult:
     @pulumi.getter
     def etag(self) -> str:
         """
-        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
         """
         return pulumi.get(self, "etag")
 
@@ -135,7 +135,7 @@ class GetBackupPlanResult:
     @pulumi.getter(name="protectedPodCount")
     def protected_pod_count(self) -> int:
         """
-        Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+        The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         """
         return pulumi.get(self, "protected_pod_count")
 
@@ -159,7 +159,7 @@ class GetBackupPlanResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        The timestamp when this BackupPlan resource was last updated.
         """
         return pulumi.get(self, "update_time")
 

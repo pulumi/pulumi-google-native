@@ -47,6 +47,7 @@ __all__ = [
     'MaintenanceExclusionOptionsArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
+    'ManagedPrometheusConfigArgs',
     'MasterAuthorizedNetworksConfigArgs',
     'MasterAuthArgs',
     'MaxPodsConstraintArgs',
@@ -54,6 +55,7 @@ __all__ = [
     'MonitoringComponentConfigArgs',
     'MonitoringConfigArgs',
     'NetworkConfigArgs',
+    'NetworkPerformanceConfigArgs',
     'NetworkPolicyConfigArgs',
     'NetworkPolicyArgs',
     'NetworkTagsArgs',
@@ -1679,6 +1681,30 @@ class MaintenanceWindowArgs:
 
 
 @pulumi.input_type
+class ManagedPrometheusConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+        :param pulumi.Input[bool] enabled: Enable Managed Collection.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Managed Collection.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class MasterAuthorizedNetworksConfigArgs:
     def __init__(__self__, *,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]] = None,
@@ -1849,13 +1875,17 @@ class MonitoringComponentConfigArgs:
 @pulumi.input_type
 class MonitoringConfigArgs:
     def __init__(__self__, *,
-                 component_config: Optional[pulumi.Input['MonitoringComponentConfigArgs']] = None):
+                 component_config: Optional[pulumi.Input['MonitoringComponentConfigArgs']] = None,
+                 managed_prometheus_config: Optional[pulumi.Input['ManagedPrometheusConfigArgs']] = None):
         """
         MonitoringConfig is cluster monitoring configuration.
         :param pulumi.Input['MonitoringComponentConfigArgs'] component_config: Monitoring components configuration
+        :param pulumi.Input['ManagedPrometheusConfigArgs'] managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
         """
         if component_config is not None:
             pulumi.set(__self__, "component_config", component_config)
+        if managed_prometheus_config is not None:
+            pulumi.set(__self__, "managed_prometheus_config", managed_prometheus_config)
 
     @property
     @pulumi.getter(name="componentConfig")
@@ -1868,6 +1898,18 @@ class MonitoringConfigArgs:
     @component_config.setter
     def component_config(self, value: Optional[pulumi.Input['MonitoringComponentConfigArgs']]):
         pulumi.set(self, "component_config", value)
+
+    @property
+    @pulumi.getter(name="managedPrometheusConfig")
+    def managed_prometheus_config(self) -> Optional[pulumi.Input['ManagedPrometheusConfigArgs']]:
+        """
+        Enable Google Cloud Managed Service for Prometheus in the cluster.
+        """
+        return pulumi.get(self, "managed_prometheus_config")
+
+    @managed_prometheus_config.setter
+    def managed_prometheus_config(self, value: Optional[pulumi.Input['ManagedPrometheusConfigArgs']]):
+        pulumi.set(self, "managed_prometheus_config", value)
 
 
 @pulumi.input_type
@@ -1988,6 +2030,30 @@ class NetworkConfigArgs:
     @service_external_ips_config.setter
     def service_external_ips_config(self, value: Optional[pulumi.Input['ServiceExternalIPsConfigArgs']]):
         pulumi.set(self, "service_external_ips_config", value)
+
+
+@pulumi.input_type
+class NetworkPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: Optional[pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier']] = None):
+        """
+        Configuration of all network bandwidth tiers
+        :param pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier'] total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        """
+        if total_egress_bandwidth_tier is not None:
+            pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> Optional[pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier']]:
+        """
+        Specifies the total network bandwidth tier for the NodePool.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
+
+    @total_egress_bandwidth_tier.setter
+    def total_egress_bandwidth_tier(self, value: Optional[pulumi.Input['NetworkPerformanceConfigTotalEgressBandwidthTier']]):
+        pulumi.set(self, "total_egress_bandwidth_tier", value)
 
 
 @pulumi.input_type
@@ -2658,16 +2724,20 @@ class NodeManagementArgs:
 class NodeNetworkConfigArgs:
     def __init__(__self__, *,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
+                 network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  pod_range: Optional[pulumi.Input[str]] = None):
         """
         Parameters for node pool-level network config.
         :param pulumi.Input[bool] create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param pulumi.Input['NetworkPerformanceConfigArgs'] network_performance_config: Network bandwidth tier configuration.
         :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if pod_ipv4_cidr_block is not None:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
@@ -2684,6 +2754,18 @@ class NodeNetworkConfigArgs:
     @create_pod_range.setter
     def create_pod_range(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_pod_range", value)
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional[pulumi.Input['NetworkPerformanceConfigArgs']]:
+        """
+        Network bandwidth tier configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
+
+    @network_performance_config.setter
+    def network_performance_config(self, value: Optional[pulumi.Input['NetworkPerformanceConfigArgs']]):
+        pulumi.set(self, "network_performance_config", value)
 
     @property
     @pulumi.getter(name="podIpv4CidrBlock")

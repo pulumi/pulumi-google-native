@@ -18,11 +18,14 @@ __all__ = [
     'GoogleCloudRunV2ContainerResponse',
     'GoogleCloudRunV2EnvVarResponse',
     'GoogleCloudRunV2EnvVarSourceResponse',
+    'GoogleCloudRunV2ExecutionReferenceResponse',
+    'GoogleCloudRunV2ExecutionTemplateResponse',
     'GoogleCloudRunV2ResourceRequirementsResponse',
     'GoogleCloudRunV2RevisionScalingResponse',
     'GoogleCloudRunV2RevisionTemplateResponse',
     'GoogleCloudRunV2SecretKeySelectorResponse',
     'GoogleCloudRunV2SecretVolumeSourceResponse',
+    'GoogleCloudRunV2TaskTemplateResponse',
     'GoogleCloudRunV2TrafficTargetResponse',
     'GoogleCloudRunV2TrafficTargetStatusResponse',
     'GoogleCloudRunV2VersionToPathResponse',
@@ -61,16 +64,13 @@ class GoogleCloudRunV2BinaryAuthorizationResponse(dict):
 
     def __init__(__self__, *,
                  breakglass_justification: str,
-                 policy: str,
                  use_default: bool):
         """
         Settings for Binary Authorization feature.
         :param str breakglass_justification: If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
-        :param str policy: The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
         :param bool use_default: If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
         """
         pulumi.set(__self__, "breakglass_justification", breakglass_justification)
-        pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "use_default", use_default)
 
     @property
@@ -80,14 +80,6 @@ class GoogleCloudRunV2BinaryAuthorizationResponse(dict):
         If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
         """
         return pulumi.get(self, "breakglass_justification")
-
-    @property
-    @pulumi.getter
-    def policy(self) -> str:
-        """
-        The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-        """
-        return pulumi.get(self, "policy")
 
     @property
     @pulumi.getter(name="useDefault")
@@ -128,12 +120,8 @@ class GoogleCloudRunV2ConditionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "domainMappingReason":
-            suggest = "domain_mapping_reason"
-        elif key == "executionReason":
+        if key == "executionReason":
             suggest = "execution_reason"
-        elif key == "internalReason":
-            suggest = "internal_reason"
         elif key == "lastTransitionTime":
             suggest = "last_transition_time"
         elif key == "revisionReason":
@@ -151,9 +139,7 @@ class GoogleCloudRunV2ConditionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 domain_mapping_reason: str,
                  execution_reason: str,
-                 internal_reason: str,
                  last_transition_time: str,
                  message: str,
                  reason: str,
@@ -163,9 +149,7 @@ class GoogleCloudRunV2ConditionResponse(dict):
                  type: str):
         """
         Defines a status condition for a resource.
-        :param str domain_mapping_reason: A reason for the domain mapping condition.
         :param str execution_reason: A reason for the execution condition.
-        :param str internal_reason: A reason for the internal condition.
         :param str last_transition_time: Last time the condition transitioned from one status to another.
         :param str message: Human readable message indicating details about the current status.
         :param str reason: A common (service-level) reason for this condition.
@@ -174,9 +158,7 @@ class GoogleCloudRunV2ConditionResponse(dict):
         :param str state: State of the condition.
         :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
         """
-        pulumi.set(__self__, "domain_mapping_reason", domain_mapping_reason)
         pulumi.set(__self__, "execution_reason", execution_reason)
-        pulumi.set(__self__, "internal_reason", internal_reason)
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
         pulumi.set(__self__, "reason", reason)
@@ -186,28 +168,12 @@ class GoogleCloudRunV2ConditionResponse(dict):
         pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter(name="domainMappingReason")
-    def domain_mapping_reason(self) -> str:
-        """
-        A reason for the domain mapping condition.
-        """
-        return pulumi.get(self, "domain_mapping_reason")
-
-    @property
     @pulumi.getter(name="executionReason")
     def execution_reason(self) -> str:
         """
         A reason for the execution condition.
         """
         return pulumi.get(self, "execution_reason")
-
-    @property
-    @pulumi.getter(name="internalReason")
-    def internal_reason(self) -> str:
-        """
-        A reason for the internal condition.
-        """
-        return pulumi.get(self, "internal_reason")
 
     @property
     @pulumi.getter(name="lastTransitionTime")
@@ -352,7 +318,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence['GoogleCloudRunV2EnvVarResponse'] env: List of environment variables to set in the container.
-        :param str image: URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+        :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         :param str name: Name of the container specified as a DNS_LABEL.
         :param Sequence['GoogleCloudRunV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'GoogleCloudRunV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -395,7 +361,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         """
         return pulumi.get(self, "image")
 
@@ -533,6 +499,139 @@ class GoogleCloudRunV2EnvVarSourceResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRunV2ExecutionReferenceResponse(dict):
+    """
+    Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ExecutionReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2ExecutionReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2ExecutionReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 create_time: str,
+                 name: str):
+        """
+        Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+        :param str create_time: Creation timestamp of the execution.
+        :param str name: Name of the execution.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        Creation timestamp of the execution.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the execution.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2ExecutionTemplateResponse(dict):
+    """
+    ExecutionTemplate describes the data an execution should have when created from a template.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "taskCount":
+            suggest = "task_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2ExecutionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2ExecutionTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2ExecutionTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 labels: Mapping[str, str],
+                 parallelism: int,
+                 task_count: int,
+                 template: 'outputs.GoogleCloudRunV2TaskTemplateResponse'):
+        """
+        ExecutionTemplate describes the data an execution should have when created from a template.
+        :param Mapping[str, str] annotations: KRM-style annotations for the resource.
+        :param Mapping[str, str] labels: KRM-style labels for the resource.
+        :param int parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        :param int task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        :param 'GoogleCloudRunV2TaskTemplateResponse' template: Describes the task(s) that will be created when executing an execution.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "parallelism", parallelism)
+        pulumi.set(__self__, "task_count", task_count)
+        pulumi.set(__self__, "template", template)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        KRM-style annotations for the resource.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        KRM-style labels for the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def parallelism(self) -> int:
+        """
+        Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+        """
+        return pulumi.get(self, "parallelism")
+
+    @property
+    @pulumi.getter(name="taskCount")
+    def task_count(self) -> int:
+        """
+        Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        """
+        return pulumi.get(self, "task_count")
+
+    @property
+    @pulumi.getter
+    def template(self) -> 'outputs.GoogleCloudRunV2TaskTemplateResponse':
+        """
+        Describes the task(s) that will be created when executing an execution.
+        """
+        return pulumi.get(self, "template")
+
+
+@pulumi.output_type
 class GoogleCloudRunV2ResourceRequirementsResponse(dict):
     """
     ResourceRequirements describes the compute resource requirements.
@@ -642,12 +741,12 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "containerConcurrency":
-            suggest = "container_concurrency"
-        elif key == "encryptionKey":
+        if key == "encryptionKey":
             suggest = "encryption_key"
         elif key == "executionEnvironment":
             suggest = "execution_environment"
+        elif key == "maxInstanceRequestConcurrency":
+            suggest = "max_instance_request_concurrency"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "vpcAccess":
@@ -666,12 +765,11 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
 
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
-                 confidential: bool,
-                 container_concurrency: int,
                  containers: Sequence['outputs.GoogleCloudRunV2ContainerResponse'],
                  encryption_key: str,
                  execution_environment: str,
                  labels: Mapping[str, str],
+                 max_instance_request_concurrency: int,
                  revision: str,
                  scaling: 'outputs.GoogleCloudRunV2RevisionScalingResponse',
                  service_account: str,
@@ -681,12 +779,11 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         """
         RevisionTemplate describes the data a revision should have when created from a template.
         :param Mapping[str, str] annotations: KRM-style annotations for the resource.
-        :param bool confidential: Enables Confidential Cloud Run in Revisions created using this template.
-        :param int container_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param Sequence['GoogleCloudRunV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this Revision.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
         :param Mapping[str, str] labels: KRM-style labels for the resource.
+        :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param 'GoogleCloudRunV2RevisionScalingResponse' scaling: Scaling settings for this Revision.
         :param str service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
@@ -695,12 +792,11 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         :param 'GoogleCloudRunV2VpcAccessResponse' vpc_access: VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
         """
         pulumi.set(__self__, "annotations", annotations)
-        pulumi.set(__self__, "confidential", confidential)
-        pulumi.set(__self__, "container_concurrency", container_concurrency)
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "encryption_key", encryption_key)
         pulumi.set(__self__, "execution_environment", execution_environment)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "scaling", scaling)
         pulumi.set(__self__, "service_account", service_account)
@@ -715,22 +811,6 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         KRM-style annotations for the resource.
         """
         return pulumi.get(self, "annotations")
-
-    @property
-    @pulumi.getter
-    def confidential(self) -> bool:
-        """
-        Enables Confidential Cloud Run in Revisions created using this template.
-        """
-        return pulumi.get(self, "confidential")
-
-    @property
-    @pulumi.getter(name="containerConcurrency")
-    def container_concurrency(self) -> int:
-        """
-        Sets the maximum number of requests that each serving instance can receive.
-        """
-        return pulumi.get(self, "container_concurrency")
 
     @property
     @pulumi.getter
@@ -763,6 +843,14 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
         KRM-style labels for the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> int:
+        """
+        Sets the maximum number of requests that each serving instance can receive.
+        """
+        return pulumi.get(self, "max_instance_request_concurrency")
 
     @property
     @pulumi.getter
@@ -905,6 +993,130 @@ class GoogleCloudRunV2SecretVolumeSourceResponse(dict):
         The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
         """
         return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2TaskTemplateResponse(dict):
+    """
+    TaskTemplate describes the data a task should have when created from a template.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionKey":
+            suggest = "encryption_key"
+        elif key == "executionEnvironment":
+            suggest = "execution_environment"
+        elif key == "maxRetries":
+            suggest = "max_retries"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "vpcAccess":
+            suggest = "vpc_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV2TaskTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV2TaskTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV2TaskTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 containers: Sequence['outputs.GoogleCloudRunV2ContainerResponse'],
+                 encryption_key: str,
+                 execution_environment: str,
+                 max_retries: int,
+                 service_account: str,
+                 timeout: str,
+                 volumes: Sequence['outputs.GoogleCloudRunV2VolumeResponse'],
+                 vpc_access: 'outputs.GoogleCloudRunV2VpcAccessResponse'):
+        """
+        TaskTemplate describes the data a task should have when created from a template.
+        :param Sequence['GoogleCloudRunV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this task.
+        :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        :param str execution_environment: The execution environment being used to host this Task.
+        :param int max_retries: Number of retries allowed per Task, before marking this Task failed.
+        :param str service_account: Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        :param str timeout: Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        :param Sequence['GoogleCloudRunV2VolumeResponse'] volumes: A list of Volumes to make available to containers.
+        :param 'GoogleCloudRunV2VpcAccessResponse' vpc_access: VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "encryption_key", encryption_key)
+        pulumi.set(__self__, "execution_environment", execution_environment)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "volumes", volumes)
+        pulumi.set(__self__, "vpc_access", vpc_access)
+
+    @property
+    @pulumi.getter
+    def containers(self) -> Sequence['outputs.GoogleCloudRunV2ContainerResponse']:
+        """
+        Holds the single container that defines the unit of execution for this task.
+        """
+        return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter(name="encryptionKey")
+    def encryption_key(self) -> str:
+        """
+        A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+        """
+        return pulumi.get(self, "encryption_key")
+
+    @property
+    @pulumi.getter(name="executionEnvironment")
+    def execution_environment(self) -> str:
+        """
+        The execution environment being used to host this Task.
+        """
+        return pulumi.get(self, "execution_environment")
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> int:
+        """
+        Number of retries allowed per Task, before marking this Task failed.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> str:
+        """
+        Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        """
+        return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GoogleCloudRunV2VolumeResponse']:
+        """
+        A list of Volumes to make available to containers.
+        """
+        return pulumi.get(self, "volumes")
+
+    @property
+    @pulumi.getter(name="vpcAccess")
+    def vpc_access(self) -> 'outputs.GoogleCloudRunV2VpcAccessResponse':
+        """
+        VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+        """
+        return pulumi.get(self, "vpc_access")
 
 
 @pulumi.output_type
@@ -1219,7 +1431,7 @@ class GoogleCloudRunV2VpcAccessResponse(dict):
 @pulumi.output_type
 class GoogleIamV1AuditConfigResponse(dict):
     """
-    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1242,7 +1454,7 @@ class GoogleIamV1AuditConfigResponse(dict):
                  audit_log_configs: Sequence['outputs.GoogleIamV1AuditLogConfigResponse'],
                  service: str):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param Sequence['GoogleIamV1AuditLogConfigResponse'] audit_log_configs: The configuration for logging of each type of permission.
         :param str service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """

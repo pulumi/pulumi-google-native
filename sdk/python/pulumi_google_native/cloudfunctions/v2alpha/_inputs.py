@@ -322,6 +322,7 @@ class EventFilterArgs:
 class EventTriggerArgs:
     def __init__(__self__, *,
                  event_type: pulumi.Input[str],
+                 channel: Optional[pulumi.Input[str]] = None,
                  event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]]] = None,
                  pubsub_topic: Optional[pulumi.Input[str]] = None,
                  retry_policy: Optional[pulumi.Input['EventTriggerRetryPolicy']] = None,
@@ -330,6 +331,7 @@ class EventTriggerArgs:
         """
         Describes EventTrigger, used to request events to be sent from another service.
         :param pulumi.Input[str] event_type: The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
+        :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]] event_filters: Criteria used to filter events.
         :param pulumi.Input[str] pubsub_topic: Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
         :param pulumi.Input['EventTriggerRetryPolicy'] retry_policy: Optional. If unset, then defaults to ignoring failures (i.e. not retrying them).
@@ -337,6 +339,8 @@ class EventTriggerArgs:
         :param pulumi.Input[str] trigger_region: The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
         """
         pulumi.set(__self__, "event_type", event_type)
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
         if event_filters is not None:
             pulumi.set(__self__, "event_filters", event_filters)
         if pubsub_topic is not None:
@@ -359,6 +363,18 @@ class EventTriggerArgs:
     @event_type.setter
     def event_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
 
     @property
     @pulumi.getter(name="eventFilters")

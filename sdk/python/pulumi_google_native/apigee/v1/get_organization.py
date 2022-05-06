@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationResult:
-    def __init__(__self__, addons_config=None, analytics_region=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_type=None, type=None):
+    def __init__(__self__, addons_config=None, analytics_region=None, apigee_project_id=None, attributes=None, authorized_network=None, billing_type=None, ca_certificate=None, created_at=None, customer_name=None, description=None, display_name=None, environments=None, expires_at=None, last_modified_at=None, name=None, portal_disabled=None, project=None, properties=None, runtime_database_encryption_key_name=None, runtime_type=None, state=None, subscription_type=None, type=None):
         if addons_config and not isinstance(addons_config, dict):
             raise TypeError("Expected argument 'addons_config' to be a dict")
         pulumi.set(__self__, "addons_config", addons_config)
@@ -29,6 +29,9 @@ class GetOrganizationResult:
             pulumi.log.warn("""analytics_region is deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).""")
 
         pulumi.set(__self__, "analytics_region", analytics_region)
+        if apigee_project_id and not isinstance(apigee_project_id, str):
+            raise TypeError("Expected argument 'apigee_project_id' to be a str")
+        pulumi.set(__self__, "apigee_project_id", apigee_project_id)
         if attributes and not isinstance(attributes, list):
             raise TypeError("Expected argument 'attributes' to be a list")
         pulumi.set(__self__, "attributes", attributes)
@@ -109,6 +112,14 @@ class GetOrganizationResult:
         DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
+
+    @property
+    @pulumi.getter(name="apigeeProjectId")
+    def apigee_project_id(self) -> str:
+        """
+        Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
+        """
+        return pulumi.get(self, "apigee_project_id")
 
     @property
     @pulumi.getter
@@ -279,6 +290,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
         return GetOrganizationResult(
             addons_config=self.addons_config,
             analytics_region=self.analytics_region,
+            apigee_project_id=self.apigee_project_id,
             attributes=self.attributes,
             authorized_network=self.authorized_network,
             billing_type=self.billing_type,
@@ -317,6 +329,7 @@ def get_organization(organization_id: Optional[str] = None,
     return AwaitableGetOrganizationResult(
         addons_config=__ret__.addons_config,
         analytics_region=__ret__.analytics_region,
+        apigee_project_id=__ret__.apigee_project_id,
         attributes=__ret__.attributes,
         authorized_network=__ret__.authorized_network,
         billing_type=__ret__.billing_type,

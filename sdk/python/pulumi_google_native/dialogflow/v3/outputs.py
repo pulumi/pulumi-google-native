@@ -59,6 +59,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3RolloutConfigResponse',
     'GoogleCloudDialogflowCxV3RolloutConfigRolloutStepResponse',
     'GoogleCloudDialogflowCxV3RolloutStateResponse',
+    'GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse',
     'GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse',
     'GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse',
     'GoogleCloudDialogflowCxV3TestCaseResultResponse',
@@ -2867,6 +2868,84 @@ class GoogleCloudDialogflowCxV3RolloutStateResponse(dict):
         Index of the current step in the auto rollout steps list.
         """
         return pulumi.get(self, "step_index")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse(dict):
+    """
+    Settings for exporting audio.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioExportPattern":
+            suggest = "audio_export_pattern"
+        elif key == "audioFormat":
+            suggest = "audio_format"
+        elif key == "enableAudioRedaction":
+            suggest = "enable_audio_redaction"
+        elif key == "gcsBucket":
+            suggest = "gcs_bucket"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audio_export_pattern: str,
+                 audio_format: str,
+                 enable_audio_redaction: bool,
+                 gcs_bucket: str):
+        """
+        Settings for exporting audio.
+        :param str audio_export_pattern: Filename pattern for exported audio.
+        :param str audio_format: File format for exported audio file. Currently only in telephony recordings.
+        :param bool enable_audio_redaction: Enable audio redaction if it is true.
+        :param str gcs_bucket: Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+        """
+        pulumi.set(__self__, "audio_export_pattern", audio_export_pattern)
+        pulumi.set(__self__, "audio_format", audio_format)
+        pulumi.set(__self__, "enable_audio_redaction", enable_audio_redaction)
+        pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+
+    @property
+    @pulumi.getter(name="audioExportPattern")
+    def audio_export_pattern(self) -> str:
+        """
+        Filename pattern for exported audio.
+        """
+        return pulumi.get(self, "audio_export_pattern")
+
+    @property
+    @pulumi.getter(name="audioFormat")
+    def audio_format(self) -> str:
+        """
+        File format for exported audio file. Currently only in telephony recordings.
+        """
+        return pulumi.get(self, "audio_format")
+
+    @property
+    @pulumi.getter(name="enableAudioRedaction")
+    def enable_audio_redaction(self) -> bool:
+        """
+        Enable audio redaction if it is true.
+        """
+        return pulumi.get(self, "enable_audio_redaction")
+
+    @property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> str:
+        """
+        Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+        """
+        return pulumi.get(self, "gcs_bucket")
 
 
 @pulumi.output_type

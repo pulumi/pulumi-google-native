@@ -18,6 +18,7 @@ __all__ = [
     'EnvVarSourceArgs',
     'EnvVarArgs',
     'ExecActionArgs',
+    'GRPCActionArgs',
     'HTTPGetActionArgs',
     'HTTPHeaderArgs',
     'InstanceSpecArgs',
@@ -744,6 +745,46 @@ class ExecActionArgs:
     @command.setter
     def command(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "command", value)
+
+
+@pulumi.input_type
+class GRPCActionArgs:
+    def __init__(__self__, *,
+                 port: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None):
+        """
+        Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+        :param pulumi.Input[int] port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param pulumi.Input[str] service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
@@ -1527,6 +1568,7 @@ class ProbeArgs:
     def __init__(__self__, *,
                  exec_: Optional[pulumi.Input['ExecActionArgs']] = None,
                  failure_threshold: Optional[pulumi.Input[int]] = None,
+                 grpc: Optional[pulumi.Input['GRPCActionArgs']] = None,
                  http_get: Optional[pulumi.Input['HTTPGetActionArgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
@@ -1537,6 +1579,7 @@ class ProbeArgs:
         Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
         :param pulumi.Input['ExecActionArgs'] exec_: (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
         :param pulumi.Input[int] failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param pulumi.Input['GRPCActionArgs'] grpc: (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
         :param pulumi.Input['HTTPGetActionArgs'] http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
         :param pulumi.Input[int] initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param pulumi.Input[int] period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
@@ -1548,6 +1591,8 @@ class ProbeArgs:
             pulumi.set(__self__, "exec_", exec_)
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
+        if grpc is not None:
+            pulumi.set(__self__, "grpc", grpc)
         if http_get is not None:
             pulumi.set(__self__, "http_get", http_get)
         if initial_delay_seconds is not None:
@@ -1584,6 +1629,18 @@ class ProbeArgs:
     @failure_threshold.setter
     def failure_threshold(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "failure_threshold", value)
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> Optional[pulumi.Input['GRPCActionArgs']]:
+        """
+        (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        """
+        return pulumi.get(self, "grpc")
+
+    @grpc.setter
+    def grpc(self, value: Optional[pulumi.Input['GRPCActionArgs']]):
+        pulumi.set(self, "grpc", value)
 
     @property
     @pulumi.getter(name="httpGet")

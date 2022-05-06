@@ -44,6 +44,7 @@ __all__ = [
     'FingerprintArgs',
     'GerritSourceContextArgs',
     'GitSourceContextArgs',
+    'GrafeasV1FileLocationArgs',
     'HintArgs',
     'IdentityArgs',
     'ImageNoteArgs',
@@ -809,7 +810,7 @@ class CVSSArgs:
                  scope: Optional[pulumi.Input['CVSSScope']] = None,
                  user_interaction: Optional[pulumi.Input['CVSSUserInteraction']] = None):
         """
-        Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+        Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
         :param pulumi.Input['CVSSAttackVector'] attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
         :param pulumi.Input[float] base_score: The base score is a function of the base metric scores.
         """
@@ -2391,6 +2392,30 @@ class GitSourceContextArgs:
 
 
 @pulumi.input_type
+class GrafeasV1FileLocationArgs:
+    def __init__(__self__, *,
+                 file_path: Optional[pulumi.Input[str]] = None):
+        """
+        Indicates the location at which a package was found.
+        :param pulumi.Input[str] file_path: For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+        """
+        if file_path is not None:
+            pulumi.set(__self__, "file_path", file_path)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+        """
+        return pulumi.get(self, "file_path")
+
+    @file_path.setter
+    def file_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_path", value)
+
+
+@pulumi.input_type
 class HintArgs:
     def __init__(__self__, *,
                  human_readable_name: pulumi.Input[str]):
@@ -3009,6 +3034,7 @@ class PackageIssueArgs:
                  affected_package: pulumi.Input[str],
                  affected_version: pulumi.Input['VersionArgs'],
                  fixed_version: pulumi.Input['VersionArgs'],
+                 file_location: Optional[pulumi.Input[Sequence[pulumi.Input['GrafeasV1FileLocationArgs']]]] = None,
                  fixed_cpe_uri: Optional[pulumi.Input[str]] = None,
                  fixed_package: Optional[pulumi.Input[str]] = None,
                  package_type: Optional[pulumi.Input[str]] = None):
@@ -3018,6 +3044,7 @@ class PackageIssueArgs:
         :param pulumi.Input[str] affected_package: The package this vulnerability was found in.
         :param pulumi.Input['VersionArgs'] affected_version: The version of the package that is installed on the resource affected by this vulnerability.
         :param pulumi.Input['VersionArgs'] fixed_version: The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.
+        :param pulumi.Input[Sequence[pulumi.Input['GrafeasV1FileLocationArgs']]] file_location: The location at which this package was found.
         :param pulumi.Input[str] fixed_cpe_uri: The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
         :param pulumi.Input[str] fixed_package: The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
         :param pulumi.Input[str] package_type: The type of package (e.g. OS, MAVEN, GO).
@@ -3026,6 +3053,8 @@ class PackageIssueArgs:
         pulumi.set(__self__, "affected_package", affected_package)
         pulumi.set(__self__, "affected_version", affected_version)
         pulumi.set(__self__, "fixed_version", fixed_version)
+        if file_location is not None:
+            pulumi.set(__self__, "file_location", file_location)
         if fixed_cpe_uri is not None:
             pulumi.set(__self__, "fixed_cpe_uri", fixed_cpe_uri)
         if fixed_package is not None:
@@ -3080,6 +3109,18 @@ class PackageIssueArgs:
     @fixed_version.setter
     def fixed_version(self, value: pulumi.Input['VersionArgs']):
         pulumi.set(self, "fixed_version", value)
+
+    @property
+    @pulumi.getter(name="fileLocation")
+    def file_location(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrafeasV1FileLocationArgs']]]]:
+        """
+        The location at which this package was found.
+        """
+        return pulumi.get(self, "file_location")
+
+    @file_location.setter
+    def file_location(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrafeasV1FileLocationArgs']]]]):
+        pulumi.set(self, "file_location", value)
 
     @property
     @pulumi.getter(name="fixedCpeUri")

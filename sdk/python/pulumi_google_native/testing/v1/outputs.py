@@ -1932,7 +1932,7 @@ class ShardResponse(dict):
         Output only. Details about the shard.
         :param int num_shards: The total number of shards.
         :param int shard_index: The index of the shard among all the shards.
-        :param 'TestTargetsForShardResponse' test_targets_for_shard: Test targets for each shard.
+        :param 'TestTargetsForShardResponse' test_targets_for_shard: Test targets for each shard. Only set for manual sharding.
         """
         pulumi.set(__self__, "num_shards", num_shards)
         pulumi.set(__self__, "shard_index", shard_index)
@@ -1958,7 +1958,7 @@ class ShardResponse(dict):
     @pulumi.getter(name="testTargetsForShard")
     def test_targets_for_shard(self) -> 'outputs.TestTargetsForShardResponse':
         """
-        Test targets for each shard.
+        Test targets for each shard. Only set for manual sharding.
         """
         return pulumi.get(self, "test_targets_for_shard")
 

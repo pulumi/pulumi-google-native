@@ -55,6 +55,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs',
     'GoogleCloudDialogflowCxV3beta1RolloutConfigArgs',
     'GoogleCloudDialogflowCxV3beta1RolloutStateArgs',
+    'GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsArgs',
     'GoogleCloudDialogflowCxV3beta1TestCaseResultArgs',
@@ -2533,6 +2534,78 @@ class GoogleCloudDialogflowCxV3beta1RolloutStateArgs:
     @step_index.setter
     def step_index(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "step_index", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs:
+    def __init__(__self__, *,
+                 audio_export_pattern: Optional[pulumi.Input[str]] = None,
+                 audio_format: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat']] = None,
+                 enable_audio_redaction: Optional[pulumi.Input[bool]] = None,
+                 gcs_bucket: Optional[pulumi.Input[str]] = None):
+        """
+        Settings for exporting audio.
+        :param pulumi.Input[str] audio_export_pattern: Filename pattern for exported audio.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat'] audio_format: File format for exported audio file. Currently only in telephony recordings.
+        :param pulumi.Input[bool] enable_audio_redaction: Enable audio redaction if it is true.
+        :param pulumi.Input[str] gcs_bucket: Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+        """
+        if audio_export_pattern is not None:
+            pulumi.set(__self__, "audio_export_pattern", audio_export_pattern)
+        if audio_format is not None:
+            pulumi.set(__self__, "audio_format", audio_format)
+        if enable_audio_redaction is not None:
+            pulumi.set(__self__, "enable_audio_redaction", enable_audio_redaction)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+
+    @property
+    @pulumi.getter(name="audioExportPattern")
+    def audio_export_pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        Filename pattern for exported audio.
+        """
+        return pulumi.get(self, "audio_export_pattern")
+
+    @audio_export_pattern.setter
+    def audio_export_pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audio_export_pattern", value)
+
+    @property
+    @pulumi.getter(name="audioFormat")
+    def audio_format(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat']]:
+        """
+        File format for exported audio file. Currently only in telephony recordings.
+        """
+        return pulumi.get(self, "audio_format")
+
+    @audio_format.setter
+    def audio_format(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat']]):
+        pulumi.set(self, "audio_format", value)
+
+    @property
+    @pulumi.getter(name="enableAudioRedaction")
+    def enable_audio_redaction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable audio redaction if it is true.
+        """
+        return pulumi.get(self, "enable_audio_redaction")
+
+    @enable_audio_redaction.setter
+    def enable_audio_redaction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audio_redaction", value)
+
+    @property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @gcs_bucket.setter
+    def gcs_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_bucket", value)
 
 
 @pulumi.input_type

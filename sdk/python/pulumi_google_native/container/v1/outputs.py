@@ -48,6 +48,7 @@ __all__ = [
     'MaintenanceExclusionOptionsResponse',
     'MaintenancePolicyResponse',
     'MaintenanceWindowResponse',
+    'ManagedPrometheusConfigResponse',
     'MasterAuthResponse',
     'MasterAuthorizedNetworksConfigResponse',
     'MaxPodsConstraintResponse',
@@ -55,6 +56,7 @@ __all__ = [
     'MonitoringComponentConfigResponse',
     'MonitoringConfigResponse',
     'NetworkConfigResponse',
+    'NetworkPerformanceConfigResponse',
     'NetworkPolicyConfigResponse',
     'NetworkPolicyResponse',
     'NetworkTagsResponse',
@@ -1829,6 +1831,28 @@ class MaintenanceWindowResponse(dict):
 
 
 @pulumi.output_type
+class ManagedPrometheusConfigResponse(dict):
+    """
+    ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
+        :param bool enabled: Enable Managed Collection.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Managed Collection.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class MasterAuthResponse(dict):
     """
     The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
@@ -2105,6 +2129,8 @@ class MonitoringConfigResponse(dict):
         suggest = None
         if key == "componentConfig":
             suggest = "component_config"
+        elif key == "managedPrometheusConfig":
+            suggest = "managed_prometheus_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MonitoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2118,12 +2144,15 @@ class MonitoringConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 component_config: 'outputs.MonitoringComponentConfigResponse'):
+                 component_config: 'outputs.MonitoringComponentConfigResponse',
+                 managed_prometheus_config: 'outputs.ManagedPrometheusConfigResponse'):
         """
         MonitoringConfig is cluster monitoring configuration.
         :param 'MonitoringComponentConfigResponse' component_config: Monitoring components configuration
+        :param 'ManagedPrometheusConfigResponse' managed_prometheus_config: Enable Google Cloud Managed Service for Prometheus in the cluster.
         """
         pulumi.set(__self__, "component_config", component_config)
+        pulumi.set(__self__, "managed_prometheus_config", managed_prometheus_config)
 
     @property
     @pulumi.getter(name="componentConfig")
@@ -2132,6 +2161,14 @@ class MonitoringConfigResponse(dict):
         Monitoring components configuration
         """
         return pulumi.get(self, "component_config")
+
+    @property
+    @pulumi.getter(name="managedPrometheusConfig")
+    def managed_prometheus_config(self) -> 'outputs.ManagedPrometheusConfigResponse':
+        """
+        Enable Google Cloud Managed Service for Prometheus in the cluster.
+        """
+        return pulumi.get(self, "managed_prometheus_config")
 
 
 @pulumi.output_type
@@ -2271,6 +2308,45 @@ class NetworkConfigResponse(dict):
         The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class NetworkPerformanceConfigResponse(dict):
+    """
+    Configuration of all network bandwidth tiers
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkPerformanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkPerformanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkPerformanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        Configuration of all network bandwidth tiers
+        :param str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        Specifies the total network bandwidth tier for the NodePool.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type
@@ -2890,6 +2966,8 @@ class NodeNetworkConfigResponse(dict):
         suggest = None
         if key == "createPodRange":
             suggest = "create_pod_range"
+        elif key == "networkPerformanceConfig":
+            suggest = "network_performance_config"
         elif key == "podIpv4CidrBlock":
             suggest = "pod_ipv4_cidr_block"
         elif key == "podRange":
@@ -2908,15 +2986,18 @@ class NodeNetworkConfigResponse(dict):
 
     def __init__(__self__, *,
                  create_pod_range: bool,
+                 network_performance_config: 'outputs.NetworkPerformanceConfigResponse',
                  pod_ipv4_cidr_block: str,
                  pod_range: str):
         """
         Parameters for node pool-level network config.
         :param bool create_pod_range: Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
+        :param 'NetworkPerformanceConfigResponse' network_performance_config: Network bandwidth tier configuration.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         pulumi.set(__self__, "create_pod_range", create_pod_range)
+        pulumi.set(__self__, "network_performance_config", network_performance_config)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
 
@@ -2927,6 +3008,14 @@ class NodeNetworkConfigResponse(dict):
         Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
         """
         return pulumi.get(self, "create_pod_range")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> 'outputs.NetworkPerformanceConfigResponse':
+        """
+        Network bandwidth tier configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter(name="podIpv4CidrBlock")

@@ -19,6 +19,7 @@ __all__ = [
     'EnvVarResponse',
     'EnvVarSourceResponse',
     'ExecActionResponse',
+    'GRPCActionResponse',
     'GoogleRpcStatusResponse',
     'HTTPGetActionResponse',
     'HTTPHeaderResponse',
@@ -735,6 +736,39 @@ class ExecActionResponse(dict):
         (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         """
         return pulumi.get(self, "command")
+
+
+@pulumi.output_type
+class GRPCActionResponse(dict):
+    """
+    Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+    """
+    def __init__(__self__, *,
+                 port: int,
+                 service: str):
+        """
+        Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+        :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535.
+        :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
 
 
 @pulumi.output_type
@@ -1913,6 +1947,7 @@ class ProbeResponse(dict):
     def __init__(__self__, *,
                  exec_: 'outputs.ExecActionResponse',
                  failure_threshold: int,
+                 grpc: 'outputs.GRPCActionResponse',
                  http_get: 'outputs.HTTPGetActionResponse',
                  initial_delay_seconds: int,
                  period_seconds: int,
@@ -1923,6 +1958,7 @@ class ProbeResponse(dict):
         Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
         :param 'ExecActionResponse' exec_: (Optional) One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
         :param int failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'GRPCActionResponse' grpc: (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
         :param 'HTTPGetActionResponse' http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
         :param int initial_delay_seconds: (Optional) Number of seconds after the container has started before liveness probes are initiated. Defaults to 0 seconds. Minimum value is 0. Max value for liveness probe is 3600. Max value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Max value for liveness probe is 3600. Max value for startup probe is 240. Must be greater or equal than timeout_seconds.
@@ -1932,6 +1968,7 @@ class ProbeResponse(dict):
         """
         pulumi.set(__self__, "exec_", exec_)
         pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "grpc", grpc)
         pulumi.set(__self__, "http_get", http_get)
         pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         pulumi.set(__self__, "period_seconds", period_seconds)
@@ -1954,6 +1991,14 @@ class ProbeResponse(dict):
         (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
+
+    @property
+    @pulumi.getter
+    def grpc(self) -> 'outputs.GRPCActionResponse':
+        """
+        (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        """
+        return pulumi.get(self, "grpc")
 
     @property
     @pulumi.getter(name="httpGet")

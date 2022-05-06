@@ -5,6 +5,7 @@
 from enum import Enum
 
 __all__ = [
+    'AuthenticationConfigAuthenticationType',
     'GceClusterConfigPrivateIpv6GoogleAccess',
     'GkeNodePoolTargetRolesItem',
     'InstanceGroupConfigPreemptibility',
@@ -12,6 +13,24 @@ __all__ = [
     'ReservationAffinityConsumeReservationType',
     'SoftwareConfigOptionalComponentsItem',
 ]
+
+
+class AuthenticationConfigAuthenticationType(str, Enum):
+    """
+    Authentication type for session execution.
+    """
+    AUTHENTICATION_TYPE_UNSPECIFIED = "AUTHENTICATION_TYPE_UNSPECIFIED"
+    """
+    If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
+    """
+    SERVICE_ACCOUNT = "SERVICE_ACCOUNT"
+    """
+    Defaults to using service account credentials
+    """
+    INJECTABLE_CREDENTIALS = "INJECTABLE_CREDENTIALS"
+    """
+    Injectable credentials authentication type
+    """
 
 
 class GceClusterConfigPrivateIpv6GoogleAccess(str, Enum):
@@ -43,19 +62,19 @@ class GkeNodePoolTargetRolesItem(str, Enum):
     """
     DEFAULT = "DEFAULT"
     """
-    Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+    At least one node pool must have the DEFAULT role. Work assigned to a role that is not associated with a node pool is assigned to the node pool with the DEFAULT role. For example, work assigned to the CONTROLLER role will be assigned to the node pool with the DEFAULT role if no node pool has the CONTROLLER role.
     """
     CONTROLLER = "CONTROLLER"
     """
-    Run controllers and webhooks.
+    Run work associated with the Dataproc control plane (for example, controllers and webhooks). Very low resource requirements.
     """
     SPARK_DRIVER = "SPARK_DRIVER"
     """
-    Run spark driver.
+    Run work associated with a Spark driver of a job.
     """
     SPARK_EXECUTOR = "SPARK_EXECUTOR"
     """
-    Run spark executors.
+    Run work associated with a Spark executor of a job.
     """
 
 
@@ -79,35 +98,35 @@ class InstanceGroupConfigPreemptibility(str, Enum):
 
 class MetricMetricSource(str, Enum):
     """
-    Required. MetricSource that should be enabled
+    Required. MetricSource to enable.
     """
     METRIC_SOURCE_UNSPECIFIED = "METRIC_SOURCE_UNSPECIFIED"
     """
-    Required unspecified metric source
+    Required unspecified metric source.
     """
     MONITORING_AGENT_DEFAULTS = "MONITORING_AGENT_DEFAULTS"
     """
-    all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+    Default monitoring agent metrics, which are published with an agent.googleapis.com prefix when Dataproc enables the monitoring agent in Compute Engine.
     """
     HDFS = "HDFS"
     """
-    Hdfs metric source
+    HDFS metric source.
     """
     SPARK = "SPARK"
     """
-    Spark metric source
+    Spark metric source.
     """
     YARN = "YARN"
     """
-    Yarn metric source
+    YARN metric source.
     """
     SPARK_HISTORY_SERVER = "SPARK_HISTORY_SERVER"
     """
-    Spark history server metric source
+    Spark History Server metric source.
     """
     HIVESERVER2 = "HIVESERVER2"
     """
-    hiveserver2 metric source
+    Hiveserver2 metric source.
     """
 
 

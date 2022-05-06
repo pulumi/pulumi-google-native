@@ -497,7 +497,7 @@ class Dataset(pulumi.CustomResource):
         return pulumi.get(self, "max_time_travel_hours")
 
     @property
-    @pulumi.getter(name="satisfiesPZS")
+    @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
         Reserved for future use.

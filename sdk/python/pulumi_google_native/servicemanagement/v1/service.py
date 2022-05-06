@@ -18,7 +18,7 @@ class ServiceArgs:
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[str] producer_project_id: ID of the project that produces and owns this service.
-        :param pulumi.Input[str] service_name: The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+        :param pulumi.Input[str] service_name: The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
         """
         if producer_project_id is not None:
             pulumi.set(__self__, "producer_project_id", producer_project_id)
@@ -41,7 +41,7 @@ class ServiceArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+        The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
         """
         return pulumi.get(self, "service_name")
 
@@ -65,7 +65,7 @@ class Service(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] producer_project_id: ID of the project that produces and owns this service.
-        :param pulumi.Input[str] service_name: The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+        :param pulumi.Input[str] service_name: The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
         """
         ...
     @overload
@@ -146,7 +146,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements.
+        The name of the service. See the [overview](https://cloud.google.com/service-infrastructure/docs/overview) for naming requirements.
         """
         return pulumi.get(self, "service_name")
 

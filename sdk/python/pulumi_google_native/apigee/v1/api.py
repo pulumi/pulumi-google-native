@@ -292,7 +292,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def revision(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of revisons defined for the API proxy.
+        List of revisions defined for the API proxy.
         """
         return pulumi.get(self, "revision")
 

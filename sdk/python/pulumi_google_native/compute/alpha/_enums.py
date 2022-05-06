@@ -45,6 +45,7 @@ __all__ = [
     'ConditionIam',
     'ConditionOp',
     'ConditionSys',
+    'ConfidentialInstanceConfigConfidentialInstanceType',
     'DeprecationStatusState',
     'DiskArchitecture',
     'DiskInstantiationConfigInstantiateFrom',
@@ -354,6 +355,10 @@ class AddressPurpose(str, Enum):
     PRIVATE_SERVICE_CONNECT = "PRIVATE_SERVICE_CONNECT"
     """
     A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
+    """
+    SERVERLESS = "SERVERLESS"
+    """
+    A regional internal IP address range reserved for Serverless.
     """
     SHARED_LOADBALANCER_VIP = "SHARED_LOADBALANCER_VIP"
     """
@@ -1012,6 +1017,24 @@ class ConditionSys(str, Enum):
     """
 
 
+class ConfidentialInstanceConfigConfidentialInstanceType(str, Enum):
+    """
+    Defines the type of technology used by the confidential instance.
+    """
+    CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED = "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"
+    """
+    No type specified. Do not use this value.
+    """
+    SEV = "SEV"
+    """
+    AMD Secure Encrypted Virtualization.
+    """
+    SEV_SNP = "SEV_SNP"
+    """
+    AMD Secure Encrypted Virtualization - Secure Nested Paging.
+    """
+
+
 class DeprecationStatusState(str, Enum):
     """
     The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
@@ -1367,6 +1390,10 @@ class GlobalAddressPurpose(str, Enum):
     """
     A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
     """
+    SERVERLESS = "SERVERLESS"
+    """
+    A regional internal IP address range reserved for Serverless.
+    """
     SHARED_LOADBALANCER_VIP = "SHARED_LOADBALANCER_VIP"
     """
     A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
@@ -1516,6 +1543,7 @@ class GuestOsFeatureType(str, Enum):
     MULTI_IP_SUBNET = "MULTI_IP_SUBNET"
     SECURE_BOOT = "SECURE_BOOT"
     SEV_CAPABLE = "SEV_CAPABLE"
+    SEV_SNP_CAPABLE = "SEV_SNP_CAPABLE"
     UEFI_COMPATIBLE = "UEFI_COMPATIBLE"
     VIRTIO_SCSI_MULTIQUEUE = "VIRTIO_SCSI_MULTIQUEUE"
     WINDOWS = "WINDOWS"
@@ -2636,6 +2664,7 @@ class RegionCommitmentType(str, Enum):
     GENERAL_PURPOSE_N2D = "GENERAL_PURPOSE_N2D"
     GENERAL_PURPOSE_T2D = "GENERAL_PURPOSE_T2D"
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
+    MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 

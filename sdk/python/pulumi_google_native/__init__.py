@@ -11,10 +11,14 @@ from .provider import *
 if typing.TYPE_CHECKING:
     import pulumi_google_native.accesscontextmanager as __accesscontextmanager
     accesscontextmanager = __accesscontextmanager
+    import pulumi_google_native.analyticshub as __analyticshub
+    analyticshub = __analyticshub
     import pulumi_google_native.apigateway as __apigateway
     apigateway = __apigateway
     import pulumi_google_native.apigee as __apigee
     apigee = __apigee
+    import pulumi_google_native.apigeeregistry as __apigeeregistry
+    apigeeregistry = __apigeeregistry
     import pulumi_google_native.apikeys as __apikeys
     apikeys = __apikeys
     import pulumi_google_native.appengine as __appengine
@@ -251,8 +255,10 @@ if typing.TYPE_CHECKING:
     workflows = __workflows
 else:
     accesscontextmanager = _utilities.lazy_import('pulumi_google_native.accesscontextmanager')
+    analyticshub = _utilities.lazy_import('pulumi_google_native.analyticshub')
     apigateway = _utilities.lazy_import('pulumi_google_native.apigateway')
     apigee = _utilities.lazy_import('pulumi_google_native.apigee')
+    apigeeregistry = _utilities.lazy_import('pulumi_google_native.apigeeregistry')
     apikeys = _utilities.lazy_import('pulumi_google_native.apikeys')
     appengine = _utilities.lazy_import('pulumi_google_native.appengine')
     artifactregistry = _utilities.lazy_import('pulumi_google_native.artifactregistry')
@@ -398,6 +404,17 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "analyticshub/v1beta1",
+  "fqn": "pulumi_google_native.analyticshub.v1beta1",
+  "classes": {
+   "google-native:analyticshub/v1beta1:DataExchange": "DataExchange",
+   "google-native:analyticshub/v1beta1:DataExchangeIamPolicy": "DataExchangeIamPolicy",
+   "google-native:analyticshub/v1beta1:DataExchangeListingIamPolicy": "DataExchangeListingIamPolicy",
+   "google-native:analyticshub/v1beta1:Listing": "Listing"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "apigateway/v1",
   "fqn": "pulumi_google_native.apigateway.v1",
   "classes": {
@@ -458,6 +475,31 @@ _utilities.register(
    "google-native:apigee/v1:Sharedflow": "Sharedflow",
    "google-native:apigee/v1:Subscription": "Subscription",
    "google-native:apigee/v1:TargetServer": "TargetServer"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "apigeeregistry/v1",
+  "fqn": "pulumi_google_native.apigeeregistry.v1",
+  "classes": {
+   "google-native:apigeeregistry/v1:Api": "Api",
+   "google-native:apigeeregistry/v1:ApiArtifactIamPolicy": "ApiArtifactIamPolicy",
+   "google-native:apigeeregistry/v1:ApiDeploymentIamPolicy": "ApiDeploymentIamPolicy",
+   "google-native:apigeeregistry/v1:ApiIamPolicy": "ApiIamPolicy",
+   "google-native:apigeeregistry/v1:ApiVersionArtifactIamPolicy": "ApiVersionArtifactIamPolicy",
+   "google-native:apigeeregistry/v1:ApiVersionIamPolicy": "ApiVersionIamPolicy",
+   "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamPolicy": "ApiVersionSpecArtifactIamPolicy",
+   "google-native:apigeeregistry/v1:ApiVersionSpecIamPolicy": "ApiVersionSpecIamPolicy",
+   "google-native:apigeeregistry/v1:Artifact": "Artifact",
+   "google-native:apigeeregistry/v1:ArtifactIamPolicy": "ArtifactIamPolicy",
+   "google-native:apigeeregistry/v1:Deployment": "Deployment",
+   "google-native:apigeeregistry/v1:DeploymentArtifact": "DeploymentArtifact",
+   "google-native:apigeeregistry/v1:Instance": "Instance",
+   "google-native:apigeeregistry/v1:InstanceIamPolicy": "InstanceIamPolicy",
+   "google-native:apigeeregistry/v1:RuntimeIamPolicy": "RuntimeIamPolicy",
+   "google-native:apigeeregistry/v1:Spec": "Spec",
+   "google-native:apigeeregistry/v1:Version": "Version",
+   "google-native:apigeeregistry/v1:VersionArtifact": "VersionArtifact"
   }
  },
  {
@@ -719,7 +761,9 @@ _utilities.register(
   "fqn": "pulumi_google_native.cloudchannel.v1",
   "classes": {
    "google-native:cloudchannel/v1:ChannelPartnerLink": "ChannelPartnerLink",
+   "google-native:cloudchannel/v1:ChannelPartnerRepricingConfig": "ChannelPartnerRepricingConfig",
    "google-native:cloudchannel/v1:Customer": "Customer",
+   "google-native:cloudchannel/v1:CustomerRepricingConfig": "CustomerRepricingConfig",
    "google-native:cloudchannel/v1:Entitlement": "Entitlement"
   }
  },
@@ -1132,6 +1176,7 @@ _utilities.register(
    "google-native:compute/beta:RegionSslCertificate": "RegionSslCertificate",
    "google-native:compute/beta:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/beta:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
+   "google-native:compute/beta:RegionTargetTcpProxy": "RegionTargetTcpProxy",
    "google-native:compute/beta:RegionUrlMap": "RegionUrlMap",
    "google-native:compute/beta:Reservation": "Reservation",
    "google-native:compute/beta:ReservationIamPolicy": "ReservationIamPolicy",
@@ -1780,6 +1825,14 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "firebaseappcheck/v1",
+  "fqn": "pulumi_google_native.firebaseappcheck.v1",
+  "classes": {
+   "google-native:firebaseappcheck/v1:DebugToken": "DebugToken"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "firebaseappcheck/v1beta",
   "fqn": "pulumi_google_native.firebaseappcheck.v1beta",
   "classes": {
@@ -2123,6 +2176,8 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1alpha",
   "classes": {
    "google-native:metastore/v1alpha:Backup": "Backup",
+   "google-native:metastore/v1alpha:Federation": "Federation",
+   "google-native:metastore/v1alpha:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1alpha:MetadataImport": "MetadataImport",
    "google-native:metastore/v1alpha:Service": "Service",
    "google-native:metastore/v1alpha:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
@@ -2137,6 +2192,8 @@ _utilities.register(
   "fqn": "pulumi_google_native.metastore.v1beta",
   "classes": {
    "google-native:metastore/v1beta:Backup": "Backup",
+   "google-native:metastore/v1beta:Federation": "Federation",
+   "google-native:metastore/v1beta:FederationIamPolicy": "FederationIamPolicy",
    "google-native:metastore/v1beta:MetadataImport": "MetadataImport",
    "google-native:metastore/v1beta:Service": "Service",
    "google-native:metastore/v1beta:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
@@ -2198,10 +2255,10 @@ _utilities.register(
   "mod": "networkconnectivity/v1alpha1",
   "fqn": "pulumi_google_native.networkconnectivity.v1alpha1",
   "classes": {
+   "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamPolicy": "ConnectionPolicyIamPolicy",
    "google-native:networkconnectivity/v1alpha1:Hub": "Hub",
    "google-native:networkconnectivity/v1alpha1:HubIamPolicy": "HubIamPolicy",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy": "InternalRangeIamPolicy",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectPolicyIamPolicy": "ServiceConnectPolicyIamPolicy",
    "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy": "ServiceInstanceIamPolicy",
    "google-native:networkconnectivity/v1alpha1:Spoke": "Spoke",
    "google-native:networkconnectivity/v1alpha1:SpokeIamPolicy": "SpokeIamPolicy"
@@ -2260,7 +2317,9 @@ _utilities.register(
    "google-native:networkservices/v1:EdgeCacheOriginIamPolicy": "EdgeCacheOriginIamPolicy",
    "google-native:networkservices/v1:EdgeCacheServiceIamPolicy": "EdgeCacheServiceIamPolicy",
    "google-native:networkservices/v1:EndpointPolicy": "EndpointPolicy",
-   "google-native:networkservices/v1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy"
+   "google-native:networkservices/v1:EndpointPolicyIamPolicy": "EndpointPolicyIamPolicy",
+   "google-native:networkservices/v1:ServiceBinding": "ServiceBinding",
+   "google-native:networkservices/v1:ServiceBindingIamPolicy": "ServiceBindingIamPolicy"
   }
  },
  {
@@ -2540,6 +2599,8 @@ _utilities.register(
   "mod": "run/v2",
   "fqn": "pulumi_google_native.run.v2",
   "classes": {
+   "google-native:run/v2:Job": "Job",
+   "google-native:run/v2:JobIamPolicy": "JobIamPolicy",
    "google-native:run/v2:Service": "Service",
    "google-native:run/v2:ServiceIamPolicy": "ServiceIamPolicy"
   }

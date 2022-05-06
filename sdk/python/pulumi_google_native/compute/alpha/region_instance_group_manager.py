@@ -41,7 +41,7 @@ class RegionInstanceGroupManagerArgs:
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]] = None):
         """
         The set of arguments for constructing a RegionInstanceGroupManager resource.
-        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Specifies configuration that overrides the instance template configuration for the group.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerAutoHealingPolicyArgs']]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -122,7 +122,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        Specifies configuration that overrides the instance template configuration for the group.
         """
         return pulumi.get(self, "all_instances_config")
 
@@ -414,7 +414,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Specifies configuration that overrides the instance template configuration for the group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPolicyArgs']]]] auto_healing_policies: The autohealing policy for this managed instance group. You can specify only one value.
         :param pulumi.Input[str] base_instance_name: The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -587,7 +587,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> pulumi.Output['outputs.InstanceGroupManagerAllInstancesConfigResponse']:
         """
-        Specifies the instances configs overrides that should be applied for all instances in the MIG.
+        Specifies configuration that overrides the instance template configuration for the group.
         """
         return pulumi.get(self, "all_instances_config")
 

@@ -374,6 +374,7 @@ class EventTriggerResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 channel: str,
                  event_filters: Sequence['outputs.EventFilterResponse'],
                  event_type: str,
                  pubsub_topic: str,
@@ -383,6 +384,7 @@ class EventTriggerResponse(dict):
                  trigger_region: str):
         """
         Describes EventTrigger, used to request events to be sent from another service.
+        :param str channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param Sequence['EventFilterResponse'] event_filters: Criteria used to filter events.
         :param str event_type: The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
         :param str pubsub_topic: Optional. The name of a Pub/Sub topic in the same project that will be used as the transport topic for the event delivery. Format: `projects/{project}/topics/{topic}`. This is only valid for events of type `google.cloud.pubsub.topic.v1.messagePublished`. The topic provided here will not be deleted at function deletion.
@@ -391,6 +393,7 @@ class EventTriggerResponse(dict):
         :param str trigger: The resource name of the Eventarc trigger. The format of this field is `projects/{project}/locations/{region}/triggers/{trigger}`.
         :param str trigger_region: The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
         """
+        pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "event_filters", event_filters)
         pulumi.set(__self__, "event_type", event_type)
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
@@ -398,6 +401,14 @@ class EventTriggerResponse(dict):
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "trigger", trigger)
         pulumi.set(__self__, "trigger_region", trigger_region)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
 
     @property
     @pulumi.getter(name="eventFilters")

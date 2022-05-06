@@ -93,7 +93,7 @@ class GetApiResult:
     @pulumi.getter
     def revision(self) -> Sequence[str]:
         """
-        List of revisons defined for the API proxy.
+        List of revisions defined for the API proxy.
         """
         return pulumi.get(self, "revision")
 

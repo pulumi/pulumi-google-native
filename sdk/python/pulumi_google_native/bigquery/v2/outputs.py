@@ -172,7 +172,7 @@ class ArgumentResponse(dict):
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
-    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -195,7 +195,7 @@ class AuditConfigResponse(dict):
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param Sequence['AuditLogConfigResponse'] audit_log_configs: The configuration for logging of each type of permission.
         :param str service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
@@ -6157,8 +6157,8 @@ class TableFieldSchemaResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "collationSpec":
-            suggest = "collation_spec"
+        if key == "defaultValueExpression":
+            suggest = "default_value_expression"
         elif key == "maxLength":
             suggest = "max_length"
         elif key == "policyTags":
@@ -6177,7 +6177,8 @@ class TableFieldSchemaResponse(dict):
 
     def __init__(__self__, *,
                  categories: 'outputs.TableFieldSchemaCategoriesResponse',
-                 collation_spec: str,
+                 collation: str,
+                 default_value_expression: str,
                  description: str,
                  fields: Sequence['outputs.TableFieldSchemaResponse'],
                  max_length: str,
@@ -6189,7 +6190,8 @@ class TableFieldSchemaResponse(dict):
                  type: str):
         """
         :param 'TableFieldSchemaCategoriesResponse' categories: [Optional] The categories attached to this field, used for field-level access control.
-        :param str collation_spec: Optional. Collation specification of the field. It only can be set on string type field.
+        :param str collation: Optional. Collation specification of the field. It only can be set on string type field.
+        :param str default_value_expression: Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
         :param str description: [Optional] The field description. The maximum length is 1,024 characters.
         :param Sequence['TableFieldSchemaResponse'] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param str max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -6200,7 +6202,8 @@ class TableFieldSchemaResponse(dict):
         :param str type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
         """
         pulumi.set(__self__, "categories", categories)
-        pulumi.set(__self__, "collation_spec", collation_spec)
+        pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "default_value_expression", default_value_expression)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "max_length", max_length)
@@ -6220,12 +6223,20 @@ class TableFieldSchemaResponse(dict):
         return pulumi.get(self, "categories")
 
     @property
-    @pulumi.getter(name="collationSpec")
-    def collation_spec(self) -> str:
+    @pulumi.getter
+    def collation(self) -> str:
         """
         Optional. Collation specification of the field. It only can be set on string type field.
         """
-        return pulumi.get(self, "collation_spec")
+        return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="defaultValueExpression")
+    def default_value_expression(self) -> str:
+        """
+        Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
+        """
+        return pulumi.get(self, "default_value_expression")
 
     @property
     @pulumi.getter
