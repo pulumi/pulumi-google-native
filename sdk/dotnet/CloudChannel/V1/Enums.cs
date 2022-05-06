@@ -153,4 +153,45 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudChannelV1RepricingConfigRebillingBasis : IEquatable<GoogleCloudChannelV1RepricingConfigRebillingBasis>
+    {
+        private readonly string _value;
+
+        private GoogleCloudChannelV1RepricingConfigRebillingBasis(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not used.
+        /// </summary>
+        public static GoogleCloudChannelV1RepricingConfigRebillingBasis RebillingBasisUnspecified { get; } = new GoogleCloudChannelV1RepricingConfigRebillingBasis("REBILLING_BASIS_UNSPECIFIED");
+        /// <summary>
+        /// Use the list cost, also known as the MSRP.
+        /// </summary>
+        public static GoogleCloudChannelV1RepricingConfigRebillingBasis CostAtList { get; } = new GoogleCloudChannelV1RepricingConfigRebillingBasis("COST_AT_LIST");
+        /// <summary>
+        /// Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
+        /// </summary>
+        public static GoogleCloudChannelV1RepricingConfigRebillingBasis DirectCustomerCost { get; } = new GoogleCloudChannelV1RepricingConfigRebillingBasis("DIRECT_CUSTOMER_COST");
+
+        public static bool operator ==(GoogleCloudChannelV1RepricingConfigRebillingBasis left, GoogleCloudChannelV1RepricingConfigRebillingBasis right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudChannelV1RepricingConfigRebillingBasis left, GoogleCloudChannelV1RepricingConfigRebillingBasis right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudChannelV1RepricingConfigRebillingBasis value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudChannelV1RepricingConfigRebillingBasis other && Equals(other);
+        public bool Equals(GoogleCloudChannelV1RepricingConfigRebillingBasis other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

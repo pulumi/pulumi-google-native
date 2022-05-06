@@ -536,6 +536,43 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Specifies the total network bandwidth tier for the NodePool.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkPerformanceConfigTotalEgressBandwidthTier : IEquatable<NetworkPerformanceConfigTotalEgressBandwidthTier>
+    {
+        private readonly string _value;
+
+        private NetworkPerformanceConfigTotalEgressBandwidthTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static NetworkPerformanceConfigTotalEgressBandwidthTier TierUnspecified { get; } = new NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_UNSPECIFIED");
+        /// <summary>
+        /// Higher bandwidth, actual values based on VM size.
+        /// </summary>
+        public static NetworkPerformanceConfigTotalEgressBandwidthTier Tier1 { get; } = new NetworkPerformanceConfigTotalEgressBandwidthTier("TIER_1");
+
+        public static bool operator ==(NetworkPerformanceConfigTotalEgressBandwidthTier left, NetworkPerformanceConfigTotalEgressBandwidthTier right) => left.Equals(right);
+        public static bool operator !=(NetworkPerformanceConfigTotalEgressBandwidthTier left, NetworkPerformanceConfigTotalEgressBandwidthTier right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkPerformanceConfigTotalEgressBandwidthTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkPerformanceConfigTotalEgressBandwidthTier other && Equals(other);
+        public bool Equals(NetworkPerformanceConfigTotalEgressBandwidthTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The selected network policy provider.
     /// </summary>
     [EnumType]

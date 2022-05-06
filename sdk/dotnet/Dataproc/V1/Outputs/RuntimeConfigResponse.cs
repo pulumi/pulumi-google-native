@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Properties;
         /// <summary>
+        /// Optional. Authentication configuration for the session execution.
+        /// </summary>
+        public readonly Outputs.AuthenticationConfigResponse SessionAuthenticationConfig;
+        /// <summary>
         /// Optional. Version of the batch runtime.
         /// </summary>
         public readonly string Version;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             ImmutableDictionary<string, string> properties,
 
+            Outputs.AuthenticationConfigResponse sessionAuthenticationConfig,
+
             string version)
         {
             ContainerImage = containerImage;
             Properties = properties;
+            SessionAuthenticationConfig = sessionAuthenticationConfig;
             Version = version;
         }
     }

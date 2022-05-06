@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Monitoring components configuration
         /// </summary>
         public readonly Outputs.MonitoringComponentConfigResponse ComponentConfig;
+        /// <summary>
+        /// Enable Google Cloud Managed Service for Prometheus in the cluster.
+        /// </summary>
+        public readonly Outputs.ManagedPrometheusConfigResponse ManagedPrometheusConfig;
 
         [OutputConstructor]
-        private MonitoringConfigResponse(Outputs.MonitoringComponentConfigResponse componentConfig)
+        private MonitoringConfigResponse(
+            Outputs.MonitoringComponentConfigResponse componentConfig,
+
+            Outputs.ManagedPrometheusConfigResponse managedPrometheusConfig)
         {
             ComponentConfig = componentConfig;
+            ManagedPrometheusConfig = managedPrometheusConfig;
         }
     }
 }

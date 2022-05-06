@@ -17,25 +17,25 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public partial class Restore : Pulumi.CustomResource
     {
         /// <summary>
-        /// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         /// </summary>
         [Output("backup")]
         public Output<string> Backup { get; private set; } = null!;
 
         /// <summary>
-        /// The target cluster into which this Restore will restore data. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster field.
+        /// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// When the restore operation either successfully completed or failed.
+        /// Timestamp of when the restore operation completed.
         /// </summary>
         [Output("completeTime")]
         public Output<string> CompleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this Restore resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// The timestamp when this Restore resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -47,13 +47,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` to ensure that their change will be applied to the same version.
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a restore from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform restore updates in order to avoid race conditions: An `etag` is returned in the response to `GetRestore`, and systems are expected to put that etag in the request to `UpdateRestore` or `DeleteRestore` to ensure that their change will be applied to the same version of the resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// GCP Labels.
+        /// A set of custom labels supplied by user.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -65,19 +65,19 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of resources excluded in this restore action.
+        /// Number of resources excluded during the restore execution.
         /// </summary>
         [Output("resourcesExcludedCount")]
         public Output<int> ResourcesExcludedCount { get; private set; } = null!;
 
         /// <summary>
-        /// Number of resources failed to be restored in this restore action.
+        /// Number of resources that failed to be restored during the restore execution.
         /// </summary>
         [Output("resourcesFailedCount")]
         public Output<int> ResourcesFailedCount { get; private set; } = null!;
 
         /// <summary>
-        /// Number of resources restored in this restore action.
+        /// Number of resources restored during the restore execution.
         /// </summary>
         [Output("resourcesRestoredCount")]
         public Output<int> ResourcesRestoredCount { get; private set; } = null!;
@@ -107,13 +107,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this Restore resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// The timestamp when this Restore resource was last updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Number of volumes restored in this restore action.
+        /// Number of volumes restored during the restore execution.
         /// </summary>
         [Output("volumesRestoredCount")]
         public Output<int> VolumesRestoredCount { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class RestoreArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. The Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
         /// </summary>
         [Input("backup", required: true)]
         public Input<string> Backup { get; set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// GCP Labels.
+        /// A set of custom labels supplied by user.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -194,7 +194,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Required. The client-provided short name for the Restore resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of Restores in this RestorePlan.
+        /// Required. The client-provided short name for the Restore resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Restores in this RestorePlan.
         /// </summary>
         [Input("restoreId", required: true)]
         public Input<string> RestoreId { get; set; } = null!;

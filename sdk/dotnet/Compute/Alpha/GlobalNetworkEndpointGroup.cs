@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> NetworkEndpointType { get; private set; } = null!;
 
         /// <summary>
-        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         /// </summary>
         [Output("pscTargetService")]
         public Output<string> PscTargetService { get; private set; } = null!;
@@ -256,7 +256,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
+        /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         /// </summary>
         [Input("pscTargetService")]
         public Input<string>? PscTargetService { get; set; }

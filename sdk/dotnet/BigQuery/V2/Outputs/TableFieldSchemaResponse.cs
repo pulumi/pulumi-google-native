@@ -20,7 +20,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// Optional. Collation specification of the field. It only can be set on string type field.
         /// </summary>
-        public readonly string CollationSpec;
+        public readonly string Collation;
+        /// <summary>
+        /// Optional. A SQL expression to specify the default value for this field. It can only be set for top level fields (columns). You can use struct or array expression to specify default value for the entire struct or array. The valid SQL expressions are: - Literals for all data types, including STRUCT and ARRAY. - Following functions: - CURRENT_TIMESTAMP - CURRENT_TIME - CURRENT_DATE - CURRENT_DATETIME - GENERATE_UUID - RAND - SESSION_USER - ST_GEOGPOINT - Struct or array composed with the above allowed functions, for example, [CURRENT_DATE(), DATE '2020-01-01']
+        /// </summary>
+        public readonly string DefaultValueExpression;
         /// <summary>
         /// [Optional] The field description. The maximum length is 1,024 characters.
         /// </summary>
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private TableFieldSchemaResponse(
             Outputs.TableFieldSchemaCategoriesResponse categories,
 
-            string collationSpec,
+            string collation,
+
+            string defaultValueExpression,
 
             string description,
 
@@ -80,7 +86,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             string type)
         {
             Categories = categories;
-            CollationSpec = collationSpec;
+            Collation = collation;
+            DefaultValueExpression = defaultValueExpression;
             Description = description;
             Fields = fields;
             MaxLength = maxLength;

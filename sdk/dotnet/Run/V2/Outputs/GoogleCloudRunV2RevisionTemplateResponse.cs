@@ -21,14 +21,6 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// Enables Confidential Cloud Run in Revisions created using this template.
-        /// </summary>
-        public readonly bool Confidential;
-        /// <summary>
-        /// Sets the maximum number of requests that each serving instance can receive.
-        /// </summary>
-        public readonly int ContainerConcurrency;
-        /// <summary>
         /// Holds the single container that defines the unit of execution for this Revision.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2ContainerResponse> Containers;
@@ -44,6 +36,10 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// KRM-style labels for the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Sets the maximum number of requests that each serving instance can receive.
+        /// </summary>
+        public readonly int MaxInstanceRequestConcurrency;
         /// <summary>
         /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         /// </summary>
@@ -73,10 +69,6 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         private GoogleCloudRunV2RevisionTemplateResponse(
             ImmutableDictionary<string, string> annotations,
 
-            bool confidential,
-
-            int containerConcurrency,
-
             ImmutableArray<Outputs.GoogleCloudRunV2ContainerResponse> containers,
 
             string encryptionKey,
@@ -84,6 +76,8 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
             string executionEnvironment,
 
             ImmutableDictionary<string, string> labels,
+
+            int maxInstanceRequestConcurrency,
 
             string revision,
 
@@ -98,12 +92,11 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
             Outputs.GoogleCloudRunV2VpcAccessResponse vpcAccess)
         {
             Annotations = annotations;
-            Confidential = confidential;
-            ContainerConcurrency = containerConcurrency;
             Containers = containers;
             EncryptionKey = encryptionKey;
             ExecutionEnvironment = executionEnvironment;
             Labels = labels;
+            MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             Revision = revision;
             Scaling = scaling;
             ServiceAccount = serviceAccount;

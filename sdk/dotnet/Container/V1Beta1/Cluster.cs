@@ -761,7 +761,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
         /// <summary>
-        /// Deprecated. The Google Developers Console [project ID or project number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and replaced by the parent field.
+        /// Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

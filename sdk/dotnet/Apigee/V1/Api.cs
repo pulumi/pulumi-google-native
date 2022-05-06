@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<bool> ReadOnly { get; private set; } = null!;
 
         /// <summary>
-        /// List of revisons defined for the API proxy.
+        /// List of revisions defined for the API proxy.
         /// </summary>
         [Output("revision")]
         public Output<ImmutableArray<string>> Revision { get; private set; } = null!;

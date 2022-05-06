@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// </summary>
         public readonly Outputs.OidcResponse Oidc;
         /// <summary>
+        /// An SAML 2.0 identity provider.
+        /// </summary>
+        public readonly Outputs.SamlResponse Saml;
+        /// <summary>
         /// The state of the provider.
         /// </summary>
         public readonly string State;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.IAM.V1
 
             Outputs.OidcResponse oidc,
 
+            Outputs.SamlResponse saml,
+
             string state)
         {
             AttributeCondition = attributeCondition;
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.IAM.V1
             DisplayName = displayName;
             Name = name;
             Oidc = oidc;
+            Saml = saml;
             State = state;
         }
     }

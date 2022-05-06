@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<string>? MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible).
+        /// Optional. Whether the nodes are created as preemptible VM instances (https://cloud.google.com/compute/docs/instances/preemptible). Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the CONTROLLER role is not assigned (the DEFAULT node pool will assume the CONTROLLER role).
         /// </summary>
         [Input("preemptible")]
         public Input<bool>? Preemptible { get; set; }

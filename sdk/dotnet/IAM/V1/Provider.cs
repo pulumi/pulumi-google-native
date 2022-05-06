@@ -65,6 +65,12 @@ namespace Pulumi.GoogleNative.IAM.V1
         public Output<Outputs.OidcResponse> Oidc { get; private set; } = null!;
 
         /// <summary>
+        /// An SAML 2.0 identity provider.
+        /// </summary>
+        [Output("saml")]
+        public Output<Outputs.SamlResponse> Saml { get; private set; } = null!;
+
+        /// <summary>
         /// The state of the provider.
         /// </summary>
         [Output("state")]
@@ -168,6 +174,12 @@ namespace Pulumi.GoogleNative.IAM.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// An SAML 2.0 identity provider.
+        /// </summary>
+        [Input("saml")]
+        public Input<Inputs.SamlArgs>? Saml { get; set; }
 
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;

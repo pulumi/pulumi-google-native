@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` LINT.ThenChange(//depot/google3/google/cloud/serverless/v1/internal_service.proto:create_internal_service_request)
+        /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
         /// </summary>
         [Input("dryRun")]
         public Input<string>? DryRun { get; set; }

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class GkeNodePoolAutoscalingConfigResponse
     {
         /// <summary>
-        /// The maximum number of nodes in the NodePool. Must be &gt;= min_node_count. Note: Quota must be sufficient to scale up the cluster.
+        /// The maximum number of nodes in the node pool. Must be &gt;= min_node_count, and must be &gt; 0. Note: Quota must be sufficient to scale up the cluster.
         /// </summary>
         public readonly int MaxNodeCount;
         /// <summary>
-        /// The minimum number of nodes in the NodePool. Must be &gt;= 0 and &lt;= max_node_count.
+        /// The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= max_node_count.
         /// </summary>
         public readonly int MinNodeCount;
 

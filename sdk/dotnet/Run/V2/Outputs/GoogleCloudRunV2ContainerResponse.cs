@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2EnvVarResponse> Env;
         /// <summary>
-        /// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         public readonly string Image;
         /// <summary>

@@ -17,17 +17,9 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2ConditionResponse
     {
         /// <summary>
-        /// A reason for the domain mapping condition.
-        /// </summary>
-        public readonly string DomainMappingReason;
-        /// <summary>
         /// A reason for the execution condition.
         /// </summary>
         public readonly string ExecutionReason;
-        /// <summary>
-        /// A reason for the internal condition.
-        /// </summary>
-        public readonly string InternalReason;
         /// <summary>
         /// Last time the condition transitioned from one status to another.
         /// </summary>
@@ -59,11 +51,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
         [OutputConstructor]
         private GoogleCloudRunV2ConditionResponse(
-            string domainMappingReason,
-
             string executionReason,
-
-            string internalReason,
 
             string lastTransitionTime,
 
@@ -79,9 +67,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
 
             string type)
         {
-            DomainMappingReason = domainMappingReason;
             ExecutionReason = executionReason;
-            InternalReason = internalReason;
             LastTransitionTime = lastTransitionTime;
             Message = message;
             Reason = reason;

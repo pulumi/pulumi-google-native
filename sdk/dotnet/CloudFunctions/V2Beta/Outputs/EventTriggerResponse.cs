@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
     public sealed class EventTriggerResponse
     {
         /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        public readonly string Channel;
+        /// <summary>
         /// Criteria used to filter events.
         /// </summary>
         public readonly ImmutableArray<Outputs.EventFilterResponse> EventFilters;
@@ -47,6 +51,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
         [OutputConstructor]
         private EventTriggerResponse(
+            string channel,
+
             ImmutableArray<Outputs.EventFilterResponse> eventFilters,
 
             string eventType,
@@ -61,6 +67,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Outputs
 
             string triggerRegion)
         {
+            Channel = channel;
             EventFilters = eventFilters;
             EventType = eventType;
             PubsubTopic = pubsubTopic;

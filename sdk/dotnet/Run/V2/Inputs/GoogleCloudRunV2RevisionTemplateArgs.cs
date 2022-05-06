@@ -27,18 +27,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
             set => _annotations = value;
         }
 
-        /// <summary>
-        /// Enables Confidential Cloud Run in Revisions created using this template.
-        /// </summary>
-        [Input("confidential")]
-        public Input<bool>? Confidential { get; set; }
-
-        /// <summary>
-        /// Sets the maximum number of requests that each serving instance can receive.
-        /// </summary>
-        [Input("containerConcurrency")]
-        public Input<int>? ContainerConcurrency { get; set; }
-
         [Input("containers")]
         private InputList<Inputs.GoogleCloudRunV2ContainerArgs>? _containers;
 
@@ -74,6 +62,12 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Sets the maximum number of requests that each serving instance can receive.
+        /// </summary>
+        [Input("maxInstanceRequestConcurrency")]
+        public Input<int>? MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>
         /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.

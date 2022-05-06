@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> HdfsMetrics;
         /// <summary>
-        /// The YARN metrics.
+        /// YARN metrics.
         /// </summary>
         public readonly ImmutableDictionary<string, string> YarnMetrics;
 

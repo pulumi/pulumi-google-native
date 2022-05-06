@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly int FailureThreshold;
         /// <summary>
+        /// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        /// </summary>
+        public readonly Outputs.GRPCActionResponse Grpc;
+        /// <summary>
         /// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
         /// </summary>
         public readonly Outputs.HTTPGetActionResponse HttpGet;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 
             int failureThreshold,
 
+            Outputs.GRPCActionResponse grpc,
+
             Outputs.HTTPGetActionResponse httpGet,
 
             int initialDelaySeconds,
@@ -69,6 +75,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         {
             Exec = exec;
             FailureThreshold = failureThreshold;
+            Grpc = grpc;
             HttpGet = httpGet;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;

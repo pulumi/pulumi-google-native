@@ -33,6 +33,18 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         [Input("affectedVersion", required: true)]
         public Input<Inputs.VersionArgs> AffectedVersion { get; set; } = null!;
 
+        [Input("fileLocation")]
+        private InputList<Inputs.GrafeasV1FileLocationArgs>? _fileLocation;
+
+        /// <summary>
+        /// The location at which this package was found.
+        /// </summary>
+        public InputList<Inputs.GrafeasV1FileLocationArgs> FileLocation
+        {
+            get => _fileLocation ?? (_fileLocation = new InputList<Inputs.GrafeasV1FileLocationArgs>());
+            set => _fileLocation = value;
+        }
+
         /// <summary>
         /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
         /// </summary>

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
 {
 
     /// <summary>
-    /// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a NodePool.
+    /// A GkeNodeConfigAcceleratorConfig represents a Hardware Accelerator request for a node pool.
     /// </summary>
     public sealed class GkeNodePoolAcceleratorConfigArgs : Pulumi.ResourceArgs
     {

@@ -29,19 +29,19 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<Outputs.ScheduleResponse> BackupSchedule { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// The timestamp when this BackupPlan resource was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         /// </summary>
         [Output("deactivated")]
         public Output<bool> Deactivated { get; private set; } = null!;
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+        /// The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         /// </summary>
         [Output("protectedPodCount")]
         public Output<int> ProtectedPodCount { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// The timestamp when this BackupPlan resource was last updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<Inputs.BackupConfigArgs>? BackupConfig { get; set; }
 
         /// <summary>
-        /// Required. The client-provided short name for the BackupPlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of BackupPlans in this location
+        /// Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
         /// </summary>
         [Input("backupPlanId", required: true)]
         public Input<string> BackupPlanId { get; set; } = null!;
@@ -158,13 +158,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<Inputs.ScheduleArgs>? BackupSchedule { get; set; }
 
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*/locations/*/clusters/* 2. projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
         /// </summary>
         [Input("deactivated")]
         public Input<bool>? Deactivated { get; set; }

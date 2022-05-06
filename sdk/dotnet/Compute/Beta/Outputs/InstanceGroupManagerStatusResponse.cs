@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class InstanceGroupManagerStatusResponse
     {
         /// <summary>
+        /// [Output only] Status of all-instances configuration on the group.
+        /// </summary>
+        public readonly Outputs.InstanceGroupManagerStatusAllInstancesConfigResponse AllInstancesConfig;
+        /// <summary>
         /// The URL of the Autoscaler that targets this instance group manager.
         /// </summary>
         public readonly string Autoscaler;
@@ -32,6 +36,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
         [OutputConstructor]
         private InstanceGroupManagerStatusResponse(
+            Outputs.InstanceGroupManagerStatusAllInstancesConfigResponse allInstancesConfig,
+
             string autoscaler,
 
             bool isStable,
@@ -40,6 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             Outputs.InstanceGroupManagerStatusVersionTargetResponse versionTarget)
         {
+            AllInstancesConfig = allInstancesConfig;
             Autoscaler = autoscaler;
             IsStable = isStable;
             Stateful = stateful;

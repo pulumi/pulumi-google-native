@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<int>? FailureThreshold { get; set; }
 
         /// <summary>
+        /// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        /// </summary>
+        [Input("grpc")]
+        public Input<Inputs.GRPCActionArgs>? Grpc { get; set; }
+
+        /// <summary>
         /// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
         /// </summary>
         [Input("httpGet")]
