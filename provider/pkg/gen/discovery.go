@@ -208,7 +208,10 @@ func addFoundResource(
 	}
 
 	return errors.Errorf(
-		"%q incompatible params: %q vs %q", typeName, existing.createMethod.FlatPath, dd.createMethod.FlatPath)
+		"%q incompatible params: %q vs %q. You might have to override the names in 'resourceNameByPathOverrides' in"+
+			" overrides.go", typeName,
+		existing.createMethod.FlatPath,
+		dd.createMethod.FlatPath)
 }
 
 func preferParams(set codegen.StringSet, other codegen.StringSet) bool {
