@@ -604,6 +604,8 @@ const (
 	ScanConfigTargetPlatformsItemAppEngine = ScanConfigTargetPlatformsItem("APP_ENGINE")
 	// Google Compute Engine service.
 	ScanConfigTargetPlatformsItemCompute = ScanConfigTargetPlatformsItem("COMPUTE")
+	// Google Cloud Run service.
+	ScanConfigTargetPlatformsItemCloudRun = ScanConfigTargetPlatformsItem("CLOUD_RUN")
 )
 
 func (ScanConfigTargetPlatformsItem) ElementType() reflect.Type {

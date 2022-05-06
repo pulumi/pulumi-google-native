@@ -49,7 +49,7 @@ type LookupServiceResult struct {
 	Etag string `pulumi:"etag"`
 	// For a deleted resource, the time after which it will be permamently deleted.
 	ExpireTime string `pulumi:"expireTime"`
-	// A number that monotonically increases every time the user modifies the desired state.
+	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
 	Generation string `pulumi:"generation"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
 	Ingress string `pulumi:"ingress"`
@@ -65,7 +65,7 @@ type LookupServiceResult struct {
 	LaunchStage string `pulumi:"launchStage"`
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name string `pulumi:"name"`
-	// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
+	// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
 	ObservedGeneration string `pulumi:"observedGeneration"`
 	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling bool `pulumi:"reconciling"`
@@ -177,7 +177,7 @@ func (o LookupServiceResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
-// A number that monotonically increases every time the user modifies the desired state.
+// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
 func (o LookupServiceResultOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Generation }).(pulumi.StringOutput)
 }
@@ -217,7 +217,7 @@ func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
+// The generation of this Service currently serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`.
 func (o LookupServiceResultOutput) ObservedGeneration() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.ObservedGeneration }).(pulumi.StringOutput)
 }

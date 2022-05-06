@@ -1036,6 +1036,8 @@ const (
 	AddressPurposeNatAuto = AddressPurpose("NAT_AUTO")
 	// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
 	AddressPurposePrivateServiceConnect = AddressPurpose("PRIVATE_SERVICE_CONNECT")
+	// A regional internal IP address range reserved for Serverless.
+	AddressPurposeServerless = AddressPurpose("SERVERLESS")
 	// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
 	AddressPurposeSharedLoadbalancerVip = AddressPurpose("SHARED_LOADBALANCER_VIP")
 	// IP range for peer networks.
@@ -6817,6 +6819,175 @@ func (in *conditionSysPtr) ToConditionSysPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionSysPtrOutput)
 }
 
+// Defines the type of technology used by the confidential instance.
+type ConfidentialInstanceConfigConfidentialInstanceType string
+
+const (
+	// No type specified. Do not use this value.
+	ConfidentialInstanceConfigConfidentialInstanceTypeConfidentialInstanceTypeUnspecified = ConfidentialInstanceConfigConfidentialInstanceType("CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED")
+	// AMD Secure Encrypted Virtualization.
+	ConfidentialInstanceConfigConfidentialInstanceTypeSev = ConfidentialInstanceConfigConfidentialInstanceType("SEV")
+	// AMD Secure Encrypted Virtualization - Secure Nested Paging.
+	ConfidentialInstanceConfigConfidentialInstanceTypeSevSnp = ConfidentialInstanceConfigConfidentialInstanceType("SEV_SNP")
+)
+
+func (ConfidentialInstanceConfigConfidentialInstanceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialInstanceConfigConfidentialInstanceType)(nil)).Elem()
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToConfidentialInstanceConfigConfidentialInstanceTypeOutput() ConfidentialInstanceConfigConfidentialInstanceTypeOutput {
+	return pulumi.ToOutput(e).(ConfidentialInstanceConfigConfidentialInstanceTypeOutput)
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToConfidentialInstanceConfigConfidentialInstanceTypeOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConfidentialInstanceConfigConfidentialInstanceTypeOutput)
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutput() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return e.ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return ConfidentialInstanceConfigConfidentialInstanceType(e).ToConfidentialInstanceConfigConfidentialInstanceTypeOutputWithContext(ctx).ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx)
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ConfidentialInstanceConfigConfidentialInstanceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ConfidentialInstanceConfigConfidentialInstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialInstanceConfigConfidentialInstanceType)(nil)).Elem()
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToConfidentialInstanceConfigConfidentialInstanceTypeOutput() ConfidentialInstanceConfigConfidentialInstanceTypeOutput {
+	return o
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToConfidentialInstanceConfigConfidentialInstanceTypeOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypeOutput {
+	return o
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutput() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return o.ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialInstanceConfigConfidentialInstanceType) *ConfidentialInstanceConfigConfidentialInstanceType {
+		return &v
+	}).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfidentialInstanceConfigConfidentialInstanceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConfidentialInstanceConfigConfidentialInstanceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialInstanceConfigConfidentialInstanceType)(nil)).Elem()
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutput() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return o
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return o
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) Elem() ConfidentialInstanceConfigConfidentialInstanceTypeOutput {
+	return o.ApplyT(func(v *ConfidentialInstanceConfigConfidentialInstanceType) ConfidentialInstanceConfigConfidentialInstanceType {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialInstanceConfigConfidentialInstanceType
+		return ret
+	}).(ConfidentialInstanceConfigConfidentialInstanceTypeOutput)
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConfidentialInstanceConfigConfidentialInstanceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ConfidentialInstanceConfigConfidentialInstanceTypeInput is an input type that accepts ConfidentialInstanceConfigConfidentialInstanceTypeArgs and ConfidentialInstanceConfigConfidentialInstanceTypeOutput values.
+// You can construct a concrete instance of `ConfidentialInstanceConfigConfidentialInstanceTypeInput` via:
+//
+//          ConfidentialInstanceConfigConfidentialInstanceTypeArgs{...}
+type ConfidentialInstanceConfigConfidentialInstanceTypeInput interface {
+	pulumi.Input
+
+	ToConfidentialInstanceConfigConfidentialInstanceTypeOutput() ConfidentialInstanceConfigConfidentialInstanceTypeOutput
+	ToConfidentialInstanceConfigConfidentialInstanceTypeOutputWithContext(context.Context) ConfidentialInstanceConfigConfidentialInstanceTypeOutput
+}
+
+var confidentialInstanceConfigConfidentialInstanceTypePtrType = reflect.TypeOf((**ConfidentialInstanceConfigConfidentialInstanceType)(nil)).Elem()
+
+type ConfidentialInstanceConfigConfidentialInstanceTypePtrInput interface {
+	pulumi.Input
+
+	ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutput() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput
+	ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput
+}
+
+type confidentialInstanceConfigConfidentialInstanceTypePtr string
+
+func ConfidentialInstanceConfigConfidentialInstanceTypePtr(v string) ConfidentialInstanceConfigConfidentialInstanceTypePtrInput {
+	return (*confidentialInstanceConfigConfidentialInstanceTypePtr)(&v)
+}
+
+func (*confidentialInstanceConfigConfidentialInstanceTypePtr) ElementType() reflect.Type {
+	return confidentialInstanceConfigConfidentialInstanceTypePtrType
+}
+
+func (in *confidentialInstanceConfigConfidentialInstanceTypePtr) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutput() ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return pulumi.ToOutput(in).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
+}
+
+func (in *confidentialInstanceConfigConfidentialInstanceTypePtr) ToConfidentialInstanceConfigConfidentialInstanceTypePtrOutputWithContext(ctx context.Context) ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput)
+}
+
 // The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED. Operations which communicate the end of life date for an image, can use ACTIVE. Operations which create a new resource using a DEPRECATED resource will return successfully, but with a warning indicating the deprecated resource and recommending its replacement. Operations which use OBSOLETE or DELETED resources will be rejected and result in an error.
 type DeprecationStatusState string
 
@@ -10536,6 +10707,8 @@ const (
 	GlobalAddressPurposeNatAuto = GlobalAddressPurpose("NAT_AUTO")
 	// A private network IP address that can be used to configure Private Service Connect. This purpose can be specified only for GLOBAL addresses of Type INTERNAL
 	GlobalAddressPurposePrivateServiceConnect = GlobalAddressPurpose("PRIVATE_SERVICE_CONNECT")
+	// A regional internal IP address range reserved for Serverless.
+	GlobalAddressPurposeServerless = GlobalAddressPurpose("SERVERLESS")
 	// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
 	GlobalAddressPurposeSharedLoadbalancerVip = GlobalAddressPurpose("SHARED_LOADBALANCER_VIP")
 	// IP range for peer networks.
@@ -11903,6 +12076,7 @@ const (
 	GuestOsFeatureTypeMultiIpSubnet            = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot               = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable               = GuestOsFeatureType("SEV_CAPABLE")
+	GuestOsFeatureTypeSevSnpCapable            = GuestOsFeatureType("SEV_SNP_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible           = GuestOsFeatureType("UEFI_COMPATIBLE")
 	GuestOsFeatureTypeVirtioScsiMultiqueue     = GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE")
 	GuestOsFeatureTypeWindows                  = GuestOsFeatureType("WINDOWS")
@@ -23063,6 +23237,7 @@ const (
 	RegionCommitmentTypeGeneralPurposeN2d    = RegionCommitmentType("GENERAL_PURPOSE_N2D")
 	RegionCommitmentTypeGeneralPurposeT2d    = RegionCommitmentType("GENERAL_PURPOSE_T2D")
 	RegionCommitmentTypeMemoryOptimized      = RegionCommitmentType("MEMORY_OPTIMIZED")
+	RegionCommitmentTypeMemoryOptimizedM3    = RegionCommitmentType("MEMORY_OPTIMIZED_M3")
 	RegionCommitmentTypeTypeUnspecified      = RegionCommitmentType("TYPE_UNSPECIFIED")
 )
 
@@ -38068,6 +38243,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionOpPtrInput)(nil)).Elem(), ConditionOp("DISCHARGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionSysInput)(nil)).Elem(), ConditionSys("IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionSysPtrInput)(nil)).Elem(), ConditionSys("IP"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigConfidentialInstanceTypeInput)(nil)).Elem(), ConfidentialInstanceConfigConfidentialInstanceType("CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfidentialInstanceConfigConfidentialInstanceTypePtrInput)(nil)).Elem(), ConfidentialInstanceConfigConfidentialInstanceType("CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusStateInput)(nil)).Elem(), DeprecationStatusState("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusStatePtrInput)(nil)).Elem(), DeprecationStatusState("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskArchitectureInput)(nil)).Elem(), DiskArchitecture("ARCHITECTURE_UNSPECIFIED"))
@@ -38520,6 +38697,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionOpPtrOutput{})
 	pulumi.RegisterOutputType(ConditionSysOutput{})
 	pulumi.RegisterOutputType(ConditionSysPtrOutput{})
+	pulumi.RegisterOutputType(ConfidentialInstanceConfigConfidentialInstanceTypeOutput{})
+	pulumi.RegisterOutputType(ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusStateOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusStatePtrOutput{})
 	pulumi.RegisterOutputType(DiskArchitectureOutput{})

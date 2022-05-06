@@ -31,8 +31,6 @@ type LookupTcpRouteResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description string `pulumi:"description"`
-	// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-	Gateways []string `pulumi:"gateways"`
 	// Optional. Set of label tags associated with the TcpRoute resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
@@ -92,11 +90,6 @@ func (o LookupTcpRouteResultOutput) CreateTime() pulumi.StringOutput {
 // Optional. A free-text description of the resource. Max length 1024 characters.
 func (o LookupTcpRouteResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTcpRouteResult) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-func (o LookupTcpRouteResultOutput) Gateways() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupTcpRouteResult) []string { return v.Gateways }).(pulumi.StringArrayOutput)
 }
 
 // Optional. Set of label tags associated with the TcpRoute resource.

@@ -32,6 +32,8 @@ type Provider struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// An OpenId Connect 1.0 identity provider.
 	Oidc OidcResponseOutput `pulumi:"oidc"`
+	// An SAML 2.0 identity provider.
+	Saml SamlResponseOutput `pulumi:"saml"`
 	// The state of the provider.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -95,9 +97,11 @@ type providerArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	Location    *string `pulumi:"location"`
 	// An OpenId Connect 1.0 identity provider.
-	Oidc                   *Oidc   `pulumi:"oidc"`
-	Project                *string `pulumi:"project"`
-	WorkloadIdentityPoolId string  `pulumi:"workloadIdentityPoolId"`
+	Oidc    *Oidc   `pulumi:"oidc"`
+	Project *string `pulumi:"project"`
+	// An SAML 2.0 identity provider.
+	Saml                   *Saml  `pulumi:"saml"`
+	WorkloadIdentityPoolId string `pulumi:"workloadIdentityPoolId"`
 	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
 }
@@ -118,8 +122,10 @@ type ProviderArgs struct {
 	DisplayName pulumi.StringPtrInput
 	Location    pulumi.StringPtrInput
 	// An OpenId Connect 1.0 identity provider.
-	Oidc                   OidcPtrInput
-	Project                pulumi.StringPtrInput
+	Oidc    OidcPtrInput
+	Project pulumi.StringPtrInput
+	// An SAML 2.0 identity provider.
+	Saml                   SamlPtrInput
 	WorkloadIdentityPoolId pulumi.StringInput
 	// Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
 	WorkloadIdentityPoolProviderId pulumi.StringInput
@@ -200,6 +206,11 @@ func (o ProviderOutput) Name() pulumi.StringOutput {
 // An OpenId Connect 1.0 identity provider.
 func (o ProviderOutput) Oidc() OidcResponseOutput {
 	return o.ApplyT(func(v *Provider) OidcResponseOutput { return v.Oidc }).(OidcResponseOutput)
+}
+
+// An SAML 2.0 identity provider.
+func (o ProviderOutput) Saml() SamlResponseOutput {
+	return o.ApplyT(func(v *Provider) SamlResponseOutput { return v.Saml }).(SamlResponseOutput)
 }
 
 // The state of the provider.

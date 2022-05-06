@@ -19,8 +19,6 @@ type TcpRoute struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-	Gateways pulumi.StringArrayOutput `pulumi:"gateways"`
 	// Optional. Set of label tags associated with the TcpRoute resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
@@ -82,8 +80,6 @@ func (TcpRouteState) ElementType() reflect.Type {
 type tcpRouteArgs struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
-	// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-	Gateways []string `pulumi:"gateways"`
 	// Optional. Set of label tags associated with the TcpRoute resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -102,8 +98,6 @@ type tcpRouteArgs struct {
 type TcpRouteArgs struct {
 	// Optional. A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
-	// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-	Gateways pulumi.StringArrayInput
 	// Optional. Set of label tags associated with the TcpRoute resource.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -163,11 +157,6 @@ func (o TcpRouteOutput) CreateTime() pulumi.StringOutput {
 // Optional. A free-text description of the resource. Max length 1024 characters.
 func (o TcpRouteOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TcpRoute) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
-}
-
-// Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-func (o TcpRouteOutput) Gateways() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TcpRoute) pulumi.StringArrayOutput { return v.Gateways }).(pulumi.StringArrayOutput)
 }
 
 // Optional. Set of label tags associated with the TcpRoute resource.

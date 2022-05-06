@@ -10123,6 +10123,202 @@ func (o NetworkConfigResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfig struct {
+	// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+	ExternalIpEgressBandwidthTier *NetworkPerformanceConfigExternalIpEgressBandwidthTier `pulumi:"externalIpEgressBandwidthTier"`
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier *NetworkPerformanceConfigTotalEgressBandwidthTier `pulumi:"totalEgressBandwidthTier"`
+}
+
+// NetworkPerformanceConfigInput is an input type that accepts NetworkPerformanceConfigArgs and NetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `NetworkPerformanceConfigInput` via:
+//
+//          NetworkPerformanceConfigArgs{...}
+type NetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToNetworkPerformanceConfigOutput() NetworkPerformanceConfigOutput
+	ToNetworkPerformanceConfigOutputWithContext(context.Context) NetworkPerformanceConfigOutput
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigArgs struct {
+	// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+	ExternalIpEgressBandwidthTier NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrInput `pulumi:"externalIpEgressBandwidthTier"`
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier NetworkPerformanceConfigTotalEgressBandwidthTierPtrInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (NetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigOutput() NetworkPerformanceConfigOutput {
+	return i.ToNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigOutputWithContext(ctx context.Context) NetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPerformanceConfigOutput)
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return i.ToNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkPerformanceConfigArgs) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPerformanceConfigOutput).ToNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// NetworkPerformanceConfigPtrInput is an input type that accepts NetworkPerformanceConfigArgs, NetworkPerformanceConfigPtr and NetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `NetworkPerformanceConfigPtrInput` via:
+//
+//          NetworkPerformanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput
+	ToNetworkPerformanceConfigPtrOutputWithContext(context.Context) NetworkPerformanceConfigPtrOutput
+}
+
+type networkPerformanceConfigPtrType NetworkPerformanceConfigArgs
+
+func NetworkPerformanceConfigPtr(v *NetworkPerformanceConfigArgs) NetworkPerformanceConfigPtrInput {
+	return (*networkPerformanceConfigPtrType)(v)
+}
+
+func (*networkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *networkPerformanceConfigPtrType) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return i.ToNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPerformanceConfigPtrType) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigOutput() NetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigOutputWithContext(ctx context.Context) NetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return o.ToNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPerformanceConfigOutput) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPerformanceConfig) *NetworkPerformanceConfig {
+		return &v
+	}).(NetworkPerformanceConfigPtrOutput)
+}
+
+// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+func (o NetworkPerformanceConfigOutput) ExternalIpEgressBandwidthTier() NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v NetworkPerformanceConfig) *NetworkPerformanceConfigExternalIpEgressBandwidthTier {
+		return v.ExternalIpEgressBandwidthTier
+	}).(NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o NetworkPerformanceConfigOutput) TotalEgressBandwidthTier() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v NetworkPerformanceConfig) *NetworkPerformanceConfigTotalEgressBandwidthTier {
+		return v.TotalEgressBandwidthTier
+	}).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+type NetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigPtrOutput) ToNetworkPerformanceConfigPtrOutput() NetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigPtrOutput) ToNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigPtrOutput) Elem() NetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *NetworkPerformanceConfig) NetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPerformanceConfig
+		return ret
+	}).(NetworkPerformanceConfigOutput)
+}
+
+// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+func (o NetworkPerformanceConfigPtrOutput) ExternalIpEgressBandwidthTier() NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v *NetworkPerformanceConfig) *NetworkPerformanceConfigExternalIpEgressBandwidthTier {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalIpEgressBandwidthTier
+	}).(NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o NetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput {
+	return o.ApplyT(func(v *NetworkPerformanceConfig) *NetworkPerformanceConfigTotalEgressBandwidthTier {
+		if v == nil {
+			return nil
+		}
+		return v.TotalEgressBandwidthTier
+	}).(NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput)
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigResponse struct {
+	// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+	ExternalIpEgressBandwidthTier string `pulumi:"externalIpEgressBandwidthTier"`
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// Configuration of all network bandwidth tiers
+type NetworkPerformanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkPerformanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPerformanceConfigResponse)(nil)).Elem()
+}
+
+func (o NetworkPerformanceConfigResponseOutput) ToNetworkPerformanceConfigResponseOutput() NetworkPerformanceConfigResponseOutput {
+	return o
+}
+
+func (o NetworkPerformanceConfigResponseOutput) ToNetworkPerformanceConfigResponseOutputWithContext(ctx context.Context) NetworkPerformanceConfigResponseOutput {
+	return o
+}
+
+// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
+func (o NetworkPerformanceConfigResponseOutput) ExternalIpEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPerformanceConfigResponse) string { return v.ExternalIpEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o NetworkPerformanceConfigResponseOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkPerformanceConfigResponse) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
 // Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
 type NetworkPolicy struct {
 	// Whether network policy is enabled on the cluster.
@@ -12153,6 +12349,8 @@ func (o NodeManagementResponseOutput) UpgradeOptions() AutoUpgradeOptionsRespons
 type NodeNetworkConfig struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange *bool `pulumi:"createPodRange"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -12174,6 +12372,8 @@ type NodeNetworkConfigInput interface {
 type NodeNetworkConfigArgs struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -12263,6 +12463,11 @@ func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
+// Network bandwidth tier configuration.
+func (o NodeNetworkConfigOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *string { return v.PodIpv4CidrBlock }).(pulumi.StringPtrOutput)
@@ -12307,6 +12512,16 @@ func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Network bandwidth tier configuration.
+func (o NodeNetworkConfigPtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *NetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(NetworkPerformanceConfigPtrOutput)
+}
+
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigPtrOutput) PodIpv4CidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *string {
@@ -12331,6 +12546,8 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 type NodeNetworkConfigResponse struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange bool `pulumi:"createPodRange"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	PodIpv4CidrBlock string `pulumi:"podIpv4CidrBlock"`
 	// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -12355,6 +12572,11 @@ func (o NodeNetworkConfigResponseOutput) ToNodeNetworkConfigResponseOutputWithCo
 // Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 func (o NodeNetworkConfigResponseOutput) CreatePodRange() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o NodeNetworkConfigResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
 }
 
 // The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -18319,6 +18541,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringConfigPtrInput)(nil)).Elem(), MonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigInput)(nil)).Elem(), NetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPerformanceConfigPtrInput)(nil)).Elem(), NetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyPtrInput)(nil)).Elem(), NetworkPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyConfigInput)(nil)).Elem(), NetworkPolicyConfigArgs{})
@@ -18550,6 +18774,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigOutput{})
 	pulumi.RegisterOutputType(NetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPerformanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyConfigOutput{})

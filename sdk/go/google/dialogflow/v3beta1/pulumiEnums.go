@@ -1555,6 +1555,177 @@ func (in *googleCloudDialogflowCxV3beta1NluSettingsModelTypePtr) ToGoogleCloudDi
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput)
 }
 
+// File format for exported audio file. Currently only in telephony recordings.
+type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat string
+
+const (
+	// Unspecified. Do not use.
+	GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatAudioFormatUnspecified = GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("AUDIO_FORMAT_UNSPECIFIED")
+	// G.711 mu-law PCM with 8kHz sample rate.
+	GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatMulaw = GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("MULAW")
+	// MP3 file format.
+	GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatMp3 = GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("MP3")
+	// OGG Vorbis.
+	GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOgg = GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("OGG")
+)
+
+func (GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat(e).ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) *GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat
+		return ret
+	}).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatInput is an input type that accepts GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatArgs and GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatArgs{...}
+type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput
+	ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput
+}
+
+var googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr string
+
+func GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr(v string) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrInput {
+	return (*googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrType
+}
+
+func (in *googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput() GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtr) ToGoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput)
+}
+
 // Whether the test case passed in the agent environment.
 type GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult string
 
@@ -2457,6 +2628,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode("MODEL_TRAINING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1NluSettingsModelType("MODEL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1NluSettingsModelType("MODEL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("AUDIO_FORMAT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormat("AUDIO_FORMAT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult("TEST_RESULT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingPurgeDataTypesItemInput)(nil)).Elem(), SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED"))
@@ -2486,6 +2659,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsAudioFormatPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemOutput{})

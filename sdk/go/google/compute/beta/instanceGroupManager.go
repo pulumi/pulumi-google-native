@@ -14,6 +14,8 @@ import (
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
+	// Specifies configuration that overrides the instance template configuration for the group.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigResponseOutput `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyResponseArrayOutput `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -101,6 +103,8 @@ func (InstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerArgs struct {
+	// Specifies configuration that overrides the instance template configuration for the group.
+	AllInstancesConfig *InstanceGroupManagerAllInstancesConfig `pulumi:"allInstancesConfig"`
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies []InstanceGroupManagerAutoHealingPolicy `pulumi:"autoHealingPolicies"`
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -137,6 +141,8 @@ type instanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a InstanceGroupManager resource.
 type InstanceGroupManagerArgs struct {
+	// Specifies configuration that overrides the instance template configuration for the group.
+	AllInstancesConfig InstanceGroupManagerAllInstancesConfigPtrInput
 	// The autohealing policy for this managed instance group. You can specify only one value.
 	AutoHealingPolicies InstanceGroupManagerAutoHealingPolicyArrayInput
 	// The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
@@ -206,6 +212,13 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroup
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
 	return o
+}
+
+// Specifies configuration that overrides the instance template configuration for the group.
+func (o InstanceGroupManagerOutput) AllInstancesConfig() InstanceGroupManagerAllInstancesConfigResponseOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerAllInstancesConfigResponseOutput {
+		return v.AllInstancesConfig
+	}).(InstanceGroupManagerAllInstancesConfigResponseOutput)
 }
 
 // The autohealing policy for this managed instance group. You can specify only one value.

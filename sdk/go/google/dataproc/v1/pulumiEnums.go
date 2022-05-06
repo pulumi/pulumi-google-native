@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Authentication type for session execution.
+type AuthenticationConfigAuthenticationType string
+
+const (
+	// If AuthenticationType is unspecified, SERVICE_ACCOUNT is used
+	AuthenticationConfigAuthenticationTypeAuthenticationTypeUnspecified = AuthenticationConfigAuthenticationType("AUTHENTICATION_TYPE_UNSPECIFIED")
+	// Defaults to using service account credentials
+	AuthenticationConfigAuthenticationTypeServiceAccount = AuthenticationConfigAuthenticationType("SERVICE_ACCOUNT")
+	// Injectable credentials authentication type
+	AuthenticationConfigAuthenticationTypeInjectableCredentials = AuthenticationConfigAuthenticationType("INJECTABLE_CREDENTIALS")
+)
+
+func (AuthenticationConfigAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationConfigAuthenticationType)(nil)).Elem()
+}
+
+func (e AuthenticationConfigAuthenticationType) ToAuthenticationConfigAuthenticationTypeOutput() AuthenticationConfigAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AuthenticationConfigAuthenticationTypeOutput)
+}
+
+func (e AuthenticationConfigAuthenticationType) ToAuthenticationConfigAuthenticationTypeOutputWithContext(ctx context.Context) AuthenticationConfigAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthenticationConfigAuthenticationTypeOutput)
+}
+
+func (e AuthenticationConfigAuthenticationType) ToAuthenticationConfigAuthenticationTypePtrOutput() AuthenticationConfigAuthenticationTypePtrOutput {
+	return e.ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuthenticationConfigAuthenticationType) ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationConfigAuthenticationTypePtrOutput {
+	return AuthenticationConfigAuthenticationType(e).ToAuthenticationConfigAuthenticationTypeOutputWithContext(ctx).ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AuthenticationConfigAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthenticationConfigAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthenticationConfigAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthenticationConfigAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthenticationConfigAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationConfigAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticationConfigAuthenticationType)(nil)).Elem()
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToAuthenticationConfigAuthenticationTypeOutput() AuthenticationConfigAuthenticationTypeOutput {
+	return o
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToAuthenticationConfigAuthenticationTypeOutputWithContext(ctx context.Context) AuthenticationConfigAuthenticationTypeOutput {
+	return o
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToAuthenticationConfigAuthenticationTypePtrOutput() AuthenticationConfigAuthenticationTypePtrOutput {
+	return o.ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationConfigAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticationConfigAuthenticationType) *AuthenticationConfigAuthenticationType {
+		return &v
+	}).(AuthenticationConfigAuthenticationTypePtrOutput)
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthenticationConfigAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationConfigAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthenticationConfigAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthenticationConfigAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthenticationConfigAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticationConfigAuthenticationType)(nil)).Elem()
+}
+
+func (o AuthenticationConfigAuthenticationTypePtrOutput) ToAuthenticationConfigAuthenticationTypePtrOutput() AuthenticationConfigAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AuthenticationConfigAuthenticationTypePtrOutput) ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationConfigAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AuthenticationConfigAuthenticationTypePtrOutput) Elem() AuthenticationConfigAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AuthenticationConfigAuthenticationType) AuthenticationConfigAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthenticationConfigAuthenticationType
+		return ret
+	}).(AuthenticationConfigAuthenticationTypeOutput)
+}
+
+func (o AuthenticationConfigAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticationConfigAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthenticationConfigAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthenticationConfigAuthenticationTypeInput is an input type that accepts AuthenticationConfigAuthenticationTypeArgs and AuthenticationConfigAuthenticationTypeOutput values.
+// You can construct a concrete instance of `AuthenticationConfigAuthenticationTypeInput` via:
+//
+//          AuthenticationConfigAuthenticationTypeArgs{...}
+type AuthenticationConfigAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAuthenticationConfigAuthenticationTypeOutput() AuthenticationConfigAuthenticationTypeOutput
+	ToAuthenticationConfigAuthenticationTypeOutputWithContext(context.Context) AuthenticationConfigAuthenticationTypeOutput
+}
+
+var authenticationConfigAuthenticationTypePtrType = reflect.TypeOf((**AuthenticationConfigAuthenticationType)(nil)).Elem()
+
+type AuthenticationConfigAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAuthenticationConfigAuthenticationTypePtrOutput() AuthenticationConfigAuthenticationTypePtrOutput
+	ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(context.Context) AuthenticationConfigAuthenticationTypePtrOutput
+}
+
+type authenticationConfigAuthenticationTypePtr string
+
+func AuthenticationConfigAuthenticationTypePtr(v string) AuthenticationConfigAuthenticationTypePtrInput {
+	return (*authenticationConfigAuthenticationTypePtr)(&v)
+}
+
+func (*authenticationConfigAuthenticationTypePtr) ElementType() reflect.Type {
+	return authenticationConfigAuthenticationTypePtrType
+}
+
+func (in *authenticationConfigAuthenticationTypePtr) ToAuthenticationConfigAuthenticationTypePtrOutput() AuthenticationConfigAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AuthenticationConfigAuthenticationTypePtrOutput)
+}
+
+func (in *authenticationConfigAuthenticationTypePtr) ToAuthenticationConfigAuthenticationTypePtrOutputWithContext(ctx context.Context) AuthenticationConfigAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthenticationConfigAuthenticationTypePtrOutput)
+}
+
 // Optional. The type of IPv6 access for a cluster.
 type GceClusterConfigPrivateIpv6GoogleAccess string
 
@@ -186,13 +355,13 @@ type GkeNodePoolTargetRolesItem string
 const (
 	// Role is unspecified.
 	GkeNodePoolTargetRolesItemRoleUnspecified = GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED")
-	// Any roles that are not directly assigned to a NodePool run on the default role's NodePool.
+	// At least one node pool must have the DEFAULT role. Work assigned to a role that is not associated with a node pool is assigned to the node pool with the DEFAULT role. For example, work assigned to the CONTROLLER role will be assigned to the node pool with the DEFAULT role if no node pool has the CONTROLLER role.
 	GkeNodePoolTargetRolesItemDefault = GkeNodePoolTargetRolesItem("DEFAULT")
-	// Run controllers and webhooks.
+	// Run work associated with the Dataproc control plane (for example, controllers and webhooks). Very low resource requirements.
 	GkeNodePoolTargetRolesItemController = GkeNodePoolTargetRolesItem("CONTROLLER")
-	// Run spark driver.
+	// Run work associated with a Spark driver of a job.
 	GkeNodePoolTargetRolesItemSparkDriver = GkeNodePoolTargetRolesItem("SPARK_DRIVER")
-	// Run spark executors.
+	// Run work associated with a Spark executor of a job.
 	GkeNodePoolTargetRolesItemSparkExecutor = GkeNodePoolTargetRolesItem("SPARK_EXECUTOR")
 )
 
@@ -567,23 +736,23 @@ func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibil
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupConfigPreemptibilityPtrOutput)
 }
 
-// Required. MetricSource that should be enabled
+// Required. MetricSource to enable.
 type MetricMetricSource string
 
 const (
-	// Required unspecified metric source
+	// Required unspecified metric source.
 	MetricMetricSourceMetricSourceUnspecified = MetricMetricSource("METRIC_SOURCE_UNSPECIFIED")
-	// all default monitoring agent metrics that are published with prefix "agent.googleapis.com" when we enable a monitoring agent in Compute Engine
+	// Default monitoring agent metrics, which are published with an agent.googleapis.com prefix when Dataproc enables the monitoring agent in Compute Engine.
 	MetricMetricSourceMonitoringAgentDefaults = MetricMetricSource("MONITORING_AGENT_DEFAULTS")
-	// Hdfs metric source
+	// HDFS metric source.
 	MetricMetricSourceHdfs = MetricMetricSource("HDFS")
-	// Spark metric source
+	// Spark metric source.
 	MetricMetricSourceSpark = MetricMetricSource("SPARK")
-	// Yarn metric source
+	// YARN metric source.
 	MetricMetricSourceYarn = MetricMetricSource("YARN")
-	// Spark history server metric source
+	// Spark History Server metric source.
 	MetricMetricSourceSparkHistoryServer = MetricMetricSource("SPARK_HISTORY_SERVER")
-	// hiveserver2 metric source
+	// Hiveserver2 metric source.
 	MetricMetricSourceHiveserver2 = MetricMetricSource("HIVESERVER2")
 )
 
@@ -1148,6 +1317,8 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationConfigAuthenticationTypeInput)(nil)).Elem(), AuthenticationConfigAuthenticationType("AUTHENTICATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticationConfigAuthenticationTypePtrInput)(nil)).Elem(), AuthenticationConfigAuthenticationType("AUTHENTICATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccessPtrInput)(nil)).Elem(), GceClusterConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNodePoolTargetRolesItemInput)(nil)).Elem(), GkeNodePoolTargetRolesItem("ROLE_UNSPECIFIED"))
@@ -1162,6 +1333,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemPtrInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemArrayInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItemArray{})
+	pulumi.RegisterOutputType(AuthenticationConfigAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AuthenticationConfigAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessOutput{})
 	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput{})
 	pulumi.RegisterOutputType(GkeNodePoolTargetRolesItemOutput{})

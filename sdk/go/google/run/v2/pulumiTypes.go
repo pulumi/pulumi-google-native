@@ -14,8 +14,6 @@ import (
 type GoogleCloudRunV2BinaryAuthorization struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification *string `pulumi:"breakglassJustification"`
-	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-	Policy *string `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault *bool `pulumi:"useDefault"`
 }
@@ -35,8 +33,6 @@ type GoogleCloudRunV2BinaryAuthorizationInput interface {
 type GoogleCloudRunV2BinaryAuthorizationArgs struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification pulumi.StringPtrInput `pulumi:"breakglassJustification"`
-	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault pulumi.BoolPtrInput `pulumi:"useDefault"`
 }
@@ -124,11 +120,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationOutput) BreakglassJustification() pul
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.BreakglassJustification }).(pulumi.StringPtrOutput)
 }
 
-// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-func (o GoogleCloudRunV2BinaryAuthorizationOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *string { return v.Policy }).(pulumi.StringPtrOutput)
-}
-
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunV2BinaryAuthorizationOutput) UseDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorization) *bool { return v.UseDefault }).(pulumi.BoolPtrOutput)
@@ -168,16 +159,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) BreakglassJustification() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRunV2BinaryAuthorization) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Policy
-	}).(pulumi.StringPtrOutput)
-}
-
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2BinaryAuthorization) *bool {
@@ -192,8 +173,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPt
 type GoogleCloudRunV2BinaryAuthorizationResponse struct {
 	// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 	BreakglassJustification string `pulumi:"breakglassJustification"`
-	// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-	Policy string `pulumi:"policy"`
 	// If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
 	UseDefault bool `pulumi:"useDefault"`
 }
@@ -216,11 +195,6 @@ func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) ToGoogleCloudRunV2Bin
 // If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
 func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) BreakglassJustification() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.BreakglassJustification }).(pulumi.StringOutput)
-}
-
-// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
-func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) Policy() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) string { return v.Policy }).(pulumi.StringOutput)
 }
 
 // If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
@@ -396,12 +370,8 @@ func (o GoogleCloudRunV2CloudSqlInstanceResponseOutput) Instances() pulumi.Strin
 
 // Defines a status condition for a resource.
 type GoogleCloudRunV2ConditionResponse struct {
-	// A reason for the domain mapping condition.
-	DomainMappingReason string `pulumi:"domainMappingReason"`
 	// A reason for the execution condition.
 	ExecutionReason string `pulumi:"executionReason"`
-	// A reason for the internal condition.
-	InternalReason string `pulumi:"internalReason"`
 	// Last time the condition transitioned from one status to another.
 	LastTransitionTime string `pulumi:"lastTransitionTime"`
 	// Human readable message indicating details about the current status.
@@ -433,19 +403,9 @@ func (o GoogleCloudRunV2ConditionResponseOutput) ToGoogleCloudRunV2ConditionResp
 	return o
 }
 
-// A reason for the domain mapping condition.
-func (o GoogleCloudRunV2ConditionResponseOutput) DomainMappingReason() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2ConditionResponse) string { return v.DomainMappingReason }).(pulumi.StringOutput)
-}
-
 // A reason for the execution condition.
 func (o GoogleCloudRunV2ConditionResponseOutput) ExecutionReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ConditionResponse) string { return v.ExecutionReason }).(pulumi.StringOutput)
-}
-
-// A reason for the internal condition.
-func (o GoogleCloudRunV2ConditionResponseOutput) InternalReason() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2ConditionResponse) string { return v.InternalReason }).(pulumi.StringOutput)
 }
 
 // Last time the condition transitioned from one status to another.
@@ -511,7 +471,7 @@ type GoogleCloudRunV2Container struct {
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVar `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
 	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
@@ -542,7 +502,7 @@ type GoogleCloudRunV2ContainerArgs struct {
 	Command pulumi.StringArrayInput `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env GoogleCloudRunV2EnvVarArrayInput `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
 	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -621,7 +581,7 @@ func (o GoogleCloudRunV2ContainerOutput) Env() GoogleCloudRunV2EnvVarArrayOutput
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []GoogleCloudRunV2EnvVar { return v.Env }).(GoogleCloudRunV2EnvVarArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o GoogleCloudRunV2ContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -836,7 +796,7 @@ type GoogleCloudRunV2ContainerResponse struct {
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVarResponse `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
 	// Name of the container specified as a DNS_LABEL.
 	Name string `pulumi:"name"`
@@ -878,7 +838,7 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Env() GoogleCloudRunV2EnvVarRes
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []GoogleCloudRunV2EnvVarResponse { return v.Env }).(GoogleCloudRunV2EnvVarResponseArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Docker More info: https://kubernetes.io/docs/concepts/containers/images
+// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o GoogleCloudRunV2ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -1271,6 +1231,186 @@ func (o GoogleCloudRunV2EnvVarSourceResponseOutput) SecretKeyRef() GoogleCloudRu
 	}).(GoogleCloudRunV2SecretKeySelectorResponseOutput)
 }
 
+// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+type GoogleCloudRunV2ExecutionReferenceResponse struct {
+	// Creation timestamp of the execution.
+	CreateTime string `pulumi:"createTime"`
+	// Name of the execution.
+	Name string `pulumi:"name"`
+}
+
+// Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status.
+type GoogleCloudRunV2ExecutionReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2ExecutionReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ExecutionReferenceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToGoogleCloudRunV2ExecutionReferenceResponseOutput() GoogleCloudRunV2ExecutionReferenceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) ToGoogleCloudRunV2ExecutionReferenceResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionReferenceResponseOutput {
+	return o
+}
+
+// Creation timestamp of the execution.
+func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionReferenceResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Name of the execution.
+func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionReferenceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// ExecutionTemplate describes the data an execution should have when created from a template.
+type GoogleCloudRunV2ExecutionTemplate struct {
+	// KRM-style annotations for the resource.
+	Annotations map[string]string `pulumi:"annotations"`
+	// KRM-style labels for the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+	Parallelism *int `pulumi:"parallelism"`
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	TaskCount *int `pulumi:"taskCount"`
+	// Describes the task(s) that will be created when executing an execution.
+	Template GoogleCloudRunV2TaskTemplate `pulumi:"template"`
+}
+
+// GoogleCloudRunV2ExecutionTemplateInput is an input type that accepts GoogleCloudRunV2ExecutionTemplateArgs and GoogleCloudRunV2ExecutionTemplateOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2ExecutionTemplateInput` via:
+//
+//          GoogleCloudRunV2ExecutionTemplateArgs{...}
+type GoogleCloudRunV2ExecutionTemplateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2ExecutionTemplateOutput() GoogleCloudRunV2ExecutionTemplateOutput
+	ToGoogleCloudRunV2ExecutionTemplateOutputWithContext(context.Context) GoogleCloudRunV2ExecutionTemplateOutput
+}
+
+// ExecutionTemplate describes the data an execution should have when created from a template.
+type GoogleCloudRunV2ExecutionTemplateArgs struct {
+	// KRM-style annotations for the resource.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// KRM-style labels for the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	TaskCount pulumi.IntPtrInput `pulumi:"taskCount"`
+	// Describes the task(s) that will be created when executing an execution.
+	Template GoogleCloudRunV2TaskTemplateInput `pulumi:"template"`
+}
+
+func (GoogleCloudRunV2ExecutionTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplate)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2ExecutionTemplateArgs) ToGoogleCloudRunV2ExecutionTemplateOutput() GoogleCloudRunV2ExecutionTemplateOutput {
+	return i.ToGoogleCloudRunV2ExecutionTemplateOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2ExecutionTemplateArgs) ToGoogleCloudRunV2ExecutionTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2ExecutionTemplateOutput)
+}
+
+// ExecutionTemplate describes the data an execution should have when created from a template.
+type GoogleCloudRunV2ExecutionTemplateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2ExecutionTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplate)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2ExecutionTemplateOutput) ToGoogleCloudRunV2ExecutionTemplateOutput() GoogleCloudRunV2ExecutionTemplateOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ExecutionTemplateOutput) ToGoogleCloudRunV2ExecutionTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionTemplateOutput {
+	return o
+}
+
+// KRM-style annotations for the resource.
+func (o GoogleCloudRunV2ExecutionTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// KRM-style labels for the resource.
+func (o GoogleCloudRunV2ExecutionTemplateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+func (o GoogleCloudRunV2ExecutionTemplateOutput) Parallelism() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o GoogleCloudRunV2ExecutionTemplateOutput) TaskCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) *int { return v.TaskCount }).(pulumi.IntPtrOutput)
+}
+
+// Describes the task(s) that will be created when executing an execution.
+func (o GoogleCloudRunV2ExecutionTemplateOutput) Template() GoogleCloudRunV2TaskTemplateOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) GoogleCloudRunV2TaskTemplate { return v.Template }).(GoogleCloudRunV2TaskTemplateOutput)
+}
+
+// ExecutionTemplate describes the data an execution should have when created from a template.
+type GoogleCloudRunV2ExecutionTemplateResponse struct {
+	// KRM-style annotations for the resource.
+	Annotations map[string]string `pulumi:"annotations"`
+	// KRM-style labels for the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+	Parallelism int `pulumi:"parallelism"`
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	TaskCount int `pulumi:"taskCount"`
+	// Describes the task(s) that will be created when executing an execution.
+	Template GoogleCloudRunV2TaskTemplateResponse `pulumi:"template"`
+}
+
+// ExecutionTemplate describes the data an execution should have when created from a template.
+type GoogleCloudRunV2ExecutionTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2ExecutionTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToGoogleCloudRunV2ExecutionTemplateResponseOutput() GoogleCloudRunV2ExecutionTemplateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToGoogleCloudRunV2ExecutionTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2ExecutionTemplateResponseOutput {
+	return o
+}
+
+// KRM-style annotations for the resource.
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// KRM-style labels for the resource.
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Parallelism() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) int { return v.Parallelism }).(pulumi.IntOutput)
+}
+
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) TaskCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) int { return v.TaskCount }).(pulumi.IntOutput)
+}
+
+// Describes the task(s) that will be created when executing an execution.
+func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Template() GoogleCloudRunV2TaskTemplateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) GoogleCloudRunV2TaskTemplateResponse {
+		return v.Template
+	}).(GoogleCloudRunV2TaskTemplateResponseOutput)
+}
+
 // ResourceRequirements describes the compute resource requirements.
 type GoogleCloudRunV2ResourceRequirements struct {
 	// Determines whether CPU should be throttled or not outside of requests.
@@ -1659,10 +1799,6 @@ func (o GoogleCloudRunV2RevisionScalingResponseOutput) MinInstanceCount() pulumi
 type GoogleCloudRunV2RevisionTemplate struct {
 	// KRM-style annotations for the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Enables Confidential Cloud Run in Revisions created using this template.
-	Confidential *bool `pulumi:"confidential"`
-	// Sets the maximum number of requests that each serving instance can receive.
-	ContainerConcurrency *int `pulumi:"containerConcurrency"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers []GoogleCloudRunV2Container `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -1671,6 +1807,8 @@ type GoogleCloudRunV2RevisionTemplate struct {
 	ExecutionEnvironment *GoogleCloudRunV2RevisionTemplateExecutionEnvironment `pulumi:"executionEnvironment"`
 	// KRM-style labels for the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Sets the maximum number of requests that each serving instance can receive.
+	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision *string `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -1700,10 +1838,6 @@ type GoogleCloudRunV2RevisionTemplateInput interface {
 type GoogleCloudRunV2RevisionTemplateArgs struct {
 	// KRM-style annotations for the resource.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// Enables Confidential Cloud Run in Revisions created using this template.
-	Confidential pulumi.BoolPtrInput `pulumi:"confidential"`
-	// Sets the maximum number of requests that each serving instance can receive.
-	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers GoogleCloudRunV2ContainerArrayInput `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -1712,6 +1846,8 @@ type GoogleCloudRunV2RevisionTemplateArgs struct {
 	ExecutionEnvironment GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput `pulumi:"executionEnvironment"`
 	// KRM-style labels for the resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Sets the maximum number of requests that each serving instance can receive.
+	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -1758,16 +1894,6 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) Annotations() pulumi.StringMapOu
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Enables Confidential Cloud Run in Revisions created using this template.
-func (o GoogleCloudRunV2RevisionTemplateOutput) Confidential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *bool { return v.Confidential }).(pulumi.BoolPtrOutput)
-}
-
-// Sets the maximum number of requests that each serving instance can receive.
-func (o GoogleCloudRunV2RevisionTemplateOutput) ContainerConcurrency() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
-}
-
 // Holds the single container that defines the unit of execution for this Revision.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Containers() GoogleCloudRunV2ContainerArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) []GoogleCloudRunV2Container { return v.Containers }).(GoogleCloudRunV2ContainerArrayOutput)
@@ -1788,6 +1914,11 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ExecutionEnvironment() GoogleClo
 // KRM-style labels for the resource.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Sets the maximum number of requests that each serving instance can receive.
+func (o GoogleCloudRunV2RevisionTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
@@ -1824,10 +1955,6 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) VpcAccess() GoogleCloudRunV2VpcA
 type GoogleCloudRunV2RevisionTemplateResponse struct {
 	// KRM-style annotations for the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Enables Confidential Cloud Run in Revisions created using this template.
-	Confidential bool `pulumi:"confidential"`
-	// Sets the maximum number of requests that each serving instance can receive.
-	ContainerConcurrency int `pulumi:"containerConcurrency"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers []GoogleCloudRunV2ContainerResponse `pulumi:"containers"`
 	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
@@ -1836,6 +1963,8 @@ type GoogleCloudRunV2RevisionTemplateResponse struct {
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
 	// KRM-style labels for the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Sets the maximum number of requests that each serving instance can receive.
+	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision string `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -1870,16 +1999,6 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Annotations() pulumi.Str
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Enables Confidential Cloud Run in Revisions created using this template.
-func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Confidential() pulumi.BoolOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) bool { return v.Confidential }).(pulumi.BoolOutput)
-}
-
-// Sets the maximum number of requests that each serving instance can receive.
-func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ContainerConcurrency() pulumi.IntOutput {
-	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
-}
-
 // Holds the single container that defines the unit of execution for this Revision.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Containers() GoogleCloudRunV2ContainerResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) []GoogleCloudRunV2ContainerResponse {
@@ -1900,6 +2019,11 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ExecutionEnvironment() p
 // KRM-style labels for the resource.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Sets the maximum number of requests that each serving instance can receive.
+func (o GoogleCloudRunV2RevisionTemplateResponseOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
@@ -2344,6 +2468,201 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) Items() GoogleCloudRun
 // The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project.
 func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretVolumeSourceResponse) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+// TaskTemplate describes the data a task should have when created from a template.
+type GoogleCloudRunV2TaskTemplate struct {
+	// Holds the single container that defines the unit of execution for this task.
+	Containers []GoogleCloudRunV2Container `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey *string `pulumi:"encryptionKey"`
+	// The execution environment being used to host this Task.
+	ExecutionEnvironment *GoogleCloudRunV2TaskTemplateExecutionEnvironment `pulumi:"executionEnvironment"`
+	// Number of retries allowed per Task, before marking this Task failed.
+	MaxRetries *int `pulumi:"maxRetries"`
+	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	Timeout *string `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes []GoogleCloudRunV2Volume `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccess *GoogleCloudRunV2VpcAccess `pulumi:"vpcAccess"`
+}
+
+// GoogleCloudRunV2TaskTemplateInput is an input type that accepts GoogleCloudRunV2TaskTemplateArgs and GoogleCloudRunV2TaskTemplateOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2TaskTemplateInput` via:
+//
+//          GoogleCloudRunV2TaskTemplateArgs{...}
+type GoogleCloudRunV2TaskTemplateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2TaskTemplateOutput() GoogleCloudRunV2TaskTemplateOutput
+	ToGoogleCloudRunV2TaskTemplateOutputWithContext(context.Context) GoogleCloudRunV2TaskTemplateOutput
+}
+
+// TaskTemplate describes the data a task should have when created from a template.
+type GoogleCloudRunV2TaskTemplateArgs struct {
+	// Holds the single container that defines the unit of execution for this task.
+	Containers GoogleCloudRunV2ContainerArrayInput `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
+	// The execution environment being used to host this Task.
+	ExecutionEnvironment GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrInput `pulumi:"executionEnvironment"`
+	// Number of retries allowed per Task, before marking this Task failed.
+	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes GoogleCloudRunV2VolumeArrayInput `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccess GoogleCloudRunV2VpcAccessPtrInput `pulumi:"vpcAccess"`
+}
+
+func (GoogleCloudRunV2TaskTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TaskTemplate)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2TaskTemplateArgs) ToGoogleCloudRunV2TaskTemplateOutput() GoogleCloudRunV2TaskTemplateOutput {
+	return i.ToGoogleCloudRunV2TaskTemplateOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2TaskTemplateArgs) ToGoogleCloudRunV2TaskTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2TaskTemplateOutput)
+}
+
+// TaskTemplate describes the data a task should have when created from a template.
+type GoogleCloudRunV2TaskTemplateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2TaskTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TaskTemplate)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2TaskTemplateOutput) ToGoogleCloudRunV2TaskTemplateOutput() GoogleCloudRunV2TaskTemplateOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateOutput) ToGoogleCloudRunV2TaskTemplateOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateOutput {
+	return o
+}
+
+// Holds the single container that defines the unit of execution for this task.
+func (o GoogleCloudRunV2TaskTemplateOutput) Containers() GoogleCloudRunV2ContainerArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) []GoogleCloudRunV2Container { return v.Containers }).(GoogleCloudRunV2ContainerArrayOutput)
+}
+
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+func (o GoogleCloudRunV2TaskTemplateOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *string { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// The execution environment being used to host this Task.
+func (o GoogleCloudRunV2TaskTemplateOutput) ExecutionEnvironment() GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *GoogleCloudRunV2TaskTemplateExecutionEnvironment {
+		return v.ExecutionEnvironment
+	}).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
+}
+
+// Number of retries allowed per Task, before marking this Task failed.
+func (o GoogleCloudRunV2TaskTemplateOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+func (o GoogleCloudRunV2TaskTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+func (o GoogleCloudRunV2TaskTemplateOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// A list of Volumes to make available to containers.
+func (o GoogleCloudRunV2TaskTemplateOutput) Volumes() GoogleCloudRunV2VolumeArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) []GoogleCloudRunV2Volume { return v.Volumes }).(GoogleCloudRunV2VolumeArrayOutput)
+}
+
+// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+func (o GoogleCloudRunV2TaskTemplateOutput) VpcAccess() GoogleCloudRunV2VpcAccessPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *GoogleCloudRunV2VpcAccess { return v.VpcAccess }).(GoogleCloudRunV2VpcAccessPtrOutput)
+}
+
+// TaskTemplate describes the data a task should have when created from a template.
+type GoogleCloudRunV2TaskTemplateResponse struct {
+	// Holds the single container that defines the unit of execution for this task.
+	Containers []GoogleCloudRunV2ContainerResponse `pulumi:"containers"`
+	// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+	EncryptionKey string `pulumi:"encryptionKey"`
+	// The execution environment being used to host this Task.
+	ExecutionEnvironment string `pulumi:"executionEnvironment"`
+	// Number of retries allowed per Task, before marking this Task failed.
+	MaxRetries int `pulumi:"maxRetries"`
+	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	Timeout string `pulumi:"timeout"`
+	// A list of Volumes to make available to containers.
+	Volumes []GoogleCloudRunV2VolumeResponse `pulumi:"volumes"`
+	// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+	VpcAccess GoogleCloudRunV2VpcAccessResponse `pulumi:"vpcAccess"`
+}
+
+// TaskTemplate describes the data a task should have when created from a template.
+type GoogleCloudRunV2TaskTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2TaskTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2TaskTemplateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) ToGoogleCloudRunV2TaskTemplateResponseOutput() GoogleCloudRunV2TaskTemplateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) ToGoogleCloudRunV2TaskTemplateResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2TaskTemplateResponseOutput {
+	return o
+}
+
+// Holds the single container that defines the unit of execution for this task.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) Containers() GoogleCloudRunV2ContainerResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) []GoogleCloudRunV2ContainerResponse { return v.Containers }).(GoogleCloudRunV2ContainerResponseArrayOutput)
+}
+
+// A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) EncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.EncryptionKey }).(pulumi.StringOutput)
+}
+
+// The execution environment being used to host this Task.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) ExecutionEnvironment() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
+}
+
+// Number of retries allowed per Task, before marking this Task failed.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// A list of Volumes to make available to containers.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) Volumes() GoogleCloudRunV2VolumeResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) []GoogleCloudRunV2VolumeResponse { return v.Volumes }).(GoogleCloudRunV2VolumeResponseArrayOutput)
+}
+
+// VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
+func (o GoogleCloudRunV2TaskTemplateResponseOutput) VpcAccess() GoogleCloudRunV2VpcAccessResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) GoogleCloudRunV2VpcAccessResponse { return v.VpcAccess }).(GoogleCloudRunV2VpcAccessResponseOutput)
 }
 
 // Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
@@ -3326,7 +3645,7 @@ func (o GoogleCloudRunV2VpcAccessResponseOutput) Egress() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccessResponse) string { return v.Egress }).(pulumi.StringOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfig struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []GoogleIamV1AuditLogConfig `pulumi:"auditLogConfigs"`
@@ -3345,7 +3664,7 @@ type GoogleIamV1AuditConfigInput interface {
 	ToGoogleIamV1AuditConfigOutputWithContext(context.Context) GoogleIamV1AuditConfigOutput
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigArgs struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs GoogleIamV1AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
@@ -3390,7 +3709,7 @@ func (i GoogleIamV1AuditConfigArray) ToGoogleIamV1AuditConfigArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamV1AuditConfigArrayOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1AuditConfigOutput) ElementType() reflect.Type {
@@ -3435,7 +3754,7 @@ func (o GoogleIamV1AuditConfigArrayOutput) Index(i pulumi.IntInput) GoogleIamV1A
 	}).(GoogleIamV1AuditConfigOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigResponse struct {
 	// The configuration for logging of each type of permission.
 	AuditLogConfigs []GoogleIamV1AuditLogConfigResponse `pulumi:"auditLogConfigs"`
@@ -3443,7 +3762,7 @@ type GoogleIamV1AuditConfigResponse struct {
 	Service string `pulumi:"service"`
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type GoogleIamV1AuditConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleIamV1AuditConfigResponseOutput) ElementType() reflect.Type {
@@ -4085,6 +4404,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarArrayInput)(nil)).Elem(), GoogleCloudRunV2EnvVarArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourceInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplateInput)(nil)).Elem(), GoogleCloudRunV2ExecutionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ResourceRequirementsInput)(nil)).Elem(), GoogleCloudRunV2ResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ResourceRequirementsPtrInput)(nil)).Elem(), GoogleCloudRunV2ResourceRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2RevisionScalingInput)(nil)).Elem(), GoogleCloudRunV2RevisionScalingArgs{})
@@ -4094,6 +4414,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2SecretKeySelectorPtrInput)(nil)).Elem(), GoogleCloudRunV2SecretKeySelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2SecretVolumeSourceInput)(nil)).Elem(), GoogleCloudRunV2SecretVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2SecretVolumeSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2SecretVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TaskTemplateInput)(nil)).Elem(), GoogleCloudRunV2TaskTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TrafficTargetInput)(nil)).Elem(), GoogleCloudRunV2TrafficTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2TrafficTargetArrayInput)(nil)).Elem(), GoogleCloudRunV2TrafficTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2VersionToPathInput)(nil)).Elem(), GoogleCloudRunV2VersionToPathArgs{})
@@ -4135,6 +4456,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2EnvVarSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2EnvVarSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2EnvVarSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionReferenceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ResourceRequirementsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ResourceRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ResourceRequirementsResponseOutput{})
@@ -4149,6 +4473,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2SecretVolumeSourceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2SecretVolumeSourcePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2SecretVolumeSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2TaskTemplateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2TaskTemplateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2TrafficTargetResponseOutput{})

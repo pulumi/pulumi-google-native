@@ -73,7 +73,7 @@ type destGroupArgs struct {
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Required. The ID to use for the TunnelDestGroup, which will become the final component of the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
 	TunnelDestGroupId string `pulumi:"tunnelDestGroupId"`
 }
 
@@ -87,7 +87,7 @@ type DestGroupArgs struct {
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Required. The ID to use for the TunnelDestGroup, which will become the final component of the resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+	// Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `a-z-`.
 	TunnelDestGroupId pulumi.StringInput
 }
 

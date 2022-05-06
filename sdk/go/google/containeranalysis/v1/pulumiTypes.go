@@ -1978,7 +1978,7 @@ func (o BuilderConfigResponseOutput) ToBuilderConfigResponseOutputWithContext(ct
 	return o
 }
 
-// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 type CVSS struct {
 	AttackComplexity *CVSSAttackComplexity `pulumi:"attackComplexity"`
 	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2007,7 +2007,7 @@ type CVSSInput interface {
 	ToCVSSOutputWithContext(context.Context) CVSSOutput
 }
 
-// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 type CVSSArgs struct {
 	AttackComplexity CVSSAttackComplexityPtrInput `pulumi:"attackComplexity"`
 	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2078,7 +2078,7 @@ func (i *cvssPtrType) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(CVSSPtrOutput)
 }
 
-// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 type CVSSOutput struct{ *pulumi.OutputState }
 
 func (CVSSOutput) ElementType() reflect.Type {
@@ -2287,7 +2287,7 @@ func (o CVSSPtrOutput) UserInteraction() CVSSUserInteractionPtrOutput {
 	}).(CVSSUserInteractionPtrOutput)
 }
 
-// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 type CVSSResponse struct {
 	AttackComplexity string `pulumi:"attackComplexity"`
 	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2305,7 +2305,7 @@ type CVSSResponse struct {
 	UserInteraction       string  `pulumi:"userInteraction"`
 }
 
-// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing multiple versions of CVSS. The intention is that as new versions of CVSS scores get added, we will be able to modify this message rather than adding new protos for each new version of the score.
+// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
 type CVSSResponseOutput struct{ *pulumi.OutputState }
 
 func (CVSSResponseOutput) ElementType() reflect.Type {
@@ -7639,6 +7639,152 @@ func (o GitSourceContextResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GitSourceContextResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Indicates the location at which a package was found.
+type GrafeasV1FileLocation struct {
+	// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+	FilePath *string `pulumi:"filePath"`
+}
+
+// GrafeasV1FileLocationInput is an input type that accepts GrafeasV1FileLocationArgs and GrafeasV1FileLocationOutput values.
+// You can construct a concrete instance of `GrafeasV1FileLocationInput` via:
+//
+//          GrafeasV1FileLocationArgs{...}
+type GrafeasV1FileLocationInput interface {
+	pulumi.Input
+
+	ToGrafeasV1FileLocationOutput() GrafeasV1FileLocationOutput
+	ToGrafeasV1FileLocationOutputWithContext(context.Context) GrafeasV1FileLocationOutput
+}
+
+// Indicates the location at which a package was found.
+type GrafeasV1FileLocationArgs struct {
+	// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+	FilePath pulumi.StringPtrInput `pulumi:"filePath"`
+}
+
+func (GrafeasV1FileLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1FileLocation)(nil)).Elem()
+}
+
+func (i GrafeasV1FileLocationArgs) ToGrafeasV1FileLocationOutput() GrafeasV1FileLocationOutput {
+	return i.ToGrafeasV1FileLocationOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1FileLocationArgs) ToGrafeasV1FileLocationOutputWithContext(ctx context.Context) GrafeasV1FileLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1FileLocationOutput)
+}
+
+// GrafeasV1FileLocationArrayInput is an input type that accepts GrafeasV1FileLocationArray and GrafeasV1FileLocationArrayOutput values.
+// You can construct a concrete instance of `GrafeasV1FileLocationArrayInput` via:
+//
+//          GrafeasV1FileLocationArray{ GrafeasV1FileLocationArgs{...} }
+type GrafeasV1FileLocationArrayInput interface {
+	pulumi.Input
+
+	ToGrafeasV1FileLocationArrayOutput() GrafeasV1FileLocationArrayOutput
+	ToGrafeasV1FileLocationArrayOutputWithContext(context.Context) GrafeasV1FileLocationArrayOutput
+}
+
+type GrafeasV1FileLocationArray []GrafeasV1FileLocationInput
+
+func (GrafeasV1FileLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafeasV1FileLocation)(nil)).Elem()
+}
+
+func (i GrafeasV1FileLocationArray) ToGrafeasV1FileLocationArrayOutput() GrafeasV1FileLocationArrayOutput {
+	return i.ToGrafeasV1FileLocationArrayOutputWithContext(context.Background())
+}
+
+func (i GrafeasV1FileLocationArray) ToGrafeasV1FileLocationArrayOutputWithContext(ctx context.Context) GrafeasV1FileLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafeasV1FileLocationArrayOutput)
+}
+
+// Indicates the location at which a package was found.
+type GrafeasV1FileLocationOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1FileLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1FileLocation)(nil)).Elem()
+}
+
+func (o GrafeasV1FileLocationOutput) ToGrafeasV1FileLocationOutput() GrafeasV1FileLocationOutput {
+	return o
+}
+
+func (o GrafeasV1FileLocationOutput) ToGrafeasV1FileLocationOutputWithContext(ctx context.Context) GrafeasV1FileLocationOutput {
+	return o
+}
+
+// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+func (o GrafeasV1FileLocationOutput) FilePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GrafeasV1FileLocation) *string { return v.FilePath }).(pulumi.StringPtrOutput)
+}
+
+type GrafeasV1FileLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1FileLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafeasV1FileLocation)(nil)).Elem()
+}
+
+func (o GrafeasV1FileLocationArrayOutput) ToGrafeasV1FileLocationArrayOutput() GrafeasV1FileLocationArrayOutput {
+	return o
+}
+
+func (o GrafeasV1FileLocationArrayOutput) ToGrafeasV1FileLocationArrayOutputWithContext(ctx context.Context) GrafeasV1FileLocationArrayOutput {
+	return o
+}
+
+func (o GrafeasV1FileLocationArrayOutput) Index(i pulumi.IntInput) GrafeasV1FileLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrafeasV1FileLocation {
+		return vs[0].([]GrafeasV1FileLocation)[vs[1].(int)]
+	}).(GrafeasV1FileLocationOutput)
+}
+
+// Indicates the location at which a package was found.
+type GrafeasV1FileLocationResponse struct {
+	// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+	FilePath string `pulumi:"filePath"`
+}
+
+// Indicates the location at which a package was found.
+type GrafeasV1FileLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1FileLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafeasV1FileLocationResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1FileLocationResponseOutput) ToGrafeasV1FileLocationResponseOutput() GrafeasV1FileLocationResponseOutput {
+	return o
+}
+
+func (o GrafeasV1FileLocationResponseOutput) ToGrafeasV1FileLocationResponseOutputWithContext(ctx context.Context) GrafeasV1FileLocationResponseOutput {
+	return o
+}
+
+// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+func (o GrafeasV1FileLocationResponseOutput) FilePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafeasV1FileLocationResponse) string { return v.FilePath }).(pulumi.StringOutput)
+}
+
+type GrafeasV1FileLocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GrafeasV1FileLocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GrafeasV1FileLocationResponse)(nil)).Elem()
+}
+
+func (o GrafeasV1FileLocationResponseArrayOutput) ToGrafeasV1FileLocationResponseArrayOutput() GrafeasV1FileLocationResponseArrayOutput {
+	return o
+}
+
+func (o GrafeasV1FileLocationResponseArrayOutput) ToGrafeasV1FileLocationResponseArrayOutputWithContext(ctx context.Context) GrafeasV1FileLocationResponseArrayOutput {
+	return o
+}
+
+func (o GrafeasV1FileLocationResponseArrayOutput) Index(i pulumi.IntInput) GrafeasV1FileLocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GrafeasV1FileLocationResponse {
+		return vs[0].([]GrafeasV1FileLocationResponse)[vs[1].(int)]
+	}).(GrafeasV1FileLocationResponseOutput)
+}
+
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type Hint struct {
 	// The human readable name of this attestation authority, for example "qa".
@@ -10121,6 +10267,8 @@ type PackageIssue struct {
 	AffectedPackage string `pulumi:"affectedPackage"`
 	// The version of the package that is installed on the resource affected by this vulnerability.
 	AffectedVersion Version `pulumi:"affectedVersion"`
+	// The location at which this package was found.
+	FileLocation []GrafeasV1FileLocation `pulumi:"fileLocation"`
 	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
 	FixedCpeUri *string `pulumi:"fixedCpeUri"`
 	// The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
@@ -10150,6 +10298,8 @@ type PackageIssueArgs struct {
 	AffectedPackage pulumi.StringInput `pulumi:"affectedPackage"`
 	// The version of the package that is installed on the resource affected by this vulnerability.
 	AffectedVersion VersionInput `pulumi:"affectedVersion"`
+	// The location at which this package was found.
+	FileLocation GrafeasV1FileLocationArrayInput `pulumi:"fileLocation"`
 	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
 	FixedCpeUri pulumi.StringPtrInput `pulumi:"fixedCpeUri"`
 	// The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
@@ -10227,6 +10377,11 @@ func (o PackageIssueOutput) AffectedVersion() VersionOutput {
 	return o.ApplyT(func(v PackageIssue) Version { return v.AffectedVersion }).(VersionOutput)
 }
 
+// The location at which this package was found.
+func (o PackageIssueOutput) FileLocation() GrafeasV1FileLocationArrayOutput {
+	return o.ApplyT(func(v PackageIssue) []GrafeasV1FileLocation { return v.FileLocation }).(GrafeasV1FileLocationArrayOutput)
+}
+
 // The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
 func (o PackageIssueOutput) FixedCpeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PackageIssue) *string { return v.FixedCpeUri }).(pulumi.StringPtrOutput)
@@ -10277,6 +10432,8 @@ type PackageIssueResponse struct {
 	AffectedVersion VersionResponse `pulumi:"affectedVersion"`
 	// The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
 	EffectiveSeverity string `pulumi:"effectiveSeverity"`
+	// The location at which this package was found.
+	FileLocation []GrafeasV1FileLocationResponse `pulumi:"fileLocation"`
 	// Whether a fix is available for this package.
 	FixAvailable bool `pulumi:"fixAvailable"`
 	// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
@@ -10322,6 +10479,11 @@ func (o PackageIssueResponseOutput) AffectedVersion() VersionResponseOutput {
 // The distro or language system assigned severity for this vulnerability when that is available and note provider assigned severity when it is not available.
 func (o PackageIssueResponseOutput) EffectiveSeverity() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageIssueResponse) string { return v.EffectiveSeverity }).(pulumi.StringOutput)
+}
+
+// The location at which this package was found.
+func (o PackageIssueResponseOutput) FileLocation() GrafeasV1FileLocationResponseArrayOutput {
+	return o.ApplyT(func(v PackageIssueResponse) []GrafeasV1FileLocationResponse { return v.FileLocation }).(GrafeasV1FileLocationResponseArrayOutput)
 }
 
 // Whether a fix is available for this package.
@@ -16031,6 +16193,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GerritSourceContextPtrInput)(nil)).Elem(), GerritSourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextInput)(nil)).Elem(), GitSourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GitSourceContextPtrInput)(nil)).Elem(), GitSourceContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1FileLocationInput)(nil)).Elem(), GrafeasV1FileLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GrafeasV1FileLocationArrayInput)(nil)).Elem(), GrafeasV1FileLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HintPtrInput)(nil)).Elem(), HintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityInput)(nil)).Elem(), IdentityArgs{})
@@ -16219,6 +16383,10 @@ func init() {
 	pulumi.RegisterOutputType(GitSourceContextOutput{})
 	pulumi.RegisterOutputType(GitSourceContextPtrOutput{})
 	pulumi.RegisterOutputType(GitSourceContextResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1FileLocationOutput{})
+	pulumi.RegisterOutputType(GrafeasV1FileLocationArrayOutput{})
+	pulumi.RegisterOutputType(GrafeasV1FileLocationResponseOutput{})
+	pulumi.RegisterOutputType(GrafeasV1FileLocationResponseArrayOutput{})
 	pulumi.RegisterOutputType(HintOutput{})
 	pulumi.RegisterOutputType(HintPtrOutput{})
 	pulumi.RegisterOutputType(HintResponseOutput{})

@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:metastore/v1beta:Backup":
 		r = &Backup{}
+	case "google-native:metastore/v1beta:Federation":
+		r = &Federation{}
+	case "google-native:metastore/v1beta:FederationIamPolicy":
+		r = &FederationIamPolicy{}
 	case "google-native:metastore/v1beta:MetadataImport":
 		r = &MetadataImport{}
 	case "google-native:metastore/v1beta:Service":

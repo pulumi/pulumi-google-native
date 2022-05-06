@@ -1002,6 +1002,8 @@ func (o EventFilterResponseArrayOutput) Index(i pulumi.IntInput) EventFilterResp
 
 // Describes EventTrigger, used to request events to be sent from another service.
 type EventTrigger struct {
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel *string `pulumi:"channel"`
 	// Criteria used to filter events.
 	EventFilters []EventFilter `pulumi:"eventFilters"`
 	// The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
@@ -1029,6 +1031,8 @@ type EventTriggerInput interface {
 
 // Describes EventTrigger, used to request events to be sent from another service.
 type EventTriggerArgs struct {
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
 	// Criteria used to filter events.
 	EventFilters EventFilterArrayInput `pulumi:"eventFilters"`
 	// The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
@@ -1121,6 +1125,11 @@ func (o EventTriggerOutput) ToEventTriggerPtrOutputWithContext(ctx context.Conte
 	}).(EventTriggerPtrOutput)
 }
 
+// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+func (o EventTriggerOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventTrigger) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
 // Criteria used to filter events.
 func (o EventTriggerOutput) EventFilters() EventFilterArrayOutput {
 	return o.ApplyT(func(v EventTrigger) []EventFilter { return v.EventFilters }).(EventFilterArrayOutput)
@@ -1173,6 +1182,16 @@ func (o EventTriggerPtrOutput) Elem() EventTriggerOutput {
 		var ret EventTrigger
 		return ret
 	}).(EventTriggerOutput)
+}
+
+// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+func (o EventTriggerPtrOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Criteria used to filter events.
@@ -1237,6 +1256,8 @@ func (o EventTriggerPtrOutput) TriggerRegion() pulumi.StringPtrOutput {
 
 // Describes EventTrigger, used to request events to be sent from another service.
 type EventTriggerResponse struct {
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel string `pulumi:"channel"`
 	// Criteria used to filter events.
 	EventFilters []EventFilterResponse `pulumi:"eventFilters"`
 	// The type of event to observe. For example: `google.cloud.audit.log.v1.written` or `google.cloud.pubsub.topic.v1.messagePublished`.
@@ -1266,6 +1287,11 @@ func (o EventTriggerResponseOutput) ToEventTriggerResponseOutput() EventTriggerR
 
 func (o EventTriggerResponseOutput) ToEventTriggerResponseOutputWithContext(ctx context.Context) EventTriggerResponseOutput {
 	return o
+}
+
+// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+func (o EventTriggerResponseOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v EventTriggerResponse) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 // Criteria used to filter events.
