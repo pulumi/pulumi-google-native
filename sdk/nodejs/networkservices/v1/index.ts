@@ -15,6 +15,10 @@ export * from "./getEdgeCacheOriginIamPolicy";
 export * from "./getEdgeCacheServiceIamPolicy";
 export * from "./getEndpointPolicy";
 export * from "./getEndpointPolicyIamPolicy";
+export * from "./getServiceBinding";
+export * from "./getServiceBindingIamPolicy";
+export * from "./serviceBinding";
+export * from "./serviceBindingIamPolicy";
 
 // Export enums:
 export * from "../../types/enums/networkservices/v1";
@@ -25,6 +29,8 @@ import { EdgeCacheOriginIamPolicy } from "./edgeCacheOriginIamPolicy";
 import { EdgeCacheServiceIamPolicy } from "./edgeCacheServiceIamPolicy";
 import { EndpointPolicy } from "./endpointPolicy";
 import { EndpointPolicyIamPolicy } from "./endpointPolicyIamPolicy";
+import { ServiceBinding } from "./serviceBinding";
+import { ServiceBindingIamPolicy } from "./serviceBindingIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
@@ -40,6 +46,10 @@ const _module = {
                 return new EndpointPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EndpointPolicyIamPolicy":
                 return new EndpointPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:ServiceBinding":
+                return new ServiceBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:ServiceBindingIamPolicy":
+                return new ServiceBindingIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

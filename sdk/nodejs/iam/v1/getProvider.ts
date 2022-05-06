@@ -63,6 +63,10 @@ export interface GetProviderResult {
      */
     readonly oidc: outputs.iam.v1.OidcResponse;
     /**
+     * An SAML 2.0 identity provider.
+     */
+    readonly saml: outputs.iam.v1.SamlResponse;
+    /**
      * The state of the provider.
      */
     readonly state: string;

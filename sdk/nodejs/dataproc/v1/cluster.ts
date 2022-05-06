@@ -69,7 +69,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusHistory!: pulumi.Output<outputs.dataproc.v1.ClusterStatusResponse[]>;
     /**
-     * Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+     * Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
      */
     public readonly virtualClusterConfig!: pulumi.Output<outputs.dataproc.v1.VirtualClusterConfigResponse>;
 
@@ -148,7 +148,7 @@ export interface ClusterArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * Optional. The virtual cluster config, used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster). Note that Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtualClusterConfig must be specified.
+     * Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
      */
     virtualClusterConfig?: pulumi.Input<inputs.dataproc.v1.VirtualClusterConfigArgs>;
 }

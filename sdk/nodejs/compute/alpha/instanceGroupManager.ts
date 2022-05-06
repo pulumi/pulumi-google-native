@@ -36,7 +36,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the instances configs overrides that should be applied for all instances in the MIG.
+     * Specifies configuration that overrides the instance template configuration for the group.
      */
     public readonly allInstancesConfig!: pulumi.Output<outputs.compute.alpha.InstanceGroupManagerAllInstancesConfigResponse>;
     /**
@@ -241,7 +241,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
  */
 export interface InstanceGroupManagerArgs {
     /**
-     * Specifies the instances configs overrides that should be applied for all instances in the MIG.
+     * Specifies configuration that overrides the instance template configuration for the group.
      */
     allInstancesConfig?: pulumi.Input<inputs.compute.alpha.InstanceGroupManagerAllInstancesConfigArgs>;
     /**

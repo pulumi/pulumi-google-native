@@ -257,6 +257,22 @@ export const NetworkConfigPrivateIpv6GoogleAccess = {
  */
 export type NetworkConfigPrivateIpv6GoogleAccess = (typeof NetworkConfigPrivateIpv6GoogleAccess)[keyof typeof NetworkConfigPrivateIpv6GoogleAccess];
 
+export const NetworkPerformanceConfigTotalEgressBandwidthTier = {
+    /**
+     * Default value
+     */
+    TierUnspecified: "TIER_UNSPECIFIED",
+    /**
+     * Higher bandwidth, actual values based on VM size.
+     */
+    Tier1: "TIER_1",
+} as const;
+
+/**
+ * Specifies the total network bandwidth tier for the NodePool.
+ */
+export type NetworkPerformanceConfigTotalEgressBandwidthTier = (typeof NetworkPerformanceConfigTotalEgressBandwidthTier)[keyof typeof NetworkPerformanceConfigTotalEgressBandwidthTier];
+
 export const NetworkPolicyProvider = {
     /**
      * Not set

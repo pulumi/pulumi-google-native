@@ -231,6 +231,10 @@ export const ScanConfigTargetPlatformsItem = {
      * Google Compute Engine service.
      */
     Compute: "COMPUTE",
+    /**
+     * Google Cloud Run service.
+     */
+    CloudRun: "CLOUD_RUN",
 } as const;
 
 export type ScanConfigTargetPlatformsItem = (typeof ScanConfigTargetPlatformsItem)[keyof typeof ScanConfigTargetPlatformsItem];

@@ -85,3 +85,23 @@ export const GoogleCloudChannelV1RenewalSettingsPaymentPlan = {
  * Describes how a reseller will be billed.
  */
 export type GoogleCloudChannelV1RenewalSettingsPaymentPlan = (typeof GoogleCloudChannelV1RenewalSettingsPaymentPlan)[keyof typeof GoogleCloudChannelV1RenewalSettingsPaymentPlan];
+
+export const GoogleCloudChannelV1RepricingConfigRebillingBasis = {
+    /**
+     * Not used.
+     */
+    RebillingBasisUnspecified: "REBILLING_BASIS_UNSPECIFIED",
+    /**
+     * Use the list cost, also known as the MSRP.
+     */
+    CostAtList: "COST_AT_LIST",
+    /**
+     * Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
+     */
+    DirectCustomerCost: "DIRECT_CUSTOMER_COST",
+} as const;
+
+/**
+ * Required. The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
+ */
+export type GoogleCloudChannelV1RepricingConfigRebillingBasis = (typeof GoogleCloudChannelV1RepricingConfigRebillingBasis)[keyof typeof GoogleCloudChannelV1RepricingConfigRebillingBasis];

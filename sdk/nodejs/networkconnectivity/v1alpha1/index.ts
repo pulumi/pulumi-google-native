@@ -5,17 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./connectionPolicyIamPolicy";
+export * from "./getConnectionPolicyIamPolicy";
 export * from "./getHub";
 export * from "./getHubIamPolicy";
 export * from "./getInternalRangeIamPolicy";
-export * from "./getServiceConnectPolicyIamPolicy";
 export * from "./getServiceInstanceIamPolicy";
 export * from "./getSpoke";
 export * from "./getSpokeIamPolicy";
 export * from "./hub";
 export * from "./hubIamPolicy";
 export * from "./internalRangeIamPolicy";
-export * from "./serviceConnectPolicyIamPolicy";
 export * from "./serviceInstanceIamPolicy";
 export * from "./spoke";
 export * from "./spokeIamPolicy";
@@ -24,10 +24,10 @@ export * from "./spokeIamPolicy";
 export * from "../../types/enums/networkconnectivity/v1alpha1";
 
 // Import resources to register:
+import { ConnectionPolicyIamPolicy } from "./connectionPolicyIamPolicy";
 import { Hub } from "./hub";
 import { HubIamPolicy } from "./hubIamPolicy";
 import { InternalRangeIamPolicy } from "./internalRangeIamPolicy";
-import { ServiceConnectPolicyIamPolicy } from "./serviceConnectPolicyIamPolicy";
 import { ServiceInstanceIamPolicy } from "./serviceInstanceIamPolicy";
 import { Spoke } from "./spoke";
 import { SpokeIamPolicy } from "./spokeIamPolicy";
@@ -36,14 +36,14 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:networkconnectivity/v1alpha1:ConnectionPolicyIamPolicy":
+                return new ConnectionPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:Hub":
                 return new Hub(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:HubIamPolicy":
                 return new HubIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
                 return new InternalRangeIamPolicy(name, <any>undefined, { urn })
-            case "google-native:networkconnectivity/v1alpha1:ServiceConnectPolicyIamPolicy":
-                return new ServiceConnectPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:ServiceInstanceIamPolicy":
                 return new ServiceInstanceIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1alpha1:Spoke":

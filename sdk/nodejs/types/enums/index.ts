@@ -3,6 +3,7 @@
 
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager";
+import * as analyticshub from "./analyticshub";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
 import * as appengine from "./appengine";
@@ -103,6 +104,7 @@ import * as workflowexecutions from "./workflowexecutions";
 
 export {
     accesscontextmanager,
+    analyticshub,
     apigateway,
     apigee,
     appengine,

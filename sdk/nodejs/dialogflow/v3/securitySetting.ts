@@ -36,6 +36,10 @@ export class SecuritySetting extends pulumi.CustomResource {
     }
 
     /**
+     * Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
+     */
+    public readonly audioExportSettings!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse>;
+    /**
      * [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
      */
     public readonly deidentifyTemplate!: pulumi.Output<string>;
@@ -86,6 +90,7 @@ export class SecuritySetting extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["audioExportSettings"] = args ? args.audioExportSettings : undefined;
             resourceInputs["deidentifyTemplate"] = args ? args.deidentifyTemplate : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["insightsExportSettings"] = args ? args.insightsExportSettings : undefined;
@@ -98,6 +103,7 @@ export class SecuritySetting extends pulumi.CustomResource {
             resourceInputs["redactionStrategy"] = args ? args.redactionStrategy : undefined;
             resourceInputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
         } else {
+            resourceInputs["audioExportSettings"] = undefined /*out*/;
             resourceInputs["deidentifyTemplate"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["insightsExportSettings"] = undefined /*out*/;
@@ -117,6 +123,10 @@ export class SecuritySetting extends pulumi.CustomResource {
  * The set of arguments for constructing a SecuritySetting resource.
  */
 export interface SecuritySettingArgs {
+    /**
+     * Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
+     */
+    audioExportSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs>;
     /**
      * [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. The `DLP De-identify Templates Reader` role is needed on the Dialogflow service identity service account (has the form `service-PROJECT_NUMBER@gcp-sa-dialogflow.iam.gserviceaccount.com`) for your agent's project. If empty, Dialogflow replaces sensitive info with `[redacted]` text. The template name will have one of the following formats: `projects//locations//deidentifyTemplates/` OR `organizations//locations//deidentifyTemplates/` Note: `deidentify_template` must be located in the same region as the `SecuritySettings`.
      */

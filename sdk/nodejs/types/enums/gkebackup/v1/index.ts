@@ -48,7 +48,7 @@ export type RestoreConfigClusterResourceConflictPolicy = (typeof RestoreConfigCl
 
 export const RestoreConfigNamespacedResourceRestoreMode = {
     /**
-     * Unspecified. Only allowed if no namespaced resources will be restored.
+     * Unspecified (invalid).
      */
     NamespacedResourceRestoreModeUnspecified: "NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED",
     /**
@@ -62,13 +62,13 @@ export const RestoreConfigNamespacedResourceRestoreMode = {
 } as const;
 
 /**
- * Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED if any namespaced restoration is configured via namespaced_resource_restore_scope .
+ * Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
  */
 export type RestoreConfigNamespacedResourceRestoreMode = (typeof RestoreConfigNamespacedResourceRestoreMode)[keyof typeof RestoreConfigNamespacedResourceRestoreMode];
 
 export const RestoreConfigVolumeDataRestorePolicy = {
     /**
-     * unspecified, default value
+     * Unspecified (illegal).
      */
     VolumeDataRestorePolicyUnspecified: "VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED",
     /**

@@ -134,6 +134,10 @@ export const AddressPurpose = {
      */
     PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
     /**
+     * A regional internal IP address range reserved for Serverless.
+     */
+    Serverless: "SERVERLESS",
+    /**
      * A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
      */
     SharedLoadbalancerVip: "SHARED_LOADBALANCER_VIP",
@@ -861,6 +865,26 @@ export const ConditionSys = {
  */
 export type ConditionSys = (typeof ConditionSys)[keyof typeof ConditionSys];
 
+export const ConfidentialInstanceConfigConfidentialInstanceType = {
+    /**
+     * No type specified. Do not use this value.
+     */
+    ConfidentialInstanceTypeUnspecified: "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED",
+    /**
+     * AMD Secure Encrypted Virtualization.
+     */
+    Sev: "SEV",
+    /**
+     * AMD Secure Encrypted Virtualization - Secure Nested Paging.
+     */
+    SevSnp: "SEV_SNP",
+} as const;
+
+/**
+ * Defines the type of technology used by the confidential instance.
+ */
+export type ConfidentialInstanceConfigConfidentialInstanceType = (typeof ConfidentialInstanceConfigConfidentialInstanceType)[keyof typeof ConfidentialInstanceConfigConfidentialInstanceType];
+
 export const DeprecationStatusState = {
     Active: "ACTIVE",
     Deleted: "DELETED",
@@ -1258,6 +1282,10 @@ export const GlobalAddressPurpose = {
      */
     PrivateServiceConnect: "PRIVATE_SERVICE_CONNECT",
     /**
+     * A regional internal IP address range reserved for Serverless.
+     */
+    Serverless: "SERVERLESS",
+    /**
      * A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
      */
     SharedLoadbalancerVip: "SHARED_LOADBALANCER_VIP",
@@ -1422,6 +1450,7 @@ export const GuestOsFeatureType = {
     MultiIpSubnet: "MULTI_IP_SUBNET",
     SecureBoot: "SECURE_BOOT",
     SevCapable: "SEV_CAPABLE",
+    SevSnpCapable: "SEV_SNP_CAPABLE",
     UefiCompatible: "UEFI_COMPATIBLE",
     VirtioScsiMultiqueue: "VIRTIO_SCSI_MULTIQUEUE",
     Windows: "WINDOWS",
@@ -2676,6 +2705,7 @@ export const RegionCommitmentType = {
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
     GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
     MemoryOptimized: "MEMORY_OPTIMIZED",
+    MemoryOptimizedM3: "MEMORY_OPTIMIZED_M3",
     TypeUnspecified: "TYPE_UNSPECIFIED",
 } as const;
 

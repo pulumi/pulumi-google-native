@@ -5,8 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getJob";
+export * from "./getJobIamPolicy";
 export * from "./getService";
 export * from "./getServiceIamPolicy";
+export * from "./job";
+export * from "./jobIamPolicy";
 export * from "./service";
 export * from "./serviceIamPolicy";
 
@@ -14,6 +18,8 @@ export * from "./serviceIamPolicy";
 export * from "../../types/enums/run/v2";
 
 // Import resources to register:
+import { Job } from "./job";
+import { JobIamPolicy } from "./jobIamPolicy";
 import { Service } from "./service";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
 
@@ -21,6 +27,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:run/v2:Job":
+                return new Job(name, <any>undefined, { urn })
+            case "google-native:run/v2:JobIamPolicy":
+                return new JobIamPolicy(name, <any>undefined, { urn })
             case "google-native:run/v2:Service":
                 return new Service(name, <any>undefined, { urn })
             case "google-native:run/v2:ServiceIamPolicy":

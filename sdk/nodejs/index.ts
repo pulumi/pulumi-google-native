@@ -9,8 +9,10 @@ export * from "./provider";
 
 // Export sub-modules:
 import * as accesscontextmanager from "./accesscontextmanager";
+import * as analyticshub from "./analyticshub";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
+import * as apigeeregistry from "./apigeeregistry";
 import * as apikeys from "./apikeys";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
@@ -132,8 +134,10 @@ import * as workflows from "./workflows";
 
 export {
     accesscontextmanager,
+    analyticshub,
     apigateway,
     apigee,
+    apigeeregistry,
     apikeys,
     appengine,
     artifactregistry,

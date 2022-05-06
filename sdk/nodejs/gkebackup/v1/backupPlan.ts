@@ -45,15 +45,15 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly backupSchedule!: pulumi.Output<outputs.gkebackup.v1.ScheduleResponse>;
     /**
-     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
-     * The timestamp when this BackupPlan resource was created - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+     * The timestamp when this BackupPlan resource was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
      */
     public readonly deactivated!: pulumi.Output<boolean>;
     /**
@@ -61,7 +61,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` to ensure that their change will be applied to the same version.
+     * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a backup plan from overwriting each other. It is strongly suggested that systems make use of the 'etag' in the read-modify-write cycle to perform BackupPlan updates in order to avoid race conditions: An `etag` is returned in the response to `GetBackupPlan`, and systems are expected to put that etag in the request to `UpdateBackupPlan` or `DeleteBackupPlan` to ensure that their change will be applied to the same version of the resource.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
@@ -73,7 +73,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Represents the number of Kubernetes Pods backed up in the last successful Backup created underneath this BackupPlan.
+     * The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
      */
     public /*out*/ readonly protectedPodCount!: pulumi.Output<number>;
     /**
@@ -85,7 +85,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * The timestamp when this BackupPlan resource was last updated - can be converted to and from [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+     * The timestamp when this BackupPlan resource was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -151,7 +151,7 @@ export interface BackupPlanArgs {
      */
     backupConfig?: pulumi.Input<inputs.gkebackup.v1.BackupConfigArgs>;
     /**
-     * Required. The client-provided short name for the BackupPlan resource. This name must: a. be between 1 and 63 characters long (inclusive) b. consist of only lower-case ASCII letters, numbers, and dashes c. start with a lower-case letter d. end with a lower-case letter or number e. be unique within the set of BackupPlans in this location
+     * Required. The client-provided short name for the BackupPlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of BackupPlans in this location
      */
     backupPlanId: pulumi.Input<string>;
     /**
@@ -159,11 +159,11 @@ export interface BackupPlanArgs {
      */
     backupSchedule?: pulumi.Input<inputs.gkebackup.v1.ScheduleArgs>;
     /**
-     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Possible formats: 1. projects/*&#47;locations/*&#47;clusters/* 2. projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
      */
     cluster: pulumi.Input<string>;
     /**
-     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed, including the deactivated field. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
+     * This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled Backups). Default: False
      */
     deactivated?: pulumi.Input<boolean>;
     /**
