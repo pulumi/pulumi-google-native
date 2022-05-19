@@ -2,6 +2,11 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
+
+
+## 0.19.0 (2022-05-19)
+
 - Update discovery docs
 
 ** BUG FIXES **
