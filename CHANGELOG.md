@@ -3,6 +3,10 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 - Update discovery docs
+
+** BUG FIXES **
+- Disable autonaming for certain resources [#291](https://github.com/pulumi/pulumi-google-native/issues/291)
+
 ** BREAKING CHANGES **
 - Resource `google-native:bigquery/v2:Dataset` - output `satisfiesPZS` was renamed
 - Function `google-native:bigquery/v2:getDataset` output `satisfiesPZS` was renamed
