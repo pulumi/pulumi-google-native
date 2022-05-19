@@ -11,6 +11,7 @@ CHANGELOG
 
 ** BUG FIXES **
 - Disable autonaming for certain resources [#291](https://github.com/pulumi/pulumi-google-native/issues/291)
+- Revert "use sequence numbers to generate deterministic autonames" [#435](https://github.com/pulumi/pulumi-google-native/pull/435)
 
 ** BREAKING CHANGES **
 - Resource `google-native:bigquery/v2:Dataset` - output `satisfiesPZS` was renamed
