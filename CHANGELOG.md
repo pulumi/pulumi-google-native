@@ -8,6 +8,12 @@ CHANGELOG
 - Function `google-native:bigquery/v2:getDataset` output `satisfiesPZS` was renamed
 - Resource `google-native:networkservices/v1beta1:TcpRoute` missing input `gateways`
 - Resource `google-native:networkservices/v1beta1:TcpRoute` missing output `gateways`
+- Resource `google-native:baremetalsolution/v2:Snapshot` was removed
+- Resource `google-native:metastore/v1alpha:Federation` was removed
+- Resource `google-native:baremetalsolution/v2:SnapshotSchedulePolicy` was removed
+- Function `google-native:metastore/v1alpha:getFederation` was removed
+- Function `google-native:baremetalsolution/v2:getSnapshotSchedulePolicy` was removed
+- Function `google-native:baremetalsolution/v2:getSnapshot` was removed
 - Type `google-native:bigquery/v2:TableFieldSchemaResponse`  `collationSpec` renamed to `collation`
 - Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplate` property `confidential` removed
 - Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplate` property `containerConcurrency` renamed to `maxInstanceRequestConcurrency`
@@ -18,6 +24,13 @@ CHANGELOG
 - Type `google-native:bigquery/v2:TableFieldSchema` property `collationSpec` renamed to `collation`
 - Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplateResponse` property `confidential` removed
 - Type `google-native:run/v2:GoogleCloudRunV2RevisionTemplateResponse`  property `containerConcurrency` renamed to `maxInstanceRequestConcurrency`
+- Type `google-native:networkmanagement/v1beta1:StepResponse` missing property `appEngineVersionInfo`
+- Type `google-native:baremetalsolution/v2:Schedule` was removed
+- Type `google-native:baremetalsolution/v2:ScheduleResponse` was removed
+- Type `google-native:compute/alpha:InstanceGroupManagerAutoHealingPolicyUpdateInstances` was removed
+- Type `google-native:baremetalsolution/v2:SnapshotSchedulePolicyState` was removed
+- Type `google-native:compute/alpha:InstanceGroupManagerAutoHealingPolicy` property `updateInstances`
+- Type `google-native:compute/alpha:InstanceGroupManagerAutoHealingPolicyResponse` missing property `updateInstances`
 
 
 ## 0.18.2 (2022-05-02)
