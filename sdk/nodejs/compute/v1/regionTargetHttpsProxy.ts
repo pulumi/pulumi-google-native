@@ -40,6 +40,10 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly authorizationPolicy!: pulumi.Output<string>;
     /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    public readonly certificateMap!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -107,6 +111,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["authorizationPolicy"] = args ? args.authorizationPolicy : undefined;
+            resourceInputs["certificateMap"] = args ? args.certificateMap : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -124,6 +129,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
         } else {
             resourceInputs["authorizationPolicy"] = undefined /*out*/;
+            resourceInputs["certificateMap"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -151,6 +157,10 @@ export interface RegionTargetHttpsProxyArgs {
      * Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
      */
     authorizationPolicy?: pulumi.Input<string>;
+    /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    certificateMap?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

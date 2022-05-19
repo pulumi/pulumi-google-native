@@ -18,6 +18,7 @@ class TcpRouteArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteRuleArgs']]],
                  tcp_route_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -28,6 +29,7 @@ class TcpRouteArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TcpRouteRouteRuleArgs']]] rules: Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
         :param pulumi.Input[str] tcp_route_id: Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the TcpRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
@@ -36,6 +38,8 @@ class TcpRouteArgs:
         pulumi.set(__self__, "tcp_route_id", tcp_route_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateways is not None:
+            pulumi.set(__self__, "gateways", gateways)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -82,6 +86,18 @@ class TcpRouteArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        """
+        return pulumi.get(self, "gateways")
+
+    @gateways.setter
+    def gateways(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "gateways", value)
 
     @property
     @pulumi.getter
@@ -144,6 +160,7 @@ class TcpRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -158,6 +175,7 @@ class TcpRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateways: Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the TcpRoute resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] meshes: Optional. Meshes defines a list of meshes this TcpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
         :param pulumi.Input[str] name: Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`.
@@ -189,6 +207,7 @@ class TcpRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateways: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  meshes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -209,6 +228,7 @@ class TcpRoute(pulumi.CustomResource):
             __props__ = TcpRouteArgs.__new__(TcpRouteArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["gateways"] = gateways
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["meshes"] = meshes
@@ -247,6 +267,7 @@ class TcpRoute(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["gateways"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["meshes"] = None
         __props__.__dict__["name"] = None
@@ -270,6 +291,14 @@ class TcpRoute(pulumi.CustomResource):
         Optional. A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def gateways(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
+        """
+        return pulumi.get(self, "gateways")
 
     @property
     @pulumi.getter

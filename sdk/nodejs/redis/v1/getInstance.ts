@@ -77,6 +77,10 @@ export interface GetInstanceResult {
      */
     readonly maintenanceSchedule: outputs.redis.v1.MaintenanceScheduleResponse;
     /**
+     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+     */
+    readonly maintenanceVersion: string;
+    /**
      * Redis memory size in GiB.
      */
     readonly memorySizeGb: number;

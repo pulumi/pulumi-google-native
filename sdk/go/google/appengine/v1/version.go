@@ -18,7 +18,7 @@ type Version struct {
 
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponseOutput `pulumi:"apiConfig"`
-	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolOutput `pulumi:"appEngineApis"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
 	AutomaticScaling AutomaticScalingResponseOutput `pulumi:"automaticScaling"`
@@ -145,7 +145,7 @@ func (VersionState) ElementType() reflect.Type {
 type versionArgs struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig *ApiConfigHandler `pulumi:"apiConfig"`
-	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis *bool  `pulumi:"appEngineApis"`
 	AppId         string `pulumi:"appId"`
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
@@ -223,7 +223,7 @@ type versionArgs struct {
 type VersionArgs struct {
 	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerPtrInput
-	// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolPtrInput
 	AppId         pulumi.StringInput
 	// Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
@@ -339,7 +339,7 @@ func (o VersionOutput) ApiConfig() ApiConfigHandlerResponseOutput {
 	return o.ApplyT(func(v *Version) ApiConfigHandlerResponseOutput { return v.ApiConfig }).(ApiConfigHandlerResponseOutput)
 }
 
-// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+// Allows App Engine second generation runtimes to access the legacy bundled services.
 func (o VersionOutput) AppEngineApis() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Version) pulumi.BoolOutput { return v.AppEngineApis }).(pulumi.BoolOutput)
 }

@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         public readonly bool EnableDynamicPortAllocation;
         public readonly bool EnableEndpointIndependentMapping;
         /// <summary>
-        /// List of Natted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        /// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
         /// </summary>
         public readonly ImmutableArray<string> EndpointTypes;
         /// <summary>

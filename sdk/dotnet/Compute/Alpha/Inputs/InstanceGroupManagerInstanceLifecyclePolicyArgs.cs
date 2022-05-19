@@ -13,6 +13,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class InstanceGroupManagerInstanceLifecyclePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+        /// </summary>
+        [Input("forceUpdateOnRepair")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair>? ForceUpdateOnRepair { get; set; }
+
+        /// <summary>
         /// The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them.
         /// </summary>
         [Input("metadataBasedReadinessSignal")]

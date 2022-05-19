@@ -44,6 +44,10 @@ export class TcpRoute extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*&#47;locations/global/gateways/`
+     */
+    public readonly gateways!: pulumi.Output<string[]>;
+    /**
      * Optional. Set of label tags associated with the TcpRoute resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -86,6 +90,7 @@ export class TcpRoute extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tcpRouteId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gateways"] = args ? args.gateways : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["meshes"] = args ? args.meshes : undefined;
@@ -99,6 +104,7 @@ export class TcpRoute extends pulumi.CustomResource {
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["gateways"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["meshes"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -119,6 +125,10 @@ export interface TcpRouteArgs {
      * Optional. A free-text description of the resource. Max length 1024 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Gateways defines a list of gateways this TcpRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*&#47;locations/global/gateways/`
+     */
+    gateways?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Optional. Set of label tags associated with the TcpRoute resource.
      */

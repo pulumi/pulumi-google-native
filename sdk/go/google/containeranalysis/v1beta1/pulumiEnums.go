@@ -350,6 +350,1555 @@ func (in *buildSignatureKeyTypePtr) ToBuildSignatureKeyTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(BuildSignatureKeyTypePtrOutput)
 }
 
+// Defined in CVSS v3, CVSS v2
+type CVSSAttackComplexity string
+
+const (
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackComplexityAttackComplexityUnspecified = CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackComplexityAttackComplexityLow = CVSSAttackComplexity("ATTACK_COMPLEXITY_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackComplexityAttackComplexityHigh = CVSSAttackComplexity("ATTACK_COMPLEXITY_HIGH")
+	// Defined in CVSS v2
+	CVSSAttackComplexityAttackComplexityMedium = CVSSAttackComplexity("ATTACK_COMPLEXITY_MEDIUM")
+)
+
+func (CVSSAttackComplexity) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAttackComplexity)(nil)).Elem()
+}
+
+func (e CVSSAttackComplexity) ToCVSSAttackComplexityOutput() CVSSAttackComplexityOutput {
+	return pulumi.ToOutput(e).(CVSSAttackComplexityOutput)
+}
+
+func (e CVSSAttackComplexity) ToCVSSAttackComplexityOutputWithContext(ctx context.Context) CVSSAttackComplexityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSAttackComplexityOutput)
+}
+
+func (e CVSSAttackComplexity) ToCVSSAttackComplexityPtrOutput() CVSSAttackComplexityPtrOutput {
+	return e.ToCVSSAttackComplexityPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAttackComplexity) ToCVSSAttackComplexityPtrOutputWithContext(ctx context.Context) CVSSAttackComplexityPtrOutput {
+	return CVSSAttackComplexity(e).ToCVSSAttackComplexityOutputWithContext(ctx).ToCVSSAttackComplexityPtrOutputWithContext(ctx)
+}
+
+func (e CVSSAttackComplexity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAttackComplexity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAttackComplexity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAttackComplexity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSAttackComplexityOutput struct{ *pulumi.OutputState }
+
+func (CVSSAttackComplexityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAttackComplexity)(nil)).Elem()
+}
+
+func (o CVSSAttackComplexityOutput) ToCVSSAttackComplexityOutput() CVSSAttackComplexityOutput {
+	return o
+}
+
+func (o CVSSAttackComplexityOutput) ToCVSSAttackComplexityOutputWithContext(ctx context.Context) CVSSAttackComplexityOutput {
+	return o
+}
+
+func (o CVSSAttackComplexityOutput) ToCVSSAttackComplexityPtrOutput() CVSSAttackComplexityPtrOutput {
+	return o.ToCVSSAttackComplexityPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackComplexityOutput) ToCVSSAttackComplexityPtrOutputWithContext(ctx context.Context) CVSSAttackComplexityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSAttackComplexity) *CVSSAttackComplexity {
+		return &v
+	}).(CVSSAttackComplexityPtrOutput)
+}
+
+func (o CVSSAttackComplexityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackComplexityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAttackComplexity) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSAttackComplexityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackComplexityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAttackComplexity) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSAttackComplexityPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSAttackComplexityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSAttackComplexity)(nil)).Elem()
+}
+
+func (o CVSSAttackComplexityPtrOutput) ToCVSSAttackComplexityPtrOutput() CVSSAttackComplexityPtrOutput {
+	return o
+}
+
+func (o CVSSAttackComplexityPtrOutput) ToCVSSAttackComplexityPtrOutputWithContext(ctx context.Context) CVSSAttackComplexityPtrOutput {
+	return o
+}
+
+func (o CVSSAttackComplexityPtrOutput) Elem() CVSSAttackComplexityOutput {
+	return o.ApplyT(func(v *CVSSAttackComplexity) CVSSAttackComplexity {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSAttackComplexity
+		return ret
+	}).(CVSSAttackComplexityOutput)
+}
+
+func (o CVSSAttackComplexityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackComplexityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSAttackComplexity) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSAttackComplexityInput is an input type that accepts CVSSAttackComplexityArgs and CVSSAttackComplexityOutput values.
+// You can construct a concrete instance of `CVSSAttackComplexityInput` via:
+//
+//          CVSSAttackComplexityArgs{...}
+type CVSSAttackComplexityInput interface {
+	pulumi.Input
+
+	ToCVSSAttackComplexityOutput() CVSSAttackComplexityOutput
+	ToCVSSAttackComplexityOutputWithContext(context.Context) CVSSAttackComplexityOutput
+}
+
+var cvssattackComplexityPtrType = reflect.TypeOf((**CVSSAttackComplexity)(nil)).Elem()
+
+type CVSSAttackComplexityPtrInput interface {
+	pulumi.Input
+
+	ToCVSSAttackComplexityPtrOutput() CVSSAttackComplexityPtrOutput
+	ToCVSSAttackComplexityPtrOutputWithContext(context.Context) CVSSAttackComplexityPtrOutput
+}
+
+type cvssattackComplexityPtr string
+
+func CVSSAttackComplexityPtr(v string) CVSSAttackComplexityPtrInput {
+	return (*cvssattackComplexityPtr)(&v)
+}
+
+func (*cvssattackComplexityPtr) ElementType() reflect.Type {
+	return cvssattackComplexityPtrType
+}
+
+func (in *cvssattackComplexityPtr) ToCVSSAttackComplexityPtrOutput() CVSSAttackComplexityPtrOutput {
+	return pulumi.ToOutput(in).(CVSSAttackComplexityPtrOutput)
+}
+
+func (in *cvssattackComplexityPtr) ToCVSSAttackComplexityPtrOutputWithContext(ctx context.Context) CVSSAttackComplexityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSAttackComplexityPtrOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+type CVSSAttackVector string
+
+const (
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorUnspecified = CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorNetwork = CVSSAttackVector("ATTACK_VECTOR_NETWORK")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorAdjacent = CVSSAttackVector("ATTACK_VECTOR_ADJACENT")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAttackVectorAttackVectorLocal = CVSSAttackVector("ATTACK_VECTOR_LOCAL")
+	// Defined in CVSS v3
+	CVSSAttackVectorAttackVectorPhysical = CVSSAttackVector("ATTACK_VECTOR_PHYSICAL")
+)
+
+func (CVSSAttackVector) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAttackVector)(nil)).Elem()
+}
+
+func (e CVSSAttackVector) ToCVSSAttackVectorOutput() CVSSAttackVectorOutput {
+	return pulumi.ToOutput(e).(CVSSAttackVectorOutput)
+}
+
+func (e CVSSAttackVector) ToCVSSAttackVectorOutputWithContext(ctx context.Context) CVSSAttackVectorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSAttackVectorOutput)
+}
+
+func (e CVSSAttackVector) ToCVSSAttackVectorPtrOutput() CVSSAttackVectorPtrOutput {
+	return e.ToCVSSAttackVectorPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAttackVector) ToCVSSAttackVectorPtrOutputWithContext(ctx context.Context) CVSSAttackVectorPtrOutput {
+	return CVSSAttackVector(e).ToCVSSAttackVectorOutputWithContext(ctx).ToCVSSAttackVectorPtrOutputWithContext(ctx)
+}
+
+func (e CVSSAttackVector) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAttackVector) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAttackVector) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAttackVector) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSAttackVectorOutput struct{ *pulumi.OutputState }
+
+func (CVSSAttackVectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAttackVector)(nil)).Elem()
+}
+
+func (o CVSSAttackVectorOutput) ToCVSSAttackVectorOutput() CVSSAttackVectorOutput {
+	return o
+}
+
+func (o CVSSAttackVectorOutput) ToCVSSAttackVectorOutputWithContext(ctx context.Context) CVSSAttackVectorOutput {
+	return o
+}
+
+func (o CVSSAttackVectorOutput) ToCVSSAttackVectorPtrOutput() CVSSAttackVectorPtrOutput {
+	return o.ToCVSSAttackVectorPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackVectorOutput) ToCVSSAttackVectorPtrOutputWithContext(ctx context.Context) CVSSAttackVectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSAttackVector) *CVSSAttackVector {
+		return &v
+	}).(CVSSAttackVectorPtrOutput)
+}
+
+func (o CVSSAttackVectorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackVectorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAttackVector) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSAttackVectorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackVectorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAttackVector) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSAttackVectorPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSAttackVectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSAttackVector)(nil)).Elem()
+}
+
+func (o CVSSAttackVectorPtrOutput) ToCVSSAttackVectorPtrOutput() CVSSAttackVectorPtrOutput {
+	return o
+}
+
+func (o CVSSAttackVectorPtrOutput) ToCVSSAttackVectorPtrOutputWithContext(ctx context.Context) CVSSAttackVectorPtrOutput {
+	return o
+}
+
+func (o CVSSAttackVectorPtrOutput) Elem() CVSSAttackVectorOutput {
+	return o.ApplyT(func(v *CVSSAttackVector) CVSSAttackVector {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSAttackVector
+		return ret
+	}).(CVSSAttackVectorOutput)
+}
+
+func (o CVSSAttackVectorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAttackVectorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSAttackVector) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSAttackVectorInput is an input type that accepts CVSSAttackVectorArgs and CVSSAttackVectorOutput values.
+// You can construct a concrete instance of `CVSSAttackVectorInput` via:
+//
+//          CVSSAttackVectorArgs{...}
+type CVSSAttackVectorInput interface {
+	pulumi.Input
+
+	ToCVSSAttackVectorOutput() CVSSAttackVectorOutput
+	ToCVSSAttackVectorOutputWithContext(context.Context) CVSSAttackVectorOutput
+}
+
+var cvssattackVectorPtrType = reflect.TypeOf((**CVSSAttackVector)(nil)).Elem()
+
+type CVSSAttackVectorPtrInput interface {
+	pulumi.Input
+
+	ToCVSSAttackVectorPtrOutput() CVSSAttackVectorPtrOutput
+	ToCVSSAttackVectorPtrOutputWithContext(context.Context) CVSSAttackVectorPtrOutput
+}
+
+type cvssattackVectorPtr string
+
+func CVSSAttackVectorPtr(v string) CVSSAttackVectorPtrInput {
+	return (*cvssattackVectorPtr)(&v)
+}
+
+func (*cvssattackVectorPtr) ElementType() reflect.Type {
+	return cvssattackVectorPtrType
+}
+
+func (in *cvssattackVectorPtr) ToCVSSAttackVectorPtrOutput() CVSSAttackVectorPtrOutput {
+	return pulumi.ToOutput(in).(CVSSAttackVectorPtrOutput)
+}
+
+func (in *cvssattackVectorPtr) ToCVSSAttackVectorPtrOutputWithContext(ctx context.Context) CVSSAttackVectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSAttackVectorPtrOutput)
+}
+
+// Defined in CVSS v2
+type CVSSAuthentication string
+
+const (
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationUnspecified = CVSSAuthentication("AUTHENTICATION_UNSPECIFIED")
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationMultiple = CVSSAuthentication("AUTHENTICATION_MULTIPLE")
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationSingle = CVSSAuthentication("AUTHENTICATION_SINGLE")
+	// Defined in CVSS v2
+	CVSSAuthenticationAuthenticationNone = CVSSAuthentication("AUTHENTICATION_NONE")
+)
+
+func (CVSSAuthentication) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAuthentication)(nil)).Elem()
+}
+
+func (e CVSSAuthentication) ToCVSSAuthenticationOutput() CVSSAuthenticationOutput {
+	return pulumi.ToOutput(e).(CVSSAuthenticationOutput)
+}
+
+func (e CVSSAuthentication) ToCVSSAuthenticationOutputWithContext(ctx context.Context) CVSSAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSAuthenticationOutput)
+}
+
+func (e CVSSAuthentication) ToCVSSAuthenticationPtrOutput() CVSSAuthenticationPtrOutput {
+	return e.ToCVSSAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAuthentication) ToCVSSAuthenticationPtrOutputWithContext(ctx context.Context) CVSSAuthenticationPtrOutput {
+	return CVSSAuthentication(e).ToCVSSAuthenticationOutputWithContext(ctx).ToCVSSAuthenticationPtrOutputWithContext(ctx)
+}
+
+func (e CVSSAuthentication) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAuthentication) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAuthentication) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAuthentication) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (CVSSAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAuthentication)(nil)).Elem()
+}
+
+func (o CVSSAuthenticationOutput) ToCVSSAuthenticationOutput() CVSSAuthenticationOutput {
+	return o
+}
+
+func (o CVSSAuthenticationOutput) ToCVSSAuthenticationOutputWithContext(ctx context.Context) CVSSAuthenticationOutput {
+	return o
+}
+
+func (o CVSSAuthenticationOutput) ToCVSSAuthenticationPtrOutput() CVSSAuthenticationPtrOutput {
+	return o.ToCVSSAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAuthenticationOutput) ToCVSSAuthenticationPtrOutputWithContext(ctx context.Context) CVSSAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSAuthentication) *CVSSAuthentication {
+		return &v
+	}).(CVSSAuthenticationPtrOutput)
+}
+
+func (o CVSSAuthenticationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSAuthenticationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAuthentication) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSAuthenticationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAuthenticationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAuthentication) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSAuthentication)(nil)).Elem()
+}
+
+func (o CVSSAuthenticationPtrOutput) ToCVSSAuthenticationPtrOutput() CVSSAuthenticationPtrOutput {
+	return o
+}
+
+func (o CVSSAuthenticationPtrOutput) ToCVSSAuthenticationPtrOutputWithContext(ctx context.Context) CVSSAuthenticationPtrOutput {
+	return o
+}
+
+func (o CVSSAuthenticationPtrOutput) Elem() CVSSAuthenticationOutput {
+	return o.ApplyT(func(v *CVSSAuthentication) CVSSAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSAuthentication
+		return ret
+	}).(CVSSAuthenticationOutput)
+}
+
+func (o CVSSAuthenticationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAuthenticationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSAuthentication) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSAuthenticationInput is an input type that accepts CVSSAuthenticationArgs and CVSSAuthenticationOutput values.
+// You can construct a concrete instance of `CVSSAuthenticationInput` via:
+//
+//          CVSSAuthenticationArgs{...}
+type CVSSAuthenticationInput interface {
+	pulumi.Input
+
+	ToCVSSAuthenticationOutput() CVSSAuthenticationOutput
+	ToCVSSAuthenticationOutputWithContext(context.Context) CVSSAuthenticationOutput
+}
+
+var cvssauthenticationPtrType = reflect.TypeOf((**CVSSAuthentication)(nil)).Elem()
+
+type CVSSAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToCVSSAuthenticationPtrOutput() CVSSAuthenticationPtrOutput
+	ToCVSSAuthenticationPtrOutputWithContext(context.Context) CVSSAuthenticationPtrOutput
+}
+
+type cvssauthenticationPtr string
+
+func CVSSAuthenticationPtr(v string) CVSSAuthenticationPtrInput {
+	return (*cvssauthenticationPtr)(&v)
+}
+
+func (*cvssauthenticationPtr) ElementType() reflect.Type {
+	return cvssauthenticationPtrType
+}
+
+func (in *cvssauthenticationPtr) ToCVSSAuthenticationPtrOutput() CVSSAuthenticationPtrOutput {
+	return pulumi.ToOutput(in).(CVSSAuthenticationPtrOutput)
+}
+
+func (in *cvssauthenticationPtr) ToCVSSAuthenticationPtrOutputWithContext(ctx context.Context) CVSSAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSAuthenticationPtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+type CVSSAvailabilityImpact string
+
+const (
+	// Defined in CVSS v3, CVSS v2
+	CVSSAvailabilityImpactImpactUnspecified = CVSSAvailabilityImpact("IMPACT_UNSPECIFIED")
+	// Defined in CVSS v3
+	CVSSAvailabilityImpactImpactHigh = CVSSAvailabilityImpact("IMPACT_HIGH")
+	// Defined in CVSS v3
+	CVSSAvailabilityImpactImpactLow = CVSSAvailabilityImpact("IMPACT_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSAvailabilityImpactImpactNone = CVSSAvailabilityImpact("IMPACT_NONE")
+	// Defined in CVSS v2
+	CVSSAvailabilityImpactImpactPartial = CVSSAvailabilityImpact("IMPACT_PARTIAL")
+	// Defined in CVSS v2
+	CVSSAvailabilityImpactImpactComplete = CVSSAvailabilityImpact("IMPACT_COMPLETE")
+)
+
+func (CVSSAvailabilityImpact) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAvailabilityImpact)(nil)).Elem()
+}
+
+func (e CVSSAvailabilityImpact) ToCVSSAvailabilityImpactOutput() CVSSAvailabilityImpactOutput {
+	return pulumi.ToOutput(e).(CVSSAvailabilityImpactOutput)
+}
+
+func (e CVSSAvailabilityImpact) ToCVSSAvailabilityImpactOutputWithContext(ctx context.Context) CVSSAvailabilityImpactOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSAvailabilityImpactOutput)
+}
+
+func (e CVSSAvailabilityImpact) ToCVSSAvailabilityImpactPtrOutput() CVSSAvailabilityImpactPtrOutput {
+	return e.ToCVSSAvailabilityImpactPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAvailabilityImpact) ToCVSSAvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSAvailabilityImpactPtrOutput {
+	return CVSSAvailabilityImpact(e).ToCVSSAvailabilityImpactOutputWithContext(ctx).ToCVSSAvailabilityImpactPtrOutputWithContext(ctx)
+}
+
+func (e CVSSAvailabilityImpact) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAvailabilityImpact) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSAvailabilityImpact) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSAvailabilityImpact) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSAvailabilityImpactOutput struct{ *pulumi.OutputState }
+
+func (CVSSAvailabilityImpactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSAvailabilityImpact)(nil)).Elem()
+}
+
+func (o CVSSAvailabilityImpactOutput) ToCVSSAvailabilityImpactOutput() CVSSAvailabilityImpactOutput {
+	return o
+}
+
+func (o CVSSAvailabilityImpactOutput) ToCVSSAvailabilityImpactOutputWithContext(ctx context.Context) CVSSAvailabilityImpactOutput {
+	return o
+}
+
+func (o CVSSAvailabilityImpactOutput) ToCVSSAvailabilityImpactPtrOutput() CVSSAvailabilityImpactPtrOutput {
+	return o.ToCVSSAvailabilityImpactPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAvailabilityImpactOutput) ToCVSSAvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSAvailabilityImpactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSAvailabilityImpact) *CVSSAvailabilityImpact {
+		return &v
+	}).(CVSSAvailabilityImpactPtrOutput)
+}
+
+func (o CVSSAvailabilityImpactOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSAvailabilityImpactOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAvailabilityImpact) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSAvailabilityImpactOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAvailabilityImpactOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSAvailabilityImpact) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSAvailabilityImpactPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSAvailabilityImpactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSAvailabilityImpact)(nil)).Elem()
+}
+
+func (o CVSSAvailabilityImpactPtrOutput) ToCVSSAvailabilityImpactPtrOutput() CVSSAvailabilityImpactPtrOutput {
+	return o
+}
+
+func (o CVSSAvailabilityImpactPtrOutput) ToCVSSAvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSAvailabilityImpactPtrOutput {
+	return o
+}
+
+func (o CVSSAvailabilityImpactPtrOutput) Elem() CVSSAvailabilityImpactOutput {
+	return o.ApplyT(func(v *CVSSAvailabilityImpact) CVSSAvailabilityImpact {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSAvailabilityImpact
+		return ret
+	}).(CVSSAvailabilityImpactOutput)
+}
+
+func (o CVSSAvailabilityImpactPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSAvailabilityImpactPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSAvailabilityImpact) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSAvailabilityImpactInput is an input type that accepts CVSSAvailabilityImpactArgs and CVSSAvailabilityImpactOutput values.
+// You can construct a concrete instance of `CVSSAvailabilityImpactInput` via:
+//
+//          CVSSAvailabilityImpactArgs{...}
+type CVSSAvailabilityImpactInput interface {
+	pulumi.Input
+
+	ToCVSSAvailabilityImpactOutput() CVSSAvailabilityImpactOutput
+	ToCVSSAvailabilityImpactOutputWithContext(context.Context) CVSSAvailabilityImpactOutput
+}
+
+var cvssavailabilityImpactPtrType = reflect.TypeOf((**CVSSAvailabilityImpact)(nil)).Elem()
+
+type CVSSAvailabilityImpactPtrInput interface {
+	pulumi.Input
+
+	ToCVSSAvailabilityImpactPtrOutput() CVSSAvailabilityImpactPtrOutput
+	ToCVSSAvailabilityImpactPtrOutputWithContext(context.Context) CVSSAvailabilityImpactPtrOutput
+}
+
+type cvssavailabilityImpactPtr string
+
+func CVSSAvailabilityImpactPtr(v string) CVSSAvailabilityImpactPtrInput {
+	return (*cvssavailabilityImpactPtr)(&v)
+}
+
+func (*cvssavailabilityImpactPtr) ElementType() reflect.Type {
+	return cvssavailabilityImpactPtrType
+}
+
+func (in *cvssavailabilityImpactPtr) ToCVSSAvailabilityImpactPtrOutput() CVSSAvailabilityImpactPtrOutput {
+	return pulumi.ToOutput(in).(CVSSAvailabilityImpactPtrOutput)
+}
+
+func (in *cvssavailabilityImpactPtr) ToCVSSAvailabilityImpactPtrOutputWithContext(ctx context.Context) CVSSAvailabilityImpactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSAvailabilityImpactPtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+type CVSSConfidentialityImpact string
+
+const (
+	// Defined in CVSS v3, CVSS v2
+	CVSSConfidentialityImpactImpactUnspecified = CVSSConfidentialityImpact("IMPACT_UNSPECIFIED")
+	// Defined in CVSS v3
+	CVSSConfidentialityImpactImpactHigh = CVSSConfidentialityImpact("IMPACT_HIGH")
+	// Defined in CVSS v3
+	CVSSConfidentialityImpactImpactLow = CVSSConfidentialityImpact("IMPACT_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSConfidentialityImpactImpactNone = CVSSConfidentialityImpact("IMPACT_NONE")
+	// Defined in CVSS v2
+	CVSSConfidentialityImpactImpactPartial = CVSSConfidentialityImpact("IMPACT_PARTIAL")
+	// Defined in CVSS v2
+	CVSSConfidentialityImpactImpactComplete = CVSSConfidentialityImpact("IMPACT_COMPLETE")
+)
+
+func (CVSSConfidentialityImpact) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSConfidentialityImpact)(nil)).Elem()
+}
+
+func (e CVSSConfidentialityImpact) ToCVSSConfidentialityImpactOutput() CVSSConfidentialityImpactOutput {
+	return pulumi.ToOutput(e).(CVSSConfidentialityImpactOutput)
+}
+
+func (e CVSSConfidentialityImpact) ToCVSSConfidentialityImpactOutputWithContext(ctx context.Context) CVSSConfidentialityImpactOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSConfidentialityImpactOutput)
+}
+
+func (e CVSSConfidentialityImpact) ToCVSSConfidentialityImpactPtrOutput() CVSSConfidentialityImpactPtrOutput {
+	return e.ToCVSSConfidentialityImpactPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSConfidentialityImpact) ToCVSSConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSConfidentialityImpactPtrOutput {
+	return CVSSConfidentialityImpact(e).ToCVSSConfidentialityImpactOutputWithContext(ctx).ToCVSSConfidentialityImpactPtrOutputWithContext(ctx)
+}
+
+func (e CVSSConfidentialityImpact) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSConfidentialityImpact) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSConfidentialityImpact) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSConfidentialityImpact) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSConfidentialityImpactOutput struct{ *pulumi.OutputState }
+
+func (CVSSConfidentialityImpactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSConfidentialityImpact)(nil)).Elem()
+}
+
+func (o CVSSConfidentialityImpactOutput) ToCVSSConfidentialityImpactOutput() CVSSConfidentialityImpactOutput {
+	return o
+}
+
+func (o CVSSConfidentialityImpactOutput) ToCVSSConfidentialityImpactOutputWithContext(ctx context.Context) CVSSConfidentialityImpactOutput {
+	return o
+}
+
+func (o CVSSConfidentialityImpactOutput) ToCVSSConfidentialityImpactPtrOutput() CVSSConfidentialityImpactPtrOutput {
+	return o.ToCVSSConfidentialityImpactPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSConfidentialityImpactOutput) ToCVSSConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSConfidentialityImpactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSConfidentialityImpact) *CVSSConfidentialityImpact {
+		return &v
+	}).(CVSSConfidentialityImpactPtrOutput)
+}
+
+func (o CVSSConfidentialityImpactOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSConfidentialityImpactOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSConfidentialityImpact) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSConfidentialityImpactOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSConfidentialityImpactOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSConfidentialityImpact) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSConfidentialityImpactPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSConfidentialityImpactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSConfidentialityImpact)(nil)).Elem()
+}
+
+func (o CVSSConfidentialityImpactPtrOutput) ToCVSSConfidentialityImpactPtrOutput() CVSSConfidentialityImpactPtrOutput {
+	return o
+}
+
+func (o CVSSConfidentialityImpactPtrOutput) ToCVSSConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSConfidentialityImpactPtrOutput {
+	return o
+}
+
+func (o CVSSConfidentialityImpactPtrOutput) Elem() CVSSConfidentialityImpactOutput {
+	return o.ApplyT(func(v *CVSSConfidentialityImpact) CVSSConfidentialityImpact {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSConfidentialityImpact
+		return ret
+	}).(CVSSConfidentialityImpactOutput)
+}
+
+func (o CVSSConfidentialityImpactPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSConfidentialityImpactPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSConfidentialityImpact) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSConfidentialityImpactInput is an input type that accepts CVSSConfidentialityImpactArgs and CVSSConfidentialityImpactOutput values.
+// You can construct a concrete instance of `CVSSConfidentialityImpactInput` via:
+//
+//          CVSSConfidentialityImpactArgs{...}
+type CVSSConfidentialityImpactInput interface {
+	pulumi.Input
+
+	ToCVSSConfidentialityImpactOutput() CVSSConfidentialityImpactOutput
+	ToCVSSConfidentialityImpactOutputWithContext(context.Context) CVSSConfidentialityImpactOutput
+}
+
+var cvssconfidentialityImpactPtrType = reflect.TypeOf((**CVSSConfidentialityImpact)(nil)).Elem()
+
+type CVSSConfidentialityImpactPtrInput interface {
+	pulumi.Input
+
+	ToCVSSConfidentialityImpactPtrOutput() CVSSConfidentialityImpactPtrOutput
+	ToCVSSConfidentialityImpactPtrOutputWithContext(context.Context) CVSSConfidentialityImpactPtrOutput
+}
+
+type cvssconfidentialityImpactPtr string
+
+func CVSSConfidentialityImpactPtr(v string) CVSSConfidentialityImpactPtrInput {
+	return (*cvssconfidentialityImpactPtr)(&v)
+}
+
+func (*cvssconfidentialityImpactPtr) ElementType() reflect.Type {
+	return cvssconfidentialityImpactPtrType
+}
+
+func (in *cvssconfidentialityImpactPtr) ToCVSSConfidentialityImpactPtrOutput() CVSSConfidentialityImpactPtrOutput {
+	return pulumi.ToOutput(in).(CVSSConfidentialityImpactPtrOutput)
+}
+
+func (in *cvssconfidentialityImpactPtr) ToCVSSConfidentialityImpactPtrOutputWithContext(ctx context.Context) CVSSConfidentialityImpactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSConfidentialityImpactPtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+type CVSSIntegrityImpact string
+
+const (
+	// Defined in CVSS v3, CVSS v2
+	CVSSIntegrityImpactImpactUnspecified = CVSSIntegrityImpact("IMPACT_UNSPECIFIED")
+	// Defined in CVSS v3
+	CVSSIntegrityImpactImpactHigh = CVSSIntegrityImpact("IMPACT_HIGH")
+	// Defined in CVSS v3
+	CVSSIntegrityImpactImpactLow = CVSSIntegrityImpact("IMPACT_LOW")
+	// Defined in CVSS v3, CVSS v2
+	CVSSIntegrityImpactImpactNone = CVSSIntegrityImpact("IMPACT_NONE")
+	// Defined in CVSS v2
+	CVSSIntegrityImpactImpactPartial = CVSSIntegrityImpact("IMPACT_PARTIAL")
+	// Defined in CVSS v2
+	CVSSIntegrityImpactImpactComplete = CVSSIntegrityImpact("IMPACT_COMPLETE")
+)
+
+func (CVSSIntegrityImpact) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSIntegrityImpact)(nil)).Elem()
+}
+
+func (e CVSSIntegrityImpact) ToCVSSIntegrityImpactOutput() CVSSIntegrityImpactOutput {
+	return pulumi.ToOutput(e).(CVSSIntegrityImpactOutput)
+}
+
+func (e CVSSIntegrityImpact) ToCVSSIntegrityImpactOutputWithContext(ctx context.Context) CVSSIntegrityImpactOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSIntegrityImpactOutput)
+}
+
+func (e CVSSIntegrityImpact) ToCVSSIntegrityImpactPtrOutput() CVSSIntegrityImpactPtrOutput {
+	return e.ToCVSSIntegrityImpactPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSIntegrityImpact) ToCVSSIntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSIntegrityImpactPtrOutput {
+	return CVSSIntegrityImpact(e).ToCVSSIntegrityImpactOutputWithContext(ctx).ToCVSSIntegrityImpactPtrOutputWithContext(ctx)
+}
+
+func (e CVSSIntegrityImpact) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSIntegrityImpact) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSIntegrityImpact) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSIntegrityImpact) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSIntegrityImpactOutput struct{ *pulumi.OutputState }
+
+func (CVSSIntegrityImpactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSIntegrityImpact)(nil)).Elem()
+}
+
+func (o CVSSIntegrityImpactOutput) ToCVSSIntegrityImpactOutput() CVSSIntegrityImpactOutput {
+	return o
+}
+
+func (o CVSSIntegrityImpactOutput) ToCVSSIntegrityImpactOutputWithContext(ctx context.Context) CVSSIntegrityImpactOutput {
+	return o
+}
+
+func (o CVSSIntegrityImpactOutput) ToCVSSIntegrityImpactPtrOutput() CVSSIntegrityImpactPtrOutput {
+	return o.ToCVSSIntegrityImpactPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSIntegrityImpactOutput) ToCVSSIntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSIntegrityImpactPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSIntegrityImpact) *CVSSIntegrityImpact {
+		return &v
+	}).(CVSSIntegrityImpactPtrOutput)
+}
+
+func (o CVSSIntegrityImpactOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSIntegrityImpactOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSIntegrityImpact) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSIntegrityImpactOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSIntegrityImpactOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSIntegrityImpact) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSIntegrityImpactPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSIntegrityImpactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSIntegrityImpact)(nil)).Elem()
+}
+
+func (o CVSSIntegrityImpactPtrOutput) ToCVSSIntegrityImpactPtrOutput() CVSSIntegrityImpactPtrOutput {
+	return o
+}
+
+func (o CVSSIntegrityImpactPtrOutput) ToCVSSIntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSIntegrityImpactPtrOutput {
+	return o
+}
+
+func (o CVSSIntegrityImpactPtrOutput) Elem() CVSSIntegrityImpactOutput {
+	return o.ApplyT(func(v *CVSSIntegrityImpact) CVSSIntegrityImpact {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSIntegrityImpact
+		return ret
+	}).(CVSSIntegrityImpactOutput)
+}
+
+func (o CVSSIntegrityImpactPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSIntegrityImpactPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSIntegrityImpact) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSIntegrityImpactInput is an input type that accepts CVSSIntegrityImpactArgs and CVSSIntegrityImpactOutput values.
+// You can construct a concrete instance of `CVSSIntegrityImpactInput` via:
+//
+//          CVSSIntegrityImpactArgs{...}
+type CVSSIntegrityImpactInput interface {
+	pulumi.Input
+
+	ToCVSSIntegrityImpactOutput() CVSSIntegrityImpactOutput
+	ToCVSSIntegrityImpactOutputWithContext(context.Context) CVSSIntegrityImpactOutput
+}
+
+var cvssintegrityImpactPtrType = reflect.TypeOf((**CVSSIntegrityImpact)(nil)).Elem()
+
+type CVSSIntegrityImpactPtrInput interface {
+	pulumi.Input
+
+	ToCVSSIntegrityImpactPtrOutput() CVSSIntegrityImpactPtrOutput
+	ToCVSSIntegrityImpactPtrOutputWithContext(context.Context) CVSSIntegrityImpactPtrOutput
+}
+
+type cvssintegrityImpactPtr string
+
+func CVSSIntegrityImpactPtr(v string) CVSSIntegrityImpactPtrInput {
+	return (*cvssintegrityImpactPtr)(&v)
+}
+
+func (*cvssintegrityImpactPtr) ElementType() reflect.Type {
+	return cvssintegrityImpactPtrType
+}
+
+func (in *cvssintegrityImpactPtr) ToCVSSIntegrityImpactPtrOutput() CVSSIntegrityImpactPtrOutput {
+	return pulumi.ToOutput(in).(CVSSIntegrityImpactPtrOutput)
+}
+
+func (in *cvssintegrityImpactPtr) ToCVSSIntegrityImpactPtrOutputWithContext(ctx context.Context) CVSSIntegrityImpactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSIntegrityImpactPtrOutput)
+}
+
+// Defined in CVSS v3
+type CVSSPrivilegesRequired string
+
+const (
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredUnspecified = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_UNSPECIFIED")
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredNone = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_NONE")
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredLow = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_LOW")
+	// Defined in CVSS v3
+	CVSSPrivilegesRequiredPrivilegesRequiredHigh = CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_HIGH")
+)
+
+func (CVSSPrivilegesRequired) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSPrivilegesRequired)(nil)).Elem()
+}
+
+func (e CVSSPrivilegesRequired) ToCVSSPrivilegesRequiredOutput() CVSSPrivilegesRequiredOutput {
+	return pulumi.ToOutput(e).(CVSSPrivilegesRequiredOutput)
+}
+
+func (e CVSSPrivilegesRequired) ToCVSSPrivilegesRequiredOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSPrivilegesRequiredOutput)
+}
+
+func (e CVSSPrivilegesRequired) ToCVSSPrivilegesRequiredPtrOutput() CVSSPrivilegesRequiredPtrOutput {
+	return e.ToCVSSPrivilegesRequiredPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSPrivilegesRequired) ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredPtrOutput {
+	return CVSSPrivilegesRequired(e).ToCVSSPrivilegesRequiredOutputWithContext(ctx).ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx)
+}
+
+func (e CVSSPrivilegesRequired) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSPrivilegesRequired) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSPrivilegesRequired) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSPrivilegesRequired) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSPrivilegesRequiredOutput struct{ *pulumi.OutputState }
+
+func (CVSSPrivilegesRequiredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSPrivilegesRequired)(nil)).Elem()
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToCVSSPrivilegesRequiredOutput() CVSSPrivilegesRequiredOutput {
+	return o
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToCVSSPrivilegesRequiredOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredOutput {
+	return o
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToCVSSPrivilegesRequiredPtrOutput() CVSSPrivilegesRequiredPtrOutput {
+	return o.ToCVSSPrivilegesRequiredPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSPrivilegesRequired) *CVSSPrivilegesRequired {
+		return &v
+	}).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSPrivilegesRequired) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSPrivilegesRequiredOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSPrivilegesRequired) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSPrivilegesRequiredPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSPrivilegesRequiredPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSPrivilegesRequired)(nil)).Elem()
+}
+
+func (o CVSSPrivilegesRequiredPtrOutput) ToCVSSPrivilegesRequiredPtrOutput() CVSSPrivilegesRequiredPtrOutput {
+	return o
+}
+
+func (o CVSSPrivilegesRequiredPtrOutput) ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredPtrOutput {
+	return o
+}
+
+func (o CVSSPrivilegesRequiredPtrOutput) Elem() CVSSPrivilegesRequiredOutput {
+	return o.ApplyT(func(v *CVSSPrivilegesRequired) CVSSPrivilegesRequired {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSPrivilegesRequired
+		return ret
+	}).(CVSSPrivilegesRequiredOutput)
+}
+
+func (o CVSSPrivilegesRequiredPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSPrivilegesRequiredPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSPrivilegesRequired) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSPrivilegesRequiredInput is an input type that accepts CVSSPrivilegesRequiredArgs and CVSSPrivilegesRequiredOutput values.
+// You can construct a concrete instance of `CVSSPrivilegesRequiredInput` via:
+//
+//          CVSSPrivilegesRequiredArgs{...}
+type CVSSPrivilegesRequiredInput interface {
+	pulumi.Input
+
+	ToCVSSPrivilegesRequiredOutput() CVSSPrivilegesRequiredOutput
+	ToCVSSPrivilegesRequiredOutputWithContext(context.Context) CVSSPrivilegesRequiredOutput
+}
+
+var cvssprivilegesRequiredPtrType = reflect.TypeOf((**CVSSPrivilegesRequired)(nil)).Elem()
+
+type CVSSPrivilegesRequiredPtrInput interface {
+	pulumi.Input
+
+	ToCVSSPrivilegesRequiredPtrOutput() CVSSPrivilegesRequiredPtrOutput
+	ToCVSSPrivilegesRequiredPtrOutputWithContext(context.Context) CVSSPrivilegesRequiredPtrOutput
+}
+
+type cvssprivilegesRequiredPtr string
+
+func CVSSPrivilegesRequiredPtr(v string) CVSSPrivilegesRequiredPtrInput {
+	return (*cvssprivilegesRequiredPtr)(&v)
+}
+
+func (*cvssprivilegesRequiredPtr) ElementType() reflect.Type {
+	return cvssprivilegesRequiredPtrType
+}
+
+func (in *cvssprivilegesRequiredPtr) ToCVSSPrivilegesRequiredPtrOutput() CVSSPrivilegesRequiredPtrOutput {
+	return pulumi.ToOutput(in).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+func (in *cvssprivilegesRequiredPtr) ToCVSSPrivilegesRequiredPtrOutputWithContext(ctx context.Context) CVSSPrivilegesRequiredPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+// Defined in CVSS v3
+type CVSSScope string
+
+const (
+	// Defined in CVSS v3
+	CVSSScopeScopeUnspecified = CVSSScope("SCOPE_UNSPECIFIED")
+	// Defined in CVSS v3
+	CVSSScopeScopeUnchanged = CVSSScope("SCOPE_UNCHANGED")
+	// Defined in CVSS v3
+	CVSSScopeScopeChanged = CVSSScope("SCOPE_CHANGED")
+)
+
+func (CVSSScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSScope)(nil)).Elem()
+}
+
+func (e CVSSScope) ToCVSSScopeOutput() CVSSScopeOutput {
+	return pulumi.ToOutput(e).(CVSSScopeOutput)
+}
+
+func (e CVSSScope) ToCVSSScopeOutputWithContext(ctx context.Context) CVSSScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSScopeOutput)
+}
+
+func (e CVSSScope) ToCVSSScopePtrOutput() CVSSScopePtrOutput {
+	return e.ToCVSSScopePtrOutputWithContext(context.Background())
+}
+
+func (e CVSSScope) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVSSScopePtrOutput {
+	return CVSSScope(e).ToCVSSScopeOutputWithContext(ctx).ToCVSSScopePtrOutputWithContext(ctx)
+}
+
+func (e CVSSScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSScopeOutput struct{ *pulumi.OutputState }
+
+func (CVSSScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSScope)(nil)).Elem()
+}
+
+func (o CVSSScopeOutput) ToCVSSScopeOutput() CVSSScopeOutput {
+	return o
+}
+
+func (o CVSSScopeOutput) ToCVSSScopeOutputWithContext(ctx context.Context) CVSSScopeOutput {
+	return o
+}
+
+func (o CVSSScopeOutput) ToCVSSScopePtrOutput() CVSSScopePtrOutput {
+	return o.ToCVSSScopePtrOutputWithContext(context.Background())
+}
+
+func (o CVSSScopeOutput) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVSSScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSScope) *CVSSScope {
+		return &v
+	}).(CVSSScopePtrOutput)
+}
+
+func (o CVSSScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSScopePtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSScope)(nil)).Elem()
+}
+
+func (o CVSSScopePtrOutput) ToCVSSScopePtrOutput() CVSSScopePtrOutput {
+	return o
+}
+
+func (o CVSSScopePtrOutput) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVSSScopePtrOutput {
+	return o
+}
+
+func (o CVSSScopePtrOutput) Elem() CVSSScopeOutput {
+	return o.ApplyT(func(v *CVSSScope) CVSSScope {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSScope
+		return ret
+	}).(CVSSScopeOutput)
+}
+
+func (o CVSSScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSScopeInput is an input type that accepts CVSSScopeArgs and CVSSScopeOutput values.
+// You can construct a concrete instance of `CVSSScopeInput` via:
+//
+//          CVSSScopeArgs{...}
+type CVSSScopeInput interface {
+	pulumi.Input
+
+	ToCVSSScopeOutput() CVSSScopeOutput
+	ToCVSSScopeOutputWithContext(context.Context) CVSSScopeOutput
+}
+
+var cvssscopePtrType = reflect.TypeOf((**CVSSScope)(nil)).Elem()
+
+type CVSSScopePtrInput interface {
+	pulumi.Input
+
+	ToCVSSScopePtrOutput() CVSSScopePtrOutput
+	ToCVSSScopePtrOutputWithContext(context.Context) CVSSScopePtrOutput
+}
+
+type cvssscopePtr string
+
+func CVSSScopePtr(v string) CVSSScopePtrInput {
+	return (*cvssscopePtr)(&v)
+}
+
+func (*cvssscopePtr) ElementType() reflect.Type {
+	return cvssscopePtrType
+}
+
+func (in *cvssscopePtr) ToCVSSScopePtrOutput() CVSSScopePtrOutput {
+	return pulumi.ToOutput(in).(CVSSScopePtrOutput)
+}
+
+func (in *cvssscopePtr) ToCVSSScopePtrOutputWithContext(ctx context.Context) CVSSScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSScopePtrOutput)
+}
+
+// Defined in CVSS v3
+type CVSSUserInteraction string
+
+const (
+	// Defined in CVSS v3
+	CVSSUserInteractionUserInteractionUnspecified = CVSSUserInteraction("USER_INTERACTION_UNSPECIFIED")
+	// Defined in CVSS v3
+	CVSSUserInteractionUserInteractionNone = CVSSUserInteraction("USER_INTERACTION_NONE")
+	// Defined in CVSS v3
+	CVSSUserInteractionUserInteractionRequired = CVSSUserInteraction("USER_INTERACTION_REQUIRED")
+)
+
+func (CVSSUserInteraction) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSUserInteraction)(nil)).Elem()
+}
+
+func (e CVSSUserInteraction) ToCVSSUserInteractionOutput() CVSSUserInteractionOutput {
+	return pulumi.ToOutput(e).(CVSSUserInteractionOutput)
+}
+
+func (e CVSSUserInteraction) ToCVSSUserInteractionOutputWithContext(ctx context.Context) CVSSUserInteractionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CVSSUserInteractionOutput)
+}
+
+func (e CVSSUserInteraction) ToCVSSUserInteractionPtrOutput() CVSSUserInteractionPtrOutput {
+	return e.ToCVSSUserInteractionPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSUserInteraction) ToCVSSUserInteractionPtrOutputWithContext(ctx context.Context) CVSSUserInteractionPtrOutput {
+	return CVSSUserInteraction(e).ToCVSSUserInteractionOutputWithContext(ctx).ToCVSSUserInteractionPtrOutputWithContext(ctx)
+}
+
+func (e CVSSUserInteraction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSUserInteraction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CVSSUserInteraction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CVSSUserInteraction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CVSSUserInteractionOutput struct{ *pulumi.OutputState }
+
+func (CVSSUserInteractionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSUserInteraction)(nil)).Elem()
+}
+
+func (o CVSSUserInteractionOutput) ToCVSSUserInteractionOutput() CVSSUserInteractionOutput {
+	return o
+}
+
+func (o CVSSUserInteractionOutput) ToCVSSUserInteractionOutputWithContext(ctx context.Context) CVSSUserInteractionOutput {
+	return o
+}
+
+func (o CVSSUserInteractionOutput) ToCVSSUserInteractionPtrOutput() CVSSUserInteractionPtrOutput {
+	return o.ToCVSSUserInteractionPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSUserInteractionOutput) ToCVSSUserInteractionPtrOutputWithContext(ctx context.Context) CVSSUserInteractionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSSUserInteraction) *CVSSUserInteraction {
+		return &v
+	}).(CVSSUserInteractionPtrOutput)
+}
+
+func (o CVSSUserInteractionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CVSSUserInteractionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSUserInteraction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CVSSUserInteractionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSUserInteractionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CVSSUserInteraction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CVSSUserInteractionPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSUserInteractionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSSUserInteraction)(nil)).Elem()
+}
+
+func (o CVSSUserInteractionPtrOutput) ToCVSSUserInteractionPtrOutput() CVSSUserInteractionPtrOutput {
+	return o
+}
+
+func (o CVSSUserInteractionPtrOutput) ToCVSSUserInteractionPtrOutputWithContext(ctx context.Context) CVSSUserInteractionPtrOutput {
+	return o
+}
+
+func (o CVSSUserInteractionPtrOutput) Elem() CVSSUserInteractionOutput {
+	return o.ApplyT(func(v *CVSSUserInteraction) CVSSUserInteraction {
+		if v != nil {
+			return *v
+		}
+		var ret CVSSUserInteraction
+		return ret
+	}).(CVSSUserInteractionOutput)
+}
+
+func (o CVSSUserInteractionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSUserInteractionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CVSSUserInteraction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CVSSUserInteractionInput is an input type that accepts CVSSUserInteractionArgs and CVSSUserInteractionOutput values.
+// You can construct a concrete instance of `CVSSUserInteractionInput` via:
+//
+//          CVSSUserInteractionArgs{...}
+type CVSSUserInteractionInput interface {
+	pulumi.Input
+
+	ToCVSSUserInteractionOutput() CVSSUserInteractionOutput
+	ToCVSSUserInteractionOutputWithContext(context.Context) CVSSUserInteractionOutput
+}
+
+var cvssuserInteractionPtrType = reflect.TypeOf((**CVSSUserInteraction)(nil)).Elem()
+
+type CVSSUserInteractionPtrInput interface {
+	pulumi.Input
+
+	ToCVSSUserInteractionPtrOutput() CVSSUserInteractionPtrOutput
+	ToCVSSUserInteractionPtrOutputWithContext(context.Context) CVSSUserInteractionPtrOutput
+}
+
+type cvssuserInteractionPtr string
+
+func CVSSUserInteractionPtr(v string) CVSSUserInteractionPtrInput {
+	return (*cvssuserInteractionPtr)(&v)
+}
+
+func (*cvssuserInteractionPtr) ElementType() reflect.Type {
+	return cvssuserInteractionPtrType
+}
+
+func (in *cvssuserInteractionPtr) ToCVSSUserInteractionPtrOutput() CVSSUserInteractionPtrOutput {
+	return pulumi.ToOutput(in).(CVSSUserInteractionPtrOutput)
+}
+
+func (in *cvssuserInteractionPtr) ToCVSSUserInteractionPtrOutputWithContext(ctx context.Context) CVSSUserInteractionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CVSSUserInteractionPtrOutput)
+}
+
 type CVSSv3AttackComplexity string
 
 const (
@@ -3618,6 +5167,175 @@ func (in *layerDirectivePtr) ToLayerDirectivePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LayerDirectivePtrOutput)
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+type PackageArchitecture string
+
+const (
+	// Unknown architecture.
+	PackageArchitectureArchitectureUnspecified = PackageArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// X86 architecture.
+	PackageArchitectureX86 = PackageArchitecture("X86")
+	// X64 architecture.
+	PackageArchitectureX64 = PackageArchitecture("X64")
+)
+
+func (PackageArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageArchitecture)(nil)).Elem()
+}
+
+func (e PackageArchitecture) ToPackageArchitectureOutput() PackageArchitectureOutput {
+	return pulumi.ToOutput(e).(PackageArchitectureOutput)
+}
+
+func (e PackageArchitecture) ToPackageArchitectureOutputWithContext(ctx context.Context) PackageArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PackageArchitectureOutput)
+}
+
+func (e PackageArchitecture) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return e.ToPackageArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e PackageArchitecture) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return PackageArchitecture(e).ToPackageArchitectureOutputWithContext(ctx).ToPackageArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e PackageArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PackageArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PackageArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PackageArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PackageArchitectureOutput struct{ *pulumi.OutputState }
+
+func (PackageArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageArchitecture)(nil)).Elem()
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitectureOutput() PackageArchitectureOutput {
+	return o
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitectureOutputWithContext(ctx context.Context) PackageArchitectureOutput {
+	return o
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return o.ToPackageArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o PackageArchitectureOutput) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageArchitecture) *PackageArchitecture {
+		return &v
+	}).(PackageArchitecturePtrOutput)
+}
+
+func (o PackageArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PackageArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PackageArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PackageArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageArchitecture)(nil)).Elem()
+}
+
+func (o PackageArchitecturePtrOutput) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return o
+}
+
+func (o PackageArchitecturePtrOutput) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return o
+}
+
+func (o PackageArchitecturePtrOutput) Elem() PackageArchitectureOutput {
+	return o.ApplyT(func(v *PackageArchitecture) PackageArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret PackageArchitecture
+		return ret
+	}).(PackageArchitectureOutput)
+}
+
+func (o PackageArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PackageArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageArchitectureInput is an input type that accepts PackageArchitectureArgs and PackageArchitectureOutput values.
+// You can construct a concrete instance of `PackageArchitectureInput` via:
+//
+//          PackageArchitectureArgs{...}
+type PackageArchitectureInput interface {
+	pulumi.Input
+
+	ToPackageArchitectureOutput() PackageArchitectureOutput
+	ToPackageArchitectureOutputWithContext(context.Context) PackageArchitectureOutput
+}
+
+var packageArchitecturePtrType = reflect.TypeOf((**PackageArchitecture)(nil)).Elem()
+
+type PackageArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput
+	ToPackageArchitecturePtrOutputWithContext(context.Context) PackageArchitecturePtrOutput
+}
+
+type packageArchitecturePtr string
+
+func PackageArchitecturePtr(v string) PackageArchitecturePtrInput {
+	return (*packageArchitecturePtr)(&v)
+}
+
+func (*packageArchitecturePtr) ElementType() reflect.Type {
+	return packageArchitecturePtrType
+}
+
+func (in *packageArchitecturePtr) ToPackageArchitecturePtrOutput() PackageArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(PackageArchitecturePtrOutput)
+}
+
+func (in *packageArchitecturePtr) ToPackageArchitecturePtrOutputWithContext(ctx context.Context) PackageArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PackageArchitecturePtrOutput)
+}
+
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 type PgpSignedAttestationContentType string
 
@@ -4387,6 +6105,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextKindPtrInput)(nil)).Elem(), AliasContextKind("KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignatureKeyTypeInput)(nil)).Elem(), BuildSignatureKeyType("KEY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignatureKeyTypePtrInput)(nil)).Elem(), BuildSignatureKeyType("KEY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackComplexityInput)(nil)).Elem(), CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackComplexityPtrInput)(nil)).Elem(), CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackVectorInput)(nil)).Elem(), CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackVectorPtrInput)(nil)).Elem(), CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAuthenticationInput)(nil)).Elem(), CVSSAuthentication("AUTHENTICATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAuthenticationPtrInput)(nil)).Elem(), CVSSAuthentication("AUTHENTICATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAvailabilityImpactInput)(nil)).Elem(), CVSSAvailabilityImpact("IMPACT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAvailabilityImpactPtrInput)(nil)).Elem(), CVSSAvailabilityImpact("IMPACT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSConfidentialityImpactInput)(nil)).Elem(), CVSSConfidentialityImpact("IMPACT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSConfidentialityImpactPtrInput)(nil)).Elem(), CVSSConfidentialityImpact("IMPACT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSIntegrityImpactInput)(nil)).Elem(), CVSSIntegrityImpact("IMPACT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSIntegrityImpactPtrInput)(nil)).Elem(), CVSSIntegrityImpact("IMPACT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSPrivilegesRequiredInput)(nil)).Elem(), CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSPrivilegesRequiredPtrInput)(nil)).Elem(), CVSSPrivilegesRequired("PRIVILEGES_REQUIRED_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSScopeInput)(nil)).Elem(), CVSSScope("SCOPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSScopePtrInput)(nil)).Elem(), CVSSScope("SCOPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSUserInteractionInput)(nil)).Elem(), CVSSUserInteraction("USER_INTERACTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSUserInteractionPtrInput)(nil)).Elem(), CVSSUserInteraction("USER_INTERACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3AttackComplexityInput)(nil)).Elem(), CVSSv3AttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3AttackComplexityPtrInput)(nil)).Elem(), CVSSv3AttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3AttackVectorInput)(nil)).Elem(), CVSSv3AttackVector("ATTACK_VECTOR_UNSPECIFIED"))
@@ -4425,6 +6161,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HashTypePtrInput)(nil)).Elem(), HashType("HASH_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectiveInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LayerDirectivePtrInput)(nil)).Elem(), LayerDirective("DIRECTIVE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageArchitectureInput)(nil)).Elem(), PackageArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageArchitecturePtrInput)(nil)).Elem(), PackageArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypeInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PgpSignedAttestationContentTypePtrInput)(nil)).Elem(), PgpSignedAttestationContentType("CONTENT_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RelationshipNoteTypeInput)(nil)).Elem(), RelationshipNoteType("RELATIONSHIP_TYPE_UNSPECIFIED"))
@@ -4437,6 +6175,24 @@ func init() {
 	pulumi.RegisterOutputType(AliasContextKindPtrOutput{})
 	pulumi.RegisterOutputType(BuildSignatureKeyTypeOutput{})
 	pulumi.RegisterOutputType(BuildSignatureKeyTypePtrOutput{})
+	pulumi.RegisterOutputType(CVSSAttackComplexityOutput{})
+	pulumi.RegisterOutputType(CVSSAttackComplexityPtrOutput{})
+	pulumi.RegisterOutputType(CVSSAttackVectorOutput{})
+	pulumi.RegisterOutputType(CVSSAttackVectorPtrOutput{})
+	pulumi.RegisterOutputType(CVSSAuthenticationOutput{})
+	pulumi.RegisterOutputType(CVSSAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(CVSSAvailabilityImpactOutput{})
+	pulumi.RegisterOutputType(CVSSAvailabilityImpactPtrOutput{})
+	pulumi.RegisterOutputType(CVSSConfidentialityImpactOutput{})
+	pulumi.RegisterOutputType(CVSSConfidentialityImpactPtrOutput{})
+	pulumi.RegisterOutputType(CVSSIntegrityImpactOutput{})
+	pulumi.RegisterOutputType(CVSSIntegrityImpactPtrOutput{})
+	pulumi.RegisterOutputType(CVSSPrivilegesRequiredOutput{})
+	pulumi.RegisterOutputType(CVSSPrivilegesRequiredPtrOutput{})
+	pulumi.RegisterOutputType(CVSSScopeOutput{})
+	pulumi.RegisterOutputType(CVSSScopePtrOutput{})
+	pulumi.RegisterOutputType(CVSSUserInteractionOutput{})
+	pulumi.RegisterOutputType(CVSSUserInteractionPtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3AttackComplexityOutput{})
 	pulumi.RegisterOutputType(CVSSv3AttackComplexityPtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3AttackVectorOutput{})
@@ -4475,6 +6231,8 @@ func init() {
 	pulumi.RegisterOutputType(HashTypePtrOutput{})
 	pulumi.RegisterOutputType(LayerDirectiveOutput{})
 	pulumi.RegisterOutputType(LayerDirectivePtrOutput{})
+	pulumi.RegisterOutputType(PackageArchitectureOutput{})
+	pulumi.RegisterOutputType(PackageArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypeOutput{})
 	pulumi.RegisterOutputType(PgpSignedAttestationContentTypePtrOutput{})
 	pulumi.RegisterOutputType(RelationshipNoteTypeOutput{})

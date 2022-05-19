@@ -17,10 +17,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetHttpsProxyResult:
-    def __init__(__self__, authorization_policy=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         if authorization_policy and not isinstance(authorization_policy, str):
             raise TypeError("Expected argument 'authorization_policy' to be a str")
         pulumi.set(__self__, "authorization_policy", authorization_policy)
+        if certificate_map and not isinstance(certificate_map, str):
+            raise TypeError("Expected argument 'certificate_map' to be a str")
+        pulumi.set(__self__, "certificate_map", certificate_map)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -68,6 +71,14 @@ class GetTargetHttpsProxyResult:
         Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
         """
         return pulumi.get(self, "authorization_policy")
+
+    @property
+    @pulumi.getter(name="certificateMap")
+    def certificate_map(self) -> str:
+        """
+        URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+        """
+        return pulumi.get(self, "certificate_map")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -181,6 +192,7 @@ class AwaitableGetTargetHttpsProxyResult(GetTargetHttpsProxyResult):
             yield self
         return GetTargetHttpsProxyResult(
             authorization_policy=self.authorization_policy,
+            certificate_map=self.certificate_map,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
@@ -213,6 +225,7 @@ def get_target_https_proxy(project: Optional[str] = None,
 
     return AwaitableGetTargetHttpsProxyResult(
         authorization_policy=__ret__.authorization_policy,
+        certificate_map=__ret__.certificate_map,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,

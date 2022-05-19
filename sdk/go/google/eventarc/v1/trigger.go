@@ -15,6 +15,8 @@ import (
 type Trigger struct {
 	pulumi.CustomResourceState
 
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel pulumi.StringOutput `pulumi:"channel"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Destination specifies where the events should be sent to.
@@ -88,6 +90,8 @@ func (TriggerState) ElementType() reflect.Type {
 }
 
 type triggerArgs struct {
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel *string `pulumi:"channel"`
 	// Destination specifies where the events should be sent to.
 	Destination Destination `pulumi:"destination"`
 	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
@@ -110,6 +114,8 @@ type triggerArgs struct {
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
+	// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+	Channel pulumi.StringPtrInput
 	// Destination specifies where the events should be sent to.
 	Destination DestinationInput
 	// null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
@@ -165,6 +171,11 @@ func (o TriggerOutput) ToTriggerOutput() TriggerOutput {
 
 func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
 	return o
+}
+
+// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+func (o TriggerOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Channel }).(pulumi.StringOutput)
 }
 
 // The creation time.

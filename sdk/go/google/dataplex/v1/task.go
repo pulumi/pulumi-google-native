@@ -24,6 +24,8 @@ type Task struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Spec related to how a task is executed.
 	ExecutionSpec GoogleCloudDataplexV1TaskExecutionSpecResponseOutput `pulumi:"executionSpec"`
+	// Status of the latest task executions.
+	ExecutionStatus GoogleCloudDataplexV1TaskExecutionStatusResponseOutput `pulumi:"executionStatus"`
 	// Optional. User-defined labels for the task.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}.
@@ -190,6 +192,11 @@ func (o TaskOutput) DisplayName() pulumi.StringOutput {
 // Spec related to how a task is executed.
 func (o TaskOutput) ExecutionSpec() GoogleCloudDataplexV1TaskExecutionSpecResponseOutput {
 	return o.ApplyT(func(v *Task) GoogleCloudDataplexV1TaskExecutionSpecResponseOutput { return v.ExecutionSpec }).(GoogleCloudDataplexV1TaskExecutionSpecResponseOutput)
+}
+
+// Status of the latest task executions.
+func (o TaskOutput) ExecutionStatus() GoogleCloudDataplexV1TaskExecutionStatusResponseOutput {
+	return o.ApplyT(func(v *Task) GoogleCloudDataplexV1TaskExecutionStatusResponseOutput { return v.ExecutionStatus }).(GoogleCloudDataplexV1TaskExecutionStatusResponseOutput)
 }
 
 // Optional. User-defined labels for the task.

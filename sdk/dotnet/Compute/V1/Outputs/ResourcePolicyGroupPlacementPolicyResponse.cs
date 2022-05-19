@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class ResourcePolicyGroupPlacementPolicyResponse
     {
         /// <summary>
-        /// The number of availability domains instances will be spread across. If two instances are in different availability domain, they will not be put in the same low latency network
+        /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
         /// </summary>
         public readonly int AvailabilityDomainCount;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Collocation;
         /// <summary>
-        /// Number of vms in this placement group
+        /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
         /// </summary>
         public readonly int VmCount;
 

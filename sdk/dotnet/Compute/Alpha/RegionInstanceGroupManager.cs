@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> InstanceGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Instance lifecycle policy for this Instance Group Manager.
+        /// The repair policy for this managed instance group.
         /// </summary>
         [Output("instanceLifecyclePolicy")]
         public Output<Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse> InstanceLifecyclePolicy { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<Pulumi.GoogleNative.Compute.Alpha.RegionInstanceGroupManagerFailoverAction>? FailoverAction { get; set; }
 
         /// <summary>
-        /// Instance lifecycle policy for this Instance Group Manager.
+        /// The repair policy for this managed instance group.
         /// </summary>
         [Input("instanceLifecyclePolicy")]
         public Input<Inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs>? InstanceLifecyclePolicy { get; set; }

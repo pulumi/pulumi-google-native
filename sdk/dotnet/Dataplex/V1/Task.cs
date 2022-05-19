@@ -41,6 +41,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Output<Outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse> ExecutionSpec { get; private set; } = null!;
 
         /// <summary>
+        /// Status of the latest task executions.
+        /// </summary>
+        [Output("executionStatus")]
+        public Output<Outputs.GoogleCloudDataplexV1TaskExecutionStatusResponse> ExecutionStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. User-defined labels for the task.
         /// </summary>
         [Output("labels")]

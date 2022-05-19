@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        /// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

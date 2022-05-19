@@ -16,6 +16,7 @@ class DeviceArgs:
     def __init__(__self__, *,
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  customer: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -23,6 +24,7 @@ class DeviceArgs:
         The set of arguments for constructing a Device resource.
         :param pulumi.Input[str] asset_tag: Asset tag of the device.
         :param pulumi.Input[str] customer: Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+        :param pulumi.Input[str] device_id: Unique identifier for the device.
         :param pulumi.Input[str] last_sync_time: Most recent time when device synced with this service.
         :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
@@ -31,6 +33,8 @@ class DeviceArgs:
             pulumi.set(__self__, "asset_tag", asset_tag)
         if customer is not None:
             pulumi.set(__self__, "customer", customer)
+        if device_id is not None:
+            pulumi.set(__self__, "device_id", device_id)
         if last_sync_time is not None:
             pulumi.set(__self__, "last_sync_time", last_sync_time)
         if serial_number is not None:
@@ -61,6 +65,18 @@ class DeviceArgs:
     @customer.setter
     def customer(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "customer", value)
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier for the device.
+        """
+        return pulumi.get(self, "device_id")
+
+    @device_id.setter
+    def device_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_id", value)
 
     @property
     @pulumi.getter(name="lastSyncTime")
@@ -106,6 +122,7 @@ class Device(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  customer: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -118,6 +135,7 @@ class Device(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] asset_tag: Asset tag of the device.
         :param pulumi.Input[str] customer: Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
+        :param pulumi.Input[str] device_id: Unique identifier for the device.
         :param pulumi.Input[str] last_sync_time: Most recent time when device synced with this service.
         :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
@@ -149,6 +167,7 @@ class Device(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
                  customer: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -166,6 +185,7 @@ class Device(pulumi.CustomResource):
 
             __props__.__dict__["asset_tag"] = asset_tag
             __props__.__dict__["customer"] = customer
+            __props__.__dict__["device_id"] = device_id
             __props__.__dict__["last_sync_time"] = last_sync_time
             __props__.__dict__["serial_number"] = serial_number
             __props__.__dict__["wifi_mac_addresses"] = wifi_mac_addresses
@@ -223,6 +243,7 @@ class Device(pulumi.CustomResource):
         __props__.__dict__["build_number"] = None
         __props__.__dict__["compromised_state"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["device_id"] = None
         __props__.__dict__["device_type"] = None
         __props__.__dict__["enabled_developer_options"] = None
         __props__.__dict__["enabled_usb_debugging"] = None
@@ -308,6 +329,14 @@ class Device(pulumi.CustomResource):
         When the Company-Owned device was imported. This field is empty for BYOD devices.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> pulumi.Output[str]:
+        """
+        Unique identifier for the device.
+        """
+        return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter(name="deviceType")

@@ -27,6 +27,7 @@ class ComputeEngineTargetDefaultsArgs:
                  additional_licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  compute_scheduling: Optional[pulumi.Input['ComputeSchedulingArgs']] = None,
                  disk_type: Optional[pulumi.Input['ComputeEngineTargetDefaultsDiskType']] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  license_type: Optional[pulumi.Input['ComputeEngineTargetDefaultsLicenseType']] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -44,6 +45,7 @@ class ComputeEngineTargetDefaultsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_licenses: Additional licenses to assign to the VM.
         :param pulumi.Input['ComputeSchedulingArgs'] compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param pulumi.Input['ComputeEngineTargetDefaultsDiskType'] disk_type: The disk type to use in the VM.
+        :param pulumi.Input[str] hostname: The hostname to assign to the VM.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of labels to associate with the VM.
         :param pulumi.Input['ComputeEngineTargetDefaultsLicenseType'] license_type: The license type to use in OS adaptation.
         :param pulumi.Input[str] machine_type: The machine type to create the VM with.
@@ -63,6 +65,8 @@ class ComputeEngineTargetDefaultsArgs:
             pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if license_type is not None:
@@ -123,6 +127,18 @@ class ComputeEngineTargetDefaultsArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input['ComputeEngineTargetDefaultsDiskType']]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The hostname to assign to the VM.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
 
     @property
     @pulumi.getter

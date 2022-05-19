@@ -35,7 +35,7 @@ export interface GetVersionResult {
      */
     readonly apiConfig: outputs.appengine.v1.ApiConfigHandlerResponse;
     /**
-     * app_engine_apis allows second generation runtimes to access the App Engine APIs.
+     * Allows App Engine second generation runtimes to access the legacy bundled services.
      */
     readonly appEngineApis: boolean;
     /**

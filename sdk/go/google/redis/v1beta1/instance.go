@@ -39,6 +39,8 @@ type Instance struct {
 	MaintenancePolicy MaintenancePolicyResponseOutput `pulumi:"maintenancePolicy"`
 	// Date and time of upcoming maintenance events which have been scheduled.
 	MaintenanceSchedule MaintenanceScheduleResponseOutput `pulumi:"maintenanceSchedule"`
+	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+	MaintenanceVersion pulumi.StringOutput `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -145,6 +147,8 @@ type instanceArgs struct {
 	Location *string `pulumi:"location"`
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy *MaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+	MaintenanceVersion *string `pulumi:"maintenanceVersion"`
 	// Redis memory size in GiB.
 	MemorySizeGb int `pulumi:"memorySizeGb"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -190,6 +194,8 @@ type InstanceArgs struct {
 	Location pulumi.StringPtrInput
 	// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
 	MaintenancePolicy MaintenancePolicyPtrInput
+	// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+	MaintenanceVersion pulumi.StringPtrInput
 	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntInput
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
@@ -310,6 +316,11 @@ func (o InstanceOutput) MaintenancePolicy() MaintenancePolicyResponseOutput {
 // Date and time of upcoming maintenance events which have been scheduled.
 func (o InstanceOutput) MaintenanceSchedule() MaintenanceScheduleResponseOutput {
 	return o.ApplyT(func(v *Instance) MaintenanceScheduleResponseOutput { return v.MaintenanceSchedule }).(MaintenanceScheduleResponseOutput)
+}
+
+// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+func (o InstanceOutput) MaintenanceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaintenanceVersion }).(pulumi.StringOutput)
 }
 
 // Redis memory size in GiB.

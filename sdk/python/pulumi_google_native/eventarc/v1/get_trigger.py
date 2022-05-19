@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, create_time=None, destination=None, etag=None, event_filters=None, labels=None, name=None, service_account=None, transport=None, uid=None, update_time=None):
+    def __init__(__self__, channel=None, create_time=None, destination=None, etag=None, event_filters=None, labels=None, name=None, service_account=None, transport=None, uid=None, update_time=None):
+        if channel and not isinstance(channel, str):
+            raise TypeError("Expected argument 'channel' to be a str")
+        pulumi.set(__self__, "channel", channel)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -49,6 +52,14 @@ class GetTriggerResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        """
+        return pulumi.get(self, "channel")
 
     @property
     @pulumi.getter(name="createTime")
@@ -137,6 +148,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
         if False:
             yield self
         return GetTriggerResult(
+            channel=self.channel,
             create_time=self.create_time,
             destination=self.destination,
             etag=self.etag,
@@ -167,6 +179,7 @@ def get_trigger(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:eventarc/v1:getTrigger', __args__, opts=opts, typ=GetTriggerResult).value
 
     return AwaitableGetTriggerResult(
+        channel=__ret__.channel,
         create_time=__ret__.create_time,
         destination=__ret__.destination,
         etag=__ret__.etag,

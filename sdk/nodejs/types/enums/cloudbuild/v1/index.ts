@@ -275,6 +275,22 @@ export const TriggerEventType = {
  */
 export type TriggerEventType = (typeof TriggerEventType)[keyof typeof TriggerEventType];
 
+export const TriggerIncludeBuildLogs = {
+    /**
+     * Build logs will not be shown on GitHub.
+     */
+    IncludeBuildLogsUnspecified: "INCLUDE_BUILD_LOGS_UNSPECIFIED",
+    /**
+     * Build logs will be shown on GitHub.
+     */
+    IncludeBuildLogsWithStatus: "INCLUDE_BUILD_LOGS_WITH_STATUS",
+} as const;
+
+/**
+ * If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+ */
+export type TriggerIncludeBuildLogs = (typeof TriggerIncludeBuildLogs)[keyof typeof TriggerIncludeBuildLogs];
+
 export const WebhookConfigState = {
     /**
      * The webhook auth configuration not been checked.

@@ -54,7 +54,7 @@ class AuditConfigArgs:
                  audit_log_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditLogConfigArgs']]]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
+        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
         :param pulumi.Input[Sequence[pulumi.Input['AuditLogConfigArgs']]] audit_log_configs: The configuration for logging of each type of permission.
         :param pulumi.Input[str] service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
@@ -270,6 +270,7 @@ class ExecutionConfigArgs:
                  usages: pulumi.Input[Sequence[pulumi.Input['ExecutionConfigUsagesItem']]],
                  artifact_storage: Optional[pulumi.Input[str]] = None,
                  default_pool: Optional[pulumi.Input['DefaultPoolArgs']] = None,
+                 execution_timeout: Optional[pulumi.Input[str]] = None,
                  private_pool: Optional[pulumi.Input['PrivatePoolArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  worker_pool: Optional[pulumi.Input[str]] = None):
@@ -278,6 +279,7 @@ class ExecutionConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionConfigUsagesItem']]] usages: Usages when this configuration should be applied.
         :param pulumi.Input[str] artifact_storage: Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
         :param pulumi.Input['DefaultPoolArgs'] default_pool: Optional. Use default Cloud Build pool.
+        :param pulumi.Input[str] execution_timeout: Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
         :param pulumi.Input['PrivatePoolArgs'] private_pool: Optional. Use private Cloud Build pool.
         :param pulumi.Input[str] service_account: Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) is used.
         :param pulumi.Input[str] worker_pool: Optional. The resource name of the `WorkerPool`, with the format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. If this optional field is unspecified, the default Cloud Build pool will be used.
@@ -287,6 +289,8 @@ class ExecutionConfigArgs:
             pulumi.set(__self__, "artifact_storage", artifact_storage)
         if default_pool is not None:
             pulumi.set(__self__, "default_pool", default_pool)
+        if execution_timeout is not None:
+            pulumi.set(__self__, "execution_timeout", execution_timeout)
         if private_pool is not None:
             pulumi.set(__self__, "private_pool", private_pool)
         if service_account is not None:
@@ -329,6 +333,18 @@ class ExecutionConfigArgs:
     @default_pool.setter
     def default_pool(self, value: Optional[pulumi.Input['DefaultPoolArgs']]):
         pulumi.set(self, "default_pool", value)
+
+    @property
+    @pulumi.getter(name="executionTimeout")
+    def execution_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
+        """
+        return pulumi.get(self, "execution_timeout")
+
+    @execution_timeout.setter
+    def execution_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_timeout", value)
 
     @property
     @pulumi.getter(name="privatePool")

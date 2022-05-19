@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Output<Outputs.MutationRecordResponse> MutationRecord { get; private set; } = null!;
 
         /// <summary>
-        /// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
+        /// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public Input<Inputs.MutationRecordArgs>? MutationRecord { get; set; }
 
         /// <summary>
-        /// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
+        /// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

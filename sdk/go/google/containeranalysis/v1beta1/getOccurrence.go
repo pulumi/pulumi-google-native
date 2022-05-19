@@ -38,6 +38,8 @@ type LookupOccurrenceResult struct {
 	DerivedImage GrafeasV1beta1ImageDetailsResponse `pulumi:"derivedImage"`
 	// Describes when a resource was discovered.
 	Discovered GrafeasV1beta1DiscoveryDetailsResponse `pulumi:"discovered"`
+	// https://github.com/secure-systems-lab/dsse
+	Envelope EnvelopeResponse `pulumi:"envelope"`
 	// Describes the installation of a package on the linked resource.
 	Installation GrafeasV1beta1PackageDetailsResponse `pulumi:"installation"`
 	// Describes a specific in-toto link.
@@ -130,6 +132,11 @@ func (o LookupOccurrenceResultOutput) DerivedImage() GrafeasV1beta1ImageDetailsR
 // Describes when a resource was discovered.
 func (o LookupOccurrenceResultOutput) Discovered() GrafeasV1beta1DiscoveryDetailsResponseOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) GrafeasV1beta1DiscoveryDetailsResponse { return v.Discovered }).(GrafeasV1beta1DiscoveryDetailsResponseOutput)
+}
+
+// https://github.com/secure-systems-lab/dsse
+func (o LookupOccurrenceResultOutput) Envelope() EnvelopeResponseOutput {
+	return o.ApplyT(func(v LookupOccurrenceResult) EnvelopeResponse { return v.Envelope }).(EnvelopeResponseOutput)
 }
 
 // Describes the installation of a package on the linked resource.

@@ -3560,7 +3560,7 @@ type TransferOptions struct {
 	MetadataOptions *MetadataOptions `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
-	// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 	OverwriteWhen *TransferOptionsOverwriteWhen `pulumi:"overwriteWhen"`
 }
 
@@ -3585,7 +3585,7 @@ type TransferOptionsArgs struct {
 	MetadataOptions MetadataOptionsPtrInput `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
-	// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 	OverwriteWhen TransferOptionsOverwriteWhenPtrInput `pulumi:"overwriteWhen"`
 }
 
@@ -3687,7 +3687,7 @@ func (o TransferOptionsOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.Bo
 	return o.ApplyT(func(v TransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }
 
-// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 func (o TransferOptionsOutput) OverwriteWhen() TransferOptionsOverwriteWhenPtrOutput {
 	return o.ApplyT(func(v TransferOptions) *TransferOptionsOverwriteWhen { return v.OverwriteWhen }).(TransferOptionsOverwriteWhenPtrOutput)
 }
@@ -3756,7 +3756,7 @@ func (o TransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 func (o TransferOptionsPtrOutput) OverwriteWhen() TransferOptionsOverwriteWhenPtrOutput {
 	return o.ApplyT(func(v *TransferOptions) *TransferOptionsOverwriteWhen {
 		if v == nil {
@@ -3776,7 +3776,7 @@ type TransferOptionsResponse struct {
 	MetadataOptions MetadataOptionsResponse `pulumi:"metadataOptions"`
 	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
-	// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 	OverwriteWhen string `pulumi:"overwriteWhen"`
 }
 
@@ -3815,7 +3815,7 @@ func (o TransferOptionsResponseOutput) OverwriteObjectsAlreadyExistingInSink() p
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolOutput)
 }
 
-// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
 func (o TransferOptionsResponseOutput) OverwriteWhen() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferOptionsResponse) string { return v.OverwriteWhen }).(pulumi.StringOutput)
 }

@@ -26,6 +26,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         public readonly bool EnableDynamicPortAllocation;
         public readonly bool EnableEndpointIndependentMapping;
         /// <summary>
+        /// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        /// </summary>
+        public readonly ImmutableArray<string> EndpointTypes;
+        /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         /// </summary>
         public readonly int IcmpIdleTimeoutSec;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             bool enableEndpointIndependentMapping,
 
+            ImmutableArray<string> endpointTypes,
+
             int icmpIdleTimeoutSec,
 
             Outputs.RouterNatLogConfigResponse logConfig,
@@ -121,6 +127,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
             DrainNatIps = drainNatIps;
             EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;
+            EndpointTypes = endpointTypes;
             IcmpIdleTimeoutSec = icmpIdleTimeoutSec;
             LogConfig = logConfig;
             MaxPortsPerVm = maxPortsPerVm;

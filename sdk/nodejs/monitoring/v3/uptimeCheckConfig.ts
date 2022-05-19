@@ -44,7 +44,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly contentMatchers!: pulumi.Output<outputs.monitoring.v3.ContentMatcherResponse[]>;
     /**
-     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -146,7 +146,7 @@ export interface UptimeCheckConfigArgs {
      */
     contentMatchers?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.ContentMatcherArgs>[]>;
     /**
-     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
      */
     displayName?: pulumi.Input<string>;
     /**

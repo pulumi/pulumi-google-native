@@ -194,7 +194,7 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="instanceLifecyclePolicy")
     def instance_lifecycle_policy(self) -> 'outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse':
         """
-        Instance lifecycle policy for this Instance Group Manager.
+        The repair policy for this managed instance group.
         """
         return pulumi.get(self, "instance_lifecycle_policy")
 

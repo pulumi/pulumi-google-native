@@ -394,6 +394,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
                  boot_option: str,
                  compute_scheduling: 'outputs.ComputeSchedulingResponse',
                  disk_type: str,
+                 hostname: str,
                  labels: Mapping[str, str],
                  license_type: str,
                  machine_type: str,
@@ -413,6 +414,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
         :param str boot_option: The VM Boot Option, as set in the source vm.
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param str disk_type: The disk type to use in the VM.
+        :param str hostname: The hostname to assign to the VM.
         :param Mapping[str, str] labels: A map of labels to associate with the VM.
         :param str license_type: The license type to use in OS adaptation.
         :param str machine_type: The machine type to create the VM with.
@@ -431,6 +433,7 @@ class ComputeEngineTargetDefaultsResponse(dict):
         pulumi.set(__self__, "boot_option", boot_option)
         pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "license_type", license_type)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -483,6 +486,14 @@ class ComputeEngineTargetDefaultsResponse(dict):
         The disk type to use in the VM.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname to assign to the VM.
+        """
+        return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
@@ -633,6 +644,7 @@ class ComputeEngineTargetDetailsResponse(dict):
                  boot_option: str,
                  compute_scheduling: 'outputs.ComputeSchedulingResponse',
                  disk_type: str,
+                 hostname: str,
                  labels: Mapping[str, str],
                  license_type: str,
                  machine_type: str,
@@ -652,6 +664,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         :param str boot_option: The VM Boot Option, as set in the source vm.
         :param 'ComputeSchedulingResponse' compute_scheduling: Compute instance scheduling information (if empty default is used).
         :param str disk_type: The disk type to use in the VM.
+        :param str hostname: The hostname to assign to the VM.
         :param Mapping[str, str] labels: A map of labels to associate with the VM.
         :param str license_type: The license type to use in OS adaptation.
         :param str machine_type: The machine type to create the VM with.
@@ -670,6 +683,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         pulumi.set(__self__, "boot_option", boot_option)
         pulumi.set(__self__, "compute_scheduling", compute_scheduling)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "license_type", license_type)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -722,6 +736,14 @@ class ComputeEngineTargetDetailsResponse(dict):
         The disk type to use in the VM.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The hostname to assign to the VM.
+        """
+        return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter

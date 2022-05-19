@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public readonly Outputs.ApiConfigHandlerResponse ApiConfig;
         /// <summary>
-        /// app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        /// Allows App Engine second generation runtimes to access the legacy bundled services.
         /// </summary>
         public readonly bool AppEngineApis;
         /// <summary>

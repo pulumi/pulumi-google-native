@@ -17,12 +17,16 @@ __all__ = [
     'BasicAuthenticationArgs',
     'BasicSliArgs',
     'CloudEndpointsArgs',
+    'CloudRunArgs',
     'ClusterIstioArgs',
     'ConditionArgs',
     'ContentMatcherArgs',
     'CustomArgs',
     'DistributionCutArgs',
     'DocumentationArgs',
+    'GkeNamespaceArgs',
+    'GkeServiceArgs',
+    'GkeWorkloadArgs',
     'GoogleMonitoringV3RangeArgs',
     'HttpCheckArgs',
     'InternalCheckerArgs',
@@ -349,6 +353,46 @@ class CloudEndpointsArgs:
 
 
 @pulumi.input_type
+class CloudRunArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        Cloud Run service. Learn more at https://cloud.google.com/run.
+        :param pulumi.Input[str] location: The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        :param pulumi.Input[str] service_name: The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
 class ClusterIstioArgs:
     def __init__(__self__, *,
                  cluster_name: Optional[pulumi.Input[str]] = None,
@@ -436,7 +480,7 @@ class ConditionArgs:
         :param pulumi.Input['MonitoringQueryLanguageConditionArgs'] condition_monitoring_query_language: A condition that uses the Monitoring Query Language to define alerts.
         :param pulumi.Input['MetricThresholdArgs'] condition_threshold: A condition that compares a time series against a threshold.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
-        :param pulumi.Input[str] name: Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+        :param pulumi.Input[str] name: Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
         """
         if condition_absent is not None:
             pulumi.set(__self__, "condition_absent", condition_absent)
@@ -515,7 +559,7 @@ class ConditionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+        Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
         """
         return pulumi.get(self, "name")
 
@@ -651,6 +695,222 @@ class DocumentationArgs:
     @mime_type.setter
     def mime_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mime_type", value)
+
+
+@pulumi.input_type
+class GkeNamespaceArgs:
+    def __init__(__self__, *,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None):
+        """
+        GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+        :param pulumi.Input[str] cluster_name: The name of the parent cluster.
+        :param pulumi.Input[str] location: The location of the parent cluster. This may be a zone or region.
+        :param pulumi.Input[str] namespace_name: The name of this namespace.
+        """
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if namespace_name is not None:
+            pulumi.set(__self__, "namespace_name", namespace_name)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the parent cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the parent cluster. This may be a zone or region.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_name", value)
+
+
+@pulumi.input_type
+class GkeServiceArgs:
+    def __init__(__self__, *,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+        :param pulumi.Input[str] cluster_name: The name of the parent cluster.
+        :param pulumi.Input[str] location: The location of the parent cluster. This may be a zone or region.
+        :param pulumi.Input[str] namespace_name: The name of the parent namespace.
+        :param pulumi.Input[str] service_name: The name of this service.
+        """
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if namespace_name is not None:
+            pulumi.set(__self__, "namespace_name", namespace_name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the parent cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the parent cluster. This may be a zone or region.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the parent namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this service.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class GkeWorkloadArgs:
+    def __init__(__self__, *,
+                 cluster_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 namespace_name: Optional[pulumi.Input[str]] = None,
+                 top_level_controller_name: Optional[pulumi.Input[str]] = None,
+                 top_level_controller_type: Optional[pulumi.Input[str]] = None):
+        """
+        A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+        :param pulumi.Input[str] cluster_name: The name of the parent cluster.
+        :param pulumi.Input[str] location: The location of the parent cluster. This may be a zone or region.
+        :param pulumi.Input[str] namespace_name: The name of the parent namespace.
+        :param pulumi.Input[str] top_level_controller_name: The name of this workload.
+        :param pulumi.Input[str] top_level_controller_type: The type of this workload (e.g. "Deployment" or "DaemonSet")
+        """
+        if cluster_name is not None:
+            pulumi.set(__self__, "cluster_name", cluster_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if namespace_name is not None:
+            pulumi.set(__self__, "namespace_name", namespace_name)
+        if top_level_controller_name is not None:
+            pulumi.set(__self__, "top_level_controller_name", top_level_controller_name)
+        if top_level_controller_type is not None:
+            pulumi.set(__self__, "top_level_controller_type", top_level_controller_type)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the parent cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the parent cluster. This may be a zone or region.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the parent namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @namespace_name.setter
+    def namespace_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_name", value)
+
+    @property
+    @pulumi.getter(name="topLevelControllerName")
+    def top_level_controller_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this workload.
+        """
+        return pulumi.get(self, "top_level_controller_name")
+
+    @top_level_controller_name.setter
+    def top_level_controller_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "top_level_controller_name", value)
+
+    @property
+    @pulumi.getter(name="topLevelControllerType")
+    def top_level_controller_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of this workload (e.g. "Deployment" or "DaemonSet")
+        """
+        return pulumi.get(self, "top_level_controller_type")
+
+    @top_level_controller_type.setter
+    def top_level_controller_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "top_level_controller_type", value)
 
 
 @pulumi.input_type
@@ -872,11 +1132,11 @@ class InternalCheckerArgs:
                  state: Optional[pulumi.Input['InternalCheckerState']] = None):
         """
         An internal checker allows Uptime checks to run on private/internal GCP resources.
-        :param pulumi.Input[str] display_name: The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+        :param pulumi.Input[str] display_name: The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[str] gcp_zone: The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
-        :param pulumi.Input[str] name: A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+        :param pulumi.Input[str] name: A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
         :param pulumi.Input[str] network: The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
-        :param pulumi.Input[str] peer_project_id: The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+        :param pulumi.Input[str] peer_project_id: The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
         :param pulumi.Input['InternalCheckerState'] state: The current operational state of the internal checker.
         """
         if display_name is not None:
@@ -896,7 +1156,7 @@ class InternalCheckerArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+        The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
         """
         return pulumi.get(self, "display_name")
 
@@ -920,7 +1180,7 @@ class InternalCheckerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+        A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
         """
         return pulumi.get(self, "name")
 
@@ -944,7 +1204,7 @@ class InternalCheckerArgs:
     @pulumi.getter(name="peerProjectId")
     def peer_project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+        The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
         """
         return pulumi.get(self, "peer_project_id")
 

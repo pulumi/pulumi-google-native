@@ -868,6 +868,47 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
     }
 
     /// <summary>
+    /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+    /// </summary>
+    [EnumType]
+    public readonly struct PackageNoteArchitecture : IEquatable<PackageNoteArchitecture>
+    {
+        private readonly string _value;
+
+        private PackageNoteArchitecture(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown architecture.
+        /// </summary>
+        public static PackageNoteArchitecture ArchitectureUnspecified { get; } = new PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED");
+        /// <summary>
+        /// X86 architecture.
+        /// </summary>
+        public static PackageNoteArchitecture X86 { get; } = new PackageNoteArchitecture("X86");
+        /// <summary>
+        /// X64 architecture.
+        /// </summary>
+        public static PackageNoteArchitecture X64 { get; } = new PackageNoteArchitecture("X64");
+
+        public static bool operator ==(PackageNoteArchitecture left, PackageNoteArchitecture right) => left.Equals(right);
+        public static bool operator !=(PackageNoteArchitecture left, PackageNoteArchitecture right) => !left.Equals(right);
+
+        public static explicit operator string(PackageNoteArchitecture value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PackageNoteArchitecture other && Equals(other);
+        public bool Equals(PackageNoteArchitecture other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
     /// </summary>
     [EnumType]

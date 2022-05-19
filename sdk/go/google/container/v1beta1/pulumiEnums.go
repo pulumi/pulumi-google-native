@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+type BinaryAuthorizationEvaluationMode string
+
+const (
+	// Default value, equivalent to DISABLED.
+	BinaryAuthorizationEvaluationModeEvaluationModeUnspecified = BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED")
+	// Disable BinaryAuthorization
+	BinaryAuthorizationEvaluationModeDisabled = BinaryAuthorizationEvaluationMode("DISABLED")
+	// If enabled, enforce Kubernetes admission requests with BinAuthz using the project's singleton policy. Equivalent to bool enabled=true.
+	BinaryAuthorizationEvaluationModeProjectSingletonPolicyEnforce = BinaryAuthorizationEvaluationMode("PROJECT_SINGLETON_POLICY_ENFORCE")
+)
+
+func (BinaryAuthorizationEvaluationMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationEvaluationMode)(nil)).Elem()
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModeOutput() BinaryAuthorizationEvaluationModeOutput {
+	return pulumi.ToOutput(e).(BinaryAuthorizationEvaluationModeOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModeOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BinaryAuthorizationEvaluationModeOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return e.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(context.Background())
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return BinaryAuthorizationEvaluationMode(e).ToBinaryAuthorizationEvaluationModeOutputWithContext(ctx).ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BinaryAuthorizationEvaluationMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BinaryAuthorizationEvaluationModeOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationEvaluationModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BinaryAuthorizationEvaluationMode)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModeOutput() BinaryAuthorizationEvaluationModeOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModeOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModeOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ToBinaryAuthorizationEvaluationModePtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BinaryAuthorizationEvaluationMode) *BinaryAuthorizationEvaluationMode {
+		return &v
+	}).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BinaryAuthorizationEvaluationMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BinaryAuthorizationEvaluationMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BinaryAuthorizationEvaluationModePtrOutput struct{ *pulumi.OutputState }
+
+func (BinaryAuthorizationEvaluationModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BinaryAuthorizationEvaluationMode)(nil)).Elem()
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return o
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) Elem() BinaryAuthorizationEvaluationModeOutput {
+	return o.ApplyT(func(v *BinaryAuthorizationEvaluationMode) BinaryAuthorizationEvaluationMode {
+		if v != nil {
+			return *v
+		}
+		var ret BinaryAuthorizationEvaluationMode
+		return ret
+	}).(BinaryAuthorizationEvaluationModeOutput)
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BinaryAuthorizationEvaluationModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BinaryAuthorizationEvaluationMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BinaryAuthorizationEvaluationModeInput is an input type that accepts BinaryAuthorizationEvaluationModeArgs and BinaryAuthorizationEvaluationModeOutput values.
+// You can construct a concrete instance of `BinaryAuthorizationEvaluationModeInput` via:
+//
+//          BinaryAuthorizationEvaluationModeArgs{...}
+type BinaryAuthorizationEvaluationModeInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationEvaluationModeOutput() BinaryAuthorizationEvaluationModeOutput
+	ToBinaryAuthorizationEvaluationModeOutputWithContext(context.Context) BinaryAuthorizationEvaluationModeOutput
+}
+
+var binaryAuthorizationEvaluationModePtrType = reflect.TypeOf((**BinaryAuthorizationEvaluationMode)(nil)).Elem()
+
+type BinaryAuthorizationEvaluationModePtrInput interface {
+	pulumi.Input
+
+	ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput
+	ToBinaryAuthorizationEvaluationModePtrOutputWithContext(context.Context) BinaryAuthorizationEvaluationModePtrOutput
+}
+
+type binaryAuthorizationEvaluationModePtr string
+
+func BinaryAuthorizationEvaluationModePtr(v string) BinaryAuthorizationEvaluationModePtrInput {
+	return (*binaryAuthorizationEvaluationModePtr)(&v)
+}
+
+func (*binaryAuthorizationEvaluationModePtr) ElementType() reflect.Type {
+	return binaryAuthorizationEvaluationModePtrType
+}
+
+func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationModePtrOutput() BinaryAuthorizationEvaluationModePtrOutput {
+	return pulumi.ToOutput(in).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
+func (in *binaryAuthorizationEvaluationModePtr) ToBinaryAuthorizationEvaluationModePtrOutputWithContext(ctx context.Context) BinaryAuthorizationEvaluationModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BinaryAuthorizationEvaluationModePtrOutput)
+}
+
 // Which load balancer type is installed for Cloud Run.
 type CloudRunConfigLoadBalancerType string
 
@@ -4432,6 +4601,8 @@ func (in *workloadMetadataConfigNodeMetadataPtr) ToWorkloadMetadataConfigNodeMet
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationEvaluationModeInput)(nil)).Elem(), BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BinaryAuthorizationEvaluationModePtrInput)(nil)).Elem(), BinaryAuthorizationEvaluationMode("EVALUATION_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigLoadBalancerTypeInput)(nil)).Elem(), CloudRunConfigLoadBalancerType("LOAD_BALANCER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigLoadBalancerTypePtrInput)(nil)).Elem(), CloudRunConfigLoadBalancerType("LOAD_BALANCER_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingAutoscalingProfileInput)(nil)).Elem(), ClusterAutoscalingAutoscalingProfile("PROFILE_UNSPECIFIED"))
@@ -4485,6 +4656,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModePtrInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigNodeMetadataInput)(nil)).Elem(), WorkloadMetadataConfigNodeMetadata("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigNodeMetadataPtrInput)(nil)).Elem(), WorkloadMetadataConfigNodeMetadata("UNSPECIFIED"))
+	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModeOutput{})
+	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModePtrOutput{})
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypeOutput{})
 	pulumi.RegisterOutputType(CloudRunConfigLoadBalancerTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingAutoscalingProfileOutput{})

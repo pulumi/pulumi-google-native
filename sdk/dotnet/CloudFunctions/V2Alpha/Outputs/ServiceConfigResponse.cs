@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SecretEnvVarResponse> SecretEnvironmentVariables;
         /// <summary>
+        /// Secret volumes configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecretVolumeResponse> SecretVolumes;
+        /// <summary>
         /// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         /// </summary>
         public readonly string Service;
@@ -91,6 +95,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
 
             ImmutableArray<Outputs.SecretEnvVarResponse> secretEnvironmentVariables,
 
+            ImmutableArray<Outputs.SecretVolumeResponse> secretVolumes,
+
             string service,
 
             string serviceAccountEmail,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
             MinInstanceCount = minInstanceCount;
             Revision = revision;
             SecretEnvironmentVariables = secretEnvironmentVariables;
+            SecretVolumes = secretVolumes;
             Service = service;
             ServiceAccountEmail = serviceAccountEmail;
             TimeoutSeconds = timeoutSeconds;

@@ -39,6 +39,12 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         [Input("diskType")]
         public Input<Pulumi.GoogleNative.VMMigration.V1Alpha1.ComputeEngineTargetDefaultsDiskType>? DiskType { get; set; }
 
+        /// <summary>
+        /// The hostname to assign to the VM.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

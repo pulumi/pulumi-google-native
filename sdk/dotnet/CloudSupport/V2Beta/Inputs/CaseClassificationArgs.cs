@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The unique ID for a classification. Must be specified for case creation.
+        /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

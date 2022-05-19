@@ -79,7 +79,7 @@ class GetUptimeCheckConfigResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         """
         return pulumi.get(self, "display_name")
 

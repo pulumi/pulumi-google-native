@@ -12,11 +12,13 @@ from ._enums import *
 
 __all__ = [
     'AllowedIpRangeResponse',
+    'CidrBlockResponse',
     'DatabaseConfigResponse',
     'EncryptionConfigResponse',
     'EnvironmentConfigResponse',
     'IPAllocationPolicyResponse',
     'MaintenanceWindowResponse',
+    'MasterAuthorizedNetworksConfigResponse',
     'NodeConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateEnvironmentConfigResponse',
@@ -60,6 +62,58 @@ class AllowedIpRangeResponse(dict):
         IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CidrBlockResponse(dict):
+    """
+    CIDR block with an optional name.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlock":
+            suggest = "cidr_block"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CidrBlockResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CidrBlockResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CidrBlockResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_block: str,
+                 display_name: str):
+        """
+        CIDR block with an optional name.
+        :param str cidr_block: CIDR block that must be specified in CIDR notation.
+        :param str display_name: User-defined name that identifies the CIDR block.
+        """
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        CIDR block that must be specified in CIDR notation.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        User-defined name that identifies the CIDR block.
+        """
+        return pulumi.get(self, "display_name")
 
 
 @pulumi.output_type
@@ -162,6 +216,8 @@ class EnvironmentConfigResponse(dict):
             suggest = "gke_cluster"
         elif key == "maintenanceWindow":
             suggest = "maintenance_window"
+        elif key == "masterAuthorizedNetworksConfig":
+            suggest = "master_authorized_networks_config"
         elif key == "nodeConfig":
             suggest = "node_config"
         elif key == "nodeCount":
@@ -196,6 +252,7 @@ class EnvironmentConfigResponse(dict):
                  environment_size: str,
                  gke_cluster: str,
                  maintenance_window: 'outputs.MaintenanceWindowResponse',
+                 master_authorized_networks_config: 'outputs.MasterAuthorizedNetworksConfigResponse',
                  node_config: 'outputs.NodeConfigResponse',
                  node_count: int,
                  private_environment_config: 'outputs.PrivateEnvironmentConfigResponse',
@@ -212,6 +269,7 @@ class EnvironmentConfigResponse(dict):
         :param str environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str gke_cluster: The Kubernetes Engine cluster used to run this environment.
         :param 'MaintenanceWindowResponse' maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        :param 'MasterAuthorizedNetworksConfigResponse' master_authorized_networks_config: Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
         :param 'NodeConfigResponse' node_config: The configuration used for the Kubernetes Engine cluster.
         :param int node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'PrivateEnvironmentConfigResponse' private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -227,6 +285,7 @@ class EnvironmentConfigResponse(dict):
         pulumi.set(__self__, "environment_size", environment_size)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "maintenance_window", maintenance_window)
+        pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_config", private_environment_config)
@@ -290,6 +349,14 @@ class EnvironmentConfigResponse(dict):
         Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
         """
         return pulumi.get(self, "maintenance_window")
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> 'outputs.MasterAuthorizedNetworksConfigResponse':
+        """
+        Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+        """
+        return pulumi.get(self, "master_authorized_networks_config")
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -500,6 +567,56 @@ class MaintenanceWindowResponse(dict):
         Start time of the first recurrence of the maintenance window.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class MasterAuthorizedNetworksConfigResponse(dict):
+    """
+    Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cidrBlocks":
+            suggest = "cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MasterAuthorizedNetworksConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MasterAuthorizedNetworksConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MasterAuthorizedNetworksConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr_blocks: Sequence['outputs.CidrBlockResponse'],
+                 enabled: bool):
+        """
+        Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+        :param Sequence['CidrBlockResponse'] cidr_blocks: Up to 50 external networks that could access Kubernetes master through HTTPS.
+        :param bool enabled: Whether or not master authorized networks feature is enabled.
+        """
+        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Sequence['outputs.CidrBlockResponse']:
+        """
+        Up to 50 external networks that could access Kubernetes master through HTTPS.
+        """
+        return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether or not master authorized networks feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -720,6 +837,8 @@ class PrivateEnvironmentConfigResponse(dict):
             suggest = "cloud_sql_ipv4_cidr_block"
         elif key == "enablePrivateEnvironment":
             suggest = "enable_private_environment"
+        elif key == "enablePrivatelyUsedPublicIps":
+            suggest = "enable_privately_used_public_ips"
         elif key == "privateClusterConfig":
             suggest = "private_cluster_config"
         elif key == "webServerIpv4CidrBlock":
@@ -744,6 +863,7 @@ class PrivateEnvironmentConfigResponse(dict):
                  cloud_composer_network_ipv4_reserved_range: str,
                  cloud_sql_ipv4_cidr_block: str,
                  enable_private_environment: bool,
+                 enable_privately_used_public_ips: bool,
                  private_cluster_config: 'outputs.PrivateClusterConfigResponse',
                  web_server_ipv4_cidr_block: str,
                  web_server_ipv4_reserved_range: str):
@@ -754,6 +874,7 @@ class PrivateEnvironmentConfigResponse(dict):
         :param str cloud_composer_network_ipv4_reserved_range: The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param str cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param bool enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param bool enable_privately_used_public_ips: Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
         :param 'PrivateClusterConfigResponse' private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param str web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param str web_server_ipv4_reserved_range: The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -763,6 +884,7 @@ class PrivateEnvironmentConfigResponse(dict):
         pulumi.set(__self__, "cloud_composer_network_ipv4_reserved_range", cloud_composer_network_ipv4_reserved_range)
         pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         pulumi.set(__self__, "enable_private_environment", enable_private_environment)
+        pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
         pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
         pulumi.set(__self__, "web_server_ipv4_reserved_range", web_server_ipv4_reserved_range)
@@ -806,6 +928,14 @@ class PrivateEnvironmentConfigResponse(dict):
         Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
         return pulumi.get(self, "enable_private_environment")
+
+    @property
+    @pulumi.getter(name="enablePrivatelyUsedPublicIps")
+    def enable_privately_used_public_ips(self) -> bool:
+        """
+        Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        """
+        return pulumi.get(self, "enable_privately_used_public_ips")
 
     @property
     @pulumi.getter(name="privateClusterConfig")

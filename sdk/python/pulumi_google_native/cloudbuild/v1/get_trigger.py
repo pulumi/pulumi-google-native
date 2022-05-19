@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, ignored_files=None, include_build_logs=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
         if approval_config and not isinstance(approval_config, dict):
             raise TypeError("Expected argument 'approval_config' to be a dict")
         pulumi.set(__self__, "approval_config", approval_config)
@@ -58,6 +58,9 @@ class GetTriggerResult:
         if ignored_files and not isinstance(ignored_files, list):
             raise TypeError("Expected argument 'ignored_files' to be a list")
         pulumi.set(__self__, "ignored_files", ignored_files)
+        if include_build_logs and not isinstance(include_build_logs, str):
+            raise TypeError("Expected argument 'include_build_logs' to be a str")
+        pulumi.set(__self__, "include_build_logs", include_build_logs)
         if included_files and not isinstance(included_files, list):
             raise TypeError("Expected argument 'included_files' to be a list")
         pulumi.set(__self__, "included_files", included_files)
@@ -194,6 +197,14 @@ class GetTriggerResult:
         return pulumi.get(self, "ignored_files")
 
     @property
+    @pulumi.getter(name="includeBuildLogs")
+    def include_build_logs(self) -> str:
+        """
+        If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "include_build_logs")
+
+    @property
     @pulumi.getter(name="includedFiles")
     def included_files(self) -> Sequence[str]:
         """
@@ -293,6 +304,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             git_file_source=self.git_file_source,
             github=self.github,
             ignored_files=self.ignored_files,
+            include_build_logs=self.include_build_logs,
             included_files=self.included_files,
             name=self.name,
             pubsub_config=self.pubsub_config,
@@ -338,6 +350,7 @@ def get_trigger(location: Optional[str] = None,
         git_file_source=__ret__.git_file_source,
         github=__ret__.github,
         ignored_files=__ret__.ignored_files,
+        include_build_logs=__ret__.include_build_logs,
         included_files=__ret__.included_files,
         name=__ret__.name,
         pubsub_config=__ret__.pubsub_config,

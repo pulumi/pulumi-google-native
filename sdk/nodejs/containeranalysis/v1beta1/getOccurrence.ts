@@ -51,6 +51,10 @@ export interface GetOccurrenceResult {
      */
     readonly discovered: outputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetailsResponse;
     /**
+     * https://github.com/secure-systems-lab/dsse
+     */
+    readonly envelope: outputs.containeranalysis.v1beta1.EnvelopeResponse;
+    /**
      * Describes the installation of a package on the linked resource.
      */
     readonly installation: outputs.containeranalysis.v1beta1.GrafeasV1beta1PackageDetailsResponse;

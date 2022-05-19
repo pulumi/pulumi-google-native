@@ -88,6 +88,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly ignoredFiles!: pulumi.Output<string[]>;
     /**
+     * If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+     */
+    public readonly includeBuildLogs!: pulumi.Output<string>;
+    /**
      * If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
      */
     public readonly includedFiles!: pulumi.Output<string[]>;
@@ -154,6 +158,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["gitFileSource"] = args ? args.gitFileSource : undefined;
             resourceInputs["github"] = args ? args.github : undefined;
             resourceInputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
+            resourceInputs["includeBuildLogs"] = args ? args.includeBuildLogs : undefined;
             resourceInputs["includedFiles"] = args ? args.includedFiles : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -182,6 +187,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["gitFileSource"] = undefined /*out*/;
             resourceInputs["github"] = undefined /*out*/;
             resourceInputs["ignoredFiles"] = undefined /*out*/;
+            resourceInputs["includeBuildLogs"] = undefined /*out*/;
             resourceInputs["includedFiles"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pubsubConfig"] = undefined /*out*/;
@@ -250,6 +256,10 @@ export interface TriggerArgs {
      * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
      */
     ignoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+     */
+    includeBuildLogs?: pulumi.Input<enums.cloudbuild.v1.TriggerIncludeBuildLogs>;
     /**
      * If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
      */

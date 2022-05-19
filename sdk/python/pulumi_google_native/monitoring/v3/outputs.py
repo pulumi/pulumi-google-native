@@ -18,12 +18,16 @@ __all__ = [
     'BasicAuthenticationResponse',
     'BasicSliResponse',
     'CloudEndpointsResponse',
+    'CloudRunResponse',
     'ClusterIstioResponse',
     'ConditionResponse',
     'ContentMatcherResponse',
     'CustomResponse',
     'DistributionCutResponse',
     'DocumentationResponse',
+    'GkeNamespaceResponse',
+    'GkeServiceResponse',
+    'GkeWorkloadResponse',
     'GoogleMonitoringV3RangeResponse',
     'HttpCheckResponse',
     'InternalCheckerResponse',
@@ -355,6 +359,56 @@ class CloudEndpointsResponse(dict):
 
 
 @pulumi.output_type
+class CloudRunResponse(dict):
+    """
+    Cloud Run service. Learn more at https://cloud.google.com/run.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudRunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudRunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudRunResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 location: str,
+                 service_name: str):
+        """
+        Cloud Run service. Learn more at https://cloud.google.com/run.
+        :param str location: The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        :param str service_name: The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+        """
+        return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
 class ClusterIstioResponse(dict):
     """
     Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
@@ -474,7 +528,7 @@ class ConditionResponse(dict):
         :param 'MonitoringQueryLanguageConditionResponse' condition_monitoring_query_language: A condition that uses the Monitoring Query Language to define alerts.
         :param 'MetricThresholdResponse' condition_threshold: A condition that compares a time series against a threshold.
         :param str display_name: A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
-        :param str name: Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+        :param str name: Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
         """
         pulumi.set(__self__, "condition_absent", condition_absent)
         pulumi.set(__self__, "condition_matched_log", condition_matched_log)
@@ -527,7 +581,7 @@ class ConditionResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+        Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
         """
         return pulumi.get(self, "name")
 
@@ -675,6 +729,267 @@ class DocumentationResponse(dict):
         The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
         """
         return pulumi.get(self, "mime_type")
+
+
+@pulumi.output_type
+class GkeNamespaceResponse(dict):
+    """
+    GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "namespaceName":
+            suggest = "namespace_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GkeNamespaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GkeNamespaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GkeNamespaceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_name: str,
+                 location: str,
+                 namespace_name: str,
+                 project: str):
+        """
+        GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+        :param str cluster_name: The name of the parent cluster.
+        :param str location: The location of the parent cluster. This may be a zone or region.
+        :param str namespace_name: The name of this namespace.
+        :param str project: The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+        """
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the parent cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the parent cluster. This may be a zone or region.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        """
+        The name of this namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+        """
+        return pulumi.get(self, "project")
+
+
+@pulumi.output_type
+class GkeServiceResponse(dict):
+    """
+    GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "namespaceName":
+            suggest = "namespace_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GkeServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GkeServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GkeServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_name: str,
+                 location: str,
+                 namespace_name: str,
+                 project: str,
+                 service_name: str):
+        """
+        GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+        :param str cluster_name: The name of the parent cluster.
+        :param str location: The location of the parent cluster. This may be a zone or region.
+        :param str namespace_name: The name of the parent namespace.
+        :param str project: The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+        :param str service_name: The name of this service.
+        """
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the parent cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the parent cluster. This may be a zone or region.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        """
+        The name of the parent namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        The name of this service.
+        """
+        return pulumi.get(self, "service_name")
+
+
+@pulumi.output_type
+class GkeWorkloadResponse(dict):
+    """
+    A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "namespaceName":
+            suggest = "namespace_name"
+        elif key == "topLevelControllerName":
+            suggest = "top_level_controller_name"
+        elif key == "topLevelControllerType":
+            suggest = "top_level_controller_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GkeWorkloadResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GkeWorkloadResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GkeWorkloadResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_name: str,
+                 location: str,
+                 namespace_name: str,
+                 project: str,
+                 top_level_controller_name: str,
+                 top_level_controller_type: str):
+        """
+        A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+        :param str cluster_name: The name of the parent cluster.
+        :param str location: The location of the parent cluster. This may be a zone or region.
+        :param str namespace_name: The name of the parent namespace.
+        :param str project: The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+        :param str top_level_controller_name: The name of this workload.
+        :param str top_level_controller_type: The type of this workload (e.g. "Deployment" or "DaemonSet")
+        """
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "namespace_name", namespace_name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "top_level_controller_name", top_level_controller_name)
+        pulumi.set(__self__, "top_level_controller_type", top_level_controller_type)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> str:
+        """
+        The name of the parent cluster.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the parent cluster. This may be a zone or region.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="namespaceName")
+    def namespace_name(self) -> str:
+        """
+        The name of the parent namespace.
+        """
+        return pulumi.get(self, "namespace_name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="topLevelControllerName")
+    def top_level_controller_name(self) -> str:
+        """
+        The name of this workload.
+        """
+        return pulumi.get(self, "top_level_controller_name")
+
+    @property
+    @pulumi.getter(name="topLevelControllerType")
+    def top_level_controller_type(self) -> str:
+        """
+        The type of this workload (e.g. "Deployment" or "DaemonSet")
+        """
+        return pulumi.get(self, "top_level_controller_type")
 
 
 @pulumi.output_type
@@ -893,11 +1208,11 @@ class InternalCheckerResponse(dict):
                  state: str):
         """
         An internal checker allows Uptime checks to run on private/internal GCP resources.
-        :param str display_name: The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+        :param str display_name: The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
         :param str gcp_zone: The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
-        :param str name: A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+        :param str name: A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
         :param str network: The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
-        :param str peer_project_id: The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+        :param str peer_project_id: The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
         :param str state: The current operational state of the internal checker.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -911,7 +1226,7 @@ class InternalCheckerResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+        The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
         """
         return pulumi.get(self, "display_name")
 
@@ -927,7 +1242,7 @@ class InternalCheckerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+        A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
         """
         return pulumi.get(self, "name")
 
@@ -943,7 +1258,7 @@ class InternalCheckerResponse(dict):
     @pulumi.getter(name="peerProjectId")
     def peer_project_id(self) -> str:
         """
-        The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+        The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
         """
         return pulumi.get(self, "peer_project_id")
 

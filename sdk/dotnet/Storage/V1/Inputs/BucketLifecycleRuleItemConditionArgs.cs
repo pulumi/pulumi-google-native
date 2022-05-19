@@ -57,6 +57,18 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         [Input("matchesPattern")]
         public Input<string>? MatchesPattern { get; set; }
 
+        [Input("matchesPrefix")]
+        private InputList<string>? _matchesPrefix;
+
+        /// <summary>
+        /// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+        /// </summary>
+        public InputList<string> MatchesPrefix
+        {
+            get => _matchesPrefix ?? (_matchesPrefix = new InputList<string>());
+            set => _matchesPrefix = value;
+        }
+
         [Input("matchesStorageClass")]
         private InputList<string>? _matchesStorageClass;
 
@@ -67,6 +79,18 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         {
             get => _matchesStorageClass ?? (_matchesStorageClass = new InputList<string>());
             set => _matchesStorageClass = value;
+        }
+
+        [Input("matchesSuffix")]
+        private InputList<string>? _matchesSuffix;
+
+        /// <summary>
+        /// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+        /// </summary>
+        public InputList<string> MatchesSuffix
+        {
+            get => _matchesSuffix ?? (_matchesSuffix = new InputList<string>());
+            set => _matchesSuffix = value;
         }
 
         /// <summary>

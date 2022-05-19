@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<string>? MaxJobExecutionLifetime { get; set; }
 
         /// <summary>
+        /// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+        /// </summary>
+        [Input("project")]
+        public Input<string>? Project { get; set; }
+
+        /// <summary>
         /// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         /// </summary>
         [Input("serviceAccount", required: true)]

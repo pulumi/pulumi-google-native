@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<Inputs.MaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
+        /// Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+        /// </summary>
+        [Input("masterAuthorizedNetworksConfig")]
+        public Input<Inputs.MasterAuthorizedNetworksConfigArgs>? MasterAuthorizedNetworksConfig { get; set; }
+
+        /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.
         /// </summary>
         [Input("nodeConfig")]

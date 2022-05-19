@@ -93,6 +93,8 @@ type LookupRegionBackendServiceResult struct {
 	SecuritySettings SecuritySettingsResponse `pulumi:"securitySettings"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
+	// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+	ServiceBindings []string `pulumi:"serviceBindings"`
 	// Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
 	SessionAffinity string             `pulumi:"sessionAffinity"`
 	Subsetting      SubsettingResponse `pulumi:"subsetting"`
@@ -306,6 +308,11 @@ func (o LookupRegionBackendServiceResultOutput) SecuritySettings() SecuritySetti
 // Server-defined URL for the resource.
 func (o LookupRegionBackendServiceResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+func (o LookupRegionBackendServiceResultOutput) ServiceBindings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) []string { return v.ServiceBindings }).(pulumi.StringArrayOutput)
 }
 
 // Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).

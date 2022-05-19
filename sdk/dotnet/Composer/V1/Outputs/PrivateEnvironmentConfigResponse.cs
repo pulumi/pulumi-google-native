@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
         /// </summary>
         public readonly bool EnablePrivateEnvironment;
         /// <summary>
+        /// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        /// </summary>
+        public readonly bool EnablePrivatelyUsedPublicIps;
+        /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         /// </summary>
         public readonly Outputs.PrivateClusterConfigResponse PrivateClusterConfig;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
 
             bool enablePrivateEnvironment,
 
+            bool enablePrivatelyUsedPublicIps,
+
             Outputs.PrivateClusterConfigResponse privateClusterConfig,
 
             string webServerIpv4CidrBlock,
@@ -72,6 +78,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Outputs
             CloudComposerNetworkIpv4ReservedRange = cloudComposerNetworkIpv4ReservedRange;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEnvironment = enablePrivateEnvironment;
+            EnablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             PrivateClusterConfig = privateClusterConfig;
             WebServerIpv4CidrBlock = webServerIpv4CidrBlock;
             WebServerIpv4ReservedRange = webServerIpv4ReservedRange;

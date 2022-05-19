@@ -61,6 +61,10 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly discovered!: pulumi.Output<outputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetailsResponse>;
     /**
+     * https://github.com/secure-systems-lab/dsse
+     */
+    public readonly envelope!: pulumi.Output<outputs.containeranalysis.v1beta1.EnvelopeResponse>;
+    /**
      * Describes the installation of a package on the linked resource.
      */
     public readonly installation!: pulumi.Output<outputs.containeranalysis.v1beta1.GrafeasV1beta1PackageDetailsResponse>;
@@ -135,6 +139,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["deployment"] = args ? args.deployment : undefined;
             resourceInputs["derivedImage"] = args ? args.derivedImage : undefined;
             resourceInputs["discovered"] = args ? args.discovered : undefined;
+            resourceInputs["envelope"] = args ? args.envelope : undefined;
             resourceInputs["installation"] = args ? args.installation : undefined;
             resourceInputs["intoto"] = args ? args.intoto : undefined;
             resourceInputs["noteName"] = args ? args.noteName : undefined;
@@ -157,6 +162,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["deployment"] = undefined /*out*/;
             resourceInputs["derivedImage"] = undefined /*out*/;
             resourceInputs["discovered"] = undefined /*out*/;
+            resourceInputs["envelope"] = undefined /*out*/;
             resourceInputs["installation"] = undefined /*out*/;
             resourceInputs["intoto"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -200,6 +206,10 @@ export interface OccurrenceArgs {
      * Describes when a resource was discovered.
      */
     discovered?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetailsArgs>;
+    /**
+     * https://github.com/secure-systems-lab/dsse
+     */
+    envelope?: pulumi.Input<inputs.containeranalysis.v1beta1.EnvelopeArgs>;
     /**
      * Describes the installation of a package on the linked resource.
      */

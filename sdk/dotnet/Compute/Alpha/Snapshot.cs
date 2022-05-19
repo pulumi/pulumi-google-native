@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> ChainName { get; private set; } = null!;
 
         /// <summary>
+        /// Size in bytes of the snapshot at creation time.
+        /// </summary>
+        [Output("creationSizeBytes")]
+        public Output<string> CreationSizeBytes { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        [Output("channel")]
+        public Output<string> Channel { get; private set; } = null!;
+
+        /// <summary>
         /// The creation time.
         /// </summary>
         [Output("createTime")]
@@ -120,6 +126,12 @@ namespace Pulumi.GoogleNative.Eventarc.V1
 
     public sealed class TriggerArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
         /// <summary>
         /// Destination specifies where the events should be sent to.
         /// </summary>

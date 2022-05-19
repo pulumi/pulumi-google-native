@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Profile;
         /// <summary>
+        /// URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -120,6 +124,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string profile,
 
+            string region,
+
             string selfLink,
 
             ImmutableArray<Outputs.SslPolicyWarningsItemResponse> warnings)
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             MinTlsVersion = minTlsVersion;
             Name = name;
             Profile = profile;
+            Region = region;
             SelfLink = selfLink;
             Warnings = warnings;
         }

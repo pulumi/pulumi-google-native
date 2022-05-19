@@ -721,7 +721,9 @@ class BucketLifecycleRuleItemConditionArgs:
                  days_since_noncurrent_time: Optional[pulumi.Input[int]] = None,
                  is_live: Optional[pulumi.Input[bool]] = None,
                  matches_pattern: Optional[pulumi.Input[str]] = None,
+                 matches_prefix: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  matches_storage_class: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 matches_suffix: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  noncurrent_time_before: Optional[pulumi.Input[str]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None):
         """
@@ -733,7 +735,9 @@ class BucketLifecycleRuleItemConditionArgs:
         :param pulumi.Input[int] days_since_noncurrent_time: Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
         :param pulumi.Input[bool] is_live: Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
         :param pulumi.Input[str] matches_pattern: A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_prefix: List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_storage_class: Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_suffix: List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
         :param pulumi.Input[str] noncurrent_time_before: A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
         """
@@ -751,8 +755,12 @@ class BucketLifecycleRuleItemConditionArgs:
             pulumi.set(__self__, "is_live", is_live)
         if matches_pattern is not None:
             pulumi.set(__self__, "matches_pattern", matches_pattern)
+        if matches_prefix is not None:
+            pulumi.set(__self__, "matches_prefix", matches_prefix)
         if matches_storage_class is not None:
             pulumi.set(__self__, "matches_storage_class", matches_storage_class)
+        if matches_suffix is not None:
+            pulumi.set(__self__, "matches_suffix", matches_suffix)
         if noncurrent_time_before is not None:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
@@ -843,6 +851,18 @@ class BucketLifecycleRuleItemConditionArgs:
         pulumi.set(self, "matches_pattern", value)
 
     @property
+    @pulumi.getter(name="matchesPrefix")
+    def matches_prefix(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+        """
+        return pulumi.get(self, "matches_prefix")
+
+    @matches_prefix.setter
+    def matches_prefix(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "matches_prefix", value)
+
+    @property
     @pulumi.getter(name="matchesStorageClass")
     def matches_storage_class(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -853,6 +873,18 @@ class BucketLifecycleRuleItemConditionArgs:
     @matches_storage_class.setter
     def matches_storage_class(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "matches_storage_class", value)
+
+    @property
+    @pulumi.getter(name="matchesSuffix")
+    def matches_suffix(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+        """
+        return pulumi.get(self, "matches_suffix")
+
+    @matches_suffix.setter
+    def matches_suffix(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "matches_suffix", value)
 
     @property
     @pulumi.getter(name="noncurrentTimeBefore")

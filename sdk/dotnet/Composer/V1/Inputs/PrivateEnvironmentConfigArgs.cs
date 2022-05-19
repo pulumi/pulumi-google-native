@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public Input<bool>? EnablePrivateEnvironment { get; set; }
 
         /// <summary>
+        /// Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        /// </summary>
+        [Input("enablePrivatelyUsedPublicIps")]
+        public Input<bool>? EnablePrivatelyUsedPublicIps { get; set; }
+
+        /// <summary>
         /// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         /// </summary>
         [Input("privateClusterConfig")]

@@ -62,7 +62,7 @@ class CaseClassificationArgs:
         """
         A classification object with a product type and value.
         :param pulumi.Input[str] display_name: The display name of the classification.
-        :param pulumi.Input[str] id: The unique ID for a classification. Must be specified for case creation.
+        :param pulumi.Input[str] id: The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -85,7 +85,7 @@ class CaseClassificationArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ID for a classification. Must be specified for case creation.
+        The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
         """
         return pulumi.get(self, "id")
 

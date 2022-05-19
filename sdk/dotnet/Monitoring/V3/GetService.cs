@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly Outputs.CloudEndpointsResponse CloudEndpoints;
         /// <summary>
+        /// Type used for Cloud Run services.
+        /// </summary>
+        public readonly Outputs.CloudRunResponse CloudRun;
+        /// <summary>
         /// Type used for Istio services that live in a Kubernetes cluster.
         /// </summary>
         public readonly Outputs.ClusterIstioResponse ClusterIstio;
@@ -81,6 +85,18 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Name used for UI elements listing this Service.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Type used for GKE Namespaces.
+        /// </summary>
+        public readonly Outputs.GkeNamespaceResponse GkeNamespace;
+        /// <summary>
+        /// Type used for GKE Services (the Kubernetes concept of a service).
+        /// </summary>
+        public readonly Outputs.GkeServiceResponse GkeService;
+        /// <summary>
+        /// Type used for GKE Workloads.
+        /// </summary>
+        public readonly Outputs.GkeWorkloadResponse GkeWorkload;
         /// <summary>
         /// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
         /// </summary>
@@ -108,11 +124,19 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
             Outputs.CloudEndpointsResponse cloudEndpoints,
 
+            Outputs.CloudRunResponse cloudRun,
+
             Outputs.ClusterIstioResponse clusterIstio,
 
             Outputs.CustomResponse custom,
 
             string displayName,
+
+            Outputs.GkeNamespaceResponse gkeNamespace,
+
+            Outputs.GkeServiceResponse gkeService,
+
+            Outputs.GkeWorkloadResponse gkeWorkload,
 
             Outputs.IstioCanonicalServiceResponse istioCanonicalService,
 
@@ -126,9 +150,13 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         {
             AppEngine = appEngine;
             CloudEndpoints = cloudEndpoints;
+            CloudRun = cloudRun;
             ClusterIstio = clusterIstio;
             Custom = custom;
             DisplayName = displayName;
+            GkeNamespace = gkeNamespace;
+            GkeService = gkeService;
+            GkeWorkload = gkeWorkload;
             IstioCanonicalService = istioCanonicalService;
             MeshIstio = meshIstio;
             Name = name;

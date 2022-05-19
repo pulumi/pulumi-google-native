@@ -1319,184 +1319,6 @@ func (o NfsExportResponseArrayOutput) Index(i pulumi.IntInput) NfsExportResponse
 	}).(NfsExportResponseOutput)
 }
 
-// A snapshot schedule.
-type Schedule struct {
-	// A crontab-like specification that the schedule uses to take snapshots.
-	CrontabSpec *string `pulumi:"crontabSpec"`
-	// A list of snapshot names created in this schedule.
-	Prefix *string `pulumi:"prefix"`
-	// The maximum number of snapshots to retain in this schedule.
-	RetentionCount *int `pulumi:"retentionCount"`
-}
-
-// ScheduleInput is an input type that accepts ScheduleArgs and ScheduleOutput values.
-// You can construct a concrete instance of `ScheduleInput` via:
-//
-//          ScheduleArgs{...}
-type ScheduleInput interface {
-	pulumi.Input
-
-	ToScheduleOutput() ScheduleOutput
-	ToScheduleOutputWithContext(context.Context) ScheduleOutput
-}
-
-// A snapshot schedule.
-type ScheduleArgs struct {
-	// A crontab-like specification that the schedule uses to take snapshots.
-	CrontabSpec pulumi.StringPtrInput `pulumi:"crontabSpec"`
-	// A list of snapshot names created in this schedule.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The maximum number of snapshots to retain in this schedule.
-	RetentionCount pulumi.IntPtrInput `pulumi:"retentionCount"`
-}
-
-func (ScheduleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil)).Elem()
-}
-
-func (i ScheduleArgs) ToScheduleOutput() ScheduleOutput {
-	return i.ToScheduleOutputWithContext(context.Background())
-}
-
-func (i ScheduleArgs) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleOutput)
-}
-
-// ScheduleArrayInput is an input type that accepts ScheduleArray and ScheduleArrayOutput values.
-// You can construct a concrete instance of `ScheduleArrayInput` via:
-//
-//          ScheduleArray{ ScheduleArgs{...} }
-type ScheduleArrayInput interface {
-	pulumi.Input
-
-	ToScheduleArrayOutput() ScheduleArrayOutput
-	ToScheduleArrayOutputWithContext(context.Context) ScheduleArrayOutput
-}
-
-type ScheduleArray []ScheduleInput
-
-func (ScheduleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Schedule)(nil)).Elem()
-}
-
-func (i ScheduleArray) ToScheduleArrayOutput() ScheduleArrayOutput {
-	return i.ToScheduleArrayOutputWithContext(context.Background())
-}
-
-func (i ScheduleArray) ToScheduleArrayOutputWithContext(ctx context.Context) ScheduleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ScheduleArrayOutput)
-}
-
-// A snapshot schedule.
-type ScheduleOutput struct{ *pulumi.OutputState }
-
-func (ScheduleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Schedule)(nil)).Elem()
-}
-
-func (o ScheduleOutput) ToScheduleOutput() ScheduleOutput {
-	return o
-}
-
-func (o ScheduleOutput) ToScheduleOutputWithContext(ctx context.Context) ScheduleOutput {
-	return o
-}
-
-// A crontab-like specification that the schedule uses to take snapshots.
-func (o ScheduleOutput) CrontabSpec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Schedule) *string { return v.CrontabSpec }).(pulumi.StringPtrOutput)
-}
-
-// A list of snapshot names created in this schedule.
-func (o ScheduleOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Schedule) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-// The maximum number of snapshots to retain in this schedule.
-func (o ScheduleOutput) RetentionCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Schedule) *int { return v.RetentionCount }).(pulumi.IntPtrOutput)
-}
-
-type ScheduleArrayOutput struct{ *pulumi.OutputState }
-
-func (ScheduleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Schedule)(nil)).Elem()
-}
-
-func (o ScheduleArrayOutput) ToScheduleArrayOutput() ScheduleArrayOutput {
-	return o
-}
-
-func (o ScheduleArrayOutput) ToScheduleArrayOutputWithContext(ctx context.Context) ScheduleArrayOutput {
-	return o
-}
-
-func (o ScheduleArrayOutput) Index(i pulumi.IntInput) ScheduleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Schedule {
-		return vs[0].([]Schedule)[vs[1].(int)]
-	}).(ScheduleOutput)
-}
-
-// A snapshot schedule.
-type ScheduleResponse struct {
-	// A crontab-like specification that the schedule uses to take snapshots.
-	CrontabSpec string `pulumi:"crontabSpec"`
-	// A list of snapshot names created in this schedule.
-	Prefix string `pulumi:"prefix"`
-	// The maximum number of snapshots to retain in this schedule.
-	RetentionCount int `pulumi:"retentionCount"`
-}
-
-// A snapshot schedule.
-type ScheduleResponseOutput struct{ *pulumi.OutputState }
-
-func (ScheduleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ScheduleResponse)(nil)).Elem()
-}
-
-func (o ScheduleResponseOutput) ToScheduleResponseOutput() ScheduleResponseOutput {
-	return o
-}
-
-func (o ScheduleResponseOutput) ToScheduleResponseOutputWithContext(ctx context.Context) ScheduleResponseOutput {
-	return o
-}
-
-// A crontab-like specification that the schedule uses to take snapshots.
-func (o ScheduleResponseOutput) CrontabSpec() pulumi.StringOutput {
-	return o.ApplyT(func(v ScheduleResponse) string { return v.CrontabSpec }).(pulumi.StringOutput)
-}
-
-// A list of snapshot names created in this schedule.
-func (o ScheduleResponseOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v ScheduleResponse) string { return v.Prefix }).(pulumi.StringOutput)
-}
-
-// The maximum number of snapshots to retain in this schedule.
-func (o ScheduleResponseOutput) RetentionCount() pulumi.IntOutput {
-	return o.ApplyT(func(v ScheduleResponse) int { return v.RetentionCount }).(pulumi.IntOutput)
-}
-
-type ScheduleResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ScheduleResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ScheduleResponse)(nil)).Elem()
-}
-
-func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutput() ScheduleResponseArrayOutput {
-	return o
-}
-
-func (o ScheduleResponseArrayOutput) ToScheduleResponseArrayOutputWithContext(ctx context.Context) ScheduleResponseArrayOutput {
-	return o
-}
-
-func (o ScheduleResponseArrayOutput) Index(i pulumi.IntInput) ScheduleResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScheduleResponse {
-		return vs[0].([]ScheduleResponse)[vs[1].(int)]
-	}).(ScheduleResponseOutput)
-}
-
 // Configuration parameters for a new volume.
 type VolumeConfig struct {
 	// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
@@ -1800,8 +1622,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigArrayInput)(nil)).Elem(), NetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportInput)(nil)).Elem(), NfsExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportArrayInput)(nil)).Elem(), NfsExportArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleInput)(nil)).Elem(), ScheduleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ScheduleArrayInput)(nil)).Elem(), ScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigInput)(nil)).Elem(), VolumeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigArrayInput)(nil)).Elem(), VolumeConfigArray{})
 	pulumi.RegisterOutputType(InstanceConfigOutput{})
@@ -1827,10 +1647,6 @@ func init() {
 	pulumi.RegisterOutputType(NfsExportArrayOutput{})
 	pulumi.RegisterOutputType(NfsExportResponseOutput{})
 	pulumi.RegisterOutputType(NfsExportResponseArrayOutput{})
-	pulumi.RegisterOutputType(ScheduleOutput{})
-	pulumi.RegisterOutputType(ScheduleArrayOutput{})
-	pulumi.RegisterOutputType(ScheduleResponseOutput{})
-	pulumi.RegisterOutputType(ScheduleResponseArrayOutput{})
 	pulumi.RegisterOutputType(VolumeConfigOutput{})
 	pulumi.RegisterOutputType(VolumeConfigArrayOutput{})
 	pulumi.RegisterOutputType(VolumeConfigResponseOutput{})

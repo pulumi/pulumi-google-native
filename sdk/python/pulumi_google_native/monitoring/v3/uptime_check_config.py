@@ -34,7 +34,7 @@ class UptimeCheckConfigArgs:
         The set of arguments for constructing a UptimeCheckConfig resource.
         :param pulumi.Input['UptimeCheckConfigCheckerType'] checker_type: The type of checkers to use to execute the Uptime check.
         :param pulumi.Input[Sequence[pulumi.Input['ContentMatcherArgs']]] content_matchers: The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
-        :param pulumi.Input[str] display_name: A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        :param pulumi.Input[str] display_name: A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         :param pulumi.Input['HttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
         :param pulumi.Input[Sequence[pulumi.Input['InternalCheckerArgs']]] internal_checkers: The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
         :param pulumi.Input[bool] is_internal: If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
@@ -103,7 +103,7 @@ class UptimeCheckConfigArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         """
         return pulumi.get(self, "display_name")
 
@@ -268,7 +268,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['UptimeCheckConfigCheckerType'] checker_type: The type of checkers to use to execute the Uptime check.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContentMatcherArgs']]]] content_matchers: The content that is expected to appear in the data returned by the target server against which the check is run. Currently, only the first entry in the content_matchers list is supported, and additional entries will be ignored. This field is optional and should only be specified if a content match is required as part of the/ Uptime check.
-        :param pulumi.Input[str] display_name: A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        :param pulumi.Input[str] display_name: A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         :param pulumi.Input[pulumi.InputType['HttpCheckArgs']] http_check: Contains information needed to make an HTTP or HTTPS check.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InternalCheckerArgs']]]] internal_checkers: The internal checkers that this check will egress from. If is_internal is true and this list is empty, the check will egress from all the InternalCheckers configured for the project that owns this UptimeCheckConfig.
         :param pulumi.Input[bool] is_internal: If this is true, then checks are made only from the 'internal_checkers'. If it is false, then checks are made only from the 'selected_regions'. It is an error to provide 'selected_regions' when is_internal is true, or to provide 'internal_checkers' when is_internal is false.
@@ -401,7 +401,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         """
         return pulumi.get(self, "display_name")
 

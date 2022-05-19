@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// The hostname to assign to the VM.
+        /// </summary>
+        public readonly string Hostname;
+        /// <summary>
         /// A map of labels to associate with the VM.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -97,6 +101,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
 
             string diskType,
 
+            string hostname,
+
             ImmutableDictionary<string, string> labels,
 
             string licenseType,
@@ -126,6 +132,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Outputs
             BootOption = bootOption;
             ComputeScheduling = computeScheduling;
             DiskType = diskType;
+            Hostname = hostname;
             Labels = labels;
             LicenseType = licenseType;
             MachineType = machineType;

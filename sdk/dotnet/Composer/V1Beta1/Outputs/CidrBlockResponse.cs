@@ -11,17 +11,17 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 {
 
     /// <summary>
-    /// CidrBlock contains an optional name and one CIDR block.
+    /// CIDR block with an optional name.
     /// </summary>
     [OutputType]
     public sealed class CidrBlockResponse
     {
         /// <summary>
-        /// cidr_block must be specified in CIDR notation.
+        /// CIDR block that must be specified in CIDR notation.
         /// </summary>
         public readonly string CidrBlock;
         /// <summary>
-        /// display_name is a field for users to identify CIDR blocks.
+        /// User-defined name that identifies the CIDR block.
         /// </summary>
         public readonly string DisplayName;
 

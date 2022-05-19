@@ -98,22 +98,6 @@ export const NfsExportPermissions = {
  */
 export type NfsExportPermissions = (typeof NfsExportPermissions)[keyof typeof NfsExportPermissions];
 
-export const SnapshotSchedulePolicyState = {
-    /**
-     * The policy is in an unknown state.
-     */
-    StateUnspecified: "STATE_UNSPECIFIED",
-    /**
-     * The policy is been provisioned.
-     */
-    Provisioned: "PROVISIONED",
-} as const;
-
-/**
- * The state of the snapshot schedule policy.
- */
-export type SnapshotSchedulePolicyState = (typeof SnapshotSchedulePolicyState)[keyof typeof SnapshotSchedulePolicyState];
-
 export const VolumeConfigProtocol = {
     /**
      * Unspecified value.

@@ -26,6 +26,10 @@ export interface GetTargetSslProxyArgs {
 
 export interface GetTargetSslProxyResult {
     /**
+     * URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
+     */
+    readonly certificateMap: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;

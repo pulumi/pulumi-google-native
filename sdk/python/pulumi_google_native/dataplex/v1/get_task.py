@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTaskResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, execution_spec=None, labels=None, name=None, spark=None, state=None, trigger_spec=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, execution_spec=None, execution_status=None, labels=None, name=None, spark=None, state=None, trigger_spec=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -31,6 +31,9 @@ class GetTaskResult:
         if execution_spec and not isinstance(execution_spec, dict):
             raise TypeError("Expected argument 'execution_spec' to be a dict")
         pulumi.set(__self__, "execution_spec", execution_spec)
+        if execution_status and not isinstance(execution_status, dict):
+            raise TypeError("Expected argument 'execution_status' to be a dict")
+        pulumi.set(__self__, "execution_status", execution_status)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -84,6 +87,14 @@ class GetTaskResult:
         Spec related to how a task is executed.
         """
         return pulumi.get(self, "execution_spec")
+
+    @property
+    @pulumi.getter(name="executionStatus")
+    def execution_status(self) -> 'outputs.GoogleCloudDataplexV1TaskExecutionStatusResponse':
+        """
+        Status of the latest task executions.
+        """
+        return pulumi.get(self, "execution_status")
 
     @property
     @pulumi.getter
@@ -152,6 +163,7 @@ class AwaitableGetTaskResult(GetTaskResult):
             description=self.description,
             display_name=self.display_name,
             execution_spec=self.execution_spec,
+            execution_status=self.execution_status,
             labels=self.labels,
             name=self.name,
             spark=self.spark,
@@ -185,6 +197,7 @@ def get_task(lake_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         execution_spec=__ret__.execution_spec,
+        execution_status=__ret__.execution_status,
         labels=__ret__.labels,
         name=__ret__.name,
         spark=__ret__.spark,

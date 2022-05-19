@@ -153,7 +153,7 @@ class GetVersionResult:
     @pulumi.getter(name="appEngineApis")
     def app_engine_apis(self) -> bool:
         """
-        app_engine_apis allows second generation runtimes to access the App Engine APIs.
+        Allows App Engine second generation runtimes to access the legacy bundled services.
         """
         return pulumi.get(self, "app_engine_apis")
 

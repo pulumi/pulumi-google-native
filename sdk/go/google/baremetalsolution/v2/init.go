@@ -23,10 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:baremetalsolution/v2:ProvisioningConfig":
 		r = &ProvisioningConfig{}
-	case "google-native:baremetalsolution/v2:Snapshot":
-		r = &Snapshot{}
-	case "google-native:baremetalsolution/v2:SnapshotSchedulePolicy":
-		r = &SnapshotSchedulePolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

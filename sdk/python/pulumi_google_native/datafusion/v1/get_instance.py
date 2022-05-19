@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, disabled_reason=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, event_publish_config=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_account=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -55,6 +55,9 @@ class GetInstanceResult:
         if enable_stackdriver_monitoring and not isinstance(enable_stackdriver_monitoring, bool):
             raise TypeError("Expected argument 'enable_stackdriver_monitoring' to be a bool")
         pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+        if event_publish_config and not isinstance(event_publish_config, dict):
+            raise TypeError("Expected argument 'event_publish_config' to be a dict")
+        pulumi.set(__self__, "event_publish_config", event_publish_config)
         if gcs_bucket and not isinstance(gcs_bucket, str):
             raise TypeError("Expected argument 'gcs_bucket' to be a str")
         pulumi.set(__self__, "gcs_bucket", gcs_bucket)
@@ -205,6 +208,14 @@ class GetInstanceResult:
         return pulumi.get(self, "enable_stackdriver_monitoring")
 
     @property
+    @pulumi.getter(name="eventPublishConfig")
+    def event_publish_config(self) -> 'outputs.EventPublishConfigResponse':
+        """
+        Option to enable and pass metadata for event publishing.
+        """
+        return pulumi.get(self, "event_publish_config")
+
+    @property
     @pulumi.getter(name="gcsBucket")
     def gcs_bucket(self) -> str:
         """
@@ -351,6 +362,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             enable_rbac=self.enable_rbac,
             enable_stackdriver_logging=self.enable_stackdriver_logging,
             enable_stackdriver_monitoring=self.enable_stackdriver_monitoring,
+            event_publish_config=self.event_publish_config,
             gcs_bucket=self.gcs_bucket,
             labels=self.labels,
             name=self.name,
@@ -399,6 +411,7 @@ def get_instance(instance_id: Optional[str] = None,
         enable_rbac=__ret__.enable_rbac,
         enable_stackdriver_logging=__ret__.enable_stackdriver_logging,
         enable_stackdriver_monitoring=__ret__.enable_stackdriver_monitoring,
+        event_publish_config=__ret__.event_publish_config,
         gcs_bucket=__ret__.gcs_bucket,
         labels=__ret__.labels,
         name=__ret__.name,

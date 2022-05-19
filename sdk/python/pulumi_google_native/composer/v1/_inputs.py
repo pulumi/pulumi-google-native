@@ -11,11 +11,13 @@ from ._enums import *
 
 __all__ = [
     'AllowedIpRangeArgs',
+    'CidrBlockArgs',
     'DatabaseConfigArgs',
     'EncryptionConfigArgs',
     'EnvironmentConfigArgs',
     'IPAllocationPolicyArgs',
     'MaintenanceWindowArgs',
+    'MasterAuthorizedNetworksConfigArgs',
     'NodeConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateEnvironmentConfigArgs',
@@ -66,6 +68,46 @@ class AllowedIpRangeArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CidrBlockArgs:
+    def __init__(__self__, *,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None):
+        """
+        CIDR block with an optional name.
+        :param pulumi.Input[str] cidr_block: CIDR block that must be specified in CIDR notation.
+        :param pulumi.Input[str] display_name: User-defined name that identifies the CIDR block.
+        """
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        """
+        CIDR block that must be specified in CIDR notation.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined name that identifies the CIDR block.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
@@ -123,6 +165,7 @@ class EnvironmentConfigArgs:
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  environment_size: Optional[pulumi.Input['EnvironmentConfigEnvironmentSize']] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
+                 master_authorized_networks_config: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']] = None,
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']] = None,
@@ -136,6 +179,7 @@ class EnvironmentConfigArgs:
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         :param pulumi.Input['EnvironmentConfigEnvironmentSize'] environment_size: Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the default value for maintenance window will be applied. The default value is Saturday and Sunday 00-06 GMT.
+        :param pulumi.Input['MasterAuthorizedNetworksConfigArgs'] master_authorized_networks_config: Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
@@ -152,6 +196,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "environment_size", environment_size)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if master_authorized_networks_config is not None:
+            pulumi.set(__self__, "master_authorized_networks_config", master_authorized_networks_config)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
         if node_count is not None:
@@ -214,6 +260,18 @@ class EnvironmentConfigArgs:
     @maintenance_window.setter
     def maintenance_window(self, value: Optional[pulumi.Input['MaintenanceWindowArgs']]):
         pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter(name="masterAuthorizedNetworksConfig")
+    def master_authorized_networks_config(self) -> Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']]:
+        """
+        Optional. The configuration options for GKE cluster master authorized networks. By default master authorized networks feature is: - in case of private environment: enabled with no external networks allowlisted. - in case of public environment: disabled.
+        """
+        return pulumi.get(self, "master_authorized_networks_config")
+
+    @master_authorized_networks_config.setter
+    def master_authorized_networks_config(self, value: Optional[pulumi.Input['MasterAuthorizedNetworksConfigArgs']]):
+        pulumi.set(self, "master_authorized_networks_config", value)
 
     @property
     @pulumi.getter(name="nodeConfig")
@@ -442,6 +500,46 @@ class MaintenanceWindowArgs:
 
 
 @pulumi.input_type
+class MasterAuthorizedNetworksConfigArgs:
+    def __init__(__self__, *,
+                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+        :param pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]] cidr_blocks: Up to 50 external networks that could access Kubernetes master through HTTPS.
+        :param pulumi.Input[bool] enabled: Whether or not master authorized networks feature is enabled.
+        """
+        if cidr_blocks is not None:
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]:
+        """
+        Up to 50 external networks that could access Kubernetes master through HTTPS.
+        """
+        return pulumi.get(self, "cidr_blocks")
+
+    @cidr_blocks.setter
+    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]):
+        pulumi.set(self, "cidr_blocks", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not master authorized networks feature is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class NodeConfigArgs:
     def __init__(__self__, *,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -640,6 +738,7 @@ class PrivateEnvironmentConfigArgs:
                  cloud_composer_network_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cloud_sql_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  enable_private_environment: Optional[pulumi.Input[bool]] = None,
+                 enable_privately_used_public_ips: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input['PrivateClusterConfigArgs']] = None,
                  web_server_ipv4_cidr_block: Optional[pulumi.Input[str]] = None):
         """
@@ -648,6 +747,7 @@ class PrivateEnvironmentConfigArgs:
         :param pulumi.Input[str] cloud_composer_network_ipv4_cidr_block: Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input[str] cloud_sql_ipv4_cidr_block: Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.
         :param pulumi.Input[bool] enable_private_environment: Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param pulumi.Input[bool] enable_privately_used_public_ips: Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
         :param pulumi.Input['PrivateClusterConfigArgs'] private_cluster_config: Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
         :param pulumi.Input[str] web_server_ipv4_cidr_block: Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         """
@@ -659,6 +759,8 @@ class PrivateEnvironmentConfigArgs:
             pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
         if enable_private_environment is not None:
             pulumi.set(__self__, "enable_private_environment", enable_private_environment)
+        if enable_privately_used_public_ips is not None:
+            pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
         if private_cluster_config is not None:
             pulumi.set(__self__, "private_cluster_config", private_cluster_config)
         if web_server_ipv4_cidr_block is not None:
@@ -711,6 +813,18 @@ class PrivateEnvironmentConfigArgs:
     @enable_private_environment.setter
     def enable_private_environment(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_private_environment", value)
+
+    @property
+    @pulumi.getter(name="enablePrivatelyUsedPublicIps")
+    def enable_privately_used_public_ips(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. When enabled, IPs from public (non-RFC1918) ranges can be used for `IPAllocationPolicy.cluster_ipv4_cidr_block` and `IPAllocationPolicy.service_ipv4_cidr_block`.
+        """
+        return pulumi.get(self, "enable_privately_used_public_ips")
+
+    @enable_privately_used_public_ips.setter
+    def enable_privately_used_public_ips(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_privately_used_public_ips", value)
 
     @property
     @pulumi.getter(name="privateClusterConfig")

@@ -69,6 +69,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Unique identifier for the device.
+     */
+    public readonly deviceId!: pulumi.Output<string>;
+    /**
      * Type of device.
      */
     public /*out*/ readonly deviceType!: pulumi.Output<string>;
@@ -162,6 +166,7 @@ export class Device extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["assetTag"] = args ? args.assetTag : undefined;
             resourceInputs["customer"] = args ? args.customer : undefined;
+            resourceInputs["deviceId"] = args ? args.deviceId : undefined;
             resourceInputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
             resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
             resourceInputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
@@ -198,6 +203,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["buildNumber"] = undefined /*out*/;
             resourceInputs["compromisedState"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deviceId"] = undefined /*out*/;
             resourceInputs["deviceType"] = undefined /*out*/;
             resourceInputs["enabledDeveloperOptions"] = undefined /*out*/;
             resourceInputs["enabledUsbDebugging"] = undefined /*out*/;
@@ -236,6 +242,10 @@ export interface DeviceArgs {
      * Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs.
      */
     customer?: pulumi.Input<string>;
+    /**
+     * Unique identifier for the device.
+     */
+    deviceId?: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.
      */

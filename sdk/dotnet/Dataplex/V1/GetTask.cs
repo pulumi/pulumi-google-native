@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse ExecutionSpec;
         /// <summary>
+        /// Status of the latest task executions.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1TaskExecutionStatusResponse ExecutionStatus;
+        /// <summary>
         /// Optional. User-defined labels for the task.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
             Outputs.GoogleCloudDataplexV1TaskExecutionSpecResponse executionSpec,
 
+            Outputs.GoogleCloudDataplexV1TaskExecutionStatusResponse executionStatus,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -140,6 +146,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
             Description = description;
             DisplayName = displayName;
             ExecutionSpec = executionSpec;
+            ExecutionStatus = executionStatus;
             Labels = labels;
             Name = name;
             Spark = spark;

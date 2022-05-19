@@ -232,6 +232,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static AddressPurpose PrivateServiceConnect { get; } = new AddressPurpose("PRIVATE_SERVICE_CONNECT");
         /// <summary>
+        /// A regional internal IP address range reserved for Serverless.
+        /// </summary>
+        public static AddressPurpose Serverless { get; } = new AddressPurpose("SERVERLESS");
+        /// <summary>
         /// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
         /// </summary>
         public static AddressPurpose SharedLoadbalancerVip { get; } = new AddressPurpose("SHARED_LOADBALANCER_VIP");
@@ -1953,6 +1957,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public static GlobalAddressPurpose PrivateServiceConnect { get; } = new GlobalAddressPurpose("PRIVATE_SERVICE_CONNECT");
         /// <summary>
+        /// A regional internal IP address range reserved for Serverless.
+        /// </summary>
+        public static GlobalAddressPurpose Serverless { get; } = new GlobalAddressPurpose("SERVERLESS");
+        /// <summary>
         /// A private network IP address that can be shared by multiple Internal Load Balancer forwarding rules.
         /// </summary>
         public static GlobalAddressPurpose SharedLoadbalancerVip { get; } = new GlobalAddressPurpose("SHARED_LOADBALANCER_VIP");
@@ -2660,7 +2668,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
     /// <summary>
-    /// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+    /// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. 
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerUpdatePolicyMinimalAction : IEquatable<InstanceGroupManagerUpdatePolicyMinimalAction>
@@ -4744,6 +4752,40 @@ namespace Pulumi.GoogleNative.Compute.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is RouterBgpPeerEnable other && Equals(other);
         public bool Equals(RouterBgpPeerEnable other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct RouterNatEndpointTypesItem : IEquatable<RouterNatEndpointTypesItem>
+    {
+        private readonly string _value;
+
+        private RouterNatEndpointTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is used for Secure Web Gateway endpoints.
+        /// </summary>
+        public static RouterNatEndpointTypesItem EndpointTypeSwg { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG");
+        /// <summary>
+        /// This is the default.
+        /// </summary>
+        public static RouterNatEndpointTypesItem EndpointTypeVm { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_VM");
+
+        public static bool operator ==(RouterNatEndpointTypesItem left, RouterNatEndpointTypesItem right) => left.Equals(right);
+        public static bool operator !=(RouterNatEndpointTypesItem left, RouterNatEndpointTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(RouterNatEndpointTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RouterNatEndpointTypesItem other && Equals(other);
+        public bool Equals(RouterNatEndpointTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -29,6 +29,7 @@ __all__ = [
     'DiscoveryOccurrenceAnalysisStatus',
     'DiscoveryOccurrenceContinuousAnalysis',
     'DistributionArchitecture',
+    'PackageNoteArchitecture',
     'VersionKind',
     'VulnerabilityNoteSeverity',
     'VulnerabilityOccurrenceEffectiveSeverity',
@@ -328,6 +329,24 @@ class DiscoveryOccurrenceContinuousAnalysis(str, Enum):
 class DistributionArchitecture(str, Enum):
     """
     The CPU architecture for which packages in this distribution channel were built.
+    """
+    ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
+    """
+    Unknown architecture.
+    """
+    X86 = "X86"
+    """
+    X86 architecture.
+    """
+    X64 = "X64"
+    """
+    X64 architecture.
+    """
+
+
+class PackageNoteArchitecture(str, Enum):
+    """
+    The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
     """
     ARCHITECTURE_UNSPECIFIED = "ARCHITECTURE_UNSPECIFIED"
     """

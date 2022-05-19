@@ -36,6 +36,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("enableEndpointIndependentMapping")]
         public Input<bool>? EnableEndpointIndependentMapping { get; set; }
 
+        [Input("endpointTypes")]
+        private InputList<Pulumi.GoogleNative.Compute.V1.RouterNatEndpointTypesItem>? _endpointTypes;
+
+        /// <summary>
+        /// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Compute.V1.RouterNatEndpointTypesItem> EndpointTypes
+        {
+            get => _endpointTypes ?? (_endpointTypes = new InputList<Pulumi.GoogleNative.Compute.V1.RouterNatEndpointTypesItem>());
+            set => _endpointTypes = value;
+        }
+
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         /// </summary>

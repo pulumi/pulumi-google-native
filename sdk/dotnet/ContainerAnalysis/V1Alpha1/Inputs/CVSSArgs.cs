@@ -11,22 +11,31 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
 {
 
     /// <summary>
-    /// Common Vulnerability Scoring System.
+    /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
     /// </summary>
     public sealed class CVSSArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         [Input("attackComplexity")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSAttackComplexity>? AttackComplexity { get; set; }
 
         /// <summary>
-        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        /// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
         /// </summary>
         [Input("attackVector")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSAttackVector>? AttackVector { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v2
+        /// </summary>
         [Input("authentication")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSAuthentication>? Authentication { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         [Input("availabilityImpact")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSAvailabilityImpact>? AvailabilityImpact { get; set; }
 
@@ -36,6 +45,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("baseScore")]
         public Input<double>? BaseScore { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         [Input("confidentialityImpact")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSConfidentialityImpact>? ConfidentialityImpact { get; set; }
 
@@ -45,15 +57,27 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("impactScore")]
         public Input<double>? ImpactScore { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v3, CVSS v2
+        /// </summary>
         [Input("integrityImpact")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSIntegrityImpact>? IntegrityImpact { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
         [Input("privilegesRequired")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSPrivilegesRequired>? PrivilegesRequired { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
         [Input("scope")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSScope>? Scope { get; set; }
 
+        /// <summary>
+        /// Defined in CVSS v3
+        /// </summary>
         [Input("userInteraction")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.CVSSUserInteraction>? UserInteraction { get; set; }
 

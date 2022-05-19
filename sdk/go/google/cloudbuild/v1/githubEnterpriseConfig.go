@@ -81,7 +81,7 @@ type githubEnterpriseConfigArgs struct {
 	AppId string `pulumi:"appId"`
 	// Name to display for this config.
 	DisplayName *string `pulumi:"displayName"`
-	// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
+	// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
 	GheConfigId *string `pulumi:"gheConfigId"`
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl  *string `pulumi:"hostUrl"`
@@ -107,7 +107,7 @@ type GithubEnterpriseConfigArgs struct {
 	AppId pulumi.StringInput
 	// Name to display for this config.
 	DisplayName pulumi.StringPtrInput
-	// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig’s resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
+	// Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character
 	GheConfigId pulumi.StringPtrInput
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl  pulumi.StringPtrInput

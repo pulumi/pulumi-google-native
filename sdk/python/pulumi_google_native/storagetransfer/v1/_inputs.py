@@ -960,7 +960,7 @@ class TransferOptionsArgs:
         :param pulumi.Input[bool] delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
         :param pulumi.Input['MetadataOptionsArgs'] metadata_options: Represents the selected metadata options for a transfer job. This feature is in Preview.
         :param pulumi.Input[bool] overwrite_objects_already_existing_in_sink: When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
-        :param pulumi.Input['TransferOptionsOverwriteWhen'] overwrite_when: When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+        :param pulumi.Input['TransferOptionsOverwriteWhen'] overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         """
         if delete_objects_from_source_after_transfer is not None:
             pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
@@ -1025,7 +1025,7 @@ class TransferOptionsArgs:
     @pulumi.getter(name="overwriteWhen")
     def overwrite_when(self) -> Optional[pulumi.Input['TransferOptionsOverwriteWhen']]:
         """
-        When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+        When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
         """
         return pulumi.get(self, "overwrite_when")
 

@@ -31,12 +31,20 @@ type LookupServiceResult struct {
 	AppEngine AppEngineResponse `pulumi:"appEngine"`
 	// Type used for Cloud Endpoints services.
 	CloudEndpoints CloudEndpointsResponse `pulumi:"cloudEndpoints"`
+	// Type used for Cloud Run services.
+	CloudRun CloudRunResponse `pulumi:"cloudRun"`
 	// Type used for Istio services that live in a Kubernetes cluster.
 	ClusterIstio ClusterIstioResponse `pulumi:"clusterIstio"`
 	// Custom service type.
 	Custom CustomResponse `pulumi:"custom"`
 	// Name used for UI elements listing this Service.
 	DisplayName string `pulumi:"displayName"`
+	// Type used for GKE Namespaces.
+	GkeNamespace GkeNamespaceResponse `pulumi:"gkeNamespace"`
+	// Type used for GKE Services (the Kubernetes concept of a service).
+	GkeService GkeServiceResponse `pulumi:"gkeService"`
+	// Type used for GKE Workloads.
+	GkeWorkload GkeWorkloadResponse `pulumi:"gkeWorkload"`
 	// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
 	IstioCanonicalService IstioCanonicalServiceResponse `pulumi:"istioCanonicalService"`
 	// Type used for Istio services scoped to an Istio mesh.
@@ -96,6 +104,11 @@ func (o LookupServiceResultOutput) CloudEndpoints() CloudEndpointsResponseOutput
 	return o.ApplyT(func(v LookupServiceResult) CloudEndpointsResponse { return v.CloudEndpoints }).(CloudEndpointsResponseOutput)
 }
 
+// Type used for Cloud Run services.
+func (o LookupServiceResultOutput) CloudRun() CloudRunResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) CloudRunResponse { return v.CloudRun }).(CloudRunResponseOutput)
+}
+
 // Type used for Istio services that live in a Kubernetes cluster.
 func (o LookupServiceResultOutput) ClusterIstio() ClusterIstioResponseOutput {
 	return o.ApplyT(func(v LookupServiceResult) ClusterIstioResponse { return v.ClusterIstio }).(ClusterIstioResponseOutput)
@@ -109,6 +122,21 @@ func (o LookupServiceResultOutput) Custom() CustomResponseOutput {
 // Name used for UI elements listing this Service.
 func (o LookupServiceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Type used for GKE Namespaces.
+func (o LookupServiceResultOutput) GkeNamespace() GkeNamespaceResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GkeNamespaceResponse { return v.GkeNamespace }).(GkeNamespaceResponseOutput)
+}
+
+// Type used for GKE Services (the Kubernetes concept of a service).
+func (o LookupServiceResultOutput) GkeService() GkeServiceResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GkeServiceResponse { return v.GkeService }).(GkeServiceResponseOutput)
+}
+
+// Type used for GKE Workloads.
+func (o LookupServiceResultOutput) GkeWorkload() GkeWorkloadResponseOutput {
+	return o.ApplyT(func(v LookupServiceResult) GkeWorkloadResponse { return v.GkeWorkload }).(GkeWorkloadResponseOutput)
 }
 
 // Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)

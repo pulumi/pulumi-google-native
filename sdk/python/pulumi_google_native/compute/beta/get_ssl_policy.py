@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSslPolicyResult:
-    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, kind=None, min_tls_version=None, name=None, profile=None, self_link=None, warnings=None):
+    def __init__(__self__, creation_timestamp=None, custom_features=None, description=None, enabled_features=None, fingerprint=None, kind=None, min_tls_version=None, name=None, profile=None, region=None, self_link=None, warnings=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -46,6 +46,9 @@ class GetSslPolicyResult:
         if profile and not isinstance(profile, str):
             raise TypeError("Expected argument 'profile' to be a str")
         pulumi.set(__self__, "profile", profile)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -126,6 +129,14 @@ class GetSslPolicyResult:
         return pulumi.get(self, "profile")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -157,6 +168,7 @@ class AwaitableGetSslPolicyResult(GetSslPolicyResult):
             min_tls_version=self.min_tls_version,
             name=self.name,
             profile=self.profile,
+            region=self.region,
             self_link=self.self_link,
             warnings=self.warnings)
 
@@ -186,6 +198,7 @@ def get_ssl_policy(project: Optional[str] = None,
         min_tls_version=__ret__.min_tls_version,
         name=__ret__.name,
         profile=__ret__.profile,
+        region=__ret__.region,
         self_link=__ret__.self_link,
         warnings=__ret__.warnings)
 

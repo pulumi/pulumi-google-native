@@ -709,13 +709,33 @@ class BinaryAuthorizationResponse(dict):
     """
     Configuration for Binary Authorization.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BinaryAuthorizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BinaryAuthorizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BinaryAuthorizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: bool):
+                 enabled: bool,
+                 evaluation_mode: str):
         """
         Configuration for Binary Authorization.
         :param bool enabled: Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
+        :param str evaluation_mode: Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "evaluation_mode", evaluation_mode)
 
     @property
     @pulumi.getter
@@ -724,6 +744,14 @@ class BinaryAuthorizationResponse(dict):
         Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> str:
+        """
+        Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        """
+        return pulumi.get(self, "evaluation_mode")
 
 
 @pulumi.output_type

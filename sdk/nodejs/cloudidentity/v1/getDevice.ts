@@ -59,6 +59,10 @@ export interface GetDeviceResult {
      */
     readonly createTime: string;
     /**
+     * Unique identifier for the device.
+     */
+    readonly deviceId: string;
+    /**
      * Type of device.
      */
     readonly deviceType: string;

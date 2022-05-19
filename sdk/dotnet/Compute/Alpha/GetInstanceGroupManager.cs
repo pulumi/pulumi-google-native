@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string InstanceGroup;
         /// <summary>
-        /// Instance lifecycle policy for this Instance Group Manager.
+        /// The repair policy for this managed instance group.
         /// </summary>
         public readonly Outputs.InstanceGroupManagerInstanceLifecyclePolicyResponse InstanceLifecyclePolicy;
         /// <summary>

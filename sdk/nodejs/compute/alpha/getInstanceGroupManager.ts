@@ -69,7 +69,7 @@ export interface GetInstanceGroupManagerResult {
      */
     readonly instanceGroup: string;
     /**
-     * Instance lifecycle policy for this Instance Group Manager.
+     * The repair policy for this managed instance group.
      */
     readonly instanceLifecyclePolicy: outputs.compute.alpha.InstanceGroupManagerInstanceLifecyclePolicyResponse;
     /**

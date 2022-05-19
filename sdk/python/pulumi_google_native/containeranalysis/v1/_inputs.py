@@ -35,6 +35,7 @@ __all__ = [
     'DeploymentNoteArgs',
     'DeploymentOccurrenceArgs',
     'DetailArgs',
+    'DigestArgs',
     'DiscoveryNoteArgs',
     'DiscoveryOccurrenceArgs',
     'DistributionArgs',
@@ -54,6 +55,7 @@ __all__ = [
     'JwtArgs',
     'KnowledgeBaseArgs',
     'LayerArgs',
+    'LicenseArgs',
     'LocationArgs',
     'MaterialArgs',
     'MetadataArgs',
@@ -1883,6 +1885,46 @@ class DetailArgs:
 
 
 @pulumi.input_type
+class DigestArgs:
+    def __init__(__self__, *,
+                 algo: Optional[pulumi.Input[str]] = None,
+                 digest_value: Optional[pulumi.Input[str]] = None):
+        """
+        Digest information.
+        :param pulumi.Input[str] algo: `SHA1`, `SHA512` etc.
+        :param pulumi.Input[str] digest_value: Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        if algo is not None:
+            pulumi.set(__self__, "algo", algo)
+        if digest_value is not None:
+            pulumi.set(__self__, "digest_value", digest_value)
+
+    @property
+    @pulumi.getter
+    def algo(self) -> Optional[pulumi.Input[str]]:
+        """
+        `SHA1`, `SHA512` etc.
+        """
+        return pulumi.get(self, "algo")
+
+    @algo.setter
+    def algo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algo", value)
+
+    @property
+    @pulumi.getter(name="digestValue")
+    def digest_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        return pulumi.get(self, "digest_value")
+
+    @digest_value.setter
+    def digest_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest_value", value)
+
+
+@pulumi.input_type
 class DiscoveryNoteArgs:
     def __init__(__self__, *,
                  analysis_kind: pulumi.Input['DiscoveryNoteAnalysisKind']):
@@ -2800,33 +2842,80 @@ class LayerArgs:
 
 
 @pulumi.input_type
+class LicenseArgs:
+    def __init__(__self__, *,
+                 comments: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None):
+        """
+        License information.
+        :param pulumi.Input[str] comments: Comments
+        :param pulumi.Input[str] expression: Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+        """
+        if comments is not None:
+            pulumi.set(__self__, "comments", comments)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comments
+        """
+        return pulumi.get(self, "comments")
+
+    @comments.setter
+    def comments(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comments", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+
+@pulumi.input_type
 class LocationArgs:
     def __init__(__self__, *,
-                 cpe_uri: pulumi.Input[str],
+                 cpe_uri: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input['VersionArgs']] = None):
         """
         An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
-        :param pulumi.Input[str] cpe_uri: The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        :param pulumi.Input[str] cpe_uri: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         :param pulumi.Input[str] path: The path from which we gathered that this package/version is installed.
-        :param pulumi.Input['VersionArgs'] version: The version installed at this location.
+        :param pulumi.Input['VersionArgs'] version: Deprecated. The version installed at this location.
         """
-        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        if cpe_uri is not None:
+            warnings.warn("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""", DeprecationWarning)
+            pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)""")
+        if cpe_uri is not None:
+            pulumi.set(__self__, "cpe_uri", cpe_uri)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if version is not None:
+            warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
+            pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
         if version is not None:
             pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="cpeUri")
-    def cpe_uri(self) -> pulumi.Input[str]:
+    def cpe_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
         """
         return pulumi.get(self, "cpe_uri")
 
     @cpe_uri.setter
-    def cpe_uri(self, value: pulumi.Input[str]):
+    def cpe_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpe_uri", value)
 
     @property
@@ -2845,7 +2934,7 @@ class LocationArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input['VersionArgs']]:
         """
-        The version installed at this location.
+        Deprecated. The version installed at this location.
         """
         return pulumi.get(self, "version")
 
@@ -3163,15 +3252,54 @@ class PackageIssueArgs:
 class PackageNoteArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 distribution: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]] = None):
+                 architecture: Optional[pulumi.Input['PackageNoteArchitecture']] = None,
+                 cpe_uri: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[Sequence[pulumi.Input['DigestArgs']]]] = None,
+                 distribution: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]] = None,
+                 license: Optional[pulumi.Input['LicenseArgs']] = None,
+                 maintainer: Optional[pulumi.Input[str]] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input['VersionArgs']] = None):
         """
-        This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+        PackageNote represents a particular package version.
         :param pulumi.Input[str] name: Immutable. The name of the package.
-        :param pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]] distribution: The various channels by which a package is distributed.
+        :param pulumi.Input['PackageNoteArchitecture'] architecture: The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        :param pulumi.Input[str] cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        :param pulumi.Input[str] description: The description of this package.
+        :param pulumi.Input[Sequence[pulumi.Input['DigestArgs']]] digest: Hash value, typically a file digest, that allows unique identification a specific package.
+        :param pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]] distribution: Deprecated. The various channels by which a package is distributed.
+        :param pulumi.Input['LicenseArgs'] license: Licenses that have been declared by the authors of the package.
+        :param pulumi.Input[str] maintainer: A freeform text denoting the maintainer of this package.
+        :param pulumi.Input[str] package_type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        :param pulumi.Input[str] url: The homepage for this package.
+        :param pulumi.Input['VersionArgs'] version: The version of the package.
         """
         pulumi.set(__self__, "name", name)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cpe_uri is not None:
+            pulumi.set(__self__, "cpe_uri", cpe_uri)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if distribution is not None:
+            warnings.warn("""Deprecated. The various channels by which a package is distributed.""", DeprecationWarning)
+            pulumi.log.warn("""distribution is deprecated: Deprecated. The various channels by which a package is distributed.""")
         if distribution is not None:
             pulumi.set(__self__, "distribution", distribution)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if maintainer is not None:
+            pulumi.set(__self__, "maintainer", maintainer)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -3187,9 +3315,57 @@ class PackageNoteArgs:
 
     @property
     @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input['PackageNoteArchitecture']]:
+        """
+        The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input['PackageNoteArchitecture']]):
+        pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @cpe_uri.setter
+    def cpe_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpe_uri", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of this package.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DigestArgs']]]]:
+        """
+        Hash value, typically a file digest, that allows unique identification a specific package.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DigestArgs']]]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter
     def distribution(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]:
         """
-        The various channels by which a package is distributed.
+        Deprecated. The various channels by which a package is distributed.
         """
         return pulumi.get(self, "distribution")
 
@@ -3197,27 +3373,104 @@ class PackageNoteArgs:
     def distribution(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]):
         pulumi.set(self, "distribution", value)
 
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[pulumi.Input['LicenseArgs']]:
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input['LicenseArgs']]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def maintainer(self) -> Optional[pulumi.Input[str]]:
+        """
+        A freeform text denoting the maintainer of this package.
+        """
+        return pulumi.get(self, "maintainer")
+
+    @maintainer.setter
+    def maintainer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintainer", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The homepage for this package.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input['VersionArgs']]:
+        """
+        The version of the package.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input['VersionArgs']]):
+        pulumi.set(self, "version", value)
+
 
 @pulumi.input_type
 class PackageOccurrenceArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]):
+                 license: Optional[pulumi.Input['LicenseArgs']] = None,
+                 location: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]] = None):
         """
         Details on how a particular software package was installed on a system.
+        :param pulumi.Input['LicenseArgs'] license: Licenses that have been declared by the authors of the package.
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] location: All of the places within the filesystem versions of this package have been found.
         """
-        pulumi.set(__self__, "location", location)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]:
+    def license(self) -> Optional[pulumi.Input['LicenseArgs']]:
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input['LicenseArgs']]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]:
         """
         All of the places within the filesystem versions of this package have been found.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]):
+    def location(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]):
         pulumi.set(self, "location", value)
 
 

@@ -601,7 +601,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
     /// <summary>
-    /// When to overwrite objects that already exist in the sink. If not set overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
+    /// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by overwrite_objects_already_existing_in_sink.
     /// </summary>
     [EnumType]
     public readonly struct TransferOptionsOverwriteWhen : IEquatable<TransferOptionsOverwriteWhen>
@@ -614,19 +614,19 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         }
 
         /// <summary>
-        /// Indicate the option is not set.
+        /// Overwrite behavior is unspecified.
         /// </summary>
         public static TransferOptionsOverwriteWhen OverwriteWhenUnspecified { get; } = new TransferOptionsOverwriteWhen("OVERWRITE_WHEN_UNSPECIFIED");
         /// <summary>
-        /// Overwrite destination object with source if the two objects are different.
+        /// Overwrites destination objects with the source objects, only if the objects have the same name but different HTTP ETags or checksum values.
         /// </summary>
         public static TransferOptionsOverwriteWhen Different { get; } = new TransferOptionsOverwriteWhen("DIFFERENT");
         /// <summary>
-        /// Never overwrite destination object.
+        /// Never overwrites a destination object if a source object has the same name. In this case, the source object is not transferred.
         /// </summary>
         public static TransferOptionsOverwriteWhen Never { get; } = new TransferOptionsOverwriteWhen("NEVER");
         /// <summary>
-        /// Always overwrite destination object.
+        /// Always overwrite the destination object with the source object, even if the HTTP Etags or checksum values are the same.
         /// </summary>
         public static TransferOptionsOverwriteWhen Always { get; } = new TransferOptionsOverwriteWhen("ALWAYS");
 

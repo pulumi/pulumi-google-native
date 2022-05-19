@@ -2463,7 +2463,447 @@ func (o ByProductsResponseOutput) CustomValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ByProductsResponse) map[string]string { return v.CustomValues }).(pulumi.StringMapOutput)
 }
 
-// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+type CVSS struct {
+	// Defined in CVSS v3, CVSS v2
+	AttackComplexity *CVSSAttackComplexity `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+	AttackVector *CVSSAttackVector `pulumi:"attackVector"`
+	// Defined in CVSS v2
+	Authentication *CVSSAuthentication `pulumi:"authentication"`
+	// Defined in CVSS v3, CVSS v2
+	AvailabilityImpact *CVSSAvailabilityImpact `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore *float64 `pulumi:"baseScore"`
+	// Defined in CVSS v3, CVSS v2
+	ConfidentialityImpact *CVSSConfidentialityImpact `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   *float64                   `pulumi:"exploitabilityScore"`
+	ImpactScore           *float64                   `pulumi:"impactScore"`
+	// Defined in CVSS v3, CVSS v2
+	IntegrityImpact *CVSSIntegrityImpact `pulumi:"integrityImpact"`
+	// Defined in CVSS v3
+	PrivilegesRequired *CVSSPrivilegesRequired `pulumi:"privilegesRequired"`
+	// Defined in CVSS v3
+	Scope *CVSSScope `pulumi:"scope"`
+	// Defined in CVSS v3
+	UserInteraction *CVSSUserInteraction `pulumi:"userInteraction"`
+}
+
+// CVSSInput is an input type that accepts CVSSArgs and CVSSOutput values.
+// You can construct a concrete instance of `CVSSInput` via:
+//
+//          CVSSArgs{...}
+type CVSSInput interface {
+	pulumi.Input
+
+	ToCVSSOutput() CVSSOutput
+	ToCVSSOutputWithContext(context.Context) CVSSOutput
+}
+
+// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+type CVSSArgs struct {
+	// Defined in CVSS v3, CVSS v2
+	AttackComplexity CVSSAttackComplexityPtrInput `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+	AttackVector CVSSAttackVectorPtrInput `pulumi:"attackVector"`
+	// Defined in CVSS v2
+	Authentication CVSSAuthenticationPtrInput `pulumi:"authentication"`
+	// Defined in CVSS v3, CVSS v2
+	AvailabilityImpact CVSSAvailabilityImpactPtrInput `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore pulumi.Float64PtrInput `pulumi:"baseScore"`
+	// Defined in CVSS v3, CVSS v2
+	ConfidentialityImpact CVSSConfidentialityImpactPtrInput `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   pulumi.Float64PtrInput            `pulumi:"exploitabilityScore"`
+	ImpactScore           pulumi.Float64PtrInput            `pulumi:"impactScore"`
+	// Defined in CVSS v3, CVSS v2
+	IntegrityImpact CVSSIntegrityImpactPtrInput `pulumi:"integrityImpact"`
+	// Defined in CVSS v3
+	PrivilegesRequired CVSSPrivilegesRequiredPtrInput `pulumi:"privilegesRequired"`
+	// Defined in CVSS v3
+	Scope CVSSScopePtrInput `pulumi:"scope"`
+	// Defined in CVSS v3
+	UserInteraction CVSSUserInteractionPtrInput `pulumi:"userInteraction"`
+}
+
+func (CVSSArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSS)(nil)).Elem()
+}
+
+func (i CVSSArgs) ToCVSSOutput() CVSSOutput {
+	return i.ToCVSSOutputWithContext(context.Background())
+}
+
+func (i CVSSArgs) ToCVSSOutputWithContext(ctx context.Context) CVSSOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSOutput)
+}
+
+func (i CVSSArgs) ToCVSSPtrOutput() CVSSPtrOutput {
+	return i.ToCVSSPtrOutputWithContext(context.Background())
+}
+
+func (i CVSSArgs) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSOutput).ToCVSSPtrOutputWithContext(ctx)
+}
+
+// CVSSPtrInput is an input type that accepts CVSSArgs, CVSSPtr and CVSSPtrOutput values.
+// You can construct a concrete instance of `CVSSPtrInput` via:
+//
+//          CVSSArgs{...}
+//
+//  or:
+//
+//          nil
+type CVSSPtrInput interface {
+	pulumi.Input
+
+	ToCVSSPtrOutput() CVSSPtrOutput
+	ToCVSSPtrOutputWithContext(context.Context) CVSSPtrOutput
+}
+
+type cvssPtrType CVSSArgs
+
+func CVSSPtr(v *CVSSArgs) CVSSPtrInput {
+	return (*cvssPtrType)(v)
+}
+
+func (*cvssPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSS)(nil)).Elem()
+}
+
+func (i *cvssPtrType) ToCVSSPtrOutput() CVSSPtrOutput {
+	return i.ToCVSSPtrOutputWithContext(context.Background())
+}
+
+func (i *cvssPtrType) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CVSSPtrOutput)
+}
+
+// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+type CVSSOutput struct{ *pulumi.OutputState }
+
+func (CVSSOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSS)(nil)).Elem()
+}
+
+func (o CVSSOutput) ToCVSSOutput() CVSSOutput {
+	return o
+}
+
+func (o CVSSOutput) ToCVSSOutputWithContext(ctx context.Context) CVSSOutput {
+	return o
+}
+
+func (o CVSSOutput) ToCVSSPtrOutput() CVSSPtrOutput {
+	return o.ToCVSSPtrOutputWithContext(context.Background())
+}
+
+func (o CVSSOutput) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CVSS) *CVSS {
+		return &v
+	}).(CVSSPtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSOutput) AttackComplexity() CVSSAttackComplexityPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAttackComplexity { return v.AttackComplexity }).(CVSSAttackComplexityPtrOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+func (o CVSSOutput) AttackVector() CVSSAttackVectorPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAttackVector { return v.AttackVector }).(CVSSAttackVectorPtrOutput)
+}
+
+// Defined in CVSS v2
+func (o CVSSOutput) Authentication() CVSSAuthenticationPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAuthentication { return v.Authentication }).(CVSSAuthenticationPtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSOutput) AvailabilityImpact() CVSSAvailabilityImpactPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSAvailabilityImpact { return v.AvailabilityImpact }).(CVSSAvailabilityImpactPtrOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSOutput) BaseScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CVSS) *float64 { return v.BaseScore }).(pulumi.Float64PtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSOutput) ConfidentialityImpact() CVSSConfidentialityImpactPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSConfidentialityImpact { return v.ConfidentialityImpact }).(CVSSConfidentialityImpactPtrOutput)
+}
+
+func (o CVSSOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CVSS) *float64 { return v.ExploitabilityScore }).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSOutput) ImpactScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CVSS) *float64 { return v.ImpactScore }).(pulumi.Float64PtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSOutput) IntegrityImpact() CVSSIntegrityImpactPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSIntegrityImpact { return v.IntegrityImpact }).(CVSSIntegrityImpactPtrOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSOutput) PrivilegesRequired() CVSSPrivilegesRequiredPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSPrivilegesRequired { return v.PrivilegesRequired }).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSOutput) Scope() CVSSScopePtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSScope { return v.Scope }).(CVSSScopePtrOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSOutput) UserInteraction() CVSSUserInteractionPtrOutput {
+	return o.ApplyT(func(v CVSS) *CVSSUserInteraction { return v.UserInteraction }).(CVSSUserInteractionPtrOutput)
+}
+
+type CVSSPtrOutput struct{ *pulumi.OutputState }
+
+func (CVSSPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CVSS)(nil)).Elem()
+}
+
+func (o CVSSPtrOutput) ToCVSSPtrOutput() CVSSPtrOutput {
+	return o
+}
+
+func (o CVSSPtrOutput) ToCVSSPtrOutputWithContext(ctx context.Context) CVSSPtrOutput {
+	return o
+}
+
+func (o CVSSPtrOutput) Elem() CVSSOutput {
+	return o.ApplyT(func(v *CVSS) CVSS {
+		if v != nil {
+			return *v
+		}
+		var ret CVSS
+		return ret
+	}).(CVSSOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSPtrOutput) AttackComplexity() CVSSAttackComplexityPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAttackComplexity {
+		if v == nil {
+			return nil
+		}
+		return v.AttackComplexity
+	}).(CVSSAttackComplexityPtrOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+func (o CVSSPtrOutput) AttackVector() CVSSAttackVectorPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAttackVector {
+		if v == nil {
+			return nil
+		}
+		return v.AttackVector
+	}).(CVSSAttackVectorPtrOutput)
+}
+
+// Defined in CVSS v2
+func (o CVSSPtrOutput) Authentication() CVSSAuthenticationPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(CVSSAuthenticationPtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSPtrOutput) AvailabilityImpact() CVSSAvailabilityImpactPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSAvailabilityImpact {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityImpact
+	}).(CVSSAvailabilityImpactPtrOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSPtrOutput) BaseScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSS) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BaseScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSPtrOutput) ConfidentialityImpact() CVSSConfidentialityImpactPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSConfidentialityImpact {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialityImpact
+	}).(CVSSConfidentialityImpactPtrOutput)
+}
+
+func (o CVSSPtrOutput) ExploitabilityScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSS) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ExploitabilityScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o CVSSPtrOutput) ImpactScore() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CVSS) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ImpactScore
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSPtrOutput) IntegrityImpact() CVSSIntegrityImpactPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSIntegrityImpact {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrityImpact
+	}).(CVSSIntegrityImpactPtrOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSPtrOutput) PrivilegesRequired() CVSSPrivilegesRequiredPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSPrivilegesRequired {
+		if v == nil {
+			return nil
+		}
+		return v.PrivilegesRequired
+	}).(CVSSPrivilegesRequiredPtrOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSPtrOutput) Scope() CVSSScopePtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSScope {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(CVSSScopePtrOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSPtrOutput) UserInteraction() CVSSUserInteractionPtrOutput {
+	return o.ApplyT(func(v *CVSS) *CVSSUserInteraction {
+		if v == nil {
+			return nil
+		}
+		return v.UserInteraction
+	}).(CVSSUserInteractionPtrOutput)
+}
+
+// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+type CVSSResponse struct {
+	// Defined in CVSS v3, CVSS v2
+	AttackComplexity string `pulumi:"attackComplexity"`
+	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+	AttackVector string `pulumi:"attackVector"`
+	// Defined in CVSS v2
+	Authentication string `pulumi:"authentication"`
+	// Defined in CVSS v3, CVSS v2
+	AvailabilityImpact string `pulumi:"availabilityImpact"`
+	// The base score is a function of the base metric scores.
+	BaseScore float64 `pulumi:"baseScore"`
+	// Defined in CVSS v3, CVSS v2
+	ConfidentialityImpact string  `pulumi:"confidentialityImpact"`
+	ExploitabilityScore   float64 `pulumi:"exploitabilityScore"`
+	ImpactScore           float64 `pulumi:"impactScore"`
+	// Defined in CVSS v3, CVSS v2
+	IntegrityImpact string `pulumi:"integrityImpact"`
+	// Defined in CVSS v3
+	PrivilegesRequired string `pulumi:"privilegesRequired"`
+	// Defined in CVSS v3
+	Scope string `pulumi:"scope"`
+	// Defined in CVSS v3
+	UserInteraction string `pulumi:"userInteraction"`
+}
+
+// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+type CVSSResponseOutput struct{ *pulumi.OutputState }
+
+func (CVSSResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CVSSResponse)(nil)).Elem()
+}
+
+func (o CVSSResponseOutput) ToCVSSResponseOutput() CVSSResponseOutput {
+	return o
+}
+
+func (o CVSSResponseOutput) ToCVSSResponseOutputWithContext(ctx context.Context) CVSSResponseOutput {
+	return o
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSResponseOutput) AttackComplexity() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.AttackComplexity }).(pulumi.StringOutput)
+}
+
+// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+func (o CVSSResponseOutput) AttackVector() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.AttackVector }).(pulumi.StringOutput)
+}
+
+// Defined in CVSS v2
+func (o CVSSResponseOutput) Authentication() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.Authentication }).(pulumi.StringOutput)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSResponseOutput) AvailabilityImpact() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.AvailabilityImpact }).(pulumi.StringOutput)
+}
+
+// The base score is a function of the base metric scores.
+func (o CVSSResponseOutput) BaseScore() pulumi.Float64Output {
+	return o.ApplyT(func(v CVSSResponse) float64 { return v.BaseScore }).(pulumi.Float64Output)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSResponseOutput) ConfidentialityImpact() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.ConfidentialityImpact }).(pulumi.StringOutput)
+}
+
+func (o CVSSResponseOutput) ExploitabilityScore() pulumi.Float64Output {
+	return o.ApplyT(func(v CVSSResponse) float64 { return v.ExploitabilityScore }).(pulumi.Float64Output)
+}
+
+func (o CVSSResponseOutput) ImpactScore() pulumi.Float64Output {
+	return o.ApplyT(func(v CVSSResponse) float64 { return v.ImpactScore }).(pulumi.Float64Output)
+}
+
+// Defined in CVSS v3, CVSS v2
+func (o CVSSResponseOutput) IntegrityImpact() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.IntegrityImpact }).(pulumi.StringOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSResponseOutput) PrivilegesRequired() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.PrivilegesRequired }).(pulumi.StringOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSResponseOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Defined in CVSS v3
+func (o CVSSResponseOutput) UserInteraction() pulumi.StringOutput {
+	return o.ApplyT(func(v CVSSResponse) string { return v.UserInteraction }).(pulumi.StringOutput)
+}
+
+// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3 struct {
 	AttackComplexity *CVSSv3AttackComplexity `pulumi:"attackComplexity"`
 	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2491,7 +2931,7 @@ type CVSSv3Input interface {
 	ToCVSSv3OutputWithContext(context.Context) CVSSv3Output
 }
 
-// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3Args struct {
 	AttackComplexity CVSSv3AttackComplexityPtrInput `pulumi:"attackComplexity"`
 	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2561,7 +3001,7 @@ func (i *cvssv3PtrType) ToCVSSv3PtrOutputWithContext(ctx context.Context) CVSSv3
 	return pulumi.ToOutputWithContext(ctx, i).(CVSSv3PtrOutput)
 }
 
-// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3Output struct{ *pulumi.OutputState }
 
 func (CVSSv3Output) ElementType() reflect.Type {
@@ -2757,7 +3197,7 @@ func (o CVSSv3PtrOutput) UserInteraction() CVSSv3UserInteractionPtrOutput {
 	}).(CVSSv3UserInteractionPtrOutput)
 }
 
-// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3Response struct {
 	AttackComplexity string `pulumi:"attackComplexity"`
 	// Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
@@ -2774,7 +3214,7 @@ type CVSSv3Response struct {
 	UserInteraction       string  `pulumi:"userInteraction"`
 }
 
-// Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
 type CVSSv3ResponseOutput struct{ *pulumi.OutputState }
 
 func (CVSSv3ResponseOutput) ElementType() reflect.Type {
@@ -4435,6 +4875,168 @@ func (o DetailsResponseOutput) Attestation() AttestationResponseOutput {
 	return o.ApplyT(func(v DetailsResponse) AttestationResponse { return v.Attestation }).(AttestationResponseOutput)
 }
 
+// Digest information.
+type Digest struct {
+	// `SHA1`, `SHA512` etc.
+	Algo *string `pulumi:"algo"`
+	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+	DigestValue *string `pulumi:"digestValue"`
+}
+
+// DigestInput is an input type that accepts DigestArgs and DigestOutput values.
+// You can construct a concrete instance of `DigestInput` via:
+//
+//          DigestArgs{...}
+type DigestInput interface {
+	pulumi.Input
+
+	ToDigestOutput() DigestOutput
+	ToDigestOutputWithContext(context.Context) DigestOutput
+}
+
+// Digest information.
+type DigestArgs struct {
+	// `SHA1`, `SHA512` etc.
+	Algo pulumi.StringPtrInput `pulumi:"algo"`
+	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+	DigestValue pulumi.StringPtrInput `pulumi:"digestValue"`
+}
+
+func (DigestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Digest)(nil)).Elem()
+}
+
+func (i DigestArgs) ToDigestOutput() DigestOutput {
+	return i.ToDigestOutputWithContext(context.Background())
+}
+
+func (i DigestArgs) ToDigestOutputWithContext(ctx context.Context) DigestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DigestOutput)
+}
+
+// DigestArrayInput is an input type that accepts DigestArray and DigestArrayOutput values.
+// You can construct a concrete instance of `DigestArrayInput` via:
+//
+//          DigestArray{ DigestArgs{...} }
+type DigestArrayInput interface {
+	pulumi.Input
+
+	ToDigestArrayOutput() DigestArrayOutput
+	ToDigestArrayOutputWithContext(context.Context) DigestArrayOutput
+}
+
+type DigestArray []DigestInput
+
+func (DigestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Digest)(nil)).Elem()
+}
+
+func (i DigestArray) ToDigestArrayOutput() DigestArrayOutput {
+	return i.ToDigestArrayOutputWithContext(context.Background())
+}
+
+func (i DigestArray) ToDigestArrayOutputWithContext(ctx context.Context) DigestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DigestArrayOutput)
+}
+
+// Digest information.
+type DigestOutput struct{ *pulumi.OutputState }
+
+func (DigestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Digest)(nil)).Elem()
+}
+
+func (o DigestOutput) ToDigestOutput() DigestOutput {
+	return o
+}
+
+func (o DigestOutput) ToDigestOutputWithContext(ctx context.Context) DigestOutput {
+	return o
+}
+
+// `SHA1`, `SHA512` etc.
+func (o DigestOutput) Algo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Digest) *string { return v.Algo }).(pulumi.StringPtrOutput)
+}
+
+// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+func (o DigestOutput) DigestValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Digest) *string { return v.DigestValue }).(pulumi.StringPtrOutput)
+}
+
+type DigestArrayOutput struct{ *pulumi.OutputState }
+
+func (DigestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Digest)(nil)).Elem()
+}
+
+func (o DigestArrayOutput) ToDigestArrayOutput() DigestArrayOutput {
+	return o
+}
+
+func (o DigestArrayOutput) ToDigestArrayOutputWithContext(ctx context.Context) DigestArrayOutput {
+	return o
+}
+
+func (o DigestArrayOutput) Index(i pulumi.IntInput) DigestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Digest {
+		return vs[0].([]Digest)[vs[1].(int)]
+	}).(DigestOutput)
+}
+
+// Digest information.
+type DigestResponse struct {
+	// `SHA1`, `SHA512` etc.
+	Algo string `pulumi:"algo"`
+	// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+	DigestValue string `pulumi:"digestValue"`
+}
+
+// Digest information.
+type DigestResponseOutput struct{ *pulumi.OutputState }
+
+func (DigestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DigestResponse)(nil)).Elem()
+}
+
+func (o DigestResponseOutput) ToDigestResponseOutput() DigestResponseOutput {
+	return o
+}
+
+func (o DigestResponseOutput) ToDigestResponseOutputWithContext(ctx context.Context) DigestResponseOutput {
+	return o
+}
+
+// `SHA1`, `SHA512` etc.
+func (o DigestResponseOutput) Algo() pulumi.StringOutput {
+	return o.ApplyT(func(v DigestResponse) string { return v.Algo }).(pulumi.StringOutput)
+}
+
+// Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+func (o DigestResponseOutput) DigestValue() pulumi.StringOutput {
+	return o.ApplyT(func(v DigestResponse) string { return v.DigestValue }).(pulumi.StringOutput)
+}
+
+type DigestResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DigestResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DigestResponse)(nil)).Elem()
+}
+
+func (o DigestResponseArrayOutput) ToDigestResponseArrayOutput() DigestResponseArrayOutput {
+	return o
+}
+
+func (o DigestResponseArrayOutput) ToDigestResponseArrayOutputWithContext(ctx context.Context) DigestResponseArrayOutput {
+	return o
+}
+
+func (o DigestResponseArrayOutput) Index(i pulumi.IntInput) DigestResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DigestResponse {
+		return vs[0].([]DigestResponse)[vs[1].(int)]
+	}).(DigestResponseOutput)
+}
+
 // Provides information about the analysis status of a discovered resource.
 type Discovered struct {
 	// The status of discovery for the resource.
@@ -5083,7 +5685,7 @@ func (o DistributionResponseArrayOutput) Index(i pulumi.IntInput) DistributionRe
 	}).(DistributionResponseOutput)
 }
 
-// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
 type DocumentNote struct {
 	// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
 	DataLicence *string `pulumi:"dataLicence"`
@@ -5102,7 +5704,7 @@ type DocumentNoteInput interface {
 	ToDocumentNoteOutputWithContext(context.Context) DocumentNoteOutput
 }
 
-// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
 type DocumentNoteArgs struct {
 	// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
 	DataLicence pulumi.StringPtrInput `pulumi:"dataLicence"`
@@ -5163,7 +5765,7 @@ func (i *documentNotePtrType) ToDocumentNotePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentNotePtrOutput)
 }
 
-// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
 type DocumentNoteOutput struct{ *pulumi.OutputState }
 
 func (DocumentNoteOutput) ElementType() reflect.Type {
@@ -5242,7 +5844,7 @@ func (o DocumentNotePtrOutput) SpdxVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
 type DocumentNoteResponse struct {
 	// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
 	DataLicence string `pulumi:"dataLicence"`
@@ -5250,7 +5852,7 @@ type DocumentNoteResponse struct {
 	SpdxVersion string `pulumi:"spdxVersion"`
 }
 
-// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
 type DocumentNoteResponseOutput struct{ *pulumi.OutputState }
 
 func (DocumentNoteResponseOutput) ElementType() reflect.Type {
@@ -5640,6 +6242,353 @@ func (o DocumentOccurrenceResponseOutput) Namespace() pulumi.StringOutput {
 // Identify name of this document as designated by creator
 func (o DocumentOccurrenceResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentOccurrenceResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+type Envelope struct {
+	Payload     *string             `pulumi:"payload"`
+	PayloadType *string             `pulumi:"payloadType"`
+	Signatures  []EnvelopeSignature `pulumi:"signatures"`
+}
+
+// EnvelopeInput is an input type that accepts EnvelopeArgs and EnvelopeOutput values.
+// You can construct a concrete instance of `EnvelopeInput` via:
+//
+//          EnvelopeArgs{...}
+type EnvelopeInput interface {
+	pulumi.Input
+
+	ToEnvelopeOutput() EnvelopeOutput
+	ToEnvelopeOutputWithContext(context.Context) EnvelopeOutput
+}
+
+// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+type EnvelopeArgs struct {
+	Payload     pulumi.StringPtrInput       `pulumi:"payload"`
+	PayloadType pulumi.StringPtrInput       `pulumi:"payloadType"`
+	Signatures  EnvelopeSignatureArrayInput `pulumi:"signatures"`
+}
+
+func (EnvelopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Envelope)(nil)).Elem()
+}
+
+func (i EnvelopeArgs) ToEnvelopeOutput() EnvelopeOutput {
+	return i.ToEnvelopeOutputWithContext(context.Background())
+}
+
+func (i EnvelopeArgs) ToEnvelopeOutputWithContext(ctx context.Context) EnvelopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeOutput)
+}
+
+func (i EnvelopeArgs) ToEnvelopePtrOutput() EnvelopePtrOutput {
+	return i.ToEnvelopePtrOutputWithContext(context.Background())
+}
+
+func (i EnvelopeArgs) ToEnvelopePtrOutputWithContext(ctx context.Context) EnvelopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeOutput).ToEnvelopePtrOutputWithContext(ctx)
+}
+
+// EnvelopePtrInput is an input type that accepts EnvelopeArgs, EnvelopePtr and EnvelopePtrOutput values.
+// You can construct a concrete instance of `EnvelopePtrInput` via:
+//
+//          EnvelopeArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvelopePtrInput interface {
+	pulumi.Input
+
+	ToEnvelopePtrOutput() EnvelopePtrOutput
+	ToEnvelopePtrOutputWithContext(context.Context) EnvelopePtrOutput
+}
+
+type envelopePtrType EnvelopeArgs
+
+func EnvelopePtr(v *EnvelopeArgs) EnvelopePtrInput {
+	return (*envelopePtrType)(v)
+}
+
+func (*envelopePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Envelope)(nil)).Elem()
+}
+
+func (i *envelopePtrType) ToEnvelopePtrOutput() EnvelopePtrOutput {
+	return i.ToEnvelopePtrOutputWithContext(context.Background())
+}
+
+func (i *envelopePtrType) ToEnvelopePtrOutputWithContext(ctx context.Context) EnvelopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopePtrOutput)
+}
+
+// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+type EnvelopeOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Envelope)(nil)).Elem()
+}
+
+func (o EnvelopeOutput) ToEnvelopeOutput() EnvelopeOutput {
+	return o
+}
+
+func (o EnvelopeOutput) ToEnvelopeOutputWithContext(ctx context.Context) EnvelopeOutput {
+	return o
+}
+
+func (o EnvelopeOutput) ToEnvelopePtrOutput() EnvelopePtrOutput {
+	return o.ToEnvelopePtrOutputWithContext(context.Background())
+}
+
+func (o EnvelopeOutput) ToEnvelopePtrOutputWithContext(ctx context.Context) EnvelopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Envelope) *Envelope {
+		return &v
+	}).(EnvelopePtrOutput)
+}
+
+func (o EnvelopeOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Envelope) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvelopeOutput) PayloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Envelope) *string { return v.PayloadType }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvelopeOutput) Signatures() EnvelopeSignatureArrayOutput {
+	return o.ApplyT(func(v Envelope) []EnvelopeSignature { return v.Signatures }).(EnvelopeSignatureArrayOutput)
+}
+
+type EnvelopePtrOutput struct{ *pulumi.OutputState }
+
+func (EnvelopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Envelope)(nil)).Elem()
+}
+
+func (o EnvelopePtrOutput) ToEnvelopePtrOutput() EnvelopePtrOutput {
+	return o
+}
+
+func (o EnvelopePtrOutput) ToEnvelopePtrOutputWithContext(ctx context.Context) EnvelopePtrOutput {
+	return o
+}
+
+func (o EnvelopePtrOutput) Elem() EnvelopeOutput {
+	return o.ApplyT(func(v *Envelope) Envelope {
+		if v != nil {
+			return *v
+		}
+		var ret Envelope
+		return ret
+	}).(EnvelopeOutput)
+}
+
+func (o EnvelopePtrOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Envelope) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Payload
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvelopePtrOutput) PayloadType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Envelope) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PayloadType
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvelopePtrOutput) Signatures() EnvelopeSignatureArrayOutput {
+	return o.ApplyT(func(v *Envelope) []EnvelopeSignature {
+		if v == nil {
+			return nil
+		}
+		return v.Signatures
+	}).(EnvelopeSignatureArrayOutput)
+}
+
+// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+type EnvelopeResponse struct {
+	Payload     string                      `pulumi:"payload"`
+	PayloadType string                      `pulumi:"payloadType"`
+	Signatures  []EnvelopeSignatureResponse `pulumi:"signatures"`
+}
+
+// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+type EnvelopeResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeResponse)(nil)).Elem()
+}
+
+func (o EnvelopeResponseOutput) ToEnvelopeResponseOutput() EnvelopeResponseOutput {
+	return o
+}
+
+func (o EnvelopeResponseOutput) ToEnvelopeResponseOutputWithContext(ctx context.Context) EnvelopeResponseOutput {
+	return o
+}
+
+func (o EnvelopeResponseOutput) Payload() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvelopeResponse) string { return v.Payload }).(pulumi.StringOutput)
+}
+
+func (o EnvelopeResponseOutput) PayloadType() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvelopeResponse) string { return v.PayloadType }).(pulumi.StringOutput)
+}
+
+func (o EnvelopeResponseOutput) Signatures() EnvelopeSignatureResponseArrayOutput {
+	return o.ApplyT(func(v EnvelopeResponse) []EnvelopeSignatureResponse { return v.Signatures }).(EnvelopeSignatureResponseArrayOutput)
+}
+
+type EnvelopeSignature struct {
+	Keyid *string `pulumi:"keyid"`
+	Sig   *string `pulumi:"sig"`
+}
+
+// EnvelopeSignatureInput is an input type that accepts EnvelopeSignatureArgs and EnvelopeSignatureOutput values.
+// You can construct a concrete instance of `EnvelopeSignatureInput` via:
+//
+//          EnvelopeSignatureArgs{...}
+type EnvelopeSignatureInput interface {
+	pulumi.Input
+
+	ToEnvelopeSignatureOutput() EnvelopeSignatureOutput
+	ToEnvelopeSignatureOutputWithContext(context.Context) EnvelopeSignatureOutput
+}
+
+type EnvelopeSignatureArgs struct {
+	Keyid pulumi.StringPtrInput `pulumi:"keyid"`
+	Sig   pulumi.StringPtrInput `pulumi:"sig"`
+}
+
+func (EnvelopeSignatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeSignature)(nil)).Elem()
+}
+
+func (i EnvelopeSignatureArgs) ToEnvelopeSignatureOutput() EnvelopeSignatureOutput {
+	return i.ToEnvelopeSignatureOutputWithContext(context.Background())
+}
+
+func (i EnvelopeSignatureArgs) ToEnvelopeSignatureOutputWithContext(ctx context.Context) EnvelopeSignatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeSignatureOutput)
+}
+
+// EnvelopeSignatureArrayInput is an input type that accepts EnvelopeSignatureArray and EnvelopeSignatureArrayOutput values.
+// You can construct a concrete instance of `EnvelopeSignatureArrayInput` via:
+//
+//          EnvelopeSignatureArray{ EnvelopeSignatureArgs{...} }
+type EnvelopeSignatureArrayInput interface {
+	pulumi.Input
+
+	ToEnvelopeSignatureArrayOutput() EnvelopeSignatureArrayOutput
+	ToEnvelopeSignatureArrayOutputWithContext(context.Context) EnvelopeSignatureArrayOutput
+}
+
+type EnvelopeSignatureArray []EnvelopeSignatureInput
+
+func (EnvelopeSignatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvelopeSignature)(nil)).Elem()
+}
+
+func (i EnvelopeSignatureArray) ToEnvelopeSignatureArrayOutput() EnvelopeSignatureArrayOutput {
+	return i.ToEnvelopeSignatureArrayOutputWithContext(context.Background())
+}
+
+func (i EnvelopeSignatureArray) ToEnvelopeSignatureArrayOutputWithContext(ctx context.Context) EnvelopeSignatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvelopeSignatureArrayOutput)
+}
+
+type EnvelopeSignatureOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeSignatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeSignature)(nil)).Elem()
+}
+
+func (o EnvelopeSignatureOutput) ToEnvelopeSignatureOutput() EnvelopeSignatureOutput {
+	return o
+}
+
+func (o EnvelopeSignatureOutput) ToEnvelopeSignatureOutputWithContext(ctx context.Context) EnvelopeSignatureOutput {
+	return o
+}
+
+func (o EnvelopeSignatureOutput) Keyid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvelopeSignature) *string { return v.Keyid }).(pulumi.StringPtrOutput)
+}
+
+func (o EnvelopeSignatureOutput) Sig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvelopeSignature) *string { return v.Sig }).(pulumi.StringPtrOutput)
+}
+
+type EnvelopeSignatureArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeSignatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvelopeSignature)(nil)).Elem()
+}
+
+func (o EnvelopeSignatureArrayOutput) ToEnvelopeSignatureArrayOutput() EnvelopeSignatureArrayOutput {
+	return o
+}
+
+func (o EnvelopeSignatureArrayOutput) ToEnvelopeSignatureArrayOutputWithContext(ctx context.Context) EnvelopeSignatureArrayOutput {
+	return o
+}
+
+func (o EnvelopeSignatureArrayOutput) Index(i pulumi.IntInput) EnvelopeSignatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvelopeSignature {
+		return vs[0].([]EnvelopeSignature)[vs[1].(int)]
+	}).(EnvelopeSignatureOutput)
+}
+
+type EnvelopeSignatureResponse struct {
+	Keyid string `pulumi:"keyid"`
+	Sig   string `pulumi:"sig"`
+}
+
+type EnvelopeSignatureResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeSignatureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvelopeSignatureResponse)(nil)).Elem()
+}
+
+func (o EnvelopeSignatureResponseOutput) ToEnvelopeSignatureResponseOutput() EnvelopeSignatureResponseOutput {
+	return o
+}
+
+func (o EnvelopeSignatureResponseOutput) ToEnvelopeSignatureResponseOutputWithContext(ctx context.Context) EnvelopeSignatureResponseOutput {
+	return o
+}
+
+func (o EnvelopeSignatureResponseOutput) Keyid() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvelopeSignatureResponse) string { return v.Keyid }).(pulumi.StringOutput)
+}
+
+func (o EnvelopeSignatureResponseOutput) Sig() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvelopeSignatureResponse) string { return v.Sig }).(pulumi.StringOutput)
+}
+
+type EnvelopeSignatureResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvelopeSignatureResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvelopeSignatureResponse)(nil)).Elem()
+}
+
+func (o EnvelopeSignatureResponseArrayOutput) ToEnvelopeSignatureResponseArrayOutput() EnvelopeSignatureResponseArrayOutput {
+	return o
+}
+
+func (o EnvelopeSignatureResponseArrayOutput) ToEnvelopeSignatureResponseArrayOutputWithContext(ctx context.Context) EnvelopeSignatureResponseArrayOutput {
+	return o
+}
+
+func (o EnvelopeSignatureResponseArrayOutput) Index(i pulumi.IntInput) EnvelopeSignatureResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvelopeSignatureResponse {
+		return vs[0].([]EnvelopeSignatureResponse)[vs[1].(int)]
+	}).(EnvelopeSignatureResponseOutput)
 }
 
 // Defines an object for the environment field in in-toto links. The suggested fields are "variables", "filesystem", and "workdir".
@@ -9894,6 +10843,8 @@ func (o InTotoResponseOutput) Threshold() pulumi.StringOutput {
 
 // This represents how a particular software package may be installed on a system.
 type Installation struct {
+	// Licenses that have been declared by the authors of the package.
+	License *License `pulumi:"license"`
 	// All of the places within the filesystem versions of this package have been found.
 	Location []Location `pulumi:"location"`
 }
@@ -9911,6 +10862,8 @@ type InstallationInput interface {
 
 // This represents how a particular software package may be installed on a system.
 type InstallationArgs struct {
+	// Licenses that have been declared by the authors of the package.
+	License LicensePtrInput `pulumi:"license"`
 	// All of the places within the filesystem versions of this package have been found.
 	Location LocationArrayInput `pulumi:"location"`
 }
@@ -9993,6 +10946,11 @@ func (o InstallationOutput) ToInstallationPtrOutputWithContext(ctx context.Conte
 	}).(InstallationPtrOutput)
 }
 
+// Licenses that have been declared by the authors of the package.
+func (o InstallationOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v Installation) *License { return v.License }).(LicensePtrOutput)
+}
+
 // All of the places within the filesystem versions of this package have been found.
 func (o InstallationOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v Installation) []Location { return v.Location }).(LocationArrayOutput)
@@ -10022,6 +10980,16 @@ func (o InstallationPtrOutput) Elem() InstallationOutput {
 	}).(InstallationOutput)
 }
 
+// Licenses that have been declared by the authors of the package.
+func (o InstallationPtrOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v *Installation) *License {
+		if v == nil {
+			return nil
+		}
+		return v.License
+	}).(LicensePtrOutput)
+}
+
 // All of the places within the filesystem versions of this package have been found.
 func (o InstallationPtrOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v *Installation) []Location {
@@ -10034,10 +11002,20 @@ func (o InstallationPtrOutput) Location() LocationArrayOutput {
 
 // This represents how a particular software package may be installed on a system.
 type InstallationResponse struct {
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture string `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri string `pulumi:"cpeUri"`
+	// Licenses that have been declared by the authors of the package.
+	License LicenseResponse `pulumi:"license"`
 	// All of the places within the filesystem versions of this package have been found.
 	Location []LocationResponse `pulumi:"location"`
 	// The name of the installed package.
 	Name string `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType string `pulumi:"packageType"`
+	// The version of the package.
+	Version VersionResponse `pulumi:"version"`
 }
 
 // This represents how a particular software package may be installed on a system.
@@ -10055,6 +11033,21 @@ func (o InstallationResponseOutput) ToInstallationResponseOutputWithContext(ctx 
 	return o
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o InstallationResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v InstallationResponse) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o InstallationResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v InstallationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// Licenses that have been declared by the authors of the package.
+func (o InstallationResponseOutput) License() LicenseResponseOutput {
+	return o.ApplyT(func(v InstallationResponse) LicenseResponse { return v.License }).(LicenseResponseOutput)
+}
+
 // All of the places within the filesystem versions of this package have been found.
 func (o InstallationResponseOutput) Location() LocationResponseArrayOutput {
 	return o.ApplyT(func(v InstallationResponse) []LocationResponse { return v.Location }).(LocationResponseArrayOutput)
@@ -10063,6 +11056,16 @@ func (o InstallationResponseOutput) Location() LocationResponseArrayOutput {
 // The name of the installed package.
 func (o InstallationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstallationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o InstallationResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v InstallationResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The version of the package.
+func (o InstallationResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v InstallationResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
 
 type KnowledgeBase struct {
@@ -10384,11 +11387,11 @@ func (o LayerResponseArrayOutput) Index(i pulumi.IntInput) LayerResponseOutput {
 	}).(LayerResponseOutput)
 }
 
-// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+// License information.
 type License struct {
 	// Comments
 	Comments *string `pulumi:"comments"`
-	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
 	Expression *string `pulumi:"expression"`
 }
 
@@ -10403,11 +11406,11 @@ type LicenseInput interface {
 	ToLicenseOutputWithContext(context.Context) LicenseOutput
 }
 
-// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+// License information.
 type LicenseArgs struct {
 	// Comments
 	Comments pulumi.StringPtrInput `pulumi:"comments"`
-	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
 }
 
@@ -10464,7 +11467,7 @@ func (i *licensePtrType) ToLicensePtrOutputWithContext(ctx context.Context) Lice
 	return pulumi.ToOutputWithContext(ctx, i).(LicensePtrOutput)
 }
 
-// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+// License information.
 type LicenseOutput struct{ *pulumi.OutputState }
 
 func (LicenseOutput) ElementType() reflect.Type {
@@ -10494,7 +11497,7 @@ func (o LicenseOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v License) *string { return v.Comments }).(pulumi.StringPtrOutput)
 }
 
-// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
 func (o LicenseOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v License) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
@@ -10533,7 +11536,7 @@ func (o LicensePtrOutput) Comments() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
 func (o LicensePtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *License) *string {
 		if v == nil {
@@ -10543,15 +11546,15 @@ func (o LicensePtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+// License information.
 type LicenseResponse struct {
 	// Comments
 	Comments string `pulumi:"comments"`
-	// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+	// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
 	Expression string `pulumi:"expression"`
 }
 
-// License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+// License information.
 type LicenseResponseOutput struct{ *pulumi.OutputState }
 
 func (LicenseResponseOutput) ElementType() reflect.Type {
@@ -10571,7 +11574,7 @@ func (o LicenseResponseOutput) Comments() pulumi.StringOutput {
 	return o.ApplyT(func(v LicenseResponse) string { return v.Comments }).(pulumi.StringOutput)
 }
 
-// Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+// Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
 func (o LicenseResponseOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v LicenseResponse) string { return v.Expression }).(pulumi.StringOutput)
 }
@@ -10848,11 +11851,15 @@ func (o LinkResponseOutput) Products() GrafeasV1beta1IntotoArtifactResponseArray
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type Location struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri string `pulumi:"cpeUri"`
+	// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	//
+	// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri *string `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path *string `pulumi:"path"`
-	// The version installed at this location.
+	// Deprecated. The version installed at this location.
+	//
+	// Deprecated: Deprecated. The version installed at this location.
 	Version *Version `pulumi:"version"`
 }
 
@@ -10869,11 +11876,15 @@ type LocationInput interface {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationArgs struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	//
+	// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The version installed at this location.
+	// Deprecated. The version installed at this location.
+	//
+	// Deprecated: Deprecated. The version installed at this location.
 	Version VersionPtrInput `pulumi:"version"`
 }
 
@@ -10929,9 +11940,11 @@ func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) Locatio
 	return o
 }
 
-// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-func (o LocationOutput) CpeUri() pulumi.StringOutput {
-	return o.ApplyT(func(v Location) string { return v.CpeUri }).(pulumi.StringOutput)
+// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+//
+// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+func (o LocationOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Location) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
 }
 
 // The path from which we gathered that this package/version is installed.
@@ -10939,7 +11952,9 @@ func (o LocationOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Location) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The version installed at this location.
+// Deprecated. The version installed at this location.
+//
+// Deprecated: Deprecated. The version installed at this location.
 func (o LocationOutput) Version() VersionPtrOutput {
 	return o.ApplyT(func(v Location) *Version { return v.Version }).(VersionPtrOutput)
 }
@@ -10966,11 +11981,15 @@ func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationResponse struct {
-	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	//
+	// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri string `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path string `pulumi:"path"`
-	// The version installed at this location.
+	// Deprecated. The version installed at this location.
+	//
+	// Deprecated: Deprecated. The version installed at this location.
 	Version VersionResponse `pulumi:"version"`
 }
 
@@ -10989,7 +12008,9 @@ func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+//
+// Deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 func (o LocationResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
@@ -10999,7 +12020,9 @@ func (o LocationResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The version installed at this location.
+// Deprecated. The version installed at this location.
+//
+// Deprecated: Deprecated. The version installed at this location.
 func (o LocationResponseOutput) Version() VersionResponseOutput {
 	return o.ApplyT(func(v LocationResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
@@ -11024,12 +12047,30 @@ func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOu
 	}).(LocationResponseOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// Package represents a particular package version.
 type Package struct {
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture *PackageArchitecture `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri *string `pulumi:"cpeUri"`
+	// The description of this package.
+	Description *string `pulumi:"description"`
+	// Hash value, typically a file digest, that allows unique identification a specific package.
+	Digest []Digest `pulumi:"digest"`
 	// The various channels by which a package is distributed.
 	Distribution []Distribution `pulumi:"distribution"`
+	// Licenses that have been declared by the authors of the package.
+	License *License `pulumi:"license"`
+	// A freeform text denoting the maintainer of this package.
+	Maintainer *string `pulumi:"maintainer"`
 	// Immutable. The name of the package.
 	Name string `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType *string `pulumi:"packageType"`
+	// The homepage for this package.
+	Url *string `pulumi:"url"`
+	// The version of the package.
+	Version *Version `pulumi:"version"`
 }
 
 // PackageInput is an input type that accepts PackageArgs and PackageOutput values.
@@ -11043,12 +12084,30 @@ type PackageInput interface {
 	ToPackageOutputWithContext(context.Context) PackageOutput
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// Package represents a particular package version.
 type PackageArgs struct {
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture PackageArchitecturePtrInput `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The description of this package.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Hash value, typically a file digest, that allows unique identification a specific package.
+	Digest DigestArrayInput `pulumi:"digest"`
 	// The various channels by which a package is distributed.
 	Distribution DistributionArrayInput `pulumi:"distribution"`
+	// Licenses that have been declared by the authors of the package.
+	License LicensePtrInput `pulumi:"license"`
+	// A freeform text denoting the maintainer of this package.
+	Maintainer pulumi.StringPtrInput `pulumi:"maintainer"`
 	// Immutable. The name of the package.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
+	// The homepage for this package.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The version of the package.
+	Version VersionPtrInput `pulumi:"version"`
 }
 
 func (PackageArgs) ElementType() reflect.Type {
@@ -11104,7 +12163,7 @@ func (i *packagePtrType) ToPackagePtrOutputWithContext(ctx context.Context) Pack
 	return pulumi.ToOutputWithContext(ctx, i).(PackagePtrOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// Package represents a particular package version.
 type PackageOutput struct{ *pulumi.OutputState }
 
 func (PackageOutput) ElementType() reflect.Type {
@@ -11129,14 +12188,59 @@ func (o PackageOutput) ToPackagePtrOutputWithContext(ctx context.Context) Packag
 	}).(PackagePtrOutput)
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackageOutput) Architecture() PackageArchitecturePtrOutput {
+	return o.ApplyT(func(v Package) *PackageArchitecture { return v.Architecture }).(PackageArchitecturePtrOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackageOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Package) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+}
+
+// The description of this package.
+func (o PackageOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Package) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Hash value, typically a file digest, that allows unique identification a specific package.
+func (o PackageOutput) Digest() DigestArrayOutput {
+	return o.ApplyT(func(v Package) []Digest { return v.Digest }).(DigestArrayOutput)
+}
+
 // The various channels by which a package is distributed.
 func (o PackageOutput) Distribution() DistributionArrayOutput {
 	return o.ApplyT(func(v Package) []Distribution { return v.Distribution }).(DistributionArrayOutput)
 }
 
+// Licenses that have been declared by the authors of the package.
+func (o PackageOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v Package) *License { return v.License }).(LicensePtrOutput)
+}
+
+// A freeform text denoting the maintainer of this package.
+func (o PackageOutput) Maintainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Package) *string { return v.Maintainer }).(pulumi.StringPtrOutput)
+}
+
 // Immutable. The name of the package.
 func (o PackageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Package) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackageOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Package) *string { return v.PackageType }).(pulumi.StringPtrOutput)
+}
+
+// The homepage for this package.
+func (o PackageOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Package) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The version of the package.
+func (o PackageOutput) Version() VersionPtrOutput {
+	return o.ApplyT(func(v Package) *Version { return v.Version }).(VersionPtrOutput)
 }
 
 type PackagePtrOutput struct{ *pulumi.OutputState }
@@ -11163,6 +12267,46 @@ func (o PackagePtrOutput) Elem() PackageOutput {
 	}).(PackageOutput)
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackagePtrOutput) Architecture() PackageArchitecturePtrOutput {
+	return o.ApplyT(func(v *Package) *PackageArchitecture {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(PackageArchitecturePtrOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackagePtrOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpeUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The description of this package.
+func (o PackagePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hash value, typically a file digest, that allows unique identification a specific package.
+func (o PackagePtrOutput) Digest() DigestArrayOutput {
+	return o.ApplyT(func(v *Package) []Digest {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(DigestArrayOutput)
+}
+
 // The various channels by which a package is distributed.
 func (o PackagePtrOutput) Distribution() DistributionArrayOutput {
 	return o.ApplyT(func(v *Package) []Distribution {
@@ -11173,6 +12317,26 @@ func (o PackagePtrOutput) Distribution() DistributionArrayOutput {
 	}).(DistributionArrayOutput)
 }
 
+// Licenses that have been declared by the authors of the package.
+func (o PackagePtrOutput) License() LicensePtrOutput {
+	return o.ApplyT(func(v *Package) *License {
+		if v == nil {
+			return nil
+		}
+		return v.License
+	}).(LicensePtrOutput)
+}
+
+// A freeform text denoting the maintainer of this package.
+func (o PackagePtrOutput) Maintainer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Maintainer
+	}).(pulumi.StringPtrOutput)
+}
+
 // Immutable. The name of the package.
 func (o PackagePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Package) *string {
@@ -11181,6 +12345,36 @@ func (o PackagePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return &v.Name
 	}).(pulumi.StringPtrOutput)
+}
+
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackagePtrOutput) PackageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The homepage for this package.
+func (o PackagePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Package) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the package.
+func (o PackagePtrOutput) Version() VersionPtrOutput {
+	return o.ApplyT(func(v *Package) *Version {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(VersionPtrOutput)
 }
 
 // PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
@@ -12274,15 +13468,33 @@ func (o PackageIssueResponseArrayOutput) Index(i pulumi.IntInput) PackageIssueRe
 	}).(PackageIssueResponseOutput)
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// Package represents a particular package version.
 type PackageResponse struct {
+	// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+	Architecture string `pulumi:"architecture"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+	CpeUri string `pulumi:"cpeUri"`
+	// The description of this package.
+	Description string `pulumi:"description"`
+	// Hash value, typically a file digest, that allows unique identification a specific package.
+	Digest []DigestResponse `pulumi:"digest"`
 	// The various channels by which a package is distributed.
 	Distribution []DistributionResponse `pulumi:"distribution"`
+	// Licenses that have been declared by the authors of the package.
+	License LicenseResponse `pulumi:"license"`
+	// A freeform text denoting the maintainer of this package.
+	Maintainer string `pulumi:"maintainer"`
 	// Immutable. The name of the package.
 	Name string `pulumi:"name"`
+	// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+	PackageType string `pulumi:"packageType"`
+	// The homepage for this package.
+	Url string `pulumi:"url"`
+	// The version of the package.
+	Version VersionResponse `pulumi:"version"`
 }
 
-// This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+// Package represents a particular package version.
 type PackageResponseOutput struct{ *pulumi.OutputState }
 
 func (PackageResponseOutput) ElementType() reflect.Type {
@@ -12297,9 +13509,39 @@ func (o PackageResponseOutput) ToPackageResponseOutputWithContext(ctx context.Co
 	return o
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+func (o PackageResponseOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+func (o PackageResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The description of this package.
+func (o PackageResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Hash value, typically a file digest, that allows unique identification a specific package.
+func (o PackageResponseOutput) Digest() DigestResponseArrayOutput {
+	return o.ApplyT(func(v PackageResponse) []DigestResponse { return v.Digest }).(DigestResponseArrayOutput)
+}
+
 // The various channels by which a package is distributed.
 func (o PackageResponseOutput) Distribution() DistributionResponseArrayOutput {
 	return o.ApplyT(func(v PackageResponse) []DistributionResponse { return v.Distribution }).(DistributionResponseArrayOutput)
+}
+
+// Licenses that have been declared by the authors of the package.
+func (o PackageResponseOutput) License() LicenseResponseOutput {
+	return o.ApplyT(func(v PackageResponse) LicenseResponse { return v.License }).(LicenseResponseOutput)
+}
+
+// A freeform text denoting the maintainer of this package.
+func (o PackageResponseOutput) Maintainer() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Maintainer }).(pulumi.StringOutput)
 }
 
 // Immutable. The name of the package.
@@ -12307,11 +13549,26 @@ func (o PackageResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+func (o PackageResponseOutput) PackageType() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.PackageType }).(pulumi.StringOutput)
+}
+
+// The homepage for this package.
+func (o PackageResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v PackageResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// The version of the package.
+func (o PackageResponseOutput) Version() VersionResponseOutput {
+	return o.ApplyT(func(v PackageResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
+}
+
 // An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
 type PgpSignedAttestation struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 	ContentType *PgpSignedAttestationContentType `pulumi:"contentType"`
-	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId *string `pulumi:"pgpKeyId"`
 	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 	Signature string `pulumi:"signature"`
@@ -12332,7 +13589,7 @@ type PgpSignedAttestationInput interface {
 type PgpSignedAttestationArgs struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 	ContentType PgpSignedAttestationContentTypePtrInput `pulumi:"contentType"`
-	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId pulumi.StringPtrInput `pulumi:"pgpKeyId"`
 	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 	Signature pulumi.StringInput `pulumi:"signature"`
@@ -12421,7 +13678,7 @@ func (o PgpSignedAttestationOutput) ContentType() PgpSignedAttestationContentTyp
 	return o.ApplyT(func(v PgpSignedAttestation) *PgpSignedAttestationContentType { return v.ContentType }).(PgpSignedAttestationContentTypePtrOutput)
 }
 
-// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 func (o PgpSignedAttestationOutput) PgpKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgpSignedAttestation) *string { return v.PgpKeyId }).(pulumi.StringPtrOutput)
 }
@@ -12465,7 +13722,7 @@ func (o PgpSignedAttestationPtrOutput) ContentType() PgpSignedAttestationContent
 	}).(PgpSignedAttestationContentTypePtrOutput)
 }
 
-// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 func (o PgpSignedAttestationPtrOutput) PgpKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgpSignedAttestation) *string {
 		if v == nil {
@@ -12489,7 +13746,7 @@ func (o PgpSignedAttestationPtrOutput) Signature() pulumi.StringPtrOutput {
 type PgpSignedAttestationResponse struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
 	ContentType string `pulumi:"contentType"`
-	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId string `pulumi:"pgpKeyId"`
 	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 	Signature string `pulumi:"signature"`
@@ -12515,7 +13772,7 @@ func (o PgpSignedAttestationResponseOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
-// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 func (o PgpSignedAttestationResponseOutput) PgpKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.PgpKeyId }).(pulumi.StringOutput)
 }
@@ -14996,8 +16253,12 @@ func (o VersionResponseOutput) Revision() pulumi.StringOutput {
 type Vulnerability struct {
 	// The CVSS score for this vulnerability.
 	CvssScore *float64 `pulumi:"cvssScore"`
-	// The full description of the CVSSv3.
+	// The full description of the CVSS for version 2.
+	CvssV2 *CVSS `pulumi:"cvssV2"`
+	// The full description of the CVSS for version 3.
 	CvssV3 *CVSSv3 `pulumi:"cvssV3"`
+	// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+	Cwe []string `pulumi:"cwe"`
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
 	Details []Detail `pulumi:"details"`
 	// Note provider assigned impact of the vulnerability.
@@ -15023,8 +16284,12 @@ type VulnerabilityInput interface {
 type VulnerabilityArgs struct {
 	// The CVSS score for this vulnerability.
 	CvssScore pulumi.Float64PtrInput `pulumi:"cvssScore"`
-	// The full description of the CVSSv3.
+	// The full description of the CVSS for version 2.
+	CvssV2 CVSSPtrInput `pulumi:"cvssV2"`
+	// The full description of the CVSS for version 3.
 	CvssV3 CVSSv3PtrInput `pulumi:"cvssV3"`
+	// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+	Cwe pulumi.StringArrayInput `pulumi:"cwe"`
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
 	Details DetailArrayInput `pulumi:"details"`
 	// Note provider assigned impact of the vulnerability.
@@ -15118,9 +16383,19 @@ func (o VulnerabilityOutput) CvssScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Vulnerability) *float64 { return v.CvssScore }).(pulumi.Float64PtrOutput)
 }
 
-// The full description of the CVSSv3.
+// The full description of the CVSS for version 2.
+func (o VulnerabilityOutput) CvssV2() CVSSPtrOutput {
+	return o.ApplyT(func(v Vulnerability) *CVSS { return v.CvssV2 }).(CVSSPtrOutput)
+}
+
+// The full description of the CVSS for version 3.
 func (o VulnerabilityOutput) CvssV3() CVSSv3PtrOutput {
 	return o.ApplyT(func(v Vulnerability) *CVSSv3 { return v.CvssV3 }).(CVSSv3PtrOutput)
+}
+
+// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+func (o VulnerabilityOutput) Cwe() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Vulnerability) []string { return v.Cwe }).(pulumi.StringArrayOutput)
 }
 
 // All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
@@ -15177,7 +16452,17 @@ func (o VulnerabilityPtrOutput) CvssScore() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The full description of the CVSSv3.
+// The full description of the CVSS for version 2.
+func (o VulnerabilityPtrOutput) CvssV2() CVSSPtrOutput {
+	return o.ApplyT(func(v *Vulnerability) *CVSS {
+		if v == nil {
+			return nil
+		}
+		return v.CvssV2
+	}).(CVSSPtrOutput)
+}
+
+// The full description of the CVSS for version 3.
 func (o VulnerabilityPtrOutput) CvssV3() CVSSv3PtrOutput {
 	return o.ApplyT(func(v *Vulnerability) *CVSSv3 {
 		if v == nil {
@@ -15185,6 +16470,16 @@ func (o VulnerabilityPtrOutput) CvssV3() CVSSv3PtrOutput {
 		}
 		return v.CvssV3
 	}).(CVSSv3PtrOutput)
+}
+
+// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+func (o VulnerabilityPtrOutput) Cwe() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Vulnerability) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Cwe
+	}).(pulumi.StringArrayOutput)
 }
 
 // All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
@@ -15449,8 +16744,12 @@ func (o VulnerabilityLocationResponseOutput) Version() VersionResponseOutput {
 type VulnerabilityResponse struct {
 	// The CVSS score for this vulnerability.
 	CvssScore float64 `pulumi:"cvssScore"`
-	// The full description of the CVSSv3.
+	// The full description of the CVSS for version 2.
+	CvssV2 CVSSResponse `pulumi:"cvssV2"`
+	// The full description of the CVSS for version 3.
 	CvssV3 CVSSv3Response `pulumi:"cvssV3"`
+	// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+	Cwe []string `pulumi:"cwe"`
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
 	Details []DetailResponse `pulumi:"details"`
 	// Note provider assigned impact of the vulnerability.
@@ -15481,9 +16780,19 @@ func (o VulnerabilityResponseOutput) CvssScore() pulumi.Float64Output {
 	return o.ApplyT(func(v VulnerabilityResponse) float64 { return v.CvssScore }).(pulumi.Float64Output)
 }
 
-// The full description of the CVSSv3.
+// The full description of the CVSS for version 2.
+func (o VulnerabilityResponseOutput) CvssV2() CVSSResponseOutput {
+	return o.ApplyT(func(v VulnerabilityResponse) CVSSResponse { return v.CvssV2 }).(CVSSResponseOutput)
+}
+
+// The full description of the CVSS for version 3.
 func (o VulnerabilityResponseOutput) CvssV3() CVSSv3ResponseOutput {
 	return o.ApplyT(func(v VulnerabilityResponse) CVSSv3Response { return v.CvssV3 }).(CVSSv3ResponseOutput)
+}
+
+// A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+func (o VulnerabilityResponseOutput) Cwe() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VulnerabilityResponse) []string { return v.Cwe }).(pulumi.StringArrayOutput)
 }
 
 // All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
@@ -15720,6 +17029,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildSignaturePtrInput)(nil)).Elem(), BuildSignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ByProductsInput)(nil)).Elem(), ByProductsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ByProductsPtrInput)(nil)).Elem(), ByProductsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSInput)(nil)).Elem(), CVSSArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CVSSPtrInput)(nil)).Elem(), CVSSArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3Input)(nil)).Elem(), CVSSv3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSv3PtrInput)(nil)).Elem(), CVSSv3Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRepoSourceContextInput)(nil)).Elem(), CloudRepoSourceContextArgs{})
@@ -15736,6 +17047,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailArrayInput)(nil)).Elem(), DetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailsInput)(nil)).Elem(), DetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DetailsPtrInput)(nil)).Elem(), DetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DigestInput)(nil)).Elem(), DigestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DigestArrayInput)(nil)).Elem(), DigestArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveredInput)(nil)).Elem(), DiscoveredArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveredPtrInput)(nil)).Elem(), DiscoveredArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryInput)(nil)).Elem(), DiscoveryArgs{})
@@ -15746,6 +17059,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentNotePtrInput)(nil)).Elem(), DocumentNoteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentOccurrenceInput)(nil)).Elem(), DocumentOccurrenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentOccurrencePtrInput)(nil)).Elem(), DocumentOccurrenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeInput)(nil)).Elem(), EnvelopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopePtrInput)(nil)).Elem(), EnvelopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureInput)(nil)).Elem(), EnvelopeSignatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvelopeSignatureArrayInput)(nil)).Elem(), EnvelopeSignatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), EnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPtrInput)(nil)).Elem(), EnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
@@ -15879,6 +17196,9 @@ func init() {
 	pulumi.RegisterOutputType(ByProductsOutput{})
 	pulumi.RegisterOutputType(ByProductsPtrOutput{})
 	pulumi.RegisterOutputType(ByProductsResponseOutput{})
+	pulumi.RegisterOutputType(CVSSOutput{})
+	pulumi.RegisterOutputType(CVSSPtrOutput{})
+	pulumi.RegisterOutputType(CVSSResponseOutput{})
 	pulumi.RegisterOutputType(CVSSv3Output{})
 	pulumi.RegisterOutputType(CVSSv3PtrOutput{})
 	pulumi.RegisterOutputType(CVSSv3ResponseOutput{})
@@ -15905,6 +17225,10 @@ func init() {
 	pulumi.RegisterOutputType(DetailsOutput{})
 	pulumi.RegisterOutputType(DetailsPtrOutput{})
 	pulumi.RegisterOutputType(DetailsResponseOutput{})
+	pulumi.RegisterOutputType(DigestOutput{})
+	pulumi.RegisterOutputType(DigestArrayOutput{})
+	pulumi.RegisterOutputType(DigestResponseOutput{})
+	pulumi.RegisterOutputType(DigestResponseArrayOutput{})
 	pulumi.RegisterOutputType(DiscoveredOutput{})
 	pulumi.RegisterOutputType(DiscoveredPtrOutput{})
 	pulumi.RegisterOutputType(DiscoveredResponseOutput{})
@@ -15921,6 +17245,13 @@ func init() {
 	pulumi.RegisterOutputType(DocumentOccurrenceOutput{})
 	pulumi.RegisterOutputType(DocumentOccurrencePtrOutput{})
 	pulumi.RegisterOutputType(DocumentOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(EnvelopeOutput{})
+	pulumi.RegisterOutputType(EnvelopePtrOutput{})
+	pulumi.RegisterOutputType(EnvelopeResponseOutput{})
+	pulumi.RegisterOutputType(EnvelopeSignatureOutput{})
+	pulumi.RegisterOutputType(EnvelopeSignatureArrayOutput{})
+	pulumi.RegisterOutputType(EnvelopeSignatureResponseOutput{})
+	pulumi.RegisterOutputType(EnvelopeSignatureResponseArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentOutput{})
 	pulumi.RegisterOutputType(EnvironmentPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentResponseOutput{})

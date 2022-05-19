@@ -155,6 +155,10 @@ export interface GetBackendServiceResult {
      */
     readonly selfLink: string;
     /**
+     * URLs of networkservices.ServiceBinding resources. Can only be set if load balancing scheme is INTERNAL_SELF_MANAGED. If set, lists of backends and health checks must be both empty.
+     */
+    readonly serviceBindings: string[];
+    /**
      * Type of session affinity to use. The default is NONE. Only NONE and HEADER_FIELD are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. For more details, see: [Session Affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity).
      */
     readonly sessionAffinity: string;

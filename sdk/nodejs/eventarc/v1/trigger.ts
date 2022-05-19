@@ -36,6 +36,10 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     */
+    public readonly channel!: pulumi.Output<string>;
+    /**
      * The creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.validateOnly === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'validateOnly'");
             }
+            resourceInputs["channel"] = args ? args.channel : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["eventFilters"] = args ? args.eventFilters : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -114,6 +119,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["channel"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -134,6 +140,10 @@ export class Trigger extends pulumi.CustomResource {
  * The set of arguments for constructing a Trigger resource.
  */
 export interface TriggerArgs {
+    /**
+     * Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+     */
+    channel?: pulumi.Input<string>;
     /**
      * Destination specifies where the events should be sent to.
      */

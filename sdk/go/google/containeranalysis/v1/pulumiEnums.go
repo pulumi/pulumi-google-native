@@ -4044,6 +4044,175 @@ func (in *distributionArchitecturePtr) ToDistributionArchitecturePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DistributionArchitecturePtrOutput)
 }
 
+// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+type PackageNoteArchitecture string
+
+const (
+	// Unknown architecture.
+	PackageNoteArchitectureArchitectureUnspecified = PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED")
+	// X86 architecture.
+	PackageNoteArchitectureX86 = PackageNoteArchitecture("X86")
+	// X64 architecture.
+	PackageNoteArchitectureX64 = PackageNoteArchitecture("X64")
+)
+
+func (PackageNoteArchitecture) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageNoteArchitecture)(nil)).Elem()
+}
+
+func (e PackageNoteArchitecture) ToPackageNoteArchitectureOutput() PackageNoteArchitectureOutput {
+	return pulumi.ToOutput(e).(PackageNoteArchitectureOutput)
+}
+
+func (e PackageNoteArchitecture) ToPackageNoteArchitectureOutputWithContext(ctx context.Context) PackageNoteArchitectureOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PackageNoteArchitectureOutput)
+}
+
+func (e PackageNoteArchitecture) ToPackageNoteArchitecturePtrOutput() PackageNoteArchitecturePtrOutput {
+	return e.ToPackageNoteArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (e PackageNoteArchitecture) ToPackageNoteArchitecturePtrOutputWithContext(ctx context.Context) PackageNoteArchitecturePtrOutput {
+	return PackageNoteArchitecture(e).ToPackageNoteArchitectureOutputWithContext(ctx).ToPackageNoteArchitecturePtrOutputWithContext(ctx)
+}
+
+func (e PackageNoteArchitecture) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PackageNoteArchitecture) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PackageNoteArchitecture) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PackageNoteArchitecture) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PackageNoteArchitectureOutput struct{ *pulumi.OutputState }
+
+func (PackageNoteArchitectureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageNoteArchitecture)(nil)).Elem()
+}
+
+func (o PackageNoteArchitectureOutput) ToPackageNoteArchitectureOutput() PackageNoteArchitectureOutput {
+	return o
+}
+
+func (o PackageNoteArchitectureOutput) ToPackageNoteArchitectureOutputWithContext(ctx context.Context) PackageNoteArchitectureOutput {
+	return o
+}
+
+func (o PackageNoteArchitectureOutput) ToPackageNoteArchitecturePtrOutput() PackageNoteArchitecturePtrOutput {
+	return o.ToPackageNoteArchitecturePtrOutputWithContext(context.Background())
+}
+
+func (o PackageNoteArchitectureOutput) ToPackageNoteArchitecturePtrOutputWithContext(ctx context.Context) PackageNoteArchitecturePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageNoteArchitecture) *PackageNoteArchitecture {
+		return &v
+	}).(PackageNoteArchitecturePtrOutput)
+}
+
+func (o PackageNoteArchitectureOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PackageNoteArchitectureOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageNoteArchitecture) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PackageNoteArchitectureOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageNoteArchitectureOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageNoteArchitecture) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PackageNoteArchitecturePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageNoteArchitecturePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PackageNoteArchitecture)(nil)).Elem()
+}
+
+func (o PackageNoteArchitecturePtrOutput) ToPackageNoteArchitecturePtrOutput() PackageNoteArchitecturePtrOutput {
+	return o
+}
+
+func (o PackageNoteArchitecturePtrOutput) ToPackageNoteArchitecturePtrOutputWithContext(ctx context.Context) PackageNoteArchitecturePtrOutput {
+	return o
+}
+
+func (o PackageNoteArchitecturePtrOutput) Elem() PackageNoteArchitectureOutput {
+	return o.ApplyT(func(v *PackageNoteArchitecture) PackageNoteArchitecture {
+		if v != nil {
+			return *v
+		}
+		var ret PackageNoteArchitecture
+		return ret
+	}).(PackageNoteArchitectureOutput)
+}
+
+func (o PackageNoteArchitecturePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageNoteArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PackageNoteArchitecture) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PackageNoteArchitectureInput is an input type that accepts PackageNoteArchitectureArgs and PackageNoteArchitectureOutput values.
+// You can construct a concrete instance of `PackageNoteArchitectureInput` via:
+//
+//          PackageNoteArchitectureArgs{...}
+type PackageNoteArchitectureInput interface {
+	pulumi.Input
+
+	ToPackageNoteArchitectureOutput() PackageNoteArchitectureOutput
+	ToPackageNoteArchitectureOutputWithContext(context.Context) PackageNoteArchitectureOutput
+}
+
+var packageNoteArchitecturePtrType = reflect.TypeOf((**PackageNoteArchitecture)(nil)).Elem()
+
+type PackageNoteArchitecturePtrInput interface {
+	pulumi.Input
+
+	ToPackageNoteArchitecturePtrOutput() PackageNoteArchitecturePtrOutput
+	ToPackageNoteArchitecturePtrOutputWithContext(context.Context) PackageNoteArchitecturePtrOutput
+}
+
+type packageNoteArchitecturePtr string
+
+func PackageNoteArchitecturePtr(v string) PackageNoteArchitecturePtrInput {
+	return (*packageNoteArchitecturePtr)(&v)
+}
+
+func (*packageNoteArchitecturePtr) ElementType() reflect.Type {
+	return packageNoteArchitecturePtrType
+}
+
+func (in *packageNoteArchitecturePtr) ToPackageNoteArchitecturePtrOutput() PackageNoteArchitecturePtrOutput {
+	return pulumi.ToOutput(in).(PackageNoteArchitecturePtrOutput)
+}
+
+func (in *packageNoteArchitecturePtr) ToPackageNoteArchitecturePtrOutputWithContext(ctx context.Context) PackageNoteArchitecturePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PackageNoteArchitecturePtrOutput)
+}
+
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
 type VersionKind string
 
@@ -4614,6 +4783,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrenceContinuousAnalysisPtrInput)(nil)).Elem(), DiscoveryOccurrenceContinuousAnalysis("CONTINUOUS_ANALYSIS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionArchitectureInput)(nil)).Elem(), DistributionArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionArchitecturePtrInput)(nil)).Elem(), DistributionArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteArchitectureInput)(nil)).Elem(), PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteArchitecturePtrInput)(nil)).Elem(), PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindPtrInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteSeverityInput)(nil)).Elem(), VulnerabilityNoteSeverity("SEVERITY_UNSPECIFIED"))
@@ -4668,6 +4839,8 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveryOccurrenceContinuousAnalysisPtrOutput{})
 	pulumi.RegisterOutputType(DistributionArchitectureOutput{})
 	pulumi.RegisterOutputType(DistributionArchitecturePtrOutput{})
+	pulumi.RegisterOutputType(PackageNoteArchitectureOutput{})
+	pulumi.RegisterOutputType(PackageNoteArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(VersionKindOutput{})
 	pulumi.RegisterOutputType(VersionKindPtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteSeverityOutput{})

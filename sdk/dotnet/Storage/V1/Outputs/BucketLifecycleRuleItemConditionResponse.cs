@@ -45,9 +45,17 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// </summary>
         public readonly string MatchesPattern;
         /// <summary>
+        /// List of object name prefixes. This condition will be satisfied when at least one of the prefixes exactly matches the beginning of the object name.
+        /// </summary>
+        public readonly ImmutableArray<string> MatchesPrefix;
+        /// <summary>
         /// Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
         /// </summary>
         public readonly ImmutableArray<string> MatchesStorageClass;
+        /// <summary>
+        /// List of object name suffixes. This condition will be satisfied when at least one of the suffixes exactly matches the end of the object name.
+        /// </summary>
+        public readonly ImmutableArray<string> MatchesSuffix;
         /// <summary>
         /// A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
         /// </summary>
@@ -73,7 +81,11 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
 
             string matchesPattern,
 
+            ImmutableArray<string> matchesPrefix,
+
             ImmutableArray<string> matchesStorageClass,
+
+            ImmutableArray<string> matchesSuffix,
 
             string noncurrentTimeBefore,
 
@@ -86,7 +98,9 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
             DaysSinceNoncurrentTime = daysSinceNoncurrentTime;
             IsLive = isLive;
             MatchesPattern = matchesPattern;
+            MatchesPrefix = matchesPrefix;
             MatchesStorageClass = matchesStorageClass;
+            MatchesSuffix = matchesSuffix;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
         }

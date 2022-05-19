@@ -35,7 +35,7 @@ export interface GetUptimeCheckConfigResult {
      */
     readonly contentMatchers: outputs.monitoring.v3.ContentMatcherResponse[];
     /**
-     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+     * A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
      */
     readonly displayName: string;
     /**

@@ -1330,6 +1330,198 @@ func (o CloudEndpointsResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudEndpointsResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
+// Cloud Run service. Learn more at https://cloud.google.com/run.
+type CloudRun struct {
+	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	Location *string `pulumi:"location"`
+	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// CloudRunInput is an input type that accepts CloudRunArgs and CloudRunOutput values.
+// You can construct a concrete instance of `CloudRunInput` via:
+//
+//          CloudRunArgs{...}
+type CloudRunInput interface {
+	pulumi.Input
+
+	ToCloudRunOutput() CloudRunOutput
+	ToCloudRunOutputWithContext(context.Context) CloudRunOutput
+}
+
+// Cloud Run service. Learn more at https://cloud.google.com/run.
+type CloudRunArgs struct {
+	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (CloudRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRun)(nil)).Elem()
+}
+
+func (i CloudRunArgs) ToCloudRunOutput() CloudRunOutput {
+	return i.ToCloudRunOutputWithContext(context.Background())
+}
+
+func (i CloudRunArgs) ToCloudRunOutputWithContext(ctx context.Context) CloudRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunOutput)
+}
+
+func (i CloudRunArgs) ToCloudRunPtrOutput() CloudRunPtrOutput {
+	return i.ToCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (i CloudRunArgs) ToCloudRunPtrOutputWithContext(ctx context.Context) CloudRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunOutput).ToCloudRunPtrOutputWithContext(ctx)
+}
+
+// CloudRunPtrInput is an input type that accepts CloudRunArgs, CloudRunPtr and CloudRunPtrOutput values.
+// You can construct a concrete instance of `CloudRunPtrInput` via:
+//
+//          CloudRunArgs{...}
+//
+//  or:
+//
+//          nil
+type CloudRunPtrInput interface {
+	pulumi.Input
+
+	ToCloudRunPtrOutput() CloudRunPtrOutput
+	ToCloudRunPtrOutputWithContext(context.Context) CloudRunPtrOutput
+}
+
+type cloudRunPtrType CloudRunArgs
+
+func CloudRunPtr(v *CloudRunArgs) CloudRunPtrInput {
+	return (*cloudRunPtrType)(v)
+}
+
+func (*cloudRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRun)(nil)).Elem()
+}
+
+func (i *cloudRunPtrType) ToCloudRunPtrOutput() CloudRunPtrOutput {
+	return i.ToCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRunPtrType) ToCloudRunPtrOutputWithContext(ctx context.Context) CloudRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunPtrOutput)
+}
+
+// Cloud Run service. Learn more at https://cloud.google.com/run.
+type CloudRunOutput struct{ *pulumi.OutputState }
+
+func (CloudRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRun)(nil)).Elem()
+}
+
+func (o CloudRunOutput) ToCloudRunOutput() CloudRunOutput {
+	return o
+}
+
+func (o CloudRunOutput) ToCloudRunOutputWithContext(ctx context.Context) CloudRunOutput {
+	return o
+}
+
+func (o CloudRunOutput) ToCloudRunPtrOutput() CloudRunPtrOutput {
+	return o.ToCloudRunPtrOutputWithContext(context.Background())
+}
+
+func (o CloudRunOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) CloudRunPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRun) *CloudRun {
+		return &v
+	}).(CloudRunPtrOutput)
+}
+
+// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+func (o CloudRunOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudRun) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+func (o CloudRunOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudRun) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type CloudRunPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRun)(nil)).Elem()
+}
+
+func (o CloudRunPtrOutput) ToCloudRunPtrOutput() CloudRunPtrOutput {
+	return o
+}
+
+func (o CloudRunPtrOutput) ToCloudRunPtrOutputWithContext(ctx context.Context) CloudRunPtrOutput {
+	return o
+}
+
+func (o CloudRunPtrOutput) Elem() CloudRunOutput {
+	return o.ApplyT(func(v *CloudRun) CloudRun {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRun
+		return ret
+	}).(CloudRunOutput)
+}
+
+// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+func (o CloudRunPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+func (o CloudRunPtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRun) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cloud Run service. Learn more at https://cloud.google.com/run.
+type CloudRunResponse struct {
+	// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	Location string `pulumi:"location"`
+	// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// Cloud Run service. Learn more at https://cloud.google.com/run.
+type CloudRunResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunResponse)(nil)).Elem()
+}
+
+func (o CloudRunResponseOutput) ToCloudRunResponseOutput() CloudRunResponseOutput {
+	return o
+}
+
+func (o CloudRunResponseOutput) ToCloudRunResponseOutputWithContext(ctx context.Context) CloudRunResponseOutput {
+	return o
+}
+
+// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+func (o CloudRunResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run service. Corresponds to the service_name resource label in the cloud_run_revision monitored resource: https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision
+func (o CloudRunResponseOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunResponse) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
 // Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
 type ClusterIstio struct {
 	// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
@@ -1586,7 +1778,7 @@ type Condition struct {
 	ConditionThreshold *MetricThreshold `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
 	DisplayName *string `pulumi:"displayName"`
-	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
 	Name *string `pulumi:"name"`
 }
 
@@ -1613,7 +1805,7 @@ type ConditionArgs struct {
 	ConditionThreshold MetricThresholdPtrInput `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -1694,7 +1886,7 @@ func (o ConditionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Condition) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
 func (o ConditionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Condition) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1731,7 +1923,7 @@ type ConditionResponse struct {
 	ConditionThreshold MetricThresholdResponse `pulumi:"conditionThreshold"`
 	// A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
 	DisplayName string `pulumi:"displayName"`
-	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+	// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
 	Name string `pulumi:"name"`
 }
 
@@ -1777,7 +1969,7 @@ func (o ConditionResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
+// Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
 func (o ConditionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2488,6 +2680,759 @@ func (o DocumentationResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
 
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+type GkeNamespace struct {
+	// The name of the parent cluster.
+	ClusterName *string `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location *string `pulumi:"location"`
+	// The name of this namespace.
+	NamespaceName *string `pulumi:"namespaceName"`
+}
+
+// GkeNamespaceInput is an input type that accepts GkeNamespaceArgs and GkeNamespaceOutput values.
+// You can construct a concrete instance of `GkeNamespaceInput` via:
+//
+//          GkeNamespaceArgs{...}
+type GkeNamespaceInput interface {
+	pulumi.Input
+
+	ToGkeNamespaceOutput() GkeNamespaceOutput
+	ToGkeNamespaceOutputWithContext(context.Context) GkeNamespaceOutput
+}
+
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+type GkeNamespaceArgs struct {
+	// The name of the parent cluster.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The name of this namespace.
+	NamespaceName pulumi.StringPtrInput `pulumi:"namespaceName"`
+}
+
+func (GkeNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNamespace)(nil)).Elem()
+}
+
+func (i GkeNamespaceArgs) ToGkeNamespaceOutput() GkeNamespaceOutput {
+	return i.ToGkeNamespaceOutputWithContext(context.Background())
+}
+
+func (i GkeNamespaceArgs) ToGkeNamespaceOutputWithContext(ctx context.Context) GkeNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNamespaceOutput)
+}
+
+func (i GkeNamespaceArgs) ToGkeNamespacePtrOutput() GkeNamespacePtrOutput {
+	return i.ToGkeNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i GkeNamespaceArgs) ToGkeNamespacePtrOutputWithContext(ctx context.Context) GkeNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNamespaceOutput).ToGkeNamespacePtrOutputWithContext(ctx)
+}
+
+// GkeNamespacePtrInput is an input type that accepts GkeNamespaceArgs, GkeNamespacePtr and GkeNamespacePtrOutput values.
+// You can construct a concrete instance of `GkeNamespacePtrInput` via:
+//
+//          GkeNamespaceArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeNamespacePtrInput interface {
+	pulumi.Input
+
+	ToGkeNamespacePtrOutput() GkeNamespacePtrOutput
+	ToGkeNamespacePtrOutputWithContext(context.Context) GkeNamespacePtrOutput
+}
+
+type gkeNamespacePtrType GkeNamespaceArgs
+
+func GkeNamespacePtr(v *GkeNamespaceArgs) GkeNamespacePtrInput {
+	return (*gkeNamespacePtrType)(v)
+}
+
+func (*gkeNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNamespace)(nil)).Elem()
+}
+
+func (i *gkeNamespacePtrType) ToGkeNamespacePtrOutput() GkeNamespacePtrOutput {
+	return i.ToGkeNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeNamespacePtrType) ToGkeNamespacePtrOutputWithContext(ctx context.Context) GkeNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeNamespacePtrOutput)
+}
+
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+type GkeNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GkeNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNamespace)(nil)).Elem()
+}
+
+func (o GkeNamespaceOutput) ToGkeNamespaceOutput() GkeNamespaceOutput {
+	return o
+}
+
+func (o GkeNamespaceOutput) ToGkeNamespaceOutputWithContext(ctx context.Context) GkeNamespaceOutput {
+	return o
+}
+
+func (o GkeNamespaceOutput) ToGkeNamespacePtrOutput() GkeNamespacePtrOutput {
+	return o.ToGkeNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o GkeNamespaceOutput) ToGkeNamespacePtrOutputWithContext(ctx context.Context) GkeNamespacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeNamespace) *GkeNamespace {
+		return &v
+	}).(GkeNamespacePtrOutput)
+}
+
+// The name of the parent cluster.
+func (o GkeNamespaceOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNamespace) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeNamespaceOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNamespace) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The name of this namespace.
+func (o GkeNamespaceOutput) NamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeNamespace) *string { return v.NamespaceName }).(pulumi.StringPtrOutput)
+}
+
+type GkeNamespacePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeNamespace)(nil)).Elem()
+}
+
+func (o GkeNamespacePtrOutput) ToGkeNamespacePtrOutput() GkeNamespacePtrOutput {
+	return o
+}
+
+func (o GkeNamespacePtrOutput) ToGkeNamespacePtrOutputWithContext(ctx context.Context) GkeNamespacePtrOutput {
+	return o
+}
+
+func (o GkeNamespacePtrOutput) Elem() GkeNamespaceOutput {
+	return o.ApplyT(func(v *GkeNamespace) GkeNamespace {
+		if v != nil {
+			return *v
+		}
+		var ret GkeNamespace
+		return ret
+	}).(GkeNamespaceOutput)
+}
+
+// The name of the parent cluster.
+func (o GkeNamespacePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeNamespace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeNamespacePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeNamespace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of this namespace.
+func (o GkeNamespacePtrOutput) NamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeNamespace) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamespaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+type GkeNamespaceResponse struct {
+	// The name of the parent cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location string `pulumi:"location"`
+	// The name of this namespace.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+	Project string `pulumi:"project"`
+}
+
+// GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (e.g. k8s_container, k8s_pod).
+type GkeNamespaceResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeNamespaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeNamespaceResponse)(nil)).Elem()
+}
+
+func (o GkeNamespaceResponseOutput) ToGkeNamespaceResponseOutput() GkeNamespaceResponseOutput {
+	return o
+}
+
+func (o GkeNamespaceResponseOutput) ToGkeNamespaceResponseOutputWithContext(ctx context.Context) GkeNamespaceResponseOutput {
+	return o
+}
+
+// The name of the parent cluster.
+func (o GkeNamespaceResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNamespaceResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeNamespaceResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNamespaceResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of this namespace.
+func (o GkeNamespaceResponseOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNamespaceResponse) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+func (o GkeNamespaceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeNamespaceResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+type GkeService struct {
+	// The name of the parent cluster.
+	ClusterName *string `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location *string `pulumi:"location"`
+	// The name of the parent namespace.
+	NamespaceName *string `pulumi:"namespaceName"`
+	// The name of this service.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// GkeServiceInput is an input type that accepts GkeServiceArgs and GkeServiceOutput values.
+// You can construct a concrete instance of `GkeServiceInput` via:
+//
+//          GkeServiceArgs{...}
+type GkeServiceInput interface {
+	pulumi.Input
+
+	ToGkeServiceOutput() GkeServiceOutput
+	ToGkeServiceOutputWithContext(context.Context) GkeServiceOutput
+}
+
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+type GkeServiceArgs struct {
+	// The name of the parent cluster.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The name of the parent namespace.
+	NamespaceName pulumi.StringPtrInput `pulumi:"namespaceName"`
+	// The name of this service.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (GkeServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeService)(nil)).Elem()
+}
+
+func (i GkeServiceArgs) ToGkeServiceOutput() GkeServiceOutput {
+	return i.ToGkeServiceOutputWithContext(context.Background())
+}
+
+func (i GkeServiceArgs) ToGkeServiceOutputWithContext(ctx context.Context) GkeServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeServiceOutput)
+}
+
+func (i GkeServiceArgs) ToGkeServicePtrOutput() GkeServicePtrOutput {
+	return i.ToGkeServicePtrOutputWithContext(context.Background())
+}
+
+func (i GkeServiceArgs) ToGkeServicePtrOutputWithContext(ctx context.Context) GkeServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeServiceOutput).ToGkeServicePtrOutputWithContext(ctx)
+}
+
+// GkeServicePtrInput is an input type that accepts GkeServiceArgs, GkeServicePtr and GkeServicePtrOutput values.
+// You can construct a concrete instance of `GkeServicePtrInput` via:
+//
+//          GkeServiceArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeServicePtrInput interface {
+	pulumi.Input
+
+	ToGkeServicePtrOutput() GkeServicePtrOutput
+	ToGkeServicePtrOutputWithContext(context.Context) GkeServicePtrOutput
+}
+
+type gkeServicePtrType GkeServiceArgs
+
+func GkeServicePtr(v *GkeServiceArgs) GkeServicePtrInput {
+	return (*gkeServicePtrType)(v)
+}
+
+func (*gkeServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeService)(nil)).Elem()
+}
+
+func (i *gkeServicePtrType) ToGkeServicePtrOutput() GkeServicePtrOutput {
+	return i.ToGkeServicePtrOutputWithContext(context.Background())
+}
+
+func (i *gkeServicePtrType) ToGkeServicePtrOutputWithContext(ctx context.Context) GkeServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeServicePtrOutput)
+}
+
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+type GkeServiceOutput struct{ *pulumi.OutputState }
+
+func (GkeServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeService)(nil)).Elem()
+}
+
+func (o GkeServiceOutput) ToGkeServiceOutput() GkeServiceOutput {
+	return o
+}
+
+func (o GkeServiceOutput) ToGkeServiceOutputWithContext(ctx context.Context) GkeServiceOutput {
+	return o
+}
+
+func (o GkeServiceOutput) ToGkeServicePtrOutput() GkeServicePtrOutput {
+	return o.ToGkeServicePtrOutputWithContext(context.Background())
+}
+
+func (o GkeServiceOutput) ToGkeServicePtrOutputWithContext(ctx context.Context) GkeServicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeService) *GkeService {
+		return &v
+	}).(GkeServicePtrOutput)
+}
+
+// The name of the parent cluster.
+func (o GkeServiceOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeService) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeServiceOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeService) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The name of the parent namespace.
+func (o GkeServiceOutput) NamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeService) *string { return v.NamespaceName }).(pulumi.StringPtrOutput)
+}
+
+// The name of this service.
+func (o GkeServiceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeService) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type GkeServicePtrOutput struct{ *pulumi.OutputState }
+
+func (GkeServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeService)(nil)).Elem()
+}
+
+func (o GkeServicePtrOutput) ToGkeServicePtrOutput() GkeServicePtrOutput {
+	return o
+}
+
+func (o GkeServicePtrOutput) ToGkeServicePtrOutputWithContext(ctx context.Context) GkeServicePtrOutput {
+	return o
+}
+
+func (o GkeServicePtrOutput) Elem() GkeServiceOutput {
+	return o.ApplyT(func(v *GkeService) GkeService {
+		if v != nil {
+			return *v
+		}
+		var ret GkeService
+		return ret
+	}).(GkeServiceOutput)
+}
+
+// The name of the parent cluster.
+func (o GkeServicePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeServicePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the parent namespace.
+func (o GkeServicePtrOutput) NamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamespaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of this service.
+func (o GkeServicePtrOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+type GkeServiceResponse struct {
+	// The name of the parent cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location string `pulumi:"location"`
+	// The name of the parent namespace.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+	Project string `pulumi:"project"`
+	// The name of this service.
+	ServiceName string `pulumi:"serviceName"`
+}
+
+// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources: https://cloud.google.com/monitoring/api/resources#tag_k8s_service
+type GkeServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeServiceResponse)(nil)).Elem()
+}
+
+func (o GkeServiceResponseOutput) ToGkeServiceResponseOutput() GkeServiceResponseOutput {
+	return o
+}
+
+func (o GkeServiceResponseOutput) ToGkeServiceResponseOutputWithContext(ctx context.Context) GkeServiceResponseOutput {
+	return o
+}
+
+// The name of the parent cluster.
+func (o GkeServiceResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeServiceResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeServiceResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeServiceResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the parent namespace.
+func (o GkeServiceResponseOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeServiceResponse) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+func (o GkeServiceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeServiceResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The name of this service.
+func (o GkeServiceResponseOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeServiceResponse) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+type GkeWorkload struct {
+	// The name of the parent cluster.
+	ClusterName *string `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location *string `pulumi:"location"`
+	// The name of the parent namespace.
+	NamespaceName *string `pulumi:"namespaceName"`
+	// The name of this workload.
+	TopLevelControllerName *string `pulumi:"topLevelControllerName"`
+	// The type of this workload (e.g. "Deployment" or "DaemonSet")
+	TopLevelControllerType *string `pulumi:"topLevelControllerType"`
+}
+
+// GkeWorkloadInput is an input type that accepts GkeWorkloadArgs and GkeWorkloadOutput values.
+// You can construct a concrete instance of `GkeWorkloadInput` via:
+//
+//          GkeWorkloadArgs{...}
+type GkeWorkloadInput interface {
+	pulumi.Input
+
+	ToGkeWorkloadOutput() GkeWorkloadOutput
+	ToGkeWorkloadOutputWithContext(context.Context) GkeWorkloadOutput
+}
+
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+type GkeWorkloadArgs struct {
+	// The name of the parent cluster.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The name of the parent namespace.
+	NamespaceName pulumi.StringPtrInput `pulumi:"namespaceName"`
+	// The name of this workload.
+	TopLevelControllerName pulumi.StringPtrInput `pulumi:"topLevelControllerName"`
+	// The type of this workload (e.g. "Deployment" or "DaemonSet")
+	TopLevelControllerType pulumi.StringPtrInput `pulumi:"topLevelControllerType"`
+}
+
+func (GkeWorkloadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeWorkload)(nil)).Elem()
+}
+
+func (i GkeWorkloadArgs) ToGkeWorkloadOutput() GkeWorkloadOutput {
+	return i.ToGkeWorkloadOutputWithContext(context.Background())
+}
+
+func (i GkeWorkloadArgs) ToGkeWorkloadOutputWithContext(ctx context.Context) GkeWorkloadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeWorkloadOutput)
+}
+
+func (i GkeWorkloadArgs) ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput {
+	return i.ToGkeWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (i GkeWorkloadArgs) ToGkeWorkloadPtrOutputWithContext(ctx context.Context) GkeWorkloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeWorkloadOutput).ToGkeWorkloadPtrOutputWithContext(ctx)
+}
+
+// GkeWorkloadPtrInput is an input type that accepts GkeWorkloadArgs, GkeWorkloadPtr and GkeWorkloadPtrOutput values.
+// You can construct a concrete instance of `GkeWorkloadPtrInput` via:
+//
+//          GkeWorkloadArgs{...}
+//
+//  or:
+//
+//          nil
+type GkeWorkloadPtrInput interface {
+	pulumi.Input
+
+	ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput
+	ToGkeWorkloadPtrOutputWithContext(context.Context) GkeWorkloadPtrOutput
+}
+
+type gkeWorkloadPtrType GkeWorkloadArgs
+
+func GkeWorkloadPtr(v *GkeWorkloadArgs) GkeWorkloadPtrInput {
+	return (*gkeWorkloadPtrType)(v)
+}
+
+func (*gkeWorkloadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeWorkload)(nil)).Elem()
+}
+
+func (i *gkeWorkloadPtrType) ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput {
+	return i.ToGkeWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (i *gkeWorkloadPtrType) ToGkeWorkloadPtrOutputWithContext(ctx context.Context) GkeWorkloadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GkeWorkloadPtrOutput)
+}
+
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+type GkeWorkloadOutput struct{ *pulumi.OutputState }
+
+func (GkeWorkloadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeWorkload)(nil)).Elem()
+}
+
+func (o GkeWorkloadOutput) ToGkeWorkloadOutput() GkeWorkloadOutput {
+	return o
+}
+
+func (o GkeWorkloadOutput) ToGkeWorkloadOutputWithContext(ctx context.Context) GkeWorkloadOutput {
+	return o
+}
+
+func (o GkeWorkloadOutput) ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput {
+	return o.ToGkeWorkloadPtrOutputWithContext(context.Background())
+}
+
+func (o GkeWorkloadOutput) ToGkeWorkloadPtrOutputWithContext(ctx context.Context) GkeWorkloadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GkeWorkload) *GkeWorkload {
+		return &v
+	}).(GkeWorkloadPtrOutput)
+}
+
+// The name of the parent cluster.
+func (o GkeWorkloadOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeWorkload) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeWorkloadOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeWorkload) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The name of the parent namespace.
+func (o GkeWorkloadOutput) NamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeWorkload) *string { return v.NamespaceName }).(pulumi.StringPtrOutput)
+}
+
+// The name of this workload.
+func (o GkeWorkloadOutput) TopLevelControllerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeWorkload) *string { return v.TopLevelControllerName }).(pulumi.StringPtrOutput)
+}
+
+// The type of this workload (e.g. "Deployment" or "DaemonSet")
+func (o GkeWorkloadOutput) TopLevelControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GkeWorkload) *string { return v.TopLevelControllerType }).(pulumi.StringPtrOutput)
+}
+
+type GkeWorkloadPtrOutput struct{ *pulumi.OutputState }
+
+func (GkeWorkloadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GkeWorkload)(nil)).Elem()
+}
+
+func (o GkeWorkloadPtrOutput) ToGkeWorkloadPtrOutput() GkeWorkloadPtrOutput {
+	return o
+}
+
+func (o GkeWorkloadPtrOutput) ToGkeWorkloadPtrOutputWithContext(ctx context.Context) GkeWorkloadPtrOutput {
+	return o
+}
+
+func (o GkeWorkloadPtrOutput) Elem() GkeWorkloadOutput {
+	return o.ApplyT(func(v *GkeWorkload) GkeWorkload {
+		if v != nil {
+			return *v
+		}
+		var ret GkeWorkload
+		return ret
+	}).(GkeWorkloadOutput)
+}
+
+// The name of the parent cluster.
+func (o GkeWorkloadPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeWorkloadPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the parent namespace.
+func (o GkeWorkloadPtrOutput) NamespaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NamespaceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of this workload.
+func (o GkeWorkloadPtrOutput) TopLevelControllerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopLevelControllerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of this workload (e.g. "Deployment" or "DaemonSet")
+func (o GkeWorkloadPtrOutput) TopLevelControllerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GkeWorkload) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopLevelControllerType
+	}).(pulumi.StringPtrOutput)
+}
+
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+type GkeWorkloadResponse struct {
+	// The name of the parent cluster.
+	ClusterName string `pulumi:"clusterName"`
+	// The location of the parent cluster. This may be a zone or region.
+	Location string `pulumi:"location"`
+	// The name of the parent namespace.
+	NamespaceName string `pulumi:"namespaceName"`
+	// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+	Project string `pulumi:"project"`
+	// The name of this workload.
+	TopLevelControllerName string `pulumi:"topLevelControllerName"`
+	// The type of this workload (e.g. "Deployment" or "DaemonSet")
+	TopLevelControllerType string `pulumi:"topLevelControllerType"`
+}
+
+// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (e.g. k8s_container, k8s_pod).
+type GkeWorkloadResponseOutput struct{ *pulumi.OutputState }
+
+func (GkeWorkloadResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GkeWorkloadResponse)(nil)).Elem()
+}
+
+func (o GkeWorkloadResponseOutput) ToGkeWorkloadResponseOutput() GkeWorkloadResponseOutput {
+	return o
+}
+
+func (o GkeWorkloadResponseOutput) ToGkeWorkloadResponseOutputWithContext(ctx context.Context) GkeWorkloadResponseOutput {
+	return o
+}
+
+// The name of the parent cluster.
+func (o GkeWorkloadResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// The location of the parent cluster. This may be a zone or region.
+func (o GkeWorkloadResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The name of the parent namespace.
+func (o GkeWorkloadResponseOutput) NamespaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.NamespaceName }).(pulumi.StringOutput)
+}
+
+// The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself.
+func (o GkeWorkloadResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The name of this workload.
+func (o GkeWorkloadResponseOutput) TopLevelControllerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.TopLevelControllerName }).(pulumi.StringOutput)
+}
+
+// The type of this workload (e.g. "Deployment" or "DaemonSet")
+func (o GkeWorkloadResponseOutput) TopLevelControllerType() pulumi.StringOutput {
+	return o.ApplyT(func(v GkeWorkloadResponse) string { return v.TopLevelControllerType }).(pulumi.StringOutput)
+}
+
 // Range of numerical values within min and max.
 type GoogleMonitoringV3Range struct {
 	// Range maximum.
@@ -3082,15 +4027,15 @@ func (o HttpCheckResponseOutput) ValidateSsl() pulumi.BoolOutput {
 
 // An internal checker allows Uptime checks to run on private/internal GCP resources.
 type InternalChecker struct {
-	// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+	// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName *string `pulumi:"displayName"`
 	// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
 	GcpZone *string `pulumi:"gcpZone"`
-	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
 	Name *string `pulumi:"name"`
 	// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
 	Network *string `pulumi:"network"`
-	// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+	// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
 	PeerProjectId *string `pulumi:"peerProjectId"`
 	// The current operational state of the internal checker.
 	State *InternalCheckerState `pulumi:"state"`
@@ -3109,15 +4054,15 @@ type InternalCheckerInput interface {
 
 // An internal checker allows Uptime checks to run on private/internal GCP resources.
 type InternalCheckerArgs struct {
-	// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+	// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
 	GcpZone pulumi.StringPtrInput `pulumi:"gcpZone"`
-	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+	// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
 	PeerProjectId pulumi.StringPtrInput `pulumi:"peerProjectId"`
 	// The current operational state of the internal checker.
 	State InternalCheckerStatePtrInput `pulumi:"state"`
@@ -3175,7 +4120,7 @@ func (o InternalCheckerOutput) ToInternalCheckerOutputWithContext(ctx context.Co
 	return o
 }
 
-// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
 func (o InternalCheckerOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InternalChecker) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -3185,7 +4130,7 @@ func (o InternalCheckerOutput) GcpZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InternalChecker) *string { return v.GcpZone }).(pulumi.StringPtrOutput)
 }
 
-// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
 func (o InternalCheckerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InternalChecker) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3195,7 +4140,7 @@ func (o InternalCheckerOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InternalChecker) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
 func (o InternalCheckerOutput) PeerProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InternalChecker) *string { return v.PeerProjectId }).(pulumi.StringPtrOutput)
 }
@@ -3227,15 +4172,15 @@ func (o InternalCheckerArrayOutput) Index(i pulumi.IntInput) InternalCheckerOutp
 
 // An internal checker allows Uptime checks to run on private/internal GCP resources.
 type InternalCheckerResponse struct {
-	// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+	// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName string `pulumi:"displayName"`
 	// The GCP zone the Uptime check should egress from. Only respected for internal Uptime checks, where internal_network is specified.
 	GcpZone string `pulumi:"gcpZone"`
-	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+	// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
 	Name string `pulumi:"name"`
 	// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the internal resource lives (ex: "default").
 	Network string `pulumi:"network"`
-	// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+	// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
 	PeerProjectId string `pulumi:"peerProjectId"`
 	// The current operational state of the internal checker.
 	State string `pulumi:"state"`
@@ -3256,7 +4201,7 @@ func (o InternalCheckerResponseOutput) ToInternalCheckerResponseOutputWithContex
 	return o
 }
 
-// The checker's human-readable name. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
+// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
 func (o InternalCheckerResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v InternalCheckerResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -3266,7 +4211,7 @@ func (o InternalCheckerResponseOutput) GcpZone() pulumi.StringOutput {
 	return o.ApplyT(func(v InternalCheckerResponse) string { return v.GcpZone }).(pulumi.StringOutput)
 }
 
-// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime check config associated with the internal checker.
+// A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker.
 func (o InternalCheckerResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InternalCheckerResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3276,7 +4221,7 @@ func (o InternalCheckerResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v InternalCheckerResponse) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// The GCP project ID where the internal checker lives. Not necessary the same as the Workspace project.
+// The GCP project ID where the internal checker lives. Not necessary the same as the Metrics Scope project.
 func (o InternalCheckerResponseOutput) PeerProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v InternalCheckerResponse) string { return v.PeerProjectId }).(pulumi.StringOutput)
 }
@@ -8244,6 +9189,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicSliPtrInput)(nil)).Elem(), BasicSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsInput)(nil)).Elem(), CloudEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudEndpointsPtrInput)(nil)).Elem(), CloudEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunInput)(nil)).Elem(), CloudRunArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunPtrInput)(nil)).Elem(), CloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioInput)(nil)).Elem(), ClusterIstioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIstioPtrInput)(nil)).Elem(), ClusterIstioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
@@ -8256,6 +9203,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutPtrInput)(nil)).Elem(), DistributionCutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationInput)(nil)).Elem(), DocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationPtrInput)(nil)).Elem(), DocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNamespaceInput)(nil)).Elem(), GkeNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeNamespacePtrInput)(nil)).Elem(), GkeNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeServiceInput)(nil)).Elem(), GkeServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeServicePtrInput)(nil)).Elem(), GkeServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeWorkloadInput)(nil)).Elem(), GkeWorkloadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GkeWorkloadPtrInput)(nil)).Elem(), GkeWorkloadArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleMonitoringV3RangeInput)(nil)).Elem(), GoogleMonitoringV3RangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleMonitoringV3RangePtrInput)(nil)).Elem(), GoogleMonitoringV3RangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpCheckInput)(nil)).Elem(), HttpCheckArgs{})
@@ -8331,6 +9284,9 @@ func init() {
 	pulumi.RegisterOutputType(CloudEndpointsOutput{})
 	pulumi.RegisterOutputType(CloudEndpointsPtrOutput{})
 	pulumi.RegisterOutputType(CloudEndpointsResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunOutput{})
+	pulumi.RegisterOutputType(CloudRunPtrOutput{})
+	pulumi.RegisterOutputType(CloudRunResponseOutput{})
 	pulumi.RegisterOutputType(ClusterIstioOutput{})
 	pulumi.RegisterOutputType(ClusterIstioPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIstioResponseOutput{})
@@ -8351,6 +9307,15 @@ func init() {
 	pulumi.RegisterOutputType(DocumentationOutput{})
 	pulumi.RegisterOutputType(DocumentationPtrOutput{})
 	pulumi.RegisterOutputType(DocumentationResponseOutput{})
+	pulumi.RegisterOutputType(GkeNamespaceOutput{})
+	pulumi.RegisterOutputType(GkeNamespacePtrOutput{})
+	pulumi.RegisterOutputType(GkeNamespaceResponseOutput{})
+	pulumi.RegisterOutputType(GkeServiceOutput{})
+	pulumi.RegisterOutputType(GkeServicePtrOutput{})
+	pulumi.RegisterOutputType(GkeServiceResponseOutput{})
+	pulumi.RegisterOutputType(GkeWorkloadOutput{})
+	pulumi.RegisterOutputType(GkeWorkloadPtrOutput{})
+	pulumi.RegisterOutputType(GkeWorkloadResponseOutput{})
 	pulumi.RegisterOutputType(GoogleMonitoringV3RangeOutput{})
 	pulumi.RegisterOutputType(GoogleMonitoringV3RangePtrOutput{})
 	pulumi.RegisterOutputType(GoogleMonitoringV3RangeResponseOutput{})

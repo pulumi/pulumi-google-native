@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        /// </summary>
+        public readonly string EvaluationMode;
 
         [OutputConstructor]
-        private BinaryAuthorizationResponse(bool enabled)
+        private BinaryAuthorizationResponse(
+            bool enabled,
+
+            string evaluationMode)
         {
             Enabled = enabled;
+            EvaluationMode = evaluationMode;
         }
     }
 }

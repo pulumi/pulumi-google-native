@@ -2199,6 +2199,88 @@ func (o GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput) Active() pu
 	return o.ApplyT(func(v GoogleCloudDataplexV1EnvironmentSessionStatusResponse) bool { return v.Active }).(pulumi.BoolOutput)
 }
 
+// A job represents an instance of a task.
+type GoogleCloudDataplexV1JobResponse struct {
+	// The time when the job ended.
+	EndTime string `pulumi:"endTime"`
+	// Additional information about the current state.
+	Message string `pulumi:"message"`
+	// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+	Name string `pulumi:"name"`
+	// . The number of times the job has been retried (excluding the initial attempt).
+	RetryCount int `pulumi:"retryCount"`
+	// The underlying service running a job.
+	Service string `pulumi:"service"`
+	// The full resource name for the job run under a particular service.
+	ServiceJob string `pulumi:"serviceJob"`
+	// The time when the job was started.
+	StartTime string `pulumi:"startTime"`
+	// Execution state for the job.
+	State string `pulumi:"state"`
+	// System generated globally unique ID for the job.
+	Uid string `pulumi:"uid"`
+}
+
+// A job represents an instance of a task.
+type GoogleCloudDataplexV1JobResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1JobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1JobResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1JobResponseOutput) ToGoogleCloudDataplexV1JobResponseOutput() GoogleCloudDataplexV1JobResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1JobResponseOutput) ToGoogleCloudDataplexV1JobResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1JobResponseOutput {
+	return o
+}
+
+// The time when the job ended.
+func (o GoogleCloudDataplexV1JobResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Additional information about the current state.
+func (o GoogleCloudDataplexV1JobResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The relative resource name of the job, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}/jobs/{job_id}.
+func (o GoogleCloudDataplexV1JobResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// . The number of times the job has been retried (excluding the initial attempt).
+func (o GoogleCloudDataplexV1JobResponseOutput) RetryCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) int { return v.RetryCount }).(pulumi.IntOutput)
+}
+
+// The underlying service running a job.
+func (o GoogleCloudDataplexV1JobResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// The full resource name for the job run under a particular service.
+func (o GoogleCloudDataplexV1JobResponseOutput) ServiceJob() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.ServiceJob }).(pulumi.StringOutput)
+}
+
+// The time when the job was started.
+func (o GoogleCloudDataplexV1JobResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// Execution state for the job.
+func (o GoogleCloudDataplexV1JobResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// System generated globally unique ID for the job.
+func (o GoogleCloudDataplexV1JobResponseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1JobResponse) string { return v.Uid }).(pulumi.StringOutput)
+}
+
 // Settings to manage association of Dataproc Metastore with a lake.
 type GoogleCloudDataplexV1LakeMetastore struct {
 	// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
@@ -3491,6 +3573,8 @@ type GoogleCloudDataplexV1TaskExecutionSpec struct {
 	Args map[string]string `pulumi:"args"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
+	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+	Project *string `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
 }
@@ -3512,6 +3596,8 @@ type GoogleCloudDataplexV1TaskExecutionSpecArgs struct {
 	Args pulumi.StringMapInput `pulumi:"args"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
+	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 }
@@ -3553,6 +3639,11 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) MaxJobExecutionLifetime() 
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) *string { return v.MaxJobExecutionLifetime }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
 // Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) string { return v.ServiceAccount }).(pulumi.StringOutput)
@@ -3564,6 +3655,8 @@ type GoogleCloudDataplexV1TaskExecutionSpecResponse struct {
 	Args map[string]string `pulumi:"args"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime string `pulumi:"maxJobExecutionLifetime"`
+	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+	Project string `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
 }
@@ -3593,9 +3686,49 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) MaxJobExecutionLif
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) string { return v.MaxJobExecutionLifetime }).(pulumi.StringOutput)
 }
 
+// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
 // Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Status of the task execution (e.g. Jobs).
+type GoogleCloudDataplexV1TaskExecutionStatusResponse struct {
+	// latest job execution
+	LatestJob GoogleCloudDataplexV1JobResponse `pulumi:"latestJob"`
+	// Last update time of the status.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// Status of the task execution (e.g. Jobs).
+type GoogleCloudDataplexV1TaskExecutionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TaskExecutionStatusResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) ToGoogleCloudDataplexV1TaskExecutionStatusResponseOutput() GoogleCloudDataplexV1TaskExecutionStatusResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) ToGoogleCloudDataplexV1TaskExecutionStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TaskExecutionStatusResponseOutput {
+	return o
+}
+
+// latest job execution
+func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) LatestJob() GoogleCloudDataplexV1JobResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionStatusResponse) GoogleCloudDataplexV1JobResponse {
+		return v.LatestJob
+	}).(GoogleCloudDataplexV1JobResponseOutput)
+}
+
+// Last update time of the status.
+func (o GoogleCloudDataplexV1TaskExecutionStatusResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionStatusResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // Configuration for the underlying infrastructure used to run workloads.
@@ -3784,9 +3917,9 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput) VpcNetwork() Googl
 
 // Batch compute resources associated with the task.
 type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources struct {
-	// Optional. Total number of job executors.
+	// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
 	ExecutorsCount *int `pulumi:"executorsCount"`
-	// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+	// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
 	MaxExecutorsCount *int `pulumi:"maxExecutorsCount"`
 }
 
@@ -3803,9 +3936,9 @@ type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesInput inter
 
 // Batch compute resources associated with the task.
 type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs struct {
-	// Optional. Total number of job executors.
+	// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
 	ExecutorsCount pulumi.IntPtrInput `pulumi:"executorsCount"`
-	// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+	// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
 	MaxExecutorsCount pulumi.IntPtrInput `pulumi:"maxExecutorsCount"`
 }
 
@@ -3887,12 +4020,12 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput) 
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput)
 }
 
-// Optional. Total number of job executors.
+// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput) ExecutorsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources) *int { return v.ExecutorsCount }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput) MaxExecutorsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources) *int {
 		return v.MaxExecutorsCount
@@ -3923,7 +4056,7 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutpu
 	}).(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput)
 }
 
-// Optional. Total number of job executors.
+// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput) ExecutorsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources) *int {
 		if v == nil {
@@ -3933,7 +4066,7 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput) MaxExecutorsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources) *int {
 		if v == nil {
@@ -3945,9 +4078,9 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutpu
 
 // Batch compute resources associated with the task.
 type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse struct {
-	// Optional. Total number of job executors.
+	// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
 	ExecutorsCount int `pulumi:"executorsCount"`
-	// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+	// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
 	MaxExecutorsCount int `pulumi:"maxExecutorsCount"`
 }
 
@@ -3966,14 +4099,14 @@ func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse
 	return o
 }
 
-// Optional. Total number of job executors.
+// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponseOutput) ExecutorsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse) int {
 		return v.ExecutorsCount
 	}).(pulumi.IntOutput)
 }
 
-// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled.
+// Optional. Max configurable executors. If max_executors_count > executors_count, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. Default=1000
 func (o GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponseOutput) MaxExecutorsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesResponse) int {
 		return v.MaxExecutorsCount
@@ -6120,7 +6253,7 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role *string `pulumi:"role"`
@@ -6141,7 +6274,7 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -6204,7 +6337,7 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -6238,7 +6371,7 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+	// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.
 	Role string `pulumi:"role"`
@@ -6264,7 +6397,7 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Cloud Platform resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
+// Specifies the principals requesting access for a Google Cloud resource. members can have the following values: allUsers: A special identifier that represents anyone who is on the internet; with or without a Google account. allAuthenticatedUsers: A special identifier that represents anyone who is authenticated with a Google account or a service account. user:{emailid}: An email address that represents a specific Google account. For example, alice@example.com . serviceAccount:{emailid}: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com. group:{emailid}: An email address that represents a Google group. For example, admins@example.com. deleted:user:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a user that has been recently deleted. For example, alice@example.com?uid=123456789012345678901. If the user is recovered, this value reverts to user:{emailid} and the recovered user retains the role in the binding. deleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901. If the service account is undeleted, this value reverts to serviceAccount:{emailid} and the undeleted service account retains the role in the binding. deleted:group:{emailid}?uid={uniqueid}: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, admins@example.com?uid=123456789012345678901. If the group is recovered, this value reverts to group:{emailid} and the recovered group retains the role in the binding. domain:{domain}: The G Suite domain (primary) that represents all the users of that domain. For example, google.com or example.com.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -6631,6 +6764,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1JobResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1LakeMetastoreOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1LakeMetastorePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1LakeMetastoreResponseOutput{})
@@ -6655,6 +6789,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskExecutionSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskExecutionSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskExecutionStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskInfrastructureSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput{})

@@ -2301,7 +2301,7 @@ type StepResponse struct {
 	// Display information of the final state "abort" and reason.
 	Abort AbortInfoResponse `pulumi:"abort"`
 	// Display information of an App Engine service version.
-	AppEngineVersionInfo AppEngineVersionInfoResponse `pulumi:"appEngineVersionInfo"`
+	AppEngineVersion AppEngineVersionInfoResponse `pulumi:"appEngineVersion"`
 	// This is a step that leads to the final state Drop.
 	CausesDrop bool `pulumi:"causesDrop"`
 	// Display information of a Cloud function.
@@ -2365,8 +2365,8 @@ func (o StepResponseOutput) Abort() AbortInfoResponseOutput {
 }
 
 // Display information of an App Engine service version.
-func (o StepResponseOutput) AppEngineVersionInfo() AppEngineVersionInfoResponseOutput {
-	return o.ApplyT(func(v StepResponse) AppEngineVersionInfoResponse { return v.AppEngineVersionInfo }).(AppEngineVersionInfoResponseOutput)
+func (o StepResponseOutput) AppEngineVersion() AppEngineVersionInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) AppEngineVersionInfoResponse { return v.AppEngineVersion }).(AppEngineVersionInfoResponseOutput)
 }
 
 // This is a step that leads to the final state Drop.

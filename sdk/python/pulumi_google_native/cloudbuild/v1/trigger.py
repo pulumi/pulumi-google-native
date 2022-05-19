@@ -29,6 +29,7 @@ class TriggerArgs:
                  git_file_source: Optional[pulumi.Input['GitFileSourceArgs']] = None,
                  github: Optional[pulumi.Input['GitHubEventsConfigArgs']] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -56,6 +57,7 @@ class TriggerArgs:
         :param pulumi.Input['GitFileSourceArgs'] git_file_source: The file source describing the local or remote Build template.
         :param pulumi.Input['GitHubEventsConfigArgs'] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
+        :param pulumi.Input['TriggerIncludeBuildLogs'] include_build_logs: If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input['PubsubConfigArgs'] pubsub_config: PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
@@ -92,6 +94,8 @@ class TriggerArgs:
             pulumi.set(__self__, "github", github)
         if ignored_files is not None:
             pulumi.set(__self__, "ignored_files", ignored_files)
+        if include_build_logs is not None:
+            pulumi.set(__self__, "include_build_logs", include_build_logs)
         if included_files is not None:
             pulumi.set(__self__, "included_files", included_files)
         if location is not None:
@@ -274,6 +278,18 @@ class TriggerArgs:
         pulumi.set(self, "ignored_files", value)
 
     @property
+    @pulumi.getter(name="includeBuildLogs")
+    def include_build_logs(self) -> Optional[pulumi.Input['TriggerIncludeBuildLogs']]:
+        """
+        If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "include_build_logs")
+
+    @include_build_logs.setter
+    def include_build_logs(self, value: Optional[pulumi.Input['TriggerIncludeBuildLogs']]):
+        pulumi.set(self, "include_build_logs", value)
+
+    @property
     @pulumi.getter(name="includedFiles")
     def included_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -429,6 +445,7 @@ class Trigger(pulumi.CustomResource):
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -460,6 +477,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GitFileSourceArgs']] git_file_source: The file source describing the local or remote Build template.
         :param pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
+        :param pulumi.Input['TriggerIncludeBuildLogs'] include_build_logs: If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         :param pulumi.Input[str] project_id: Required. ID of the project for which to configure automatic builds.
@@ -508,6 +526,7 @@ class Trigger(pulumi.CustomResource):
                  git_file_source: Optional[pulumi.Input[pulumi.InputType['GitFileSourceArgs']]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_build_logs: Optional[pulumi.Input['TriggerIncludeBuildLogs']] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -545,6 +564,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["git_file_source"] = git_file_source
             __props__.__dict__["github"] = github
             __props__.__dict__["ignored_files"] = ignored_files
+            __props__.__dict__["include_build_logs"] = include_build_logs
             __props__.__dict__["included_files"] = included_files
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -596,6 +616,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["git_file_source"] = None
         __props__.__dict__["github"] = None
         __props__.__dict__["ignored_files"] = None
+        __props__.__dict__["include_build_logs"] = None
         __props__.__dict__["included_files"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["pubsub_config"] = None
@@ -711,6 +732,14 @@ class Trigger(pulumi.CustomResource):
         ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         """
         return pulumi.get(self, "ignored_files")
+
+    @property
+    @pulumi.getter(name="includeBuildLogs")
+    def include_build_logs(self) -> pulumi.Output[str]:
+        """
+        If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+        """
+        return pulumi.get(self, "include_build_logs")
 
     @property
     @pulumi.getter(name="includedFiles")

@@ -36,6 +36,7 @@ __all__ = [
     'DeploymentResponse',
     'DerivedResponse',
     'DetailResponse',
+    'DigestResponse',
     'DiscoveredResponse',
     'DiscoveryResponse',
     'DistributionResponse',
@@ -45,6 +46,7 @@ __all__ = [
     'EnvelopeSignatureResponse',
     'ExprResponse',
     'ExternalRefResponse',
+    'FileLocationResponse',
     'FileNoteResponse',
     'FileOccurrenceResponse',
     'FingerprintResponse',
@@ -712,7 +714,7 @@ class BuilderConfigResponse(dict):
 @pulumi.output_type
 class CVSSResponse(dict):
     """
-    Common Vulnerability Scoring System.
+    Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
     """
     @staticmethod
     def __key_warning(key: str):
@@ -763,9 +765,17 @@ class CVSSResponse(dict):
                  scope: str,
                  user_interaction: str):
         """
-        Common Vulnerability Scoring System.
-        :param str attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+        :param str attack_complexity: Defined in CVSS v3, CVSS v2
+        :param str attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+        :param str authentication: Defined in CVSS v2
+        :param str availability_impact: Defined in CVSS v3, CVSS v2
         :param float base_score: The base score is a function of the base metric scores.
+        :param str confidentiality_impact: Defined in CVSS v3, CVSS v2
+        :param str integrity_impact: Defined in CVSS v3, CVSS v2
+        :param str privileges_required: Defined in CVSS v3
+        :param str scope: Defined in CVSS v3
+        :param str user_interaction: Defined in CVSS v3
         """
         pulumi.set(__self__, "attack_complexity", attack_complexity)
         pulumi.set(__self__, "attack_vector", attack_vector)
@@ -783,24 +793,33 @@ class CVSSResponse(dict):
     @property
     @pulumi.getter(name="attackComplexity")
     def attack_complexity(self) -> str:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
         return pulumi.get(self, "attack_complexity")
 
     @property
     @pulumi.getter(name="attackVector")
     def attack_vector(self) -> str:
         """
-        Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
+        Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
         """
         return pulumi.get(self, "attack_vector")
 
     @property
     @pulumi.getter
     def authentication(self) -> str:
+        """
+        Defined in CVSS v2
+        """
         return pulumi.get(self, "authentication")
 
     @property
     @pulumi.getter(name="availabilityImpact")
     def availability_impact(self) -> str:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
         return pulumi.get(self, "availability_impact")
 
     @property
@@ -814,6 +833,9 @@ class CVSSResponse(dict):
     @property
     @pulumi.getter(name="confidentialityImpact")
     def confidentiality_impact(self) -> str:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
         return pulumi.get(self, "confidentiality_impact")
 
     @property
@@ -829,21 +851,33 @@ class CVSSResponse(dict):
     @property
     @pulumi.getter(name="integrityImpact")
     def integrity_impact(self) -> str:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
         return pulumi.get(self, "integrity_impact")
 
     @property
     @pulumi.getter(name="privilegesRequired")
     def privileges_required(self) -> str:
+        """
+        Defined in CVSS v3
+        """
         return pulumi.get(self, "privileges_required")
 
     @property
     @pulumi.getter
     def scope(self) -> str:
+        """
+        Defined in CVSS v3
+        """
         return pulumi.get(self, "scope")
 
     @property
     @pulumi.getter(name="userInteraction")
     def user_interaction(self) -> str:
+        """
+        Defined in CVSS v3
+        """
         return pulumi.get(self, "user_interaction")
 
 
@@ -1709,6 +1743,56 @@ class DetailResponse(dict):
 
 
 @pulumi.output_type
+class DigestResponse(dict):
+    """
+    Digest information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "digestValue":
+            suggest = "digest_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DigestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DigestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DigestResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 algo: str,
+                 digest_value: str):
+        """
+        Digest information.
+        :param str algo: `SHA1`, `SHA512` etc.
+        :param str digest_value: Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        pulumi.set(__self__, "algo", algo)
+        pulumi.set(__self__, "digest_value", digest_value)
+
+    @property
+    @pulumi.getter
+    def algo(self) -> str:
+        """
+        `SHA1`, `SHA512` etc.
+        """
+        return pulumi.get(self, "algo")
+
+    @property
+    @pulumi.getter(name="digestValue")
+    def digest_value(self) -> str:
+        """
+        Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        return pulumi.get(self, "digest_value")
+
+
+@pulumi.output_type
 class DiscoveredResponse(dict):
     """
     Provides information about the scan status of a discovered resource.
@@ -2334,6 +2418,45 @@ class ExternalRefResponse(dict):
         Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class FileLocationResponse(dict):
+    """
+    Indicates the location at which a package was found.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePath":
+            suggest = "file_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_path: str):
+        """
+        Indicates the location at which a package was found.
+        :param str file_path: For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+        """
+        pulumi.set(__self__, "file_path", file_path)
+
+    @property
+    @pulumi.getter(name="filePath")
+    def file_path(self) -> str:
+        """
+        For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
+        """
+        return pulumi.get(self, "file_path")
 
 
 @pulumi.output_type
@@ -3154,16 +3277,74 @@ class InstallationResponse(dict):
     """
     This represents how a particular software package may be installed on a system.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+        elif key == "packageType":
+            suggest = "package_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstallationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstallationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstallationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 architecture: str,
+                 cpe_uri: str,
+                 license: 'outputs.LicenseResponse',
                  location: Sequence['outputs.LocationResponse'],
-                 name: str):
+                 name: str,
+                 package_type: str,
+                 version: 'outputs.VersionResponse'):
         """
         This represents how a particular software package may be installed on a system.
+        :param str architecture: The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        :param str cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        :param 'LicenseResponse' license: Licenses that have been declared by the authors of the package.
         :param Sequence['LocationResponse'] location: All of the places within the filesystem versions of this package have been found.
         :param str name: The name of the installed package.
+        :param str package_type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        :param 'VersionResponse' version: The version of the package.
         """
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        pulumi.set(__self__, "license", license)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> str:
+        """
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @property
+    @pulumi.getter
+    def license(self) -> 'outputs.LicenseResponse':
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
 
     @property
     @pulumi.getter
@@ -3180,6 +3361,22 @@ class InstallationResponse(dict):
         The name of the installed package.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter
+    def version(self) -> 'outputs.VersionResponse':
+        """
+        The version of the package.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -3218,15 +3415,15 @@ class LayerResponse(dict):
 @pulumi.output_type
 class LicenseResponse(dict):
     """
-    License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+    License information.
     """
     def __init__(__self__, *,
                  comments: str,
                  expression: str):
         """
-        License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+        License information.
         :param str comments: Comments
-        :param str expression: Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        :param str expression: Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
         """
         pulumi.set(__self__, "comments", comments)
         pulumi.set(__self__, "expression", expression)
@@ -3243,7 +3440,7 @@ class LicenseResponse(dict):
     @pulumi.getter
     def expression(self) -> str:
         """
-        Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
         """
         return pulumi.get(self, "expression")
 
@@ -3276,9 +3473,9 @@ class LocationResponse(dict):
                  version: 'outputs.VersionResponse'):
         """
         An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
-        :param str cpe_uri: The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        :param str cpe_uri: Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         :param str path: The path from which we gathered that this package/version is installed.
-        :param 'VersionResponse' version: The version installed at this location.
+        :param 'VersionResponse' version: Deprecated. The version installed at this location.
         """
         pulumi.set(__self__, "cpe_uri", cpe_uri)
         pulumi.set(__self__, "path", path)
@@ -3288,7 +3485,7 @@ class LocationResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        Deprecated. The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -3304,7 +3501,7 @@ class LocationResponse(dict):
     @pulumi.getter
     def version(self) -> 'outputs.VersionResponse':
         """
-        The version installed at this location.
+        Deprecated. The version installed at this location.
         """
         return pulumi.get(self, "version")
 
@@ -4014,16 +4211,94 @@ class PackageResponse(dict):
     """
     This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+        elif key == "packageType":
+            suggest = "package_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 architecture: str,
+                 cpe_uri: str,
+                 description: str,
+                 digest: Sequence['outputs.DigestResponse'],
                  distribution: Sequence['outputs.DistributionResponse'],
-                 name: str):
+                 license: 'outputs.LicenseResponse',
+                 maintainer: str,
+                 name: str,
+                 package_type: str,
+                 url: str,
+                 version: 'outputs.VersionResponse'):
         """
         This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
+        :param str architecture: The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        :param str cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        :param str description: The description of this package.
+        :param Sequence['DigestResponse'] digest: Hash value, typically a file digest, that allows unique identification a specific package.
         :param Sequence['DistributionResponse'] distribution: The various channels by which a package is distributed.
+        :param 'LicenseResponse' license: Licenses that have been declared by the authors of the package.
+        :param str maintainer: A freeform text denoting the maintainer of this package.
         :param str name: The name of the package.
+        :param str package_type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        :param str url: The homepage for this package.
+        :param 'VersionResponse' version: The version of the package.
         """
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "digest", digest)
         pulumi.set(__self__, "distribution", distribution)
+        pulumi.set(__self__, "license", license)
+        pulumi.set(__self__, "maintainer", maintainer)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "package_type", package_type)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def architecture(self) -> str:
+        """
+        The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        """
+        return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> str:
+        """
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of this package.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Sequence['outputs.DigestResponse']:
+        """
+        Hash value, typically a file digest, that allows unique identification a specific package.
+        """
+        return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter
@@ -4035,11 +4310,51 @@ class PackageResponse(dict):
 
     @property
     @pulumi.getter
+    def license(self) -> 'outputs.LicenseResponse':
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def maintainer(self) -> str:
+        """
+        A freeform text denoting the maintainer of this package.
+        """
+        return pulumi.get(self, "maintainer")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The name of the package.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> str:
+        """
+        The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        """
+        return pulumi.get(self, "package_type")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The homepage for this package.
+        """
+        return pulumi.get(self, "url")
+
+    @property
+    @pulumi.getter
+    def version(self) -> 'outputs.VersionResponse':
+        """
+        The version of the package.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -5309,6 +5624,8 @@ class VulnerabilityLocationResponse(dict):
         suggest = None
         if key == "cpeUri":
             suggest = "cpe_uri"
+        elif key == "fileLocation":
+            suggest = "file_location"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VulnerabilityLocationResponse. Access the value via the '{suggest}' property getter instead.")
@@ -5323,15 +5640,18 @@ class VulnerabilityLocationResponse(dict):
 
     def __init__(__self__, *,
                  cpe_uri: str,
+                 file_location: Sequence['outputs.FileLocationResponse'],
                  package: str,
                  version: 'outputs.VersionResponse'):
         """
         The location of the vulnerability
         :param str cpe_uri: The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
+        :param Sequence['FileLocationResponse'] file_location: The file location at which this package was found.
         :param str package: The package being described.
         :param 'VersionResponse' version: The version of the package being described. This field can be used as a filter in list requests.
         """
         pulumi.set(__self__, "cpe_uri", cpe_uri)
+        pulumi.set(__self__, "file_location", file_location)
         pulumi.set(__self__, "package", package)
         pulumi.set(__self__, "version", version)
 
@@ -5342,6 +5662,14 @@ class VulnerabilityLocationResponse(dict):
         The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "cpe_uri")
+
+    @property
+    @pulumi.getter(name="fileLocation")
+    def file_location(self) -> Sequence['outputs.FileLocationResponse']:
+        """
+        The file location at which this package was found.
+        """
+        return pulumi.get(self, "file_location")
 
     @property
     @pulumi.getter
@@ -5370,6 +5698,8 @@ class VulnerabilityTypeResponse(dict):
         suggest = None
         if key == "cvssScore":
             suggest = "cvss_score"
+        elif key == "cvssV2":
+            suggest = "cvss_v2"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VulnerabilityTypeResponse. Access the value via the '{suggest}' property getter instead.")
@@ -5384,15 +5714,21 @@ class VulnerabilityTypeResponse(dict):
 
     def __init__(__self__, *,
                  cvss_score: float,
+                 cvss_v2: 'outputs.CVSSResponse',
+                 cwe: Sequence[str],
                  details: Sequence['outputs.DetailResponse'],
                  severity: str):
         """
         VulnerabilityType provides metadata about a security vulnerability.
         :param float cvss_score: The CVSS score for this Vulnerability.
+        :param 'CVSSResponse' cvss_v2: The full description of the CVSS for version 2.
+        :param Sequence[str] cwe: A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
         :param Sequence['DetailResponse'] details: All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
         :param str severity: Note provider assigned impact of the vulnerability
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
+        pulumi.set(__self__, "cvss_v2", cvss_v2)
+        pulumi.set(__self__, "cwe", cwe)
         pulumi.set(__self__, "details", details)
         pulumi.set(__self__, "severity", severity)
 
@@ -5403,6 +5739,22 @@ class VulnerabilityTypeResponse(dict):
         The CVSS score for this Vulnerability.
         """
         return pulumi.get(self, "cvss_score")
+
+    @property
+    @pulumi.getter(name="cvssV2")
+    def cvss_v2(self) -> 'outputs.CVSSResponse':
+        """
+        The full description of the CVSS for version 2.
+        """
+        return pulumi.get(self, "cvss_v2")
+
+    @property
+    @pulumi.getter
+    def cwe(self) -> Sequence[str]:
+        """
+        A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+        """
+        return pulumi.get(self, "cwe")
 
     @property
     @pulumi.getter

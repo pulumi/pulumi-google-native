@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<Pulumi.GoogleNative.Compute.Alpha.RouterNatEndpointTypesItem>? _endpointTypes;
 
         /// <summary>
-        /// List of Natted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
+        /// List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM
         /// </summary>
         public InputList<Pulumi.GoogleNative.Compute.Alpha.RouterNatEndpointTypesItem> EndpointTypes
         {

@@ -213,7 +213,7 @@ func (o ActorResponseOutput) GoogleSupport() pulumi.BoolOutput {
 type CaseClassification struct {
 	// The display name of the classification.
 	DisplayName *string `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation.
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
 	Id *string `pulumi:"id"`
 }
 
@@ -232,7 +232,7 @@ type CaseClassificationInput interface {
 type CaseClassificationArgs struct {
 	// The display name of the classification.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The unique ID for a classification. Must be specified for case creation.
+	// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
 
@@ -319,7 +319,7 @@ func (o CaseClassificationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaseClassification) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The unique ID for a classification. Must be specified for case creation.
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
 func (o CaseClassificationOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaseClassification) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -358,7 +358,7 @@ func (o CaseClassificationPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The unique ID for a classification. Must be specified for case creation.
+// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification IDs for case creation, use `caseClassifications.search`.
 func (o CaseClassificationPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaseClassification) *string {
 		if v == nil {

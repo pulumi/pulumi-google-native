@@ -533,6 +533,43 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
     /// <summary>
+    /// If set to INCLUDE_BUILD_LOGS_WITH_STATUS, log url will be shown on GitHub page when build status is final. Setting this field to INCLUDE_BUILD_LOGS_WITH_STATUS for non GitHub triggers results in INVALID_ARGUMENT error.
+    /// </summary>
+    [EnumType]
+    public readonly struct TriggerIncludeBuildLogs : IEquatable<TriggerIncludeBuildLogs>
+    {
+        private readonly string _value;
+
+        private TriggerIncludeBuildLogs(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Build logs will not be shown on GitHub.
+        /// </summary>
+        public static TriggerIncludeBuildLogs IncludeBuildLogsUnspecified { get; } = new TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_UNSPECIFIED");
+        /// <summary>
+        /// Build logs will be shown on GitHub.
+        /// </summary>
+        public static TriggerIncludeBuildLogs IncludeBuildLogsWithStatus { get; } = new TriggerIncludeBuildLogs("INCLUDE_BUILD_LOGS_WITH_STATUS");
+
+        public static bool operator ==(TriggerIncludeBuildLogs left, TriggerIncludeBuildLogs right) => left.Equals(right);
+        public static bool operator !=(TriggerIncludeBuildLogs left, TriggerIncludeBuildLogs right) => !left.Equals(right);
+
+        public static explicit operator string(TriggerIncludeBuildLogs value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TriggerIncludeBuildLogs other && Equals(other);
+        public bool Equals(TriggerIncludeBuildLogs other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
     /// </summary>
     [EnumType]

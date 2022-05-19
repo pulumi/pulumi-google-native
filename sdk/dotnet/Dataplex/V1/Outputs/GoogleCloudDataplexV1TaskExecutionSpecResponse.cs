@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string MaxJobExecutionLifetime;
         /// <summary>
+        /// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+        /// </summary>
+        public readonly string Project;
+        /// <summary>
         /// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         /// </summary>
         public readonly string ServiceAccount;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             string maxJobExecutionLifetime,
 
+            string project,
+
             string serviceAccount)
         {
             Args = args;
             MaxJobExecutionLifetime = maxJobExecutionLifetime;
+            Project = project;
             ServiceAccount = serviceAccount;
         }
     }

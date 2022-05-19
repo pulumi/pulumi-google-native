@@ -17,7 +17,7 @@
 import * as google from "@pulumi/google-native";
 
 // TODO: Determine this dynamically once https://github.com/pulumi/pulumi-google-native/issues/166 is done.
-const engineVersion = "1.21.6-gke.1503";
+const engineVersion = "1.22";
 
 const nodeConfig: google.types.input.container.v1.NodeConfigArgs = {
     machineType: "n1-standard-2",

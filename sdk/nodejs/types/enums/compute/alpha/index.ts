@@ -980,6 +980,10 @@ export const DistributionPolicyTargetShape = {
      */
     Any: "ANY",
     /**
+     * The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+     */
+    AnySingleZone: "ANY_SINGLE_ZONE",
+    /**
      * The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
      */
     Balanced: "BALANCED",
@@ -1709,19 +1713,6 @@ export const InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthChe
  */
 export type InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck = (typeof InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck)[keyof typeof InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck];
 
-export const InstanceGroupManagerAutoHealingPolicyUpdateInstances = {
-    /**
-     * Autohealer always updates instances with a new version for both PROACTIVE and OPPORTUNISTIC updates.
-     */
-    Always: "ALWAYS",
-    /**
-     * (Default) Autohealer updates instance with new version according to update policy constraints: - OPPORTUNISTIC: autohealing does not perform updates. - PROACTIVE: autohealing performs updates according to maxSurge and maxUnavailable constraints. 
-     */
-    FollowUpdatePolicy: "FOLLOW_UPDATE_POLICY",
-} as const;
-
-export type InstanceGroupManagerAutoHealingPolicyUpdateInstances = (typeof InstanceGroupManagerAutoHealingPolicyUpdateInstances)[keyof typeof InstanceGroupManagerAutoHealingPolicyUpdateInstances];
-
 export const InstanceGroupManagerFailoverAction = {
     NoFailover: "NO_FAILOVER",
     Unknown: "UNKNOWN",
@@ -1731,6 +1722,16 @@ export const InstanceGroupManagerFailoverAction = {
  * The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
  */
 export type InstanceGroupManagerFailoverAction = (typeof InstanceGroupManagerFailoverAction)[keyof typeof InstanceGroupManagerFailoverAction];
+
+export const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = {
+    No: "NO",
+    Yes: "YES",
+} as const;
+
+/**
+ * A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+ */
+export type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = (typeof InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)[keyof typeof InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair];
 
 export const InstanceGroupManagerListManagedInstancesResults = {
     /**
@@ -1784,7 +1785,7 @@ export const InstanceGroupManagerUpdatePolicyMinimalAction = {
 } as const;
 
 /**
- * Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+ * Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. 
  */
 export type InstanceGroupManagerUpdatePolicyMinimalAction = (typeof InstanceGroupManagerUpdatePolicyMinimalAction)[keyof typeof InstanceGroupManagerUpdatePolicyMinimalAction];
 
@@ -3256,7 +3257,7 @@ export type RouterBgpPeerEnable = (typeof RouterBgpPeerEnable)[keyof typeof Rout
 
 export const RouterNatEndpointTypesItem = {
     /**
-     * This is used for Secure Web Gateway (go/securewebgateway) endpoints.
+     * This is used for Secure Web Gateway endpoints.
      */
     EndpointTypeSwg: "ENDPOINT_TYPE_SWG",
     /**

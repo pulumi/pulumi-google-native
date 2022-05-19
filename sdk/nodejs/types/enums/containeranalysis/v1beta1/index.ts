@@ -46,6 +46,242 @@ export const BuildSignatureKeyType = {
  */
 export type BuildSignatureKeyType = (typeof BuildSignatureKeyType)[keyof typeof BuildSignatureKeyType];
 
+export const CVSSAttackComplexity = {
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackComplexityUnspecified: "ATTACK_COMPLEXITY_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackComplexityLow: "ATTACK_COMPLEXITY_LOW",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackComplexityHigh: "ATTACK_COMPLEXITY_HIGH",
+    /**
+     * Defined in CVSS v2
+     */
+    AttackComplexityMedium: "ATTACK_COMPLEXITY_MEDIUM",
+} as const;
+
+/**
+ * Defined in CVSS v3, CVSS v2
+ */
+export type CVSSAttackComplexity = (typeof CVSSAttackComplexity)[keyof typeof CVSSAttackComplexity];
+
+export const CVSSAttackVector = {
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackVectorUnspecified: "ATTACK_VECTOR_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackVectorNetwork: "ATTACK_VECTOR_NETWORK",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackVectorAdjacent: "ATTACK_VECTOR_ADJACENT",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    AttackVectorLocal: "ATTACK_VECTOR_LOCAL",
+    /**
+     * Defined in CVSS v3
+     */
+    AttackVectorPhysical: "ATTACK_VECTOR_PHYSICAL",
+} as const;
+
+/**
+ * Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+ */
+export type CVSSAttackVector = (typeof CVSSAttackVector)[keyof typeof CVSSAttackVector];
+
+export const CVSSAuthentication = {
+    /**
+     * Defined in CVSS v2
+     */
+    AuthenticationUnspecified: "AUTHENTICATION_UNSPECIFIED",
+    /**
+     * Defined in CVSS v2
+     */
+    AuthenticationMultiple: "AUTHENTICATION_MULTIPLE",
+    /**
+     * Defined in CVSS v2
+     */
+    AuthenticationSingle: "AUTHENTICATION_SINGLE",
+    /**
+     * Defined in CVSS v2
+     */
+    AuthenticationNone: "AUTHENTICATION_NONE",
+} as const;
+
+/**
+ * Defined in CVSS v2
+ */
+export type CVSSAuthentication = (typeof CVSSAuthentication)[keyof typeof CVSSAuthentication];
+
+export const CVSSAvailabilityImpact = {
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    ImpactUnspecified: "IMPACT_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3
+     */
+    ImpactHigh: "IMPACT_HIGH",
+    /**
+     * Defined in CVSS v3
+     */
+    ImpactLow: "IMPACT_LOW",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    ImpactNone: "IMPACT_NONE",
+    /**
+     * Defined in CVSS v2
+     */
+    ImpactPartial: "IMPACT_PARTIAL",
+    /**
+     * Defined in CVSS v2
+     */
+    ImpactComplete: "IMPACT_COMPLETE",
+} as const;
+
+/**
+ * Defined in CVSS v3, CVSS v2
+ */
+export type CVSSAvailabilityImpact = (typeof CVSSAvailabilityImpact)[keyof typeof CVSSAvailabilityImpact];
+
+export const CVSSConfidentialityImpact = {
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    ImpactUnspecified: "IMPACT_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3
+     */
+    ImpactHigh: "IMPACT_HIGH",
+    /**
+     * Defined in CVSS v3
+     */
+    ImpactLow: "IMPACT_LOW",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    ImpactNone: "IMPACT_NONE",
+    /**
+     * Defined in CVSS v2
+     */
+    ImpactPartial: "IMPACT_PARTIAL",
+    /**
+     * Defined in CVSS v2
+     */
+    ImpactComplete: "IMPACT_COMPLETE",
+} as const;
+
+/**
+ * Defined in CVSS v3, CVSS v2
+ */
+export type CVSSConfidentialityImpact = (typeof CVSSConfidentialityImpact)[keyof typeof CVSSConfidentialityImpact];
+
+export const CVSSIntegrityImpact = {
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    ImpactUnspecified: "IMPACT_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3
+     */
+    ImpactHigh: "IMPACT_HIGH",
+    /**
+     * Defined in CVSS v3
+     */
+    ImpactLow: "IMPACT_LOW",
+    /**
+     * Defined in CVSS v3, CVSS v2
+     */
+    ImpactNone: "IMPACT_NONE",
+    /**
+     * Defined in CVSS v2
+     */
+    ImpactPartial: "IMPACT_PARTIAL",
+    /**
+     * Defined in CVSS v2
+     */
+    ImpactComplete: "IMPACT_COMPLETE",
+} as const;
+
+/**
+ * Defined in CVSS v3, CVSS v2
+ */
+export type CVSSIntegrityImpact = (typeof CVSSIntegrityImpact)[keyof typeof CVSSIntegrityImpact];
+
+export const CVSSPrivilegesRequired = {
+    /**
+     * Defined in CVSS v3
+     */
+    PrivilegesRequiredUnspecified: "PRIVILEGES_REQUIRED_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3
+     */
+    PrivilegesRequiredNone: "PRIVILEGES_REQUIRED_NONE",
+    /**
+     * Defined in CVSS v3
+     */
+    PrivilegesRequiredLow: "PRIVILEGES_REQUIRED_LOW",
+    /**
+     * Defined in CVSS v3
+     */
+    PrivilegesRequiredHigh: "PRIVILEGES_REQUIRED_HIGH",
+} as const;
+
+/**
+ * Defined in CVSS v3
+ */
+export type CVSSPrivilegesRequired = (typeof CVSSPrivilegesRequired)[keyof typeof CVSSPrivilegesRequired];
+
+export const CVSSScope = {
+    /**
+     * Defined in CVSS v3
+     */
+    ScopeUnspecified: "SCOPE_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3
+     */
+    ScopeUnchanged: "SCOPE_UNCHANGED",
+    /**
+     * Defined in CVSS v3
+     */
+    ScopeChanged: "SCOPE_CHANGED",
+} as const;
+
+/**
+ * Defined in CVSS v3
+ */
+export type CVSSScope = (typeof CVSSScope)[keyof typeof CVSSScope];
+
+export const CVSSUserInteraction = {
+    /**
+     * Defined in CVSS v3
+     */
+    UserInteractionUnspecified: "USER_INTERACTION_UNSPECIFIED",
+    /**
+     * Defined in CVSS v3
+     */
+    UserInteractionNone: "USER_INTERACTION_NONE",
+    /**
+     * Defined in CVSS v3
+     */
+    UserInteractionRequired: "USER_INTERACTION_REQUIRED",
+} as const;
+
+/**
+ * Defined in CVSS v3
+ */
+export type CVSSUserInteraction = (typeof CVSSUserInteraction)[keyof typeof CVSSUserInteraction];
+
 export const CVSSv3AttackComplexity = {
     AttackComplexityUnspecified: "ATTACK_COMPLEXITY_UNSPECIFIED",
     AttackComplexityLow: "ATTACK_COMPLEXITY_LOW",
@@ -502,6 +738,26 @@ export const LayerDirective = {
  * Required. The recovered Dockerfile directive used to construct this layer.
  */
 export type LayerDirective = (typeof LayerDirective)[keyof typeof LayerDirective];
+
+export const PackageArchitecture = {
+    /**
+     * Unknown architecture.
+     */
+    ArchitectureUnspecified: "ARCHITECTURE_UNSPECIFIED",
+    /**
+     * X86 architecture.
+     */
+    X86: "X86",
+    /**
+     * X64 architecture.
+     */
+    X64: "X64",
+} as const;
+
+/**
+ * The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+ */
+export type PackageArchitecture = (typeof PackageArchitecture)[keyof typeof PackageArchitecture];
 
 export const PgpSignedAttestationContentType = {
     /**

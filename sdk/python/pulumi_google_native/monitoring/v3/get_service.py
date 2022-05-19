@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, app_engine=None, cloud_endpoints=None, cluster_istio=None, custom=None, display_name=None, istio_canonical_service=None, mesh_istio=None, name=None, telemetry=None, user_labels=None):
+    def __init__(__self__, app_engine=None, cloud_endpoints=None, cloud_run=None, cluster_istio=None, custom=None, display_name=None, gke_namespace=None, gke_service=None, gke_workload=None, istio_canonical_service=None, mesh_istio=None, name=None, telemetry=None, user_labels=None):
         if app_engine and not isinstance(app_engine, dict):
             raise TypeError("Expected argument 'app_engine' to be a dict")
         pulumi.set(__self__, "app_engine", app_engine)
         if cloud_endpoints and not isinstance(cloud_endpoints, dict):
             raise TypeError("Expected argument 'cloud_endpoints' to be a dict")
         pulumi.set(__self__, "cloud_endpoints", cloud_endpoints)
+        if cloud_run and not isinstance(cloud_run, dict):
+            raise TypeError("Expected argument 'cloud_run' to be a dict")
+        pulumi.set(__self__, "cloud_run", cloud_run)
         if cluster_istio and not isinstance(cluster_istio, dict):
             raise TypeError("Expected argument 'cluster_istio' to be a dict")
         pulumi.set(__self__, "cluster_istio", cluster_istio)
@@ -34,6 +37,15 @@ class GetServiceResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if gke_namespace and not isinstance(gke_namespace, dict):
+            raise TypeError("Expected argument 'gke_namespace' to be a dict")
+        pulumi.set(__self__, "gke_namespace", gke_namespace)
+        if gke_service and not isinstance(gke_service, dict):
+            raise TypeError("Expected argument 'gke_service' to be a dict")
+        pulumi.set(__self__, "gke_service", gke_service)
+        if gke_workload and not isinstance(gke_workload, dict):
+            raise TypeError("Expected argument 'gke_workload' to be a dict")
+        pulumi.set(__self__, "gke_workload", gke_workload)
         if istio_canonical_service and not isinstance(istio_canonical_service, dict):
             raise TypeError("Expected argument 'istio_canonical_service' to be a dict")
         pulumi.set(__self__, "istio_canonical_service", istio_canonical_service)
@@ -67,6 +79,14 @@ class GetServiceResult:
         return pulumi.get(self, "cloud_endpoints")
 
     @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> 'outputs.CloudRunResponse':
+        """
+        Type used for Cloud Run services.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @property
     @pulumi.getter(name="clusterIstio")
     def cluster_istio(self) -> 'outputs.ClusterIstioResponse':
         """
@@ -89,6 +109,30 @@ class GetServiceResult:
         Name used for UI elements listing this Service.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="gkeNamespace")
+    def gke_namespace(self) -> 'outputs.GkeNamespaceResponse':
+        """
+        Type used for GKE Namespaces.
+        """
+        return pulumi.get(self, "gke_namespace")
+
+    @property
+    @pulumi.getter(name="gkeService")
+    def gke_service(self) -> 'outputs.GkeServiceResponse':
+        """
+        Type used for GKE Services (the Kubernetes concept of a service).
+        """
+        return pulumi.get(self, "gke_service")
+
+    @property
+    @pulumi.getter(name="gkeWorkload")
+    def gke_workload(self) -> 'outputs.GkeWorkloadResponse':
+        """
+        Type used for GKE Workloads.
+        """
+        return pulumi.get(self, "gke_workload")
 
     @property
     @pulumi.getter(name="istioCanonicalService")
@@ -139,9 +183,13 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             app_engine=self.app_engine,
             cloud_endpoints=self.cloud_endpoints,
+            cloud_run=self.cloud_run,
             cluster_istio=self.cluster_istio,
             custom=self.custom,
             display_name=self.display_name,
+            gke_namespace=self.gke_namespace,
+            gke_service=self.gke_service,
+            gke_workload=self.gke_workload,
             istio_canonical_service=self.istio_canonical_service,
             mesh_istio=self.mesh_istio,
             name=self.name,
@@ -169,9 +217,13 @@ def get_service(service_id: Optional[str] = None,
     return AwaitableGetServiceResult(
         app_engine=__ret__.app_engine,
         cloud_endpoints=__ret__.cloud_endpoints,
+        cloud_run=__ret__.cloud_run,
         cluster_istio=__ret__.cluster_istio,
         custom=__ret__.custom,
         display_name=__ret__.display_name,
+        gke_namespace=__ret__.gke_namespace,
+        gke_service=__ret__.gke_service,
+        gke_workload=__ret__.gke_workload,
         istio_canonical_service=__ret__.istio_canonical_service,
         mesh_istio=__ret__.mesh_istio,
         name=__ret__.name,

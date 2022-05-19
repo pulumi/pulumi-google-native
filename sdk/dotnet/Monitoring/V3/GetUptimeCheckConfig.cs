@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         public readonly ImmutableArray<Outputs.ContentMatcherResponse> ContentMatchers;
         /// <summary>
-        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
+        /// A human-friendly name for the Uptime check configuration. The display name should be unique within a Cloud Monitoring Workspace in order to make it easier to identify; however, uniqueness is not enforced. Required.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

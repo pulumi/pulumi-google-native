@@ -30,7 +30,7 @@ type AlertPolicy struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
 	MutationRecord MutationRecordResponseOutput `pulumi:"mutationRecord"`
-	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
+	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	NotificationChannels pulumi.StringArrayOutput `pulumi:"notificationChannels"`
@@ -95,7 +95,7 @@ type alertPolicyArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
 	MutationRecord *MutationRecord `pulumi:"mutationRecord"`
-	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
+	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
 	Name *string `pulumi:"name"`
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	NotificationChannels []string `pulumi:"notificationChannels"`
@@ -124,7 +124,7 @@ type AlertPolicyArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
 	MutationRecord MutationRecordPtrInput
-	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
+	// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
 	Name pulumi.StringPtrInput
 	// Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
 	NotificationChannels pulumi.StringArrayInput
@@ -212,7 +212,7 @@ func (o AlertPolicyOutput) MutationRecord() MutationRecordResponseOutput {
 	return o.ApplyT(func(v *AlertPolicy) MutationRecordResponseOutput { return v.MutationRecord }).(MutationRecordResponseOutput)
 }
 
-// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
+// Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
 func (o AlertPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

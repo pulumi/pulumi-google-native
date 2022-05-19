@@ -27,6 +27,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['PersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,7 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        :param pulumi.Input[str] maintenance_version: Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input['PersistenceConfigArgs'] persistence_config: Optional. Persistence configuration parameters
         :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
@@ -79,6 +81,8 @@ class InstanceArgs:
             pulumi.set(__self__, "location", location)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if persistence_config is not None:
@@ -233,6 +237,18 @@ class InstanceArgs:
         pulumi.set(self, "maintenance_policy", value)
 
     @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -364,6 +380,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['PersistenceConfigArgs']]] = None,
@@ -391,6 +408,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        :param pulumi.Input[str] maintenance_version: Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[pulumi.InputType['PersistenceConfigArgs']] persistence_config: Optional. Persistence configuration parameters
@@ -436,6 +454,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['PersistenceConfigArgs']]] = None,
@@ -471,6 +490,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["maintenance_version"] = maintenance_version
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
@@ -533,6 +553,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["maintenance_policy"] = None
         __props__.__dict__["maintenance_schedule"] = None
+        __props__.__dict__["maintenance_version"] = None
         __props__.__dict__["memory_size_gb"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nodes"] = None
@@ -649,6 +670,14 @@ class Instance(pulumi.CustomResource):
         Date and time of upcoming maintenance events which have been scheduled.
         """
         return pulumi.get(self, "maintenance_schedule")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> pulumi.Output[str]:
+        """
+        Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="memorySizeGb")

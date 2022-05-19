@@ -23,6 +23,7 @@ __all__ = [
     'BuildArgs',
     'ByProductsArgs',
     'CVSSv3Args',
+    'CVSSArgs',
     'CloudRepoSourceContextArgs',
     'CommandArgs',
     'DeployableArgs',
@@ -30,11 +31,14 @@ __all__ = [
     'DerivedArgs',
     'DetailsArgs',
     'DetailArgs',
+    'DigestArgs',
     'DiscoveredArgs',
     'DiscoveryArgs',
     'DistributionArgs',
     'DocumentNoteArgs',
     'DocumentOccurrenceArgs',
+    'EnvelopeSignatureArgs',
+    'EnvelopeArgs',
     'EnvironmentArgs',
     'ExprArgs',
     'ExternalRefArgs',
@@ -734,7 +738,7 @@ class CVSSv3Args:
                  scope: Optional[pulumi.Input['CVSSv3Scope']] = None,
                  user_interaction: Optional[pulumi.Input['CVSSv3UserInteraction']] = None):
         """
-        Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
+        Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
         :param pulumi.Input['CVSSv3AttackVector'] attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments.
         :param pulumi.Input[float] base_score: The base score is a function of the base metric scores.
         """
@@ -864,6 +868,198 @@ class CVSSv3Args:
 
     @user_interaction.setter
     def user_interaction(self, value: Optional[pulumi.Input['CVSSv3UserInteraction']]):
+        pulumi.set(self, "user_interaction", value)
+
+
+@pulumi.input_type
+class CVSSArgs:
+    def __init__(__self__, *,
+                 attack_complexity: Optional[pulumi.Input['CVSSAttackComplexity']] = None,
+                 attack_vector: Optional[pulumi.Input['CVSSAttackVector']] = None,
+                 authentication: Optional[pulumi.Input['CVSSAuthentication']] = None,
+                 availability_impact: Optional[pulumi.Input['CVSSAvailabilityImpact']] = None,
+                 base_score: Optional[pulumi.Input[float]] = None,
+                 confidentiality_impact: Optional[pulumi.Input['CVSSConfidentialityImpact']] = None,
+                 exploitability_score: Optional[pulumi.Input[float]] = None,
+                 impact_score: Optional[pulumi.Input[float]] = None,
+                 integrity_impact: Optional[pulumi.Input['CVSSIntegrityImpact']] = None,
+                 privileges_required: Optional[pulumi.Input['CVSSPrivilegesRequired']] = None,
+                 scope: Optional[pulumi.Input['CVSSScope']] = None,
+                 user_interaction: Optional[pulumi.Input['CVSSUserInteraction']] = None):
+        """
+        Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
+        :param pulumi.Input['CVSSAttackComplexity'] attack_complexity: Defined in CVSS v3, CVSS v2
+        :param pulumi.Input['CVSSAttackVector'] attack_vector: Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+        :param pulumi.Input['CVSSAuthentication'] authentication: Defined in CVSS v2
+        :param pulumi.Input['CVSSAvailabilityImpact'] availability_impact: Defined in CVSS v3, CVSS v2
+        :param pulumi.Input[float] base_score: The base score is a function of the base metric scores.
+        :param pulumi.Input['CVSSConfidentialityImpact'] confidentiality_impact: Defined in CVSS v3, CVSS v2
+        :param pulumi.Input['CVSSIntegrityImpact'] integrity_impact: Defined in CVSS v3, CVSS v2
+        :param pulumi.Input['CVSSPrivilegesRequired'] privileges_required: Defined in CVSS v3
+        :param pulumi.Input['CVSSScope'] scope: Defined in CVSS v3
+        :param pulumi.Input['CVSSUserInteraction'] user_interaction: Defined in CVSS v3
+        """
+        if attack_complexity is not None:
+            pulumi.set(__self__, "attack_complexity", attack_complexity)
+        if attack_vector is not None:
+            pulumi.set(__self__, "attack_vector", attack_vector)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if availability_impact is not None:
+            pulumi.set(__self__, "availability_impact", availability_impact)
+        if base_score is not None:
+            pulumi.set(__self__, "base_score", base_score)
+        if confidentiality_impact is not None:
+            pulumi.set(__self__, "confidentiality_impact", confidentiality_impact)
+        if exploitability_score is not None:
+            pulumi.set(__self__, "exploitability_score", exploitability_score)
+        if impact_score is not None:
+            pulumi.set(__self__, "impact_score", impact_score)
+        if integrity_impact is not None:
+            pulumi.set(__self__, "integrity_impact", integrity_impact)
+        if privileges_required is not None:
+            pulumi.set(__self__, "privileges_required", privileges_required)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+        if user_interaction is not None:
+            pulumi.set(__self__, "user_interaction", user_interaction)
+
+    @property
+    @pulumi.getter(name="attackComplexity")
+    def attack_complexity(self) -> Optional[pulumi.Input['CVSSAttackComplexity']]:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
+        return pulumi.get(self, "attack_complexity")
+
+    @attack_complexity.setter
+    def attack_complexity(self, value: Optional[pulumi.Input['CVSSAttackComplexity']]):
+        pulumi.set(self, "attack_complexity", value)
+
+    @property
+    @pulumi.getter(name="attackVector")
+    def attack_vector(self) -> Optional[pulumi.Input['CVSSAttackVector']]:
+        """
+        Base Metrics Represents the intrinsic characteristics of a vulnerability that are constant over time and across user environments. Defined in CVSS v3, CVSS v2
+        """
+        return pulumi.get(self, "attack_vector")
+
+    @attack_vector.setter
+    def attack_vector(self, value: Optional[pulumi.Input['CVSSAttackVector']]):
+        pulumi.set(self, "attack_vector", value)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input['CVSSAuthentication']]:
+        """
+        Defined in CVSS v2
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['CVSSAuthentication']]):
+        pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter(name="availabilityImpact")
+    def availability_impact(self) -> Optional[pulumi.Input['CVSSAvailabilityImpact']]:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
+        return pulumi.get(self, "availability_impact")
+
+    @availability_impact.setter
+    def availability_impact(self, value: Optional[pulumi.Input['CVSSAvailabilityImpact']]):
+        pulumi.set(self, "availability_impact", value)
+
+    @property
+    @pulumi.getter(name="baseScore")
+    def base_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        The base score is a function of the base metric scores.
+        """
+        return pulumi.get(self, "base_score")
+
+    @base_score.setter
+    def base_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "base_score", value)
+
+    @property
+    @pulumi.getter(name="confidentialityImpact")
+    def confidentiality_impact(self) -> Optional[pulumi.Input['CVSSConfidentialityImpact']]:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
+        return pulumi.get(self, "confidentiality_impact")
+
+    @confidentiality_impact.setter
+    def confidentiality_impact(self, value: Optional[pulumi.Input['CVSSConfidentialityImpact']]):
+        pulumi.set(self, "confidentiality_impact", value)
+
+    @property
+    @pulumi.getter(name="exploitabilityScore")
+    def exploitability_score(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "exploitability_score")
+
+    @exploitability_score.setter
+    def exploitability_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "exploitability_score", value)
+
+    @property
+    @pulumi.getter(name="impactScore")
+    def impact_score(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "impact_score")
+
+    @impact_score.setter
+    def impact_score(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "impact_score", value)
+
+    @property
+    @pulumi.getter(name="integrityImpact")
+    def integrity_impact(self) -> Optional[pulumi.Input['CVSSIntegrityImpact']]:
+        """
+        Defined in CVSS v3, CVSS v2
+        """
+        return pulumi.get(self, "integrity_impact")
+
+    @integrity_impact.setter
+    def integrity_impact(self, value: Optional[pulumi.Input['CVSSIntegrityImpact']]):
+        pulumi.set(self, "integrity_impact", value)
+
+    @property
+    @pulumi.getter(name="privilegesRequired")
+    def privileges_required(self) -> Optional[pulumi.Input['CVSSPrivilegesRequired']]:
+        """
+        Defined in CVSS v3
+        """
+        return pulumi.get(self, "privileges_required")
+
+    @privileges_required.setter
+    def privileges_required(self, value: Optional[pulumi.Input['CVSSPrivilegesRequired']]):
+        pulumi.set(self, "privileges_required", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input['CVSSScope']]:
+        """
+        Defined in CVSS v3
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input['CVSSScope']]):
+        pulumi.set(self, "scope", value)
+
+    @property
+    @pulumi.getter(name="userInteraction")
+    def user_interaction(self) -> Optional[pulumi.Input['CVSSUserInteraction']]:
+        """
+        Defined in CVSS v3
+        """
+        return pulumi.get(self, "user_interaction")
+
+    @user_interaction.setter
+    def user_interaction(self, value: Optional[pulumi.Input['CVSSUserInteraction']]):
         pulumi.set(self, "user_interaction", value)
 
 
@@ -1413,6 +1609,46 @@ class DetailArgs:
 
 
 @pulumi.input_type
+class DigestArgs:
+    def __init__(__self__, *,
+                 algo: Optional[pulumi.Input[str]] = None,
+                 digest_value: Optional[pulumi.Input[str]] = None):
+        """
+        Digest information.
+        :param pulumi.Input[str] algo: `SHA1`, `SHA512` etc.
+        :param pulumi.Input[str] digest_value: Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        if algo is not None:
+            pulumi.set(__self__, "algo", algo)
+        if digest_value is not None:
+            pulumi.set(__self__, "digest_value", digest_value)
+
+    @property
+    @pulumi.getter
+    def algo(self) -> Optional[pulumi.Input[str]]:
+        """
+        `SHA1`, `SHA512` etc.
+        """
+        return pulumi.get(self, "algo")
+
+    @algo.setter
+    def algo(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algo", value)
+
+    @property
+    @pulumi.getter(name="digestValue")
+    def digest_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the digest encoded. For example: SHA512 - base64 encoding, SHA1 - hex encoding.
+        """
+        return pulumi.get(self, "digest_value")
+
+    @digest_value.setter
+    def digest_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest_value", value)
+
+
+@pulumi.input_type
 class DiscoveredArgs:
     def __init__(__self__, *,
                  analysis_status: Optional[pulumi.Input['DiscoveredAnalysisStatus']] = None,
@@ -1619,7 +1855,7 @@ class DocumentNoteArgs:
                  data_licence: Optional[pulumi.Input[str]] = None,
                  spdx_version: Optional[pulumi.Input[str]] = None):
         """
-        DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+        DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
         :param pulumi.Input[str] data_licence: Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
         :param pulumi.Input[str] spdx_version: Provide a reference number that can be used to understand how to parse and interpret the rest of the file
         """
@@ -1803,6 +2039,79 @@ class DocumentOccurrenceArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class EnvelopeSignatureArgs:
+    def __init__(__self__, *,
+                 keyid: Optional[pulumi.Input[str]] = None,
+                 sig: Optional[pulumi.Input[str]] = None):
+        if keyid is not None:
+            pulumi.set(__self__, "keyid", keyid)
+        if sig is not None:
+            pulumi.set(__self__, "sig", sig)
+
+    @property
+    @pulumi.getter
+    def keyid(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keyid")
+
+    @keyid.setter
+    def keyid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keyid", value)
+
+    @property
+    @pulumi.getter
+    def sig(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sig")
+
+    @sig.setter
+    def sig(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sig", value)
+
+
+@pulumi.input_type
+class EnvelopeArgs:
+    def __init__(__self__, *,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 payload_type: Optional[pulumi.Input[str]] = None,
+                 signatures: Optional[pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]]] = None):
+        """
+        MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
+        """
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if payload_type is not None:
+            pulumi.set(__self__, "payload_type", payload_type)
+        if signatures is not None:
+            pulumi.set(__self__, "signatures", signatures)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="payloadType")
+    def payload_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "payload_type")
+
+    @payload_type.setter
+    def payload_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload_type", value)
+
+    @property
+    @pulumi.getter
+    def signatures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]]]:
+        return pulumi.get(self, "signatures")
+
+    @signatures.setter
+    def signatures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvelopeSignatureArgs']]]]):
+        pulumi.set(self, "signatures", value)
 
 
 @pulumi.input_type
@@ -2810,23 +3119,40 @@ class InTotoArgs:
 @pulumi.input_type
 class InstallationArgs:
     def __init__(__self__, *,
-                 location: pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]):
+                 license: Optional[pulumi.Input['LicenseArgs']] = None,
+                 location: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]] = None):
         """
         This represents how a particular software package may be installed on a system.
+        :param pulumi.Input['LicenseArgs'] license: Licenses that have been declared by the authors of the package.
         :param pulumi.Input[Sequence[pulumi.Input['LocationArgs']]] location: All of the places within the filesystem versions of this package have been found.
         """
-        pulumi.set(__self__, "location", location)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]:
+    def license(self) -> Optional[pulumi.Input['LicenseArgs']]:
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input['LicenseArgs']]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]:
         """
         All of the places within the filesystem versions of this package have been found.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]):
+    def location(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LocationArgs']]]]):
         pulumi.set(self, "location", value)
 
 
@@ -2914,9 +3240,9 @@ class LicenseArgs:
                  comments: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None):
         """
-        License information: https://spdx.github.io/spdx-spec/3-package-information/#315-declared-license
+        License information.
         :param pulumi.Input[str] comments: Comments
-        :param pulumi.Input[str] expression: Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        :param pulumi.Input[str] expression: Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
         """
         if comments is not None:
             pulumi.set(__self__, "comments", comments)
@@ -2939,7 +3265,7 @@ class LicenseArgs:
     @pulumi.getter
     def expression(self) -> Optional[pulumi.Input[str]]:
         """
-        Expression: https://spdx.github.io/spdx-spec/appendix-IV-SPDX-license-expressions/
+        Often a single license can be used to represent the licensing terms. Sometimes it is necessary to include a choice of one or more licenses or some combination of license identifiers. Examples: "LGPL-2.1-only OR MIT", "LGPL-2.1-only AND MIT", "GPL-2.0-or-later WITH Bison-exception-2.2".
         """
         return pulumi.get(self, "expression")
 
@@ -3039,31 +3365,38 @@ class LinkArgs:
 @pulumi.input_type
 class LocationArgs:
     def __init__(__self__, *,
-                 cpe_uri: pulumi.Input[str],
+                 cpe_uri: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input['VersionArgs']] = None):
         """
         An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
-        :param pulumi.Input[str] cpe_uri: The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        :param pulumi.Input[str] cpe_uri: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         :param pulumi.Input[str] path: The path from which we gathered that this package/version is installed.
-        :param pulumi.Input['VersionArgs'] version: The version installed at this location.
+        :param pulumi.Input['VersionArgs'] version: Deprecated. The version installed at this location.
         """
-        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        if cpe_uri is not None:
+            warnings.warn("""Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""", DeprecationWarning)
+            pulumi.log.warn("""cpe_uri is deprecated: Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.""")
+        if cpe_uri is not None:
+            pulumi.set(__self__, "cpe_uri", cpe_uri)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if version is not None:
+            warnings.warn("""Deprecated. The version installed at this location.""", DeprecationWarning)
+            pulumi.log.warn("""version is deprecated: Deprecated. The version installed at this location.""")
         if version is not None:
             pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="cpeUri")
-    def cpe_uri(self) -> pulumi.Input[str]:
+    def cpe_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
         return pulumi.get(self, "cpe_uri")
 
     @cpe_uri.setter
-    def cpe_uri(self, value: pulumi.Input[str]):
+    def cpe_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpe_uri", value)
 
     @property
@@ -3082,7 +3415,7 @@ class LocationArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input['VersionArgs']]:
         """
-        The version installed at this location.
+        Deprecated. The version installed at this location.
         """
         return pulumi.get(self, "version")
 
@@ -3537,15 +3870,51 @@ class PackageIssueArgs:
 class PackageArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 distribution: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]] = None):
+                 architecture: Optional[pulumi.Input['PackageArchitecture']] = None,
+                 cpe_uri: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[Sequence[pulumi.Input['DigestArgs']]]] = None,
+                 distribution: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]] = None,
+                 license: Optional[pulumi.Input['LicenseArgs']] = None,
+                 maintainer: Optional[pulumi.Input[str]] = None,
+                 package_type: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input['VersionArgs']] = None):
         """
-        This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
+        Package represents a particular package version.
         :param pulumi.Input[str] name: Immutable. The name of the package.
+        :param pulumi.Input['PackageArchitecture'] architecture: The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        :param pulumi.Input[str] cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        :param pulumi.Input[str] description: The description of this package.
+        :param pulumi.Input[Sequence[pulumi.Input['DigestArgs']]] digest: Hash value, typically a file digest, that allows unique identification a specific package.
         :param pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]] distribution: The various channels by which a package is distributed.
+        :param pulumi.Input['LicenseArgs'] license: Licenses that have been declared by the authors of the package.
+        :param pulumi.Input[str] maintainer: A freeform text denoting the maintainer of this package.
+        :param pulumi.Input[str] package_type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        :param pulumi.Input[str] url: The homepage for this package.
+        :param pulumi.Input['VersionArgs'] version: The version of the package.
         """
         pulumi.set(__self__, "name", name)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cpe_uri is not None:
+            pulumi.set(__self__, "cpe_uri", cpe_uri)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
         if distribution is not None:
             pulumi.set(__self__, "distribution", distribution)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if maintainer is not None:
+            pulumi.set(__self__, "maintainer", maintainer)
+        if package_type is not None:
+            pulumi.set(__self__, "package_type", package_type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter
@@ -3561,6 +3930,54 @@ class PackageArgs:
 
     @property
     @pulumi.getter
+    def architecture(self) -> Optional[pulumi.Input['PackageArchitecture']]:
+        """
+        The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
+        """
+        return pulumi.get(self, "architecture")
+
+    @architecture.setter
+    def architecture(self, value: Optional[pulumi.Input['PackageArchitecture']]):
+        pulumi.set(self, "architecture", value)
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package. The cpe_uri will be blank for language packages.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @cpe_uri.setter
+    def cpe_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpe_uri", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of this package.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DigestArgs']]]]:
+        """
+        Hash value, typically a file digest, that allows unique identification a specific package.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DigestArgs']]]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter
     def distribution(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]:
         """
         The various channels by which a package is distributed.
@@ -3570,6 +3987,66 @@ class PackageArgs:
     @distribution.setter
     def distribution(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DistributionArgs']]]]):
         pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[pulumi.Input['LicenseArgs']]:
+        """
+        Licenses that have been declared by the authors of the package.
+        """
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input['LicenseArgs']]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def maintainer(self) -> Optional[pulumi.Input[str]]:
+        """
+        A freeform text denoting the maintainer of this package.
+        """
+        return pulumi.get(self, "maintainer")
+
+    @maintainer.setter
+    def maintainer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintainer", value)
+
+    @property
+    @pulumi.getter(name="packageType")
+    def package_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
+        """
+        return pulumi.get(self, "package_type")
+
+    @package_type.setter
+    def package_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The homepage for this package.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input['VersionArgs']]:
+        """
+        The version of the package.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input['VersionArgs']]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type
@@ -3582,7 +4059,7 @@ class PgpSignedAttestationArgs:
         An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
         :param pulumi.Input[str] signature: The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
         :param pulumi.Input['PgpSignedAttestationContentType'] content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
-        :param pulumi.Input[str] pgp_key_id: The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+        :param pulumi.Input[str] pgp_key_id: The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
         """
         pulumi.set(__self__, "signature", signature)
         if content_type is not None:
@@ -3618,7 +4095,7 @@ class PgpSignedAttestationArgs:
     @pulumi.getter(name="pgpKeyId")
     def pgp_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
+        The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
         """
         return pulumi.get(self, "pgp_key_id")
 
@@ -4344,7 +4821,9 @@ class VulnerabilityLocationArgs:
 class VulnerabilityArgs:
     def __init__(__self__, *,
                  cvss_score: Optional[pulumi.Input[float]] = None,
+                 cvss_v2: Optional[pulumi.Input['CVSSArgs']] = None,
                  cvss_v3: Optional[pulumi.Input['CVSSv3Args']] = None,
+                 cwe: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input['DetailArgs']]]] = None,
                  severity: Optional[pulumi.Input['VulnerabilitySeverity']] = None,
                  source_update_time: Optional[pulumi.Input[str]] = None,
@@ -4352,7 +4831,9 @@ class VulnerabilityArgs:
         """
         Vulnerability provides metadata about a security vulnerability in a Note.
         :param pulumi.Input[float] cvss_score: The CVSS score for this vulnerability.
-        :param pulumi.Input['CVSSv3Args'] cvss_v3: The full description of the CVSSv3.
+        :param pulumi.Input['CVSSArgs'] cvss_v2: The full description of the CVSS for version 2.
+        :param pulumi.Input['CVSSv3Args'] cvss_v3: The full description of the CVSS for version 3.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cwe: A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
         :param pulumi.Input[Sequence[pulumi.Input['DetailArgs']]] details: All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
         :param pulumi.Input['VulnerabilitySeverity'] severity: Note provider assigned impact of the vulnerability.
         :param pulumi.Input[str] source_update_time: The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
@@ -4360,8 +4841,12 @@ class VulnerabilityArgs:
         """
         if cvss_score is not None:
             pulumi.set(__self__, "cvss_score", cvss_score)
+        if cvss_v2 is not None:
+            pulumi.set(__self__, "cvss_v2", cvss_v2)
         if cvss_v3 is not None:
             pulumi.set(__self__, "cvss_v3", cvss_v3)
+        if cwe is not None:
+            pulumi.set(__self__, "cwe", cwe)
         if details is not None:
             pulumi.set(__self__, "details", details)
         if severity is not None:
@@ -4384,16 +4869,40 @@ class VulnerabilityArgs:
         pulumi.set(self, "cvss_score", value)
 
     @property
+    @pulumi.getter(name="cvssV2")
+    def cvss_v2(self) -> Optional[pulumi.Input['CVSSArgs']]:
+        """
+        The full description of the CVSS for version 2.
+        """
+        return pulumi.get(self, "cvss_v2")
+
+    @cvss_v2.setter
+    def cvss_v2(self, value: Optional[pulumi.Input['CVSSArgs']]):
+        pulumi.set(self, "cvss_v2", value)
+
+    @property
     @pulumi.getter(name="cvssV3")
     def cvss_v3(self) -> Optional[pulumi.Input['CVSSv3Args']]:
         """
-        The full description of the CVSSv3.
+        The full description of the CVSS for version 3.
         """
         return pulumi.get(self, "cvss_v3")
 
     @cvss_v3.setter
     def cvss_v3(self, value: Optional[pulumi.Input['CVSSv3Args']]):
         pulumi.set(self, "cvss_v3", value)
+
+    @property
+    @pulumi.getter
+    def cwe(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of CWE for this vulnerability. For details, see: https://cwe.mitre.org/index.html
+        """
+        return pulumi.get(self, "cwe")
+
+    @cwe.setter
+    def cwe(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cwe", value)
 
     @property
     @pulumi.getter

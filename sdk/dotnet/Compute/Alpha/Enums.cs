@@ -1963,6 +1963,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public static DistributionPolicyTargetShape Any { get; } = new DistributionPolicyTargetShape("ANY");
         /// <summary>
+        /// The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.
+        /// </summary>
+        public static DistributionPolicyTargetShape AnySingleZone { get; } = new DistributionPolicyTargetShape("ANY_SINGLE_ZONE");
+        /// <summary>
         /// The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.
         /// </summary>
         public static DistributionPolicyTargetShape Balanced { get; } = new DistributionPolicyTargetShape("BALANCED");
@@ -3541,40 +3545,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public override string ToString() => _value;
     }
 
-    [EnumType]
-    public readonly struct InstanceGroupManagerAutoHealingPolicyUpdateInstances : IEquatable<InstanceGroupManagerAutoHealingPolicyUpdateInstances>
-    {
-        private readonly string _value;
-
-        private InstanceGroupManagerAutoHealingPolicyUpdateInstances(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Autohealer always updates instances with a new version for both PROACTIVE and OPPORTUNISTIC updates.
-        /// </summary>
-        public static InstanceGroupManagerAutoHealingPolicyUpdateInstances Always { get; } = new InstanceGroupManagerAutoHealingPolicyUpdateInstances("ALWAYS");
-        /// <summary>
-        /// (Default) Autohealer updates instance with new version according to update policy constraints: - OPPORTUNISTIC: autohealing does not perform updates. - PROACTIVE: autohealing performs updates according to maxSurge and maxUnavailable constraints. 
-        /// </summary>
-        public static InstanceGroupManagerAutoHealingPolicyUpdateInstances FollowUpdatePolicy { get; } = new InstanceGroupManagerAutoHealingPolicyUpdateInstances("FOLLOW_UPDATE_POLICY");
-
-        public static bool operator ==(InstanceGroupManagerAutoHealingPolicyUpdateInstances left, InstanceGroupManagerAutoHealingPolicyUpdateInstances right) => left.Equals(right);
-        public static bool operator !=(InstanceGroupManagerAutoHealingPolicyUpdateInstances left, InstanceGroupManagerAutoHealingPolicyUpdateInstances right) => !left.Equals(right);
-
-        public static explicit operator string(InstanceGroupManagerAutoHealingPolicyUpdateInstances value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is InstanceGroupManagerAutoHealingPolicyUpdateInstances other && Equals(other);
-        public bool Equals(InstanceGroupManagerAutoHealingPolicyUpdateInstances other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
     /// <summary>
     /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
     /// </summary>
@@ -3599,6 +3569,37 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is InstanceGroupManagerFailoverAction other && Equals(other);
         public bool Equals(InstanceGroupManagerFailoverAction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair : IEquatable<InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair No { get; } = new InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("NO");
+        public static InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair Yes { get; } = new InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair("YES");
+
+        public static bool operator ==(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair left, InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair left, InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair other && Equals(other);
+        public bool Equals(InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3681,7 +3682,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+    /// Minimal action to be taken on an instance. Use this option to minimize disruption as much as possible or to apply a more disruptive action than is necessary. - To limit disruption as much as possible, set the minimal action to REFRESH. If your update requires a more disruptive action, Compute Engine performs the necessary action to execute the update. - To apply a more disruptive action than is strictly necessary, set the minimal action to RESTART or REPLACE. For example, Compute Engine does not need to restart a VM to change its metadata. But if your application reads instance metadata only when a VM is restarted, you can set the minimal action to RESTART in order to pick up metadata changes. 
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerUpdatePolicyMinimalAction : IEquatable<InstanceGroupManagerUpdatePolicyMinimalAction>
@@ -6945,7 +6946,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// This is used for Secure Web Gateway (go/securewebgateway) endpoints.
+        /// This is used for Secure Web Gateway endpoints.
         /// </summary>
         public static RouterNatEndpointTypesItem EndpointTypeSwg { get; } = new RouterNatEndpointTypesItem("ENDPOINT_TYPE_SWG");
         /// <summary>
