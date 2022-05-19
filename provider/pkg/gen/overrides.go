@@ -14,7 +14,10 @@
 
 package gen
 
-import "github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+import (
+	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+)
 
 // resourceNameByTypeOverrides is a map of Pulumi resource names by the type name
 // that is present in the discovery document.
@@ -137,6 +140,17 @@ var autonameOverrides = map[string]string{
 	"google-native:cloudkms/v1:ImportJob":        "importJobId",
 	"google-native:cloudkms/v1:KeyRing":          "keyRingId",
 }
+
+// autonameExcludes is a set of resource tokens which should be explicitly excluded from autonaming.
+var autonameExcludes = codegen.NewStringSet(
+	"google-native:bigtableadmin/v1:Cluster",
+	"google-native:bigtableadmin/v2:Cluster",
+	"google-native:bigtableadmin/v2:Instance",
+	"google-native:dialogflow/v3:Agent",
+	"google-native:dialogflow/v3beta1:Agent",
+	"google-native:monitoring/v3:NotificationChannel",
+	"google-native:monitoring/v3:AlertPolicy",
+	"google-native:monitoring/v3:UptimeCheckConfig")
 
 // metadataOverrides is a map of values static overlays to merge into the metadata for
 // individual resource tokens. In case of conflict, the values in this mapping are preferred.

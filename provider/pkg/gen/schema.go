@@ -716,7 +716,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	description := dd.createMethod.Description
 
 	// Apply auto-naming.
-	autoNameable := !strings.HasSuffix(typeName, "IamPolicy")
+	autoNameable := !strings.HasSuffix(typeName, "IamPolicy") && !autonameExcludes.Has(resourceTok)
 	if autoNameable {
 		namePattern, err := namePropertyPattern(inputProperties)
 		if err == nil {
